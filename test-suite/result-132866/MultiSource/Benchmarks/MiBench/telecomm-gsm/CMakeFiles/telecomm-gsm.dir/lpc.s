@@ -2,15 +2,6 @@
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function Gsm_LPC_Analysis
 .LCPI0_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-.LCPI0_1:
 	.half	1                               # 0x1
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
@@ -19,56 +10,56 @@
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
-.LCPI0_2:
+.LCPI0_1:
 	.dword	576460752303423488              # 0x800000000000000
 	.dword	-720575940379279360             # 0xf600000000000000
-.LCPI0_3:
+.LCPI0_2:
 	.dword	119949846642688                 # 0x6d1800000000
 	.dword	131941395333120                 # 0x780000000000
-.LCPI0_4:
+.LCPI0_3:
 	.dword	73306501808128                  # 0x42ac00000000
 	.dword	77618648973312                  # 0x469800000000
-.LCPI0_5:
+.LCPI0_4:
 	.dword	-95982967058333696              # 0xfeab000000000000
 	.dword	-322007373356990464             # 0xfb88000000000000
-.LCPI0_6:
+.LCPI0_5:
 	.dword	26458647810801664               # 0x5e000000000000
 	.dword	-504403158265495552             # 0xf900000000000000
-.LCPI0_7:
+.LCPI0_6:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	4                               # 0x4
 	.word	6                               # 0x6
+.LCPI0_7:
+	.word	31                              # 0x1f
+	.word	31                              # 0x1f
+	.word	15                              # 0xf
+	.word	15                              # 0xf
 .LCPI0_8:
-	.word	31                              # 0x1f
-	.word	31                              # 0x1f
-	.word	15                              # 0xf
-	.word	15                              # 0xf
+	.word	7                               # 0x7
+	.word	7                               # 0x7
+	.word	3                               # 0x3
+	.word	3                               # 0x3
 .LCPI0_9:
-	.word	7                               # 0x7
-	.word	7                               # 0x7
-	.word	3                               # 0x3
-	.word	3                               # 0x3
+	.word	4294967288                      # 0xfffffff8
+	.word	4294967288                      # 0xfffffff8
+	.word	4294967292                      # 0xfffffffc
+	.word	4294967292                      # 0xfffffffc
 .LCPI0_10:
-	.word	4294967288                      # 0xfffffff8
-	.word	4294967288                      # 0xfffffff8
-	.word	4294967292                      # 0xfffffffc
-	.word	4294967292                      # 0xfffffffc
-.LCPI0_11:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	4                               # 0x4
 	.word	5                               # 0x5
+.LCPI0_11:
+	.half	32                              # 0x20
+	.half	32                              # 0x20
+	.half	16                              # 0x10
+	.half	16                              # 0x10
+	.half	8                               # 0x8
+	.half	8                               # 0x8
+	.half	4                               # 0x4
+	.half	4                               # 0x4
 .LCPI0_12:
-	.half	32                              # 0x20
-	.half	32                              # 0x20
-	.half	16                              # 0x10
-	.half	16                              # 0x10
-	.half	8                               # 0x8
-	.half	8                               # 0x8
-	.half	4                               # 0x4
-	.half	4                               # 0x4
-.LCPI0_13:
 	.half	63                              # 0x3f
 	.half	63                              # 0x3f
 	.half	31                              # 0x1f
@@ -238,13 +229,11 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vbitsel.v	$vr0, $vr10, $vr1, $vr0
 	vbitsel.v	$vr1, $vr6, $vr8, $vr4
 	vbitsel.v	$vr0, $vr7, $vr0, $vr5
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_0)
 	vmax.hu	$vr1, $vr1, $vr2
 	vmax.hu	$vr0, $vr0, $vr3
 	vmax.hu	$vr0, $vr1, $vr0
-	vshuf.h	$vr4, $vr0, $vr0
-	vmax.hu	$vr0, $vr0, $vr4
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.hu	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.hu	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
@@ -1545,8 +1534,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vinsgr2vr.d	$vr5, $a7, 0
 	vpackev.d	$vr5, $vr6, $vr5
 	vinsgr2vr.d	$vr7, $fp, 0
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	vld	$vr17, $a3, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	vld	$vr17, $a3, %pc_lo12(.LCPI0_0)
 	vpackev.d	$vr6, $vr6, $vr7
 	vrepli.b	$vr18, 0
 	ori	$a3, $zero, 304
@@ -2324,8 +2313,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vilvl.w	$vr2, $vr2, $vr2
 	vslli.d	$vr2, $vr2, 48
 	vsrai.d	$vr2, $vr2, 48
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_1)
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 40960
 	vreplgr2vr.d	$vr4, $a0
@@ -2336,20 +2325,20 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vslli.d	$vr3, $vr3, 48
 	vsrai.d	$vr3, $vr3, 48
 	vilvh.w	$vr0, $vr0, $vr0
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_3)
+	vld	$vr5, $a0, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	vld	$vr5, $a0, %pc_lo12(.LCPI0_4)
+	vld	$vr6, $a0, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	vld	$vr6, $a0, %pc_lo12(.LCPI0_5)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	vld	$vr7, $a0, %pc_lo12(.LCPI0_6)
+	vld	$vr7, $a0, %pc_lo12(.LCPI0_5)
 	vslli.d	$vr0, $vr0, 48
 	vsrai.d	$vr0, $vr0, 48
 	vmadd.d	$vr6, $vr0, $vr5
 	vmadd.d	$vr7, $vr3, $vr4
-	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_7)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_6)
 	vsrli.d	$vr3, $vr7, 32
 	vsrli.d	$vr4, $vr6, 32
 	vpickev.w	$vr3, $vr4, $vr3
@@ -2362,22 +2351,22 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vsrai.w	$vr1, $vr1, 25
 	vshuf4i.w	$vr2, $vr0, 14
 	vmaxi.w	$vr2, $vr2, -16
+	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_7)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_8)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_8)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_9)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_9)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
-	vld	$vr5, $a0, %pc_lo12(.LCPI0_10)
+	vld	$vr5, $a0, %pc_lo12(.LCPI0_9)
 	vslt.w	$vr3, $vr3, $vr0
 	vslt.w	$vr4, $vr4, $vr1
 	vpickev.h	$vr3, $vr4, $vr3
 	vmax.w	$vr1, $vr1, $vr5
+	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_10)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_11)
+	vld	$vr5, $a0, %pc_lo12(.LCPI0_11)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
-	vld	$vr5, $a0, %pc_lo12(.LCPI0_12)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_13)
-	vld	$vr6, $a0, %pc_lo12(.LCPI0_13)
+	vld	$vr6, $a0, %pc_lo12(.LCPI0_12)
 	vshuf.w	$vr4, $vr2, $vr0
 	vpickev.h	$vr0, $vr1, $vr4
 	vadd.h	$vr0, $vr0, $vr5

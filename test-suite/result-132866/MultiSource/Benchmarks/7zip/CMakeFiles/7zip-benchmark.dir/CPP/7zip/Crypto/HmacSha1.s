@@ -204,23 +204,6 @@ _ZN7NCrypto5NSha15CHmac5FinalEPhm:      # @_ZN7NCrypto5NSha15CHmac5FinalEPhm
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI2_3:
-	.byte	3                               # 0x3
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	7                               # 0x7
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	11                              # 0xb
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	15                              # 0xf
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
 	.text
 	.globl	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	.p2align	5
@@ -281,13 +264,11 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	vreplgr2vr.d	$vr5, $a0
 	vsll.w	$vr3, $vr3, $vr5
 	vor.v	$vr1, $vr3, $vr1
-	vshuf.b	$vr3, $vr2, $vr0, $vr4
-	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
-	vld	$vr4, $a0, %pc_lo12(.LCPI2_3)
-	vslli.w	$vr3, $vr3, 8
+	vshuf.b	$vr2, $vr2, $vr0, $vr4
+	vslli.w	$vr2, $vr2, 8
 	ld.w	$a0, $sp, 16
-	vor.v	$vr1, $vr1, $vr3
-	vshuf.b	$vr0, $vr2, $vr0, $vr4
+	vor.v	$vr1, $vr1, $vr2
+	vsrli.w	$vr0, $vr0, 24
 	vor.v	$vr0, $vr1, $vr0
 	revb.2w	$a0, $a0
 	b	.LBB2_6

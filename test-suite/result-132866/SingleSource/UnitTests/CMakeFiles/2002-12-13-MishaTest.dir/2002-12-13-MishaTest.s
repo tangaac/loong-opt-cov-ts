@@ -11,15 +11,6 @@
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 .LCPI0_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-.LCPI0_2:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -96,11 +87,9 @@ sum:                                    # @sum
 	addi.d	$a4, $a4, 32
 	bnez	$a6, .LBB0_11
 # %bb.12:                               # %middle.block
-	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
-	vld	$vr2, $a4, %pc_lo12(.LCPI0_1)
 	vadd.h	$vr0, $vr1, $vr0
-	vshuf.h	$vr2, $vr0, $vr0
-	vadd.h	$vr0, $vr0, $vr2
+	vbsrl.v	$vr1, $vr0, 8
+	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
@@ -114,8 +103,8 @@ sum:                                    # @sum
 .LBB0_14:                               # %vec.epilog.ph
 	bstrpick.d	$a6, $a3, 31, 2
 	slli.d	$a7, $a6, 2
-	pcalau12i	$t0, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $t0, %pc_lo12(.LCPI0_2)
+	pcalau12i	$t0, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $t0, %pc_lo12(.LCPI0_1)
 	alsl.d	$a6, $a6, $a1, 3
 	vinsgr2vr.h	$vr1, $a4, 0
 	vinsgr2vr.h	$vr2, $zero, 0

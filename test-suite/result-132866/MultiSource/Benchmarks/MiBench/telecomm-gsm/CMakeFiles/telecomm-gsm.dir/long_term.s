@@ -1,17 +1,6 @@
 	.file	"long_term.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Gsm_Long_Term_Predictor
-.LCPI0_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
-	.globl	Gsm_Long_Term_Predictor
+	.globl	Gsm_Long_Term_Predictor         # -- Begin function Gsm_Long_Term_Predictor
 	.p2align	5
 	.type	Gsm_Long_Term_Predictor,@function
 Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
@@ -66,14 +55,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vseq.h	$vr5, $vr4, $vr2
 	vneg.h	$vr7, $vr4
 	vbitsel.v	$vr5, $vr7, $vr6, $vr5
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr7, $a0, %pc_lo12(.LCPI0_0)
 	vbitsel.v	$vr3, $vr4, $vr5, $vr3
 	vmax.h	$vr1, $vr1, $vr3
 	vmax.h	$vr0, $vr0, $vr1
 	vmaxi.h	$vr0, $vr0, 0
-	vori.b	$vr1, $vr7, 0
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -87,8 +73,8 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vbitsel.v	$vr2, $vr4, $vr6, $vr2
 	vbitsel.v	$vr1, $vr1, $vr2, $vr3
 	vmax.h	$vr0, $vr1, $vr0
-	vshuf.h	$vr7, $vr0, $vr0
-	vmax.h	$vr0, $vr0, $vr7
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1

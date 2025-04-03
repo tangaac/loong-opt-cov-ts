@@ -21,7 +21,7 @@ git pull
 
 
 cd $WORK_DIR
-git submodule update
+git submodule update --remote
 
 git add .
 git commit -m "update submodule with upstream"

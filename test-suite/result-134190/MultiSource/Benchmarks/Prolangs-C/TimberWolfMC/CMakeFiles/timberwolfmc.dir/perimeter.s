@@ -49,9 +49,7 @@ perimeter:                              # @perimeter
 	ld.d	$t0, $a3, 0
 	vinsgr2vr.d	$vr0, $a7, 0
 	vinsgr2vr.d	$vr1, $t0, 0
-	vsub.w	$vr0, $vr0, $vr1
-	vneg.w	$vr1, $vr0
-	vmax.w	$vr0, $vr0, $vr1
+	vabsd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a7, $vr0, 0
 	vpickve2gr.w	$t0, $vr0, 1
 	b	.LBB0_3

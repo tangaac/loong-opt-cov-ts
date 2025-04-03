@@ -4590,13 +4590,9 @@ edgeDistortion:                         # @edgeDistortion
 .LBB24_3:                               # %.loopexit
                                         #   in Loop: Header=BB24_6 Depth=2
 	vld	$vr4, $a4, 0
-	vmin.hu	$vr5, $vr1, $vr2
-	vmax.hu	$vr1, $vr1, $vr2
-	vsub.h	$vr1, $vr1, $vr5
+	vabsd.hu	$vr1, $vr1, $vr2
 	vilvl.h	$vr2, $vr0, $vr1
-	vmin.hu	$vr5, $vr3, $vr4
-	vmax.hu	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr3, $vr5
+	vabsd.hu	$vr3, $vr3, $vr4
 	vilvl.h	$vr4, $vr0, $vr3
 	vilvh.h	$vr1, $vr0, $vr1
 	vilvh.h	$vr3, $vr0, $vr3

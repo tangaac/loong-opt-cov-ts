@@ -13,9 +13,7 @@ bar:                                    # @bar
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a0, 0
 	vld	$vr2, $a1, 0
-	vmin.b	$vr3, $vr1, $vr2
-	vmax.b	$vr1, $vr1, $vr2
-	vsub.b	$vr1, $vr1, $vr3
+	vabsd.b	$vr1, $vr1, $vr2
 	vilvh.b	$vr2, $vr0, $vr1
 	vilvl.h	$vr3, $vr0, $vr2
 	vilvl.b	$vr1, $vr0, $vr1

@@ -168,73 +168,45 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	slli.d	$t2, $t2, 3
 	vinsgr2vr.w	$vr3, $t4, 0
 	vinsgr2vr.w	$vr4, $t6, 0
-	vmin.hu	$vr5, $vr1, $vr3
-	vmax.hu	$vr1, $vr1, $vr3
-	vsub.h	$vr3, $vr1, $vr5
+	vabsd.hu	$vr3, $vr1, $vr3
 	vrepli.b	$vr1, 0
 	vilvl.h	$vr3, $vr1, $vr3
-	vmin.hu	$vr5, $vr2, $vr4
-	vmax.hu	$vr2, $vr2, $vr4
 	ld.d	$t4, $a6, 8
-	vsub.h	$vr2, $vr2, $vr5
 	ldx.h	$t3, $t3, $a5
-	vilvl.h	$vr2, $vr1, $vr2
-	ldx.h	$t4, $t4, $a5
+	vabsd.hu	$vr2, $vr2, $vr4
 	ld.d	$t5, $a6, 16
+	ldx.h	$t4, $t4, $a5
 	vinsgr2vr.h	$vr4, $t3, 0
 	ld.d	$t3, $a6, 24
-	vinsgr2vr.h	$vr4, $t4, 1
-	vinsgr2vr.h	$vr4, $a0, 2
-	vinsgr2vr.h	$vr4, $a0, 3
-	vinsgr2vr.h	$vr4, $a0, 4
-	vinsgr2vr.h	$vr4, $a0, 5
-	ldx.h	$t4, $t5, $a5
-	ldx.h	$t3, $t3, $a5
-	vinsgr2vr.h	$vr4, $a0, 6
-	vinsgr2vr.h	$vr4, $a0, 7
+	vilvl.h	$vr2, $vr1, $vr2
+	ldx.h	$t5, $t5, $a5
 	vinsgr2vr.h	$vr5, $t4, 0
-	vinsgr2vr.h	$vr5, $t3, 1
-	vinsgr2vr.h	$vr5, $a0, 2
-	vinsgr2vr.h	$vr5, $a0, 3
-	vinsgr2vr.h	$vr5, $a0, 4
-	vinsgr2vr.h	$vr5, $a0, 5
+	ldx.h	$t3, $t3, $a5
+	vpackev.h	$vr4, $vr5, $vr4
+	vinsgr2vr.h	$vr5, $t5, 0
 	ldx.d	$t1, $t1, $t2
+	vinsgr2vr.h	$vr6, $t3, 0
+	vpackev.h	$vr5, $vr6, $vr5
 	ld.d	$t2, $a3, 8
-	vinsgr2vr.h	$vr5, $a0, 6
-	vinsgr2vr.h	$vr5, $a0, 7
 	alsl.d	$t1, $a4, $t1, 1
-	alsl.d	$t2, $a4, $t2, 1
 	ld.d	$t3, $a3, 16
 	ld.d	$t4, $a3, 24
+	alsl.d	$t2, $a4, $t2, 1
 	ld.h	$t1, $t1, -2
-	ld.h	$t2, $t2, -2
 	alsl.d	$t3, $a4, $t3, 1
 	alsl.d	$t4, $a4, $t4, 1
+	ld.h	$t2, $t2, -2
 	vinsgr2vr.h	$vr6, $t1, 0
-	vinsgr2vr.h	$vr6, $t2, 1
-	vinsgr2vr.h	$vr6, $a0, 2
-	vinsgr2vr.h	$vr6, $a0, 3
-	vinsgr2vr.h	$vr6, $a0, 4
-	vinsgr2vr.h	$vr6, $a0, 5
 	ld.h	$t1, $t3, -2
-	ld.h	$t2, $t4, -2
-	vinsgr2vr.h	$vr6, $a0, 6
-	vinsgr2vr.h	$vr6, $a0, 7
+	ld.h	$t3, $t4, -2
+	vinsgr2vr.h	$vr7, $t2, 0
+	vpackev.h	$vr6, $vr7, $vr6
 	vinsgr2vr.h	$vr7, $t1, 0
-	vinsgr2vr.h	$vr7, $t2, 1
-	vinsgr2vr.h	$vr7, $a0, 2
-	vinsgr2vr.h	$vr7, $a0, 3
-	vinsgr2vr.h	$vr7, $a0, 4
-	vinsgr2vr.h	$vr7, $a0, 5
-	vinsgr2vr.h	$vr7, $a0, 6
-	vinsgr2vr.h	$vr7, $a0, 7
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
+	vinsgr2vr.h	$vr8, $t3, 0
+	vpackev.h	$vr7, $vr8, $vr7
+	vabsd.hu	$vr4, $vr4, $vr6
 	vilvl.h	$vr4, $vr1, $vr4
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr5, $vr1, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr5
@@ -246,75 +218,47 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.w	$vr5, $t2, 0
 	vinsgr2vr.w	$vr6, $t3, 0
 	vinsgr2vr.w	$vr7, $t4, 0
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
+	vabsd.hu	$vr4, $vr4, $vr6
 	vilvl.h	$vr4, $vr1, $vr4
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr5, $vr1, $vr5
 	ld.d	$t1, $a6, 32
-	ld.d	$t2, $a6, 40
 	vadd.w	$vr3, $vr3, $vr4
+	ld.d	$t2, $a6, 40
 	vadd.w	$vr2, $vr2, $vr5
 	ldx.h	$t1, $t1, $a5
-	ldx.h	$t2, $t2, $a5
 	ld.d	$t3, $a6, 48
+	ldx.h	$t2, $t2, $a5
 	ld.d	$t4, $a6, 56
 	vinsgr2vr.h	$vr4, $t1, 0
-	vinsgr2vr.h	$vr4, $t2, 1
-	vinsgr2vr.h	$vr4, $a0, 2
-	vinsgr2vr.h	$vr4, $a0, 3
-	vinsgr2vr.h	$vr4, $a0, 4
-	vinsgr2vr.h	$vr4, $a0, 5
 	ldx.h	$t1, $t3, $a5
+	vinsgr2vr.h	$vr5, $t2, 0
 	ldx.h	$t2, $t4, $a5
-	vinsgr2vr.h	$vr4, $a0, 6
-	vinsgr2vr.h	$vr4, $a0, 7
+	vpackev.h	$vr4, $vr5, $vr4
 	vinsgr2vr.h	$vr5, $t1, 0
-	vinsgr2vr.h	$vr5, $t2, 1
-	vinsgr2vr.h	$vr5, $a0, 2
-	vinsgr2vr.h	$vr5, $a0, 3
-	vinsgr2vr.h	$vr5, $a0, 4
-	vinsgr2vr.h	$vr5, $a0, 5
 	ld.d	$t1, $a3, 32
+	vinsgr2vr.h	$vr6, $t2, 0
+	vpackev.h	$vr5, $vr6, $vr5
 	ld.d	$t2, $a3, 40
-	vinsgr2vr.h	$vr5, $a0, 6
-	vinsgr2vr.h	$vr5, $a0, 7
 	alsl.d	$t1, $a4, $t1, 1
-	alsl.d	$t2, $a4, $t2, 1
 	ld.d	$t3, $a3, 48
 	ld.d	$t4, $a3, 56
+	alsl.d	$t2, $a4, $t2, 1
 	ld.h	$t1, $t1, -2
-	ld.h	$t2, $t2, -2
 	alsl.d	$t3, $a4, $t3, 1
 	alsl.d	$t4, $a4, $t4, 1
+	ld.h	$t2, $t2, -2
 	vinsgr2vr.h	$vr6, $t1, 0
-	vinsgr2vr.h	$vr6, $t2, 1
-	vinsgr2vr.h	$vr6, $a0, 2
-	vinsgr2vr.h	$vr6, $a0, 3
-	vinsgr2vr.h	$vr6, $a0, 4
-	vinsgr2vr.h	$vr6, $a0, 5
 	ld.h	$t1, $t3, -2
-	ld.h	$t2, $t4, -2
-	vinsgr2vr.h	$vr6, $a0, 6
-	vinsgr2vr.h	$vr6, $a0, 7
+	ld.h	$t3, $t4, -2
+	vinsgr2vr.h	$vr7, $t2, 0
+	vpackev.h	$vr6, $vr7, $vr6
 	vinsgr2vr.h	$vr7, $t1, 0
-	vinsgr2vr.h	$vr7, $t2, 1
-	vinsgr2vr.h	$vr7, $a0, 2
-	vinsgr2vr.h	$vr7, $a0, 3
-	vinsgr2vr.h	$vr7, $a0, 4
-	vinsgr2vr.h	$vr7, $a0, 5
-	vinsgr2vr.h	$vr7, $a0, 6
-	vinsgr2vr.h	$vr7, $a0, 7
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
+	vinsgr2vr.h	$vr8, $t3, 0
+	vpackev.h	$vr7, $vr8, $vr7
+	vabsd.hu	$vr4, $vr4, $vr6
 	vilvl.h	$vr4, $vr1, $vr4
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr5, $vr1, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr5
@@ -326,75 +270,47 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.w	$vr5, $t2, 0
 	vinsgr2vr.w	$vr6, $t3, 0
 	vinsgr2vr.w	$vr7, $t4, 0
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
+	vabsd.hu	$vr4, $vr4, $vr6
 	vilvl.h	$vr4, $vr1, $vr4
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr5, $vr1, $vr5
 	ld.d	$t1, $a6, 64
-	ld.d	$t2, $a6, 72
 	vadd.w	$vr3, $vr3, $vr4
+	ld.d	$t2, $a6, 72
 	vadd.w	$vr2, $vr2, $vr5
 	ldx.h	$t1, $t1, $a5
-	ldx.h	$t2, $t2, $a5
 	ld.d	$t3, $a6, 80
+	ldx.h	$t2, $t2, $a5
 	ld.d	$t4, $a6, 88
 	vinsgr2vr.h	$vr4, $t1, 0
-	vinsgr2vr.h	$vr4, $t2, 1
-	vinsgr2vr.h	$vr4, $a0, 2
-	vinsgr2vr.h	$vr4, $a0, 3
-	vinsgr2vr.h	$vr4, $a0, 4
-	vinsgr2vr.h	$vr4, $a0, 5
 	ldx.h	$t1, $t3, $a5
+	vinsgr2vr.h	$vr5, $t2, 0
 	ldx.h	$t2, $t4, $a5
-	vinsgr2vr.h	$vr4, $a0, 6
-	vinsgr2vr.h	$vr4, $a0, 7
+	vpackev.h	$vr4, $vr5, $vr4
 	vinsgr2vr.h	$vr5, $t1, 0
-	vinsgr2vr.h	$vr5, $t2, 1
-	vinsgr2vr.h	$vr5, $a0, 2
-	vinsgr2vr.h	$vr5, $a0, 3
-	vinsgr2vr.h	$vr5, $a0, 4
-	vinsgr2vr.h	$vr5, $a0, 5
 	ld.d	$t1, $a3, 64
+	vinsgr2vr.h	$vr6, $t2, 0
+	vpackev.h	$vr5, $vr6, $vr5
 	ld.d	$t2, $a3, 72
-	vinsgr2vr.h	$vr5, $a0, 6
-	vinsgr2vr.h	$vr5, $a0, 7
 	alsl.d	$t1, $a4, $t1, 1
-	alsl.d	$t2, $a4, $t2, 1
 	ld.d	$t3, $a3, 80
 	ld.d	$t4, $a3, 88
+	alsl.d	$t2, $a4, $t2, 1
 	ld.h	$t1, $t1, -2
-	ld.h	$t2, $t2, -2
 	alsl.d	$t3, $a4, $t3, 1
 	alsl.d	$t4, $a4, $t4, 1
+	ld.h	$t2, $t2, -2
 	vinsgr2vr.h	$vr6, $t1, 0
-	vinsgr2vr.h	$vr6, $t2, 1
-	vinsgr2vr.h	$vr6, $a0, 2
-	vinsgr2vr.h	$vr6, $a0, 3
-	vinsgr2vr.h	$vr6, $a0, 4
-	vinsgr2vr.h	$vr6, $a0, 5
 	ld.h	$t1, $t3, -2
-	ld.h	$t2, $t4, -2
-	vinsgr2vr.h	$vr6, $a0, 6
-	vinsgr2vr.h	$vr6, $a0, 7
+	ld.h	$t3, $t4, -2
+	vinsgr2vr.h	$vr7, $t2, 0
+	vpackev.h	$vr6, $vr7, $vr6
 	vinsgr2vr.h	$vr7, $t1, 0
-	vinsgr2vr.h	$vr7, $t2, 1
-	vinsgr2vr.h	$vr7, $a0, 2
-	vinsgr2vr.h	$vr7, $a0, 3
-	vinsgr2vr.h	$vr7, $a0, 4
-	vinsgr2vr.h	$vr7, $a0, 5
-	vinsgr2vr.h	$vr7, $a0, 6
-	vinsgr2vr.h	$vr7, $a0, 7
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
+	vinsgr2vr.h	$vr8, $t3, 0
+	vpackev.h	$vr7, $vr8, $vr7
+	vabsd.hu	$vr4, $vr4, $vr6
 	vilvl.h	$vr4, $vr1, $vr4
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr5, $vr1, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vilvl.w	$vr3, $vr1, $vr3
@@ -408,76 +324,48 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vinsgr2vr.w	$vr5, $t0, 0
 	vinsgr2vr.w	$vr6, $t2, 0
 	vinsgr2vr.w	$vr7, $a7, 0
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vabsd.hu	$vr4, $vr4, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr4, $vr1, $vr4
 	vilvl.w	$vr4, $vr1, $vr4
 	vilvl.h	$vr5, $vr1, $vr5
 	vilvl.w	$vr5, $vr1, $vr5
 	ld.d	$a7, $a6, 96
-	ld.d	$t0, $a6, 104
 	vadd.d	$vr3, $vr3, $vr4
+	ld.d	$t0, $a6, 104
 	vadd.d	$vr2, $vr2, $vr5
 	ldx.h	$a7, $a7, $a5
-	ldx.h	$t0, $t0, $a5
 	ld.d	$t1, $a6, 112
+	ldx.h	$t0, $t0, $a5
 	ld.d	$a6, $a6, 120
 	vinsgr2vr.h	$vr4, $a7, 0
-	vinsgr2vr.h	$vr4, $t0, 1
-	vinsgr2vr.h	$vr4, $a0, 2
-	vinsgr2vr.h	$vr4, $a0, 3
-	vinsgr2vr.h	$vr4, $a0, 4
-	vinsgr2vr.h	$vr4, $a0, 5
 	ldx.h	$a7, $t1, $a5
+	vinsgr2vr.h	$vr5, $t0, 0
 	ldx.h	$a5, $a6, $a5
-	vinsgr2vr.h	$vr4, $a0, 6
-	vinsgr2vr.h	$vr4, $a0, 7
+	vpackev.h	$vr4, $vr5, $vr4
 	vinsgr2vr.h	$vr5, $a7, 0
-	vinsgr2vr.h	$vr5, $a5, 1
-	vinsgr2vr.h	$vr5, $a0, 2
-	vinsgr2vr.h	$vr5, $a0, 3
-	vinsgr2vr.h	$vr5, $a0, 4
-	vinsgr2vr.h	$vr5, $a0, 5
-	ld.d	$a5, $a3, 96
-	ld.d	$a6, $a3, 104
-	vinsgr2vr.h	$vr5, $a0, 6
-	vinsgr2vr.h	$vr5, $a0, 7
-	alsl.d	$a5, $a4, $a5, 1
+	ld.d	$a6, $a3, 96
+	vinsgr2vr.h	$vr6, $a5, 0
+	vpackev.h	$vr5, $vr6, $vr5
+	ld.d	$a5, $a3, 104
 	alsl.d	$a6, $a4, $a6, 1
 	ld.d	$a7, $a3, 112
 	ld.d	$a3, $a3, 120
-	ld.h	$a5, $a5, -2
+	alsl.d	$a5, $a4, $a5, 1
 	ld.h	$a6, $a6, -2
 	alsl.d	$a7, $a4, $a7, 1
 	alsl.d	$a3, $a4, $a3, 1
-	vinsgr2vr.h	$vr6, $a5, 0
-	vinsgr2vr.h	$vr6, $a6, 1
-	vinsgr2vr.h	$vr6, $a0, 2
-	vinsgr2vr.h	$vr6, $a0, 3
-	vinsgr2vr.h	$vr6, $a0, 4
-	vinsgr2vr.h	$vr6, $a0, 5
-	ld.h	$a4, $a7, -2
+	ld.h	$a4, $a5, -2
+	vinsgr2vr.h	$vr6, $a6, 0
+	ld.h	$a5, $a7, -2
 	ld.h	$a3, $a3, -2
-	vinsgr2vr.h	$vr6, $a0, 6
-	vinsgr2vr.h	$vr6, $a0, 7
 	vinsgr2vr.h	$vr7, $a4, 0
-	vinsgr2vr.h	$vr7, $a3, 1
-	vinsgr2vr.h	$vr7, $a0, 2
-	vinsgr2vr.h	$vr7, $a0, 3
-	vinsgr2vr.h	$vr7, $a0, 4
-	vinsgr2vr.h	$vr7, $a0, 5
-	vinsgr2vr.h	$vr7, $a0, 6
-	vinsgr2vr.h	$vr7, $a0, 7
-	vmin.hu	$vr8, $vr4, $vr6
-	vmax.hu	$vr4, $vr4, $vr6
-	vsub.h	$vr4, $vr4, $vr8
-	vmin.hu	$vr6, $vr5, $vr7
-	vmax.hu	$vr5, $vr5, $vr7
-	vsub.h	$vr5, $vr5, $vr6
+	vpackev.h	$vr6, $vr7, $vr6
+	vinsgr2vr.h	$vr7, $a5, 0
+	vinsgr2vr.h	$vr8, $a3, 0
+	vpackev.h	$vr7, $vr8, $vr7
+	vabsd.hu	$vr4, $vr4, $vr6
+	vabsd.hu	$vr5, $vr5, $vr7
 	vilvl.h	$vr4, $vr1, $vr4
 	vilvl.w	$vr4, $vr1, $vr4
 	vilvl.h	$vr5, $vr1, $vr5
@@ -519,91 +407,63 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 .LBB1_5:                                # %vector.body66
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t4, $a7, 0
-	ld.w	$t5, $t1, 0
 	vinsgr2vr.w	$vr3, $t4, 0
-	vinsgr2vr.w	$vr4, $t5, 0
-	vmin.hu	$vr5, $vr3, $vr4
-	vmax.hu	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr3, $vr5
 	add.d	$t4, $a1, $a2
 	ldx.d	$t5, $a1, $a2
-	ld.d	$t6, $t4, 8
-	vilvl.h	$vr3, $vr1, $vr3
-	slli.d	$t4, $a3, 1
-	ldx.h	$t5, $t5, $t4
-	ldx.h	$t6, $t6, $t4
-	vilvl.w	$vr3, $vr1, $vr3
-	vadd.d	$vr2, $vr2, $vr3
-	vinsgr2vr.h	$vr3, $t5, 0
-	vinsgr2vr.h	$vr3, $t6, 1
-	vinsgr2vr.h	$vr3, $a0, 2
-	vinsgr2vr.h	$vr3, $a0, 3
-	add.d	$t5, $a4, $a2
-	ldx.d	$t6, $a4, $a2
-	ld.d	$t5, $t5, 8
-	vinsgr2vr.h	$vr3, $a0, 4
-	vinsgr2vr.h	$vr3, $a0, 5
-	alsl.d	$t6, $a0, $t6, 1
-	alsl.d	$t5, $a0, $t5, 1
-	ld.h	$t6, $t6, -2
-	ld.h	$t5, $t5, -2
-	vinsgr2vr.h	$vr3, $a0, 6
-	vinsgr2vr.h	$vr3, $a0, 7
-	vinsgr2vr.h	$vr4, $t6, 0
-	vinsgr2vr.h	$vr4, $t5, 1
-	vinsgr2vr.h	$vr4, $a0, 2
-	vinsgr2vr.h	$vr4, $a0, 3
-	vinsgr2vr.h	$vr4, $a0, 4
-	vinsgr2vr.h	$vr4, $a0, 5
-	vinsgr2vr.h	$vr4, $a0, 6
-	vinsgr2vr.h	$vr4, $a0, 7
-	vmin.hu	$vr5, $vr3, $vr4
-	vmax.hu	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr3, $vr5
-	vilvl.h	$vr3, $vr1, $vr3
-	ld.w	$t5, $t0, 0
-	ld.w	$t6, $t2, 0
-	vilvl.w	$vr3, $vr1, $vr3
-	vadd.d	$vr2, $vr2, $vr3
-	vinsgr2vr.w	$vr3, $t5, 0
-	vinsgr2vr.w	$vr4, $t6, 0
-	vmin.hu	$vr5, $vr3, $vr4
-	vmax.hu	$vr3, $vr3, $vr4
-	add.d	$t5, $a5, $a2
-	ldx.d	$t6, $a5, $a2
-	ld.d	$t5, $t5, 8
-	vsub.h	$vr3, $vr3, $vr5
-	vilvl.h	$vr3, $vr1, $vr3
-	ldx.h	$t6, $t6, $t4
-	ldx.h	$t4, $t5, $t4
-	vilvl.w	$vr3, $vr1, $vr3
-	vadd.d	$vr2, $vr2, $vr3
-	vinsgr2vr.h	$vr3, $t6, 0
-	vinsgr2vr.h	$vr3, $t4, 1
-	vinsgr2vr.h	$vr3, $a0, 2
-	vinsgr2vr.h	$vr3, $a0, 3
-	add.d	$t4, $a6, $a2
-	ldx.d	$t5, $a6, $a2
 	ld.d	$t4, $t4, 8
-	vinsgr2vr.h	$vr3, $a0, 4
-	vinsgr2vr.h	$vr3, $a0, 5
+	ld.w	$t6, $t1, 0
+	slli.d	$t7, $a3, 1
+	ldx.h	$t5, $t5, $t7
+	ldx.h	$t4, $t4, $t7
+	vinsgr2vr.w	$vr4, $t6, 0
+	vabsd.hu	$vr3, $vr3, $vr4
+	vinsgr2vr.h	$vr4, $t5, 0
+	vinsgr2vr.h	$vr5, $t4, 0
+	add.d	$t4, $a4, $a2
+	ldx.d	$t5, $a4, $a2
+	ld.d	$t4, $t4, 8
+	vilvl.h	$vr3, $vr1, $vr3
+	vilvl.w	$vr3, $vr1, $vr3
 	alsl.d	$t5, $a0, $t5, 1
 	alsl.d	$t4, $a0, $t4, 1
 	ld.h	$t5, $t5, -2
 	ld.h	$t4, $t4, -2
-	vinsgr2vr.h	$vr3, $a0, 6
-	vinsgr2vr.h	$vr3, $a0, 7
+	vadd.d	$vr2, $vr2, $vr3
+	vpackev.h	$vr3, $vr5, $vr4
 	vinsgr2vr.h	$vr4, $t5, 0
-	vinsgr2vr.h	$vr4, $t4, 1
-	vinsgr2vr.h	$vr4, $a0, 2
-	vinsgr2vr.h	$vr4, $a0, 3
-	vinsgr2vr.h	$vr4, $a0, 4
-	vinsgr2vr.h	$vr4, $a0, 5
-	vinsgr2vr.h	$vr4, $a0, 6
-	vinsgr2vr.h	$vr4, $a0, 7
-	vmin.hu	$vr5, $vr3, $vr4
-	vmax.hu	$vr3, $vr3, $vr4
-	vsub.h	$vr3, $vr3, $vr5
+	vinsgr2vr.h	$vr5, $t4, 0
+	vpackev.h	$vr4, $vr5, $vr4
+	vabsd.hu	$vr3, $vr3, $vr4
+	vilvl.h	$vr3, $vr1, $vr3
+	ld.w	$t4, $t0, 0
+	vilvl.w	$vr3, $vr1, $vr3
+	ld.w	$t5, $t2, 0
+	vadd.d	$vr2, $vr2, $vr3
+	vinsgr2vr.w	$vr3, $t4, 0
+	ldx.d	$t4, $a5, $a2
+	vinsgr2vr.w	$vr4, $t5, 0
+	add.d	$t5, $a5, $a2
+	ld.d	$t5, $t5, 8
+	ldx.h	$t4, $t4, $t7
+	vabsd.hu	$vr3, $vr3, $vr4
+	vilvl.h	$vr3, $vr1, $vr3
+	ldx.h	$t5, $t5, $t7
+	vinsgr2vr.h	$vr4, $t4, 0
+	add.d	$t4, $a6, $a2
+	ldx.d	$t6, $a6, $a2
+	ld.d	$t4, $t4, 8
+	vilvl.w	$vr3, $vr1, $vr3
+	vadd.d	$vr2, $vr2, $vr3
+	alsl.d	$t6, $a0, $t6, 1
+	alsl.d	$t4, $a0, $t4, 1
+	ld.h	$t6, $t6, -2
+	ld.h	$t4, $t4, -2
+	vinsgr2vr.h	$vr3, $t5, 0
+	vpackev.h	$vr3, $vr3, $vr4
+	vinsgr2vr.h	$vr4, $t6, 0
+	vinsgr2vr.h	$vr5, $t4, 0
+	vpackev.h	$vr4, $vr5, $vr4
+	vabsd.hu	$vr3, $vr3, $vr4
 	vilvl.h	$vr3, $vr1, $vr3
 	vilvl.w	$vr3, $vr1, $vr3
 	vadd.d	$vr2, $vr2, $vr3

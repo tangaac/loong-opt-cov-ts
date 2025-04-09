@@ -4,8 +4,8 @@ WORK_DIR=$(pwd)
 TEST_SUITE_DIR=$WORK_DIR/test-suite
 RESULTS_DIR=$TEST_SUITE_DIR/result-$1
 
-$BRANCH_NAME=$(date +%s)
-git checkout -b pr-$1-$BRANCH_NAME
+BRANCH_NAME=pr-$1-$(date +%s)
+git checkout -b $BRANCH_NAME
 
 
 rm -rf $RESULTS_DIR
@@ -36,7 +36,7 @@ git add .
 git commit -m "files after pr $1"
 
 
-git push --set-upstream origin pr-$1
+git push --set-upstream origin $BRANCH_NAME
 
 current_hash=$(git rev-parse HEAD)
 

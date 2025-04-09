@@ -7188,26 +7188,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS4_St1
 	.half	13                              # 0xd
 	.half	14                              # 0xe
 	.half	15                              # 0xf
-.LCPI17_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI17_2:
+.LCPI17_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -7216,15 +7199,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS4_St1
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI17_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -7288,13 +7262,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 # %bb.8:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a6, %pc_hi20(.LCPI17_1)
-	xvld	$xr2, $a6, %pc_lo12(.LCPI17_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -7323,8 +7295,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	maskeqz	$a3, $a6, $a3
 	or	$a5, $a3, $a5
 	bstrpick.d	$a3, $a0, 14, 3
-	pcalau12i	$a6, %pc_hi20(.LCPI17_2)
-	vld	$vr1, $a6, %pc_lo12(.LCPI17_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI17_1)
+	vld	$vr1, $a6, %pc_lo12(.LCPI17_1)
 	slli.d	$a3, $a3, 3
 	vreplgr2vr.h	$vr0, $a5
 	vreplgr2vr.h	$vr2, $a7
@@ -7345,9 +7317,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB17_11
 # %bb.12:                               # %vec.epilog.middle.block
-	pcalau12i	$a5, %pc_hi20(.LCPI17_3)
-	vld	$vr1, $a5, %pc_lo12(.LCPI17_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -7971,26 +7941,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_6E10_M_managerERSt9_Any_dataRKS4_St1
 	.half	13                              # 0xd
 	.half	14                              # 0xe
 	.half	15                              # 0xf
-.LCPI29_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI29_2:
+.LCPI29_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -7999,15 +7952,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_6E10_M_managerERSt9_Any_dataRKS4_St1
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI29_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -8071,13 +8015,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 # %bb.8:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a6, %pc_hi20(.LCPI29_1)
-	xvld	$xr2, $a6, %pc_lo12(.LCPI29_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -8106,8 +8048,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	maskeqz	$a3, $a6, $a3
 	or	$a5, $a3, $a5
 	bstrpick.d	$a3, $a0, 14, 3
-	pcalau12i	$a6, %pc_hi20(.LCPI29_2)
-	vld	$vr1, $a6, %pc_lo12(.LCPI29_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI29_1)
+	vld	$vr1, $a6, %pc_lo12(.LCPI29_1)
 	slli.d	$a3, $a3, 3
 	vreplgr2vr.h	$vr0, $a5
 	vreplgr2vr.h	$vr2, $a7
@@ -8128,9 +8070,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB29_11
 # %bb.12:                               # %vec.epilog.middle.block
-	pcalau12i	$a5, %pc_hi20(.LCPI29_3)
-	vld	$vr1, $a5, %pc_lo12(.LCPI29_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -8743,26 +8683,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_10E10_M_managerERSt9_Any_dataRKS4_St
 	.half	13                              # 0xd
 	.half	14                              # 0xe
 	.half	15                              # 0xf
-.LCPI41_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI41_2:
+.LCPI41_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -8771,15 +8694,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_10E10_M_managerERSt9_Any_dataRKS4_St
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI41_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -8838,13 +8752,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.7:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a6, %pc_hi20(.LCPI41_1)
-	xvld	$xr2, $a6, %pc_lo12(.LCPI41_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -8875,8 +8787,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	maskeqz	$a4, $a7, $a4
 	or	$a6, $a4, $a6
 	bstrpick.d	$a4, $a1, 14, 3
-	pcalau12i	$a7, %pc_hi20(.LCPI41_2)
-	vld	$vr1, $a7, %pc_lo12(.LCPI41_2)
+	pcalau12i	$a7, %pc_hi20(.LCPI41_1)
+	vld	$vr1, $a7, %pc_lo12(.LCPI41_1)
 	slli.d	$a4, $a4, 3
 	vreplgr2vr.h	$vr0, $a6
 	vreplgr2vr.h	$vr2, $t0
@@ -8897,9 +8809,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$t0, $t0, 16
 	bnez	$a6, .LBB41_11
 # %bb.12:                               # %vec.epilog.middle.block
-	pcalau12i	$a6, %pc_hi20(.LCPI41_3)
-	vld	$vr1, $a6, %pc_lo12(.LCPI41_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -10262,26 +10172,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_22E10_M_managerERSt9_Any_dataRKS4_St
 	.half	16                              # 0x10
 	.half	17                              # 0x11
 	.half	18                              # 0x12
-.LCPI77_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI77_2:
+.LCPI77_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -10290,15 +10183,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_22E10_M_managerERSt9_Any_dataRKS4_St
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI77_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -10367,13 +10251,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.8:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$t1, %pc_hi20(.LCPI77_1)
-	xvld	$xr2, $t1, %pc_lo12(.LCPI77_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -10402,8 +10284,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	or	$t1, $t0, $t1
 	move	$t2, $a3
 	bstrins.d	$t2, $zero, 2, 0
-	pcalau12i	$t0, %pc_hi20(.LCPI77_2)
-	vld	$vr1, $t0, %pc_lo12(.LCPI77_2)
+	pcalau12i	$t0, %pc_hi20(.LCPI77_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI77_1)
 	move	$t0, $a3
 	bstrins.d	$t0, $a6, 2, 0
 	vreplgr2vr.h	$vr0, $t1
@@ -10427,9 +10309,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_23E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB77_11
 # %bb.12:                               # %vec.epilog.middle.block
-	pcalau12i	$a5, %pc_hi20(.LCPI77_3)
-	vld	$vr1, $a5, %pc_lo12(.LCPI77_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -11064,26 +10944,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_26E10_M_managerERSt9_Any_dataRKS4_St
 	.half	16                              # 0x10
 	.half	17                              # 0x11
 	.half	18                              # 0x12
-.LCPI89_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI89_2:
+.LCPI89_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -11092,15 +10955,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_26E10_M_managerERSt9_Any_dataRKS4_St
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI89_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -11162,13 +11016,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.6:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$t0, %pc_hi20(.LCPI89_1)
-	xvld	$xr2, $t0, %pc_lo12(.LCPI89_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -11197,8 +11049,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	or	$t1, $t0, $t1
 	move	$t2, $a3
 	bstrins.d	$t2, $zero, 2, 0
-	pcalau12i	$t0, %pc_hi20(.LCPI89_2)
-	vld	$vr1, $t0, %pc_lo12(.LCPI89_2)
+	pcalau12i	$t0, %pc_hi20(.LCPI89_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI89_1)
 	move	$t0, $a3
 	bstrins.d	$t0, $a6, 2, 0
 	vreplgr2vr.h	$vr0, $t1
@@ -11222,9 +11074,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_27E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB89_9
 # %bb.10:                               # %vec.epilog.middle.block
-	pcalau12i	$a5, %pc_hi20(.LCPI89_3)
-	vld	$vr1, $a5, %pc_lo12(.LCPI89_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -11863,26 +11713,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_30E10_M_managerERSt9_Any_dataRKS4_St
 	.half	16                              # 0x10
 	.half	17                              # 0x11
 	.half	18                              # 0x12
-.LCPI101_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI101_2:
+.LCPI101_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -11891,15 +11724,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_30E10_M_managerERSt9_Any_dataRKS4_St
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI101_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -11963,13 +11787,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.7:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$t0, %pc_hi20(.LCPI101_1)
-	xvld	$xr2, $t0, %pc_lo12(.LCPI101_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -11998,8 +11820,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	or	$t1, $t0, $t1
 	move	$t2, $a3
 	bstrins.d	$t2, $zero, 2, 0
-	pcalau12i	$t0, %pc_hi20(.LCPI101_2)
-	vld	$vr1, $t0, %pc_lo12(.LCPI101_2)
+	pcalau12i	$t0, %pc_hi20(.LCPI101_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI101_1)
 	move	$t0, $a3
 	bstrins.d	$t0, $a6, 2, 0
 	vreplgr2vr.h	$vr0, $t1
@@ -12023,9 +11845,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_31E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB101_10
 # %bb.11:                               # %vec.epilog.middle.block
-	pcalau12i	$a5, %pc_hi20(.LCPI101_3)
-	vld	$vr1, $a5, %pc_lo12(.LCPI101_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -12655,26 +12475,9 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_34E10_M_managerERSt9_Any_dataRKS4_St
 	.half	16                              # 0x10
 	.half	17                              # 0x11
 	.half	18                              # 0x12
-.LCPI113_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI113_2:
+.LCPI113_1:
 	.half	0                               # 0x0
 	.half	1                               # 0x1
 	.half	2                               # 0x2
@@ -12683,15 +12486,6 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_34E10_M_managerERSt9_Any_dataRKS4_St
 	.half	5                               # 0x5
 	.half	6                               # 0x6
 	.half	7                               # 0x7
-.LCPI113_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
@@ -12754,13 +12548,11 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.7:                                # %middle.block
 	xvmax.h	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$t0, %pc_hi20(.LCPI113_1)
-	xvld	$xr2, $t0, %pc_lo12(.LCPI113_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.h	$xr0, $xr0, $xr1
@@ -12789,8 +12581,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	or	$t1, $t0, $t1
 	move	$t2, $a3
 	bstrins.d	$t2, $zero, 2, 0
-	pcalau12i	$t0, %pc_hi20(.LCPI113_2)
-	vld	$vr1, $t0, %pc_lo12(.LCPI113_2)
+	pcalau12i	$t0, %pc_hi20(.LCPI113_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI113_1)
 	move	$t0, $a3
 	bstrins.d	$t0, $a6, 2, 0
 	vreplgr2vr.h	$vr0, $t1
@@ -12814,9 +12606,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_35E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB113_10
 # %bb.11:                               # %vec.epilog.middle.block
-	pcalau12i	$a5, %pc_hi20(.LCPI113_3)
-	vld	$vr1, $a5, %pc_lo12(.LCPI113_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1

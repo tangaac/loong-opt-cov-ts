@@ -23206,27 +23206,8 @@ GCC_except_table47:
 .Lcst_end47:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE
-.LCPI48_0:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
-	.globl	_Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE
+	.globl	_Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE # -- Begin function _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE
 	.p2align	5
 	.type	_Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE,@function
 _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE: # @_Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE
@@ -23235,19 +23216,19 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception48
 # %bb.0:
-	addi.d	$sp, $sp, -1216
-	.cfi_def_cfa_offset 1216
-	st.d	$ra, $sp, 1208                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1200                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1192                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1184                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1176                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1168                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1160                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1152                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1144                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1136                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1128                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1184
+	.cfi_def_cfa_offset 1184
+	st.d	$ra, $sp, 1176                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1168                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1160                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1152                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1144                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1136                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1128                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 1120                  # 8-byte Folded Spill
+	st.d	$s6, $sp, 1112                  # 8-byte Folded Spill
+	st.d	$s7, $sp, 1104                  # 8-byte Folded Spill
+	st.d	$s8, $sp, 1096                  # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -23259,7 +23240,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	addi.d	$fp, $sp, 1216
+	addi.d	$fp, $sp, 1184
 	.cfi_def_cfa 22, 0
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s1, $a0
@@ -23278,8 +23259,8 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 .Ltmp1033:
 # %bb.1:                                # %.split
 	move	$s4, $a0
-	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 1112
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 1080
 .Ltmp1035:
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
@@ -23293,7 +23274,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	add.d	$s2, $s4, $a0
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 3840
-	st.h	$a0, $sp, 1126
+	st.h	$a0, $sp, 1094
 	lu12i.w	$a0, -3
 	ori	$s8, $a0, 2288
 	pcalau12i	$a0, %pc_hi20(_ZL3rng)
@@ -23301,8 +23282,8 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	.p2align	4, , 16
 .LBB48_3:                               # =>This Inner Loop Header: Depth=1
 .Ltmp1038:
-	addi.d	$a0, $sp, 1126
-	addi.d	$a2, $sp, 1126
+	addi.d	$a0, $sp, 1094
+	addi.d	$a2, $sp, 1094
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE)
 	jirl	$ra, $ra, 0
@@ -23332,8 +23313,6 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	addi.d	$a1, $a1, 16
 	bnez	$a0, .LBB48_6
 # %bb.7:                                # %vector.body82.preheader
-	pcalau12i	$a0, %pc_hi20(.LCPI48_0)
-	vld	$vr8, $a0, %pc_lo12(.LCPI48_0)
 	addi.d	$a0, $s4, 128
 	lu12i.w	$a1, -3
 	ori	$a1, $a1, 2304
@@ -23346,153 +23325,30 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	ldptr.d	$a4, $a2, 9992
 	ldptr.d	$a3, $a2, 10000
 	ldptr.d	$a2, $a2, 10008
-	vshuf.b	$vr1, $vr0, $vr0, $vr8
-	vst	$vr1, $sp, 1056
-	vst	$vr0, $sp, 928
-	st.b	$zero, $sp, 607
-	st.h	$zero, $sp, 605
-	st.w	$zero, $sp, 601
-	st.b	$zero, $sp, 599
-	st.h	$zero, $sp, 597
-	st.w	$zero, $sp, 593
-	st.b	$zero, $sp, 591
-	st.h	$zero, $sp, 589
-	st.w	$zero, $sp, 585
-	st.b	$zero, $sp, 583
-	st.h	$zero, $sp, 581
-	st.w	$zero, $sp, 577
-	xvld	$xr0, $sp, 1056
+	vsrli.d	$vr1, $vr0, 32
+	vst	$vr1, $sp, 1024
+	vst	$vr0, $sp, 896
+	st.b	$zero, $sp, 575
+	st.h	$zero, $sp, 573
+	st.w	$zero, $sp, 569
+	st.b	$zero, $sp, 567
+	st.h	$zero, $sp, 565
+	st.w	$zero, $sp, 561
+	st.b	$zero, $sp, 559
+	st.h	$zero, $sp, 557
+	st.w	$zero, $sp, 553
+	st.b	$zero, $sp, 551
+	st.h	$zero, $sp, 549
+	st.w	$zero, $sp, 545
+	xvld	$xr0, $sp, 1024
 	vpickve2gr.b	$a5, $vr0, 3
-	st.b	$a5, $sp, 600
+	st.b	$a5, $sp, 568
 	vpickve2gr.b	$a5, $vr0, 2
-	st.b	$a5, $sp, 592
+	st.b	$a5, $sp, 560
 	vpickve2gr.b	$a5, $vr0, 1
-	st.b	$a5, $sp, 584
+	st.b	$a5, $sp, 552
 	vpickve2gr.b	$a5, $vr0, 0
-	st.b	$a5, $sp, 576
-	st.b	$zero, $sp, 735
-	st.h	$zero, $sp, 733
-	st.w	$zero, $sp, 729
-	st.b	$zero, $sp, 727
-	st.h	$zero, $sp, 725
-	st.w	$zero, $sp, 721
-	st.b	$zero, $sp, 719
-	st.h	$zero, $sp, 717
-	st.w	$zero, $sp, 713
-	st.b	$zero, $sp, 711
-	st.h	$zero, $sp, 709
-	st.w	$zero, $sp, 705
-	xvld	$xr0, $sp, 928
-	vinsgr2vr.d	$vr2, $a4, 0
-	vpickve2gr.b	$a4, $vr0, 3
-	st.b	$a4, $sp, 728
-	vpickve2gr.b	$a4, $vr0, 2
-	st.b	$a4, $sp, 720
-	vpickve2gr.b	$a4, $vr0, 1
-	st.b	$a4, $sp, 712
-	vpickve2gr.b	$a4, $vr0, 0
-	st.b	$a4, $sp, 704
-	xvld	$xr0, $sp, 576
-	xvld	$xr1, $sp, 704
-	vshuf.b	$vr3, $vr0, $vr2, $vr8
-	vst	$vr3, $sp, 1024
-	vst	$vr2, $sp, 896
-	st.b	$zero, $sp, 639
-	st.h	$zero, $sp, 637
-	st.w	$zero, $sp, 633
-	st.b	$zero, $sp, 631
-	st.h	$zero, $sp, 629
-	st.w	$zero, $sp, 625
-	st.b	$zero, $sp, 623
-	st.h	$zero, $sp, 621
-	st.w	$zero, $sp, 617
-	st.b	$zero, $sp, 615
-	st.h	$zero, $sp, 613
-	st.w	$zero, $sp, 609
-	xvld	$xr2, $sp, 1024
-	vpickve2gr.b	$a4, $vr2, 3
-	st.b	$a4, $sp, 632
-	vpickve2gr.b	$a4, $vr2, 2
-	st.b	$a4, $sp, 624
-	vpickve2gr.b	$a4, $vr2, 1
-	st.b	$a4, $sp, 616
-	vpickve2gr.b	$a4, $vr2, 0
-	st.b	$a4, $sp, 608
-	st.b	$zero, $sp, 767
-	st.h	$zero, $sp, 765
-	st.w	$zero, $sp, 761
-	st.b	$zero, $sp, 759
-	st.h	$zero, $sp, 757
-	st.w	$zero, $sp, 753
-	st.b	$zero, $sp, 751
-	st.h	$zero, $sp, 749
-	st.w	$zero, $sp, 745
-	st.b	$zero, $sp, 743
-	st.h	$zero, $sp, 741
-	st.w	$zero, $sp, 737
-	xvld	$xr2, $sp, 896
-	vinsgr2vr.d	$vr4, $a3, 0
-	vpickve2gr.b	$a3, $vr2, 3
-	st.b	$a3, $sp, 760
-	vpickve2gr.b	$a3, $vr2, 2
-	st.b	$a3, $sp, 752
-	vpickve2gr.b	$a3, $vr2, 1
-	st.b	$a3, $sp, 744
-	vpickve2gr.b	$a3, $vr2, 0
-	st.b	$a3, $sp, 736
-	xvld	$xr2, $sp, 608
-	xvld	$xr3, $sp, 736
-	vshuf.b	$vr5, $vr0, $vr4, $vr8
-	vst	$vr5, $sp, 992
-	vst	$vr4, $sp, 864
-	st.b	$zero, $sp, 671
-	st.h	$zero, $sp, 669
-	st.w	$zero, $sp, 665
-	st.b	$zero, $sp, 663
-	st.h	$zero, $sp, 661
-	st.w	$zero, $sp, 657
-	st.b	$zero, $sp, 655
-	st.h	$zero, $sp, 653
-	st.w	$zero, $sp, 649
-	st.b	$zero, $sp, 647
-	st.h	$zero, $sp, 645
-	st.w	$zero, $sp, 641
-	xvld	$xr4, $sp, 992
-	vpickve2gr.b	$a3, $vr4, 3
-	st.b	$a3, $sp, 664
-	vpickve2gr.b	$a3, $vr4, 2
-	st.b	$a3, $sp, 656
-	vpickve2gr.b	$a3, $vr4, 1
-	st.b	$a3, $sp, 648
-	vpickve2gr.b	$a3, $vr4, 0
-	st.b	$a3, $sp, 640
-	st.b	$zero, $sp, 799
-	st.h	$zero, $sp, 797
-	st.w	$zero, $sp, 793
-	st.b	$zero, $sp, 791
-	st.h	$zero, $sp, 789
-	st.w	$zero, $sp, 785
-	st.b	$zero, $sp, 783
-	st.h	$zero, $sp, 781
-	st.w	$zero, $sp, 777
-	st.b	$zero, $sp, 775
-	st.h	$zero, $sp, 773
-	st.w	$zero, $sp, 769
-	xvld	$xr4, $sp, 864
-	vinsgr2vr.d	$vr5, $a2, 0
-	vpickve2gr.b	$a2, $vr4, 3
-	st.b	$a2, $sp, 792
-	vpickve2gr.b	$a2, $vr4, 2
-	st.b	$a2, $sp, 784
-	vpickve2gr.b	$a2, $vr4, 1
-	st.b	$a2, $sp, 776
-	vpickve2gr.b	$a2, $vr4, 0
-	st.b	$a2, $sp, 768
-	xvld	$xr4, $sp, 640
-	xvld	$xr6, $sp, 768
-	vshuf.b	$vr7, $vr0, $vr5, $vr8
-	vst	$vr7, $sp, 960
-	vst	$vr5, $sp, 832
+	st.b	$a5, $sp, 544
 	st.b	$zero, $sp, 703
 	st.h	$zero, $sp, 701
 	st.w	$zero, $sp, 697
@@ -23505,38 +23361,161 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 679
 	st.h	$zero, $sp, 677
 	st.w	$zero, $sp, 673
-	xvld	$xr5, $sp, 960
+	xvld	$xr0, $sp, 896
+	vinsgr2vr.d	$vr2, $a4, 0
+	vpickve2gr.b	$a4, $vr0, 3
+	st.b	$a4, $sp, 696
+	vpickve2gr.b	$a4, $vr0, 2
+	st.b	$a4, $sp, 688
+	vpickve2gr.b	$a4, $vr0, 1
+	st.b	$a4, $sp, 680
+	vpickve2gr.b	$a4, $vr0, 0
+	st.b	$a4, $sp, 672
+	xvld	$xr0, $sp, 544
+	xvld	$xr1, $sp, 672
+	vsrli.d	$vr3, $vr2, 32
+	vst	$vr3, $sp, 992
+	vst	$vr2, $sp, 864
+	st.b	$zero, $sp, 607
+	st.h	$zero, $sp, 605
+	st.w	$zero, $sp, 601
+	st.b	$zero, $sp, 599
+	st.h	$zero, $sp, 597
+	st.w	$zero, $sp, 593
+	st.b	$zero, $sp, 591
+	st.h	$zero, $sp, 589
+	st.w	$zero, $sp, 585
+	st.b	$zero, $sp, 583
+	st.h	$zero, $sp, 581
+	st.w	$zero, $sp, 577
+	xvld	$xr2, $sp, 992
+	vpickve2gr.b	$a4, $vr2, 3
+	st.b	$a4, $sp, 600
+	vpickve2gr.b	$a4, $vr2, 2
+	st.b	$a4, $sp, 592
+	vpickve2gr.b	$a4, $vr2, 1
+	st.b	$a4, $sp, 584
+	vpickve2gr.b	$a4, $vr2, 0
+	st.b	$a4, $sp, 576
+	st.b	$zero, $sp, 735
+	st.h	$zero, $sp, 733
+	st.w	$zero, $sp, 729
+	st.b	$zero, $sp, 727
+	st.h	$zero, $sp, 725
+	st.w	$zero, $sp, 721
+	st.b	$zero, $sp, 719
+	st.h	$zero, $sp, 717
+	st.w	$zero, $sp, 713
+	st.b	$zero, $sp, 711
+	st.h	$zero, $sp, 709
+	st.w	$zero, $sp, 705
+	xvld	$xr2, $sp, 864
+	vinsgr2vr.d	$vr4, $a3, 0
+	vpickve2gr.b	$a3, $vr2, 3
+	st.b	$a3, $sp, 728
+	vpickve2gr.b	$a3, $vr2, 2
+	st.b	$a3, $sp, 720
+	vpickve2gr.b	$a3, $vr2, 1
+	st.b	$a3, $sp, 712
+	vpickve2gr.b	$a3, $vr2, 0
+	st.b	$a3, $sp, 704
+	xvld	$xr2, $sp, 576
+	xvld	$xr3, $sp, 704
+	vsrli.d	$vr5, $vr4, 32
+	vst	$vr5, $sp, 960
+	vst	$vr4, $sp, 832
+	st.b	$zero, $sp, 639
+	st.h	$zero, $sp, 637
+	st.w	$zero, $sp, 633
+	st.b	$zero, $sp, 631
+	st.h	$zero, $sp, 629
+	st.w	$zero, $sp, 625
+	st.b	$zero, $sp, 623
+	st.h	$zero, $sp, 621
+	st.w	$zero, $sp, 617
+	st.b	$zero, $sp, 615
+	st.h	$zero, $sp, 613
+	st.w	$zero, $sp, 609
+	xvld	$xr4, $sp, 960
+	vpickve2gr.b	$a3, $vr4, 3
+	st.b	$a3, $sp, 632
+	vpickve2gr.b	$a3, $vr4, 2
+	st.b	$a3, $sp, 624
+	vpickve2gr.b	$a3, $vr4, 1
+	st.b	$a3, $sp, 616
+	vpickve2gr.b	$a3, $vr4, 0
+	st.b	$a3, $sp, 608
+	st.b	$zero, $sp, 767
+	st.h	$zero, $sp, 765
+	st.w	$zero, $sp, 761
+	st.b	$zero, $sp, 759
+	st.h	$zero, $sp, 757
+	st.w	$zero, $sp, 753
+	st.b	$zero, $sp, 751
+	st.h	$zero, $sp, 749
+	st.w	$zero, $sp, 745
+	st.b	$zero, $sp, 743
+	st.h	$zero, $sp, 741
+	st.w	$zero, $sp, 737
+	xvld	$xr4, $sp, 832
+	vinsgr2vr.d	$vr5, $a2, 0
+	vpickve2gr.b	$a2, $vr4, 3
+	st.b	$a2, $sp, 760
+	vpickve2gr.b	$a2, $vr4, 2
+	st.b	$a2, $sp, 752
+	vpickve2gr.b	$a2, $vr4, 1
+	st.b	$a2, $sp, 744
+	vpickve2gr.b	$a2, $vr4, 0
+	st.b	$a2, $sp, 736
+	xvld	$xr4, $sp, 608
+	xvld	$xr6, $sp, 736
+	vsrli.d	$vr7, $vr5, 32
+	vst	$vr7, $sp, 928
+	vst	$vr5, $sp, 800
+	st.b	$zero, $sp, 671
+	st.h	$zero, $sp, 669
+	st.w	$zero, $sp, 665
+	st.b	$zero, $sp, 663
+	st.h	$zero, $sp, 661
+	st.w	$zero, $sp, 657
+	st.b	$zero, $sp, 655
+	st.h	$zero, $sp, 653
+	st.w	$zero, $sp, 649
+	st.b	$zero, $sp, 647
+	st.h	$zero, $sp, 645
+	st.w	$zero, $sp, 641
+	xvld	$xr5, $sp, 928
 	vpickve2gr.b	$a2, $vr5, 3
-	st.b	$a2, $sp, 696
+	st.b	$a2, $sp, 664
 	vpickve2gr.b	$a2, $vr5, 2
-	st.b	$a2, $sp, 688
+	st.b	$a2, $sp, 656
 	vpickve2gr.b	$a2, $vr5, 1
-	st.b	$a2, $sp, 680
+	st.b	$a2, $sp, 648
 	vpickve2gr.b	$a2, $vr5, 0
-	st.b	$a2, $sp, 672
-	st.b	$zero, $sp, 831
-	st.h	$zero, $sp, 829
-	st.w	$zero, $sp, 825
-	st.b	$zero, $sp, 823
-	st.h	$zero, $sp, 821
-	st.w	$zero, $sp, 817
-	st.b	$zero, $sp, 815
-	st.h	$zero, $sp, 813
-	st.w	$zero, $sp, 809
-	st.b	$zero, $sp, 807
-	st.h	$zero, $sp, 805
-	st.w	$zero, $sp, 801
-	xvld	$xr5, $sp, 832
+	st.b	$a2, $sp, 640
+	st.b	$zero, $sp, 799
+	st.h	$zero, $sp, 797
+	st.w	$zero, $sp, 793
+	st.b	$zero, $sp, 791
+	st.h	$zero, $sp, 789
+	st.w	$zero, $sp, 785
+	st.b	$zero, $sp, 783
+	st.h	$zero, $sp, 781
+	st.w	$zero, $sp, 777
+	st.b	$zero, $sp, 775
+	st.h	$zero, $sp, 773
+	st.w	$zero, $sp, 769
+	xvld	$xr5, $sp, 800
 	vpickve2gr.b	$a2, $vr5, 3
-	st.b	$a2, $sp, 824
+	st.b	$a2, $sp, 792
 	vpickve2gr.b	$a2, $vr5, 2
-	st.b	$a2, $sp, 816
+	st.b	$a2, $sp, 784
 	vpickve2gr.b	$a2, $vr5, 1
-	st.b	$a2, $sp, 808
+	st.b	$a2, $sp, 776
 	vpickve2gr.b	$a2, $vr5, 0
-	st.b	$a2, $sp, 800
-	xvld	$xr5, $sp, 672
-	xvld	$xr7, $sp, 800
+	st.b	$a2, $sp, 768
+	xvld	$xr5, $sp, 640
+	xvld	$xr7, $sp, 768
 	xvst	$xr1, $a0, -128
 	xvst	$xr0, $a0, -96
 	xvst	$xr3, $a0, -64
@@ -23601,8 +23580,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	addi.d	$s8, $s8, 8
 	bnez	$s2, .LBB48_10
 # %bb.12:
-	vst	$vr8, $sp, 32                   # 16-byte Folded Spill
-	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$s4, $s7, 28
 	ld.d	$s2, $s7, 16
 .Ltmp1056:
@@ -23611,13 +23589,12 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	jirl	$ra, $ra, 0
 .Ltmp1057:
 # %bb.13:                               # %_ZN9benchmark5State3endEv.exit.preheader
-	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
 	bnez	$s4, .LBB48_25
 # %bb.14:                               # %_ZN9benchmark5State3endEv.exit.preheader
 	beqz	$s2, .LBB48_25
 # %bb.15:                               # %.lr.ph.preheader
 	add.d	$a0, $s0, $s5
-	addi.d	$a1, $sp, 1112
+	addi.d	$a1, $sp, 1080
 	lu12i.w	$a3, -3
 	ori	$a2, $a3, 2288
 	ori	$a3, $a3, 2304
@@ -23629,7 +23606,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	#APP
 	#NO_APP
 	#MEMBARRIER
-	ld.d	$a4, $sp, 1112
+	ld.d	$a4, $sp, 1080
 	bgeu	$a4, $a0, .LBB48_19
 # %bb.17:                               # %.lr.ph
                                         #   in Loop: Header=BB48_16 Depth=1
@@ -23653,153 +23630,30 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	ldptr.d	$t1, $a7, 9992
 	ldptr.d	$t0, $a7, 10000
 	ldptr.d	$a7, $a7, 10008
-	vshuf.b	$vr1, $vr0, $vr0, $vr8
-	vst	$vr1, $sp, 544
-	vst	$vr0, $sp, 416
-	st.b	$zero, $sp, 95
-	st.h	$zero, $sp, 93
-	st.w	$zero, $sp, 89
-	st.b	$zero, $sp, 87
-	st.h	$zero, $sp, 85
-	st.w	$zero, $sp, 81
-	st.b	$zero, $sp, 79
-	st.h	$zero, $sp, 77
-	st.w	$zero, $sp, 73
-	st.b	$zero, $sp, 71
-	st.h	$zero, $sp, 69
-	st.w	$zero, $sp, 65
-	xvld	$xr0, $sp, 544
+	vsrli.d	$vr1, $vr0, 32
+	vst	$vr1, $sp, 512
+	vst	$vr0, $sp, 384
+	st.b	$zero, $sp, 63
+	st.h	$zero, $sp, 61
+	st.w	$zero, $sp, 57
+	st.b	$zero, $sp, 55
+	st.h	$zero, $sp, 53
+	st.w	$zero, $sp, 49
+	st.b	$zero, $sp, 47
+	st.h	$zero, $sp, 45
+	st.w	$zero, $sp, 41
+	st.b	$zero, $sp, 39
+	st.h	$zero, $sp, 37
+	st.w	$zero, $sp, 33
+	xvld	$xr0, $sp, 512
 	vpickve2gr.b	$t2, $vr0, 3
-	st.b	$t2, $sp, 88
+	st.b	$t2, $sp, 56
 	vpickve2gr.b	$t2, $vr0, 2
-	st.b	$t2, $sp, 80
+	st.b	$t2, $sp, 48
 	vpickve2gr.b	$t2, $vr0, 1
-	st.b	$t2, $sp, 72
+	st.b	$t2, $sp, 40
 	vpickve2gr.b	$t2, $vr0, 0
-	st.b	$t2, $sp, 64
-	st.b	$zero, $sp, 223
-	st.h	$zero, $sp, 221
-	st.w	$zero, $sp, 217
-	st.b	$zero, $sp, 215
-	st.h	$zero, $sp, 213
-	st.w	$zero, $sp, 209
-	st.b	$zero, $sp, 207
-	st.h	$zero, $sp, 205
-	st.w	$zero, $sp, 201
-	st.b	$zero, $sp, 199
-	st.h	$zero, $sp, 197
-	st.w	$zero, $sp, 193
-	xvld	$xr0, $sp, 416
-	vinsgr2vr.d	$vr2, $t1, 0
-	vpickve2gr.b	$t1, $vr0, 3
-	st.b	$t1, $sp, 216
-	vpickve2gr.b	$t1, $vr0, 2
-	st.b	$t1, $sp, 208
-	vpickve2gr.b	$t1, $vr0, 1
-	st.b	$t1, $sp, 200
-	vpickve2gr.b	$t1, $vr0, 0
-	st.b	$t1, $sp, 192
-	xvld	$xr0, $sp, 64
-	xvld	$xr1, $sp, 192
-	vshuf.b	$vr3, $vr0, $vr2, $vr8
-	vst	$vr3, $sp, 512
-	vst	$vr2, $sp, 384
-	st.b	$zero, $sp, 127
-	st.h	$zero, $sp, 125
-	st.w	$zero, $sp, 121
-	st.b	$zero, $sp, 119
-	st.h	$zero, $sp, 117
-	st.w	$zero, $sp, 113
-	st.b	$zero, $sp, 111
-	st.h	$zero, $sp, 109
-	st.w	$zero, $sp, 105
-	st.b	$zero, $sp, 103
-	st.h	$zero, $sp, 101
-	st.w	$zero, $sp, 97
-	xvld	$xr2, $sp, 512
-	vpickve2gr.b	$t1, $vr2, 3
-	st.b	$t1, $sp, 120
-	vpickve2gr.b	$t1, $vr2, 2
-	st.b	$t1, $sp, 112
-	vpickve2gr.b	$t1, $vr2, 1
-	st.b	$t1, $sp, 104
-	vpickve2gr.b	$t1, $vr2, 0
-	st.b	$t1, $sp, 96
-	st.b	$zero, $sp, 255
-	st.h	$zero, $sp, 253
-	st.w	$zero, $sp, 249
-	st.b	$zero, $sp, 247
-	st.h	$zero, $sp, 245
-	st.w	$zero, $sp, 241
-	st.b	$zero, $sp, 239
-	st.h	$zero, $sp, 237
-	st.w	$zero, $sp, 233
-	st.b	$zero, $sp, 231
-	st.h	$zero, $sp, 229
-	st.w	$zero, $sp, 225
-	xvld	$xr2, $sp, 384
-	vinsgr2vr.d	$vr4, $t0, 0
-	vpickve2gr.b	$t0, $vr2, 3
-	st.b	$t0, $sp, 248
-	vpickve2gr.b	$t0, $vr2, 2
-	st.b	$t0, $sp, 240
-	vpickve2gr.b	$t0, $vr2, 1
-	st.b	$t0, $sp, 232
-	vpickve2gr.b	$t0, $vr2, 0
-	st.b	$t0, $sp, 224
-	xvld	$xr2, $sp, 96
-	xvld	$xr3, $sp, 224
-	vshuf.b	$vr5, $vr0, $vr4, $vr8
-	vst	$vr5, $sp, 480
-	vst	$vr4, $sp, 352
-	st.b	$zero, $sp, 159
-	st.h	$zero, $sp, 157
-	st.w	$zero, $sp, 153
-	st.b	$zero, $sp, 151
-	st.h	$zero, $sp, 149
-	st.w	$zero, $sp, 145
-	st.b	$zero, $sp, 143
-	st.h	$zero, $sp, 141
-	st.w	$zero, $sp, 137
-	st.b	$zero, $sp, 135
-	st.h	$zero, $sp, 133
-	st.w	$zero, $sp, 129
-	xvld	$xr4, $sp, 480
-	vpickve2gr.b	$t0, $vr4, 3
-	st.b	$t0, $sp, 152
-	vpickve2gr.b	$t0, $vr4, 2
-	st.b	$t0, $sp, 144
-	vpickve2gr.b	$t0, $vr4, 1
-	st.b	$t0, $sp, 136
-	vpickve2gr.b	$t0, $vr4, 0
-	st.b	$t0, $sp, 128
-	st.b	$zero, $sp, 287
-	st.h	$zero, $sp, 285
-	st.w	$zero, $sp, 281
-	st.b	$zero, $sp, 279
-	st.h	$zero, $sp, 277
-	st.w	$zero, $sp, 273
-	st.b	$zero, $sp, 271
-	st.h	$zero, $sp, 269
-	st.w	$zero, $sp, 265
-	st.b	$zero, $sp, 263
-	st.h	$zero, $sp, 261
-	st.w	$zero, $sp, 257
-	xvld	$xr4, $sp, 352
-	vinsgr2vr.d	$vr5, $a7, 0
-	vpickve2gr.b	$a7, $vr4, 3
-	st.b	$a7, $sp, 280
-	vpickve2gr.b	$a7, $vr4, 2
-	st.b	$a7, $sp, 272
-	vpickve2gr.b	$a7, $vr4, 1
-	st.b	$a7, $sp, 264
-	vpickve2gr.b	$a7, $vr4, 0
-	st.b	$a7, $sp, 256
-	xvld	$xr4, $sp, 128
-	xvld	$xr6, $sp, 256
-	vshuf.b	$vr7, $vr0, $vr5, $vr8
-	vst	$vr7, $sp, 448
-	vst	$vr5, $sp, 320
+	st.b	$t2, $sp, 32
 	st.b	$zero, $sp, 191
 	st.h	$zero, $sp, 189
 	st.w	$zero, $sp, 185
@@ -23812,38 +23666,161 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 167
 	st.h	$zero, $sp, 165
 	st.w	$zero, $sp, 161
-	xvld	$xr5, $sp, 448
+	xvld	$xr0, $sp, 384
+	vinsgr2vr.d	$vr2, $t1, 0
+	vpickve2gr.b	$t1, $vr0, 3
+	st.b	$t1, $sp, 184
+	vpickve2gr.b	$t1, $vr0, 2
+	st.b	$t1, $sp, 176
+	vpickve2gr.b	$t1, $vr0, 1
+	st.b	$t1, $sp, 168
+	vpickve2gr.b	$t1, $vr0, 0
+	st.b	$t1, $sp, 160
+	xvld	$xr0, $sp, 32
+	xvld	$xr1, $sp, 160
+	vsrli.d	$vr3, $vr2, 32
+	vst	$vr3, $sp, 480
+	vst	$vr2, $sp, 352
+	st.b	$zero, $sp, 95
+	st.h	$zero, $sp, 93
+	st.w	$zero, $sp, 89
+	st.b	$zero, $sp, 87
+	st.h	$zero, $sp, 85
+	st.w	$zero, $sp, 81
+	st.b	$zero, $sp, 79
+	st.h	$zero, $sp, 77
+	st.w	$zero, $sp, 73
+	st.b	$zero, $sp, 71
+	st.h	$zero, $sp, 69
+	st.w	$zero, $sp, 65
+	xvld	$xr2, $sp, 480
+	vpickve2gr.b	$t1, $vr2, 3
+	st.b	$t1, $sp, 88
+	vpickve2gr.b	$t1, $vr2, 2
+	st.b	$t1, $sp, 80
+	vpickve2gr.b	$t1, $vr2, 1
+	st.b	$t1, $sp, 72
+	vpickve2gr.b	$t1, $vr2, 0
+	st.b	$t1, $sp, 64
+	st.b	$zero, $sp, 223
+	st.h	$zero, $sp, 221
+	st.w	$zero, $sp, 217
+	st.b	$zero, $sp, 215
+	st.h	$zero, $sp, 213
+	st.w	$zero, $sp, 209
+	st.b	$zero, $sp, 207
+	st.h	$zero, $sp, 205
+	st.w	$zero, $sp, 201
+	st.b	$zero, $sp, 199
+	st.h	$zero, $sp, 197
+	st.w	$zero, $sp, 193
+	xvld	$xr2, $sp, 352
+	vinsgr2vr.d	$vr4, $t0, 0
+	vpickve2gr.b	$t0, $vr2, 3
+	st.b	$t0, $sp, 216
+	vpickve2gr.b	$t0, $vr2, 2
+	st.b	$t0, $sp, 208
+	vpickve2gr.b	$t0, $vr2, 1
+	st.b	$t0, $sp, 200
+	vpickve2gr.b	$t0, $vr2, 0
+	st.b	$t0, $sp, 192
+	xvld	$xr2, $sp, 64
+	xvld	$xr3, $sp, 192
+	vsrli.d	$vr5, $vr4, 32
+	vst	$vr5, $sp, 448
+	vst	$vr4, $sp, 320
+	st.b	$zero, $sp, 127
+	st.h	$zero, $sp, 125
+	st.w	$zero, $sp, 121
+	st.b	$zero, $sp, 119
+	st.h	$zero, $sp, 117
+	st.w	$zero, $sp, 113
+	st.b	$zero, $sp, 111
+	st.h	$zero, $sp, 109
+	st.w	$zero, $sp, 105
+	st.b	$zero, $sp, 103
+	st.h	$zero, $sp, 101
+	st.w	$zero, $sp, 97
+	xvld	$xr4, $sp, 448
+	vpickve2gr.b	$t0, $vr4, 3
+	st.b	$t0, $sp, 120
+	vpickve2gr.b	$t0, $vr4, 2
+	st.b	$t0, $sp, 112
+	vpickve2gr.b	$t0, $vr4, 1
+	st.b	$t0, $sp, 104
+	vpickve2gr.b	$t0, $vr4, 0
+	st.b	$t0, $sp, 96
+	st.b	$zero, $sp, 255
+	st.h	$zero, $sp, 253
+	st.w	$zero, $sp, 249
+	st.b	$zero, $sp, 247
+	st.h	$zero, $sp, 245
+	st.w	$zero, $sp, 241
+	st.b	$zero, $sp, 239
+	st.h	$zero, $sp, 237
+	st.w	$zero, $sp, 233
+	st.b	$zero, $sp, 231
+	st.h	$zero, $sp, 229
+	st.w	$zero, $sp, 225
+	xvld	$xr4, $sp, 320
+	vinsgr2vr.d	$vr5, $a7, 0
+	vpickve2gr.b	$a7, $vr4, 3
+	st.b	$a7, $sp, 248
+	vpickve2gr.b	$a7, $vr4, 2
+	st.b	$a7, $sp, 240
+	vpickve2gr.b	$a7, $vr4, 1
+	st.b	$a7, $sp, 232
+	vpickve2gr.b	$a7, $vr4, 0
+	st.b	$a7, $sp, 224
+	xvld	$xr4, $sp, 96
+	xvld	$xr6, $sp, 224
+	vsrli.d	$vr7, $vr5, 32
+	vst	$vr7, $sp, 416
+	vst	$vr5, $sp, 288
+	st.b	$zero, $sp, 159
+	st.h	$zero, $sp, 157
+	st.w	$zero, $sp, 153
+	st.b	$zero, $sp, 151
+	st.h	$zero, $sp, 149
+	st.w	$zero, $sp, 145
+	st.b	$zero, $sp, 143
+	st.h	$zero, $sp, 141
+	st.w	$zero, $sp, 137
+	st.b	$zero, $sp, 135
+	st.h	$zero, $sp, 133
+	st.w	$zero, $sp, 129
+	xvld	$xr5, $sp, 416
 	vpickve2gr.b	$a7, $vr5, 3
-	st.b	$a7, $sp, 184
+	st.b	$a7, $sp, 152
 	vpickve2gr.b	$a7, $vr5, 2
-	st.b	$a7, $sp, 176
+	st.b	$a7, $sp, 144
 	vpickve2gr.b	$a7, $vr5, 1
-	st.b	$a7, $sp, 168
+	st.b	$a7, $sp, 136
 	vpickve2gr.b	$a7, $vr5, 0
-	st.b	$a7, $sp, 160
-	st.b	$zero, $sp, 319
-	st.h	$zero, $sp, 317
-	st.w	$zero, $sp, 313
-	st.b	$zero, $sp, 311
-	st.h	$zero, $sp, 309
-	st.w	$zero, $sp, 305
-	st.b	$zero, $sp, 303
-	st.h	$zero, $sp, 301
-	st.w	$zero, $sp, 297
-	st.b	$zero, $sp, 295
-	st.h	$zero, $sp, 293
-	st.w	$zero, $sp, 289
-	xvld	$xr5, $sp, 320
+	st.b	$a7, $sp, 128
+	st.b	$zero, $sp, 287
+	st.h	$zero, $sp, 285
+	st.w	$zero, $sp, 281
+	st.b	$zero, $sp, 279
+	st.h	$zero, $sp, 277
+	st.w	$zero, $sp, 273
+	st.b	$zero, $sp, 271
+	st.h	$zero, $sp, 269
+	st.w	$zero, $sp, 265
+	st.b	$zero, $sp, 263
+	st.h	$zero, $sp, 261
+	st.w	$zero, $sp, 257
+	xvld	$xr5, $sp, 288
 	vpickve2gr.b	$a7, $vr5, 3
-	st.b	$a7, $sp, 312
+	st.b	$a7, $sp, 280
 	vpickve2gr.b	$a7, $vr5, 2
-	st.b	$a7, $sp, 304
+	st.b	$a7, $sp, 272
 	vpickve2gr.b	$a7, $vr5, 1
-	st.b	$a7, $sp, 296
+	st.b	$a7, $sp, 264
 	vpickve2gr.b	$a7, $vr5, 0
-	st.b	$a7, $sp, 288
-	xvld	$xr5, $sp, 160
-	xvld	$xr7, $sp, 288
+	st.b	$a7, $sp, 256
+	xvld	$xr5, $sp, 128
+	xvld	$xr7, $sp, 256
 	xvst	$xr1, $a5, -128
 	xvst	$xr0, $a5, -96
 	xvst	$xr3, $a5, -64
@@ -23886,7 +23863,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 1112
+	ld.d	$a0, $sp, 1080
 	beqz	$a0, .LBB48_28
 # %bb.27:                               # %_ZNKSt14default_deleteIA_mEclImEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i37
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -23895,19 +23872,19 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	addi.d	$sp, $fp, -1216
-	ld.d	$s8, $sp, 1128                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1136                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1144                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1152                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1160                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1168                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1176                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1184                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1192                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1200                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1208                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1216
+	addi.d	$sp, $fp, -1184
+	ld.d	$s8, $sp, 1096                  # 8-byte Folded Reload
+	ld.d	$s7, $sp, 1104                  # 8-byte Folded Reload
+	ld.d	$s6, $sp, 1112                  # 8-byte Folded Reload
+	ld.d	$s5, $sp, 1120                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1128                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1136                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1144                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1152                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1160                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1168                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1176                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1184
 	ret
 .LBB48_29:
 .Ltmp1041:
@@ -23999,7 +23976,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 1112
+	ld.d	$s4, $sp, 1080
 	beqz	$s4, .LBB48_44
 .LBB48_43:                              # %_ZNKSt14default_deleteIA_mEclImEENSt9enable_ifIXsr14is_convertibleIPA_T_PS0_EE5valueEvE4typeEPS4_.exit.i30
 	move	$a0, $s4
@@ -25429,23 +25406,6 @@ GCC_except_table50:
 .LCPI51_0:
 	.dword	0                               # 0x0
 	.dword	-1                              # 0xffffffffffffffff
-.LCPI51_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	_Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5StateE
 	.p2align	5
@@ -25558,8 +25518,6 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 # %bb.10:                               # %.lr.ph.preheader
 	add.d	$a0, $s0, $s3
 	addi.d	$a1, $sp, 520
-	pcalau12i	$a2, %pc_hi20(.LCPI51_1)
-	vld	$vr0, $a2, %pc_lo12(.LCPI51_1)
 	ori	$a2, $s7, 2288
 	ori	$a3, $s7, 2304
 	ori	$a4, $s6, 1792
@@ -25591,13 +25549,13 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t0, $s0, $a7
 	ldptr.d	$t1, $t0, 9984
-	vinsgr2vr.d	$vr1, $t1, 0
+	vinsgr2vr.d	$vr0, $t1, 0
 	ldptr.d	$t2, $t0, 9992
 	ldptr.d	$t1, $t0, 10000
 	ldptr.d	$t0, $t0, 10008
-	vst	$vr1, $sp, 352
-	vshuf.b	$vr1, $vr0, $vr1, $vr0
-	vst	$vr1, $sp, 480
+	vst	$vr0, $sp, 352
+	vsrli.d	$vr0, $vr0, 32
+	vst	$vr0, $sp, 480
 	st.b	$zero, $sp, 159
 	st.h	$zero, $sp, 157
 	st.w	$zero, $sp, 153
@@ -25610,14 +25568,14 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 135
 	st.h	$zero, $sp, 133
 	st.w	$zero, $sp, 129
-	xvld	$xr1, $sp, 352
-	vpickve2gr.b	$t3, $vr1, 3
+	xvld	$xr0, $sp, 352
+	vpickve2gr.b	$t3, $vr0, 3
 	st.b	$t3, $sp, 152
-	vpickve2gr.b	$t3, $vr1, 2
+	vpickve2gr.b	$t3, $vr0, 2
 	st.b	$t3, $sp, 144
-	vpickve2gr.b	$t3, $vr1, 1
+	vpickve2gr.b	$t3, $vr0, 1
 	st.b	$t3, $sp, 136
-	vpickve2gr.b	$t3, $vr1, 0
+	vpickve2gr.b	$t3, $vr0, 0
 	st.b	$t3, $sp, 128
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
@@ -25631,21 +25589,21 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr1, $sp, 480
-	vinsgr2vr.d	$vr3, $t2, 0
-	vpickve2gr.b	$t2, $vr1, 3
+	xvld	$xr0, $sp, 480
+	vinsgr2vr.d	$vr2, $t2, 0
+	vpickve2gr.b	$t2, $vr0, 3
 	st.b	$t2, $sp, 24
-	vpickve2gr.b	$t2, $vr1, 2
+	vpickve2gr.b	$t2, $vr0, 2
 	st.b	$t2, $sp, 16
-	vpickve2gr.b	$t2, $vr1, 1
+	vpickve2gr.b	$t2, $vr0, 1
 	st.b	$t2, $sp, 8
-	vpickve2gr.b	$t2, $vr1, 0
+	vpickve2gr.b	$t2, $vr0, 0
 	st.b	$t2, $sp, 0
-	xvld	$xr1, $sp, 128
-	xvld	$xr2, $sp, 0
-	vst	$vr3, $sp, 320
-	vshuf.b	$vr3, $vr0, $vr3, $vr0
-	vst	$vr3, $sp, 448
+	xvld	$xr0, $sp, 128
+	xvld	$xr1, $sp, 0
+	vst	$vr2, $sp, 320
+	vsrli.d	$vr2, $vr2, 32
+	vst	$vr2, $sp, 448
 	st.b	$zero, $sp, 191
 	st.h	$zero, $sp, 189
 	st.w	$zero, $sp, 185
@@ -25658,14 +25616,14 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 167
 	st.h	$zero, $sp, 165
 	st.w	$zero, $sp, 161
-	xvld	$xr3, $sp, 320
-	vpickve2gr.b	$t2, $vr3, 3
+	xvld	$xr2, $sp, 320
+	vpickve2gr.b	$t2, $vr2, 3
 	st.b	$t2, $sp, 184
-	vpickve2gr.b	$t2, $vr3, 2
+	vpickve2gr.b	$t2, $vr2, 2
 	st.b	$t2, $sp, 176
-	vpickve2gr.b	$t2, $vr3, 1
+	vpickve2gr.b	$t2, $vr2, 1
 	st.b	$t2, $sp, 168
-	vpickve2gr.b	$t2, $vr3, 0
+	vpickve2gr.b	$t2, $vr2, 0
 	st.b	$t2, $sp, 160
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
@@ -25679,21 +25637,21 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 448
-	vinsgr2vr.d	$vr5, $t1, 0
-	vpickve2gr.b	$t1, $vr3, 3
+	xvld	$xr2, $sp, 448
+	vinsgr2vr.d	$vr4, $t1, 0
+	vpickve2gr.b	$t1, $vr2, 3
 	st.b	$t1, $sp, 56
-	vpickve2gr.b	$t1, $vr3, 2
+	vpickve2gr.b	$t1, $vr2, 2
 	st.b	$t1, $sp, 48
-	vpickve2gr.b	$t1, $vr3, 1
+	vpickve2gr.b	$t1, $vr2, 1
 	st.b	$t1, $sp, 40
-	vpickve2gr.b	$t1, $vr3, 0
+	vpickve2gr.b	$t1, $vr2, 0
 	st.b	$t1, $sp, 32
-	xvld	$xr3, $sp, 160
-	xvld	$xr4, $sp, 32
-	vst	$vr5, $sp, 288
-	vshuf.b	$vr5, $vr0, $vr5, $vr0
-	vst	$vr5, $sp, 416
+	xvld	$xr2, $sp, 160
+	xvld	$xr3, $sp, 32
+	vst	$vr4, $sp, 288
+	vsrli.d	$vr4, $vr4, 32
+	vst	$vr4, $sp, 416
 	st.b	$zero, $sp, 223
 	st.h	$zero, $sp, 221
 	st.w	$zero, $sp, 217
@@ -25706,14 +25664,14 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 199
 	st.h	$zero, $sp, 197
 	st.w	$zero, $sp, 193
-	xvld	$xr5, $sp, 288
-	vpickve2gr.b	$t1, $vr5, 3
+	xvld	$xr4, $sp, 288
+	vpickve2gr.b	$t1, $vr4, 3
 	st.b	$t1, $sp, 216
-	vpickve2gr.b	$t1, $vr5, 2
+	vpickve2gr.b	$t1, $vr4, 2
 	st.b	$t1, $sp, 208
-	vpickve2gr.b	$t1, $vr5, 1
+	vpickve2gr.b	$t1, $vr4, 1
 	st.b	$t1, $sp, 200
-	vpickve2gr.b	$t1, $vr5, 0
+	vpickve2gr.b	$t1, $vr4, 0
 	st.b	$t1, $sp, 192
 	st.b	$zero, $sp, 95
 	st.h	$zero, $sp, 93
@@ -25727,21 +25685,21 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 71
 	st.h	$zero, $sp, 69
 	st.w	$zero, $sp, 65
-	xvld	$xr5, $sp, 416
-	vinsgr2vr.d	$vr6, $t0, 0
-	vpickve2gr.b	$t0, $vr5, 3
+	xvld	$xr4, $sp, 416
+	vinsgr2vr.d	$vr5, $t0, 0
+	vpickve2gr.b	$t0, $vr4, 3
 	st.b	$t0, $sp, 88
-	vpickve2gr.b	$t0, $vr5, 2
+	vpickve2gr.b	$t0, $vr4, 2
 	st.b	$t0, $sp, 80
-	vpickve2gr.b	$t0, $vr5, 1
+	vpickve2gr.b	$t0, $vr4, 1
 	st.b	$t0, $sp, 72
-	vpickve2gr.b	$t0, $vr5, 0
+	vpickve2gr.b	$t0, $vr4, 0
 	st.b	$t0, $sp, 64
-	xvld	$xr5, $sp, 192
-	xvld	$xr7, $sp, 64
-	vst	$vr6, $sp, 256
-	vshuf.b	$vr6, $vr0, $vr6, $vr0
-	vst	$vr6, $sp, 384
+	xvld	$xr4, $sp, 192
+	xvld	$xr6, $sp, 64
+	vst	$vr5, $sp, 256
+	vsrli.d	$vr5, $vr5, 32
+	vst	$vr5, $sp, 384
 	st.b	$zero, $sp, 255
 	st.h	$zero, $sp, 253
 	st.w	$zero, $sp, 249
@@ -25754,14 +25712,14 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 231
 	st.h	$zero, $sp, 229
 	st.w	$zero, $sp, 225
-	xvld	$xr6, $sp, 256
-	vpickve2gr.b	$t0, $vr6, 3
+	xvld	$xr5, $sp, 256
+	vpickve2gr.b	$t0, $vr5, 3
 	st.b	$t0, $sp, 248
-	vpickve2gr.b	$t0, $vr6, 2
+	vpickve2gr.b	$t0, $vr5, 2
 	st.b	$t0, $sp, 240
-	vpickve2gr.b	$t0, $vr6, 1
+	vpickve2gr.b	$t0, $vr5, 1
 	st.b	$t0, $sp, 232
-	vpickve2gr.b	$t0, $vr6, 0
+	vpickve2gr.b	$t0, $vr5, 0
 	st.b	$t0, $sp, 224
 	st.b	$zero, $sp, 127
 	st.h	$zero, $sp, 125
@@ -25775,41 +25733,41 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.b	$zero, $sp, 103
 	st.h	$zero, $sp, 101
 	st.w	$zero, $sp, 97
-	xvld	$xr6, $sp, 384
-	vpickve2gr.b	$t0, $vr6, 3
+	xvld	$xr5, $sp, 384
+	vpickve2gr.b	$t0, $vr5, 3
 	st.b	$t0, $sp, 120
-	vpickve2gr.b	$t0, $vr6, 2
+	vpickve2gr.b	$t0, $vr5, 2
 	st.b	$t0, $sp, 112
-	vpickve2gr.b	$t0, $vr6, 1
+	vpickve2gr.b	$t0, $vr5, 1
 	st.b	$t0, $sp, 104
-	vpickve2gr.b	$t0, $vr6, 0
+	vpickve2gr.b	$t0, $vr5, 0
 	st.b	$t0, $sp, 96
-	xvld	$xr6, $sp, 224
-	xvld	$xr8, $sp, 96
-	xvld	$xr9, $a6, -128
-	xvld	$xr10, $a6, -96
-	xvld	$xr11, $a6, -64
-	xvld	$xr12, $a6, -32
-	xvld	$xr13, $a6, 0
-	xvld	$xr14, $a6, 32
-	xvld	$xr15, $a6, 64
-	xvld	$xr16, $a6, 96
-	xvadd.d	$xr2, $xr10, $xr2
+	xvld	$xr5, $sp, 224
+	xvld	$xr7, $sp, 96
+	xvld	$xr8, $a6, -128
+	xvld	$xr9, $a6, -96
+	xvld	$xr10, $a6, -64
+	xvld	$xr11, $a6, -32
+	xvld	$xr12, $a6, 0
+	xvld	$xr13, $a6, 32
+	xvld	$xr14, $a6, 64
+	xvld	$xr15, $a6, 96
 	xvadd.d	$xr1, $xr9, $xr1
-	xvadd.d	$xr4, $xr12, $xr4
+	xvadd.d	$xr0, $xr8, $xr0
 	xvadd.d	$xr3, $xr11, $xr3
-	xvadd.d	$xr7, $xr14, $xr7
-	xvadd.d	$xr5, $xr13, $xr5
-	xvadd.d	$xr8, $xr16, $xr8
-	xvadd.d	$xr6, $xr15, $xr6
-	xvst	$xr1, $a6, -128
-	xvst	$xr2, $a6, -96
-	xvst	$xr3, $a6, -64
-	xvst	$xr4, $a6, -32
-	xvst	$xr5, $a6, 0
-	xvst	$xr7, $a6, 32
-	xvst	$xr6, $a6, 64
-	xvst	$xr8, $a6, 96
+	xvadd.d	$xr2, $xr10, $xr2
+	xvadd.d	$xr6, $xr13, $xr6
+	xvadd.d	$xr4, $xr12, $xr4
+	xvadd.d	$xr7, $xr15, $xr7
+	xvadd.d	$xr5, $xr14, $xr5
+	xvst	$xr0, $a6, -128
+	xvst	$xr1, $a6, -96
+	xvst	$xr2, $a6, -64
+	xvst	$xr3, $a6, -32
+	xvst	$xr4, $a6, 0
+	xvst	$xr6, $a6, 32
+	xvst	$xr5, $a6, 64
+	xvst	$xr7, $a6, 96
 	addi.d	$a7, $a7, 32
 	addi.d	$a6, $a6, 256
 	bnez	$a7, .LBB51_15

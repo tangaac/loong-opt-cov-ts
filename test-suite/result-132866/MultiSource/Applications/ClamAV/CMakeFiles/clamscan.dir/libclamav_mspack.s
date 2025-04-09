@@ -12678,8 +12678,7 @@ qtm_update_model:                       # @qtm_update_model
 	slli.d	$a3, $a3, 4
 	vinsgr2vr.h	$vr0, $a4, 0
 	xvpermi.d	$xr0, $xr0, 68
-	xvrepli.b	$xr1, 0
-	xvshuf.h	$xr1, $xr0, $xr0
+	xvbsll.v	$xr1, $xr0, 14
 	addi.d	$a5, $a2, 34
 	move	$a6, $a3
 	.p2align	4, , 16

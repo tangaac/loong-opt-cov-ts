@@ -1,26 +1,7 @@
 	.file	"lpc.c"
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function Gsm_LPC_Analysis
-.LCPI0_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
+	.p2align	4, 0x0                          # -- Begin function Gsm_LPC_Analysis
+.LCPI0_0:
 	.half	1                               # 0x1
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
@@ -124,13 +105,11 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	xvmax.hu	$xr0, $xr0, $xr2
 	xvmax.hu	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI0_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvmax.hu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvmax.hu	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvmax.hu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvmax.hu	$xr0, $xr0, $xr1
@@ -380,8 +359,8 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vinsgr2vr.d	$vr5, $a7, 0
 	vpackev.d	$vr5, $vr6, $vr5
 	vinsgr2vr.d	$vr7, $fp, 0
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	vld	$vr17, $a3, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	vld	$vr17, $a3, %pc_lo12(.LCPI0_0)
 	vpackev.d	$vr6, $vr6, $vr7
 	vrepli.b	$vr18, 0
 	ori	$a3, $zero, 304

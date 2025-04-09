@@ -1,18 +1,7 @@
 	.file	"long_term.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function Gsm_Long_Term_Predictor
-.LCPI0_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI0_1:
+	.p2align	5, 0x0                          # -- Begin function Gsm_Long_Term_Predictor
+.LCPI0_0:
 	.half	0                               # 0x0
 	.half	0                               # 0x0
 	.half	0                               # 0x0
@@ -29,7 +18,7 @@
 	.half	0                               # 0x0
 	.half	0                               # 0x0
 	.half	0                               # 0x0
-.LCPI0_2:
+.LCPI0_1:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
 	.dword	0                               # 0x0
@@ -85,14 +74,11 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vseq.h	$vr5, $vr4, $vr2
 	vneg.h	$vr7, $vr4
 	vbitsel.v	$vr5, $vr7, $vr6, $vr5
-	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
-	vld	$vr7, $a0, %pc_lo12(.LCPI0_0)
 	vbitsel.v	$vr3, $vr4, $vr5, $vr3
 	vmax.h	$vr1, $vr1, $vr3
 	vmax.h	$vr0, $vr0, $vr1
 	vmaxi.h	$vr0, $vr0, 0
-	vori.b	$vr1, $vr7, 0
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
@@ -106,8 +92,8 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vbitsel.v	$vr2, $vr4, $vr6, $vr2
 	vbitsel.v	$vr1, $vr1, $vr2, $vr3
 	vmax.h	$vr0, $vr1, $vr0
-	vshuf.h	$vr7, $vr0, $vr0
-	vmax.h	$vr0, $vr0, $vr7
+	vbsrl.v	$vr1, $vr0, 8
+	vmax.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vmax.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
@@ -476,8 +462,8 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vst	$vr10, $sp, 544
 	beqz	$s1, .LBB0_16
 # %bb.6:
-	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr6, $a0, %pc_lo12(.LCPI0_0)
 	xvpermi.d	$xr0, $xr0, 68
 	xvori.b	$xr10, $xr6, 0
 	xvshuf.h	$xr10, $xr0, $xr0
@@ -537,8 +523,8 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	xvslli.d	$xr1, $xr6, 48
 	xvsrai.d	$xr1, $xr1, 48
 	xvmadd.d	$xr2, $xr0, $xr0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
 	xvmadd.d	$xr5, $xr1, $xr1
 	xvadd.d	$xr1, $xr5, $xr2
 	xvpermi.d	$xr2, $xr1, 78

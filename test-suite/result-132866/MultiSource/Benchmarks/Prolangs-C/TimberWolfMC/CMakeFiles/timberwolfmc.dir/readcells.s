@@ -1,13 +1,6 @@
 	.file	"readcells.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function readcells
-.LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
 	.text
-	.globl	readcells
+	.globl	readcells                       # -- Begin function readcells
 	.p2align	5
 	.type	readcells,@function
 readcells:                              # @readcells
@@ -2012,7 +2005,6 @@ readcells:                              # @readcells
 	pcaddu18i	$ra, %call36(Hside)
 	jirl	$ra, $ra, 0
 	add.w	$a1, $a0, $s7
-	vld	$vr2, $sp, 304                  # 16-byte Folded Reload
 	bge	$a0, $s3, .LBB0_132
 	b	.LBB0_128
 	.p2align	4, , 16
@@ -2023,7 +2015,6 @@ readcells:                              # @readcells
 	pcaddu18i	$ra, %call36(Vside)
 	jirl	$ra, $ra, 0
 	add.w	$a1, $a0, $s7
-	vld	$vr2, $sp, 304                  # 16-byte Folded Reload
 	blt	$a0, $s3, .LBB0_128
 .LBB0_132:                              # %.lr.ph1051
                                         #   in Loop: Header=BB0_129 Depth=2
@@ -2054,11 +2045,9 @@ readcells:                              # @readcells
 	st.w	$a4, $a3, -4
 	st.w	$a5, $a3, 0
 	ld.d	$a4, $a0, -16
-	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI0_0)
 	addi.d	$s7, $s7, 1
-	vinsgr2vr.d	$vr1, $a4, 0
-	vshuf.w	$vr0, $vr1, $vr2
+	vinsgr2vr.d	$vr0, $a4, 0
+	vbsll.v	$vr0, $vr0, 8
 	vst	$vr0, $a2, -16
 	addi.d	$a0, $a0, 20
 	addi.d	$a2, $a2, 20

@@ -2626,26 +2626,9 @@ DoAssign:                               # @DoAssign
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI10_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI10_3:
+.LCPI10_2:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -4440,21 +4423,19 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_113 Depth=4
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI10_2)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI10_2)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr3, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr3
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.h	$xr1, $xr1, 1
 	xvadd.h	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI10_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI10_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI10_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI10_2)
 	vrepli.w	$vr3, 1
 	vand.v	$vr2, $vr2, $vr3
 	vpickve2gr.w	$a0, $vr2, 3

@@ -674,75 +674,9 @@ Ppmd8_Update1:                          # @Ppmd8_Update1
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI7_1:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI7_2:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI7_3:
+.LCPI7_1:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -751,23 +685,6 @@ Ppmd8_Update1:                          # @Ppmd8_Update1
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI7_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
@@ -1234,15 +1151,11 @@ Rescale:                                # @Rescale
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvor.v	$xr0, $xr0, $xr1
-	pcalau12i	$t1, %pc_hi20(.LCPI7_1)
-	xvld	$xr1, $t1, %pc_lo12(.LCPI7_1)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$t1, %pc_hi20(.LCPI7_2)
-	xvld	$xr3, $t1, %pc_lo12(.LCPI7_2)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -1261,8 +1174,8 @@ Rescale:                                # @Rescale
 	slli.d	$t4, $t3, 5
 	alsl.d	$t3, $t3, $t4, 4
 	add.d	$a6, $a6, $t3
-	pcalau12i	$t3, %pc_hi20(.LCPI7_3)
-	vld	$vr0, $t3, %pc_lo12(.LCPI7_3)
+	pcalau12i	$t3, %pc_hi20(.LCPI7_1)
+	vld	$vr0, $t3, %pc_lo12(.LCPI7_1)
 	sub.d	$a5, $a5, $t2
 	vinsgr2vr.b	$vr1, $t1, 0
 	vinsgr2vr.b	$vr2, $zero, 0
@@ -1301,9 +1214,7 @@ Rescale:                                # @Rescale
 	addi.d	$t0, $t0, 48
 	bnez	$t1, .LBB7_27
 # %bb.28:                               # %vec.epilog.middle.block
-	pcalau12i	$t0, %pc_hi20(.LCPI7_4)
-	vld	$vr1, $t0, %pc_lo12(.LCPI7_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vsrli.d	$vr1, $vr0, 32
 	vor.v	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vor.v	$vr0, $vr0, $vr1

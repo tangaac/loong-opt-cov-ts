@@ -2273,77 +2273,9 @@ main:                                   # @main
 	.size	main, .Lfunc_end5-main
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
-.LCPI6_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI6_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI6_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
+.LCPI6_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -2360,43 +2292,9 @@ main:                                   # @main
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI6_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI6_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI6_5:
+.LCPI6_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
@@ -2463,8 +2361,8 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI6_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI6_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI6_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -2523,15 +2421,11 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI6_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI6_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI6_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -2568,13 +2462,9 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB6_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI6_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI6_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI6_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI6_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -2674,8 +2564,8 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB6_27:                               # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI6_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI6_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI6_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI6_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -2712,77 +2602,9 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc, .Lfunc_end6-_Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
-.LCPI7_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI7_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI7_2:
+	.p2align	4, 0x0                          # -- Begin function _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
+.LCPI7_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -2799,43 +2621,9 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI7_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI7_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI7_5:
+.LCPI7_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc,"axG",@progbits,_Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc,comdat
 	.weak	_Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
@@ -2902,8 +2690,8 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI7_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI7_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI7_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -2958,15 +2746,11 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI7_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI7_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI7_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -3002,13 +2786,9 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB7_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB7_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI7_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI7_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI7_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI7_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -3108,8 +2888,8 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB7_27:                               # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI7_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI7_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI7_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI7_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -3146,77 +2926,9 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	.size	_Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc, .Lfunc_end7-_Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI8_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI8_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI8_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI8_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -3233,43 +2945,9 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI8_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI8_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI8_5:
+.LCPI8_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
@@ -3342,8 +3020,8 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI8_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI8_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI8_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -3402,15 +3080,11 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI8_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI8_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI8_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -3447,13 +3121,9 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB8_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI8_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI8_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI8_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI8_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -3553,8 +3223,8 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB8_27:                               # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI8_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI8_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI8_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -3591,77 +3261,9 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end8-_Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc
-.LCPI9_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI9_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI9_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc
+.LCPI9_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -3678,43 +3280,9 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI9_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI9_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI9_5:
+.LCPI9_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc
@@ -3781,8 +3349,8 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI9_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI9_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI9_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -3841,15 +3409,11 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI9_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI9_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI9_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -3886,13 +3450,9 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB9_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB9_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI9_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI9_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI9_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI9_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -3992,8 +3552,8 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB9_27:                               # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI9_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI9_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI9_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI9_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -4030,77 +3590,9 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc, .Lfunc_end9-_Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI10_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI10_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI10_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI10_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -4117,43 +3609,9 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI10_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI10_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI10_5:
+.LCPI10_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
@@ -4226,8 +3684,8 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI10_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI10_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI10_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -4286,15 +3744,11 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI10_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI10_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI10_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -4331,13 +3785,9 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB10_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB10_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI10_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI10_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI10_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI10_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -4437,8 +3887,8 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB10_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI10_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI10_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI10_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI10_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -4475,77 +3925,9 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end10-_Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc
-.LCPI11_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI11_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI11_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc
+.LCPI11_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -4562,43 +3944,9 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI11_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI11_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI11_5:
+.LCPI11_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc
@@ -4667,8 +4015,8 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI11_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI11_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI11_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -4725,15 +4073,11 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI11_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI11_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI11_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -4769,13 +4113,9 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB11_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB11_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI11_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI11_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI11_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI11_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -4874,8 +4214,8 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB11_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI11_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI11_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI11_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI11_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -4912,77 +4252,9 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	.size	_Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc, .Lfunc_end11-_Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI12_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI12_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI12_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI12_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -4999,43 +4271,9 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI12_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI12_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI12_5:
+.LCPI12_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
@@ -5165,15 +4403,11 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI12_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI12_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI12_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI12_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -5191,8 +4425,8 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	beqz	$a4, .LBB12_15
 .LBB12_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB12_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI12_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI12_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI12_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI12_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -5210,13 +4444,9 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB12_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB12_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI12_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI12_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI12_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI12_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -5315,8 +4545,8 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB12_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI12_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI12_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI12_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI12_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -5353,77 +4583,9 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	.size	_Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end12-_Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI13_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI13_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI13_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI13_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -5440,43 +4602,9 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI13_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI13_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI13_5:
+.LCPI13_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
@@ -5607,15 +4735,11 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI13_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI13_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI13_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI13_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -5633,8 +4757,8 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	beqz	$a4, .LBB13_15
 .LBB13_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB13_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI13_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI13_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI13_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI13_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -5653,13 +4777,9 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB13_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB13_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI13_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI13_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI13_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI13_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -5759,8 +4879,8 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB13_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI13_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI13_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI13_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI13_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -5800,23 +4920,6 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc
 .LCPI14_0:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI14_1:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -5835,7 +4938,7 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI14_2:
+.LCPI14_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc
@@ -5903,8 +5006,8 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI14_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI14_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI14_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI14_0)
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
@@ -5969,10 +5072,8 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a2, .LBB14_9
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB14_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI14_0)
-	vld	$vr2, $a0, %pc_lo12(.LCPI14_0)
 	vadd.b	$vr0, $vr1, $vr0
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -6134,8 +5235,8 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB14_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI14_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI14_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI14_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI14_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -6175,23 +5276,6 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 .LCPI15_0:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI15_1:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -6210,7 +5294,7 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI15_2:
+.LCPI15_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
@@ -6366,10 +5450,8 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a2, .LBB15_9
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB15_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI15_0)
-	vld	$vr2, $a0, %pc_lo12(.LCPI15_0)
 	vadd.b	$vr0, $vr1, $vr0
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -6385,8 +5467,8 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	beqz	$a4, .LBB15_15
 .LBB15_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB15_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI15_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI15_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI15_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI15_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -6608,8 +5690,8 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB15_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI15_2)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI15_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI15_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI15_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -6646,77 +5728,9 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	.size	_Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end15-_Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI16_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI16_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI16_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI16_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -6733,43 +5747,9 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI16_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI16_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI16_5:
+.LCPI16_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
@@ -6844,8 +5824,8 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI16_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI16_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI16_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI16_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -6904,15 +5884,11 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI16_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI16_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI16_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI16_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -6949,13 +5925,9 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB16_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB16_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI16_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI16_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI16_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI16_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -7055,8 +6027,8 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB16_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI16_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI16_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI16_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI16_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -7093,77 +6065,9 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	.size	_Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end16-_Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI17_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI17_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI17_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI17_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -7180,43 +6084,9 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI17_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI17_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI17_5:
+.LCPI17_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
@@ -7352,15 +6222,11 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI17_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI17_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI17_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI17_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -7378,8 +6244,8 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	beqz	$a4, .LBB17_15
 .LBB17_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB17_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI17_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI17_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI17_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI17_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -7399,13 +6265,9 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB17_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB17_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI17_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI17_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI17_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI17_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -7511,8 +6373,8 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB17_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI17_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI17_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI17_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI17_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -7549,77 +6411,9 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	.size	_Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end17-_Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc
-.LCPI18_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI18_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI18_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc
+.LCPI18_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -7636,43 +6430,9 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI18_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI18_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI18_5:
+.LCPI18_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc
@@ -7739,8 +6499,8 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI18_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI18_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI18_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI18_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -7799,15 +6559,11 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI18_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI18_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI18_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI18_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -7844,13 +6600,9 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB18_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB18_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI18_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI18_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI18_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI18_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -7950,8 +6702,8 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB18_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI18_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI18_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI18_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI18_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -7988,77 +6740,9 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc, .Lfunc_end18-_Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI19_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI19_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI19_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI19_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -8075,43 +6759,9 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI19_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI19_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI19_5:
+.LCPI19_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc
@@ -8250,15 +6900,11 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI19_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI19_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI19_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI19_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -8276,8 +6922,8 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB19_15
 .LBB19_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB19_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI19_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI19_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI19_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI19_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -8296,13 +6942,9 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB19_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB19_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI19_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI19_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI19_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI19_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -8403,8 +7045,8 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB19_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI19_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI19_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI19_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI19_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -8441,77 +7083,9 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end19-_Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc
-.LCPI20_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI20_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI20_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc
+.LCPI20_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -8528,43 +7102,9 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI20_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI20_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI20_5:
+.LCPI20_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc
@@ -8631,8 +7171,8 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI20_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI20_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI20_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI20_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -8691,15 +7231,11 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI20_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI20_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI20_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI20_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -8736,13 +7272,9 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	bnez	$a0, .LBB20_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB20_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI20_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI20_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI20_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI20_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -8842,8 +7374,8 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB20_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI20_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI20_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI20_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI20_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -8880,77 +7412,9 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	.size	_Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc, .Lfunc_end20-_Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI21_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI21_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI21_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI21_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -8967,43 +7431,9 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI21_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI21_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI21_5:
+.LCPI21_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc
@@ -9142,15 +7572,11 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI21_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI21_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI21_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI21_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -9168,8 +7594,8 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	beqz	$a4, .LBB21_15
 .LBB21_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB21_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI21_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI21_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI21_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI21_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -9188,13 +7614,9 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB21_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI21_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI21_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI21_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI21_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -9295,8 +7717,8 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB21_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI21_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI21_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI21_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI21_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -9333,77 +7755,9 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.size	_Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end21-_Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc
-.LCPI22_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI22_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI22_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc
+.LCPI22_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -9420,43 +7774,9 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI22_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI22_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI22_5:
+.LCPI22_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc
@@ -9523,8 +7843,8 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI22_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI22_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI22_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI22_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -9583,15 +7903,11 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI22_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI22_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI22_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI22_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -9628,13 +7944,9 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB22_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI22_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI22_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI22_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI22_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -9734,8 +8046,8 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB22_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI22_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI22_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI22_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI22_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -9772,77 +8084,9 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc, .Lfunc_end22-_Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc
-.LCPI23_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI23_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI23_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc
+.LCPI23_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -9859,43 +8103,9 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI23_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI23_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI23_5:
+.LCPI23_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc
@@ -10034,15 +8244,11 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI23_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI23_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI23_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI23_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -10060,8 +8266,8 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB23_15
 .LBB23_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB23_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI23_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI23_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI23_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI23_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -10080,13 +8286,9 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB23_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI23_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI23_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI23_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI23_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -10187,8 +8389,8 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB23_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI23_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI23_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -10225,77 +8427,9 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end23-_Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
-.LCPI24_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI24_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI24_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
+.LCPI24_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -10312,43 +8446,9 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI24_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI24_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI24_5:
+.LCPI24_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
@@ -10415,8 +8515,8 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI24_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI24_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI24_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI24_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -10475,15 +8575,11 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI24_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI24_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI24_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI24_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -10520,13 +8616,9 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB24_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI24_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI24_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI24_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI24_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -10626,8 +8718,8 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB24_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI24_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI24_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI24_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI24_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -10664,77 +8756,9 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc, .Lfunc_end24-_Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
-.LCPI25_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI25_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI25_2:
+	.p2align	4, 0x0                          # -- Begin function _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
+.LCPI25_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -10751,43 +8775,9 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI25_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI25_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI25_5:
+.LCPI25_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc,"axG",@progbits,_Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc,comdat
 	.weak	_Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
@@ -10854,8 +8844,8 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI25_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI25_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI25_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI25_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -10910,15 +8900,11 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI25_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI25_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI25_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI25_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -10954,13 +8940,9 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB25_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI25_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI25_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI25_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI25_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -11060,8 +9042,8 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB25_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI25_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI25_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI25_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI25_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -11098,77 +9080,9 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	.size	_Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc, .Lfunc_end25-_Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI26_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI26_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI26_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI26_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -11185,43 +9099,9 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI26_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI26_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI26_5:
+.LCPI26_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
@@ -11294,8 +9174,8 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI26_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI26_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI26_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI26_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -11354,15 +9234,11 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI26_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI26_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI26_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI26_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -11399,13 +9275,9 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB26_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI26_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI26_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI26_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI26_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -11505,8 +9377,8 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB26_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI26_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI26_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI26_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI26_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -11543,77 +9415,9 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end26-_Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc
-.LCPI27_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI27_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI27_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc
+.LCPI27_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -11630,43 +9434,9 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI27_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI27_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI27_5:
+.LCPI27_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc
@@ -11733,8 +9503,8 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI27_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI27_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI27_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -11793,15 +9563,11 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI27_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI27_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI27_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI27_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -11838,13 +9604,9 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB27_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI27_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI27_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI27_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI27_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -11944,8 +9706,8 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB27_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI27_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI27_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI27_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI27_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -11982,77 +9744,9 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc, .Lfunc_end27-_Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI28_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI28_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI28_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI28_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -12069,43 +9763,9 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI28_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI28_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI28_5:
+.LCPI28_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
@@ -12178,8 +9838,8 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI28_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI28_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI28_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI28_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -12238,15 +9898,11 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI28_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI28_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI28_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI28_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -12283,13 +9939,9 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB28_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI28_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI28_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI28_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI28_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -12389,8 +10041,8 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB28_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI28_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI28_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI28_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI28_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -12427,77 +10079,9 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end28-_Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc
-.LCPI29_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI29_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI29_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc
+.LCPI29_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -12514,43 +10098,9 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI29_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI29_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI29_5:
+.LCPI29_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc
@@ -12619,8 +10169,8 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI29_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI29_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI29_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI29_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -12677,15 +10227,11 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI29_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI29_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI29_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI29_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -12721,13 +10267,9 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB29_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI29_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI29_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI29_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI29_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -12826,8 +10368,8 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB29_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI29_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI29_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI29_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI29_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -12864,77 +10406,9 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	.size	_Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc, .Lfunc_end29-_Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI30_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI30_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI30_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI30_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -12951,43 +10425,9 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI30_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI30_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI30_5:
+.LCPI30_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
@@ -13117,15 +10557,11 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI30_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI30_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI30_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI30_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -13143,8 +10579,8 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	beqz	$a4, .LBB30_15
 .LBB30_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB30_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI30_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI30_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI30_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI30_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -13162,13 +10598,9 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB30_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI30_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI30_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI30_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI30_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -13267,8 +10699,8 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB30_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI30_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI30_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI30_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI30_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -13305,77 +10737,9 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	.size	_Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end30-_Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI31_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI31_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI31_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI31_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -13392,43 +10756,9 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI31_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI31_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI31_5:
+.LCPI31_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
@@ -13559,15 +10889,11 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI31_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI31_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI31_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI31_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -13585,8 +10911,8 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	beqz	$a4, .LBB31_15
 .LBB31_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB31_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI31_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI31_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI31_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI31_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -13605,13 +10931,9 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB31_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI31_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI31_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI31_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI31_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -13711,8 +11033,8 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB31_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI31_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI31_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI31_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI31_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -13749,77 +11071,9 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	.size	_Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end31-_Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc
-.LCPI32_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI32_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI32_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc
+.LCPI32_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -13836,43 +11090,9 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI32_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI32_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI32_5:
+.LCPI32_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc
@@ -13939,8 +11159,8 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI32_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI32_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI32_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI32_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -13999,15 +11219,11 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI32_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI32_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI32_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI32_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -14044,13 +11260,9 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB32_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI32_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI32_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI32_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI32_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -14150,8 +11362,8 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB32_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI32_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI32_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI32_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI32_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -14188,77 +11400,9 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	.size	_Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc, .Lfunc_end32-_Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI33_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI33_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI33_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI33_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -14275,43 +11419,9 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI33_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI33_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI33_5:
+.LCPI33_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
@@ -14320,19 +11430,19 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	.cfi_def_cfa_offset 384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -400
+	.cfi_def_cfa_offset 400
+	st.d	$ra, $sp, 392                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 384                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 376                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 368                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 360                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 352                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 344                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 336                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 328                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 320                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 312                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -14353,14 +11463,15 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$s5, $a0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	pcalau12i	$fp, %pc_hi20(iterations)
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	pcalau12i	$a1, %pc_hi20(iterations)
+	st.d	$a1, $sp, 296                   # 8-byte Folded Spill
+	ld.w	$a1, $a1, %pc_lo12(iterations)
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
 	ori	$a0, $zero, 1
 	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 288                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 304                   # 8-byte Folded Spill
 	blt	$a1, $a0, .LBB33_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s4, .LBB33_19
@@ -14375,18 +11486,17 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $s4, 48
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	bstrpick.d	$a0, $s4, 30, 4
-	slli.d	$a0, $a0, 4
+	slli.d	$s7, $a0, 4
 	vreplgr2vr.b	$vr8, $s3
 	vreplgr2vr.b	$vr9, $s2
 	vreplgr2vr.b	$vr10, $s1
 	vreplgr2vr.b	$vr11, $s0
-	addi.d	$a2, $s5, 32
-	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	sub.d	$a0, $zero, $a0
+	addi.d	$a0, $s5, 32
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	sub.d	$a0, $zero, $s7
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ori	$a5, $zero, 15
-	pcalau12i	$s7, %pc_hi20(init_value)
+	pcalau12i	$fp, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
@@ -14428,7 +11538,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	.p2align	4, , 16
 .LBB33_8:                               # %vector.body.preheader
                                         #   in Loop: Header=BB33_4 Depth=1
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a2, $s6
 	xvld	$xr1, $sp, 32                   # 32-byte Folded Reload
 	xvori.b	$xr0, $xr1, 0
@@ -14457,15 +11567,11 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI33_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI33_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI33_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI33_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -14483,12 +11589,12 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	beqz	$a4, .LBB33_15
 .LBB33_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB33_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI33_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI33_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI33_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI33_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a2
 	add.d	$a2, $s5, $a2
 	.p2align	4, , 16
@@ -14506,22 +11612,17 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB33_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI33_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI33_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI33_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI33_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vpickve2gr.b	$a0, $vr0, 0
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	move	$a3, $a2
-	beq	$a2, $s4, .LBB33_17
+	move	$a3, $s7
+	beq	$s7, $s4, .LBB33_17
 .LBB33_15:                              # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB33_4 Depth=1
 	add.d	$a2, $s5, $a3
@@ -14541,7 +11642,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a3, .LBB33_16
 .LBB33_17:                              # %._crit_edge.us
                                         #   in Loop: Header=BB33_4 Depth=1
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a2, $fa0
 	div.du	$a2, $a2, $s3
@@ -14553,7 +11654,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $a0, 255
 	beq	$a0, $a2, .LBB33_3
 # %bb.18:                               #   in Loop: Header=BB33_4 Depth=1
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
@@ -14567,20 +11668,21 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	xvld	$xr6, $sp, 192                  # 32-byte Folded Reload
 	xvld	$xr5, $sp, 224                  # 32-byte Folded Reload
 	xvld	$xr4, $sp, 256                  # 32-byte Folded Reload
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB33_3
 .LBB33_19:                              # %.preheader.preheader
-	pcalau12i	$s5, %pc_hi20(init_value)
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
-	move	$s6, $zero
+	pcalau12i	$fp, %pc_hi20(init_value)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
+	move	$s5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.179)
 	b	.LBB33_21
 	.p2align	4, , 16
 .LBB33_20:                              # %_Z26check_shifted_variable_sumIh31custom_divide_multiple_variableIhEEvT_S2_S2_S2_S2_.exit
                                         #   in Loop: Header=BB33_21 Depth=1
-	addi.w	$s6, $s6, 1
-	bge	$s6, $a1, .LBB33_23
+	addi.w	$s5, $s5, 1
+	bge	$s5, $a1, .LBB33_23
 .LBB33_21:                              # %.preheader
                                         # =>This Inner Loop Header: Depth=1
 	ftintrz.l.d	$fa1, $fa0
@@ -14592,13 +11694,14 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	andi	$a0, $a0, 3
 	beqz	$a0, .LBB33_20
 # %bb.22:                               #   in Loop: Header=BB33_21 Depth=1
-	ld.d	$a0, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
 	ld.w	$a1, $a0, %pc_lo12(current_test)
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s5, %pc_lo12(init_value)
-	ld.w	$a1, $fp, %pc_lo12(iterations)
+	fld.d	$fa0, $fp, %pc_lo12(init_value)
+	ld.d	$a0, $sp, 296                   # 8-byte Folded Reload
+	ld.w	$a1, $a0, %pc_lo12(iterations)
 	b	.LBB33_20
 .LBB33_23:                              # %._crit_edge22
 	pcaddu18i	$ra, %call36(clock)
@@ -14612,7 +11715,7 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(end_time)
 	st.d	$s0, $a0, %pc_lo12(end_time)
-	ld.d	$s3, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 304                   # 8-byte Folded Reload
 	beqz	$a2, .LBB33_25
 # %bb.24:                               # %._crit_edge22
 	ld.w	$a0, $s3, %pc_lo12(current_test)
@@ -14631,8 +11734,8 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB33_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI33_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI33_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI33_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI33_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -14643,18 +11746,18 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	st.d	$a4, $a1, 8
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s3, %pc_lo12(current_test)
-	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s8, $sp, 312                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 392                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 400
 	ret
 .LBB33_28:
 	ld.w	$a1, $s1, %pc_lo12(allocated_results)
@@ -14669,77 +11772,9 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	.size	_Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end33-_Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI34_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI34_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI34_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI34_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -14756,43 +11791,9 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI34_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI34_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI34_5:
+.LCPI34_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
@@ -14865,8 +11866,8 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI34_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI34_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI34_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI34_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -14925,15 +11926,11 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI34_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI34_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI34_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI34_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -14970,13 +11967,9 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB34_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI34_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI34_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI34_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI34_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -15076,8 +12069,8 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB34_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI34_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI34_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI34_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI34_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -15114,77 +12107,9 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	.size	_Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end34-_Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI35_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI35_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI35_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI35_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -15201,43 +12126,9 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI35_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI35_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI35_5:
+.LCPI35_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
@@ -15310,8 +12201,8 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$s7, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI35_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI35_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI35_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI35_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -15370,15 +12261,11 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI35_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI35_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI35_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI35_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -15415,13 +12302,9 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB35_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI35_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI35_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI35_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI35_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -15521,8 +12404,8 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB35_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI35_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI35_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI35_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI35_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -15559,77 +12442,9 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	.size	_Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end35-_Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc
-.LCPI36_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI36_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI36_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc
+.LCPI36_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -15646,43 +12461,9 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI36_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI36_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI36_5:
+.LCPI36_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc
@@ -15749,8 +12530,8 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI36_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI36_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI36_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI36_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -15809,15 +12590,11 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI36_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI36_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI36_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI36_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -15854,13 +12631,9 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB36_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI36_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI36_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI36_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI36_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -15960,8 +12733,8 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB36_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI36_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI36_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI36_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI36_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -15998,77 +12771,9 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc, .Lfunc_end36-_Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI37_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI37_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI37_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI37_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -16085,43 +12790,9 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI37_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI37_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI37_5:
+.LCPI37_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc
@@ -16260,15 +12931,11 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI37_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI37_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI37_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI37_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -16286,8 +12953,8 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB37_15
 .LBB37_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB37_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI37_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI37_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI37_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI37_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -16306,13 +12973,9 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB37_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI37_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI37_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI37_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI37_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -16413,8 +13076,8 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB37_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI37_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI37_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI37_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI37_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -16451,77 +13114,9 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end37-_Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc
-.LCPI38_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI38_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI38_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc
+.LCPI38_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -16538,43 +13133,9 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI38_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI38_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI38_5:
+.LCPI38_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc
@@ -16641,8 +13202,8 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI38_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI38_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI38_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI38_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -16701,15 +13262,11 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI38_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI38_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI38_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI38_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -16746,13 +13303,9 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	bnez	$a0, .LBB38_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI38_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI38_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI38_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI38_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -16852,8 +13405,8 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB38_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI38_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI38_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI38_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI38_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -16890,77 +13443,9 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	.size	_Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc, .Lfunc_end38-_Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI39_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI39_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI39_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI39_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -16977,43 +13462,9 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI39_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI39_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI39_5:
+.LCPI39_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc
@@ -17152,15 +13603,11 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI39_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI39_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI39_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI39_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -17178,8 +13625,8 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	beqz	$a4, .LBB39_15
 .LBB39_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB39_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI39_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI39_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI39_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI39_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -17198,13 +13645,9 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB39_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI39_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI39_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI39_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI39_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -17305,8 +13748,8 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB39_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI39_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI39_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI39_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI39_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -17343,77 +13786,9 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.size	_Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end39-_Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc
-.LCPI40_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI40_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI40_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc
+.LCPI40_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -17430,43 +13805,9 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI40_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI40_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI40_5:
+.LCPI40_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc
@@ -17533,8 +13874,8 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$s5, %pc_hi20(init_value)
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.179)
-	pcalau12i	$a0, %pc_hi20(.LCPI40_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI40_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI40_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI40_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.b	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -17593,15 +13934,11 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI40_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI40_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI40_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI40_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -17638,13 +13975,9 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB40_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI40_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI40_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI40_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI40_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -17744,8 +14077,8 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB40_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI40_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI40_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI40_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI40_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -17782,77 +14115,9 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc, .Lfunc_end40-_Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc
-.LCPI41_0:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-.LCPI41_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
-	.byte	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI41_2:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc
+.LCPI41_0:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -17869,43 +14134,9 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
-.LCPI41_3:
-	.byte	8                               # 0x8
-	.byte	9                               # 0x9
-	.byte	10                              # 0xa
-	.byte	11                              # 0xb
-	.byte	12                              # 0xc
-	.byte	13                              # 0xd
-	.byte	14                              # 0xe
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-.LCPI41_4:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI41_5:
+.LCPI41_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc
@@ -18044,15 +14275,11 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	xvpermi.d	$xr1, $xr0, 78
 	xvshuf4i.b	$xr1, $xr1, 228
 	xvadd.b	$xr0, $xr0, $xr1
-	pcalau12i	$a0, %pc_hi20(.LCPI41_0)
-	xvld	$xr1, $a0, %pc_lo12(.LCPI41_0)
-	xvpermi.d	$xr2, $xr0, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI41_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI41_1)
-	xvshuf.b	$xr1, $xr0, $xr2, $xr1
+	xvpermi.d	$xr1, $xr0, 68
+	xvbsrl.v	$xr1, $xr1, 8
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.b	$xr1, $xr0, $xr1, $xr3
+	xvsrli.d	$xr1, $xr1, 32
 	xvadd.b	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.b	$xr1, $xr1, 14
@@ -18070,8 +14297,8 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB41_15
 .LBB41_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB41_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI41_2)
-	vld	$vr0, $a3, %pc_lo12(.LCPI41_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI41_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI41_0)
 	vinsgr2vr.b	$vr1, $a0, 0
 	vinsgr2vr.b	$vr2, $zero, 0
 	vshuf.b	$vr0, $vr2, $vr1, $vr0
@@ -18090,13 +14317,9 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB41_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB41_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI41_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI41_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI41_4)
-	vld	$vr2, $a0, %pc_lo12(.LCPI41_4)
-	vshuf.b	$vr1, $vr0, $vr0, $vr1
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr0, $vr0, $vr2
+	vsrli.d	$vr1, $vr0, 32
 	vadd.b	$vr0, $vr0, $vr1
 	vshuf4i.b	$vr1, $vr0, 14
 	vadd.b	$vr0, $vr0, $vr1
@@ -18197,8 +14420,8 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB41_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI41_5)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI41_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI41_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI41_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -18235,28 +14458,9 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end41-_Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
-.LCPI42_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI42_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
+.LCPI42_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -18265,18 +14469,9 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI42_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI42_3:
+.LCPI42_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
@@ -18346,8 +14541,8 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI42_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI42_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI42_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI42_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -18404,13 +14599,11 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB42_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI42_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI42_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -18446,9 +14639,7 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB42_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB42_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI42_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI42_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -18553,8 +14744,8 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB42_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI42_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI42_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI42_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI42_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -18591,28 +14782,9 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc, .Lfunc_end42-_Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
-.LCPI43_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI43_1:
+	.p2align	4, 0x0                          # -- Begin function _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
+.LCPI43_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -18621,18 +14793,9 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI43_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI43_3:
+.LCPI43_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc,"axG",@progbits,_Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc,comdat
 	.weak	_Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
@@ -18702,8 +14865,8 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI43_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI43_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI43_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI43_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -18756,13 +14919,11 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
                                         #   in Loop: Header=BB43_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI43_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI43_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -18797,9 +14958,7 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB43_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB43_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI43_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI43_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -18906,8 +15065,8 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB43_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI43_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI43_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI43_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI43_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -18944,28 +15103,9 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	.size	_Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc, .Lfunc_end43-_Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI44_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI44_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI44_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -18974,18 +15114,9 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI44_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI44_3:
+.LCPI44_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
@@ -19061,8 +15192,8 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI44_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI44_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI44_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI44_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -19119,13 +15250,11 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB44_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI44_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI44_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -19161,9 +15290,7 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB44_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB44_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI44_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI44_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -19268,8 +15395,8 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB44_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI44_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI44_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI44_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI44_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -19306,28 +15433,9 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end44-_Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc
-.LCPI45_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI45_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc
+.LCPI45_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -19336,18 +15444,9 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI45_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI45_3:
+.LCPI45_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc
@@ -19417,8 +15516,8 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI45_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI45_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI45_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI45_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -19475,13 +15574,11 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB45_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI45_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI45_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -19517,9 +15614,7 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB45_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB45_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI45_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI45_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -19624,8 +15719,8 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB45_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI45_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI45_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI45_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI45_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -19662,28 +15757,9 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc, .Lfunc_end45-_Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI46_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI46_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI46_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -19692,18 +15768,9 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI46_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI46_3:
+.LCPI46_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
@@ -19779,8 +15846,8 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI46_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI46_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI46_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI46_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -19837,13 +15904,11 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB46_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI46_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI46_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -19879,9 +15944,7 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB46_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB46_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI46_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI46_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -19986,8 +16049,8 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB46_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI46_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI46_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI46_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI46_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -20024,28 +16087,9 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end46-_Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc
-.LCPI47_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI47_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc
+.LCPI47_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -20054,18 +16098,9 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI47_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI47_3:
+.LCPI47_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc
@@ -20136,8 +16171,8 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI47_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI47_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI47_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI47_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -20192,13 +16227,11 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
                                         #   in Loop: Header=BB47_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI47_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI47_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -20233,9 +16266,7 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB47_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB47_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI47_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI47_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -20334,8 +16365,8 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB47_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI47_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI47_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI47_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI47_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -20372,28 +16403,9 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	.size	_Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc, .Lfunc_end47-_Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI48_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI48_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI48_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -20402,18 +16414,9 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI48_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI48_3:
+.LCPI48_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
@@ -20543,13 +16546,11 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
                                         #   in Loop: Header=BB48_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI48_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI48_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -20566,8 +16567,8 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	beqz	$a4, .LBB48_15
 .LBB48_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB48_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI48_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI48_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI48_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI48_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -20585,9 +16586,7 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB48_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB48_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI48_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI48_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -20686,8 +16685,8 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB48_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI48_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI48_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI48_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI48_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -20724,28 +16723,9 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	.size	_Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end48-_Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI49_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI49_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI49_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -20754,18 +16734,9 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI49_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI49_3:
+.LCPI49_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
@@ -20894,13 +16865,11 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
                                         #   in Loop: Header=BB49_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI49_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI49_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -20917,8 +16886,8 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	beqz	$a4, .LBB49_15
 .LBB49_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB49_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI49_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI49_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI49_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI49_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -20937,9 +16906,7 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB49_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB49_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI49_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI49_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -21048,8 +17015,8 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB49_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI49_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI49_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI49_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI49_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -21631,28 +17598,9 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 	.size	_Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end51-_Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI52_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI52_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI52_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -21661,18 +17609,9 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI52_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI52_3:
+.LCPI52_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
@@ -21748,8 +17687,8 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI52_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI52_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI52_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI52_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -21806,13 +17745,11 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
                                         #   in Loop: Header=BB52_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI52_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI52_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -21848,9 +17785,7 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB52_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB52_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI52_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI52_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -21955,8 +17890,8 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB52_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI52_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI52_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI52_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI52_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -21993,28 +17928,9 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	.size	_Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end52-_Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI53_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI53_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI53_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -22023,18 +17939,9 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI53_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI53_3:
+.LCPI53_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
@@ -22110,8 +18017,8 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI53_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI53_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI53_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI53_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -22168,13 +18075,11 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
                                         #   in Loop: Header=BB53_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI53_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI53_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -22210,9 +18115,7 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB53_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI53_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI53_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -22317,8 +18220,8 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB53_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI53_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI53_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI53_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI53_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -22355,28 +18258,9 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	.size	_Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end53-_Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc
-.LCPI54_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI54_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc
+.LCPI54_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -22385,18 +18269,9 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI54_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI54_3:
+.LCPI54_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc
@@ -22466,8 +18341,8 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI54_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI54_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI54_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI54_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -22524,13 +18399,11 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB54_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI54_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI54_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -22566,9 +18439,7 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB54_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI54_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI54_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -22673,8 +18544,8 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB54_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI54_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI54_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI54_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI54_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -22711,28 +18582,9 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc, .Lfunc_end54-_Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI55_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI55_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI55_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -22741,18 +18593,9 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI55_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI55_3:
+.LCPI55_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc
@@ -22891,13 +18734,11 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB55_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI55_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI55_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -22914,8 +18755,8 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB55_15
 .LBB55_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB55_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI55_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI55_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI55_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI55_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -22934,9 +18775,7 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB55_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI55_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI55_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -23045,8 +18884,8 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB55_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI55_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI55_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI55_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI55_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -23083,28 +18922,9 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end55-_Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc
-.LCPI56_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI56_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc
+.LCPI56_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -23113,18 +18933,9 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI56_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI56_3:
+.LCPI56_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc
@@ -23194,8 +19005,8 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI56_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI56_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI56_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI56_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -23252,13 +19063,11 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
                                         #   in Loop: Header=BB56_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI56_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI56_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -23294,9 +19103,7 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	bnez	$a0, .LBB56_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI56_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI56_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -23401,8 +19208,8 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB56_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI56_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI56_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI56_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI56_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -23439,28 +19246,9 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	.size	_Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc, .Lfunc_end56-_Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI57_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI57_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI57_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -23469,18 +19257,9 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI57_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI57_3:
+.LCPI57_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc
@@ -23619,13 +19398,11 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
                                         #   in Loop: Header=BB57_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI57_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI57_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -23642,8 +19419,8 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	beqz	$a4, .LBB57_15
 .LBB57_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB57_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI57_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI57_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI57_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI57_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -23662,9 +19439,7 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB57_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI57_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI57_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -23773,8 +19548,8 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB57_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI57_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI57_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI57_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI57_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -23811,28 +19586,9 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.size	_Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end57-_Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc
-.LCPI58_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI58_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc
+.LCPI58_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -23841,18 +19597,9 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI58_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI58_3:
+.LCPI58_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc
@@ -23922,8 +19669,8 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI58_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI58_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI58_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI58_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -23980,13 +19727,11 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB58_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI58_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI58_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -24022,9 +19767,7 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB58_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI58_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI58_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -24129,8 +19872,8 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB58_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI58_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI58_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI58_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI58_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -24167,28 +19910,9 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc, .Lfunc_end58-_Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc
-.LCPI59_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI59_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc
+.LCPI59_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -24197,18 +19921,9 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI59_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI59_3:
+.LCPI59_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc
@@ -24347,13 +20062,11 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB59_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI59_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI59_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -24370,8 +20083,8 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB59_15
 .LBB59_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB59_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI59_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI59_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI59_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI59_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -24390,9 +20103,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB59_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI59_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI59_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -24501,8 +20212,8 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB59_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI59_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI59_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI59_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI59_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -24539,28 +20250,9 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end59-_Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc
-.LCPI60_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI60_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc
+.LCPI60_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -24569,18 +20261,9 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI60_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI60_3:
+.LCPI60_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc
@@ -24650,8 +20333,8 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI60_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI60_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI60_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI60_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -24708,13 +20391,11 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB60_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI60_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI60_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -24750,9 +20431,7 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB60_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI60_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI60_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -24857,8 +20536,8 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB60_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI60_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI60_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI60_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI60_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -24895,28 +20574,9 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc, .Lfunc_end60-_Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc
-.LCPI61_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI61_1:
+	.p2align	4, 0x0                          # -- Begin function _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc
+.LCPI61_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -24925,18 +20585,9 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI61_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI61_3:
+.LCPI61_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc,"axG",@progbits,_Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc,comdat
 	.weak	_Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc
@@ -25006,8 +20657,8 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI61_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI61_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI61_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI61_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -25060,13 +20711,11 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
                                         #   in Loop: Header=BB61_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI61_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI61_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -25101,9 +20750,7 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB61_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI61_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI61_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -25210,8 +20857,8 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB61_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI61_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI61_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI61_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI61_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -25248,28 +20895,9 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	.size	_Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc, .Lfunc_end61-_Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI62_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI62_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI62_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -25278,18 +20906,9 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI62_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI62_3:
+.LCPI62_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
@@ -25365,8 +20984,8 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI62_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI62_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI62_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI62_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -25423,13 +21042,11 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB62_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI62_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI62_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -25465,9 +21082,7 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB62_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI62_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI62_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -25572,8 +21187,8 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB62_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI62_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI62_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI62_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI62_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -25610,28 +21225,9 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end62-_Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc
-.LCPI63_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI63_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc
+.LCPI63_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -25640,18 +21236,9 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI63_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI63_3:
+.LCPI63_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc
@@ -25721,8 +21308,8 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI63_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI63_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI63_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI63_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -25779,13 +21366,11 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB63_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI63_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI63_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -25821,9 +21406,7 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB63_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI63_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI63_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -25928,8 +21511,8 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB63_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI63_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI63_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI63_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI63_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -25966,28 +21549,9 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc, .Lfunc_end63-_Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI64_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI64_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI64_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -25996,18 +21560,9 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI64_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI64_3:
+.LCPI64_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
@@ -26083,8 +21638,8 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI64_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI64_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI64_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI64_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -26141,13 +21696,11 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB64_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI64_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI64_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -26183,9 +21736,7 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB64_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI64_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI64_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -26290,8 +21841,8 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB64_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI64_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI64_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI64_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI64_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -26328,28 +21879,9 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end64-_Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc
-.LCPI65_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI65_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc
+.LCPI65_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -26358,18 +21890,9 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI65_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI65_3:
+.LCPI65_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc
@@ -26440,8 +21963,8 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI65_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI65_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI65_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI65_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -26496,13 +22019,11 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
                                         #   in Loop: Header=BB65_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI65_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI65_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -26537,9 +22058,7 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB65_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI65_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI65_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -26638,8 +22157,8 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB65_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI65_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI65_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI65_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI65_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -26676,28 +22195,9 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	.size	_Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc, .Lfunc_end65-_Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI66_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI66_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI66_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -26706,18 +22206,9 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI66_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI66_3:
+.LCPI66_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
@@ -26847,13 +22338,11 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
                                         #   in Loop: Header=BB66_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI66_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI66_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -26870,8 +22359,8 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	beqz	$a4, .LBB66_15
 .LBB66_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB66_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI66_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI66_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI66_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI66_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -26889,9 +22378,7 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB66_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI66_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI66_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -26990,8 +22477,8 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB66_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI66_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI66_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI66_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI66_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -27028,28 +22515,9 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	.size	_Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end66-_Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI67_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI67_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI67_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -27058,18 +22526,9 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI67_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI67_3:
+.LCPI67_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
@@ -27198,13 +22657,11 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
                                         #   in Loop: Header=BB67_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI67_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI67_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -27221,8 +22678,8 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	beqz	$a4, .LBB67_15
 .LBB67_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB67_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI67_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI67_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI67_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI67_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -27241,9 +22698,7 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB67_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI67_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI67_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -27352,8 +22807,8 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB67_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI67_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI67_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI67_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI67_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -27390,28 +22845,9 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	.size	_Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end67-_Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc
-.LCPI68_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI68_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc
+.LCPI68_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -27420,18 +22856,9 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI68_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI68_3:
+.LCPI68_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc
@@ -27501,8 +22928,8 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI68_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI68_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI68_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI68_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -27559,13 +22986,11 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
                                         #   in Loop: Header=BB68_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI68_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI68_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -27601,9 +23026,7 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB68_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI68_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI68_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -27708,8 +23131,8 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB68_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI68_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI68_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI68_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI68_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -27746,28 +23169,9 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	.size	_Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc, .Lfunc_end68-_Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI69_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI69_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI69_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -27776,18 +23180,9 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI69_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI69_3:
+.LCPI69_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
@@ -27934,13 +23329,11 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
                                         #   in Loop: Header=BB69_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI69_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI69_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -27957,8 +23350,8 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	beqz	$a4, .LBB69_15
 .LBB69_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB69_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI69_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI69_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI69_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI69_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -27980,9 +23373,7 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB69_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI69_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI69_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -28108,8 +23499,8 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB69_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI69_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI69_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI69_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI69_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -28146,28 +23537,9 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	.size	_Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end69-_Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI70_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI70_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI70_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -28176,18 +23548,9 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI70_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI70_3:
+.LCPI70_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
@@ -28263,8 +23626,8 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI70_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI70_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI70_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI70_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -28321,13 +23684,11 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
                                         #   in Loop: Header=BB70_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI70_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI70_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -28363,9 +23724,7 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB70_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI70_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI70_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -28470,8 +23829,8 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB70_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI70_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI70_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI70_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI70_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -28508,28 +23867,9 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	.size	_Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end70-_Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI71_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI71_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI71_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -28538,18 +23878,9 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI71_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI71_3:
+.LCPI71_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
@@ -28625,8 +23956,8 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI71_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI71_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI71_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI71_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -28683,13 +24014,11 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
                                         #   in Loop: Header=BB71_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI71_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI71_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -28725,9 +24054,7 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB71_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI71_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI71_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -28832,8 +24159,8 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 .LBB71_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI71_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI71_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI71_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI71_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -28870,28 +24197,9 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	.size	_Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end71-_Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc
-.LCPI72_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI72_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc
+.LCPI72_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -28900,18 +24208,9 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI72_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI72_3:
+.LCPI72_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc
@@ -28981,8 +24280,8 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI72_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI72_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI72_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI72_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -29039,13 +24338,11 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB72_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI72_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI72_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -29081,9 +24378,7 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB72_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI72_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI72_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -29188,8 +24483,8 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB72_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI72_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI72_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI72_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI72_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29226,28 +24521,9 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc, .Lfunc_end72-_Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI73_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI73_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI73_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -29256,18 +24532,9 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI73_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI73_3:
+.LCPI73_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc
@@ -29406,13 +24673,11 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB73_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI73_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI73_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -29429,8 +24694,8 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB73_15
 .LBB73_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB73_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI73_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI73_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI73_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI73_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -29449,9 +24714,7 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB73_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI73_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI73_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -29560,8 +24823,8 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB73_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI73_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI73_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI73_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI73_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29598,28 +24861,9 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.size	_Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end73-_Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc
-.LCPI74_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI74_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc
+.LCPI74_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -29628,18 +24872,9 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI74_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI74_3:
+.LCPI74_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc
@@ -29709,8 +24944,8 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI74_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI74_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI74_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI74_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -29767,13 +25002,11 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
                                         #   in Loop: Header=BB74_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI74_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI74_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -29809,9 +25042,7 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	bnez	$a0, .LBB74_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI74_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI74_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -29916,8 +25147,8 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB74_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI74_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI74_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI74_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI74_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -29954,28 +25185,9 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	.size	_Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc, .Lfunc_end74-_Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI75_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI75_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI75_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -29984,18 +25196,9 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI75_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI75_3:
+.LCPI75_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc
@@ -30134,13 +25337,11 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
                                         #   in Loop: Header=BB75_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI75_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI75_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -30157,8 +25358,8 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	beqz	$a4, .LBB75_15
 .LBB75_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB75_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI75_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI75_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI75_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI75_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -30177,9 +25378,7 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB75_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI75_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI75_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -30288,8 +25487,8 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB75_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI75_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI75_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI75_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI75_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -30326,28 +25525,9 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.size	_Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc, .Lfunc_end75-_Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc
-.LCPI76_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI76_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc
+.LCPI76_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -30356,18 +25536,9 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI76_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI76_3:
+.LCPI76_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc,"axG",@progbits,_Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc,comdat
 	.weak	_Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc
@@ -30437,8 +25608,8 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	pcalau12i	$a0, %pc_hi20(.L.str.179)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.179)
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI76_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI76_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI76_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI76_0)
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	vinsgr2vr.h	$vr0, $zero, 0
 	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
@@ -30495,13 +25666,11 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
                                         #   in Loop: Header=BB76_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI76_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI76_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -30537,9 +25706,7 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB76_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB76_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI76_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI76_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -30644,8 +25811,8 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	ld.w	$a0, $s4, %pc_lo12(current_test)
 .LBB76_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI76_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI76_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI76_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI76_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
@@ -30682,28 +25849,9 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.size	_Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc, .Lfunc_end76-_Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0                          # -- Begin function _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc
-.LCPI77_0:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI77_1:
+	.p2align	4, 0x0                          # -- Begin function _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc
+.LCPI77_0:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -30712,18 +25860,9 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI77_2:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI77_3:
+.LCPI77_1:
 	.dword	0x412e848000000000              # double 1.0E+6
 	.section	.text._Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc,"axG",@progbits,_Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc,comdat
 	.weak	_Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc
@@ -30862,13 +26001,11 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
                                         #   in Loop: Header=BB77_4 Depth=1
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI77_0)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI77_0)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -30885,8 +26022,8 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	beqz	$a4, .LBB77_15
 .LBB77_12:                              # %vec.epilog.ph
                                         #   in Loop: Header=BB77_4 Depth=1
-	pcalau12i	$a3, %pc_hi20(.LCPI77_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI77_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI77_0)
+	vld	$vr0, $a3, %pc_lo12(.LCPI77_0)
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
 	vshuf.h	$vr0, $vr2, $vr1
@@ -30905,9 +26042,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB77_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB77_4 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI77_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI77_2)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
@@ -31016,8 +26151,8 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	ld.w	$a0, $s3, %pc_lo12(current_test)
 .LBB77_27:                              # %_Z13record_resultdPKc.exit
 	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	pcalau12i	$a1, %pc_hi20(.LCPI77_3)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI77_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI77_1)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI77_1)
 	sub.d	$a1, $s0, $fp
 	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1

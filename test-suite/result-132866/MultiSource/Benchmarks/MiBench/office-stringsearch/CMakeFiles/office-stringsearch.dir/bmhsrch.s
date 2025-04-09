@@ -10,25 +10,6 @@
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	bmh_init
 	.p2align	5
@@ -105,21 +86,19 @@ bmh_init:                               # @bmh_init
 .LBB0_3:                                # %vector.ph30
 	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
 	xvld	$xr1, $a4, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
-	vld	$vr2, $a4, %pc_lo12(.LCPI0_1)
 	bstrpick.d	$a4, $a0, 30, 3
 	slli.d	$a4, $a4, 3
-	xvrepli.b	$xr3, -1
+	xvrepli.b	$xr2, -1
 	move	$a5, $s0
 	move	$a6, $a4
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body33
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a7, $a5, 0
-	vinsgr2vr.d	$vr4, $a7, 0
-	vshuf.b	$vr5, $vr0, $vr4, $vr2
-	vst	$vr5, $sp, 96
-	vst	$vr4, $sp, 64
+	vinsgr2vr.d	$vr3, $a7, 0
+	vsrli.d	$vr4, $vr3, 32
+	vst	$vr4, $sp, 96
+	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -132,14 +111,14 @@ bmh_init:                               # @bmh_init
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr4, $sp, 96
-	vpickve2gr.b	$a7, $vr4, 3
+	xvld	$xr3, $sp, 96
+	vpickve2gr.b	$a7, $vr3, 3
 	st.b	$a7, $sp, 24
-	vpickve2gr.b	$a7, $vr4, 2
+	vpickve2gr.b	$a7, $vr3, 2
 	st.b	$a7, $sp, 16
-	vpickve2gr.b	$a7, $vr4, 1
+	vpickve2gr.b	$a7, $vr3, 1
 	st.b	$a7, $sp, 8
-	vpickve2gr.b	$a7, $vr4, 0
+	vpickve2gr.b	$a7, $vr3, 0
 	st.b	$a7, $sp, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
@@ -153,50 +132,50 @@ bmh_init:                               # @bmh_init
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr4, $sp, 64
-	vpickve2gr.b	$a7, $vr4, 3
+	xvld	$xr3, $sp, 64
+	vpickve2gr.b	$a7, $vr3, 3
 	st.b	$a7, $sp, 56
-	vpickve2gr.b	$a7, $vr4, 2
+	vpickve2gr.b	$a7, $vr3, 2
 	st.b	$a7, $sp, 48
-	vpickve2gr.b	$a7, $vr4, 1
+	vpickve2gr.b	$a7, $vr3, 1
 	st.b	$a7, $sp, 40
-	vpickve2gr.b	$a7, $vr4, 0
+	vpickve2gr.b	$a7, $vr3, 0
 	st.b	$a7, $sp, 32
-	xvld	$xr4, $sp, 32
-	xvxor.v	$xr5, $xr1, $xr3
-	xvadd.w	$xr5, $xr0, $xr5
-	xvld	$xr6, $sp, 0
-	xvpickve2gr.d	$a7, $xr4, 0
+	xvld	$xr3, $sp, 32
+	xvxor.v	$xr4, $xr1, $xr2
+	xvadd.w	$xr4, $xr0, $xr4
+	xvld	$xr5, $sp, 0
+	xvpickve2gr.d	$a7, $xr3, 0
 	slli.d	$a7, $a7, 2
-	xvpickve2gr.d	$t0, $xr4, 1
+	xvpickve2gr.d	$t0, $xr3, 1
 	slli.d	$t0, $t0, 2
-	xvpickve2gr.d	$t1, $xr4, 2
+	xvpickve2gr.d	$t1, $xr3, 2
 	slli.d	$t1, $t1, 2
-	xvpickve2gr.d	$t2, $xr4, 3
+	xvpickve2gr.d	$t2, $xr3, 3
 	slli.d	$t2, $t2, 2
-	xvpickve2gr.d	$t3, $xr6, 0
+	xvpickve2gr.d	$t3, $xr5, 0
 	slli.d	$t3, $t3, 2
-	xvpickve2gr.d	$t4, $xr6, 1
+	xvpickve2gr.d	$t4, $xr5, 1
 	slli.d	$t4, $t4, 2
-	xvpickve2gr.d	$t5, $xr6, 2
+	xvpickve2gr.d	$t5, $xr5, 2
 	slli.d	$t5, $t5, 2
-	xvpickve2gr.d	$t6, $xr6, 3
+	xvpickve2gr.d	$t6, $xr5, 3
 	slli.d	$t6, $t6, 2
-	xvpickve2gr.w	$t7, $xr5, 0
+	xvpickve2gr.w	$t7, $xr4, 0
 	stx.w	$t7, $a2, $a7
-	xvpickve2gr.w	$a7, $xr5, 1
+	xvpickve2gr.w	$a7, $xr4, 1
 	stx.w	$a7, $a2, $t0
-	xvpickve2gr.w	$a7, $xr5, 2
+	xvpickve2gr.w	$a7, $xr4, 2
 	stx.w	$a7, $a2, $t1
-	xvpickve2gr.w	$a7, $xr5, 3
+	xvpickve2gr.w	$a7, $xr4, 3
 	stx.w	$a7, $a2, $t2
-	xvpickve2gr.w	$a7, $xr5, 4
+	xvpickve2gr.w	$a7, $xr4, 4
 	stx.w	$a7, $a2, $t3
-	xvpickve2gr.w	$a7, $xr5, 5
+	xvpickve2gr.w	$a7, $xr4, 5
 	stx.w	$a7, $a2, $t4
-	xvpickve2gr.w	$a7, $xr5, 6
+	xvpickve2gr.w	$a7, $xr4, 6
 	stx.w	$a7, $a2, $t5
-	xvpickve2gr.w	$a7, $xr5, 7
+	xvpickve2gr.w	$a7, $xr4, 7
 	stx.w	$a7, $a2, $t6
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a6, $a6, -8

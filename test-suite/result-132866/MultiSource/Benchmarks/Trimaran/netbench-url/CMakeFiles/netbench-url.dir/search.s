@@ -10,25 +10,6 @@
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	calculate_bm_table
 	.p2align	5
@@ -92,21 +73,19 @@ calculate_bm_table:                     # @calculate_bm_table
 .LBB0_4:                                # %vector.ph23
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	vld	$vr2, $a1, %pc_lo12(.LCPI0_1)
 	bstrpick.d	$a1, $s0, 30, 3
 	slli.d	$a1, $a1, 3
-	xvrepli.b	$xr3, -1
+	xvrepli.b	$xr2, -1
 	move	$a2, $s1
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body26
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
-	vinsgr2vr.d	$vr4, $a4, 0
-	vshuf.b	$vr5, $vr0, $vr4, $vr2
-	vst	$vr5, $sp, 96
-	vst	$vr4, $sp, 64
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vst	$vr4, $sp, 96
+	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -119,14 +98,14 @@ calculate_bm_table:                     # @calculate_bm_table
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr4, $sp, 96
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 96
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 24
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 16
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 8
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
@@ -140,50 +119,50 @@ calculate_bm_table:                     # @calculate_bm_table
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr4, $sp, 64
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 64
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 56
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 48
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 40
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 32
-	xvld	$xr4, $sp, 32
-	xvxor.v	$xr5, $xr1, $xr3
-	xvadd.w	$xr5, $xr0, $xr5
-	xvld	$xr6, $sp, 0
-	xvpickve2gr.d	$a4, $xr4, 0
+	xvld	$xr3, $sp, 32
+	xvxor.v	$xr4, $xr1, $xr2
+	xvadd.w	$xr4, $xr0, $xr4
+	xvld	$xr5, $sp, 0
+	xvpickve2gr.d	$a4, $xr3, 0
 	slli.d	$a4, $a4, 2
-	xvpickve2gr.d	$a5, $xr4, 1
+	xvpickve2gr.d	$a5, $xr3, 1
 	slli.d	$a5, $a5, 2
-	xvpickve2gr.d	$a6, $xr4, 2
+	xvpickve2gr.d	$a6, $xr3, 2
 	slli.d	$a6, $a6, 2
-	xvpickve2gr.d	$a7, $xr4, 3
+	xvpickve2gr.d	$a7, $xr3, 3
 	slli.d	$a7, $a7, 2
-	xvpickve2gr.d	$t0, $xr6, 0
+	xvpickve2gr.d	$t0, $xr5, 0
 	slli.d	$t0, $t0, 2
-	xvpickve2gr.d	$t1, $xr6, 1
+	xvpickve2gr.d	$t1, $xr5, 1
 	slli.d	$t1, $t1, 2
-	xvpickve2gr.d	$t2, $xr6, 2
+	xvpickve2gr.d	$t2, $xr5, 2
 	slli.d	$t2, $t2, 2
-	xvpickve2gr.d	$t3, $xr6, 3
+	xvpickve2gr.d	$t3, $xr5, 3
 	slli.d	$t3, $t3, 2
-	xvpickve2gr.w	$t4, $xr5, 0
+	xvpickve2gr.w	$t4, $xr4, 0
 	stx.w	$t4, $a0, $a4
-	xvpickve2gr.w	$a4, $xr5, 1
+	xvpickve2gr.w	$a4, $xr4, 1
 	stx.w	$a4, $a0, $a5
-	xvpickve2gr.w	$a4, $xr5, 2
+	xvpickve2gr.w	$a4, $xr4, 2
 	stx.w	$a4, $a0, $a6
-	xvpickve2gr.w	$a4, $xr5, 3
+	xvpickve2gr.w	$a4, $xr4, 3
 	stx.w	$a4, $a0, $a7
-	xvpickve2gr.w	$a4, $xr5, 4
+	xvpickve2gr.w	$a4, $xr4, 4
 	stx.w	$a4, $a0, $t0
-	xvpickve2gr.w	$a4, $xr5, 5
+	xvpickve2gr.w	$a4, $xr4, 5
 	stx.w	$a4, $a0, $t1
-	xvpickve2gr.w	$a4, $xr5, 6
+	xvpickve2gr.w	$a4, $xr4, 6
 	stx.w	$a4, $a0, $t2
-	xvpickve2gr.w	$a4, $xr5, 7
+	xvpickve2gr.w	$a4, $xr4, 7
 	stx.w	$a4, $a0, $t3
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
@@ -553,25 +532,6 @@ find_destination:                       # @find_destination
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI3_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	NewPatternNode
 	.p2align	5
@@ -662,21 +622,19 @@ NewPatternNode:                         # @NewPatternNode
 .LBB3_6:                                # %vector.ph18
 	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI3_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI3_1)
-	vld	$vr2, $a1, %pc_lo12(.LCPI3_1)
 	bstrpick.d	$a1, $s1, 30, 3
 	slli.d	$a1, $a1, 3
-	xvrepli.b	$xr3, -1
+	xvrepli.b	$xr2, -1
 	move	$a2, $s2
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB3_7:                                # %vector.body21
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
-	vinsgr2vr.d	$vr4, $a4, 0
-	vshuf.b	$vr5, $vr0, $vr4, $vr2
-	vst	$vr5, $sp, 96
-	vst	$vr4, $sp, 64
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vst	$vr4, $sp, 96
+	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -689,14 +647,14 @@ NewPatternNode:                         # @NewPatternNode
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr4, $sp, 96
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 96
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 24
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 16
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 8
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
@@ -710,50 +668,50 @@ NewPatternNode:                         # @NewPatternNode
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr4, $sp, 64
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 64
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 56
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 48
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 40
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 32
-	xvld	$xr4, $sp, 32
-	xvxor.v	$xr5, $xr1, $xr3
-	xvadd.w	$xr5, $xr0, $xr5
-	xvld	$xr6, $sp, 0
-	xvpickve2gr.d	$a4, $xr4, 0
+	xvld	$xr3, $sp, 32
+	xvxor.v	$xr4, $xr1, $xr2
+	xvadd.w	$xr4, $xr0, $xr4
+	xvld	$xr5, $sp, 0
+	xvpickve2gr.d	$a4, $xr3, 0
 	slli.d	$a4, $a4, 2
-	xvpickve2gr.d	$a5, $xr4, 1
+	xvpickve2gr.d	$a5, $xr3, 1
 	slli.d	$a5, $a5, 2
-	xvpickve2gr.d	$a6, $xr4, 2
+	xvpickve2gr.d	$a6, $xr3, 2
 	slli.d	$a6, $a6, 2
-	xvpickve2gr.d	$a7, $xr4, 3
+	xvpickve2gr.d	$a7, $xr3, 3
 	slli.d	$a7, $a7, 2
-	xvpickve2gr.d	$t0, $xr6, 0
+	xvpickve2gr.d	$t0, $xr5, 0
 	slli.d	$t0, $t0, 2
-	xvpickve2gr.d	$t1, $xr6, 1
+	xvpickve2gr.d	$t1, $xr5, 1
 	slli.d	$t1, $t1, 2
-	xvpickve2gr.d	$t2, $xr6, 2
+	xvpickve2gr.d	$t2, $xr5, 2
 	slli.d	$t2, $t2, 2
-	xvpickve2gr.d	$t3, $xr6, 3
+	xvpickve2gr.d	$t3, $xr5, 3
 	slli.d	$t3, $t3, 2
-	xvpickve2gr.w	$t4, $xr5, 0
+	xvpickve2gr.w	$t4, $xr4, 0
 	stx.w	$t4, $a0, $a4
-	xvpickve2gr.w	$a4, $xr5, 1
+	xvpickve2gr.w	$a4, $xr4, 1
 	stx.w	$a4, $a0, $a5
-	xvpickve2gr.w	$a4, $xr5, 2
+	xvpickve2gr.w	$a4, $xr4, 2
 	stx.w	$a4, $a0, $a6
-	xvpickve2gr.w	$a4, $xr5, 3
+	xvpickve2gr.w	$a4, $xr4, 3
 	stx.w	$a4, $a0, $a7
-	xvpickve2gr.w	$a4, $xr5, 4
+	xvpickve2gr.w	$a4, $xr4, 4
 	stx.w	$a4, $a0, $t0
-	xvpickve2gr.w	$a4, $xr5, 5
+	xvpickve2gr.w	$a4, $xr4, 5
 	stx.w	$a4, $a0, $t1
-	xvpickve2gr.w	$a4, $xr5, 6
+	xvpickve2gr.w	$a4, $xr4, 6
 	stx.w	$a4, $a0, $t2
-	xvpickve2gr.w	$a4, $xr5, 7
+	xvpickve2gr.w	$a4, $xr4, 7
 	stx.w	$a4, $a0, $t3
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
@@ -834,25 +792,6 @@ NewPatternNode:                         # @NewPatternNode
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI4_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	NewStrTreeNode
 	.p2align	5
@@ -938,21 +877,19 @@ NewStrTreeNode:                         # @NewStrTreeNode
 .LBB4_6:                                # %vector.ph14
 	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI4_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI4_1)
-	vld	$vr2, $a1, %pc_lo12(.LCPI4_1)
 	bstrpick.d	$a1, $s1, 30, 3
 	slli.d	$a1, $a1, 3
-	xvrepli.b	$xr3, -1
+	xvrepli.b	$xr2, -1
 	move	$a2, $s2
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB4_7:                                # %vector.body17
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
-	vinsgr2vr.d	$vr4, $a4, 0
-	vshuf.b	$vr5, $vr0, $vr4, $vr2
-	vst	$vr5, $sp, 96
-	vst	$vr4, $sp, 64
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vst	$vr4, $sp, 96
+	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -965,14 +902,14 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr4, $sp, 96
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 96
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 24
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 16
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 8
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
@@ -986,50 +923,50 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr4, $sp, 64
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 64
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 56
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 48
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 40
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 32
-	xvld	$xr4, $sp, 32
-	xvxor.v	$xr5, $xr1, $xr3
-	xvadd.w	$xr5, $xr0, $xr5
-	xvld	$xr6, $sp, 0
-	xvpickve2gr.d	$a4, $xr4, 0
+	xvld	$xr3, $sp, 32
+	xvxor.v	$xr4, $xr1, $xr2
+	xvadd.w	$xr4, $xr0, $xr4
+	xvld	$xr5, $sp, 0
+	xvpickve2gr.d	$a4, $xr3, 0
 	slli.d	$a4, $a4, 2
-	xvpickve2gr.d	$a5, $xr4, 1
+	xvpickve2gr.d	$a5, $xr3, 1
 	slli.d	$a5, $a5, 2
-	xvpickve2gr.d	$a6, $xr4, 2
+	xvpickve2gr.d	$a6, $xr3, 2
 	slli.d	$a6, $a6, 2
-	xvpickve2gr.d	$a7, $xr4, 3
+	xvpickve2gr.d	$a7, $xr3, 3
 	slli.d	$a7, $a7, 2
-	xvpickve2gr.d	$t0, $xr6, 0
+	xvpickve2gr.d	$t0, $xr5, 0
 	slli.d	$t0, $t0, 2
-	xvpickve2gr.d	$t1, $xr6, 1
+	xvpickve2gr.d	$t1, $xr5, 1
 	slli.d	$t1, $t1, 2
-	xvpickve2gr.d	$t2, $xr6, 2
+	xvpickve2gr.d	$t2, $xr5, 2
 	slli.d	$t2, $t2, 2
-	xvpickve2gr.d	$t3, $xr6, 3
+	xvpickve2gr.d	$t3, $xr5, 3
 	slli.d	$t3, $t3, 2
-	xvpickve2gr.w	$t4, $xr5, 0
+	xvpickve2gr.w	$t4, $xr4, 0
 	stx.w	$t4, $a0, $a4
-	xvpickve2gr.w	$a4, $xr5, 1
+	xvpickve2gr.w	$a4, $xr4, 1
 	stx.w	$a4, $a0, $a5
-	xvpickve2gr.w	$a4, $xr5, 2
+	xvpickve2gr.w	$a4, $xr4, 2
 	stx.w	$a4, $a0, $a6
-	xvpickve2gr.w	$a4, $xr5, 3
+	xvpickve2gr.w	$a4, $xr4, 3
 	stx.w	$a4, $a0, $a7
-	xvpickve2gr.w	$a4, $xr5, 4
+	xvpickve2gr.w	$a4, $xr4, 4
 	stx.w	$a4, $a0, $t0
-	xvpickve2gr.w	$a4, $xr5, 5
+	xvpickve2gr.w	$a4, $xr4, 5
 	stx.w	$a4, $a0, $t1
-	xvpickve2gr.w	$a4, $xr5, 6
+	xvpickve2gr.w	$a4, $xr4, 6
 	stx.w	$a4, $a0, $t2
-	xvpickve2gr.w	$a4, $xr5, 7
+	xvpickve2gr.w	$a4, $xr4, 7
 	stx.w	$a4, $a0, $t3
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8
@@ -1108,25 +1045,6 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI5_1:
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	find_lcs
 	.p2align	5
@@ -1206,21 +1124,19 @@ find_lcs:                               # @find_lcs
 .LBB5_7:                                # %vector.ph141
 	pcalau12i	$a1, %pc_hi20(.LCPI5_0)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI5_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI5_1)
-	vld	$vr2, $a1, %pc_lo12(.LCPI5_1)
 	bstrpick.d	$a1, $s4, 30, 3
 	slli.d	$a1, $a1, 3
-	xvrepli.b	$xr3, -1
+	xvrepli.b	$xr2, -1
 	move	$a2, $s5
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB5_8:                                # %vector.body144
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
-	vinsgr2vr.d	$vr4, $a4, 0
-	vshuf.b	$vr5, $vr0, $vr4, $vr2
-	vst	$vr5, $sp, 96
-	vst	$vr4, $sp, 64
+	vinsgr2vr.d	$vr3, $a4, 0
+	vsrli.d	$vr4, $vr3, 32
+	vst	$vr4, $sp, 96
+	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -1233,14 +1149,14 @@ find_lcs:                               # @find_lcs
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr4, $sp, 96
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 96
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 24
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 16
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 8
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
@@ -1254,50 +1170,50 @@ find_lcs:                               # @find_lcs
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr4, $sp, 64
-	vpickve2gr.b	$a4, $vr4, 3
+	xvld	$xr3, $sp, 64
+	vpickve2gr.b	$a4, $vr3, 3
 	st.b	$a4, $sp, 56
-	vpickve2gr.b	$a4, $vr4, 2
+	vpickve2gr.b	$a4, $vr3, 2
 	st.b	$a4, $sp, 48
-	vpickve2gr.b	$a4, $vr4, 1
+	vpickve2gr.b	$a4, $vr3, 1
 	st.b	$a4, $sp, 40
-	vpickve2gr.b	$a4, $vr4, 0
+	vpickve2gr.b	$a4, $vr3, 0
 	st.b	$a4, $sp, 32
-	xvld	$xr4, $sp, 32
-	xvxor.v	$xr5, $xr1, $xr3
-	xvadd.w	$xr5, $xr0, $xr5
-	xvld	$xr6, $sp, 0
-	xvpickve2gr.d	$a4, $xr4, 0
+	xvld	$xr3, $sp, 32
+	xvxor.v	$xr4, $xr1, $xr2
+	xvadd.w	$xr4, $xr0, $xr4
+	xvld	$xr5, $sp, 0
+	xvpickve2gr.d	$a4, $xr3, 0
 	slli.d	$a4, $a4, 2
-	xvpickve2gr.d	$a5, $xr4, 1
+	xvpickve2gr.d	$a5, $xr3, 1
 	slli.d	$a5, $a5, 2
-	xvpickve2gr.d	$a6, $xr4, 2
+	xvpickve2gr.d	$a6, $xr3, 2
 	slli.d	$a6, $a6, 2
-	xvpickve2gr.d	$a7, $xr4, 3
+	xvpickve2gr.d	$a7, $xr3, 3
 	slli.d	$a7, $a7, 2
-	xvpickve2gr.d	$t0, $xr6, 0
+	xvpickve2gr.d	$t0, $xr5, 0
 	slli.d	$t0, $t0, 2
-	xvpickve2gr.d	$t1, $xr6, 1
+	xvpickve2gr.d	$t1, $xr5, 1
 	slli.d	$t1, $t1, 2
-	xvpickve2gr.d	$t2, $xr6, 2
+	xvpickve2gr.d	$t2, $xr5, 2
 	slli.d	$t2, $t2, 2
-	xvpickve2gr.d	$t3, $xr6, 3
+	xvpickve2gr.d	$t3, $xr5, 3
 	slli.d	$t3, $t3, 2
-	xvpickve2gr.w	$t4, $xr5, 0
+	xvpickve2gr.w	$t4, $xr4, 0
 	stx.w	$t4, $a0, $a4
-	xvpickve2gr.w	$a4, $xr5, 1
+	xvpickve2gr.w	$a4, $xr4, 1
 	stx.w	$a4, $a0, $a5
-	xvpickve2gr.w	$a4, $xr5, 2
+	xvpickve2gr.w	$a4, $xr4, 2
 	stx.w	$a4, $a0, $a6
-	xvpickve2gr.w	$a4, $xr5, 3
+	xvpickve2gr.w	$a4, $xr4, 3
 	stx.w	$a4, $a0, $a7
-	xvpickve2gr.w	$a4, $xr5, 4
+	xvpickve2gr.w	$a4, $xr4, 4
 	stx.w	$a4, $a0, $t0
-	xvpickve2gr.w	$a4, $xr5, 5
+	xvpickve2gr.w	$a4, $xr4, 5
 	stx.w	$a4, $a0, $t1
-	xvpickve2gr.w	$a4, $xr5, 6
+	xvpickve2gr.w	$a4, $xr4, 6
 	stx.w	$a4, $a0, $t2
-	xvpickve2gr.w	$a4, $xr5, 7
+	xvpickve2gr.w	$a4, $xr4, 7
 	stx.w	$a4, $a0, $t3
 	xvaddi.wu	$xr1, $xr1, 8
 	addi.d	$a3, $a3, -8

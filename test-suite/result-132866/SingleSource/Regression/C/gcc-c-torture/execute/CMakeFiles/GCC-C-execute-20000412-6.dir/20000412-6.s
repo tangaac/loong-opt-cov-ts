@@ -46,26 +46,9 @@ main:                                   # @main
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI1_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
-	.half	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI1_2:
+.LCPI1_1:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -74,15 +57,6 @@ main:                                   # @main
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI1_3:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.globl	bug
 	.p2align	5
@@ -137,13 +111,11 @@ bug:                                    # @bug
 # %bb.7:                                # %middle.block
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI1_1)
 	xvshuf4i.h	$xr1, $xr1, 228
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf.h	$xr2, $xr0, $xr1
-	xvadd.h	$xr0, $xr0, $xr2
+	xvbsrl.v	$xr1, $xr1, 8
+	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvshuf4i.h	$xr1, $xr1, 14
 	xvadd.h	$xr0, $xr0, $xr1
@@ -158,8 +130,8 @@ bug:                                    # @bug
 .LBB1_9:                                # %vec.epilog.ph
 	move	$a6, $a3
 	bstrins.d	$a6, $zero, 2, 0
-	pcalau12i	$a5, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a5, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI1_1)
 	alsl.d	$a5, $a6, $a1, 1
 	vinsgr2vr.h	$vr1, $a0, 0
 	vinsgr2vr.h	$vr2, $zero, 0
@@ -175,9 +147,7 @@ bug:                                    # @bug
 	addi.d	$a0, $a0, 16
 	bnez	$a1, .LBB1_10
 # %bb.11:                               # %vec.epilog.middle.block
-	pcalau12i	$a0, %pc_hi20(.LCPI1_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI1_3)
-	vshuf.h	$vr1, $vr0, $vr0
+	vbsrl.v	$vr1, $vr0, 8
 	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1

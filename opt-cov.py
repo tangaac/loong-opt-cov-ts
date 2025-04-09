@@ -46,7 +46,7 @@ def process_pr(args):
     status = load_status(filepath)
 
     for step, script in zip(steps, scripts):
-        if status.get(step, False):
+        if status.get(step, False) and args.ignore : 
             print(f"[-] 跳过成功执行的脚本：{step}")
             continue
         print(f"[*] 正在执行：{step}, {script}")
@@ -100,6 +100,7 @@ def parse_args():
     # add pr subcommand
     parser_pr = subparsers.add_parser("pr", help = "Work with Github pull request of llvm-project")
     parser_pr.add_argument("pr_id", type=int, help="Pull request id of llvm-project")
+    parser_pr.add_argument("-i", "--ignore", action='store_false', help="Ignore cache file")
     parser_pr.set_defaults(func=process_pr)
 
 

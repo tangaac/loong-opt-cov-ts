@@ -4,7 +4,8 @@ WORK_DIR=$(pwd)
 TEST_SUITE_DIR=$WORK_DIR/test-suite
 RESULTS_DIR=$TEST_SUITE_DIR/result-$1
 
-git checkout -b pr-$1
+$BRANCH_NAME=$(date +%s)
+git checkout -b pr-$1-$BRANCH_NAME
 
 
 rm -rf $RESULTS_DIR

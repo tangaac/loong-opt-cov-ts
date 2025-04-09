@@ -2613,15 +2613,6 @@ DoAssign:                               # @DoAssign
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
-.LCPI10_1:
-	.half	4                               # 0x4
-	.half	5                               # 0x5
-	.half	6                               # 0x6
-	.half	7                               # 0x7
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
-	.half	65535                           # 0xffff
 	.text
 	.p2align	5
 	.type	DoAssignIteration,@function
@@ -3743,11 +3734,9 @@ DoAssignIteration:                      # @DoAssignIteration
 	st.h	$s2, $a3, 0
 .LBB10_91:                              # %pred.store.continue73
                                         #   in Loop: Header=BB10_51 Depth=4
-	pcalau12i	$a3, %pc_hi20(.LCPI10_1)
-	vld	$vr3, $a3, %pc_lo12(.LCPI10_1)
 	vadd.h	$vr0, $vr1, $vr0
-	vshuf.h	$vr3, $vr0, $vr0
-	vadd.h	$vr0, $vr0, $vr3
+	vbsrl.v	$vr1, $vr0, 8
+	vadd.h	$vr0, $vr0, $vr1
 	vshuf4i.h	$vr1, $vr0, 14
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1

@@ -136,23 +136,6 @@ Sha256_Update:                          # @Sha256_Update
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI2_3:
-	.byte	3                               # 0x3
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	7                               # 0x7
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	11                              # 0xb
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	15                              # 0xf
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
 	.text
 	.p2align	5
 	.type	Sha256_WriteByteBlock,@function
@@ -181,12 +164,10 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	vsll.w	$vr6, $vr6, $vr8
 	vor.v	$vr3, $vr6, $vr3
 	vshuf.b	$vr6, $vr2, $vr1, $vr7
-	pcalau12i	$a1, %pc_hi20(.LCPI2_3)
-	vld	$vr9, $a1, %pc_lo12(.LCPI2_3)
 	vslli.w	$vr6, $vr6, 8
 	vor.v	$vr3, $vr3, $vr6
 	vld	$vr6, $a0, 56
-	vshuf.b	$vr1, $vr2, $vr1, $vr9
+	vsrli.w	$vr1, $vr1, 24
 	vor.v	$vr1, $vr3, $vr1
 	vst	$vr1, $sp, 0
 	vshuf.b	$vr1, $vr2, $vr6, $vr0
@@ -198,7 +179,7 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	vslli.w	$vr3, $vr3, 8
 	vor.v	$vr1, $vr1, $vr3
 	vld	$vr3, $a0, 72
-	vshuf.b	$vr6, $vr2, $vr6, $vr9
+	vsrli.w	$vr6, $vr6, 24
 	vor.v	$vr1, $vr1, $vr6
 	vst	$vr1, $sp, 16
 	vshuf.b	$vr1, $vr2, $vr3, $vr0
@@ -210,7 +191,7 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	vslli.w	$vr6, $vr6, 8
 	vor.v	$vr1, $vr1, $vr6
 	vld	$vr6, $a0, 88
-	vshuf.b	$vr3, $vr2, $vr3, $vr9
+	vsrli.w	$vr3, $vr3, 24
 	vor.v	$vr1, $vr1, $vr3
 	vst	$vr1, $sp, 32
 	vshuf.b	$vr0, $vr2, $vr6, $vr0
@@ -221,7 +202,7 @@ Sha256_WriteByteBlock:                  # @Sha256_WriteByteBlock
 	vshuf.b	$vr1, $vr2, $vr6, $vr7
 	vslli.w	$vr1, $vr1, 8
 	vor.v	$vr0, $vr0, $vr1
-	vshuf.b	$vr1, $vr2, $vr6, $vr9
+	vsrli.w	$vr1, $vr6, 24
 	vld	$vr2, $a0, 16
 	vld	$vr3, $a0, 0
 	vor.v	$vr0, $vr0, $vr1

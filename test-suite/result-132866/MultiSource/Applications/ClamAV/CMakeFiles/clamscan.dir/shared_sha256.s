@@ -150,23 +150,6 @@ sha256_update:                          # @sha256_update
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI2_3:
-	.byte	3                               # 0x3
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	7                               # 0x7
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
-	.byte	11                              # 0xb
-	.byte	25                              # 0x19
-	.byte	26                              # 0x1a
-	.byte	27                              # 0x1b
-	.byte	15                              # 0xf
-	.byte	29                              # 0x1d
-	.byte	30                              # 0x1e
-	.byte	31                              # 0x1f
 	.text
 	.p2align	5
 	.type	sha256_block,@function
@@ -186,14 +169,14 @@ sha256_block:                           # @sha256_block
 .LBB2_2:
 	addi.d	$sp, $sp, -80
 	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	vld	$vr3, $a1, 0
+	vld	$vr2, $a1, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
 	vld	$vr1, $a2, %pc_lo12(.LCPI2_0)
 	pcalau12i	$a2, %pc_hi20(.LCPI2_1)
-	vld	$vr2, $a2, %pc_lo12(.LCPI2_1)
+	vld	$vr3, $a2, %pc_lo12(.LCPI2_1)
 	vrepli.b	$vr0, 0
-	vshuf.b	$vr4, $vr0, $vr3, $vr1
-	vshuf.b	$vr5, $vr0, $vr3, $vr2
+	vshuf.b	$vr4, $vr0, $vr2, $vr1
+	vshuf.b	$vr5, $vr0, $vr2, $vr3
 	ori	$a2, $zero, 8
 	lu32i.d	$a2, 16
 	vreplgr2vr.d	$vr6, $a2
@@ -205,49 +188,47 @@ sha256_block:                           # @sha256_block
 	vreplgr2vr.d	$vr8, $a2
 	vsll.w	$vr5, $vr5, $vr8
 	vor.v	$vr4, $vr5, $vr4
-	vshuf.b	$vr5, $vr0, $vr3, $vr7
-	pcalau12i	$a2, %pc_hi20(.LCPI2_3)
-	vld	$vr9, $a2, %pc_lo12(.LCPI2_3)
+	vshuf.b	$vr5, $vr0, $vr2, $vr7
 	vor.v	$vr4, $vr4, $vr5
 	vslli.w	$vr4, $vr4, 8
 	vld	$vr5, $a1, 16
-	vshuf.b	$vr3, $vr0, $vr3, $vr9
-	vor.v	$vr3, $vr4, $vr3
-	vst	$vr3, $sp, 0
-	vshuf.b	$vr3, $vr0, $vr5, $vr1
-	vshuf.b	$vr4, $vr0, $vr5, $vr2
-	vsll.w	$vr3, $vr3, $vr6
+	vsrli.w	$vr2, $vr2, 24
+	vor.v	$vr2, $vr4, $vr2
+	vst	$vr2, $sp, 0
+	vshuf.b	$vr2, $vr0, $vr5, $vr1
+	vshuf.b	$vr4, $vr0, $vr5, $vr3
+	vsll.w	$vr2, $vr2, $vr6
 	vsll.w	$vr4, $vr4, $vr8
-	vor.v	$vr3, $vr4, $vr3
+	vor.v	$vr2, $vr4, $vr2
 	vshuf.b	$vr4, $vr0, $vr5, $vr7
-	vor.v	$vr3, $vr3, $vr4
-	vslli.w	$vr3, $vr3, 8
+	vor.v	$vr2, $vr2, $vr4
+	vslli.w	$vr2, $vr2, 8
 	vld	$vr4, $a1, 32
-	vshuf.b	$vr5, $vr0, $vr5, $vr9
-	vor.v	$vr3, $vr3, $vr5
-	vst	$vr3, $sp, 16
-	vshuf.b	$vr3, $vr0, $vr4, $vr1
-	vshuf.b	$vr5, $vr0, $vr4, $vr2
-	vsll.w	$vr3, $vr3, $vr6
+	vsrli.w	$vr5, $vr5, 24
+	vor.v	$vr2, $vr2, $vr5
+	vst	$vr2, $sp, 16
+	vshuf.b	$vr2, $vr0, $vr4, $vr1
+	vshuf.b	$vr5, $vr0, $vr4, $vr3
+	vsll.w	$vr2, $vr2, $vr6
 	vsll.w	$vr5, $vr5, $vr8
-	vor.v	$vr3, $vr5, $vr3
+	vor.v	$vr2, $vr5, $vr2
 	vshuf.b	$vr5, $vr0, $vr4, $vr7
-	vor.v	$vr3, $vr3, $vr5
-	vslli.w	$vr3, $vr3, 8
+	vor.v	$vr2, $vr2, $vr5
+	vslli.w	$vr2, $vr2, 8
 	vld	$vr5, $a1, 48
-	vshuf.b	$vr4, $vr0, $vr4, $vr9
-	vor.v	$vr3, $vr3, $vr4
-	vst	$vr3, $sp, 32
+	vsrli.w	$vr4, $vr4, 24
+	vor.v	$vr2, $vr2, $vr4
+	vst	$vr2, $sp, 32
 	vshuf.b	$vr1, $vr0, $vr5, $vr1
-	vshuf.b	$vr2, $vr0, $vr5, $vr2
+	vshuf.b	$vr2, $vr0, $vr5, $vr3
 	vsll.w	$vr1, $vr1, $vr6
 	vsll.w	$vr2, $vr2, $vr8
 	vor.v	$vr1, $vr2, $vr1
-	vshuf.b	$vr2, $vr0, $vr5, $vr7
-	vor.v	$vr1, $vr1, $vr2
-	vslli.w	$vr1, $vr1, 8
-	vshuf.b	$vr0, $vr0, $vr5, $vr9
+	vshuf.b	$vr0, $vr0, $vr5, $vr7
 	vor.v	$vr0, $vr1, $vr0
+	vslli.w	$vr0, $vr0, 8
+	vsrli.w	$vr1, $vr5, 24
+	vor.v	$vr0, $vr0, $vr1
 	vst	$vr0, $sp, 48
 	addi.d	$a1, $sp, 0
 	pcaddu18i	$ra, %call36(sha256_transform)

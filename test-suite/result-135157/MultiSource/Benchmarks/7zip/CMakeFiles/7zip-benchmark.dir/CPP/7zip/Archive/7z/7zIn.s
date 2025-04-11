@@ -8519,23 +8519,6 @@ _ZN8NArchive3N7z18CArchiveDatabaseEx24FillFolderStartFileIndexEv: # @_ZN8NArchiv
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI39_7:
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	_ZN8NArchive3N7z10CInArchive13ReadDatabase2ERNS0_18CArchiveDatabaseExEP22ICryptoGetTextPasswordRb
 	.p2align	5
@@ -8592,8 +8575,8 @@ _ZN8NArchive3N7z10CInArchive13ReadDatabase2ERNS0_18CArchiveDatabaseExEP22ICrypto
 	addi.d	$a0, $s1, 648
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
 	jirl	$ra, $ra, 0
-	vrepli.b	$vr9, 0
-	vst	$vr9, $s1, 680
+	vrepli.b	$vr8, 0
+	vst	$vr8, $s1, 680
 	ld.d	$a0, $s2, 48
 	st.d	$a0, $s1, 488
 	ld.bu	$a0, $s2, 62
@@ -8610,30 +8593,30 @@ _ZN8NArchive3N7z10CInArchive13ReadDatabase2ERNS0_18CArchiveDatabaseExEP22ICrypto
 	vld	$vr2, $a0, %pc_lo12(.LCPI39_1)
 	addi.d	$a0, $s2, 68
 	ld.w	$s4, $s2, 84
-	vshuf.b	$vr1, $vr9, $vr0, $vr1
-	vshuf.b	$vr2, $vr9, $vr0, $vr2
+	vshuf.b	$vr1, $vr8, $vr0, $vr1
+	vshuf.b	$vr2, $vr8, $vr0, $vr2
 	pcalau12i	$a1, %pc_hi20(.LCPI39_2)
 	vld	$vr3, $a1, %pc_lo12(.LCPI39_2)
 	pcalau12i	$a1, %pc_hi20(.LCPI39_3)
 	vld	$vr4, $a1, %pc_lo12(.LCPI39_3)
 	vslli.d	$vr2, $vr2, 8
-	vshuf.b	$vr3, $vr9, $vr0, $vr3
+	vshuf.b	$vr3, $vr8, $vr0, $vr3
 	vslli.d	$vr3, $vr3, 16
-	vshuf.b	$vr4, $vr9, $vr0, $vr4
-	vslli.d	$vr4, $vr4, 24
+	vshuf.b	$vr4, $vr8, $vr0, $vr4
 	pcalau12i	$a1, %pc_hi20(.LCPI39_4)
 	vld	$vr5, $a1, %pc_lo12(.LCPI39_4)
 	pcalau12i	$a1, %pc_hi20(.LCPI39_5)
 	vld	$vr6, $a1, %pc_lo12(.LCPI39_5)
 	pcalau12i	$a1, %pc_hi20(.LCPI39_6)
 	vld	$vr7, $a1, %pc_lo12(.LCPI39_6)
-	pcalau12i	$a1, %pc_hi20(.LCPI39_7)
-	vld	$vr8, $a1, %pc_lo12(.LCPI39_7)
-	vshuf.b	$vr5, $vr9, $vr0, $vr5
-	vshuf.b	$vr6, $vr9, $vr0, $vr6
-	vst	$vr9, $sp, 0                    # 16-byte Folded Spill
-	vshuf.b	$vr7, $vr9, $vr0, $vr7
-	vshuf.b	$vr0, $vr0, $vr0, $vr8
+	vslli.d	$vr4, $vr4, 24
+	vshuf.b	$vr5, $vr8, $vr0, $vr5
+	vshuf.b	$vr6, $vr8, $vr0, $vr6
+	vst	$vr8, $sp, 0                    # 16-byte Folded Spill
+	vshuf.b	$vr7, $vr8, $vr0, $vr7
+	vbsrl.v	$vr8, $vr0, 15
+	vbsll.v	$vr0, $vr0, 1
+	vor.v	$vr0, $vr0, $vr8
 	vslli.d	$vr0, $vr0, 56
 	vslli.d	$vr7, $vr7, 48
 	vslli.d	$vr6, $vr6, 40

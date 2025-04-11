@@ -2190,13 +2190,8 @@ _ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm3
 	.size	_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE, .Lfunc_end8-_ZNSt24uniform_int_distributionIhEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEhRT_RKNS0_10param_typeE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
-.LCPI9_0:
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
 	.section	.text._ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv,"axG",@progbits,_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv,comdat
-	.weak	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
+	.weak	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv # -- Begin function _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
 	.p2align	5
 	.type	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv,@function
 _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv: # @_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
@@ -2209,46 +2204,45 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	ld.d	$a1, $a0, 0
 	move	$a2, $zero
 	vinsgr2vr.d	$vr0, $a1, 0
-	vreplvei.d	$vr6, $vr0, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI9_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI9_0)
+	vreplvei.d	$vr5, $vr0, 0
 	lu12i.w	$a1, -524288
-	vreplgr2vr.d	$vr1, $a1
+	vreplgr2vr.d	$vr0, $a1
 	lu12i.w	$a1, 524287
 	ori	$a1, $a1, 4094
-	vreplgr2vr.d	$vr2, $a1
+	vreplgr2vr.d	$vr1, $a1
 	ori	$a3, $zero, 3176
-	vrepli.d	$vr3, 1
-	vrepli.b	$vr4, 0
+	vrepli.d	$vr2, 1
+	vrepli.b	$vr3, 0
 	lu12i.w	$a1, -421749
 	ori	$a1, $a1, 223
 	lu32i.d	$a1, 0
-	vreplgr2vr.d	$vr5, $a1
+	vreplgr2vr.d	$vr4, $a1
 	ori	$a4, $zero, 1808
 	.p2align	4, , 16
 .LBB9_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr7, $vr6, 0
+	vori.b	$vr6, $vr5, 0
 	add.d	$a5, $a0, $a2
-	vld	$vr6, $a5, 8
-	vori.b	$vr8, $vr0, 0
-	vshuf.d	$vr8, $vr6, $vr7
-	vand.v	$vr7, $vr8, $vr1
-	vldx	$vr8, $a5, $a3
-	vand.v	$vr9, $vr6, $vr2
-	vor.v	$vr7, $vr9, $vr7
-	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr8
-	vand.v	$vr8, $vr6, $vr3
-	vseqi.d	$vr8, $vr8, 0
-	vbitsel.v	$vr8, $vr5, $vr4, $vr8
-	vxor.v	$vr7, $vr7, $vr8
-	vstx	$vr7, $a0, $a2
+	vld	$vr5, $a5, 8
+	vbsrl.v	$vr6, $vr6, 8
+	vbsll.v	$vr7, $vr5, 8
+	vor.v	$vr6, $vr7, $vr6
+	vand.v	$vr6, $vr6, $vr0
+	vldx	$vr7, $a5, $a3
+	vand.v	$vr8, $vr5, $vr1
+	vor.v	$vr6, $vr8, $vr6
+	vsrli.d	$vr6, $vr6, 1
+	vxor.v	$vr6, $vr6, $vr7
+	vand.v	$vr7, $vr5, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vbitsel.v	$vr7, $vr4, $vr3, $vr7
+	vxor.v	$vr6, $vr6, $vr7
+	vstx	$vr6, $a0, $a2
 	addi.d	$a2, $a2, 16
 	bne	$a2, $a4, .LBB9_2
 # %bb.3:                                # %vector.ph11
 	ld.d	$a2, $a0, 1816
-	vpickve2gr.d	$a3, $vr6, 1
+	vpickve2gr.d	$a3, $vr5, 1
 	bstrpick.d	$a4, $a2, 30, 1
 	ldptr.d	$a5, $a0, 4984
 	slli.d	$a4, $a4, 1
@@ -2260,8 +2254,8 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	and	$a4, $a4, $a1
 	xor	$a3, $a3, $a4
 	st.d	$a3, $a0, 1808
-	vinsgr2vr.d	$vr6, $a2, 0
-	vreplvei.d	$vr6, $vr6, 0
+	vinsgr2vr.d	$vr5, $a2, 0
+	vreplvei.d	$vr5, $vr5, 0
 	lu12i.w	$a2, -1
 	ori	$a2, $a2, 928
 	lu12i.w	$a5, 1
@@ -2272,22 +2266,23 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 .LBB9_4:                                # %vector.body12
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a0, $a2
-	vldx	$vr7, $a6, $a3
-	vori.b	$vr8, $vr0, 0
-	vshuf.d	$vr8, $vr7, $vr6
-	vand.v	$vr6, $vr8, $vr1
-	vldx	$vr8, $a6, $a4
-	vand.v	$vr9, $vr7, $vr2
-	vor.v	$vr6, $vr9, $vr6
-	vsrli.d	$vr6, $vr6, 1
-	vxor.v	$vr6, $vr6, $vr8
-	vand.v	$vr8, $vr7, $vr3
-	vseqi.d	$vr8, $vr8, 0
-	vbitsel.v	$vr8, $vr5, $vr4, $vr8
-	vxor.v	$vr6, $vr6, $vr8
+	vldx	$vr6, $a6, $a3
+	vbsrl.v	$vr5, $vr5, 8
+	vbsll.v	$vr7, $vr6, 8
+	vor.v	$vr5, $vr7, $vr5
+	vand.v	$vr5, $vr5, $vr0
+	vldx	$vr7, $a6, $a4
+	vand.v	$vr8, $vr6, $vr1
+	vor.v	$vr5, $vr8, $vr5
+	vsrli.d	$vr5, $vr5, 1
+	vxor.v	$vr5, $vr5, $vr7
+	vand.v	$vr7, $vr6, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vbitsel.v	$vr7, $vr4, $vr3, $vr7
+	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a2, $a2, 16
-	vstx	$vr6, $a6, $a5
-	vori.b	$vr6, $vr7, 0
+	vstx	$vr5, $a6, $a5
+	vori.b	$vr5, $vr6, 0
 	bnez	$a2, .LBB9_4
 # %bb.5:                                # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit
 	ld.d	$a3, $a0, 0

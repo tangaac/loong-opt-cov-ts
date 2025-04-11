@@ -149,15 +149,7 @@ hypre_CSRMatrixSetDataOwner:            # @hypre_CSRMatrixSetDataOwner
 .Lfunc_end3:
 	.size	hypre_CSRMatrixSetDataOwner, .Lfunc_end3-hypre_CSRMatrixSetDataOwner
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function hypre_CSRMatrixSetRownnz
-.LCPI4_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.text
-	.globl	hypre_CSRMatrixSetRownnz
+	.globl	hypre_CSRMatrixSetRownnz        # -- Begin function hypre_CSRMatrixSetRownnz
 	.p2align	5
 	.type	hypre_CSRMatrixSetRownnz,@function
 hypre_CSRMatrixSetRownnz:               # @hypre_CSRMatrixSetRownnz
@@ -188,32 +180,31 @@ hypre_CSRMatrixSetRownnz:               # @hypre_CSRMatrixSetRownnz
 	bstrpick.d	$a1, $a3, 30, 3
 	slli.d	$a1, $a1, 3
 	vinsgr2vr.w	$vr0, $a4, 0
-	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI4_0)
 	vreplvei.w	$vr0, $vr0, 0
-	vrepli.b	$vr2, 0
+	vrepli.b	$vr1, 0
 	addi.d	$a2, $fp, 20
 	move	$a4, $a1
-	vori.b	$vr3, $vr2, 0
+	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB4_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr4, $vr0, 0
-	vld	$vr5, $a2, -16
+	vld	$vr3, $a2, -16
+	vbsrl.v	$vr4, $vr0, 12
 	vld	$vr0, $a2, 0
-	vori.b	$vr6, $vr1, 0
-	vshuf.w	$vr6, $vr5, $vr4
-	vori.b	$vr4, $vr1, 0
-	vshuf.w	$vr4, $vr0, $vr5
-	vslt.w	$vr5, $vr6, $vr5
-	vslt.w	$vr4, $vr4, $vr0
-	vsub.w	$vr2, $vr2, $vr5
-	vsub.w	$vr3, $vr3, $vr4
+	vbsll.v	$vr5, $vr3, 4
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr3, 12
+	vbsll.v	$vr6, $vr0, 4
+	vor.v	$vr5, $vr6, $vr5
+	vslt.w	$vr3, $vr4, $vr3
+	vslt.w	$vr4, $vr5, $vr0
+	vsub.w	$vr1, $vr1, $vr3
+	vsub.w	$vr2, $vr2, $vr4
 	addi.d	$a4, $a4, -8
 	addi.d	$a2, $a2, 32
 	bnez	$a4, .LBB4_5
 # %bb.6:                                # %middle.block
-	vadd.w	$vr1, $vr3, $vr2
+	vadd.w	$vr1, $vr2, $vr1
 	vshuf4i.w	$vr2, $vr1, 14
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
@@ -722,15 +713,7 @@ hypre_CSRMatrixCopy:                    # @hypre_CSRMatrixCopy
 .Lfunc_end7:
 	.size	hypre_CSRMatrixCopy, .Lfunc_end7-hypre_CSRMatrixCopy
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function hypre_CSRMatrixClone
-.LCPI8_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.text
-	.globl	hypre_CSRMatrixClone
+	.globl	hypre_CSRMatrixClone            # -- Begin function hypre_CSRMatrixClone
 	.p2align	5
 	.type	hypre_CSRMatrixClone,@function
 hypre_CSRMatrixClone:                   # @hypre_CSRMatrixClone
@@ -909,32 +892,31 @@ hypre_CSRMatrixClone:                   # @hypre_CSRMatrixClone
 .LBB8_28:                               # %vector.ph59
 	bstrpick.d	$a0, $s0, 30, 3
 	slli.d	$a1, $a0, 3
-	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	vld	$vr1, $a0, %pc_lo12(.LCPI8_0)
 	vinsgr2vr.w	$vr0, $a2, 0
 	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a0, $s2, 20
 	move	$a2, $a1
-	vori.b	$vr2, $vr6, 0
+	vori.b	$vr1, $vr6, 0
 	.p2align	4, , 16
 .LBB8_29:                               # %vector.body62
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr3, $vr0, 0
-	vld	$vr4, $a0, -16
+	vld	$vr2, $a0, -16
+	vbsrl.v	$vr3, $vr0, 12
 	vld	$vr0, $a0, 0
-	vori.b	$vr5, $vr1, 0
-	vshuf.w	$vr5, $vr4, $vr3
-	vori.b	$vr3, $vr1, 0
-	vshuf.w	$vr3, $vr0, $vr4
-	vslt.w	$vr4, $vr5, $vr4
-	vslt.w	$vr3, $vr3, $vr0
-	vsub.w	$vr6, $vr6, $vr4
-	vsub.w	$vr2, $vr2, $vr3
+	vbsll.v	$vr4, $vr2, 4
+	vor.v	$vr3, $vr4, $vr3
+	vbsrl.v	$vr4, $vr2, 12
+	vbsll.v	$vr5, $vr0, 4
+	vor.v	$vr4, $vr5, $vr4
+	vslt.w	$vr2, $vr3, $vr2
+	vslt.w	$vr3, $vr4, $vr0
+	vsub.w	$vr6, $vr6, $vr2
+	vsub.w	$vr1, $vr1, $vr3
 	addi.d	$a2, $a2, -8
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB8_29
 # %bb.30:                               # %middle.block68
-	vadd.w	$vr1, $vr2, $vr6
+	vadd.w	$vr1, $vr1, $vr6
 	vshuf4i.w	$vr2, $vr1, 14
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1

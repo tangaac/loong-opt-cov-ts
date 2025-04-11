@@ -835,13 +835,8 @@ _ZNSt24uniform_int_distributionImEclISt23mersenne_twister_engineImLm32ELm624ELm3
 	.size	_ZNSt24uniform_int_distributionImEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEmRT_RKNS0_10param_typeE, .Lfunc_end3-_ZNSt24uniform_int_distributionImEclISt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEEEmRT_RKNS0_10param_typeE
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
-.LCPI4_0:
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
 	.section	.text._ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv,"axG",@progbits,_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv,comdat
-	.weak	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
+	.weak	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv # -- Begin function _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
 	.p2align	5
 	.type	_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv,@function
 _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv: # @_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EEclEv
@@ -854,46 +849,45 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	ld.d	$a1, $a0, 0
 	move	$a2, $zero
 	vinsgr2vr.d	$vr0, $a1, 0
-	vreplvei.d	$vr6, $vr0, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $a1, %pc_lo12(.LCPI4_0)
+	vreplvei.d	$vr5, $vr0, 0
 	lu12i.w	$a1, -524288
-	vreplgr2vr.d	$vr1, $a1
+	vreplgr2vr.d	$vr0, $a1
 	lu12i.w	$a1, 524287
 	ori	$a1, $a1, 4094
-	vreplgr2vr.d	$vr2, $a1
+	vreplgr2vr.d	$vr1, $a1
 	ori	$a3, $zero, 3176
-	vrepli.d	$vr3, 1
-	vrepli.b	$vr4, 0
+	vrepli.d	$vr2, 1
+	vrepli.b	$vr3, 0
 	lu12i.w	$a1, -421749
 	ori	$a1, $a1, 223
 	lu32i.d	$a1, 0
-	vreplgr2vr.d	$vr5, $a1
+	vreplgr2vr.d	$vr4, $a1
 	ori	$a4, $zero, 1808
 	.p2align	4, , 16
 .LBB4_2:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr7, $vr6, 0
+	vori.b	$vr6, $vr5, 0
 	add.d	$a5, $a0, $a2
-	vld	$vr6, $a5, 8
-	vori.b	$vr8, $vr0, 0
-	vshuf.d	$vr8, $vr6, $vr7
-	vand.v	$vr7, $vr8, $vr1
-	vldx	$vr8, $a5, $a3
-	vand.v	$vr9, $vr6, $vr2
-	vor.v	$vr7, $vr9, $vr7
-	vsrli.d	$vr7, $vr7, 1
-	vxor.v	$vr7, $vr7, $vr8
-	vand.v	$vr8, $vr6, $vr3
-	vseqi.d	$vr8, $vr8, 0
-	vbitsel.v	$vr8, $vr5, $vr4, $vr8
-	vxor.v	$vr7, $vr7, $vr8
-	vstx	$vr7, $a0, $a2
+	vld	$vr5, $a5, 8
+	vbsrl.v	$vr6, $vr6, 8
+	vbsll.v	$vr7, $vr5, 8
+	vor.v	$vr6, $vr7, $vr6
+	vand.v	$vr6, $vr6, $vr0
+	vldx	$vr7, $a5, $a3
+	vand.v	$vr8, $vr5, $vr1
+	vor.v	$vr6, $vr8, $vr6
+	vsrli.d	$vr6, $vr6, 1
+	vxor.v	$vr6, $vr6, $vr7
+	vand.v	$vr7, $vr5, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vbitsel.v	$vr7, $vr4, $vr3, $vr7
+	vxor.v	$vr6, $vr6, $vr7
+	vstx	$vr6, $a0, $a2
 	addi.d	$a2, $a2, 16
 	bne	$a2, $a4, .LBB4_2
 # %bb.3:                                # %vector.ph11
 	ld.d	$a2, $a0, 1816
-	vpickve2gr.d	$a3, $vr6, 1
+	vpickve2gr.d	$a3, $vr5, 1
 	bstrpick.d	$a4, $a2, 30, 1
 	ldptr.d	$a5, $a0, 4984
 	slli.d	$a4, $a4, 1
@@ -905,8 +899,8 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	and	$a4, $a4, $a1
 	xor	$a3, $a3, $a4
 	st.d	$a3, $a0, 1808
-	vinsgr2vr.d	$vr6, $a2, 0
-	vreplvei.d	$vr6, $vr6, 0
+	vinsgr2vr.d	$vr5, $a2, 0
+	vreplvei.d	$vr5, $vr5, 0
 	lu12i.w	$a2, -1
 	ori	$a2, $a2, 928
 	lu12i.w	$a5, 1
@@ -917,22 +911,23 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 .LBB4_4:                                # %vector.body12
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a0, $a2
-	vldx	$vr7, $a6, $a3
-	vori.b	$vr8, $vr0, 0
-	vshuf.d	$vr8, $vr7, $vr6
-	vand.v	$vr6, $vr8, $vr1
-	vldx	$vr8, $a6, $a4
-	vand.v	$vr9, $vr7, $vr2
-	vor.v	$vr6, $vr9, $vr6
-	vsrli.d	$vr6, $vr6, 1
-	vxor.v	$vr6, $vr6, $vr8
-	vand.v	$vr8, $vr7, $vr3
-	vseqi.d	$vr8, $vr8, 0
-	vbitsel.v	$vr8, $vr5, $vr4, $vr8
-	vxor.v	$vr6, $vr6, $vr8
+	vldx	$vr6, $a6, $a3
+	vbsrl.v	$vr5, $vr5, 8
+	vbsll.v	$vr7, $vr6, 8
+	vor.v	$vr5, $vr7, $vr5
+	vand.v	$vr5, $vr5, $vr0
+	vldx	$vr7, $a6, $a4
+	vand.v	$vr8, $vr6, $vr1
+	vor.v	$vr5, $vr8, $vr5
+	vsrli.d	$vr5, $vr5, 1
+	vxor.v	$vr5, $vr5, $vr7
+	vand.v	$vr7, $vr6, $vr2
+	vseqi.d	$vr7, $vr7, 0
+	vbitsel.v	$vr7, $vr4, $vr3, $vr7
+	vxor.v	$vr5, $vr5, $vr7
 	addi.d	$a2, $a2, 16
-	vstx	$vr6, $a6, $a5
-	vori.b	$vr6, $vr7, 0
+	vstx	$vr5, $a6, $a5
+	vori.b	$vr5, $vr6, 0
 	bnez	$a2, .LBB4_4
 # %bb.5:                                # %_ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm4294967295ELm7ELm2636928640ELm15ELm4022730752ELm18ELm1812433253EE11_M_gen_randEv.exit
 	ld.d	$a3, $a0, 0
@@ -1030,70 +1025,65 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_0E10_M_managerERSt9_Any_dataRKS4_St1
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI7_1:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
 	.text
 	.p2align	5
 	.type	_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj,@function
 _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj: # @"_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj"
 # %bb.0:
-	ld.w	$a3, $a3, 0
-	beqz	$a3, .LBB7_9
+	ld.w	$a1, $a3, 0
+	beqz	$a1, .LBB7_9
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a0, $a2, 0
-	ori	$a2, $zero, 8
-	bstrpick.d	$a1, $a3, 31, 0
-	bgeu	$a3, $a2, .LBB7_3
+	ori	$a3, $zero, 8
+	bstrpick.d	$a2, $a1, 31, 0
+	bgeu	$a1, $a3, .LBB7_3
 # %bb.2:
-	move	$a2, $zero
+	move	$a1, $zero
 	ori	$a3, $zero, 33
 	b	.LBB7_7
 .LBB7_3:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 31, 3
+	bstrpick.d	$a1, $a2, 31, 3
 	pcalau12i	$a3, %pc_hi20(.LCPI7_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI7_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI7_1)
-	vld	$vr1, $a3, %pc_lo12(.LCPI7_1)
-	slli.d	$a2, $a2, 3
+	slli.d	$a1, $a1, 3
 	addi.d	$a3, $a0, 16
-	vrepli.w	$vr2, 33
-	move	$a4, $a2
+	vrepli.w	$vr1, 33
+	move	$a4, $a1
 	.p2align	4, , 16
 .LBB7_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr3, $vr1, 0
-	vshuf.w	$vr3, $vr0, $vr2
-	vaddi.wu	$vr2, $vr0, 4
-	vori.b	$vr4, $vr1, 0
-	vshuf.w	$vr4, $vr2, $vr0
-	vadd.w	$vr3, $vr3, $vr0
-	vadd.w	$vr4, $vr4, $vr2
-	vst	$vr3, $a3, -16
-	vst	$vr4, $a3, 0
+	vbsrl.v	$vr2, $vr1, 12
+	vaddi.wu	$vr1, $vr0, 4
+	vbsll.v	$vr3, $vr0, 4
+	vor.v	$vr2, $vr3, $vr2
+	vbsrl.v	$vr3, $vr0, 12
+	vbsll.v	$vr4, $vr1, 4
+	vor.v	$vr3, $vr4, $vr3
+	vadd.w	$vr2, $vr2, $vr0
+	vadd.w	$vr3, $vr3, $vr1
+	vst	$vr2, $a3, -16
+	vst	$vr3, $a3, 0
 	vaddi.wu	$vr0, $vr0, 8
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB7_4
 # %bb.5:                                # %middle.block
-	beq	$a2, $a1, .LBB7_9
+	beq	$a1, $a2, .LBB7_9
 # %bb.6:
-	vpickve2gr.w	$a3, $vr2, 3
+	vpickve2gr.w	$a3, $vr1, 3
 .LBB7_7:                                # %.lr.ph.i.i.i.preheader
-	sub.d	$a1, $a1, $a2
-	alsl.d	$a0, $a2, $a0, 2
+	sub.d	$a2, $a2, $a1
+	alsl.d	$a0, $a1, $a0, 2
 	.p2align	4, , 16
 .LBB7_8:                                # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a3, $a3, $a2
+	add.d	$a3, $a3, $a1
 	st.w	$a3, $a0, 0
-	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, 4
-	move	$a3, $a2
-	addi.d	$a2, $a2, 1
-	bnez	$a1, .LBB7_8
+	move	$a3, $a1
+	addi.d	$a1, $a1, 1
+	bnez	$a2, .LBB7_8
 .LBB7_9:                                # %"_ZSt10__invoke_rIvRZ4mainE3$_1JPjS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end7:
@@ -1172,15 +1162,7 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS4_St1
 	.size	_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation, .Lfunc_end10-_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
-.LCPI11_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	.type	_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj,@function
 _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj: # @"_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj"
 # %bb.0:
@@ -1201,35 +1183,35 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bltu	$a6, $a7, .LBB11_7
 # %bb.3:                                # %vector.ph
 	bstrpick.d	$a3, $a2, 31, 2
-	pcalau12i	$a4, %pc_hi20(.LCPI11_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI11_0)
 	slli.d	$a3, $a3, 2
-	vrepli.w	$vr1, 33
-	vrepli.w	$vr2, 22
+	vrepli.w	$vr0, 33
+	vrepli.w	$vr1, 22
 	move	$a4, $a0
 	move	$a5, $a1
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB11_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr3, $vr1, 0
-	vld	$vr1, $a4, 0
-	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr1, $vr3
-	vori.b	$vr3, $vr0, 0
-	vshuf.w	$vr3, $vr4, $vr2
-	vadd.w	$vr2, $vr4, $vr3
-	vst	$vr2, $a5, 0
+	vori.b	$vr2, $vr0, 0
+	vld	$vr0, $a4, 0
+	vbsrl.v	$vr2, $vr2, 12
+	vbsll.v	$vr3, $vr0, 4
+	vbsrl.v	$vr1, $vr1, 12
+	vor.v	$vr2, $vr3, $vr2
+	vbsll.v	$vr3, $vr2, 4
+	vor.v	$vr1, $vr3, $vr1
+	vadd.w	$vr1, $vr2, $vr1
+	vst	$vr1, $a5, 0
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, 16
-	vori.b	$vr2, $vr4, 0
+	vori.b	$vr1, $vr2, 0
 	bnez	$a6, .LBB11_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a2, .LBB11_9
 # %bb.6:
-	vpickve2gr.w	$a5, $vr1, 2
-	vpickve2gr.w	$a4, $vr1, 3
+	vpickve2gr.w	$a5, $vr0, 2
+	vpickve2gr.w	$a4, $vr0, 3
 .LBB11_7:                               # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a1, $a3, $a1, 2
@@ -1327,15 +1309,7 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_4E10_M_managerERSt9_Any_dataRKS4_St1
 	.size	_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_4E10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation, .Lfunc_end14-_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_4E10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
-.LCPI15_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	.type	_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj,@function
 _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj: # @"_ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj"
 # %bb.0:
@@ -1358,40 +1332,41 @@ _ZNSt17_Function_handlerIFvPjS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 # %bb.3:                                # %vector.ph
 	bstrpick.d	$a3, $a2, 31, 2
 	slli.d	$a3, $a3, 2
-	pcalau12i	$a4, %pc_hi20(.LCPI15_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI15_0)
-	vrepli.w	$vr2, 11
-	vrepli.w	$vr3, 22
-	vrepli.w	$vr1, 33
+	vrepli.w	$vr1, 11
+	vrepli.w	$vr2, 22
+	vrepli.w	$vr0, 33
 	move	$a4, $a0
 	move	$a5, $a1
 	move	$a6, $a3
 	.p2align	4, , 16
 .LBB15_4:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr4, $vr1, 0
-	vld	$vr1, $a4, 0
-	vori.b	$vr5, $vr0, 0
-	vshuf.w	$vr5, $vr1, $vr4
-	vori.b	$vr4, $vr0, 0
-	vshuf.w	$vr4, $vr5, $vr3
 	vori.b	$vr3, $vr0, 0
-	vshuf.w	$vr3, $vr4, $vr2
-	vadd.w	$vr2, $vr4, $vr5
-	vadd.w	$vr2, $vr2, $vr3
-	vst	$vr2, $a5, 0
+	vld	$vr0, $a4, 0
+	vbsrl.v	$vr3, $vr3, 12
+	vbsll.v	$vr4, $vr0, 4
+	vbsrl.v	$vr2, $vr2, 12
+	vor.v	$vr3, $vr4, $vr3
+	vbsll.v	$vr4, $vr3, 4
+	vbsrl.v	$vr1, $vr1, 12
+	vor.v	$vr4, $vr4, $vr2
+	vbsll.v	$vr2, $vr4, 4
+	vor.v	$vr1, $vr2, $vr1
+	vadd.w	$vr2, $vr4, $vr3
+	vadd.w	$vr1, $vr2, $vr1
+	vst	$vr1, $a5, 0
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, 16
-	vori.b	$vr3, $vr5, 0
-	vori.b	$vr2, $vr4, 0
+	vori.b	$vr2, $vr3, 0
+	vori.b	$vr1, $vr4, 0
 	bnez	$a6, .LBB15_4
 # %bb.5:                                # %middle.block
 	beq	$a3, $a2, .LBB15_9
 # %bb.6:
-	vpickve2gr.w	$a5, $vr1, 3
-	vpickve2gr.w	$a4, $vr1, 2
-	vpickve2gr.w	$a6, $vr1, 1
+	vpickve2gr.w	$a5, $vr0, 3
+	vpickve2gr.w	$a4, $vr0, 2
+	vpickve2gr.w	$a6, $vr0, 1
 .LBB15_7:                               # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a1, $a3, $a1, 2

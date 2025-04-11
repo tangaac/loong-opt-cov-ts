@@ -1032,15 +1032,6 @@ _ZN9NCompress8NQuantum8CDecoder8CodeSpecEj: # @_ZN9NCompress8NQuantum8CDecoder8C
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE
 .LCPI2_0:
-	.half	7                               # 0x7
-	.half	8                               # 0x8
-	.half	9                               # 0x9
-	.half	10                              # 0xa
-	.half	11                              # 0xb
-	.half	12                              # 0xc
-	.half	13                              # 0xd
-	.half	14                              # 0xe
-.LCPI2_1:
 	.half	3                               # 0x3
 	.half	9                               # 0x9
 	.half	4                               # 0x4
@@ -1186,39 +1177,38 @@ _ZN9NCompress8NQuantum11NRangeCoder13CModelDecoder6DecodeEPNS1_8CDecoderE: # @_Z
 	slli.d	$a4, $a4, 3
 	pcalau12i	$a6, %pc_hi20(.LCPI2_0)
 	vld	$vr0, $a6, %pc_lo12(.LCPI2_0)
-	pcalau12i	$a6, %pc_hi20(.LCPI2_1)
-	vld	$vr1, $a6, %pc_lo12(.LCPI2_1)
-	vinsgr2vr.h	$vr2, $a3, 0
-	vreplvei.h	$vr2, $vr2, 0
-	vrepli.b	$vr3, 0
+	vinsgr2vr.h	$vr1, $a3, 0
+	vreplvei.h	$vr1, $vr1, 0
+	vrepli.b	$vr2, 0
 	move	$a3, $a4
 	.p2align	4, , 16
 .LBB2_18:                               # %vector.body88
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr4, $vr2, 0
-	vld	$vr2, $a5, 0
-	vori.b	$vr5, $vr0, 0
-	vshuf.h	$vr5, $vr2, $vr4
-	vori.b	$vr4, $vr1, 0
-	vshuf.h	$vr4, $vr3, $vr2
-	vilvl.h	$vr5, $vr3, $vr5
-	vilvh.h	$vr6, $vr3, $vr2
-	vilvl.h	$vr7, $vr3, $vr2
-	vsub.w	$vr5, $vr5, $vr7
-	vaddi.wu	$vr5, $vr5, 1
-	vsub.w	$vr4, $vr4, $vr6
+	vori.b	$vr3, $vr1, 0
+	vld	$vr1, $a5, 0
+	vbsrl.v	$vr3, $vr3, 14
+	vbsll.v	$vr4, $vr1, 2
+	vor.v	$vr3, $vr4, $vr3
+	vori.b	$vr4, $vr0, 0
+	vshuf.h	$vr4, $vr2, $vr1
+	vilvl.h	$vr3, $vr2, $vr3
+	vilvh.h	$vr5, $vr2, $vr1
+	vilvl.h	$vr6, $vr2, $vr1
+	vsub.w	$vr3, $vr3, $vr6
+	vaddi.wu	$vr3, $vr3, 1
+	vsub.w	$vr4, $vr4, $vr5
 	vaddi.wu	$vr4, $vr4, 1
 	vsrli.w	$vr4, $vr4, 1
-	vsrli.w	$vr5, $vr5, 1
-	vpickev.h	$vr4, $vr4, $vr5
-	vst	$vr4, $a5, -2
+	vsrli.w	$vr3, $vr3, 1
+	vpickev.h	$vr3, $vr4, $vr3
+	vst	$vr3, $a5, -2
 	addi.d	$a3, $a3, -8
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB2_18
 # %bb.19:                               # %middle.block92
 	beq	$a4, $a2, .LBB2_23
 # %bb.20:
-	vpickve2gr.h	$a3, $vr2, 7
+	vpickve2gr.h	$a3, $vr1, 7
 .LBB2_21:                               # %.lr.ph.preheader115
 	alsl.d	$a5, $a4, $fp, 1
 	addi.d	$a5, $a5, 10

@@ -4883,21 +4883,11 @@ dct_luma8x8:                            # @dct_luma8x8
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function LowPassForIntra8x8Pred
 .LCPI5_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-.LCPI5_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
-.LCPI5_2:
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-.LCPI5_3:
+.LCPI5_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	4                               # 0x4
@@ -4949,24 +4939,24 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	vinsgr2vr.w	$vr3, $t4, 0
 	pcalau12i	$t4, %pc_hi20(.LCPI5_0)
 	vld	$vr4, $t4, %pc_lo12(.LCPI5_0)
-	pcalau12i	$t4, %pc_hi20(.LCPI5_1)
-	vld	$vr5, $t4, %pc_lo12(.LCPI5_1)
-	pcalau12i	$t4, %pc_hi20(.LCPI5_2)
-	vld	$vr6, $t4, %pc_lo12(.LCPI5_2)
-	vshuf.w	$vr4, $vr2, $vr1
-	vshuf.w	$vr5, $vr1, $vr3
-	vslli.w	$vr3, $vr4, 1
-	vshuf.w	$vr6, $vr2, $vr1
-	vadd.w	$vr3, $vr6, $vr3
-	vinsgr2vr.w	$vr4, $t3, 0
+	vbsrl.v	$vr5, $vr1, 12
+	vbsll.v	$vr6, $vr2, 4
+	vor.v	$vr5, $vr6, $vr5
+	vshuf.w	$vr4, $vr1, $vr3
+	vslli.w	$vr3, $vr5, 1
+	vbsrl.v	$vr5, $vr1, 8
+	vbsll.v	$vr6, $vr2, 8
+	vor.v	$vr5, $vr6, $vr5
+	vadd.w	$vr3, $vr5, $vr3
+	vinsgr2vr.w	$vr5, $t3, 0
 	vinsgr2vr.w	$vr6, $t6, 0
-	pcalau12i	$t3, %pc_hi20(.LCPI5_3)
-	vld	$vr7, $t3, %pc_lo12(.LCPI5_3)
-	vpackev.w	$vr4, $vr4, $vr6
+	pcalau12i	$t3, %pc_hi20(.LCPI5_1)
+	vld	$vr7, $t3, %pc_lo12(.LCPI5_1)
+	vpackev.w	$vr5, $vr5, $vr6
 	vaddi.wu	$vr6, $vr1, 2
-	vslli.w	$vr5, $vr5, 1
-	vshuf.w	$vr7, $vr6, $vr4
-	vadd.w	$vr4, $vr7, $vr5
+	vslli.w	$vr4, $vr4, 1
+	vshuf.w	$vr7, $vr6, $vr5
+	vadd.w	$vr4, $vr7, $vr4
 	vadd.w	$vr3, $vr3, $vr2
 	vaddi.wu	$vr3, $vr3, 2
 	vadd.w	$vr1, $vr4, $vr1

@@ -552,9 +552,6 @@ _ZNK16ComplexBenchmark7c_styleEv:       # @_ZNK16ComplexBenchmark7c_styleEv
 .LCPI13_0:
 	.dword	0x3febb67ae8584caa              # double 0.8660254037844386
 	.dword	0xbfebb67ae8584caa              # double -0.8660254037844386
-.LCPI13_1:
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
 	.text
 	.globl	_ZNK16ComplexBenchmark9oop_styleEv
 	.p2align	5
@@ -570,24 +567,23 @@ _ZNK16ComplexBenchmark9oop_styleEv:     # @_ZNK16ComplexBenchmark9oop_styleEv
 	lu12i.w	$a3, 3
 	pcalau12i	$a4, %pc_hi20(.LCPI13_0)
 	vld	$vr0, $a4, %pc_lo12(.LCPI13_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI13_1)
-	vld	$vr1, $a4, %pc_lo12(.LCPI13_1)
 	ori	$a3, $a3, 3712
 	lu52i.d	$a4, $zero, 1022
-	vreplgr2vr.d	$vr2, $a4
+	vreplgr2vr.d	$vr1, $a4
 	.p2align	4, , 16
 .LBB13_1:                               # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a2, $a0
-	vldx	$vr3, $a4, $a3
+	vldx	$vr2, $a4, $a3
 	add.d	$a4, $a1, $a0
-	vldx	$vr4, $a4, $a3
-	vfmul.d	$vr5, $vr3, $vr0
-	vori.b	$vr6, $vr1, 0
-	vshuf.d	$vr6, $vr0, $vr5
-	vfmadd.d	$vr3, $vr3, $vr2, $vr6
-	vfadd.d	$vr3, $vr4, $vr3
+	vldx	$vr3, $a4, $a3
+	vfmul.d	$vr4, $vr2, $vr0
+	vbsrl.v	$vr5, $vr4, 8
+	vbsll.v	$vr4, $vr4, 8
+	vor.v	$vr4, $vr4, $vr5
+	vfmadd.d	$vr2, $vr2, $vr1, $vr4
+	vfadd.d	$vr2, $vr3, $vr2
 	addi.d	$a0, $a0, 16
-	vstx	$vr3, $a4, $a3
+	vstx	$vr2, $a4, $a3
 	bnez	$a0, .LBB13_1
 # %bb.2:
 	ret

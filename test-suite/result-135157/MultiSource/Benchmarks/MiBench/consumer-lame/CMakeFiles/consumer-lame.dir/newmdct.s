@@ -3,11 +3,6 @@
 	.p2align	3, 0x0                          # -- Begin function mdct_sub48
 .LCPI0_0:
 	.dword	0x3ff921fb54442d18              # double 1.5707963267948966
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_1:
-	.dword	1                               # 0x1
-	.dword	0                               # 0x0
 	.text
 	.globl	mdct_sub48
 	.p2align	5
@@ -1136,85 +1131,86 @@ mdct_sub48:                             # @mdct_sub48
 	bne	$a1, $a2, .LBB0_28
 # %bb.29:                               # %mdct_long.exit
                                         #   in Loop: Header=BB0_24 Depth=3
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a1, %pc_lo12(.LCPI0_1)
-	vld	$vr1, $s7, 640
-	vld	$vr2, $s7, 608
-	vori.b	$vr3, $vr0, 0
-	vshuf.d	$vr3, $vr0, $vr1
-	vfadd.d	$vr1, $vr2, $vr3
-	vld	$vr2, $s7, 728
-	fld.d	$fa3, $s7, 624
-	fld.d	$fa4, $s7, 632
-	fld.d	$fa5, $s7, 744
-	vld	$vr6, $s7, 656
-	vld	$vr7, $s7, 680
-	vfadd.d	$vr8, $vr1, $vr2
-	fadd.d	$fa1, $fa3, $fa4
-	fadd.d	$fa1, $fa1, $fa5
-	vfsub.d	$vr2, $vr6, $vr7
-	vld	$vr3, $s7, 712
-	fld.d	$fa4, $s7, 672
-	fld.d	$fa5, $s7, 696
-	fld.d	$fa6, $s7, 704
-	vshuf.d	$vr0, $vr0, $vr3
-	vfadd.d	$vr0, $vr2, $vr0
-	fsub.d	$fa2, $fa4, $fa5
-	fadd.d	$fa2, $fa2, $fa6
+	vld	$vr0, $s7, 640
+	vld	$vr1, $s7, 608
+	vbsrl.v	$vr2, $vr0, 8
+	vld	$vr3, $s7, 728
+	vbsll.v	$vr0, $vr0, 8
+	vor.v	$vr0, $vr0, $vr2
+	vfadd.d	$vr0, $vr1, $vr0
+	vfadd.d	$vr0, $vr0, $vr3
+	fld.d	$fa1, $s7, 624
+	fld.d	$fa2, $s7, 632
+	fld.d	$fa3, $s7, 744
+	vld	$vr4, $s7, 656
+	vld	$vr5, $s7, 680
+	vld	$vr6, $s7, 712
+	fadd.d	$fa1, $fa1, $fa2
+	fadd.d	$fa1, $fa1, $fa3
+	vfsub.d	$vr2, $vr4, $vr5
+	vbsrl.v	$vr3, $vr6, 8
+	vbsll.v	$vr4, $vr6, 8
+	fld.d	$fa5, $s7, 672
+	fld.d	$fa6, $s7, 696
+	fld.d	$fa7, $s7, 704
+	vor.v	$vr3, $vr4, $vr3
+	vfadd.d	$vr8, $vr2, $vr3
+	fsub.d	$fa2, $fa5, $fa6
+	fadd.d	$fa2, $fa2, $fa7
 	fld.d	$fa4, $a0, -104
 	fld.d	$fa6, $a0, -112
-	vreplvei.d	$vr3, $vr8, 1
+	vreplvei.d	$vr3, $vr0, 1
 	fld.d	$fa7, $a0, -96
 	fmul.d	$fa4, $fa3, $fa4
-	vreplvei.d	$vr5, $vr8, 0
-	fmadd.d	$fa4, $fa5, $fa6, $fa4
-	fmadd.d	$fa6, $fa1, $fa7, $fa4
-	fld.d	$fa7, $a0, -88
-	vreplvei.d	$vr4, $vr0, 0
-	fld.d	$ft0, $a0, -80
+	vreplvei.d	$vr5, $vr0, 0
+	fmadd.d	$fa0, $fa5, $fa6, $fa4
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
+	fld.d	$fa6, $a0, -88
+	vreplvei.d	$vr4, $vr8, 0
+	fld.d	$fa7, $a0, -80
 	fld.d	$ft1, $a0, -72
-	fmadd.d	$fa6, $fa4, $fa7, $fa6
-	vreplvei.d	$vr7, $vr0, 1
-	fmadd.d	$fa0, $fa7, $ft0, $fa6
+	fmadd.d	$fa0, $fa4, $fa6, $fa0
+	vreplvei.d	$vr6, $vr8, 1
+	fmadd.d	$fa0, $fa6, $fa7, $fa0
 	fmadd.d	$fa0, $fa2, $ft1, $fa0
 	fst.d	$fa0, $s4, 128
 	fld.d	$fa0, $a0, -56
-	fld.d	$fa6, $a0, -64
+	fld.d	$fa7, $a0, -64
 	fmul.d	$fa0, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa6, $fa0
-	fld.d	$fa6, $a0, -48
+	fmadd.d	$fa0, $fa5, $fa7, $fa0
+	fld.d	$fa7, $a0, -48
 	fld.d	$ft0, $a0, -40
 	fld.d	$ft1, $a0, -32
 	fld.d	$ft2, $a0, -24
-	fmadd.d	$fa0, $fa1, $fa6, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	fmadd.d	$fa0, $fa7, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft1, $fa0
 	fmadd.d	$fa0, $fa2, $ft2, $fa0
 	fst.d	$fa0, $s4, 80
 	fld.d	$fa0, $a0, -8
-	fld.d	$fa6, $a0, -16
+	fld.d	$fa7, $a0, -16
 	fmul.d	$fa0, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa6, $fa0
-	fld.d	$fa6, $a0, 0
+	fmadd.d	$fa0, $fa5, $fa7, $fa0
+	fld.d	$fa7, $a0, 0
 	fld.d	$ft0, $a0, 8
 	fld.d	$ft1, $a0, 16
 	fld.d	$ft2, $a0, 24
-	fmadd.d	$fa0, $fa1, $fa6, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	fmadd.d	$fa0, $fa7, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft1, $fa0
 	fmadd.d	$fa0, $fa2, $ft2, $fa0
 	fst.d	$fa0, $s4, 56
 	fld.d	$fa0, $a0, 40
-	fld.d	$fa6, $a0, 32
+	fld.d	$fa7, $a0, 32
 	fmul.d	$fa0, $fa3, $fa0
-	fmadd.d	$fa0, $fa5, $fa6, $fa0
-	fld.d	$fa6, $a0, 48
+	fmadd.d	$fa0, $fa5, $fa7, $fa0
+	fld.d	$fa7, $a0, 48
 	fld.d	$ft0, $a0, 56
 	fld.d	$ft1, $a0, 64
 	fld.d	$ft2, $a0, 72
-	fmadd.d	$fa0, $fa1, $fa6, $fa0
+	fmadd.d	$fa0, $fa1, $fa7, $fa0
 	fmadd.d	$fa0, $fa4, $ft0, $fa0
-	fmadd.d	$fa0, $fa7, $ft1, $fa0
+	fmadd.d	$fa0, $fa6, $ft1, $fa0
 	fmadd.d	$fa0, $fa2, $ft2, $fa0
 	fst.d	$fa0, $s4, 8
 	fsub.d	$fa3, $fa5, $fa3
@@ -1222,7 +1218,7 @@ mdct_sub48:                             # @mdct_sub48
 	fld.d	$fa3, $a0, 88
 	fld.d	$fa5, $a0, 80
 	fsub.d	$fa1, $fa1, $fa4
-	fsub.d	$fa1, $fa1, $fa7
+	fsub.d	$fa1, $fa1, $fa6
 	fmul.d	$fa3, $fa1, $fa3
 	fmadd.d	$fa3, $fa2, $fa5, $fa3
 	fst.d	$fa3, $s4, 104

@@ -4811,15 +4811,8 @@ cli_scanautoit:                         # @cli_scanautoit
 	.word	.LBB0_357-.LJTI0_0
 	.word	.LBB0_330-.LJTI0_0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function MT_decrypt
-.LCPI1_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
 	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function MT_decrypt
 	.type	MT_decrypt,@function
 MT_decrypt:                             # @MT_decrypt
 # %bb.0:
@@ -4862,18 +4855,16 @@ MT_decrypt:                             # @MT_decrypt
 	addi.d	$a3, $sp, 16
 	ori	$a4, $zero, 2496
 	ori	$a5, $zero, 624
-	pcalau12i	$a6, %pc_hi20(.LCPI1_0)
-	vld	$vr0, $a6, %pc_lo12(.LCPI1_0)
 	lu12i.w	$a6, 524287
 	ori	$a6, $a6, 4094
-	vreplgr2vr.w	$vr1, $a6
+	vreplgr2vr.w	$vr0, $a6
 	lu12i.w	$a6, -524288
-	vreplgr2vr.w	$vr2, $a6
-	vrepli.w	$vr3, 1
-	vrepli.b	$vr4, 0
+	vreplgr2vr.w	$vr1, $a6
+	vrepli.w	$vr2, 1
+	vrepli.b	$vr3, 0
 	lu12i.w	$a7, -421749
 	ori	$a7, $a7, 223
-	vreplgr2vr.w	$vr5, $a7
+	vreplgr2vr.w	$vr4, $a7
 	ori	$t0, $zero, 896
 	lu32i.d	$a6, 0
 	lu32i.d	$a7, 0
@@ -4924,35 +4915,36 @@ MT_decrypt:                             # @MT_decrypt
 	ori	$t8, $zero, 2512
 	add.d	$t8, $sp, $t8
 	stptr.w	$a5, $t8, 0
-	vinsgr2vr.w	$vr6, $a2, 0
-	vreplvei.w	$vr6, $vr6, 0
+	vinsgr2vr.w	$vr5, $a2, 0
+	vreplvei.w	$vr5, $vr5, 0
 	.p2align	4, , 16
 .LBB1_8:                                # %vector.body24
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vori.b	$vr7, $vr6, 0
+	vori.b	$vr6, $vr5, 0
 	add.d	$a2, $a3, $t7
-	vld	$vr6, $a2, 4
-	vori.b	$vr8, $vr0, 0
-	vshuf.w	$vr8, $vr6, $vr7
-	vand.v	$vr7, $vr6, $vr1
-	vand.v	$vr8, $vr8, $vr2
-	vor.v	$vr7, $vr7, $vr8
-	vsrli.w	$vr7, $vr7, 1
-	vld	$vr8, $a2, 1588
-	vand.v	$vr9, $vr6, $vr3
-	vseqi.w	$vr9, $vr9, 0
-	vbitsel.v	$vr9, $vr5, $vr4, $vr9
-	vxor.v	$vr8, $vr9, $vr8
+	vld	$vr5, $a2, 4
+	vbsrl.v	$vr6, $vr6, 12
+	vbsll.v	$vr7, $vr5, 4
+	vor.v	$vr6, $vr7, $vr6
+	vand.v	$vr7, $vr5, $vr0
+	vand.v	$vr6, $vr6, $vr1
+	vor.v	$vr6, $vr7, $vr6
+	vsrli.w	$vr6, $vr6, 1
+	vld	$vr7, $a2, 1588
+	vand.v	$vr8, $vr5, $vr2
+	vseqi.w	$vr8, $vr8, 0
+	vbitsel.v	$vr8, $vr4, $vr3, $vr8
 	vxor.v	$vr7, $vr8, $vr7
-	vstx	$vr7, $t7, $a3
+	vxor.v	$vr6, $vr7, $vr6
+	vstx	$vr6, $t7, $a3
 	addi.d	$t7, $t7, 16
 	bne	$t7, $t0, .LBB1_8
 # %bb.9:                                # %vector.ph
                                         #   in Loop: Header=BB1_6 Depth=1
 	ld.wu	$t7, $sp, 916
 	move	$a2, $zero
-	vpickve2gr.w	$t8, $vr6, 3
+	vpickve2gr.w	$t8, $vr5, 3
 	and	$t8, $t8, $a6
 	srli.d	$fp, $t7, 1
 	bstrins.d	$t8, $fp, 30, 1
@@ -4988,29 +4980,30 @@ MT_decrypt:                             # @MT_decrypt
 	srli.d	$t7, $t7, 1
 	xor	$t7, $t8, $t7
 	st.w	$t7, $sp, 920
-	vinsgr2vr.w	$vr6, $fp, 0
-	vreplvei.w	$vr6, $vr6, 0
+	vinsgr2vr.w	$vr5, $fp, 0
+	vreplvei.w	$vr5, $vr5, 0
 	.p2align	4, , 16
 .LBB1_10:                               # %vector.body
                                         #   Parent Loop BB1_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t7, $a3, $a2
-	vld	$vr7, $t7, 912
-	vori.b	$vr8, $vr0, 0
-	vshuf.w	$vr8, $vr7, $vr6
-	vand.v	$vr6, $vr7, $vr1
-	vand.v	$vr8, $vr8, $vr2
-	vor.v	$vr6, $vr6, $vr8
-	vsrli.w	$vr6, $vr6, 1
-	vldx	$vr8, $a2, $a3
-	vand.v	$vr9, $vr7, $vr3
-	vseqi.w	$vr9, $vr9, 0
-	vbitsel.v	$vr9, $vr5, $vr4, $vr9
-	vxor.v	$vr8, $vr9, $vr8
-	vxor.v	$vr6, $vr8, $vr6
+	vld	$vr6, $t7, 912
+	vbsrl.v	$vr5, $vr5, 12
+	vbsll.v	$vr7, $vr6, 4
+	vor.v	$vr5, $vr7, $vr5
+	vand.v	$vr7, $vr6, $vr0
+	vand.v	$vr5, $vr5, $vr1
+	vor.v	$vr5, $vr7, $vr5
+	vsrli.w	$vr5, $vr5, 1
+	vldx	$vr7, $a2, $a3
+	vand.v	$vr8, $vr6, $vr2
+	vseqi.w	$vr8, $vr8, 0
+	vbitsel.v	$vr8, $vr4, $vr3, $vr8
+	vxor.v	$vr7, $vr8, $vr7
+	vxor.v	$vr5, $vr7, $vr5
 	addi.d	$a2, $a2, 16
-	vst	$vr6, $t7, 908
-	vori.b	$vr6, $vr7, 0
+	vst	$vr5, $t7, 908
+	vori.b	$vr5, $vr6, 0
 	bne	$a2, $t4, .LBB1_10
 # %bb.11:                               # %._crit_edge.i
                                         #   in Loop: Header=BB1_6 Depth=1

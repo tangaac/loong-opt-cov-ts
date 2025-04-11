@@ -365,15 +365,7 @@ create_seq:                             # @create_seq
 .Lfunc_end1:
 	.size	create_seq, .Lfunc_end1-create_seq
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function full_verify
-.LCPI2_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.text
-	.globl	full_verify
+	.globl	full_verify                     # -- Begin function full_verify
 	.p2align	5
 	.type	full_verify,@function
 full_verify:                            # @full_verify
@@ -400,34 +392,33 @@ full_verify:                            # @full_verify
 # %bb.2:                                # %vector.ph
 	ld.w	$a1, $a0, 0
 	vinsgr2vr.w	$vr0, $a1, 0
-	vreplvei.w	$vr0, $vr0, 0
+	vreplvei.w	$vr1, $vr0, 0
 	addi.d	$a1, $a0, 20
-	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
-	vld	$vr2, $a2, %pc_lo12(.LCPI2_0)
-	vrepli.b	$vr1, 0
+	vrepli.b	$vr0, 0
 	lu12i.w	$a2, 8191
 	ori	$a2, $a2, 4088
-	vori.b	$vr3, $vr1, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB2_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr4, $vr0, 0
-	vld	$vr5, $a1, -16
-	vld	$vr0, $a1, 0
-	vori.b	$vr6, $vr2, 0
-	vshuf.w	$vr6, $vr5, $vr4
-	vori.b	$vr4, $vr2, 0
-	vshuf.w	$vr4, $vr0, $vr5
-	vslt.w	$vr5, $vr5, $vr6
-	vslt.w	$vr4, $vr0, $vr4
-	vsub.w	$vr1, $vr1, $vr5
-	vsub.w	$vr3, $vr3, $vr4
+	vld	$vr3, $a1, -16
+	vbsrl.v	$vr4, $vr1, 12
+	vld	$vr1, $a1, 0
+	vbsll.v	$vr5, $vr3, 4
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr3, 12
+	vbsll.v	$vr6, $vr1, 4
+	vor.v	$vr5, $vr6, $vr5
+	vslt.w	$vr3, $vr3, $vr4
+	vslt.w	$vr4, $vr1, $vr5
+	vsub.w	$vr0, $vr0, $vr3
+	vsub.w	$vr2, $vr2, $vr4
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB2_3
 # %bb.4:                                # %.preheader
-	vpickve2gr.w	$a1, $vr0, 3
-	vadd.w	$vr0, $vr3, $vr1
+	vpickve2gr.w	$a1, $vr1, 3
+	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
@@ -901,13 +892,6 @@ rank:                                   # @rank
 	.dword	0x41b2b9b0a1000000              # double 314159265
 .LCPI5_1:
 	.dword	0x41d2309ce5400000              # double 1220703125
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI5_2:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
 	.text
 	.globl	main
 	.p2align	5
@@ -1059,34 +1043,33 @@ main:                                   # @main
 # %bb.2:                                # %vector.ph
 	ld.w	$a1, $a0, 0
 	vinsgr2vr.w	$vr0, $a1, 0
-	vreplvei.w	$vr0, $vr0, 0
+	vreplvei.w	$vr1, $vr0, 0
 	addi.d	$a1, $a0, 20
-	pcalau12i	$a2, %pc_hi20(.LCPI5_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI5_2)
-	vrepli.b	$vr1, 0
+	vrepli.b	$vr0, 0
 	lu12i.w	$a2, 8191
 	ori	$a2, $a2, 4088
-	vori.b	$vr3, $vr1, 0
+	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB5_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr4, $vr0, 0
-	vld	$vr5, $a1, -16
-	vld	$vr0, $a1, 0
-	vori.b	$vr6, $vr2, 0
-	vshuf.w	$vr6, $vr5, $vr4
-	vori.b	$vr4, $vr2, 0
-	vshuf.w	$vr4, $vr0, $vr5
-	vslt.w	$vr5, $vr5, $vr6
-	vslt.w	$vr4, $vr0, $vr4
-	vsub.w	$vr1, $vr1, $vr5
-	vsub.w	$vr3, $vr3, $vr4
+	vld	$vr3, $a1, -16
+	vbsrl.v	$vr4, $vr1, 12
+	vld	$vr1, $a1, 0
+	vbsll.v	$vr5, $vr3, 4
+	vor.v	$vr4, $vr5, $vr4
+	vbsrl.v	$vr5, $vr3, 12
+	vbsll.v	$vr6, $vr1, 4
+	vor.v	$vr5, $vr6, $vr5
+	vslt.w	$vr3, $vr3, $vr4
+	vslt.w	$vr4, $vr1, $vr5
+	vsub.w	$vr0, $vr0, $vr3
+	vsub.w	$vr2, $vr2, $vr4
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB5_3
 # %bb.4:                                # %.preheader.i
-	vpickve2gr.w	$a1, $vr0, 3
-	vadd.w	$vr0, $vr3, $vr1
+	vpickve2gr.w	$a1, $vr1, 3
+	vadd.w	$vr0, $vr2, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1

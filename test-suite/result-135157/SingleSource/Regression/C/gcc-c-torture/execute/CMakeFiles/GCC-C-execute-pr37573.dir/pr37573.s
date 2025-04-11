@@ -210,15 +210,7 @@ bar:                                    # @bar
 .Lfunc_end1:
 	.size	bar, .Lfunc_end1-bar
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function foo
-.LCPI2_0:
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function foo
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
@@ -235,39 +227,38 @@ foo:                                    # @foo
 	addi.d	$a1, $a0, 12
 	vinsgr2vr.w	$vr0, $a2, 0
 	vreplvei.w	$vr0, $vr0, 0
-	pcalau12i	$a2, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI2_0)
 	lu12i.w	$a2, 524287
 	ori	$a2, $a2, 4094
-	vreplgr2vr.w	$vr2, $a2
+	vreplgr2vr.w	$vr1, $a2
 	lu12i.w	$a3, -524288
-	vreplgr2vr.w	$vr3, $a3
-	vrepli.w	$vr4, 1
-	vrepli.b	$vr5, 0
+	vreplgr2vr.w	$vr2, $a3
+	vrepli.w	$vr3, 1
+	vrepli.b	$vr4, 0
 	lu12i.w	$a2, -421749
 	ori	$a2, $a2, 223
-	vreplgr2vr.w	$vr6, $a2
+	vreplgr2vr.w	$vr5, $a2
 	ori	$a5, $zero, 896
 	.p2align	4, , 16
 .LBB2_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vori.b	$vr7, $vr0, 0
+	vori.b	$vr6, $vr0, 0
 	add.d	$a6, $a0, $a4
 	vld	$vr0, $a6, 16
-	vori.b	$vr8, $vr1, 0
-	vshuf.w	$vr8, $vr0, $vr7
-	vand.v	$vr7, $vr0, $vr2
-	vand.v	$vr8, $vr8, $vr3
-	vor.v	$vr7, $vr7, $vr8
-	vsrli.w	$vr7, $vr7, 1
-	vld	$vr8, $a6, 1600
-	vand.v	$vr9, $vr0, $vr4
-	vseqi.w	$vr9, $vr9, 0
-	vbitsel.v	$vr9, $vr6, $vr5, $vr9
-	vxor.v	$vr8, $vr9, $vr8
+	vbsrl.v	$vr6, $vr6, 12
+	vbsll.v	$vr7, $vr0, 4
+	vor.v	$vr6, $vr7, $vr6
+	vand.v	$vr7, $vr0, $vr1
+	vand.v	$vr6, $vr6, $vr2
+	vor.v	$vr6, $vr7, $vr6
+	vsrli.w	$vr6, $vr6, 1
+	vld	$vr7, $a6, 1600
+	vand.v	$vr8, $vr0, $vr3
+	vseqi.w	$vr8, $vr8, 0
+	vbitsel.v	$vr8, $vr5, $vr4, $vr8
 	vxor.v	$vr7, $vr8, $vr7
+	vxor.v	$vr6, $vr7, $vr6
 	addi.d	$a4, $a4, 16
-	vst	$vr7, $a6, 12
+	vst	$vr6, $a6, 12
 	bne	$a4, $a5, .LBB2_3
 # %bb.4:                                # %.loopexit.loopexit
 	ld.wu	$a4, $a0, 912

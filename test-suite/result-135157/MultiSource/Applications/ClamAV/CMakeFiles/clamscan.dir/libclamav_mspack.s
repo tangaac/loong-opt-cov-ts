@@ -11667,19 +11667,7 @@ qtm_decompress:                         # @qtm_decompress
 .Lfunc_end13:
 	.size	qtm_decompress, .Lfunc_end13-qtm_decompress
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function qtm_update_model
-.LCPI14_0:
-	.half	7                               # 0x7
-	.half	8                               # 0x8
-	.half	9                               # 0x9
-	.half	10                              # 0xa
-	.half	11                              # 0xb
-	.half	12                              # 0xc
-	.half	13                              # 0xd
-	.half	14                              # 0xe
-	.text
-	.p2align	5
+	.p2align	5                               # -- Begin function qtm_update_model
 	.type	qtm_update_model,@function
 qtm_update_model:                       # @qtm_update_model
 # %bb.0:
@@ -11730,10 +11718,8 @@ qtm_update_model:                       # @qtm_update_model
 .LBB14_7:                               # %vector.ph
 	bstrpick.d	$a4, $a1, 30, 3
 	slli.d	$a4, $a4, 3
-	pcalau12i	$a5, %pc_hi20(.LCPI14_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI14_0)
-	vinsgr2vr.h	$vr1, $a3, 0
-	vreplvei.h	$vr1, $vr1, 0
+	vinsgr2vr.h	$vr0, $a3, 0
+	vreplvei.h	$vr0, $vr0, 0
 	addi.d	$a5, $a2, 18
 	move	$a6, $a4
 	.p2align	4, , 16
@@ -11754,32 +11740,33 @@ qtm_update_model:                       # @qtm_update_model
 	st.h	$t1, $sp, 4
 	st.h	$t0, $sp, 2
 	st.h	$a7, $sp, 0
-	vld	$vr2, $sp, 0
-	vori.b	$vr3, $vr0, 0
-	vshuf.h	$vr3, $vr2, $vr1
-	vinsgr2vr.h	$vr2, $a3, 7
-	vsub.h	$vr1, $vr3, $vr2
-	vaddi.hu	$vr1, $vr1, 1
-	vsrli.h	$vr1, $vr1, 1
-	vpickve2gr.h	$a7, $vr1, 0
+	vld	$vr1, $sp, 0
+	vbsrl.v	$vr0, $vr0, 14
+	vbsll.v	$vr2, $vr1, 2
+	vinsgr2vr.h	$vr1, $a3, 7
+	vor.v	$vr0, $vr2, $vr0
+	vsub.h	$vr0, $vr0, $vr1
+	vaddi.hu	$vr0, $vr0, 1
+	vsrli.h	$vr0, $vr0, 1
+	vpickve2gr.h	$a7, $vr0, 0
 	st.h	$a7, $a5, -16
-	vpickve2gr.h	$a7, $vr1, 1
+	vpickve2gr.h	$a7, $vr0, 1
 	st.h	$a7, $a5, -12
-	vpickve2gr.h	$a7, $vr1, 2
+	vpickve2gr.h	$a7, $vr0, 2
 	st.h	$a7, $a5, -8
-	vpickve2gr.h	$a7, $vr1, 3
+	vpickve2gr.h	$a7, $vr0, 3
 	st.h	$a7, $a5, -4
-	vpickve2gr.h	$a7, $vr1, 4
+	vpickve2gr.h	$a7, $vr0, 4
 	st.h	$a7, $a5, 0
-	vpickve2gr.h	$a7, $vr1, 5
+	vpickve2gr.h	$a7, $vr0, 5
 	st.h	$a7, $a5, 4
-	vpickve2gr.h	$a7, $vr1, 6
+	vpickve2gr.h	$a7, $vr0, 6
 	st.h	$a7, $a5, 8
-	vpickve2gr.h	$a7, $vr1, 7
+	vpickve2gr.h	$a7, $vr0, 7
 	st.h	$a7, $a5, 12
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 32
-	vori.b	$vr1, $vr2, 0
+	vori.b	$vr0, $vr1, 0
 	bnez	$a6, .LBB14_8
 # %bb.9:                                # %middle.block
 	beq	$a4, $a1, .LBB14_12

@@ -5233,23 +5233,6 @@ _ZN8NArchive4NZip6CEcd645ParseEPKh:     # @_ZN8NArchive4NZip6CEcd645ParseEPKh
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-.LCPI31_7:
-	.byte	15                              # 0xf
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	7                               # 0x7
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
-	.byte	255                             # 0xff
 	.text
 	.globl	_ZN8NArchive4NZip10CInArchive11ReadHeadersER13CObjectVectorINS0_7CItemExEEPNS0_13CProgressVirtE
 	.p2align	5
@@ -5495,42 +5478,42 @@ _ZN8NArchive4NZip10CInArchive11ReadHeadersER13CObjectVectorINS0_7CItemExEEPNS0_1
 	vld	$vr0, $a0, %pc_lo12(.LCPI31_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_1)
 	vld	$vr1, $a0, %pc_lo12(.LCPI31_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI31_2)
-	vld	$vr2, $a0, %pc_lo12(.LCPI31_2)
-	vrepli.b	$vr3, 0
+	vrepli.b	$vr2, 0
 	vld	$vr8, $sp, 80                   # 16-byte Folded Reload
-	vshuf.b	$vr0, $vr3, $vr8, $vr0
-	vshuf.b	$vr1, $vr3, $vr8, $vr1
-	vshuf.b	$vr2, $vr3, $vr8, $vr2
+	vshuf.b	$vr0, $vr2, $vr8, $vr0
+	vshuf.b	$vr1, $vr2, $vr8, $vr1
+	pcalau12i	$a0, %pc_hi20(.LCPI31_2)
+	vld	$vr3, $a0, %pc_lo12(.LCPI31_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_3)
 	vld	$vr4, $a0, %pc_lo12(.LCPI31_3)
+	vslli.d	$vr1, $vr1, 8
+	vshuf.b	$vr3, $vr2, $vr8, $vr3
+	vslli.d	$vr3, $vr3, 16
+	vshuf.b	$vr4, $vr2, $vr8, $vr4
 	pcalau12i	$a0, %pc_hi20(.LCPI31_4)
 	vld	$vr5, $a0, %pc_lo12(.LCPI31_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_5)
 	vld	$vr6, $a0, %pc_lo12(.LCPI31_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI31_6)
 	vld	$vr7, $a0, %pc_lo12(.LCPI31_6)
-	vshuf.b	$vr4, $vr3, $vr8, $vr4
-	vshuf.b	$vr5, $vr3, $vr8, $vr5
-	vshuf.b	$vr6, $vr3, $vr8, $vr6
-	vshuf.b	$vr3, $vr3, $vr8, $vr7
-	pcalau12i	$a0, %pc_hi20(.LCPI31_7)
-	vld	$vr7, $a0, %pc_lo12(.LCPI31_7)
-	vslli.d	$vr1, $vr1, 8
-	vslli.d	$vr2, $vr2, 16
 	vslli.d	$vr4, $vr4, 24
-	vshuf.b	$vr7, $vr0, $vr8, $vr7
+	vshuf.b	$vr5, $vr2, $vr8, $vr5
+	vshuf.b	$vr6, $vr2, $vr8, $vr6
+	vshuf.b	$vr2, $vr2, $vr8, $vr7
+	vbsrl.v	$vr7, $vr8, 15
+	vbsll.v	$vr8, $vr8, 1
+	vor.v	$vr7, $vr8, $vr7
 	vslli.d	$vr7, $vr7, 56
-	vslli.d	$vr3, $vr3, 48
+	vslli.d	$vr2, $vr2, 48
 	vslli.d	$vr6, $vr6, 40
 	vslli.d	$vr5, $vr5, 32
 	vor.v	$vr0, $vr1, $vr0
-	vor.v	$vr0, $vr0, $vr2
+	vor.v	$vr0, $vr0, $vr3
 	vor.v	$vr0, $vr0, $vr4
 	vor.v	$vr0, $vr0, $vr5
 	vor.v	$vr0, $vr0, $vr6
 	ld.w	$a0, $sp, 156
-	vor.v	$vr0, $vr0, $vr3
+	vor.v	$vr0, $vr0, $vr2
 	vor.v	$vr0, $vr0, $vr7
 	vpickve2gr.d	$a2, $vr0, 1
 	bne	$a2, $a0, .LBB31_31

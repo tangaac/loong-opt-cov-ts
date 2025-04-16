@@ -2109,12 +2109,11 @@ partA__align:                           # @partA__align
 	bnez	$a6, .LBB4_79
 # %bb.84:                               # %vector.ph768
 	move	$a6, $a5
-	fld.s	$fa0, $a0, 0
 	bstrins.d	$a6, $zero, 2, 0
 	ori	$a7, $zero, 1
 	move	$a4, $a5
 	bstrins.d	$a4, $a7, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
+	vldrepl.w	$vr0, $a0, 0
 	addi.d	$a7, $s6, 16
 	addi.d	$t0, $a2, 20
 	addi.d	$t1, $a3, 20
@@ -3343,12 +3342,11 @@ partA__align:                           # @partA__align
 	bnez	$a5, .LBB4_57
 # %bb.211:                              # %vector.ph708
 	move	$a5, $a4
-	fld.s	$fa0, $a0, 0
 	bstrins.d	$a5, $zero, 2, 0
 	ori	$a6, $zero, 1
 	move	$a3, $a4
+	vldrepl.w	$vr0, $a0, 0
 	bstrins.d	$a3, $a6, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a6, $a1, 16
 	ld.d	$a7, $sp, 256                   # 8-byte Folded Reload
 	addi.d	$a7, $a7, 20
@@ -3390,12 +3388,11 @@ partA__align:                           # @partA__align
 	bnez	$a5, .LBB4_61
 # %bb.216:                              # %vector.ph738
 	move	$a5, $a4
-	fld.s	$fa0, $a0, 0
 	bstrins.d	$a5, $zero, 2, 0
 	ori	$a6, $zero, 1
 	move	$a3, $a4
+	vldrepl.w	$vr0, $a0, 0
 	bstrins.d	$a3, $a6, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a6, $a1, 16
 	addi.d	$a7, $s6, 20
 	move	$t0, $a5

@@ -3563,23 +3563,22 @@ Q__align:                               # @Q__align
 # %bb.218:                              # %vector.ph1107
 	move	$t1, $a6
 	bstrins.d	$t1, $zero, 1, 0
-	fld.s	$fa0, $a0, 0
-	fld.s	$fa1, $a1, 0
+	fld.s	$fa1, $a0, 0
+	fld.s	$fa2, $a1, 0
 	ori	$t2, $zero, 1
 	move	$a5, $a6
-	fld.s	$fa2, $a0, 4
+	vldrepl.w	$vr0, $a0, 4
 	bstrins.d	$a5, $t2, 1, 0
-	fmul.s	$fa0, $fa0, $fa1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr2, 0
+	fmul.s	$fa1, $fa1, $fa2
+	vreplvei.w	$vr1, $vr1, 0
 	move	$t2, $t1
 	.p2align	4, , 16
 .LBB3_219:                              # %vector.body1110
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a7, 0
 	vld	$vr3, $t0, 0
-	vfadd.s	$vr2, $vr2, $vr0
-	vfmul.s	$vr3, $vr1, $vr3
+	vfadd.s	$vr2, $vr2, $vr1
+	vfmul.s	$vr3, $vr0, $vr3
 	vfadd.s	$vr2, $vr2, $vr3
 	vst	$vr2, $a7, 0
 	addi.d	$a7, $a7, 16
@@ -3613,23 +3612,22 @@ Q__align:                               # @Q__align
 # %bb.224:                              # %vector.ph1145
 	move	$t0, $a5
 	bstrins.d	$t0, $zero, 1, 0
-	fld.s	$fa0, $a0, 0
-	fld.s	$fa1, $a1, 0
+	fld.s	$fa1, $a0, 0
+	fld.s	$fa2, $a1, 0
 	ori	$t1, $zero, 1
 	move	$a4, $a5
-	fld.s	$fa2, $a0, 4
+	vldrepl.w	$vr0, $a0, 4
 	bstrins.d	$a4, $t1, 1, 0
-	fmul.s	$fa0, $fa0, $fa1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr2, 0
+	fmul.s	$fa1, $fa1, $fa2
+	vreplvei.w	$vr1, $vr1, 0
 	move	$t1, $t0
 	.p2align	4, , 16
 .LBB3_225:                              # %vector.body1148
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a6, 0
 	vld	$vr3, $a7, 0
-	vfadd.s	$vr2, $vr2, $vr0
-	vfmul.s	$vr3, $vr1, $vr3
+	vfadd.s	$vr2, $vr2, $vr1
+	vfmul.s	$vr3, $vr0, $vr3
 	vfadd.s	$vr2, $vr2, $vr3
 	vst	$vr2, $a6, 0
 	addi.d	$a6, $a6, 16
@@ -8113,23 +8111,22 @@ Q__align_gapmap:                        # @Q__align_gapmap
 # %bb.207:                              # %vector.ph1063
 	move	$t2, $a7
 	bstrins.d	$t2, $zero, 1, 0
-	fld.s	$fa0, $a1, 0
-	fld.s	$fa1, $a2, 0
+	fld.s	$fa1, $a1, 0
+	fld.s	$fa2, $a2, 0
 	ori	$t3, $zero, 1
 	move	$a6, $a7
-	fld.s	$fa2, $a1, 4
+	vldrepl.w	$vr0, $a1, 4
 	bstrins.d	$a6, $t3, 1, 0
-	fmul.s	$fa0, $fa0, $fa1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr2, 0
+	fmul.s	$fa1, $fa1, $fa2
+	vreplvei.w	$vr1, $vr1, 0
 	move	$t3, $t2
 	.p2align	4, , 16
 .LBB6_208:                              # %vector.body1066
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $t0, 0
 	vld	$vr3, $t1, 0
-	vfadd.s	$vr2, $vr2, $vr0
-	vfmul.s	$vr3, $vr1, $vr3
+	vfadd.s	$vr2, $vr2, $vr1
+	vfmul.s	$vr3, $vr0, $vr3
 	vfadd.s	$vr2, $vr2, $vr3
 	vst	$vr2, $t0, 0
 	addi.d	$t0, $t0, 16
@@ -8163,23 +8160,22 @@ Q__align_gapmap:                        # @Q__align_gapmap
 # %bb.213:                              # %vector.ph1101
 	move	$t1, $a6
 	bstrins.d	$t1, $zero, 1, 0
-	fld.s	$fa0, $a1, 0
-	fld.s	$fa1, $a2, 0
+	fld.s	$fa1, $a1, 0
+	fld.s	$fa2, $a2, 0
 	ori	$t2, $zero, 1
 	move	$a5, $a6
-	fld.s	$fa2, $a1, 4
+	vldrepl.w	$vr0, $a1, 4
 	bstrins.d	$a5, $t2, 1, 0
-	fmul.s	$fa0, $fa0, $fa1
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr2, 0
+	fmul.s	$fa1, $fa1, $fa2
+	vreplvei.w	$vr1, $vr1, 0
 	move	$t2, $t1
 	.p2align	4, , 16
 .LBB6_214:                              # %vector.body1104
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a7, 0
 	vld	$vr3, $t0, 0
-	vfadd.s	$vr2, $vr2, $vr0
-	vfmul.s	$vr3, $vr1, $vr3
+	vfadd.s	$vr2, $vr2, $vr1
+	vfmul.s	$vr3, $vr0, $vr3
 	vfadd.s	$vr2, $vr2, $vr3
 	vst	$vr2, $a7, 0
 	addi.d	$a7, $a7, 16

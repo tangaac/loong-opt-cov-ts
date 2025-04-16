@@ -1992,12 +1992,11 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 # %bb.175:                              # %vector.ph304
 	addi.d	$a0, $s0, -1
 	move	$a1, $a0
-	fld.s	$fa0, $s7, 0
 	bstrins.d	$a1, $zero, 2, 0
 	ori	$a2, $zero, 1
 	move	$fp, $a0
+	vldrepl.w	$vr0, $s7, 0
 	bstrins.d	$fp, $a2, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a2, $a5, 16
 	addi.d	$a3, $s1, 20
 	move	$a4, $a1
@@ -2038,11 +2037,10 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 # %bb.180:                              # %vector.ph333
 	ld.d	$a2, $sp, 424                   # 8-byte Folded Reload
 	move	$a3, $a2
-	fld.s	$fa0, $s8, 0
 	bstrins.d	$a3, $zero, 2, 0
 	ori	$a4, $zero, 1
+	vldrepl.w	$vr0, $s8, 0
 	bstrins.d	$a2, $a4, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a4, $a7, 16
 	addi.d	$a5, $s6, 20
 	move	$a6, $a3
@@ -2083,11 +2081,10 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 # %bb.185:                              # %vector.ph379
 	ld.d	$a2, $sp, 424                   # 8-byte Folded Reload
 	move	$a1, $a2
-	fld.s	$fa0, $s5, 0
 	bstrins.d	$a1, $zero, 2, 0
 	ori	$a3, $zero, 1
 	bstrins.d	$a2, $a3, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
+	vldrepl.w	$vr0, $s5, 0
 	addi.d	$a3, $s6, 16
 	addi.d	$a4, $t0, 20
 	ld.d	$a5, $sp, 440                   # 8-byte Folded Reload
@@ -2142,10 +2139,9 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 	ld.d	$fp, $sp, 432                   # 8-byte Folded Reload
 	bnez	$a2, .LBB0_92
 # %bb.190:                              # %vector.ph406
-	fld.s	$fa0, $a1, 0
 	bstrpick.d	$a0, $s2, 30, 3
+	vldrepl.w	$vr0, $a1, 0
 	slli.d	$a0, $a0, 3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a2, $s7, 20
 	addi.d	$a3, $s4, 16
 	move	$a4, $a0
@@ -2186,10 +2182,9 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 	and	$a3, $a4, $a3
 	bnez	$a3, .LBB0_97
 # %bb.195:                              # %vector.ph436
-	fld.s	$fa0, $a0, 0
 	bstrpick.d	$a2, $t6, 30, 3
+	vldrepl.w	$vr0, $a0, 0
 	slli.d	$a2, $a2, 3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a3, $s8, 20
 	addi.d	$a4, $s3, 16
 	move	$a5, $a2
@@ -2230,10 +2225,9 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 	and	$a3, $a4, $a3
 	bnez	$a3, .LBB0_104
 # %bb.200:                              # %vector.ph465
-	fld.s	$fa0, $a0, 0
 	bstrpick.d	$a2, $t6, 30, 3
+	vldrepl.w	$vr0, $a0, 0
 	slli.d	$a2, $a2, 3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a3, $s8, 20
 	addi.d	$a4, $a1, 16
 	move	$a5, $a2
@@ -2280,11 +2274,10 @@ Lalignmm_hmout:                         # @Lalignmm_hmout
 	bstrpick.d	$a0, $a3, 31, 0
 	addi.d	$a3, $a0, 1
 	bstrpick.d	$a0, $a3, 32, 2
-	fld.s	$fa1, $a2, 0
 	slli.d	$a4, $a0, 2
 	sub.d	$a0, $t6, $a4
 	vreplgr2vr.w	$vr0, $t4
-	vreplvei.w	$vr1, $vr1, 0
+	vldrepl.w	$vr1, $a2, 0
 	addi.d	$a7, $t0, -12
 	ld.d	$a5, $sp, 440                   # 8-byte Folded Reload
 	add.d	$a5, $a5, $a7
@@ -4384,12 +4377,11 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 # %bb.175:                              # %vector.ph308
 	addi.d	$a0, $s0, -1
 	move	$a1, $a0
-	fld.s	$fa0, $s7, 0
 	bstrins.d	$a1, $zero, 2, 0
 	ori	$a2, $zero, 1
 	move	$fp, $a0
+	vldrepl.w	$vr0, $s7, 0
 	bstrins.d	$fp, $a2, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a2, $a5, 16
 	addi.d	$a3, $s1, 20
 	move	$a4, $a1
@@ -4430,11 +4422,10 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 # %bb.180:                              # %vector.ph337
 	ld.d	$a2, $sp, 424                   # 8-byte Folded Reload
 	move	$a3, $a2
-	fld.s	$fa0, $s8, 0
 	bstrins.d	$a3, $zero, 2, 0
 	ori	$a4, $zero, 1
+	vldrepl.w	$vr0, $s8, 0
 	bstrins.d	$a2, $a4, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a4, $a7, 16
 	addi.d	$a5, $s6, 20
 	move	$a6, $a3
@@ -4475,11 +4466,10 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 # %bb.185:                              # %vector.ph383
 	ld.d	$a2, $sp, 424                   # 8-byte Folded Reload
 	move	$a1, $a2
-	fld.s	$fa0, $s5, 0
 	bstrins.d	$a1, $zero, 2, 0
 	ori	$a3, $zero, 1
 	bstrins.d	$a2, $a3, 2, 0
-	vreplvei.w	$vr0, $vr0, 0
+	vldrepl.w	$vr0, $s5, 0
 	addi.d	$a3, $s6, 16
 	addi.d	$a4, $t0, 20
 	ld.d	$a5, $sp, 440                   # 8-byte Folded Reload
@@ -4534,10 +4524,9 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 	ld.d	$fp, $sp, 448                   # 8-byte Folded Reload
 	bnez	$a2, .LBB1_92
 # %bb.190:                              # %vector.ph410
-	fld.s	$fa0, $a1, 0
 	bstrpick.d	$a0, $s2, 30, 3
+	vldrepl.w	$vr0, $a1, 0
 	slli.d	$a0, $a0, 3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a2, $s7, 20
 	addi.d	$a3, $s4, 16
 	move	$a4, $a0
@@ -4578,10 +4567,9 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 	and	$a3, $a4, $a3
 	bnez	$a3, .LBB1_97
 # %bb.195:                              # %vector.ph440
-	fld.s	$fa0, $a0, 0
 	bstrpick.d	$a2, $t6, 30, 3
+	vldrepl.w	$vr0, $a0, 0
 	slli.d	$a2, $a2, 3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a3, $s8, 20
 	addi.d	$a4, $s3, 16
 	move	$a5, $a2
@@ -4622,10 +4610,9 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 	and	$a3, $a4, $a3
 	bnez	$a3, .LBB1_104
 # %bb.200:                              # %vector.ph469
-	fld.s	$fa0, $a0, 0
 	bstrpick.d	$a2, $t6, 30, 3
+	vldrepl.w	$vr0, $a0, 0
 	slli.d	$a2, $a2, 3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$a3, $s8, 20
 	addi.d	$a4, $a1, 16
 	move	$a5, $a2
@@ -4672,11 +4659,10 @@ Lalign2m2m_hmout:                       # @Lalign2m2m_hmout
 	bstrpick.d	$a0, $a3, 31, 0
 	addi.d	$a3, $a0, 1
 	bstrpick.d	$a0, $a3, 32, 2
-	fld.s	$fa1, $a2, 0
 	slli.d	$a4, $a0, 2
 	sub.d	$a0, $t6, $a4
 	vreplgr2vr.w	$vr0, $t4
-	vreplvei.w	$vr1, $vr1, 0
+	vldrepl.w	$vr1, $a2, 0
 	addi.d	$a7, $t0, -12
 	ld.d	$a5, $sp, 440                   # 8-byte Folded Reload
 	add.d	$a5, $a5, $a7

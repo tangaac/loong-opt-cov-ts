@@ -1200,8 +1200,7 @@ mseqcat:                                # @mseqcat
 	.p2align	4, , 16
 .LBB7_17:                               # %vector.ph166
                                         #   in Loop: Header=BB7_11 Depth=1
-	fld.d	$fa0, $a6, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $a6, 0
 	addi.d	$t0, $a7, 16
 	move	$t1, $a4
 	move	$t2, $a3
@@ -1299,8 +1298,7 @@ mseqcat:                                # @mseqcat
 	bnez	$s3, .LBB7_24
 # %bb.28:                               # %vector.ph191
                                         #   in Loop: Header=BB7_23 Depth=1
-	fld.d	$fa0, $t6, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $t6, 0
 	add.d	$t8, $t7, $t2
 	move	$s3, $t0
 	move	$s4, $t3
@@ -1382,8 +1380,7 @@ mseqcat:                                # @mseqcat
 	bnez	$t3, .LBB7_35
 # %bb.39:                               # %vector.ph217
                                         #   in Loop: Header=BB7_33 Depth=1
-	fld.d	$fa0, $t1, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $t1, 0
 	addi.d	$t3, $t2, 16
 	move	$t4, $a6
 	move	$t5, $a5
@@ -1455,8 +1452,7 @@ mseqcat:                                # @mseqcat
 	bltu	$s0, $t7, .LBB7_52
 .LBB7_49:                               # %vector.ph243
                                         #   in Loop: Header=BB7_46 Depth=1
-	fld.d	$fa0, $t4, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $t4, 0
 	add.d	$t6, $t5, $t0
 	move	$t7, $a6
 	move	$t8, $a2
@@ -3303,8 +3299,7 @@ makeEffMtx:                             # @makeEffMtx
 	.p2align	4, , 16
 .LBB24_9:                               # %vector.ph
                                         #   in Loop: Header=BB24_3 Depth=1
-	fld.d	$fa0, $t1, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $t1, 0
 	addi.d	$t3, $t2, 16
 	move	$t4, $a7
 	move	$t5, $a6

@@ -1919,13 +1919,13 @@ matgen:                                 # @matgen
 	ld.d	$t2, $s2, 8
 	ori	$a5, $zero, 12
 	addi.d	$t0, $a3, -1
-	addi.d	$a6, $a0, 4
+	addi.d	$a7, $a0, 4
 	bgeu	$a3, $a5, .LBB1_211
 # %bb.198:
 	move	$t1, $zero
 .LBB1_199:
 	move	$a5, $t2
-	move	$a7, $a4
+	move	$a6, $a4
 .LBB1_200:                              # %.lr.ph.i416.preheader
 	sub.d	$t1, $a3, $t1
 	.p2align	4, , 16
@@ -1934,15 +1934,15 @@ matgen:                                 # @matgen
 	fld.s	$fa0, $a5, 0
 	fld.s	$fa1, $a0, 0
 	fmul.s	$fa0, $fa0, $fa1
-	fst.s	$fa0, $a7, 0
-	addi.d	$a7, $a7, 4
+	fst.s	$fa0, $a6, 0
+	addi.d	$a6, $a6, 4
 	addi.w	$t1, $t1, -1
 	addi.d	$a5, $a5, 4
 	bnez	$t1, .LBB1_201
 .LBB1_202:                              # %.preheader.i
-	ori	$a7, $zero, 1
+	ori	$a6, $zero, 1
 	addi.d	$a5, $s2, 8
-	bne	$a1, $a7, .LBB1_216
+	bne	$a1, $a6, .LBB1_216
 .LBB1_203:                              # %.thread446
 	ld.d	$a3, $s8, 0
 	move	$a4, $zero
@@ -2010,27 +2010,26 @@ matgen:                                 # @matgen
 .LBB1_211:                              # %vector.memcheck
 	bstrpick.d	$a5, $t0, 31, 0
 	slli.d	$a5, $a5, 2
-	addi.d	$a7, $a5, 4
-	add.d	$a5, $a4, $a7
-	add.d	$a7, $t2, $a7
-	sltu	$a7, $a4, $a7
+	addi.d	$a6, $a5, 4
+	add.d	$a5, $a4, $a6
+	add.d	$a6, $t2, $a6
+	sltu	$a6, $a4, $a6
 	sltu	$t1, $t2, $a5
-	and	$a7, $a7, $t1
+	and	$a6, $a6, $t1
 	move	$t1, $zero
-	bnez	$a7, .LBB1_199
+	bnez	$a6, .LBB1_199
 # %bb.212:                              # %vector.memcheck
-	sltu	$a7, $a4, $a6
+	sltu	$a6, $a4, $a7
 	sltu	$a5, $a0, $a5
-	and	$a5, $a7, $a5
+	and	$a5, $a6, $a5
 	bnez	$a5, .LBB1_199
 # %bb.213:                              # %vector.ph776
 	bstrpick.d	$a5, $a2, 30, 3
 	slli.d	$t1, $a5, 3
-	fld.s	$fa0, $a0, 0
-	slli.d	$a7, $a5, 5
-	add.d	$a5, $t2, $a7
-	add.d	$a7, $a4, $a7
-	vreplvei.w	$vr0, $vr0, 0
+	slli.d	$a6, $a5, 5
+	add.d	$a5, $t2, $a6
+	vldrepl.w	$vr0, $a0, 0
+	add.d	$a6, $a4, $a6
 	addi.d	$t3, $a4, 16
 	addi.d	$t2, $t2, 16
 	move	$t4, $t1
@@ -2057,8 +2056,8 @@ matgen:                                 # @matgen
 	add.d	$t1, $a4, $t0
 	alsl.d	$t2, $a1, $a0, 2
 	sltu	$t2, $a4, $t2
-	sltu	$a6, $a6, $t1
-	and	$a6, $t2, $a6
+	sltu	$a7, $a7, $t1
+	and	$a7, $t2, $a7
 	bstrpick.d	$t3, $a3, 30, 3
 	slli.d	$t2, $t3, 3
 	slli.d	$t3, $t3, 5
@@ -2069,15 +2068,15 @@ matgen:                                 # @matgen
 	.p2align	4, , 16
 .LBB1_217:                              # %._crit_edge.us74.i
                                         #   in Loop: Header=BB1_218 Depth=1
-	addi.d	$a7, $a7, 1
-	beq	$a7, $a1, .LBB1_203
+	addi.d	$a6, $a6, 1
+	beq	$a6, $a1, .LBB1_203
 .LBB1_218:                              # %.lr.ph71.us.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_224 Depth 2
                                         #     Child Loop BB1_222 Depth 2
-	slli.d	$t7, $a7, 3
+	slli.d	$t7, $a6, 3
 	ldx.d	$s4, $a5, $t7
-	alsl.d	$t7, $a7, $a0, 2
+	alsl.d	$t7, $a6, $a0, 2
 	bltu	$a3, $t6, .LBB1_220
 # %bb.219:                              # %vector.memcheck796
                                         #   in Loop: Header=BB1_218 Depth=1
@@ -2085,7 +2084,7 @@ matgen:                                 # @matgen
 	sltu	$t8, $a4, $t8
 	sltu	$fp, $s4, $t1
 	and	$t8, $t8, $fp
-	or	$t8, $t8, $a6
+	or	$t8, $t8, $a7
 	beqz	$t8, .LBB1_223
 .LBB1_220:                              #   in Loop: Header=BB1_218 Depth=1
 	move	$fp, $zero
@@ -2110,9 +2109,8 @@ matgen:                                 # @matgen
 	b	.LBB1_217
 .LBB1_223:                              # %vector.ph810
                                         #   in Loop: Header=BB1_218 Depth=1
-	fld.s	$fa0, $t7, 0
+	vldrepl.w	$vr0, $t7, 0
 	add.d	$t8, $s4, $t3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$fp, $s4, 16
 	move	$s0, $t2
 	move	$s4, $t5
@@ -2360,11 +2358,10 @@ matvec:                                 # @matvec
 # %bb.17:                               # %vector.ph
 	bstrpick.d	$a3, $a6, 30, 3
 	slli.d	$a7, $a3, 3
-	fld.s	$fa0, $a1, 0
 	slli.d	$a4, $a3, 5
 	add.d	$a3, $t0, $a4
+	vldrepl.w	$vr0, $a1, 0
 	add.d	$a4, $a2, $a4
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$t1, $a2, 16
 	addi.d	$t0, $t0, 16
 	move	$t2, $a7
@@ -2448,9 +2445,8 @@ matvec:                                 # @matvec
 	.p2align	4, , 16
 .LBB3_27:                               # %vector.ph113
                                         #   in Loop: Header=BB3_22 Depth=1
-	fld.s	$fa0, $t7, 0
+	vldrepl.w	$vr0, $t7, 0
 	add.d	$t8, $fp, $t3
-	vreplvei.w	$vr0, $vr0, 0
 	addi.d	$fp, $fp, 16
 	move	$s0, $t2
 	move	$s1, $t5

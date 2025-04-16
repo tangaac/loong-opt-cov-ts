@@ -2875,10 +2875,9 @@ output_symbolic_constraints:            # @output_symbolic_constraints
 	b	.LBB17_55
 .LBB17_58:                              # %vector.ph
                                         #   in Loop: Header=BB17_4 Depth=1
-	ld.w	$a2, $a0, 0
+	vldrepl.w	$vr0, $a0, 0
 	bstrpick.d	$a1, $s3, 30, 3
 	slli.d	$a1, $a1, 3
-	vreplgr2vr.w	$vr0, $a2
 	vaddi.wu	$vr1, $vr0, 4
 	addi.d	$a2, $s4, 16
 	move	$a3, $a1

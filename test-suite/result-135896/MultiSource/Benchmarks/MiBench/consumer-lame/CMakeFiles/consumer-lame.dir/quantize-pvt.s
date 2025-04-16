@@ -3117,11 +3117,10 @@ bin_search_StepSize2:                   # @bin_search_StepSize2
 quantize_xrpow:                         # @quantize_xrpow
 # %bb.0:
 	ld.wu	$a2, $a2, 12
-	slli.d	$a2, $a2, 3
 	pcalau12i	$a3, %pc_hi20(ipow20)
 	addi.d	$a3, $a3, %pc_lo12(ipow20)
-	fldx.d	$fa0, $a3, $a2
-	vreplvei.d	$vr0, $vr0, 0
+	alsl.d	$a2, $a2, $a3, 3
+	vldrepl.d	$vr0, $a2, 0
 	ori	$a2, $zero, 73
 	pcalau12i	$a3, %pc_hi20(adj43)
 	addi.d	$a3, $a3, %pc_lo12(adj43)

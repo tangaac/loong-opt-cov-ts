@@ -369,8 +369,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_21:                               # %vector.body45.preheader
                                         #   in Loop: Header=BB7_16 Depth=1
-	fld.d	$fa1, $a5, 0
-	vreplvei.d	$vr1, $vr1, 0
+	vldrepl.d	$vr1, $a5, 0
 	move	$a5, $a2
 	.p2align	4, , 16
 .LBB7_22:                               # %vector.body45

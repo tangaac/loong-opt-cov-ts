@@ -81,8 +81,7 @@ HouseMatrix:                            # @HouseMatrix
 	bltu	$a4, $t7, .LBB0_10
 .LBB0_7:                                # %vector.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	fld.d	$fa2, $t5, 0
-	vreplvei.d	$vr2, $vr2, 0
+	vldrepl.d	$vr2, $t5, 0
 	vbitrevi.d	$vr2, $vr2, 63
 	vfmul.d	$vr2, $vr1, $vr2
 	add.d	$t7, $t6, $t1

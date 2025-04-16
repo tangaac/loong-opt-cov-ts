@@ -603,8 +603,7 @@ getHorSubImageSixTap:                   # @getHorSubImageSixTap
 	bnez	$t6, .LBB1_5
 # %bb.9:                                # %vector.ph
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t6, $a5, 0
-	vreplgr2vr.w	$vr3, $t6
+	vldrepl.w	$vr3, $a5, 0
 	addi.d	$t6, $s8, 6
 	ld.d	$t7, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16

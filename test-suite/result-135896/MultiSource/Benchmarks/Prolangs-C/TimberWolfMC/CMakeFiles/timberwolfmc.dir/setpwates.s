@@ -12,14 +12,13 @@ setpwates:                              # @setpwates
 	blt	$a2, $a0, .LBB0_5
 # %bb.1:                                # %.lr.ph35
 	pcalau12i	$a1, %got_pc_hi20(cellarray)
+	ld.d	$a1, $a1, %got_pc_lo12(cellarray)
 	pcalau12i	$a3, %got_pc_hi20(pinsPerLen)
 	ld.d	$a3, $a3, %got_pc_lo12(pinsPerLen)
-	ld.d	$a1, $a1, %got_pc_lo12(cellarray)
-	fld.d	$fa0, $a3, 0
 	ld.d	$a1, $a1, 0
 	addi.d	$a2, $a2, 1
+	vldrepl.d	$vr0, $a3, 0
 	bstrpick.d	$a2, $a2, 31, 0
-	vreplvei.d	$vr0, $vr0, 0
 	lu52i.d	$a3, $zero, 1023
 	vreplgr2vr.d	$vr1, $a3
 	b	.LBB0_3

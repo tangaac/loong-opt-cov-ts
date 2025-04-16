@@ -47,21 +47,22 @@
 	.type	fast_nuclear_W,@function
 fast_nuclear_W:                         # @fast_nuclear_W
 # %bb.0:
-	addi.d	$sp, $sp, -320
-	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 264                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 256                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 248                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 240                  # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 232                  # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 224                  # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 216                  # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 208                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -304
+	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 240                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 232                  # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 224                  # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 216                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 208                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 200                  # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 184                  # 8-byte Folded Spill
 	fmov.d	$fs4, $fa1
 	fmov.d	$fs5, $fa0
 	pcaddu18i	$ra, %call36(cabs)
@@ -76,15 +77,15 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmul.d	$fs0, $fs4, $fa0
 	fmul.d	$fa2, $fs4, $fs2
 	fmul.d	$fs1, $fs5, $fa0
-	fst.d	$fa1, $sp, 176                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 152                  # 8-byte Folded Spill
 	fsub.d	$fa0, $fa1, $fs0
-	fst.d	$fa2, $sp, 168                  # 8-byte Folded Spill
+	fst.d	$fa2, $sp, 144                  # 8-byte Folded Spill
 	fadd.d	$fa1, $fs1, $fa2
 	fcmp.cor.d	$fcc0, $fa0, $fa0
 	fmov.d	$fs7, $fa0
-	fst.d	$fa1, $sp, 200                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 176                  # 8-byte Folded Spill
 	movcf2gr	$a0, $fcc0
-	st.d	$a0, $sp, 128
+	st.d	$a0, $sp, 112
 	bceqz	$fcc0, .LBB0_15
 .LBB0_2:
 	pcaddu18i	$ra, %call36(cexp)
@@ -105,20 +106,20 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
 	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_4)
-	fst.d	$fa0, $sp, 152                  # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 160                  # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 128                  # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 136                  # 8-byte Folded Spill
 	fmul.d	$fs6, $fs5, $fa2
 	fmul.d	$fs2, $fs4, $fa2
 	fmul.d	$fa0, $fs5, $fs6
 	fmul.d	$fa1, $fs4, $fs2
-	fst.d	$fs4, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 168                  # 8-byte Folded Spill
 	fmul.d	$fa2, $fs6, $fs4
 	fmul.d	$fa3, $fs5, $fs2
 	fsub.d	$fs4, $fa0, $fa1
 	fadd.d	$fs3, $fa2, $fa3
-	ld.d	$a0, $sp, 128
+	ld.d	$a0, $sp, 112
 	movgr2cf	$fcc0, $a0
-	fst.d	$fs5, $sp, 184                  # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 160                  # 8-byte Folded Spill
 	bceqz	$fcc0, .LBB0_19
 # %bb.4:                                # %.split
 	fcmp.cor.d	$fcc0, $fs4, $fs4
@@ -127,7 +128,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fneg.d	$fs6, $fs3
 	fmov.d	$fs5, $fs7
 	fmov.d	$fa0, $fs7
-	fld.d	$fs7, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fs7, $sp, 176                  # 8-byte Folded Reload
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
@@ -177,7 +178,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr0, $a0
 	vfmul.d	$vr0, $vr1, $vr0
 	vfadd.d	$vr0, $vr2, $vr0
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
@@ -201,7 +202,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	lu52i.d	$a0, $a0, 1020
 	vreplgr2vr.d	$vr0, $a0
 	vfmul.d	$vr0, $vr1, $vr0
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
@@ -214,8 +215,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa3, $fs6
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 80                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
@@ -229,8 +230,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa3, $fs6
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 64                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
@@ -243,8 +244,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa3, $fs6
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 48                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
@@ -258,8 +259,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa3, $fs6
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 32                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs5
 	fmov.d	$fa1, $fs7
 	pcaddu18i	$ra, %call36(cexp)
@@ -301,13 +302,13 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa3, $fs6
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	vld	$vr2, $sp, 128                  # 16-byte Folded Reload
-	vld	$vr3, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr3, $sp, 96                   # 16-byte Folded Reload
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 80                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 88                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -68057
@@ -317,10 +318,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 64                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 72                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -131043
@@ -330,10 +331,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 48                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 56                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, 343154
@@ -343,10 +344,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 32                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 40                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -342897
@@ -393,14 +394,14 @@ fast_nuclear_W:                         # @fast_nuclear_W
 .LBB0_7:                                # %.split56.us
 	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
 	fld.d	$fa3, $a0, %pc_lo12(.LCPI0_15)
-	fld.d	$fa0, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 168                  # 8-byte Folded Reload
 	fmul.d	$fa0, $fa0, $fa3
-	fld.d	$fa2, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
 	fmul.d	$fa1, $fa2, $fa3
-	fld.d	$fa4, $sp, 176                  # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 152                  # 8-byte Folded Reload
 	fsub.d	$fa0, $fa4, $fa0
 	fcmp.cor.d	$fcc0, $fa0, $fa0
-	fld.d	$fa4, $sp, 168                  # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 144                  # 8-byte Folded Reload
 	fadd.d	$fa1, $fa1, $fa4
 	bceqz	$fcc0, .LBB0_26
 .LBB0_8:
@@ -421,10 +422,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	bceqz	$fcc0, .LBB0_28
 .LBB0_9:
 	vreplvei.d	$vr0, $vr2, 1
-	fld.d	$fa1, $sp, 152                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 128                  # 8-byte Folded Reload
 	fadd.d	$fa0, $fa1, $fa0
 	vreplvei.d	$vr1, $vr2, 0
-	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 136                  # 8-byte Folded Reload
 	fadd.d	$fa1, $fa2, $fa1
 	b	.LBB0_14
 .LBB0_10:
@@ -474,24 +475,25 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fadd.d	$fa1, $fa4, $fa5
 	bceqz	$fcc0, .LBB0_34
 .LBB0_14:
-	fld.d	$fs7, $sp, 208                  # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 216                  # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 224                  # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 232                  # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 240                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 248                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 256                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 264                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 320
+	fld.d	$fs7, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 208                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 216                  # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 224                  # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 232                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 240                  # 8-byte Folded Reload
+	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 304
 	ret
 .LBB0_15:
-	fld.d	$fa1, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 176                  # 8-byte Folded Reload
 	fcmp.cor.d	$fcc0, $fa1, $fa1
 	fmov.d	$fa0, $fs7
 	bcnez	$fcc0, .LBB0_2
@@ -518,7 +520,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vrepli.b	$vr6, 0
 	pcalau12i	$a0, %pc_hi20(.L__const.fast_nuclear_W.neg_1n)
 	addi.d	$s0, $a0, %pc_lo12(.L__const.fast_nuclear_W.neg_1n)
-	fld.d	$fa0, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fa0, $sp, 176                  # 8-byte Folded Reload
 	fcmp.cor.d	$fcc0, $fa0, $fa0
 	movcf2gr	$a0, $fcc0
 	st.d	$a0, $sp, 88
@@ -537,10 +539,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	ori	$s3, $zero, 80
 .LBB0_20:                               # %.split.us
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr6, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr6, $sp, 112                  # 16-byte Folded Spill
 	fldx.d	$fs5, $s0, $fp
 	fmov.d	$fa0, $fs7
-	fld.d	$fa1, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 176                  # 8-byte Folded Reload
 	ld.d	$a0, $sp, 88
 	movgr2cf	$fcc0, $a0
 	bceqz	$fcc0, .LBB0_23
@@ -548,7 +550,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
 	fldx.d	$fa2, $s1, $fp
-	fst.d	$fa2, $sp, 112                  # 8-byte Folded Spill
+	fst.d	$fa2, $sp, 96                   # 8-byte Folded Spill
 	fmov.d	$fs1, $fa0
 	fmov.d	$fs0, $fa1
 	fmov.d	$fa0, $fs4
@@ -559,34 +561,32 @@ fast_nuclear_W:                         # @fast_nuclear_W
 .LBB0_22:                               #   in Loop: Header=BB0_20 Depth=1
 	fmul.d	$fa2, $fs5, $fs1
 	fmul.d	$fa4, $fs5, $fs0
-	fldx.d	$fa3, $s2, $fp
-	vst	$vr3, $sp, 96                   # 16-byte Folded Spill
 	vldi	$vr3, -784
 	fadd.d	$fa5, $fa2, $fa3
-	fld.d	$fa2, $sp, 112                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 96                   # 8-byte Folded Reload
 	fsub.d	$fa2, $fa2, $fa0
 	fneg.d	$fa3, $fa1
+	add.d	$s4, $s2, $fp
 	fmov.d	$fa0, $fa5
 	fmov.d	$fa1, $fa4
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	vld	$vr2, $sp, 96                   # 16-byte Folded Reload
-	vreplvei.d	$vr2, $vr2, 0
+	vldrepl.d	$vr2, $s4, 0
 	movfr2gr.d	$a0, $fa1
 	vinsgr2vr.d	$vr1, $a0, 0
 	movfr2gr.d	$a0, $fa0
 	vinsgr2vr.d	$vr1, $a0, 1
 	vfmul.d	$vr0, $vr2, $vr1
 	addi.d	$fp, $fp, 8
-	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
 	vfadd.d	$vr6, $vr6, $vr0
 	bne	$fp, $s3, .LBB0_20
 	b	.LBB0_7
 .LBB0_23:                               #   in Loop: Header=BB0_20 Depth=1
 	vldi	$vr1, -984
 	fld.d	$fa0, $sp, 72                   # 8-byte Folded Reload
-	fld.d	$fa2, $sp, 184                  # 8-byte Folded Reload
-	fld.d	$fa3, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 168                  # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
 	b	.LBB0_21
@@ -599,8 +599,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 # %bb.25:                               #   in Loop: Header=BB0_20 Depth=1
 	fmov.d	$fa0, $fs6
 	fmov.d	$fa1, $fs2
-	fld.d	$fa2, $sp, 184                  # 8-byte Folded Reload
-	fld.d	$fa3, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa2, $sp, 160                  # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 168                  # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
 	b	.LBB0_22
@@ -610,11 +610,11 @@ fast_nuclear_W:                         # @fast_nuclear_W
 # %bb.27:
 	movgr2fr.d	$fa0, $zero
 	fmov.d	$fa1, $fa3
-	fld.d	$fa3, $sp, 192                  # 8-byte Folded Reload
-	vst	$vr6, $sp, 128                  # 16-byte Folded Spill
+	fld.d	$fa3, $sp, 168                  # 8-byte Folded Reload
+	vst	$vr6, $sp, 112                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
-	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 112                  # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 def $vr0
                                         # kill: def $f1_64 killed $f1_64 def $vr1
 	b	.LBB0_8
@@ -696,8 +696,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 # %bb.37:                               # %.split.split.us.split.us.preheader
 	fmov.d	$fs4, $fs7
 	fmov.d	$fa0, $fs7
-	fst.d	$fs7, $sp, 16                   # 8-byte Folded Spill
-	fld.d	$fs3, $sp, 200                  # 8-byte Folded Reload
+	fst.d	$fs7, $sp, 8                    # 8-byte Folded Spill
+	fld.d	$fs3, $sp, 176                  # 8-byte Folded Reload
 	fmov.d	$fa1, $fs3
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
@@ -706,9 +706,9 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fsub.d	$fs1, $fa1, $fa0
 	fmov.d	$fa0, $fs6
 	fmov.d	$fa1, $fs2
-	fld.d	$fs7, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs7, $sp, 160                  # 8-byte Folded Reload
 	fmov.d	$fa2, $fs7
-	fld.d	$fs5, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 168                  # 8-byte Folded Reload
 	fmov.d	$fa3, $fs5
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
@@ -766,10 +766,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr0, $a0
 	vfmul.d	$vr0, $vr1, $vr0
 	vfadd.d	$vr0, $vr2, $vr0
-	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
-	fld.d	$fs4, $sp, 16                   # 8-byte Folded Reload
+	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	fld.d	$fs4, $sp, 8                    # 8-byte Folded Reload
 	fmov.d	$fa0, $fs4
-	fld.d	$fs5, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 176                  # 8-byte Folded Reload
 	fmov.d	$fa1, $fs5
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
@@ -779,7 +779,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa0, $fs6
 	fmov.d	$fa1, $fs2
 	fmov.d	$fa2, $fs7
-	fld.d	$fa3, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 168                  # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
@@ -800,7 +800,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	lu52i.d	$a0, $a0, 1020
 	vreplgr2vr.d	$vr0, $a0
 	vfmul.d	$vr0, $vr1, $vr0
-	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
 	fmov.d	$fa0, $fs4
 	fmov.d	$fa1, $fs5
 	pcaddu18i	$ra, %call36(cexp)
@@ -811,7 +811,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa0, $fs6
 	fmov.d	$fa1, $fs2
 	fmov.d	$fa2, $fs7
-	fld.d	$fs3, $sp, 192                  # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 168                  # 8-byte Folded Reload
 	fmov.d	$fa3, $fs3
 	pcaddu18i	$ra, %call36(__muldc3)
 	jirl	$ra, $ra, 0
@@ -823,8 +823,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 96                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 88                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 80                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs4
 	fmov.d	$fa1, $fs5
 	pcaddu18i	$ra, %call36(cexp)
@@ -846,8 +846,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 80                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 72                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 64                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs4
 	fmov.d	$fs7, $fs4
 	fmov.d	$fa1, $fs5
@@ -858,7 +858,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fadd.d	$fs1, $fa0, $fa1
 	fmov.d	$fa0, $fs6
 	fmov.d	$fa1, $fs2
-	fld.d	$fs4, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 160                  # 8-byte Folded Reload
 	fmov.d	$fa2, $fs4
 	fmov.d	$fa3, $fs3
 	pcaddu18i	$ra, %call36(__muldc3)
@@ -871,8 +871,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 64                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 48                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs7
 	fmov.d	$fa1, $fs5
 	pcaddu18i	$ra, %call36(cexp)
@@ -895,10 +895,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 32                   # 8-byte Folded Spill
 	fmov.d	$fa0, $fs7
-	fld.d	$fs4, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 176                  # 8-byte Folded Reload
 	fmov.d	$fa1, $fs4
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
@@ -919,8 +919,8 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa1, $fs0
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fa1, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fa0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fa1, $sp, 16                   # 8-byte Folded Spill
 	fmov.d	$fs0, $fs7
 	fmov.d	$fa0, $fs7
 	fmov.d	$fa1, $fs4
@@ -947,7 +947,7 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fs1, $fa0
 	fmov.d	$fs4, $fa1
 	fmov.d	$fa0, $fs0
-	fld.d	$fa1, $sp, 200                  # 8-byte Folded Reload
+	fld.d	$fa1, $sp, 176                  # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cexp)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs5, $fa1
@@ -967,13 +967,13 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	fmov.d	$fa1, $fs5
 	pcaddu18i	$ra, %call36(__divdc3)
 	jirl	$ra, $ra, 0
-	vld	$vr2, $sp, 128                  # 16-byte Folded Reload
-	vld	$vr3, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 112                  # 16-byte Folded Reload
+	vld	$vr3, $sp, 96                   # 16-byte Folded Reload
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 88                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 80                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 96                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 88                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -68057
@@ -983,10 +983,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 72                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 64                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 80                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 72                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -131043
@@ -996,10 +996,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 48                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 64                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 56                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, 343154
@@ -1009,10 +1009,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 32                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 40                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -342897
@@ -1022,10 +1022,10 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	vreplgr2vr.d	$vr4, $a0
 	vfmul.d	$vr3, $vr3, $vr4
 	vfadd.d	$vr2, $vr2, $vr3
-	fld.d	$fa3, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fa3, $sp, 16                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa3
 	vinsgr2vr.d	$vr3, $a0, 0
-	fld.d	$fa4, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fa4, $sp, 24                   # 8-byte Folded Reload
 	movfr2gr.d	$a0, $fa4
 	vinsgr2vr.d	$vr3, $a0, 1
 	lu12i.w	$a0, -504007

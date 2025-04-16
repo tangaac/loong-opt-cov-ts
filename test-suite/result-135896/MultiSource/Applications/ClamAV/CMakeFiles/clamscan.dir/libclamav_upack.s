@@ -355,8 +355,7 @@ unupack:                                # @unupack
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a1, .LBB0_52
 # %bb.50:                               # %vector.ph1245
-	ld.w	$a1, $a2, 0
-	vreplgr2vr.w	$vr0, $a1
+	vldrepl.w	$vr0, $a2, 0
 	addi.d	$a1, $s2, -256
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 256

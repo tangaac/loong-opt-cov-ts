@@ -1639,7 +1639,7 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	ldx.hu	$s1, $s1, $s7
 	lu12i.w	$s7, 3
 	ori	$s7, $s7, 3232
-	ldx.w	$s7, $a1, $s7
+	add.d	$s7, $a1, $s7
 	alsl.d	$s0, $s0, $s0, 2
 	alsl.d	$s4, $s4, $s4, 1
 	sub.d	$s3, $s3, $s5
@@ -1657,7 +1657,7 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vreplgr2vr.w	$vr0, $t1
 	vreplgr2vr.w	$vr1, $t6
 	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
-	vreplgr2vr.w	$vr2, $s7
+	vldrepl.w	$vr2, $s7, 0
 	vreplgr2vr.w	$vr3, $t7
 	vreplgr2vr.w	$vr4, $s8
 	vreplgr2vr.w	$vr5, $t5

@@ -478,13 +478,14 @@ main:                                   # @main
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
+	move	$s0, $a0
 	ori	$s2, $zero, 2
 	pcalau12i	$s1, %pc_hi20(base_iterations)
-	pcalau12i	$s3, %pc_hi20(init_value)
-	blt	$a0, $s2, .LBB5_3
+	pcalau12i	$a0, %pc_hi20(init_value)
+	addi.d	$s3, $a0, %pc_lo12(init_value)
+	blt	$s0, $s2, .LBB5_3
 # %bb.1:
 	move	$fp, $a1
-	move	$s0, $a0
 	ld.d	$a0, $a1, 8
 	ori	$a2, $zero, 10
 	move	$a1, $zero
@@ -497,9 +498,9 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtod)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $s3, %pc_lo12(init_value)
+	fst.d	$fa0, $s3, 0
 .LBB5_3:                                # %.thread
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data8)
@@ -713,7 +714,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data8unsigned)
@@ -922,7 +923,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
 	vreplgr2vr.h	$vr0, $a0
@@ -1144,7 +1145,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
 	vreplgr2vr.h	$vr0, $a0
@@ -1362,7 +1363,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
 	vreplgr2vr.w	$vr0, $a0
@@ -1584,7 +1585,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
 	vreplgr2vr.w	$vr0, $a0
@@ -1802,7 +1803,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data64+16)
@@ -2020,7 +2021,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.d	$fa1, $a0, %pc_lo12(.LCPI5_0)
 	fcmp.clt.d	$fcc0, $fa0, $fa1
@@ -2250,7 +2251,7 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	fld.d	$fa0, $s3, 0
 	fcvt.s.d	$fa0, $fa0
 	vreplvei.w	$vr0, $vr0, 0
 	ori	$a0, $s8, 768
@@ -2371,10 +2372,9 @@ main:                                   # @main
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_Z13test_constantIf30custom_multiple_constant_mixedIfEEvPT_iPKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s3, %pc_lo12(init_value)
+	vldrepl.d	$vr0, $s3, 0
 	pcalau12i	$a0, %pc_hi20(dataDouble+16)
 	addi.d	$a0, $a0, %pc_lo12(dataDouble+16)
-	vreplvei.d	$vr0, $vr0, 0
 	.p2align	4, , 16
 .LBB5_18:                               # %vector.body87
                                         # =>This Inner Loop Header: Depth=1

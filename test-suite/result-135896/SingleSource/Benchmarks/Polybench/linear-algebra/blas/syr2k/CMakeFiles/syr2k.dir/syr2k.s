@@ -582,10 +582,8 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_35:                               # %vector.ph115
                                         #   in Loop: Header=BB7_33 Depth=2
-	fld.d	$fa3, $s5, 0
-	fld.d	$fa4, $a0, 0
-	vreplvei.d	$vr3, $vr3, 0
-	vreplvei.d	$vr4, $vr4, 0
+	vldrepl.d	$vr3, $s5, 0
+	vldrepl.d	$vr4, $a0, 0
 	move	$fp, $t7
 	move	$s0, $t6
 	move	$s2, $s8
@@ -780,10 +778,8 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_53:                               # %vector.ph162
                                         #   in Loop: Header=BB7_51 Depth=2
-	fld.d	$fa3, $s5, 0
-	fld.d	$fa4, $a0, 0
-	vreplvei.d	$vr3, $vr3, 0
-	vreplvei.d	$vr4, $vr4, 0
+	vldrepl.d	$vr3, $s5, 0
+	vldrepl.d	$vr4, $a0, 0
 	move	$t7, $fp
 	move	$t5, $s0
 	move	$s8, $s2
@@ -892,23 +888,23 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	move	$s5, $zero
 	move	$s6, $zero
+	move	$s7, $zero
 	ori	$a0, $fp, 2816
 	stx.b	$zero, $s3, $a0
 	addi.d	$fp, $s3, 7
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$s2, $a0, %got_pc_lo12(stderr)
-	ori	$s7, $s0, 2688
+	ori	$s5, $s0, 2688
 	ori	$s8, $zero, 3
 	ori	$s0, $zero, 1200
 .LBB7_64:                               # %.preheader.i55
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_65 Depth 2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $s6
 	move	$a1, $fp
-	move	$a2, $s7
+	move	$a2, $s5
 	.p2align	4, , 16
 .LBB7_65:                               #   Parent Loop BB7_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -953,9 +949,9 @@ main:                                   # @main
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
-	addi.d	$s6, $s6, 1
-	add.d	$s5, $s5, $s4
-	bne	$s6, $s0, .LBB7_64
+	addi.d	$s7, $s7, 1
+	add.d	$s6, $s6, $s4
+	bne	$s7, $s0, .LBB7_64
 # %bb.67:                               # %print_array.exit
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)

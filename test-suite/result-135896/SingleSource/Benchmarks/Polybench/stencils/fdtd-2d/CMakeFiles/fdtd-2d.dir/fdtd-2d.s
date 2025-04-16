@@ -481,9 +481,8 @@ main:                                   # @main
                                         #     Child Loop BB7_40 Depth 2
                                         #       Child Loop BB7_43 Depth 3
                                         #       Child Loop BB7_46 Depth 3
-	slli.d	$a3, $t1, 3
-	fldx.d	$fa3, $s0, $a3
-	vreplvei.d	$vr3, $vr3, 0
+	alsl.d	$a3, $t1, $s0, 3
+	vldrepl.d	$vr3, $a3, 0
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB7_25:                               # %vector.body178
@@ -970,11 +969,10 @@ main:                                   # @main
                                         #     Child Loop BB7_75 Depth 2
                                         #       Child Loop BB7_78 Depth 3
                                         #       Child Loop BB7_81 Depth 3
-	st.d	$t8, $sp, 104                   # 8-byte Folded Spill
-	slli.d	$t0, $t8, 3
 	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
-	fldx.d	$fa4, $a4, $t0
-	vreplvei.d	$vr4, $vr4, 0
+	st.d	$t8, $sp, 104                   # 8-byte Folded Spill
+	alsl.d	$t0, $t8, $a4, 3
+	vldrepl.d	$vr4, $t0, 0
 	ld.d	$t0, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB7_60:                               # %vector.body276

@@ -11894,10 +11894,9 @@ counteff:                               # @counteff
 	.p2align	4, , 16
 .LBB37_71:                              # %vector.ph315
                                         #   in Loop: Header=BB37_69 Depth=1
-	fld.d	$fa2, $a5, 0
+	vldrepl.d	$vr1, $a5, 0
 	ld.d	$a7, $a6, 0
-	vreplgr2vr.d	$vr1, $a1
-	vreplvei.d	$vr2, $vr2, 0
+	vreplgr2vr.d	$vr2, $a1
 	move	$t0, $a2
 	move	$t1, $a0
 	vori.b	$vr3, $vr0, 0
@@ -11908,12 +11907,12 @@ counteff:                               # @counteff
 	vaddi.du	$vr4, $vr3, 2
 	vld	$vr5, $t0, -16
 	vld	$vr6, $t0, 0
-	vseq.d	$vr7, $vr3, $vr1
-	vseq.d	$vr8, $vr4, $vr1
-	vfmul.d	$vr5, $vr2, $vr5
-	vfmul.d	$vr6, $vr2, $vr6
-	vbitsel.v	$vr5, $vr5, $vr2, $vr7
-	vbitsel.v	$vr6, $vr6, $vr2, $vr8
+	vseq.d	$vr7, $vr3, $vr2
+	vseq.d	$vr8, $vr4, $vr2
+	vfmul.d	$vr5, $vr1, $vr5
+	vfmul.d	$vr6, $vr1, $vr6
+	vbitsel.v	$vr5, $vr5, $vr1, $vr7
+	vbitsel.v	$vr6, $vr6, $vr1, $vr8
 	vpickve2gr.d	$t2, $vr3, 0
 	slli.d	$t2, $t2, 3
 	vpickve2gr.d	$t3, $vr3, 1
@@ -15277,11 +15276,10 @@ calcimportance:                         # @calcimportance
                                         #   in Loop: Header=BB65_19 Depth=3
 	bstrpick.d	$a6, $a6, 31, 0
 	addi.d	$t0, $a6, 1
-	fld.d	$fa0, $a2, 0
 	bstrpick.d	$a6, $t0, 32, 2
+	vldrepl.d	$vr0, $a2, 0
 	slli.d	$t1, $a6, 2
 	alsl.d	$a6, $a6, $a7, 2
-	vreplvei.d	$vr0, $vr0, 0
 	alsl.d	$a7, $a7, $s8, 3
 	move	$t2, $t1
 	.p2align	4, , 16

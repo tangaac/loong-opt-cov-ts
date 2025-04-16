@@ -320,8 +320,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_15:                               # %vector.body86.preheader
                                         #   in Loop: Header=BB7_12 Depth=2
-	ld.w	$s4, $s4, 0
-	vreplgr2vr.w	$vr8, $s4
+	vldrepl.w	$vr8, $s4, 0
 	move	$s4, $t2
 	.p2align	4, , 16
 .LBB7_16:                               # %vector.body86
@@ -474,8 +473,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_28:                               # %vector.body122.preheader
                                         #   in Loop: Header=BB7_25 Depth=2
-	ld.w	$t6, $t6, 0
-	vreplgr2vr.w	$vr0, $t6
+	vldrepl.w	$vr0, $t6, 0
 	move	$t6, $a7
 	.p2align	4, , 16
 .LBB7_29:                               # %vector.body122

@@ -603,8 +603,7 @@ getHorSubImageSixTap:                   # @getHorSubImageSixTap
 	bnez	$t6, .LBB1_5
 # %bb.9:                                # %vector.ph
                                         #   in Loop: Header=BB1_3 Depth=1
-	ld.w	$t6, $a5, 0
-	vreplgr2vr.w	$vr3, $t6
+	vldrepl.w	$vr3, $a5, 0
 	addi.d	$t6, $s8, 6
 	ld.d	$t7, $sp, 32                    # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -854,17 +853,18 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 # %bb.14:                               # %.lr.ph255.split.us
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a5, $t1, 0
+	add.d	$a6, $a5, $t2
 	ldx.w	$t1, $a5, $t2
 	ori	$a5, $zero, 3
-	slt	$a6, $a5, $s8
-	masknez	$a5, $a5, $a6
+	slt	$a7, $a5, $s8
+	masknez	$a5, $a5, $a7
 	st.d	$s8, $sp, 0                     # 8-byte Folded Spill
-	maskeqz	$a6, $s8, $a6
-	or	$t2, $a6, $a5
+	maskeqz	$a7, $s8, $a7
+	or	$t2, $a7, $a5
 	ld.d	$t8, $a3, 16
 	bstrpick.d	$a5, $a4, 30, 3
 	slli.d	$a5, $a5, 3
-	vreplgr2vr.w	$vr0, $t1
+	vldrepl.w	$vr0, $a6, 0
 	ori	$t6, $zero, 2
 	ori	$t4, $zero, 8
 	ori	$t5, $zero, 16
@@ -1463,15 +1463,16 @@ getVerSubImageSixTap:                   # @getVerSubImageSixTap
 	ld.d	$a6, $t1, 0
 	ld.d	$a3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$t1, $a3, %pc_lo12(imgY_sub_tmp)
+	add.d	$a7, $a6, $t2
 	ldx.w	$t2, $a6, $t2
 	ori	$a6, $zero, 3
-	slt	$a7, $a6, $a5
-	masknez	$a6, $a6, $a7
-	maskeqz	$a7, $a5, $a7
-	or	$t4, $a7, $a6
+	slt	$t4, $a6, $a5
+	masknez	$a6, $a6, $t4
+	maskeqz	$t4, $a5, $t4
+	or	$t4, $t4, $a6
 	ld.d	$t8, $t1, 16
 	slli.d	$a6, $t3, 2
-	vreplgr2vr.w	$vr0, $t2
+	vldrepl.w	$vr0, $a7, 0
 	ori	$t6, $zero, 2
 	ori	$t5, $zero, 4
 	vrepli.w	$vr1, 20
@@ -2650,7 +2651,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 # %bb.19:                               # %vector.ph123
                                         #   in Loop: Header=BB3_5 Depth=1
 	ld.h	$t5, $s6, 0
-	vreplgr2vr.h	$vr1, $t5
+	vldrepl.h	$vr1, $s6, 0
 	vinsgr2vr.h	$vr2, $t5, 0
 	vreplvei.h	$vr2, $vr2, 0
 	vilvl.h	$vr2, $vr0, $vr2
@@ -2763,7 +2764,7 @@ getHorSubImageBiLinear:                 # @getHorSubImageBiLinear
 # %bb.30:                               # %vector.ph
                                         #   in Loop: Header=BB3_25 Depth=1
 	ld.h	$s3, $t8, 0
-	vreplgr2vr.h	$vr1, $s3
+	vldrepl.h	$vr1, $t8, 0
 	vinsgr2vr.h	$vr2, $s3, 0
 	vreplvei.h	$vr2, $vr2, 0
 	vilvl.h	$vr2, $vr0, $vr2

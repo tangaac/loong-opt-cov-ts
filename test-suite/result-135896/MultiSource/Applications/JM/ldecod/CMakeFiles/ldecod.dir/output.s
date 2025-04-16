@@ -1268,25 +1268,26 @@ clear_picture:                          # @clear_picture
 # %bb.0:
 	lu12i.w	$a1, 77
 	ori	$a1, $a1, 1472
-	add.d	$a1, $a0, $a1
-	ld.w	$a2, $a1, 4
+	add.d	$a0, $a0, $a1
+	ld.w	$a2, $a0, 4
 	ori	$a3, $zero, 1
-	lu12i.w	$a0, 1
+	lu12i.w	$a1, 1
 	blt	$a2, $a3, .LBB6_17
 # %bb.1:                                # %.preheader32.lr.ph
-	ld.w	$a4, $a1, 0
+	ld.w	$a4, $a0, 0
 	blt	$a4, $a3, .LBB6_17
 # %bb.2:                                # %.preheader32.lr.ph.split.us
 	pcalau12i	$a5, %got_pc_hi20(img)
 	ld.d	$a5, $a5, %got_pc_lo12(img)
 	ld.d	$a6, $a5, 0
 	move	$a5, $zero
-	ori	$a7, $a0, 1796
+	ori	$a7, $a1, 1796
+	add.d	$t1, $a6, $a7
 	ldx.w	$a6, $a6, $a7
-	ld.d	$a7, $a1, 56
+	ld.d	$a7, $a0, 56
 	bstrpick.d	$t0, $a4, 30, 4
 	slli.d	$t0, $t0, 4
-	vreplgr2vr.h	$vr0, $a6
+	vldrepl.h	$vr0, $t1, 0
 	andi	$t1, $a4, 8
 	bstrpick.d	$t2, $a4, 30, 3
 	slli.d	$t2, $t2, 3
@@ -1370,24 +1371,25 @@ clear_picture:                          # @clear_picture
 	bnez	$t7, .LBB6_16
 	b	.LBB6_3
 .LBB6_17:                               # %.preheader31
-	ld.w	$a2, $a1, 12
+	ld.w	$a2, $a0, 12
 	blt	$a2, $a3, .LBB6_50
 # %bb.18:                               # %.preheader30.lr.ph
-	ld.w	$a4, $a1, 8
+	ld.w	$a4, $a0, 8
 	ori	$a3, $zero, 1
 	blt	$a4, $a3, .LBB6_34
 # %bb.19:                               # %.preheader30.lr.ph.split.us
 	pcalau12i	$a5, %got_pc_hi20(img)
 	ld.d	$a5, $a5, %got_pc_lo12(img)
 	ld.d	$a6, $a5, 0
-	ld.d	$a7, $a1, 64
 	move	$a5, $zero
-	ori	$t0, $a0, 1800
+	ld.d	$a7, $a0, 64
+	ori	$t0, $a1, 1800
+	add.d	$t1, $a6, $t0
 	ldx.w	$a6, $a6, $t0
 	ld.d	$a7, $a7, 0
 	bstrpick.d	$t0, $a4, 30, 4
 	slli.d	$t0, $t0, 4
-	vreplgr2vr.h	$vr0, $a6
+	vldrepl.h	$vr0, $t1, 0
 	andi	$t1, $a4, 8
 	bstrpick.d	$t2, $a4, 30, 3
 	slli.d	$t2, $t2, 3
@@ -1471,20 +1473,21 @@ clear_picture:                          # @clear_picture
 	bnez	$t7, .LBB6_33
 	b	.LBB6_20
 .LBB6_34:                               # %.preheader.lr.ph
-	ld.w	$a4, $a1, 8
+	ld.w	$a4, $a0, 8
 	blt	$a4, $a3, .LBB6_50
 # %bb.35:                               # %.preheader.lr.ph.split.us
 	pcalau12i	$a3, %got_pc_hi20(img)
 	ld.d	$a3, $a3, %got_pc_lo12(img)
-	ld.d	$a3, $a3, 0
-	ld.d	$a5, $a1, 64
-	move	$a1, $zero
-	ori	$a0, $a0, 1800
-	ldx.w	$a0, $a3, $a0
-	ld.d	$a3, $a5, 8
+	ld.d	$a5, $a3, 0
+	move	$a3, $zero
+	ld.d	$a6, $a0, 64
+	ori	$a0, $a1, 1800
+	add.d	$a7, $a5, $a0
+	ldx.w	$a0, $a5, $a0
+	ld.d	$a1, $a6, 8
 	bstrpick.d	$a5, $a4, 30, 4
 	slli.d	$a5, $a5, 4
-	vreplgr2vr.h	$vr0, $a0
+	vldrepl.h	$vr0, $a7, 0
 	andi	$a6, $a4, 8
 	bstrpick.d	$a7, $a4, 30, 3
 	slli.d	$a7, $a7, 3
@@ -1495,15 +1498,15 @@ clear_picture:                          # @clear_picture
 	.p2align	4, , 16
 .LBB6_36:                               # %._crit_edge.us41
                                         #   in Loop: Header=BB6_37 Depth=1
-	addi.d	$a1, $a1, 1
-	beq	$a1, $a2, .LBB6_50
+	addi.d	$a3, $a3, 1
+	beq	$a3, $a2, .LBB6_50
 .LBB6_37:                               # %iter.check107
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_45 Depth 2
                                         #     Child Loop BB6_42 Depth 2
                                         #     Child Loop BB6_49 Depth 2
-	slli.d	$t3, $a1, 3
-	ldx.d	$t3, $a3, $t3
+	slli.d	$t3, $a3, 3
+	ldx.d	$t3, $a1, $t3
 	bgeu	$a4, $t1, .LBB6_39
 # %bb.38:                               #   in Loop: Header=BB6_37 Depth=1
 	move	$t4, $zero
@@ -1622,11 +1625,12 @@ write_unpaired_field:                   # @write_unpaired_field
 	move	$a4, $zero
 	lu12i.w	$a6, 1
 	ori	$a6, $a6, 1796
+	add.d	$t0, $a5, $a6
 	ldx.w	$a5, $a5, $a6
 	ld.d	$a6, $a2, 56
 	bstrpick.d	$a7, $a0, 30, 4
 	slli.d	$a7, $a7, 4
-	vreplgr2vr.h	$vr0, $a5
+	vldrepl.h	$vr0, $t0, 0
 	andi	$t0, $a0, 8
 	bstrpick.d	$t1, $a0, 30, 3
 	slli.d	$t1, $t1, 3
@@ -1719,19 +1723,20 @@ write_unpaired_field:                   # @write_unpaired_field
 # %bb.20:                               # %.preheader30.lr.ph.split.us.i
 	pcalau12i	$a3, %got_pc_hi20(img)
 	ld.d	$a3, $a3, %got_pc_lo12(img)
-	move	$a7, $zero
-	ld.d	$a5, $a3, 0
+	move	$t0, $zero
+	ld.d	$a6, $a3, 0
+	lu12i.w	$a5, 1
 	ld.d	$a4, $a2, 64
-	lu12i.w	$a2, 1
-	ori	$t0, $a2, 1800
-	ldx.w	$t1, $a5, $t0
+	ori	$a5, $a5, 1800
+	add.d	$a2, $a6, $a5
+	ldx.w	$t1, $a6, $a5
 	ld.d	$t2, $a4, 0
-	bstrpick.d	$a5, $a1, 30, 4
-	slli.d	$t3, $a5, 4
-	vreplgr2vr.h	$vr0, $t1
+	bstrpick.d	$a6, $a1, 30, 4
+	slli.d	$t3, $a6, 4
+	vldrepl.h	$vr0, $a2, 0
 	andi	$a2, $a1, 8
-	bstrpick.d	$a6, $a1, 30, 3
-	slli.d	$t4, $a6, 3
+	bstrpick.d	$a7, $a1, 30, 3
+	slli.d	$t4, $a7, 3
 	sub.d	$t5, $zero, $t4
 	ori	$t6, $zero, 8
 	ori	$t7, $zero, 16
@@ -1739,14 +1744,14 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_21:                               # %._crit_edge.us37.i
                                         #   in Loop: Header=BB7_22 Depth=1
-	addi.d	$a7, $a7, 1
-	beq	$a7, $a0, .LBB7_35
+	addi.d	$t0, $t0, 1
+	beq	$t0, $a0, .LBB7_35
 .LBB7_22:                               # %iter.check88
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_30 Depth 2
                                         #     Child Loop BB7_27 Depth 2
                                         #     Child Loop BB7_34 Depth 2
-	slli.d	$t8, $a7, 3
+	slli.d	$t8, $t0, 3
 	ldx.d	$t8, $t2, $t8
 	bgeu	$a1, $t6, .LBB7_24
 # %bb.23:                               #   in Loop: Header=BB7_22 Depth=1
@@ -1812,28 +1817,29 @@ write_unpaired_field:                   # @write_unpaired_field
 	bnez	$s2, .LBB7_34
 	b	.LBB7_21
 .LBB7_35:                               # %.preheader.lr.ph.split.us.i
-	ld.d	$a3, $a3, 0
-	ldx.w	$a3, $a3, $t0
-	move	$a7, $zero
+	ld.d	$t0, $a3, 0
+	move	$a3, $zero
+	add.d	$t1, $t0, $a5
+	ldx.w	$a5, $t0, $a5
 	ld.d	$a4, $a4, 8
-	slli.d	$a5, $a5, 4
-	vreplgr2vr.h	$vr0, $a3
-	slli.d	$a6, $a6, 3
-	sub.d	$t0, $zero, $a6
+	slli.d	$a6, $a6, 4
+	vldrepl.h	$vr0, $t1, 0
+	slli.d	$a7, $a7, 3
+	sub.d	$t0, $zero, $a7
 	ori	$t1, $zero, 8
 	ori	$t2, $zero, 16
 	b	.LBB7_37
 	.p2align	4, , 16
 .LBB7_36:                               # %._crit_edge.us41.i
                                         #   in Loop: Header=BB7_37 Depth=1
-	addi.d	$a7, $a7, 1
-	beq	$a7, $a0, .LBB7_50
+	addi.d	$a3, $a3, 1
+	beq	$a3, $a0, .LBB7_50
 .LBB7_37:                               # %iter.check119
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_45 Depth 2
                                         #     Child Loop BB7_42 Depth 2
                                         #     Child Loop BB7_49 Depth 2
-	slli.d	$t3, $a7, 3
+	slli.d	$t3, $a3, 3
 	ldx.d	$t3, $a4, $t3
 	bgeu	$a1, $t1, .LBB7_39
 # %bb.38:                               #   in Loop: Header=BB7_37 Depth=1
@@ -1859,14 +1865,14 @@ write_unpaired_field:                   # @write_unpaired_field
 	bnez	$t4, .LBB7_42
 # %bb.43:                               # %vec.epilog.middle.block145
                                         #   in Loop: Header=BB7_37 Depth=1
-	move	$t5, $a6
-	beq	$a6, $a1, .LBB7_36
+	move	$t5, $a7
+	beq	$a7, $a1, .LBB7_36
 	b	.LBB7_48
 	.p2align	4, , 16
 .LBB7_44:                               # %vector.body127.preheader
                                         #   in Loop: Header=BB7_37 Depth=1
 	addi.d	$t4, $t3, 16
-	move	$t5, $a5
+	move	$t5, $a6
 	.p2align	4, , 16
 .LBB7_45:                               # %vector.body127
                                         #   Parent Loop BB7_37 Depth=1
@@ -1878,11 +1884,11 @@ write_unpaired_field:                   # @write_unpaired_field
 	bnez	$t5, .LBB7_45
 # %bb.46:                               # %middle.block130
                                         #   in Loop: Header=BB7_37 Depth=1
-	beq	$a5, $a1, .LBB7_36
+	beq	$a6, $a1, .LBB7_36
 # %bb.47:                               # %vec.epilog.iter.check135
                                         #   in Loop: Header=BB7_37 Depth=1
-	move	$t6, $a5
-	move	$t5, $a5
+	move	$t6, $a6
+	move	$t5, $a6
 	bnez	$a2, .LBB7_41
 	.p2align	4, , 16
 .LBB7_48:                               # %vec.epilog.scalar.ph133.preheader
@@ -1893,7 +1899,7 @@ write_unpaired_field:                   # @write_unpaired_field
 .LBB7_49:                               # %vec.epilog.scalar.ph133
                                         #   Parent Loop BB7_37 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.h	$a3, $t3, 0
+	st.h	$a5, $t3, 0
 	addi.d	$t4, $t4, -1
 	addi.d	$t3, $t3, 2
 	bnez	$t4, .LBB7_49
@@ -1940,11 +1946,12 @@ write_unpaired_field:                   # @write_unpaired_field
 	move	$a3, $zero
 	lu12i.w	$a5, 1
 	ori	$a5, $a5, 1796
+	add.d	$a7, $a4, $a5
 	ldx.w	$a4, $a4, $a5
 	ld.d	$a5, $a1, 56
 	bstrpick.d	$a6, $a0, 30, 4
 	slli.d	$a6, $a6, 4
-	vreplgr2vr.h	$vr0, $a4
+	vldrepl.h	$vr0, $a7, 0
 	andi	$a7, $a0, 8
 	bstrpick.d	$t0, $a0, 30, 3
 	slli.d	$t0, $t0, 3
@@ -2037,19 +2044,20 @@ write_unpaired_field:                   # @write_unpaired_field
 # %bb.71:                               # %.preheader30.lr.ph.split.us.i53
 	pcalau12i	$a3, %got_pc_hi20(img)
 	ld.d	$a4, $a3, %got_pc_lo12(img)
-	move	$t0, $zero
+	move	$t1, $zero
 	ld.d	$a3, $a4, 0
-	ld.d	$a5, $a1, 64
 	lu12i.w	$a6, 1
-	ori	$t1, $a6, 1800
-	ldx.w	$t2, $a3, $t1
+	ld.d	$a5, $a1, 64
+	ori	$a6, $a6, 1800
+	add.d	$t0, $a3, $a6
+	ldx.w	$t2, $a3, $a6
 	ld.d	$t3, $a5, 0
-	bstrpick.d	$a6, $a2, 30, 4
-	slli.d	$t4, $a6, 4
-	vreplgr2vr.h	$vr0, $t2
+	bstrpick.d	$a7, $a2, 30, 4
+	slli.d	$t4, $a7, 4
+	vldrepl.h	$vr0, $t0, 0
 	andi	$a3, $a2, 8
-	bstrpick.d	$a7, $a2, 30, 3
-	slli.d	$t5, $a7, 3
+	bstrpick.d	$t0, $a2, 30, 3
+	slli.d	$t5, $t0, 3
 	sub.d	$t6, $zero, $t5
 	ori	$t7, $zero, 8
 	ori	$t8, $zero, 16
@@ -2057,14 +2065,14 @@ write_unpaired_field:                   # @write_unpaired_field
 	.p2align	4, , 16
 .LBB7_72:                               # %._crit_edge.us37.i61
                                         #   in Loop: Header=BB7_73 Depth=1
-	addi.d	$t0, $t0, 1
-	beq	$t0, $a0, .LBB7_86
+	addi.d	$t1, $t1, 1
+	beq	$t1, $a0, .LBB7_86
 .LBB7_73:                               # %iter.check181
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_81 Depth 2
                                         #     Child Loop BB7_78 Depth 2
                                         #     Child Loop BB7_85 Depth 2
-	slli.d	$s2, $t0, 3
+	slli.d	$s2, $t1, 3
 	ldx.d	$s2, $t3, $s2
 	bgeu	$a2, $t7, .LBB7_75
 # %bb.74:                               #   in Loop: Header=BB7_73 Depth=1
@@ -2130,28 +2138,29 @@ write_unpaired_field:                   # @write_unpaired_field
 	bnez	$s3, .LBB7_85
 	b	.LBB7_72
 .LBB7_86:                               # %.preheader.lr.ph.split.us.i42
-	ld.d	$a4, $a4, 0
-	ldx.w	$a4, $a4, $t1
-	move	$t0, $zero
+	ld.d	$t1, $a4, 0
+	move	$a4, $zero
+	add.d	$t2, $t1, $a6
+	ldx.w	$a6, $t1, $a6
 	ld.d	$a5, $a5, 8
-	slli.d	$a6, $a6, 4
-	vreplgr2vr.h	$vr0, $a4
-	slli.d	$a7, $a7, 3
-	sub.d	$t1, $zero, $a7
+	slli.d	$a7, $a7, 4
+	vldrepl.h	$vr0, $t2, 0
+	slli.d	$t0, $t0, 3
+	sub.d	$t1, $zero, $t0
 	ori	$t2, $zero, 8
 	ori	$t3, $zero, 16
 	b	.LBB7_88
 	.p2align	4, , 16
 .LBB7_87:                               # %._crit_edge.us41.i50
                                         #   in Loop: Header=BB7_88 Depth=1
-	addi.d	$t0, $t0, 1
-	beq	$t0, $a0, .LBB7_101
+	addi.d	$a4, $a4, 1
+	beq	$a4, $a0, .LBB7_101
 .LBB7_88:                               # %iter.check212
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_96 Depth 2
                                         #     Child Loop BB7_93 Depth 2
                                         #     Child Loop BB7_100 Depth 2
-	slli.d	$t4, $t0, 3
+	slli.d	$t4, $a4, 3
 	ldx.d	$t4, $a5, $t4
 	bgeu	$a2, $t2, .LBB7_90
 # %bb.89:                               #   in Loop: Header=BB7_88 Depth=1
@@ -2177,14 +2186,14 @@ write_unpaired_field:                   # @write_unpaired_field
 	bnez	$t5, .LBB7_93
 # %bb.94:                               # %vec.epilog.middle.block238
                                         #   in Loop: Header=BB7_88 Depth=1
-	move	$t6, $a7
-	beq	$a7, $a2, .LBB7_87
+	move	$t6, $t0
+	beq	$t0, $a2, .LBB7_87
 	b	.LBB7_99
 	.p2align	4, , 16
 .LBB7_95:                               # %vector.body220.preheader
                                         #   in Loop: Header=BB7_88 Depth=1
 	addi.d	$t5, $t4, 16
-	move	$t6, $a6
+	move	$t6, $a7
 	.p2align	4, , 16
 .LBB7_96:                               # %vector.body220
                                         #   Parent Loop BB7_88 Depth=1
@@ -2196,11 +2205,11 @@ write_unpaired_field:                   # @write_unpaired_field
 	bnez	$t6, .LBB7_96
 # %bb.97:                               # %middle.block223
                                         #   in Loop: Header=BB7_88 Depth=1
-	beq	$a6, $a2, .LBB7_87
+	beq	$a7, $a2, .LBB7_87
 # %bb.98:                               # %vec.epilog.iter.check228
                                         #   in Loop: Header=BB7_88 Depth=1
-	move	$t7, $a6
-	move	$t6, $a6
+	move	$t7, $a7
+	move	$t6, $a7
 	bnez	$a3, .LBB7_92
 	.p2align	4, , 16
 .LBB7_99:                               # %vec.epilog.scalar.ph226.preheader
@@ -2211,7 +2220,7 @@ write_unpaired_field:                   # @write_unpaired_field
 .LBB7_100:                              # %vec.epilog.scalar.ph226
                                         #   Parent Loop BB7_88 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.h	$a4, $t4, 0
+	st.h	$a6, $t4, 0
 	addi.d	$t5, $t5, -1
 	addi.d	$t4, $t4, 2
 	bnez	$t5, .LBB7_100

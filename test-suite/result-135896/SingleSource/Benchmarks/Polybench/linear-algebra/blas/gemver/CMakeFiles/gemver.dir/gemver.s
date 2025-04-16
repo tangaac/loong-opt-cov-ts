@@ -375,8 +375,8 @@ main:                                   # @main
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_28 Depth 2
                                         #     Child Loop BB7_26 Depth 2
-	alsl.d	$t2, $a2, $s0, 3
-	alsl.d	$t1, $a2, $s3, 3
+	alsl.d	$t1, $a2, $s0, 3
+	alsl.d	$t2, $a2, $s3, 3
 	beqz	$a3, .LBB7_27
 # %bb.25:                               # %scalar.ph65.preheader
                                         #   in Loop: Header=BB7_24 Depth=1
@@ -387,10 +387,10 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t4, $t0, $t3
 	fldx.d	$fa0, $t4, $s1
-	fld.d	$fa1, $t2, 0
+	fld.d	$fa1, $t1, 0
 	add.d	$t5, $s2, $t3
 	fldx.d	$fa2, $t5, $s1
-	fld.d	$fa3, $t1, 0
+	fld.d	$fa3, $t2, 0
 	add.d	$t5, $s4, $t3
 	fldx.d	$fa4, $t5, $s1
 	fmul.d	$fa1, $fa1, $fa2
@@ -404,10 +404,8 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_27:                               # %vector.body67.preheader
                                         #   in Loop: Header=BB7_24 Depth=1
-	fld.d	$fa0, $t2, 0
-	fld.d	$fa1, $t1, 0
-	vreplvei.d	$vr0, $vr0, 0
-	vreplvei.d	$vr1, $vr1, 0
+	vldrepl.d	$vr0, $t1, 0
+	vldrepl.d	$vr1, $t2, 0
 	move	$t1, $a5
 	.p2align	4, , 16
 .LBB7_28:                               # %vector.body67

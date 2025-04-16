@@ -154,13 +154,12 @@ bigTableSetup:                          # @bigTableSetup
 	srli.d	$a6, $a0, 3
 	vpickve2gr.w	$a7, $vr8, 0
 	bstrins.d	$a6, $a7, 63, 5
-	andi	$a6, $a6, 63
-	slli.d	$a6, $a6, 2
-	ldx.w	$a6, $a2, $a6
 	vand.v	$vr8, $vr0, $vr2
 	vslli.w	$vr9, $vr9, 3
 	vor.v	$vr8, $vr9, $vr8
-	vreplgr2vr.w	$vr9, $a6
+	andi	$a6, $a6, 63
+	alsl.d	$a6, $a6, $a2, 2
+	vldrepl.w	$vr9, $a6, 0
 	vilvh.w	$vr10, $vr3, $vr8
 	vilvl.w	$vr8, $vr3, $vr8
 	vpickve2gr.d	$a6, $vr8, 0

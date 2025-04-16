@@ -230,31 +230,31 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
 	move	$a0, $fp
-	ld.wu	$s3, $s1, 8
 	st.d	$s0, $fp, 0
 	st.w	$zero, $s0, 0
+	ld.wu	$s3, $s1, 8
 	ori	$a1, $zero, 4
-	bstrpick.d	$a2, $s3, 15, 12
+	st.w	$a1, $fp, 12
+	vldrepl.w	$vr1, $s1, 8
+	bstrpick.d	$a1, $s3, 15, 12
+	pcalau12i	$a2, %pc_hi20(_ZL11kPosixTypes)
+	addi.d	$a2, $a2, %pc_lo12(_ZL11kPosixTypes)
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI1_0)
-	vreplgr2vr.w	$vr1, $s3
-	pcalau12i	$a3, %pc_hi20(.LCPI1_1)
-	vld	$vr2, $a3, %pc_lo12(.LCPI1_1)
+	ldx.b	$a1, $a2, $a1
+	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
+	vld	$vr2, $a2, %pc_lo12(.LCPI1_1)
 	vand.v	$vr0, $vr1, $vr0
 	vseqi.w	$vr0, $vr0, 0
 	vrepli.w	$vr3, 45
 	vbitsel.v	$vr2, $vr2, $vr3, $vr0
+	pcalau12i	$a2, %pc_hi20(.LCPI1_2)
+	vld	$vr4, $a2, %pc_lo12(.LCPI1_2)
 	vst	$vr2, $sp, 52
-	pcalau12i	$a3, %pc_hi20(.LCPI1_2)
-	vld	$vr2, $a3, %pc_lo12(.LCPI1_2)
-	pcalau12i	$a3, %pc_hi20(_ZL11kPosixTypes)
-	addi.d	$a3, $a3, %pc_lo12(_ZL11kPosixTypes)
-	ldx.b	$a2, $a3, $a2
-	vand.v	$vr1, $vr1, $vr2
-	pcalau12i	$a3, %pc_hi20(.LCPI1_3)
-	vld	$vr2, $a3, %pc_lo12(.LCPI1_3)
-	st.w	$a1, $fp, 12
-	st.w	$a2, $sp, 48
+	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
+	vld	$vr2, $a2, %pc_lo12(.LCPI1_3)
+	vand.v	$vr1, $vr1, $vr4
+	st.w	$a1, $sp, 48
 	vseqi.w	$vr1, $vr1, 0
 	vbitsel.v	$vr2, $vr2, $vr3, $vr1
 	vst	$vr2, $sp, 68

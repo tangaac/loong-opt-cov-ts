@@ -765,11 +765,12 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	lu12i.w	$a2, 15
 	ori	$a2, $a2, 4092
 .LBB0_8:                                # %APCM_quantization.exit
+	pcalau12i	$a3, %got_pc_hi20(gsm_NRFAC)
+	ld.d	$a4, $a3, %got_pc_lo12(gsm_NRFAC)
 	ori	$a3, $zero, 6
-	pcalau12i	$a4, %got_pc_hi20(gsm_NRFAC)
-	ld.d	$a4, $a4, %got_pc_lo12(gsm_NRFAC)
 	sub.d	$a3, $a3, $a2
 	bstrpick.d	$a5, $a1, 15, 0
+	alsl.d	$a6, $a5, $a4, 1
 	slli.d	$a5, $a5, 1
 	ldx.h	$a4, $a4, $a5
 	st.h	$s3, $sp, 92
@@ -790,7 +791,7 @@ Gsm_RPE_Encoding:                       # @Gsm_RPE_Encoding
 	vreplgr2vr.w	$vr2, $a5
 	vsll.w	$vr0, $vr0, $vr2
 	vsll.w	$vr1, $vr1, $vr2
-	vreplgr2vr.w	$vr2, $a4
+	vldrepl.w	$vr2, $a6, 0
 	vslli.w	$vr1, $vr1, 16
 	vsrai.w	$vr1, $vr1, 16
 	vslli.w	$vr0, $vr0, 16

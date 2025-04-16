@@ -471,28 +471,29 @@ main:                                   # @main
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
+	move	$s0, $a0
 	ori	$s1, $zero, 2
-	pcalau12i	$s5, %pc_hi20(iterations)
-	pcalau12i	$s6, %pc_hi20(init_value)
-	blt	$a0, $s1, .LBB5_3
+	pcalau12i	$s6, %pc_hi20(iterations)
+	pcalau12i	$a0, %pc_hi20(init_value)
+	addi.d	$s5, $a0, %pc_lo12(init_value)
+	blt	$s0, $s1, .LBB5_3
 # %bb.1:
 	move	$fp, $a1
-	move	$s0, $a0
 	ld.d	$a0, $a1, 8
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s5, %pc_lo12(iterations)
+	st.w	$a0, $s6, %pc_lo12(iterations)
 	beq	$s0, $s1, .LBB5_3
 # %bb.2:
 	ld.d	$a0, $fp, 16
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtod)
 	jirl	$ra, $ra, 0
-	fst.d	$fa0, $s6, %pc_lo12(init_value)
+	fst.d	$fa0, $s5, 0
 .LBB5_3:                                # %vector.ph
-	fld.d	$fa0, $s6, %pc_lo12(init_value)
+	fld.d	$fa0, $s5, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
 	vreplgr2vr.w	$vr0, $a0
@@ -622,15 +623,14 @@ main:                                   # @main
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(_Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s5, %pc_lo12(iterations)
+	ld.w	$a0, $s6, %pc_lo12(iterations)
 	bstrpick.d	$a1, $a0, 62, 61
 	add.w	$a0, $a0, $a1
 	srli.d	$a0, $a0, 2
-	fld.d	$fa0, $s6, %pc_lo12(init_value)
-	st.w	$a0, $s5, %pc_lo12(iterations)
+	st.w	$a0, $s6, %pc_lo12(iterations)
+	vldrepl.d	$vr0, $s5, 0
 	pcalau12i	$a0, %pc_hi20(dataDouble+16)
 	addi.d	$a0, $a0, %pc_lo12(dataDouble+16)
-	vreplvei.d	$vr0, $vr0, 0
 	.p2align	4, , 16
 .LBB5_6:                                # %vector.body9
                                         # =>This Inner Loop Header: Depth=1

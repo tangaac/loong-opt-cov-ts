@@ -197,10 +197,10 @@ offset_momentum:                        # @offset_momentum
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa2, $a2, 0
 	vld	$vr3, $a2, -24
-	fld.d	$fa4, $a2, -8
-	vreplvei.d	$vr5, $vr2, 0
-	vfmadd.d	$vr1, $vr3, $vr5, $vr1
-	fmadd.d	$fa0, $fa4, $fa2, $fa0
+	vldrepl.d	$vr4, $a2, 0
+	fld.d	$fa5, $a2, -8
+	vfmadd.d	$vr1, $vr3, $vr4, $vr1
+	fmadd.d	$fa0, $fa5, $fa2, $fa0
 	addi.d	$a0, $a0, -1
 	addi.d	$a2, $a2, 56
 	bnez	$a0, .LBB2_2

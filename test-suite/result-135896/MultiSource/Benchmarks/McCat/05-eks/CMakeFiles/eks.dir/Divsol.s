@@ -81,8 +81,7 @@ HouseMatrix:                            # @HouseMatrix
 	bltu	$a4, $t7, .LBB0_10
 .LBB0_7:                                # %vector.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	fld.d	$fa2, $t5, 0
-	vreplvei.d	$vr2, $vr2, 0
+	vldrepl.d	$vr2, $t5, 0
 	vbitrevi.d	$vr2, $vr2, 63
 	vfmul.d	$vr2, $vr1, $vr2
 	add.d	$t7, $t6, $t1
@@ -188,36 +187,34 @@ ApplyHouse:                             # @ApplyHouse
 	.p2align	4, , 16
 .LBB1_4:                                # %vector.body
                                         #   in Loop: Header=BB1_1 Depth=1
-	fld.d	$fa1, $a5, 0
-	vld	$vr2, $s2, 0
-	vld	$vr3, $s2, 16
-	vld	$vr4, $a4, 0
-	vld	$vr5, $a4, 16
-	vreplvei.d	$vr1, $vr1, 0
-	vbitrevi.d	$vr1, $vr1, 63
-	vfmul.d	$vr1, $vr0, $vr1
-	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	vfmadd.d	$vr3, $vr1, $vr3, $vr5
-	vld	$vr4, $s2, 32
-	vld	$vr5, $s2, 48
+	vld	$vr1, $s2, 0
+	vld	$vr2, $s2, 16
+	vld	$vr3, $a4, 0
+	vld	$vr4, $a4, 16
+	vldrepl.d	$vr5, $a5, 0
+	vbitrevi.d	$vr5, $vr5, 63
+	vfmul.d	$vr5, $vr0, $vr5
+	vfmadd.d	$vr1, $vr5, $vr1, $vr3
+	vfmadd.d	$vr2, $vr5, $vr2, $vr4
+	vld	$vr3, $s2, 32
+	vld	$vr4, $s2, 48
 	vld	$vr6, $a4, 32
 	vld	$vr7, $a4, 48
-	vst	$vr2, $a4, 0
-	vst	$vr3, $a4, 16
-	vfmadd.d	$vr2, $vr1, $vr4, $vr6
-	vfmadd.d	$vr3, $vr1, $vr5, $vr7
-	vst	$vr2, $a4, 32
-	vld	$vr2, $s2, 64
-	vld	$vr4, $a4, 64
-	vld	$vr5, $s2, 80
-	vld	$vr6, $a4, 80
-	vst	$vr3, $a4, 48
-	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa3, $a5, 0
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vst	$vr2, $a4, 64
-	vst	$vr1, $a4, 80
-	vreplvei.d	$vr1, $vr3, 0
+	vst	$vr1, $a4, 0
+	vst	$vr2, $a4, 16
+	vfmadd.d	$vr1, $vr5, $vr3, $vr6
+	vfmadd.d	$vr2, $vr5, $vr4, $vr7
+	vld	$vr3, $s2, 64
+	vld	$vr4, $s2, 80
+	vld	$vr6, $a4, 64
+	vld	$vr7, $a4, 80
+	vst	$vr1, $a4, 32
+	vst	$vr2, $a4, 48
+	vfmadd.d	$vr1, $vr5, $vr3, $vr6
+	vfmadd.d	$vr2, $vr5, $vr4, $vr7
+	vst	$vr1, $a4, 64
+	vst	$vr2, $a4, 80
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 96
 	vld	$vr3, $s2, 112
 	vld	$vr4, $a4, 96
@@ -225,11 +222,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 96
 	vst	$vr1, $a4, 112
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 128
 	vld	$vr3, $s2, 144
 	vld	$vr4, $a4, 128
@@ -237,11 +233,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 128
 	vst	$vr1, $a4, 144
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 160
 	vld	$vr3, $s2, 176
 	vld	$vr4, $a4, 160
@@ -249,11 +244,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 160
 	vst	$vr1, $a4, 176
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 192
 	vld	$vr3, $s2, 208
 	vld	$vr4, $a4, 192
@@ -261,11 +255,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 192
 	vst	$vr1, $a4, 208
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 224
 	vld	$vr3, $s2, 240
 	vld	$vr4, $a4, 224
@@ -273,11 +266,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 224
 	vst	$vr1, $a4, 240
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 256
 	vld	$vr3, $s2, 272
 	vld	$vr4, $a4, 256
@@ -285,11 +277,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 256
 	vst	$vr1, $a4, 272
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 288
 	vld	$vr3, $s2, 304
 	vld	$vr4, $a4, 288
@@ -297,11 +288,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 288
 	vst	$vr1, $a4, 304
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 320
 	vld	$vr3, $s2, 336
 	vld	$vr4, $a4, 320
@@ -309,11 +299,10 @@ ApplyHouse:                             # @ApplyHouse
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a5, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a4, 320
 	vst	$vr1, $a4, 336
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a5, 0
 	vld	$vr2, $s2, 352
 	vld	$vr3, $s2, 368
 	vld	$vr4, $a4, 352
@@ -721,36 +710,34 @@ DivideAndSolve:                         # @DivideAndSolve
 	.p2align	4, , 16
 .LBB3_16:                               # %vector.body132
                                         #   in Loop: Header=BB3_13 Depth=3
-	fld.d	$fa1, $a2, 0
-	vld	$vr2, $s0, 0
-	vld	$vr3, $s0, 16
-	vld	$vr4, $a1, 0
-	vld	$vr5, $a1, 16
-	vreplvei.d	$vr1, $vr1, 0
-	vbitrevi.d	$vr1, $vr1, 63
-	vfmul.d	$vr1, $vr0, $vr1
-	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	vfmadd.d	$vr3, $vr1, $vr3, $vr5
-	vld	$vr4, $s0, 32
-	vld	$vr5, $s0, 48
+	vld	$vr1, $s0, 0
+	vld	$vr2, $s0, 16
+	vld	$vr3, $a1, 0
+	vld	$vr4, $a1, 16
+	vldrepl.d	$vr5, $a2, 0
+	vbitrevi.d	$vr5, $vr5, 63
+	vfmul.d	$vr5, $vr0, $vr5
+	vfmadd.d	$vr1, $vr5, $vr1, $vr3
+	vfmadd.d	$vr2, $vr5, $vr2, $vr4
+	vld	$vr3, $s0, 32
+	vld	$vr4, $s0, 48
 	vld	$vr6, $a1, 32
 	vld	$vr7, $a1, 48
-	vst	$vr2, $a1, 0
-	vst	$vr3, $a1, 16
-	vfmadd.d	$vr2, $vr1, $vr4, $vr6
-	vfmadd.d	$vr3, $vr1, $vr5, $vr7
-	vst	$vr2, $a1, 32
-	vld	$vr2, $s0, 64
-	vld	$vr4, $a1, 64
-	vld	$vr5, $s0, 80
-	vld	$vr6, $a1, 80
-	vst	$vr3, $a1, 48
-	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa3, $a2, 0
-	vfmadd.d	$vr1, $vr1, $vr5, $vr6
-	vst	$vr2, $a1, 64
-	vst	$vr1, $a1, 80
-	vreplvei.d	$vr1, $vr3, 0
+	vst	$vr1, $a1, 0
+	vst	$vr2, $a1, 16
+	vfmadd.d	$vr1, $vr5, $vr3, $vr6
+	vfmadd.d	$vr2, $vr5, $vr4, $vr7
+	vld	$vr3, $s0, 64
+	vld	$vr4, $s0, 80
+	vld	$vr6, $a1, 64
+	vld	$vr7, $a1, 80
+	vst	$vr1, $a1, 32
+	vst	$vr2, $a1, 48
+	vfmadd.d	$vr1, $vr5, $vr3, $vr6
+	vfmadd.d	$vr2, $vr5, $vr4, $vr7
+	vst	$vr1, $a1, 64
+	vst	$vr2, $a1, 80
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 96
 	vld	$vr3, $s0, 112
 	vld	$vr4, $a1, 96
@@ -758,11 +745,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 96
 	vst	$vr1, $a1, 112
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 128
 	vld	$vr3, $s0, 144
 	vld	$vr4, $a1, 128
@@ -770,11 +756,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 128
 	vst	$vr1, $a1, 144
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 160
 	vld	$vr3, $s0, 176
 	vld	$vr4, $a1, 160
@@ -782,11 +767,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 160
 	vst	$vr1, $a1, 176
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 192
 	vld	$vr3, $s0, 208
 	vld	$vr4, $a1, 192
@@ -794,11 +778,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 192
 	vst	$vr1, $a1, 208
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 224
 	vld	$vr3, $s0, 240
 	vld	$vr4, $a1, 224
@@ -806,11 +789,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 224
 	vst	$vr1, $a1, 240
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 256
 	vld	$vr3, $s0, 272
 	vld	$vr4, $a1, 256
@@ -818,11 +800,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 256
 	vst	$vr1, $a1, 272
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 288
 	vld	$vr3, $s0, 304
 	vld	$vr4, $a1, 288
@@ -830,11 +811,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 288
 	vst	$vr1, $a1, 304
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 320
 	vld	$vr3, $s0, 336
 	vld	$vr4, $a1, 320
@@ -842,11 +822,10 @@ DivideAndSolve:                         # @DivideAndSolve
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmul.d	$vr1, $vr0, $vr1
 	vfmadd.d	$vr2, $vr1, $vr2, $vr4
-	fld.d	$fa4, $a2, 0
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vst	$vr2, $a1, 320
 	vst	$vr1, $a1, 336
-	vreplvei.d	$vr1, $vr4, 0
+	vldrepl.d	$vr1, $a2, 0
 	vld	$vr2, $s0, 352
 	vld	$vr3, $s0, 368
 	vld	$vr4, $a1, 352

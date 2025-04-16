@@ -642,8 +642,9 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_1:                                # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
-	ldx.w	$a3, $a2, $fp
-	vreplgr2vr.w	$vr0, $a3
+	add.d	$a3, $fp, $a2
+	ldx.w	$a4, $a2, $fp
+	vldrepl.w	$vr0, $a3, 0
 	vst	$vr0, $a0, -116
 	vst	$vr0, $a0, -132
 	vst	$vr0, $a0, -84
@@ -652,8 +653,8 @@ main:                                   # @main
 	vst	$vr0, $a0, -68
 	vst	$vr0, $a0, -20
 	vst	$vr0, $a0, -36
-	st.w	$a3, $a0, -4
-	st.w	$a3, $a0, 0
+	st.w	$a4, $a0, -4
+	st.w	$a4, $a0, 0
 	addi.d	$a0, $a0, 800
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 804

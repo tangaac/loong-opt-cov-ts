@@ -264,13 +264,13 @@ endgame:                                # @endgame
 	b	.LBB0_12
 .LBB0_15:                               # %.preheader32
 	pcalau12i	$a0, %got_pc_hi20(mymove)
-	ld.d	$a0, $a0, %got_pc_lo12(mymove)
-	pcalau12i	$a1, %got_pc_hi20(umove)
-	ld.d	$a1, $a1, %got_pc_lo12(umove)
-	ld.w	$a0, $a0, 0
-	ld.w	$a1, $a1, 0
-	vreplgr2vr.w	$vr0, $a0
-	vreplgr2vr.w	$vr1, $a1
+	ld.d	$a2, $a0, %got_pc_lo12(mymove)
+	pcalau12i	$a0, %got_pc_hi20(umove)
+	ld.d	$a3, $a0, %got_pc_lo12(umove)
+	ld.w	$a0, $a2, 0
+	ld.w	$a1, $a3, 0
+	vldrepl.w	$vr0, $a2, 0
+	vldrepl.w	$vr1, $a3, 0
 	vrepli.b	$vr2, 0
 	ori	$a2, $zero, 151
 	vrepli.b	$vr3, -1

@@ -895,29 +895,28 @@ _ZN3QCS11setQCnForceEPKdS1_S1_P7double2ii: # @_ZN3QCS11setQCnForceEPKdS1_S1_P7do
 	ldx.w	$t3, $a2, $t1
 	ldx.w	$t1, $a3, $t1
 	ld.w	$t4, $a6, 0
+	ld.w	$t5, $a7, 0
 	slli.d	$t2, $t2, 4
 	slli.d	$t3, $t3, 4
 	slli.d	$t1, $t1, 3
 	fldx.d	$fa0, $s7, $t1
 	vldx	$vr1, $s6, $t2
 	vldx	$vr2, $s6, $t3
-	fld.d	$fa3, $t0, 0
-	ld.w	$t1, $a7, 0
+	vldrepl.d	$vr3, $t0, 0
 	frecip.d	$fa0, $fa0
 	vfsub.d	$vr1, $vr1, $vr2
-	vreplvei.d	$vr2, $vr3, 0
-	vfmul.d	$vr1, $vr1, $vr2
+	vfmul.d	$vr1, $vr1, $vr3
 	vreplvei.d	$vr0, $vr0, 0
 	vfmul.d	$vr0, $vr1, $vr0
 	vst	$vr0, $a4, -16
-	slli.d	$t3, $t4, 4
-	slli.d	$t1, $t1, 3
-	fldx.d	$fa0, $s7, $t1
-	vldx	$vr1, $s6, $t3
-	vldx	$vr3, $s6, $t2
+	slli.d	$t1, $t4, 4
+	slli.d	$t3, $t5, 3
+	fldx.d	$fa0, $s7, $t3
+	vldx	$vr1, $s6, $t1
+	vldx	$vr2, $s6, $t2
 	frecip.d	$fa0, $fa0
-	vfsub.d	$vr1, $vr1, $vr3
-	vfmul.d	$vr1, $vr2, $vr1
+	vfsub.d	$vr1, $vr1, $vr2
+	vfmul.d	$vr1, $vr3, $vr1
 	vreplvei.d	$vr0, $vr0, 0
 	vfmul.d	$vr0, $vr1, $vr0
 	vst	$vr0, $a4, 0
@@ -1044,30 +1043,27 @@ _ZN3QCS8setForceEPKdPK7double2PdPS2_ii: # @_ZN3QCS8setForceEPKdPK7double2PdPS2_i
 	sub.w	$t0, $t0, $fp
 	slli.d	$t1, $t1, 3
 	fldx.d	$fa0, $s5, $t1
-	fld.d	$fa1, $a6, 0
-	fld.d	$fa2, $a7, 0
-	slli.d	$t1, $t0, 3
-	slli.w	$t0, $t0, 1
-	addi.w	$t2, $t0, 1
+	alsl.d	$t1, $t0, $a0, 3
+	slli.w	$t2, $t0, 1
+	alsl.d	$t0, $t0, $s0, 3
+	addi.w	$t3, $t2, 1
+	vld	$vr1, $a4, -16
+	vldrepl.d	$vr2, $a6, 0
+	vld	$vr3, $a4, 0
+	slli.d	$t3, $t3, 4
 	slli.d	$t2, $t2, 4
-	fldx.d	$fa3, $s0, $t1
-	vld	$vr4, $a4, -16
-	slli.d	$t0, $t0, 4
-	vld	$vr5, $a4, 0
-	vreplvei.d	$vr1, $vr1, 0
-	vfmul.d	$vr1, $vr1, $vr4
-	fldx.d	$fa4, $a0, $t1
-	vfadd.d	$vr1, $vr1, $vr5
-	vreplvei.d	$vr2, $vr2, 0
+	vfmul.d	$vr1, $vr2, $vr1
+	vfadd.d	$vr1, $vr1, $vr3
+	vldrepl.d	$vr2, $a7, 0
+	vldx	$vr3, $s1, $t3
+	vldrepl.d	$vr4, $t0, 0
+	vldx	$vr5, $s1, $t2
 	vfmul.d	$vr1, $vr1, $vr2
-	vldx	$vr2, $s1, $t2
-	vldx	$vr5, $s1, $t0
+	vldrepl.d	$vr2, $t1, 0
+	vfmul.d	$vr3, $vr4, $vr3
+	vfadd.d	$vr3, $vr3, $vr5
 	frecip.d	$fa0, $fa0
-	vreplvei.d	$vr3, $vr3, 0
 	vfmul.d	$vr2, $vr3, $vr2
-	vfadd.d	$vr2, $vr2, $vr5
-	vreplvei.d	$vr3, $vr4, 0
-	vfmul.d	$vr2, $vr2, $vr3
 	vfadd.d	$vr1, $vr1, $vr2
 	vreplvei.d	$vr0, $vr0, 0
 	vfmul.d	$vr0, $vr0, $vr1

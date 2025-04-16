@@ -1373,8 +1373,7 @@ foldrna:                                # @foldrna
 	bnez	$a0, .LBB1_141
 # %bb.138:                              # %vector.ph673
                                         #   in Loop: Header=BB1_122 Depth=1
-	fld.s	$fa1, $a1, 0
-	vreplvei.w	$vr1, $vr1, 0
+	vldrepl.w	$vr1, $a1, 0
 	addi.d	$a0, $t8, 16
 	addi.d	$a1, $fp, 16
 	move	$s1, $t2
@@ -1445,8 +1444,7 @@ foldrna:                                # @foldrna
 	bnez	$a0, .LBB1_134
 # %bb.145:                              # %vector.ph649
                                         #   in Loop: Header=BB1_122 Depth=1
-	fld.s	$fa1, $a1, 0
-	vreplvei.w	$vr1, $vr1, 0
+	vldrepl.w	$vr1, $a1, 0
 	addi.d	$a0, $t8, 16
 	addi.d	$a1, $fp, 16
 	move	$s1, $t2

@@ -329,8 +329,9 @@ MapLoad:                                # @MapLoad
 	addi.d	$fp, $fp, 8
 	bnez	$s1, .LBB0_4
 .LBB0_6:                                # %._crit_edge
-	pcalau12i	$fp, %pc_hi20(notdef_word)
-	ld.d	$a0, $fp, %pc_lo12(notdef_word)
+	pcalau12i	$a0, %pc_hi20(notdef_word)
+	addi.d	$fp, $a0, %pc_lo12(notdef_word)
+	ld.d	$a0, $fp, 0
 	bnez	$a0, .LBB0_8
 # %bb.7:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
@@ -342,7 +343,7 @@ MapLoad:                                # @MapLoad
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
 	ld.w	$s0, $s5, %pc_lo12(maptop)
-	st.d	$a0, $fp, %pc_lo12(notdef_word)
+	st.d	$a0, $fp, 0
 .LBB0_8:
 	ori	$a0, $zero, 20
 	addi.d	$a1, $s2, 32
@@ -448,55 +449,54 @@ MapLoad:                                # @MapLoad
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI0_0)
-	vst	$vr0, $s6, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr2, $a0, %pc_lo12(.LCPI0_3)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_3)
+	vst	$vr0, $s6, 0
+	vst	$vr1, $s6, 16
+	vst	$vr2, $s6, 32
+	vst	$vr3, $s6, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_4)
-	vst	$vr0, $s6, 16
-	vst	$vr1, $s6, 32
-	vst	$vr2, $s6, 48
-	vst	$vr3, $s6, 64
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_5)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_5)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_6)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_7)
-	vld	$vr2, $a0, %pc_lo12(.LCPI0_7)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_7)
+	vst	$vr0, $s6, 64
+	vst	$vr1, $s6, 80
+	vst	$vr2, $s6, 96
+	vst	$vr3, $s6, 112
 	pcalau12i	$a0, %pc_hi20(.LCPI0_8)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_8)
-	vst	$vr0, $s6, 80
-	vst	$vr1, $s6, 96
-	vst	$vr2, $s6, 112
-	vst	$vr3, $s6, 128
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_8)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_9)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_9)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_9)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_10)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_10)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_10)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
-	vld	$vr2, $a0, %pc_lo12(.LCPI0_11)
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_11)
+	vst	$vr0, $s6, 128
+	vst	$vr1, $s6, 144
+	vst	$vr2, $s6, 160
+	vst	$vr3, $s6, 176
 	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
-	vld	$vr3, $a0, %pc_lo12(.LCPI0_12)
-	vst	$vr0, $s6, 144
-	vst	$vr1, $s6, 160
-	vst	$vr2, $s6, 176
-	vst	$vr3, $s6, 192
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_12)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_13)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_13)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_13)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_14)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_14)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_14)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
-	vld	$vr2, $a0, %pc_lo12(.LCPI0_15)
-	vst	$vr0, $s6, 208
-	ld.d	$a0, $fp, %pc_lo12(notdef_word)
-	vst	$vr1, $s6, 224
-	vst	$vr2, $s6, 240
+	vld	$vr3, $a0, %pc_lo12(.LCPI0_15)
+	vst	$vr0, $s6, 192
+	vst	$vr1, $s6, 208
+	vst	$vr2, $s6, 224
+	vst	$vr3, $s6, 240
+	vldrepl.d	$vr0, $fp, 0
 	addi.d	$s2, $s1, 32
-	vreplgr2vr.d	$vr0, $a0
 	vst	$vr0, $s1, 32
 	vst	$vr0, $s1, 48
 	vst	$vr0, $s1, 64

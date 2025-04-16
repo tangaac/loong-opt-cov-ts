@@ -166,10 +166,10 @@ procesnet:                              # @procesnet
 # %bb.10:                               # %.preheader324.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(numnodes)
-	ld.d	$a0, $a0, %got_pc_lo12(numnodes)
-	ld.w	$a0, $a0, 0
+	ld.d	$a1, $a0, %got_pc_lo12(numnodes)
+	ld.w	$a0, $a1, 0
+	vldrepl.w	$vr0, $a1, 0
 	move	$s0, $zero
-	vreplgr2vr.w	$vr0, $a0
 	ori	$a1, $zero, 1
 	b	.LBB0_12
 	.p2align	4, , 16

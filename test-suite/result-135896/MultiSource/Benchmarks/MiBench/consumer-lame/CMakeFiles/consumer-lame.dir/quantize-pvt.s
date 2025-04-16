@@ -3117,11 +3117,10 @@ bin_search_StepSize2:                   # @bin_search_StepSize2
 quantize_xrpow:                         # @quantize_xrpow
 # %bb.0:
 	ld.wu	$a2, $a2, 12
-	slli.d	$a2, $a2, 3
 	pcalau12i	$a3, %pc_hi20(ipow20)
 	addi.d	$a3, $a3, %pc_lo12(ipow20)
-	fldx.d	$fa0, $a3, $a2
-	vreplvei.d	$vr0, $vr0, 0
+	alsl.d	$a2, $a2, $a3, 3
+	vldrepl.d	$vr0, $a2, 0
 	ori	$a2, $zero, 73
 	pcalau12i	$a3, %pc_hi20(adj43)
 	addi.d	$a3, $a3, %pc_lo12(adj43)
@@ -3251,14 +3250,15 @@ quantize_xrpow:                         # @quantize_xrpow
 quantize_xrpow_ISO:                     # @quantize_xrpow_ISO
 # %bb.0:                                # %vector.ph
 	ld.wu	$a2, $a2, 12
-	slli.d	$a2, $a2, 3
 	pcalau12i	$a3, %pc_hi20(ipow20)
 	addi.d	$a3, $a3, %pc_lo12(ipow20)
-	fldx.d	$fa0, $a3, $a2
-	pcalau12i	$a2, %pc_hi20(.LCPI13_0)
-	fld.d	$fa1, $a2, %pc_lo12(.LCPI13_0)
+	slli.d	$a4, $a2, 3
+	fldx.d	$fa0, $a3, $a4
+	pcalau12i	$a4, %pc_hi20(.LCPI13_0)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI13_0)
+	alsl.d	$a2, $a2, $a3, 3
 	fdiv.d	$fa1, $fa1, $fa0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $a2, 0
 	vreplvei.d	$vr1, $vr1, 0
 	addi.d	$a0, $a0, 16
 	lu12i.w	$a2, -1

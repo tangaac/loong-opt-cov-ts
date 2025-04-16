@@ -358,12 +358,12 @@ generate_tracks:                        # @generate_tracks
 	ori	$a3, $zero, 1
 	blt	$s4, $a3, .LBB4_18
 # %bb.9:                                # %.preheader78.lr.ph.split.us
-	ld.w	$a6, $fp, 88
 	move	$a3, $zero
 	move	$a4, $zero
+	ld.w	$a6, $fp, 88
 	bstrpick.d	$a5, $s4, 30, 2
 	slli.d	$a5, $a5, 2
-	vreplgr2vr.d	$vr0, $a6
+	vldrepl.d	$vr0, $fp, 88
 	slli.d	$a7, $a6, 5
 	alsl.d	$a6, $a6, $a7, 3
 	vld	$vr1, $a2, %pc_lo12(.LCPI4_0)

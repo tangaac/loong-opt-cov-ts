@@ -527,22 +527,22 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(assemble)
 	jirl	$ra, $ra, 0
 	ld.hu	$a0, $s6, %pc_lo12(inter)
-	ld.h	$a1, $s5, %pc_lo12(c)
-	vld	$vr0, $s1, 0
-	srli.d	$a2, $a0, 8
-	vreplgr2vr.b	$vr1, $a1
-	vxor.v	$vr0, $vr0, $vr1
-	vst	$vr0, $s1, 0
-	vld	$vr0, $s1, 16
-	st.h	$a2, $s7, %pc_lo12(cfc)
+	srli.d	$a1, $a0, 8
+	st.h	$a1, $s7, %pc_lo12(cfc)
 	andi	$a0, $a0, 255
 	st.h	$a0, $s8, %pc_lo12(cfd)
+	ld.h	$a2, $s5, %pc_lo12(c)
+	vld	$vr0, $s1, 0
+	vldrepl.b	$vr1, $s5, %pc_lo12(c)
+	vld	$vr2, $s1, 16
 	vxor.v	$vr0, $vr0, $vr1
+	vst	$vr0, $s1, 0
+	vxor.v	$vr0, $vr2, $vr1
 	vst	$vr0, $s1, 16
 	ori	$a3, $zero, 32
 	st.h	$a3, $fp, %pc_lo12(compte)
-	xor	$a0, $a0, $a1
 	xor	$a0, $a0, $a2
+	xor	$a0, $a0, $a1
 	ext.w.h	$a1, $a0
 	st.h	$a0, $s5, %pc_lo12(c)
 	srai.d	$a1, $a1, 4

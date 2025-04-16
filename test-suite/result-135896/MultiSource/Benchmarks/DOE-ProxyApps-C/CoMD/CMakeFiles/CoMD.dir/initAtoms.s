@@ -600,20 +600,20 @@ setVcm:                                 # @setVcm
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(profileStop)
 	jirl	$ra, $ra, 0
+	fld.d	$fa1, $sp, 24
+	fld.d	$fa3, $sp, 16
+	vld	$vr0, $sp, 0
+	vldrepl.d	$vr2, $sp, 24
 	ld.d	$a3, $fp, 24
 	ld.w	$a0, $a3, 12
 	blt	$a0, $s1, .LBB3_12
 # %bb.7:                                # %.lr.ph33
-	fld.d	$fa0, $sp, 24
-	fld.d	$fa1, $sp, 16
 	move	$a1, $zero
 	move	$a2, $zero
-	fdiv.d	$fa1, $fa1, $fa0
-	vld	$vr2, $sp, 0
-	vreplvei.d	$vr0, $vr0, 0
+	fdiv.d	$fa1, $fa3, $fa1
 	vld	$vr3, $s0, 0
 	fld.d	$fa4, $s0, 16
-	vfdiv.d	$vr0, $vr2, $vr0
+	vfdiv.d	$vr0, $vr0, $vr2
 	ld.d	$a3, $a3, 120
 	vfsub.d	$vr0, $vr3, $vr0
 	fsub.d	$fa1, $fa4, $fa1
@@ -650,11 +650,11 @@ setVcm:                                 # @setVcm
 	alsl.d	$t1, $t1, $a6, 4
 	fld.d	$fa2, $t1, 8
 	vld	$vr3, $a7, -16
-	fld.d	$fa4, $a7, 0
-	vreplvei.d	$vr5, $vr2, 0
-	vfmadd.d	$vr3, $vr5, $vr0, $vr3
+	vldrepl.d	$vr4, $t1, 8
+	fld.d	$fa5, $a7, 0
+	vfmadd.d	$vr3, $vr4, $vr0, $vr3
 	vst	$vr3, $a7, -16
-	fmadd.d	$fa2, $fa2, $fa1, $fa4
+	fmadd.d	$fa2, $fa2, $fa1, $fa5
 	fst.d	$fa2, $a7, 0
 	addi.d	$a7, $a7, 24
 	addi.w	$a5, $a5, -1

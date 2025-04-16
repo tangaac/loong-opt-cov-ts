@@ -19190,7 +19190,7 @@ s113:                                   # @s113
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_3 Depth 2
 	fld.d	$fa0, $fp, 0
-	vreplvei.d	$vr1, $vr0, 0
+	vldrepl.d	$vr1, $fp, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a1, $fp
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
@@ -19729,18 +19729,17 @@ s115:                                   # @s115
                                         #   Parent Loop BB14_3 Depth=1
                                         #     Parent Loop BB14_5 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	fld.d	$fa0, $a6, 0
-	vld	$vr1, $t3, -16
-	vld	$vr2, $t3, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vld	$vr0, $t3, -16
+	vld	$vr1, $t3, 0
+	vldrepl.d	$vr2, $a6, 0
 	vld	$vr3, $t4, -16
 	vld	$vr4, $t4, 0
+	vbitrevi.d	$vr0, $vr0, 63
 	vbitrevi.d	$vr1, $vr1, 63
-	vbitrevi.d	$vr2, $vr2, 63
-	vfmadd.d	$vr1, $vr1, $vr0, $vr3
-	vfmadd.d	$vr0, $vr2, $vr0, $vr4
-	vst	$vr1, $t4, -16
-	vst	$vr0, $t4, 0
+	vfmadd.d	$vr0, $vr0, $vr2, $vr3
+	vfmadd.d	$vr1, $vr1, $vr2, $vr4
+	vst	$vr0, $t4, -16
+	vst	$vr1, $t4, 0
 	addi.d	$t2, $t2, -4
 	addi.d	$t4, $t4, 32
 	addi.d	$t3, $t3, 32

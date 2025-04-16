@@ -559,95 +559,94 @@ Reference_IDCT:                         # @Reference_IDCT
 	vst	$vr2, $sp, 272                  # 16-byte Folded Spill
 	vreplvei.d	$vr1, $vr1, 0
 	vst	$vr1, $sp, 256                  # 16-byte Folded Spill
+	vld	$vr1, $a1, 32
+	vld	$vr2, $a1, 96
+	vld	$vr3, $a1, 160
 	vreplvei.d	$vr0, $vr0, 0
 	vst	$vr0, $sp, 240                  # 16-byte Folded Spill
-	vld	$vr0, $a1, 32
-	vld	$vr1, $a1, 96
-	vld	$vr2, $a1, 160
-	vld	$vr3, $a1, 224
-	vreplvei.d	$vr0, $vr0, 0
+	vreplvei.d	$vr0, $vr1, 0
 	vst	$vr0, $sp, 224                  # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr1, 0
+	vreplvei.d	$vr0, $vr2, 0
 	vst	$vr0, $sp, 208                  # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr2, 0
+	vreplvei.d	$vr0, $vr3, 0
 	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr3, 0
+	vld	$vr0, $a1, 224
+	vld	$vr1, $a1, 288
+	vld	$vr2, $a1, 352
+	vld	$vr3, $a1, 416
+	vreplvei.d	$vr0, $vr0, 0
 	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
-	vld	$vr0, $a1, 288
-	vld	$vr1, $a1, 352
-	vld	$vr2, $a1, 416
-	vld	$vr3, $a1, 480
-	vreplvei.d	$vr0, $vr0, 0
+	vreplvei.d	$vr0, $vr1, 0
 	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr1, 0
+	vreplvei.d	$vr0, $vr2, 0
 	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr2, 0
+	vreplvei.d	$vr0, $vr3, 0
 	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr3, 0
+	vld	$vr0, $a1, 480
+	vld	$vr1, $a1, 40
+	vld	$vr2, $a1, 104
+	vld	$vr3, $a1, 168
+	vreplvei.d	$vr0, $vr0, 0
 	vst	$vr0, $sp, 112                  # 16-byte Folded Spill
-	vld	$vr0, $a1, 40
-	vld	$vr1, $a1, 104
-	vld	$vr2, $a1, 168
-	vld	$vr3, $a1, 232
-	vreplvei.d	$vr0, $vr0, 0
+	vreplvei.d	$vr0, $vr1, 0
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
-	vreplvei.d	$vr0, $vr1, 0
-	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vreplvei.d	$vr0, $vr2, 0
-	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	vreplvei.d	$vr0, $vr3, 0
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	vld	$vr0, $a1, 296
-	vld	$vr1, $a1, 360
-	vld	$vr2, $a1, 424
-	vld	$vr3, $a1, 488
+	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
+	vld	$vr0, $a1, 232
+	vld	$vr1, $a1, 296
+	vld	$vr2, $a1, 360
+	vld	$vr3, $a1, 424
 	vreplvei.d	$vr0, $vr0, 0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	vreplvei.d	$vr0, $vr1, 0
+	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
+	vreplvei.d	$vr0, $vr2, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vreplvei.d	$vr14, $vr2, 0
-	vreplvei.d	$vr15, $vr3, 0
-	vld	$vr0, $a1, 48
-	vld	$vr1, $a1, 112
-	vld	$vr2, $a1, 176
-	vld	$vr3, $a1, 240
-	vreplvei.d	$vr16, $vr0, 0
-	vreplvei.d	$vr17, $vr1, 0
-	vreplvei.d	$vr18, $vr2, 0
-	vreplvei.d	$vr19, $vr3, 0
-	vld	$vr0, $a1, 304
-	vld	$vr1, $a1, 368
-	vld	$vr2, $a1, 432
-	vld	$vr3, $a1, 496
-	vreplvei.d	$vr20, $vr0, 0
-	vreplvei.d	$vr21, $vr1, 0
-	vreplvei.d	$vr22, $vr2, 0
-	vreplvei.d	$vr23, $vr3, 0
-	vld	$vr0, $a1, 56
-	vld	$vr1, $a1, 120
-	vld	$vr2, $a1, 184
-	vld	$vr3, $a1, 248
-	vreplvei.d	$vr24, $vr0, 0
-	vreplvei.d	$vr25, $vr1, 0
-	vreplvei.d	$vr26, $vr2, 0
-	vreplvei.d	$vr27, $vr3, 0
-	vld	$vr0, $a1, 312
-	vld	$vr1, $a1, 376
-	vld	$vr2, $a1, 440
-	fld.d	$fa3, $a1, 504
-	vreplvei.d	$vr28, $vr0, 0
-	vreplvei.d	$vr29, $vr1, 0
-	vreplvei.d	$vr30, $vr2, 0
-	vreplvei.d	$vr31, $vr3, 0
+	vreplvei.d	$vr14, $vr3, 0
+	vld	$vr0, $a1, 488
+	vld	$vr1, $a1, 48
+	vld	$vr2, $a1, 112
+	vld	$vr3, $a1, 176
+	vreplvei.d	$vr15, $vr0, 0
+	vreplvei.d	$vr16, $vr1, 0
+	vreplvei.d	$vr17, $vr2, 0
+	vreplvei.d	$vr18, $vr3, 0
+	vld	$vr0, $a1, 240
+	vld	$vr1, $a1, 304
+	vld	$vr2, $a1, 368
+	vld	$vr3, $a1, 432
+	vreplvei.d	$vr19, $vr0, 0
+	vreplvei.d	$vr20, $vr1, 0
+	vreplvei.d	$vr21, $vr2, 0
+	vreplvei.d	$vr22, $vr3, 0
+	vld	$vr0, $a1, 496
+	vld	$vr1, $a1, 56
+	vld	$vr2, $a1, 120
+	vld	$vr3, $a1, 184
+	vreplvei.d	$vr23, $vr0, 0
+	vreplvei.d	$vr24, $vr1, 0
+	vreplvei.d	$vr25, $vr2, 0
+	vreplvei.d	$vr26, $vr3, 0
+	vld	$vr0, $a1, 248
+	vld	$vr1, $a1, 312
+	vld	$vr2, $a1, 376
+	vld	$vr3, $a1, 440
+	vreplvei.d	$vr27, $vr0, 0
+	vreplvei.d	$vr28, $vr1, 0
+	vreplvei.d	$vr29, $vr2, 0
+	vreplvei.d	$vr30, $vr3, 0
 	addi.d	$a0, $a0, 64
-	ori	$a1, $zero, 448
-	addi.d	$a2, $sp, 752
+	ori	$a2, $zero, 448
+	vldrepl.d	$vr31, $a1, 504
+	addi.d	$a1, $sp, 752
 	lu52i.d	$a3, $zero, 1022
 	ori	$a4, $zero, 512
 	.p2align	4, , 16
 .LBB1_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a5, $a2, $a1
+	add.d	$a5, $a1, $a2
 	vld	$vr0, $a5, -448
 	vrepli.b	$vr1, 0
 	vld	$vr2, $a5, -384
@@ -664,7 +663,7 @@ Reference_IDCT:                         # @Reference_IDCT
 	vld	$vr5, $a5, -192
 	vld	$vr6, $a5, -128
 	vld	$vr7, $a5, -64
-	vldx	$vr8, $a1, $a2
+	vldx	$vr8, $a2, $a1
 	vld	$vr10, $sp, 672                 # 16-byte Folded Reload
 	vfmadd.d	$vr9, $vr10, $vr5, $vr9
 	vld	$vr10, $sp, 656                 # 16-byte Folded Reload
@@ -922,9 +921,9 @@ Reference_IDCT:                         # @Reference_IDCT
 	st.w	$t2, $a0, 16
 	st.w	$t3, $a0, 32
 	st.w	$t4, $a0, 48
-	addi.d	$a1, $a1, 16
+	addi.d	$a2, $a2, 16
 	addi.d	$a0, $a0, 4
-	bne	$a1, $a4, .LBB1_3
+	bne	$a2, $a4, .LBB1_3
 # %bb.4:                                # %middle.block
 	fld.d	$fs7, $sp, 1264                 # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 1272                 # 8-byte Folded Reload

@@ -1010,8 +1010,7 @@ init_array:                             # @init_array
 	.p2align	4, , 16
 .LBB8_27:                               # %vector.body22.preheader
                                         #   in Loop: Header=BB8_24 Depth=2
-	fld.d	$fa0, $t5, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $t5, 0
 	move	$t5, $a3
 	move	$t6, $a5
 	.p2align	4, , 16

@@ -581,9 +581,8 @@ main:                                   # @main
 	b	.LBB7_30
 .LBB7_39:                               # %vector.body65.preheader
                                         #   in Loop: Header=BB7_31 Depth=1
-	fld.d	$fa6, $a7, 0
+	vldrepl.d	$vr6, $a7, 0
 	move	$a7, $zero
-	vreplvei.d	$vr6, $vr6, 0
 	.p2align	4, , 16
 .LBB7_40:                               # %vector.body65
                                         #   Parent Loop BB7_31 Depth=1

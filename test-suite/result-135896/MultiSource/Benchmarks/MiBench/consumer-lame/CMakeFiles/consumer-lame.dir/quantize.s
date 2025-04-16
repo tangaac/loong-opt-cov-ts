@@ -1512,14 +1512,15 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	ld.w	$a0, $s3, 204
 	blt	$a0, $a2, .LBB4_59
 # %bb.49:                               # %.preheader345.lr.ph.split.us
-	ld.w	$a2, $s3, 220
-	slli.d	$a2, $a2, 2
-	addi.d	$a3, $sp, 260
-	ldx.w	$a2, $a2, $a3
-	move	$a3, $zero
+	ld.w	$a3, $s3, 220
+	move	$a2, $zero
+	addi.d	$a4, $sp, 260
+	alsl.d	$a5, $a3, $a4, 2
+	slli.d	$a3, $a3, 2
+	ldx.w	$a3, $a3, $a4
 	bstrpick.d	$a4, $a0, 30, 3
 	slli.d	$a4, $a4, 3
-	vreplgr2vr.w	$vr0, $a2
+	vldrepl.w	$vr0, $a5, 0
 	vreplgr2vr.w	$vr1, $fp
 	addi.d	$a5, $sp, 352
 	addi.d	$a6, $sp, 368
@@ -1528,10 +1529,10 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	.p2align	4, , 16
 .LBB4_50:                               # %._crit_edge387.us
                                         #   in Loop: Header=BB4_51 Depth=1
-	addi.d	$a3, $a3, 1
+	addi.d	$a2, $a2, 1
 	addi.d	$a6, $a6, 8
 	addi.d	$a5, $a5, 8
-	bgeu	$a3, $a1, .LBB4_59
+	bgeu	$a2, $a1, .LBB4_59
 .LBB4_51:                               # %.preheader345.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_54 Depth 2
@@ -1573,7 +1574,7 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
                                         #   Parent Loop BB4_51 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t2, $t0, 0
-	mul.w	$t2, $a2, $t2
+	mul.w	$t2, $a3, $t2
 	div.w	$t2, $t2, $fp
 	st.w	$t2, $t0, 0
 	addi.d	$t1, $t1, -1

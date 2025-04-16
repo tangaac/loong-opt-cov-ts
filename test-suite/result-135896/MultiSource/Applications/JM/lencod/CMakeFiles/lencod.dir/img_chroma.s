@@ -372,15 +372,15 @@ getSubImagesChroma:                     # @getSubImagesChroma
 # %bb.33:                               # %vector.ph228
                                         #   in Loop: Header=BB0_12 Depth=3
 	ld.h	$t5, $s6, 0
-	vreplgr2vr.h	$vr8, $t5
+	vldrepl.h	$vr8, $s6, 0
 	vilvl.h	$vr8, $vr0, $vr8
 	vinsgr2vr.h	$vr9, $t5, 0
 	vreplvei.h	$vr9, $vr9, 0
-	ld.h	$t5, $a4, 0
 	vilvl.h	$vr9, $vr0, $vr9
+	ld.h	$t5, $a4, 0
 	vmul.w	$vr9, $vr2, $vr9
 	vmul.w	$vr8, $vr2, $vr8
-	vreplgr2vr.h	$vr10, $t5
+	vldrepl.h	$vr10, $a4, 0
 	vinsgr2vr.h	$vr11, $t5, 0
 	vreplvei.h	$vr11, $vr11, 0
 	vilvl.h	$vr11, $vr0, $vr11
@@ -507,17 +507,17 @@ getSubImagesChroma:                     # @getSubImagesChroma
 # %bb.43:                               # %vector.ph
                                         #   in Loop: Header=BB0_12 Depth=3
 	ld.h	$a0, $t6, 0
+	vldrepl.h	$vr8, $t6, 0
 	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	add.d	$s1, $a4, $s1
-	vreplgr2vr.h	$vr8, $a0
 	vilvl.h	$vr8, $vr0, $vr8
 	vinsgr2vr.h	$vr9, $a0, 0
 	vreplvei.h	$vr9, $vr9, 0
-	ld.h	$a0, $s0, 0
 	vilvl.h	$vr9, $vr0, $vr9
+	ld.h	$a0, $s0, 0
 	vmul.w	$vr9, $vr2, $vr9
 	vmul.w	$vr8, $vr2, $vr8
-	vreplgr2vr.h	$vr10, $a0
+	vldrepl.h	$vr10, $s0, 0
 	vinsgr2vr.h	$vr11, $a0, 0
 	vreplvei.h	$vr11, $vr11, 0
 	vilvl.h	$vr11, $vr0, $vr11
@@ -820,15 +820,15 @@ getSubImagesChroma:                     # @getSubImagesChroma
 # %bb.73:                               # %vector.ph331
                                         #   in Loop: Header=BB0_52 Depth=3
 	ld.h	$a0, $s6, 0
-	vreplgr2vr.h	$vr8, $a0
+	vldrepl.h	$vr8, $s6, 0
 	vilvl.h	$vr8, $vr0, $vr8
 	vinsgr2vr.h	$vr9, $a0, 0
 	vreplvei.h	$vr9, $vr9, 0
-	ld.h	$a0, $s8, 0
 	vilvl.h	$vr9, $vr0, $vr9
+	ld.h	$a0, $s8, 0
 	vmul.w	$vr9, $vr2, $vr9
 	vmul.w	$vr8, $vr2, $vr8
-	vreplgr2vr.h	$vr10, $a0
+	vldrepl.h	$vr10, $s8, 0
 	vinsgr2vr.h	$vr11, $a0, 0
 	vreplvei.h	$vr11, $vr11, 0
 	vilvl.h	$vr11, $vr0, $vr11
@@ -956,17 +956,17 @@ getSubImagesChroma:                     # @getSubImagesChroma
 # %bb.83:                               # %vector.ph260
                                         #   in Loop: Header=BB0_52 Depth=3
 	ld.h	$a0, $t6, 0
+	vldrepl.h	$vr8, $t6, 0
 	ld.d	$t5, $sp, 136                   # 8-byte Folded Reload
 	add.d	$s1, $t5, $s1
-	vreplgr2vr.h	$vr8, $a0
 	vilvl.h	$vr8, $vr0, $vr8
 	vinsgr2vr.h	$vr9, $a0, 0
 	vreplvei.h	$vr9, $vr9, 0
-	ld.h	$a0, $s0, 0
 	vilvl.h	$vr9, $vr0, $vr9
+	ld.h	$a0, $s0, 0
 	vmul.w	$vr9, $vr2, $vr9
 	vmul.w	$vr8, $vr2, $vr8
-	vreplgr2vr.h	$vr10, $a0
+	vldrepl.h	$vr10, $s0, 0
 	vinsgr2vr.h	$vr11, $a0, 0
 	vreplvei.h	$vr11, $vr11, 0
 	vilvl.h	$vr11, $vr0, $vr11

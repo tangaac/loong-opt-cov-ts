@@ -776,34 +776,33 @@ FmoInit:                                # @FmoInit
 	b	.LBB0_100
 .LBB0_115:                              # %vector.ph106
 	bstrpick.d	$a3, $s4, 31, 3
+	vldrepl.w	$vr0, $a1, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI0_2)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_2)
 	slli.d	$a3, $a3, 3
-	ld.w	$a4, $a1, 0
-	pcalau12i	$a5, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $a5, %pc_lo12(.LCPI0_2)
-	vreplgr2vr.w	$vr1, $a2
-	vreplgr2vr.w	$vr2, $a4
+	vreplgr2vr.w	$vr2, $a2
 	addi.d	$a4, $a0, 16
 	move	$a5, $a3
 	.p2align	4, , 16
 .LBB0_116:                              # %vector.body111
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.wu	$vr3, $vr0, 4
-	vdiv.wu	$vr4, $vr0, $vr2
-	vori.b	$vr5, $vr0, 0
-	vmsub.w	$vr5, $vr4, $vr2
-	vdiv.wu	$vr6, $vr3, $vr2
-	vmsub.w	$vr3, $vr6, $vr2
-	vmul.w	$vr4, $vr4, $vr1
-	vmul.w	$vr6, $vr6, $vr1
+	vaddi.wu	$vr3, $vr1, 4
+	vdiv.wu	$vr4, $vr1, $vr0
+	vori.b	$vr5, $vr1, 0
+	vmsub.w	$vr5, $vr4, $vr0
+	vdiv.wu	$vr6, $vr3, $vr0
+	vmsub.w	$vr3, $vr6, $vr0
+	vmul.w	$vr4, $vr4, $vr2
+	vmul.w	$vr6, $vr6, $vr2
 	vsrli.w	$vr4, $vr4, 1
 	vsrli.w	$vr6, $vr6, 1
 	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr6, $vr3
-	vmod.wu	$vr4, $vr4, $vr1
-	vmod.wu	$vr3, $vr3, $vr1
+	vmod.wu	$vr4, $vr4, $vr2
+	vmod.wu	$vr3, $vr3, $vr2
 	vst	$vr4, $a4, -16
 	vst	$vr3, $a4, 0
-	vaddi.wu	$vr0, $vr0, 8
+	vaddi.wu	$vr1, $vr1, 8
 	addi.d	$a5, $a5, -8
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB0_116

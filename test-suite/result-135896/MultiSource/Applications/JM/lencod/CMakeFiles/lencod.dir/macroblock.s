@@ -9184,14 +9184,15 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	add.d	$a0, $a0, $a3
 	lu12i.w	$a3, 3
 	ori	$a3, $a3, 3236
+	add.d	$a7, $a5, $a3
 	ldx.w	$a3, $a5, $a3
-	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
-	mul.d	$a5, $a5, $a2
-	add.d	$a7, $a5, $a6
 	addi.d	$a5, $a6, 16
 	vreplgr2vr.w	$vr0, $a1
-	vreplgr2vr.w	$vr1, $a3
-	addi.d	$a6, $a7, 16
+	vldrepl.w	$vr1, $a7, 0
+	ld.d	$a7, $sp, 120                   # 8-byte Folded Reload
+	mul.d	$a7, $a7, $a2
+	add.d	$a6, $a7, $a6
+	addi.d	$a6, $a6, 16
 	b	.LBB17_164
 	.p2align	4, , 16
 .LBB17_163:                             # %._crit_edge514.us

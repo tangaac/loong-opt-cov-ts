@@ -2131,12 +2131,12 @@ mdct_init48:                            # @mdct_init48
 	vst	$vr1, $s0, 80
 	vst	$vr2, $s0, 96
 	fdiv.d	$fa0, $fa3, $fa4
-	vld	$vr1, $a0, 8
-	vld	$vr2, $a0, 24
 	fst.d	$fa0, $sp, 248
-	vreplvei.d	$vr0, $vr3, 0
-	vfdiv.d	$vr1, $vr1, $vr0
-	vfdiv.d	$vr0, $vr2, $vr0
+	vld	$vr0, $a0, 24
+	vld	$vr1, $a0, 8
+	vldrepl.d	$vr2, $a0, 0
+	vfdiv.d	$vr1, $vr1, $vr2
+	vfdiv.d	$vr0, $vr0, $vr2
 	fld.d	$fa2, $a0, 40
 	vst	$vr0, $a0, 16
 	vst	$vr1, $a0, 0

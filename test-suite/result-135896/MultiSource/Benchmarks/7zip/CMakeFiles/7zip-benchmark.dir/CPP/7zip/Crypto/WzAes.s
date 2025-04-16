@@ -269,10 +269,8 @@ _ZN7NCrypto6NWzAes10CBaseCoder4InitEv:  # @_ZN7NCrypto6NWzAes10CBaseCoder4InitEv
 .LBB2_3:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $s2, $a2
-	ldx.w	$a5, $a2, $s2
-	ld.w	$a4, $a4, 4
-	vreplgr2vr.w	$vr4, $a5
-	vreplgr2vr.w	$vr5, $a4
+	vldrepl.w	$vr4, $a4, 0
+	vldrepl.w	$vr5, $a4, 4
 	vslli.w	$vr6, $vr0, 3
 	vxor.v	$vr6, $vr6, $vr2
 	vand.v	$vr6, $vr6, $vr3

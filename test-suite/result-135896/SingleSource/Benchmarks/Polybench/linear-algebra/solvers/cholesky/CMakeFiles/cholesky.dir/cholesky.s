@@ -431,8 +431,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB7_30:                               # %vector.body117.preheader
                                         #   in Loop: Header=BB7_27 Depth=2
-	fld.d	$fa0, $t6, 0
-	vreplvei.d	$vr0, $vr0, 0
+	vldrepl.d	$vr0, $t6, 0
 	move	$t6, $a4
 	move	$t7, $a6
 	.p2align	4, , 16

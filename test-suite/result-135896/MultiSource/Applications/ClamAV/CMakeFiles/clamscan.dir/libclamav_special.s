@@ -33,10 +33,10 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 4
 	ld.w	$a0, $sp, 0
+	vld	$vr0, $sp, 4
+	vldrepl.w	$vr1, $sp, 0
 	vshuf4i.b	$vr0, $vr0, 27
-	vreplgr2vr.w	$vr1, $a0
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
@@ -87,10 +87,10 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 4
 	ld.w	$a0, $sp, 0
+	vld	$vr0, $sp, 4
+	vldrepl.w	$vr1, $sp, 0
 	vshuf4i.b	$vr0, $vr0, 27
-	vreplgr2vr.w	$vr1, $a0
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
@@ -141,10 +141,10 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 4
 	ld.w	$a0, $sp, 0
+	vld	$vr0, $sp, 4
+	vldrepl.w	$vr1, $sp, 0
 	vshuf4i.b	$vr0, $vr0, 27
-	vreplgr2vr.w	$vr1, $a0
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
@@ -195,10 +195,10 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 4
 	ld.w	$a0, $sp, 0
+	vld	$vr0, $sp, 4
+	vldrepl.w	$vr1, $sp, 0
 	vshuf4i.b	$vr0, $vr0, 27
-	vreplgr2vr.w	$vr1, $a0
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1
@@ -249,10 +249,10 @@ cli_check_mydoom_log:                   # @cli_check_mydoom_log
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 4
 	ld.w	$a0, $sp, 0
+	vld	$vr0, $sp, 4
+	vldrepl.w	$vr1, $sp, 0
 	vshuf4i.b	$vr0, $vr0, 27
-	vreplgr2vr.w	$vr1, $a0
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
 	vpickve2gr.w	$a2, $vr0, 1

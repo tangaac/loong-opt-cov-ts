@@ -486,12 +486,13 @@ main:                                   # @main
 	.cfi_offset 57, -104
 	.cfi_offset 58, -112
 	.cfi_offset 59, -120
+	move	$s0, $a0
 	ori	$s1, $zero, 2
-	pcalau12i	$s7, %pc_hi20(init_value)
-	blt	$a0, $s1, .LBB5_4
+	pcalau12i	$a0, %pc_hi20(init_value)
+	addi.d	$s7, $a0, %pc_lo12(init_value)
+	blt	$s0, $s1, .LBB5_4
 # %bb.1:
 	move	$fp, $a1
-	move	$s0, $a0
 	ld.d	$a0, $a1, 8
 	ori	$a2, $zero, 10
 	move	$a1, $zero
@@ -506,7 +507,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(strtod)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 4
-	fst.d	$fa0, $s7, %pc_lo12(init_value)
+	fst.d	$fa0, $s7, 0
 	bltu	$s0, $a0, .LBB5_4
 # %bb.3:
 	ld.d	$a0, $fp, 24
@@ -519,7 +520,7 @@ main:                                   # @main
 	vldi	$vr0, -912
 .LBB5_5:                                # %.thread535
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $s7, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data8)
@@ -697,7 +698,7 @@ main:                                   # @main
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $s7, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data8unsigned)
@@ -869,7 +870,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
 	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
-	fld.d	$fa0, $s7, %pc_lo12(init_value)
+	fld.d	$fa0, $s7, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
 	vreplgr2vr.h	$vr0, $a0
@@ -1054,7 +1055,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	fld.d	$fa0, $a0, %pc_lo12(init_value)
+	fld.d	$fa0, $a0, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
 	vreplgr2vr.h	$vr0, $a0
@@ -1236,7 +1237,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	fld.d	$fa0, $a0, %pc_lo12(init_value)
+	fld.d	$fa0, $a0, 0
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a0, $fa0
 	vreplgr2vr.w	$vr0, $a0
@@ -1422,7 +1423,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	fld.d	$fa0, $a0, %pc_lo12(init_value)
+	fld.d	$fa0, $a0, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
 	vreplgr2vr.w	$vr0, $a0
@@ -1604,7 +1605,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	fld.d	$fa0, $s6, %pc_lo12(init_value)
+	fld.d	$fa0, $s6, 0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(data64+16)
@@ -1782,7 +1783,7 @@ main:                                   # @main
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Il28custom_multiple_variable_xorIlEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $s6, %pc_lo12(init_value)
+	fld.d	$fa1, $s6, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.d	$fa0, $a0, %pc_lo12(.LCPI5_0)
 	fcmp.clt.d	$fcc0, $fa1, $fa0
@@ -1982,7 +1983,7 @@ main:                                   # @main
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(_Z14test_variable4Im28custom_multiple_variable_xorImEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s6, %pc_lo12(init_value)
+	fld.d	$fa0, $s6, 0
 	fcvt.s.d	$fa0, $fa0
 	vreplvei.w	$vr0, $vr0, 0
 	lu12i.w	$a0, -8
@@ -2112,10 +2113,9 @@ main:                                   # @main
 	fmov.s	$fa3, $fs3
 	pcaddu18i	$ra, %call36(_Z14test_variable4If30custom_mixed_multiple_variableIfEEvPT_iS2_S2_S2_S2_PKc)
 	jirl	$ra, $ra, 0
-	fld.d	$fa0, $s6, %pc_lo12(init_value)
+	vldrepl.d	$vr0, $s6, 0
 	pcalau12i	$a0, %pc_hi20(dataDouble+16)
 	addi.d	$a0, $a0, %pc_lo12(dataDouble+16)
-	vreplvei.d	$vr0, $vr0, 0
 	.p2align	4, , 16
 .LBB5_20:                               # %vector.body600
                                         # =>This Inner Loop Header: Depth=1

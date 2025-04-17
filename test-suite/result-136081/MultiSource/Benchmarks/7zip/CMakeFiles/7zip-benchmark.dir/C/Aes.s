@@ -651,37 +651,26 @@ AesCbc_Decode:                          # @AesCbc_Decode
 .Lfunc_end2:
 	.size	AesCbc_Decode, .Lfunc_end2-AesCbc_Decode
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function AesCtr_Code
-.LCPI3_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.text
-	.globl	AesCtr_Code
+	.globl	AesCtr_Code                     # -- Begin function AesCtr_Code
 	.p2align	5
 	.type	AesCtr_Code,@function
 AesCtr_Code:                            # @AesCtr_Code
 # %bb.0:
 	beqz	$a2, .LBB3_6
 # %bb.1:                                # %.lr.ph
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
 	addi.d	$s2, $a0, 16
 	ori	$s3, $zero, 0
 	lu32i.d	$s3, 1
-	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
-	vld	$vr0, $a0, %pc_lo12(.LCPI3_0)
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
 	ori	$a0, $zero, 16
 	lu32i.d	$a0, 24
 	vreplgr2vr.d	$vr0, $a0
@@ -689,46 +678,41 @@ AesCtr_Code:                            # @AesCtr_Code
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 16
 	move	$a0, $s2
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(Aes_Encode)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $s1, 0
 	addi.d	$a0, $s1, 16
-	vld	$vr1, $sp, 32
-	ld.w	$a1, $sp, 32
-	ld.w	$a2, $sp, 44
-	ld.w	$a3, $sp, 40
-	ld.w	$a4, $sp, 36
+	vld	$vr1, $sp, 16
+	ld.w	$a1, $sp, 16
+	ld.w	$a2, $sp, 28
+	ld.w	$a3, $sp, 24
+	ld.w	$a4, $sp, 20
 	srli.d	$a1, $a1, 8
 	vreplvei.w	$vr2, $vr1, 0
-	vld	$vr10, $sp, 0                   # 16-byte Folded Reload
-	vsrl.w	$vr2, $vr2, $vr10
+	vld	$vr8, $sp, 0                    # 16-byte Folded Reload
+	vsrl.w	$vr2, $vr2, $vr8
 	srli.d	$a4, $a4, 8
 	vreplvei.w	$vr3, $vr1, 1
-	vsrl.w	$vr4, $vr3, $vr10
+	vsrl.w	$vr4, $vr3, $vr8
 	srli.d	$a3, $a3, 8
 	vreplvei.w	$vr5, $vr1, 2
-	vsrl.w	$vr6, $vr5, $vr10
+	vsrl.w	$vr6, $vr5, $vr8
 	srli.d	$a2, $a2, 8
 	vreplvei.w	$vr7, $vr1, 3
 	vinsgr2vr.w	$vr1, $a1, 1
-	vld	$vr9, $sp, 16                   # 16-byte Folded Reload
-	vori.b	$vr8, $vr9, 0
-	vshuf.w	$vr8, $vr2, $vr1
-	vsrl.w	$vr1, $vr7, $vr10
+	vpackev.d	$vr1, $vr2, $vr1
+	vsrl.w	$vr2, $vr7, $vr8
 	vinsgr2vr.w	$vr3, $a4, 1
 	vinsgr2vr.w	$vr5, $a3, 1
 	vinsgr2vr.w	$vr7, $a2, 1
-	vori.b	$vr2, $vr9, 0
-	vshuf.w	$vr2, $vr4, $vr3
-	vori.b	$vr3, $vr9, 0
-	vshuf.w	$vr3, $vr6, $vr5
-	vori.b	$vr4, $vr9, 0
-	vshuf.w	$vr4, $vr1, $vr7
-	vpickev.h	$vr1, $vr2, $vr8
-	vpickev.h	$vr2, $vr4, $vr3
+	vpackev.d	$vr3, $vr4, $vr3
+	vpackev.d	$vr4, $vr6, $vr5
+	vpackev.d	$vr2, $vr2, $vr7
+	vpickev.h	$vr1, $vr3, $vr1
+	vpickev.h	$vr2, $vr2, $vr4
 	vpickev.b	$vr1, $vr2, $vr1
 	vxor.v	$vr0, $vr0, $vr1
 	addi.d	$fp, $fp, -1
@@ -747,13 +731,13 @@ AesCtr_Code:                            # @AesCtr_Code
 	st.w	$a0, $s0, 4
 	b	.LBB3_2
 .LBB3_5:
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 .LBB3_6:                                # %._crit_edge
 	ret
 .Lfunc_end3:

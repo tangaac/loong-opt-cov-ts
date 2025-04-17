@@ -2348,26 +2348,21 @@ _ZN9NCompress8NDeflate8NEncoder21Huffman_GetPrice_SpecEPKjPKhjS5_j: # @_ZN9NComp
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0                          # -- Begin function _ZNK9NCompress8NDeflate8NEncoder6CCoder15GetLzBlockPriceEv
 .LCPI19_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-.LCPI19_1:
 	.word	10                              # 0xa
 	.word	11                              # 0xb
 	.word	11                              # 0xb
 	.word	12                              # 0xc
-.LCPI19_2:
+.LCPI19_1:
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-.LCPI19_3:
+.LCPI19_2:
 	.word	12                              # 0xc
 	.word	13                              # 0xd
 	.word	13                              # 0xd
 	.word	14                              # 0xe
-.LCPI19_4:
+.LCPI19_3:
 	.word	7                               # 0x7
 	.word	9                               # 0x9
 	.word	9                               # 0x9
@@ -2427,37 +2422,35 @@ _ZNK9NCompress8NDeflate8NEncoder6CCoder15GetLzBlockPriceEv: # @_ZNK9NCompress8ND
 	ori	$a7, $zero, 3500
 	ori	$t2, $zero, 3516
 	vldx	$vr7, $a0, $t2
-	pcalau12i	$t2, %pc_hi20(.LCPI19_0)
-	vld	$vr6, $t2, %pc_lo12(.LCPI19_0)
-	vinsgr2vr.w	$vr9, $t0, 0
-	vinsgr2vr.w	$vr10, $t1, 0
-	vpackev.w	$vr9, $vr10, $vr9
-	vshuf.w	$vr6, $vr5, $vr9
-	pcalau12i	$t0, %pc_hi20(.LCPI19_3)
+	vinsgr2vr.w	$vr6, $t0, 0
+	vinsgr2vr.w	$vr9, $t1, 0
+	vpackev.w	$vr6, $vr9, $vr6
+	vpackev.d	$vr6, $vr5, $vr6
+	pcalau12i	$t0, %pc_hi20(.LCPI19_2)
 	ori	$t1, $zero, 2224
 	vldx	$vr9, $a0, $t1
-	pcalau12i	$t1, %pc_hi20(.LCPI19_4)
+	pcalau12i	$t1, %pc_hi20(.LCPI19_3)
 	vldx	$vr5, $a0, $a2
-	vld	$vr10, $t1, %pc_lo12(.LCPI19_4)
+	vld	$vr10, $t1, %pc_lo12(.LCPI19_3)
 	vilvl.b	$vr11, $vr2, $vr9
 	vilvh.h	$vr12, $vr2, $vr11
 	vmul.w	$vr5, $vr5, $vr12
 	vldx	$vr12, $a0, $a4
 	vmadd.w	$vr5, $vr6, $vr10
-	vld	$vr10, $t0, %pc_lo12(.LCPI19_3)
+	vld	$vr10, $t0, %pc_lo12(.LCPI19_2)
 	vilvh.b	$vr9, $vr2, $vr9
 	vilvh.h	$vr6, $vr2, $vr9
 	vmul.w	$vr6, $vr12, $vr6
 	vldx	$vr12, $a0, $a7
-	pcalau12i	$a7, %pc_hi20(.LCPI19_1)
+	pcalau12i	$a7, %pc_hi20(.LCPI19_0)
 	ori	$t0, $zero, 3408
 	vmadd.w	$vr6, $vr7, $vr10
 	vldx	$vr7, $a0, $t0
-	pcalau12i	$t0, %pc_hi20(.LCPI19_2)
-	vld	$vr10, $t0, %pc_lo12(.LCPI19_2)
+	pcalau12i	$t0, %pc_hi20(.LCPI19_1)
+	vld	$vr10, $t0, %pc_lo12(.LCPI19_1)
 	vilvl.h	$vr11, $vr2, $vr11
 	vmul.w	$vr7, $vr7, $vr11
-	vld	$vr11, $a7, %pc_lo12(.LCPI19_1)
+	vld	$vr11, $a7, %pc_lo12(.LCPI19_0)
 	ori	$a7, $zero, 2240
 	vmadd.w	$vr7, $vr8, $vr10
 	vldx	$vr8, $a0, $a3

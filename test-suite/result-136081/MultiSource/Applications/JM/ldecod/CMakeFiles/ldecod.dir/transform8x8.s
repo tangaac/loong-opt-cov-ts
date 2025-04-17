@@ -1876,11 +1876,6 @@ intrapred8x8:                           # @intrapred8x8
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
-.LCPI1_1:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
 	.text
 	.globl	LowPassForIntra8x8Pred
 	.p2align	5
@@ -1925,32 +1920,30 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	srli.d	$t2, $t5, 2
 	vilvh.h	$vr2, $vr0, $vr1
 	vilvl.h	$vr1, $vr0, $vr1
-	vinsgr2vr.w	$vr3, $t4, 0
+	vaddi.wu	$vr3, $vr1, 2
+	vinsgr2vr.w	$vr4, $t4, 0
 	pcalau12i	$t4, %pc_hi20(.LCPI1_0)
-	vld	$vr4, $t4, %pc_lo12(.LCPI1_0)
-	vbsrl.v	$vr5, $vr1, 12
-	vbsll.v	$vr6, $vr2, 4
-	vor.v	$vr5, $vr6, $vr5
-	vshuf.w	$vr4, $vr1, $vr3
-	vslli.w	$vr3, $vr5, 1
-	vbsrl.v	$vr5, $vr1, 8
-	vbsll.v	$vr6, $vr2, 8
-	vor.v	$vr5, $vr6, $vr5
-	vadd.w	$vr3, $vr5, $vr3
-	vinsgr2vr.w	$vr5, $t3, 0
-	vinsgr2vr.w	$vr6, $t6, 0
-	pcalau12i	$t3, %pc_hi20(.LCPI1_1)
-	vld	$vr7, $t3, %pc_lo12(.LCPI1_1)
-	vpackev.w	$vr5, $vr5, $vr6
-	vaddi.wu	$vr6, $vr1, 2
-	vslli.w	$vr4, $vr4, 1
-	vshuf.w	$vr7, $vr6, $vr5
-	vadd.w	$vr4, $vr7, $vr4
-	vadd.w	$vr3, $vr3, $vr2
-	vaddi.wu	$vr3, $vr3, 2
-	vadd.w	$vr1, $vr4, $vr1
+	vld	$vr5, $t4, %pc_lo12(.LCPI1_0)
+	vbsrl.v	$vr6, $vr1, 12
+	vbsll.v	$vr7, $vr2, 4
+	vor.v	$vr6, $vr7, $vr6
+	vshuf.w	$vr5, $vr1, $vr4
+	vslli.w	$vr4, $vr5, 1
+	vslli.w	$vr5, $vr6, 1
+	vbsrl.v	$vr6, $vr1, 8
+	vbsll.v	$vr7, $vr2, 8
+	vor.v	$vr6, $vr7, $vr6
+	vadd.w	$vr5, $vr6, $vr5
+	vinsgr2vr.w	$vr6, $t3, 0
+	vinsgr2vr.w	$vr7, $t6, 0
+	vpackev.w	$vr6, $vr6, $vr7
+	vpackev.d	$vr3, $vr3, $vr6
+	vadd.w	$vr3, $vr3, $vr4
+	vadd.w	$vr4, $vr5, $vr2
+	vaddi.wu	$vr4, $vr4, 2
+	vadd.w	$vr1, $vr3, $vr1
 	vsrli.w	$vr1, $vr1, 2
-	vsrli.w	$vr3, $vr3, 2
+	vsrli.w	$vr3, $vr4, 2
 	vpickev.h	$vr1, $vr3, $vr1
 	vpickve2gr.w	$t3, $vr2, 2
 	alsl.d	$t3, $t1, $t3, 1

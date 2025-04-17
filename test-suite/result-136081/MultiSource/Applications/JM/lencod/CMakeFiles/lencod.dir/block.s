@@ -8289,11 +8289,6 @@ dct_chroma:                             # @dct_chroma
 .LCPI5_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	4294967295                      # 0xffffffff
-.LCPI5_2:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	4                               # 0x4
 	.text
@@ -8399,39 +8394,37 @@ dct_luma_sp:                            # @dct_luma_sp
 	vinsgr2vr.d	$vr3, $a3, 0
 	vilvl.h	$vr3, $vr5, $vr3
 	vpickve2gr.w	$a3, $vr3, 1
-	ori	$t2, $a1, 912
-	vldx	$vr4, $a2, $t2
+	ori	$t1, $a1, 912
+	vldx	$vr4, $a2, $t1
 	st.w	$a3, $sp, 388
 	vpickve2gr.w	$a3, $vr3, 2
 	st.w	$a3, $sp, 404
 	vadd.w	$vr4, $vr4, $vr3
 	ldptr.d	$a3, $a4, 12688
-	vstx	$vr4, $a2, $t2
+	vstx	$vr4, $a2, $t1
 	vpickve2gr.w	$a5, $vr3, 3
 	st.w	$a5, $sp, 420
 	vinsgr2vr.d	$vr4, $a3, 0
 	vilvl.h	$vr4, $vr5, $vr4
 	vpickve2gr.w	$a3, $vr4, 1
-	ori	$t1, $a1, 976
-	vldx	$vr6, $a2, $t1
 	st.w	$a3, $sp, 392
+	ori	$t2, $a1, 976
+	vldx	$vr6, $a2, $t2
 	vpickve2gr.w	$a3, $vr4, 2
+	ldptr.d	$a4, $a4, 12720
 	st.w	$a3, $sp, 408
 	vadd.w	$vr6, $vr6, $vr4
-	ldptr.d	$a3, $a4, 12720
-	vstx	$vr6, $a2, $t1
-	vpickve2gr.w	$a4, $vr4, 3
-	st.w	$a4, $sp, 424
-	vinsgr2vr.d	$vr6, $a3, 0
+	vstx	$vr6, $a2, $t2
+	vinsgr2vr.d	$vr6, $a4, 0
 	vilvl.h	$vr5, $vr5, $vr6
 	ori	$t0, $a1, 1040
-	vldx	$vr7, $a2, $t0
+	vldx	$vr6, $a2, $t0
+	vpickve2gr.w	$a3, $vr4, 3
+	st.w	$a3, $sp, 424
 	pcalau12i	$a3, %pc_hi20(.LCPI5_1)
+	vadd.w	$vr6, $vr6, $vr5
+	vstx	$vr6, $a2, $t0
 	vld	$vr6, $a3, %pc_lo12(.LCPI5_1)
-	pcalau12i	$a3, %pc_hi20(.LCPI5_2)
-	vadd.w	$vr7, $vr7, $vr5
-	vstx	$vr7, $a2, $t0
-	vld	$vr7, $a3, %pc_lo12(.LCPI5_2)
 	vpickve2gr.w	$a2, $vr5, 1
 	st.w	$a2, $sp, 396
 	ld.d	$a2, $s1, 0
@@ -8461,7 +8454,7 @@ dct_luma_sp:                            # @dct_luma_sp
 	stptr.w	$a3, $a2, 13140
 	slli.d	$a3, $a6, 1
 	sub.d	$a3, $a4, $a3
-	ldx.w	$a4, $a2, $t2
+	ldx.w	$a4, $a2, $t1
 	ori	$a5, $a1, 924
 	st.d	$a5, $sp, 88                    # 8-byte Folded Spill
 	ldx.w	$a5, $a2, $a5
@@ -8484,7 +8477,7 @@ dct_luma_sp:                            # @dct_luma_sp
 	stptr.w	$a3, $a2, 13204
 	slli.d	$a3, $a6, 1
 	sub.d	$a3, $a4, $a3
-	ldx.w	$a4, $a2, $t1
+	ldx.w	$a4, $a2, $t2
 	ori	$a5, $a1, 988
 	st.d	$a5, $sp, 48                    # 8-byte Folded Spill
 	ldx.w	$a5, $a2, $a5
@@ -8524,7 +8517,6 @@ dct_luma_sp:                            # @dct_luma_sp
 	sub.d	$a1, $a6, $a1
 	add.d	$a6, $a5, $a3
 	stptr.w	$a6, $a2, 13328
-	vpackev.w	$vr2, $vr3, $vr2
 	sub.d	$a3, $a3, $a5
 	st.d	$t4, $sp, 312                   # 8-byte Folded Spill
 	addi.d	$a5, $t4, 15
@@ -8536,9 +8528,10 @@ dct_luma_sp:                            # @dct_luma_sp
 	sub.d	$a1, $a4, $a1
 	st.d	$a5, $sp, 288                   # 8-byte Folded Spill
 	sll.w	$a3, $fp, $a5
-	vshuf.w	$vr6, $vr4, $vr2
-	vshuf.w	$vr7, $vr5, $vr6
-	vst	$vr7, $sp, 368
+	vpackev.w	$vr2, $vr3, $vr2
+	vpackev.d	$vr2, $vr4, $vr2
+	vshuf.w	$vr6, $vr5, $vr2
+	vst	$vr6, $sp, 368
 	stptr.w	$a1, $a2, 13340
 	lu12i.w	$a1, 174762
 	ori	$a1, $a1, 2731
@@ -8548,8 +8541,8 @@ dct_luma_sp:                            # @dct_luma_sp
 	srli.d	$a1, $a1, 32
 	vldx	$vr2, $a2, $t3
 	vldx	$vr3, $a2, $t0
-	vldx	$vr4, $a2, $t2
-	vldx	$vr5, $a2, $t1
+	vldx	$vr4, $a2, $t1
+	vldx	$vr5, $a2, $t2
 	add.d	$a1, $a1, $a3
 	st.d	$a1, $sp, 280                   # 8-byte Folded Spill
 	vsub.w	$vr6, $vr2, $vr3
@@ -8560,12 +8553,12 @@ dct_luma_sp:                            # @dct_luma_sp
 	st.d	$t3, $sp, 328                   # 8-byte Folded Spill
 	vstx	$vr5, $a2, $t3
 	vsub.w	$vr2, $vr2, $vr4
-	st.d	$t1, $sp, 112                   # 8-byte Folded Spill
-	vstx	$vr2, $a2, $t1
-	vslli.w	$vr2, $vr6, 1
-	vadd.w	$vr2, $vr2, $vr3
 	st.d	$t2, $sp, 104                   # 8-byte Folded Spill
 	vstx	$vr2, $a2, $t2
+	vslli.w	$vr2, $vr6, 1
+	vadd.w	$vr2, $vr2, $vr3
+	st.d	$t1, $sp, 112                   # 8-byte Folded Spill
+	vstx	$vr2, $a2, $t1
 	vslli.w	$vr2, $vr3, 1
 	vsub.w	$vr2, $vr6, $vr2
 	ld.w	$a1, $sp, 368
@@ -9046,8 +9039,8 @@ dct_luma_sp:                            # @dct_luma_sp
 	stptr.w	$a4, $a1, 13148
 	add.d	$a5, $a7, $a3
 	sub.d	$a3, $a3, $a7
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ldx.w	$a4, $a1, $s0
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ldx.w	$a4, $a1, $fp
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	ldx.w	$a6, $a1, $s4
 	stptr.w	$a3, $a1, 13144
@@ -9064,8 +9057,8 @@ dct_luma_sp:                            # @dct_luma_sp
 	stptr.w	$a3, $a1, 13212
 	add.w	$a7, $a6, $a4
 	sub.d	$a3, $a4, $a6
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ldx.w	$a4, $a1, $fp
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ldx.w	$a4, $a1, $s0
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ldx.w	$a6, $a1, $s5
 	stptr.w	$a3, $a1, 13208
@@ -9315,7 +9308,7 @@ dct_luma_sp:                            # @dct_luma_sp
 	addi.w	$a5, $a3, 1
 	slli.d	$a5, $a5, 3
 	ldx.d	$a5, $a1, $a5
-	ldx.h	$t0, $a2, $s0
+	ldx.h	$t0, $a2, $fp
 	ld.d	$t2, $sp, 64                    # 8-byte Folded Reload
 	ldx.h	$t2, $a2, $t2
 	ldx.h	$t3, $a2, $s4
@@ -9328,7 +9321,7 @@ dct_luma_sp:                            # @dct_luma_sp
 	addi.w	$a5, $a3, 2
 	slli.d	$a5, $a5, 3
 	ldx.d	$a5, $a1, $a5
-	ldx.h	$t0, $a2, $fp
+	ldx.h	$t0, $a2, $s0
 	ld.d	$t2, $sp, 40                    # 8-byte Folded Reload
 	ldx.h	$t2, $a2, $t2
 	ldx.h	$t3, $a2, $s5
@@ -9378,27 +9371,17 @@ dct_luma_sp:                            # @dct_luma_sp
 .LCPI6_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
+	.word	2                               # 0x2
 	.word	4                               # 0x4
-	.word	4294967295                      # 0xffffffff
 .LCPI6_2:
 	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	4                               # 0x4
-.LCPI6_3:
-	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	4294967295                      # 0xffffffff
-.LCPI6_4:
+.LCPI6_3:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
-	.word	5                               # 0x5
-.LCPI6_5:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.text
 	.globl	dct_chroma_sp
@@ -9542,240 +9525,235 @@ dct_chroma_sp:                          # @dct_chroma_sp
 	ori	$a3, $t1, 848
 	vinsgr2vr.d	$vr1, $a0, 0
 	vrepli.b	$vr0, 0
-	vilvl.h	$vr4, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr4, 1
+	vilvl.h	$vr3, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr3, 1
 	vldx	$vr1, $t4, $a3
 	st.w	$a0, $sp, 656
-	vpickve2gr.w	$a0, $vr4, 2
+	vpickve2gr.w	$a0, $vr3, 2
 	st.w	$a0, $sp, 688
-	vadd.w	$vr1, $vr1, $vr4
+	vadd.w	$vr1, $vr1, $vr3
 	vstx	$vr1, $t4, $a3
 	ldptr.d	$a0, $t4, 12632
-	vpickve2gr.w	$a1, $vr4, 3
+	vpickve2gr.w	$a1, $vr3, 3
 	st.w	$a1, $sp, 720
 	ori	$a4, $t1, 864
 	vinsgr2vr.d	$vr1, $a0, 0
-	vilvl.h	$vr3, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr3, 1
+	vilvl.h	$vr2, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr2, 1
 	vldx	$vr1, $t4, $a4
 	st.w	$a0, $sp, 784
-	vpickve2gr.w	$a0, $vr3, 2
+	vpickve2gr.w	$a0, $vr2, 2
 	st.w	$a0, $sp, 816
-	vadd.w	$vr1, $vr1, $vr3
+	vadd.w	$vr1, $vr1, $vr2
 	ldptr.d	$a0, $t4, 12656
 	vstx	$vr1, $t4, $a4
-	vpickve2gr.w	$a1, $vr3, 3
+	vpickve2gr.w	$a1, $vr2, 3
 	st.w	$a1, $sp, 848
 	vinsgr2vr.d	$vr1, $a0, 0
-	vilvl.h	$vr5, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr5, 1
+	vilvl.h	$vr4, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr4, 1
 	ori	$a1, $t1, 912
 	vldx	$vr1, $t4, $a1
 	st.w	$a0, $sp, 660
-	vpickve2gr.w	$a0, $vr5, 2
+	vpickve2gr.w	$a0, $vr4, 2
 	st.w	$a0, $sp, 692
-	vadd.w	$vr1, $vr1, $vr5
+	vadd.w	$vr1, $vr1, $vr4
 	ldptr.d	$a0, $t4, 12664
 	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	vstx	$vr1, $t4, $a1
-	vpickve2gr.w	$a1, $vr5, 3
+	vpickve2gr.w	$a1, $vr4, 3
 	st.w	$a1, $sp, 724
 	vinsgr2vr.d	$vr1, $a0, 0
-	vilvl.h	$vr6, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr6, 1
+	vilvl.h	$vr5, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr5, 1
 	ori	$a1, $t1, 928
 	vldx	$vr1, $t4, $a1
 	st.w	$a0, $sp, 788
-	vpickve2gr.w	$a0, $vr6, 2
+	vpickve2gr.w	$a0, $vr5, 2
 	st.w	$a0, $sp, 820
-	vadd.w	$vr1, $vr1, $vr6
+	vadd.w	$vr1, $vr1, $vr5
 	ldptr.d	$a0, $t4, 12688
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	vstx	$vr1, $t4, $a1
-	vpickve2gr.w	$a1, $vr6, 3
+	vpickve2gr.w	$a1, $vr5, 3
 	st.w	$a1, $sp, 852
 	vinsgr2vr.d	$vr1, $a0, 0
-	vilvl.h	$vr7, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr7, 1
+	vilvl.h	$vr6, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr6, 1
 	ori	$a1, $t1, 976
 	vldx	$vr1, $t4, $a1
 	st.w	$a0, $sp, 664
-	vpickve2gr.w	$a0, $vr7, 2
+	vpickve2gr.w	$a0, $vr6, 2
 	st.w	$a0, $sp, 696
-	vadd.w	$vr1, $vr1, $vr7
+	vadd.w	$vr1, $vr1, $vr6
 	ldptr.d	$a0, $t4, 12696
 	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	vstx	$vr1, $t4, $a1
-	vpickve2gr.w	$a1, $vr7, 3
+	vpickve2gr.w	$a1, $vr6, 3
 	st.w	$a1, $sp, 728
 	vinsgr2vr.d	$vr1, $a0, 0
-	vilvl.h	$vr8, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr8, 1
+	vilvl.h	$vr7, $vr0, $vr1
+	vpickve2gr.w	$a0, $vr7, 1
 	ori	$a1, $t1, 992
 	vldx	$vr1, $t4, $a1
 	st.w	$a0, $sp, 792
-	vpickve2gr.w	$a0, $vr8, 2
+	vpickve2gr.w	$a0, $vr7, 2
 	st.w	$a0, $sp, 824
-	vadd.w	$vr1, $vr1, $vr8
+	vadd.w	$vr1, $vr1, $vr7
 	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
 	vstx	$vr1, $t4, $a1
-	vpickve2gr.w	$a0, $vr8, 3
+	vpickve2gr.w	$a0, $vr7, 3
+	ldptr.d	$a1, $t4, 12720
 	st.w	$a0, $sp, 856
-	ldptr.d	$a0, $t4, 12720
-	pcalau12i	$a1, %pc_hi20(.LCPI6_1)
-	vld	$vr1, $a1, %pc_lo12(.LCPI6_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI6_2)
-	vld	$vr2, $a1, %pc_lo12(.LCPI6_2)
-	vinsgr2vr.d	$vr9, $a0, 0
-	vilvl.h	$vr9, $vr0, $vr9
-	vpackev.w	$vr4, $vr5, $vr4
-	vori.b	$vr5, $vr1, 0
-	vshuf.w	$vr5, $vr7, $vr4
-	vori.b	$vr4, $vr2, 0
-	vshuf.w	$vr4, $vr9, $vr5
+	pcalau12i	$a0, %pc_hi20(.LCPI6_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI6_1)
+	vinsgr2vr.d	$vr8, $a1, 0
+	vilvl.h	$vr8, $vr0, $vr8
+	vpackev.w	$vr3, $vr4, $vr3
+	vpackev.d	$vr3, $vr6, $vr3
+	vori.b	$vr4, $vr1, 0
+	vshuf.w	$vr4, $vr8, $vr3
 	vst	$vr4, $sp, 624
-	vpickve2gr.w	$a0, $vr9, 1
+	vpickve2gr.w	$a0, $vr8, 1
 	ori	$a1, $t1, 1040
-	vldx	$vr4, $t4, $a1
+	vldx	$vr3, $t4, $a1
 	st.w	$a0, $sp, 668
-	vpickve2gr.w	$a0, $vr9, 2
+	vpickve2gr.w	$a0, $vr8, 2
 	st.w	$a0, $sp, 700
-	vadd.w	$vr4, $vr4, $vr9
+	vadd.w	$vr3, $vr3, $vr8
 	ldptr.d	$a0, $t4, 12728
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
-	vstx	$vr4, $t4, $a1
-	vpickve2gr.w	$a1, $vr9, 3
+	vstx	$vr3, $t4, $a1
+	vpickve2gr.w	$a1, $vr8, 3
 	st.w	$a1, $sp, 732
-	vinsgr2vr.d	$vr4, $a0, 0
-	vilvl.h	$vr4, $vr0, $vr4
-	vpackev.w	$vr3, $vr6, $vr3
-	vori.b	$vr5, $vr1, 0
-	vshuf.w	$vr5, $vr8, $vr3
-	vori.b	$vr3, $vr2, 0
-	vshuf.w	$vr3, $vr4, $vr5
-	vst	$vr3, $sp, 752
-	vpickve2gr.w	$a0, $vr4, 1
-	ori	$a1, $t1, 1056
-	vldx	$vr3, $t4, $a1
-	st.w	$a0, $sp, 796
-	vpickve2gr.w	$a0, $vr4, 2
-	st.w	$a0, $sp, 828
-	vadd.w	$vr3, $vr3, $vr4
-	ldptr.d	$a0, $t4, 12752
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	vstx	$vr3, $t4, $a1
-	vpickve2gr.w	$a1, $vr4, 3
-	st.w	$a1, $sp, 860
-	vinsgr2vr.d	$vr3, $a0, 0
-	vilvl.h	$vr4, $vr0, $vr3
-	vpickve2gr.w	$a0, $vr4, 1
-	ori	$a1, $t1, 1104
-	vldx	$vr3, $t4, $a1
-	st.w	$a0, $sp, 672
-	vpickve2gr.w	$a0, $vr4, 2
-	st.w	$a0, $sp, 704
-	vadd.w	$vr3, $vr3, $vr4
-	ldptr.d	$a0, $t4, 12760
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
-	vstx	$vr3, $t4, $a1
-	vpickve2gr.w	$a1, $vr4, 3
-	st.w	$a1, $sp, 736
 	vinsgr2vr.d	$vr3, $a0, 0
 	vilvl.h	$vr3, $vr0, $vr3
+	vpackev.w	$vr2, $vr5, $vr2
+	vpackev.d	$vr2, $vr7, $vr2
+	vori.b	$vr4, $vr1, 0
+	vshuf.w	$vr4, $vr3, $vr2
+	vst	$vr4, $sp, 752
 	vpickve2gr.w	$a0, $vr3, 1
-	ori	$a1, $t1, 1120
-	vldx	$vr5, $t4, $a1
-	st.w	$a0, $sp, 800
+	ori	$a1, $t1, 1056
+	vldx	$vr2, $t4, $a1
+	st.w	$a0, $sp, 796
 	vpickve2gr.w	$a0, $vr3, 2
+	st.w	$a0, $sp, 828
+	vadd.w	$vr2, $vr2, $vr3
+	ldptr.d	$a0, $t4, 12752
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
+	vstx	$vr2, $t4, $a1
+	vpickve2gr.w	$a1, $vr3, 3
+	st.w	$a1, $sp, 860
+	vinsgr2vr.d	$vr2, $a0, 0
+	vilvl.h	$vr3, $vr0, $vr2
+	vpickve2gr.w	$a0, $vr3, 1
+	ori	$a1, $t1, 1104
+	vldx	$vr2, $t4, $a1
+	st.w	$a0, $sp, 672
+	vpickve2gr.w	$a0, $vr3, 2
+	st.w	$a0, $sp, 704
+	vadd.w	$vr2, $vr2, $vr3
+	ldptr.d	$a0, $t4, 12760
+	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
+	vstx	$vr2, $t4, $a1
+	vpickve2gr.w	$a1, $vr3, 3
+	st.w	$a1, $sp, 736
+	vinsgr2vr.d	$vr2, $a0, 0
+	vilvl.h	$vr2, $vr0, $vr2
+	vpickve2gr.w	$a0, $vr2, 1
+	ori	$a1, $t1, 1120
+	vldx	$vr4, $t4, $a1
+	st.w	$a0, $sp, 800
+	vpickve2gr.w	$a0, $vr2, 2
 	st.w	$a0, $sp, 832
-	vadd.w	$vr5, $vr5, $vr3
+	vadd.w	$vr4, $vr4, $vr2
 	ldptr.d	$a0, $t4, 12784
 	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	vstx	$vr5, $t4, $a1
-	vpickve2gr.w	$a1, $vr3, 3
+	vstx	$vr4, $t4, $a1
+	vpickve2gr.w	$a1, $vr2, 3
 	st.w	$a1, $sp, 864
+	vinsgr2vr.d	$vr4, $a0, 0
+	vilvl.h	$vr4, $vr0, $vr4
+	vpickve2gr.w	$a0, $vr4, 1
+	ori	$a1, $t1, 1168
+	vldx	$vr5, $t4, $a1
+	st.w	$a0, $sp, 676
+	vpickve2gr.w	$a0, $vr4, 2
+	st.w	$a0, $sp, 708
+	vadd.w	$vr5, $vr5, $vr4
+	ldptr.d	$a0, $t4, 12792
+	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	vstx	$vr5, $t4, $a1
+	vpickve2gr.w	$a1, $vr4, 3
+	st.w	$a1, $sp, 740
 	vinsgr2vr.d	$vr5, $a0, 0
 	vilvl.h	$vr5, $vr0, $vr5
 	vpickve2gr.w	$a0, $vr5, 1
-	ori	$a1, $t1, 1168
+	ori	$a1, $t1, 1184
 	vldx	$vr6, $t4, $a1
-	st.w	$a0, $sp, 676
+	st.w	$a0, $sp, 804
 	vpickve2gr.w	$a0, $vr5, 2
-	st.w	$a0, $sp, 708
+	st.w	$a0, $sp, 836
 	vadd.w	$vr6, $vr6, $vr5
-	ldptr.d	$a0, $t4, 12792
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	ldptr.d	$a0, $t4, 12816
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	vstx	$vr6, $t4, $a1
 	vpickve2gr.w	$a1, $vr5, 3
-	st.w	$a1, $sp, 740
+	st.w	$a1, $sp, 868
 	vinsgr2vr.d	$vr6, $a0, 0
 	vilvl.h	$vr6, $vr0, $vr6
 	vpickve2gr.w	$a0, $vr6, 1
-	ori	$a1, $t1, 1184
+	ori	$a1, $t1, 1232
 	vldx	$vr7, $t4, $a1
-	st.w	$a0, $sp, 804
+	st.w	$a0, $sp, 680
 	vpickve2gr.w	$a0, $vr6, 2
-	st.w	$a0, $sp, 836
+	st.w	$a0, $sp, 712
 	vadd.w	$vr7, $vr7, $vr6
-	ldptr.d	$a0, $t4, 12816
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	ldptr.d	$a0, $t4, 12824
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	vstx	$vr7, $t4, $a1
 	vpickve2gr.w	$a1, $vr6, 3
-	st.w	$a1, $sp, 868
+	st.w	$a1, $sp, 744
 	vinsgr2vr.d	$vr7, $a0, 0
 	vilvl.h	$vr7, $vr0, $vr7
 	vpickve2gr.w	$a0, $vr7, 1
-	ori	$a1, $t1, 1232
-	vldx	$vr8, $t4, $a1
-	st.w	$a0, $sp, 680
-	vpickve2gr.w	$a0, $vr7, 2
-	st.w	$a0, $sp, 712
-	vadd.w	$vr8, $vr8, $vr7
-	ldptr.d	$a0, $t4, 12824
-	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
-	vstx	$vr8, $t4, $a1
-	vpickve2gr.w	$a1, $vr7, 3
-	st.w	$a1, $sp, 744
-	vinsgr2vr.d	$vr8, $a0, 0
-	vilvl.h	$vr8, $vr0, $vr8
-	vpickve2gr.w	$a0, $vr8, 1
 	ori	$a1, $t1, 1248
-	vldx	$vr9, $t4, $a1
+	vldx	$vr8, $t4, $a1
 	st.w	$a0, $sp, 808
-	vpickve2gr.w	$a0, $vr8, 2
+	vpickve2gr.w	$a0, $vr7, 2
 	st.w	$a0, $sp, 840
-	vadd.w	$vr9, $vr9, $vr8
+	vadd.w	$vr8, $vr8, $vr7
 	ldptr.d	$a0, $t4, 12848
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	vstx	$vr9, $t4, $a1
-	vpickve2gr.w	$a1, $vr8, 3
+	vstx	$vr8, $t4, $a1
+	vpickve2gr.w	$a1, $vr7, 3
 	st.w	$a1, $sp, 872
-	vinsgr2vr.d	$vr9, $a0, 0
-	vilvl.h	$vr9, $vr0, $vr9
-	vpackev.w	$vr4, $vr5, $vr4
-	vori.b	$vr5, $vr1, 0
-	vshuf.w	$vr5, $vr7, $vr4
-	vori.b	$vr4, $vr2, 0
-	vshuf.w	$vr4, $vr9, $vr5
+	vinsgr2vr.d	$vr8, $a0, 0
+	vilvl.h	$vr8, $vr0, $vr8
+	vpackev.w	$vr3, $vr4, $vr3
+	vpackev.d	$vr3, $vr6, $vr3
+	vori.b	$vr4, $vr1, 0
+	vshuf.w	$vr4, $vr8, $vr3
 	vst	$vr4, $sp, 640
-	vpickve2gr.w	$a0, $vr9, 1
+	vpickve2gr.w	$a0, $vr8, 1
 	ori	$a1, $t1, 1296
-	vldx	$vr4, $t4, $a1
+	vldx	$vr3, $t4, $a1
 	st.w	$a0, $sp, 684
-	vpickve2gr.w	$a0, $vr9, 2
+	vpickve2gr.w	$a0, $vr8, 2
 	st.w	$a0, $sp, 716
-	vadd.w	$vr4, $vr4, $vr9
+	vadd.w	$vr3, $vr3, $vr8
 	ldptr.d	$a0, $t4, 12856
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	vstx	$vr4, $t4, $a1
-	vpickve2gr.w	$a1, $vr9, 3
+	vstx	$vr3, $t4, $a1
+	vpickve2gr.w	$a1, $vr8, 3
 	st.w	$a1, $sp, 748
-	vinsgr2vr.d	$vr4, $a0, 0
-	vilvl.h	$vr0, $vr0, $vr4
-	vpackev.w	$vr3, $vr6, $vr3
-	vshuf.w	$vr1, $vr8, $vr3
-	vshuf.w	$vr2, $vr0, $vr1
-	vst	$vr2, $sp, 768
+	vinsgr2vr.d	$vr3, $a0, 0
+	vilvl.h	$vr0, $vr0, $vr3
+	vpackev.w	$vr2, $vr5, $vr2
+	vpackev.d	$vr2, $vr7, $vr2
+	vshuf.w	$vr1, $vr0, $vr2
+	vst	$vr1, $sp, 768
 	vpickve2gr.w	$a0, $vr0, 1
 	ori	$a1, $t1, 1312
 	vldx	$vr1, $t4, $a1
@@ -11301,16 +11279,14 @@ dct_chroma_sp:                          # @dct_chroma_sp
 	b	.LBB6_31
 .LBB6_45:                               # %.preheader659
 	move	$a5, $zero
+	pcalau12i	$a3, %pc_hi20(.LCPI6_2)
+	vld	$vr0, $a3, %pc_lo12(.LCPI6_2)
 	pcalau12i	$a3, %pc_hi20(.LCPI6_3)
-	vld	$vr0, $a3, %pc_lo12(.LCPI6_3)
-	pcalau12i	$a3, %pc_hi20(.LCPI6_4)
-	vld	$vr1, $a3, %pc_lo12(.LCPI6_4)
-	pcalau12i	$a3, %pc_hi20(.LCPI6_5)
-	vld	$vr2, $a3, %pc_lo12(.LCPI6_5)
+	vld	$vr1, $a3, %pc_lo12(.LCPI6_3)
 	ori	$a4, $zero, 1
 	lu12i.w	$a3, 3
 	ori	$a3, $a3, 3236
-	vrepli.w	$vr3, 32
+	vrepli.w	$vr2, 32
 	.p2align	4, , 16
 .LBB6_46:                               # %.preheader658
                                         # =>This Loop Header: Depth=1
@@ -11407,57 +11383,56 @@ dct_chroma_sp:                          # @dct_chroma_sp
 	stx.w	$t5, $t0, $t4
 	sub.d	$t6, $t7, $t8
 	stx.w	$t6, $t0, $t3
-	vldx	$vr4, $a5, $t2
+	vldx	$vr3, $a5, $t2
 	ldx.d	$t4, $t0, $t4
-	vldx	$vr5, $a7, $t2
+	vldx	$vr4, $a7, $t2
 	ldx.w	$t6, $a1, $a3
-	vldx	$vr6, $a6, $t2
-	vinsgr2vr.d	$vr7, $t4, 0
-	vadd.w	$vr8, $vr5, $vr4
-	vinsgr2vr.w	$vr9, $fp, 0
-	vori.b	$vr10, $vr0, 0
+	vldx	$vr5, $a6, $t2
+	vinsgr2vr.d	$vr6, $t4, 0
+	vadd.w	$vr7, $vr4, $vr3
+	vinsgr2vr.w	$vr8, $fp, 0
+	vori.b	$vr9, $vr0, 0
 	ldx.d	$t3, $t0, $t3
-	vshuf.w	$vr10, $vr7, $vr9
-	vadd.w	$vr7, $vr8, $vr3
-	vreplgr2vr.w	$vr8, $t6
-	vinsgr2vr.d	$vr11, $t3, 0
-	vori.b	$vr12, $vr1, 0
-	vshuf.w	$vr12, $vr11, $vr10
-	vsrai.w	$vr10, $vr12, 1
-	vadd.w	$vr10, $vr10, $vr6
+	vshuf.w	$vr9, $vr6, $vr8
+	vadd.w	$vr6, $vr7, $vr2
+	vreplgr2vr.w	$vr7, $t6
+	vinsgr2vr.d	$vr10, $t3, 0
+	vori.b	$vr11, $vr1, 0
+	vshuf.w	$vr11, $vr10, $vr9
+	vsrai.w	$vr9, $vr11, 1
+	vadd.w	$vr9, $vr9, $vr5
+	vsub.w	$vr3, $vr3, $vr4
+	vsrai.w	$vr4, $vr5, 1
+	vinsgr2vr.w	$vr8, $t5, 1
+	vpackev.d	$vr5, $vr10, $vr8
 	vsub.w	$vr4, $vr4, $vr5
-	vsrai.w	$vr5, $vr6, 1
-	vinsgr2vr.w	$vr9, $t5, 1
-	vori.b	$vr6, $vr2, 0
-	vshuf.w	$vr6, $vr11, $vr9
-	vsub.w	$vr5, $vr5, $vr6
-	vadd.w	$vr4, $vr4, $vr3
-	vadd.w	$vr6, $vr7, $vr10
-	vsrai.w	$vr6, $vr6, 6
-	vmaxi.w	$vr6, $vr6, 0
-	vmin.w	$vr6, $vr6, $vr8
-	vstx	$vr6, $a5, $t2
-	vsub.w	$vr6, $vr7, $vr10
-	vsrai.w	$vr6, $vr6, 6
-	vinsgr2vr.w	$vr7, $t6, 0
-	vreplvei.w	$vr7, $vr7, 0
-	vmaxi.w	$vr6, $vr6, 0
-	vori.b	$vr8, $vr7, 0
-	vinsgr2vr.w	$vr8, $t6, 3
-	vmin.w	$vr6, $vr6, $vr8
-	vstx	$vr6, $t0, $t2
-	vadd.w	$vr6, $vr4, $vr5
-	vsrai.w	$vr6, $vr6, 6
-	vmaxi.w	$vr6, $vr6, 0
-	vmin.w	$vr6, $vr6, $vr8
-	vstx	$vr6, $a6, $t2
+	vadd.w	$vr3, $vr3, $vr2
+	vadd.w	$vr5, $vr6, $vr9
+	vsrai.w	$vr5, $vr5, 6
+	vmaxi.w	$vr5, $vr5, 0
+	vmin.w	$vr5, $vr5, $vr7
+	vstx	$vr5, $a5, $t2
+	vsub.w	$vr5, $vr6, $vr9
+	vsrai.w	$vr5, $vr5, 6
+	vinsgr2vr.w	$vr6, $t6, 0
+	vreplvei.w	$vr6, $vr6, 0
+	vmaxi.w	$vr5, $vr5, 0
+	vori.b	$vr7, $vr6, 0
+	vinsgr2vr.w	$vr7, $t6, 3
+	vmin.w	$vr5, $vr5, $vr7
+	vstx	$vr5, $t0, $t2
+	vadd.w	$vr5, $vr3, $vr4
+	vsrai.w	$vr5, $vr5, 6
+	vmaxi.w	$vr5, $vr5, 0
+	vmin.w	$vr5, $vr5, $vr7
+	vstx	$vr5, $a6, $t2
 	ldx.w	$t3, $a1, $a3
-	vsub.w	$vr4, $vr4, $vr5
-	vsrai.w	$vr4, $vr4, 6
-	vmaxi.w	$vr4, $vr4, 0
-	vinsgr2vr.w	$vr7, $t3, 3
-	vmin.w	$vr4, $vr4, $vr7
-	vstx	$vr4, $a7, $t2
+	vsub.w	$vr3, $vr3, $vr4
+	vsrai.w	$vr3, $vr3, 6
+	vmaxi.w	$vr3, $vr3, 0
+	vinsgr2vr.w	$vr6, $t3, 3
+	vmin.w	$vr3, $vr3, $vr6
+	vstx	$vr3, $a7, $t2
 	andi	$t3, $t1, 1
 	ori	$t2, $zero, 4
 	move	$t1, $zero
@@ -13389,10 +13364,8 @@ dct_luma_sp2:                           # @dct_luma_sp2
 	.word	5                               # 0x5
 	.word	0                               # 0x0
 .LCPI11_3:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	6                               # 0x6
-	.word	7                               # 0x7
+	.dword	0                               # 0x0
+	.dword	3                               # 0x3
 	.text
 	.globl	dct_chroma_sp2
 	.p2align	5
@@ -14664,7 +14637,7 @@ dct_chroma_sp2:                         # @dct_chroma_sp2
 	vadd.w	$vr6, $vr8, $vr9
 	vsub.w	$vr7, $vr7, $vr9
 	vori.b	$vr8, $vr3, 0
-	vshuf.w	$vr8, $vr7, $vr6
+	vshuf.d	$vr8, $vr7, $vr6
 	vsrai.w	$vr6, $vr8, 6
 	vmaxi.w	$vr6, $vr6, 0
 	vmin.w	$vr6, $vr6, $vr5
@@ -14693,7 +14666,7 @@ dct_chroma_sp2:                         # @dct_chroma_sp2
 	vadd.w	$vr6, $vr7, $vr9
 	vsub.w	$vr7, $vr8, $vr9
 	vori.b	$vr8, $vr3, 0
-	vshuf.w	$vr8, $vr7, $vr6
+	vshuf.d	$vr8, $vr7, $vr6
 	vsrai.w	$vr6, $vr8, 6
 	vmaxi.w	$vr6, $vr6, 0
 	vmin.w	$vr6, $vr6, $vr5
@@ -14722,7 +14695,7 @@ dct_chroma_sp2:                         # @dct_chroma_sp2
 	vadd.w	$vr6, $vr7, $vr9
 	vsub.w	$vr7, $vr8, $vr9
 	vori.b	$vr8, $vr3, 0
-	vshuf.w	$vr8, $vr7, $vr6
+	vshuf.d	$vr8, $vr7, $vr6
 	vsrai.w	$vr6, $vr8, 6
 	vmaxi.w	$vr6, $vr6, 0
 	vmin.w	$vr6, $vr6, $vr5
@@ -14751,7 +14724,7 @@ dct_chroma_sp2:                         # @dct_chroma_sp2
 	vadd.w	$vr6, $vr7, $vr9
 	vsub.w	$vr7, $vr8, $vr9
 	vori.b	$vr8, $vr3, 0
-	vshuf.w	$vr8, $vr7, $vr6
+	vshuf.d	$vr8, $vr7, $vr6
 	vsrai.w	$vr6, $vr8, 6
 	vmaxi.w	$vr6, $vr6, 0
 	vmin.w	$vr6, $vr6, $vr5

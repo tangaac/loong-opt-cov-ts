@@ -4473,15 +4473,10 @@ intrapred_chroma:                       # @intrapred_chroma
 	.p2align	4, 0x0                          # -- Begin function itrans
 .LCPI3_0:
 	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-.LCPI3_1:
-	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	4294967295                      # 0xffffffff
-.LCPI3_2:
+.LCPI3_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -4648,87 +4643,83 @@ itrans:                                 # @itrans
 	st.w	$t1, $a0, 1584
 	slli.d	$a2, $a2, 5
 	add.d	$a2, $a0, $a2
-	ld.d	$t1, $a0, 1452
 	alsl.d	$a1, $a1, $a2, 1
-	ld.d	$a2, $a0, 1520
+	ld.d	$a2, $a0, 1452
+	ld.d	$t1, $a0, 1520
+	ld.d	$t3, $a0, 1584
 	vld	$vr1, $a0, 1384
-	vinsgr2vr.d	$vr0, $t1, 0
-	ld.d	$t1, $a0, 1584
-	vinsgr2vr.d	$vr2, $a2, 0
-	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
-	vld	$vr3, $a2, %pc_lo12(.LCPI3_0)
-	vinsgr2vr.d	$vr4, $t1, 0
-	vinsgr2vr.w	$vr5, $t2, 0
-	vinsgr2vr.w	$vr6, $a7, 0
-	vpackev.w	$vr5, $vr6, $vr5
-	vori.b	$vr6, $vr3, 0
-	vshuf.w	$vr6, $vr2, $vr5
-	vadd.w	$vr2, $vr6, $vr1
+	vinsgr2vr.d	$vr0, $a2, 0
+	vinsgr2vr.d	$vr2, $t1, 0
+	vinsgr2vr.d	$vr3, $t3, 0
+	vinsgr2vr.w	$vr4, $t2, 0
+	vinsgr2vr.w	$vr5, $a7, 0
+	vpackev.w	$vr4, $vr5, $vr4
+	vpackev.d	$vr2, $vr2, $vr4
+	vadd.w	$vr4, $vr2, $vr1
 	vinsgr2vr.w	$vr5, $t0, 0
-	vinsgr2vr.w	$vr7, $a6, 0
-	vpackev.w	$vr5, $vr7, $vr5
-	vori.b	$vr7, $vr3, 0
-	vshuf.w	$vr7, $vr4, $vr5
-	pcalau12i	$a2, %pc_hi20(.LCPI3_1)
-	vld	$vr4, $a2, %pc_lo12(.LCPI3_1)
-	vsrai.w	$vr5, $vr7, 1
-	vinsgr2vr.w	$vr8, $a4, 0
+	vinsgr2vr.w	$vr6, $a6, 0
+	vpackev.w	$vr5, $vr6, $vr5
+	vpackev.d	$vr3, $vr3, $vr5
+	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
+	vld	$vr5, $a2, %pc_lo12(.LCPI3_0)
+	vsrai.w	$vr6, $vr3, 1
+	vinsgr2vr.w	$vr7, $a4, 0
 	ld.d	$a2, $a1, 104
-	vshuf.w	$vr4, $vr0, $vr8
-	vrepli.w	$vr9, 32
-	vadd.w	$vr0, $vr2, $vr9
-	vinsgr2vr.d	$vr2, $a2, 0
-	vrepli.b	$vr10, 0
+	vshuf.w	$vr5, $vr0, $vr7
+	vrepli.w	$vr8, 32
+	vadd.w	$vr0, $vr4, $vr8
+	vinsgr2vr.d	$vr4, $a2, 0
+	vrepli.b	$vr9, 0
 	ld.d	$a2, $a0, 1456
-	vilvl.h	$vr2, $vr10, $vr2
-	vslli.w	$vr2, $vr2, 6
-	vreplgr2vr.w	$vr11, $a5
-	vinsgr2vr.d	$vr12, $a2, 0
-	vinsgr2vr.w	$vr8, $a3, 1
-	vshuf.w	$vr3, $vr12, $vr8
-	vsrai.w	$vr3, $vr3, 1
-	pcalau12i	$a2, %pc_hi20(.LCPI3_2)
-	vld	$vr8, $a2, %pc_lo12(.LCPI3_2)
-	vsub.w	$vr1, $vr1, $vr6
-	vsub.w	$vr3, $vr3, $vr7
-	vadd.w	$vr1, $vr1, $vr9
-	vshuf.w	$vr8, $vr12, $vr4
-	vadd.w	$vr4, $vr5, $vr8
-	vadd.w	$vr5, $vr0, $vr4
-	vadd.w	$vr2, $vr5, $vr2
-	vsrai.w	$vr2, $vr2, 6
+	vilvl.h	$vr4, $vr9, $vr4
+	vslli.w	$vr4, $vr4, 6
+	vreplgr2vr.w	$vr10, $a5
+	vinsgr2vr.d	$vr11, $a2, 0
+	vinsgr2vr.w	$vr7, $a3, 1
+	vpackev.d	$vr7, $vr11, $vr7
+	vsub.w	$vr1, $vr1, $vr2
+	pcalau12i	$a2, %pc_hi20(.LCPI3_1)
+	vld	$vr2, $a2, %pc_lo12(.LCPI3_1)
+	vsrai.w	$vr7, $vr7, 1
+	vsub.w	$vr3, $vr7, $vr3
+	vadd.w	$vr1, $vr1, $vr8
+	vshuf.w	$vr2, $vr11, $vr5
+	vadd.w	$vr2, $vr6, $vr2
+	vadd.w	$vr5, $vr0, $vr2
+	vadd.w	$vr4, $vr5, $vr4
+	vsrai.w	$vr4, $vr4, 6
 	ld.d	$a2, $a1, 136
-	vmaxi.w	$vr2, $vr2, 0
-	vmin.w	$vr2, $vr2, $vr11
-	vst	$vr2, $a0, 1384
-	vinsgr2vr.d	$vr2, $a2, 0
-	vilvl.h	$vr2, $vr10, $vr2
-	vslli.w	$vr2, $vr2, 6
+	vmaxi.w	$vr4, $vr4, 0
+	vmin.w	$vr4, $vr4, $vr10
+	vst	$vr4, $a0, 1384
+	vinsgr2vr.d	$vr4, $a2, 0
+	vilvl.h	$vr4, $vr9, $vr4
+	vslli.w	$vr4, $vr4, 6
 	vadd.w	$vr5, $vr1, $vr3
-	vadd.w	$vr2, $vr5, $vr2
-	vsrai.w	$vr2, $vr2, 6
+	vadd.w	$vr4, $vr5, $vr4
+	vsrai.w	$vr4, $vr4, 6
 	ld.d	$a2, $a1, 168
-	vmaxi.w	$vr2, $vr2, 0
-	vmin.w	$vr2, $vr2, $vr11
-	vst	$vr2, $a0, 1448
-	vinsgr2vr.d	$vr2, $a2, 0
-	vilvl.h	$vr2, $vr10, $vr2
-	vslli.w	$vr2, $vr2, 6
+	vmaxi.w	$vr4, $vr4, 0
+	vmin.w	$vr4, $vr4, $vr10
+	vst	$vr4, $a0, 1448
+	vinsgr2vr.d	$vr4, $a2, 0
+	vilvl.h	$vr4, $vr9, $vr4
+	vslli.w	$vr4, $vr4, 6
 	vsub.w	$vr1, $vr1, $vr3
-	vadd.w	$vr1, $vr1, $vr2
+	vadd.w	$vr1, $vr1, $vr4
 	vsrai.w	$vr1, $vr1, 6
 	ld.d	$a1, $a1, 200
 	vmaxi.w	$vr1, $vr1, 0
-	vmin.w	$vr1, $vr1, $vr11
+	vmin.w	$vr1, $vr1, $vr10
 	vst	$vr1, $a0, 1512
 	vinsgr2vr.d	$vr1, $a1, 0
-	vilvl.h	$vr1, $vr10, $vr1
+	vilvl.h	$vr1, $vr9, $vr1
 	vslli.w	$vr1, $vr1, 6
-	vsub.w	$vr0, $vr0, $vr4
+	vsub.w	$vr0, $vr0, $vr2
 	vadd.w	$vr0, $vr0, $vr1
 	vsrai.w	$vr0, $vr0, 6
 	vmaxi.w	$vr0, $vr0, 0
-	vmin.w	$vr0, $vr0, $vr11
+	vmin.w	$vr0, $vr0, $vr10
 	vst	$vr0, $a0, 1576
 	ret
 .Lfunc_end3:

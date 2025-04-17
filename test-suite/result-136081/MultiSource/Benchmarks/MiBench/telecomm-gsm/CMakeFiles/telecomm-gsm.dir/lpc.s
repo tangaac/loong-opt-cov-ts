@@ -46,20 +46,15 @@
 	.word	4294967292                      # 0xfffffffc
 	.word	4294967292                      # 0xfffffffc
 .LCPI0_10:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
+	.half	32                              # 0x20
+	.half	32                              # 0x20
+	.half	16                              # 0x10
+	.half	16                              # 0x10
+	.half	8                               # 0x8
+	.half	8                               # 0x8
+	.half	4                               # 0x4
+	.half	4                               # 0x4
 .LCPI0_11:
-	.half	32                              # 0x20
-	.half	32                              # 0x20
-	.half	16                              # 0x10
-	.half	16                              # 0x10
-	.half	8                               # 0x8
-	.half	8                               # 0x8
-	.half	4                               # 0x4
-	.half	4                               # 0x4
-.LCPI0_12:
 	.half	63                              # 0x3f
 	.half	63                              # 0x3f
 	.half	31                              # 0x1f
@@ -2365,12 +2360,10 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vld	$vr4, $a0, %pc_lo12(.LCPI0_10)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
 	vld	$vr5, $a0, %pc_lo12(.LCPI0_11)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
-	vld	$vr6, $a0, %pc_lo12(.LCPI0_12)
-	vshuf.w	$vr4, $vr2, $vr0
-	vpickev.h	$vr0, $vr1, $vr4
-	vadd.h	$vr0, $vr0, $vr5
-	vbitsel.v	$vr0, $vr0, $vr6, $vr3
+	vpackev.d	$vr0, $vr2, $vr0
+	vpickev.h	$vr0, $vr1, $vr0
+	vadd.h	$vr0, $vr0, $vr4
+	vbitsel.v	$vr0, $vr0, $vr5, $vr3
 	vst	$vr0, $s2, 0
 	fld.d	$fs0, $sp, 96                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload

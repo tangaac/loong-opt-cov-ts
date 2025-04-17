@@ -2,14 +2,10 @@
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function keyUnion
 .LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 	.text
 	.globl	keyUnion
 	.p2align	5
@@ -21,8 +17,8 @@ keyUnion:                               # @keyUnion
 	xvld	$xr1, $a0, %pc_lo12(.LCPI0_0)
 	xvld	$xr2, $a1, 0
 	xvori.b	$xr3, $xr1, 0
-	xvshuf.w	$xr3, $xr2, $xr0
-	xvshuf.w	$xr1, $xr0, $xr2
+	xvshuf.d	$xr3, $xr2, $xr0
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvfcmp.clt.s	$xr1, $xr3, $xr1
 	xvbitsel.v	$xr0, $xr2, $xr0, $xr1
 	xvst	$xr0, $a2, 0

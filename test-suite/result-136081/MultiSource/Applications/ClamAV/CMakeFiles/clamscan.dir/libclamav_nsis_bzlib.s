@@ -153,23 +153,6 @@ default_bzfree:                         # @default_bzfree
 	.byte	13                              # 0xd
 	.byte	14                              # 0xe
 	.byte	15                              # 0xf
-.LCPI3_2:
-	.byte	0                               # 0x0
-	.byte	1                               # 0x1
-	.byte	2                               # 0x2
-	.byte	3                               # 0x3
-	.byte	4                               # 0x4
-	.byte	5                               # 0x5
-	.byte	6                               # 0x6
-	.byte	7                               # 0x7
-	.byte	16                              # 0x10
-	.byte	17                              # 0x11
-	.byte	18                              # 0x12
-	.byte	19                              # 0x13
-	.byte	20                              # 0x14
-	.byte	21                              # 0x15
-	.byte	22                              # 0x16
-	.byte	23                              # 0x17
 	.text
 	.globl	nsis_BZ2_bzDecompress
 	.p2align	5
@@ -2538,7 +2521,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ori	$a1, $zero, 4080
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	vld	$vr3, $sp, 128                  # 16-byte Folded Reload
+	vld	$vr2, $sp, 128                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB3_270:                              # %.preheader1389.i
                                         #   Parent Loop BB3_4 Depth=1
@@ -2560,12 +2543,10 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	st.b	$t2, $sp, 722
 	st.b	$t3, $sp, 721
 	vld	$vr0, $sp, 720
-	pcalau12i	$a5, %pc_hi20(.LCPI3_2)
-	vld	$vr1, $a5, %pc_lo12(.LCPI3_2)
-	vinsgr2vr.b	$vr2, $a4, 0
-	vreplvei.b	$vr2, $vr2, 0
-	vor.v	$vr2, $vr2, $vr3
-	vshuf.b	$vr0, $vr2, $vr0, $vr1
+	vinsgr2vr.b	$vr1, $a4, 0
+	vreplvei.b	$vr1, $vr1, 0
+	vor.v	$vr1, $vr1, $vr2
+	vpackev.d	$vr0, $vr1, $vr0
 	vst	$vr0, $a2, 0
 	st.w	$a1, $a3, 0
 	addi.d	$a0, $a0, -1

@@ -1,13 +1,6 @@
 	.file	"pr82954.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function foo
-.LCPI0_0:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
 	.text
-	.globl	foo
+	.globl	foo                             # -- Begin function foo
 	.p2align	5
 	.type	foo,@function
 foo:                                    # @foo
@@ -15,13 +8,11 @@ foo:                                    # @foo
 	ld.d	$a1, $a1, 8
 	vld	$vr0, $a0, 0
 	vinsgr2vr.d	$vr1, $a1, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	vld	$vr2, $a1, %pc_lo12(.LCPI0_0)
 	ori	$a1, $zero, 1
 	lu32i.d	$a1, 2
-	vreplgr2vr.d	$vr3, $a1
-	vshuf.w	$vr2, $vr1, $vr3
-	vxor.v	$vr0, $vr0, $vr2
+	vreplgr2vr.d	$vr2, $a1
+	vpackev.d	$vr1, $vr1, $vr2
+	vxor.v	$vr0, $vr0, $vr1
 	vst	$vr0, $a0, 0
 	ret
 .Lfunc_end0:

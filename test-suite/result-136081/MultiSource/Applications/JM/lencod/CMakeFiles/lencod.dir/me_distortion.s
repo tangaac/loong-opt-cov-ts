@@ -252,7 +252,15 @@ HadamardSAD4x4:                         # @HadamardSAD4x4
 .Lfunc_end1:
 	.size	HadamardSAD4x4, .Lfunc_end1-HadamardSAD4x4
                                         # -- End function
-	.globl	distortion8x8                   # -- Begin function distortion8x8
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function distortion8x8
+.LCPI2_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	distortion8x8
 	.p2align	5
 	.type	distortion8x8,@function
 distortion8x8:                          # @distortion8x8
@@ -452,12 +460,14 @@ distortion8x8:                          # @distortion8x8
 	xvadd.w	$xr1, $xr3, $xr1
 	bne	$a2, $a3, .LBB2_5
 .LBB2_6:                                # %middle.block39
+	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI2_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -484,7 +494,15 @@ distortion8x8:                          # @distortion8x8
 .Lfunc_end2:
 	.size	distortion8x8, .Lfunc_end2-distortion8x8
                                         # -- End function
-	.globl	HadamardSAD8x8                  # -- Begin function HadamardSAD8x8
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function HadamardSAD8x8
+.LCPI3_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	HadamardSAD8x8
 	.p2align	5
 	.type	HadamardSAD8x8,@function
 HadamardSAD8x8:                         # @HadamardSAD8x8
@@ -721,13 +739,15 @@ HadamardSAD8x8:                         # @HadamardSAD8x8
 	xvadd.w	$xr0, $xr5, $xr0
 	xvadd.w	$xr0, $xr4, $xr0
 	xvadd.w	$xr0, $xr3, $xr0
+	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI3_0)
 	xvadd.w	$xr0, $xr2, $xr0
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr3, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1764,7 +1784,7 @@ computeSADWP:                           # @computeSADWP
 # %bb.7:                                # %middle.block
                                         #   in Loop: Header=BB6_3 Depth=1
 	vadd.w	$vr6, $vr7, $vr6
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
@@ -2170,7 +2190,7 @@ computeSADWP:                           # @computeSADWP
 # %bb.22:                               # %middle.block258
                                         #   in Loop: Header=BB6_18 Depth=1
 	vadd.w	$vr6, $vr7, $vr6
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
@@ -2538,7 +2558,7 @@ computeSADWP:                           # @computeSADWP
 # %bb.37:                               # %middle.block304
                                         #   in Loop: Header=BB6_33 Depth=1
 	vadd.w	$vr6, $vr7, $vr6
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
@@ -3686,7 +3706,7 @@ computeBiPredSAD2:                      # @computeBiPredSAD2
 # %bb.7:                                # %middle.block
                                         #   in Loop: Header=BB8_3 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
+	vreplvei.d	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
 	vreplvei.w	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
@@ -4169,7 +4189,7 @@ computeBiPredSAD2:                      # @computeBiPredSAD2
 # %bb.22:                               # %middle.block365
                                         #   in Loop: Header=BB8_18 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
+	vreplvei.d	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
 	vreplvei.w	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
@@ -4633,7 +4653,7 @@ computeBiPredSAD2:                      # @computeBiPredSAD2
 # %bb.37:                               # %middle.block423
                                         #   in Loop: Header=BB8_33 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
+	vreplvei.d	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
 	vreplvei.w	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
@@ -7845,7 +7865,7 @@ computeSSEWP:                           # @computeSSEWP
 # %bb.7:                                # %middle.block
                                         #   in Loop: Header=BB14_3 Depth=1
 	vadd.w	$vr6, $vr7, $vr6
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
@@ -8245,7 +8265,7 @@ computeSSEWP:                           # @computeSSEWP
 # %bb.23:                               # %middle.block264
                                         #   in Loop: Header=BB14_19 Depth=1
 	vadd.w	$vr6, $vr7, $vr6
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
@@ -8605,7 +8625,7 @@ computeSSEWP:                           # @computeSSEWP
 # %bb.38:                               # %middle.block310
                                         #   in Loop: Header=BB14_34 Depth=1
 	vadd.w	$vr6, $vr7, $vr6
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vadd.w	$vr6, $vr6, $vr7
@@ -9620,7 +9640,7 @@ computeBiPredSSE2:                      # @computeBiPredSSE2
 # %bb.7:                                # %middle.block
                                         #   in Loop: Header=BB16_3 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
+	vreplvei.d	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
 	vreplvei.w	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
@@ -10030,7 +10050,7 @@ computeBiPredSSE2:                      # @computeBiPredSSE2
 # %bb.22:                               # %middle.block371
                                         #   in Loop: Header=BB16_18 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
+	vreplvei.d	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
 	vreplvei.w	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
@@ -10421,7 +10441,7 @@ computeBiPredSSE2:                      # @computeBiPredSSE2
 # %bb.37:                               # %middle.block429
                                         #   in Loop: Header=BB16_33 Depth=1
 	vadd.w	$vr7, $vr8, $vr7
-	vshuf4i.w	$vr8, $vr7, 14
+	vreplvei.d	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8
 	vreplvei.w	$vr8, $vr7, 1
 	vadd.w	$vr7, $vr7, $vr8

@@ -1,14 +1,21 @@
 	.file	"placepin.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function placepin
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function placepin
 .LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.dword	0x41dfffffffc00000              # double 2147483647
 	.text
 	.globl	placepin
@@ -147,7 +154,7 @@ placepin:                               # @placepin
 	beqz	$s6, .LBB0_8
 # %bb.10:                               #   in Loop: Header=BB0_9 Depth=2
 	ld.w	$s8, $s4, 16
-	pcalau12i	$s5, %pc_hi20(.LCPI0_1)
+	pcalau12i	$s5, %pc_hi20(.LCPI0_2)
 	beq	$s8, $a4, .LBB0_14
 # %bb.11:                               #   in Loop: Header=BB0_9 Depth=2
 	bne	$s8, $a1, .LBB0_16
@@ -298,12 +305,14 @@ placepin:                               # @placepin
 	bnez	$t1, .LBB0_33
 # %bb.34:                               # %middle.block410
                                         #   in Loop: Header=BB0_9 Depth=2
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -370,12 +379,14 @@ placepin:                               # @placepin
 	bnez	$t1, .LBB0_37
 # %bb.38:                               # %middle.block482
                                         #   in Loop: Header=BB0_9 Depth=2
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -439,12 +450,14 @@ placepin:                               # @placepin
 	bnez	$t0, .LBB0_41
 # %bb.42:                               # %middle.block385
                                         #   in Loop: Header=BB0_9 Depth=2
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -466,8 +479,8 @@ placepin:                               # @placepin
                                         #   in Loop: Header=BB0_9 Depth=2
 	bstrpick.d	$a7, $s8, 32, 2
 	slli.d	$a2, $a7, 2
-	pcalau12i	$t0, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $t0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$t0, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI0_1)
 	alsl.d	$t0, $a7, $ra, 2
 	vinsgr2vr.w	$vr2, $a0, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -497,7 +510,7 @@ placepin:                               # @placepin
 	bnez	$a0, .LBB0_46
 # %bb.47:                               # %vec.epilog.middle.block427
                                         #   in Loop: Header=BB0_9 Depth=2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -516,8 +529,8 @@ placepin:                               # @placepin
                                         #   in Loop: Header=BB0_9 Depth=2
 	bstrpick.d	$a7, $ra, 32, 2
 	slli.d	$a2, $a7, 2
-	pcalau12i	$t1, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $t1, %pc_lo12(.LCPI0_0)
+	pcalau12i	$t1, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $t1, %pc_lo12(.LCPI0_1)
 	alsl.d	$t1, $a7, $t2, 2
 	vinsgr2vr.w	$vr2, $a0, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -547,7 +560,7 @@ placepin:                               # @placepin
 	bnez	$a0, .LBB0_50
 # %bb.51:                               # %vec.epilog.middle.block499
                                         #   in Loop: Header=BB0_9 Depth=2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -567,8 +580,8 @@ placepin:                               # @placepin
 	slli.d	$a2, $a2, 2
 	srli.d	$a7, $s7, 2
 	ori	$t2, $zero, 1
-	pcalau12i	$t0, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $t0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$t0, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI0_1)
 	bstrins.d	$t2, $a7, 30, 2
 	vinsgr2vr.w	$vr2, $a0, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -597,7 +610,7 @@ placepin:                               # @placepin
 	bnez	$a0, .LBB0_54
 # %bb.55:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_9 Depth=2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -738,12 +751,14 @@ placepin:                               # @placepin
 	bnez	$t0, .LBB0_72
 # %bb.73:                               # %middle.block446
                                         #   in Loop: Header=BB0_9 Depth=2
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -766,8 +781,8 @@ placepin:                               # @placepin
                                         #   in Loop: Header=BB0_9 Depth=2
 	bstrpick.d	$a7, $s8, 32, 2
 	slli.d	$a2, $a7, 2
-	pcalau12i	$t0, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $t0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$t0, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI0_1)
 	alsl.d	$t0, $a7, $t2, 2
 	vinsgr2vr.w	$vr2, $a0, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -797,7 +812,7 @@ placepin:                               # @placepin
 	bnez	$a0, .LBB0_77
 # %bb.78:                               # %vec.epilog.middle.block463
                                         #   in Loop: Header=BB0_9 Depth=2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -844,7 +859,7 @@ placepin:                               # @placepin
 	mul.d	$a0, $t0, $a5
 	add.w	$t0, $a0, $a6
 	st.w	$t0, $a2, 0
-	fld.d	$fa2, $s5, %pc_lo12(.LCPI0_1)
+	fld.d	$fa2, $s5, %pc_lo12(.LCPI0_2)
 	bstrpick.d	$a0, $t0, 30, 0
 	movgr2fr.w	$fa3, $a0
 	ffint.d.w	$fa3, $fa3
@@ -907,7 +922,7 @@ placepin:                               # @placepin
 	mul.d	$a0, $t0, $a5
 	add.w	$t0, $a0, $a6
 	st.w	$t0, $a2, 0
-	fld.d	$fa2, $s5, %pc_lo12(.LCPI0_1)
+	fld.d	$fa2, $s5, %pc_lo12(.LCPI0_2)
 	bstrpick.d	$a0, $t0, 30, 0
 	movgr2fr.w	$fa3, $a0
 	ffint.d.w	$fa3, $fa3
@@ -945,7 +960,7 @@ placepin:                               # @placepin
                                         #         Child Loop BB0_100 Depth 4
 	mul.d	$a7, $t7, $a5
 	add.w	$t7, $a7, $a6
-	fld.d	$fa2, $s5, %pc_lo12(.LCPI0_1)
+	fld.d	$fa2, $s5, %pc_lo12(.LCPI0_2)
 	bstrpick.d	$a7, $t7, 30, 0
 	movgr2fr.w	$fa3, $a7
 	ffint.d.w	$fa3, $fa3

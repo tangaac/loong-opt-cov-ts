@@ -10,9 +10,14 @@
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI0_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -40,8 +45,8 @@ SumArray:                               # @SumArray
 	addi.d	$t1, $a0, 32
 	sub.d	$t2, $zero, $t0
 	ori	$t3, $zero, 4
-	pcalau12i	$t4, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $t4, %pc_lo12(.LCPI0_1)
+	pcalau12i	$t4, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $t4, %pc_lo12(.LCPI0_2)
 	ori	$t4, $zero, 16
 	vinsgr2vr.w	$vr1, $zero, 0
 	xvrepli.b	$xr2, 0
@@ -95,12 +100,14 @@ SumArray:                               # @SumArray
 	bnez	$t5, .LBB0_9
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB0_4 Depth=1
+	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
+	xvld	$xr5, $a3, %pc_lo12(.LCPI0_1)
 	xvadd.w	$xr3, $xr4, $xr3
 	xvpermi.d	$xr4, $xr3, 78
-	xvshuf4i.w	$xr4, $xr4, 228
-	xvadd.w	$xr3, $xr3, $xr4
+	xvshuf.d	$xr5, $xr0, $xr4
+	xvadd.w	$xr3, $xr3, $xr5
 	xvpermi.d	$xr4, $xr3, 68
-	xvshuf4i.w	$xr4, $xr4, 14
+	xvrepl128vei.d	$xr4, $xr4, 1
 	xvadd.w	$xr3, $xr3, $xr4
 	xvpermi.d	$xr4, $xr3, 68
 	xvrepl128vei.w	$xr4, $xr4, 1
@@ -130,7 +137,7 @@ SumArray:                               # @SumArray
 	bnez	$a3, .LBB0_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_4 Depth=1
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -187,9 +194,14 @@ SumArray:                               # @SumArray
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI1_4:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI1_4:
+.LCPI1_5:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -427,61 +439,64 @@ main:                                   # @main
 	pcalau12i	$a2, %pc_hi20(.LCPI1_3)
 	xvld	$xr0, $a2, %pc_lo12(.LCPI1_3)
 	pcalau12i	$a2, %pc_hi20(.LCPI1_4)
-	vld	$vr1, $a2, %pc_lo12(.LCPI1_4)
-	xvinsgr2vr.w	$xr2, $zero, 0
-	xvpermi.d	$xr2, $xr2, 68
-	vinsgr2vr.w	$vr3, $zero, 0
+	xvld	$xr1, $a2, %pc_lo12(.LCPI1_4)
+	pcalau12i	$a2, %pc_hi20(.LCPI1_5)
+	vld	$vr2, $a2, %pc_lo12(.LCPI1_5)
+	xvinsgr2vr.w	$xr3, $zero, 0
+	xvpermi.d	$xr3, $xr3, 68
+	vinsgr2vr.w	$vr4, $zero, 0
 	.p2align	4, , 16
 .LBB1_28:                               # %vector.ph51
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr4, $a1, 160
-	xvld	$xr5, $a1, -96
-	xvld	$xr6, $a1, -160
-	xvld	$xr7, $a1, -32
-	xvld	$xr8, $a1, 32
-	xvld	$xr9, $a1, 96
+	xvld	$xr5, $a1, 160
+	xvld	$xr6, $a1, -96
+	xvld	$xr7, $a1, -160
+	xvld	$xr8, $a1, -32
+	xvld	$xr9, $a1, 32
+	xvld	$xr10, $a1, 96
+	xvadd.w	$xr6, $xr6, $xr7
+	xvadd.w	$xr6, $xr8, $xr6
+	xvadd.w	$xr6, $xr9, $xr6
+	xvadd.w	$xr6, $xr10, $xr6
 	xvadd.w	$xr5, $xr5, $xr6
-	xvadd.w	$xr5, $xr7, $xr5
-	xvadd.w	$xr5, $xr8, $xr5
-	xvadd.w	$xr5, $xr9, $xr5
-	xvadd.w	$xr4, $xr4, $xr5
-	xvld	$xr5, $a1, 128
-	xvld	$xr6, $a1, 64
-	xvld	$xr7, $a1, 0
-	xvld	$xr8, $a1, -64
-	xvld	$xr9, $a1, -128
-	xvld	$xr10, $a1, -192
-	xvinsgr2vr.w	$xr11, $a3, 0
-	xvpermi.d	$xr11, $xr11, 68
-	xvori.b	$xr12, $xr0, 0
-	xvshuf.w	$xr12, $xr2, $xr11
-	xvadd.w	$xr10, $xr10, $xr12
+	xvld	$xr6, $a1, 128
+	xvld	$xr7, $a1, 64
+	xvld	$xr8, $a1, 0
+	xvld	$xr9, $a1, -64
+	xvld	$xr10, $a1, -128
+	xvld	$xr11, $a1, -192
+	xvinsgr2vr.w	$xr12, $a3, 0
+	xvpermi.d	$xr12, $xr12, 68
+	xvori.b	$xr13, $xr0, 0
+	xvshuf.w	$xr13, $xr3, $xr12
+	xvadd.w	$xr11, $xr11, $xr13
+	xvadd.w	$xr10, $xr10, $xr11
 	xvadd.w	$xr9, $xr9, $xr10
 	xvadd.w	$xr8, $xr8, $xr9
 	xvadd.w	$xr7, $xr7, $xr8
 	xvadd.w	$xr6, $xr6, $xr7
 	xvadd.w	$xr5, $xr5, $xr6
-	xvadd.w	$xr4, $xr4, $xr5
-	xvpermi.d	$xr5, $xr4, 78
-	xvshuf4i.w	$xr5, $xr5, 228
-	xvadd.w	$xr4, $xr4, $xr5
-	xvpermi.d	$xr5, $xr4, 68
-	xvshuf4i.w	$xr5, $xr5, 14
-	xvadd.w	$xr4, $xr4, $xr5
-	xvpermi.d	$xr5, $xr4, 68
-	xvrepl128vei.w	$xr5, $xr5, 1
-	xvadd.w	$xr4, $xr4, $xr5
-	vld	$vr5, $a1, 192
-	xvpickve2gr.w	$a2, $xr4, 0
-	vinsgr2vr.w	$vr4, $a2, 0
-	vori.b	$vr6, $vr1, 0
-	vshuf.w	$vr6, $vr3, $vr4
-	vadd.w	$vr4, $vr5, $vr6
-	vshuf4i.w	$vr5, $vr4, 14
-	vadd.w	$vr4, $vr4, $vr5
-	vreplvei.w	$vr5, $vr4, 1
-	vadd.w	$vr4, $vr4, $vr5
-	vpickve2gr.w	$a3, $vr4, 0
+	xvpermi.d	$xr6, $xr5, 78
+	xvori.b	$xr7, $xr1, 0
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
+	xvpermi.d	$xr6, $xr5, 68
+	xvrepl128vei.d	$xr6, $xr6, 1
+	xvadd.w	$xr5, $xr5, $xr6
+	xvpermi.d	$xr6, $xr5, 68
+	xvrepl128vei.w	$xr6, $xr6, 1
+	xvadd.w	$xr5, $xr5, $xr6
+	vld	$vr6, $a1, 192
+	xvpickve2gr.w	$a2, $xr5, 0
+	vinsgr2vr.w	$vr5, $a2, 0
+	vori.b	$vr7, $vr2, 0
+	vshuf.w	$vr7, $vr4, $vr5
+	vadd.w	$vr5, $vr6, $vr7
+	vreplvei.d	$vr6, $vr5, 1
+	vadd.w	$vr5, $vr5, $vr6
+	vreplvei.w	$vr6, $vr5, 1
+	vadd.w	$vr5, $vr5, $vr6
+	vpickve2gr.w	$a3, $vr5, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 400
 	bnez	$a0, .LBB1_28

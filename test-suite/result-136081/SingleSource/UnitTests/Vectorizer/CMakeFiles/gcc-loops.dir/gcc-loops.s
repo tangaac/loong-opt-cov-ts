@@ -8841,7 +8841,15 @@ _Z8example8i:                           # @_Z8example8i
 .Lfunc_end9:
 	.size	_Z8example8i, .Lfunc_end9-_Z8example8i
                                         # -- End function
-	.globl	_Z8example9Pj                   # -- Begin function _Z8example9Pj
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z8example9Pj
+.LCPI10_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	_Z8example9Pj
 	.p2align	5
 	.type	_Z8example9Pj,@function
 _Z8example9Pj:                          # @_Z8example9Pj
@@ -8871,12 +8879,14 @@ _Z8example9Pj:                          # @_Z8example9Pj
 	xvsub.w	$xr1, $xr1, $xr5
 	bnez	$a1, .LBB10_1
 # %bb.2:                                # %middle.block
+	pcalau12i	$a1, %pc_hi20(.LCPI10_0)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI10_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -9160,7 +9170,15 @@ _Z9example12v:                          # @_Z9example12v
 .Lfunc_end14:
 	.size	_Z9example12v, .Lfunc_end14-_Z9example12v
                                         # -- End function
-	.globl	_Z9example13PPiS0_S_            # -- Begin function _Z9example13PPiS0_S_
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z9example13PPiS0_S_
+.LCPI15_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	_Z9example13PPiS0_S_
 	.p2align	5
 	.type	_Z9example13PPiS0_S_,@function
 _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
@@ -9196,6 +9214,8 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	ori	$t8, $t5, 96
 	ori	$fp, $t5, 128
 	ori	$s0, $t5, 160
+	pcalau12i	$s1, %pc_hi20(.LCPI15_0)
+	xvld	$xr1, $s1, %pc_lo12(.LCPI15_0)
 	ori	$s1, $t5, 192
 	ori	$s2, $t5, 224
 	.p2align	4, , 16
@@ -9211,8 +9231,8 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	addi.d	$s4, $s5, 256
 	addi.d	$s5, $s6, 256
 	lu12i.w	$s6, -1
-	xvori.b	$xr1, $xr0, 0
 	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr3, $xr0, 0
 	.p2align	4, , 16
 .LBB15_2:                               # %vector.body
                                         #   Parent Loop BB15_1 Depth=1
@@ -9226,14 +9246,14 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	ldx.w	$a2, $s7, $t2
 	ldx.w	$a1, $s7, $t3
 	ldx.w	$a0, $s7, $t4
-	xvinsgr2vr.w	$xr3, $s8, 0
-	xvinsgr2vr.w	$xr3, $ra, 1
-	xvinsgr2vr.w	$xr3, $a4, 2
-	xvinsgr2vr.w	$xr3, $s3, 3
-	xvinsgr2vr.w	$xr3, $a3, 4
-	xvinsgr2vr.w	$xr3, $a2, 5
-	xvinsgr2vr.w	$xr3, $a1, 6
-	xvinsgr2vr.w	$xr3, $a0, 7
+	xvinsgr2vr.w	$xr4, $s8, 0
+	xvinsgr2vr.w	$xr4, $ra, 1
+	xvinsgr2vr.w	$xr4, $a4, 2
+	xvinsgr2vr.w	$xr4, $s3, 3
+	xvinsgr2vr.w	$xr4, $a3, 4
+	xvinsgr2vr.w	$xr4, $a2, 5
+	xvinsgr2vr.w	$xr4, $a1, 6
+	xvinsgr2vr.w	$xr4, $a0, 7
 	ldx.w	$a0, $s7, $t5
 	ldx.w	$a1, $s7, $t6
 	ldx.w	$a2, $s7, $t7
@@ -9242,14 +9262,14 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	ldx.w	$s3, $s7, $s0
 	ldx.w	$s8, $s7, $s1
 	ldx.w	$s7, $s7, $s2
-	xvinsgr2vr.w	$xr4, $a0, 0
-	xvinsgr2vr.w	$xr4, $a1, 1
-	xvinsgr2vr.w	$xr4, $a2, 2
-	xvinsgr2vr.w	$xr4, $a3, 3
-	xvinsgr2vr.w	$xr4, $a4, 4
-	xvinsgr2vr.w	$xr4, $s3, 5
-	xvinsgr2vr.w	$xr4, $s8, 6
-	xvinsgr2vr.w	$xr4, $s7, 7
+	xvinsgr2vr.w	$xr5, $a0, 0
+	xvinsgr2vr.w	$xr5, $a1, 1
+	xvinsgr2vr.w	$xr5, $a2, 2
+	xvinsgr2vr.w	$xr5, $a3, 3
+	xvinsgr2vr.w	$xr5, $a4, 4
+	xvinsgr2vr.w	$xr5, $s3, 5
+	xvinsgr2vr.w	$xr5, $s8, 6
+	xvinsgr2vr.w	$xr5, $s7, 7
 	add.d	$a0, $s4, $s6
 	ldx.w	$a1, $a0, $a5
 	ldx.w	$a2, $a0, $a6
@@ -9259,14 +9279,14 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	ldx.w	$s7, $a0, $t2
 	ldx.w	$s8, $a0, $t3
 	ldx.w	$ra, $a0, $t4
-	xvinsgr2vr.w	$xr5, $a1, 0
-	xvinsgr2vr.w	$xr5, $a2, 1
-	xvinsgr2vr.w	$xr5, $a3, 2
-	xvinsgr2vr.w	$xr5, $a4, 3
-	xvinsgr2vr.w	$xr5, $s3, 4
-	xvinsgr2vr.w	$xr5, $s7, 5
-	xvinsgr2vr.w	$xr5, $s8, 6
-	xvinsgr2vr.w	$xr5, $ra, 7
+	xvinsgr2vr.w	$xr6, $a1, 0
+	xvinsgr2vr.w	$xr6, $a2, 1
+	xvinsgr2vr.w	$xr6, $a3, 2
+	xvinsgr2vr.w	$xr6, $a4, 3
+	xvinsgr2vr.w	$xr6, $s3, 4
+	xvinsgr2vr.w	$xr6, $s7, 5
+	xvinsgr2vr.w	$xr6, $s8, 6
+	xvinsgr2vr.w	$xr6, $ra, 7
 	ldx.w	$a1, $a0, $t5
 	ldx.w	$a2, $a0, $t6
 	ldx.w	$a3, $a0, $t7
@@ -9275,33 +9295,34 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 	ldx.w	$s7, $a0, $s0
 	ldx.w	$s8, $a0, $s1
 	ldx.w	$a0, $a0, $s2
-	xvinsgr2vr.w	$xr6, $a1, 0
-	xvinsgr2vr.w	$xr6, $a2, 1
-	xvinsgr2vr.w	$xr6, $a3, 2
-	xvinsgr2vr.w	$xr6, $a4, 3
-	xvinsgr2vr.w	$xr6, $s3, 4
-	xvinsgr2vr.w	$xr6, $s7, 5
-	xvinsgr2vr.w	$xr6, $s8, 6
-	xvinsgr2vr.w	$xr6, $a0, 7
-	xvadd.w	$xr1, $xr3, $xr1
+	xvinsgr2vr.w	$xr7, $a1, 0
+	xvinsgr2vr.w	$xr7, $a2, 1
+	xvinsgr2vr.w	$xr7, $a3, 2
+	xvinsgr2vr.w	$xr7, $a4, 3
+	xvinsgr2vr.w	$xr7, $s3, 4
+	xvinsgr2vr.w	$xr7, $s7, 5
+	xvinsgr2vr.w	$xr7, $s8, 6
+	xvinsgr2vr.w	$xr7, $a0, 7
 	xvadd.w	$xr2, $xr4, $xr2
-	xvsub.w	$xr1, $xr1, $xr5
-	addi.d	$s6, $s6, 512
+	xvadd.w	$xr3, $xr5, $xr3
 	xvsub.w	$xr2, $xr2, $xr6
+	addi.d	$s6, $s6, 512
+	xvsub.w	$xr3, $xr3, $xr7
 	bnez	$s6, .LBB15_2
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB15_1 Depth=1
-	xvadd.w	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a0, $xr1, 0
+	xvadd.w	$xr2, $xr3, $xr2
+	xvpermi.d	$xr3, $xr2, 78
+	xvori.b	$xr4, $xr1, 0
+	xvshuf.d	$xr4, $xr0, $xr3
+	xvadd.w	$xr2, $xr2, $xr4
+	xvpermi.d	$xr3, $xr2, 68
+	xvrepl128vei.d	$xr3, $xr3, 1
+	xvadd.w	$xr2, $xr2, $xr3
+	xvpermi.d	$xr3, $xr2, 68
+	xvrepl128vei.w	$xr3, $xr3, 1
+	xvadd.w	$xr2, $xr2, $xr3
+	xvpickve2gr.w	$a0, $xr2, 0
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	slli.d	$a1, $a3, 2
 	addi.d	$a3, $a3, 1
@@ -9421,7 +9442,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB16_1 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -9509,7 +9530,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.7:                                # %middle.block54
                                         #   in Loop: Header=BB16_5 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -9596,7 +9617,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.11:                               # %middle.block69
                                         #   in Loop: Header=BB16_9 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -9683,7 +9704,7 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 # %bb.15:                               # %middle.block84
                                         #   in Loop: Header=BB16_13 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -9698,9 +9719,16 @@ _Z9example14PPiS0_S_:                   # @_Z9example14PPiS0_S_
 .Lfunc_end16:
 	.size	_Z9example14PPiS0_S_, .Lfunc_end16-_Z9example14PPiS0_S_
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _Z9example21Pii
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z9example21Pii
 .LCPI17_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI17_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -9754,12 +9782,14 @@ _Z9example21Pii:                        # @_Z9example21Pii
 	addi.d	$a3, $a3, -64
 	bnez	$a4, .LBB17_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI17_0)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI17_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -9772,8 +9802,8 @@ _Z9example21Pii:                        # @_Z9example21Pii
 .LBB17_10:                              # %vec.epilog.ph
 	bstrpick.d	$a4, $a1, 30, 2
 	slli.d	$a5, $a4, 2
-	pcalau12i	$a4, %pc_hi20(.LCPI17_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI17_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI17_1)
+	vld	$vr0, $a4, %pc_lo12(.LCPI17_1)
 	andi	$a4, $a1, 3
 	vinsgr2vr.w	$vr1, $a3, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -9794,7 +9824,7 @@ _Z9example21Pii:                        # @_Z9example21Pii
 	addi.d	$a3, $a3, -16
 	bnez	$a2, .LBB17_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -10046,9 +10076,16 @@ _Z13digest_memoryPvS_:                  # @_Z13digest_memoryPvS_
 	.p2align	3, 0x0                          # -- Begin function main
 .LCPI24_0:
 	.dword	0x3ff199999999999a              # double 1.1000000000000001
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0
+.LCPI24_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI24_1:
+.LCPI24_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -11555,12 +11592,14 @@ main:                                   # @main
 	addi.d	$a1, $a1, 64
 	bnez	$a3, .LBB24_163
 # %bb.164:                              # %middle.block
+	pcalau12i	$a1, %pc_hi20(.LCPI24_1)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI24_1)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -11573,8 +11612,8 @@ main:                                   # @main
 .LBB24_166:                             # %vec.epilog.ph
 	bstrpick.d	$a3, $a0, 62, 2
 	slli.d	$a4, $a3, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI24_1)
-	vld	$vr0, $a5, %pc_lo12(.LCPI24_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI24_2)
+	vld	$vr0, $a5, %pc_lo12(.LCPI24_2)
 	alsl.d	$a3, $a3, $fp, 4
 	vinsgr2vr.w	$vr1, $a1, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -11590,7 +11629,7 @@ main:                                   # @main
 	addi.d	$a1, $a1, 16
 	bnez	$a2, .LBB24_167
 # %bb.168:                              # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

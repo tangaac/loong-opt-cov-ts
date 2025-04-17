@@ -15,14 +15,19 @@
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
+.LCPI0_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_2:
+.LCPI0_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
-.LCPI0_3:
+.LCPI0_4:
 	.dword	0x3ff0000000000000              # double 1
 	.dword	0x4000000000000000              # double 2
 	.text
@@ -502,7 +507,7 @@ main:                                   # @main
 .LBB0_21:                               # %vector.body.preheader
                                         #   in Loop: Header=BB0_12 Depth=1
 	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI0_1)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI0_1)
 	xvrepli.b	$xr3, 0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	move	$a0, $a1
@@ -510,20 +515,22 @@ main:                                   # @main
 .LBB0_22:                               # %vector.body
                                         #   Parent Loop BB0_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvori.b	$xr1, $xr3, 0
-	xvori.b	$xr2, $xr0, 0
-	xvbitrevi.w	$xr0, $xr0, 0
+	xvori.b	$xr0, $xr3, 0
+	xvori.b	$xr1, $xr2, 0
+	xvbitrevi.w	$xr2, $xr2, 0
 	addi.d	$a0, $a0, -16
 	xvbitrevi.w	$xr3, $xr3, 0
 	bnez	$a0, .LBB0_22
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB0_12 Depth=1
-	xvxor.v	$xr0, $xr1, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI0_2)
 	xvxor.v	$xr0, $xr0, $xr1
+	xvpermi.d	$xr1, $xr0, 78
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvxor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -539,8 +546,8 @@ main:                                   # @main
 	beqz	$a3, .LBB0_28
 .LBB0_25:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB0_12 Depth=1
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
+	vld	$vr0, $a1, %pc_lo12(.LCPI0_3)
 	vinsgr2vr.w	$vr1, $a2, 0
 	vinsgr2vr.w	$vr2, $zero, 0
 	vshuf.w	$vr0, $vr2, $vr1
@@ -555,7 +562,7 @@ main:                                   # @main
 	bnez	$a0, .LBB0_26
 # %bb.27:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_12 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -748,8 +755,8 @@ main:                                   # @main
 	move	$a7, $a6
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_3)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_4)
 	ori	$a0, $zero, 1
 	st.w	$a0, $s7, %pc_lo12(J)
 	ori	$s6, $zero, 2

@@ -1005,6 +1005,11 @@ MSalignmm:                              # @MSalignmm
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI1_5:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.p2align	5
 	.type	MSalignmm_rec,@function
@@ -3041,12 +3046,14 @@ MSalignmm_rec:                          # @MSalignmm_rec
 	bnez	$t7, .LBB1_198
 # %bb.199:                              # %middle.block538
                                         #   in Loop: Header=BB1_185 Depth=1
+	pcalau12i	$t0, %pc_hi20(.LCPI1_5)
+	xvld	$xr7, $t0, %pc_lo12(.LCPI1_5)
 	xvadd.w	$xr5, $xr6, $xr5
 	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvadd.w	$xr5, $xr5, $xr6
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
 	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
+	xvrepl128vei.d	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
 	xvpermi.d	$xr6, $xr5, 68
 	xvrepl128vei.w	$xr6, $xr6, 1

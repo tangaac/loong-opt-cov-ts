@@ -1597,11 +1597,16 @@ scale_bitcount:                         # @scale_bitcount
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function scale_bitcount_lsf
 .LCPI8_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI8_1:
 	.dword	4                               # 0x4
 	.dword	5                               # 0x5
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI8_1:
+.LCPI8_2:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
@@ -1691,7 +1696,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bstrpick.d	$a4, $a2, 31, 0
 	addi.d	$fp, $a4, 1
 	ori	$a4, $zero, 15
-	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
 	xvrepli.d	$xr0, 12
 	bgeu	$a2, $a4, .LBB8_37
 # %bb.12:
@@ -1716,12 +1721,14 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a2, $a2, 64
 	bnez	$a4, .LBB8_14
 # %bb.15:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI8_0)
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1747,7 +1754,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB8_18
 # %bb.19:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1776,7 +1783,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 # %bb.24:
 	move	$s5, $zero
 	move	$t3, $zero
-	move	$t2, $a7
+	move	$a2, $a7
 	b	.LBB8_47
 .LBB8_25:
 	move	$s5, $zero
@@ -1794,61 +1801,63 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	ori	$a0, $zero, 16
 	bgeu	$t1, $a0, .LBB8_30
 # %bb.29:
-	move	$a2, $zero
+	move	$t2, $zero
 	move	$s5, $zero
 	b	.LBB8_34
 .LBB8_30:                               # %vector.ph203
 	bstrpick.d	$a0, $t1, 30, 4
-	slli.d	$a2, $a0, 4
+	slli.d	$t2, $a0, 4
 	alsl.d	$a0, $a7, $s3, 2
 	xvrepli.b	$xr0, 0
-	addi.d	$t0, $a0, 32
-	move	$t2, $a2
+	addi.d	$a2, $a0, 32
+	move	$t0, $t2
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB8_31:                               # %vector.body206
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $t0, -32
-	xvld	$xr3, $t0, 0
+	xvld	$xr2, $a2, -32
+	xvld	$xr3, $a2, 0
 	xvmax.w	$xr0, $xr2, $xr0
 	xvmax.w	$xr1, $xr3, $xr1
-	addi.d	$t2, $t2, -16
-	addi.d	$t0, $t0, 64
-	bnez	$t2, .LBB8_31
+	addi.d	$t0, $t0, -16
+	addi.d	$a2, $a2, 64
+	bnez	$t0, .LBB8_31
 # %bb.32:                               # %middle.block213
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI8_0)
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$s5, $xr0, 0
-	beq	$a2, $t1, .LBB8_49
+	beq	$t2, $t1, .LBB8_49
 # %bb.33:                               # %vec.epilog.iter.check220
 	andi	$a0, $t1, 12
 	beqz	$a0, .LBB8_46
 .LBB8_34:                               # %vec.epilog.ph219
 	bstrpick.d	$a0, $t1, 30, 2
 	slli.d	$t3, $a0, 2
-	alsl.d	$t2, $a0, $a7, 2
+	alsl.d	$a2, $a0, $a7, 2
 	vreplgr2vr.w	$vr0, $s5
-	sub.d	$t0, $a2, $t3
-	add.d	$a0, $a2, $a7
-	alsl.d	$a2, $a0, $s3, 2
+	sub.d	$t0, $t2, $t3
+	add.d	$a0, $t2, $a7
+	alsl.d	$a7, $a0, $s3, 2
 	.p2align	4, , 16
 .LBB8_35:                               # %vec.epilog.vector.body225
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, 0
+	vld	$vr1, $a7, 0
 	vmax.w	$vr0, $vr1, $vr0
 	addi.d	$t0, $t0, 4
-	addi.d	$a2, $a2, 16
+	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB8_35
 # %bb.36:                               # %vec.epilog.middle.block232
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1865,10 +1874,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	bstrpick.d	$a2, $fp, 32, 4
 	slli.d	$t6, $a2, 4
-	pcalau12i	$a2, %pc_hi20(.LCPI8_0)
-	xvld	$xr1, $a2, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI8_1)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI8_1)
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	xvld	$xr2, $a1, %pc_lo12(.LCPI8_1)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI8_2)
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$a4, $s3, 136
 	xvrepli.b	$xr4, 0
@@ -2008,12 +2017,14 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a4, $a4, 192
 	bnez	$t6, .LBB8_38
 # %bb.39:                               # %middle.block336
-	xvmax.w	$xr1, $xr4, $xr5
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvmax.w	$xr1, $xr1, $xr2
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI8_0)
+	xvmax.w	$xr2, $xr4, $xr5
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.d	$xr1, $xr0, $xr3
+	xvmax.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvmax.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -2047,7 +2058,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 .LBB8_43:                               # %vec.epilog.ph342
 	move	$a0, $t8
-	xvld	$xr1, $a1, %pc_lo12(.LCPI8_1)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI8_2)
 	bstrpick.d	$a1, $fp, 32, 2
 	slli.d	$t8, $a1, 2
 	xvreplgr2vr.d	$xr2, $a0
@@ -2098,7 +2109,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a4, $a4, 48
 	bnez	$a2, .LBB8_44
 # %bb.45:                               # %vec.epilog.middle.block356
-	vshuf4i.w	$vr0, $vr2, 14
+	vreplvei.d	$vr0, $vr2, 1
 	vmax.w	$vr0, $vr2, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2106,10 +2117,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bne	$fp, $t8, .LBB8_81
 	b	.LBB8_83
 .LBB8_46:
-	add.d	$t2, $a2, $a7
-	move	$t3, $a2
+	add.d	$a2, $t2, $a7
+	move	$t3, $t2
 .LBB8_47:                               # %vec.epilog.scalar.ph218.preheader
-	alsl.d	$a2, $t2, $s3, 2
+	alsl.d	$a2, $a2, $s3, 2
 	sub.d	$a7, $t1, $t3
 	.p2align	4, , 16
 .LBB8_48:                               # %vec.epilog.scalar.ph218
@@ -2133,67 +2144,69 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 # %bb.51:
 	move	$t3, $zero
 	move	$t4, $zero
-	move	$t2, $a5
+	move	$a2, $a5
 	b	.LBB8_62
 .LBB8_52:                               # %vector.main.loop.iter.check243
 	ori	$a0, $zero, 16
 	bgeu	$t1, $a0, .LBB8_54
 # %bb.53:
-	move	$a2, $zero
+	move	$t2, $zero
 	move	$t3, $zero
 	b	.LBB8_58
 .LBB8_54:                               # %vector.ph244
 	bstrpick.d	$a0, $t1, 30, 4
-	slli.d	$a2, $a0, 4
+	slli.d	$t2, $a0, 4
 	alsl.d	$a0, $a5, $s3, 2
 	xvrepli.b	$xr0, 0
-	addi.d	$t2, $a0, 32
-	move	$t3, $a2
+	addi.d	$a2, $a0, 32
+	move	$t3, $t2
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB8_55:                               # %vector.body247
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $t2, -32
-	xvld	$xr3, $t2, 0
+	xvld	$xr2, $a2, -32
+	xvld	$xr3, $a2, 0
 	xvmax.w	$xr0, $xr2, $xr0
 	xvmax.w	$xr1, $xr3, $xr1
 	addi.d	$t3, $t3, -16
-	addi.d	$t2, $t2, 64
+	addi.d	$a2, $a2, 64
 	bnez	$t3, .LBB8_55
 # %bb.56:                               # %middle.block254
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI8_0)
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$t3, $xr0, 0
-	beq	$a2, $t1, .LBB8_64
+	beq	$t2, $t1, .LBB8_64
 # %bb.57:                               # %vec.epilog.iter.check261
 	andi	$a0, $t1, 12
 	beqz	$a0, .LBB8_61
 .LBB8_58:                               # %vec.epilog.ph260
 	bstrpick.d	$a0, $t1, 30, 2
 	slli.d	$t4, $a0, 2
-	alsl.d	$t2, $a0, $a5, 2
+	alsl.d	$a2, $a0, $a5, 2
 	vreplgr2vr.w	$vr0, $t3
-	sub.d	$t3, $a2, $t4
-	add.d	$a0, $a2, $a5
-	alsl.d	$a2, $a0, $s3, 2
+	sub.d	$t3, $t2, $t4
+	add.d	$a0, $t2, $a5
+	alsl.d	$t2, $a0, $s3, 2
 	.p2align	4, , 16
 .LBB8_59:                               # %vec.epilog.vector.body266
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, 0
+	vld	$vr1, $t2, 0
 	vmax.w	$vr0, $vr1, $vr0
 	addi.d	$t3, $t3, 4
-	addi.d	$a2, $a2, 16
+	addi.d	$t2, $t2, 16
 	bnez	$t3, .LBB8_59
 # %bb.60:                               # %vec.epilog.middle.block274
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2201,10 +2214,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bne	$t4, $t1, .LBB8_62
 	b	.LBB8_64
 .LBB8_61:
-	add.d	$t2, $a2, $a5
-	move	$t4, $a2
+	add.d	$a2, $t2, $a5
+	move	$t4, $t2
 .LBB8_62:                               # %vec.epilog.scalar.ph259.preheader
-	alsl.d	$a2, $t2, $s3, 2
+	alsl.d	$a2, $a2, $s3, 2
 	sub.d	$t2, $t1, $t4
 	.p2align	4, , 16
 .LBB8_63:                               # %vec.epilog.scalar.ph259
@@ -2227,67 +2240,69 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 # %bb.66:
 	move	$t7, $zero
 	move	$t1, $zero
-	move	$a7, $a5
+	move	$a2, $a5
 	b	.LBB8_77
 .LBB8_67:                               # %vector.main.loop.iter.check285
 	ori	$a0, $zero, 16
 	bgeu	$a6, $a0, .LBB8_69
 # %bb.68:
-	move	$a2, $zero
+	move	$a7, $zero
 	move	$t7, $zero
 	b	.LBB8_73
 .LBB8_69:                               # %vector.ph286
 	bstrpick.d	$a0, $a6, 30, 4
-	slli.d	$a2, $a0, 4
+	slli.d	$a7, $a0, 4
 	alsl.d	$a0, $a5, $s3, 2
 	xvrepli.b	$xr0, 0
-	addi.d	$a7, $a0, 32
-	move	$t1, $a2
+	addi.d	$a2, $a0, 32
+	move	$t1, $a7
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB8_70:                               # %vector.body289
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a7, -32
-	xvld	$xr3, $a7, 0
+	xvld	$xr2, $a2, -32
+	xvld	$xr3, $a2, 0
 	xvmax.w	$xr0, $xr2, $xr0
 	xvmax.w	$xr1, $xr3, $xr1
 	addi.d	$t1, $t1, -16
-	addi.d	$a7, $a7, 64
+	addi.d	$a2, $a2, 64
 	bnez	$t1, .LBB8_70
 # %bb.71:                               # %middle.block296
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI8_0)
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$t7, $xr0, 0
-	beq	$a2, $a6, .LBB8_79
+	beq	$a7, $a6, .LBB8_79
 # %bb.72:                               # %vec.epilog.iter.check303
 	andi	$a0, $a6, 12
 	beqz	$a0, .LBB8_76
 .LBB8_73:                               # %vec.epilog.ph302
 	bstrpick.d	$a0, $a6, 30, 2
 	slli.d	$t1, $a0, 2
-	alsl.d	$a7, $a0, $a5, 2
+	alsl.d	$a2, $a0, $a5, 2
 	vreplgr2vr.w	$vr0, $t7
-	sub.d	$t2, $a2, $t1
-	add.d	$a0, $a2, $a5
-	alsl.d	$a2, $a0, $s3, 2
+	sub.d	$t2, $a7, $t1
+	add.d	$a0, $a7, $a5
+	alsl.d	$a5, $a0, $s3, 2
 	.p2align	4, , 16
 .LBB8_74:                               # %vec.epilog.vector.body308
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr1, $a2, 0
+	vld	$vr1, $a5, 0
 	vmax.w	$vr0, $vr1, $vr0
 	addi.d	$t2, $t2, 4
-	addi.d	$a2, $a2, 16
+	addi.d	$a5, $a5, 16
 	bnez	$t2, .LBB8_74
 # %bb.75:                               # %vec.epilog.middle.block316
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2295,10 +2310,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bne	$t1, $a6, .LBB8_77
 	b	.LBB8_79
 .LBB8_76:
-	add.d	$a7, $a2, $a5
-	move	$t1, $a2
+	add.d	$a2, $a7, $a5
+	move	$t1, $a7
 .LBB8_77:                               # %vec.epilog.scalar.ph301.preheader
-	alsl.d	$a0, $a7, $s3, 2
+	alsl.d	$a0, $a2, $s3, 2
 	sub.d	$a2, $a6, $t1
 	.p2align	4, , 16
 .LBB8_78:                               # %vec.epilog.scalar.ph301
@@ -2404,10 +2419,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s7, 32, 4
 	slli.d	$fp, $a0, 4
-	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI8_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI8_1)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI8_2)
 	alsl.d	$a0, $a0, $t4, 4
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	xvreplgr2vr.d	$xr2, $t4
@@ -2557,12 +2572,14 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t3, $t3, 192
 	bnez	$fp, .LBB8_94
 # %bb.95:                               # %middle.block432
-	xvmax.w	$xr0, $xr4, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI8_0)
+	xvmax.w	$xr1, $xr4, $xr5
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.d	$xr0, $xr0, $xr2
+	xvmax.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2595,10 +2612,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s0, 32, 4
 	slli.d	$t7, $a0, 4
-	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI8_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI8_1)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI8_2)
 	alsl.d	$a0, $a0, $t4, 4
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	xvreplgr2vr.d	$xr2, $t4
@@ -2748,12 +2765,14 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t0, $t0, 192
 	bnez	$t7, .LBB8_98
 # %bb.99:                               # %middle.block381
-	xvmax.w	$xr0, $xr4, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI8_0)
+	xvmax.w	$xr1, $xr4, $xr5
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.d	$xr0, $xr0, $xr2
+	xvmax.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2791,8 +2810,8 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	ld.d	$a3, $sp, 0                     # 8-byte Folded Reload
 .LBB8_103:                              # %vec.epilog.ph439
 	bstrpick.d	$a0, $s7, 32, 2
-	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI8_2)
 	slli.d	$fp, $a0, 2
 	alsl.d	$s0, $a0, $t4, 2
 	xvreplgr2vr.d	$xr1, $a3
@@ -2845,7 +2864,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a2, $a2, 48
 	bnez	$t3, .LBB8_104
 # %bb.105:                              # %vec.epilog.middle.block457
-	vshuf4i.w	$vr0, $vr2, 14
+	vreplvei.d	$vr0, $vr2, 1
 	vmax.w	$vr0, $vr2, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2868,8 +2887,8 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 .LBB8_108:                              # %vec.epilog.ph388
 	bstrpick.d	$a0, $s0, 32, 2
-	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI8_2)
 	slli.d	$t7, $a0, 2
 	alsl.d	$t8, $a0, $t4, 2
 	xvreplgr2vr.d	$xr1, $a3
@@ -2922,7 +2941,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a2, $a2, 48
 	bnez	$t0, .LBB8_109
 # %bb.110:                              # %vec.epilog.middle.block406
-	vshuf4i.w	$vr0, $vr2, 14
+	vreplvei.d	$vr0, $vr2, 1
 	vmax.w	$vr0, $vr2, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2996,10 +3015,10 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
 	bstrpick.d	$a0, $s7, 32, 4
 	slli.d	$fp, $a0, 4
-	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI8_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI8_1)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI8_2)
 	alsl.d	$a0, $a0, $t4, 4
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	xvreplgr2vr.d	$xr2, $t4
@@ -3151,12 +3170,14 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$t7, $t7, 192
 	bnez	$fp, .LBB8_120
 # %bb.121:                              # %middle.block483
-	xvmax.w	$xr0, $xr4, $xr5
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI8_0)
+	xvmax.w	$xr1, $xr4, $xr5
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.d	$xr0, $xr0, $xr2
+	xvmax.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -3189,8 +3210,8 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 .LBB8_125:                              # %vec.epilog.ph490
 	bstrpick.d	$a0, $s7, 32, 2
-	pcalau12i	$a1, %pc_hi20(.LCPI8_1)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI8_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI8_2)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI8_2)
 	slli.d	$t8, $a0, 2
 	alsl.d	$fp, $a0, $t4, 2
 	xvreplgr2vr.d	$xr1, $a3
@@ -3243,7 +3264,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	addi.d	$a2, $a2, 48
 	bnez	$t6, .LBB8_126
 # %bb.127:                              # %vec.epilog.middle.block508
-	vshuf4i.w	$vr0, $vr2, 14
+	vreplvei.d	$vr0, $vr2, 1
 	vmax.w	$vr0, $vr2, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

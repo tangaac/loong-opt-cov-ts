@@ -888,15 +888,6 @@ AesCbc_Decode:                          # @AesCbc_Decode
 	.word	0                               # 0x0
 	.word	0                               # 0x0
 	.word	0                               # 0x0
-.LCPI3_2:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	0                               # 0x0
 	.text
 	.globl	AesCtr_Code
 	.p2align	5
@@ -905,13 +896,13 @@ AesCtr_Code:                            # @AesCtr_Code
 # %bb.0:
 	beqz	$a2, .LBB3_6
 # %bb.1:                                # %.lr.ph
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -144
+	st.d	$ra, $sp, 136                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
@@ -920,12 +911,9 @@ AesCtr_Code:                            # @AesCtr_Code
 	lu32i.d	$s3, 1
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
-	xvst	$xr0, $sp, 80                   # 32-byte Folded Spill
+	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI3_1)
-	xvst	$xr0, $sp, 48                   # 32-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI3_2)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI3_2)
 	xvst	$xr0, $sp, 16                   # 32-byte Folded Spill
 	ori	$a0, $zero, 16
 	lu32i.d	$a0, 24
@@ -934,84 +922,99 @@ AesCtr_Code:                            # @AesCtr_Code
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                #   in Loop: Header=BB3_3 Depth=1
-	addi.d	$a1, $sp, 112
+	addi.d	$a1, $sp, 80
 	move	$a0, $s2
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(Aes_Encode)
 	jirl	$ra, $ra, 0
-	ld.wu	$a1, $sp, 112
-	vld	$vr3, $sp, 112
-	ld.wu	$a0, $sp, 120
-	ld.w	$a2, $sp, 116
+	vld	$vr0, $sp, 80
+	vreplvei.w	$vr1, $vr0, 0
+	vreplvei.w	$vr2, $vr0, 1
+	vreplvei.w	$vr3, $vr0, 2
+	vreplvei.w	$vr4, $vr0, 3
+	xvpermi.q	$xr0, $xr0, 2
+	xvpermi.d	$xr6, $xr0, 68
+	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
+	xvshuf.w	$xr0, $xr0, $xr6
+	xvld	$xr5, $sp, 16                   # 32-byte Folded Reload
+	xvshuf.w	$xr5, $xr0, $xr6
+	vld	$vr6, $s1, 0
+	addi.d	$a0, $s1, 16
+	ld.wu	$a1, $sp, 80
+	ld.w	$a2, $sp, 92
+	ld.w	$a3, $sp, 84
+	ld.wu	$a4, $sp, 88
 	srli.d	$a1, $a1, 8
-	vreplvei.w	$vr0, $vr3, 0
-	vld	$vr8, $sp, 0                    # 16-byte Folded Reload
-	vsrl.w	$vr5, $vr0, $vr8
+	vld	$vr7, $sp, 0                    # 16-byte Folded Reload
+	vsrl.w	$vr1, $vr1, $vr7
+	srli.d	$a3, $a3, 8
+	vsrl.w	$vr2, $vr2, $vr7
+	srli.d	$a4, $a4, 8
+	vsrl.w	$vr3, $vr3, $vr7
 	srli.d	$a2, $a2, 8
-	vreplvei.w	$vr0, $vr3, 1
-	vreplvei.w	$vr1, $vr3, 2
-	vreplvei.w	$vr2, $vr3, 3
-	xvpermi.q	$xr3, $xr0, 2
-	xvpermi.d	$xr3, $xr3, 68
-	xvld	$xr6, $sp, 48                   # 32-byte Folded Reload
-	xvshuf.w	$xr6, $xr0, $xr3
-	xvinsgr2vr.w	$xr6, $a1, 1
-	xvinsgr2vr.w	$xr6, $a2, 5
-	xvpermi.q	$xr5, $xr0, 2
-	xvld	$xr7, $sp, 16                   # 32-byte Folded Reload
-	xvori.b	$xr4, $xr7, 0
-	xvshuf.w	$xr4, $xr5, $xr6
-	vld	$vr5, $s1, 0
-	addi.d	$a1, $s1, 16
-	ld.w	$a2, $sp, 124
-	vsrl.w	$vr0, $vr0, $vr8
-	srli.d	$a0, $a0, 8
-	vsrl.w	$vr1, $vr1, $vr8
-	srli.d	$a2, $a2, 8
-	vsrl.w	$vr2, $vr2, $vr8
-	xvld	$xr6, $sp, 80                   # 32-byte Folded Reload
-	xvshuf.w	$xr6, $xr0, $xr3
-	xvinsgr2vr.w	$xr6, $a0, 1
-	xvinsgr2vr.w	$xr6, $a2, 5
-	xvpickve2gr.w	$a0, $xr4, 5
-	xvpickve2gr.w	$a2, $xr4, 4
-	xvpickve2gr.w	$a3, $xr4, 3
-	xvpickve2gr.w	$a4, $xr4, 2
-	xvpickve2gr.w	$a5, $xr4, 1
-	xvpickve2gr.w	$a6, $xr4, 0
-	vpickve2gr.w	$a7, $vr0, 1
-	vpickve2gr.w	$t0, $vr0, 0
+	vsrl.w	$vr4, $vr4, $vr7
+	xvinsgr2vr.w	$xr5, $a1, 1
+	xvinsgr2vr.w	$xr5, $a3, 5
+	xvinsgr2vr.w	$xr0, $a4, 1
+	xvinsgr2vr.w	$xr0, $a2, 5
 	xvpermi.q	$xr1, $xr0, 2
-	xvori.b	$xr0, $xr7, 0
-	xvshuf.w	$xr0, $xr1, $xr6
-	xvpickve2gr.w	$t1, $xr0, 5
-	xvpickve2gr.w	$t2, $xr0, 4
-	xvpickve2gr.w	$t3, $xr0, 3
-	xvpickve2gr.w	$t4, $xr0, 2
-	xvpickve2gr.w	$t5, $xr0, 1
-	xvpickve2gr.w	$t6, $xr0, 0
-	vpickve2gr.w	$t7, $vr2, 1
-	vpickve2gr.w	$t8, $vr2, 0
-	vinsgr2vr.b	$vr0, $a6, 0
-	vinsgr2vr.b	$vr0, $a5, 1
-	vinsgr2vr.b	$vr0, $a4, 2
-	vinsgr2vr.b	$vr0, $a3, 3
-	vinsgr2vr.b	$vr0, $a2, 4
-	vinsgr2vr.b	$vr0, $a0, 5
-	vinsgr2vr.b	$vr0, $t0, 6
-	vinsgr2vr.b	$vr0, $a7, 7
-	vinsgr2vr.b	$vr0, $t6, 8
-	vinsgr2vr.b	$vr0, $t5, 9
-	vinsgr2vr.b	$vr0, $t4, 10
-	vinsgr2vr.b	$vr0, $t3, 11
-	vinsgr2vr.b	$vr0, $t2, 12
-	vinsgr2vr.b	$vr0, $t1, 13
-	vinsgr2vr.b	$vr0, $t8, 14
-	vinsgr2vr.b	$vr0, $t7, 15
-	vxor.v	$vr0, $vr5, $vr0
+	xvpackev.d	$xr1, $xr1, $xr5
+	xvpermi.q	$xr2, $xr0, 2
+	xvpickve2gr.d	$a1, $xr1, 0
+	xvinsgr2vr.d	$xr5, $a1, 0
+	xvpickve2gr.d	$a1, $xr1, 1
+	xvinsgr2vr.d	$xr5, $a1, 1
+	xvpickve2gr.d	$a1, $xr1, 2
+	xvinsgr2vr.d	$xr5, $a1, 2
+	xvpickve2gr.d	$a1, $xr2, 0
+	xvinsgr2vr.d	$xr5, $a1, 3
+	xvpermi.q	$xr3, $xr0, 2
+	xvpackev.d	$xr0, $xr3, $xr0
+	xvpermi.q	$xr4, $xr0, 2
+	xvpickve2gr.d	$a1, $xr0, 0
+	xvinsgr2vr.d	$xr1, $a1, 0
+	xvpickve2gr.d	$a1, $xr0, 1
+	xvinsgr2vr.d	$xr1, $a1, 1
+	xvpickve2gr.d	$a1, $xr0, 2
+	xvinsgr2vr.d	$xr1, $a1, 2
+	xvpickve2gr.d	$a1, $xr4, 0
+	xvinsgr2vr.d	$xr1, $a1, 3
+	xvpickve2gr.w	$a1, $xr5, 0
+	vinsgr2vr.b	$vr0, $a1, 0
+	xvpickve2gr.w	$a1, $xr5, 1
+	vinsgr2vr.b	$vr0, $a1, 1
+	xvpickve2gr.w	$a1, $xr5, 2
+	vinsgr2vr.b	$vr0, $a1, 2
+	xvpickve2gr.w	$a1, $xr5, 3
+	vinsgr2vr.b	$vr0, $a1, 3
+	xvpickve2gr.w	$a1, $xr5, 4
+	vinsgr2vr.b	$vr0, $a1, 4
+	xvpickve2gr.w	$a1, $xr5, 5
+	vinsgr2vr.b	$vr0, $a1, 5
+	xvpickve2gr.w	$a1, $xr5, 6
+	vinsgr2vr.b	$vr0, $a1, 6
+	xvpickve2gr.w	$a1, $xr5, 7
+	vinsgr2vr.b	$vr0, $a1, 7
+	xvpickve2gr.w	$a1, $xr1, 0
+	vinsgr2vr.b	$vr0, $a1, 8
+	xvpickve2gr.w	$a1, $xr1, 1
+	vinsgr2vr.b	$vr0, $a1, 9
+	xvpickve2gr.w	$a1, $xr1, 2
+	vinsgr2vr.b	$vr0, $a1, 10
+	xvpickve2gr.w	$a1, $xr1, 3
+	vinsgr2vr.b	$vr0, $a1, 11
+	xvpickve2gr.w	$a1, $xr1, 4
+	vinsgr2vr.b	$vr0, $a1, 12
+	xvpickve2gr.w	$a1, $xr1, 5
+	vinsgr2vr.b	$vr0, $a1, 13
+	xvpickve2gr.w	$a1, $xr1, 6
+	vinsgr2vr.b	$vr0, $a1, 14
+	xvpickve2gr.w	$a1, $xr1, 7
+	vinsgr2vr.b	$vr0, $a1, 15
+	vxor.v	$vr0, $vr6, $vr0
 	addi.d	$fp, $fp, -1
 	vst	$vr0, $s1, 0
-	move	$s1, $a1
+	move	$s1, $a0
 	beqz	$fp, .LBB3_5
 .LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	ld.wu	$a0, $s0, 0
@@ -1025,13 +1028,13 @@ AesCtr_Code:                            # @AesCtr_Code
 	st.w	$a0, $s0, 4
 	b	.LBB3_2
 .LBB3_5:
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 136                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 144
 .LBB3_6:                                # %._crit_edge
 	ret
 .Lfunc_end3:

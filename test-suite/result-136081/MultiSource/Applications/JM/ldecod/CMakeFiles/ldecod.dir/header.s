@@ -1267,21 +1267,26 @@ dec_ref_pic_marking:                    # @dec_ref_pic_marking
 	.word	.LBB3_15-.LJTI3_0
 	.word	.LBB3_14-.LJTI3_0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function decode_poc
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function decode_poc
 .LCPI4_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI4_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
+	.word	4                               # 0x4
+	.word	4                               # 0x4
+	.word	4                               # 0x4
+	.word	4                               # 0x4
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
 .LCPI4_1:
 	.word	0                               # 0x0
-	.word	4                               # 0x4
-	.word	4                               # 0x4
-	.word	4                               # 0x4
-	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -1746,12 +1751,14 @@ decode_poc:                             # @decode_poc
 	addi.d	$t1, $t1, 64
 	bnez	$t2, .LBB4_87
 # %bb.88:                               # %middle.block
+	pcalau12i	$t1, %pc_hi20(.LCPI4_0)
+	xvld	$xr2, $t1, %pc_lo12(.LCPI4_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1765,8 +1772,8 @@ decode_poc:                             # @decode_poc
 .LBB4_90:                               # %vec.epilog.ph
 	move	$t2, $t0
 	bstrpick.d	$t0, $a4, 30, 2
-	pcalau12i	$t3, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $t3, %pc_lo12(.LCPI4_0)
+	pcalau12i	$t3, %pc_hi20(.LCPI4_1)
+	vld	$vr0, $t3, %pc_lo12(.LCPI4_1)
 	slli.d	$t0, $t0, 2
 	vinsgr2vr.w	$vr1, $t1, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -1783,7 +1790,7 @@ decode_poc:                             # @decode_poc
 	addi.d	$t2, $t2, 16
 	bnez	$t1, .LBB4_91
 # %bb.92:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1795,8 +1802,8 @@ decode_poc:                             # @decode_poc
 	bstrpick.d	$a5, $a3, 31, 4
 	slli.d	$a5, $a5, 4
 	xvinsgr2vr.w	$xr1, $a7, 0
-	pcalau12i	$a7, %pc_hi20(.LCPI4_1)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a7, %pc_hi20(.LCPI4_2)
+	xvld	$xr0, $a7, %pc_lo12(.LCPI4_2)
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $zero, 0
 	xvpermi.d	$xr2, $xr2, 68
@@ -1815,12 +1822,14 @@ decode_poc:                             # @decode_poc
 	addi.d	$a7, $a7, 64
 	bnez	$t0, .LBB4_94
 # %bb.95:                               # %middle.block281
+	pcalau12i	$a7, %pc_hi20(.LCPI4_0)
+	xvld	$xr2, $a7, %pc_lo12(.LCPI4_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1834,8 +1843,8 @@ decode_poc:                             # @decode_poc
 .LBB4_97:                               # %vec.epilog.ph287
 	move	$t0, $a5
 	bstrpick.d	$a5, $a3, 31, 2
-	pcalau12i	$t1, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $t1, %pc_lo12(.LCPI4_0)
+	pcalau12i	$t1, %pc_hi20(.LCPI4_1)
+	vld	$vr0, $t1, %pc_lo12(.LCPI4_1)
 	slli.d	$a5, $a5, 2
 	vinsgr2vr.w	$vr1, $a7, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -1851,7 +1860,7 @@ decode_poc:                             # @decode_poc
 	addi.d	$a7, $a7, 16
 	bne	$a5, $t0, .LBB4_98
 # %bb.99:                               # %vec.epilog.middle.block298
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

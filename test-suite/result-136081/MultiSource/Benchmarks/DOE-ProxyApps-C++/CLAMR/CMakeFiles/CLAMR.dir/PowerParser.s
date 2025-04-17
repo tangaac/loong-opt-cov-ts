@@ -3,9 +3,16 @@
 	.globl	_ZSt21ios_base_library_initv
 
                                         # End of file scope inline assembly
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPT_RKSt6vectorIiSaIiEEb
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPT_RKSt6vectorIiSaIiEEb
 .LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -92,12 +99,14 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	addi.d	$a4, $a4, 64
 	bnez	$a7, .LBB0_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI0_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -110,8 +119,8 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 .LBB0_10:                               # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $a5, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI0_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -127,7 +136,7 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB0_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -1204,9 +1213,16 @@ GCC_except_table1:
 .Lcst_end1:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPT_RKSt6vectorIiSaIiEEb
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPT_RKSt6vectorIiSaIiEEb
 .LCPI2_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI2_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -1293,12 +1309,14 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	addi.d	$a4, $a4, 64
 	bnez	$a7, .LBB2_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI2_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI2_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1311,8 +1329,8 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 .LBB2_10:                               # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $a5, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI2_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI2_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI2_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI2_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -1328,7 +1346,7 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB2_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -57152,9 +57170,16 @@ GCC_except_table81:
 .Lcst_end49:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPiRKSt6vectorIiSaIiEEb
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPiRKSt6vectorIiSaIiEEb
 .LCPI82_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI82_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -57241,12 +57266,14 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	addi.d	$a4, $a4, 64
 	bnez	$a7, .LBB82_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI82_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI82_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -57259,8 +57286,8 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 .LBB82_10:                              # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $a5, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI82_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI82_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI82_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI82_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -57276,7 +57303,7 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB82_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -57974,9 +58001,16 @@ GCC_except_table83:
 .Lcst_end51:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPbRKSt6vectorIiSaIiEEb
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPbRKSt6vectorIiSaIiEEb
 .LCPI84_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI84_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -58063,12 +58097,14 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a4, $a4, 64
 	bnez	$a7, .LBB84_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI84_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI84_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -58081,8 +58117,8 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 .LBB84_10:                              # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $a5, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI84_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI84_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI84_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI84_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -58098,7 +58134,7 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB84_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -58777,9 +58813,16 @@ GCC_except_table85:
 .Lcst_end53:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPdRKSt6vectorIiSaIiEEb
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEPdRKSt6vectorIiSaIiEEb
 .LCPI86_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI86_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -58866,12 +58909,14 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a4, $a4, 64
 	bnez	$a7, .LBB86_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI86_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI86_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -58884,8 +58929,8 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 .LBB86_10:                              # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $a5, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI86_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI86_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI86_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI86_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -58901,7 +58946,7 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB86_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -59599,9 +59644,16 @@ GCC_except_table87:
 .Lcst_end55:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS6_SaIS6_EERKS8_IiSaIiEEbb
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEERSt6vectorIS6_SaIS6_EERKS8_IiSaIiEEbb
 .LCPI88_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI88_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -59689,12 +59741,14 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB88_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI88_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI88_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -59707,8 +59761,8 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 .LBB88_10:                              # %vec.epilog.ph
 	move	$a4, $a1
 	bstrpick.d	$a1, $a6, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI88_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI88_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI88_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI88_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $fp, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -59724,7 +59778,7 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	addi.d	$a4, $a4, 16
 	bnez	$a2, .LBB88_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

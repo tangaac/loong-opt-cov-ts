@@ -89,7 +89,15 @@ update_rc:                              # @update_rc
 .Lfunc_end0:
 	.size	update_rc, .Lfunc_end0-update_rc
                                         # -- End function
-	.globl	calc_MAD                        # -- Begin function calc_MAD
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function calc_MAD
+.LCPI1_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	calc_MAD
 	.p2align	5
 	.type	calc_MAD,@function
 calc_MAD:                               # @calc_MAD
@@ -669,13 +677,15 @@ calc_MAD:                               # @calc_MAD
 	xvadd.w	$xr4, $xr4, $xr5
 	xvadd.w	$xr3, $xr3, $xr4
 	xvadd.w	$xr2, $xr2, $xr3
+	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI1_0)
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr3, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

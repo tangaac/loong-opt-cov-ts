@@ -1,6 +1,13 @@
 	.file	"unbust.c"
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function unbust
+.LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	unbust                          # -- Begin function unbust
+	.globl	unbust
 	.p2align	5
 	.type	unbust,@function
 unbust:                                 # @unbust
@@ -131,12 +138,14 @@ unbust:                                 # @unbust
 	addi.d	$a3, $a3, 128
 	bnez	$a5, .LBB0_13
 # %bb.14:                               # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI0_0)
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmin.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -172,7 +181,7 @@ unbust:                                 # @unbust
 	addi.d	$a4, $a4, 32
 	bnez	$a3, .LBB0_17
 # %bb.18:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
@@ -485,7 +494,15 @@ coincide:                               # @coincide
 .Lfunc_end1:
 	.size	coincide, .Lfunc_end1-coincide
                                         # -- End function
-	.globl	firstP                          # -- Begin function firstP
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function firstP
+.LCPI2_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	firstP
 	.p2align	5
 	.type	firstP,@function
 firstP:                                 # @firstP
@@ -565,12 +582,14 @@ firstP:                                 # @firstP
 	addi.d	$a4, $a4, 128
 	bnez	$a6, .LBB2_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI2_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI2_0)
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmin.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -606,7 +625,7 @@ firstP:                                 # @firstP
 	addi.d	$a5, $a5, 32
 	bnez	$a4, .LBB2_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1

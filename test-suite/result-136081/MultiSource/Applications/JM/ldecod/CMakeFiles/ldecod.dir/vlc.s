@@ -944,6 +944,11 @@ GetVLCSymbol_IntraMode:                 # @GetVLCSymbol_IntraMode
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI16_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.globl	more_rbsp_data
 	.p2align	5
@@ -983,13 +988,15 @@ more_rbsp_data:                         # @more_rbsp_data
 	xvsrl.w	$xr0, $xr3, $xr0
 	xvrepli.w	$xr2, 1
 	xvand.v	$xr0, $xr0, $xr2
-	xvrepli.b	$xr2, 0
-	xvbitsel.v	$xr0, $xr0, $xr2, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI16_2)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI16_2)
+	xvrepli.b	$xr3, 0
+	xvbitsel.v	$xr0, $xr0, $xr3, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1020,6 +1027,11 @@ more_rbsp_data:                         # @more_rbsp_data
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI17_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.globl	uvlc_startcode_follows
 	.p2align	5
@@ -1069,13 +1081,15 @@ uvlc_startcode_follows:                 # @uvlc_startcode_follows
 	xvsrl.w	$xr0, $xr3, $xr0
 	xvrepli.w	$xr2, 1
 	xvand.v	$xr0, $xr0, $xr2
-	xvrepli.b	$xr2, 0
-	xvbitsel.v	$xr0, $xr0, $xr2, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI17_2)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI17_2)
+	xvrepli.b	$xr3, 0
+	xvbitsel.v	$xr0, $xr0, $xr3, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

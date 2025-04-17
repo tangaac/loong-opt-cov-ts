@@ -2483,14 +2483,19 @@ GCC_except_table2:
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI3_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI3_1:
+.LCPI3_2:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI3_2:
+.LCPI3_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -2505,19 +2510,19 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception2
 # %bb.0:
-	addi.d	$sp, $sp, -576
-	.cfi_def_cfa_offset 576
-	st.d	$ra, $sp, 568                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 560                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 552                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 544                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 536                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 528                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 520                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 512                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 504                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 496                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 488                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -608
+	.cfi_def_cfa_offset 608
+	st.d	$ra, $sp, 600                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 592                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 584                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 576                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 568                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 560                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 552                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 544                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 536                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 528                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 520                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2529,7 +2534,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	addi.d	$fp, $sp, 576
+	addi.d	$fp, $sp, 608
 	.cfi_def_cfa 22, 0
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a0
@@ -2538,15 +2543,15 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.1:
 	ld.w	$a0, $s0, 60
 	addi.d	$a1, $s0, 48
-	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
 	addi.d	$a1, $s0, 136
-	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 248                   # 8-byte Folded Spill
 	beqz	$a0, .LBB3_11
 # %bb.2:                                # %.preheader142
 	ori	$a1, $zero, 1
 	addi.d	$s3, $s0, 232
 	addi.d	$a2, $s0, 168
-	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 224                   # 8-byte Folded Spill
 	blt	$a0, $a1, .LBB3_19
 # %bb.3:                                # %.lr.ph160
 	move	$s2, $zero
@@ -2560,7 +2565,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	add.w	$s6, $s8, $s6
 	slli.d	$a0, $s8, 32
 	or	$s1, $a0, $s1
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 148
@@ -2589,7 +2594,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.7:                                #   in Loop: Header=BB3_5 Depth=1
 	move	$s4, $s7
 	bstrins.d	$s4, $s6, 63, 32
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 224                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 180
@@ -2641,27 +2646,27 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	bnez	$a0, .LBB3_117
 # %bb.13:
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 456
+	vst	$vr0, $sp, 488
 	ori	$a0, $zero, 8
-	st.d	$a0, $sp, 472
+	st.d	$a0, $sp, 504
 	pcalau12i	$a0, %pc_hi20(_ZTV13CObjectVectorI5CPropE+16)
 	addi.d	$s3, $a0, %pc_lo12(_ZTV13CObjectVectorI5CPropE+16)
-	st.d	$s3, $sp, 448
+	st.d	$s3, $sp, 480
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 480
+	st.d	$a0, $sp, 512
 	lu12i.w	$a0, 28432
 	ori	$a0, $a0, 1793
-	st.d	$a0, $sp, 440
+	st.d	$a0, $sp, 472
 .Ltmp255:
-	addi.d	$a1, $sp, 440
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 472
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive3N7z11CMethodFullEE3AddERKS2_)
 	jirl	$ra, $ra, 0
 .Ltmp256:
 # %bb.14:
 .Ltmp257:
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 .Ltmp258:
@@ -2699,10 +2704,10 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $a1, $a0
 	ld.w	$a0, $s0, 244
-	addi.d	$s2, $sp, 448
+	addi.d	$s2, $sp, 480
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 244
-	st.d	$s3, $sp, 448
+	st.d	$s3, $sp, 480
 .Ltmp264:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
@@ -2721,13 +2726,13 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	move	$s7, $zero
 .LBB3_20:                               # %._crit_edge
 	ld.w	$a0, $s0, 92
-	pcalau12i	$a1, %pc_hi20(.LCPI3_1)
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.LCPI3_2)
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(.LCPI3_3)
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
-	st.d	$a1, $sp, 152                   # 8-byte Folded Spill
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 184                   # 8-byte Folded Spill
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
 	beqz	$a0, .LBB3_62
 # %bb.21:                               # %.preheader140
 	ori	$a1, $zero, 1
@@ -2735,18 +2740,21 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.22:                               # %.lr.ph163
 	move	$s5, $zero
 	xvrepli.b	$xr0, 0
-	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
+	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
 	lu12i.w	$a0, 524287
 	ori	$s2, $a0, 4095
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	vld	$vr0, $a0, %pc_lo12(.LCPI3_1)
-	vst	$vr0, $sp, 176                  # 16-byte Folded Spill
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	vld	$vr0, $a0, %pc_lo12(.LCPI3_2)
-	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	vst	$vr0, $sp, 208                  # 16-byte Folded Spill
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	vld	$vr0, $a0, %pc_lo12(.LCPI3_3)
+	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
 	xvst	$xr0, $sp, 0                    # 32-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.LCPI3_1)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI3_1)
+	xvst	$xr0, $sp, 96                   # 32-byte Folded Spill
 	lu12i.w	$a0, -524288
 	ori	$s4, $a0, 3
 	vinsgr2vr.w	$vr0, $zero, 0
@@ -2811,33 +2819,33 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	b	.LBB3_36
 .LBB3_31:                               # %vector.ph245
                                         #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
 	xvld	$xr0, $a0, %pc_lo12(.LCPI3_0)
 	move	$a4, $a2
 	bstrins.d	$a4, $zero, 3, 0
 	move	$a0, $a4
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
 	xvori.b	$xr1, $xr2, 0
 	.p2align	4, , 16
 .LBB3_32:                               # %vector.body248
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvst	$xr0, $sp, 352
-	vld	$vr3, $sp, 368
+	xvst	$xr0, $sp, 384
+	vld	$vr3, $sp, 400
 	vpickve2gr.w	$a5, $vr3, 3
 	vpickve2gr.w	$a6, $vr3, 2
-	vld	$vr4, $sp, 352
+	vld	$vr4, $sp, 384
 	vpickve2gr.w	$a7, $vr3, 1
 	vpickve2gr.w	$t0, $vr3, 0
 	xvaddi.wu	$xr3, $xr0, 8
 	vpickve2gr.w	$t1, $vr4, 3
-	xvst	$xr3, $sp, 384
-	vld	$vr3, $sp, 400
+	xvst	$xr3, $sp, 416
+	vld	$vr3, $sp, 432
 	vpickve2gr.w	$t2, $vr4, 2
 	vpickve2gr.w	$t3, $vr4, 1
 	vpickve2gr.w	$t4, $vr4, 0
 	vpickve2gr.w	$t5, $vr3, 3
-	vld	$vr4, $sp, 384
+	vld	$vr4, $sp, 416
 	vpickve2gr.w	$t6, $vr3, 2
 	vpickve2gr.w	$t7, $vr3, 1
 	vpickve2gr.w	$t8, $vr3, 0
@@ -2902,10 +2910,11 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
                                         #   in Loop: Header=BB3_25 Depth=1
 	xvadd.w	$xr0, $xr2, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2913,13 +2922,13 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	xvpickve2gr.w	$a0, $xr0, 0
 	bne	$a2, $a4, .LBB3_35
 # %bb.34:                               #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	b	.LBB3_40
 .LBB3_35:                               # %vec.epilog.iter.check263
                                         #   in Loop: Header=BB3_25 Depth=1
 	andi	$a5, $a2, 12
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	beqz	$a5, .LBB3_39
 .LBB3_36:                               # %vec.epilog.ph262
@@ -2928,11 +2937,11 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	move	$a4, $a2
 	bstrins.d	$a4, $zero, 1, 0
 	vreplgr2vr.w	$vr0, $a5
-	vld	$vr1, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
 	vor.v	$vr0, $vr0, $vr1
 	vinsgr2vr.w	$vr2, $a0, 0
 	vinsgr2vr.w	$vr3, $zero, 0
-	vld	$vr1, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 192                  # 16-byte Folded Reload
 	vshuf.w	$vr1, $vr3, $vr2
 	sub.d	$a0, $a5, $a4
 	.p2align	4, , 16
@@ -2961,7 +2970,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	bnez	$a0, .LBB3_37
 # %bb.38:                               # %vec.epilog.middle.block277
                                         #   in Loop: Header=BB3_25 Depth=1
-	vshuf4i.w	$vr0, $vr1, 14
+	vreplvei.d	$vr0, $vr1, 1
 	vadd.w	$vr0, $vr1, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3008,28 +3017,28 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	bstrins.d	$a5, $zero, 3, 0
 	move	$a6, $a5
 	xvld	$xr1, $sp, 0                    # 32-byte Folded Reload
-	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	xvld	$xr2, $sp, 128                  # 32-byte Folded Reload
 	xvori.b	$xr0, $xr2, 0
 	.p2align	4, , 16
 .LBB3_46:                               # %vector.body
                                         #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvst	$xr1, $sp, 288
-	vld	$vr3, $sp, 304
+	xvst	$xr1, $sp, 320
+	vld	$vr3, $sp, 336
 	vpickve2gr.w	$a7, $vr3, 3
 	vpickve2gr.w	$t0, $vr3, 2
-	vld	$vr4, $sp, 288
+	vld	$vr4, $sp, 320
 	vpickve2gr.w	$t1, $vr3, 1
 	vpickve2gr.w	$t2, $vr3, 0
 	xvaddi.wu	$xr3, $xr1, 8
 	vpickve2gr.w	$t3, $vr4, 3
-	xvst	$xr3, $sp, 320
-	vld	$vr3, $sp, 336
+	xvst	$xr3, $sp, 352
+	vld	$vr3, $sp, 368
 	vpickve2gr.w	$t4, $vr4, 2
 	vpickve2gr.w	$t5, $vr4, 1
 	vpickve2gr.w	$t6, $vr4, 0
 	vpickve2gr.w	$t7, $vr3, 3
-	vld	$vr4, $sp, 320
+	vld	$vr4, $sp, 352
 	vpickve2gr.w	$t8, $vr3, 2
 	vpickve2gr.w	$s1, $vr3, 1
 	vpickve2gr.w	$s4, $vr3, 0
@@ -3094,10 +3103,11 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
                                         #   in Loop: Header=BB3_25 Depth=1
 	xvadd.w	$xr0, $xr2, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 96                   # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -3105,7 +3115,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	xvpickve2gr.w	$a6, $xr0, 0
 	bne	$a3, $a5, .LBB3_49
 # %bb.48:                               #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$t2, $sp, 80                    # 8-byte Folded Reload
@@ -3113,7 +3123,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 .LBB3_49:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB3_25 Depth=1
 	andi	$a2, $a3, 12
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$t2, $sp, 80                    # 8-byte Folded Reload
@@ -3124,10 +3134,10 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	move	$a5, $a3
 	bstrins.d	$a5, $zero, 1, 0
 	vreplgr2vr.w	$vr0, $a2
-	vld	$vr1, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
 	vor.v	$vr1, $vr0, $vr1
 	vinsgr2vr.w	$vr2, $a6, 0
-	vld	$vr0, $sp, 160                  # 16-byte Folded Reload
+	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
 	vld	$vr3, $sp, 64                   # 16-byte Folded Reload
 	vshuf.w	$vr0, $vr3, $vr2
 	sub.d	$a6, $a2, $a5
@@ -3157,7 +3167,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	bnez	$a6, .LBB3_51
 # %bb.52:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB3_25 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3273,10 +3283,10 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	lu12i.w	$a4, 524287
 	ori	$t5, $a4, 4095
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
-	vld	$vr0, $a4, %pc_lo12(.LCPI3_1)
+	vld	$vr0, $a4, %pc_lo12(.LCPI3_2)
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
-	vld	$vr1, $a4, %pc_lo12(.LCPI3_2)
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	vld	$vr1, $a4, %pc_lo12(.LCPI3_3)
+	ld.d	$a4, $sp, 184                   # 8-byte Folded Reload
 	xvld	$xr2, $a4, %pc_lo12(.LCPI3_0)
 	lu12i.w	$a4, -524288
 	ori	$t6, $a4, 3
@@ -3327,35 +3337,35 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	b	.LBB3_87
 .LBB3_82:                               # %vector.ph287
                                         #   in Loop: Header=BB3_73 Depth=1
-	st.d	$t6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$t5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$t0, $sp, 176                   # 8-byte Folded Spill
+	st.d	$t6, $sp, 184                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 192                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 208                   # 8-byte Folded Spill
 	move	$t2, $t1
 	bstrins.d	$t2, $zero, 3, 0
 	move	$t3, $t2
-	xvori.b	$xr5, $xr2, 0
+	xvori.b	$xr6, $xr2, 0
 	xvori.b	$xr4, $xr3, 0
-	xvori.b	$xr6, $xr3, 0
+	xvori.b	$xr5, $xr3, 0
 	.p2align	4, , 16
 .LBB3_83:                               # %vector.body290
                                         #   Parent Loop BB3_73 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvst	$xr5, $sp, 224
-	vld	$vr7, $sp, 240
+	xvst	$xr6, $sp, 256
+	vld	$vr7, $sp, 272
 	vpickve2gr.w	$t4, $vr7, 3
 	vpickve2gr.w	$t5, $vr7, 2
-	vld	$vr8, $sp, 224
+	vld	$vr8, $sp, 256
 	vpickve2gr.w	$t6, $vr7, 1
 	vpickve2gr.w	$t7, $vr7, 0
-	xvaddi.wu	$xr7, $xr5, 8
+	xvaddi.wu	$xr7, $xr6, 8
 	vpickve2gr.w	$t8, $vr8, 3
-	xvst	$xr7, $sp, 256
-	vld	$vr7, $sp, 272
+	xvst	$xr7, $sp, 288
+	vld	$vr7, $sp, 304
 	vpickve2gr.w	$s1, $vr8, 2
 	vpickve2gr.w	$s2, $vr8, 1
 	vpickve2gr.w	$s4, $vr8, 0
 	vpickve2gr.w	$s5, $vr7, 3
-	vld	$vr8, $sp, 256
+	vld	$vr8, $sp, 288
 	vpickve2gr.w	$s8, $vr7, 2
 	vpickve2gr.w	$ra, $vr7, 1
 	vpickve2gr.w	$t0, $vr7, 0
@@ -3412,18 +3422,20 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	xvinsgr2vr.w	$xr8, $t5, 6
 	xvinsgr2vr.w	$xr8, $t6, 7
 	xvadd.w	$xr4, $xr7, $xr4
-	xvadd.w	$xr6, $xr8, $xr6
+	xvadd.w	$xr5, $xr8, $xr5
 	addi.w	$t3, $t3, -16
-	xvaddi.wu	$xr5, $xr5, 16
+	xvaddi.wu	$xr6, $xr6, 16
 	bnez	$t3, .LBB3_83
 # %bb.84:                               # %middle.block298
                                         #   in Loop: Header=BB3_73 Depth=1
-	xvadd.w	$xr4, $xr6, $xr4
+	pcalau12i	$a4, %pc_hi20(.LCPI3_1)
+	xvld	$xr6, $a4, %pc_lo12(.LCPI3_1)
+	xvadd.w	$xr4, $xr5, $xr4
 	xvpermi.d	$xr5, $xr4, 78
-	xvshuf4i.w	$xr5, $xr5, 228
-	xvadd.w	$xr4, $xr4, $xr5
+	xvshuf.d	$xr6, $xr0, $xr5
+	xvadd.w	$xr4, $xr4, $xr6
 	xvpermi.d	$xr5, $xr4, 68
-	xvshuf4i.w	$xr5, $xr5, 14
+	xvrepl128vei.d	$xr5, $xr5, 1
 	xvadd.w	$xr4, $xr4, $xr5
 	xvpermi.d	$xr5, $xr4, 68
 	xvrepl128vei.w	$xr5, $xr5, 1
@@ -3432,21 +3444,21 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	xvpickve2gr.w	$s2, $xr4, 0
 	bne	$t1, $a4, .LBB3_86
 # %bb.85:                               #   in Loop: Header=BB3_73 Depth=1
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 208                   # 8-byte Folded Reload
 	ori	$t4, $zero, 1
-	ld.d	$t5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 184                   # 8-byte Folded Reload
 	ori	$t7, $zero, 16
 	b	.LBB3_91
 .LBB3_86:                               # %vec.epilog.iter.check305
                                         #   in Loop: Header=BB3_73 Depth=1
 	andi	$a4, $t1, 12
-	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$t0, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 208                   # 8-byte Folded Reload
 	ori	$t4, $zero, 1
-	ld.d	$t5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 184                   # 8-byte Folded Reload
 	ori	$t7, $zero, 16
 	beqz	$a4, .LBB3_90
 .LBB3_87:                               # %vec.epilog.ph304
@@ -3487,7 +3499,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	bnez	$t3, .LBB3_88
 # %bb.89:                               # %vec.epilog.middle.block319
                                         #   in Loop: Header=BB3_73 Depth=1
-	vshuf4i.w	$vr4, $vr5, 14
+	vreplvei.d	$vr4, $vr5, 1
 	vadd.w	$vr4, $vr5, $vr4
 	vreplvei.w	$vr5, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr5
@@ -3584,9 +3596,9 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
 	jirl	$ra, $ra, 0
-	addi.d	$s4, $sp, 448
+	addi.d	$s4, $sp, 480
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 192                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 224                  # 16-byte Folded Spill
 	ori	$s7, $zero, 8
 	pcalau12i	$a0, %pc_hi20(_ZTV13CObjectVectorI5CPropE+16)
 	addi.d	$s8, $a0, %pc_lo12(_ZTV13CObjectVectorI5CPropE+16)
@@ -3596,22 +3608,22 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ori	$s5, $a0, 1793
 	.p2align	4, , 16
 .LBB3_105:                              # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $sp, 456
-	vld	$vr0, $sp, 192                  # 16-byte Folded Reload
+	addi.d	$a0, $sp, 488
+	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
-	st.d	$s7, $sp, 472
-	st.d	$s8, $sp, 448
-	st.d	$s1, $sp, 480
-	st.d	$s5, $sp, 440
+	st.d	$s7, $sp, 504
+	st.d	$s8, $sp, 480
+	st.d	$s1, $sp, 512
+	st.d	$s5, $sp, 472
 .Ltmp245:
-	addi.d	$a1, $sp, 440
-	ld.d	$a0, $sp, 208                   # 8-byte Folded Reload
+	addi.d	$a1, $sp, 472
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN13CObjectVectorIN8NArchive3N7z11CMethodFullEE3AddERKS2_)
 	jirl	$ra, $ra, 0
 .Ltmp246:
 # %bb.106:                              #   in Loop: Header=BB3_105 Depth=1
 .Ltmp247:
-	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 .Ltmp248:
@@ -3636,7 +3648,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	ld.w	$a0, $s0, 244
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 244
-	st.d	$s8, $sp, 448
+	st.d	$s8, $sp, 480
 .Ltmp252:
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
@@ -3682,7 +3694,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 .Ltmp267:
-	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN11NCoderMixer21CBindReverseConverterC1ERKNS_9CBindInfoE)
 	jirl	$ra, $ra, 0
 .Ltmp268:
@@ -3696,19 +3708,19 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 	st.b	$a0, $s0, 432
 .LBB3_115:
 	move	$a0, $zero
-	addi.d	$sp, $fp, -576
-	ld.d	$s8, $sp, 488                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 496                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 512                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 520                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 528                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 536                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 544                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 568                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 576
+	addi.d	$sp, $fp, -608
+	ld.d	$s8, $sp, 520                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 552                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 560                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 576                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 584                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 600                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 608
 	ret
 .LBB3_116:                              # %._crit_edge176
 	move	$a0, $s3
@@ -3754,7 +3766,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 .Ltmp251:
 .LBB3_123:
 	move	$s0, $a0
-	addi.d	$a0, $sp, 440
+	addi.d	$a0, $sp, 472
 	pcaddu18i	$ra, %call36(_ZN7CMethodD2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0

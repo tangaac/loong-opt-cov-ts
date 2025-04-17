@@ -877,7 +877,7 @@ F_floatmul:                             # @F_floatmul
 	bnez	$a5, .LBB4_13
 # %bb.14:                               # %middle.block
 	vadd.w	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -939,7 +939,7 @@ F_floatmul:                             # @F_floatmul
 	bnez	$a5, .LBB4_21
 # %bb.22:                               # %middle.block106
 	vadd.w	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

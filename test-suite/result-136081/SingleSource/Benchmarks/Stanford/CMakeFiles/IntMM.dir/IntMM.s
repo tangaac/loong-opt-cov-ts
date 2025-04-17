@@ -81,6 +81,11 @@ Initmatrix:                             # @Initmatrix
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function Innerproduct
 .LCPI3_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI3_1:
 	.word	0                               # 0x0
 	.word	5                               # 0x5
 	.word	6                               # 0x6
@@ -120,8 +125,8 @@ Innerproduct:                           # @Innerproduct
 	ori	$a5, $zero, 164
 	mul.d	$a3, $a3, $a5
 	add.d	$a1, $a1, $a3
-	xvld	$xr1, $a1, 4
-	xvld	$xr0, $a1, 36
+	xvld	$xr0, $a1, 4
+	xvld	$xr1, $a1, 36
 	ld.w	$a3, $a2, 164
 	ld.w	$a5, $a2, 328
 	ld.w	$a6, $a2, 492
@@ -210,20 +215,23 @@ Innerproduct:                           # @Innerproduct
 	xvinsgr2vr.w	$xr7, $t3, 7
 	xvmul.w	$xr4, $xr6, $xr4
 	xvmul.w	$xr5, $xr7, $xr5
-	xvmadd.w	$xr4, $xr2, $xr1
-	xvmadd.w	$xr5, $xr3, $xr0
+	pcalau12i	$a3, %pc_hi20(.LCPI3_0)
+	xvld	$xr6, $a3, %pc_lo12(.LCPI3_0)
+	xvmadd.w	$xr4, $xr2, $xr0
+	xvmadd.w	$xr5, $xr3, $xr1
 	xvadd.w	$xr0, $xr5, $xr4
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvori.b	$xr2, $xr6, 0
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
-	pcalau12i	$a3, %pc_hi20(.LCPI3_0)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI3_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI3_1)
+	xvld	$xr1, $a3, %pc_lo12(.LCPI3_1)
 	xvpickve2gr.w	$a3, $xr0, 0
 	st.w	$a3, $a0, 0
 	xvrepli.b	$xr2, 0
@@ -255,10 +263,10 @@ Innerproduct:                           # @Innerproduct
 	xvinsgr2vr.w	$xr2, $a2, 7
 	xvmadd.w	$xr1, $xr2, $xr0
 	xvpermi.d	$xr0, $xr1, 78
-	xvshuf4i.w	$xr0, $xr0, 228
-	xvadd.w	$xr0, $xr1, $xr0
+	xvshuf.d	$xr6, $xr0, $xr0
+	xvadd.w	$xr0, $xr1, $xr6
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

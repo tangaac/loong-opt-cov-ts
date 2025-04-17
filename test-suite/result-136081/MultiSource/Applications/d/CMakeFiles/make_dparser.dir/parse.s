@@ -6155,7 +6155,7 @@ add_Reduction:                          # @add_Reduction
 	bnez	$t1, .LBB40_7
 # %bb.8:                                # %middle.block
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
@@ -6261,7 +6261,7 @@ add_Reduction:                          # @add_Reduction
 # %bb.22:                               # %middle.block96
                                         #   in Loop: Header=BB40_14 Depth=1
 	vmax.wu	$vr1, $vr1, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmax.wu	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmax.wu	$vr1, $vr1, $vr2

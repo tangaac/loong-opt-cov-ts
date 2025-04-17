@@ -12045,7 +12045,7 @@ clause_NumberOfMaxAntecedentLits:       # @clause_NumberOfMaxAntecedentLits
 	bnez	$a0, .LBB116_8
 # %bb.9:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -12198,7 +12198,7 @@ clause_SelectLiteral:                   # @clause_SelectLiteral
 	bnez	$t0, .LBB117_17
 # %bb.18:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

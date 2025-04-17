@@ -378,7 +378,7 @@ _ZN4Crux16store_MallocPlusE10MallocPlus: # @_ZN4Crux16store_MallocPlusE10MallocP
 # %bb.15:                               # %middle.block
                                         #   in Loop: Header=BB2_5 Depth=1
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -1147,7 +1147,7 @@ _ZN4Crux18restore_MallocPlusE10MallocPlus: # @_ZN4Crux18restore_MallocPlusE10Mal
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

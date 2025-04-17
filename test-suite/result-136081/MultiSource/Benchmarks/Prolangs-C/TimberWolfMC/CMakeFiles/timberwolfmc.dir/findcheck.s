@@ -661,25 +661,25 @@ initcheck:                              # @initcheck
 	bnez	$t1, .LBB1_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr4, $vr7, $vr4
-	vshuf4i.w	$vr7, $vr4, 14
+	vreplvei.d	$vr7, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr7
 	vreplvei.w	$vr7, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr7
 	vpickve2gr.w	$t0, $vr4, 0
 	vadd.w	$vr4, $vr6, $vr5
-	vshuf4i.w	$vr5, $vr4, 14
+	vreplvei.d	$vr5, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr5
 	vreplvei.w	$vr5, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr5
 	vpickve2gr.w	$t1, $vr4, 0
 	vadd.w	$vr2, $vr3, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$t2, $vr2, 0
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

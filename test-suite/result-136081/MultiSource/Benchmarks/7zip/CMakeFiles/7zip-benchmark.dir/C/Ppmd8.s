@@ -677,9 +677,14 @@ Ppmd8_Update1:                          # @Ppmd8_Update1
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
+.LCPI7_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI7_1:
+.LCPI7_2:
 	.byte	0                               # 0x0
 	.byte	16                              # 0x10
 	.byte	16                              # 0x10
@@ -1150,18 +1155,20 @@ Rescale:                                # @Rescale
 	addi.d	$t1, $t1, 384
 	bnez	$t2, .LBB7_23
 # %bb.24:                               # %middle.block
+	pcalau12i	$t1, %pc_hi20(.LCPI7_1)
+	xvld	$xr2, $t1, %pc_lo12(.LCPI7_1)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.b	$xr1, $xr1, 228
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
+	xvpermi.d	$xr1, $xr0, 68
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
+	xvrepl128vei.w	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvsrli.d	$xr1, $xr1, 32
-	xvor.v	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.b	$xr1, $xr1, 14
+	xvrepl128vei.h	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.b	$xr1, $xr1, 1
@@ -1177,8 +1184,8 @@ Rescale:                                # @Rescale
 	slli.d	$t4, $t3, 5
 	alsl.d	$t3, $t3, $t4, 4
 	add.d	$a6, $a6, $t3
-	pcalau12i	$t3, %pc_hi20(.LCPI7_1)
-	vld	$vr0, $t3, %pc_lo12(.LCPI7_1)
+	pcalau12i	$t3, %pc_hi20(.LCPI7_2)
+	vld	$vr0, $t3, %pc_lo12(.LCPI7_2)
 	sub.d	$a5, $a5, $t2
 	vinsgr2vr.b	$vr1, $t1, 0
 	vinsgr2vr.b	$vr2, $zero, 0
@@ -1217,9 +1224,9 @@ Rescale:                                # @Rescale
 	addi.d	$t0, $t0, 48
 	bnez	$t1, .LBB7_27
 # %bb.28:                               # %vec.epilog.middle.block
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -2354,9 +2361,14 @@ CreateSuccessors:                       # @CreateSuccessors
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
+.LCPI14_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI14_2:
+.LCPI14_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -2872,12 +2884,15 @@ RestoreModel:                           # @RestoreModel
 	bnez	$a3, .LBB14_21
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB14_14 Depth=1
+	pcalau12i	$a2, %pc_hi20(.LCPI14_2)
+	xvld	$xr6, $a2, %pc_lo12(.LCPI14_2)
 	xvadd.w	$xr3, $xr5, $xr3
 	xvpermi.d	$xr5, $xr3, 78
-	xvshuf4i.w	$xr5, $xr5, 228
-	xvadd.w	$xr3, $xr3, $xr5
+	xvori.b	$xr7, $xr6, 0
+	xvshuf.d	$xr7, $xr0, $xr5
+	xvadd.w	$xr3, $xr3, $xr7
 	xvpermi.d	$xr5, $xr3, 68
-	xvshuf4i.w	$xr5, $xr5, 14
+	xvrepl128vei.d	$xr5, $xr5, 1
 	xvadd.w	$xr3, $xr3, $xr5
 	xvpermi.d	$xr5, $xr3, 68
 	xvrepl128vei.w	$xr5, $xr5, 1
@@ -2885,10 +2900,11 @@ RestoreModel:                           # @RestoreModel
 	xvpickve2gr.w	$a3, $xr3, 0
 	xvadd.w	$xr1, $xr4, $xr1
 	xvpermi.d	$xr3, $xr1, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvadd.w	$xr1, $xr1, $xr3
+	xvori.b	$xr4, $xr6, 0
+	xvshuf.d	$xr4, $xr0, $xr3
+	xvadd.w	$xr1, $xr1, $xr4
 	xvpermi.d	$xr3, $xr1, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr3, $xr1, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -2896,10 +2912,10 @@ RestoreModel:                           # @RestoreModel
 	xvpickve2gr.w	$a4, $xr1, 0
 	xvor.v	$xr0, $xr2, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr6, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr6
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2916,8 +2932,8 @@ RestoreModel:                           # @RestoreModel
                                         #   in Loop: Header=BB14_14 Depth=1
 	andi	$a7, $s7, 252
 	sub.d	$a2, $s7, $a7
-	pcalau12i	$a6, %pc_hi20(.LCPI14_2)
-	vld	$vr0, $a6, %pc_lo12(.LCPI14_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI14_3)
+	vld	$vr0, $a6, %pc_lo12(.LCPI14_3)
 	mul.d	$a6, $a7, $s6
 	add.d	$a6, $a0, $a6
 	vinsgr2vr.w	$vr1, $a3, 0
@@ -2982,17 +2998,17 @@ RestoreModel:                           # @RestoreModel
 	bnez	$a3, .LBB14_25
 # %bb.26:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB14_14 Depth=1
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$a3, $vr2, 0
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a4, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -3714,9 +3730,14 @@ GetUsedMemory:                          # @GetUsedMemory
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
+.LCPI17_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI17_2:
+.LCPI17_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -3853,17 +3874,17 @@ CutOff:                                 # @CutOff
 	ld.bu	$a4, $a0, 0
 	ori	$a1, $zero, 63
 	ld.hu	$a5, $s0, 2
-	ld.bu	$a7, $a0, 1
+	ld.bu	$a6, $a0, 1
 	sltu	$a4, $a1, $a4
 	slli.d	$a4, $a4, 3
-	or	$a6, $a4, $a2
-	sub.d	$a5, $a5, $a7
-	add.d	$a2, $a7, $s2
+	or	$a7, $a4, $a2
+	sub.d	$a5, $a5, $a6
+	add.d	$a2, $a6, $s2
 	srl.w	$a2, $a2, $s2
 	st.b	$a2, $a0, 1
 	addi.d	$a4, $s4, -1
 	ori	$t0, $zero, 3
-	andi	$a7, $a2, 255
+	andi	$a6, $a2, 255
 	bgeu	$a4, $t0, .LBB17_34
 # %bb.16:
 	move	$t0, $a0
@@ -4065,18 +4086,18 @@ CutOff:                                 # @CutOff
 	xvld	$xr1, $a4, %pc_lo12(.LCPI17_0)
 	bstrpick.d	$a4, $a2, 32, 4
 	slli.d	$a4, $a4, 4
-	xvreplgr2vr.w	$xr3, $s2
+	xvreplgr2vr.w	$xr4, $s2
 	xvinsgr2vr.w	$xr2, $a5, 0
 	xvpermi.d	$xr2, $xr2, 68
-	xvinsgr2vr.w	$xr4, $zero, 0
-	xvpermi.d	$xr5, $xr4, 68
-	xvori.b	$xr4, $xr1, 0
-	xvshuf.w	$xr4, $xr5, $xr2
-	xvinsgr2vr.w	$xr2, $a7, 0
+	xvinsgr2vr.w	$xr3, $zero, 0
+	xvpermi.d	$xr5, $xr3, 68
+	xvori.b	$xr3, $xr1, 0
+	xvshuf.w	$xr3, $xr5, $xr2
+	xvinsgr2vr.w	$xr2, $a6, 0
 	xvpermi.d	$xr6, $xr2, 68
 	xvori.b	$xr2, $xr1, 0
 	xvshuf.w	$xr2, $xr5, $xr6
-	xvinsgr2vr.w	$xr6, $a6, 0
+	xvinsgr2vr.w	$xr6, $a7, 0
 	xvpermi.d	$xr6, $xr6, 68
 	xvshuf.w	$xr1, $xr5, $xr6
 	addi.d	$a5, $a0, 48
@@ -4195,12 +4216,12 @@ CutOff:                                 # @CutOff
 	vpickve2gr.b	$a7, $vr12, 0
 	st.b	$a7, $sp, 64
 	xvld	$xr12, $sp, 64
-	xvsub.w	$xr4, $xr4, $xr11
+	xvsub.w	$xr3, $xr3, $xr11
 	xvsub.w	$xr7, $xr7, $xr12
-	xvadd.w	$xr11, $xr3, $xr11
-	xvadd.w	$xr12, $xr3, $xr12
-	xvsrl.w	$xr13, $xr11, $xr3
-	xvsrl.w	$xr11, $xr12, $xr3
+	xvadd.w	$xr11, $xr4, $xr11
+	xvadd.w	$xr12, $xr4, $xr12
+	xvsrl.w	$xr13, $xr11, $xr4
+	xvsrl.w	$xr11, $xr12, $xr4
 	xvpickve2gr.w	$a7, $xr13, 7
 	xvpickve2gr.w	$t0, $xr13, 6
 	xvpickve2gr.w	$t1, $xr13, 5
@@ -4291,39 +4312,43 @@ CutOff:                                 # @CutOff
 	addi.d	$a5, $a5, 96
 	bnez	$a6, .LBB17_39
 # %bb.40:                               # %middle.block
-	xvadd.w	$xr3, $xr7, $xr4
-	xvpermi.d	$xr4, $xr3, 78
-	xvshuf4i.w	$xr4, $xr4, 228
-	xvadd.w	$xr3, $xr3, $xr4
-	xvpermi.d	$xr4, $xr3, 68
-	xvshuf4i.w	$xr4, $xr4, 14
-	xvadd.w	$xr3, $xr3, $xr4
-	xvpermi.d	$xr4, $xr3, 68
-	xvrepl128vei.w	$xr4, $xr4, 1
-	xvadd.w	$xr3, $xr3, $xr4
+	pcalau12i	$a5, %pc_hi20(.LCPI17_2)
+	xvld	$xr4, $a5, %pc_lo12(.LCPI17_2)
+	xvadd.w	$xr3, $xr7, $xr3
+	xvpermi.d	$xr7, $xr3, 78
+	xvori.b	$xr8, $xr4, 0
+	xvshuf.d	$xr8, $xr0, $xr7
+	xvadd.w	$xr3, $xr3, $xr8
+	xvpermi.d	$xr7, $xr3, 68
+	xvrepl128vei.d	$xr7, $xr7, 1
+	xvadd.w	$xr3, $xr3, $xr7
+	xvpermi.d	$xr7, $xr3, 68
+	xvrepl128vei.w	$xr7, $xr7, 1
+	xvadd.w	$xr3, $xr3, $xr7
 	xvpickve2gr.w	$a5, $xr3, 0
 	xvadd.w	$xr2, $xr6, $xr2
 	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvadd.w	$xr2, $xr2, $xr3
+	xvori.b	$xr6, $xr4, 0
+	xvshuf.d	$xr6, $xr0, $xr3
+	xvadd.w	$xr2, $xr2, $xr6
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvadd.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
 	xvadd.w	$xr2, $xr2, $xr3
-	xvpickve2gr.w	$a7, $xr2, 0
+	xvpickve2gr.w	$a6, $xr2, 0
 	xvor.v	$xr1, $xr5, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvor.v	$xr1, $xr1, $xr2
+	xvshuf.d	$xr4, $xr0, $xr2
+	xvor.v	$xr1, $xr1, $xr4
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvor.v	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
 	xvor.v	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$a6, $xr1, 0
+	xvpickve2gr.w	$a7, $xr1, 0
 	beq	$a2, $a4, .LBB17_48
 # %bb.41:                               # %vec.epilog.iter.check
 	andi	$t0, $a2, 12
@@ -4334,18 +4359,18 @@ CutOff:                                 # @CutOff
 	sub.d	$s4, $s4, $t1
 	slli.d	$t2, $t0, 4
 	alsl.d	$t0, $t0, $t2, 3
-	pcalau12i	$t2, %pc_hi20(.LCPI17_2)
-	vld	$vr1, $t2, %pc_lo12(.LCPI17_2)
+	pcalau12i	$t2, %pc_hi20(.LCPI17_3)
+	vld	$vr1, $t2, %pc_lo12(.LCPI17_3)
 	add.d	$t0, $a0, $t0
 	vreplgr2vr.w	$vr3, $s2
 	vinsgr2vr.w	$vr2, $a5, 0
 	vinsgr2vr.w	$vr5, $zero, 0
 	vori.b	$vr4, $vr1, 0
 	vshuf.w	$vr4, $vr5, $vr2
-	vinsgr2vr.w	$vr6, $a7, 0
+	vinsgr2vr.w	$vr6, $a6, 0
 	vori.b	$vr2, $vr1, 0
 	vshuf.w	$vr2, $vr5, $vr6
-	vinsgr2vr.w	$vr6, $a6, 0
+	vinsgr2vr.w	$vr6, $a7, 0
 	vshuf.w	$vr1, $vr5, $vr6
 	sub.d	$a5, $a4, $t1
 	alsl.d	$a4, $a4, $a4, 1
@@ -4406,21 +4431,21 @@ CutOff:                                 # @CutOff
 	addi.d	$a0, $a0, 24
 	bnez	$a5, .LBB17_43
 # %bb.44:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr0, $vr4, 14
+	vreplvei.d	$vr0, $vr4, 1
 	vadd.w	$vr0, $vr4, $vr0
 	vreplvei.w	$vr3, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr3
 	vpickve2gr.w	$a5, $vr0, 0
-	vshuf4i.w	$vr0, $vr2, 14
+	vreplvei.d	$vr0, $vr2, 1
 	vadd.w	$vr0, $vr2, $vr0
 	vreplvei.w	$vr2, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr2
-	vpickve2gr.w	$a7, $vr0, 0
-	vshuf4i.w	$vr0, $vr1, 14
+	vpickve2gr.w	$a6, $vr0, 0
+	vreplvei.d	$vr0, $vr1, 1
 	vor.v	$vr0, $vr1, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a6, $vr0, 0
+	vpickve2gr.w	$a7, $vr0, 0
 	bne	$a2, $t1, .LBB17_46
 	b	.LBB17_48
 .LBB17_45:
@@ -4440,19 +4465,19 @@ CutOff:                                 # @CutOff
 	ld.bu	$a4, $a0, -1
 	st.b	$a2, $a0, 0
 	andi	$a2, $a2, 255
-	add.d	$a7, $a2, $a7
+	add.d	$a6, $a2, $a6
 	sltu	$a2, $a1, $a4
 	slli.d	$a2, $a2, 3
-	or	$a6, $a2, $a6
+	or	$a7, $a2, $a7
 	addi.w	$s4, $s4, -1
 	addi.d	$a0, $a0, 6
 	bnez	$s4, .LBB17_47
 .LBB17_48:                              # %Refresh.exit
 	add.d	$a0, $a5, $s2
 	srl.w	$a0, $a0, $s2
-	add.d	$a0, $a7, $a0
+	add.d	$a0, $a6, $a0
 	st.h	$a0, $s0, 2
-	st.b	$a6, $s0, 1
+	st.b	$a7, $s0, 1
 .LBB17_49:                              # %._crit_edge._crit_edge
 	sub.w	$a0, $s0, $a3
 .LBB17_50:                              # %SpecialFreeUnit.exit

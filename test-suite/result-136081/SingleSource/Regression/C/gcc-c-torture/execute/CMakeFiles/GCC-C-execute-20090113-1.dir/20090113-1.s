@@ -1,6 +1,13 @@
 	.file	"20090113-1.c"
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function msum_i4
+.LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	msum_i4                         # -- Begin function msum_i4
+	.globl	msum_i4
 	.p2align	5
 	.type	msum_i4,@function
 msum_i4:                                # @msum_i4
@@ -124,9 +131,11 @@ msum_i4:                                # @msum_i4
 	add.d	$a4, $a4, $s3
 	ori	$a5, $zero, 16
 	ori	$a6, $zero, 0
+	pcalau12i	$t0, %pc_hi20(.LCPI0_0)
+	xvld	$xr0, $t0, %pc_lo12(.LCPI0_0)
 	lu32i.d	$a6, 1
 	addi.w	$a7, $a7, 0
-	xvrepli.b	$xr0, 0
+	xvrepli.b	$xr1, 0
 	b	.LBB0_11
 	.p2align	4, , 16
 .LBB0_10:                               # %._crit_edge35.us
@@ -153,32 +162,33 @@ msum_i4:                                # @msum_i4
 	add.d	$t0, $t2, $a3
 	addi.d	$t1, $t2, 32
 	move	$t2, $a2
-	xvori.b	$xr1, $xr0, 0
-	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr2, $xr1, 0
+	xvori.b	$xr3, $xr1, 0
 	.p2align	4, , 16
 .LBB0_14:                               # %vector.body50
                                         #   Parent Loop BB0_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	xvld	$xr3, $t1, -32
-	xvld	$xr4, $t1, 0
-	xvadd.w	$xr1, $xr3, $xr1
+	xvld	$xr4, $t1, -32
+	xvld	$xr5, $t1, 0
 	xvadd.w	$xr2, $xr4, $xr2
+	xvadd.w	$xr3, $xr5, $xr3
 	addi.d	$t2, $t2, -16
 	addi.d	$t1, $t1, 64
 	bnez	$t2, .LBB0_14
 # %bb.15:                               # %middle.block55
                                         #   in Loop: Header=BB0_11 Depth=1
-	xvadd.w	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$t1, $xr1, 0
+	xvadd.w	$xr2, $xr3, $xr2
+	xvpermi.d	$xr3, $xr2, 78
+	xvori.b	$xr4, $xr0, 0
+	xvshuf.d	$xr4, $xr0, $xr3
+	xvadd.w	$xr2, $xr2, $xr4
+	xvpermi.d	$xr3, $xr2, 68
+	xvrepl128vei.d	$xr3, $xr3, 1
+	xvadd.w	$xr2, $xr2, $xr3
+	xvpermi.d	$xr3, $xr2, 68
+	xvrepl128vei.w	$xr3, $xr3, 1
+	xvadd.w	$xr2, $xr2, $xr3
+	xvpickve2gr.w	$t1, $xr2, 0
 	move	$t3, $a2
 	beq	$a2, $s1, .LBB0_10
 .LBB0_16:                               # %scalar.ph45.preheader

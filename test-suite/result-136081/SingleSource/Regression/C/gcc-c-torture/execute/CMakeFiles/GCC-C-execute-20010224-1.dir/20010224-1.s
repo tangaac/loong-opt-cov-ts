@@ -18,9 +18,14 @@
 	.half	8                               # 0x8
 	.half	8                               # 0x8
 	.half	8                               # 0x8
+.LCPI0_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.half	0                               # 0x0
 	.half	8                               # 0x8
 	.half	8                               # 0x8
@@ -90,15 +95,17 @@ ba_compute_psd:                         # @ba_compute_psd
 	addi.d	$a5, $a5, 64
 	bnez	$a7, .LBB0_6
 # %bb.7:                                # %middle.block
+	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
+	xvld	$xr2, $a5, %pc_lo12(.LCPI0_1)
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.h	$xr0, $xr0, $xr2
+	xvpermi.d	$xr1, $xr0, 68
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
+	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.h	$xr1, $xr1, 1
@@ -112,8 +119,8 @@ ba_compute_psd:                         # @ba_compute_psd
 	bstrpick.d	$t1, $a4, 32, 3
 	slli.d	$t0, $t1, 3
 	alsl.d	$a7, $t1, $a0, 3
-	pcalau12i	$t2, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $t2, %pc_lo12(.LCPI0_1)
+	pcalau12i	$t2, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $t2, %pc_lo12(.LCPI0_2)
 	alsl.w	$a3, $t1, $a3, 3
 	vinsgr2vr.h	$vr1, $a5, 0
 	vinsgr2vr.h	$vr2, $zero, 0
@@ -131,9 +138,9 @@ ba_compute_psd:                         # @ba_compute_psd
 	addi.d	$a0, $a0, 16
 	bnez	$a5, .LBB0_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1

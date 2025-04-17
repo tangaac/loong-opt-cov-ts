@@ -83,7 +83,7 @@ calculate_bm_table:                     # @calculate_bm_table
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
+	vreplvei.w	$vr4, $vr3, 1
 	vst	$vr4, $sp, 96
 	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
@@ -632,7 +632,7 @@ NewPatternNode:                         # @NewPatternNode
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
+	vreplvei.w	$vr4, $vr3, 1
 	vst	$vr4, $sp, 96
 	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
@@ -887,7 +887,7 @@ NewStrTreeNode:                         # @NewStrTreeNode
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
+	vreplvei.w	$vr4, $vr3, 1
 	vst	$vr4, $sp, 96
 	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
@@ -1134,7 +1134,7 @@ find_lcs:                               # @find_lcs
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
+	vreplvei.w	$vr4, $vr3, 1
 	vst	$vr4, $sp, 96
 	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31

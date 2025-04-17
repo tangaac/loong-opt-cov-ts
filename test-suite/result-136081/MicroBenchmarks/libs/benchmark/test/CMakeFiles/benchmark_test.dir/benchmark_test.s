@@ -3439,6 +3439,11 @@ main:                                   # @main
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI15_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.p2align	5
 	.type	_ZN12_GLOBAL__N_19FactorialEi,@function
@@ -3452,17 +3457,19 @@ _ZN12_GLOBAL__N_19FactorialEi:          # @_ZN12_GLOBAL__N_19FactorialEi
 	pcalau12i	$a1, %pc_hi20(.LCPI15_1)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI15_1)
 	addi.d	$a1, $a0, -2
-	xvreplgr2vr.w	$xr2, $a0
-	xvadd.w	$xr0, $xr2, $xr0
 	xvreplgr2vr.w	$xr2, $a1
+	xvreplgr2vr.w	$xr3, $a0
+	xvadd.w	$xr0, $xr3, $xr0
 	xvslt.wu	$xr1, $xr2, $xr1
-	xvrepli.w	$xr2, 1
-	xvbitsel.v	$xr0, $xr0, $xr2, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI15_2)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI15_2)
+	xvrepli.w	$xr3, 1
+	xvbitsel.v	$xr0, $xr0, $xr3, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

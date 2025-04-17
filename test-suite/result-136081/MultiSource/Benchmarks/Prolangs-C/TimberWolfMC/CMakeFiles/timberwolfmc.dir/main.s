@@ -442,7 +442,7 @@ main:                                   # @main
 	bnez	$a6, .LBB0_23
 # %bb.24:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1036,7 +1036,7 @@ main:                                   # @main
 	bnez	$a7, .LBB0_70
 # %bb.71:                               # %middle.block174
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1689,7 +1689,7 @@ prepSpots:                              # @prepSpots
 # %bb.52:                               # %middle.block
                                         #   in Loop: Header=BB1_44 Depth=1
 	vadd.w	$vr9, $vr10, $vr9
-	vshuf4i.w	$vr10, $vr9, 14
+	vreplvei.d	$vr10, $vr9, 1
 	vadd.w	$vr9, $vr9, $vr10
 	vreplvei.w	$vr10, $vr9, 1
 	vadd.w	$vr9, $vr9, $vr10

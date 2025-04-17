@@ -7,27 +7,27 @@
 	.dword	0x4090000000000000              # double 1024
 .LCPI0_2:
 	.dword	0x416153d9a3000000              # double 9084621.09375
-.LCPI0_11:
-	.dword	0x3fd0137987dd704c              # double 0.25118864315095801
 .LCPI0_12:
-	.dword	0x3fcd791c5f888823              # double 0.23025850929940458
+	.dword	0x3fd0137987dd704c              # double 0.25118864315095801
 .LCPI0_13:
-	.dword	0x3fd999999999999a              # double 0.40000000000000002
+	.dword	0x3fcd791c5f888823              # double 0.23025850929940458
 .LCPI0_14:
-	.dword	0x3fb0270ac3f8a9f9              # double 0.063095734448019317
+	.dword	0x3fd999999999999a              # double 0.40000000000000002
 .LCPI0_15:
-	.dword	0x3fa8f6869e6f084d              # double 0.048755843010000001
+	.dword	0x3fb0270ac3f8a9f9              # double 0.063095734448019317
 .LCPI0_16:
-	.dword	0x3fdfedfbdeea22f7              # double 0.49890038269999998
+	.dword	0x3fa8f6869e6f084d              # double 0.048755843010000001
 .LCPI0_17:
-	.dword	0x3fea6ff6e4078667              # double 0.82616753136626364
+	.dword	0x3fdfedfbdeea22f7              # double 0.49890038269999998
 .LCPI0_18:
-	.dword	0x3ff30298b36105e3              # double 1.1881339079849276
+	.dword	0x3fea6ff6e4078667              # double 0.82616753136626364
 .LCPI0_19:
-	.dword	0x40a7700000000000              # double 3000
+	.dword	0x3ff30298b36105e3              # double 1.1881339079849276
 .LCPI0_20:
-	.dword	0x3ff947ae147ae148              # double 1.5800000000000001
+	.dword	0x40a7700000000000              # double 3000
 .LCPI0_21:
+	.dword	0x3ff947ae147ae148              # double 1.5800000000000001
+.LCPI0_22:
 	.dword	0x3fe6666666666666              # double 0.69999999999999996
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0
@@ -71,6 +71,11 @@
 	.dword	0x3fe36813fc23e21a              # double 0.60645484205366817
 	.dword	0x3fe81049c5a7f437              # double 0.75198830227566915
 	.dword	0x3fec28aef2028a7f              # double 0.87996623294414167
+.LCPI0_11:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.globl	L3psycho_anal
 	.p2align	5
@@ -527,13 +532,15 @@ L3psycho_anal:                          # @L3psycho_anal
 	xvmax.w	$xr1, $xr1, $xr3
 	xvmax.w	$xr1, $xr1, $xr4
 	xvmax.w	$xr1, $xr1, $xr5
+	pcalau12i	$a0, %pc_hi20(.LCPI0_11)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI0_11)
 	xvmax.w	$xr0, $xr0, $xr1
 	xvmaxi.w	$xr0, $xr0, 0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -723,8 +730,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB0_49
 # %bb.38:                               # %.lr.ph1008.preheader
-	pcalau12i	$a3, %pc_hi20(.LCPI0_11)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI0_11)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_12)
+	fld.d	$fa0, $a3, %pc_lo12(.LCPI0_12)
 	move	$a3, $zero
 	movgr2fr.d	$fa1, $zero
 	ori	$a4, $zero, 7
@@ -815,8 +822,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB0_53
 # %bb.51:                               # %.lr.ph1011.preheader
-	pcalau12i	$a0, %pc_hi20(.LCPI0_12)
-	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_12)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_13)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI0_13)
 	move	$fp, $zero
 	addi.d	$s2, $sp, 608
 	.p2align	4, , 16
@@ -1797,8 +1804,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	.p2align	4, , 16
 .LBB0_133:                              # %._crit_edge1063
                                         #   in Loop: Header=BB0_134 Depth=2
-	pcalau12i	$a1, %pc_hi20(.LCPI0_13)
-	fld.d	$fa1, $a1, %pc_lo12(.LCPI0_13)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_14)
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI0_14)
 	slli.d	$a1, $a0, 3
 	fstx.d	$fa0, $s3, $a1
 	fmul.d	$fa0, $fa0, $fa1
@@ -1911,14 +1918,14 @@ L3psycho_anal:                          # @L3psycho_anal
 	fcmp.ceq.d	$fcc0, $fs3, $fa1
 	bcnez	$fcc0, .LBB0_148
 # %bb.145:                              #   in Loop: Header=BB0_141 Depth=2
-	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_15)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_16)
+	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_16)
 	fdiv.d	$fa0, $fa0, $fs3
 	fcmp.cle.d	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB0_149
 # %bb.146:                              #   in Loop: Header=BB0_141 Depth=2
-	pcalau12i	$a0, %pc_hi20(.LCPI0_16)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_16)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_17)
+	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_17)
 	fcmp.clt.d	$fcc0, $fa1, $fa0
 	bceqz	$fcc0, .LBB0_150
 # %bb.147:                              #   in Loop: Header=BB0_141 Depth=2
@@ -1928,16 +1935,16 @@ L3psycho_anal:                          # @L3psycho_anal
 	fmov.d	$fa0, $fs3
 	b	.LBB0_151
 .LBB0_149:                              #   in Loop: Header=BB0_141 Depth=2
-	pcalau12i	$a0, %pc_hi20(.LCPI0_14)
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_14)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_15)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_15)
 	b	.LBB0_151
 .LBB0_150:                              #   in Loop: Header=BB0_141 Depth=2
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_17)
-	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_17)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_18)
-	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_18)
+	fld.d	$fa1, $a0, %pc_lo12(.LCPI0_18)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_19)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI0_19)
 	fmadd.d	$fa0, $fa0, $fa2, $fa1
 	pcaddu18i	$ra, %call36(exp)
 	jirl	$ra, $ra, 0
@@ -2024,8 +2031,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	stx.w	$s6, $a0, $a1
 	b	.LBB0_165
 .LBB0_157:                              #   in Loop: Header=BB0_69 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI0_19)
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_19)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_20)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI0_20)
 	fcmp.clt.d	$fcc0, $fa0, $fs0
 	bceqz	$fcc0, .LBB0_159
 # %bb.158:                              #   in Loop: Header=BB0_69 Depth=1
@@ -2370,8 +2377,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	bne	$a2, $a1, .LBB0_212
 # %bb.194:                              # %.preheader947.preheader
 	move	$a1, $zero
-	pcalau12i	$a2, %pc_hi20(.LCPI0_20)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI0_20)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_21)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI0_21)
 	ori	$a2, $zero, 168
 	pcalau12i	$a3, %pc_hi20(L3psycho_anal.mld_l)
 	addi.d	$a3, $a3, %pc_lo12(L3psycho_anal.mld_l)
@@ -2570,8 +2577,8 @@ L3psycho_anal:                          # @L3psycho_anal
 	fadd.d	$fs2, $fs2, $fa3
 	bne	$s0, $s1, .LBB0_215
 .LBB0_217:
-	pcalau12i	$a0, %pc_hi20(.LCPI0_21)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_21)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_22)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI0_22)
 	move	$s0, $zero
 	fdiv.d	$fa0, $fs3, $fs2
 	fmul.d	$fs2, $fa0, $fs1

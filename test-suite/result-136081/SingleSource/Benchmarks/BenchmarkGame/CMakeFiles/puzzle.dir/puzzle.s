@@ -405,9 +405,14 @@ createRandomArray:                      # @createRandomArray
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI5_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI5_2:
+.LCPI5_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -482,12 +487,14 @@ findDuplicate:                          # @findDuplicate
 	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB5_7
 # %bb.8:                                # %middle.block
-	xvxor.v	$xr0, $xr3, $xr2
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
+	pcalau12i	$a4, %pc_hi20(.LCPI5_2)
+	xvld	$xr0, $a4, %pc_lo12(.LCPI5_2)
+	xvxor.v	$xr1, $xr3, $xr2
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.d	$xr0, $xr0, $xr2
+	xvxor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -503,8 +510,8 @@ findDuplicate:                          # @findDuplicate
 	slli.d	$a2, $a2, 2
 	xvld	$xr0, $a3, %pc_lo12(.LCPI5_1)
 	xvreplgr2vr.d	$xr2, $a5
-	pcalau12i	$a3, %pc_hi20(.LCPI5_2)
-	vld	$vr1, $a3, %pc_lo12(.LCPI5_2)
+	pcalau12i	$a3, %pc_hi20(.LCPI5_3)
+	vld	$vr1, $a3, %pc_lo12(.LCPI5_3)
 	xvor.v	$xr0, $xr2, $xr0
 	vinsgr2vr.w	$vr2, $a4, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -531,7 +538,7 @@ findDuplicate:                          # @findDuplicate
 	addi.d	$a4, $a4, 16
 	bnez	$a3, .LBB5_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr0, $vr1, 14
+	vreplvei.d	$vr0, $vr1, 1
 	vxor.v	$vr0, $vr1, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -569,19 +576,24 @@ findDuplicate:                          # @findDuplicate
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI6_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.globl	main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(next)
 	ori	$a1, $zero, 1
 	st.d	$a1, $a0, %pc_lo12(next)
@@ -647,13 +659,16 @@ main:                                   # @main
 	addi.w	$a1, $a1, 1
 	bne	$a1, $a3, .LBB6_1
 # %bb.4:
+	pcalau12i	$a1, %pc_hi20(.LCPI6_2)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI6_2)
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
+	xvst	$xr2, $sp, 0                    # 32-byte Folded Spill
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvxor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -726,10 +741,11 @@ main:                                   # @main
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 0                    # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvxor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -802,10 +818,11 @@ main:                                   # @main
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 0                    # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvxor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -878,10 +895,11 @@ main:                                   # @main
 	ld.w	$a1, $a2, 0
 	xvxor.v	$xr0, $xr6, $xr5
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 0                    # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvxor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -953,10 +971,11 @@ main:                                   # @main
 	ldx.w	$a1, $a0, $s1
 	xvxor.v	$xr0, $xr6, $xr5
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvxor.v	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 0                    # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvxor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvxor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -971,13 +990,13 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end6:
 	.size	main, .Lfunc_end6-main

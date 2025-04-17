@@ -2268,7 +2268,7 @@ build_scanners:                         # @build_scanners
 # %bb.352:                              # %middle.block308
                                         #   in Loop: Header=BB0_347 Depth=3
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -4622,7 +4622,7 @@ trans_hash_fn:                          # @trans_hash_fn
 	bnez	$a4, .LBB3_9
 # %bb.10:                               # %middle.block44
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4686,7 +4686,7 @@ trans_hash_fn:                          # @trans_hash_fn
 	bnez	$a5, .LBB3_15
 # %bb.16:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

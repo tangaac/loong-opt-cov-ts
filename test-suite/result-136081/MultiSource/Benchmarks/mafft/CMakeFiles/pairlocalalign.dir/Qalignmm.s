@@ -503,6 +503,11 @@ imp_match_init_strictQ:                 # @imp_match_init_strictQ
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI3_10:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst4,"aM",@progbits,4
 	.p2align	2, 0x0
 .LCPI3_2:
@@ -4551,12 +4556,14 @@ Q__align:                               # @Q__align
 	bnez	$s4, .LBB3_288
 # %bb.289:                              # %middle.block1372
                                         #   in Loop: Header=BB3_275 Depth=1
+	pcalau12i	$t6, %pc_hi20(.LCPI3_10)
+	xvld	$xr7, $t6, %pc_lo12(.LCPI3_10)
 	xvadd.w	$xr5, $xr6, $xr5
 	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvadd.w	$xr5, $xr5, $xr6
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
 	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
+	xvrepl128vei.d	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
 	xvpermi.d	$xr6, $xr5, 68
 	xvrepl128vei.w	$xr6, $xr6, 1
@@ -5358,6 +5365,11 @@ match_calc:                             # @match_calc
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI5_4:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.p2align	5
 	.type	Atracking,@function
@@ -5694,12 +5706,14 @@ Atracking:                              # @Atracking
 	bnez	$s1, .LBB5_43
 # %bb.44:                               # %middle.block43
                                         #   in Loop: Header=BB5_35 Depth=1
+	pcalau12i	$t2, %pc_hi20(.LCPI5_4)
+	xvld	$xr7, $t2, %pc_lo12(.LCPI5_4)
 	xvadd.w	$xr5, $xr6, $xr5
 	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvadd.w	$xr5, $xr5, $xr6
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
 	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
+	xvrepl128vei.d	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
 	xvpermi.d	$xr6, $xr5, 68
 	xvrepl128vei.w	$xr6, $xr6, 1

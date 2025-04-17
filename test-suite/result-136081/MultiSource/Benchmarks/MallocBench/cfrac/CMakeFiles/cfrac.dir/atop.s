@@ -28,6 +28,11 @@
 	.word	10                              # 0xa
 	.word	10                              # 0xa
 	.word	10                              # 0xa
+.LCPI0_3:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.globl	atop
 	.p2align	5
@@ -220,20 +225,22 @@ atop:                                   # @atop
 .LBB0_21:
 	ori	$a0, $zero, 6
 .LBB0_22:                               # %vector.ph
-	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI0_1)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI0_2)
-	xvreplgr2vr.w	$xr3, $a0
-	xvslt.wu	$xr0, $xr3, $xr0
-	xvbitsel.v	$xr0, $xr2, $xr1, $xr0
+	xvreplgr2vr.w	$xr0, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
+	xvld	$xr1, $a0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
+	xvld	$xr4, $a0, %pc_lo12(.LCPI0_3)
+	xvslt.wu	$xr0, $xr0, $xr1
+	xvbitsel.v	$xr0, $xr3, $xr2, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr4, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr4
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

@@ -306,6 +306,11 @@ hypre_StructGridSetHood:                # @hypre_StructGridSetHood
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function hypre_StructGridAssemble
 .LCPI8_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI8_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -335,7 +340,8 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	move	$fp, $a0
 	ld.d	$a0, $a0, 24
 	ld.d	$s0, $fp, 8
-	bnez	$a0, .LBB8_49
+	pcalau12i	$s8, %pc_hi20(.LCPI8_0)
+	bnez	$a0, .LBB8_50
 # %bb.1:
 	ld.w	$a0, $fp, 0
 	ld.w	$s2, $fp, 4
@@ -350,7 +356,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	pcaddu18i	$ra, %call36(hypre_BoxCreate)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	blt	$s2, $a1, .LBB8_19
+	blt	$s2, $a1, .LBB8_20
 # %bb.2:                                # %.lr.ph125
 	ld.d	$a2, $sp, 24
 	ld.d	$a3, $a2, 0
@@ -362,41 +368,44 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	ori	$t1, $zero, 4
 	ori	$t2, $zero, 16
 	move	$t3, $a3
-	b	.LBB8_4
+	b	.LBB8_5
+.LBB8_3:                                #   in Loop: Header=BB8_5 Depth=1
+	ori	$t2, $zero, 16
 	.p2align	4, , 16
-.LBB8_3:                                # %._crit_edge
-                                        #   in Loop: Header=BB8_4 Depth=1
+.LBB8_4:                                # %._crit_edge
+                                        #   in Loop: Header=BB8_5 Depth=1
 	stx.w	$t8, $a0, $t4
 	stx.w	$t7, $a6, $t4
 	addi.d	$a4, $a4, 1
 	addi.d	$a7, $a7, 4
 	addi.d	$t0, $t0, 4
 	addi.d	$t3, $t3, 4
-	beq	$a4, $s2, .LBB8_18
-.LBB8_4:                                # =>This Loop Header: Depth=1
-                                        #     Child Loop BB8_10 Depth 2
-                                        #     Child Loop BB8_14 Depth 2
-                                        #     Child Loop BB8_17 Depth 2
+	beq	$a4, $s2, .LBB8_19
+.LBB8_5:                                # =>This Loop Header: Depth=1
+                                        #     Child Loop BB8_11 Depth 2
+                                        #     Child Loop BB8_15 Depth 2
+                                        #     Child Loop BB8_18 Depth 2
 	slli.d	$t4, $a4, 2
 	ldx.w	$t8, $a3, $t4
 	ld.w	$t5, $a2, 8
 	ldx.w	$t7, $a5, $t4
-	blt	$t5, $a1, .LBB8_3
-# %bb.5:                                # %iter.check
-                                        #   in Loop: Header=BB8_4 Depth=1
-	bgeu	$t5, $t1, .LBB8_7
-# %bb.6:                                #   in Loop: Header=BB8_4 Depth=1
+	blt	$t5, $a1, .LBB8_4
+# %bb.6:                                # %iter.check
+                                        #   in Loop: Header=BB8_5 Depth=1
+	bgeu	$t5, $t1, .LBB8_8
+# %bb.7:                                #   in Loop: Header=BB8_5 Depth=1
 	move	$t6, $zero
-	b	.LBB8_16
+	b	.LBB8_17
 	.p2align	4, , 16
-.LBB8_7:                                # %vector.main.loop.iter.check
-                                        #   in Loop: Header=BB8_4 Depth=1
-	bgeu	$t5, $t2, .LBB8_9
-# %bb.8:                                #   in Loop: Header=BB8_4 Depth=1
+.LBB8_8:                                # %vector.main.loop.iter.check
+                                        #   in Loop: Header=BB8_5 Depth=1
+	bgeu	$t5, $t2, .LBB8_10
+# %bb.9:                                #   in Loop: Header=BB8_5 Depth=1
 	move	$t6, $zero
-	b	.LBB8_13
-.LBB8_9:                                # %vector.ph
-                                        #   in Loop: Header=BB8_4 Depth=1
+	b	.LBB8_14
+.LBB8_10:                               # %vector.ph
+                                        #   in Loop: Header=BB8_5 Depth=1
+	move	$t2, $s8
 	bstrpick.d	$t6, $t5, 30, 4
 	slli.d	$t6, $t6, 4
 	xvreplgr2vr.w	$xr2, $t7
@@ -406,25 +415,25 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvori.b	$xr3, $xr2, 0
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB8_10:                               # %vector.body
-                                        #   Parent Loop BB8_4 Depth=1
+.LBB8_11:                               # %vector.body
+                                        #   Parent Loop BB8_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$s3, $t7, -192
 	ld.w	$s4, $t7, -168
-	ld.w	$s5, $t7, -144
-	ld.w	$s6, $t7, -120
-	ld.w	$s7, $t7, -96
-	ld.w	$s8, $t7, -72
-	ld.w	$ra, $t7, -48
-	ld.w	$s1, $t7, -24
+	ld.w	$s6, $t7, -144
+	ld.w	$s7, $t7, -120
+	ld.w	$s8, $t7, -96
+	ld.w	$ra, $t7, -72
+	ld.w	$s1, $t7, -48
+	ld.w	$s5, $t7, -24
 	xvinsgr2vr.w	$xr4, $s3, 0
 	xvinsgr2vr.w	$xr4, $s4, 1
-	xvinsgr2vr.w	$xr4, $s5, 2
-	xvinsgr2vr.w	$xr4, $s6, 3
-	xvinsgr2vr.w	$xr4, $s7, 4
-	xvinsgr2vr.w	$xr4, $s8, 5
-	xvinsgr2vr.w	$xr4, $ra, 6
-	xvinsgr2vr.w	$xr4, $s1, 7
+	xvinsgr2vr.w	$xr4, $s6, 2
+	xvinsgr2vr.w	$xr4, $s7, 3
+	xvinsgr2vr.w	$xr4, $s8, 4
+	xvinsgr2vr.w	$xr4, $ra, 5
+	xvinsgr2vr.w	$xr4, $s1, 6
+	xvinsgr2vr.w	$xr4, $s5, 7
 	ld.w	$s1, $t7, 0
 	ld.w	$s3, $t7, 24
 	ld.w	$s4, $t7, 48
@@ -479,15 +488,18 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvmax.w	$xr3, $xr3, $xr5
 	addi.d	$t8, $t8, -16
 	addi.d	$t7, $t7, 384
-	bnez	$t8, .LBB8_10
-# %bb.11:                               # %middle.block
-                                        #   in Loop: Header=BB8_4 Depth=1
+	bnez	$t8, .LBB8_11
+# %bb.12:                               # %middle.block
+                                        #   in Loop: Header=BB8_5 Depth=1
+	move	$s8, $t2
+	xvld	$xr4, $t2, %pc_lo12(.LCPI8_0)
 	xvmax.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmax.w	$xr2, $xr2, $xr3
+	xvori.b	$xr5, $xr4, 0
+	xvshuf.d	$xr5, $xr0, $xr3
+	xvmax.w	$xr2, $xr2, $xr5
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvmax.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -495,22 +507,23 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvpickve2gr.w	$t7, $xr2, 0
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr4, $xr0, $xr1
+	xvmin.w	$xr0, $xr0, $xr4
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$t8, $xr0, 0
 	beq	$t6, $t5, .LBB8_3
-# %bb.12:                               # %vec.epilog.iter.check
-                                        #   in Loop: Header=BB8_4 Depth=1
+# %bb.13:                               # %vec.epilog.iter.check
+                                        #   in Loop: Header=BB8_5 Depth=1
 	andi	$s1, $t5, 12
-	beqz	$s1, .LBB8_16
-.LBB8_13:                               # %vec.epilog.ph
-                                        #   in Loop: Header=BB8_4 Depth=1
+	ori	$t2, $zero, 16
+	beqz	$s1, .LBB8_17
+.LBB8_14:                               # %vec.epilog.ph
+                                        #   in Loop: Header=BB8_5 Depth=1
 	move	$s1, $t6
 	bstrpick.d	$t6, $t5, 30, 2
 	slli.d	$t6, $t6, 2
@@ -521,8 +534,8 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	alsl.d	$t8, $s1, $t8, 3
 	move	$s3, $t0
 	.p2align	4, , 16
-.LBB8_14:                               # %vec.epilog.vector.body
-                                        #   Parent Loop BB8_4 Depth=1
+.LBB8_15:                               # %vec.epilog.vector.body
+                                        #   Parent Loop BB8_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$s1, $s3, $t8
 	ld.w	$s4, $s1, -84
@@ -545,28 +558,28 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	vmax.w	$vr1, $vr1, $vr2
 	addi.d	$t7, $t7, 4
 	addi.d	$s3, $s3, 96
-	bnez	$t7, .LBB8_14
-# %bb.15:                               # %vec.epilog.middle.block
-                                        #   in Loop: Header=BB8_4 Depth=1
-	vshuf4i.w	$vr2, $vr1, 14
+	bnez	$t7, .LBB8_15
+# %bb.16:                               # %vec.epilog.middle.block
+                                        #   in Loop: Header=BB8_5 Depth=1
+	vreplvei.d	$vr2, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$t7, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t8, $vr0, 0
-	beq	$t6, $t5, .LBB8_3
-.LBB8_16:                               # %.lr.ph.preheader
-                                        #   in Loop: Header=BB8_4 Depth=1
+	beq	$t6, $t5, .LBB8_4
+.LBB8_17:                               # %.lr.ph.preheader
+                                        #   in Loop: Header=BB8_5 Depth=1
 	slli.d	$s1, $t6, 4
 	alsl.d	$s3, $t6, $s1, 3
 	sub.d	$t5, $t5, $t6
 	.p2align	4, , 16
-.LBB8_17:                               # %.lr.ph
-                                        #   Parent Loop BB8_4 Depth=1
+.LBB8_18:                               # %.lr.ph
+                                        #   Parent Loop BB8_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t6, $t3, $s3
 	add.d	$s1, $t3, $s3
@@ -581,89 +594,89 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	or	$t7, $t6, $s1
 	addi.d	$t5, $t5, -1
 	addi.d	$s3, $s3, 24
-	bnez	$t5, .LBB8_17
-	b	.LBB8_3
-.LBB8_18:                               # %.preheader
+	bnez	$t5, .LBB8_18
+	b	.LBB8_4
+.LBB8_19:                               # %.preheader
 	ori	$a1, $zero, 2
-	blt	$a1, $s2, .LBB8_22
-.LBB8_19:                               # %.lr.ph127
+	blt	$a1, $s2, .LBB8_23
+.LBB8_20:                               # %.lr.ph127
 	addi.d	$a1, $s2, 1
 	bstrpick.d	$a2, $a1, 31, 0
 	ori	$a1, $zero, 4
 	sub.d	$a1, $a1, $a2
 	ori	$a3, $zero, 10
-	bgeu	$a1, $a3, .LBB8_26
-.LBB8_20:                               # %scalar.ph.preheader
+	bgeu	$a1, $a3, .LBB8_27
+.LBB8_21:                               # %scalar.ph.preheader
 	alsl.d	$a1, $s2, $a0, 2
 	addi.d	$a2, $s2, 1
 	ori	$a3, $zero, 3
 	.p2align	4, , 16
-.LBB8_21:                               # %scalar.ph
+.LBB8_22:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a1, 0
 	st.w	$zero, $a1, 12
 	bstrpick.d	$a4, $a2, 31, 0
 	addi.d	$a1, $a1, 4
 	addi.d	$a2, $a2, 1
-	bne	$a4, $a3, .LBB8_21
-.LBB8_22:                               # %._crit_edge128
+	bne	$a4, $a3, .LBB8_22
+.LBB8_23:                               # %._crit_edge128
 	ld.d	$a2, $sp, 24
 	ld.w	$a1, $a2, 8
 	ori	$s4, $zero, 1
 	st.d	$a0, $fp, 40
-	blt	$a1, $s4, .LBB8_25
-# %bb.23:                               # %iter.check208
+	blt	$a1, $s4, .LBB8_26
+# %bb.24:                               # %iter.check208
 	ld.d	$a0, $a2, 0
 	ori	$a2, $zero, 8
-	bgeu	$a1, $a2, .LBB8_31
-# %bb.24:
+	bgeu	$a1, $a2, .LBB8_32
+# %bb.25:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB8_40
-.LBB8_25:
+	b	.LBB8_41
+.LBB8_26:
 	move	$a3, $zero
-	b	.LBB8_42
-.LBB8_26:                               # %vector.scevcheck
+	b	.LBB8_43
+.LBB8_27:                               # %vector.scevcheck
 	ori	$a3, $zero, 3
 	sub.d	$a2, $a3, $a2
 	addi.w	$a3, $a2, 0
 	addi.d	$a4, $zero, -2
 	sub.w	$a4, $a4, $s2
-	bltu	$a4, $a3, .LBB8_20
-# %bb.27:                               # %vector.scevcheck
+	bltu	$a4, $a3, .LBB8_21
+# %bb.28:                               # %vector.scevcheck
 	srli.d	$a2, $a2, 32
-	bnez	$a2, .LBB8_20
-# %bb.28:                               # %vector.ph196
+	bnez	$a2, .LBB8_21
+# %bb.29:                               # %vector.ph196
 	move	$a2, $a1
 	bstrins.d	$a2, $zero, 0, 0
 	add.d	$a3, $a2, $s2
 	alsl.d	$a4, $s2, $a0, 2
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB8_29:                               # %vector.body199
+.LBB8_30:                               # %vector.body199
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$zero, $a4, 0
 	st.d	$zero, $a4, 12
 	addi.d	$a5, $a5, -2
 	addi.d	$a4, $a4, 8
-	bnez	$a5, .LBB8_29
-# %bb.30:                               # %middle.block202
+	bnez	$a5, .LBB8_30
+# %bb.31:                               # %middle.block202
 	move	$s2, $a3
-	bne	$a1, $a2, .LBB8_20
-	b	.LBB8_22
-.LBB8_31:                               # %vector.main.loop.iter.check210
+	bne	$a1, $a2, .LBB8_21
+	b	.LBB8_23
+.LBB8_32:                               # %vector.main.loop.iter.check210
 	ori	$a2, $zero, 16
-	bgeu	$a1, $a2, .LBB8_36
-# %bb.32:
+	bgeu	$a1, $a2, .LBB8_37
+# %bb.33:
 	move	$a2, $zero
 	move	$a3, $zero
-.LBB8_33:                               # %vec.epilog.ph224
+.LBB8_34:                               # %vec.epilog.ph224
 	move	$a4, $a2
 	bstrpick.d	$a2, $a1, 30, 3
 	slli.d	$a2, $a2, 3
 	xvinsgr2vr.w	$xr1, $a3, 0
-	pcalau12i	$a3, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	xvld	$xr0, $a3, %pc_lo12(.LCPI8_1)
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $zero, 0
 	xvpermi.d	$xr2, $xr2, 68
@@ -674,7 +687,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	add.d	$a4, $a4, $a0
 	addi.d	$a4, $a4, 96
 	.p2align	4, , 16
-.LBB8_34:                               # %vec.epilog.vector.body230
+.LBB8_35:                               # %vec.epilog.vector.body230
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a4, -84
 	ld.w	$a6, $a4, -60
@@ -785,21 +798,22 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvmadd.w	$xr0, $xr1, $xr2
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 192
-	bnez	$a3, .LBB8_34
-# %bb.35:                               # %vec.epilog.middle.block234
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	bnez	$a3, .LBB8_35
+# %bb.36:                               # %vec.epilog.middle.block234
+	xvld	$xr1, $s8, %pc_lo12(.LCPI8_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a3, $xr0, 0
-	bne	$a2, $a1, .LBB8_40
-	b	.LBB8_42
-.LBB8_36:                               # %vector.ph211
+	bne	$a2, $a1, .LBB8_41
+	b	.LBB8_43
+.LBB8_37:                               # %vector.ph211
 	bstrpick.d	$a2, $a1, 30, 4
 	slli.d	$a2, $a2, 4
 	xvrepli.b	$xr0, 0
@@ -807,7 +821,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	move	$a4, $a2
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB8_37:                               # %vector.body214
+.LBB8_38:                               # %vector.body214
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a3, -180
 	ld.w	$a6, $a3, -156
@@ -1025,24 +1039,25 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvmadd.w	$xr1, $xr2, $xr5
 	addi.d	$a4, $a4, -16
 	addi.d	$a3, $a3, 384
-	bnez	$a4, .LBB8_37
-# %bb.38:                               # %middle.block219
+	bnez	$a4, .LBB8_38
+# %bb.39:                               # %middle.block219
+	xvld	$xr2, $s8, %pc_lo12(.LCPI8_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a3, $xr0, 0
-	beq	$a2, $a1, .LBB8_42
-# %bb.39:                               # %vec.epilog.iter.check225
+	beq	$a2, $a1, .LBB8_43
+# %bb.40:                               # %vec.epilog.iter.check225
 	andi	$a4, $a1, 8
-	bnez	$a4, .LBB8_33
-.LBB8_40:                               # %vec.epilog.scalar.ph223.preheader
+	bnez	$a4, .LBB8_34
+.LBB8_41:                               # %vec.epilog.scalar.ph223.preheader
 	slli.d	$a4, $a2, 4
 	alsl.d	$a4, $a2, $a4, 3
 	add.d	$a0, $a4, $a0
@@ -1050,7 +1065,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	sub.d	$a1, $a1, $a2
 	addi.w	$a2, $zero, -1
 	.p2align	4, , 16
-.LBB8_41:                               # %vec.epilog.scalar.ph223
+.LBB8_42:                               # %vec.epilog.scalar.ph223
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a0, -4
 	ld.w	$a5, $a0, -16
@@ -1074,8 +1089,8 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	add.d	$a3, $a4, $a3
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 24
-	bnez	$a1, .LBB8_41
-.LBB8_42:                               # %._crit_edge133
+	bnez	$a1, .LBB8_42
+.LBB8_43:                               # %._crit_edge133
 	st.w	$a3, $fp, 52
 	addi.d	$a1, $sp, 24
 	addi.d	$a2, $sp, 16
@@ -1091,21 +1106,21 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s3, 8
 	move	$s2, $a0
-	blt	$a1, $s4, .LBB8_45
-# %bb.43:                               # %.lr.ph137.preheader
+	blt	$a1, $s4, .LBB8_46
+# %bb.44:                               # %.lr.ph137.preheader
 	move	$a0, $zero
 	move	$a1, $zero
 	move	$a2, $s2
 	.p2align	4, , 16
-.LBB8_44:                               # %.lr.ph137
+.LBB8_45:                               # %.lr.ph137
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$a0, $a2, 0
 	ld.w	$a3, $s3, 8
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 1
 	addi.d	$a2, $a2, 4
-	blt	$a1, $a3, .LBB8_44
-.LBB8_45:                               # %._crit_edge138
+	blt	$a1, $a3, .LBB8_45
+.LBB8_46:                               # %._crit_edge138
 	ld.d	$a1, $sp, 16
 	ld.w	$s4, $sp, 12
 	ld.w	$a5, $sp, 8
@@ -1124,13 +1139,13 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
 	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_48
-# %bb.46:                               # %.lr.ph141.preheader
+	blt	$a1, $a2, .LBB8_49
+# %bb.47:                               # %.lr.ph141.preheader
 	move	$a1, $zero
 	alsl.d	$a2, $s4, $s2, 2
 	move	$a3, $a0
 	.p2align	4, , 16
-.LBB8_47:                               # %.lr.ph141
+.LBB8_48:                               # %.lr.ph141
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a2, 0
 	st.w	$a4, $a3, 0
@@ -1138,43 +1153,43 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	addi.d	$a1, $a1, 1
 	addi.d	$a2, $a2, 4
 	addi.d	$a3, $a3, 4
-	blt	$a1, $a4, .LBB8_47
-.LBB8_48:                               # %._crit_edge142
+	blt	$a1, $a4, .LBB8_48
+.LBB8_49:                               # %._crit_edge142
 	ld.d	$a1, $fp, 24
 	st.d	$a0, $fp, 16
 	move	$a0, $a1
-.LBB8_49:
+.LBB8_50:
 	ld.w	$a1, $fp, 32
 	ori	$a2, $zero, 1
 	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_BoxNeighborsAssemble)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 8
-	blt	$a0, $s1, .LBB8_52
-# %bb.50:                               # %iter.check241
+	blt	$a0, $s1, .LBB8_53
+# %bb.51:                               # %iter.check241
 	ld.d	$a1, $s0, 0
 	ori	$a2, $zero, 8
-	bgeu	$a0, $a2, .LBB8_53
-# %bb.51:
+	bgeu	$a0, $a2, .LBB8_54
+# %bb.52:
 	move	$a2, $zero
 	move	$a3, $zero
-	b	.LBB8_62
-.LBB8_52:
+	b	.LBB8_63
+.LBB8_53:
 	move	$a3, $zero
-	b	.LBB8_64
-.LBB8_53:                               # %vector.main.loop.iter.check243
+	b	.LBB8_65
+.LBB8_54:                               # %vector.main.loop.iter.check243
 	ori	$a2, $zero, 16
-	bgeu	$a0, $a2, .LBB8_58
-# %bb.54:
+	bgeu	$a0, $a2, .LBB8_59
+# %bb.55:
 	move	$a2, $zero
 	move	$a3, $zero
-.LBB8_55:                               # %vec.epilog.ph258
+.LBB8_56:                               # %vec.epilog.ph258
 	move	$a4, $a2
 	bstrpick.d	$a2, $a0, 30, 3
 	slli.d	$a2, $a2, 3
 	xvinsgr2vr.w	$xr1, $a3, 0
-	pcalau12i	$a3, %pc_hi20(.LCPI8_0)
-	xvld	$xr0, $a3, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
+	xvld	$xr0, $a3, %pc_lo12(.LCPI8_1)
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $zero, 0
 	xvpermi.d	$xr2, $xr2, 68
@@ -1185,7 +1200,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	add.d	$a4, $a4, $a1
 	addi.d	$a4, $a4, 96
 	.p2align	4, , 16
-.LBB8_56:                               # %vec.epilog.vector.body264
+.LBB8_57:                               # %vec.epilog.vector.body264
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a4, -84
 	ld.w	$a6, $a4, -60
@@ -1296,21 +1311,22 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvmadd.w	$xr0, $xr1, $xr2
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, 192
-	bnez	$a3, .LBB8_56
-# %bb.57:                               # %vec.epilog.middle.block268
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	bnez	$a3, .LBB8_57
+# %bb.58:                               # %vec.epilog.middle.block268
+	xvld	$xr1, $s8, %pc_lo12(.LCPI8_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a3, $xr0, 0
-	bne	$a2, $a0, .LBB8_62
-	b	.LBB8_64
-.LBB8_58:                               # %vector.ph244
+	bne	$a2, $a0, .LBB8_63
+	b	.LBB8_65
+.LBB8_59:                               # %vector.ph244
 	bstrpick.d	$a2, $a0, 30, 4
 	slli.d	$a2, $a2, 4
 	xvrepli.b	$xr0, 0
@@ -1318,7 +1334,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	move	$a4, $a2
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB8_59:                               # %vector.body247
+.LBB8_60:                               # %vector.body247
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a3, -180
 	ld.w	$a6, $a3, -156
@@ -1536,24 +1552,25 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	xvmadd.w	$xr1, $xr2, $xr5
 	addi.d	$a4, $a4, -16
 	addi.d	$a3, $a3, 384
-	bnez	$a4, .LBB8_59
-# %bb.60:                               # %middle.block252
+	bnez	$a4, .LBB8_60
+# %bb.61:                               # %middle.block252
+	xvld	$xr2, $s8, %pc_lo12(.LCPI8_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a3, $xr0, 0
-	beq	$a2, $a0, .LBB8_64
-# %bb.61:                               # %vec.epilog.iter.check259
+	beq	$a2, $a0, .LBB8_65
+# %bb.62:                               # %vec.epilog.iter.check259
 	andi	$a4, $a0, 8
-	bnez	$a4, .LBB8_55
-.LBB8_62:                               # %vec.epilog.scalar.ph257.preheader
+	bnez	$a4, .LBB8_56
+.LBB8_63:                               # %vec.epilog.scalar.ph257.preheader
 	slli.d	$a4, $a2, 4
 	alsl.d	$a4, $a2, $a4, 3
 	add.d	$a1, $a4, $a1
@@ -1561,7 +1578,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	sub.d	$a0, $a0, $a2
 	addi.w	$a2, $zero, -1
 	.p2align	4, , 16
-.LBB8_63:                               # %vec.epilog.scalar.ph257
+.LBB8_64:                               # %vec.epilog.scalar.ph257
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, -4
 	ld.w	$a5, $a1, -16
@@ -1585,8 +1602,8 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	add.d	$a3, $a4, $a3
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 24
-	bnez	$a0, .LBB8_63
-.LBB8_64:                               # %._crit_edge147
+	bnez	$a0, .LBB8_64
+.LBB8_65:                               # %._crit_edge147
 	st.w	$a3, $fp, 48
 	move	$a0, $zero
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload

@@ -1001,14 +1001,19 @@ massive_count:                          # @massive_count
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI3_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI3_1:
+.LCPI3_2:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI3_2:
+.LCPI3_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -1091,10 +1096,10 @@ binate_split_select:                    # @binate_split_select
 	xvreplgr2vr.w	$xr1, $a0
 	xvadd.w	$xr1, $xr1, $xr0
 	xvrepli.b	$xr0, 0
-	xvrepli.b	$xr2, -1
-	xvrepli.w	$xr3, 1
+	xvrepli.b	$xr3, -1
+	xvrepli.w	$xr4, 1
 	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
-	xvori.b	$xr4, $xr0, 0
+	xvori.b	$xr2, $xr0, 0
 	.p2align	4, , 16
 .LBB3_6:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -1171,24 +1176,26 @@ binate_split_select:                    # @binate_split_select
 	xvinsgr2vr.w	$xr7, $t3, 5
 	xvinsgr2vr.w	$xr7, $t4, 6
 	xvinsgr2vr.w	$xr7, $t5, 7
-	xvxor.v	$xr6, $xr6, $xr2
-	xvxor.v	$xr7, $xr7, $xr2
+	xvxor.v	$xr6, $xr6, $xr3
+	xvxor.v	$xr7, $xr7, $xr3
 	xvsrl.w	$xr6, $xr6, $xr1
 	xvsrl.w	$xr5, $xr7, $xr5
-	xvand.v	$xr6, $xr6, $xr3
-	xvand.v	$xr5, $xr5, $xr3
+	xvand.v	$xr6, $xr6, $xr4
+	xvand.v	$xr5, $xr5, $xr4
 	xvadd.w	$xr0, $xr6, $xr0
-	xvadd.w	$xr4, $xr5, $xr4
+	xvadd.w	$xr2, $xr5, $xr2
 	addi.w	$a6, $a6, -16
 	xvaddi.wu	$xr1, $xr1, 16
 	bnez	$a6, .LBB3_6
 # %bb.7:                                # %middle.block
-	xvadd.w	$xr0, $xr4, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	pcalau12i	$a5, %pc_hi20(.LCPI3_1)
+	xvld	$xr1, $a5, %pc_lo12(.LCPI3_1)
+	xvadd.w	$xr0, $xr2, $xr0
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1207,11 +1214,11 @@ binate_split_select:                    # @binate_split_select
 	move	$a7, $a4
 	bstrins.d	$a7, $zero, 1, 0
 	vreplgr2vr.w	$vr1, $a3
-	pcalau12i	$a3, %pc_hi20(.LCPI3_1)
-	vld	$vr2, $a3, %pc_lo12(.LCPI3_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI3_2)
+	vld	$vr2, $a3, %pc_lo12(.LCPI3_2)
 	add.w	$a3, $a0, $a7
-	pcalau12i	$a5, %pc_hi20(.LCPI3_2)
-	vld	$vr0, $a5, %pc_lo12(.LCPI3_2)
+	pcalau12i	$a5, %pc_hi20(.LCPI3_3)
+	vld	$vr0, $a5, %pc_lo12(.LCPI3_3)
 	vadd.w	$vr1, $vr1, $vr2
 	vinsgr2vr.w	$vr2, $a6, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -1247,7 +1254,7 @@ binate_split_select:                    # @binate_split_select
 	vaddi.wu	$vr1, $vr1, 4
 	bnez	$a5, .LBB3_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

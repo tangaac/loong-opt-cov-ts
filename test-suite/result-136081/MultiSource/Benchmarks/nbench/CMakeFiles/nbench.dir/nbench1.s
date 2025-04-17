@@ -3524,8 +3524,8 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$a7, $zero, 101
 	move	$a0, $zero
 	addi.d	$a1, $sp, 368
-	xvld	$xr9, $sp, 96                   # 32-byte Folded Reload
-	xvld	$xr10, $sp, 64                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 96                  # 32-byte Folded Reload
+	xvld	$xr11, $sp, 64                  # 32-byte Folded Reload
 	b	.LBB10_80
 	.p2align	4, , 16
 .LBB10_78:                              # %.critedge.i.i
@@ -3561,6 +3561,7 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_83:                              # %.preheader116.i.i.preheader
                                         #   in Loop: Header=BB10_29 Depth=2
 	move	$a0, $zero
+	xvld	$xr9, $sp, 128                  # 32-byte Folded Reload
 	b	.LBB10_85
 	.p2align	4, , 16
 .LBB10_84:                              #   in Loop: Header=BB10_85 Depth=3
@@ -3760,7 +3761,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	ori	$a0, $a0, 536
 	add.d	$a4, $sp, $a0
 	ld.d	$a5, $sp, 200                   # 8-byte Folded Reload
-	xvori.b	$xr1, $xr9, 0
+	xvori.b	$xr1, $xr10, 0
 	b	.LBB10_116
 	.p2align	4, , 16
 .LBB10_115:                             # %pred.store.continue89
@@ -3935,9 +3936,9 @@ DoAssignIteration:                      # @DoAssignIteration
 	xvld	$xr6, $a4, 0
 	xvseqi.h	$xr2, $xr4, 1
 	xvseqi.h	$xr4, $xr5, 1
-	xvxor.v	$xr5, $xr4, $xr10
+	xvxor.v	$xr5, $xr4, $xr11
 	xvseqi.h	$xr4, $xr6, 1
-	xvxor.v	$xr4, $xr4, $xr10
+	xvxor.v	$xr4, $xr4, $xr11
 	xvand.v	$xr8, $xr3, $xr5
 	xvst	$xr8, $sp, 320
 	ld.h	$s4, $sp, 336
@@ -4423,13 +4424,14 @@ DoAssignIteration:                      # @DoAssignIteration
                                         #   in Loop: Header=BB10_113 Depth=4
 	xvadd.h	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.h	$xr1, $xr1, 228
+	xvori.b	$xr3, $xr9, 0
+	xvshuf.d	$xr3, $xr0, $xr1
+	xvadd.h	$xr0, $xr0, $xr3
+	xvpermi.d	$xr1, $xr0, 68
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvbsrl.v	$xr1, $xr1, 8
-	xvadd.h	$xr0, $xr0, $xr1
-	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.h	$xr1, $xr1, 14
+	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.h	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.h	$xr1, $xr1, 1
@@ -4452,7 +4454,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vinsgr2vr.h	$vr3, $zero, 0
 	vshuf.h	$vr1, $vr3, $vr2
 	vadd.h	$vr0, $vr1, $vr0
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	ldx.hu	$a1, $a4, $a0
 	vadd.h	$vr0, $vr0, $vr1

@@ -10,6 +10,11 @@
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI0_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI0_1:
@@ -17,7 +22,7 @@
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI0_2:
+.LCPI0_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -28,10 +33,10 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 	ori	$a2, $zero, 2
 	ori	$fp, $zero, 100
 	blt	$a0, $a2, .LBB0_2
@@ -135,20 +140,24 @@ main:                                   # @main
 	xvadd.w	$xr2, $xr2, $xr3
 	xvadd.w	$xr2, $xr4, $xr2
 	xvadd.w	$xr2, $xr5, $xr2
+	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
+	xvld	$xr3, $a1, %pc_lo12(.LCPI0_2)
+	xvst	$xr3, $sp, 32                   # 32-byte Folded Spill
 	xvadd.w	$xr2, $xr6, $xr2
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvori.b	$xr2, $xr3, 0
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
-	pcalau12i	$a1, %pc_hi20(.LCPI0_2)
-	vld	$vr2, $a1, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
+	vld	$vr2, $a1, %pc_lo12(.LCPI0_3)
 	vst	$vr2, $sp, 16                   # 16-byte Folded Spill
 	xvpickve2gr.w	$a1, $xr0, 0
 	vld	$vr0, $a0, 384
@@ -157,7 +166,7 @@ main:                                   # @main
 	vst	$vr3, $sp, 0                    # 16-byte Folded Spill
 	vshuf.w	$vr2, $vr3, $vr1
 	vadd.w	$vr0, $vr0, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -192,10 +201,11 @@ main:                                   # @main
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvld	$xr2, $sp, 32                   # 32-byte Folded Reload
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -207,7 +217,7 @@ main:                                   # @main
 	vld	$vr3, $sp, 0                    # 16-byte Folded Reload
 	vshuf.w	$vr2, $vr3, $vr0
 	vadd.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -220,10 +230,10 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end0:
 	.size	main, .Lfunc_end0-main

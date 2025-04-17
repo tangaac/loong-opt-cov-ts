@@ -1,6 +1,13 @@
 	.file	"getpic.c"
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function Decode_Picture
+.LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	Decode_Picture                  # -- Begin function Decode_Picture
+	.globl	Decode_Picture
 	.p2align	5
 	.type	Decode_Picture,@function
 Decode_Picture:                         # @Decode_Picture
@@ -1808,13 +1815,15 @@ Decode_Picture:                         # @Decode_Picture
 	xvinsgr2vr.w	$xr5, $a2, 7
 	vst	$vr4, $a1, 96
 	xvadd.w	$xr2, $xr2, $xr3
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr3, $a2, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr1, $xr5
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1

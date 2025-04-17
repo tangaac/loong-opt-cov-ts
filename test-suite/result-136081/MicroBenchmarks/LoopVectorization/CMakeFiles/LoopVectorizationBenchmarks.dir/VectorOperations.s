@@ -23325,7 +23325,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	ldptr.d	$a4, $a2, 9992
 	ldptr.d	$a3, $a2, 10000
 	ldptr.d	$a2, $a2, 10008
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vst	$vr1, $sp, 1024
 	vst	$vr0, $sp, 896
 	st.b	$zero, $sp, 575
@@ -23373,7 +23373,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$a4, $sp, 672
 	xvld	$xr0, $sp, 544
 	xvld	$xr1, $sp, 672
-	vsrli.d	$vr3, $vr2, 32
+	vreplvei.w	$vr3, $vr2, 1
 	vst	$vr3, $sp, 992
 	vst	$vr2, $sp, 864
 	st.b	$zero, $sp, 607
@@ -23421,7 +23421,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$a3, $sp, 704
 	xvld	$xr2, $sp, 576
 	xvld	$xr3, $sp, 704
-	vsrli.d	$vr5, $vr4, 32
+	vreplvei.w	$vr5, $vr4, 1
 	vst	$vr5, $sp, 960
 	vst	$vr4, $sp, 832
 	st.b	$zero, $sp, 639
@@ -23469,7 +23469,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$a2, $sp, 736
 	xvld	$xr4, $sp, 608
 	xvld	$xr6, $sp, 736
-	vsrli.d	$vr7, $vr5, 32
+	vreplvei.w	$vr7, $vr5, 1
 	vst	$vr7, $sp, 928
 	vst	$vr5, $sp, 800
 	st.b	$zero, $sp, 671
@@ -23630,7 +23630,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	ldptr.d	$t1, $a7, 9992
 	ldptr.d	$t0, $a7, 10000
 	ldptr.d	$a7, $a7, 10008
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vst	$vr1, $sp, 512
 	vst	$vr0, $sp, 384
 	st.b	$zero, $sp, 63
@@ -23678,7 +23678,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$t1, $sp, 160
 	xvld	$xr0, $sp, 32
 	xvld	$xr1, $sp, 160
-	vsrli.d	$vr3, $vr2, 32
+	vreplvei.w	$vr3, $vr2, 1
 	vst	$vr3, $sp, 480
 	vst	$vr2, $sp, 352
 	st.b	$zero, $sp, 95
@@ -23726,7 +23726,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$t0, $sp, 192
 	xvld	$xr2, $sp, 64
 	xvld	$xr3, $sp, 192
-	vsrli.d	$vr5, $vr4, 32
+	vreplvei.w	$vr5, $vr4, 1
 	vst	$vr5, $sp, 448
 	vst	$vr4, $sp, 320
 	st.b	$zero, $sp, 127
@@ -23774,7 +23774,7 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.b	$a7, $sp, 224
 	xvld	$xr4, $sp, 96
 	xvld	$xr6, $sp, 224
-	vsrli.d	$vr7, $vr5, 32
+	vreplvei.w	$vr7, $vr5, 1
 	vst	$vr7, $sp, 416
 	vst	$vr5, $sp, 288
 	st.b	$zero, $sp, 159
@@ -25554,7 +25554,7 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	ldptr.d	$t1, $t0, 10000
 	ldptr.d	$t0, $t0, 10008
 	vst	$vr0, $sp, 352
-	vsrli.d	$vr0, $vr0, 32
+	vreplvei.w	$vr0, $vr0, 1
 	vst	$vr0, $sp, 480
 	st.b	$zero, $sp, 159
 	st.h	$zero, $sp, 157
@@ -25602,7 +25602,7 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	xvld	$xr0, $sp, 128
 	xvld	$xr1, $sp, 0
 	vst	$vr2, $sp, 320
-	vsrli.d	$vr2, $vr2, 32
+	vreplvei.w	$vr2, $vr2, 1
 	vst	$vr2, $sp, 448
 	st.b	$zero, $sp, 191
 	st.h	$zero, $sp, 189
@@ -25650,7 +25650,7 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	xvld	$xr2, $sp, 160
 	xvld	$xr3, $sp, 32
 	vst	$vr4, $sp, 288
-	vsrli.d	$vr4, $vr4, 32
+	vreplvei.w	$vr4, $vr4, 1
 	vst	$vr4, $sp, 416
 	st.b	$zero, $sp, 223
 	st.h	$zero, $sp, 221
@@ -25698,7 +25698,7 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	xvld	$xr4, $sp, 192
 	xvld	$xr6, $sp, 64
 	vst	$vr5, $sp, 256
-	vsrli.d	$vr5, $vr5, 32
+	vreplvei.w	$vr5, $vr5, 1
 	vst	$vr5, $sp, 384
 	st.b	$zero, $sp, 255
 	st.h	$zero, $sp, 253

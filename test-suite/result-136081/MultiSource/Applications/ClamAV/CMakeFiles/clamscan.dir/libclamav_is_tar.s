@@ -154,7 +154,7 @@ is_tar:                                 # @is_tar
 	vadd.w	$vr0, $vr2, $vr1
 	ld.bu	$a0, $fp, 155
 	ld.bu	$a2, $fp, 154
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	ld.bu	$a4, $fp, 153
 	vadd.w	$vr0, $vr0, $vr1
 	add.d	$a0, $a0, $a2

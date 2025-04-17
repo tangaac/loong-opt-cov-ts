@@ -1,7 +1,14 @@
 	.file	"sumarray.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function SumArray
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function SumArray
 .LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -52,12 +59,14 @@ SumArray:                               # @SumArray
 	addi.d	$a1, $a1, 64
 	bnez	$a4, .LBB0_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -70,8 +79,8 @@ SumArray:                               # @SumArray
 .LBB0_10:                               # %vec.epilog.ph
 	move	$a4, $a3
 	bstrpick.d	$a3, $a2, 31, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a5, %pc_lo12(.LCPI0_1)
 	slli.d	$a3, $a3, 2
 	vinsgr2vr.w	$vr1, $a1, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -87,7 +96,7 @@ SumArray:                               # @SumArray
 	addi.d	$a4, $a4, 16
 	bnez	$a1, .LBB0_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -229,6 +238,11 @@ SumArray:                               # @SumArray
 	.word	1176                            # 0x498
 	.word	2400                            # 0x960
 	.word	1224                            # 0x4c8
+.LCPI1_14:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI1_11:
@@ -251,48 +265,50 @@ main:                                   # @main
 	xvld	$xr0, $a1, %pc_lo12(.LCPI1_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI1_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI1_2)
 	xvst	$xr0, $a0, 0
 	xvst	$xr1, $a0, 32
-	pcalau12i	$a1, %pc_hi20(.LCPI1_2)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_2)
+	xvst	$xr2, $a0, 64
 	pcalau12i	$a1, %pc_hi20(.LCPI1_3)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_3)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI1_3)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_4)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_4)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI1_4)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_5)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI1_5)
-	xvst	$xr0, $a0, 64
-	xvst	$xr1, $a0, 96
-	xvst	$xr2, $a0, 160
-	xvst	$xr3, $a0, 192
+	xvld	$xr2, $a1, %pc_lo12(.LCPI1_5)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_6)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_6)
+	xvld	$xr3, $a1, %pc_lo12(.LCPI1_6)
+	xvst	$xr0, $a0, 96
+	xvst	$xr1, $a0, 160
+	xvst	$xr2, $a0, 192
+	xvst	$xr3, $a0, 224
 	pcalau12i	$a1, %pc_hi20(.LCPI1_7)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_7)
+	xvld	$xr0, $a1, %pc_lo12(.LCPI1_7)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_8)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_8)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI1_8)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_9)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI1_9)
-	xvst	$xr0, $a0, 224
-	xvst	$xr1, $a0, 256
-	xvst	$xr2, $a0, 288
-	xvst	$xr3, $a0, 320
+	xvld	$xr2, $a1, %pc_lo12(.LCPI1_9)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_10)
-	xvld	$xr0, $a1, %pc_lo12(.LCPI1_10)
+	xvld	$xr3, $a1, %pc_lo12(.LCPI1_10)
+	xvst	$xr0, $a0, 256
+	xvst	$xr1, $a0, 288
+	xvst	$xr2, $a0, 320
+	xvst	$xr3, $a0, 352
 	pcalau12i	$a1, %pc_hi20(.LCPI1_11)
-	vld	$vr1, $a1, %pc_lo12(.LCPI1_11)
+	vld	$vr0, $a1, %pc_lo12(.LCPI1_11)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_12)
-	xvld	$xr2, $a1, %pc_lo12(.LCPI1_12)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI1_12)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_13)
-	xvld	$xr3, $a1, %pc_lo12(.LCPI1_13)
-	xvst	$xr0, $a0, 352
-	vst	$vr1, $a0, 384
-	xvst	$xr2, $a0, 128
-	xvpermi.d	$xr0, $xr3, 78
-	xvshuf4i.w	$xr0, $xr0, 228
-	xvadd.w	$xr0, $xr0, $xr3
+	xvld	$xr2, $a1, %pc_lo12(.LCPI1_13)
+	pcalau12i	$a1, %pc_hi20(.LCPI1_14)
+	xvld	$xr3, $a1, %pc_lo12(.LCPI1_14)
+	vst	$vr0, $a0, 384
+	xvst	$xr1, $a0, 128
+	xvpermi.d	$xr0, $xr2, 78
+	xvshuf.d	$xr3, $xr0, $xr0
+	xvadd.w	$xr0, $xr3, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

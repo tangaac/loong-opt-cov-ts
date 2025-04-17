@@ -193,14 +193,10 @@ _ZN7NCrypto5NSha15CHmac5FinalEPhm:      # @_ZN7NCrypto5NSha15CHmac5FinalEPhm
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0
 .LCPI2_3:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	0                               # 0x0
-	.word	0                               # 0x0
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	0                               # 0x0
 	.text
 	.globl	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	.p2align	5
@@ -296,38 +292,28 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	vrepli.b	$vr0, 0
 .LBB2_7:                                # %.loopexit
 	ld.w	$a1, $sp, 148
-	ld.d	$a2, $sp, 152
 	xvinsgr2vr.w	$xr1, $a0, 0
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $a1, 0
+	xvpermi.d	$xr2, $xr2, 68
 	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
 	xvld	$xr3, $a0, %pc_lo12(.LCPI2_3)
-	xvpermi.d	$xr2, $xr2, 68
 	xvpackev.w	$xr1, $xr2, $xr1
+	ld.d	$a0, $sp, 152
 	xvpermi.q	$xr0, $xr0, 2
-	xvshuf.w	$xr3, $xr1, $xr0
-	xvinsgr2vr.d	$xr0, $a2, 0
-	xvpickve2gr.w	$a0, $xr3, 0
-	xvinsgr2vr.w	$xr1, $a0, 0
-	xvpickve2gr.w	$a0, $xr3, 1
-	xvinsgr2vr.w	$xr1, $a0, 1
-	xvpickve2gr.w	$a0, $xr3, 2
-	xvinsgr2vr.w	$xr1, $a0, 2
-	xvpickve2gr.w	$a0, $xr3, 3
-	xvinsgr2vr.w	$xr1, $a0, 3
-	xvpickve2gr.w	$a0, $xr3, 4
-	xvinsgr2vr.w	$xr1, $a0, 4
-	xvpickve2gr.w	$a0, $xr3, 5
-	xvinsgr2vr.w	$xr1, $a0, 5
-	xvpickve2gr.w	$a0, $xr0, 0
-	xvinsgr2vr.w	$xr1, $a0, 6
-	xvpickve2gr.w	$a0, $xr0, 1
-	xvinsgr2vr.w	$xr1, $a0, 7
-	xvld	$xr0, $sp, 160
+	xvshuf.d	$xr3, $xr1, $xr0
+	xvpickve2gr.d	$a1, $xr3, 0
+	xvinsgr2vr.d	$xr0, $a1, 0
+	xvpickve2gr.d	$a1, $xr3, 1
+	xvinsgr2vr.d	$xr0, $a1, 1
+	xvpickve2gr.d	$a1, $xr3, 2
+	xvinsgr2vr.d	$xr0, $a1, 2
+	xvinsgr2vr.d	$xr0, $a0, 3
+	xvld	$xr1, $sp, 160
 	xvrepli.b	$xr2, 54
-	xvxor.v	$xr1, $xr1, $xr2
-	xvst	$xr1, $sp, 128
 	xvxor.v	$xr0, $xr0, $xr2
+	xvst	$xr0, $sp, 128
+	xvxor.v	$xr0, $xr1, $xr2
 	xvst	$xr0, $sp, 160
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN7NCrypto5NSha112CContextBase4InitEv)

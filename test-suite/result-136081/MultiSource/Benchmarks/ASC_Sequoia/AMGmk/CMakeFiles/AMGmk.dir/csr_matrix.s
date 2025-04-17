@@ -214,7 +214,7 @@ hypre_CSRMatrixSetRownnz:               # @hypre_CSRMatrixSetRownnz
 	bnez	$a4, .LBB4_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr1, $vr3, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -989,7 +989,7 @@ hypre_CSRMatrixClone:                   # @hypre_CSRMatrixClone
 	bnez	$a2, .LBB8_41
 # %bb.42:                               # %middle.block91
 	vadd.w	$vr1, $vr2, $vr6
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

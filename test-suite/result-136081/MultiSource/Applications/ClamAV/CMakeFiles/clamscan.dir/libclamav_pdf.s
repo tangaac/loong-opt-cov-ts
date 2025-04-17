@@ -1347,7 +1347,12 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
-.LCPI4_2:
+.LCPI4_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI4_3:
 	.word	24                              # 0x18
 	.word	25                              # 0x19
 	.word	26                              # 0x1a
@@ -1356,7 +1361,7 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	29                              # 0x1d
 	.word	30                              # 0x1e
 	.word	31                              # 0x1f
-.LCPI4_3:
+.LCPI4_4:
 	.word	16                              # 0x10
 	.word	17                              # 0x11
 	.word	18                              # 0x12
@@ -1365,7 +1370,7 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	21                              # 0x15
 	.word	22                              # 0x16
 	.word	23                              # 0x17
-.LCPI4_4:
+.LCPI4_5:
 	.word	8                               # 0x8
 	.word	9                               # 0x9
 	.word	10                              # 0xa
@@ -1374,7 +1379,7 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	13                              # 0xd
 	.word	14                              # 0xe
 	.word	15                              # 0xf
-.LCPI4_5:
+.LCPI4_6:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -1385,7 +1390,7 @@ pdf_nextlinestart:                      # @pdf_nextlinestart
 	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI4_1:
+.LCPI4_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -1627,12 +1632,14 @@ ascii85decode:                          # @ascii85decode
 	xvmul.w	$xr1, $xr1, $xr2
 	bnez	$a2, .LBB4_34
 # %bb.35:                               # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI4_1)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI4_1)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1646,8 +1653,8 @@ ascii85decode:                          # @ascii85decode
 	move	$a3, $a0
 	bstrins.d	$a3, $zero, 1, 0
 	add.d	$a2, $s1, $a3
-	pcalau12i	$a4, %pc_hi20(.LCPI4_1)
-	vld	$vr0, $a4, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_2)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_2)
 	vinsgr2vr.w	$vr1, $s4, 0
 	ori	$a4, $zero, 1
 	vinsgr2vr.w	$vr2, $a4, 0
@@ -1660,7 +1667,7 @@ ascii85decode:                          # @ascii85decode
 	vmul.w	$vr0, $vr0, $vr1
 	bnez	$a1, .LBB4_38
 # %bb.39:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -1709,20 +1716,20 @@ ascii85decode:                          # @ascii85decode
 	bstrpick.d	$a1, $a1, 31, 0
 	ori	$a3, $zero, 33
 	xvreplgr2vr.w	$xr0, $a0
-	pcalau12i	$a2, %pc_hi20(.LCPI4_5)
+	pcalau12i	$a2, %pc_hi20(.LCPI4_6)
 	xvrepli.w	$xr1, 24
 	bgeu	$s1, $a3, .LBB4_48
 # %bb.47:
 	move	$a3, $zero
 	b	.LBB4_52
 .LBB4_48:                               # %vector.ph227
-	pcalau12i	$a3, %pc_hi20(.LCPI4_2)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI4_2)
 	pcalau12i	$a3, %pc_hi20(.LCPI4_3)
-	xvld	$xr3, $a3, %pc_lo12(.LCPI4_3)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI4_3)
 	pcalau12i	$a3, %pc_hi20(.LCPI4_4)
-	xvld	$xr4, $a3, %pc_lo12(.LCPI4_4)
-	xvld	$xr5, $a2, %pc_lo12(.LCPI4_5)
+	xvld	$xr3, $a3, %pc_lo12(.LCPI4_4)
+	pcalau12i	$a3, %pc_hi20(.LCPI4_5)
+	xvld	$xr4, $a3, %pc_lo12(.LCPI4_5)
+	xvld	$xr5, $a2, %pc_lo12(.LCPI4_6)
 	bstrpick.d	$a3, $a1, 31, 5
 	slli.d	$a3, $a3, 5
 	xvrepli.w	$xr6, 32
@@ -1869,7 +1876,7 @@ ascii85decode:                          # @ascii85decode
 	beqz	$a4, .LBB4_55
 .LBB4_52:                               # %vec.epilog.ph238
 	bstrpick.d	$a5, $a1, 31, 3
-	xvld	$xr2, $a2, %pc_lo12(.LCPI4_5)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI4_6)
 	slli.d	$a4, $a5, 3
 	ld.d	$a6, $sp, 8                     # 8-byte Folded Reload
 	alsl.d	$a2, $a5, $a6, 3

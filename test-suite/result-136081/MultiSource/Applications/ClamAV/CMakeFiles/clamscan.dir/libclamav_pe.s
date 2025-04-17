@@ -1,6 +1,13 @@
 	.file	"libclamav_pe.c"
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function cli_scanpe
+.LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	cli_scanpe                      # -- Begin function cli_scanpe
+	.globl	cli_scanpe
 	.p2align	5
 	.type	cli_scanpe,@function
 cli_scanpe:                             # @cli_scanpe
@@ -4114,12 +4121,14 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a1, $a1, 576
 	bnez	$a2, .LBB0_617
 # %bb.618:                              # %middle.block3793
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI0_0)
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.wu	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.wu	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -4166,7 +4175,7 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 144
 	bnez	$a1, .LBB0_621
 # %bb.622:                              # %vec.epilog.middle.block3811
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
@@ -5255,12 +5264,14 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a1, $a1, 576
 	bnez	$a2, .LBB0_774
 # %bb.775:                              # %middle.block3767
+	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI0_0)
 	xvmin.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.wu	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmin.wu	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmin.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -5296,7 +5307,7 @@ cli_scanpe:                             # @cli_scanpe
 	addi.d	$a2, $a2, 144
 	bnez	$a1, .LBB0_778
 # %bb.779:                              # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.wu	$vr0, $vr0, $vr1

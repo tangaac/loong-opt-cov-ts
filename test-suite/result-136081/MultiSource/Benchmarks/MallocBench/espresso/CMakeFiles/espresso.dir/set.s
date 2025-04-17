@@ -656,6 +656,11 @@ set_merge:                              # @set_merge
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function set_andp
 .LCPI11_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI11_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -682,7 +687,7 @@ set_andp:                               # @set_andp
 	st.w	$a5, $a0, 0
 	bgeu	$a4, $a6, .LBB11_5
 # %bb.1:
-	move	$a7, $zero
+	move	$t0, $zero
 .LBB11_2:                               # %vec.epilog.scalar.ph.preheader
 	addi.d	$a4, $a3, 1
 	alsl.d	$a0, $a3, $a0, 2
@@ -696,126 +701,129 @@ set_andp:                               # @set_andp
 	ld.w	$a6, $a2, 0
 	and	$a5, $a6, $a5
 	st.w	$a5, $a0, 0
-	or	$a7, $a5, $a7
+	or	$t0, $a5, $t0
 	addi.d	$a4, $a4, -1
 	addi.d	$a0, $a0, -4
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, -4
 	bltu	$a3, $a4, .LBB11_3
 .LBB11_4:                               # %.loopexit
-	sltu	$a0, $zero, $a7
+	sltu	$a0, $zero, $t0
 	ret
 .LBB11_5:                               # %vector.memcheck
 	sub.d	$a6, $a1, $a0
 	ori	$a5, $zero, 64
-	move	$a7, $zero
+	move	$t0, $zero
 	bltu	$a6, $a5, .LBB11_2
 # %bb.6:                                # %vector.memcheck
 	sub.d	$a6, $a2, $a0
 	bltu	$a6, $a5, .LBB11_2
 # %bb.7:                                # %vector.main.loop.iter.check
-	ori	$a6, $zero, 16
-	slli.d	$a5, $a3, 2
-	bgeu	$a4, $a6, .LBB11_12
+	ori	$a7, $zero, 16
+	slli.d	$a6, $a3, 2
+	pcalau12i	$a5, %pc_hi20(.LCPI11_0)
+	bgeu	$a4, $a7, .LBB11_12
 # %bb.8:
-	move	$a6, $zero
 	move	$a7, $zero
+	move	$t0, $zero
 .LBB11_9:                               # %vec.epilog.ph
-	move	$t0, $a4
-	bstrins.d	$t0, $zero, 2, 0
-	sub.d	$a3, $a3, $t0
-	xvinsgr2vr.w	$xr1, $a7, 0
-	pcalau12i	$a7, %pc_hi20(.LCPI11_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI11_0)
+	move	$t1, $a4
+	bstrins.d	$t1, $zero, 2, 0
+	sub.d	$a3, $a3, $t1
+	xvinsgr2vr.w	$xr1, $t0, 0
+	pcalau12i	$t0, %pc_hi20(.LCPI11_1)
+	xvld	$xr0, $t0, %pc_lo12(.LCPI11_1)
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $zero, 0
 	xvpermi.d	$xr2, $xr2, 68
 	xvshuf.w	$xr0, $xr2, $xr1
-	sub.d	$a7, $a6, $t0
-	slli.d	$a6, $a6, 2
-	sub.d	$a5, $a5, $a6
-	addi.d	$t1, $a5, -28
-	add.d	$a5, $a0, $t1
-	add.d	$a6, $a2, $t1
-	add.d	$t1, $a1, $t1
+	sub.d	$t0, $a7, $t1
+	slli.d	$a7, $a7, 2
+	sub.d	$a6, $a6, $a7
+	addi.d	$t2, $a6, -28
+	add.d	$a6, $a0, $t2
+	add.d	$a7, $a2, $t2
+	add.d	$t2, $a1, $t2
 	.p2align	4, , 16
 .LBB11_10:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $t1, 0
-	xvld	$xr2, $a6, 0
+	xvld	$xr1, $t2, 0
+	xvld	$xr2, $a7, 0
 	xvand.v	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
 	xvshuf4i.w	$xr2, $xr2, 27
-	xvst	$xr1, $a5, 0
+	xvst	$xr1, $a6, 0
 	xvor.v	$xr0, $xr2, $xr0
-	addi.d	$a7, $a7, 8
-	addi.d	$a5, $a5, -32
+	addi.d	$t0, $t0, 8
 	addi.d	$a6, $a6, -32
-	addi.d	$t1, $t1, -32
-	bnez	$a7, .LBB11_10
+	addi.d	$a7, $a7, -32
+	addi.d	$t2, $t2, -32
+	bnez	$t0, .LBB11_10
 # %bb.11:                               # %vec.epilog.middle.block
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvld	$xr1, $a5, %pc_lo12(.LCPI11_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
-	bne	$a4, $t0, .LBB11_2
+	xvpickve2gr.w	$t0, $xr0, 0
+	bne	$a4, $t1, .LBB11_2
 	b	.LBB11_4
 .LBB11_12:                              # %vector.ph
-	move	$a6, $a4
-	bstrins.d	$a6, $zero, 3, 0
-	addi.d	$t1, $a5, -28
-	add.d	$a7, $a1, $t1
-	add.d	$t0, $a0, $t1
+	move	$a7, $a4
+	bstrins.d	$a7, $zero, 3, 0
+	addi.d	$t2, $a6, -28
+	add.d	$t0, $a1, $t2
+	add.d	$t1, $a0, $t2
 	xvrepli.b	$xr0, 0
-	add.d	$t1, $a2, $t1
-	move	$t2, $a6
+	add.d	$t2, $a2, $t2
+	move	$t3, $a7
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB11_13:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a7, 0
-	xvld	$xr3, $t1, 0
-	xvld	$xr4, $a7, -32
-	xvld	$xr5, $t1, -32
+	xvld	$xr2, $t0, 0
+	xvld	$xr3, $t2, 0
+	xvld	$xr4, $t0, -32
+	xvld	$xr5, $t2, -32
 	xvand.v	$xr2, $xr3, $xr2
 	xvpermi.d	$xr3, $xr2, 78
 	xvshuf4i.w	$xr3, $xr3, 27
 	xvand.v	$xr4, $xr5, $xr4
 	xvpermi.d	$xr5, $xr4, 78
 	xvshuf4i.w	$xr5, $xr5, 27
-	xvst	$xr2, $t0, 0
-	xvst	$xr4, $t0, -32
+	xvst	$xr2, $t1, 0
+	xvst	$xr4, $t1, -32
 	xvor.v	$xr0, $xr3, $xr0
 	xvor.v	$xr1, $xr5, $xr1
-	addi.d	$t2, $t2, -16
-	addi.d	$a7, $a7, -64
+	addi.d	$t3, $t3, -16
 	addi.d	$t0, $t0, -64
 	addi.d	$t1, $t1, -64
-	bnez	$t2, .LBB11_13
+	addi.d	$t2, $t2, -64
+	bnez	$t3, .LBB11_13
 # %bb.14:                               # %middle.block
+	xvld	$xr2, $a5, %pc_lo12(.LCPI11_0)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
-	beq	$a4, $a6, .LBB11_4
+	xvpickve2gr.w	$t0, $xr0, 0
+	beq	$a4, $a7, .LBB11_4
 # %bb.15:                               # %vec.epilog.iter.check
-	andi	$t0, $a4, 8
-	bnez	$t0, .LBB11_9
+	andi	$t1, $a4, 8
+	bnez	$t1, .LBB11_9
 # %bb.16:
-	sub.d	$a3, $a3, $a6
+	sub.d	$a3, $a3, $a7
 	b	.LBB11_2
 .Lfunc_end11:
 	.size	set_andp, .Lfunc_end11-set_andp
@@ -823,6 +831,11 @@ set_andp:                               # @set_andp
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function set_orp
 .LCPI12_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI12_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -849,7 +862,7 @@ set_orp:                                # @set_orp
 	st.w	$a5, $a0, 0
 	bgeu	$a4, $a6, .LBB12_5
 # %bb.1:
-	move	$a7, $zero
+	move	$t0, $zero
 .LBB12_2:                               # %vec.epilog.scalar.ph.preheader
 	addi.d	$a4, $a3, 1
 	alsl.d	$a0, $a3, $a0, 2
@@ -863,126 +876,129 @@ set_orp:                                # @set_orp
 	ld.w	$a6, $a2, 0
 	or	$a5, $a6, $a5
 	st.w	$a5, $a0, 0
-	or	$a7, $a5, $a7
+	or	$t0, $a5, $t0
 	addi.d	$a4, $a4, -1
 	addi.d	$a0, $a0, -4
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, -4
 	bltu	$a3, $a4, .LBB12_3
 .LBB12_4:                               # %.loopexit
-	sltu	$a0, $zero, $a7
+	sltu	$a0, $zero, $t0
 	ret
 .LBB12_5:                               # %vector.memcheck
 	sub.d	$a6, $a1, $a0
 	ori	$a5, $zero, 64
-	move	$a7, $zero
+	move	$t0, $zero
 	bltu	$a6, $a5, .LBB12_2
 # %bb.6:                                # %vector.memcheck
 	sub.d	$a6, $a2, $a0
 	bltu	$a6, $a5, .LBB12_2
 # %bb.7:                                # %vector.main.loop.iter.check
-	ori	$a6, $zero, 16
-	slli.d	$a5, $a3, 2
-	bgeu	$a4, $a6, .LBB12_12
+	ori	$a7, $zero, 16
+	slli.d	$a6, $a3, 2
+	pcalau12i	$a5, %pc_hi20(.LCPI12_0)
+	bgeu	$a4, $a7, .LBB12_12
 # %bb.8:
-	move	$a6, $zero
 	move	$a7, $zero
+	move	$t0, $zero
 .LBB12_9:                               # %vec.epilog.ph
-	move	$t0, $a4
-	bstrins.d	$t0, $zero, 2, 0
-	sub.d	$a3, $a3, $t0
-	xvinsgr2vr.w	$xr1, $a7, 0
-	pcalau12i	$a7, %pc_hi20(.LCPI12_0)
-	xvld	$xr0, $a7, %pc_lo12(.LCPI12_0)
+	move	$t1, $a4
+	bstrins.d	$t1, $zero, 2, 0
+	sub.d	$a3, $a3, $t1
+	xvinsgr2vr.w	$xr1, $t0, 0
+	pcalau12i	$t0, %pc_hi20(.LCPI12_1)
+	xvld	$xr0, $t0, %pc_lo12(.LCPI12_1)
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $zero, 0
 	xvpermi.d	$xr2, $xr2, 68
 	xvshuf.w	$xr0, $xr2, $xr1
-	sub.d	$a7, $a6, $t0
-	slli.d	$a6, $a6, 2
-	sub.d	$a5, $a5, $a6
-	addi.d	$t1, $a5, -28
-	add.d	$a5, $a0, $t1
-	add.d	$a6, $a2, $t1
-	add.d	$t1, $a1, $t1
+	sub.d	$t0, $a7, $t1
+	slli.d	$a7, $a7, 2
+	sub.d	$a6, $a6, $a7
+	addi.d	$t2, $a6, -28
+	add.d	$a6, $a0, $t2
+	add.d	$a7, $a2, $t2
+	add.d	$t2, $a1, $t2
 	.p2align	4, , 16
 .LBB12_10:                              # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr1, $t1, 0
-	xvld	$xr2, $a6, 0
+	xvld	$xr1, $t2, 0
+	xvld	$xr2, $a7, 0
 	xvor.v	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
 	xvshuf4i.w	$xr2, $xr2, 27
-	xvst	$xr1, $a5, 0
+	xvst	$xr1, $a6, 0
 	xvor.v	$xr0, $xr2, $xr0
-	addi.d	$a7, $a7, 8
-	addi.d	$a5, $a5, -32
+	addi.d	$t0, $t0, 8
 	addi.d	$a6, $a6, -32
-	addi.d	$t1, $t1, -32
-	bnez	$a7, .LBB12_10
+	addi.d	$a7, $a7, -32
+	addi.d	$t2, $t2, -32
+	bnez	$t0, .LBB12_10
 # %bb.11:                               # %vec.epilog.middle.block
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvld	$xr1, $a5, %pc_lo12(.LCPI12_0)
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
-	bne	$a4, $t0, .LBB12_2
+	xvpickve2gr.w	$t0, $xr0, 0
+	bne	$a4, $t1, .LBB12_2
 	b	.LBB12_4
 .LBB12_12:                              # %vector.ph
-	move	$a6, $a4
-	bstrins.d	$a6, $zero, 3, 0
-	addi.d	$t1, $a5, -28
-	add.d	$a7, $a1, $t1
-	add.d	$t0, $a0, $t1
+	move	$a7, $a4
+	bstrins.d	$a7, $zero, 3, 0
+	addi.d	$t2, $a6, -28
+	add.d	$t0, $a1, $t2
+	add.d	$t1, $a0, $t2
 	xvrepli.b	$xr0, 0
-	add.d	$t1, $a2, $t1
-	move	$t2, $a6
+	add.d	$t2, $a2, $t2
+	move	$t3, $a7
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB12_13:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr2, $a7, 0
-	xvld	$xr3, $t1, 0
-	xvld	$xr4, $a7, -32
-	xvld	$xr5, $t1, -32
+	xvld	$xr2, $t0, 0
+	xvld	$xr3, $t2, 0
+	xvld	$xr4, $t0, -32
+	xvld	$xr5, $t2, -32
 	xvor.v	$xr2, $xr3, $xr2
 	xvpermi.d	$xr3, $xr2, 78
 	xvshuf4i.w	$xr3, $xr3, 27
 	xvor.v	$xr4, $xr5, $xr4
 	xvpermi.d	$xr5, $xr4, 78
 	xvshuf4i.w	$xr5, $xr5, 27
-	xvst	$xr2, $t0, 0
-	xvst	$xr4, $t0, -32
+	xvst	$xr2, $t1, 0
+	xvst	$xr4, $t1, -32
 	xvor.v	$xr0, $xr3, $xr0
 	xvor.v	$xr1, $xr5, $xr1
-	addi.d	$t2, $t2, -16
-	addi.d	$a7, $a7, -64
+	addi.d	$t3, $t3, -16
 	addi.d	$t0, $t0, -64
 	addi.d	$t1, $t1, -64
-	bnez	$t2, .LBB12_13
+	addi.d	$t2, $t2, -64
+	bnez	$t3, .LBB12_13
 # %bb.14:                               # %middle.block
+	xvld	$xr2, $a5, %pc_lo12(.LCPI12_0)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a7, $xr0, 0
-	beq	$a4, $a6, .LBB12_4
+	xvpickve2gr.w	$t0, $xr0, 0
+	beq	$a4, $a7, .LBB12_4
 # %bb.15:                               # %vec.epilog.iter.check
-	andi	$t0, $a4, 8
-	bnez	$t0, .LBB12_9
+	andi	$t1, $a4, 8
+	bnez	$t1, .LBB12_9
 # %bb.16:
-	sub.d	$a3, $a3, $a6
+	sub.d	$a3, $a3, $a7
 	b	.LBB12_2
 .Lfunc_end12:
 	.size	set_orp, .Lfunc_end12-set_orp

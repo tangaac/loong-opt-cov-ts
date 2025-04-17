@@ -649,9 +649,16 @@ _ZN6Solver6newVarEbb:                   # @_ZN6Solver6newVarEbb
 	.size	_ZN6Solver6newVarEbb, .Lfunc_end2-_ZN6Solver6newVarEbb
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN6Solver9addClauseER3vecI3LitE
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN6Solver9addClauseER3vecI3LitE
 .LCPI3_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI3_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -869,12 +876,14 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 	addi.d	$a2, $a2, 64
 	bnez	$a3, .LBB3_29
 # %bb.30:                               # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI3_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI3_0)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -887,8 +896,8 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 .LBB3_32:                               # %vec.epilog.ph
 	move	$a3, $a1
 	bstrpick.d	$a1, $a0, 28, 2
-	pcalau12i	$a4, %pc_hi20(.LCPI3_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI3_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI3_1)
+	vld	$vr0, $a4, %pc_lo12(.LCPI3_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $a2, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -906,7 +915,7 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 	addi.d	$a3, $a3, 16
 	bnez	$a2, .LBB3_33
 # %bb.34:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -2042,9 +2051,16 @@ _ZN4HeapIN6Solver10VarOrderLtEE9removeMinEv: # @_ZN4HeapIN6Solver10VarOrderLtEE9
 	.dword	0x54b249ad2594c37d              # double 1.0E+100
 .LCPI13_3:
 	.dword	0x2b2bff2ee48e0530              # double 1.0E-100
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0
+.LCPI13_4:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI13_4:
+.LCPI13_5:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -2541,12 +2557,14 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB13_60
 # %bb.61:                               # %middle.block309
+	pcalau12i	$a5, %pc_hi20(.LCPI13_4)
+	xvld	$xr2, $a5, %pc_lo12(.LCPI13_4)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2595,8 +2613,8 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	bstrins.d	$a6, $zero, 1, 0
 	ori	$a7, $zero, 1
 	move	$a5, $a3
-	pcalau12i	$t0, %pc_hi20(.LCPI13_4)
-	vld	$vr0, $t0, %pc_lo12(.LCPI13_4)
+	pcalau12i	$t0, %pc_hi20(.LCPI13_5)
+	vld	$vr0, $t0, %pc_lo12(.LCPI13_5)
 	bstrins.d	$a5, $a7, 1, 0
 	vinsgr2vr.w	$vr1, $s3, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -2630,7 +2648,7 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	addi.d	$a7, $a7, 16
 	bnez	$a4, .LBB13_72
 # %bb.73:                               # %vec.epilog.middle.block325
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -5467,7 +5485,7 @@ _ZN6Solver17checkLiteralCountEv:        # @_ZN6Solver17checkLiteralCountEv
 	bnez	$a5, .LBB24_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

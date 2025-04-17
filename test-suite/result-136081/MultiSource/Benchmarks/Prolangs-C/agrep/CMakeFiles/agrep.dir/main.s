@@ -2668,9 +2668,16 @@ exponen:                                # @exponen
 .Lfunc_end6:
 	.size	exponen, .Lfunc_end6-exponen
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function re1
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function re1
 .LCPI7_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI7_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -2764,12 +2771,14 @@ re1:                                    # @re1
 	xvor.v	$xr1, $xr3, $xr1
 	bne	$a3, $a2, .LBB7_9
 # %bb.10:                               # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI7_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI7_0)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2783,8 +2792,8 @@ re1:                                    # @re1
 	sub.d	$a3, $zero, $a1
 	andi	$a1, $s4, 60
 	ori	$a2, $zero, 32
-	pcalau12i	$a4, %pc_hi20(.LCPI7_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI7_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI7_1)
+	vld	$vr0, $a4, %pc_lo12(.LCPI7_1)
 	sub.d	$a2, $a2, $a1
 	vinsgr2vr.w	$vr1, $s7, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -2802,7 +2811,7 @@ re1:                                    # @re1
 	vor.v	$vr0, $vr1, $vr0
 	bne	$a4, $a3, .LBB7_13
 # %bb.14:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

@@ -11167,7 +11167,7 @@ s31111:                                 # @s31111
 	xvld	$xr0, $s0, 0
 	xvst	$xr0, $sp, 800
 	xvpermi.d	$xr1, $xr0, 78
-	xvrepl128vei.w	$xr2, $xr1, 0
+	xvrepl128vei.d	$xr2, $xr1, 0
 	xvst	$xr2, $sp, 832
 	vld	$vr2, $sp, 800
 	vld	$vr3, $sp, 832
@@ -11182,9 +11182,9 @@ s31111:                                 # @s31111
 	vld	$vr8, $sp, 16                   # 16-byte Folded Reload
 	vfadd.s	$vr2, $vr2, $vr8
 	vpackev.w	$vr3, $vr5, $vr4
-	xvrepl128vei.w	$xr4, $xr0, 2
+	xvrepl128vei.d	$xr4, $xr0, 1
 	xvst	$xr4, $sp, 928
-	xvrepl128vei.w	$xr4, $xr1, 2
+	xvrepl128vei.d	$xr4, $xr1, 1
 	xvst	$xr4, $sp, 960
 	vld	$vr4, $sp, 928
 	vld	$vr5, $sp, 960
@@ -11204,7 +11204,7 @@ s31111:                                 # @s31111
 	vreplvei.w	$vr0, $vr0, 1
 	xvst	$xr1, $sp, 544
 	xvpermi.d	$xr3, $xr1, 78
-	xvrepl128vei.w	$xr4, $xr3, 0
+	xvrepl128vei.d	$xr4, $xr3, 0
 	xvst	$xr4, $sp, 576
 	vld	$vr4, $sp, 544
 	vld	$vr5, $sp, 576
@@ -11219,9 +11219,9 @@ s31111:                                 # @s31111
 	vpackev.w	$vr2, $vr5, $vr4
 	vfadd.s	$vr2, $vr2, $vr8
 	vpackev.w	$vr4, $vr7, $vr6
-	xvrepl128vei.w	$xr5, $xr1, 2
+	xvrepl128vei.d	$xr5, $xr1, 1
 	xvst	$xr5, $sp, 672
-	xvrepl128vei.w	$xr5, $xr3, 2
+	xvrepl128vei.d	$xr5, $xr3, 1
 	xvst	$xr5, $sp, 704
 	vld	$vr5, $sp, 672
 	vld	$vr6, $sp, 704
@@ -11242,7 +11242,7 @@ s31111:                                 # @s31111
 	vreplvei.w	$vr1, $vr1, 1
 	xvst	$xr2, $sp, 288
 	xvpermi.d	$xr3, $xr2, 78
-	xvrepl128vei.w	$xr4, $xr3, 0
+	xvrepl128vei.d	$xr4, $xr3, 0
 	xvst	$xr4, $sp, 320
 	vld	$vr4, $sp, 288
 	vld	$vr5, $sp, 320
@@ -11257,9 +11257,9 @@ s31111:                                 # @s31111
 	vpackev.w	$vr1, $vr5, $vr4
 	vfadd.s	$vr1, $vr1, $vr8
 	vpackev.w	$vr4, $vr7, $vr6
-	xvrepl128vei.w	$xr5, $xr2, 2
+	xvrepl128vei.d	$xr5, $xr2, 1
 	xvst	$xr5, $sp, 416
-	xvrepl128vei.w	$xr5, $xr3, 2
+	xvrepl128vei.d	$xr5, $xr3, 1
 	xvst	$xr5, $sp, 448
 	vld	$vr5, $sp, 416
 	vld	$vr6, $sp, 448
@@ -11280,7 +11280,7 @@ s31111:                                 # @s31111
 	vreplvei.w	$vr1, $vr1, 1
 	xvst	$xr2, $sp, 32
 	xvpermi.d	$xr3, $xr2, 78
-	xvrepl128vei.w	$xr4, $xr3, 0
+	xvrepl128vei.d	$xr4, $xr3, 0
 	xvst	$xr4, $sp, 64
 	vld	$vr4, $sp, 32
 	vld	$vr5, $sp, 64
@@ -11295,9 +11295,9 @@ s31111:                                 # @s31111
 	vpackev.w	$vr1, $vr5, $vr4
 	vfadd.s	$vr1, $vr1, $vr8
 	vpackev.w	$vr4, $vr7, $vr6
-	xvrepl128vei.w	$xr5, $xr2, 2
+	xvrepl128vei.d	$xr5, $xr2, 1
 	xvst	$xr5, $sp, 160
-	xvrepl128vei.w	$xr5, $xr3, 2
+	xvrepl128vei.d	$xr5, $xr3, 1
 	xvst	$xr5, $sp, 192
 	vld	$vr5, $sp, 160
 	vld	$vr6, $sp, 192

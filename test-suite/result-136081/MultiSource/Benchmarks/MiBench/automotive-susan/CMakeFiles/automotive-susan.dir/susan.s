@@ -359,9 +359,16 @@ put_image:                              # @put_image
 .Lfunc_end3:
 	.size	put_image, .Lfunc_end3-put_image
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function int_to_uchar
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function int_to_uchar
 .LCPI4_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI4_1:
 	.byte	0                               # 0x0
 	.byte	4                               # 0x4
 	.byte	8                               # 0x8
@@ -424,12 +431,15 @@ int_to_uchar:                           # @int_to_uchar
 	addi.d	$a3, $a3, 64
 	bnez	$a5, .LBB4_6
 # %bb.7:                                # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI4_0)
+	xvld	$xr4, $a3, %pc_lo12(.LCPI4_0)
 	xvmin.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmin.w	$xr2, $xr2, $xr3
+	xvori.b	$xr5, $xr4, 0
+	xvshuf.d	$xr5, $xr0, $xr3
+	xvmin.w	$xr2, $xr2, $xr5
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvmin.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -437,10 +447,10 @@ int_to_uchar:                           # @int_to_uchar
 	xvpickve2gr.w	$a3, $xr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr4, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr4
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -468,12 +478,12 @@ int_to_uchar:                           # @int_to_uchar
 	addi.d	$a5, $a5, 16
 	bnez	$a3, .LBB4_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a3, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -609,8 +619,8 @@ int_to_uchar:                           # @int_to_uchar
 	vreplgr2vr.w	$vr0, $a3
 	vreplgr2vr.w	$vr1, $a4
 	sub.d	$a6, $t0, $a5
-	pcalau12i	$a7, %pc_hi20(.LCPI4_0)
-	vld	$vr2, $a7, %pc_lo12(.LCPI4_0)
+	pcalau12i	$a7, %pc_hi20(.LCPI4_1)
+	vld	$vr2, $a7, %pc_lo12(.LCPI4_1)
 	add.d	$a7, $a1, $t0
 	alsl.d	$t0, $t0, $a0, 2
 	vrepli.w	$vr3, 255
@@ -2174,13 +2184,13 @@ susan_smoothing:                        # @susan_smoothing
 # %bb.36:                               # %middle.block
                                         #   in Loop: Header=BB10_32 Depth=3
 	vadd.w	$vr2, $vr4, $vr2
-	vshuf4i.w	$vr4, $vr2, 14
+	vreplvei.d	$vr4, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr4
 	vreplvei.w	$vr4, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr4
 	vpickve2gr.w	$a5, $vr2, 0
 	vadd.w	$vr1, $vr3, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -7138,9 +7148,56 @@ susan_corners_quick:                    # @susan_corners_quick
 	.p2align	3, 0x0                          # -- Begin function main
 .LCPI18_0:
 	.dword	0x4059000000000000              # double 100
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0
+.LCPI18_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI18_3:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+.LCPI18_4:
+	.dword	28                              # 0x1c
+	.dword	29                              # 0x1d
+	.dword	30                              # 0x1e
+	.dword	31                              # 0x1f
+.LCPI18_5:
+	.dword	24                              # 0x18
+	.dword	25                              # 0x19
+	.dword	26                              # 0x1a
+	.dword	27                              # 0x1b
+.LCPI18_6:
+	.dword	20                              # 0x14
+	.dword	21                              # 0x15
+	.dword	22                              # 0x16
+	.dword	23                              # 0x17
+.LCPI18_7:
+	.dword	16                              # 0x10
+	.dword	17                              # 0x11
+	.dword	18                              # 0x12
+	.dword	19                              # 0x13
+.LCPI18_8:
+	.dword	12                              # 0xc
+	.dword	13                              # 0xd
+	.dword	14                              # 0xe
+	.dword	15                              # 0xf
+.LCPI18_9:
+	.dword	8                               # 0x8
+	.dword	9                               # 0x9
+	.dword	10                              # 0xa
+	.dword	11                              # 0xb
+.LCPI18_10:
+	.dword	4                               # 0x4
+	.dword	5                               # 0x5
+	.dword	6                               # 0x6
+	.dword	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI18_1:
+.LCPI18_2:
 	.byte	0                               # 0x0
 	.byte	4                               # 0x4
 	.byte	8                               # 0x8
@@ -7157,48 +7214,6 @@ susan_corners_quick:                    # @susan_corners_quick
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
 	.byte	255                             # 0xff
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI18_2:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI18_3:
-	.dword	28                              # 0x1c
-	.dword	29                              # 0x1d
-	.dword	30                              # 0x1e
-	.dword	31                              # 0x1f
-.LCPI18_4:
-	.dword	24                              # 0x18
-	.dword	25                              # 0x19
-	.dword	26                              # 0x1a
-	.dword	27                              # 0x1b
-.LCPI18_5:
-	.dword	20                              # 0x14
-	.dword	21                              # 0x15
-	.dword	22                              # 0x16
-	.dword	23                              # 0x17
-.LCPI18_6:
-	.dword	16                              # 0x10
-	.dword	17                              # 0x11
-	.dword	18                              # 0x12
-	.dword	19                              # 0x13
-.LCPI18_7:
-	.dword	12                              # 0xc
-	.dword	13                              # 0xd
-	.dword	14                              # 0xe
-	.dword	15                              # 0xf
-.LCPI18_8:
-	.dword	8                               # 0x8
-	.dword	9                               # 0x9
-	.dword	10                              # 0xa
-	.dword	11                              # 0xb
-.LCPI18_9:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
 	.text
 	.globl	main
 	.p2align	5
@@ -7244,9 +7259,9 @@ main:                                   # @main
 	ori	$a3, $zero, 1
 	bne	$s1, $s6, .LBB18_3
 # %bb.2:
-	move	$s5, $zero
-	move	$a5, $zero
 	move	$s8, $zero
+	move	$a5, $zero
+	move	$s6, $zero
 	move	$s4, $zero
 	vldi	$vr0, -1008
 	vldi	$vr1, -1228
@@ -7352,10 +7367,11 @@ main:                                   # @main
 	sltui	$a5, $a0, 1
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	fcvt.d.s	$fa0, $fa0
-	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	move	$s6, $s8
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	ori	$a3, $zero, 1
 .LBB18_21:                              # %._crit_edge
-	addi.d	$a0, $s5, -1
+	addi.d	$a0, $s8, -1
 	sltui	$a0, $a0, 1
 	sltui	$a1, $s4, 1
 	masknez	$a2, $s4, $a1
@@ -7376,12 +7392,12 @@ main:                                   # @main
 	lu12i.w	$a0, 88
 	ori	$a0, $a0, 244
 	add.d	$a0, $sp, $a0
-	ld.w	$s6, $a0, 0
+	ld.w	$s5, $a0, 0
 	lu12i.w	$a0, 88
 	ori	$a0, $a0, 240
 	add.d	$a0, $sp, $a0
 	ld.w	$s7, $a0, 0
-	mul.w	$a0, $s7, $s6
+	mul.w	$a0, $s7, $s5
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(malloc)
@@ -7421,20 +7437,20 @@ main:                                   # @main
 	addi.w	$s4, $s4, 1
 	bne	$s3, $s1, .LBB18_24
 # %bb.25:                               # %setup_brightness_lut.exit86
-	beqz	$s5, .LBB18_37
+	beqz	$s8, .LBB18_37
 # %bb.26:
 	lu12i.w	$a0, 88
 	ori	$a0, $a0, 248
 	add.d	$a0, $sp, $a0
 	ld.d	$s2, $a0, 0
-	beqz	$s8, .LBB18_53
+	beqz	$s6, .LBB18_53
 # %bb.27:
 	move	$a0, $s2
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	move	$a1, $s1
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	move	$a3, $zero
-	move	$a4, $s6
+	move	$a4, $s5
 	move	$a5, $s7
 	pcaddu18i	$ra, %call36(susan_principle_small)
 	jirl	$ra, $ra, 0
@@ -7444,7 +7460,6 @@ main:                                   # @main
 	b	.LBB18_201
 .LBB18_28:
 	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
-	move	$s8, $s5
 	lu12i.w	$a0, 88
 	ori	$a0, $a0, 244
 	add.d	$a0, $sp, $a0
@@ -7563,7 +7578,7 @@ main:                                   # @main
 	ori	$a0, $a0, 240
 	add.d	$a0, $sp, $a0
 	ld.w	$a3, $a0, 0
-	move	$a0, $s8
+	move	$a0, $s6
 	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	move	$a4, $s1
@@ -7584,7 +7599,7 @@ main:                                   # @main
 	ori	$a0, $a0, 248
 	add.d	$a0, $sp, $a0
 	ld.d	$s3, $a0, 0
-	beqz	$s8, .LBB18_64
+	beqz	$s6, .LBB18_64
 # %bb.38:
 	move	$a0, $s3
 	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
@@ -7592,7 +7607,7 @@ main:                                   # @main
 	move	$a2, $s2
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	move	$a4, $zero
-	move	$a5, $s6
+	move	$a5, $s5
 	move	$a6, $s7
 	pcaddu18i	$ra, %call36(susan_edges_small)
 	jirl	$ra, $ra, 0
@@ -7601,7 +7616,7 @@ main:                                   # @main
 .LBB18_39:
 	move	$a0, $s4
 	move	$a1, $s2
-	move	$a2, $s6
+	move	$a2, $s5
 	move	$a3, $s7
 	pcaddu18i	$ra, %call36(susan_thin)
 	jirl	$ra, $ra, 0
@@ -7613,12 +7628,12 @@ main:                                   # @main
 	blt	$s1, $a0, .LBB18_201
 # %bb.42:                               # %.lr.ph.i90
 	move	$a0, $zero
-	sub.d	$a1, $s3, $s6
-	addi.w	$a3, $s6, -2
+	sub.d	$a1, $s3, $s5
+	addi.w	$a3, $s5, -2
 	slli.d	$a2, $a3, 1
-	sub.d	$a2, $a2, $s6
+	sub.d	$a2, $a2, $s5
 	add.d	$a2, $s3, $a2
-	sub.d	$a3, $a3, $s6
+	sub.d	$a3, $a3, $s5
 	add.d	$a3, $a3, $s3
 	addi.d	$a3, $a3, 1
 	ori	$a4, $zero, 7
@@ -7675,8 +7690,8 @@ main:                                   # @main
 	bltu	$a1, $a0, .LBB18_104
 # %bb.51:                               # %vector.main.loop.iter.check336
 	xvreplgr2vr.d	$xr0, $s2
-	pcalau12i	$a1, %pc_hi20(.LCPI18_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI18_9)
+	pcalau12i	$a1, %pc_hi20(.LCPI18_3)
+	pcalau12i	$a2, %pc_hi20(.LCPI18_10)
 	bgeu	$s1, $a0, .LBB18_114
 # %bb.52:
 	move	$a3, $zero
@@ -7688,7 +7703,7 @@ main:                                   # @main
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
 	move	$a1, $s1
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
-	move	$a4, $s6
+	move	$a4, $s5
 	move	$a5, $s7
 	pcaddu18i	$ra, %call36(susan_principle)
 	jirl	$ra, $ra, 0
@@ -7766,7 +7781,7 @@ main:                                   # @main
 	move	$a1, $s4
 	move	$a2, $s2
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	move	$a5, $s6
+	move	$a5, $s5
 	move	$a6, $s7
 	pcaddu18i	$ra, %call36(susan_edges)
 	jirl	$ra, $ra, 0
@@ -7795,12 +7810,15 @@ main:                                   # @main
 	addi.d	$a0, $a0, 64
 	bnez	$a2, .LBB18_66
 # %bb.67:                               # %middle.block264
+	pcalau12i	$a0, %pc_hi20(.LCPI18_1)
+	xvld	$xr4, $a0, %pc_lo12(.LCPI18_1)
 	xvmin.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmin.w	$xr2, $xr2, $xr3
+	xvori.b	$xr5, $xr4, 0
+	xvshuf.d	$xr5, $xr0, $xr3
+	xvmin.w	$xr2, $xr2, $xr5
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvmin.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -7808,10 +7826,10 @@ main:                                   # @main
 	xvpickve2gr.w	$a0, $xr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr4, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr4
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -7839,12 +7857,12 @@ main:                                   # @main
 	addi.d	$a2, $a2, 16
 	bnez	$a0, .LBB18_70
 # %bb.71:                               # %vec.epilog.middle.block288
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a0, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -7953,8 +7971,8 @@ main:                                   # @main
 	vreplgr2vr.w	$vr0, $a0
 	vreplgr2vr.w	$vr1, $a1
 	sub.d	$a3, $a5, $a2
-	pcalau12i	$a4, %pc_hi20(.LCPI18_1)
-	vld	$vr2, $a4, %pc_lo12(.LCPI18_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI18_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI18_2)
 	add.d	$a4, $s2, $a5
 	alsl.d	$a5, $a5, $s1, 2
 	vrepli.w	$vr3, 255
@@ -8014,12 +8032,15 @@ main:                                   # @main
 	addi.d	$a0, $a0, 64
 	bnez	$a2, .LBB18_88
 # %bb.89:                               # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI18_1)
+	xvld	$xr4, $a0, %pc_lo12(.LCPI18_1)
 	xvmin.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmin.w	$xr2, $xr2, $xr3
+	xvori.b	$xr5, $xr4, 0
+	xvshuf.d	$xr5, $xr0, $xr3
+	xvmin.w	$xr2, $xr2, $xr5
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvmin.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -8027,10 +8048,10 @@ main:                                   # @main
 	xvpickve2gr.w	$a0, $xr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr4, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr4
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -8058,12 +8079,12 @@ main:                                   # @main
 	addi.d	$a2, $a2, 16
 	bnez	$a0, .LBB18_92
 # %bb.93:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a0, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -8213,8 +8234,8 @@ main:                                   # @main
 	vreplgr2vr.w	$vr0, $a0
 	vreplgr2vr.w	$vr1, $a1
 	sub.d	$a3, $a5, $a2
-	pcalau12i	$a4, %pc_hi20(.LCPI18_1)
-	vld	$vr2, $a4, %pc_lo12(.LCPI18_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI18_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI18_2)
 	add.d	$a4, $s1, $a5
 	alsl.d	$a5, $a5, $s2, 2
 	vrepli.w	$vr3, 255
@@ -8236,20 +8257,20 @@ main:                                   # @main
 	beq	$a2, $a7, .LBB18_201
 	b	.LBB18_100
 .LBB18_114:                             # %vector.ph337
-	xvld	$xr1, $a1, %pc_lo12(.LCPI18_2)
-	pcalau12i	$a0, %pc_hi20(.LCPI18_3)
-	xvld	$xr2, $a0, %pc_lo12(.LCPI18_3)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI18_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_4)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI18_4)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI18_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_5)
-	xvld	$xr4, $a0, %pc_lo12(.LCPI18_5)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI18_5)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_6)
-	xvld	$xr5, $a0, %pc_lo12(.LCPI18_6)
+	xvld	$xr4, $a0, %pc_lo12(.LCPI18_6)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_7)
-	xvld	$xr6, $a0, %pc_lo12(.LCPI18_7)
+	xvld	$xr5, $a0, %pc_lo12(.LCPI18_7)
 	pcalau12i	$a0, %pc_hi20(.LCPI18_8)
-	xvld	$xr7, $a0, %pc_lo12(.LCPI18_8)
-	xvld	$xr8, $a2, %pc_lo12(.LCPI18_9)
+	xvld	$xr6, $a0, %pc_lo12(.LCPI18_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI18_9)
+	xvld	$xr7, $a0, %pc_lo12(.LCPI18_9)
+	xvld	$xr8, $a2, %pc_lo12(.LCPI18_10)
 	bstrpick.d	$a0, $s1, 30, 5
 	slli.d	$a3, $a0, 5
 	add.d	$a0, $s2, $a3
@@ -8692,8 +8713,8 @@ main:                                   # @main
 	beqz	$a4, .LBB18_202
 .LBB18_182:                             # %vec.epilog.ph413
 	bstrpick.d	$a4, $s1, 30, 3
-	xvld	$xr1, $a1, %pc_lo12(.LCPI18_2)
-	xvld	$xr2, $a2, %pc_lo12(.LCPI18_9)
+	xvld	$xr1, $a1, %pc_lo12(.LCPI18_3)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI18_10)
 	slli.d	$a2, $a4, 3
 	alsl.d	$a1, $a4, $s2, 3
 	sub.d	$a3, $a3, $a2

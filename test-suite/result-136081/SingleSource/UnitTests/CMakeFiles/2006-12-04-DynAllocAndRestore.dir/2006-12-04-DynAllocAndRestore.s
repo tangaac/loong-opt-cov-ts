@@ -34,6 +34,11 @@ main:                                   # @main
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI1_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI1_1:
@@ -41,7 +46,7 @@ main:                                   # @main
 	.word	1                               # 0x1
 	.word	2                               # 0x2
 	.word	3                               # 0x3
-.LCPI1_2:
+.LCPI1_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -171,12 +176,14 @@ _ZN13BabyDebugTest4doitEv:              # @_ZN13BabyDebugTest4doitEv
 	addi.d	$a0, $a0, 64
 	bnez	$a4, .LBB1_20
 # %bb.21:                               # %middle.block48
+	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI1_2)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -189,8 +196,8 @@ _ZN13BabyDebugTest4doitEv:              # @_ZN13BabyDebugTest4doitEv
 .LBB1_23:                               # %vec.epilog.ph51
 	move	$a4, $a3
 	bstrpick.d	$a3, $a1, 30, 2
-	pcalau12i	$a5, %pc_hi20(.LCPI1_2)
-	vld	$vr0, $a5, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a5, %pc_hi20(.LCPI1_3)
+	vld	$vr0, $a5, %pc_lo12(.LCPI1_3)
 	slli.d	$a3, $a3, 2
 	vinsgr2vr.w	$vr1, $a0, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -206,7 +213,7 @@ _ZN13BabyDebugTest4doitEv:              # @_ZN13BabyDebugTest4doitEv
 	addi.d	$a4, $a4, 16
 	bnez	$a0, .LBB1_24
 # %bb.25:                               # %vec.epilog.middle.block62
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

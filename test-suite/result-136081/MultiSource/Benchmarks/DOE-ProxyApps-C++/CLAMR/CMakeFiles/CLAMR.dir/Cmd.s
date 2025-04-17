@@ -8346,9 +8346,14 @@ _ZN2PP3Cmd13set_processedEb:            # @_ZN2PP3Cmd13set_processedEb
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI31_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI31_1:
+.LCPI31_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -8625,12 +8630,14 @@ _ZN2PP3Cmd9get_nvalsERSt6vectorIiSaIiEERKS3_RiRNSt7__cxx1118basic_stringstreamIc
 	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB31_33
 # %bb.34:                               # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI31_1)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI31_1)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -8646,8 +8653,8 @@ _ZN2PP3Cmd9get_nvalsERSt6vectorIiSaIiEERKS3_RiRNSt7__cxx1118basic_stringstreamIc
 	ori	$a6, $zero, 2
 	move	$a4, $a2
 	bstrins.d	$a4, $a6, 1, 0
-	pcalau12i	$a6, %pc_hi20(.LCPI31_1)
-	vld	$vr0, $a6, %pc_lo12(.LCPI31_1)
+	pcalau12i	$a6, %pc_hi20(.LCPI31_2)
+	vld	$vr0, $a6, %pc_lo12(.LCPI31_2)
 	vinsgr2vr.w	$vr1, $s7, 0
 	ori	$a6, $zero, 1
 	vinsgr2vr.w	$vr2, $a6, 0
@@ -8664,7 +8671,7 @@ _ZN2PP3Cmd9get_nvalsERSt6vectorIiSaIiEERKS3_RiRNSt7__cxx1118basic_stringstreamIc
 	addi.d	$a6, $a6, 16
 	bnez	$a3, .LBB31_37
 # %bb.38:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -9134,9 +9141,16 @@ _ZN2PP3Cmd11find_equalsEv:              # @_ZN2PP3Cmd11find_equalsEv
 	.size	_ZN2PP3Cmd11find_equalsEv, .Lfunc_end32-_ZN2PP3Cmd11find_equalsEv
 	.cfi_endproc
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP3Cmd14error_dup_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiRSt6vectorIiSaIiEERS8_IPS0_SaISC_EESB_RKSA_iRNS1_18basic_stringstreamIcS4_S5_EERi
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP3Cmd14error_dup_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEiiRSt6vectorIiSaIiEERS8_IPS0_SaISC_EESB_RKSA_iRNS1_18basic_stringstreamIcS4_S5_EERi
 .LCPI33_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI33_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -9343,12 +9357,14 @@ _ZN2PP3Cmd14error_dup_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	addi.d	$a3, $a3, 64
 	bnez	$a4, .LBB33_26
 # %bb.27:                               # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI33_0)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI33_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -9361,8 +9377,8 @@ _ZN2PP3Cmd14error_dup_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 .LBB33_29:                              # %vec.epilog.ph
 	move	$a3, $a1
 	bstrpick.d	$a1, $s1, 30, 2
-	pcalau12i	$a4, %pc_hi20(.LCPI33_0)
-	vld	$vr0, $a4, %pc_lo12(.LCPI33_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI33_1)
+	vld	$vr0, $a4, %pc_lo12(.LCPI33_1)
 	slli.d	$a1, $a1, 2
 	vinsgr2vr.w	$vr1, $s6, 0
 	vinsgr2vr.w	$vr2, $a2, 0
@@ -9378,7 +9394,7 @@ _ZN2PP3Cmd14error_dup_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	addi.d	$a3, $a3, 16
 	bnez	$a2, .LBB33_30
 # %bb.31:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -13181,9 +13197,16 @@ GCC_except_table38:
 .Lcst_end18:
 	.p2align	2, 0x0
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN2PP3Cmd8get_sizeERSt6vectorIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _ZN2PP3Cmd8get_sizeERSt6vectorIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char_traitsIcESaIcEEERi
 .LCPI39_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI39_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -13349,12 +13372,14 @@ _ZN2PP3Cmd8get_sizeERSt6vectorIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char
 	addi.d	$a4, $a4, 64
 	bnez	$a6, .LBB39_18
 # %bb.19:                               # %middle.block
+	pcalau12i	$a4, %pc_hi20(.LCPI39_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI39_0)
 	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -13367,8 +13392,8 @@ _ZN2PP3Cmd8get_sizeERSt6vectorIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char
 .LBB39_21:                              # %vec.epilog.ph
 	move	$a6, $a3
 	bstrpick.d	$a3, $a2, 30, 2
-	pcalau12i	$a7, %pc_hi20(.LCPI39_0)
-	vld	$vr0, $a7, %pc_lo12(.LCPI39_0)
+	pcalau12i	$a7, %pc_hi20(.LCPI39_1)
+	vld	$vr0, $a7, %pc_lo12(.LCPI39_1)
 	slli.d	$a3, $a3, 2
 	vinsgr2vr.w	$vr1, $a4, 0
 	vinsgr2vr.w	$vr2, $a5, 0
@@ -13384,7 +13409,7 @@ _ZN2PP3Cmd8get_sizeERSt6vectorIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char
 	addi.d	$a5, $a5, 16
 	bnez	$a4, .LBB39_22
 # %bb.23:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

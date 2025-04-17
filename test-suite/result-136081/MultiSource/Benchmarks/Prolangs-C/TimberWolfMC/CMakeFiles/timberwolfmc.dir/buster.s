@@ -1,6 +1,13 @@
 	.file	"buster.c"
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function buster
+.LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	buster                          # -- Begin function buster
+	.globl	buster
 	.p2align	5
 	.type	buster,@function
 buster:                                 # @buster
@@ -82,12 +89,14 @@ buster:                                 # @buster
 	addi.d	$a3, $a3, 128
 	bnez	$a6, .LBB0_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI0_0)
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmin.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmin.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmin.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -123,7 +132,7 @@ buster:                                 # @buster
 	addi.d	$a5, $a5, 32
 	bnez	$a3, .LBB0_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1

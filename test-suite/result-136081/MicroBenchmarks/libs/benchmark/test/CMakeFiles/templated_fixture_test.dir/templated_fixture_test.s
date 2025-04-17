@@ -175,6 +175,11 @@ GCC_except_table0:
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI1_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.hidden	_ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE
 	.globl	_ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE
@@ -242,12 +247,14 @@ _ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN23MyFixtu
 	xvaddi.wu	$xr1, $xr1, 1
 	bnez	$a1, .LBB1_4
 # %bb.5:                                # %middle.block
+	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
+	xvld	$xr2, $a0, %pc_lo12(.LCPI1_1)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1

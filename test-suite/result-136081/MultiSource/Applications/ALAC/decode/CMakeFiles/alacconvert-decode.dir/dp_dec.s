@@ -1,7 +1,14 @@
 	.file	"dp_dec.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function unpc_block
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function unpc_block
 .LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -583,12 +590,12 @@ unpc_block:                             # @unpc_block
 	b	.LBB0_64
 .LBB0_60:                               # %vector.ph
                                         #   in Loop: Header=BB0_54 Depth=1
-	xvreplgr2vr.w	$xr1, $s6
+	xvreplgr2vr.w	$xr3, $s6
 	move	$s7, $t5
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 	move	$ra, $t1
+	xvori.b	$xr1, $xr0, 0
 	xvori.b	$xr2, $xr0, 0
-	xvori.b	$xr3, $xr0, 0
 	.p2align	4, , 16
 .LBB0_61:                               # %vector.body
                                         #   Parent Loop BB0_54 Depth=1
@@ -649,22 +656,24 @@ unpc_block:                             # @unpc_block
 	xvshuf4i.w	$xr6, $xr6, 27
 	xvpermi.d	$xr7, $xr7, 78
 	xvshuf4i.w	$xr7, $xr7, 27
-	xvsub.w	$xr6, $xr6, $xr1
-	xvsub.w	$xr7, $xr7, $xr1
-	xvmadd.w	$xr2, $xr6, $xr4
-	xvmadd.w	$xr3, $xr7, $xr5
+	xvsub.w	$xr6, $xr6, $xr3
+	xvsub.w	$xr7, $xr7, $xr3
+	xvmadd.w	$xr1, $xr6, $xr4
+	xvmadd.w	$xr2, $xr7, $xr5
 	addi.d	$ra, $ra, -16
 	addi.d	$s8, $s8, 32
 	addi.d	$s7, $s7, -64
 	bnez	$ra, .LBB0_61
 # %bb.62:                               # %middle.block
                                         #   in Loop: Header=BB0_54 Depth=1
-	xvadd.w	$xr1, $xr3, $xr2
+	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
+	xvld	$xr3, $a4, %pc_lo12(.LCPI0_0)
+	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -679,8 +688,8 @@ unpc_block:                             # @unpc_block
 	beqz	$a4, .LBB0_67
 .LBB0_64:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB0_54 Depth=1
-	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $a4, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI0_1)
 	vreplgr2vr.w	$vr2, $s6
 	vinsgr2vr.w	$vr3, $s8, 0
 	vinsgr2vr.w	$vr4, $zero, 0
@@ -709,7 +718,7 @@ unpc_block:                             # @unpc_block
 	bnez	$a4, .LBB0_65
 # %bb.66:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB0_54 Depth=1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

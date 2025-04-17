@@ -10,9 +10,14 @@
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI0_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -482,12 +487,14 @@ maskgen:                                # @maskgen
 	addi.d	$a7, $a7, 64
 	bnez	$t1, .LBB0_53
 # %bb.54:                               # %middle.block
+	pcalau12i	$a7, %pc_hi20(.LCPI0_1)
+	xvld	$xr2, $a7, %pc_lo12(.LCPI0_1)
 	xvor.v	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvor.v	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvor.v	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvor.v	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -502,8 +509,8 @@ maskgen:                                # @maskgen
 	slli.d	$t2, $t1, 2
 	srli.d	$t3, $a6, 2
 	ori	$t1, $zero, 1
-	pcalau12i	$t4, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $t4, %pc_lo12(.LCPI0_1)
+	pcalau12i	$t4, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $t4, %pc_lo12(.LCPI0_2)
 	bstrins.d	$t1, $t3, 30, 2
 	vinsgr2vr.w	$vr1, $a7, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -520,7 +527,7 @@ maskgen:                                # @maskgen
 	addi.d	$a7, $a7, 16
 	bnez	$t0, .LBB0_57
 # %bb.58:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

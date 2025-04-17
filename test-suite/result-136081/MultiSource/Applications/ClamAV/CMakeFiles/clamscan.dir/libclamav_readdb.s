@@ -34,9 +34,14 @@
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
 	.byte	0                               # 0x0
+.LCPI0_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -187,7 +192,7 @@ cli_parse_add:                          # @cli_parse_add
 	bnez	$a3, .LBB0_16
 # %bb.17:                               # %middle.block399
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -255,12 +260,12 @@ cli_parse_add:                          # @cli_parse_add
 .LBB0_26:                               # %vector.ph
 	bstrpick.d	$a2, $a0, 31, 4
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	xvld	$xr2, $a3, %pc_lo12(.LCPI0_0)
+	xvld	$xr3, $a3, %pc_lo12(.LCPI0_0)
 	slli.d	$a2, $a2, 4
-	xvrepli.b	$xr3, 0
+	xvrepli.b	$xr2, 0
 	addi.d	$a3, $s6, 8
 	move	$a4, $a2
-	xvori.b	$xr4, $xr3, 0
+	xvori.b	$xr4, $xr2, 0
 	.p2align	4, , 16
 .LBB0_27:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -277,14 +282,14 @@ cli_parse_add:                          # @cli_parse_add
 	vseq.b	$vr6, $vr6, $vr1
 	vor.v	$vr6, $vr7, $vr6
 	xvpermi.d	$xr5, $xr5, 68
-	xvshuf.b	$xr5, $xr0, $xr5, $xr2
+	xvshuf.b	$xr5, $xr0, $xr5, $xr3
 	vst	$vr6, $sp, 96
 	xvld	$xr6, $sp, 96
 	xvslli.w	$xr5, $xr5, 24
 	xvsrai.w	$xr5, $xr5, 24
-	xvsub.w	$xr3, $xr3, $xr5
+	xvsub.w	$xr2, $xr2, $xr5
 	xvpermi.d	$xr5, $xr6, 68
-	xvshuf.b	$xr5, $xr0, $xr5, $xr2
+	xvshuf.b	$xr5, $xr0, $xr5, $xr3
 	xvslli.w	$xr5, $xr5, 24
 	xvsrai.w	$xr5, $xr5, 24
 	xvsub.w	$xr4, $xr4, $xr5
@@ -292,12 +297,14 @@ cli_parse_add:                          # @cli_parse_add
 	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB0_27
 # %bb.28:                               # %middle.block
-	xvadd.w	$xr2, $xr4, $xr3
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
+	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
+	xvld	$xr3, $a3, %pc_lo12(.LCPI0_1)
+	xvadd.w	$xr2, $xr4, $xr2
+	xvpermi.d	$xr4, $xr2, 78
+	xvshuf.d	$xr3, $xr0, $xr4
 	xvadd.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvadd.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -310,8 +317,8 @@ cli_parse_add:                          # @cli_parse_add
 .LBB0_30:                               # %vec.epilog.ph
 	move	$a4, $a2
 	bstrpick.d	$a0, $a0, 31, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
-	vld	$vr2, $a2, %pc_lo12(.LCPI0_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
+	vld	$vr2, $a2, %pc_lo12(.LCPI0_2)
 	slli.d	$a2, $a0, 2
 	vinsgr2vr.w	$vr3, $a3, 0
 	vinsgr2vr.w	$vr4, $zero, 0
@@ -335,7 +342,7 @@ cli_parse_add:                          # @cli_parse_add
 	addi.d	$a3, $a3, 4
 	bnez	$a0, .LBB0_31
 # %bb.32:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr0, $vr2, 14
+	vreplvei.d	$vr0, $vr2, 1
 	vadd.w	$vr0, $vr2, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

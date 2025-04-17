@@ -3519,16 +3519,23 @@ DDterm4:                                # @DDterm4
 .Lfunc_end20:
 	.size	DDterm4, .Lfunc_end20-DDterm4
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function getptree
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function getptree
 .LCPI21_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI21_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI21_1:
+.LCPI21_2:
 	.dword	0x3eb0c6f7a0b5ed8d              # double 9.9999999999999995E-7
 	.text
 	.globl	getptree
@@ -3571,23 +3578,25 @@ getptree:                               # @getptree
 	bstrpick.d	$a2, $a1, 30, 4
 	slli.w	$a2, $a2, 4
 	xvrepli.w	$xr0, 1
-	xvreplgr2vr.w	$xr1, $s1
+	xvreplgr2vr.w	$xr2, $s1
 	move	$a3, $a2
-	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB21_6:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.w	$xr0, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	addi.w	$a3, $a3, -16
-	xvmul.w	$xr2, $xr2, $xr1
+	xvmul.w	$xr1, $xr1, $xr2
 	bnez	$a3, .LBB21_6
 # %bb.7:                                # %middle.block
-	xvmul.w	$xr0, $xr2, $xr0
+	pcalau12i	$a3, %pc_hi20(.LCPI21_0)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI21_0)
+	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -3602,8 +3611,8 @@ getptree:                               # @getptree
 	slli.w	$a4, $a4, 2
 	srli.d	$a5, $a1, 2
 	vreplgr2vr.w	$vr0, $s1
-	pcalau12i	$a6, %pc_hi20(.LCPI21_0)
-	vld	$vr1, $a6, %pc_lo12(.LCPI21_0)
+	pcalau12i	$a6, %pc_hi20(.LCPI21_1)
+	vld	$vr1, $a6, %pc_lo12(.LCPI21_1)
 	vinsgr2vr.w	$vr2, $a3, 0
 	vinsgr2vr.w	$vr3, $a0, 0
 	bstrins.d	$a0, $a5, 30, 2
@@ -3616,7 +3625,7 @@ getptree:                               # @getptree
 	vmul.w	$vr1, $vr1, $vr0
 	bnez	$a2, .LBB21_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr0, $vr1, 14
+	vreplvei.d	$vr0, $vr1, 1
 	vmul.w	$vr0, $vr1, $vr0
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -3636,9 +3645,9 @@ getptree:                               # @getptree
 	bnez	$a0, .LBB21_14
 .LBB21_15:                              # %._crit_edge
 	addi.w	$a0, $a3, -1
-	ori	$a2, $zero, 1
+	ori	$a4, $zero, 1
 	div.w	$s2, $a0, $s0
-	bne	$a1, $a2, .LBB21_17
+	bne	$a1, $a4, .LBB21_17
 # %bb.16:
 	move	$a0, $zero
 	b	.LBB21_31
@@ -3648,40 +3657,42 @@ getptree:                               # @getptree
 	bltu	$a1, $a0, .LBB21_28
 # %bb.18:                               # %vector.main.loop.iter.check180
 	addi.w	$a0, $a1, -1
-	ori	$a2, $zero, 17
-	ori	$a3, $zero, 1
-	bgeu	$a1, $a2, .LBB21_20
-# %bb.19:
-	move	$a4, $zero
+	ori	$a3, $zero, 17
 	ori	$a2, $zero, 1
+	bgeu	$a1, $a3, .LBB21_20
+# %bb.19:
+	move	$a3, $zero
+	ori	$a4, $zero, 1
 	b	.LBB21_24
 .LBB21_20:                              # %vector.ph181
-	move	$a4, $a0
-	bstrins.d	$a4, $zero, 3, 0
+	move	$a3, $a0
+	bstrins.d	$a3, $zero, 3, 0
 	xvrepli.w	$xr0, 1
-	xvreplgr2vr.w	$xr1, $s1
-	move	$a2, $a4
-	xvori.b	$xr2, $xr0, 0
+	xvreplgr2vr.w	$xr2, $s1
+	move	$a4, $a3
+	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
 .LBB21_21:                              # %vector.body186
                                         # =>This Inner Loop Header: Depth=1
-	xvmul.w	$xr0, $xr0, $xr1
-	addi.w	$a2, $a2, -16
-	xvmul.w	$xr2, $xr2, $xr1
-	bnez	$a2, .LBB21_21
+	xvmul.w	$xr0, $xr0, $xr2
+	addi.w	$a4, $a4, -16
+	xvmul.w	$xr1, $xr1, $xr2
+	bnez	$a4, .LBB21_21
 # %bb.22:                               # %middle.block191
-	xvmul.w	$xr0, $xr2, $xr0
+	pcalau12i	$a4, %pc_hi20(.LCPI21_0)
+	xvld	$xr2, $a4, %pc_lo12(.LCPI21_0)
+	xvmul.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmul.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmul.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a2, $xr0, 0
-	beq	$a0, $a4, .LBB21_30
+	xvpickve2gr.w	$a4, $xr0, 0
+	beq	$a0, $a3, .LBB21_30
 # %bb.23:                               # %vec.epilog.iter.check198
 	andi	$a5, $a0, 12
 	beqz	$a5, .LBB21_27
@@ -3689,14 +3700,14 @@ getptree:                               # @getptree
 	move	$a6, $a0
 	bstrins.d	$a6, $zero, 1, 0
 	move	$a5, $a0
-	bstrins.d	$a5, $a3, 1, 0
-	pcalau12i	$a7, %pc_hi20(.LCPI21_0)
-	vld	$vr0, $a7, %pc_lo12(.LCPI21_0)
+	bstrins.d	$a5, $a2, 1, 0
+	pcalau12i	$a7, %pc_hi20(.LCPI21_1)
+	vld	$vr0, $a7, %pc_lo12(.LCPI21_1)
 	vreplgr2vr.w	$vr1, $s1
-	vinsgr2vr.w	$vr2, $a2, 0
-	vinsgr2vr.w	$vr3, $a3, 0
+	vinsgr2vr.w	$vr2, $a4, 0
+	vinsgr2vr.w	$vr3, $a2, 0
 	vshuf.w	$vr0, $vr3, $vr2
-	sub.d	$a2, $a4, $a6
+	sub.d	$a2, $a3, $a6
 	.p2align	4, , 16
 .LBB21_25:                              # %vec.epilog.vector.body205
                                         # =>This Inner Loop Header: Depth=1
@@ -3704,25 +3715,25 @@ getptree:                               # @getptree
 	vmul.w	$vr0, $vr0, $vr1
 	bnez	$a2, .LBB21_25
 # %bb.26:                               # %vec.epilog.middle.block209
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
+	vpickve2gr.w	$a4, $vr0, 0
 	bne	$a0, $a6, .LBB21_28
 	b	.LBB21_30
 .LBB21_27:
-	ori	$a5, $a4, 1
+	ori	$a5, $a3, 1
 .LBB21_28:                              # %vec.epilog.scalar.ph196.preheader
 	sub.d	$a0, $a1, $a5
 	.p2align	4, , 16
 .LBB21_29:                              # %vec.epilog.scalar.ph196
                                         # =>This Inner Loop Header: Depth=1
 	addi.w	$a0, $a0, -1
-	mul.d	$a2, $a2, $s1
+	mul.d	$a4, $a4, $s1
 	bnez	$a0, .LBB21_29
 .LBB21_30:                              # %._crit_edge92.loopexit
-	addi.w	$a0, $a2, -1
+	addi.w	$a0, $a4, -1
 .LBB21_31:                              # %._crit_edge92
 	div.w	$s3, $a0, $s0
 	addi.w	$a0, $s2, 1
@@ -3998,8 +4009,8 @@ getptree:                               # @getptree
 .LBB21_70:                              # %._crit_edge115
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI21_1)
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI21_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI21_2)
+	fld.d	$fa0, $a0, %pc_lo12(.LCPI21_2)
 	fdiv.d	$fa1, $fs1, $fs2
 	fcmp.clt.d	$fcc0, $fs1, $fa0
 	fsel	$fa0, $fa1, $fs0, $fcc0

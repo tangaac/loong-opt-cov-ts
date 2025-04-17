@@ -442,7 +442,7 @@ acttab_insert:                          # @acttab_insert
 # %bb.34:                               # %middle.block
                                         #   in Loop: Header=BB4_9 Depth=1
 	vadd.w	$vr2, $vr6, $vr5
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3

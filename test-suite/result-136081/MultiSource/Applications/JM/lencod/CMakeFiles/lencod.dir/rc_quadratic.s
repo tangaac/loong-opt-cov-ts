@@ -3369,16 +3369,21 @@ rc_init_GOP:                            # @rc_init_GOP
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI9_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI9_1:
+.LCPI9_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI9_2:
+.LCPI9_3:
 	.dword	0x3fe3333333333333              # double 0.59999999999999998
 	.text
 	.globl	rc_init_pict
@@ -3963,12 +3968,14 @@ rc_init_pict:                           # @rc_init_pict
 	addi.d	$t3, $t3, 64
 	bnez	$t4, .LBB9_84
 # %bb.85:                               # %middle.block
+	pcalau12i	$t3, %pc_hi20(.LCPI9_1)
+	xvld	$xr3, $t3, %pc_lo12(.LCPI9_1)
 	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -3981,8 +3988,8 @@ rc_init_pict:                           # @rc_init_pict
 .LBB9_87:                               # %vec.epilog.ph
 	move	$t4, $t2
 	bstrpick.d	$t2, $t1, 30, 2
-	pcalau12i	$t5, %pc_hi20(.LCPI9_1)
-	vld	$vr1, $t5, %pc_lo12(.LCPI9_1)
+	pcalau12i	$t5, %pc_hi20(.LCPI9_2)
+	vld	$vr1, $t5, %pc_lo12(.LCPI9_2)
 	slli.d	$t2, $t2, 2
 	vinsgr2vr.w	$vr2, $t3, 0
 	vinsgr2vr.w	$vr3, $zero, 0
@@ -3999,7 +4006,7 @@ rc_init_pict:                           # @rc_init_pict
 	addi.d	$t4, $t4, 16
 	bnez	$t3, .LBB9_88
 # %bb.89:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -4161,8 +4168,8 @@ rc_init_pict:                           # @rc_init_pict
 	beqz	$a2, .LBB9_116
 # %bb.115:
 	ld.w	$a1, $a0, 1540
-	pcalau12i	$a2, %pc_hi20(.LCPI9_2)
-	fld.d	$fa0, $a2, %pc_lo12(.LCPI9_2)
+	pcalau12i	$a2, %pc_hi20(.LCPI9_3)
+	fld.d	$fa0, $a2, %pc_lo12(.LCPI9_3)
 	st.w	$zero, $a0, 1552
 	movgr2fr.w	$fa1, $a1
 	ffint.d.w	$fa1, $fa1
@@ -5292,7 +5299,7 @@ RCModelEstimator:                       # @RCModelEstimator
 	bnez	$a5, .LBB16_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5850,7 +5857,7 @@ MADModelEstimator:                      # @MADModelEstimator
 	bnez	$a5, .LBB18_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

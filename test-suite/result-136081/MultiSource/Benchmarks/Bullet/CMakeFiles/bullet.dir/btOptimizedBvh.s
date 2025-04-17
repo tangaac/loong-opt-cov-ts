@@ -1653,14 +1653,10 @@ GCC_except_table12:
 	.word	0xdd5e0b6b                      # float -9.99999984E+17
 	.word	0x00000000                      # float 0
 .LCPI13_1:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
-	.word	6                               # 0x6
-	.word	7                               # 0x7
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 	.text
 	.p2align	5
 	.type	_ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTriangleCallback28internalProcessTriangleIndexEPS2_ii,@function
@@ -1798,18 +1794,18 @@ _ZZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_EN20NodeTri
 	add.d	$a4, $a1, $a0
 	xvbitsel.v	$xr0, $xr0, $xr3, $xr1
 	xvori.b	$xr1, $xr2, 0
-	xvshuf.w	$xr1, $xr0, $xr7
+	xvshuf.d	$xr1, $xr0, $xr7
 	xvpermi.d	$xr3, $xr0, 68
 	xvpermi.d	$xr4, $xr7, 68
 	xvori.b	$xr5, $xr2, 0
-	xvshuf.w	$xr5, $xr4, $xr3
+	xvshuf.d	$xr5, $xr4, $xr3
 	xvfcmp.clt.s	$xr1, $xr1, $xr5
 	xvbitsel.v	$xr0, $xr0, $xr7, $xr1
 	xvori.b	$xr1, $xr2, 0
-	xvshuf.w	$xr1, $xr0, $xr6
+	xvshuf.d	$xr1, $xr0, $xr6
 	xvpermi.d	$xr3, $xr0, 68
 	xvpermi.d	$xr4, $xr6, 68
-	xvshuf.w	$xr2, $xr4, $xr3
+	xvshuf.d	$xr2, $xr4, $xr3
 	xvfcmp.clt.s	$xr1, $xr1, $xr2
 	xvbitsel.v	$xr0, $xr0, $xr6, $xr1
 	xvstx	$xr0, $a1, $a0

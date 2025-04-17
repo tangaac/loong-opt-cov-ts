@@ -1147,9 +1147,14 @@ GCC_except_table5:
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
+.LCPI6_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI6_1:
+.LCPI6_2:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -2299,45 +2304,48 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 .LBB6_179:                              # %vector.ph
 	bstrpick.d	$a2, $a0, 30, 4
 	slli.d	$a2, $a2, 4
-	xvreplgr2vr.w	$xr2, $s5
+	xvreplgr2vr.w	$xr3, $s5
 	pcalau12i	$a4, %pc_hi20(.LCPI6_0)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI6_0)
+	xvld	$xr4, $a4, %pc_lo12(.LCPI6_0)
 	xvreplgr2vr.w	$xr5, $s7
-	xvreplgr2vr.w	$xr4, $a3
+	xvreplgr2vr.w	$xr2, $a3
 	addi.d	$a4, $a1, 32
 	move	$a5, $a2
-	xvori.b	$xr6, $xr4, 0
-	xvori.b	$xr0, $xr4, 0
-	xvori.b	$xr1, $xr4, 0
+	xvori.b	$xr6, $xr2, 0
+	xvori.b	$xr0, $xr2, 0
+	xvori.b	$xr1, $xr2, 0
 	.p2align	4, , 16
 .LBB6_180:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr7, $a4, -32
 	xvld	$xr8, $a4, 0
-	xvaddi.wu	$xr9, $xr3, 8
-	xvseq.w	$xr10, $xr7, $xr2
-	xvseq.w	$xr11, $xr8, $xr2
-	xvbitsel.v	$xr0, $xr0, $xr3, $xr10
+	xvaddi.wu	$xr9, $xr4, 8
+	xvseq.w	$xr10, $xr7, $xr3
+	xvseq.w	$xr11, $xr8, $xr3
+	xvbitsel.v	$xr0, $xr0, $xr4, $xr10
 	xvbitsel.v	$xr1, $xr1, $xr9, $xr11
 	xvseq.w	$xr7, $xr7, $xr5
 	xvseq.w	$xr8, $xr8, $xr5
-	xvbitsel.v	$xr4, $xr4, $xr3, $xr7
+	xvbitsel.v	$xr2, $xr2, $xr4, $xr7
 	xvbitsel.v	$xr6, $xr6, $xr9, $xr8
-	xvaddi.wu	$xr3, $xr3, 16
+	xvaddi.wu	$xr4, $xr4, 16
 	addi.d	$a5, $a5, -16
 	addi.d	$a4, $a4, 64
 	bnez	$a5, .LBB6_180
 # %bb.181:                              # %middle.block
-	xvmax.w	$xr2, $xr4, $xr6
-	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
-	xvmax.w	$xr2, $xr2, $xr3
-	xvpermi.d	$xr3, $xr2, 68
-	xvrepl128vei.w	$xr3, $xr3, 1
-	xvmax.w	$xr2, $xr2, $xr3
+	pcalau12i	$a4, %pc_hi20(.LCPI6_1)
+	xvld	$xr3, $a4, %pc_lo12(.LCPI6_1)
+	xvmax.w	$xr2, $xr2, $xr6
+	xvpermi.d	$xr4, $xr2, 78
+	xvori.b	$xr5, $xr3, 0
+	xvshuf.d	$xr5, $xr0, $xr4
+	xvmax.w	$xr2, $xr2, $xr5
+	xvpermi.d	$xr4, $xr2, 68
+	xvrepl128vei.d	$xr4, $xr4, 1
+	xvmax.w	$xr2, $xr2, $xr4
+	xvpermi.d	$xr4, $xr2, 68
+	xvrepl128vei.w	$xr4, $xr4, 1
+	xvmax.w	$xr2, $xr2, $xr4
 	xvpickve2gr.w	$a4, $xr2, 0
 	xor	$a5, $a4, $a3
 	sltui	$a5, $a5, 1
@@ -2347,10 +2355,10 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 	or	$a7, $a5, $a4
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr3, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -2377,8 +2385,8 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 	masknez	$a6, $a7, $a2
 	maskeqz	$a2, $a3, $a2
 	or	$a6, $a2, $a6
-	pcalau12i	$a2, %pc_hi20(.LCPI6_1)
-	vld	$vr4, $a2, %pc_lo12(.LCPI6_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI6_2)
+	vld	$vr4, $a2, %pc_lo12(.LCPI6_2)
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplgr2vr.w	$vr2, $s5
@@ -2402,7 +2410,7 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 	addi.d	$a5, $a5, 16
 	bnez	$a4, .LBB6_184
 # %bb.185:                              # %vec.epilog.middle.block
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr2
@@ -2413,7 +2421,7 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 	addi.d	$a6, $zero, -1
 	maskeqz	$a5, $a6, $a5
 	or	$a7, $a5, $a4
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

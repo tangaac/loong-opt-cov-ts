@@ -2536,6 +2536,11 @@ _ZN4Mesh20print_partition_typeEv:       # @_ZN4Mesh20print_partition_typeEv
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method
 .LCPI4_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI4_1:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -2546,7 +2551,7 @@ _ZN4Mesh20print_partition_typeEv:       # @_ZN4Mesh20print_partition_typeEv
 	.word	7                               # 0x7
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI4_1:
+.LCPI4_2:
 	.word	0                               # 0x0
 	.word	1                               # 0x1
 	.word	2                               # 0x2
@@ -4081,8 +4086,8 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	move	$a1, $zero
 	b	.LBB4_274
 .LBB4_255:                              # %vector.ph874
-	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
-	xvld	$xr0, $a2, %pc_lo12(.LCPI4_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI4_1)
+	xvld	$xr0, $a2, %pc_lo12(.LCPI4_1)
 	bstrpick.d	$a2, $a0, 32, 4
 	slli.d	$a2, $a2, 4
 	addi.d	$a3, $a1, 32
@@ -4104,8 +4109,8 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	beqz	$a3, .LBB4_10
 .LBB4_259:                              # %vec.epilog.ph885
 	move	$a4, $a2
-	pcalau12i	$a3, %pc_hi20(.LCPI4_1)
-	vld	$vr0, $a3, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a3, %pc_hi20(.LCPI4_2)
+	vld	$vr0, $a3, %pc_lo12(.LCPI4_2)
 	bstrpick.d	$a3, $a0, 32, 2
 	vreplgr2vr.w	$vr1, $a2
 	slli.d	$a2, $a3, 2
@@ -4153,12 +4158,15 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a6, $a6, 64
 	bnez	$a7, .LBB4_264
 # %bb.265:                              # %middle.block582
+	pcalau12i	$a5, %pc_hi20(.LCPI4_0)
+	xvld	$xr4, $a5, %pc_lo12(.LCPI4_0)
 	xvmax.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 78
-	xvshuf4i.w	$xr3, $xr3, 228
-	xvmax.w	$xr2, $xr2, $xr3
+	xvori.b	$xr5, $xr4, 0
+	xvshuf.d	$xr5, $xr0, $xr3
+	xvmax.w	$xr2, $xr2, $xr5
 	xvpermi.d	$xr3, $xr2, 68
-	xvshuf4i.w	$xr3, $xr3, 14
+	xvrepl128vei.d	$xr3, $xr3, 1
 	xvmax.w	$xr2, $xr2, $xr3
 	xvpermi.d	$xr3, $xr2, 68
 	xvrepl128vei.w	$xr3, $xr3, 1
@@ -4166,10 +4174,10 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	xvpickve2gr.w	$a5, $xr2, 0
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr4, $xr0, $xr1
+	xvmax.w	$xr0, $xr0, $xr4
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -4200,12 +4208,12 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB4_268
 # %bb.269:                              # %vec.epilog.middle.block605
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a5, $vr1, 0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

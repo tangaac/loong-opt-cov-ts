@@ -1,7 +1,14 @@
 	.file	"traits.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function write_node_info
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function write_node_info
 .LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -121,45 +128,45 @@ write_node_info:                        # @write_node_info
 	xvinsgr2vr.w	$xr6, $t0, 5
 	xvpickve2gr.w	$t1, $xr7, 5
 	xvinsgr2vr.w	$xr6, $t1, 6
-	xvpickve2gr.w	$t2, $xr7, 6
-	xvinsgr2vr.w	$xr6, $t2, 7
-	xvpickve2gr.w	$t3, $xr7, 7
-	xvpickve2gr.w	$t4, $xr5, 7
-	xvinsgr2vr.w	$xr5, $t3, 0
-	xvpickve2gr.w	$t5, $xr0, 0
-	xvinsgr2vr.w	$xr5, $t5, 1
-	xvpickve2gr.w	$t6, $xr0, 1
-	xvinsgr2vr.w	$xr5, $t6, 2
-	xvpickve2gr.w	$t7, $xr0, 2
-	xvinsgr2vr.w	$xr5, $t7, 3
-	xvpickve2gr.w	$t8, $xr0, 3
-	xvinsgr2vr.w	$xr5, $t8, 4
-	xvpickve2gr.w	$s1, $xr0, 4
-	xvinsgr2vr.w	$xr5, $s1, 5
-	xvpickve2gr.w	$s6, $xr0, 5
-	xvinsgr2vr.w	$xr5, $s6, 6
+	xvpickve2gr.w	$a6, $xr7, 6
+	xvinsgr2vr.w	$xr6, $a6, 7
+	xvpickve2gr.w	$a6, $xr7, 7
+	xvpickve2gr.w	$t2, $xr5, 7
+	xvinsgr2vr.w	$xr5, $a6, 0
+	xvpickve2gr.w	$a6, $xr0, 0
+	xvinsgr2vr.w	$xr5, $a6, 1
+	xvpickve2gr.w	$a6, $xr0, 1
+	xvinsgr2vr.w	$xr5, $a6, 2
+	xvpickve2gr.w	$a6, $xr0, 2
+	xvinsgr2vr.w	$xr5, $a6, 3
+	xvpickve2gr.w	$a6, $xr0, 3
+	xvinsgr2vr.w	$xr5, $a6, 4
+	xvpickve2gr.w	$a6, $xr0, 4
+	xvinsgr2vr.w	$xr5, $a6, 5
+	xvpickve2gr.w	$a6, $xr0, 5
+	xvinsgr2vr.w	$xr5, $a6, 6
 	xvpickve2gr.w	$a6, $xr0, 6
 	xvinsgr2vr.w	$xr5, $a6, 7
-	xvinsgr2vr.w	$xr8, $t4, 0
-	xvpickve2gr.w	$t4, $xr6, 0
-	xvinsgr2vr.w	$xr8, $t4, 1
-	xvpickve2gr.w	$t4, $xr6, 1
-	xvinsgr2vr.w	$xr8, $t4, 2
-	xvpickve2gr.w	$t4, $xr6, 2
-	xvinsgr2vr.w	$xr8, $t4, 3
-	xvpickve2gr.w	$t4, $xr6, 3
-	xvinsgr2vr.w	$xr8, $t4, 4
+	xvinsgr2vr.w	$xr8, $t2, 0
+	xvpickve2gr.w	$t2, $xr6, 0
+	xvinsgr2vr.w	$xr8, $t2, 1
+	xvpickve2gr.w	$t2, $xr6, 1
+	xvinsgr2vr.w	$xr8, $t2, 2
+	xvpickve2gr.w	$t2, $xr6, 2
+	xvinsgr2vr.w	$xr8, $t2, 3
+	xvpickve2gr.w	$t2, $xr6, 3
+	xvinsgr2vr.w	$xr8, $t2, 4
 	xvinsgr2vr.w	$xr8, $a7, 5
 	xvinsgr2vr.w	$xr8, $t0, 6
 	xvinsgr2vr.w	$xr8, $t1, 7
-	xvinsgr2vr.w	$xr9, $t2, 0
-	xvinsgr2vr.w	$xr9, $t3, 1
-	xvinsgr2vr.w	$xr9, $t5, 2
-	xvinsgr2vr.w	$xr9, $t6, 3
-	xvinsgr2vr.w	$xr9, $t7, 4
-	xvinsgr2vr.w	$xr9, $t8, 5
-	xvinsgr2vr.w	$xr9, $s1, 6
-	xvinsgr2vr.w	$xr9, $s6, 7
+	xvpickve2gr.d	$a7, $xr7, 3
+	xvinsgr2vr.d	$xr9, $a7, 0
+	xvpickve2gr.d	$a7, $xr0, 0
+	xvinsgr2vr.d	$xr9, $a7, 1
+	xvpickve2gr.d	$a7, $xr0, 1
+	xvinsgr2vr.d	$xr9, $a7, 2
+	xvpickve2gr.d	$a7, $xr0, 2
+	xvinsgr2vr.d	$xr9, $a7, 3
 	xvand.v	$xr7, $xr7, $xr8
 	xvand.v	$xr8, $xr0, $xr9
 	xvxor.v	$xr9, $xr6, $xr2
@@ -358,12 +365,14 @@ write_node_info:                        # @write_node_info
 	addi.d	$a2, $a2, 64
 	bnez	$a5, .LBB0_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr4, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.d	$xr2, $xr0, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -476,45 +485,45 @@ write_node_info:                        # @write_node_info
 	xvinsgr2vr.w	$xr6, $t1, 5
 	xvpickve2gr.w	$t2, $xr7, 5
 	xvinsgr2vr.w	$xr6, $t2, 6
-	xvpickve2gr.w	$t3, $xr7, 6
-	xvinsgr2vr.w	$xr6, $t3, 7
-	xvpickve2gr.w	$t4, $xr7, 7
-	xvpickve2gr.w	$t5, $xr5, 7
-	xvinsgr2vr.w	$xr5, $t4, 0
-	xvpickve2gr.w	$t6, $xr0, 0
-	xvinsgr2vr.w	$xr5, $t6, 1
-	xvpickve2gr.w	$t7, $xr0, 1
-	xvinsgr2vr.w	$xr5, $t7, 2
-	xvpickve2gr.w	$t8, $xr0, 2
-	xvinsgr2vr.w	$xr5, $t8, 3
-	xvpickve2gr.w	$s2, $xr0, 3
-	xvinsgr2vr.w	$xr5, $s2, 4
-	xvpickve2gr.w	$s4, $xr0, 4
-	xvinsgr2vr.w	$xr5, $s4, 5
-	xvpickve2gr.w	$s6, $xr0, 5
-	xvinsgr2vr.w	$xr5, $s6, 6
+	xvpickve2gr.w	$a7, $xr7, 6
+	xvinsgr2vr.w	$xr6, $a7, 7
+	xvpickve2gr.w	$a7, $xr7, 7
+	xvpickve2gr.w	$t3, $xr5, 7
+	xvinsgr2vr.w	$xr5, $a7, 0
+	xvpickve2gr.w	$a7, $xr0, 0
+	xvinsgr2vr.w	$xr5, $a7, 1
+	xvpickve2gr.w	$a7, $xr0, 1
+	xvinsgr2vr.w	$xr5, $a7, 2
+	xvpickve2gr.w	$a7, $xr0, 2
+	xvinsgr2vr.w	$xr5, $a7, 3
+	xvpickve2gr.w	$a7, $xr0, 3
+	xvinsgr2vr.w	$xr5, $a7, 4
+	xvpickve2gr.w	$a7, $xr0, 4
+	xvinsgr2vr.w	$xr5, $a7, 5
+	xvpickve2gr.w	$a7, $xr0, 5
+	xvinsgr2vr.w	$xr5, $a7, 6
 	xvpickve2gr.w	$a7, $xr0, 6
 	xvinsgr2vr.w	$xr5, $a7, 7
-	xvinsgr2vr.w	$xr8, $t5, 0
-	xvpickve2gr.w	$t5, $xr6, 0
-	xvinsgr2vr.w	$xr8, $t5, 1
-	xvpickve2gr.w	$t5, $xr6, 1
-	xvinsgr2vr.w	$xr8, $t5, 2
-	xvpickve2gr.w	$t5, $xr6, 2
-	xvinsgr2vr.w	$xr8, $t5, 3
-	xvpickve2gr.w	$t5, $xr6, 3
-	xvinsgr2vr.w	$xr8, $t5, 4
+	xvinsgr2vr.w	$xr8, $t3, 0
+	xvpickve2gr.w	$t3, $xr6, 0
+	xvinsgr2vr.w	$xr8, $t3, 1
+	xvpickve2gr.w	$t3, $xr6, 1
+	xvinsgr2vr.w	$xr8, $t3, 2
+	xvpickve2gr.w	$t3, $xr6, 2
+	xvinsgr2vr.w	$xr8, $t3, 3
+	xvpickve2gr.w	$t3, $xr6, 3
+	xvinsgr2vr.w	$xr8, $t3, 4
 	xvinsgr2vr.w	$xr8, $t0, 5
 	xvinsgr2vr.w	$xr8, $t1, 6
 	xvinsgr2vr.w	$xr8, $t2, 7
-	xvinsgr2vr.w	$xr9, $t3, 0
-	xvinsgr2vr.w	$xr9, $t4, 1
-	xvinsgr2vr.w	$xr9, $t6, 2
-	xvinsgr2vr.w	$xr9, $t7, 3
-	xvinsgr2vr.w	$xr9, $t8, 4
-	xvinsgr2vr.w	$xr9, $s2, 5
-	xvinsgr2vr.w	$xr9, $s4, 6
-	xvinsgr2vr.w	$xr9, $s6, 7
+	xvpickve2gr.d	$t0, $xr7, 3
+	xvinsgr2vr.d	$xr9, $t0, 0
+	xvpickve2gr.d	$t0, $xr0, 0
+	xvinsgr2vr.d	$xr9, $t0, 1
+	xvpickve2gr.d	$t0, $xr0, 1
+	xvinsgr2vr.d	$xr9, $t0, 2
+	xvpickve2gr.d	$t0, $xr0, 2
+	xvinsgr2vr.d	$xr9, $t0, 3
 	xvand.v	$xr7, $xr7, $xr8
 	xvand.v	$xr8, $xr0, $xr9
 	xvxor.v	$xr9, $xr6, $xr2
@@ -713,12 +722,14 @@ write_node_info:                        # @write_node_info
 	addi.d	$a2, $a2, 64
 	bnez	$a6, .LBB0_18
 # %bb.19:                               # %middle.block90
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr4, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.d	$xr2, $xr0, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -1030,12 +1041,14 @@ write_node_info:                        # @write_node_info
 	addi.d	$a2, $a2, 64
 	bnez	$a4, .LBB0_31
 # %bb.32:                               # %middle.block113
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr0, $xr3, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1049,8 +1062,8 @@ write_node_info:                        # @write_node_info
 	move	$a4, $a1
 	bstrpick.d	$a1, $a0, 30, 2
 	slli.d	$a1, $a1, 2
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a3, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a3, %got_pc_hi20(g_board)
 	ld.d	$a3, $a3, %got_pc_lo12(g_board)
 	vinsgr2vr.w	$vr1, $a2, 0
@@ -1114,7 +1127,7 @@ write_node_info:                        # @write_node_info
 	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB0_35
 # %bb.36:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1409,12 +1422,14 @@ write_node_info:                        # @write_node_info
 	addi.d	$a2, $a2, 64
 	bnez	$a5, .LBB0_44
 # %bb.45:                               # %middle.block140
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr1, $xr3, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.d	$xr2, $xr0, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -1690,12 +1705,14 @@ write_node_info:                        # @write_node_info
 	addi.d	$a2, $a2, 64
 	bnez	$a4, .LBB0_57
 # %bb.58:                               # %middle.block163
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr0, $xr2, $xr0
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1713,8 +1730,8 @@ write_node_info:                        # @write_node_info
 	vinsgr2vr.w	$vr2, $zero, 0
 	pcalau12i	$a2, %got_pc_hi20(g_board)
 	ld.d	$a2, $a2, %got_pc_lo12(g_board)
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $a3, %pc_lo12(.LCPI0_1)
 	alsl.d	$a3, $a4, $s5, 2
 	add.d	$a3, $a3, $a2
 	pcalau12i	$a2, %got_pc_hi20(countbits16)
@@ -1776,7 +1793,7 @@ write_node_info:                        # @write_node_info
 	addi.d	$a3, $a3, 16
 	bnez	$a4, .LBB0_61
 # %bb.62:                               # %vec.epilog.middle.block180
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1850,7 +1867,15 @@ write_node_info:                        # @write_node_info
 .Lfunc_end0:
 	.size	write_node_info, .Lfunc_end0-write_node_info
                                         # -- End function
-	.p2align	5                               # -- Begin function tr_non_safe_moves_a_little_touchy
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function tr_non_safe_moves_a_little_touchy
+.LCPI1_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.p2align	5
 	.type	tr_non_safe_moves_a_little_touchy,@function
 tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 # %bb.0:
@@ -1878,7 +1903,7 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	ld.d	$a3, $a1, %got_pc_lo12(g_board)
 	slli.d	$a4, $a0, 7
 	add.d	$a1, $a3, $a4
-	ldx.w	$t0, $a3, $a4
+	ldx.w	$a7, $a3, $a4
 	ld.w	$a6, $a1, 4
 	ori	$a1, $zero, 16
 	bgeu	$a2, $a1, .LBB1_4
@@ -1895,7 +1920,7 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	xvinsgr2vr.w	$xr0, $a6, 0
 	xvpermi.d	$xr0, $xr0, 68
 	xvshuf4i.w	$xr0, $xr0, 0
-	xvinsgr2vr.w	$xr1, $t0, 0
+	xvinsgr2vr.w	$xr1, $a7, 0
 	xvpermi.d	$xr1, $xr1, 68
 	xvshuf4i.w	$xr4, $xr1, 0
 	add.d	$a1, $a4, $a3
@@ -1906,66 +1931,66 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	lu12i.w	$a7, 15
 	ori	$a7, $a7, 4095
 	xvreplgr2vr.w	$xr2, $a7
-	move	$a7, $a5
+	move	$t0, $a5
 	xvori.b	$xr3, $xr1, 0
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr6, $a1, -32
-	xvpickve2gr.w	$t0, $xr0, 7
+	xvpickve2gr.w	$a7, $xr0, 7
 	xvld	$xr0, $a1, 0
-	xvinsgr2vr.w	$xr5, $t0, 0
-	xvpickve2gr.w	$t0, $xr6, 0
-	xvinsgr2vr.w	$xr5, $t0, 1
-	xvpickve2gr.w	$t0, $xr6, 1
-	xvinsgr2vr.w	$xr5, $t0, 2
-	xvpickve2gr.w	$t0, $xr6, 2
-	xvinsgr2vr.w	$xr5, $t0, 3
+	xvinsgr2vr.w	$xr5, $a7, 0
+	xvpickve2gr.w	$a7, $xr6, 0
+	xvinsgr2vr.w	$xr5, $a7, 1
+	xvpickve2gr.w	$a7, $xr6, 1
+	xvinsgr2vr.w	$xr5, $a7, 2
+	xvpickve2gr.w	$a7, $xr6, 2
+	xvinsgr2vr.w	$xr5, $a7, 3
 	xvpickve2gr.w	$t1, $xr6, 3
 	xvinsgr2vr.w	$xr5, $t1, 4
 	xvpickve2gr.w	$t2, $xr6, 4
 	xvinsgr2vr.w	$xr5, $t2, 5
 	xvpickve2gr.w	$t3, $xr6, 5
 	xvinsgr2vr.w	$xr5, $t3, 6
-	xvpickve2gr.w	$t4, $xr6, 6
-	xvinsgr2vr.w	$xr5, $t4, 7
-	xvpickve2gr.w	$t5, $xr6, 7
-	xvpickve2gr.w	$t6, $xr4, 7
-	xvinsgr2vr.w	$xr4, $t5, 0
-	xvpickve2gr.w	$t7, $xr0, 0
-	xvinsgr2vr.w	$xr4, $t7, 1
-	xvpickve2gr.w	$t8, $xr0, 1
-	xvinsgr2vr.w	$xr4, $t8, 2
-	xvpickve2gr.w	$s0, $xr0, 2
-	xvinsgr2vr.w	$xr4, $s0, 3
-	xvpickve2gr.w	$s1, $xr0, 3
-	xvinsgr2vr.w	$xr4, $s1, 4
-	xvpickve2gr.w	$s2, $xr0, 4
-	xvinsgr2vr.w	$xr4, $s2, 5
-	xvpickve2gr.w	$s3, $xr0, 5
-	xvinsgr2vr.w	$xr4, $s3, 6
-	xvpickve2gr.w	$t0, $xr0, 6
-	xvinsgr2vr.w	$xr4, $t0, 7
-	xvinsgr2vr.w	$xr7, $t6, 0
-	xvpickve2gr.w	$t6, $xr5, 0
-	xvinsgr2vr.w	$xr7, $t6, 1
-	xvpickve2gr.w	$t6, $xr5, 1
-	xvinsgr2vr.w	$xr7, $t6, 2
-	xvpickve2gr.w	$t6, $xr5, 2
-	xvinsgr2vr.w	$xr7, $t6, 3
-	xvpickve2gr.w	$t6, $xr5, 3
-	xvinsgr2vr.w	$xr7, $t6, 4
+	xvpickve2gr.w	$a7, $xr6, 6
+	xvinsgr2vr.w	$xr5, $a7, 7
+	xvpickve2gr.w	$a7, $xr6, 7
+	xvpickve2gr.w	$t4, $xr4, 7
+	xvinsgr2vr.w	$xr4, $a7, 0
+	xvpickve2gr.w	$a7, $xr0, 0
+	xvinsgr2vr.w	$xr4, $a7, 1
+	xvpickve2gr.w	$a7, $xr0, 1
+	xvinsgr2vr.w	$xr4, $a7, 2
+	xvpickve2gr.w	$a7, $xr0, 2
+	xvinsgr2vr.w	$xr4, $a7, 3
+	xvpickve2gr.w	$a7, $xr0, 3
+	xvinsgr2vr.w	$xr4, $a7, 4
+	xvpickve2gr.w	$a7, $xr0, 4
+	xvinsgr2vr.w	$xr4, $a7, 5
+	xvpickve2gr.w	$a7, $xr0, 5
+	xvinsgr2vr.w	$xr4, $a7, 6
+	xvpickve2gr.w	$a7, $xr0, 6
+	xvinsgr2vr.w	$xr4, $a7, 7
+	xvinsgr2vr.w	$xr7, $t4, 0
+	xvpickve2gr.w	$t4, $xr5, 0
+	xvinsgr2vr.w	$xr7, $t4, 1
+	xvpickve2gr.w	$t4, $xr5, 1
+	xvinsgr2vr.w	$xr7, $t4, 2
+	xvpickve2gr.w	$t4, $xr5, 2
+	xvinsgr2vr.w	$xr7, $t4, 3
+	xvpickve2gr.w	$t4, $xr5, 3
+	xvinsgr2vr.w	$xr7, $t4, 4
 	xvinsgr2vr.w	$xr7, $t1, 5
 	xvinsgr2vr.w	$xr7, $t2, 6
 	xvinsgr2vr.w	$xr7, $t3, 7
-	xvinsgr2vr.w	$xr8, $t4, 0
-	xvinsgr2vr.w	$xr8, $t5, 1
-	xvinsgr2vr.w	$xr8, $t7, 2
-	xvinsgr2vr.w	$xr8, $t8, 3
-	xvinsgr2vr.w	$xr8, $s0, 4
-	xvinsgr2vr.w	$xr8, $s1, 5
-	xvinsgr2vr.w	$xr8, $s2, 6
-	xvinsgr2vr.w	$xr8, $s3, 7
+	xvpickve2gr.d	$t1, $xr6, 3
+	xvinsgr2vr.d	$xr8, $t1, 0
+	xvpickve2gr.d	$t1, $xr0, 0
+	xvinsgr2vr.d	$xr8, $t1, 1
+	xvpickve2gr.d	$t1, $xr0, 1
+	xvinsgr2vr.d	$xr8, $t1, 2
+	xvpickve2gr.d	$t1, $xr0, 2
+	xvinsgr2vr.d	$xr8, $t1, 3
 	xvor.v	$xr6, $xr6, $xr7
 	xvor.v	$xr7, $xr0, $xr8
 	xvsrli.w	$xr8, $xr5, 1
@@ -2162,16 +2187,18 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	xvadd.w	$xr3, $xr6, $xr3
 	xvadd.w	$xr1, $xr1, $xr7
 	xvadd.w	$xr3, $xr3, $xr8
-	addi.d	$a7, $a7, -16
+	addi.d	$t0, $t0, -16
 	addi.d	$a1, $a1, 64
-	bnez	$a7, .LBB1_5
+	bnez	$t0, .LBB1_5
 # %bb.6:                                # %middle.block
+	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
+	xvld	$xr2, $a1, %pc_lo12(.LCPI1_0)
 	xvadd.w	$xr1, $xr3, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
+	xvpermi.d	$xr3, $xr1, 78
+	xvshuf.d	$xr2, $xr0, $xr3
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -2192,28 +2219,28 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	.p2align	4, , 16
 .LBB1_9:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a7, $a6
+	move	$t0, $a6
 	ld.w	$a6, $a3, 0
-	or	$t0, $a6, $t0
-	bstrpick.d	$t1, $a7, 31, 1
-	or	$t0, $t0, $a7
-	slli.d	$t2, $t0, 1
-	slli.d	$t3, $a7, 2
+	or	$a7, $a6, $a7
+	bstrpick.d	$t1, $t0, 31, 1
+	or	$a7, $a7, $t0
+	slli.d	$t2, $a7, 1
+	slli.d	$t3, $t0, 2
 	or	$t1, $t1, $t3
 	or	$t1, $t1, $t2
-	or	$t2, $t0, $t1
+	or	$t2, $a7, $t1
 	andn	$t2, $a5, $t2
-	nor	$t0, $t0, $t1
-	bstrpick.d	$t0, $t0, 15, 0
-	slli.d	$t0, $t0, 2
-	ldx.w	$t0, $a4, $t0
+	nor	$a7, $a7, $t1
+	bstrpick.d	$a7, $a7, 15, 0
+	slli.d	$a7, $a7, 2
+	ldx.w	$a7, $a4, $a7
 	srli.d	$t1, $t2, 14
 	ldx.w	$t1, $a4, $t1
-	add.d	$a1, $t0, $a1
+	add.d	$a1, $a7, $a1
 	add.w	$a1, $a1, $t1
 	addi.d	$a2, $a2, -1
 	addi.d	$a3, $a3, 4
-	move	$t0, $a7
+	move	$a7, $t0
 	bnez	$a2, .LBB1_9
 .LBB1_10:                               # %._crit_edge
 	addi.w	$a2, $zero, -1

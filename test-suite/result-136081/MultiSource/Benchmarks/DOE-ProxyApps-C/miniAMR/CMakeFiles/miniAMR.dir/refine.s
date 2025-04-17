@@ -10,9 +10,14 @@
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI0_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_1:
+.LCPI0_2:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -299,12 +304,14 @@ refine:                                 # @refine
 	addi.d	$a2, $a2, 64
 	bnez	$a5, .LBB0_32
 # %bb.33:                               # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI0_1)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -320,8 +327,8 @@ refine:                                 # @refine
 	slli.d	$a6, $a5, 2
 	srli.d	$a7, $a3, 2
 	ori	$a5, $zero, 1
-	pcalau12i	$t0, %pc_hi20(.LCPI0_1)
-	vld	$vr0, $t0, %pc_lo12(.LCPI0_1)
+	pcalau12i	$t0, %pc_hi20(.LCPI0_2)
+	vld	$vr0, $t0, %pc_lo12(.LCPI0_2)
 	bstrins.d	$a5, $a7, 30, 2
 	vinsgr2vr.w	$vr1, $a2, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -338,7 +345,7 @@ refine:                                 # @refine
 	addi.d	$a2, $a2, 16
 	bnez	$a4, .LBB0_36
 # %bb.37:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

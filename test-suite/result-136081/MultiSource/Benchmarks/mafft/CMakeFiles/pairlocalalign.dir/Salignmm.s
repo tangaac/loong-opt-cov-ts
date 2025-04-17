@@ -503,6 +503,11 @@ imp_match_init_strict:                  # @imp_match_init_strict
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI3_9:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI3_4:
@@ -3138,12 +3143,14 @@ A__align:                               # @A__align
 	bnez	$s6, .LBB3_205
 # %bb.206:                              # %middle.block919
                                         #   in Loop: Header=BB3_192 Depth=1
+	pcalau12i	$t7, %pc_hi20(.LCPI3_9)
+	xvld	$xr7, $t7, %pc_lo12(.LCPI3_9)
 	xvadd.w	$xr5, $xr6, $xr5
 	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvadd.w	$xr5, $xr5, $xr6
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
 	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
+	xvrepl128vei.d	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
 	xvpermi.d	$xr6, $xr5, 68
 	xvrepl128vei.w	$xr6, $xr6, 1
@@ -4098,6 +4105,11 @@ match_calc:                             # @match_calc
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI5_4:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.p2align	5
 	.type	Atracking,@function
@@ -4434,12 +4446,14 @@ Atracking:                              # @Atracking
 	bnez	$s1, .LBB5_43
 # %bb.44:                               # %middle.block43
                                         #   in Loop: Header=BB5_35 Depth=1
+	pcalau12i	$t2, %pc_hi20(.LCPI5_4)
+	xvld	$xr7, $t2, %pc_lo12(.LCPI5_4)
 	xvadd.w	$xr5, $xr6, $xr5
 	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvadd.w	$xr5, $xr5, $xr6
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
 	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
+	xvrepl128vei.d	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
 	xvpermi.d	$xr6, $xr5, 68
 	xvrepl128vei.w	$xr6, $xr6, 1
@@ -4654,6 +4668,11 @@ Atracking:                              # @Atracking
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI6_9:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
 .LCPI6_4:
@@ -6925,7 +6944,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	ld.d	$a0, $sp, 280                   # 8-byte Folded Reload
 	bltz	$a0, .LBB6_193
 # %bb.162:                              # %.lr.ph41.i.preheader
-	move	$t5, $zero
+	move	$t6, $zero
 	addi.w	$a2, $zero, -1
 	ori	$a3, $zero, 1
 	ori	$a4, $zero, 45
@@ -6950,8 +6969,8 @@ A__align_gapmap:                        # @A__align_gapmap
 	slli.d	$t2, $t1, 3
 	ldx.d	$t2, $s3, $t2
 	addi.w	$t3, $t0, 0
-	slli.d	$t6, $t3, 2
-	ldx.w	$t4, $t2, $t6
+	slli.d	$t5, $t3, 2
+	ldx.w	$t4, $t2, $t5
 	bge	$a2, $t4, .LBB6_171
 # %bb.164:                              #   in Loop: Header=BB6_163 Depth=1
 	beqz	$t4, .LBB6_192
@@ -7020,14 +7039,14 @@ A__align_gapmap:                        # @A__align_gapmap
 	sub.d	$s0, $s1, $s2
 	sub.d	$t7, $s6, $s2
 	sub.d	$t8, $s5, $s2
-	xvinsgr2vr.w	$xr6, $t5, 0
-	pcalau12i	$t5, %pc_hi20(.LCPI6_8)
-	xvld	$xr5, $t5, %pc_lo12(.LCPI6_8)
+	xvinsgr2vr.w	$xr6, $t6, 0
+	pcalau12i	$t6, %pc_hi20(.LCPI6_8)
+	xvld	$xr5, $t6, %pc_lo12(.LCPI6_8)
 	xvpermi.d	$xr6, $xr6, 68
 	xvinsgr2vr.w	$xr7, $zero, 0
 	xvpermi.d	$xr7, $xr7, 68
 	xvshuf.w	$xr5, $xr7, $xr6
-	addi.d	$t5, $s5, -8
+	addi.d	$t6, $s5, -8
 	addi.d	$s3, $s6, -8
 	move	$s5, $s2
 	xvori.b	$xr6, $xr0, 0
@@ -7035,27 +7054,29 @@ A__align_gapmap:                        # @A__align_gapmap
 .LBB6_176:                              # %vector.body784
                                         #   Parent Loop BB6_163 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vst	$vr1, $t5, -8
+	vst	$vr1, $t6, -8
 	vst	$vr2, $s3, -8
 	xvaddi.wu	$xr5, $xr5, 1
 	xvaddi.wu	$xr6, $xr6, 1
 	addi.d	$s5, $s5, -16
-	addi.d	$t5, $t5, -16
+	addi.d	$t6, $t6, -16
 	addi.d	$s3, $s3, -16
 	bnez	$s5, .LBB6_176
 # %bb.177:                              # %middle.block791
                                         #   in Loop: Header=BB6_163 Depth=1
+	pcalau12i	$t6, %pc_hi20(.LCPI6_9)
+	xvld	$xr7, $t6, %pc_lo12(.LCPI6_9)
 	xvadd.w	$xr5, $xr6, $xr5
 	xvpermi.d	$xr6, $xr5, 78
-	xvshuf4i.w	$xr6, $xr6, 228
-	xvadd.w	$xr5, $xr5, $xr6
+	xvshuf.d	$xr7, $xr0, $xr6
+	xvadd.w	$xr5, $xr5, $xr7
 	xvpermi.d	$xr6, $xr5, 68
-	xvshuf4i.w	$xr6, $xr6, 14
+	xvrepl128vei.d	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
 	xvpermi.d	$xr6, $xr5, 68
 	xvrepl128vei.w	$xr6, $xr6, 1
 	xvadd.w	$xr5, $xr5, $xr6
-	xvpickve2gr.w	$t5, $xr5, 0
+	xvpickve2gr.w	$t6, $xr5, 0
 	move	$s3, $a0
 	bne	$s2, $s1, .LBB6_184
 	b	.LBB6_186
@@ -7082,8 +7103,8 @@ A__align_gapmap:                        # @A__align_gapmap
 .LBB6_181:                              # %._crit_edge20.loopexit.i
                                         #   in Loop: Header=BB6_163 Depth=1
 	addi.d	$t7, $s8, -1
-	add.d	$t5, $t7, $t5
-	sub.d	$t5, $t5, $t2
+	add.d	$t6, $t7, $t6
+	sub.d	$t6, $t6, $t2
 	move	$s5, $s0
 	move	$s6, $t8
 	bne	$t4, $a2, .LBB6_173
@@ -7099,7 +7120,7 @@ A__align_gapmap:                        # @A__align_gapmap
 	move	$t8, $s5
 .LBB6_184:                              # %.lr.ph29.i.preheader
                                         #   in Loop: Header=BB6_163 Depth=1
-	add.d	$t5, $t5, $s0
+	add.d	$t6, $t6, $s0
 	.p2align	4, , 16
 .LBB6_185:                              # %.lr.ph29.i
                                         #   Parent Loop BB6_163 Depth=1
@@ -7125,11 +7146,11 @@ A__align_gapmap:                        # @A__align_gapmap
 	ld.d	$s1, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s1, $s1, %pc_lo12(impmtx)
 	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ldx.w	$t6, $s2, $t6
+	ldx.w	$t5, $s2, $t5
 	slli.d	$s0, $s0, 3
 	ldx.d	$s0, $s1, $s0
-	slli.d	$t6, $t6, 2
-	fldx.s	$fa5, $s0, $t6
+	slli.d	$t5, $t5, 2
+	fldx.s	$fa5, $s0, $t5
 	fld.s	$fa6, $a1, 0
 	fadd.s	$fa5, $fa5, $fa6
 	fst.s	$fa5, $a1, 0
@@ -7142,11 +7163,11 @@ A__align_gapmap:                        # @A__align_gapmap
 	addi.d	$s5, $t8, -1
 	st.b	$a4, $t8, -1
 	addi.d	$s6, $t7, -1
-	addi.w	$t5, $t5, 2
+	addi.w	$t6, $t6, 2
 	st.b	$a4, $t7, -1
 	move	$s8, $t2
 	ld.d	$t1, $sp, 280                   # 8-byte Folded Reload
-	bge	$t1, $t5, .LBB6_163
+	bge	$t1, $t6, .LBB6_163
 	b	.LBB6_193
 	.p2align	4, , 16
 .LBB6_192:                              #   in Loop: Header=BB6_163 Depth=1

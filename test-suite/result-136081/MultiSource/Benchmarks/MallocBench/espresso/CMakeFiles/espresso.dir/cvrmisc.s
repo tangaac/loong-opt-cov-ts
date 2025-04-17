@@ -1,7 +1,14 @@
 	.file	"cvrmisc.c"
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function cover_cost
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function cover_cost
 .LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI0_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -186,12 +193,14 @@ cover_cost:                             # @cover_cost
 	addi.d	$a3, $a3, 64
 	bnez	$a7, .LBB0_26
 # %bb.27:                               # %middle.block
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a3, %pc_lo12(.LCPI0_0)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -205,8 +214,8 @@ cover_cost:                             # @cover_cost
 .LBB0_29:                               # %vec.epilog.ph
 	move	$a7, $a6
 	bstrpick.d	$a6, $a2, 30, 2
-	pcalau12i	$t0, %pc_hi20(.LCPI0_0)
-	vld	$vr0, $t0, %pc_lo12(.LCPI0_0)
+	pcalau12i	$t0, %pc_hi20(.LCPI0_1)
+	vld	$vr0, $t0, %pc_lo12(.LCPI0_1)
 	slli.d	$a6, $a6, 2
 	vinsgr2vr.w	$vr1, $a3, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -222,7 +231,7 @@ cover_cost:                             # @cover_cost
 	addi.d	$a7, $a7, 16
 	bnez	$a3, .LBB0_30
 # %bb.31:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

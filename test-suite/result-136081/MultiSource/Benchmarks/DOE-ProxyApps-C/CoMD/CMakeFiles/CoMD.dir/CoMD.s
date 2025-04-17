@@ -5,9 +5,16 @@
 	.word	0x3a800000                      # float 9.765625E-4
 .LCPI0_1:
 	.word	0x45b00000                      # float 5632
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0
+.LCPI0_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI0_2:
+.LCPI0_3:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -224,7 +231,7 @@ main:                                   # @main
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strcasecmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB0_81
+	bnez	$a0, .LBB0_80
 # %bb.17:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 2288
@@ -237,7 +244,7 @@ main:                                   # @main
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(bcastParallel)
 	jirl	$ra, $ra, 0
-	bnez	$s1, .LBB0_84
+	bnez	$s1, .LBB0_83
 # %bb.18:                               # %initSimulation.exit
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
@@ -559,6 +566,7 @@ main:                                   # @main
 	ld.d	$a2, $fp, 24
 	ld.w	$a1, $a2, 12
 	ori	$a3, $zero, 1
+	pcalau12i	$s5, %pc_hi20(.LCPI0_2)
 	blt	$a1, $a3, .LBB0_27
 # %bb.21:                               # %iter.check
 	ld.d	$a2, $a2, 120
@@ -566,10 +574,10 @@ main:                                   # @main
 	bltu	$a1, $a3, .LBB0_24
 # %bb.22:                               # %vector.memcheck
 	alsl.d	$a3, $a1, $a2, 2
-	bgeu	$a0, $a3, .LBB0_63
+	bgeu	$a0, $a3, .LBB0_62
 # %bb.23:                               # %vector.memcheck
 	addi.d	$a3, $a0, 4
-	bgeu	$a2, $a3, .LBB0_63
+	bgeu	$a2, $a3, .LBB0_62
 .LBB0_24:
 	move	$a3, $zero
 	move	$a4, $zero
@@ -592,7 +600,7 @@ main:                                   # @main
 	ld.d	$a0, $fp, 32
 	addi.d	$a1, $a0, 4
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
+	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(addIntParallel)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 10
@@ -608,7 +616,7 @@ main:                                   # @main
 	fdiv.d	$fs0, $fa0, $fa1
 	pcaddu18i	$ra, %call36(printRank)
 	jirl	$ra, $ra, 0
-	movfr2gr.d	$s1, $fs0
+	movfr2gr.d	$s2, $fs0
 	beqz	$a0, .LBB0_29
 # %bb.28:
 	ld.d	$a1, $s4, 0
@@ -621,7 +629,7 @@ main:                                   # @main
 	ld.d	$a0, $s4, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.10)
-	move	$a2, $s1
+	move	$a2, $s2
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -630,6 +638,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 .LBB0_29:                               # %initValidate.exit
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(timestampBarrier)
@@ -638,20 +647,20 @@ main:                                   # @main
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	pcaddu18i	$ra, %call36(timestampBarrier)
 	jirl	$ra, $ra, 0
-	ld.w	$s5, $fp, 0
+	ld.w	$s6, $fp, 0
 	ld.w	$s3, $fp, 4
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(profileStart)
 	jirl	$ra, $ra, 0
-	blt	$s5, $s2, .LBB0_48
-# %bb.30:                               # %.lr.ph.preheader
 	move	$s2, $zero
-	ori	$s6, $zero, 1
-	ori	$s7, $zero, 4
-	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $a0, %pc_lo12(.LCPI0_2)
+	blt	$s6, $s1, .LBB0_48
+# %bb.30:                               # %.lr.ph.preheader
+	ori	$s7, $zero, 1
+	ori	$s8, $zero, 4
+	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
+	vld	$vr0, $a0, %pc_lo12(.LCPI0_3)
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-	ori	$s8, $zero, 16
+	ori	$s1, $zero, 16
 	vinsgr2vr.w	$vr0, $zero, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	xvrepli.b	$xr0, 0
@@ -693,7 +702,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(profileStop)
 	jirl	$ra, $ra, 0
 	add.w	$s2, $s2, $s3
-	bge	$s2, $s5, .LBB0_49
+	bge	$s2, $s6, .LBB0_48
 .LBB0_32:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_42 Depth 2
@@ -706,11 +715,11 @@ main:                                   # @main
 	st.w	$zero, $a0, 0
 	ld.d	$a2, $fp, 24
 	ld.w	$a1, $a2, 12
-	blt	$a1, $s6, .LBB0_31
+	blt	$a1, $s7, .LBB0_31
 # %bb.33:                               # %iter.check47
                                         #   in Loop: Header=BB0_32 Depth=1
 	ld.d	$a2, $a2, 120
-	bltu	$a1, $s7, .LBB0_36
+	bltu	$a1, $s8, .LBB0_36
 # %bb.34:                               # %vector.memcheck39
                                         #   in Loop: Header=BB0_32 Depth=1
 	alsl.d	$a3, $a1, $a2, 2
@@ -739,7 +748,7 @@ main:                                   # @main
 	b	.LBB0_31
 .LBB0_39:                               # %vector.main.loop.iter.check49
                                         #   in Loop: Header=BB0_32 Depth=1
-	bgeu	$a1, $s8, .LBB0_41
+	bgeu	$a1, $s1, .LBB0_41
 # %bb.40:                               #   in Loop: Header=BB0_32 Depth=1
 	move	$a3, $zero
 	move	$a4, $zero
@@ -765,12 +774,13 @@ main:                                   # @main
 	bnez	$a5, .LBB0_42
 # %bb.43:                               # %middle.block60
                                         #   in Loop: Header=BB0_32 Depth=1
+	xvld	$xr2, $s5, %pc_lo12(.LCPI0_2)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -804,7 +814,7 @@ main:                                   # @main
 	bnez	$a4, .LBB0_46
 # %bb.47:                               # %vec.epilog.middle.block77
                                         #   in Loop: Header=BB0_32 Depth=1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -812,44 +822,42 @@ main:                                   # @main
 	st.w	$a4, $a0, 0
 	beq	$a3, $a1, .LBB0_31
 	b	.LBB0_37
-.LBB0_48:
-	move	$s2, $zero
-.LBB0_49:                               # %._crit_edge
+.LBB0_48:                               # %._crit_edge
 	ori	$a0, $zero, 1
-	ori	$s3, $zero, 1
+	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(profileStop)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 32
 	st.w	$zero, $a0, 0
 	ld.d	$a2, $fp, 24
 	ld.w	$a1, $a2, 12
-	blt	$a1, $s3, .LBB0_56
-# %bb.50:                               # %iter.check89
+	blt	$a1, $s1, .LBB0_55
+# %bb.49:                               # %iter.check89
 	ld.d	$a2, $a2, 120
 	ori	$a3, $zero, 4
-	bltu	$a1, $a3, .LBB0_53
-# %bb.51:                               # %vector.memcheck81
+	bltu	$a1, $a3, .LBB0_52
+# %bb.50:                               # %vector.memcheck81
 	alsl.d	$a3, $a1, $a2, 2
-	bgeu	$a0, $a3, .LBB0_65
-# %bb.52:                               # %vector.memcheck81
+	bgeu	$a0, $a3, .LBB0_64
+# %bb.51:                               # %vector.memcheck81
 	addi.d	$a3, $a0, 4
-	bgeu	$a2, $a3, .LBB0_65
-.LBB0_53:
+	bgeu	$a2, $a3, .LBB0_64
+.LBB0_52:
 	move	$a3, $zero
 	move	$a4, $zero
-.LBB0_54:                               # %vec.epilog.scalar.ph107.preheader
+.LBB0_53:                               # %vec.epilog.scalar.ph107.preheader
 	sub.d	$a1, $a1, $a3
 	alsl.d	$a2, $a3, $a2, 2
 	.p2align	4, , 16
-.LBB0_55:                               # %vec.epilog.scalar.ph107
+.LBB0_54:                               # %vec.epilog.scalar.ph107
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
 	add.d	$a4, $a3, $a4
 	st.w	$a4, $a0, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB0_55
-.LBB0_56:                               # %sumAtoms.exit14
+	bnez	$a1, .LBB0_54
+.LBB0_55:                               # %sumAtoms.exit14
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(profileStart)
 	jirl	$ra, $ra, 0
@@ -874,15 +882,15 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(printRank)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_60
-# %bb.57:
+	beqz	$a0, .LBB0_59
+# %bb.56:
 	ld.d	$a0, $fp, 32
 	fld.d	$fa0, $fp, 48
 	fld.d	$fa1, $fp, 56
-	ld.w	$s2, $a0, 4
+	ld.w	$s1, $a0, 4
 	fadd.d	$fa0, $fa0, $fa1
 	ld.d	$a1, $s4, 0
-	movgr2fr.w	$fa1, $s2
+	movgr2fr.w	$fa1, $s1
 	ffint.d.w	$fa1, $fa1
 	fdiv.d	$fs1, $fa0, $fa1
 	ori	$a0, $zero, 10
@@ -902,7 +910,7 @@ main:                                   # @main
 	ld.d	$a0, $s4, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.12)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.12)
-	move	$a2, $s1
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s4, 0
@@ -918,8 +926,8 @@ main:                                   # @main
 	addi.d	$a1, $a1, %pc_lo12(.L.str.14)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	bne	$s2, $s0, .LBB0_59
-# %bb.58:
+	bne	$s1, $s0, .LBB0_58
+# %bb.57:
 	ld.d	$a1, $fp, 32
 	ld.d	$a0, $s4, 0
 	ld.w	$a2, $a1, 4
@@ -927,10 +935,10 @@ main:                                   # @main
 	addi.d	$a1, $a1, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	b	.LBB0_60
-.LBB0_59:
+	b	.LBB0_59
+.LBB0_58:
 	ld.d	$a3, $s4, 0
-	sub.w	$s0, $s2, $s0
+	sub.w	$s0, $s1, $s0
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.16)
 	ori	$a1, $zero, 30
@@ -950,7 +958,7 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-.LBB0_60:
+.LBB0_59:
 	addi.d	$s0, $fp, 72
 	addi.d	$s1, $fp, 24
 	move	$a0, $zero
@@ -958,12 +966,12 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 64
 	st.d	$a0, $sp, 80
-	beqz	$a0, .LBB0_62
-# %bb.61:
+	beqz	$a0, .LBB0_61
+# %bb.60:
 	ld.d	$a1, $a0, 56
 	addi.d	$a0, $sp, 80
 	jirl	$ra, $a1, 0
-.LBB0_62:                               # %destroySimulation.exit
+.LBB0_61:                               # %destroySimulation.exit
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(destroyLinkCells)
 	jirl	$ra, $ra, 0
@@ -1009,21 +1017,21 @@ main:                                   # @main
 	ld.d	$ra, $sp, 2024                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 2032
 	ret
-.LBB0_63:                               # %vector.main.loop.iter.check
+.LBB0_62:                               # %vector.main.loop.iter.check
 	ori	$a3, $zero, 16
-	bgeu	$a1, $a3, .LBB0_67
-# %bb.64:
+	bgeu	$a1, $a3, .LBB0_66
+# %bb.63:
 	move	$a3, $zero
 	move	$a4, $zero
-	b	.LBB0_71
-.LBB0_65:                               # %vector.main.loop.iter.check91
+	b	.LBB0_70
+.LBB0_64:                               # %vector.main.loop.iter.check91
 	ori	$a3, $zero, 16
-	bgeu	$a1, $a3, .LBB0_74
-# %bb.66:
+	bgeu	$a1, $a3, .LBB0_73
+# %bb.65:
 	move	$a3, $zero
 	move	$a4, $zero
-	b	.LBB0_78
-.LBB0_67:                               # %vector.ph
+	b	.LBB0_77
+.LBB0_66:                               # %vector.ph
 	bstrpick.d	$a3, $a1, 30, 4
 	slli.d	$a3, $a3, 4
 	xvrepli.b	$xr0, 0
@@ -1031,7 +1039,7 @@ main:                                   # @main
 	move	$a5, $a3
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB0_68:                               # %vector.body
+.LBB0_67:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a4, -32
 	xvld	$xr3, $a4, 0
@@ -1039,14 +1047,15 @@ main:                                   # @main
 	xvadd.w	$xr1, $xr3, $xr1
 	addi.d	$a5, $a5, -16
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB0_68
-# %bb.69:                               # %middle.block
+	bnez	$a5, .LBB0_67
+# %bb.68:                               # %middle.block
+	xvld	$xr2, $s5, %pc_lo12(.LCPI0_2)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -1054,14 +1063,14 @@ main:                                   # @main
 	xvpickve2gr.w	$a4, $xr0, 0
 	st.w	$a4, $a0, 0
 	beq	$a3, $a1, .LBB0_27
-# %bb.70:                               # %vec.epilog.iter.check
+# %bb.69:                               # %vec.epilog.iter.check
 	andi	$a5, $a1, 12
 	beqz	$a5, .LBB0_25
-.LBB0_71:                               # %vec.epilog.ph
+.LBB0_70:                               # %vec.epilog.ph
 	move	$a5, $a3
 	bstrpick.d	$a3, $a1, 30, 2
-	pcalau12i	$a6, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $a6, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI0_3)
+	vld	$vr0, $a6, %pc_lo12(.LCPI0_3)
 	slli.d	$a3, $a3, 2
 	vinsgr2vr.w	$vr1, $a4, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -1069,15 +1078,15 @@ main:                                   # @main
 	sub.d	$a4, $a5, $a3
 	alsl.d	$a5, $a5, $a2, 2
 	.p2align	4, , 16
-.LBB0_72:                               # %vec.epilog.vector.body
+.LBB0_71:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a5, 0
 	vadd.w	$vr0, $vr1, $vr0
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB0_72
-# %bb.73:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	bnez	$a4, .LBB0_71
+# %bb.72:                               # %vec.epilog.middle.block
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1085,7 +1094,7 @@ main:                                   # @main
 	st.w	$a4, $a0, 0
 	bne	$a3, $a1, .LBB0_25
 	b	.LBB0_27
-.LBB0_74:                               # %vector.ph92
+.LBB0_73:                               # %vector.ph92
 	bstrpick.d	$a3, $a1, 30, 4
 	slli.d	$a3, $a3, 4
 	xvrepli.b	$xr0, 0
@@ -1093,7 +1102,7 @@ main:                                   # @main
 	move	$a5, $a3
 	xvori.b	$xr1, $xr0, 0
 	.p2align	4, , 16
-.LBB0_75:                               # %vector.body95
+.LBB0_74:                               # %vector.body95
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr2, $a4, -32
 	xvld	$xr3, $a4, 0
@@ -1101,29 +1110,30 @@ main:                                   # @main
 	xvadd.w	$xr1, $xr3, $xr1
 	addi.d	$a5, $a5, -16
 	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB0_75
-# %bb.76:                               # %middle.block102
+	bnez	$a5, .LBB0_74
+# %bb.75:                               # %middle.block102
+	xvld	$xr2, $s5, %pc_lo12(.LCPI0_2)
 	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a4, $xr0, 0
 	st.w	$a4, $a0, 0
-	beq	$a3, $a1, .LBB0_56
-# %bb.77:                               # %vec.epilog.iter.check109
+	beq	$a3, $a1, .LBB0_55
+# %bb.76:                               # %vec.epilog.iter.check109
 	andi	$a5, $a1, 12
-	beqz	$a5, .LBB0_54
-.LBB0_78:                               # %vec.epilog.ph108
+	beqz	$a5, .LBB0_53
+.LBB0_77:                               # %vec.epilog.ph108
 	move	$a5, $a3
 	bstrpick.d	$a3, $a1, 30, 2
-	pcalau12i	$a6, %pc_hi20(.LCPI0_2)
-	vld	$vr0, $a6, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI0_3)
+	vld	$vr0, $a6, %pc_lo12(.LCPI0_3)
 	slli.d	$a3, $a3, 2
 	vinsgr2vr.w	$vr1, $a4, 0
 	vinsgr2vr.w	$vr2, $zero, 0
@@ -1131,28 +1141,28 @@ main:                                   # @main
 	sub.d	$a4, $a5, $a3
 	alsl.d	$a5, $a5, $a2, 2
 	.p2align	4, , 16
-.LBB0_79:                               # %vec.epilog.vector.body114
+.LBB0_78:                               # %vec.epilog.vector.body114
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a5, 0
 	vadd.w	$vr0, $vr1, $vr0
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 16
-	bnez	$a4, .LBB0_79
-# %bb.80:                               # %vec.epilog.middle.block119
-	vshuf4i.w	$vr1, $vr0, 14
+	bnez	$a4, .LBB0_78
+# %bb.79:                               # %vec.epilog.middle.block119
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a4, $vr0, 0
 	st.w	$a4, $a0, 0
-	bne	$a3, $a1, .LBB0_54
-	b	.LBB0_56
-.LBB0_81:
+	bne	$a3, $a1, .LBB0_53
+	b	.LBB0_55
+.LBB0_80:
 	addi.d	$s1, $s1, 4
 	pcaddu18i	$ra, %call36(printRank)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_83
-# %bb.82:
+	beqz	$a0, .LBB0_82
+# %bb.81:
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.8)
@@ -1160,7 +1170,7 @@ main:                                   # @main
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-.LBB0_83:                               # %.thread.i.i
+.LBB0_82:                               # %.thread.i.i
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 2288
 	add.d	$a0, $sp, $a0
@@ -1172,7 +1182,7 @@ main:                                   # @main
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(bcastParallel)
 	jirl	$ra, $ra, 0
-.LBB0_84:
+.LBB0_83:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0

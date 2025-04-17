@@ -1,6 +1,13 @@
 	.file	"struct_stencil.c"
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function hypre_StructStencilCreate
+.LCPI0_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	hypre_StructStencilCreate       # -- Begin function hypre_StructStencilCreate
+	.globl	hypre_StructStencilCreate
 	.p2align	5
 	.type	hypre_StructStencilCreate,@function
 hypre_StructStencilCreate:              # @hypre_StructStencilCreate
@@ -167,12 +174,14 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	addi.d	$a2, $a2, 192
 	bnez	$a3, .LBB0_7
 # %bb.8:                                # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI0_0)
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.wu	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.wu	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -232,7 +241,7 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	addi.d	$a3, $a3, 48
 	bnez	$a2, .LBB0_11
 # %bb.12:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
@@ -372,7 +381,15 @@ hypre_StructStencilElementRank:         # @hypre_StructStencilElementRank
 .Lfunc_end3:
 	.size	hypre_StructStencilElementRank, .Lfunc_end3-hypre_StructStencilElementRank
                                         # -- End function
-	.globl	hypre_StructStencilSymmetrize   # -- Begin function hypre_StructStencilSymmetrize
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function hypre_StructStencilSymmetrize
+.LCPI4_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.text
+	.globl	hypre_StructStencilSymmetrize
 	.p2align	5
 	.type	hypre_StructStencilSymmetrize,@function
 hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
@@ -677,12 +694,14 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	addi.d	$a2, $a2, 192
 	bnez	$a3, .LBB4_23
 # %bb.24:                               # %middle.block
+	pcalau12i	$a2, %pc_hi20(.LCPI4_0)
+	xvld	$xr2, $a2, %pc_lo12(.LCPI4_0)
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvmax.wu	$xr0, $xr0, $xr1
+	xvshuf.d	$xr2, $xr0, $xr1
+	xvmax.wu	$xr0, $xr0, $xr2
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmax.wu	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -742,7 +761,7 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	addi.d	$a3, $a3, 48
 	bnez	$a2, .LBB4_27
 # %bb.28:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1

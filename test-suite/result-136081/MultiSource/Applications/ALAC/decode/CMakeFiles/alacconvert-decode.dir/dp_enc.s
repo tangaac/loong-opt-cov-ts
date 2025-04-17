@@ -110,9 +110,16 @@ copy_coefs:                             # @copy_coefs
 .Lfunc_end1:
 	.size	copy_coefs, .Lfunc_end1-copy_coefs
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function pc_block
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function pc_block
 .LCPI2_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI2_1:
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
@@ -827,12 +834,12 @@ pc_block:                               # @pc_block
 	b	.LBB2_87
 .LBB2_83:                               # %vector.ph668
                                         #   in Loop: Header=BB2_77 Depth=1
-	xvreplgr2vr.w	$xr1, $s6
+	xvreplgr2vr.w	$xr3, $s6
 	move	$s7, $t6
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 	move	$ra, $t2
+	xvori.b	$xr1, $xr0, 0
 	xvori.b	$xr2, $xr0, 0
-	xvori.b	$xr3, $xr0, 0
 	.p2align	4, , 16
 .LBB2_84:                               # %vector.body673
                                         #   Parent Loop BB2_77 Depth=1
@@ -893,22 +900,24 @@ pc_block:                               # @pc_block
 	xvshuf4i.w	$xr6, $xr6, 27
 	xvpermi.d	$xr7, $xr7, 78
 	xvshuf4i.w	$xr7, $xr7, 27
-	xvsub.w	$xr6, $xr6, $xr1
-	xvsub.w	$xr7, $xr7, $xr1
-	xvmadd.w	$xr2, $xr6, $xr4
-	xvmadd.w	$xr3, $xr7, $xr5
+	xvsub.w	$xr6, $xr6, $xr3
+	xvsub.w	$xr7, $xr7, $xr3
+	xvmadd.w	$xr1, $xr6, $xr4
+	xvmadd.w	$xr2, $xr7, $xr5
 	addi.d	$ra, $ra, -16
 	addi.d	$s8, $s8, 32
 	addi.d	$s7, $s7, -64
 	bnez	$ra, .LBB2_84
 # %bb.85:                               # %middle.block682
                                         #   in Loop: Header=BB2_77 Depth=1
-	xvadd.w	$xr1, $xr3, $xr2
+	pcalau12i	$a4, %pc_hi20(.LCPI2_0)
+	xvld	$xr3, $a4, %pc_lo12(.LCPI2_0)
+	xvadd.w	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
+	xvshuf.d	$xr3, $xr0, $xr2
+	xvadd.w	$xr1, $xr1, $xr3
 	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
+	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.w	$xr1, $xr1, $xr2
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.w	$xr2, $xr2, 1
@@ -923,8 +932,8 @@ pc_block:                               # @pc_block
 	beqz	$a4, .LBB2_90
 .LBB2_87:                               # %vec.epilog.ph686
                                         #   in Loop: Header=BB2_77 Depth=1
-	pcalau12i	$a4, %pc_hi20(.LCPI2_0)
-	vld	$vr1, $a4, %pc_lo12(.LCPI2_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI2_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI2_1)
 	vreplgr2vr.w	$vr2, $s6
 	vinsgr2vr.w	$vr3, $s7, 0
 	vinsgr2vr.w	$vr4, $zero, 0
@@ -953,7 +962,7 @@ pc_block:                               # @pc_block
 	bnez	$a4, .LBB2_88
 # %bb.89:                               # %vec.epilog.middle.block701
                                         #   in Loop: Header=BB2_77 Depth=1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

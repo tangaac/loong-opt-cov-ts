@@ -89,6 +89,11 @@ _Z4initv:                               # @_Z4initv
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
+.LCPI1_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
 	.globl	main
 	.p2align	5
@@ -212,12 +217,14 @@ main:                                   # @main
 	add.d	$a1, $a1, $s0
 	bne	$a0, $a4, .LBB1_6
 # %bb.9:                                # %_ZL5test1v.exit
-	xvadd.w	$xr0, $xr2, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI1_2)
+	xvadd.w	$xr1, $xr2, $xr1
+	xvpermi.d	$xr2, $xr1, 78
+	xvshuf.d	$xr0, $xr0, $xr2
+	xvadd.w	$xr0, $xr1, $xr0
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -328,8 +335,15 @@ GCC_except_table1:
 .Lcst_end0:
 	.p2align	2, 0x0
                                         # -- End function
+	.section	.rodata.cst32,"aM",@progbits,32
+	.p2align	5, 0x0                          # -- Begin function _Z13BENCHMARK_LI1RN9benchmark5StateE
+.LCPI2_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
 	.text
-	.globl	_Z13BENCHMARK_LI1RN9benchmark5StateE # -- Begin function _Z13BENCHMARK_LI1RN9benchmark5StateE
+	.globl	_Z13BENCHMARK_LI1RN9benchmark5StateE
 	.p2align	5
 	.type	_Z13BENCHMARK_LI1RN9benchmark5StateE,@function
 _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
@@ -361,6 +375,8 @@ _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
 	lu12i.w	$a1, -1
 	lu12i.w	$a2, 1
 	ori	$a3, $a2, 32
+	pcalau12i	$a4, %pc_hi20(.LCPI2_0)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI2_0)
 	ori	$a4, $zero, 1024
 	pcalau12i	$a5, %pc_hi20(y)
 	addi.d	$a6, $sp, 12
@@ -377,23 +393,23 @@ _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_5 Depth 3
 	move	$t1, $a1
-	xvori.b	$xr1, $xr0, 0
 	xvori.b	$xr2, $xr0, 0
+	xvori.b	$xr3, $xr0, 0
 	.p2align	4, , 16
 .LBB2_5:                                # %vector.body
                                         #   Parent Loop BB2_3 Depth=1
                                         #     Parent Loop BB2_4 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$t2, $t0, $t1
-	xvldx	$xr3, $t2, $a2
-	xvldx	$xr4, $t2, $a3
-	xvaddi.wu	$xr3, $xr3, 1
+	xvldx	$xr4, $t2, $a2
+	xvldx	$xr5, $t2, $a3
 	xvaddi.wu	$xr4, $xr4, 1
-	xvstx	$xr3, $t2, $a2
-	xvstx	$xr4, $t2, $a3
-	xvadd.w	$xr1, $xr3, $xr1
-	addi.d	$t1, $t1, 64
+	xvaddi.wu	$xr5, $xr5, 1
+	xvstx	$xr4, $t2, $a2
+	xvstx	$xr5, $t2, $a3
 	xvadd.w	$xr2, $xr4, $xr2
+	addi.d	$t1, $t1, 64
+	xvadd.w	$xr3, $xr5, $xr3
 	bnez	$t1, .LBB2_5
 # %bb.6:                                # %middle.block
                                         #   in Loop: Header=BB2_4 Depth=2
@@ -402,18 +418,19 @@ _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
 	bne	$a7, $a4, .LBB2_4
 # %bb.7:                                # %_ZL5test1v.exit
                                         #   in Loop: Header=BB2_3 Depth=1
-	xvadd.w	$xr1, $xr2, $xr1
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf4i.w	$xr2, $xr2, 228
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvshuf4i.w	$xr2, $xr2, 14
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 68
-	xvrepl128vei.w	$xr2, $xr2, 1
+	xvadd.w	$xr2, $xr3, $xr2
+	xvpermi.d	$xr3, $xr2, 78
+	xvori.b	$xr4, $xr1, 0
+	xvshuf.d	$xr4, $xr0, $xr3
+	xvadd.w	$xr2, $xr2, $xr4
+	xvpermi.d	$xr3, $xr2, 68
+	xvrepl128vei.d	$xr3, $xr3, 1
+	xvadd.w	$xr2, $xr2, $xr3
+	xvpermi.d	$xr3, $xr2, 68
+	xvrepl128vei.w	$xr3, $xr3, 1
 	ld.w	$a7, $sp, 12
-	xvadd.w	$xr1, $xr1, $xr2
-	xvpickve2gr.w	$t0, $xr1, 0
+	xvadd.w	$xr2, $xr2, $xr3
+	xvpickve2gr.w	$t0, $xr2, 0
 	st.w	$t0, $a5, %pc_lo12(y)
 	add.d	$a7, $a7, $t0
 	st.w	$a7, $sp, 12

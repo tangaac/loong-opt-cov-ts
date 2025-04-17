@@ -2358,46 +2358,51 @@ _ZN9NCompress6NBZip28CEncoder8WriteCrcEj: # @_ZN9NCompress6NBZip28CEncoder8Write
 	.section	.rodata.cst32,"aM",@progbits,32
 	.p2align	5, 0x0                          # -- Begin function _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj
 .LCPI29_0:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+	.dword	0                               # 0x0
+	.dword	0                               # 0x0
+.LCPI29_1:
 	.dword	28                              # 0x1c
 	.dword	29                              # 0x1d
 	.dword	30                              # 0x1e
 	.dword	31                              # 0x1f
-.LCPI29_1:
+.LCPI29_2:
 	.dword	24                              # 0x18
 	.dword	25                              # 0x19
 	.dword	26                              # 0x1a
 	.dword	27                              # 0x1b
-.LCPI29_2:
+.LCPI29_3:
 	.dword	20                              # 0x14
 	.dword	21                              # 0x15
 	.dword	22                              # 0x16
 	.dword	23                              # 0x17
-.LCPI29_3:
+.LCPI29_4:
 	.dword	16                              # 0x10
 	.dword	17                              # 0x11
 	.dword	18                              # 0x12
 	.dword	19                              # 0x13
-.LCPI29_4:
+.LCPI29_5:
 	.dword	12                              # 0xc
 	.dword	13                              # 0xd
 	.dword	14                              # 0xe
 	.dword	15                              # 0xf
-.LCPI29_5:
+.LCPI29_6:
 	.dword	8                               # 0x8
 	.dword	9                               # 0x9
 	.dword	10                              # 0xa
 	.dword	11                              # 0xb
-.LCPI29_6:
+.LCPI29_7:
 	.dword	4                               # 0x4
 	.dword	5                               # 0x5
 	.dword	6                               # 0x6
 	.dword	7                               # 0x7
-.LCPI29_7:
+.LCPI29_8:
 	.dword	0                               # 0x0
 	.dword	1                               # 0x1
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
-.LCPI29_8:
+.LCPI29_9:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
 	.byte	2                               # 0x2
@@ -2432,7 +2437,7 @@ _ZN9NCompress6NBZip28CEncoder8WriteCrcEj: # @_ZN9NCompress6NBZip28CEncoder8Write
 	.byte	31                              # 0x1f
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4, 0x0
-.LCPI29_9:
+.LCPI29_10:
 	.byte	0                               # 0x0
 	.byte	1                               # 0x1
 	.byte	2                               # 0x2
@@ -3285,13 +3290,15 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	xvadd.w	$xr4, $xr4, $xr5
 	xvadd.w	$xr3, $xr3, $xr4
 	xvadd.w	$xr2, $xr2, $xr3
+	pcalau12i	$a0, %pc_hi20(.LCPI29_0)
+	xvld	$xr3, $a0, %pc_lo12(.LCPI29_0)
 	xvadd.w	$xr1, $xr1, $xr2
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
-	xvadd.w	$xr0, $xr0, $xr1
+	xvshuf.d	$xr3, $xr0, $xr1
+	xvadd.w	$xr0, $xr0, $xr3
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
@@ -3608,7 +3615,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
                                         #   in Loop: Header=BB29_86 Depth=2
 	xvreplgr2vr.d	$xr0, $a4
 	xvreplgr2vr.d	$xr1, $a6
-	pcalau12i	$a7, %pc_hi20(.LCPI29_7)
+	pcalau12i	$a7, %pc_hi20(.LCPI29_8)
 	ori	$t0, $zero, 32
 	bge	$t6, $t0, .LBB29_99
 # %bb.98:                               #   in Loop: Header=BB29_86 Depth=2
@@ -3617,21 +3624,21 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	.p2align	4, , 16
 .LBB29_99:                              # %vector.ph773
                                         #   in Loop: Header=BB29_86 Depth=2
-	pcalau12i	$t0, %pc_hi20(.LCPI29_0)
-	xvld	$xr2, $t0, %pc_lo12(.LCPI29_0)
 	pcalau12i	$t0, %pc_hi20(.LCPI29_1)
-	xvld	$xr3, $t0, %pc_lo12(.LCPI29_1)
+	xvld	$xr2, $t0, %pc_lo12(.LCPI29_1)
 	pcalau12i	$t0, %pc_hi20(.LCPI29_2)
-	xvld	$xr4, $t0, %pc_lo12(.LCPI29_2)
+	xvld	$xr3, $t0, %pc_lo12(.LCPI29_2)
 	pcalau12i	$t0, %pc_hi20(.LCPI29_3)
-	xvld	$xr5, $t0, %pc_lo12(.LCPI29_3)
+	xvld	$xr4, $t0, %pc_lo12(.LCPI29_3)
 	pcalau12i	$t0, %pc_hi20(.LCPI29_4)
-	xvld	$xr6, $t0, %pc_lo12(.LCPI29_4)
+	xvld	$xr5, $t0, %pc_lo12(.LCPI29_4)
 	pcalau12i	$t0, %pc_hi20(.LCPI29_5)
-	xvld	$xr7, $t0, %pc_lo12(.LCPI29_5)
+	xvld	$xr6, $t0, %pc_lo12(.LCPI29_5)
 	pcalau12i	$t0, %pc_hi20(.LCPI29_6)
-	xvld	$xr8, $t0, %pc_lo12(.LCPI29_6)
-	xvld	$xr9, $a7, %pc_lo12(.LCPI29_7)
+	xvld	$xr7, $t0, %pc_lo12(.LCPI29_6)
+	pcalau12i	$t0, %pc_hi20(.LCPI29_7)
+	xvld	$xr8, $t0, %pc_lo12(.LCPI29_7)
+	xvld	$xr9, $a7, %pc_lo12(.LCPI29_8)
 	move	$t0, $a2
 	move	$t1, $ra
 	.p2align	4, , 16
@@ -3904,7 +3911,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	beqz	$s8, .LBB29_106
 .LBB29_103:                             # %vec.epilog.ph787
                                         #   in Loop: Header=BB29_86 Depth=2
-	xvld	$xr2, $a7, %pc_lo12(.LCPI29_7)
+	xvld	$xr2, $a7, %pc_lo12(.LCPI29_8)
 	xvreplgr2vr.d	$xr3, $t0
 	xvor.v	$xr2, $xr3, $xr2
 	.p2align	4, , 16
@@ -4133,7 +4140,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 # %bb.121:                              # %middle.block762
                                         #   in Loop: Header=BB29_117 Depth=4
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4399,8 +4406,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	.p2align	4, , 16
 .LBB29_160:                             # %vector.ph701
                                         #   in Loop: Header=BB29_74 Depth=1
-	pcalau12i	$a0, %pc_hi20(.LCPI29_8)
-	xvld	$xr0, $a0, %pc_lo12(.LCPI29_8)
+	pcalau12i	$a0, %pc_hi20(.LCPI29_9)
+	xvld	$xr0, $a0, %pc_lo12(.LCPI29_9)
 	bstrpick.d	$a0, $s8, 30, 6
 	slli.d	$a0, $a0, 6
 	addi.d	$a1, $sp, 472
@@ -4428,8 +4435,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 .LBB29_164:                             # %vec.epilog.ph711
                                         #   in Loop: Header=BB29_74 Depth=1
 	move	$a2, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI29_9)
-	vld	$vr0, $a0, %pc_lo12(.LCPI29_9)
+	pcalau12i	$a0, %pc_hi20(.LCPI29_10)
+	vld	$vr0, $a0, %pc_lo12(.LCPI29_10)
 	bstrpick.d	$a0, $s8, 30, 4
 	slli.d	$a0, $a0, 4
 	vreplgr2vr.b	$vr1, $a2

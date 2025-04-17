@@ -60,11 +60,11 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ori	$a0, $zero, 257
 	bge	$s0, $a0, .LBB0_12
 .LBB0_2:
-	ld.w	$s4, $fp, 136
+	ld.w	$s3, $fp, 136
 	ori	$a0, $zero, 2
-	blt	$s4, $a0, .LBB0_13
+	blt	$s3, $a0, .LBB0_13
 .LBB0_3:                                # %.lr.ph.us.i.i.preheader
-	addi.w	$a0, $s4, -1
+	addi.w	$a0, $s3, -1
 	move	$a1, $a0
 	bstrins.d	$a1, $zero, 2, 0
 	ori	$a3, $zero, 1
@@ -91,7 +91,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	addi.d	$a3, $a3, 1
 	move	$a5, $a3
 	ori	$a6, $zero, 1
-	bltu	$s4, $a4, .LBB0_9
+	bltu	$s3, $a4, .LBB0_9
 # %bb.6:                                # %vector.ph
                                         #   in Loop: Header=BB0_5 Depth=1
 	xvreplgr2vr.d	$xr4, $a3
@@ -124,7 +124,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	beq	$a0, $a1, .LBB0_4
 .LBB0_9:                                # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
-	sub.d	$a6, $s4, $a6
+	sub.d	$a6, $s3, $a6
 	.p2align	4, , 16
 .LBB0_10:                               # %scalar.ph
                                         #   Parent Loop BB0_5 Depth=1
@@ -155,9 +155,9 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.w	$s0, $fp, 112
-	ld.w	$s4, $fp, 136
+	ld.w	$s3, $fp, 136
 	ori	$a0, $zero, 2
-	bge	$s4, $a0, .LBB0_3
+	bge	$s3, $a0, .LBB0_3
 .LBB0_13:                               # %.split.preheader.i.i
 	ori	$a0, $zero, 1
 	slt	$a1, $a0, $s0
@@ -168,8 +168,8 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 .LBB0_14:                               # %.split57.us.i.i
 	ld.d	$s1, $fp, 608
 	addi.w	$a0, $s5, 0
-	ori	$s3, $zero, 1
-	bltu	$s3, $a0, .LBB0_16
+	ori	$s4, $zero, 1
+	bltu	$s4, $a0, .LBB0_16
 # %bb.15:
 	ld.d	$a0, $fp, 0
 	st.w	$a5, $a0, 44
@@ -181,64 +181,66 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	jirl	$ra, $a1, 0
 .LBB0_16:
 	addi.d	$s2, $s1, 60
-	blt	$s4, $s3, .LBB0_33
+	blt	$s3, $s4, .LBB0_33
 # %bb.17:                               # %iter.check
 	ori	$a0, $zero, 3
-	bltu	$a0, $s4, .LBB0_19
+	bltu	$a0, $s3, .LBB0_19
 # %bb.18:
 	move	$a0, $zero
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	b	.LBB0_28
 .LBB0_19:                               # %vector.main.loop.iter.check
 	ori	$a0, $zero, 16
 	ori	$a1, $zero, 1
-	bgeu	$s4, $a0, .LBB0_21
+	bgeu	$s3, $a0, .LBB0_21
 # %bb.20:
 	move	$a0, $zero
-	ori	$s3, $zero, 1
+	ori	$s4, $zero, 1
 	b	.LBB0_25
 .LBB0_21:                               # %vector.ph60
-	bstrpick.d	$a0, $s4, 30, 4
+	bstrpick.d	$a0, $s3, 30, 4
 	slli.d	$a0, $a0, 4
-	xvreplgr2vr.w	$xr0, $s5
-	xvrepli.w	$xr1, 1
+	xvreplgr2vr.w	$xr1, $s5
+	xvrepli.w	$xr0, 1
 	addi.d	$a2, $s1, 92
 	move	$a3, $a0
-	xvori.b	$xr2, $xr1, 0
+	xvori.b	$xr2, $xr0, 0
 	.p2align	4, , 16
 .LBB0_22:                               # %vector.body65
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr0, $a2, -32
-	xvst	$xr0, $a2, 0
-	xvmul.w	$xr1, $xr1, $xr0
-	xvmul.w	$xr2, $xr2, $xr0
+	xvst	$xr1, $a2, -32
+	xvst	$xr1, $a2, 0
+	xvmul.w	$xr0, $xr0, $xr1
+	xvmul.w	$xr2, $xr2, $xr1
 	addi.d	$a3, $a3, -16
 	addi.d	$a2, $a2, 64
 	bnez	$a3, .LBB0_22
 # %bb.23:                               # %middle.block70
-	xvmul.w	$xr0, $xr2, $xr1
-	xvpermi.d	$xr1, $xr0, 78
-	xvshuf4i.w	$xr1, $xr1, 228
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI0_1)
+	xvmul.w	$xr0, $xr2, $xr0
+	xvpermi.d	$xr2, $xr0, 78
+	xvshuf.d	$xr1, $xr0, $xr2
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
-	xvshuf4i.w	$xr1, $xr1, 14
+	xvrepl128vei.d	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
 	xvpermi.d	$xr1, $xr0, 68
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvmul.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$s3, $xr0, 0
-	beq	$a0, $s4, .LBB0_30
+	xvpickve2gr.w	$s4, $xr0, 0
+	beq	$a0, $s3, .LBB0_30
 # %bb.24:                               # %vec.epilog.iter.check
-	andi	$a2, $s4, 12
+	andi	$a2, $s3, 12
 	beqz	$a2, .LBB0_28
 .LBB0_25:                               # %vec.epilog.ph
 	move	$a2, $a0
-	bstrpick.d	$a0, $s4, 30, 2
+	bstrpick.d	$a0, $s3, 30, 2
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a3, %pc_hi20(.LCPI0_2)
 	vld	$vr0, $a3, %pc_lo12(.LCPI0_2)
 	vreplgr2vr.w	$vr1, $s5
-	vinsgr2vr.w	$vr2, $s3, 0
+	vinsgr2vr.w	$vr2, $s4, 0
 	vinsgr2vr.w	$vr3, $a1, 0
 	vshuf.w	$vr0, $vr3, $vr2
 	sub.d	$a1, $a2, $a0
@@ -253,21 +255,21 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	addi.d	$a2, $a2, 16
 	bnez	$a1, .LBB0_26
 # %bb.27:                               # %vec.epilog.middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s3, $vr0, 0
-	beq	$a0, $s4, .LBB0_30
+	vpickve2gr.w	$s4, $vr0, 0
+	beq	$a0, $s3, .LBB0_30
 .LBB0_28:                               # %.lr.ph.i.i.preheader
-	sub.d	$a1, $s4, $a0
+	sub.d	$a1, $s3, $a0
 	alsl.d	$a0, $a0, $s1, 2
 	addi.d	$a0, $a0, 60
 	.p2align	4, , 16
 .LBB0_29:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$s5, $a0, 0
-	mul.w	$s3, $s3, $s5
+	mul.w	$s4, $s4, $s5
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB0_29
@@ -277,14 +279,14 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	sltui	$a0, $a0, 1
 	slli.d	$a1, $a0, 2
 	ldx.w	$a1, $s2, $a1
-	div.w	$a2, $s3, $a1
+	div.w	$a2, $s4, $a1
 	addi.d	$a4, $a1, 1
 	mulw.d.w	$a3, $a2, $a4
 	blt	$s0, $a3, .LBB0_33
 # %bb.31:                               # %.lr.ph.i
 	ori	$a1, $zero, 1
 	alsl.d	$a5, $a0, $s2, 2
-	bne	$s4, $a1, .LBB0_54
+	bne	$s3, $a1, .LBB0_54
 	.p2align	4, , 16
 .LBB0_32:                               # %._crit_edge.us70.i.us.i
                                         # =>This Inner Loop Header: Depth=1
@@ -294,7 +296,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	sltui	$a0, $a0, 1
 	slli.d	$a1, $a0, 2
 	ldx.w	$a1, $s2, $a1
-	move	$s3, $a3
+	move	$s4, $a3
 	addi.w	$a2, $a3, 0
 	div.w	$a2, $a2, $a1
 	addi.d	$a4, $a1, 1
@@ -305,7 +307,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ld.w	$a1, $fp, 136
 	ld.d	$a0, $fp, 0
 	ori	$a2, $zero, 3
-	st.w	$s3, $a0, 44
+	st.w	$s4, $a0, 44
 	bne	$a1, $a2, .LBB0_35
 # %bb.34:
 	ld.w	$a1, $s1, 60
@@ -324,22 +326,22 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ld.d	$a2, $a2, 8
 	st.w	$a1, $a0, 40
 	ori	$a1, $zero, 1
-	ori	$s4, $zero, 1
+	ori	$s3, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	ld.d	$a0, $fp, 8
 	ld.d	$a4, $a0, 16
 	ld.w	$a3, $fp, 136
-	addi.w	$s0, $s3, 0
+	addi.w	$s0, $s4, 0
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	move	$a2, $s0
 	jirl	$ra, $a4, 0
 	ld.w	$a5, $fp, 136
-	blt	$a5, $s4, .LBB0_49
+	blt	$a5, $s3, .LBB0_49
 # %bb.37:                               # %.lr.ph74.preheader.i
 	move	$a1, $zero
-	move	$a2, $s3
+	move	$a2, $s4
 	b	.LBB0_40
 	.p2align	4, , 16
 .LBB0_38:                               # %._crit_edge.loopexit.i
@@ -358,10 +360,10 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ldx.w	$a3, $s2, $a3
 	addi.w	$a4, $a2, 0
 	div.w	$a2, $a4, $a3
-	blt	$a3, $s4, .LBB0_39
+	blt	$a3, $s3, .LBB0_39
 # %bb.41:                               # %.lr.ph70.i
                                         #   in Loop: Header=BB0_40 Depth=1
-	blt	$a2, $s4, .LBB0_39
+	blt	$a2, $s3, .LBB0_39
 # %bb.42:                               # %.lr.ph70.split.us.preheader.i
                                         #   in Loop: Header=BB0_40 Depth=1
 	move	$a5, $zero
@@ -414,7 +416,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	b	.LBB0_43
 .LBB0_49:                               # %create_colormap.exit
 	st.d	$a0, $s1, 32
-	st.w	$s3, $s1, 40
+	st.w	$s4, $s1, 40
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(create_colorindex)
 	jirl	$ra, $ra, 0
@@ -458,7 +460,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	addi.d	$sp, $sp, 64
 	ret
 .LBB0_54:                               # %.peel.next.i.preheader.i.preheader
-	addi.d	$a0, $s4, -1
+	addi.d	$a0, $s3, -1
 	pcalau12i	$a1, %pc_hi20(select_ncolors.RGB_order+4)
 	addi.d	$a1, $a1, %pc_lo12(select_ncolors.RGB_order+4)
 	ori	$a2, $zero, 2
@@ -467,14 +469,14 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 .LBB0_55:                               # %.._crit_edge.us70.i.loopexit_crit_edge.i
                                         #   in Loop: Header=BB0_57 Depth=1
 	ld.w	$a3, $fp, 56
-	move	$s3, $a7
+	move	$s4, $a7
 .LBB0_56:                               # %._crit_edge.us70.i.loopexit.i
                                         #   in Loop: Header=BB0_57 Depth=1
 	addi.d	$a3, $a3, -2
 	sltui	$a5, $a3, 1
 	slli.d	$a3, $a5, 2
 	ldx.w	$a3, $s2, $a3
-	addi.w	$a4, $s3, 0
+	addi.w	$a4, $s4, 0
 	div.w	$a6, $a4, $a3
 	addi.d	$a4, $a3, 1
 	mulw.d.w	$a3, $a6, $a4
@@ -487,7 +489,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	ori	$a4, $zero, 1
 	move	$a5, $a0
 	move	$a6, $a1
-	move	$s3, $a3
+	move	$s4, $a3
 	.p2align	4, , 16
 .LBB0_58:                               # %.peel.next.i.i
                                         #   Parent Loop BB0_57 Depth=1
@@ -500,7 +502,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 .LBB0_60:                               #   in Loop: Header=BB0_58 Depth=2
 	slli.d	$a7, $t0, 2
 	ldx.w	$a7, $s2, $a7
-	addi.w	$t1, $s3, 0
+	addi.w	$t1, $s4, 0
 	div.w	$t2, $t1, $a7
 	addi.d	$t1, $a7, 1
 	mulw.d.w	$a7, $t2, $t1
@@ -511,7 +513,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	addi.d	$a6, $a6, 4
 	addi.d	$a5, $a5, -1
 	addi.w	$a4, $a4, 1
-	move	$s3, $a7
+	move	$s4, $a7
 	bnez	$a5, .LBB0_58
 	b	.LBB0_55
 .Lfunc_end0:
@@ -1241,7 +1243,7 @@ color_quantize:                         # @color_quantize
 # %bb.11:                               # %middle.block
                                         #   in Loop: Header=BB6_7 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

@@ -96,7 +96,7 @@ bmh_init:                               # @bmh_init
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a7, $a5, 0
 	vinsgr2vr.d	$vr3, $a7, 0
-	vsrli.d	$vr4, $vr3, 32
+	vreplvei.w	$vr4, $vr3, 1
 	vst	$vr4, $sp, 96
 	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31

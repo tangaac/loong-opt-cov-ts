@@ -3955,7 +3955,7 @@ rc_init_pict:                           # @rc_init_pict
 	bnez	$t4, .LBB9_82
 # %bb.83:                               # %middle.block
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -5317,7 +5317,7 @@ RCModelEstimator:                       # @RCModelEstimator
 	bnez	$a5, .LBB16_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5912,7 +5912,7 @@ MADModelEstimator:                      # @MADModelEstimator
 	bnez	$a5, .LBB18_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

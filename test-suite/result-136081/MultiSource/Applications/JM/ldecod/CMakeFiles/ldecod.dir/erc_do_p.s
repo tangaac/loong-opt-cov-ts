@@ -4593,7 +4593,7 @@ edgeDistortion:                         # @edgeDistortion
 	vadd.w	$vr1, $vr3, $vr1
 	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

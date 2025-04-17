@@ -857,7 +857,7 @@ _ZN6Solver9addClauseER3vecI3LitE:       # @_ZN6Solver9addClauseER3vecI3LitE
 	bnez	$a3, .LBB3_27
 # %bb.28:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -2450,7 +2450,7 @@ _ZN6Solver7analyzeEP6ClauseR3vecI3LitERi: # @_ZN6Solver7analyzeEP6ClauseR3vecI3L
 	bnez	$a7, .LBB13_58
 # %bb.59:                               # %middle.block299
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

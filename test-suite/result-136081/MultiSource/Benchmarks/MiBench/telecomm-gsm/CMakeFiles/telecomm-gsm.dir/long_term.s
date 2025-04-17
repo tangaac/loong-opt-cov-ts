@@ -59,9 +59,9 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vmax.h	$vr1, $vr1, $vr3
 	vmax.h	$vr0, $vr0, $vr1
 	vmaxi.h	$vr0, $vr0, 0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vld	$vr1, $a1, 64
 	vreplvei.h	$vr3, $vr0, 1
@@ -73,9 +73,9 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vbitsel.v	$vr2, $vr4, $vr6, $vr2
 	vbitsel.v	$vr1, $vr1, $vr2, $vr3
 	vmax.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vmax.h	$vr0, $vr0, $vr1

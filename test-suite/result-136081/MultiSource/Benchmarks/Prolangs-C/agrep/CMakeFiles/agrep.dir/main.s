@@ -2795,7 +2795,7 @@ re1:                                    # @re1
 	bne	$a4, $a3, .LBB7_6
 # %bb.7:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

@@ -3926,7 +3926,7 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a2, .LBB0_596
 # %bb.597:                              # %middle.block3806
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
@@ -4812,7 +4812,7 @@ cli_scanpe:                             # @cli_scanpe
 	bnez	$a2, .LBB0_726
 # %bb.727:                              # %middle.block3793
 	vmin.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.wu	$vr0, $vr0, $vr1

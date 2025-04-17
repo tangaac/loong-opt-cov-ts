@@ -609,7 +609,7 @@ fgetp:                                  # @fgetp
 	vor.v	$vr3, $vr4, $vr3
 	vslt.wu	$vr0, $vr0, $vr3
 	vbitsel.v	$vr0, $vr1, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

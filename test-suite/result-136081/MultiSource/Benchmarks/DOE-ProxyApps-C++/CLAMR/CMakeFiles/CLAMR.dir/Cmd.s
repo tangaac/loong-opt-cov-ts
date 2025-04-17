@@ -8533,7 +8533,7 @@ _ZN2PP3Cmd9get_nvalsERSt6vectorIiSaIiEERKS3_RiRNSt7__cxx1118basic_stringstreamIc
 	bnez	$a6, .LBB31_19
 # %bb.20:                               # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -9250,7 +9250,7 @@ _ZN2PP3Cmd14error_dup_lineERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	bnez	$a3, .LBB33_24
 # %bb.25:                               # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -13202,7 +13202,7 @@ _ZN2PP3Cmd8get_sizeERSt6vectorIiSaIiEERNSt7__cxx1118basic_stringstreamIcSt11char
 	bnez	$a5, .LBB39_16
 # %bb.17:                               # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

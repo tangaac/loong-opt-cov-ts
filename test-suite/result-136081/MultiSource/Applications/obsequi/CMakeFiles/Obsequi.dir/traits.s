@@ -7,10 +7,8 @@
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 .LCPI0_1:
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
 	.text
 	.globl	write_node_info
 	.p2align	5
@@ -117,7 +115,7 @@ write_node_info:                        # @write_node_info
 	vori.b	$vr8, $vr2, 0
 	vshuf.w	$vr8, $vr0, $vr9
 	vori.b	$vr12, $vr3, 0
-	vshuf.w	$vr12, $vr0, $vr9
+	vshuf.d	$vr12, $vr0, $vr9
 	vand.v	$vr9, $vr9, $vr10
 	vand.v	$vr10, $vr0, $vr12
 	vxor.v	$vr12, $vr11, $vr4
@@ -217,7 +215,7 @@ write_node_info:                        # @write_node_info
 	bnez	$a5, .LBB0_7
 # %bb.8:                                # %middle.block
 	vadd.w	$vr1, $vr7, $vr6
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -321,7 +319,7 @@ write_node_info:                        # @write_node_info
 	vori.b	$vr8, $vr2, 0
 	vshuf.w	$vr8, $vr0, $vr9
 	vori.b	$vr12, $vr3, 0
-	vshuf.w	$vr12, $vr0, $vr9
+	vshuf.d	$vr12, $vr0, $vr9
 	vand.v	$vr9, $vr9, $vr10
 	vand.v	$vr10, $vr0, $vr12
 	vxor.v	$vr12, $vr11, $vr4
@@ -421,7 +419,7 @@ write_node_info:                        # @write_node_info
 	bnez	$a6, .LBB0_17
 # %bb.18:                               # %middle.block90
 	vadd.w	$vr1, $vr7, $vr6
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -622,7 +620,7 @@ write_node_info:                        # @write_node_info
 	bnez	$a4, .LBB0_27
 # %bb.28:                               # %middle.block111
 	vadd.w	$vr0, $vr4, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -792,7 +790,7 @@ write_node_info:                        # @write_node_info
 	bnez	$a5, .LBB0_36
 # %bb.37:                               # %middle.block130
 	vadd.w	$vr1, $vr5, $vr4
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -958,7 +956,7 @@ write_node_info:                        # @write_node_info
 	bnez	$a4, .LBB0_46
 # %bb.47:                               # %middle.block149
 	vadd.w	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1036,10 +1034,8 @@ write_node_info:                        # @write_node_info
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 .LCPI1_1:
-	.word	2                               # 0x2
-	.word	3                               # 0x3
-	.word	4                               # 0x4
-	.word	5                               # 0x5
+	.dword	1                               # 0x1
+	.dword	2                               # 0x2
 	.text
 	.p2align	5
 	.type	tr_non_safe_moves_a_little_touchy,@function
@@ -1105,7 +1101,7 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	vori.b	$vr7, $vr2, 0
 	vshuf.w	$vr7, $vr0, $vr8
 	vori.b	$vr11, $vr3, 0
-	vshuf.w	$vr11, $vr0, $vr8
+	vshuf.d	$vr11, $vr0, $vr8
 	vor.v	$vr8, $vr8, $vr9
 	vor.v	$vr9, $vr0, $vr11
 	vsrli.w	$vr11, $vr10, 1
@@ -1207,7 +1203,7 @@ tr_non_safe_moves_a_little_touchy:      # @tr_non_safe_moves_a_little_touchy
 	bnez	$a7, .LBB1_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr1, $vr6, $vr5
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

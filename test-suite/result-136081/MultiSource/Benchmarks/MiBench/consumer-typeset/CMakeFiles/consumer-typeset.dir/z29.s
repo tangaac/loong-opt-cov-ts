@@ -1596,7 +1596,7 @@ InsertSym:                              # @InsertSym
 	bnez	$a5, .LBB15_60
 # %bb.61:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2141,7 +2141,7 @@ InsertAlternativeName:                  # @InsertAlternativeName
 	bnez	$a5, .LBB16_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2525,7 +2525,7 @@ SearchSym:                              # @SearchSym
 	bnez	$a5, .LBB17_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

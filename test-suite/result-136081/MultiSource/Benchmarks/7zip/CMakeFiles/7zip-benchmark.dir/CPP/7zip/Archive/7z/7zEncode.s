@@ -2788,7 +2788,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.31:                               # %middle.block242
                                         #   in Loop: Header=BB3_25 Depth=1
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2884,7 +2884,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.38:                               # %middle.block
                                         #   in Loop: Header=BB3_25 Depth=1
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3104,7 +3104,7 @@ _ZN8NArchive3N7z8CEncoder13EncoderConstrEv: # @_ZN8NArchive3N7z8CEncoder13Encode
 # %bb.68:                               # %middle.block261
                                         #   in Loop: Header=BB3_59 Depth=1
 	vadd.w	$vr2, $vr4, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3

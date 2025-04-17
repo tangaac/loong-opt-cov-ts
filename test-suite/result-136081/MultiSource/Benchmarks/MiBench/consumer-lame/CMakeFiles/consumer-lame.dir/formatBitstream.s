@@ -340,7 +340,7 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 	bnez	$a4, .LBB1_30
 # %bb.31:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -415,7 +415,7 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 	bnez	$a6, .LBB1_39
 # %bb.40:                               # %middle.block118
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -620,7 +620,7 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 # %bb.60:                               # %middle.block143
                                         #   in Loop: Header=BB1_47 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -865,7 +865,7 @@ BF_BitstreamFrame:                      # @BF_BitstreamFrame
 # %bb.85:                               # %middle.block168
                                         #   in Loop: Header=BB1_72 Depth=2
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1611,7 +1611,7 @@ BF_PartLength:                          # @BF_PartLength
 	bnez	$a5, .LBB3_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

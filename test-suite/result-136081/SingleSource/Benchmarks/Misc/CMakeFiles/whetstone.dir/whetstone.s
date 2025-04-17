@@ -459,7 +459,7 @@ main:                                   # @main
 # %bb.20:                               # %middle.block
                                         #   in Loop: Header=BB0_12 Depth=1
 	vxor.v	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1

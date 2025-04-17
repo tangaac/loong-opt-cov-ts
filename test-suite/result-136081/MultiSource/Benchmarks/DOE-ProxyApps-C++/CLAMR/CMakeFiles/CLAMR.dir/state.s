@@ -1239,7 +1239,7 @@ _ZN5State18add_boundary_cellsEv:        # @_ZN5State18add_boundary_cellsEv
 	bnez	$t1, .LBB6_83
 # %bb.84:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

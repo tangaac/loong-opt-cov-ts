@@ -602,7 +602,7 @@ set_andp:                               # @set_andp
 	bnez	$t1, .LBB11_9
 # %bb.10:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -696,7 +696,7 @@ set_orp:                                # @set_orp
 	bnez	$t1, .LBB12_9
 # %bb.10:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

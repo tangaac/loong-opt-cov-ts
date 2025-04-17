@@ -5616,7 +5616,7 @@ dump_callback:                          # @dump_callback
 	bnez	$a3, .LBB14_21
 # %bb.22:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5791,7 +5791,7 @@ dump_callback:                          # @dump_callback
 	bnez	$a3, .LBB14_42
 # %bb.43:                               # %middle.block258
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5913,7 +5913,7 @@ dump_callback:                          # @dump_callback
 	bnez	$a3, .LBB14_60
 # %bb.61:                               # %middle.block275
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6126,7 +6126,7 @@ dump_callback:                          # @dump_callback
 # %bb.89:                               # %middle.block292
                                         #   in Loop: Header=BB14_78 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6365,7 +6365,7 @@ dump_callback:                          # @dump_callback
 	bnez	$a3, .LBB14_121
 # %bb.122:                              # %middle.block309
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6559,7 +6559,7 @@ appendText:                             # @appendText
 	bnez	$a3, .LBB15_9
 # %bb.10:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

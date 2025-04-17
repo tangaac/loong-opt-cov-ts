@@ -3964,13 +3964,13 @@ _ZN4Mesh15partition_cellsEiRSt6vectorIiSaIiEE16partition_method: # @_ZN4Mesh15pa
 	bnez	$a6, .LBB4_234
 # %bb.235:                              # %middle.block571
 	vmax.w	$vr2, $vr7, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vmax.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vmax.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$a4, $vr2, 0
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

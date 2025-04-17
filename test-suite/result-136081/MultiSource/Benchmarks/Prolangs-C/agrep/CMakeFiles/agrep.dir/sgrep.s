@@ -1229,7 +1229,7 @@ initmask:                               # @initmask
 	bnez	$a3, .LBB4_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -3369,7 +3369,7 @@ m_preprocess:                           # @m_preprocess
 	stx.b	$a1, $fp, $a7
 .LBB11_9:                               # %pred.store.continue54
                                         #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr22, $vr21, 4
+	vreplvei.w	$vr22, $vr21, 2
 	vpickve2gr.b	$a7, $vr22, 4
 	andi	$a7, $a7, 1
 	vadd.d	$vr22, $vr12, $vr10
@@ -3392,7 +3392,7 @@ m_preprocess:                           # @m_preprocess
                                         #   in Loop: Header=BB11_5 Depth=2
 	vilvh.h	$vr20, $vr9, $vr20
 	vseq.w	$vr20, $vr8, $vr20
-	vreplvei.h	$vr21, $vr20, 0
+	vreplvei.d	$vr21, $vr20, 0
 	vpickve2gr.b	$a7, $vr21, 8
 	andi	$a7, $a7, 1
 	vadd.d	$vr21, $vr13, $vr10
@@ -3413,7 +3413,7 @@ m_preprocess:                           # @m_preprocess
 	stx.b	$a1, $fp, $a7
 .LBB11_17:                              # %pred.store.continue62
                                         #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr21, $vr20, 4
+	vreplvei.w	$vr21, $vr20, 2
 	vpickve2gr.b	$a7, $vr21, 12
 	andi	$a7, $a7, 1
 	vadd.d	$vr21, $vr14, $vr10
@@ -3457,7 +3457,7 @@ m_preprocess:                           # @m_preprocess
 	stx.b	$a1, $fp, $a7
 .LBB11_25:                              # %pred.store.continue70
                                         #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr21, $vr20, 4
+	vreplvei.w	$vr21, $vr20, 2
 	vpickve2gr.b	$a7, $vr21, 4
 	andi	$a7, $a7, 1
 	vadd.d	$vr21, $vr16, $vr10
@@ -3480,7 +3480,7 @@ m_preprocess:                           # @m_preprocess
                                         #   in Loop: Header=BB11_5 Depth=2
 	vilvh.h	$vr19, $vr9, $vr19
 	vseq.w	$vr19, $vr8, $vr19
-	vreplvei.h	$vr20, $vr19, 0
+	vreplvei.d	$vr20, $vr19, 0
 	vpickve2gr.b	$a7, $vr20, 8
 	andi	$a7, $a7, 1
 	vadd.d	$vr20, $vr17, $vr10
@@ -3501,7 +3501,7 @@ m_preprocess:                           # @m_preprocess
 	stx.b	$a1, $fp, $a7
 .LBB11_33:                              # %pred.store.continue78
                                         #   in Loop: Header=BB11_5 Depth=2
-	vreplvei.h	$vr20, $vr19, 4
+	vreplvei.w	$vr20, $vr19, 2
 	vpickve2gr.b	$a7, $vr20, 12
 	andi	$a7, $a7, 1
 	vadd.d	$vr20, $vr18, $vr10
@@ -4181,7 +4181,7 @@ sgrep:                                  # @sgrep
 	stx.b	$a0, $s3, $a6
 .LBB15_20:                              # %pred.store.continue173
                                         #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr22, $vr21, 4
+	vreplvei.w	$vr22, $vr21, 2
 	vpickve2gr.b	$a6, $vr22, 4
 	andi	$a6, $a6, 1
 	vadd.d	$vr22, $vr12, $vr10
@@ -4204,7 +4204,7 @@ sgrep:                                  # @sgrep
                                         #   in Loop: Header=BB15_16 Depth=2
 	vilvh.h	$vr20, $vr9, $vr20
 	vseq.w	$vr20, $vr8, $vr20
-	vreplvei.h	$vr21, $vr20, 0
+	vreplvei.d	$vr21, $vr20, 0
 	vpickve2gr.b	$a6, $vr21, 8
 	andi	$a6, $a6, 1
 	vadd.d	$vr21, $vr13, $vr10
@@ -4225,7 +4225,7 @@ sgrep:                                  # @sgrep
 	stx.b	$a0, $s3, $a6
 .LBB15_28:                              # %pred.store.continue181
                                         #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr21, $vr20, 4
+	vreplvei.w	$vr21, $vr20, 2
 	vpickve2gr.b	$a6, $vr21, 12
 	andi	$a6, $a6, 1
 	vadd.d	$vr21, $vr14, $vr10
@@ -4269,7 +4269,7 @@ sgrep:                                  # @sgrep
 	stx.b	$a0, $s3, $a6
 .LBB15_36:                              # %pred.store.continue189
                                         #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr21, $vr20, 4
+	vreplvei.w	$vr21, $vr20, 2
 	vpickve2gr.b	$a6, $vr21, 4
 	andi	$a6, $a6, 1
 	vadd.d	$vr21, $vr16, $vr10
@@ -4292,7 +4292,7 @@ sgrep:                                  # @sgrep
                                         #   in Loop: Header=BB15_16 Depth=2
 	vilvh.h	$vr19, $vr9, $vr19
 	vseq.w	$vr19, $vr8, $vr19
-	vreplvei.h	$vr20, $vr19, 0
+	vreplvei.d	$vr20, $vr19, 0
 	vpickve2gr.b	$a6, $vr20, 8
 	andi	$a6, $a6, 1
 	vadd.d	$vr20, $vr17, $vr10
@@ -4313,7 +4313,7 @@ sgrep:                                  # @sgrep
 	stx.b	$a0, $s3, $a6
 .LBB15_44:                              # %pred.store.continue197
                                         #   in Loop: Header=BB15_16 Depth=2
-	vreplvei.h	$vr20, $vr19, 4
+	vreplvei.w	$vr20, $vr19, 2
 	vpickve2gr.b	$a6, $vr20, 12
 	andi	$a6, $a6, 1
 	vadd.d	$vr20, $vr18, $vr10

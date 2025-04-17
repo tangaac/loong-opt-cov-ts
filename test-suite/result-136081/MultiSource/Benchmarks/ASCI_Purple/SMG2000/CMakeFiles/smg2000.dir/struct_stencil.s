@@ -113,7 +113,7 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	bnez	$a3, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
@@ -504,7 +504,7 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	bnez	$a3, .LBB4_21
 # %bb.22:                               # %middle.block
 	vmax.wu	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.wu	$vr0, $vr0, $vr1

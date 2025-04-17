@@ -1710,7 +1710,7 @@ Decode_Picture:                         # @Decode_Picture
 	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr1, $vr5
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

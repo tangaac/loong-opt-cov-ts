@@ -68,7 +68,7 @@ SumArray:                               # @SumArray
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB0_4 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -315,7 +315,7 @@ main:                                   # @main
 	vadd.w	$vr4, $vr4, $vr5
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr2, $vr2, $vr3
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3

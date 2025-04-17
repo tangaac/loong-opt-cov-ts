@@ -9011,7 +9011,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 # %bb.148:                              # %middle.block798
                                         #   in Loop: Header=BB17_26 Depth=1
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -9122,7 +9122,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 # %bb.158:                              # %middle.block776
                                         #   in Loop: Header=BB17_26 Depth=1
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -17149,7 +17149,7 @@ find_sad_16x16:                         # @find_sad_16x16
 	vadd.w	$vr2, $vr19, $vr2
 	vadd.w	$vr2, $vr5, $vr2
 	vadd.w	$vr2, $vr3, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3

@@ -1005,7 +1005,7 @@ FmoGetLastCodedMBOfSliceGroup:          # @FmoGetLastCodedMBOfSliceGroup
 	bnez	$a6, .LBB8_5
 # %bb.6:                                # %middle.block
 	vmax.w	$vr0, $vr2, $vr4
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

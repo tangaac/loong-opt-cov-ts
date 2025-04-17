@@ -5205,13 +5205,13 @@ SIM4:                                   # @SIM4
 # %bb.570:                              # %middle.block
                                         #   in Loop: Header=BB0_561 Depth=3
 	vadd.w	$vr1, $vr3, $vr1
-	vshuf4i.w	$vr3, $vr1, 14
+	vreplvei.d	$vr3, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr3
 	vreplvei.w	$vr3, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr3
 	vpickve2gr.w	$a6, $vr1, 0
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6237,7 +6237,7 @@ exon_cores:                             # @exon_cores
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	vinsgr2vr.w	$vr1, $a2, 0
 	vpackev.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 68
+	vreplvei.d	$vr1, $vr0, 0
 	ori	$s1, $zero, 1
 	vst	$vr1, $sp, 112                  # 16-byte Folded Spill
 	b	.LBB2_97
@@ -6603,7 +6603,7 @@ exon_cores:                             # @exon_cores
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	vinsgr2vr.w	$vr1, $a2, 0
 	vpackev.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr0, $vr0, 68
+	vreplvei.d	$vr0, $vr0, 0
 	slli.d	$a1, $a1, 3
 	.p2align	4, , 16
 .LBB2_146:                              # %.lr.ph270
@@ -7565,31 +7565,31 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	bnez	$a4, .LBB8_16
 # %bb.17:                               # %middle.block
 	vadd.w	$vr4, $vr15, $vr4
-	vshuf4i.w	$vr7, $vr4, 14
+	vreplvei.d	$vr7, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr7
 	vreplvei.w	$vr7, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr7
 	vpickve2gr.w	$t1, $vr4, 0
 	vadd.w	$vr4, $vr12, $vr10
-	vshuf4i.w	$vr7, $vr4, 14
+	vreplvei.d	$vr7, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr7
 	vreplvei.w	$vr7, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr7
 	vpickve2gr.w	$a3, $vr4, 0
 	vadd.w	$vr4, $vr6, $vr5
-	vshuf4i.w	$vr5, $vr4, 14
+	vreplvei.d	$vr5, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr5
 	vreplvei.w	$vr5, $vr4, 1
 	vadd.w	$vr4, $vr4, $vr5
 	vpickve2gr.w	$a6, $vr4, 0
 	vadd.w	$vr2, $vr3, $vr2
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$a4, $vr2, 0
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

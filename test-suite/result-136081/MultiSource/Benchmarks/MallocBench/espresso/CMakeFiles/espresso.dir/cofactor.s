@@ -1130,7 +1130,7 @@ binate_split_select:                    # @binate_split_select
 	bnez	$a6, .LBB3_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr4, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

@@ -410,7 +410,7 @@ findDuplicate:                          # @findDuplicate
 	bnez	$a4, .LBB5_5
 # %bb.6:                                # %middle.block
 	vxor.v	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -509,7 +509,7 @@ main:                                   # @main
 # %bb.4:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -565,7 +565,7 @@ main:                                   # @main
 # %bb.8:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -621,7 +621,7 @@ main:                                   # @main
 # %bb.12:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -677,7 +677,7 @@ main:                                   # @main
 # %bb.16:
 	ld.w	$a1, $a2, 0
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
@@ -732,7 +732,7 @@ main:                                   # @main
 # %bb.20:
 	ldx.w	$a1, $a0, $s1
 	vxor.v	$vr0, $vr5, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1

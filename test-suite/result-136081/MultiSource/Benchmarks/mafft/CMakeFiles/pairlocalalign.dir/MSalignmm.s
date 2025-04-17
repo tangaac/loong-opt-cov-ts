@@ -2977,7 +2977,7 @@ MSalignmm_rec:                          # @MSalignmm_rec
 # %bb.202:                              # %middle.block358
                                         #   in Loop: Header=BB1_188 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4

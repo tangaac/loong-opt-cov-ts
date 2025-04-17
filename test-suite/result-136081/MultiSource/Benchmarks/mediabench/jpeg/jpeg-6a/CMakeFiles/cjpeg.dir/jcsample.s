@@ -471,11 +471,11 @@ fullsize_smooth_downsample:             # @fullsize_smooth_downsample
 	vshuf.w	$vr14, $vr10, $vr13
 	vshuf.w	$vr20, $vr9, $vr10
 	vshuf.w	$vr5, $vr4, $vr9
-	vshuf4i.w	$vr15, $vr13, 14
-	vshuf4i.w	$vr11, $vr10, 14
+	vreplvei.d	$vr15, $vr13, 1
+	vreplvei.d	$vr11, $vr10, 1
 	pcalau12i	$s5, %pc_hi20(.LCPI3_2)
 	vld	$vr16, $s5, %pc_lo12(.LCPI3_2)
-	vshuf4i.w	$vr12, $vr9, 14
+	vreplvei.d	$vr12, $vr9, 1
 	vilvl.w	$vr19, $vr2, $vr12
 	vilvl.w	$vr21, $vr2, $vr13
 	vilvl.w	$vr18, $vr2, $vr18

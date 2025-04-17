@@ -79,9 +79,9 @@ ba_compute_psd:                         # @ba_compute_psd
 	bnez	$a7, .LBB0_6
 # %bb.7:                                # %middle.block
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -114,7 +114,7 @@ ba_compute_psd:                         # @ba_compute_psd
 	addi.d	$a0, $a0, 8
 	bnez	$a4, .LBB0_10
 # %bb.11:                               # %vec.epilog.middle.block
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1

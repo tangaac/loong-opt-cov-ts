@@ -4648,11 +4648,11 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4686,9 +4686,9 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB21_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4962,11 +4962,11 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5000,9 +5000,9 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB22_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5278,11 +5278,11 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5316,9 +5316,9 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB23_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5595,11 +5595,11 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5633,9 +5633,9 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB24_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5909,11 +5909,11 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5946,9 +5946,9 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB25_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6189,11 +6189,11 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6226,9 +6226,9 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB26_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6471,11 +6471,11 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6509,9 +6509,9 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB27_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6797,11 +6797,11 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6891,9 +6891,9 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	bnez	$a0, .LBB28_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7189,11 +7189,11 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7292,9 +7292,9 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB29_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7582,11 +7582,11 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7620,9 +7620,9 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB30_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7893,11 +7893,11 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7930,9 +7930,9 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB31_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8202,11 +8202,11 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8240,9 +8240,9 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB32_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8513,11 +8513,11 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8551,9 +8551,9 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB33_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8824,11 +8824,11 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8862,9 +8862,9 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 	bnez	$a0, .LBB34_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9124,11 +9124,11 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9162,9 +9162,9 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB35_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9419,11 +9419,11 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9457,9 +9457,9 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	bnez	$a0, .LBB36_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9733,11 +9733,11 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9771,9 +9771,9 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB37_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12045,11 +12045,11 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12083,9 +12083,9 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB53_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12359,11 +12359,11 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12397,9 +12397,9 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB54_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12675,11 +12675,11 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12713,9 +12713,9 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB55_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12992,11 +12992,11 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13030,9 +13030,9 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB56_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13306,11 +13306,11 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13343,9 +13343,9 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB57_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13586,11 +13586,11 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13623,9 +13623,9 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB58_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13868,11 +13868,11 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13906,9 +13906,9 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB59_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14190,11 +14190,11 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14260,9 +14260,9 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 	bnez	$a0, .LBB60_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14547,11 +14547,11 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14617,9 +14617,9 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB61_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14897,11 +14897,11 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14935,9 +14935,9 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB62_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -15208,11 +15208,11 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -15245,9 +15245,9 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB63_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -15517,11 +15517,11 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -15555,9 +15555,9 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB64_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -15828,11 +15828,11 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -15866,9 +15866,9 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB65_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -16139,11 +16139,11 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -16177,9 +16177,9 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 	bnez	$a0, .LBB66_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -16439,11 +16439,11 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -16477,9 +16477,9 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB67_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -16734,11 +16734,11 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -16772,9 +16772,9 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	bnez	$a0, .LBB68_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -17048,11 +17048,11 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -17086,9 +17086,9 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB69_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -19368,9 +19368,9 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19404,7 +19404,7 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB85_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19681,9 +19681,9 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19717,7 +19717,7 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB86_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19996,9 +19996,9 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20032,7 +20032,7 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB87_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20312,9 +20312,9 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20348,7 +20348,7 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB88_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20625,9 +20625,9 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20660,7 +20660,7 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB89_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20934,9 +20934,9 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20969,7 +20969,7 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB90_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21246,9 +21246,9 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21282,7 +21282,7 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB91_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21572,9 +21572,9 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21636,7 +21636,7 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	bnez	$a0, .LBB92_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21938,9 +21938,9 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22007,7 +22007,7 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB93_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22307,9 +22307,9 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22343,7 +22343,7 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB94_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22615,9 +22615,9 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22650,7 +22650,7 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB95_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22922,9 +22922,9 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22958,7 +22958,7 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB96_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23234,9 +23234,9 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23270,7 +23270,7 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB97_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23546,9 +23546,9 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23582,7 +23582,7 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 	bnez	$a0, .LBB98_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23844,9 +23844,9 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23880,7 +23880,7 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB99_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24138,9 +24138,9 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24174,7 +24174,7 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	bnez	$a0, .LBB100_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24450,9 +24450,9 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24486,7 +24486,7 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB101_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -26773,9 +26773,9 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -26809,7 +26809,7 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB117_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB117_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -27086,9 +27086,9 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -27122,7 +27122,7 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB118_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB118_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -27401,9 +27401,9 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -27437,7 +27437,7 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB119_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB119_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -27717,9 +27717,9 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -27753,7 +27753,7 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB120_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB120_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28030,9 +28030,9 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28065,7 +28065,7 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 	bnez	$a0, .LBB121_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB121_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28339,9 +28339,9 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28374,7 +28374,7 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 	bnez	$a0, .LBB122_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB122_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28651,9 +28651,9 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28687,7 +28687,7 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 	bnez	$a0, .LBB123_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB123_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -28973,9 +28973,9 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29025,7 +29025,7 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 	bnez	$a0, .LBB124_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB124_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29317,9 +29317,9 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29369,7 +29369,7 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 	bnez	$a0, .LBB125_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB125_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29653,9 +29653,9 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29689,7 +29689,7 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 	bnez	$a0, .LBB126_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB126_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29961,9 +29961,9 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -29996,7 +29996,7 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 	bnez	$a0, .LBB127_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB127_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -30268,9 +30268,9 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -30304,7 +30304,7 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB128_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB128_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -30580,9 +30580,9 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -30616,7 +30616,7 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB129_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -30892,9 +30892,9 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -30928,7 +30928,7 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 	bnez	$a0, .LBB130_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -31190,9 +31190,9 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -31226,7 +31226,7 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 	bnez	$a0, .LBB131_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -31484,9 +31484,9 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -31520,7 +31520,7 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	bnez	$a0, .LBB132_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -31796,9 +31796,9 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -31832,7 +31832,7 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 	bnez	$a0, .LBB133_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -34081,7 +34081,7 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB149_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34320,7 +34320,7 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB150_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34561,7 +34561,7 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB151_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34803,7 +34803,7 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB152_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35042,7 +35042,7 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB153_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35275,7 +35275,7 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB154_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35511,7 +35511,7 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB155_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35759,7 +35759,7 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB156_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36012,7 +36012,7 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB157_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36259,7 +36259,7 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB158_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36493,7 +36493,7 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB159_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36724,7 +36724,7 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB160_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36959,7 +36959,7 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB161_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37194,7 +37194,7 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB162_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37417,7 +37417,7 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB163_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37640,7 +37640,7 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB164_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37875,7 +37875,7 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB165_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40116,7 +40116,7 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB181_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40355,7 +40355,7 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB182_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40596,7 +40596,7 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB183_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40838,7 +40838,7 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB184_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41077,7 +41077,7 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB185_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41313,7 +41313,7 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB186_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41552,7 +41552,7 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB187_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41797,7 +41797,7 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB188_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42047,7 +42047,7 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB189_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42292,7 +42292,7 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB190_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42526,7 +42526,7 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB191_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42760,7 +42760,7 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB192_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42995,7 +42995,7 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB193_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43230,7 +43230,7 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB194_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43453,7 +43453,7 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB195_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43676,7 +43676,7 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB196_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43914,7 +43914,7 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB197_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

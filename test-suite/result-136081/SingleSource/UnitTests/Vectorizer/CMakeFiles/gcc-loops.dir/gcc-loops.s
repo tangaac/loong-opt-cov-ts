@@ -864,7 +864,7 @@ _Z8example9Pj:                          # @_Z8example9Pj
 	bnez	$a1, .LBB10_1
 # %bb.2:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1152,7 +1152,7 @@ _Z9example13PPiS0_S_:                   # @_Z9example13PPiS0_S_
 # %bb.3:                                # %middle.block
                                         #   in Loop: Header=BB15_1 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -1479,7 +1479,7 @@ _Z9example21Pii:                        # @_Z9example21Pii
 	bnez	$a5, .LBB17_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3218,7 +3218,7 @@ main:                                   # @main
 	bnez	$a4, .LBB24_161
 # %bb.162:                              # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

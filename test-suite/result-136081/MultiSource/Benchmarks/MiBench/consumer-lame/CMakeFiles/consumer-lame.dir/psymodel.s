@@ -513,7 +513,7 @@ L3psycho_anal:                          # @L3psycho_anal
 	bne	$a0, $a1, .LBB0_10
 # %bb.11:                               # %.loopexit1591
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	ldptr.w	$a0, $s0, 2048
 	vreplvei.w	$vr1, $vr0, 1

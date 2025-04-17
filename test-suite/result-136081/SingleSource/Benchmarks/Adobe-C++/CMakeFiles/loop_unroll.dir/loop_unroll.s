@@ -990,7 +990,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block104
                                         #   in Loop: Header=BB6_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1092,7 +1092,7 @@ _Z27test_for_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB6_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1467,7 +1467,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB7_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1570,7 +1570,7 @@ _Z27test_for_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB7_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1937,7 +1937,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB8_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2042,7 +2042,7 @@ _Z27test_for_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB8_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2489,7 +2489,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB10_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2594,7 +2594,7 @@ _Z27test_for_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB10_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2958,7 +2958,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB11_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3063,7 +3063,7 @@ _Z27test_for_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB11_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3424,7 +3424,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB12_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3529,7 +3529,7 @@ _Z27test_for_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB12_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3885,7 +3885,7 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB13_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3989,7 +3989,7 @@ _Z27test_for_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB13_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4349,7 +4349,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block98
                                         #   in Loop: Header=BB14_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4454,7 +4454,7 @@ _Z27test_for_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB14_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4809,7 +4809,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block97
                                         #   in Loop: Header=BB15_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4914,7 +4914,7 @@ _Z27test_for_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB15_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5270,7 +5270,7 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block96
                                         #   in Loop: Header=BB16_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5375,7 +5375,7 @@ _Z27test_for_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB16_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5726,7 +5726,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block95
                                         #   in Loop: Header=BB17_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5831,7 +5831,7 @@ _Z27test_for_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB17_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6183,7 +6183,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block93
                                         #   in Loop: Header=BB18_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6288,7 +6288,7 @@ _Z27test_for_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB18_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6722,7 +6722,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block92
                                         #   in Loop: Header=BB20_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -6831,7 +6831,7 @@ _Z27test_for_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB20_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -7183,7 +7183,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block91
                                         #   in Loop: Header=BB21_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -7292,7 +7292,7 @@ _Z27test_for_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB21_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -7640,7 +7640,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block90
                                         #   in Loop: Header=BB22_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -7749,7 +7749,7 @@ _Z27test_for_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB22_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -8096,7 +8096,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block89
                                         #   in Loop: Header=BB23_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -8204,7 +8204,7 @@ _Z27test_for_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB23_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -8545,7 +8545,7 @@ _Z27test_for_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -8939,7 +8939,7 @@ _Z27test_for_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -9330,7 +9330,7 @@ _Z27test_for_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -9713,7 +9713,7 @@ _Z27test_for_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -10096,7 +10096,7 @@ _Z27test_for_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -10559,7 +10559,7 @@ _Z27test_for_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -10939,7 +10939,7 @@ _Z27test_for_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_f
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -11319,7 +11319,7 @@ _Z27test_for_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -11693,7 +11693,7 @@ _Z27test_for_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -12071,7 +12071,7 @@ _Z27test_for_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -12443,7 +12443,7 @@ _Z27test_for_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -12884,7 +12884,7 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block76
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -12963,7 +12963,7 @@ _Z27test_for_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -13380,7 +13380,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block75
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -13457,7 +13457,7 @@ _Z27test_for_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -13864,7 +13864,7 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block74
                                         #   in Loop: Header=BB38_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -13939,7 +13939,7 @@ _Z27test_for_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -14319,7 +14319,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block70
                                         #   in Loop: Header=BB39_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -14392,7 +14392,7 @@ _Z27test_for_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -14689,7 +14689,7 @@ _Z27test_for_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z27test_for_loop_unroll_fa
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -15062,7 +15062,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block104
                                         #   in Loop: Header=BB41_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -15164,7 +15164,7 @@ _Z29test_while_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB41_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -15539,7 +15539,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB42_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -15642,7 +15642,7 @@ _Z29test_while_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB42_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -16009,7 +16009,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB43_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -16114,7 +16114,7 @@ _Z29test_while_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB43_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -16561,7 +16561,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB45_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -16666,7 +16666,7 @@ _Z29test_while_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB45_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -17030,7 +17030,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB46_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -17135,7 +17135,7 @@ _Z29test_while_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB46_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -17496,7 +17496,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB47_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -17601,7 +17601,7 @@ _Z29test_while_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB47_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -17957,7 +17957,7 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB48_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -18061,7 +18061,7 @@ _Z29test_while_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB48_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -18421,7 +18421,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block98
                                         #   in Loop: Header=BB49_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -18526,7 +18526,7 @@ _Z29test_while_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB49_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -18881,7 +18881,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block97
                                         #   in Loop: Header=BB50_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -18986,7 +18986,7 @@ _Z29test_while_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB50_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -19342,7 +19342,7 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block96
                                         #   in Loop: Header=BB51_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -19447,7 +19447,7 @@ _Z29test_while_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB51_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -19798,7 +19798,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block95
                                         #   in Loop: Header=BB52_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -19903,7 +19903,7 @@ _Z29test_while_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB52_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -20255,7 +20255,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block93
                                         #   in Loop: Header=BB53_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -20360,7 +20360,7 @@ _Z29test_while_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB53_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -20794,7 +20794,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block92
                                         #   in Loop: Header=BB55_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -20903,7 +20903,7 @@ _Z29test_while_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB55_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -21255,7 +21255,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block91
                                         #   in Loop: Header=BB56_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -21364,7 +21364,7 @@ _Z29test_while_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB56_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -21712,7 +21712,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block90
                                         #   in Loop: Header=BB57_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -21821,7 +21821,7 @@ _Z29test_while_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB57_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -22168,7 +22168,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block89
                                         #   in Loop: Header=BB58_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -22276,7 +22276,7 @@ _Z29test_while_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB58_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -22617,7 +22617,7 @@ _Z29test_while_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -23011,7 +23011,7 @@ _Z29test_while_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -23402,7 +23402,7 @@ _Z29test_while_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -23785,7 +23785,7 @@ _Z29test_while_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -24168,7 +24168,7 @@ _Z29test_while_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -24631,7 +24631,7 @@ _Z29test_while_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -25011,7 +25011,7 @@ _Z29test_while_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z29test_while_loop_unro
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -25391,7 +25391,7 @@ _Z29test_while_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -25765,7 +25765,7 @@ _Z29test_while_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -26143,7 +26143,7 @@ _Z29test_while_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -26515,7 +26515,7 @@ _Z29test_while_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -26956,7 +26956,7 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block76
                                         #   in Loop: Header=BB71_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27035,7 +27035,7 @@ _Z29test_while_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27452,7 +27452,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block75
                                         #   in Loop: Header=BB72_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27529,7 +27529,7 @@ _Z29test_while_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27936,7 +27936,7 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block74
                                         #   in Loop: Header=BB73_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28011,7 +28011,7 @@ _Z29test_while_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28391,7 +28391,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block70
                                         #   in Loop: Header=BB74_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28464,7 +28464,7 @@ _Z29test_while_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28761,7 +28761,7 @@ _Z29test_while_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z29test_while_loop_unrol
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29130,7 +29130,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block104
                                         #   in Loop: Header=BB76_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29233,7 +29233,7 @@ _Z26test_do_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB76_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29603,7 +29603,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB77_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29707,7 +29707,7 @@ _Z26test_do_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB77_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30071,7 +30071,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB78_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30177,7 +30177,7 @@ _Z26test_do_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB78_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30621,7 +30621,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB80_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30727,7 +30727,7 @@ _Z26test_do_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB80_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31088,7 +31088,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB81_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31194,7 +31194,7 @@ _Z26test_do_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB81_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31552,7 +31552,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB82_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31658,7 +31658,7 @@ _Z26test_do_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB82_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32011,7 +32011,7 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB83_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32116,7 +32116,7 @@ _Z26test_do_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB83_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32473,7 +32473,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block98
                                         #   in Loop: Header=BB84_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32579,7 +32579,7 @@ _Z26test_do_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB84_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32931,7 +32931,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block97
                                         #   in Loop: Header=BB85_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33037,7 +33037,7 @@ _Z26test_do_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB85_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33390,7 +33390,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block96
                                         #   in Loop: Header=BB86_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33496,7 +33496,7 @@ _Z26test_do_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB86_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33844,7 +33844,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block95
                                         #   in Loop: Header=BB87_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33950,7 +33950,7 @@ _Z26test_do_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB87_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34299,7 +34299,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block93
                                         #   in Loop: Header=BB88_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34405,7 +34405,7 @@ _Z26test_do_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB88_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34837,7 +34837,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block92
                                         #   in Loop: Header=BB90_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34950,7 +34950,7 @@ _Z26test_do_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB90_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35300,7 +35300,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block91
                                         #   in Loop: Header=BB91_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35413,7 +35413,7 @@ _Z26test_do_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB91_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35760,7 +35760,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block90
                                         #   in Loop: Header=BB92_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -35872,7 +35872,7 @@ _Z26test_do_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB92_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36220,7 +36220,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block89
                                         #   in Loop: Header=BB93_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36331,7 +36331,7 @@ _Z26test_do_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB93_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -36669,7 +36669,7 @@ _Z26test_do_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37059,7 +37059,7 @@ _Z26test_do_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37448,7 +37448,7 @@ _Z26test_do_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -37829,7 +37829,7 @@ _Z26test_do_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -38210,7 +38210,7 @@ _Z26test_do_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -38671,7 +38671,7 @@ _Z26test_do_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -39049,7 +39049,7 @@ _Z26test_do_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fac
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -39427,7 +39427,7 @@ _Z26test_do_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB102_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -39798,7 +39798,7 @@ _Z26test_do_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB103_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40172,7 +40172,7 @@ _Z26test_do_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB104_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40542,7 +40542,7 @@ _Z26test_do_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB105_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -40979,7 +40979,7 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block76
                                         #   in Loop: Header=BB106_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41058,7 +41058,7 @@ _Z26test_do_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB106_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41471,7 +41471,7 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block75
                                         #   in Loop: Header=BB107_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41548,7 +41548,7 @@ _Z26test_do_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB107_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -41951,7 +41951,7 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block74
                                         #   in Loop: Header=BB108_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42026,7 +42026,7 @@ _Z26test_do_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB108_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42402,7 +42402,7 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block71
                                         #   in Loop: Header=BB109_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42475,7 +42475,7 @@ _Z26test_do_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB109_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -42773,7 +42773,7 @@ _Z26test_do_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z26test_do_loop_unroll_fact
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB110_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43142,7 +43142,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block104
                                         #   in Loop: Header=BB111_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43245,7 +43245,7 @@ _Z28test_goto_loop_unroll_factorILi32EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB111_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43615,7 +43615,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB112_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -43719,7 +43719,7 @@ _Z28test_goto_loop_unroll_factorILi31EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB112_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -44083,7 +44083,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block103
                                         #   in Loop: Header=BB113_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -44189,7 +44189,7 @@ _Z28test_goto_loop_unroll_factorILi30EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB113_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -44633,7 +44633,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block102
                                         #   in Loop: Header=BB115_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -44739,7 +44739,7 @@ _Z28test_goto_loop_unroll_factorILi29EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB115_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -45100,7 +45100,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block101
                                         #   in Loop: Header=BB116_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -45206,7 +45206,7 @@ _Z28test_goto_loop_unroll_factorILi28EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB116_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -45564,7 +45564,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block100
                                         #   in Loop: Header=BB117_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -45670,7 +45670,7 @@ _Z28test_goto_loop_unroll_factorILi27EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB117_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -46023,7 +46023,7 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block99
                                         #   in Loop: Header=BB118_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -46128,7 +46128,7 @@ _Z28test_goto_loop_unroll_factorILi26EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB118_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -46485,7 +46485,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block98
                                         #   in Loop: Header=BB119_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -46591,7 +46591,7 @@ _Z28test_goto_loop_unroll_factorILi25EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB119_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -46943,7 +46943,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block97
                                         #   in Loop: Header=BB120_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -47049,7 +47049,7 @@ _Z28test_goto_loop_unroll_factorILi24EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB120_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -47402,7 +47402,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block96
                                         #   in Loop: Header=BB121_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -47508,7 +47508,7 @@ _Z28test_goto_loop_unroll_factorILi23EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB121_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -47856,7 +47856,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block95
                                         #   in Loop: Header=BB122_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -47962,7 +47962,7 @@ _Z28test_goto_loop_unroll_factorILi22EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB122_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -48311,7 +48311,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block93
                                         #   in Loop: Header=BB123_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -48417,7 +48417,7 @@ _Z28test_goto_loop_unroll_factorILi21EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB123_18 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -48849,7 +48849,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block92
                                         #   in Loop: Header=BB125_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -48962,7 +48962,7 @@ _Z28test_goto_loop_unroll_factorILi20EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB125_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -49312,7 +49312,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block91
                                         #   in Loop: Header=BB126_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -49425,7 +49425,7 @@ _Z28test_goto_loop_unroll_factorILi19EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB126_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -49772,7 +49772,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block90
                                         #   in Loop: Header=BB127_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -49884,7 +49884,7 @@ _Z28test_goto_loop_unroll_factorILi18EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB127_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -50232,7 +50232,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block89
                                         #   in Loop: Header=BB128_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -50343,7 +50343,7 @@ _Z28test_goto_loop_unroll_factorILi17EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.23:                               # %middle.block
                                         #   in Loop: Header=BB128_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -50681,7 +50681,7 @@ _Z28test_goto_loop_unroll_factorILi16EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB129_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -51071,7 +51071,7 @@ _Z28test_goto_loop_unroll_factorILi15EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB130_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -51460,7 +51460,7 @@ _Z28test_goto_loop_unroll_factorILi14EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB131_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -51841,7 +51841,7 @@ _Z28test_goto_loop_unroll_factorILi13EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB132_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -52222,7 +52222,7 @@ _Z28test_goto_loop_unroll_factorILi12EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB133_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -52683,7 +52683,7 @@ _Z28test_goto_loop_unroll_factorILi11EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB135_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -53061,7 +53061,7 @@ _Z28test_goto_loop_unroll_factorILi10EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB136_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -53439,7 +53439,7 @@ _Z28test_goto_loop_unroll_factorILi9EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB137_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -53810,7 +53810,7 @@ _Z28test_goto_loop_unroll_factorILi8EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB138_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -54184,7 +54184,7 @@ _Z28test_goto_loop_unroll_factorILi7EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB139_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -54554,7 +54554,7 @@ _Z28test_goto_loop_unroll_factorILi6EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB140_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -54991,7 +54991,7 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block76
                                         #   in Loop: Header=BB141_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -55070,7 +55070,7 @@ _Z28test_goto_loop_unroll_factorILi5EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB141_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -55483,7 +55483,7 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block75
                                         #   in Loop: Header=BB142_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -55560,7 +55560,7 @@ _Z28test_goto_loop_unroll_factorILi4EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB142_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -55963,7 +55963,7 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block74
                                         #   in Loop: Header=BB143_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -56038,7 +56038,7 @@ _Z28test_goto_loop_unroll_factorILi3EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB143_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -56414,7 +56414,7 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block71
                                         #   in Loop: Header=BB144_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -56487,7 +56487,7 @@ _Z28test_goto_loop_unroll_factorILi2EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.16:                               # %middle.block
                                         #   in Loop: Header=BB144_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -56785,7 +56785,7 @@ _Z28test_goto_loop_unroll_factorILi1EiEvPKT0_iPKc: # @_Z28test_goto_loop_unroll_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB145_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

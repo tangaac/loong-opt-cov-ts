@@ -12010,7 +12010,7 @@ s331:                                   # @s331
 # %bb.4:                                # %middle.block
                                         #   in Loop: Header=BB6_2 Depth=1
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

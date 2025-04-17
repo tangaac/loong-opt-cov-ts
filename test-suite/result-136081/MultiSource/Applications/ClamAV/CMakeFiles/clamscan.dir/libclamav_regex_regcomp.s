@@ -4734,7 +4734,7 @@ p_bracket:                              # @p_bracket
 	bne	$a4, $a5, .LBB4_212
 # %bb.213:                              # %middle.block287
 	vadd.w	$vr0, $vr2, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

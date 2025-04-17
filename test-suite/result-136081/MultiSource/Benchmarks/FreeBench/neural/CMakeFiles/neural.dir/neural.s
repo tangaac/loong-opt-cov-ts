@@ -411,7 +411,7 @@ main:                                   # @main
 # %bb.38:                               # %middle.block114
                                         #   in Loop: Header=BB0_34 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -476,7 +476,7 @@ main:                                   # @main
 # %bb.45:                               # %middle.block95
                                         #   in Loop: Header=BB0_34 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -550,7 +550,7 @@ main:                                   # @main
 	bnez	$a1, .LBB0_51
 # %bb.52:                               # %middle.block
 	vadd.w	$vr0, $vr8, $vr7
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -992,7 +992,7 @@ main:                                   # @main
 # %bb.106:                              # %middle.block152
                                         #   in Loop: Header=BB0_101 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1252,7 +1252,7 @@ run:                                    # @run
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB1_6 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -1634,7 +1634,7 @@ runcont:                                # @runcont
 # %bb.28:                               # %middle.block22
                                         #   in Loop: Header=BB2_7 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

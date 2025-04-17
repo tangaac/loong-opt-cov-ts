@@ -237,7 +237,7 @@ _ZN23MyFixture_Foo_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_ZN23MyFixtu
 	bnez	$a1, .LBB1_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

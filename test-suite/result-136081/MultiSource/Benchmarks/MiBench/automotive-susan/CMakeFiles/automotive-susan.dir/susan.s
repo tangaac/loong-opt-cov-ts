@@ -417,13 +417,13 @@ int_to_uchar:                           # @int_to_uchar
 	bnez	$a5, .LBB4_4
 # %bb.5:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr0, 14
+	vreplvei.d	$vr3, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr3
 	vreplvei.w	$vr3, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr3
 	vpickve2gr.w	$a3, $vr0, 0
 	vmax.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2014,13 +2014,13 @@ susan_smoothing:                        # @susan_smoothing
 # %bb.36:                               # %middle.block
                                         #   in Loop: Header=BB10_32 Depth=3
 	vadd.w	$vr2, $vr4, $vr2
-	vshuf4i.w	$vr4, $vr2, 14
+	vreplvei.d	$vr4, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr4
 	vreplvei.w	$vr4, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr4
 	vpickve2gr.w	$a7, $vr2, 0
 	vadd.w	$vr1, $vr3, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -7242,13 +7242,13 @@ main:                                   # @main
 	bnez	$a2, .LBB18_57
 # %bb.58:                               # %middle.block225
 	vmin.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr0, 14
+	vreplvei.d	$vr3, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr3
 	vreplvei.w	$vr3, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr3
 	vpickve2gr.w	$a0, $vr0, 0
 	vmax.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -7354,13 +7354,13 @@ main:                                   # @main
 	bnez	$a2, .LBB18_69
 # %bb.70:                               # %middle.block
 	vmin.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr3, $vr0, 14
+	vreplvei.d	$vr3, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr3
 	vreplvei.w	$vr3, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr3
 	vpickve2gr.w	$a0, $vr0, 0
 	vmax.w	$vr0, $vr1, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

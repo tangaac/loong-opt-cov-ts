@@ -236,7 +236,7 @@ placepin:                               # @placepin
 # %bb.27:                               # %middle.block398
                                         #   in Loop: Header=BB0_9 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -310,7 +310,7 @@ placepin:                               # @placepin
 # %bb.34:                               # %middle.block430
                                         #   in Loop: Header=BB0_9 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -399,7 +399,7 @@ placepin:                               # @placepin
 # %bb.44:                               # %middle.block414
                                         #   in Loop: Header=BB0_9 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -509,7 +509,7 @@ placepin:                               # @placepin
 # %bb.57:                               # %middle.block384
                                         #   in Loop: Header=BB0_9 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

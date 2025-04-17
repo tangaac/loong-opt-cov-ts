@@ -9086,7 +9086,7 @@ _ZN6miniFE25generate_matrix_structureINS_9CSRMatrixIdiiEEEEiRKNS_23simple_mesh_d
 	vadd.w	$vr0, $vr2, $vr0
 	vld	$vr1, $sp, 352                  # 16-byte Folded Reload
 	vbitsel.v	$vr0, $vr6, $vr0, $vr1
-	vreplvei.w	$vr1, $vr0, 2
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr1, $vr0, $vr1
 	vreplvei.w	$vr0, $vr0, 1
 	vadd.w	$vr0, $vr1, $vr0

@@ -63,7 +63,7 @@ buster:                                 # @buster
 	bnez	$a7, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1

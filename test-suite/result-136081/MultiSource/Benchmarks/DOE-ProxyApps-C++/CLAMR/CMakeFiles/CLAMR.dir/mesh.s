@@ -7028,25 +7028,25 @@ _ZN4Mesh20calc_neighbors_localEv:       # @_ZN4Mesh20calc_neighbors_localEv
 	bnez	$t3, .LBB16_132
 # %bb.133:                              # %middle.block617
 	vmin.w	$vr2, $vr2, $vr10
-	vshuf4i.w	$vr5, $vr2, 14
+	vreplvei.d	$vr5, $vr2, 1
 	vmin.w	$vr2, $vr2, $vr5
 	vreplvei.w	$vr5, $vr2, 1
 	vmin.w	$vr2, $vr2, $vr5
 	vpickve2gr.w	$t0, $vr2, 0
 	vmin.w	$vr1, $vr1, $vr8
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vmin.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$t1, $vr1, 0
 	vmax.w	$vr0, $vr0, $vr6
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t2, $vr0, 0
 	vmax.w	$vr0, $vr3, $vr4
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

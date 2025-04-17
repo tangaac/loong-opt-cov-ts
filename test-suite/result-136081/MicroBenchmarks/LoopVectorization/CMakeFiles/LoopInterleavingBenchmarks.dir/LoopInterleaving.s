@@ -757,7 +757,7 @@ _ZL24loopWithReductionAutoVeci:         # @_ZL24loopWithReductionAutoVeci
 	addi.d	$a1, $a1, 16
 	bnez	$a3, .LBB9_5
 # %bb.6:                                # %middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -905,7 +905,7 @@ _ZL27loopWithReductionWithVW4IC1i:      # @_ZL27loopWithReductionWithVW4IC1i
 	addi.d	$a1, $a1, 16
 	bnez	$a3, .LBB11_5
 # %bb.6:                                # %middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1058,7 +1058,7 @@ _ZL27loopWithReductionWithVW4IC2i:      # @_ZL27loopWithReductionWithVW4IC2i
 	bnez	$a4, .LBB13_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1217,7 +1217,7 @@ _ZL27loopWithReductionWithVW4IC4i:      # @_ZL27loopWithReductionWithVW4IC4i
 	vadd.w	$vr0, $vr1, $vr0
 	vadd.w	$vr0, $vr2, $vr0
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2554,7 +2554,7 @@ _ZL27bigLoopWithReductionAutoVeci:      # @_ZL27bigLoopWithReductionAutoVeci
 	addi.d	$a6, $a6, 16
 	bnez	$a7, .LBB30_5
 # %bb.6:                                # %middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2751,7 +2751,7 @@ _ZL30bigLoopWithReductionWithVW4IC1i:   # @_ZL30bigLoopWithReductionWithVW4IC1i
 	addi.d	$a6, $a6, 16
 	bnez	$a7, .LBB32_5
 # %bb.6:                                # %middle.block
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2968,7 +2968,7 @@ _ZL30bigLoopWithReductionWithVW4IC2i:   # @_ZL30bigLoopWithReductionWithVW4IC2i
 	bnez	$t3, .LBB34_5
 # %bb.6:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3209,7 +3209,7 @@ _ZL30bigLoopWithReductionWithVW4IC4i:   # @_ZL30bigLoopWithReductionWithVW4IC4i
 	vadd.w	$vr0, $vr2, $vr0
 	vadd.w	$vr0, $vr3, $vr0
 	vadd.w	$vr0, $vr4, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

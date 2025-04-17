@@ -1643,7 +1643,7 @@ token_actions:                          # @token_actions
 	bnez	$a4, .LBB12_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1838,7 +1838,7 @@ token_actions:                          # @token_actions
 # %bb.27:                               # %middle.block49
                                         #   in Loop: Header=BB12_19 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3481,7 +3481,7 @@ action_row:                             # @action_row
 # %bb.66:                               # %middle.block
                                         #   in Loop: Header=BB21_62 Depth=1
 	vadd.w	$vr1, $vr3, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
@@ -3716,7 +3716,7 @@ save_row:                               # @save_row
 	bnez	$a4, .LBB22_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3967,7 +3967,7 @@ save_column:                            # @save_column
 	bnez	$a7, .LBB24_4
 # %bb.5:                                # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

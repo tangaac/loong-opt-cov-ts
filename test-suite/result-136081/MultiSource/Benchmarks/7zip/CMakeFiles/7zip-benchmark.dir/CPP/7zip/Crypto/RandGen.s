@@ -277,7 +277,7 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB2_5 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

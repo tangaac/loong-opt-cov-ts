@@ -428,7 +428,7 @@ full_verify:                            # @full_verify
 # %bb.4:                                # %.preheader
 	vpickve2gr.w	$a1, $vr0, 3
 	vadd.w	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1087,7 +1087,7 @@ main:                                   # @main
 # %bb.4:                                # %.preheader.i
 	vpickve2gr.w	$a1, $vr0, 3
 	vadd.w	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

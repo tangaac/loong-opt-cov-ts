@@ -777,12 +777,12 @@ main:                                   # @main
 	ld.w	$a7, $a7, 0
 	vinsgr2vr.w	$vr11, $a5, 0
 	vinsgr2vr.w	$vr12, $a6, 0
-	vpickev.w	$vr11, $vr12, $vr11
+	vpackev.d	$vr11, $vr12, $vr11
 	vslli.d	$vr11, $vr11, 32
 	vsrai.d	$vr11, $vr11, 32
 	vinsgr2vr.w	$vr12, $a4, 0
 	vinsgr2vr.w	$vr13, $a7, 0
-	vpickev.w	$vr12, $vr13, $vr12
+	vpackev.d	$vr12, $vr13, $vr12
 	vslli.d	$vr12, $vr12, 32
 	vsrai.d	$vr12, $vr12, 32
 	vmuh.du	$vr13, $vr12, $vr4

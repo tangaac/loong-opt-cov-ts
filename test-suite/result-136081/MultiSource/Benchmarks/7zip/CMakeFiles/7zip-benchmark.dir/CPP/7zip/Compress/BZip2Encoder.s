@@ -3126,7 +3126,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	add.w	$s6, $a0, $a1
 	vadd.w	$vr1, $vr2, $vr1
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3752,7 +3752,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 # %bb.114:                              # %middle.block712
                                         #   in Loop: Header=BB29_110 Depth=4
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

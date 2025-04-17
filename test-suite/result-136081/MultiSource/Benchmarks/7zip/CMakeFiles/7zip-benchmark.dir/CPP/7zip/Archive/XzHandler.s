@@ -3128,7 +3128,7 @@ _ZN8NArchive3NXzL14GetCheckStringERK4CXzs: # @_ZN8NArchive3NXzL14GetCheckStringE
 	bnez	$a4, .LBB13_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr3, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

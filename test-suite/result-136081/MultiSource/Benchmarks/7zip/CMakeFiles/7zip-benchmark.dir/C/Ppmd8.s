@@ -919,11 +919,11 @@ Rescale:                                # @Rescale
 	bnez	$t2, .LBB7_23
 # %bb.24:                               # %middle.block
 	vor.v	$vr1, $vr2, $vr1
-	vbsrl.v	$vr2, $vr1, 8
+	vreplvei.d	$vr2, $vr1, 1
 	vor.v	$vr1, $vr1, $vr2
-	vsrli.d	$vr2, $vr1, 32
+	vreplvei.w	$vr2, $vr1, 1
 	vor.v	$vr1, $vr1, $vr2
-	vshuf4i.b	$vr2, $vr1, 14
+	vreplvei.h	$vr2, $vr1, 1
 	vor.v	$vr1, $vr1, $vr2
 	vreplvei.b	$vr2, $vr1, 1
 	vor.v	$vr1, $vr1, $vr2
@@ -978,9 +978,9 @@ Rescale:                                # @Rescale
 	addi.d	$t0, $t0, 48
 	bnez	$t1, .LBB7_27
 # %bb.28:                               # %vec.epilog.middle.block
-	vsrli.d	$vr0, $vr1, 32
+	vreplvei.w	$vr0, $vr1, 1
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -2391,19 +2391,19 @@ RestoreModel:                           # @RestoreModel
 # %bb.20:                               # %middle.block
                                         #   in Loop: Header=BB14_14 Depth=1
 	vadd.w	$vr2, $vr5, $vr2
-	vshuf4i.w	$vr5, $vr2, 14
+	vreplvei.d	$vr5, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr5
 	vreplvei.w	$vr5, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr5
 	vpickve2gr.w	$a6, $vr2, 0
 	vadd.w	$vr1, $vr4, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$a5, $vr1, 0
 	vor.v	$vr0, $vr3, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -2947,7 +2947,7 @@ GetUsedMemory:                          # @GetUsedMemory
 	vadd.w	$vr0, $vr8, $vr6
 	vadd.w	$vr1, $vr4, $vr5
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -3405,19 +3405,19 @@ CutOff:                                 # @CutOff
 	bnez	$a6, .LBB17_35
 # %bb.36:                               # %middle.block
 	vadd.w	$vr2, $vr10, $vr3
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vpickve2gr.w	$a7, $vr2, 0
 	vadd.w	$vr1, $vr7, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vpickve2gr.w	$t0, $vr1, 0
 	vor.v	$vr0, $vr4, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

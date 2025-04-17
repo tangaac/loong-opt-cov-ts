@@ -94,7 +94,7 @@ _ZN2PP12Parser_utils9start_dexERSt6vectorIiSaIiEERKS3_: # @_ZN2PP12Parser_utils9
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB1_4 Depth=1
 	vmul.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vmul.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vmul.w	$vr3, $vr3, $vr4
@@ -308,7 +308,7 @@ _ZN2PP12Parser_utils11reverse_dexEiiRSt6vectorIiSaIiEERKS3_: # @_ZN2PP12Parser_u
 # %bb.27:                               # %middle.block144
                                         #   in Loop: Header=BB2_23 Depth=2
 	vmul.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vmul.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vmul.w	$vr3, $vr3, $vr4
@@ -396,7 +396,7 @@ _ZN2PP12Parser_utils11reverse_dexEiiRSt6vectorIiSaIiEERKS3_: # @_ZN2PP12Parser_u
 # %bb.40:                               # %middle.block129
                                         #   in Loop: Header=BB2_36 Depth=1
 	vmul.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vmul.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vmul.w	$vr3, $vr3, $vr4
@@ -893,7 +893,7 @@ _ZN2PP12Parser_utils13print_stringsESt6vectorIS1_INSt7__cxx1112basic_stringIcSt1
 	bnez	$a3, .LBB3_64
 # %bb.65:                               # %middle.block511
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

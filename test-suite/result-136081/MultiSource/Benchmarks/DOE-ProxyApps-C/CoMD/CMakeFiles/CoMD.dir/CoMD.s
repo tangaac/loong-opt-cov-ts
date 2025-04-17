@@ -746,7 +746,7 @@ main:                                   # @main
 # %bb.41:                               # %middle.block48
                                         #   in Loop: Header=BB0_32 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -970,7 +970,7 @@ main:                                   # @main
 	bnez	$a5, .LBB0_58
 # %bb.59:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -997,7 +997,7 @@ main:                                   # @main
 	bnez	$a5, .LBB0_61
 # %bb.62:                               # %middle.block71
 	vadd.w	$vr0, $vr0, $vr3
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

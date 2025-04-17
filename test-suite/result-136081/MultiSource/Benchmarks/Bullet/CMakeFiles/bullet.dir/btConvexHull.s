@@ -1252,7 +1252,7 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	bnez	$a4, .LBB11_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr6, $vr15, $vr12
-	vshuf4i.w	$vr7, $vr6, 14
+	vreplvei.d	$vr7, $vr6, 1
 	vor.v	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vor.v	$vr6, $vr6, $vr7

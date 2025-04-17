@@ -112,7 +112,7 @@ unbust:                                 # @unbust
 	bnez	$a6, .LBB0_11
 # %bb.12:                               # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
@@ -483,7 +483,7 @@ firstP:                                 # @firstP
 	bnez	$a7, .LBB2_5
 # %bb.6:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1

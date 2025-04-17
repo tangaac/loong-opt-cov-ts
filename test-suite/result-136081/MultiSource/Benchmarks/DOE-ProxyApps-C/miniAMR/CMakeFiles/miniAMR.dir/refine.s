@@ -284,7 +284,7 @@ refine:                                 # @refine
 	bnez	$a6, .LBB0_30
 # %bb.31:                               # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1724,22 +1724,22 @@ refine_level:                           # @refine_level
 	ld.w	$t6, $a0, 24
 	vinsgr2vr.w	$vr2, $t1, 0
 	vinsgr2vr.w	$vr3, $t2, 0
-	vpickev.w	$vr2, $vr3, $vr2
+	vpackev.d	$vr2, $vr3, $vr2
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
 	vinsgr2vr.w	$vr3, $a7, 0
 	vinsgr2vr.w	$vr4, $t0, 0
-	vpickev.w	$vr3, $vr4, $vr3
+	vpackev.d	$vr3, $vr4, $vr3
 	vslli.d	$vr3, $vr3, 32
 	vsrai.d	$vr3, $vr3, 32
 	vinsgr2vr.w	$vr4, $t5, 0
 	vinsgr2vr.w	$vr5, $t6, 0
-	vpickev.w	$vr4, $vr5, $vr4
+	vpackev.d	$vr4, $vr5, $vr4
 	vslli.d	$vr4, $vr4, 32
 	vsrai.d	$vr4, $vr4, 32
 	vinsgr2vr.w	$vr5, $t3, 0
 	vinsgr2vr.w	$vr6, $t4, 0
-	vpickev.w	$vr5, $vr6, $vr5
+	vpackev.d	$vr5, $vr6, $vr5
 	vslli.d	$vr5, $vr5, 32
 	vsrai.d	$vr5, $vr5, 32
 	vpickve2gr.d	$a7, $vr3, 0
@@ -1791,7 +1791,7 @@ refine_level:                           # @refine_level
 	bnez	$a6, .LBB2_203
 # %bb.204:                              # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

@@ -2187,7 +2187,7 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 	bnez	$a5, .LBB6_169
 # %bb.170:                              # %middle.block
 	vmax.w	$vr2, $vr5, $vr6
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vmax.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vmax.w	$vr2, $vr2, $vr3
@@ -2199,7 +2199,7 @@ _ZN4CArc10OpenStreamEP7CCodecsiP9IInStreamP19ISequentialInStreamP20IArchiveOpenC
 	maskeqz	$a5, $a6, $a5
 	or	$a7, $a5, $a4
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

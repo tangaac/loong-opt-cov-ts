@@ -424,13 +424,13 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 # %bb.9:                                # %middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
 	vmax.w	$vr1, $vr1, $vr3
-	vshuf4i.w	$vr3, $vr1, 14
+	vreplvei.d	$vr3, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr3
 	vreplvei.w	$vr3, $vr1, 1
 	vmax.w	$vr1, $vr1, $vr3
 	vpickve2gr.w	$t5, $vr1, 0
 	vmin.w	$vr0, $vr0, $vr2
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
@@ -661,7 +661,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	bnez	$a4, .LBB8_26
 # %bb.27:                               # %middle.block202
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -920,7 +920,7 @@ hypre_StructGridAssemble:               # @hypre_StructGridAssemble
 	bnez	$a4, .LBB8_42
 # %bb.43:                               # %middle.block216
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

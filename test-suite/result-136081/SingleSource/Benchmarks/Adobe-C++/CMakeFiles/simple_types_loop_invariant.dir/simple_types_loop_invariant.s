@@ -2419,11 +2419,11 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -2457,9 +2457,9 @@ _Z14test_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB6_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -2736,11 +2736,11 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB7_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -2773,9 +2773,9 @@ _Z22test_hoisted_variable1Ia19custom_add_variableIaEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB7_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB7_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -3063,11 +3063,11 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -3101,9 +3101,9 @@ _Z14test_variable4Ia28custom_add_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB8_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -3385,11 +3385,11 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB9_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -3423,9 +3423,9 @@ _Z14test_variable1Ia19custom_sub_variableIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB9_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB9_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -3713,11 +3713,11 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB10_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -3751,9 +3751,9 @@ _Z14test_variable4Ia28custom_sub_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB10_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB10_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4035,11 +4035,11 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB11_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4072,9 +4072,9 @@ _Z14test_variable1Ia24custom_multiply_variableIaEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB11_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB11_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4358,11 +4358,11 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB12_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4396,9 +4396,9 @@ _Z14test_variable4Ia33custom_multiply_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB12_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB12_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4683,11 +4683,11 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB13_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -4722,9 +4722,9 @@ _Z14test_variable4Ia34custom_multiply_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB13_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB13_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5019,11 +5019,11 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB14_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5061,9 +5061,9 @@ _Z14test_variable1Ia22custom_divide_variableIaEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB14_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB14_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5376,11 +5376,11 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB15_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5422,9 +5422,9 @@ _Z14test_variable4Ia31custom_divide_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB15_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB15_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5738,11 +5738,11 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB16_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -5776,9 +5776,9 @@ _Z14test_variable4Ia32custom_divide_multiple_variable2IaEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB16_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB16_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6070,11 +6070,11 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB17_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6110,9 +6110,9 @@ _Z14test_variable4Ia30custom_mixed_multiple_variableIaEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB17_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB17_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6400,11 +6400,11 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB18_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6438,9 +6438,9 @@ _Z14test_variable1Ia19custom_variable_andIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB18_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB18_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6733,11 +6733,11 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB19_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -6772,9 +6772,9 @@ _Z14test_variable4Ia28custom_multiple_variable_andIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB19_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB19_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7057,11 +7057,11 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB20_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7095,9 +7095,9 @@ _Z14test_variable1Ia18custom_variable_orIaEEvPT_iS2_PKc: # @_Z14test_variable1Ia
 	bnez	$a0, .LBB20_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB20_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7390,11 +7390,11 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7429,9 +7429,9 @@ _Z14test_variable4Ia27custom_multiple_variable_orIaEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB21_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB21_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7714,11 +7714,11 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -7752,9 +7752,9 @@ _Z14test_variable1Ia19custom_variable_xorIaEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB22_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB22_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8047,11 +8047,11 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8086,9 +8086,9 @@ _Z14test_variable4Ia28custom_multiple_variable_xorIaEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB23_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB23_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8371,11 +8371,11 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8409,9 +8409,9 @@ _Z14test_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB24_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB24_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8688,11 +8688,11 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -8725,9 +8725,9 @@ _Z22test_hoisted_variable1Ih19custom_add_variableIhEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB25_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB25_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9015,11 +9015,11 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9053,9 +9053,9 @@ _Z14test_variable4Ih28custom_add_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB26_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB26_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9337,11 +9337,11 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9375,9 +9375,9 @@ _Z14test_variable1Ih19custom_sub_variableIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB27_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB27_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9665,11 +9665,11 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9703,9 +9703,9 @@ _Z14test_variable4Ih28custom_sub_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB28_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB28_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -9987,11 +9987,11 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -10024,9 +10024,9 @@ _Z14test_variable1Ih24custom_multiply_variableIhEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB29_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB29_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -10310,11 +10310,11 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -10348,9 +10348,9 @@ _Z14test_variable4Ih33custom_multiply_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB30_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB30_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -10635,11 +10635,11 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -10674,9 +10674,9 @@ _Z14test_variable4Ih34custom_multiply_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB31_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -10958,11 +10958,11 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -11044,9 +11044,9 @@ _Z14test_variable1Ih22custom_divide_variableIhEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB32_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB32_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -11350,11 +11350,11 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -11509,9 +11509,9 @@ _Z14test_variable4Ih31custom_divide_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB33_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB33_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -11821,11 +11821,11 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -11859,9 +11859,9 @@ _Z14test_variable4Ih32custom_divide_multiple_variable2IhEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB34_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB34_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12149,11 +12149,11 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12187,9 +12187,9 @@ _Z14test_variable4Ih30custom_mixed_multiple_variableIhEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB35_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB35_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12471,11 +12471,11 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12509,9 +12509,9 @@ _Z14test_variable1Ih19custom_variable_andIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB36_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB36_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12804,11 +12804,11 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -12843,9 +12843,9 @@ _Z14test_variable4Ih28custom_multiple_variable_andIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB37_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB37_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13128,11 +13128,11 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13166,9 +13166,9 @@ _Z14test_variable1Ih18custom_variable_orIhEEvPT_iS2_PKc: # @_Z14test_variable1Ih
 	bnez	$a0, .LBB38_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB38_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13461,11 +13461,11 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13500,9 +13500,9 @@ _Z14test_variable4Ih27custom_multiple_variable_orIhEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB39_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB39_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13785,11 +13785,11 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -13823,9 +13823,9 @@ _Z14test_variable1Ih19custom_variable_xorIhEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB40_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB40_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14118,11 +14118,11 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB41_4 Depth=1
 	vadd.b	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14157,9 +14157,9 @@ _Z14test_variable4Ih28custom_multiple_variable_xorIhEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB41_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB41_4 Depth=1
-	vsrli.d	$vr1, $vr0, 32
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
-	vshuf4i.b	$vr1, $vr0, 14
+	vreplvei.h	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
 	vreplvei.b	$vr1, $vr0, 1
 	vadd.b	$vr0, $vr0, $vr1
@@ -14437,9 +14437,9 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB42_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -14473,7 +14473,7 @@ _Z14test_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB42_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB42_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -14750,9 +14750,9 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB43_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -14785,7 +14785,7 @@ _Z22test_hoisted_variable1Is19custom_add_variableIsEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB43_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB43_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -15075,9 +15075,9 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB44_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -15111,7 +15111,7 @@ _Z14test_variable4Is28custom_add_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB44_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB44_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -15393,9 +15393,9 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB45_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -15429,7 +15429,7 @@ _Z14test_variable1Is19custom_sub_variableIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB45_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB45_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -15717,9 +15717,9 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB46_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -15753,7 +15753,7 @@ _Z14test_variable4Is28custom_sub_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB46_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB46_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16034,9 +16034,9 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB47_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16069,7 +16069,7 @@ _Z14test_variable1Is24custom_multiply_variableIsEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB47_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB47_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16347,9 +16347,9 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB48_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16383,7 +16383,7 @@ _Z14test_variable4Is33custom_multiply_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB48_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB48_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16660,9 +16660,9 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB49_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16697,7 +16697,7 @@ _Z14test_variable4Is34custom_multiply_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB49_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB49_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -16996,9 +16996,9 @@ _Z14test_variable1Is22custom_divide_variableIsEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB50_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -17036,7 +17036,7 @@ _Z14test_variable1Is22custom_divide_variableIsEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB50_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB50_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -17349,9 +17349,9 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB51_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -17393,7 +17393,7 @@ _Z14test_variable4Is31custom_divide_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB51_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB51_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -17698,9 +17698,9 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB52_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -17734,7 +17734,7 @@ _Z14test_variable4Is32custom_divide_multiple_variable2IsEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB52_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB52_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18022,9 +18022,9 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18058,7 +18058,7 @@ _Z14test_variable4Is30custom_mixed_multiple_variableIsEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB53_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB53_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18340,9 +18340,9 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18376,7 +18376,7 @@ _Z14test_variable1Is19custom_variable_andIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB54_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB54_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18668,9 +18668,9 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18705,7 +18705,7 @@ _Z14test_variable4Is28custom_multiple_variable_andIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB55_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB55_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -18991,9 +18991,9 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19027,7 +19027,7 @@ _Z14test_variable1Is18custom_variable_orIsEEvPT_iS2_PKc: # @_Z14test_variable1Is
 	bnez	$a0, .LBB56_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB56_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19319,9 +19319,9 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19356,7 +19356,7 @@ _Z14test_variable4Is27custom_multiple_variable_orIsEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB57_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB57_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19642,9 +19642,9 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19678,7 +19678,7 @@ _Z14test_variable1Is19custom_variable_xorIsEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB58_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB58_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -19970,9 +19970,9 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20007,7 +20007,7 @@ _Z14test_variable4Is28custom_multiple_variable_xorIsEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB59_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB59_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20293,9 +20293,9 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20329,7 +20329,7 @@ _Z14test_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB60_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB60_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20606,9 +20606,9 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20641,7 +20641,7 @@ _Z22test_hoisted_variable1It19custom_add_variableItEEvPT_iS2_PKc: # @_Z22test_ho
 	bnez	$a0, .LBB61_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB61_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20931,9 +20931,9 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -20967,7 +20967,7 @@ _Z14test_variable4It28custom_add_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB62_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB62_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21249,9 +21249,9 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21285,7 +21285,7 @@ _Z14test_variable1It19custom_sub_variableItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB63_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB63_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21573,9 +21573,9 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21609,7 +21609,7 @@ _Z14test_variable4It28custom_sub_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB64_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB64_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21890,9 +21890,9 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -21925,7 +21925,7 @@ _Z14test_variable1It24custom_multiply_variableItEEvPT_iS2_PKc: # @_Z14test_varia
 	bnez	$a0, .LBB65_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB65_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22203,9 +22203,9 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22239,7 +22239,7 @@ _Z14test_variable4It33custom_multiply_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc:
 	bnez	$a0, .LBB66_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB66_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22516,9 +22516,9 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22553,7 +22553,7 @@ _Z14test_variable4It34custom_multiply_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc
 	bnez	$a0, .LBB67_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB67_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22839,9 +22839,9 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -22899,7 +22899,7 @@ _Z14test_variable1It22custom_divide_variableItEEvPT_iS2_PKc: # @_Z14test_variabl
 	bnez	$a0, .LBB68_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB68_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23203,9 +23203,9 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23300,7 +23300,7 @@ _Z14test_variable4It31custom_divide_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: #
 	bnez	$a0, .LBB69_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB69_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23609,9 +23609,9 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23645,7 +23645,7 @@ _Z14test_variable4It32custom_divide_multiple_variable2ItEEvPT_iS2_S2_S2_S2_PKc: 
 	bnez	$a0, .LBB70_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB70_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23933,9 +23933,9 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -23969,7 +23969,7 @@ _Z14test_variable4It30custom_mixed_multiple_variableItEEvPT_iS2_S2_S2_S2_PKc: # 
 	bnez	$a0, .LBB71_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB71_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24251,9 +24251,9 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24287,7 +24287,7 @@ _Z14test_variable1It19custom_variable_andItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB72_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB72_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24579,9 +24579,9 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24616,7 +24616,7 @@ _Z14test_variable4It28custom_multiple_variable_andItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB73_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB73_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24902,9 +24902,9 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -24938,7 +24938,7 @@ _Z14test_variable1It18custom_variable_orItEEvPT_iS2_PKc: # @_Z14test_variable1It
 	bnez	$a0, .LBB74_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB74_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -25230,9 +25230,9 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -25267,7 +25267,7 @@ _Z14test_variable4It27custom_multiple_variable_orItEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 	bnez	$a0, .LBB75_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB75_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -25553,9 +25553,9 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB76_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -25589,7 +25589,7 @@ _Z14test_variable1It19custom_variable_xorItEEvPT_iS2_PKc: # @_Z14test_variable1I
 	bnez	$a0, .LBB76_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB76_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -25881,9 +25881,9 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.10:                               # %middle.block
                                         #   in Loop: Header=BB77_4 Depth=1
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -25918,7 +25918,7 @@ _Z14test_variable4It28custom_multiple_variable_xorItEEvPT_iS2_S2_S2_S2_PKc: # @_
 	bnez	$a0, .LBB77_13
 # %bb.14:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB77_4 Depth=1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
@@ -26168,7 +26168,7 @@ _Z14test_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB78_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -26403,7 +26403,7 @@ _Z22test_hoisted_variable1Ii19custom_add_variableIiEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB79_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -26651,7 +26651,7 @@ _Z14test_variable4Ii28custom_add_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB80_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -26888,7 +26888,7 @@ _Z14test_variable1Ii19custom_sub_variableIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB81_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27130,7 +27130,7 @@ _Z14test_variable4Ii28custom_sub_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB82_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27365,7 +27365,7 @@ _Z14test_variable1Ii24custom_multiply_variableIiEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB83_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27608,7 +27608,7 @@ _Z14test_variable4Ii33custom_multiply_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB84_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -27853,7 +27853,7 @@ _Z14test_variable4Ii34custom_multiply_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB85_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28090,7 +28090,7 @@ _Z14test_variable1Ii22custom_divide_variableIiEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB86_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28345,7 +28345,7 @@ _Z14test_variable4Ii31custom_divide_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB87_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28605,7 +28605,7 @@ _Z14test_variable4Ii32custom_divide_multiple_variable2IiEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB88_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -28854,7 +28854,7 @@ _Z14test_variable4Ii30custom_mixed_multiple_variableIiEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB89_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29096,7 +29096,7 @@ _Z14test_variable1Ii19custom_variable_andIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB90_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29349,7 +29349,7 @@ _Z14test_variable4Ii28custom_multiple_variable_andIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB91_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29589,7 +29589,7 @@ _Z14test_variable1Ii18custom_variable_orIiEEvPT_iS2_PKc: # @_Z14test_variable1Ii
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB92_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -29842,7 +29842,7 @@ _Z14test_variable4Ii27custom_multiple_variable_orIiEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB93_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30082,7 +30082,7 @@ _Z14test_variable1Ii19custom_variable_xorIiEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB94_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30334,7 +30334,7 @@ _Z14test_variable4Ii28custom_multiple_variable_xorIiEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB95_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30573,7 +30573,7 @@ _Z14test_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB96_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -30811,7 +30811,7 @@ _Z22test_hoisted_variable1Ij19custom_add_variableIjEEvPT_iS2_PKc: # @_Z22test_ho
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB97_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31059,7 +31059,7 @@ _Z14test_variable4Ij28custom_add_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB98_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31299,7 +31299,7 @@ _Z14test_variable1Ij19custom_sub_variableIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB99_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31545,7 +31545,7 @@ _Z14test_variable4Ij28custom_sub_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB100_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -31784,7 +31784,7 @@ _Z14test_variable1Ij24custom_multiply_variableIjEEvPT_iS2_PKc: # @_Z14test_varia
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB101_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32027,7 +32027,7 @@ _Z14test_variable4Ij33custom_multiply_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc:
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB102_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32272,7 +32272,7 @@ _Z14test_variable4Ij34custom_multiply_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB103_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32515,7 +32515,7 @@ _Z14test_variable1Ij22custom_divide_variableIjEEvPT_iS2_PKc: # @_Z14test_variabl
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB104_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -32775,7 +32775,7 @@ _Z14test_variable4Ij31custom_divide_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: #
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB105_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33040,7 +33040,7 @@ _Z14test_variable4Ij32custom_divide_multiple_variable2IjEEvPT_iS2_S2_S2_S2_PKc: 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB106_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33292,7 +33292,7 @@ _Z14test_variable4Ij30custom_mixed_multiple_variableIjEEvPT_iS2_S2_S2_S2_PKc: # 
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB107_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33536,7 +33536,7 @@ _Z14test_variable1Ij19custom_variable_andIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB108_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -33792,7 +33792,7 @@ _Z14test_variable4Ij28custom_multiple_variable_andIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB109_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34035,7 +34035,7 @@ _Z14test_variable1Ij18custom_variable_orIjEEvPT_iS2_PKc: # @_Z14test_variable1Ij
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB110_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34291,7 +34291,7 @@ _Z14test_variable4Ij27custom_multiple_variable_orIjEEvPT_iS2_S2_S2_S2_PKc: # @_Z
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB111_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34534,7 +34534,7 @@ _Z14test_variable1Ij19custom_variable_xorIjEEvPT_iS2_PKc: # @_Z14test_variable1I
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB112_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -34790,7 +34790,7 @@ _Z14test_variable4Ij28custom_multiple_variable_xorIjEEvPT_iS2_S2_S2_S2_PKc: # @_
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB113_4 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

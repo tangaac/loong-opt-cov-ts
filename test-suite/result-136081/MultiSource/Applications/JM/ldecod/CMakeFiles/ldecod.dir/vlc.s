@@ -993,7 +993,7 @@ more_rbsp_data:                         # @more_rbsp_data
 	vor.v	$vr3, $vr4, $vr3
 	vslt.wu	$vr0, $vr0, $vr3
 	vbitsel.v	$vr0, $vr1, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1084,7 +1084,7 @@ uvlc_startcode_follows:                 # @uvlc_startcode_follows
 	vor.v	$vr3, $vr4, $vr3
 	vslt.wu	$vr0, $vr0, $vr3
 	vbitsel.v	$vr0, $vr1, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

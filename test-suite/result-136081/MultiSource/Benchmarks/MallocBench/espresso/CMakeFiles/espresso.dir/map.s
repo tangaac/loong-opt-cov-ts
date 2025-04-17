@@ -50,7 +50,7 @@ minterms:                               # @minterms
 	bnez	$a4, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -268,7 +268,7 @@ map:                                    # @map
 	bnez	$a4, .LBB2_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

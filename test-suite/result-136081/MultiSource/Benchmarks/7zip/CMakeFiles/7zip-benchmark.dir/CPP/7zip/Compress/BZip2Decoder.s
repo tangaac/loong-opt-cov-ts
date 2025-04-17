@@ -2889,7 +2889,7 @@ _ZN9NCompress6NBZip2L9ReadBlockEPN5NBitm8CDecoderI9CInBufferEEPjjPhPNS_8NHuffman
 	pcalau12i	$a0, %pc_hi20(.LCPI21_1)
 	vld	$vr1, $a0, %pc_lo12(.LCPI21_1)
 	vsle.du	$vr1, $vr1, $vr0
-	vreplvei.w	$vr2, $vr1, 0
+	vreplvei.d	$vr2, $vr1, 0
 	vpickve2gr.h	$a0, $vr2, 4
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB21_55
@@ -2926,7 +2926,7 @@ _ZN9NCompress6NBZip2L9ReadBlockEPN5NBitm8CDecoderI9CInBufferEEPjjPhPNS_8NHuffman
 	pcalau12i	$a0, %pc_hi20(.LCPI21_3)
 	vld	$vr1, $a0, %pc_lo12(.LCPI21_3)
 	vsle.du	$vr0, $vr1, $vr0
-	vreplvei.w	$vr1, $vr0, 0
+	vreplvei.d	$vr1, $vr0, 0
 	vpickve2gr.h	$a0, $vr1, 4
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB21_63

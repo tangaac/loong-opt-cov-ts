@@ -1981,6 +1981,7 @@ readcells:                              # @readcells
 	pcaddu18i	$ra, %call36(Hside)
 	jirl	$ra, $ra, 0
 	add.w	$a1, $a0, $s7
+	vld	$vr1, $sp, 256                  # 16-byte Folded Reload
 	bge	$a0, $s3, .LBB0_134
 	b	.LBB0_130
 	.p2align	4, , 16
@@ -1991,6 +1992,7 @@ readcells:                              # @readcells
 	pcaddu18i	$ra, %call36(Vside)
 	jirl	$ra, $ra, 0
 	add.w	$a1, $a0, $s7
+	vld	$vr1, $sp, 256                  # 16-byte Folded Reload
 	blt	$a0, $s3, .LBB0_130
 .LBB0_134:                              # %.lr.ph1051
                                         #   in Loop: Header=BB0_131 Depth=2
@@ -2023,7 +2025,7 @@ readcells:                              # @readcells
 	ld.d	$a4, $a0, -16
 	addi.d	$s7, $s7, 1
 	vinsgr2vr.d	$vr0, $a4, 0
-	vbsll.v	$vr0, $vr0, 8
+	vpackev.d	$vr0, $vr0, $vr1
 	vst	$vr0, $a2, -16
 	addi.d	$a0, $a0, 20
 	addi.d	$a2, $a2, 20

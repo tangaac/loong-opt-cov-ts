@@ -1375,7 +1375,7 @@ mp_sscanf:                              # @mp_sscanf
 	bnez	$a2, .LBB2_40
 # %bb.41:                               # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

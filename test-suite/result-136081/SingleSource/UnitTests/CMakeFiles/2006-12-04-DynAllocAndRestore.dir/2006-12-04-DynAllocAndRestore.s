@@ -119,7 +119,7 @@ _ZN13BabyDebugTest4doitEv:              # @_ZN13BabyDebugTest4doitEv
 	bnez	$a4, .LBB1_12
 # %bb.13:                               # %middle.block36
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

@@ -117,7 +117,7 @@ main:                                   # @main
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -183,7 +183,7 @@ main:                                   # @main
 	vadd.w	$vr2, $vr2, $vr3
 	vadd.w	$vr1, $vr1, $vr2
 	vadd.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

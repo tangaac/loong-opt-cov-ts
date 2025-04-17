@@ -3735,9 +3735,9 @@ DoAssignIteration:                      # @DoAssignIteration
 .LBB10_91:                              # %pred.store.continue73
                                         #   in Loop: Header=BB10_51 Depth=4
 	vadd.h	$vr0, $vr1, $vr0
-	vbsrl.v	$vr1, $vr0, 8
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	vadd.h	$vr0, $vr0, $vr1
 	vreplvei.h	$vr1, $vr0, 1
 	vand.v	$vr2, $vr2, $vr10
@@ -3754,7 +3754,7 @@ DoAssignIteration:                      # @DoAssignIteration
 	vilvl.h	$vr0, $vr7, $vr0
 	vilvl.w	$vr0, $vr7, $vr0
 	vadd.h	$vr0, $vr0, $vr2
-	vshuf4i.h	$vr1, $vr0, 14
+	vreplvei.w	$vr1, $vr0, 1
 	ori	$a3, $s4, 3816
 	ldx.hu	$a2, $a2, $a3
 	vadd.h	$vr0, $vr0, $vr1

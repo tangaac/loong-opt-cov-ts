@@ -270,7 +270,7 @@ reduceg:                                # @reduceg
 # %bb.22:                               # %middle.block
                                         #   in Loop: Header=BB0_14 Depth=2
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -505,7 +505,7 @@ reduceg:                                # @reduceg
 # %bb.41:                               # %middle.block1072
                                         #   in Loop: Header=BB0_33 Depth=2
 	vadd.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

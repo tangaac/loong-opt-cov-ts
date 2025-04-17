@@ -934,13 +934,13 @@ endgame:                                # @endgame
 # %bb.17:                               # %middle.block
 	move	$a2, $zero
 	vadd.w	$vr0, $vr4, $vr7
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
 	vadd.w	$vr0, $vr6, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

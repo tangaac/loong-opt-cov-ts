@@ -3561,7 +3561,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.54:                               # %middle.block1051
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr7, $vr4
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
@@ -3720,7 +3720,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.61:                               # %middle.block1015
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr7, $vr4
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
@@ -3879,7 +3879,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.68:                               # %middle.block979
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr7, $vr4
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
@@ -4037,7 +4037,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.75:                               # %middle.block
                                         #   in Loop: Header=BB4_49 Depth=4
 	vadd.w	$vr2, $vr6, $vr4
-	vshuf4i.w	$vr3, $vr2, 14
+	vreplvei.d	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
 	vreplvei.w	$vr3, $vr2, 1
 	vadd.w	$vr2, $vr2, $vr3
@@ -4425,7 +4425,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.93:                               # %middle.block1259
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4549,7 +4549,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.100:                              # %middle.block1233
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4673,7 +4673,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.107:                              # %middle.block1207
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -4797,7 +4797,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.114:                              # %middle.block1181
                                         #   in Loop: Header=BB4_89 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5041,7 +5041,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.130:                              # %middle.block1155
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5165,7 +5165,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.137:                              # %middle.block1129
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5289,7 +5289,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.144:                              # %middle.block1103
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -5413,7 +5413,7 @@ SetupFastFullPelSearch:                 # @SetupFastFullPelSearch
 # %bb.151:                              # %middle.block1077
                                         #   in Loop: Header=BB4_126 Depth=3
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1

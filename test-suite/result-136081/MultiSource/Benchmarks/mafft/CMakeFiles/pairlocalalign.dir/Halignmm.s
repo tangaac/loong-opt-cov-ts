@@ -3104,7 +3104,7 @@ H__align:                               # @H__align
 # %bb.231:                              # %middle.block1088
                                         #   in Loop: Header=BB2_222 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -3394,7 +3394,7 @@ H__align:                               # @H__align
 # %bb.273:                              # %middle.block1012
                                         #   in Loop: Header=BB2_264 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4

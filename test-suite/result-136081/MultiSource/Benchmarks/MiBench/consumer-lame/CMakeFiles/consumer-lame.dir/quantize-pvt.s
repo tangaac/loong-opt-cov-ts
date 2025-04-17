@@ -1665,7 +1665,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t3, .LBB8_10
 # %bb.11:                               # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1729,7 +1729,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t5, .LBB8_21
 # %bb.22:                               # %middle.block201
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1783,7 +1783,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t7, .LBB8_29
 # %bb.30:                               # %middle.block220
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1836,7 +1836,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t1, .LBB8_37
 # %bb.38:                               # %middle.block239
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1955,7 +1955,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$t7, .LBB8_43
 # %bb.44:                               # %middle.block255
 	vmax.w	$vr0, $vr4, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2125,7 +2125,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$s1, .LBB8_54
 # %bb.55:                               # %middle.block298
 	vmax.w	$vr0, $vr4, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2281,7 +2281,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$fp, .LBB8_62
 # %bb.63:                               # %middle.block275
 	vmax.w	$vr0, $vr4, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -2432,7 +2432,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	bnez	$fp, .LBB8_70
 # %bb.71:                               # %middle.block321
 	vmax.w	$vr0, $vr4, $vr5
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1

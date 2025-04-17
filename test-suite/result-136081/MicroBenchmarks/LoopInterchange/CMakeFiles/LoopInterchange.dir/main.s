@@ -188,7 +188,7 @@ main:                                   # @main
 	bne	$a0, $a3, .LBB1_6
 # %bb.9:                                # %_ZL5test1v.exit
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -374,7 +374,7 @@ _Z13BENCHMARK_LI1RN9benchmark5StateE:   # @_Z13BENCHMARK_LI1RN9benchmark5StateE
 # %bb.7:                                # %_ZL5test1v.exit
                                         #   in Loop: Header=BB2_3 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	ld.w	$a7, $sp, 12

@@ -3865,7 +3865,7 @@ Q__align:                               # @Q__align
 # %bb.256:                              # %middle.block1287
                                         #   in Loop: Header=BB3_242 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
@@ -4898,7 +4898,7 @@ Atracking:                              # @Atracking
 # %bb.38:                               # %middle.block33
                                         #   in Loop: Header=BB5_29 Depth=1
 	vadd.w	$vr3, $vr4, $vr3
-	vshuf4i.w	$vr4, $vr3, 14
+	vreplvei.d	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4
 	vreplvei.w	$vr4, $vr3, 1
 	vadd.w	$vr3, $vr3, $vr4

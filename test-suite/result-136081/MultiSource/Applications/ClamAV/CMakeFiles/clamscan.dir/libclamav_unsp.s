@@ -1598,7 +1598,7 @@ very_real_unpack:                       # @very_real_unpack
 # %bb.222:                              # %middle.block665
                                         #   in Loop: Header=BB1_15 Depth=1
 	vor.v	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
@@ -2964,7 +2964,7 @@ get_bb:                                 # @get_bb
 	bnez	$a0, .LBB8_24
 # %bb.25:                               # %middle.block
 	vor.v	$vr0, $vr3, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

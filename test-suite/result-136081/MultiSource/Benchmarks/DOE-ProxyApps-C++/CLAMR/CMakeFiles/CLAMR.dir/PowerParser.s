@@ -78,7 +78,7 @@ _ZN2PP11PowerParser7get_intIiEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	bnez	$a4, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -1230,7 +1230,7 @@ _ZN2PP11PowerParser7get_intIlEEvRNSt7__cxx1112basic_stringIcSt11char_traitsIcESa
 	bnez	$a4, .LBB2_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -57195,7 +57195,7 @@ _ZN2PP11PowerParser12get_bool_intERNSt7__cxx1112basic_stringIcSt11char_traitsIcE
 	bnez	$a4, .LBB82_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -57968,7 +57968,7 @@ _ZN2PP11PowerParser8get_boolERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	bnez	$a4, .LBB84_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -58722,7 +58722,7 @@ _ZN2PP11PowerParser8get_realERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	bnez	$a4, .LBB86_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -59496,7 +59496,7 @@ _ZN2PP11PowerParser8get_charERNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcE
 	bnez	$a4, .LBB88_5
 # %bb.6:                                # %middle.block
 	vmul.w	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

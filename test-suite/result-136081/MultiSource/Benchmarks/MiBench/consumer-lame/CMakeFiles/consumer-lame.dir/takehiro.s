@@ -376,7 +376,7 @@ choose_table_short:                     # @choose_table_short
 	bnez	$a7, .LBB1_5
 # %bb.6:                                # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -593,7 +593,7 @@ choose_table_short:                     # @choose_table_short
 	bnez	$t6, .LBB1_18
 # %bb.19:                               # %middle.block167
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -727,7 +727,7 @@ choose_table_short:                     # @choose_table_short
 	bnez	$t2, .LBB1_24
 # %bb.25:                               # %middle.block189
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1081,7 +1081,7 @@ choose_table_short:                     # @choose_table_short
 	bnez	$t0, .LBB1_65
 # %bb.66:                               # %middle.block146
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -1801,7 +1801,7 @@ choose_table:                           # @choose_table
 	bnez	$t0, .LBB3_5
 # %bb.6:                                # %middle.block
 	vmax.w	$vr0, $vr0, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmax.w	$vr0, $vr0, $vr1
@@ -1972,7 +1972,7 @@ choose_table:                           # @choose_table
 	bnez	$t5, .LBB3_18
 # %bb.19:                               # %middle.block209
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2084,7 +2084,7 @@ choose_table:                           # @choose_table
 	bnez	$t2, .LBB3_25
 # %bb.26:                               # %middle.block229
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2354,19 +2354,19 @@ choose_table:                           # @choose_table
 	bnez	$t4, .LBB3_49
 # %bb.50:                               # %middle.block167
 	vadd.w	$vr0, $vr10, $vr9
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t4, $vr0, 0
 	vadd.w	$vr0, $vr8, $vr7
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t5, $vr0, 0
 	vadd.w	$vr0, $vr5, $vr6
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2531,7 +2531,7 @@ choose_table:                           # @choose_table
 	bnez	$t0, .LBB3_63
 # %bb.64:                               # %middle.block189
 	vadd.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
@@ -2888,7 +2888,7 @@ best_scalefac_store:                    # @best_scalefac_store
 	bnez	$t1, .LBB4_51
 # %bb.52:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vor.v	$vr0, $vr0, $vr1

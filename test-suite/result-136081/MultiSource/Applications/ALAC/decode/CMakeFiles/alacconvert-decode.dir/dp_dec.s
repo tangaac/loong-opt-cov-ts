@@ -591,7 +591,7 @@ unpc_block:                             # @unpc_block
 # %bb.60:                               # %middle.block
                                         #   in Loop: Header=BB0_54 Depth=1
 	vadd.w	$vr1, $vr3, $vr2
-	vshuf4i.w	$vr2, $vr1, 14
+	vreplvei.d	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2

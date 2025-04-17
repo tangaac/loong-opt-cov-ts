@@ -178,7 +178,7 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	bnez	$a2, .LBB0_20
 # %bb.21:                               # %middle.block68
 	vmul.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

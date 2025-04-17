@@ -2588,7 +2588,7 @@ make_table:                             # @make_table
 	pcalau12i	$t2, %pc_hi20(.LCPI7_1)
 	vld	$vr2, $t2, %pc_lo12(.LCPI7_1)
 	vsle.du	$vr2, $vr2, $vr1
-	vreplvei.w	$vr3, $vr2, 0
+	vreplvei.d	$vr3, $vr2, 0
 	vpickve2gr.h	$t2, $vr3, 4
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB7_12
@@ -2633,7 +2633,7 @@ make_table:                             # @make_table
 	pcalau12i	$t2, %pc_hi20(.LCPI7_3)
 	vld	$vr2, $t2, %pc_lo12(.LCPI7_3)
 	vsle.du	$vr1, $vr2, $vr1
-	vreplvei.w	$vr2, $vr1, 0
+	vreplvei.d	$vr2, $vr1, 0
 	vpickve2gr.h	$t2, $vr2, 4
 	andi	$t2, $t2, 1
 	beqz	$t2, .LBB7_20

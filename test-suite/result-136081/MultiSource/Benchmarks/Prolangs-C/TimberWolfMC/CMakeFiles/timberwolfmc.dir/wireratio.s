@@ -3567,7 +3567,7 @@ getptree:                               # @getptree
 	bnez	$a3, .LBB21_3
 # %bb.4:                                # %middle.block
 	vmul.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
@@ -3618,7 +3618,7 @@ getptree:                               # @getptree
 	bnez	$a4, .LBB21_12
 # %bb.13:                               # %middle.block178
 	vmul.w	$vr0, $vr2, $vr0
-	vshuf4i.w	$vr1, $vr0, 14
+	vreplvei.d	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1

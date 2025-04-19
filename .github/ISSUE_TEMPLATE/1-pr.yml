@@ -1,0 +1,16 @@
+name: llvm-pr
+description: Test llvm optimization on llvm-test-suite
+title: "[LLVM PR]: "
+labels: ["llvm pr"]
+body:
+  - type: markdown
+    attributes:
+      value: "Customize to build llvm-test-suite"
+  - type: textarea
+    id: build-conf
+    attributes:
+      label: Build Configuration
+      value: |
+        pr=""
+        CMAKE_C_FLAGS=""
+        CMAKE_CXX_FLAGS=""

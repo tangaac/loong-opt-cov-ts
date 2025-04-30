@@ -2702,14 +2702,11 @@ dfct:                                   # @dfct
                                         # =>  This Inner Loop Header: Depth=2
 	vldx	$vr0, $a3, $a1
 	vldx	$vr1, $a4, $a0
-	vbsrl.v	$vr2, $vr0, 8
-	vbsll.v	$vr3, $vr0, 8
-	vor.v	$vr2, $vr3, $vr2
+	vori.b	$vr2, $vr0, 0
+	vshuf4i.d	$vr2, $vr0, 1
 	vfsub.d	$vr2, $vr2, $vr1
 	vst	$vr2, $a4, 0
-	vbsrl.v	$vr2, $vr1, 8
-	vbsll.v	$vr1, $vr1, 8
-	vor.v	$vr1, $vr1, $vr2
+	vshuf4i.d	$vr1, $vr0, 1
 	vfadd.d	$vr0, $vr1, $vr0
 	vstx	$vr0, $a3, $a0
 	addi.d	$a5, $a5, -2
@@ -2867,29 +2864,21 @@ dfct:                                   # @dfct
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr0, $fp, $t1
 	vldx	$vr1, $fp, $t2
-	vbsrl.v	$vr2, $vr0, 8
-	vbsll.v	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr2
+	vshuf4i.d	$vr0, $vr0, 1
 	vldx	$vr2, $fp, $a7
-	vfsub.d	$vr3, $vr1, $vr0
+	vldx	$vr3, $fp, $t0
+	vfsub.d	$vr4, $vr1, $vr0
 	vfadd.d	$vr0, $vr1, $vr0
-	vldx	$vr1, $fp, $t0
-	vbsrl.v	$vr4, $vr2, 8
-	vbsll.v	$vr2, $vr2, 8
-	vor.v	$vr2, $vr2, $vr4
-	vfsub.d	$vr4, $vr2, $vr1
-	vfadd.d	$vr1, $vr2, $vr1
-	vstx	$vr3, $fp, $t2
-	vbsrl.v	$vr2, $vr4, 8
-	vbsll.v	$vr3, $vr4, 8
-	vor.v	$vr2, $vr3, $vr2
-	vstx	$vr2, $fp, $a7
-	vfsub.d	$vr2, $vr0, $vr1
-	vstx	$vr2, $s0, $t2
-	vfadd.d	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vbsll.v	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr1
+	vshuf4i.d	$vr2, $vr0, 1
+	vfsub.d	$vr1, $vr2, $vr3
+	vfadd.d	$vr2, $vr2, $vr3
+	vstx	$vr4, $fp, $t2
+	vshuf4i.d	$vr1, $vr0, 1
+	vstx	$vr1, $fp, $a7
+	vfsub.d	$vr1, $vr0, $vr2
+	vstx	$vr1, $s0, $t2
+	vfadd.d	$vr0, $vr0, $vr2
+	vshuf4i.d	$vr0, $vr0, 1
 	vstx	$vr0, $s0, $a7
 	addi.d	$a7, $a7, -16
 	addi.d	$t0, $t0, 16
@@ -3558,14 +3547,11 @@ dfst:                                   # @dfst
                                         # =>  This Inner Loop Header: Depth=2
 	vldx	$vr0, $t0, $a2
 	vldx	$vr1, $a7, $a1
-	vbsrl.v	$vr2, $vr0, 8
-	vbsll.v	$vr3, $vr0, 8
-	vor.v	$vr2, $vr3, $vr2
+	vori.b	$vr2, $vr0, 0
+	vshuf4i.d	$vr2, $vr0, 1
 	vfadd.d	$vr2, $vr2, $vr1
 	vst	$vr2, $a7, 0
-	vbsrl.v	$vr2, $vr1, 8
-	vbsll.v	$vr1, $vr1, 8
-	vor.v	$vr1, $vr1, $vr2
+	vshuf4i.d	$vr1, $vr0, 1
 	vfsub.d	$vr0, $vr0, $vr1
 	vstx	$vr0, $t0, $a1
 	addi.d	$t0, $t0, -16
@@ -3722,29 +3708,21 @@ dfst:                                   # @dfst
                                         # =>This Inner Loop Header: Depth=1
 	vldx	$vr0, $fp, $t1
 	vldx	$vr1, $fp, $t2
-	vbsrl.v	$vr2, $vr0, 8
-	vbsll.v	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr2
+	vshuf4i.d	$vr0, $vr0, 1
 	vldx	$vr2, $fp, $a7
-	vfadd.d	$vr3, $vr1, $vr0
+	vldx	$vr3, $fp, $t0
+	vfadd.d	$vr4, $vr1, $vr0
 	vfsub.d	$vr0, $vr1, $vr0
-	vldx	$vr1, $fp, $t0
-	vbsrl.v	$vr4, $vr2, 8
-	vbsll.v	$vr2, $vr2, 8
-	vor.v	$vr2, $vr2, $vr4
-	vfadd.d	$vr4, $vr2, $vr1
-	vfsub.d	$vr1, $vr2, $vr1
-	vstx	$vr3, $fp, $t2
-	vbsrl.v	$vr2, $vr4, 8
-	vbsll.v	$vr3, $vr4, 8
-	vor.v	$vr2, $vr3, $vr2
-	vstx	$vr2, $fp, $a7
-	vfadd.d	$vr2, $vr0, $vr1
-	vstx	$vr2, $s0, $t2
-	vfsub.d	$vr0, $vr0, $vr1
-	vbsrl.v	$vr1, $vr0, 8
-	vbsll.v	$vr0, $vr0, 8
-	vor.v	$vr0, $vr0, $vr1
+	vshuf4i.d	$vr2, $vr0, 1
+	vfadd.d	$vr1, $vr2, $vr3
+	vfsub.d	$vr2, $vr2, $vr3
+	vstx	$vr4, $fp, $t2
+	vshuf4i.d	$vr1, $vr0, 1
+	vstx	$vr1, $fp, $a7
+	vfadd.d	$vr1, $vr0, $vr2
+	vstx	$vr1, $s0, $t2
+	vfsub.d	$vr0, $vr0, $vr2
+	vshuf4i.d	$vr0, $vr0, 1
 	vstx	$vr0, $s0, $a7
 	addi.d	$a7, $a7, -16
 	addi.d	$t0, $t0, 16

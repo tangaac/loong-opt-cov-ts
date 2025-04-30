@@ -21835,212 +21835,186 @@ _ZN6miniFE4Hex827gradients_and_invJ_and_detJIdEEvPKT_S4_PS2_RS2_: # @_ZN6miniFE4
 .Lfunc_end41:
 	.size	_ZN6miniFE4Hex827gradients_and_invJ_and_detJIdEEvPKT_S4_PS2_RS2_, .Lfunc_end41-_ZN6miniFE4Hex827gradients_and_invJ_and_detJIdEEvPKT_S4_PS2_RS2_
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function _ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_
-.LCPI42_0:
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
 	.section	.text._ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_,"axG",@progbits,_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_,comdat
-	.weak	_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_
+	.weak	_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_ # -- Begin function _ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_
 	.p2align	5
 	.type	_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_,@function
 _ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_: # @_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
-	fld.d	$ft0, $a0, 0
-	fld.d	$ft9, $a1, 8
-	fld.d	$ft8, $a1, 0
-	fld.d	$ft7, $a0, 24
-	fld.d	$ft2, $a1, 32
-	fmul.d	$fa0, $ft0, $ft9
+	addi.d	$sp, $sp, -64
+	fst.d	$fs0, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 0                    # 8-byte Folded Spill
+	fld.d	$ft7, $a0, 0
+	fld.d	$ft8, $a1, 8
+	fld.d	$ft10, $a1, 0
+	fld.d	$ft5, $a0, 24
+	fld.d	$ft6, $a1, 32
+	fmul.d	$fa0, $ft7, $ft8
 	movgr2fr.d	$fa1, $zero
 	fadd.d	$fa0, $fa0, $fa1
-	fmul.d	$fa1, $ft7, $ft2
-	fld.d	$ft5, $a0, 48
-	fld.d	$ft6, $a1, 56
-	fld.d	$ft3, $a0, 72
-	fld.d	$ft4, $a1, 80
-	fadd.d	$fa0, $fa0, $fa1
 	fmul.d	$fa1, $ft5, $ft6
+	fld.d	$ft3, $a0, 48
+	fld.d	$ft4, $a1, 56
+	fld.d	$ft1, $a0, 72
+	fld.d	$ft2, $a1, 80
 	fadd.d	$fa0, $fa0, $fa1
 	fmul.d	$fa1, $ft3, $ft4
+	fadd.d	$fa0, $fa0, $fa1
+	fmul.d	$fa1, $ft1, $ft2
 	fld.d	$fa7, $a0, 96
-	fld.d	$ft1, $a1, 104
+	fld.d	$ft0, $a1, 104
 	fld.d	$fa5, $a0, 120
 	fld.d	$fa6, $a1, 128
 	fadd.d	$fa0, $fa0, $fa1
-	fmul.d	$fa1, $fa7, $ft1
+	fmul.d	$fa1, $fa7, $ft0
 	fadd.d	$fa0, $fa0, $fa1
-	fmul.d	$ft10, $fa5, $fa6
+	fmul.d	$ft9, $fa5, $fa6
 	fld.d	$fa3, $a0, 144
 	fld.d	$fa4, $a1, 152
 	fld.d	$fa1, $a0, 168
 	fld.d	$fa2, $a1, 176
-	fadd.d	$fa0, $fa0, $ft10
-	fmul.d	$ft10, $fa3, $fa4
-	fadd.d	$fa0, $fa0, $ft10
-	fmul.d	$ft10, $fa1, $fa2
-	vld	$vr19, $a0, 8
-	fadd.d	$fa0, $fa0, $ft10
-	vreplvei.d	$vr17, $vr17, 0
-	vld	$vr18, $a1, 16
-	vfmul.d	$vr17, $vr19, $vr17
-	vrepli.b	$vr20, 0
-	vfadd.d	$vr17, $vr17, $vr20
-	vpackev.d	$vr21, $vr18, $vr16
-	vreplvei.d	$vr8, $vr8, 0
-	vfmul.d	$vr8, $vr21, $vr8
-	vfadd.d	$vr21, $vr8, $vr20
-	pcalau12i	$a3, %pc_hi20(.LCPI42_0)
-	vld	$vr8, $a3, %pc_lo12(.LCPI42_0)
-	movfr2gr.d	$a3, $ft8
-	vbsrl.v	$vr16, $vr19, 8
-	vld	$vr22, $a1, 40
-	vbsll.v	$vr23, $vr19, 8
-	vor.v	$vr16, $vr23, $vr16
-	vbsrl.v	$vr23, $vr18, 8
-	vori.b	$vr24, $vr8, 0
-	vshuf.d	$vr24, $vr18, $vr22
-	vinsgr2vr.d	$vr18, $a3, 1
-	vfmul.d	$vr19, $vr19, $vr18
-	vfmul.d	$vr16, $vr16, $vr18
-	vld	$vr18, $a0, 32
-	vfadd.d	$vr19, $vr19, $vr20
-	vfadd.d	$vr16, $vr16, $vr20
-	vreplvei.d	$vr10, $vr10, 0
-	vfmul.d	$vr10, $vr18, $vr10
-	vfadd.d	$vr17, $vr17, $vr10
-	vbsll.v	$vr10, $vr22, 8
-	vor.v	$vr20, $vr10, $vr23
-	fld.d	$ft2, $a1, 184
+	fadd.d	$fa0, $fa0, $ft9
+	fmul.d	$ft9, $fa3, $fa4
+	fadd.d	$fa0, $fa0, $ft9
+	fmul.d	$ft11, $fa1, $fa2
+	vld	$vr17, $a0, 8
+	fadd.d	$fa0, $fa0, $ft11
+	vreplvei.d	$vr16, $vr16, 0
+	vld	$vr20, $a1, 16
+	vfmul.d	$vr16, $vr17, $vr16
+	vrepli.b	$vr19, 0
+	vfadd.d	$vr16, $vr16, $vr19
+	vpackev.d	$vr21, $vr20, $vr18
 	vreplvei.d	$vr15, $vr15, 0
-	vfmul.d	$vr15, $vr20, $vr15
-	vfadd.d	$vr15, $vr21, $vr15
-	vfmul.d	$vr20, $vr18, $vr24
-	vfadd.d	$vr19, $vr19, $vr20
-	vbsrl.v	$vr20, $vr18, 8
-	vbsll.v	$vr18, $vr18, 8
-	vor.v	$vr18, $vr18, $vr20
-	vfmul.d	$vr18, $vr18, $vr24
-	vld	$vr20, $a0, 56
-	vfadd.d	$vr16, $vr16, $vr18
+	vfmul.d	$vr15, $vr21, $vr15
+	vfadd.d	$vr15, $vr15, $vr19
+	movfr2gr.d	$a3, $ft10
+	vld	$vr21, $a1, 40
+	vori.b	$vr18, $vr20, 0
+	vld	$vr26, $a1, 64
+	vld	$vr28, $a1, 88
+	vld	$vr25, $a1, 112
+	vld	$vr30, $a1, 136
+	vshuf4i.d	$vr18, $vr21, 9
+	vori.b	$vr29, $vr21, 0
+	vshuf4i.d	$vr29, $vr26, 9
+	vori.b	$vr27, $vr26, 0
+	vshuf4i.d	$vr27, $vr28, 9
+	vori.b	$vr24, $vr28, 0
+	vshuf4i.d	$vr24, $vr25, 9
+	vori.b	$vr22, $vr25, 0
+	vori.b	$vr23, $vr30, 0
+	vshuf4i.d	$vr23, $vr25, 12
+	vshuf4i.d	$vr25, $vr28, 12
+	vshuf4i.d	$vr28, $vr26, 12
+	vshuf4i.d	$vr26, $vr21, 12
+	vshuf4i.d	$vr21, $vr20, 12
+	vinsgr2vr.d	$vr20, $a3, 1
+	vfmul.d	$vr31, $vr17, $vr20
+	vfadd.d	$vr31, $vr31, $vr19
+	vshuf4i.d	$vr17, $vr0, 1
+	vfmul.d	$vr17, $vr17, $vr20
+	vfadd.d	$vr19, $vr17, $vr19
+	vld	$vr20, $a0, 32
+	vld	$vr17, $a1, 160
+	vshuf4i.d	$vr22, $vr30, 9
 	vreplvei.d	$vr14, $vr14, 0
-	vld	$vr18, $a1, 64
 	vfmul.d	$vr14, $vr20, $vr14
-	vfadd.d	$vr14, $vr17, $vr14
-	vbsrl.v	$vr17, $vr22, 8
-	vbsll.v	$vr21, $vr18, 8
-	vor.v	$vr17, $vr21, $vr17
+	vfadd.d	$vr16, $vr16, $vr14
+	vori.b	$vr14, $vr17, 0
+	vshuf4i.d	$vr14, $vr30, 12
 	vreplvei.d	$vr13, $vr13, 0
-	vfmul.d	$vr13, $vr17, $vr13
+	vfmul.d	$vr13, $vr18, $vr13
 	vfadd.d	$vr13, $vr15, $vr13
-	vori.b	$vr15, $vr8, 0
-	vshuf.d	$vr15, $vr22, $vr18
-	vfmul.d	$vr17, $vr20, $vr15
-	vfadd.d	$vr17, $vr19, $vr17
-	vbsrl.v	$vr19, $vr20, 8
-	vbsll.v	$vr20, $vr20, 8
-	vor.v	$vr19, $vr20, $vr19
-	vfmul.d	$vr15, $vr19, $vr15
-	vld	$vr19, $a0, 80
-	vfadd.d	$vr15, $vr16, $vr15
+	vfmul.d	$vr15, $vr20, $vr21
+	vfadd.d	$vr15, $vr31, $vr15
+	vshuf4i.d	$vr20, $vr0, 1
+	vld	$vr18, $a0, 56
+	vfmul.d	$vr20, $vr20, $vr21
+	vfadd.d	$vr19, $vr19, $vr20
 	vreplvei.d	$vr12, $vr12, 0
-	vld	$vr16, $a1, 88
-	vfmul.d	$vr12, $vr19, $vr12
-	vfadd.d	$vr12, $vr14, $vr12
-	vbsrl.v	$vr14, $vr18, 8
-	vbsll.v	$vr20, $vr16, 8
-	vor.v	$vr14, $vr20, $vr14
+	vfmul.d	$vr12, $vr18, $vr12
+	vfadd.d	$vr12, $vr16, $vr12
 	vreplvei.d	$vr11, $vr11, 0
-	vfmul.d	$vr11, $vr14, $vr11
+	vfmul.d	$vr11, $vr29, $vr11
 	vfadd.d	$vr11, $vr13, $vr11
-	vori.b	$vr13, $vr8, 0
-	vshuf.d	$vr13, $vr18, $vr16
-	vfmul.d	$vr14, $vr19, $vr13
-	vfadd.d	$vr14, $vr17, $vr14
-	vbsrl.v	$vr17, $vr19, 8
-	vbsll.v	$vr18, $vr19, 8
-	vor.v	$vr17, $vr18, $vr17
-	vfmul.d	$vr13, $vr17, $vr13
-	vld	$vr17, $a0, 104
+	vfmul.d	$vr13, $vr18, $vr26
 	vfadd.d	$vr13, $vr15, $vr13
+	vshuf4i.d	$vr18, $vr0, 1
+	vld	$vr15, $a0, 80
+	vfmul.d	$vr16, $vr18, $vr26
+	vfadd.d	$vr16, $vr19, $vr16
+	vreplvei.d	$vr10, $vr10, 0
+	vfmul.d	$vr10, $vr15, $vr10
+	vfadd.d	$vr10, $vr12, $vr10
 	vreplvei.d	$vr9, $vr9, 0
-	vld	$vr15, $a1, 112
-	vfmul.d	$vr9, $vr17, $vr9
-	vfadd.d	$vr9, $vr12, $vr9
-	vbsrl.v	$vr12, $vr16, 8
-	vbsll.v	$vr18, $vr15, 8
-	vor.v	$vr12, $vr18, $vr12
-	vreplvei.d	$vr7, $vr7, 0
-	vfmul.d	$vr7, $vr12, $vr7
-	vfadd.d	$vr7, $vr11, $vr7
-	vori.b	$vr11, $vr8, 0
-	vshuf.d	$vr11, $vr16, $vr15
-	vfmul.d	$vr12, $vr17, $vr11
-	vfadd.d	$vr12, $vr14, $vr12
-	vbsrl.v	$vr14, $vr17, 8
-	vbsll.v	$vr16, $vr17, 8
-	vor.v	$vr14, $vr16, $vr14
-	vfmul.d	$vr11, $vr14, $vr11
-	vld	$vr14, $a0, 128
+	vfmul.d	$vr9, $vr27, $vr9
+	vfadd.d	$vr9, $vr11, $vr9
+	vfmul.d	$vr11, $vr15, $vr28
 	vfadd.d	$vr11, $vr13, $vr11
+	vshuf4i.d	$vr15, $vr0, 1
+	vfmul.d	$vr12, $vr15, $vr28
+	vld	$vr13, $a0, 104
+	fld.d	$ft7, $a1, 184
+	vfadd.d	$vr12, $vr16, $vr12
+	vreplvei.d	$vr8, $vr8, 0
+	vfmul.d	$vr8, $vr13, $vr8
+	vfadd.d	$vr8, $vr10, $vr8
+	vreplvei.d	$vr7, $vr7, 0
+	vfmul.d	$vr7, $vr24, $vr7
+	vfadd.d	$vr7, $vr9, $vr7
+	vfmul.d	$vr9, $vr13, $vr25
+	vfadd.d	$vr9, $vr11, $vr9
+	vshuf4i.d	$vr13, $vr0, 1
+	vld	$vr10, $a0, 128
+	vfmul.d	$vr11, $vr13, $vr25
+	vfadd.d	$vr11, $vr12, $vr11
 	vreplvei.d	$vr6, $vr6, 0
-	vld	$vr13, $a1, 136
-	vfmul.d	$vr6, $vr14, $vr6
-	vfadd.d	$vr6, $vr9, $vr6
-	vbsrl.v	$vr9, $vr15, 8
-	vbsll.v	$vr16, $vr13, 8
-	vor.v	$vr9, $vr16, $vr9
+	vfmul.d	$vr6, $vr10, $vr6
+	vfadd.d	$vr6, $vr8, $vr6
 	vreplvei.d	$vr5, $vr5, 0
-	vfmul.d	$vr5, $vr9, $vr5
+	vfmul.d	$vr5, $vr22, $vr5
 	vfadd.d	$vr5, $vr7, $vr5
-	vori.b	$vr7, $vr8, 0
-	vshuf.d	$vr7, $vr15, $vr13
-	vfmul.d	$vr9, $vr14, $vr7
-	vfadd.d	$vr9, $vr12, $vr9
-	vbsrl.v	$vr12, $vr14, 8
-	vbsll.v	$vr14, $vr14, 8
-	vor.v	$vr12, $vr14, $vr12
-	vfmul.d	$vr7, $vr12, $vr7
-	vld	$vr12, $a0, 152
-	vfadd.d	$vr7, $vr11, $vr7
+	vfmul.d	$vr7, $vr10, $vr23
+	vfadd.d	$vr7, $vr9, $vr7
+	vshuf4i.d	$vr10, $vr0, 1
+	vld	$vr8, $a0, 152
+	vfmul.d	$vr9, $vr10, $vr23
+	vfadd.d	$vr9, $vr11, $vr9
 	vreplvei.d	$vr4, $vr4, 0
-	vld	$vr11, $a1, 160
-	vfmul.d	$vr4, $vr12, $vr4
+	vfmul.d	$vr4, $vr8, $vr4
 	vfadd.d	$vr4, $vr6, $vr4
-	vbsrl.v	$vr6, $vr13, 8
-	vbsll.v	$vr14, $vr11, 8
-	vor.v	$vr6, $vr14, $vr6
+	vshuf4i.d	$vr30, $vr17, 9
 	vreplvei.d	$vr3, $vr3, 0
-	vfmul.d	$vr3, $vr6, $vr3
+	vfmul.d	$vr3, $vr30, $vr3
 	vfadd.d	$vr3, $vr5, $vr3
-	vshuf.d	$vr8, $vr13, $vr11
-	vfmul.d	$vr5, $vr12, $vr8
-	vfadd.d	$vr5, $vr9, $vr5
-	vbsrl.v	$vr6, $vr12, 8
-	vbsll.v	$vr9, $vr12, 8
-	vor.v	$vr6, $vr9, $vr6
-	vld	$vr9, $a0, 176
-	vfmul.d	$vr6, $vr6, $vr8
-	vfadd.d	$vr6, $vr7, $vr6
+	vfmul.d	$vr5, $vr8, $vr14
+	vfadd.d	$vr5, $vr7, $vr5
+	vshuf4i.d	$vr8, $vr0, 1
+	vld	$vr6, $a0, 176
+	vfmul.d	$vr7, $vr8, $vr14
+	vfadd.d	$vr7, $vr9, $vr7
 	vreplvei.d	$vr2, $vr2, 0
-	vfmul.d	$vr2, $vr9, $vr2
+	vfmul.d	$vr2, $vr6, $vr2
 	vfadd.d	$vr2, $vr4, $vr2
-	vreplvei.d	$vr4, $vr11, 1
-	movfr2gr.d	$a0, $ft2
+	vreplvei.d	$vr4, $vr17, 1
+	movfr2gr.d	$a0, $ft7
 	vinsgr2vr.d	$vr4, $a0, 1
 	vreplvei.d	$vr1, $vr1, 0
 	vfmul.d	$vr1, $vr4, $vr1
 	vfadd.d	$vr1, $vr3, $vr1
-	vinsgr2vr.d	$vr11, $a0, 0
-	vfmul.d	$vr3, $vr9, $vr11
+	vinsgr2vr.d	$vr17, $a0, 0
+	vfmul.d	$vr3, $vr6, $vr17
 	vfadd.d	$vr3, $vr5, $vr3
-	vbsrl.v	$vr4, $vr9, 8
-	vbsll.v	$vr5, $vr9, 8
-	vor.v	$vr4, $vr5, $vr4
-	vfmul.d	$vr4, $vr4, $vr11
-	vfadd.d	$vr4, $vr6, $vr4
+	vshuf4i.d	$vr6, $vr0, 1
+	vfmul.d	$vr4, $vr6, $vr17
+	vfadd.d	$vr4, $vr7, $vr4
 	vreplvei.d	$vr5, $vr4, 0
 	vreplvei.d	$vr6, $vr4, 1
 	fmul.d	$fa5, $fa5, $fa6
@@ -22049,9 +22023,7 @@ _ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_: # @_ZN6miniFE4Hex818gradien
 	fmul.d	$fa6, $fa6, $fa7
 	fsub.d	$fa5, $fa5, $fa6
 	vfmul.d	$vr4, $vr2, $vr4
-	vbsrl.v	$vr6, $vr2, 8
-	vbsll.v	$vr2, $vr2, 8
-	vor.v	$vr2, $vr2, $vr6
+	vshuf4i.d	$vr2, $vr0, 1
 	vfmul.d	$vr2, $vr2, $vr3
 	vfsub.d	$vr2, $vr4, $vr2
 	fmul.d	$fa0, $fa0, $fa5
@@ -22061,8 +22033,15 @@ _ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_: # @_ZN6miniFE4Hex818gradien
 	vreplvei.d	$vr1, $vr1, 1
 	fadd.d	$fa0, $fa1, $fa0
 	fst.d	$fa0, $a2, 0
-	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	fld.d	$fs7, $sp, 0                    # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 56                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end42:
 	.size	_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_, .Lfunc_end42-_ZN6miniFE4Hex818gradients_and_detJIdEEvPKT_S4_RS2_

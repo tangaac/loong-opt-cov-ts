@@ -119,12 +119,9 @@ des_is_weak_key:                        # @des_is_weak_key
 	.dword	2                               # 0x2
 	.dword	6                               # 0x6
 .LCPI2_1:
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
-.LCPI2_2:
 	.dword	30                              # 0x1e
 	.dword	26                              # 0x1a
-.LCPI2_3:
+.LCPI2_2:
 	.dword	4294967292                      # 0xfffffffc
 	.dword	4294967232                      # 0xffffffc0
 	.text
@@ -278,10 +275,8 @@ des_set_key:                            # @des_set_key
 	vld	$vr1, $t0, %pc_lo12(.LCPI2_1)
 	pcalau12i	$t0, %pc_hi20(.LCPI2_2)
 	vld	$vr2, $t0, %pc_lo12(.LCPI2_2)
-	pcalau12i	$t0, %pc_hi20(.LCPI2_3)
-	vld	$vr3, $t0, %pc_lo12(.LCPI2_3)
 	lu32i.d	$a6, 0
-	vreplgr2vr.d	$vr4, $a6
+	vreplgr2vr.d	$vr3, $a6
 	ori	$a6, $zero, 16
 	.p2align	4, , 16
 .LBB2_13:                               # =>This Inner Loop Header: Depth=1
@@ -343,19 +338,18 @@ des_set_key:                            # @des_set_key
 	slli.d	$t2, $t0, 16
 	bstrpick.d	$t3, $t1, 15, 0
 	srli.d	$t1, $t1, 16
-	vinsgr2vr.d	$vr5, $t2, 0
-	vinsgr2vr.d	$vr5, $t0, 1
-	vand.v	$vr5, $vr5, $vr4
-	vinsgr2vr.d	$vr6, $t3, 0
-	vinsgr2vr.d	$vr6, $t1, 1
-	vor.v	$vr6, $vr5, $vr6
-	vsll.d	$vr7, $vr6, $vr0
-	vori.b	$vr8, $vr1, 0
-	vshuf.d	$vr8, $vr6, $vr5
-	vsrl.d	$vr5, $vr8, $vr2
-	vand.v	$vr6, $vr7, $vr3
-	vor.v	$vr5, $vr6, $vr5
-	vst	$vr5, $a1, 0
+	vinsgr2vr.d	$vr4, $t2, 0
+	vinsgr2vr.d	$vr4, $t0, 1
+	vand.v	$vr4, $vr4, $vr3
+	vinsgr2vr.d	$vr5, $t3, 0
+	vinsgr2vr.d	$vr5, $t1, 1
+	vor.v	$vr5, $vr4, $vr5
+	vsll.d	$vr6, $vr5, $vr0
+	vshuf4i.d	$vr4, $vr5, 12
+	vsrl.d	$vr4, $vr4, $vr1
+	vand.v	$vr5, $vr6, $vr2
+	vor.v	$vr4, $vr5, $vr4
+	vst	$vr4, $a1, 0
 	addi.d	$a1, $a1, 16
 	addi.d	$a0, $a0, 1
 	bstrpick.d	$a7, $a7, 27, 0

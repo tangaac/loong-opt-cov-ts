@@ -241,7 +241,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, 8
 	addi.d	$a1, $sp, 80
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	vst	$vr6, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr3, $sp, 48                   # 16-byte Folded Reload
@@ -283,7 +283,7 @@ main:                                   # @main
 	fadd.d	$fa0, $fa0, $fa1
 	fneg.d	$fa0, $fa0
 	vst	$vr5, $sp, 32                   # 16-byte Folded Spill
-	fdiv.d	$fa6, $fa0, $fa5
+	fdiv.d	$fa5, $fa0, $fa5
 	ori	$a0, $zero, 4
 	bgeu	$s3, $a0, .LBB7_14
 # %bb.13:                               #   in Loop: Header=BB7_10 Depth=1
@@ -294,7 +294,7 @@ main:                                   # @main
                                         #   in Loop: Header=BB7_10 Depth=1
 	bstrpick.d	$a0, $s3, 62, 2
 	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr6, 0
+	vreplvei.d	$vr0, $vr5, 0
 	move	$a2, $s8
 	addi.d	$a3, $sp, 96
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
@@ -303,17 +303,13 @@ main:                                   # @main
                                         #   Parent Loop BB7_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr1, $a2, 0
-	vld	$vr2, $a4, -16
-	vld	$vr3, $a4, 0
-	vld	$vr4, $a2, -16
-	vbsrl.v	$vr5, $vr1, 8
-	vbsll.v	$vr1, $vr1, 8
-	vor.v	$vr1, $vr1, $vr5
-	vbsrl.v	$vr5, $vr4, 8
-	vbsll.v	$vr4, $vr4, 8
-	vor.v	$vr4, $vr4, $vr5
-	vfmadd.d	$vr1, $vr0, $vr1, $vr2
-	vfmadd.d	$vr2, $vr0, $vr4, $vr3
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a4, -16
+	vld	$vr4, $a4, 0
+	vshuf4i.d	$vr1, $vr0, 1
+	vshuf4i.d	$vr2, $vr0, 1
+	vfmadd.d	$vr1, $vr0, $vr1, $vr3
+	vfmadd.d	$vr2, $vr0, $vr2, $vr4
 	vst	$vr1, $a3, -16
 	vst	$vr2, $a3, 0
 	addi.d	$a1, $a1, -4
@@ -337,7 +333,7 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa0, $a3, 0
 	fld.d	$fa1, $a2, 0
-	fmadd.d	$fa0, $fa6, $fa1, $fa0
+	fmadd.d	$fa0, $fa5, $fa1, $fa0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 8
@@ -416,7 +412,7 @@ main:                                   # @main
 	addi.d	$a2, $a0, 8
 	addi.d	$a1, $sp, 80
 	move	$a0, $fp
-	vst	$vr6, $sp, 48                   # 16-byte Folded Spill
+	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	vld	$vr3, $sp, 48                   # 16-byte Folded Reload
@@ -457,7 +453,7 @@ main:                                   # @main
 	fadd.d	$fa0, $fa0, $fa1
 	fneg.d	$fa0, $fa0
 	vst	$vr4, $sp, 32                   # 16-byte Folded Spill
-	fdiv.d	$fa6, $fa0, $fa4
+	fdiv.d	$fa5, $fa0, $fa4
 	ori	$a0, $zero, 4
 	bgeu	$s8, $a0, .LBB7_27
 # %bb.26:                               #   in Loop: Header=BB7_23 Depth=1
@@ -468,7 +464,7 @@ main:                                   # @main
                                         #   in Loop: Header=BB7_23 Depth=1
 	bstrpick.d	$a0, $s8, 62, 2
 	slli.d	$a0, $a0, 2
-	vreplvei.d	$vr0, $vr6, 0
+	vreplvei.d	$vr0, $vr5, 0
 	move	$a2, $s3
 	addi.d	$a3, $sp, 96
 	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
@@ -477,19 +473,15 @@ main:                                   # @main
                                         #   Parent Loop BB7_23 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr1, $a2, 0
-	vld	$vr2, $a4, -16
-	vld	$vr3, $a4, 0
-	vld	$vr4, $a2, -16
-	vbsrl.v	$vr5, $vr1, 8
-	vbsll.v	$vr1, $vr1, 8
-	vor.v	$vr1, $vr1, $vr5
-	vbsrl.v	$vr5, $vr4, 8
-	vbsll.v	$vr4, $vr4, 8
-	vor.v	$vr4, $vr4, $vr5
+	vld	$vr2, $a2, -16
+	vld	$vr3, $a4, -16
+	vld	$vr4, $a4, 0
+	vshuf4i.d	$vr1, $vr0, 1
+	vshuf4i.d	$vr2, $vr0, 1
 	vfmul.d	$vr1, $vr0, $vr1
-	vfmul.d	$vr4, $vr0, $vr4
-	vfadd.d	$vr1, $vr2, $vr1
-	vfadd.d	$vr2, $vr3, $vr4
+	vfmul.d	$vr2, $vr0, $vr2
+	vfadd.d	$vr1, $vr3, $vr1
+	vfadd.d	$vr2, $vr4, $vr2
 	vst	$vr1, $a3, -16
 	vst	$vr2, $a3, 0
 	addi.d	$a1, $a1, -4
@@ -513,7 +505,7 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa0, $a2, 0
 	fld.d	$fa1, $a3, 0
-	fmul.d	$fa0, $fa6, $fa0
+	fmul.d	$fa0, $fa5, $fa0
 	fadd.d	$fa0, $fa1, $fa0
 	fst.d	$fa0, $a1, 0
 	addi.d	$a0, $a0, 1

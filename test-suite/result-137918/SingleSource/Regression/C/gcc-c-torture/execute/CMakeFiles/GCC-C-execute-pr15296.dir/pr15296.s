@@ -93,10 +93,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 48
 	vld	$vr1, $sp, 32
-	vinsgr2vr.d	$vr2, $fp, 0
-	vinsgr2vr.d	$vr3, $zero, 0
-	vpackev.d	$vr2, $vr3, $vr2
-	vseq.d	$vr1, $vr1, $vr2
+	vinsgr2vr.d	$vr2, $zero, 0
+	vinsgr2vr.d	$vr3, $fp, 0
+	vshuf4i.d	$vr3, $vr2, 8
+	vseq.d	$vr1, $vr1, $vr3
 	vrepli.b	$vr2, -1
 	vxor.v	$vr1, $vr1, $vr2
 	vld	$vr3, $sp, 0                    # 16-byte Folded Reload

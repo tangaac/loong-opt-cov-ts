@@ -124,10 +124,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint16_t_To_uint8_t_RN9benchmark5Sta
 	vpickev.b	$vr1, $vr1, $vr1
 	vpickev.b	$vr2, $vr2, $vr2
 	vpickev.b	$vr3, $vr3, $vr3
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, -16
-	vpackev.d	$vr0, $vr3, $vr2
-	vst	$vr0, $a1, 0
+	vshuf4i.d	$vr2, $vr3, 8
+	vst	$vr2, $a1, 0
 	addi.d	$a3, $a3, 64
 	addi.d	$a1, $a1, 32
 	bnez	$a3, .LBB0_8
@@ -246,10 +246,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint16_t_To_uint8_t_RN9benchmark5Sta
 	vpickev.b	$vr2, $vr2, $vr2
 	vpickev.b	$vr3, $vr3, $vr3
 	add.d	$t2, $a7, $t1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t2, $a5
-	vpackev.d	$vr0, $vr3, $vr2
-	vstx	$vr0, $t2, $s5
+	vshuf4i.d	$vr2, $vr3, 8
+	vstx	$vr2, $t2, $s5
 	addi.d	$t1, $t1, 32
 	addi.d	$t0, $t0, 64
 	bnez	$t1, .LBB0_20
@@ -1031,7 +1031,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	vldx	$vr1, $a3, $a2
 	vpickev.b	$vr0, $vr0, $vr0
 	vpickev.b	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a0, -8
 	addi.d	$a1, $a1, 32
 	addi.d	$a0, $a0, 16
@@ -1115,7 +1115,7 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5StateE: # 
 	vpickev.b	$vr0, $vr0, $vr0
 	vpickev.b	$vr1, $vr1, $vr1
 	add.d	$a7, $a4, $a6
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $a7, $s2
 	addi.d	$a6, $a6, 16
 	addi.d	$a5, $a5, 32
@@ -1470,10 +1470,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint16_t_To_uint8_t_RN9benchm
 	vadd.b	$vr1, $vr5, $vr1
 	vadd.b	$vr2, $vr6, $vr2
 	vadd.b	$vr3, $vr7, $vr3
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $t3, -16
-	vpackev.d	$vr0, $vr3, $vr2
-	vst	$vr0, $t3, 0
+	vshuf4i.d	$vr2, $vr3, 8
+	vst	$vr2, $t3, 0
 	addi.d	$t4, $t4, 64
 	addi.d	$t3, $t3, 32
 	bnez	$t4, .LBB3_15
@@ -2346,11 +2346,11 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint8_t_RN9benchmark5Sta
 	st.b	$a2, $sp, 96
 	vld	$vr0, $sp, 80
 	vld	$vr1, $sp, 128
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, -16
 	vld	$vr0, $sp, 112
 	vld	$vr1, $sp, 96
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, 0
 	addi.d	$a0, $a0, 128
 	addi.d	$a1, $a1, 32
@@ -2531,11 +2531,11 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint32_t_To_uint8_t_RN9benchmark5Sta
 	vld	$vr0, $sp, 64
 	vld	$vr1, $sp, 48
 	add.d	$t2, $a7, $t1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t2, $a5
 	vld	$vr0, $sp, 16
 	vld	$vr1, $sp, 32
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t2, $s5
 	addi.d	$t1, $t1, 32
 	addi.d	$t0, $t0, 128
@@ -3857,10 +3857,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint32_t_To_uint8_t_RN9benchm
 	vadd.b	$vr1, $vr1, $vr6
 	vadd.b	$vr2, $vr2, $vr7
 	vadd.b	$vr3, $vr3, $vr4
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t3, $a5
-	vpackev.d	$vr0, $vr3, $vr2
-	vstx	$vr0, $t3, $a6
+	vshuf4i.d	$vr2, $vr3, 8
+	vstx	$vr2, $t3, $a6
 	addi.d	$t2, $t2, 32
 	addi.d	$t1, $t1, 128
 	bnez	$t2, .LBB9_15
@@ -4783,11 +4783,11 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint64_t_To_uint8_t_RN9benchmark5Sta
 	st.b	$a2, $sp, 96
 	vld	$vr0, $sp, 80
 	vld	$vr1, $sp, 128
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, -16
 	vld	$vr0, $sp, 112
 	vld	$vr1, $sp, 96
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, 0
 	addi.d	$a0, $a0, 256
 	addi.d	$a1, $a1, 32
@@ -4976,11 +4976,11 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint64_t_To_uint8_t_RN9benchmark5Sta
 	vld	$vr0, $sp, 64
 	vld	$vr1, $sp, 48
 	add.d	$t2, $a7, $t1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t2, $a5
 	vld	$vr0, $sp, 16
 	vld	$vr1, $sp, 32
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t2, $s5
 	addi.d	$t1, $t1, 32
 	addi.d	$t0, $t0, 256
@@ -6413,10 +6413,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint64_t_To_uint8_t_RN9benchm
 	vadd.b	$vr1, $vr1, $vr7
 	vadd.b	$vr2, $vr2, $vr8
 	vadd.b	$vr3, $vr4, $vr3
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $t3, $a5
-	vpackev.d	$vr0, $vr3, $vr2
-	vstx	$vr0, $t3, $a6
+	vshuf4i.d	$vr2, $vr3, 8
+	vstx	$vr2, $t3, $a6
 	addi.d	$t2, $t2, 32
 	addi.d	$t1, $t1, 256
 	bnez	$t2, .LBB15_15
@@ -8260,7 +8260,7 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5StateE: #
 	vld	$vr1, $a2, 16
 	vpickev.h	$vr0, $vr0, $vr0
 	vpickev.h	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, -8
 	addi.d	$a0, $a0, 32
 	addi.d	$a1, $a1, 16
@@ -8316,7 +8316,7 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5StateE: #
 	vpickev.h	$vr0, $vr0, $vr0
 	vpickev.h	$vr1, $vr1, $vr1
 	add.d	$a6, $a3, $a5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $a6, $s1
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, 32
@@ -9327,7 +9327,7 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint32_t_To_uint16_t_RN9benchmark5St
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr2, $vr0
 	vadd.h	$vr1, $vr3, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $a6, $s1
 	addi.d	$a5, $a5, 16
 	addi.d	$a4, $a4, 32
@@ -13071,7 +13071,7 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint32_t_RN9benchmark5StateE: #
 	vld	$vr1, $a2, 16
 	vshuf4i.w	$vr0, $vr0, 8
 	vshuf4i.w	$vr1, $vr1, 8
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a1, -8
 	addi.d	$a0, $a0, 32
 	addi.d	$a1, $a1, 16
@@ -13126,7 +13126,7 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint32_t_RN9benchmark5StateE: #
 	vld	$vr1, $a4, 0
 	vshuf4i.w	$vr0, $vr0, 8
 	vshuf4i.w	$vr1, $vr1, 8
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a3, -8
 	addi.d	$a5, $a5, -4
 	addi.d	$a3, $a3, 16
@@ -14198,7 +14198,7 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint32_t_RN9benchmark5St
 	vshuf4i.w	$vr1, $vr1, 8
 	vadd.w	$vr0, $vr2, $vr0
 	vadd.w	$vr1, $vr3, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a3, -8
 	addi.d	$a5, $a5, -4
 	addi.d	$a3, $a3, 16
@@ -29043,9 +29043,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vori.b	$vr6, $vr5, 0
 	add.d	$a5, $a0, $a2
 	vld	$vr5, $a5, 8
-	vbsrl.v	$vr6, $vr6, 8
-	vbsll.v	$vr7, $vr5, 8
-	vor.v	$vr6, $vr7, $vr6
+	vshuf4i.d	$vr6, $vr5, 9
 	vand.v	$vr6, $vr6, $vr0
 	vldx	$vr7, $a5, $a3
 	vand.v	$vr8, $vr5, $vr1
@@ -29086,9 +29084,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a0, $a2
 	vldx	$vr6, $a6, $a3
-	vbsrl.v	$vr5, $vr5, 8
-	vbsll.v	$vr7, $vr6, 8
-	vor.v	$vr5, $vr7, $vr5
+	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr0
 	vldx	$vr7, $a6, $a4
 	vand.v	$vr8, $vr6, $vr1

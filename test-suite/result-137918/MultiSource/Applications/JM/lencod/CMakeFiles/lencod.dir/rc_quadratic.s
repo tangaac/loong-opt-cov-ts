@@ -3139,7 +3139,7 @@ rc_init_GOP:                            # @rc_init_GOP
 	movfr2gr.s	$t2, $fa5
 	vinsgr2vr.w	$vr5, $t2, 0
 	vpackev.w	$vr4, $vr5, $vr4
-	vpackev.d	$vr3, $vr4, $vr3
+	vshuf4i.d	$vr3, $vr4, 8
 	vst	$vr3, $a7, -8
 	addi.d	$t1, $t1, -4
 	addi.d	$a7, $a7, 16

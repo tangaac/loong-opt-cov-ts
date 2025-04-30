@@ -577,9 +577,7 @@ _ZNK16ComplexBenchmark9oop_styleEv:     # @_ZNK16ComplexBenchmark9oop_styleEv
 	add.d	$a4, $a1, $a0
 	vldx	$vr3, $a4, $a3
 	vfmul.d	$vr4, $vr2, $vr0
-	vbsrl.v	$vr5, $vr4, 8
-	vbsll.v	$vr4, $vr4, 8
-	vor.v	$vr4, $vr4, $vr5
+	vshuf4i.d	$vr4, $vr0, 1
 	vfmadd.d	$vr2, $vr2, $vr1, $vr4
 	vfadd.d	$vr2, $vr3, $vr2
 	addi.d	$a0, $a0, 16

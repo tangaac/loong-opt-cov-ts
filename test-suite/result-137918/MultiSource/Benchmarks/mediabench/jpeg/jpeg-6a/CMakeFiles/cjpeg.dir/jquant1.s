@@ -70,22 +70,22 @@ jinit_1pass_quantizer:                  # @jinit_1pass_quantizer
 	bltu	$s4, $a4, .LBB0_9
 # %bb.6:                                # %vector.ph
                                         #   in Loop: Header=BB0_5 Depth=1
-	vreplgr2vr.d	$vr2, $a3
-	vinsgr2vr.d	$vr3, $a3, 0
-	vpackev.d	$vr3, $vr0, $vr3
+	vreplgr2vr.d	$vr3, $a3
+	vinsgr2vr.d	$vr2, $a3, 0
+	vshuf4i.d	$vr2, $vr0, 8
 	move	$a5, $a1
 	vori.b	$vr4, $vr1, 0
 	.p2align	4, , 16
 .LBB0_7:                                # %vector.body
                                         #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vmul.d	$vr3, $vr3, $vr2
+	vmul.d	$vr2, $vr2, $vr3
 	addi.w	$a5, $a5, -4
-	vmul.d	$vr4, $vr4, $vr2
+	vmul.d	$vr4, $vr4, $vr3
 	bnez	$a5, .LBB0_7
 # %bb.8:                                # %middle.block
                                         #   in Loop: Header=BB0_5 Depth=1
-	vmul.d	$vr2, $vr4, $vr3
+	vmul.d	$vr2, $vr4, $vr2
 	vreplvei.d	$vr3, $vr2, 1
 	vmul.d	$vr2, $vr2, $vr3
 	vpickve2gr.d	$a5, $vr2, 0

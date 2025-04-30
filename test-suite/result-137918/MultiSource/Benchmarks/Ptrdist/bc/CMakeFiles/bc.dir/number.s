@@ -1673,9 +1673,9 @@ bc_multiply:                            # @bc_multiply
 	bstrins.d	$a7, $zero, 1, 0
 	sub.d	$a5, $a5, $a7
 	add.d	$fp, $a7, $fp
-	vinsgr2vr.d	$vr1, $a4, 0
 	vinsgr2vr.d	$vr2, $zero, 0
-	vpackev.d	$vr1, $vr2, $vr1
+	vinsgr2vr.d	$vr1, $a4, 0
+	vshuf4i.d	$vr1, $vr2, 8
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB15_7:                               # %vector.body
@@ -1846,9 +1846,9 @@ bc_multiply:                            # @bc_multiply
 	bstrins.d	$s8, $zero, 1, 0
 	sub.d	$s7, $s7, $s8
 	add.d	$fp, $s8, $fp
-	vinsgr2vr.d	$vr1, $a4, 0
 	vinsgr2vr.d	$vr2, $zero, 0
-	vpackev.d	$vr1, $vr2, $vr1
+	vinsgr2vr.d	$vr1, $a4, 0
+	vshuf4i.d	$vr1, $vr2, 8
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB15_18:                              # %vector.body197

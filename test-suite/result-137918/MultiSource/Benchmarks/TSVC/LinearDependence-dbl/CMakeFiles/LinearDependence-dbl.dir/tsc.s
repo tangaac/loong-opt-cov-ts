@@ -20087,7 +20087,7 @@ s116:                                   # @s116
 .LBB16_3:                               #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr1, $a0, -16
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vfmul.d	$vr1, $vr1, $vr0
 	vld	$vr2, $a0, -8
 	vld	$vr3, $a0, 0

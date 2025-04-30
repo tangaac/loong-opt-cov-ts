@@ -6333,9 +6333,9 @@ _ZN8NArchive3N7z11COutArchive13WriteDatabaseERKNS0_16CArchiveDatabaseEPKNS0_22CC
 .LBB24_59:                              # %vector.ph
 	bstrpick.d	$a2, $a0, 30, 2
 	slli.d	$a2, $a2, 2
-	vinsgr2vr.d	$vr0, $s4, 0
 	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr0, $s4, 0
+	vshuf4i.d	$vr0, $vr1, 8
 	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 	vld	$vr3, $sp, 16                   # 16-byte Folded Reload

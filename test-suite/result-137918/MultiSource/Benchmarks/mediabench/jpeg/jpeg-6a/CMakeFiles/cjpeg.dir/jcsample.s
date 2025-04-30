@@ -1254,9 +1254,9 @@ int_downsample:                         # @int_downsample
 .LBB8_17:                               # %vector.ph
                                         #   in Loop: Header=BB8_15 Depth=3
 	add.d	$t6, $t8, $a6
-	vinsgr2vr.d	$vr1, $t7, 0
 	vinsgr2vr.d	$vr2, $zero, 0
-	vpackev.d	$vr1, $vr2, $vr1
+	vinsgr2vr.d	$vr1, $t7, 0
+	vshuf4i.d	$vr1, $vr2, 8
 	addi.d	$t7, $t8, 2
 	move	$t8, $a6
 	vori.b	$vr2, $vr0, 0

@@ -168,10 +168,11 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	vor.v	$vr23, $vr23, $vr24
 	vilvl.w	$vr22, $vr18, $vr22
 	add.d	$a4, $a1, $a5
-	vpackev.d	$vr24, $vr22, $vr23
+	vori.b	$vr24, $vr23, 0
+	vshuf4i.d	$vr24, $vr22, 8
 	vstx	$vr24, $a5, $a1
-	vpackod.d	$vr22, $vr22, $vr23
-	vst	$vr22, $a4, 16
+	vshuf4i.d	$vr23, $vr22, 13
+	vst	$vr23, $a4, 16
 	vfmul.s	$vr22, $vr20, $vr10
 	vfmadd.s	$vr22, $vr9, $vr19, $vr22
 	vfmadd.s	$vr22, $vr11, $vr21, $vr22
@@ -187,11 +188,12 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	vor.v	$vr20, $vr20, $vr21
 	vilvl.w	$vr19, $vr18, $vr19
 	add.d	$a4, $a2, $a5
-	vpackev.d	$vr21, $vr19, $vr20
+	vori.b	$vr21, $vr20, 0
+	vshuf4i.d	$vr21, $vr19, 8
 	vstx	$vr21, $a5, $a2
-	vpackod.d	$vr19, $vr19, $vr20
+	vshuf4i.d	$vr20, $vr19, 13
 	addi.d	$a5, $a5, 32
-	vst	$vr19, $a4, 16
+	vst	$vr20, $a4, 16
 	bne	$a5, $a3, .LBB0_4
 # %bb.5:                                # %middle.block
 	ld.d	$a1, $a0, 0

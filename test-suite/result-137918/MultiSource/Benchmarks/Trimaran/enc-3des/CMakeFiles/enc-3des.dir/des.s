@@ -322,7 +322,7 @@ des_main_ks:                            # @des_main_ks
 	vld	$vr2, $t4, %pc_lo12(.LCPI0_34)
 	lu12i.w	$t1, 8
 	ori	$t1, $t1, 259
-	vinsgr2vr.d	$vr3, $t2, 0
+	vinsgr2vr.d	$vr6, $t2, 0
 	b	.LBB0_3
 .LBB0_1:                                #   in Loop: Header=BB0_3 Depth=1
 	ori	$t2, $zero, 26
@@ -342,9 +342,10 @@ des_main_ks:                            # @des_main_ks
 	vinsgr2vr.d	$vr4, $t5, 0
 	vinsgr2vr.d	$vr4, $a4, 1
 	vinsgr2vr.d	$vr5, $t3, 0
-	vpackev.d	$vr5, $vr5, $vr3
-	vsll.d	$vr5, $vr4, $vr5
-	vreplgr2vr.d	$vr6, $a5
+	vori.b	$vr3, $vr6, 0
+	vshuf4i.d	$vr3, $vr5, 8
+	vsll.d	$vr3, $vr4, $vr3
+	vreplgr2vr.d	$vr5, $a5
 	vinsgr2vr.d	$vr4, $t6, 0
 	vinsgr2vr.d	$vr4, $t8, 1
 	vld	$vr7, $sp, 0                    # 16-byte Folded Reload
@@ -352,66 +353,66 @@ des_main_ks:                            # @des_main_ks
 	vinsgr2vr.d	$vr4, $t7, 0
 	vinsgr2vr.d	$vr4, $fp, 1
 	vand.v	$vr8, $vr4, $vr15
-	vreplvei.d	$vr4, $vr5, 1
+	vreplvei.d	$vr4, $vr3, 1
 	vor.v	$vr7, $vr8, $vr7
 	vori.b	$vr8, $vr4, 0
 	vinsgr2vr.d	$vr8, $t4, 1
 	vand.v	$vr8, $vr8, $vr16
 	vor.v	$vr7, $vr7, $vr8
 	vld	$vr8, $sp, 128                  # 16-byte Folded Reload
-	vsll.d	$vr8, $vr6, $vr8
-	vand.v	$vr5, $vr5, $vr17
-	vor.v	$vr5, $vr7, $vr5
+	vsll.d	$vr8, $vr5, $vr8
+	vand.v	$vr3, $vr3, $vr17
+	vor.v	$vr3, $vr7, $vr3
 	vld	$vr7, $sp, 96                   # 16-byte Folded Reload
-	vsll.d	$vr7, $vr6, $vr7
+	vsll.d	$vr7, $vr5, $vr7
 	vld	$vr9, $sp, 80                   # 16-byte Folded Reload
 	vand.v	$vr7, $vr7, $vr9
-	vor.v	$vr5, $vr5, $vr7
+	vor.v	$vr3, $vr3, $vr7
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	vand.v	$vr7, $vr8, $vr7
-	vor.v	$vr5, $vr5, $vr7
+	vor.v	$vr3, $vr3, $vr7
 	vld	$vr7, $sp, 144                  # 16-byte Folded Reload
-	vsll.d	$vr7, $vr6, $vr7
+	vsll.d	$vr7, $vr5, $vr7
 	vld	$vr9, $sp, 48                   # 16-byte Folded Reload
 	vand.v	$vr7, $vr7, $vr9
-	vor.v	$vr5, $vr5, $vr7
+	vor.v	$vr3, $vr3, $vr7
 	vld	$vr7, $sp, 32                   # 16-byte Folded Reload
-	vsll.d	$vr7, $vr6, $vr7
+	vsll.d	$vr7, $vr5, $vr7
 	vld	$vr9, $sp, 16                   # 16-byte Folded Reload
 	vand.v	$vr7, $vr7, $vr9
-	vor.v	$vr5, $vr5, $vr7
-	vsll.d	$vr7, $vr6, $vr10
+	vor.v	$vr3, $vr3, $vr7
+	vsll.d	$vr7, $vr5, $vr10
 	vand.v	$vr7, $vr7, $vr11
-	vor.v	$vr5, $vr5, $vr7
+	vor.v	$vr3, $vr3, $vr7
 	vld	$vr7, $sp, 64                   # 16-byte Folded Reload
-	vsll.d	$vr7, $vr6, $vr7
+	vsll.d	$vr7, $vr5, $vr7
 	vand.v	$vr7, $vr7, $vr12
-	vor.v	$vr5, $vr5, $vr7
+	vor.v	$vr3, $vr3, $vr7
 	slli.d	$t4, $a5, 3
 	and	$t4, $t4, $a3
 	sll.d	$t3, $a4, $t3
 	srli.d	$t5, $t3, 13
 	and	$t5, $t5, $a6
-	vsll.d	$vr6, $vr6, $vr13
-	vand.v	$vr6, $vr6, $vr14
-	vor.v	$vr5, $vr5, $vr6
-	vinsgr2vr.d	$vr6, $t5, 0
-	vinsgr2vr.d	$vr6, $t4, 1
-	vor.v	$vr5, $vr5, $vr6
+	vsll.d	$vr5, $vr5, $vr13
+	vand.v	$vr5, $vr5, $vr14
+	vor.v	$vr3, $vr3, $vr5
+	vinsgr2vr.d	$vr5, $t5, 0
+	vinsgr2vr.d	$vr5, $t4, 1
+	vor.v	$vr3, $vr3, $vr5
 	srli.d	$t4, $t3, 4
 	vinsgr2vr.d	$vr8, $t4, 0
-	vand.v	$vr6, $vr8, $vr20
-	vor.v	$vr5, $vr5, $vr6
-	vsrl.d	$vr6, $vr4, $vr21
-	vand.v	$vr6, $vr6, $vr22
-	vor.v	$vr5, $vr5, $vr6
-	vsrl.d	$vr6, $vr4, $vr25
-	vand.v	$vr6, $vr6, $vr26
-	vor.v	$vr5, $vr5, $vr6
-	vsrl.d	$vr6, $vr4, $vr29
-	vand.v	$vr6, $vr6, $vr30
-	vor.v	$vr5, $vr5, $vr6
-	vori.b	$vr6, $vr4, 0
+	vand.v	$vr5, $vr8, $vr20
+	vor.v	$vr3, $vr3, $vr5
+	vsrl.d	$vr5, $vr4, $vr21
+	vand.v	$vr5, $vr5, $vr22
+	vor.v	$vr3, $vr3, $vr5
+	vsrl.d	$vr5, $vr4, $vr25
+	vand.v	$vr5, $vr5, $vr26
+	vor.v	$vr3, $vr3, $vr5
+	vsrl.d	$vr5, $vr4, $vr29
+	vand.v	$vr5, $vr5, $vr30
+	vor.v	$vr3, $vr3, $vr5
+	vori.b	$vr5, $vr4, 0
 	vsrl.d	$vr4, $vr4, $vr1
 	srl.d	$t2, $a4, $t2
 	bstrpick.d	$a4, $t3, 27, 1
@@ -420,30 +421,30 @@ des_main_ks:                            # @des_main_ks
 	srli.d	$t3, $t3, 26
 	slli.d	$t4, $a4, 8
 	vand.v	$vr4, $vr4, $vr2
-	vor.v	$vr4, $vr5, $vr4
-	vinsgr2vr.d	$vr5, $t3, 0
-	vinsgr2vr.d	$vr5, $t4, 1
-	vand.v	$vr5, $vr5, $vr23
-	vor.v	$vr4, $vr4, $vr5
-	vreplgr2vr.d	$vr5, $a4
-	vinsgr2vr.d	$vr6, $a4, 1
-	vsrl.d	$vr6, $vr6, $vr19
-	vand.v	$vr6, $vr6, $vr24
-	vor.v	$vr4, $vr4, $vr6
-	vsrl.d	$vr6, $vr5, $vr18
-	vsll.d	$vr5, $vr5, $vr27
-	vand.v	$vr5, $vr5, $vr28
-	vor.v	$vr4, $vr4, $vr5
-	vand.v	$vr5, $vr6, $vr31
-	vor.v	$vr4, $vr4, $vr5
+	vor.v	$vr3, $vr3, $vr4
+	vinsgr2vr.d	$vr4, $t3, 0
+	vinsgr2vr.d	$vr4, $t4, 1
+	vand.v	$vr4, $vr4, $vr23
+	vor.v	$vr3, $vr3, $vr4
+	vreplgr2vr.d	$vr4, $a4
+	vinsgr2vr.d	$vr5, $a4, 1
+	vsrl.d	$vr5, $vr5, $vr19
+	vand.v	$vr5, $vr5, $vr24
+	vor.v	$vr3, $vr3, $vr5
+	vsrl.d	$vr5, $vr4, $vr18
+	vsll.d	$vr4, $vr4, $vr27
+	vand.v	$vr4, $vr4, $vr28
+	vor.v	$vr3, $vr3, $vr4
+	vand.v	$vr4, $vr5, $vr31
+	vor.v	$vr3, $vr3, $vr4
 	slli.d	$t2, $t2, 2
-	vreplvei.d	$vr5, $vr6, 1
-	vinsgr2vr.d	$vr5, $t2, 1
-	vand.v	$vr5, $vr5, $vr0
-	vor.v	$vr4, $vr4, $vr5
+	vreplvei.d	$vr4, $vr5, 1
+	vinsgr2vr.d	$vr4, $t2, 1
+	vand.v	$vr4, $vr4, $vr0
+	vor.v	$vr3, $vr3, $vr4
 	addi.d	$t2, $a0, 16
 	addi.w	$a2, $a2, 1
-	vst	$vr4, $a0, 0
+	vst	$vr3, $a0, 0
 	move	$a0, $t2
 	beq	$a2, $a7, .LBB0_5
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1

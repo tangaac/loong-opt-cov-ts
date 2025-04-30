@@ -3316,9 +3316,9 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 	move	$a4, $a3
 	bstrins.d	$a4, $zero, 1, 0
 	add.d	$fp, $a4, $fp
-	vinsgr2vr.d	$vr0, $a2, 0
 	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr0, $a2, 0
+	vshuf4i.d	$vr0, $vr1, 8
 	addi.d	$a2, $a5, 16
 	move	$a5, $a4
 	vld	$vr1, $sp, 208                  # 16-byte Folded Reload
@@ -4037,9 +4037,9 @@ _ZN8NArchive3N7z6UpdateEP9IInStreamPKNS0_18CArchiveDatabaseExERK13CObjectVectorI
 	move	$a4, $a3
 	bstrins.d	$a4, $zero, 1, 0
 	add.d	$s0, $a4, $s0
-	vinsgr2vr.d	$vr0, $a2, 0
 	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr0, $a2, 0
+	vshuf4i.d	$vr0, $vr1, 8
 	addi.d	$a2, $a5, 16
 	move	$a5, $a4
 	vld	$vr1, $sp, 208                  # 16-byte Folded Reload

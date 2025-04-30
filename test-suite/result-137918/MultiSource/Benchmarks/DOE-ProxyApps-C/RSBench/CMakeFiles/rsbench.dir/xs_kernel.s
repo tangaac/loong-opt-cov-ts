@@ -33,11 +33,6 @@
 	.dword	0x408ed7aee631f8a1              # double 986.96040000000005
 .LCPI0_15:
 	.dword	0x40544f923a29c77a              # double 81.243300000000005
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
-.LCPI0_16:
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
 	.text
 	.globl	fast_nuclear_W
 	.p2align	5
@@ -403,19 +398,17 @@ fast_nuclear_W:                         # @fast_nuclear_W
 	bceqz	$fcc0, .LBB0_26
 .LBB0_8:
 	vreplvei.d	$vr2, $vr0, 0
-	vfmul.d	$vr4, $vr6, $vr2
-	vbsrl.v	$vr2, $vr6, 8
-	vbsll.v	$vr3, $vr6, 8
-	vor.v	$vr2, $vr3, $vr2
-	vreplvei.d	$vr3, $vr1, 0
-	vfmul.d	$vr5, $vr2, $vr3
-	vfadd.d	$vr3, $vr4, $vr5
-	pcalau12i	$a0, %pc_hi20(.LCPI0_16)
-	vld	$vr2, $a0, %pc_lo12(.LCPI0_16)
-	vfsub.d	$vr4, $vr4, $vr5
+	vfmul.d	$vr2, $vr6, $vr2
+	vori.b	$vr3, $vr6, 0
+	vshuf4i.d	$vr3, $vr0, 1
+	vreplvei.d	$vr4, $vr1, 0
+	vfmul.d	$vr4, $vr3, $vr4
+	vfadd.d	$vr3, $vr2, $vr4
+	vfsub.d	$vr4, $vr2, $vr4
+	vori.b	$vr2, $vr3, 0
 	vreplvei.d	$vr5, $vr4, 1
 	fcmp.cor.d	$fcc0, $fa5, $fa5
-	vshuf.d	$vr2, $vr4, $vr3
+	vshuf4i.d	$vr2, $vr4, 12
 	bceqz	$fcc0, .LBB0_28
 .LBB0_9:
 	vreplvei.d	$vr0, $vr2, 1

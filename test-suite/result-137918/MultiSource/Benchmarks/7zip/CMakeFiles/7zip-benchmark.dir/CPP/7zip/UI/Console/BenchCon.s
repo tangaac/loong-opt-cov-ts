@@ -156,10 +156,10 @@ _ZL12PrintResultsP8_IO_FILERK10CBenchInfoyR14CTotalBenchRes: # @_ZL12PrintResult
 	pcaddu18i	$ra, %call36(_ZL12PrintResultsP8_IO_FILEyyy)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $fp, 0
-	vinsgr2vr.d	$vr1, $s4, 0
-	vinsgr2vr.d	$vr2, $s0, 0
-	vpackev.d	$vr1, $vr2, $vr1
-	vadd.d	$vr0, $vr0, $vr1
+	vinsgr2vr.d	$vr1, $s0, 0
+	vinsgr2vr.d	$vr2, $s4, 0
+	vshuf4i.d	$vr2, $vr1, 8
+	vadd.d	$vr0, $vr0, $vr2
 	vld	$vr1, $fp, 16
 	vst	$vr0, $fp, 0
 	vinsgr2vr.d	$vr0, $s3, 0

@@ -18585,64 +18585,72 @@ s31111:                                 # @s31111
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $fp, 0
 	vld	$vr1, $fp, 32
-	vld	$vr2, $fp, 16
-	vld	$vr3, $fp, 48
-	vpackev.d	$vr4, $vr1, $vr0
+	vld	$vr2, $fp, 48
+	vld	$vr3, $fp, 16
+	vori.b	$vr4, $vr0, 0
+	vshuf4i.d	$vr4, $vr1, 8
 	vld	$vr6, $sp, 0                    # 16-byte Folded Reload
 	vfadd.d	$vr4, $vr4, $vr6
-	vpackod.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 13
 	vfadd.d	$vr0, $vr4, $vr0
-	vpackev.d	$vr1, $vr3, $vr2
+	vori.b	$vr1, $vr3, 0
+	vshuf4i.d	$vr1, $vr2, 8
 	vfadd.d	$vr0, $vr0, $vr1
-	vpackod.d	$vr1, $vr3, $vr2
-	vfadd.d	$vr0, $vr0, $vr1
+	vshuf4i.d	$vr3, $vr2, 13
+	vfadd.d	$vr0, $vr0, $vr3
 	vreplvei.d	$vr1, $vr0, 0
 	vreplvei.d	$vr0, $vr0, 1
 	vld	$vr2, $fp, 64
 	vld	$vr3, $fp, 96
 	fadd.d	$fa0, $fa1, $fa0
-	vld	$vr1, $fp, 80
-	vld	$vr4, $fp, 112
-	vpackev.d	$vr5, $vr3, $vr2
+	vld	$vr1, $fp, 112
+	vld	$vr4, $fp, 80
+	vori.b	$vr5, $vr2, 0
+	vshuf4i.d	$vr5, $vr3, 8
 	vfadd.d	$vr5, $vr5, $vr6
-	vpackod.d	$vr2, $vr3, $vr2
+	vshuf4i.d	$vr2, $vr3, 13
 	vfadd.d	$vr2, $vr5, $vr2
-	vpackev.d	$vr3, $vr4, $vr1
+	vori.b	$vr3, $vr4, 0
+	vshuf4i.d	$vr3, $vr1, 8
 	vfadd.d	$vr2, $vr2, $vr3
-	vpackod.d	$vr1, $vr4, $vr1
-	vfadd.d	$vr1, $vr2, $vr1
+	vshuf4i.d	$vr4, $vr1, 13
+	vfadd.d	$vr1, $vr2, $vr4
 	vreplvei.d	$vr2, $vr1, 0
 	fadd.d	$fa0, $fa0, $fa2
 	vreplvei.d	$vr1, $vr1, 1
 	vld	$vr2, $fp, 128
 	vld	$vr3, $fp, 160
 	fadd.d	$fa0, $fa0, $fa1
-	vld	$vr1, $fp, 144
-	vld	$vr4, $fp, 176
-	vpackev.d	$vr5, $vr3, $vr2
+	vld	$vr1, $fp, 176
+	vld	$vr4, $fp, 144
+	vori.b	$vr5, $vr2, 0
+	vshuf4i.d	$vr5, $vr3, 8
 	vfadd.d	$vr5, $vr5, $vr6
-	vpackod.d	$vr2, $vr3, $vr2
+	vshuf4i.d	$vr2, $vr3, 13
 	vfadd.d	$vr2, $vr5, $vr2
-	vpackev.d	$vr3, $vr4, $vr1
+	vori.b	$vr3, $vr4, 0
+	vshuf4i.d	$vr3, $vr1, 8
 	vfadd.d	$vr2, $vr2, $vr3
-	vpackod.d	$vr1, $vr4, $vr1
-	vfadd.d	$vr1, $vr2, $vr1
+	vshuf4i.d	$vr4, $vr1, 13
+	vfadd.d	$vr1, $vr2, $vr4
 	vreplvei.d	$vr2, $vr1, 0
 	fadd.d	$fa0, $fa0, $fa2
 	vreplvei.d	$vr1, $vr1, 1
 	vld	$vr2, $fp, 192
 	vld	$vr3, $fp, 224
 	fadd.d	$fa0, $fa0, $fa1
-	vld	$vr1, $fp, 208
-	vld	$vr4, $fp, 240
-	vpackev.d	$vr5, $vr3, $vr2
+	vld	$vr1, $fp, 240
+	vld	$vr4, $fp, 208
+	vori.b	$vr5, $vr2, 0
+	vshuf4i.d	$vr5, $vr3, 8
 	vfadd.d	$vr5, $vr5, $vr6
-	vpackod.d	$vr2, $vr3, $vr2
+	vshuf4i.d	$vr2, $vr3, 13
 	vfadd.d	$vr2, $vr5, $vr2
-	vpackev.d	$vr3, $vr4, $vr1
+	vori.b	$vr3, $vr4, 0
+	vshuf4i.d	$vr3, $vr1, 8
 	vfadd.d	$vr2, $vr2, $vr3
-	vpackod.d	$vr1, $vr4, $vr1
-	vfadd.d	$vr1, $vr2, $vr1
+	vshuf4i.d	$vr4, $vr1, 13
+	vfadd.d	$vr1, $vr2, $vr4
 	vreplvei.d	$vr2, $vr1, 0
 	fadd.d	$fa0, $fa0, $fa2
 	vreplvei.d	$vr1, $vr1, 1

@@ -695,15 +695,15 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 192
-	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
+	vst	$vr0, $sp, 128                  # 16-byte Folded Spill
 	addi.d	$a1, $sp, 192
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
 	vld	$vr1, $sp, 192
-	vst	$vr1, $sp, 128                  # 16-byte Folded Spill
+	vst	$vr1, $sp, 144                  # 16-byte Folded Spill
 	vld	$vr0, $sp, 176                  # 16-byte Folded Reload
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $sp, 160                  # 16-byte Folded Spill
 	vsrli.d	$vr0, $vr0, 32
 	vshuf4i.w	$vr0, $vr0, 8
@@ -713,29 +713,33 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	pcaddu18i	$ra, %call36(_ZNK11btMatrix3x311getRotationER12btQuaternion)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 192
-	vld	$vr8, $sp, 144                  # 16-byte Folded Reload
-	vpackod.d	$vr1, $vr0, $vr8
+	vld	$vr8, $sp, 128                  # 16-byte Folded Reload
+	vori.b	$vr1, $vr8, 0
+	vshuf4i.d	$vr1, $vr0, 13
 	vsrli.d	$vr2, $vr1, 32
 	vshuf4i.w	$vr2, $vr2, 8
 	vld	$vr17, $sp, 112                 # 16-byte Folded Reload
 	vreplvei.w	$vr3, $vr17, 0
 	vreplvei.w	$vr4, $vr2, 0
 	fmul.s	$fa5, $fa3, $fa4
-	vld	$vr6, $sp, 176                  # 16-byte Folded Reload
-	vld	$vr7, $sp, 128                  # 16-byte Folded Reload
-	vpackod.d	$vr6, $vr7, $vr6
-	vsrli.d	$vr7, $vr6, 32
-	vshuf4i.w	$vr7, $vr7, 8
-	vpackev.d	$vr0, $vr0, $vr8
-	vsrli.d	$vr8, $vr0, 32
-	vshuf4i.w	$vr8, $vr8, 8
-	vreplvei.w	$vr9, $vr8, 0
-	vreplvei.w	$vr10, $vr7, 0
-	fmadd.s	$fa5, $ft2, $ft1, $fa5
+	vld	$vr7, $sp, 176                  # 16-byte Folded Reload
+	vld	$vr6, $sp, 144                  # 16-byte Folded Reload
+	vshuf4i.d	$vr7, $vr6, 13
+	vsrli.d	$vr6, $vr7, 32
+	vori.b	$vr9, $vr7, 0
 	vshuf4i.w	$vr6, $vr6, 8
+	vori.b	$vr7, $vr8, 0
+	vshuf4i.d	$vr7, $vr0, 8
+	vsrli.d	$vr0, $vr7, 32
+	vori.b	$vr10, $vr7, 0
 	vshuf4i.w	$vr0, $vr0, 8
-	vreplvei.w	$vr11, $vr6, 0
-	vreplvei.w	$vr12, $vr0, 0
+	vreplvei.w	$vr7, $vr0, 0
+	vreplvei.w	$vr8, $vr6, 0
+	fmadd.s	$fa5, $ft0, $fa7, $fa5
+	vshuf4i.w	$vr9, $vr9, 8
+	vshuf4i.w	$vr10, $vr10, 8
+	vreplvei.w	$vr11, $vr9, 0
+	vreplvei.w	$vr12, $vr10, 0
 	fmadd.s	$fa5, $ft3, $ft4, $fa5
 	vld	$vr13, $sp, 160                 # 16-byte Folded Reload
 	vshuf4i.w	$vr13, $vr13, 8
@@ -745,50 +749,50 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	vreplvei.w	$vr16, $vr1, 0
 	fmadd.s	$fs5, $ft7, $ft8, $fa5
 	fmul.s	$fa5, $ft3, $fa4
-	fmadd.s	$fa5, $ft2, $ft8, $fa5
-	fmadd.s	$fa5, $ft6, $ft1, $fa5
+	fmadd.s	$fa5, $ft0, $ft8, $fa5
+	fmadd.s	$fa5, $ft6, $fa7, $fa5
 	fneg.s	$fa3, $fa3
 	fmadd.s	$ft7, $fa3, $ft4, $fa5
 	fneg.s	$fa5, $ft4
 	fmul.s	$fa5, $ft6, $fa5
-	fmadd.s	$fa4, $ft2, $fa4, $fa5
-	fmadd.s	$fa3, $fa3, $ft1, $fa4
-	vbitrevi.w	$vr4, $vr6, 31
+	fmadd.s	$fa4, $ft0, $fa4, $fa5
+	fmadd.s	$fa3, $fa3, $fa7, $fa4
+	vbitrevi.w	$vr4, $vr9, 31
 	vreplvei.w	$vr5, $vr4, 0
 	fmadd.s	$ft6, $fa5, $ft8, $fa3
 	vfmul.s	$vr3, $vr13, $vr2
-	vfmadd.s	$vr3, $vr7, $vr0, $vr3
+	vfmadd.s	$vr3, $vr6, $vr10, $vr3
 	vfmadd.s	$vr3, $vr17, $vr1, $vr3
-	vfmadd.s	$vr3, $vr4, $vr8, $vr3
+	vfmadd.s	$vr3, $vr4, $vr0, $vr3
 	vreplvei.w	$vr5, $vr17, 1
 	vreplvei.w	$vr2, $vr2, 1
-	fmul.s	$ft1, $fa5, $fa2
-	vreplvei.w	$vr8, $vr8, 1
-	vreplvei.w	$vr7, $vr7, 1
-	fmadd.s	$ft1, $fa7, $ft0, $ft1
-	vreplvei.w	$vr6, $vr6, 1
+	fmul.s	$fa7, $fa5, $fa2
 	vreplvei.w	$vr0, $vr0, 1
-	fmadd.s	$ft1, $fa6, $fa0, $ft1
+	vreplvei.w	$vr6, $vr6, 1
+	fmadd.s	$fa7, $fa6, $fa0, $fa7
+	vreplvei.w	$vr8, $vr9, 1
+	vreplvei.w	$vr9, $vr10, 1
+	fmadd.s	$fa7, $ft0, $ft1, $fa7
 	vreplvei.w	$vr10, $vr13, 1
 	fneg.s	$ft3, $ft2
 	vreplvei.w	$vr1, $vr1, 1
-	fmadd.s	$ft5, $ft3, $fa1, $ft1
-	fmul.s	$fa6, $fa6, $fa2
-	fmadd.s	$fa6, $fa7, $fa1, $fa6
-	fmadd.s	$fa6, $ft2, $ft0, $fa6
+	fmadd.s	$ft5, $ft3, $fa1, $fa7
+	fmul.s	$ft0, $ft0, $fa2
+	fmadd.s	$ft0, $fa6, $fa1, $ft0
+	fmadd.s	$ft0, $ft2, $fa0, $ft0
 	fneg.s	$fa5, $fa5
-	fmadd.s	$ft8, $fa5, $fa0, $fa6
-	fneg.s	$ft4, $fa0
+	fmadd.s	$ft8, $fa5, $ft1, $ft0
+	fneg.s	$ft4, $ft1
 	fmul.s	$ft2, $ft2, $ft4
-	fmadd.s	$fa2, $fa7, $fa2, $ft2
-	fmadd.s	$fa2, $fa5, $ft0, $fa2
-	vreplvei.w	$vr4, $vr4, 1
-	fmadd.s	$fa4, $fa4, $fa1, $fa2
-	vreplvei.w	$vr8, $vr3, 1
-	fneg.s	$fa7, $ft0
-	fnmadd.s	$fa1, $ft3, $fa1, $ft1
-	fnmadd.s	$fa2, $fa5, $fa0, $fa6
-	fmul.s	$fa0, $ft6, $fa7
+	fmadd.s	$fa2, $fa6, $fa2, $ft2
+	fmadd.s	$fa0, $fa5, $fa0, $fa2
+	vreplvei.w	$vr2, $vr4, 1
+	fmadd.s	$fa4, $fa2, $fa1, $fa0
+	vreplvei.w	$vr10, $vr3, 1
+	fneg.s	$fa6, $ft2
+	fnmadd.s	$fa1, $ft3, $fa1, $fa7
+	fnmadd.s	$fa2, $fa5, $ft1, $ft0
+	fmul.s	$fa0, $ft6, $fa6
 	vreplvei.w	$vr5, $vr3, 0
 	fmadd.s	$fa0, $fa4, $fa5, $fa0
 	fmadd.s	$fa0, $fa1, $ft7, $fa0
@@ -797,14 +801,14 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmul.s	$fa1, $ft6, $fa1
 	fmadd.s	$fa1, $fa4, $fs5, $fa1
 	fmadd.s	$fa3, $fa2, $fa5, $fa1
-	fmadd.s	$ft10, $ft0, $ft7, $fa3
+	fmadd.s	$ft10, $ft2, $ft7, $fa3
 	fst.s	$fa2, $sp, 104                  # 4-byte Folded Spill
 	fmul.s	$fa1, $ft6, $fa2
 	fmadd.s	$fa1, $fa4, $ft7, $fa1
-	fst.s	$fa7, $sp, 100                  # 4-byte Folded Spill
-	fmadd.s	$fa2, $fa7, $fs5, $fa1
+	fst.s	$fa6, $sp, 100                  # 4-byte Folded Spill
+	fmadd.s	$fa2, $fa6, $fs5, $fa1
 	fmadd.s	$fs7, $ft5, $fa5, $fa2
-	fmul.s	$fa1, $fa5, $ft0
+	fmul.s	$fa1, $fa5, $ft2
 	fst.s	$ft6, $sp, 92                   # 4-byte Folded Spill
 	fst.s	$fa4, $sp, 112                  # 4-byte Folded Spill
 	fmadd.s	$fa1, $fa4, $ft6, $fa1
@@ -825,8 +829,8 @@ _ZN21btConeTwistConstraint14calcAngleInfo2ERK11btTransformS2_RK11btMatrix3x3S5_:
 	fmul.s	$fa7, $ft9, $fa1
 	fmadd.s	$fa7, $fs2, $fa1, $fa7
 	fst.s	$ft7, $sp, 96                   # 4-byte Folded Spill
-	vst	$vr8, $sp, 128                  # 16-byte Folded Spill
-	fnmadd.s	$fa3, $ft0, $ft7, $fa3
+	vst	$vr10, $sp, 128                 # 16-byte Folded Spill
+	fnmadd.s	$fa3, $ft2, $ft7, $fa3
 	fsub.s	$fa7, $fa7, $ft10
 	fmul.s	$ft0, $ft10, $fa2
 	fsub.s	$ft0, $ft0, $ft9

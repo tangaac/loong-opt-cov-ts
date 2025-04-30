@@ -1166,7 +1166,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vld	$vr5, $sp, 0                    # 16-byte Folded Reload
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, -64
 	vld	$vr0, $sp, 64
 	vld	$vr1, $sp, 80
@@ -1182,7 +1182,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, -48
 	vld	$vr0, $sp, 96
 	vld	$vr1, $sp, 112
@@ -1198,7 +1198,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, -32
 	vld	$vr0, $sp, 128
 	vld	$vr1, $sp, 144
@@ -1214,7 +1214,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, -16
 	vld	$vr0, $sp, 160
 	vld	$vr1, $sp, 176
@@ -1230,7 +1230,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, 0
 	vld	$vr0, $sp, 192
 	vld	$vr1, $sp, 208
@@ -1246,7 +1246,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, 16
 	vld	$vr0, $sp, 224
 	vld	$vr1, $sp, 240
@@ -1262,7 +1262,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, 32
 	vld	$vr0, $sp, 256
 	vld	$vr1, $sp, 272
@@ -1278,7 +1278,7 @@ forward_DCT_float:                      # @forward_DCT_float
 	vpickev.h	$vr1, $vr1, $vr1
 	vadd.h	$vr0, $vr0, $vr5
 	vadd.h	$vr1, $vr1, $vr5
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $s4, 48
 	addi.w	$fp, $fp, 8
 	addi.d	$s3, $s3, -1

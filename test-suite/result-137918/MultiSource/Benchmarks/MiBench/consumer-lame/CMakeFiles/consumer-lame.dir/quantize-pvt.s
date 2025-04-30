@@ -3298,7 +3298,7 @@ quantize_xrpow_ISO:                     # @quantize_xrpow_ISO
 	vpackev.w	$vr5, $vr5, $vr8
 	vbitsel.v	$vr4, $vr4, $vr3, $vr6
 	vbitsel.v	$vr5, $vr5, $vr3, $vr7
-	vpackev.d	$vr4, $vr5, $vr4
+	vshuf4i.d	$vr4, $vr5, 8
 	vstx	$vr4, $a4, $a3
 	addi.d	$a2, $a2, 16
 	addi.d	$a0, $a0, 32

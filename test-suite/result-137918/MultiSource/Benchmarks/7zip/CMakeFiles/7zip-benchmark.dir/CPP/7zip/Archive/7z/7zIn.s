@@ -5610,7 +5610,7 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
                                         #     Child Loop BB31_44 Depth 2
 	ld.d	$a0, $sp, 488
 	slli.d	$a1, $s8, 3
-	ldx.d	$s5, $a0, $a1
+	ldx.d	$s6, $a0, $a1
 .Ltmp97:
 	ori	$a0, $zero, 24
 	pcaddu18i	$ra, %call36(_Znwm)
@@ -5637,7 +5637,7 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	addi.w	$a0, $a0, 1
 	st.w	$a0, $s1, 12
 	alsl.d	$a1, $a0, $a1, 3
-	ld.w	$a0, $s5, 108
+	ld.w	$a0, $s6, 108
 	ld.d	$fp, $a1, -8
 	beqz	$a0, .LBB31_20
 # %bb.7:                                # %_ZNK8NArchive3N7z7CFolder24FindBindPairForOutStreamEj.exit.preheader.i
@@ -5646,13 +5646,13 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	blt	$a0, $a1, .LBB31_52
 # %bb.8:                                # %.lr.ph.i
                                         #   in Loop: Header=BB31_4 Depth=1
-	ld.w	$a1, $s5, 44
+	ld.w	$a1, $s6, 44
 	addi.w	$a2, $a0, -1
 	ori	$a0, $zero, 1
 	blt	$a1, $a0, .LBB31_15
 # %bb.9:                                # %.lr.ph.i.us.i.preheader
                                         #   in Loop: Header=BB31_4 Depth=1
-	ld.d	$a3, $s5, 48
+	ld.d	$a3, $s6, 48
 	bstrpick.d	$a0, $a1, 31, 0
 	addi.d	$a1, $a3, 4
 	b	.LBB31_11
@@ -5682,11 +5682,11 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	move	$a2, $a3
 .LBB31_15:                              # %_ZNK8NArchive3N7z7CFolder13GetUnpackSizeEv.exit
                                         #   in Loop: Header=BB31_4 Depth=1
-	ld.d	$a0, $s5, 112
+	ld.d	$a0, $s6, 112
 	slli.d	$a1, $a2, 3
 	ldx.d	$s7, $a0, $a1
-	ld.d	$s6, $fp, 8
-	beq	$s7, $s6, .LBB31_26
+	ld.d	$s5, $fp, 8
+	beq	$s7, $s5, .LBB31_26
 # %bb.16:                               #   in Loop: Header=BB31_4 Depth=1
 	beqz	$s7, .LBB31_21
 # %bb.17:                               #   in Loop: Header=BB31_4 Depth=1
@@ -5698,12 +5698,12 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 # %bb.18:                               # %.noexc84
                                         #   in Loop: Header=BB31_4 Depth=1
 	move	$s4, $a0
-	beqz	$s6, .LBB31_22
+	beqz	$s5, .LBB31_22
 # %bb.19:                               #   in Loop: Header=BB31_4 Depth=1
 	ld.d	$a1, $fp, 16
-	sltu	$a0, $s6, $s7
+	sltu	$a0, $s5, $s7
 	masknez	$a2, $s7, $a0
-	maskeqz	$a0, $s6, $a0
+	maskeqz	$a0, $s5, $a0
 	or	$a2, $a0, $a2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(memmove)
@@ -5739,24 +5739,24 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	jirl	$ra, $ra, 0
 .Ltmp109:
 # %bb.27:                               #   in Loop: Header=BB31_4 Depth=1
-	move	$s6, $a0
+	move	$s5, $a0
 	st.w	$zero, $a0, 8
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.d	$a0, $s6, 0
+	st.d	$a0, $s5, 0
 .Ltmp111:
-	move	$a0, $s6
+	move	$a0, $s5
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	jirl	$ra, $a1, 0
 .Ltmp112:
 # %bb.28:                               # %_ZN9CMyComPtrI20ISequentialOutStreamEC2EPS0_.exit
                                         #   in Loop: Header=BB31_4 Depth=1
 	ld.d	$a0, $fp, 16
-	st.d	$a0, $s6, 16
+	st.d	$a0, $s5, 16
 	ld.d	$a0, $sp, 584
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	st.d	$zero, $s6, 32
-	st.d	$s7, $s6, 24
+	st.d	$zero, $s5, 32
+	st.d	$s7, $s5, 24
 	alsl.d	$a3, $s2, $a0, 3
 .Ltmp114:
 	ori	$a0, $zero, 1
@@ -5766,8 +5766,8 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	st.d	$a2, $sp, 0
 	move	$a2, $s3
-	move	$a4, $s5
-	move	$a5, $s6
+	move	$a4, $s6
+	move	$a5, $s5
 	move	$a6, $zero
 	ld.d	$a7, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZN8NArchive3N7z8CDecoder6DecodeEP9IInStreamyPKyRKNS0_7CFolderEP20ISequentialOutStreamP21ICompressProgressInfoP22ICryptoGetTextPasswordRbbj)
@@ -5777,7 +5777,7 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	move	$s4, $a0
 	bnez	$a0, .LBB31_46
 # %bb.30:                               #   in Loop: Header=BB31_4 Depth=1
-	ld.bu	$a0, $s5, 132
+	ld.bu	$a0, $s6, 132
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB31_33
 # %bb.31:                               #   in Loop: Header=BB31_4 Depth=1
@@ -5788,10 +5788,10 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	jirl	$ra, $ra, 0
 .Ltmp117:
 # %bb.32:                               #   in Loop: Header=BB31_4 Depth=1
-	ld.w	$a1, $s5, 128
+	ld.w	$a1, $s6, 128
 	bne	$a0, $a1, .LBB31_54
 .LBB31_33:                              #   in Loop: Header=BB31_4 Depth=1
-	ld.w	$a3, $s5, 76
+	ld.w	$a3, $s6, 76
 	ori	$a0, $zero, 1
 	blt	$a3, $a0, .LBB31_46
 # %bb.34:                               # %.lr.ph
@@ -5835,9 +5835,9 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	alsl.w	$a2, $a2, $s2, 2
 	vinsgr2vr.d	$vr0, $a4, 0
 	vinsgr2vr.d	$vr2, $zero, 0
-	vpackev.d	$vr1, $vr2, $vr0
-	vinsgr2vr.d	$vr0, $s3, 0
-	vpackev.d	$vr0, $vr2, $vr0
+	vshuf4i.d	$vr0, $vr2, 8
+	vinsgr2vr.d	$vr1, $s3, 0
+	vshuf4i.d	$vr1, $vr2, 8
 	move	$a4, $a5
 	vld	$vr2, $sp, 80                   # 16-byte Folded Reload
 	vori.b	$vr3, $vr2, 0
@@ -5849,20 +5849,20 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	slli.d	$a7, $s2, 3
 	vldx	$vr4, $a1, $a7
 	vld	$vr5, $a6, 16
-	vadd.d	$vr0, $vr4, $vr0
+	vadd.d	$vr1, $vr4, $vr1
 	vadd.d	$vr2, $vr5, $vr2
-	vadd.d	$vr1, $vr1, $vr4
+	vadd.d	$vr0, $vr0, $vr4
 	vadd.d	$vr3, $vr3, $vr5
 	addi.w	$a4, $a4, -4
 	addi.w	$s2, $s2, 4
 	bnez	$a4, .LBB31_42
 # %bb.43:                               # %middle.block
                                         #   in Loop: Header=BB31_4 Depth=1
-	vadd.d	$vr1, $vr3, $vr1
-	vreplvei.d	$vr3, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr3
-	vpickve2gr.d	$a4, $vr1, 0
-	vadd.d	$vr0, $vr2, $vr0
+	vadd.d	$vr0, $vr3, $vr0
+	vreplvei.d	$vr3, $vr0, 1
+	vadd.d	$vr0, $vr0, $vr3
+	vpickve2gr.d	$a4, $vr0, 0
+	vadd.d	$vr0, $vr2, $vr1
 	vreplvei.d	$vr1, $vr0, 1
 	vadd.d	$vr0, $vr0, $vr1
 	vpickve2gr.d	$s3, $vr0, 0
@@ -5884,10 +5884,10 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 	move	$s2, $a0
 .LBB31_46:                              # %.loopexit
                                         #   in Loop: Header=BB31_4 Depth=1
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a1, $a0, 16
 .Ltmp125:
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 .Ltmp126:
 # %bb.47:                               # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit90
@@ -6004,10 +6004,10 @@ _ZN8NArchive3N7z10CInArchive26ReadAndDecodePackedStreamsEyRyR13CObjectVectorI7CB
 .Ltmp118:
 .LBB31_67:
 	move	$fp, $a0
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a1, $a0, 16
 .Ltmp122:
-	move	$a0, $s6
+	move	$a0, $s5
 	jirl	$ra, $a1, 0
 .Ltmp123:
 	b	.LBB31_71

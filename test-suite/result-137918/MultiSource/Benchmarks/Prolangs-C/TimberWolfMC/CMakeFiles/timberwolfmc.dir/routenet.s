@@ -902,9 +902,9 @@ recursePath:                            # @recursePath
 	ori	$a4, $zero, 1
 	move	$a1, $a2
 	bstrins.d	$a1, $a4, 1, 0
-	vinsgr2vr.d	$vr0, $s5, 0
 	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr0, $s5, 0
+	vshuf4i.d	$vr0, $vr1, 8
 	vrepli.b	$vr1, 0
 	move	$a4, $a3
 	.p2align	4, , 16
@@ -1401,7 +1401,7 @@ recursePath:                            # @recursePath
 	vld	$vr1, $a5, 0
 	vpickev.h	$vr0, $vr0, $vr0
 	vpickev.h	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a6, -8
 	addi.d	$a5, $a5, 32
 	addi.d	$a7, $a7, -8
@@ -1620,7 +1620,7 @@ recursePath:                            # @recursePath
 	vld	$vr1, $t0, 0
 	vpickev.h	$vr0, $vr0, $vr0
 	vpickev.h	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $t1, -8
 	addi.d	$t0, $t0, 32
 	addi.d	$t2, $t2, -8

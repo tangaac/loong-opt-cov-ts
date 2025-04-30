@@ -11269,10 +11269,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a6, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a6, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
@@ -11362,10 +11363,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a5, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
@@ -11455,10 +11457,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a6, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a6, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
@@ -11548,10 +11551,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a5, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
@@ -11641,10 +11645,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a3, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a3, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a3, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a4, $a4, -2
 	addi.d	$a3, $a3, 32
@@ -26208,10 +26213,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a6, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a6, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
@@ -26301,10 +26307,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a5, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
@@ -26394,10 +26401,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a6, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a6, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
@@ -26487,10 +26495,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a5, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a5, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
@@ -26580,10 +26589,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
-	vpackev.d	$vr8, $vr7, $vr9
+	vori.b	$vr8, $vr9, 0
+	vshuf4i.d	$vr8, $vr7, 8
 	vst	$vr8, $a3, -16
-	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a3, 0
+	vshuf4i.d	$vr9, $vr7, 13
+	vst	$vr9, $a3, 0
 	vaddi.wu	$vr4, $vr4, 2
 	addi.d	$a4, $a4, -2
 	addi.d	$a3, $a3, 32
@@ -36386,10 +36396,11 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfadd.d	$vr4, $vr4, $vr7
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
-	vpackev.d	$vr4, $vr3, $vr5
+	vori.b	$vr4, $vr5, 0
+	vshuf4i.d	$vr4, $vr3, 8
 	vst	$vr4, $a0, -16
-	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vshuf4i.d	$vr5, $vr3, 13
+	vst	$vr5, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36461,10 +36472,11 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfadd.d	$vr4, $vr4, $vr7
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
-	vpackev.d	$vr4, $vr3, $vr5
+	vori.b	$vr4, $vr5, 0
+	vshuf4i.d	$vr4, $vr3, 8
 	vst	$vr4, $a0, -16
-	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vshuf4i.d	$vr5, $vr3, 13
+	vst	$vr5, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36536,10 +36548,11 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfadd.d	$vr4, $vr4, $vr7
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
-	vpackev.d	$vr4, $vr3, $vr5
+	vori.b	$vr4, $vr5, 0
+	vshuf4i.d	$vr4, $vr3, 8
 	vst	$vr4, $a0, -16
-	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vshuf4i.d	$vr5, $vr3, 13
+	vst	$vr5, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36611,10 +36624,11 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfadd.d	$vr4, $vr4, $vr7
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
-	vpackev.d	$vr4, $vr3, $vr5
+	vori.b	$vr4, $vr5, 0
+	vshuf4i.d	$vr4, $vr3, 8
 	vst	$vr4, $a0, -16
-	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vshuf4i.d	$vr5, $vr3, 13
+	vst	$vr5, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36685,10 +36699,11 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfadd.d	$vr4, $vr4, $vr7
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
-	vpackev.d	$vr4, $vr3, $vr5
+	vori.b	$vr4, $vr5, 0
+	vshuf4i.d	$vr4, $vr3, 8
 	vst	$vr4, $a0, -16
-	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vshuf4i.d	$vr5, $vr3, 13
+	vst	$vr5, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32

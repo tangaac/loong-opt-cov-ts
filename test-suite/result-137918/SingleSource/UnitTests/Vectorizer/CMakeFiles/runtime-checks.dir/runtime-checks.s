@@ -9149,9 +9149,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	vori.b	$vr6, $vr5, 0
 	add.d	$a5, $a0, $a2
 	vld	$vr5, $a5, 8
-	vbsrl.v	$vr6, $vr6, 8
-	vbsll.v	$vr7, $vr5, 8
-	vor.v	$vr6, $vr7, $vr6
+	vshuf4i.d	$vr6, $vr5, 9
 	vand.v	$vr6, $vr6, $vr0
 	vldx	$vr7, $a5, $a3
 	vand.v	$vr8, $vr5, $vr1
@@ -9192,9 +9190,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a6, $a0, $a2
 	vldx	$vr6, $a6, $a3
-	vbsrl.v	$vr5, $vr5, 8
-	vbsll.v	$vr7, $vr6, 8
-	vor.v	$vr5, $vr7, $vr5
+	vshuf4i.d	$vr5, $vr6, 9
 	vand.v	$vr5, $vr5, $vr0
 	vldx	$vr7, $a6, $a4
 	vand.v	$vr8, $vr6, $vr1

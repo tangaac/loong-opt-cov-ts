@@ -1613,7 +1613,7 @@ Decode_Picture:                         # @Decode_Picture
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, 24
 	vilvl.h	$vr4, $vr6, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $a0, $s1
 	vinsgr2vr.d	$vr0, $a2, 0
 	vmax.h	$vr1, $vr3, $vr7
@@ -1623,25 +1623,25 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a2, $a1, 32
 	vilvl.h	$vr3, $vr6, $vr1
 	vilvl.h	$vr5, $vr6, $vr0
-	vpackev.d	$vr0, $vr0, $vr1
-	vinsgr2vr.d	$vr1, $a2, 0
+	vshuf4i.d	$vr1, $vr0, 8
+	vinsgr2vr.d	$vr0, $a2, 0
 	ld.d	$a2, $a1, 40
-	vst	$vr0, $a1, 16
-	vadd.w	$vr0, $vr2, $vr3
+	vst	$vr1, $a1, 16
+	vadd.w	$vr1, $vr2, $vr3
 	vadd.w	$vr2, $vr4, $vr5
 	vinsgr2vr.d	$vr3, $a2, 0
-	vmax.h	$vr1, $vr1, $vr7
+	vmax.h	$vr0, $vr0, $vr7
 	vmax.h	$vr3, $vr3, $vr7
-	vmin.h	$vr1, $vr1, $vr8
+	vmin.h	$vr0, $vr0, $vr8
 	vmin.h	$vr3, $vr3, $vr8
 	ld.d	$a2, $a1, 48
-	vilvl.h	$vr4, $vr6, $vr1
+	vilvl.h	$vr4, $vr6, $vr0
 	vilvl.h	$vr5, $vr6, $vr3
-	vpackev.d	$vr1, $vr3, $vr1
+	vshuf4i.d	$vr0, $vr3, 8
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, 56
-	vst	$vr1, $a1, 32
-	vadd.w	$vr0, $vr0, $vr4
+	vst	$vr0, $a1, 32
+	vadd.w	$vr0, $vr1, $vr4
 	vadd.w	$vr1, $vr2, $vr5
 	vinsgr2vr.d	$vr2, $a2, 0
 	vmax.h	$vr3, $vr3, $vr7
@@ -1651,21 +1651,21 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a2, $a1, 64
 	vilvl.h	$vr4, $vr6, $vr3
 	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
-	vinsgr2vr.d	$vr3, $a2, 0
+	vshuf4i.d	$vr3, $vr2, 8
+	vinsgr2vr.d	$vr2, $a2, 0
 	ld.d	$a2, $a1, 72
-	vst	$vr2, $a1, 48
+	vst	$vr3, $a1, 48
 	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr1, $vr5
-	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
+	vinsgr2vr.d	$vr3, $a2, 0
 	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
+	vmax.h	$vr3, $vr3, $vr7
 	vmin.h	$vr2, $vr2, $vr8
+	vmin.h	$vr3, $vr3, $vr8
 	ld.d	$a2, $a1, 80
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
+	vilvl.h	$vr4, $vr6, $vr2
+	vilvl.h	$vr5, $vr6, $vr3
+	vshuf4i.d	$vr2, $vr3, 8
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, 88
 	vst	$vr2, $a1, 64
@@ -1679,21 +1679,21 @@ Decode_Picture:                         # @Decode_Picture
 	ld.d	$a2, $a1, 96
 	vilvl.h	$vr4, $vr6, $vr3
 	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
-	vinsgr2vr.d	$vr3, $a2, 0
+	vshuf4i.d	$vr3, $vr2, 8
+	vinsgr2vr.d	$vr2, $a2, 0
 	ld.d	$a2, $a1, 104
-	vst	$vr2, $a1, 80
+	vst	$vr3, $a1, 80
 	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr1, $vr5
-	vinsgr2vr.d	$vr2, $a2, 0
-	vmax.h	$vr3, $vr3, $vr7
+	vinsgr2vr.d	$vr3, $a2, 0
 	vmax.h	$vr2, $vr2, $vr7
-	vmin.h	$vr3, $vr3, $vr8
+	vmax.h	$vr3, $vr3, $vr7
 	vmin.h	$vr2, $vr2, $vr8
+	vmin.h	$vr3, $vr3, $vr8
 	ld.d	$a2, $a1, 112
-	vilvl.h	$vr4, $vr6, $vr3
-	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
+	vilvl.h	$vr4, $vr6, $vr2
+	vilvl.h	$vr5, $vr6, $vr3
+	vshuf4i.d	$vr2, $vr3, 8
 	vinsgr2vr.d	$vr3, $a2, 0
 	ld.d	$a2, $a1, 120
 	vst	$vr2, $a1, 96
@@ -1706,7 +1706,7 @@ Decode_Picture:                         # @Decode_Picture
 	vmin.h	$vr2, $vr2, $vr8
 	vilvl.h	$vr4, $vr6, $vr3
 	vilvl.h	$vr5, $vr6, $vr2
-	vpackev.d	$vr2, $vr2, $vr3
+	vshuf4i.d	$vr3, $vr2, 8
 	vadd.w	$vr0, $vr0, $vr4
 	vadd.w	$vr1, $vr1, $vr5
 	vadd.w	$vr0, $vr1, $vr0
@@ -1716,7 +1716,7 @@ Decode_Picture:                         # @Decode_Picture
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a2, $vr0, 0
 	andi	$a2, $a2, 1
-	vst	$vr2, $a1, 112
+	vst	$vr3, $a1, 112
 	bnez	$a2, .LBB0_185
 # %bb.184:                              #   in Loop: Header=BB0_179 Depth=3
 	ld.h	$a2, $a1, 126

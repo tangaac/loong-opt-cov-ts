@@ -306,8 +306,8 @@ gettbl:                                 # @gettbl
 	slli.d	$s4, $s3, 4
 	vinsgr2vr.d	$vr0, $zero, 0
 	vinsgr2vr.d	$vr1, $a1, 0
-	vpackev.d	$vr0, $vr0, $vr1
-	vstx	$vr0, $a0, $s4
+	vshuf4i.d	$vr1, $vr0, 8
+	vstx	$vr1, $a0, $s4
 	ld.d	$a0, $s7, 0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(match)
@@ -478,11 +478,11 @@ gettbl:                                 # @gettbl
 .LBB0_57:                               # %vector.body
                                         #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vinsgr2vr.d	$vr0, $s5, 0
-	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
-	vst	$vr0, $a2, -16
-	vst	$vr0, $a2, 0
+	vinsgr2vr.d	$vr0, $zero, 0
+	vinsgr2vr.d	$vr1, $s5, 0
+	vshuf4i.d	$vr1, $vr0, 8
+	vst	$vr1, $a2, -16
+	vst	$vr1, $a2, 0
 	addi.d	$a6, $a6, -2
 	addi.d	$a2, $a2, 32
 	bnez	$a6, .LBB0_57
@@ -499,10 +499,10 @@ gettbl:                                 # @gettbl
 .LBB0_60:                               # %scalar.ph
                                         #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vinsgr2vr.d	$vr0, $s5, 0
-	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
-	vst	$vr0, $a1, 0
+	vinsgr2vr.d	$vr0, $zero, 0
+	vinsgr2vr.d	$vr1, $s5, 0
+	vshuf4i.d	$vr1, $vr0, 8
+	vst	$vr1, $a1, 0
 	addi.w	$a0, $a0, -1
 	addi.d	$a1, $a1, 16
 	bnez	$a0, .LBB0_60
@@ -933,10 +933,10 @@ permute:                                # @permute
                                         # =>    This Inner Loop Header: Depth=3
 	slli.d	$a1, $a0, 3
 	ldx.d	$a1, $s0, $a1
-	vinsgr2vr.d	$vr0, $s6, 0
-	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
-	vstx	$vr0, $a1, $s5
+	vinsgr2vr.d	$vr0, $zero, 0
+	vinsgr2vr.d	$vr1, $s6, 0
+	vshuf4i.d	$vr1, $vr0, 8
+	vstx	$vr1, $a1, $s5
 	pcaddu18i	$ra, %call36(next)
 	jirl	$ra, $ra, 0
 	blt	$a0, $s2, .LBB3_33

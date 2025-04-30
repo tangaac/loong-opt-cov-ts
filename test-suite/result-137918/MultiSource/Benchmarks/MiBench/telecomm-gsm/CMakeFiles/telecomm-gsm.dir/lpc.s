@@ -1518,25 +1518,25 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	add.d	$a4, $a4, $a5
 	vinsgr2vr.h	$vr0, $a3, 0
 	vreplvei.h	$vr19, $vr0, 0
-	vinsgr2vr.d	$vr6, $zero, 0
-	vinsgr2vr.d	$vr0, $a4, 0
-	vpackev.d	$vr16, $vr6, $vr0
+	vinsgr2vr.d	$vr7, $zero, 0
+	vinsgr2vr.d	$vr16, $a4, 0
+	vshuf4i.d	$vr16, $vr7, 8
 	vinsgr2vr.d	$vr0, $t8, 0
-	vpackev.d	$vr0, $vr6, $vr0
+	vshuf4i.d	$vr0, $vr7, 8
 	vinsgr2vr.d	$vr1, $t7, 0
-	vpackev.d	$vr1, $vr6, $vr1
+	vshuf4i.d	$vr1, $vr7, 8
 	vinsgr2vr.d	$vr2, $t5, 0
-	vpackev.d	$vr2, $vr6, $vr2
+	vshuf4i.d	$vr2, $vr7, 8
 	vinsgr2vr.d	$vr3, $t4, 0
-	vpackev.d	$vr3, $vr6, $vr3
+	vshuf4i.d	$vr3, $vr7, 8
 	vinsgr2vr.d	$vr4, $t0, 0
-	vpackev.d	$vr4, $vr6, $vr4
+	vshuf4i.d	$vr4, $vr7, 8
 	vinsgr2vr.d	$vr5, $a7, 0
-	vpackev.d	$vr5, $vr6, $vr5
-	vinsgr2vr.d	$vr7, $fp, 0
+	vshuf4i.d	$vr5, $vr7, 8
+	vinsgr2vr.d	$vr6, $fp, 0
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
 	vld	$vr17, $a3, %pc_lo12(.LCPI0_0)
-	vpackev.d	$vr6, $vr6, $vr7
+	vshuf4i.d	$vr6, $vr7, 8
 	vrepli.b	$vr18, 0
 	ori	$a3, $zero, 304
 	vori.b	$vr7, $vr18, 0

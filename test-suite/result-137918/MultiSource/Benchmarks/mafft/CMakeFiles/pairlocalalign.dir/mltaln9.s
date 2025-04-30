@@ -7909,7 +7909,7 @@ veryfastsupg:                           # @veryfastsupg
 	movfr2gr.s	$t2, $fa4
 	vinsgr2vr.w	$vr4, $t2, 0
 	vpackev.w	$vr4, $vr4, $vr5
-	vpackev.d	$vr3, $vr4, $vr3
+	vshuf4i.d	$vr3, $vr4, 8
 	vst	$vr3, $a7, -8
 	addi.d	$t1, $t1, -4
 	addi.d	$a7, $a7, 16
@@ -16195,7 +16195,8 @@ makelocal:                              # @makelocal
 	movgr2fr.w	$fa4, $t2
 	ffint.d.w	$fa4, $fa4
 	fadd.d	$fa3, $fa3, $fa4
-	vpackev.d	$vr4, $vr3, $vr2
+	vori.b	$vr4, $vr2, 0
+	vshuf4i.d	$vr4, $vr3, 8
 	movfr2gr.d	$t2, $fa3
 	vinsgr2vr.d	$vr1, $t2, 0
 	vfcmp.clt.d	$vr3, $vr1, $vr4

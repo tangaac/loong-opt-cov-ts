@@ -138,8 +138,8 @@ main:                                   # @main
 	addi.d	$a5, $a1, 8
 	ori	$a2, $zero, 0
 	lu32i.d	$a2, 1
-	vreplgr2vr.d	$vr2, $a2
-	vrepli.h	$vr3, 256
+	vreplgr2vr.d	$vr3, $a2
+	vrepli.h	$vr2, 256
 	ori	$a6, $zero, 4
 	pcalau12i	$a2, %pc_hi20(arg1)
 	addi.d	$a2, $a2, %pc_lo12(arg1)
@@ -148,10 +148,10 @@ main:                                   # @main
 .LBB1_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.du	$vr4, $vr1, 2
-	vaddi.wu	$vr5, $vr2, 2
-	vaddi.bu	$vr6, $vr3, 2
+	vaddi.wu	$vr5, $vr3, 2
+	vaddi.bu	$vr6, $vr2, 2
 	vaddi.hu	$vr7, $vr0, 2
-	vpickve2gr.h	$t0, $vr3, 0
+	vpickve2gr.h	$t0, $vr2, 0
 	st.h	$t0, $a3, -2
 	vpickve2gr.h	$t0, $vr6, 0
 	st.h	$t0, $a3, 0
@@ -160,18 +160,19 @@ main:                                   # @main
 	st.w	$t1, $t0, -4
 	vpickve2gr.w	$t0, $vr7, 0
 	stx.w	$t0, $a2, $a6
-	vpackev.d	$vr5, $vr5, $vr2
-	vst	$vr5, $a5, -8
+	vaddi.wu	$vr6, $vr3, 4
+	vshuf4i.d	$vr3, $vr5, 8
+	vst	$vr3, $a5, -8
 	vst	$vr1, $a4, -16
 	vst	$vr4, $a4, 0
 	vaddi.du	$vr1, $vr1, 4
-	vaddi.wu	$vr2, $vr2, 4
-	vaddi.bu	$vr3, $vr3, 4
+	vaddi.bu	$vr2, $vr2, 4
 	vaddi.hu	$vr0, $vr0, 4
 	addi.d	$a6, $a6, 8
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 16
+	vori.b	$vr3, $vr6, 0
 	bne	$a6, $a7, .LBB1_1
 # %bb.2:                                # %middle.block
 	move	$a4, $zero

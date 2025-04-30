@@ -1665,9 +1665,7 @@ _ZL9init_dataIiEvPT_j:                  # @_ZL9init_dataIiEvPT_j
 	vori.b	$vr3, $vr2, 0
 	add.d	$a2, $s4, $a1
 	vld	$vr2, $a2, 8
-	vbsrl.v	$vr3, $vr3, 8
-	vbsll.v	$vr4, $vr2, 8
-	vor.v	$vr3, $vr4, $vr3
+	vshuf4i.d	$vr3, $vr2, 9
 	vand.v	$vr3, $vr3, $vr6
 	vldx	$vr4, $a2, $s5
 	vand.v	$vr5, $vr2, $vr7
@@ -1709,9 +1707,7 @@ _ZL9init_dataIiEvPT_j:                  # @_ZL9init_dataIiEvPT_j
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a2, $s4, $a1
 	vldx	$vr3, $a2, $s0
-	vbsrl.v	$vr2, $vr2, 8
-	vbsll.v	$vr4, $vr3, 8
-	vor.v	$vr2, $vr4, $vr2
+	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr6
 	vldx	$vr4, $a2, $s2
 	vand.v	$vr5, $vr3, $vr7
@@ -2243,9 +2239,7 @@ _ZL9init_dataIdEvPT_j:                  # @_ZL9init_dataIdEvPT_j
 	vori.b	$vr3, $vr2, 0
 	add.d	$a2, $s4, $a1
 	vld	$vr2, $a2, 8
-	vbsrl.v	$vr3, $vr3, 8
-	vbsll.v	$vr4, $vr2, 8
-	vor.v	$vr3, $vr4, $vr3
+	vshuf4i.d	$vr3, $vr2, 9
 	vand.v	$vr3, $vr3, $vr6
 	vldx	$vr4, $a2, $s5
 	vand.v	$vr5, $vr2, $vr7
@@ -2287,9 +2281,7 @@ _ZL9init_dataIdEvPT_j:                  # @_ZL9init_dataIdEvPT_j
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a2, $s4, $a1
 	vldx	$vr3, $a2, $s0
-	vbsrl.v	$vr2, $vr2, 8
-	vbsll.v	$vr4, $vr3, 8
-	vor.v	$vr2, $vr4, $vr2
+	vshuf4i.d	$vr2, $vr3, 9
 	vand.v	$vr2, $vr2, $vr6
 	vldx	$vr4, $a2, $s2
 	vand.v	$vr5, $vr3, $vr7

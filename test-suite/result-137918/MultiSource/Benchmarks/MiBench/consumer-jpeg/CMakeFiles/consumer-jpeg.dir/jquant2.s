@@ -996,16 +996,16 @@ finish_pass1:                           # @finish_pass1
 .LBB5_28:                               # %vector.ph
                                         #   in Loop: Header=BB5_26 Depth=3
 	add.d	$s6, $s6, $t5
-	vreplgr2vr.d	$vr6, $s7
-	vinsgr2vr.d	$vr4, $s8, 0
+	vreplgr2vr.d	$vr7, $s7
+	vinsgr2vr.d	$vr5, $s8, 0
 	vinsgr2vr.d	$vr9, $zero, 0
-	vpackev.d	$vr8, $vr9, $vr4
-	vinsgr2vr.d	$vr4, $s2, 0
-	vpackev.d	$vr7, $vr9, $vr4
-	vinsgr2vr.d	$vr4, $s1, 0
-	vpackev.d	$vr5, $vr9, $vr4
+	vshuf4i.d	$vr5, $vr9, 8
+	vinsgr2vr.d	$vr8, $s2, 0
+	vshuf4i.d	$vr8, $vr9, 8
+	vinsgr2vr.d	$vr6, $s1, 0
+	vshuf4i.d	$vr6, $vr9, 8
 	vinsgr2vr.d	$vr4, $ra, 0
-	vpackev.d	$vr4, $vr9, $vr4
+	vshuf4i.d	$vr4, $vr9, 8
 	move	$s1, $t3
 	move	$s2, $s4
 	vori.b	$vr12, $vr1, 0
@@ -1041,8 +1041,8 @@ finish_pass1:                           # @finish_pass1
 	vadd.d	$vr9, $vr9, $vr15
 	vmul.d	$vr18, $vr3, $vr14
 	vmul.d	$vr19, $vr3, $vr15
-	vmul.d	$vr20, $vr6, $vr14
-	vmul.d	$vr21, $vr6, $vr15
+	vmul.d	$vr20, $vr7, $vr14
+	vmul.d	$vr21, $vr7, $vr15
 	vslli.w	$vr22, $vr13, 3
 	vbitseti.w	$vr23, $vr22, 2
 	vaddi.wu	$vr22, $vr22, 20
@@ -1055,15 +1055,15 @@ finish_pass1:                           # @finish_pass1
 	vmul.d	$vr14, $vr14, $vr23
 	vmul.d	$vr15, $vr15, $vr22
 	vbitsel.v	$vr18, $vr18, $vr1, $vr16
-	vadd.d	$vr5, $vr5, $vr18
+	vadd.d	$vr6, $vr6, $vr18
 	vbitsel.v	$vr18, $vr19, $vr1, $vr17
 	vadd.d	$vr10, $vr10, $vr18
 	vbitsel.v	$vr18, $vr20, $vr1, $vr16
-	vadd.d	$vr7, $vr7, $vr18
+	vadd.d	$vr8, $vr8, $vr18
 	vbitsel.v	$vr18, $vr21, $vr1, $vr17
 	vadd.d	$vr11, $vr11, $vr18
 	vbitsel.v	$vr14, $vr14, $vr1, $vr16
-	vadd.d	$vr8, $vr8, $vr14
+	vadd.d	$vr5, $vr5, $vr14
 	vbitsel.v	$vr14, $vr15, $vr1, $vr17
 	vadd.d	$vr12, $vr12, $vr14
 	vaddi.wu	$vr13, $vr13, 4
@@ -1072,15 +1072,15 @@ finish_pass1:                           # @finish_pass1
 	bnez	$s1, .LBB5_29
 # %bb.30:                               # %middle.block
                                         #   in Loop: Header=BB5_26 Depth=3
-	vadd.d	$vr6, $vr12, $vr8
-	vreplvei.d	$vr8, $vr6, 1
-	vadd.d	$vr6, $vr6, $vr8
-	vpickve2gr.d	$s8, $vr6, 0
-	vadd.d	$vr6, $vr11, $vr7
-	vreplvei.d	$vr7, $vr6, 1
-	vadd.d	$vr6, $vr6, $vr7
-	vpickve2gr.d	$s2, $vr6, 0
-	vadd.d	$vr5, $vr10, $vr5
+	vadd.d	$vr5, $vr12, $vr5
+	vreplvei.d	$vr7, $vr5, 1
+	vadd.d	$vr5, $vr5, $vr7
+	vpickve2gr.d	$s8, $vr5, 0
+	vadd.d	$vr5, $vr11, $vr8
+	vreplvei.d	$vr7, $vr5, 1
+	vadd.d	$vr5, $vr5, $vr7
+	vpickve2gr.d	$s2, $vr5, 0
+	vadd.d	$vr5, $vr10, $vr6
 	vreplvei.d	$vr6, $vr5, 1
 	vadd.d	$vr5, $vr5, $vr6
 	vpickve2gr.d	$s1, $vr5, 0
@@ -1871,13 +1871,13 @@ update_box:                             # @update_box
 	mulw.d.w	$t4, $t5, $t5
 	add.d	$t1, $t1, $t4
 	st.d	$t1, $a1, 24
-	move	$s1, $zero
+	move	$s0, $zero
 	blt	$t2, $a3, .LBB9_68
 # %bb.67:                               # %.preheader.lr.ph
 	addi.w	$t1, $a6, 0
 	bge	$t1, $t0, .LBB9_69
 .LBB9_68:                               # %._crit_edge127
-	st.d	$s1, $a1, 32
+	st.d	$s0, $a1, 32
 	ld.d	$s6, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
@@ -1923,7 +1923,7 @@ update_box:                             # @update_box
                                         #   in Loop: Header=BB9_71 Depth=1
 	slli.d	$fp, $a3, 3
 	ldx.d	$fp, $a0, $fp
-	add.d	$s0, $fp, $t6
+	add.d	$s1, $fp, $t6
 	move	$s2, $t0
 	b	.LBB9_74
 	.p2align	4, , 16
@@ -1931,7 +1931,7 @@ update_box:                             # @update_box
                                         #   in Loop: Header=BB9_74 Depth=2
 	addi.d	$s2, $s2, 1
 	addi.w	$s3, $s2, 0
-	addi.d	$s0, $s0, 64
+	addi.d	$s1, $s1, 64
 	beq	$a6, $s3, .LBB9_70
 .LBB9_74:                               # %.lr.ph116
                                         #   Parent Loop BB9_71 Depth=1
@@ -1949,11 +1949,11 @@ update_box:                             # @update_box
 .LBB9_76:                               # %vector.ph
                                         #   in Loop: Header=BB9_74 Depth=2
 	add.d	$s3, $s3, $t4
-	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr4, $zero, 0
-	vpackev.d	$vr3, $vr4, $vr3
-	move	$s1, $t2
-	move	$s4, $s0
+	vinsgr2vr.d	$vr3, $s0, 0
+	vshuf4i.d	$vr3, $vr4, 8
+	move	$s0, $t2
+	move	$s4, $s1
 	vori.b	$vr4, $vr0, 0
 	.p2align	4, , 16
 .LBB9_77:                               # %vector.body
@@ -1976,15 +1976,15 @@ update_box:                             # @update_box
 	vand.v	$vr6, $vr6, $vr2
 	vadd.d	$vr3, $vr3, $vr5
 	vadd.d	$vr4, $vr4, $vr6
-	addi.d	$s1, $s1, -4
+	addi.d	$s0, $s0, -4
 	addi.d	$s4, $s4, 8
-	bnez	$s1, .LBB9_77
+	bnez	$s0, .LBB9_77
 # %bb.78:                               # %middle.block
                                         #   in Loop: Header=BB9_74 Depth=2
 	vadd.d	$vr3, $vr4, $vr3
 	vreplvei.d	$vr4, $vr3, 1
 	vadd.d	$vr3, $vr3, $vr4
-	vpickve2gr.d	$s1, $vr3, 0
+	vpickve2gr.d	$s0, $vr3, 0
 	move	$s4, $t5
 	beq	$t1, $t2, .LBB9_73
 .LBB9_79:                               # %scalar.ph.preheader
@@ -1997,7 +1997,7 @@ update_box:                             # @update_box
                                         # =>    This Inner Loop Header: Depth=3
 	ld.hu	$s5, $s3, 0
 	sltu	$s5, $zero, $s5
-	add.d	$s1, $s1, $s5
+	add.d	$s0, $s0, $s5
 	addi.w	$s4, $s4, -1
 	addi.d	$s3, $s3, 2
 	bnez	$s4, .LBB9_80

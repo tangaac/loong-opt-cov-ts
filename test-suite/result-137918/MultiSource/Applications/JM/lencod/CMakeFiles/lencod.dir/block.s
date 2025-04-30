@@ -8026,7 +8026,7 @@ dct_chroma:                             # @dct_chroma
 	vpickev.h	$vr1, $vr1, $vr1
 	slli.d	$t3, $t8, 48
 	srai.d	$t3, $t3, 47
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vstx	$vr0, $a2, $t3
 	addi.d	$s0, $s0, -8
 	addi.d	$fp, $fp, 32

@@ -1773,8 +1773,8 @@ XzUnpacker_Code:                        # @XzUnpacker_Code
 	vld	$vr0, $s4, 40
 	vinsgr2vr.d	$vr1, $s7, 0
 	vld	$vr2, $sp, 96                   # 16-byte Folded Reload
-	vpackev.d	$vr1, $vr1, $vr2
-	vadd.d	$vr0, $vr0, $vr1
+	vshuf4i.d	$vr2, $vr1, 8
+	vadd.d	$vr0, $vr0, $vr2
 	vst	$vr0, $s4, 40
 	ori	$a0, $zero, 7
 	st.d	$a0, $s4, 0

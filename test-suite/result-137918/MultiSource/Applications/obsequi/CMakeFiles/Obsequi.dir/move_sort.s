@@ -210,9 +210,9 @@ sort_moves:                             # @sort_moves
                                         #   in Loop: Header=BB0_18 Depth=1
 	bstrpick.d	$a0, $s1, 30, 2
 	slli.d	$a0, $a0, 2
-	vinsgr2vr.d	$vr0, $s8, 0
 	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr0, $s8, 0
+	vshuf4i.d	$vr0, $vr1, 8
 	move	$a1, $a0
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	.p2align	4, , 16
@@ -281,9 +281,9 @@ sort_moves:                             # @sort_moves
 	.p2align	4, , 16
 .LBB0_31:                               # %vector.ph
                                         #   in Loop: Header=BB0_29 Depth=1
-	vinsgr2vr.d	$vr0, $s8, 0
 	vinsgr2vr.d	$vr1, $zero, 0
-	vpackev.d	$vr0, $vr1, $vr0
+	vinsgr2vr.d	$vr0, $s8, 0
+	vshuf4i.d	$vr0, $vr1, 8
 	move	$a0, $s4
 	vld	$vr1, $sp, 16                   # 16-byte Folded Reload
 	.p2align	4, , 16

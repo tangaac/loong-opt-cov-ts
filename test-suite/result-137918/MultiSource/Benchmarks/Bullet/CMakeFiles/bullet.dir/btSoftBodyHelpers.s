@@ -4284,10 +4284,11 @@ _ZN17btSoftBodyHelpers10CreateRopeER19btSoftBodyWorldInfoRK9btVector3S4_ii: # @_
 	vilvl.w	$vr17, $vr15, $vr17
 	vor.v	$vr17, $vr18, $vr17
 	vilvl.w	$vr16, $vr15, $vr16
-	vpackev.d	$vr18, $vr16, $vr17
+	vori.b	$vr18, $vr17, 0
+	vshuf4i.d	$vr18, $vr16, 8
 	vst	$vr18, $a3, -16
-	vpackod.d	$vr16, $vr16, $vr17
-	vst	$vr16, $a3, 0
+	vshuf4i.d	$vr17, $vr16, 13
+	vst	$vr17, $a3, 0
 	st.d	$a4, $a6, 0
 	vaddi.wu	$vr14, $vr14, 2
 	addi.d	$a3, $a3, 32
@@ -4650,10 +4651,11 @@ _ZN17btSoftBodyHelpers11CreatePatchER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4_i
 	slli.d	$t3, $t2, 4
 	vpickve2gr.d	$t4, $vr4, 1
 	slli.d	$t4, $t4, 4
-	vpackev.d	$vr4, $vr0, $vr3
+	vori.b	$vr4, $vr3, 0
+	vshuf4i.d	$vr4, $vr0, 8
 	vstx	$vr4, $s2, $t3
-	vpackod.d	$vr0, $vr0, $vr3
-	vstx	$vr0, $s2, $t4
+	vshuf4i.d	$vr3, $vr0, 13
+	vstx	$vr3, $s2, $t4
 	slli.d	$t2, $t2, 2
 	stx.d	$t0, $s3, $t2
 	vaddi.du	$vr31, $vr31, 2
@@ -5182,10 +5184,11 @@ _ZN17btSoftBodyHelpers13CreatePatchUVER19btSoftBodyWorldInfoRK9btVector3S4_S4_S4
 	slli.d	$t3, $t2, 4
 	vpickve2gr.d	$t4, $vr4, 1
 	slli.d	$t4, $t4, 4
-	vpackev.d	$vr4, $vr0, $vr3
+	vori.b	$vr4, $vr3, 0
+	vshuf4i.d	$vr4, $vr0, 8
 	vstx	$vr4, $s3, $t3
-	vpackod.d	$vr0, $vr0, $vr3
-	vstx	$vr0, $s3, $t4
+	vshuf4i.d	$vr3, $vr0, 13
+	vstx	$vr3, $s3, $t4
 	slli.d	$t2, $t2, 2
 	stx.d	$t0, $s4, $t2
 	vaddi.du	$vr31, $vr31, 2

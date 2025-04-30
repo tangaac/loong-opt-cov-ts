@@ -9575,7 +9575,7 @@ _ZN5State21calc_refine_potentialERSt6vectorIiSaIiEERiS4_: # @_ZN5State21calc_ref
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa3, $fa1
 	fsel	$fa7, $fa3, $fa1, $fcc0
-	vpackev.d	$vr1, $vr6, $vr1
+	vshuf4i.d	$vr1, $vr6, 8
 	movfr2gr.d	$t4, $fa7
 	movfr2gr.d	$t5, $fa3
 	vinsgr2vr.d	$vr3, $t5, 0

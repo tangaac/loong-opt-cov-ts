@@ -2619,34 +2619,42 @@ L3psycho_anal:                          # @L3psycho_anal
 	vld	$vr4, $sp, 464                  # 16-byte Folded Reload
                                         # kill: def $f0_64 killed $f0_64 def $vr0
 .LBB0_222:                              #   in Loop: Header=BB0_223 Depth=1
-	vldi	$vr3, -912
-	vld	$vr1, $sp, 576                  # 16-byte Folded Reload
-	vpackev.d	$vr1, $vr1, $vr3
 	vld	$vr2, $sp, 592                  # 16-byte Folded Reload
+	vldi	$vr1, -912
+	vld	$vr3, $sp, 576                  # 16-byte Folded Reload
+	vshuf4i.d	$vr1, $vr3, 8
 	vfadd.d	$vr1, $vr2, $vr1
-	vld	$vr2, $sp, 560                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
+	vldi	$vr2, -912
+	vld	$vr3, $sp, 560                  # 16-byte Folded Reload
+	vshuf4i.d	$vr2, $vr3, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 544                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
+	vldi	$vr2, -912
+	vld	$vr3, $sp, 544                  # 16-byte Folded Reload
+	vshuf4i.d	$vr2, $vr3, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 528                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
+	vldi	$vr2, -912
+	vld	$vr3, $sp, 528                  # 16-byte Folded Reload
+	vshuf4i.d	$vr2, $vr3, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 512                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
+	vldi	$vr2, -912
+	vld	$vr3, $sp, 512                  # 16-byte Folded Reload
+	vshuf4i.d	$vr2, $vr3, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 496                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
+	vldi	$vr2, -912
+	vld	$vr3, $sp, 496                  # 16-byte Folded Reload
+	vshuf4i.d	$vr2, $vr3, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vld	$vr2, $sp, 480                  # 16-byte Folded Reload
-	vpackev.d	$vr2, $vr2, $vr3
+	vldi	$vr2, -912
+	vld	$vr3, $sp, 480                  # 16-byte Folded Reload
+	vshuf4i.d	$vr2, $vr3, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vpackev.d	$vr2, $vr4, $vr3
+	vldi	$vr2, -912
+	vshuf4i.d	$vr2, $vr4, 8
 	vfadd.d	$vr1, $vr1, $vr2
-	vpackev.d	$vr0, $vr0, $vr3
+	vldi	$vr2, -912
+	vshuf4i.d	$vr2, $vr0, 8
 	addi.d	$s0, $s0, 8
-	vfadd.d	$vr3, $vr1, $vr0
+	vfadd.d	$vr3, $vr1, $vr2
 	beq	$s0, $s1, .LBB0_249
 .LBB0_223:                              # %.preheader
                                         # =>This Inner Loop Header: Depth=1

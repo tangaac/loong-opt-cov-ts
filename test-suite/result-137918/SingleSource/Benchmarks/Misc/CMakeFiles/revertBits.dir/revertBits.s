@@ -65,9 +65,9 @@ main:                                   # @main
 # %bb.2:                                # %vector.ph
 	vinsgr2vr.d	$vr0, $s3, 0
 	vinsgr2vr.d	$vr2, $zero, 0
-	vpackev.d	$vr1, $vr2, $vr0
-	vinsgr2vr.d	$vr0, $s2, 0
-	vpackev.d	$vr0, $vr2, $vr0
+	vshuf4i.d	$vr0, $vr2, 8
+	vinsgr2vr.d	$vr1, $s2, 0
+	vshuf4i.d	$vr1, $vr2, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	vld	$vr2, $a0, %pc_lo12(.LCPI2_0)
 	ori	$a0, $zero, 0
@@ -93,7 +93,7 @@ main:                                   # @main
 	vshuf.w	$vr11, $vr4, $vr10
 	vori.b	$vr10, $vr3, 0
 	vshuf.w	$vr10, $vr4, $vr9
-	vsub.d	$vr1, $vr1, $vr11
+	vsub.d	$vr0, $vr0, $vr11
 	vsub.d	$vr7, $vr7, $vr10
 	vpickve2gr.d	$a0, $vr2, 0
 	bitrev.d	$a0, $a0
@@ -107,18 +107,18 @@ main:                                   # @main
 	vpickve2gr.d	$a0, $vr8, 1
 	bitrev.d	$a0, $a0
 	vinsgr2vr.d	$vr10, $a0, 1
-	vsub.d	$vr0, $vr0, $vr9
+	vsub.d	$vr1, $vr1, $vr9
 	vsub.d	$vr6, $vr6, $vr10
 	vaddi.du	$vr2, $vr2, 4
 	addi.d	$s1, $s1, -4
 	vaddi.wu	$vr5, $vr5, 4
 	bnez	$s1, .LBB2_3
 # %bb.4:                                # %middle.block
-	vadd.d	$vr1, $vr7, $vr1
-	vreplvei.d	$vr2, $vr1, 1
-	vadd.d	$vr1, $vr1, $vr2
-	vpickve2gr.d	$fp, $vr1, 0
-	vadd.d	$vr0, $vr6, $vr0
+	vadd.d	$vr0, $vr7, $vr0
+	vreplvei.d	$vr2, $vr0, 1
+	vadd.d	$vr0, $vr0, $vr2
+	vpickve2gr.d	$fp, $vr0, 0
+	vadd.d	$vr0, $vr6, $vr1
 	vreplvei.d	$vr1, $vr0, 1
 	vadd.d	$vr0, $vr0, $vr1
 	vpickve2gr.d	$s0, $vr0, 0

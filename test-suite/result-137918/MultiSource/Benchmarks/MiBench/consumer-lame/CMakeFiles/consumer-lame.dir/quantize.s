@@ -386,9 +386,9 @@ init_outer_loop:                        # @init_outer_loop
 	movfr2gr.d	$a1, $fa1
 	vinsgr2vr.d	$vr4, $a1, 0
 	vinsgr2vr.d	$vr4, $a0, 1
-	vpackev.d	$vr1, $vr1, $vr2
-	vfcmp.clt.d	$vr2, $vr1, $vr4
-	vbitsel.v	$vr1, $vr1, $vr4, $vr2
+	vshuf4i.d	$vr2, $vr1, 8
+	vfcmp.clt.d	$vr1, $vr2, $vr4
+	vbitsel.v	$vr1, $vr2, $vr4, $vr1
 	vreplvei.d	$vr2, $vr1, 1
 	fdiv.d	$fs0, $fa3, $fa2
 	fdiv.d	$fs1, $fa0, $fa2

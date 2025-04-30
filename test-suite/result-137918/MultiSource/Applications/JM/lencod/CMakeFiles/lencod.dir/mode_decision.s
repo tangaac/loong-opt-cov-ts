@@ -64,13 +64,8 @@ rc_store_diff:                          # @rc_store_diff
 	.p2align	3, 0x0                          # -- Begin function fast_mode_intra_decision
 .LCPI1_0:
 	.dword	0x3f65555555555555              # double 0.0026041666666666665
-.LCPI1_2:
-	.dword	0x3f90000000000000              # double 0.015625
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
 .LCPI1_1:
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
+	.dword	0x3f90000000000000              # double 0.015625
 	.text
 	.globl	fast_mode_intra_decision
 	.p2align	5
@@ -371,35 +366,33 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	vilvl.h	$vr5, $vr1, $vr5
 	vilvl.w	$vr5, $vr1, $vr5
 	pcalau12i	$a3, %pc_hi20(imgUV_org)
-	ld.d	$a4, $a3, %pc_lo12(imgUV_org)
+	ld.d	$a5, $a3, %pc_lo12(imgUV_org)
 	vadd.d	$vr3, $vr3, $vr4
 	vadd.d	$vr2, $vr2, $vr5
 	vadd.d	$vr2, $vr2, $vr3
-	ld.d	$a3, $a4, 0
-	ld.w	$a5, $a0, 204
+	ld.d	$a3, $a5, 0
+	ld.w	$a6, $a0, 204
+	ldptr.d	$a7, $a1, 6472
 	vreplvei.d	$vr3, $vr2, 1
-	ldptr.d	$a6, $a1, 6472
-	vadd.d	$vr3, $vr2, $vr3
-	alsl.d	$a1, $a5, $a3, 3
-	slli.d	$a7, $a5, 3
-	ld.d	$t0, $a6, 0
-	ld.w	$t1, $a0, 188
-	ldx.d	$t2, $a3, $a7
+	vadd.d	$vr2, $vr2, $vr3
+	alsl.d	$a1, $a6, $a3, 3
+	ld.d	$a4, $a7, 0
+	ld.w	$t0, $a0, 188
+	slli.d	$t1, $a6, 3
+	ldx.d	$t2, $a3, $t1
 	ld.w	$a3, $a0, 200
-	ld.d	$t3, $a4, 8
-	alsl.d	$a4, $t1, $t0, 3
+	alsl.d	$a4, $t0, $a4, 3
+	ld.d	$t3, $a5, 8
 	ld.d	$t4, $a4, -8
+	ld.d	$a7, $a7, 8
 	ld.w	$a0, $a0, 184
-	alsl.d	$a5, $a5, $t3, 3
-	ld.d	$a6, $a6, 8
-	pcalau12i	$t0, %pc_hi20(.LCPI1_1)
-	vld	$vr2, $t0, %pc_lo12(.LCPI1_1)
-	ldx.d	$t0, $t3, $a7
-	alsl.d	$a6, $t1, $a6, 3
+	alsl.d	$a5, $a6, $t3, 3
+	ldx.d	$t1, $t3, $t1
+	alsl.d	$a6, $t0, $a7, 3
 	ld.d	$t3, $a6, -8
-	vshuf.d	$vr2, $vr1, $vr3
+	vshuf4i.d	$vr2, $vr1, 12
 	alsl.d	$a7, $a3, $t2, 1
-	alsl.d	$t0, $a3, $t0, 1
+	alsl.d	$t0, $a3, $t1, 1
 	alsl.d	$t1, $a0, $t4, 1
 	alsl.d	$t2, $a0, $t3, 1
 	ori	$t3, $zero, 64
@@ -476,8 +469,8 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 # %bb.6:                                # %middle.block78
 	vreplvei.d	$vr1, $vr2, 1
 	vadd.d	$vr1, $vr2, $vr1
-	pcalau12i	$a0, %pc_hi20(.LCPI1_2)
-	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
+	fld.d	$fa2, $a0, %pc_lo12(.LCPI1_1)
 	vpickve2gr.d	$a0, $vr1, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1

@@ -618,8 +618,8 @@ process_args:                           # @process_args
 	slli.d	$a1, $a1, 3
 	vinsgr2vr.d	$vr0, $zero, 0
 	vinsgr2vr.d	$vr1, $a2, 0
-	vpackev.d	$vr0, $vr0, $vr1
-	vstx	$vr0, $a0, $a1
+	vshuf4i.d	$vr1, $vr0, 8
+	vstx	$vr1, $a0, $a1
 .LBB2_16:                               # %.loopexit
                                         #   in Loop: Header=BB2_17 Depth=1
 	ld.d	$s0, $s8, 8

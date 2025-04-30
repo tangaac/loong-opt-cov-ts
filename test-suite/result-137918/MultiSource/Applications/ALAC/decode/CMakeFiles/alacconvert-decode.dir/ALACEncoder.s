@@ -1755,7 +1755,7 @@ _ZN11ALACEncoder10EncodeMonoEP9BitBufferPvjjj: # @_ZN11ALACEncoder10EncodeMonoEP
 	vand.v	$vr5, $vr3, $vr0
 	vpickev.h	$vr4, $vr4, $vr4
 	vpickev.h	$vr5, $vr5, $vr5
-	vpackev.d	$vr4, $vr5, $vr4
+	vshuf4i.d	$vr4, $vr5, 8
 	vst	$vr4, $a6, -8
 	vsra.w	$vr2, $vr2, $vr1
 	vsra.w	$vr3, $vr3, $vr1
@@ -1805,7 +1805,7 @@ _ZN11ALACEncoder10EncodeMonoEP9BitBufferPvjjj: # @_ZN11ALACEncoder10EncodeMonoEP
 	vand.v	$vr5, $vr3, $vr0
 	vpickev.h	$vr4, $vr4, $vr4
 	vpickev.h	$vr5, $vr5, $vr5
-	vpackev.d	$vr4, $vr5, $vr4
+	vshuf4i.d	$vr4, $vr5, 8
 	vst	$vr4, $a4, -8
 	vsra.w	$vr2, $vr2, $vr1
 	vsra.w	$vr3, $vr3, $vr1

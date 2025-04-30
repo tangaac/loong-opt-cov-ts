@@ -946,7 +946,7 @@ _ZN11ALACDecoder6DecodeEP9BitBufferPhjjPj: # @_ZN11ALACDecoder6DecodeEP9BitBuffe
 	vld	$vr1, $a5, 0
 	vpickev.h	$vr0, $vr0, $vr0
 	vpickev.h	$vr1, $vr1, $vr1
-	vpackev.d	$vr0, $vr1, $vr0
+	vshuf4i.d	$vr0, $vr1, 8
 	vst	$vr0, $a4, -8
 	addi.d	$a4, $a4, 16
 	addi.d	$a6, $a6, -8

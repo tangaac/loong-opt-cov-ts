@@ -1334,9 +1334,11 @@ F_floatmagadd:                          # @F_floatmagadd
 	ld.d	$a2, $a1, 32
 	pcalau12i	$a0, %got_pc_hi20(Z_err_buf)
 	ld.d	$a0, $a0, %got_pc_lo12(Z_err_buf)
-	xvld	$xr0, $a1, 0
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 0
 	st.d	$a2, $a0, 32
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 16
+	vst	$vr1, $a0, 0
 	pcaddu18i	$ra, %call36(Z_fatal)
 	jirl	$ra, $ra, 0
 .LBB7_11:

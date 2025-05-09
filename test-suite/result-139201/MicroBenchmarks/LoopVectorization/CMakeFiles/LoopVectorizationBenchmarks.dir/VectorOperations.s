@@ -6758,11 +6758,9 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5StateE: # 
 	xvpickve2gr.d	$a2, $xr1, 0
 	st.b	$a2, $sp, 48
 	vld	$vr0, $sp, 32
-	vpickve2gr.w	$a2, $vr0, 0
-	st.w	$a2, $a1, -4
+	vstelm.w	$vr0, $a1, -4, 0
 	vld	$vr0, $sp, 48
-	vpickve2gr.w	$a2, $vr0, 0
-	st.w	$a2, $a1, 0
+	vstelm.w	$vr0, $a1, 0, 0
 	addi.d	$a0, $a0, 64
 	addi.d	$a1, $a1, 8
 	bne	$a0, $s3, .LBB14_8
@@ -20166,8 +20164,8 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	add.d	$a2, $s0, $a1
 	ldptr.d	$a3, $a2, 9984
 	vinsgr2vr.d	$vr0, $a3, 0
-	ldptr.d	$a4, $a2, 9992
-	ldptr.d	$a3, $a2, 10000
+	ldptr.d	$a3, $a2, 9992
+	ldptr.d	$a4, $a2, 10000
 	ldptr.d	$a2, $a2, 10008
 	vst	$vr0, $sp, 512
 	st.b	$zero, $sp, 319
@@ -20187,23 +20185,15 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 291
 	st.h	$zero, $sp, 289
 	xvld	$xr0, $sp, 512
-	vinsgr2vr.d	$vr1, $a4, 0
-	vpickve2gr.b	$a4, $vr0, 7
-	st.b	$a4, $sp, 316
-	vpickve2gr.b	$a4, $vr0, 6
-	st.b	$a4, $sp, 312
-	vpickve2gr.b	$a4, $vr0, 5
-	st.b	$a4, $sp, 308
-	vpickve2gr.b	$a4, $vr0, 4
-	st.b	$a4, $sp, 304
-	vpickve2gr.b	$a4, $vr0, 3
-	st.b	$a4, $sp, 300
-	vpickve2gr.b	$a4, $vr0, 2
-	st.b	$a4, $sp, 296
-	vpickve2gr.b	$a4, $vr0, 1
-	st.b	$a4, $sp, 292
-	vpickve2gr.b	$a4, $vr0, 0
-	st.b	$a4, $sp, 288
+	vinsgr2vr.d	$vr1, $a3, 0
+	xvstelm.b	$xr0, $sp, 316, 7
+	xvstelm.b	$xr0, $sp, 312, 6
+	xvstelm.b	$xr0, $sp, 308, 5
+	xvstelm.b	$xr0, $sp, 304, 4
+	xvstelm.b	$xr0, $sp, 300, 3
+	xvstelm.b	$xr0, $sp, 296, 2
+	xvstelm.b	$xr0, $sp, 292, 1
+	xvstelm.b	$xr0, $sp, 288, 0
 	xvld	$xr0, $sp, 288
 	vst	$vr1, $sp, 480
 	st.b	$zero, $sp, 351
@@ -20223,23 +20213,15 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 323
 	st.h	$zero, $sp, 321
 	xvld	$xr1, $sp, 480
-	vinsgr2vr.d	$vr2, $a3, 0
-	vpickve2gr.b	$a3, $vr1, 7
-	st.b	$a3, $sp, 348
-	vpickve2gr.b	$a3, $vr1, 6
-	st.b	$a3, $sp, 344
-	vpickve2gr.b	$a3, $vr1, 5
-	st.b	$a3, $sp, 340
-	vpickve2gr.b	$a3, $vr1, 4
-	st.b	$a3, $sp, 336
-	vpickve2gr.b	$a3, $vr1, 3
-	st.b	$a3, $sp, 332
-	vpickve2gr.b	$a3, $vr1, 2
-	st.b	$a3, $sp, 328
-	vpickve2gr.b	$a3, $vr1, 1
-	st.b	$a3, $sp, 324
-	vpickve2gr.b	$a3, $vr1, 0
-	st.b	$a3, $sp, 320
+	vinsgr2vr.d	$vr2, $a4, 0
+	xvstelm.b	$xr1, $sp, 348, 7
+	xvstelm.b	$xr1, $sp, 344, 6
+	xvstelm.b	$xr1, $sp, 340, 5
+	xvstelm.b	$xr1, $sp, 336, 4
+	xvstelm.b	$xr1, $sp, 332, 3
+	xvstelm.b	$xr1, $sp, 328, 2
+	xvstelm.b	$xr1, $sp, 324, 1
+	xvstelm.b	$xr1, $sp, 320, 0
 	xvld	$xr1, $sp, 320
 	vst	$vr2, $sp, 448
 	st.b	$zero, $sp, 383
@@ -20260,22 +20242,14 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 353
 	xvld	$xr2, $sp, 448
 	vinsgr2vr.d	$vr3, $a2, 0
-	vpickve2gr.b	$a2, $vr2, 7
-	st.b	$a2, $sp, 380
-	vpickve2gr.b	$a2, $vr2, 6
-	st.b	$a2, $sp, 376
-	vpickve2gr.b	$a2, $vr2, 5
-	st.b	$a2, $sp, 372
-	vpickve2gr.b	$a2, $vr2, 4
-	st.b	$a2, $sp, 368
-	vpickve2gr.b	$a2, $vr2, 3
-	st.b	$a2, $sp, 364
-	vpickve2gr.b	$a2, $vr2, 2
-	st.b	$a2, $sp, 360
-	vpickve2gr.b	$a2, $vr2, 1
-	st.b	$a2, $sp, 356
-	vpickve2gr.b	$a2, $vr2, 0
-	st.b	$a2, $sp, 352
+	xvstelm.b	$xr2, $sp, 380, 7
+	xvstelm.b	$xr2, $sp, 376, 6
+	xvstelm.b	$xr2, $sp, 372, 5
+	xvstelm.b	$xr2, $sp, 368, 4
+	xvstelm.b	$xr2, $sp, 364, 3
+	xvstelm.b	$xr2, $sp, 360, 2
+	xvstelm.b	$xr2, $sp, 356, 1
+	xvstelm.b	$xr2, $sp, 352, 0
 	xvld	$xr2, $sp, 352
 	vst	$vr3, $sp, 416
 	st.b	$zero, $sp, 415
@@ -20295,22 +20269,14 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 387
 	st.h	$zero, $sp, 385
 	xvld	$xr3, $sp, 416
-	vpickve2gr.b	$a2, $vr3, 7
-	st.b	$a2, $sp, 412
-	vpickve2gr.b	$a2, $vr3, 6
-	st.b	$a2, $sp, 408
-	vpickve2gr.b	$a2, $vr3, 5
-	st.b	$a2, $sp, 404
-	vpickve2gr.b	$a2, $vr3, 4
-	st.b	$a2, $sp, 400
-	vpickve2gr.b	$a2, $vr3, 3
-	st.b	$a2, $sp, 396
-	vpickve2gr.b	$a2, $vr3, 2
-	st.b	$a2, $sp, 392
-	vpickve2gr.b	$a2, $vr3, 1
-	st.b	$a2, $sp, 388
-	vpickve2gr.b	$a2, $vr3, 0
-	st.b	$a2, $sp, 384
+	xvstelm.b	$xr3, $sp, 412, 7
+	xvstelm.b	$xr3, $sp, 408, 6
+	xvstelm.b	$xr3, $sp, 404, 5
+	xvstelm.b	$xr3, $sp, 400, 4
+	xvstelm.b	$xr3, $sp, 396, 3
+	xvstelm.b	$xr3, $sp, 392, 2
+	xvstelm.b	$xr3, $sp, 388, 1
+	xvstelm.b	$xr3, $sp, 384, 0
 	xvld	$xr3, $sp, 384
 	xvst	$xr0, $a0, -64
 	xvst	$xr1, $a0, -32
@@ -20418,8 +20384,8 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	add.d	$a7, $s0, $a6
 	ldptr.d	$t0, $a7, 9984
 	vinsgr2vr.d	$vr0, $t0, 0
-	ldptr.d	$t1, $a7, 9992
-	ldptr.d	$t0, $a7, 10000
+	ldptr.d	$t0, $a7, 9992
+	ldptr.d	$t1, $a7, 10000
 	ldptr.d	$a7, $a7, 10008
 	vst	$vr0, $sp, 256
 	st.b	$zero, $sp, 63
@@ -20439,23 +20405,15 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 35
 	st.h	$zero, $sp, 33
 	xvld	$xr0, $sp, 256
-	vinsgr2vr.d	$vr1, $t1, 0
-	vpickve2gr.b	$t1, $vr0, 7
-	st.b	$t1, $sp, 60
-	vpickve2gr.b	$t1, $vr0, 6
-	st.b	$t1, $sp, 56
-	vpickve2gr.b	$t1, $vr0, 5
-	st.b	$t1, $sp, 52
-	vpickve2gr.b	$t1, $vr0, 4
-	st.b	$t1, $sp, 48
-	vpickve2gr.b	$t1, $vr0, 3
-	st.b	$t1, $sp, 44
-	vpickve2gr.b	$t1, $vr0, 2
-	st.b	$t1, $sp, 40
-	vpickve2gr.b	$t1, $vr0, 1
-	st.b	$t1, $sp, 36
-	vpickve2gr.b	$t1, $vr0, 0
-	st.b	$t1, $sp, 32
+	vinsgr2vr.d	$vr1, $t0, 0
+	xvstelm.b	$xr0, $sp, 60, 7
+	xvstelm.b	$xr0, $sp, 56, 6
+	xvstelm.b	$xr0, $sp, 52, 5
+	xvstelm.b	$xr0, $sp, 48, 4
+	xvstelm.b	$xr0, $sp, 44, 3
+	xvstelm.b	$xr0, $sp, 40, 2
+	xvstelm.b	$xr0, $sp, 36, 1
+	xvstelm.b	$xr0, $sp, 32, 0
 	xvld	$xr0, $sp, 32
 	vst	$vr1, $sp, 224
 	st.b	$zero, $sp, 95
@@ -20475,23 +20433,15 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 67
 	st.h	$zero, $sp, 65
 	xvld	$xr1, $sp, 224
-	vinsgr2vr.d	$vr2, $t0, 0
-	vpickve2gr.b	$t0, $vr1, 7
-	st.b	$t0, $sp, 92
-	vpickve2gr.b	$t0, $vr1, 6
-	st.b	$t0, $sp, 88
-	vpickve2gr.b	$t0, $vr1, 5
-	st.b	$t0, $sp, 84
-	vpickve2gr.b	$t0, $vr1, 4
-	st.b	$t0, $sp, 80
-	vpickve2gr.b	$t0, $vr1, 3
-	st.b	$t0, $sp, 76
-	vpickve2gr.b	$t0, $vr1, 2
-	st.b	$t0, $sp, 72
-	vpickve2gr.b	$t0, $vr1, 1
-	st.b	$t0, $sp, 68
-	vpickve2gr.b	$t0, $vr1, 0
-	st.b	$t0, $sp, 64
+	vinsgr2vr.d	$vr2, $t1, 0
+	xvstelm.b	$xr1, $sp, 92, 7
+	xvstelm.b	$xr1, $sp, 88, 6
+	xvstelm.b	$xr1, $sp, 84, 5
+	xvstelm.b	$xr1, $sp, 80, 4
+	xvstelm.b	$xr1, $sp, 76, 3
+	xvstelm.b	$xr1, $sp, 72, 2
+	xvstelm.b	$xr1, $sp, 68, 1
+	xvstelm.b	$xr1, $sp, 64, 0
 	xvld	$xr1, $sp, 64
 	vst	$vr2, $sp, 192
 	st.b	$zero, $sp, 127
@@ -20512,22 +20462,14 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 97
 	xvld	$xr2, $sp, 192
 	vinsgr2vr.d	$vr3, $a7, 0
-	vpickve2gr.b	$a7, $vr2, 7
-	st.b	$a7, $sp, 124
-	vpickve2gr.b	$a7, $vr2, 6
-	st.b	$a7, $sp, 120
-	vpickve2gr.b	$a7, $vr2, 5
-	st.b	$a7, $sp, 116
-	vpickve2gr.b	$a7, $vr2, 4
-	st.b	$a7, $sp, 112
-	vpickve2gr.b	$a7, $vr2, 3
-	st.b	$a7, $sp, 108
-	vpickve2gr.b	$a7, $vr2, 2
-	st.b	$a7, $sp, 104
-	vpickve2gr.b	$a7, $vr2, 1
-	st.b	$a7, $sp, 100
-	vpickve2gr.b	$a7, $vr2, 0
-	st.b	$a7, $sp, 96
+	xvstelm.b	$xr2, $sp, 124, 7
+	xvstelm.b	$xr2, $sp, 120, 6
+	xvstelm.b	$xr2, $sp, 116, 5
+	xvstelm.b	$xr2, $sp, 112, 4
+	xvstelm.b	$xr2, $sp, 108, 3
+	xvstelm.b	$xr2, $sp, 104, 2
+	xvstelm.b	$xr2, $sp, 100, 1
+	xvstelm.b	$xr2, $sp, 96, 0
 	xvld	$xr2, $sp, 96
 	vst	$vr3, $sp, 160
 	st.b	$zero, $sp, 159
@@ -20547,22 +20489,14 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchmark5Sta
 	st.b	$zero, $sp, 131
 	st.h	$zero, $sp, 129
 	xvld	$xr3, $sp, 160
-	vpickve2gr.b	$a7, $vr3, 7
-	st.b	$a7, $sp, 156
-	vpickve2gr.b	$a7, $vr3, 6
-	st.b	$a7, $sp, 152
-	vpickve2gr.b	$a7, $vr3, 5
-	st.b	$a7, $sp, 148
-	vpickve2gr.b	$a7, $vr3, 4
-	st.b	$a7, $sp, 144
-	vpickve2gr.b	$a7, $vr3, 3
-	st.b	$a7, $sp, 140
-	vpickve2gr.b	$a7, $vr3, 2
-	st.b	$a7, $sp, 136
-	vpickve2gr.b	$a7, $vr3, 1
-	st.b	$a7, $sp, 132
-	vpickve2gr.b	$a7, $vr3, 0
-	st.b	$a7, $sp, 128
+	xvstelm.b	$xr3, $sp, 156, 7
+	xvstelm.b	$xr3, $sp, 152, 6
+	xvstelm.b	$xr3, $sp, 148, 5
+	xvstelm.b	$xr3, $sp, 144, 4
+	xvstelm.b	$xr3, $sp, 140, 3
+	xvstelm.b	$xr3, $sp, 136, 2
+	xvstelm.b	$xr3, $sp, 132, 1
+	xvstelm.b	$xr3, $sp, 128, 0
 	xvld	$xr3, $sp, 128
 	xvst	$xr0, $a5, -64
 	xvst	$xr1, $a5, -32
@@ -22133,8 +22067,8 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchm
 	add.d	$t0, $s0, $a7
 	ldptr.d	$t1, $t0, 9984
 	vinsgr2vr.d	$vr0, $t1, 0
-	ldptr.d	$t2, $t0, 9992
-	ldptr.d	$t1, $t0, 10000
+	ldptr.d	$t1, $t0, 9992
+	ldptr.d	$t2, $t0, 10000
 	ldptr.d	$t0, $t0, 10008
 	vst	$vr0, $sp, 224
 	st.b	$zero, $sp, 31
@@ -22154,23 +22088,15 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchm
 	st.b	$zero, $sp, 3
 	st.h	$zero, $sp, 1
 	xvld	$xr0, $sp, 224
-	vinsgr2vr.d	$vr1, $t2, 0
-	vpickve2gr.b	$t2, $vr0, 7
-	st.b	$t2, $sp, 28
-	vpickve2gr.b	$t2, $vr0, 6
-	st.b	$t2, $sp, 24
-	vpickve2gr.b	$t2, $vr0, 5
-	st.b	$t2, $sp, 20
-	vpickve2gr.b	$t2, $vr0, 4
-	st.b	$t2, $sp, 16
-	vpickve2gr.b	$t2, $vr0, 3
-	st.b	$t2, $sp, 12
-	vpickve2gr.b	$t2, $vr0, 2
-	st.b	$t2, $sp, 8
-	vpickve2gr.b	$t2, $vr0, 1
-	st.b	$t2, $sp, 4
-	vpickve2gr.b	$t2, $vr0, 0
-	st.b	$t2, $sp, 0
+	vinsgr2vr.d	$vr1, $t1, 0
+	xvstelm.b	$xr0, $sp, 28, 7
+	xvstelm.b	$xr0, $sp, 24, 6
+	xvstelm.b	$xr0, $sp, 20, 5
+	xvstelm.b	$xr0, $sp, 16, 4
+	xvstelm.b	$xr0, $sp, 12, 3
+	xvstelm.b	$xr0, $sp, 8, 2
+	xvstelm.b	$xr0, $sp, 4, 1
+	xvstelm.b	$xr0, $sp, 0, 0
 	xvld	$xr0, $sp, 0
 	vst	$vr1, $sp, 192
 	st.b	$zero, $sp, 63
@@ -22190,23 +22116,15 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchm
 	st.b	$zero, $sp, 35
 	st.h	$zero, $sp, 33
 	xvld	$xr1, $sp, 192
-	vinsgr2vr.d	$vr2, $t1, 0
-	vpickve2gr.b	$t1, $vr1, 7
-	st.b	$t1, $sp, 60
-	vpickve2gr.b	$t1, $vr1, 6
-	st.b	$t1, $sp, 56
-	vpickve2gr.b	$t1, $vr1, 5
-	st.b	$t1, $sp, 52
-	vpickve2gr.b	$t1, $vr1, 4
-	st.b	$t1, $sp, 48
-	vpickve2gr.b	$t1, $vr1, 3
-	st.b	$t1, $sp, 44
-	vpickve2gr.b	$t1, $vr1, 2
-	st.b	$t1, $sp, 40
-	vpickve2gr.b	$t1, $vr1, 1
-	st.b	$t1, $sp, 36
-	vpickve2gr.b	$t1, $vr1, 0
-	st.b	$t1, $sp, 32
+	vinsgr2vr.d	$vr2, $t2, 0
+	xvstelm.b	$xr1, $sp, 60, 7
+	xvstelm.b	$xr1, $sp, 56, 6
+	xvstelm.b	$xr1, $sp, 52, 5
+	xvstelm.b	$xr1, $sp, 48, 4
+	xvstelm.b	$xr1, $sp, 44, 3
+	xvstelm.b	$xr1, $sp, 40, 2
+	xvstelm.b	$xr1, $sp, 36, 1
+	xvstelm.b	$xr1, $sp, 32, 0
 	xvld	$xr1, $sp, 32
 	vst	$vr2, $sp, 160
 	st.b	$zero, $sp, 95
@@ -22227,22 +22145,14 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchm
 	st.h	$zero, $sp, 65
 	xvld	$xr2, $sp, 160
 	vinsgr2vr.d	$vr3, $t0, 0
-	vpickve2gr.b	$t0, $vr2, 7
-	st.b	$t0, $sp, 92
-	vpickve2gr.b	$t0, $vr2, 6
-	st.b	$t0, $sp, 88
-	vpickve2gr.b	$t0, $vr2, 5
-	st.b	$t0, $sp, 84
-	vpickve2gr.b	$t0, $vr2, 4
-	st.b	$t0, $sp, 80
-	vpickve2gr.b	$t0, $vr2, 3
-	st.b	$t0, $sp, 76
-	vpickve2gr.b	$t0, $vr2, 2
-	st.b	$t0, $sp, 72
-	vpickve2gr.b	$t0, $vr2, 1
-	st.b	$t0, $sp, 68
-	vpickve2gr.b	$t0, $vr2, 0
-	st.b	$t0, $sp, 64
+	xvstelm.b	$xr2, $sp, 92, 7
+	xvstelm.b	$xr2, $sp, 88, 6
+	xvstelm.b	$xr2, $sp, 84, 5
+	xvstelm.b	$xr2, $sp, 80, 4
+	xvstelm.b	$xr2, $sp, 76, 3
+	xvstelm.b	$xr2, $sp, 72, 2
+	xvstelm.b	$xr2, $sp, 68, 1
+	xvstelm.b	$xr2, $sp, 64, 0
 	xvld	$xr2, $sp, 64
 	vst	$vr3, $sp, 128
 	st.b	$zero, $sp, 127
@@ -22262,22 +22172,14 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint32_t_RN9benchm
 	st.b	$zero, $sp, 99
 	st.h	$zero, $sp, 97
 	xvld	$xr3, $sp, 128
-	vpickve2gr.b	$t0, $vr3, 7
-	st.b	$t0, $sp, 124
-	vpickve2gr.b	$t0, $vr3, 6
-	st.b	$t0, $sp, 120
-	vpickve2gr.b	$t0, $vr3, 5
-	st.b	$t0, $sp, 116
-	vpickve2gr.b	$t0, $vr3, 4
-	st.b	$t0, $sp, 112
-	vpickve2gr.b	$t0, $vr3, 3
-	st.b	$t0, $sp, 108
-	vpickve2gr.b	$t0, $vr3, 2
-	st.b	$t0, $sp, 104
-	vpickve2gr.b	$t0, $vr3, 1
-	st.b	$t0, $sp, 100
-	vpickve2gr.b	$t0, $vr3, 0
-	st.b	$t0, $sp, 96
+	xvstelm.b	$xr3, $sp, 124, 7
+	xvstelm.b	$xr3, $sp, 120, 6
+	xvstelm.b	$xr3, $sp, 116, 5
+	xvstelm.b	$xr3, $sp, 112, 4
+	xvstelm.b	$xr3, $sp, 108, 3
+	xvstelm.b	$xr3, $sp, 104, 2
+	xvstelm.b	$xr3, $sp, 100, 1
+	xvstelm.b	$xr3, $sp, 96, 0
 	xvld	$xr3, $sp, 96
 	xvld	$xr4, $a6, -64
 	xvld	$xr5, $a6, -32
@@ -23312,14 +23214,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 549
 	st.w	$zero, $sp, 545
 	xvld	$xr0, $sp, 1024
-	vpickve2gr.b	$a5, $vr0, 3
-	st.b	$a5, $sp, 568
-	vpickve2gr.b	$a5, $vr0, 2
-	st.b	$a5, $sp, 560
-	vpickve2gr.b	$a5, $vr0, 1
-	st.b	$a5, $sp, 552
-	vpickve2gr.b	$a5, $vr0, 0
-	st.b	$a5, $sp, 544
+	xvstelm.b	$xr0, $sp, 568, 3
+	xvstelm.b	$xr0, $sp, 560, 2
+	xvstelm.b	$xr0, $sp, 552, 1
+	xvstelm.b	$xr0, $sp, 544, 0
 	st.b	$zero, $sp, 703
 	st.h	$zero, $sp, 701
 	st.w	$zero, $sp, 697
@@ -23334,14 +23232,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.w	$zero, $sp, 673
 	xvld	$xr0, $sp, 896
 	vinsgr2vr.d	$vr2, $a4, 0
-	vpickve2gr.b	$a4, $vr0, 3
-	st.b	$a4, $sp, 696
-	vpickve2gr.b	$a4, $vr0, 2
-	st.b	$a4, $sp, 688
-	vpickve2gr.b	$a4, $vr0, 1
-	st.b	$a4, $sp, 680
-	vpickve2gr.b	$a4, $vr0, 0
-	st.b	$a4, $sp, 672
+	xvstelm.b	$xr0, $sp, 696, 3
+	xvstelm.b	$xr0, $sp, 688, 2
+	xvstelm.b	$xr0, $sp, 680, 1
+	xvstelm.b	$xr0, $sp, 672, 0
 	xvld	$xr0, $sp, 544
 	xvld	$xr1, $sp, 672
 	vsrli.d	$vr3, $vr2, 32
@@ -23360,14 +23254,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 581
 	st.w	$zero, $sp, 577
 	xvld	$xr2, $sp, 992
-	vpickve2gr.b	$a4, $vr2, 3
-	st.b	$a4, $sp, 600
-	vpickve2gr.b	$a4, $vr2, 2
-	st.b	$a4, $sp, 592
-	vpickve2gr.b	$a4, $vr2, 1
-	st.b	$a4, $sp, 584
-	vpickve2gr.b	$a4, $vr2, 0
-	st.b	$a4, $sp, 576
+	xvstelm.b	$xr2, $sp, 600, 3
+	xvstelm.b	$xr2, $sp, 592, 2
+	xvstelm.b	$xr2, $sp, 584, 1
+	xvstelm.b	$xr2, $sp, 576, 0
 	st.b	$zero, $sp, 735
 	st.h	$zero, $sp, 733
 	st.w	$zero, $sp, 729
@@ -23382,14 +23272,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.w	$zero, $sp, 705
 	xvld	$xr2, $sp, 864
 	vinsgr2vr.d	$vr4, $a3, 0
-	vpickve2gr.b	$a3, $vr2, 3
-	st.b	$a3, $sp, 728
-	vpickve2gr.b	$a3, $vr2, 2
-	st.b	$a3, $sp, 720
-	vpickve2gr.b	$a3, $vr2, 1
-	st.b	$a3, $sp, 712
-	vpickve2gr.b	$a3, $vr2, 0
-	st.b	$a3, $sp, 704
+	xvstelm.b	$xr2, $sp, 728, 3
+	xvstelm.b	$xr2, $sp, 720, 2
+	xvstelm.b	$xr2, $sp, 712, 1
+	xvstelm.b	$xr2, $sp, 704, 0
 	xvld	$xr2, $sp, 576
 	xvld	$xr3, $sp, 704
 	vsrli.d	$vr5, $vr4, 32
@@ -23408,14 +23294,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 613
 	st.w	$zero, $sp, 609
 	xvld	$xr4, $sp, 960
-	vpickve2gr.b	$a3, $vr4, 3
-	st.b	$a3, $sp, 632
-	vpickve2gr.b	$a3, $vr4, 2
-	st.b	$a3, $sp, 624
-	vpickve2gr.b	$a3, $vr4, 1
-	st.b	$a3, $sp, 616
-	vpickve2gr.b	$a3, $vr4, 0
-	st.b	$a3, $sp, 608
+	xvstelm.b	$xr4, $sp, 632, 3
+	xvstelm.b	$xr4, $sp, 624, 2
+	xvstelm.b	$xr4, $sp, 616, 1
+	xvstelm.b	$xr4, $sp, 608, 0
 	st.b	$zero, $sp, 767
 	st.h	$zero, $sp, 765
 	st.w	$zero, $sp, 761
@@ -23430,14 +23312,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.w	$zero, $sp, 737
 	xvld	$xr4, $sp, 832
 	vinsgr2vr.d	$vr5, $a2, 0
-	vpickve2gr.b	$a2, $vr4, 3
-	st.b	$a2, $sp, 760
-	vpickve2gr.b	$a2, $vr4, 2
-	st.b	$a2, $sp, 752
-	vpickve2gr.b	$a2, $vr4, 1
-	st.b	$a2, $sp, 744
-	vpickve2gr.b	$a2, $vr4, 0
-	st.b	$a2, $sp, 736
+	xvstelm.b	$xr4, $sp, 760, 3
+	xvstelm.b	$xr4, $sp, 752, 2
+	xvstelm.b	$xr4, $sp, 744, 1
+	xvstelm.b	$xr4, $sp, 736, 0
 	xvld	$xr4, $sp, 608
 	xvld	$xr6, $sp, 736
 	vsrli.d	$vr7, $vr5, 32
@@ -23456,14 +23334,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 645
 	st.w	$zero, $sp, 641
 	xvld	$xr5, $sp, 928
-	vpickve2gr.b	$a2, $vr5, 3
-	st.b	$a2, $sp, 664
-	vpickve2gr.b	$a2, $vr5, 2
-	st.b	$a2, $sp, 656
-	vpickve2gr.b	$a2, $vr5, 1
-	st.b	$a2, $sp, 648
-	vpickve2gr.b	$a2, $vr5, 0
-	st.b	$a2, $sp, 640
+	xvstelm.b	$xr5, $sp, 664, 3
+	xvstelm.b	$xr5, $sp, 656, 2
+	xvstelm.b	$xr5, $sp, 648, 1
+	xvstelm.b	$xr5, $sp, 640, 0
 	st.b	$zero, $sp, 799
 	st.h	$zero, $sp, 797
 	st.w	$zero, $sp, 793
@@ -23477,14 +23351,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 773
 	st.w	$zero, $sp, 769
 	xvld	$xr5, $sp, 800
-	vpickve2gr.b	$a2, $vr5, 3
-	st.b	$a2, $sp, 792
-	vpickve2gr.b	$a2, $vr5, 2
-	st.b	$a2, $sp, 784
-	vpickve2gr.b	$a2, $vr5, 1
-	st.b	$a2, $sp, 776
-	vpickve2gr.b	$a2, $vr5, 0
-	st.b	$a2, $sp, 768
+	xvstelm.b	$xr5, $sp, 792, 3
+	xvstelm.b	$xr5, $sp, 784, 2
+	xvstelm.b	$xr5, $sp, 776, 1
+	xvstelm.b	$xr5, $sp, 768, 0
 	xvld	$xr5, $sp, 640
 	xvld	$xr7, $sp, 768
 	xvst	$xr1, $a0, -128
@@ -23617,14 +23487,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
 	xvld	$xr0, $sp, 512
-	vpickve2gr.b	$t2, $vr0, 3
-	st.b	$t2, $sp, 56
-	vpickve2gr.b	$t2, $vr0, 2
-	st.b	$t2, $sp, 48
-	vpickve2gr.b	$t2, $vr0, 1
-	st.b	$t2, $sp, 40
-	vpickve2gr.b	$t2, $vr0, 0
-	st.b	$t2, $sp, 32
+	xvstelm.b	$xr0, $sp, 56, 3
+	xvstelm.b	$xr0, $sp, 48, 2
+	xvstelm.b	$xr0, $sp, 40, 1
+	xvstelm.b	$xr0, $sp, 32, 0
 	st.b	$zero, $sp, 191
 	st.h	$zero, $sp, 189
 	st.w	$zero, $sp, 185
@@ -23639,14 +23505,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.w	$zero, $sp, 161
 	xvld	$xr0, $sp, 384
 	vinsgr2vr.d	$vr2, $t1, 0
-	vpickve2gr.b	$t1, $vr0, 3
-	st.b	$t1, $sp, 184
-	vpickve2gr.b	$t1, $vr0, 2
-	st.b	$t1, $sp, 176
-	vpickve2gr.b	$t1, $vr0, 1
-	st.b	$t1, $sp, 168
-	vpickve2gr.b	$t1, $vr0, 0
-	st.b	$t1, $sp, 160
+	xvstelm.b	$xr0, $sp, 184, 3
+	xvstelm.b	$xr0, $sp, 176, 2
+	xvstelm.b	$xr0, $sp, 168, 1
+	xvstelm.b	$xr0, $sp, 160, 0
 	xvld	$xr0, $sp, 32
 	xvld	$xr1, $sp, 160
 	vsrli.d	$vr3, $vr2, 32
@@ -23665,14 +23527,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 69
 	st.w	$zero, $sp, 65
 	xvld	$xr2, $sp, 480
-	vpickve2gr.b	$t1, $vr2, 3
-	st.b	$t1, $sp, 88
-	vpickve2gr.b	$t1, $vr2, 2
-	st.b	$t1, $sp, 80
-	vpickve2gr.b	$t1, $vr2, 1
-	st.b	$t1, $sp, 72
-	vpickve2gr.b	$t1, $vr2, 0
-	st.b	$t1, $sp, 64
+	xvstelm.b	$xr2, $sp, 88, 3
+	xvstelm.b	$xr2, $sp, 80, 2
+	xvstelm.b	$xr2, $sp, 72, 1
+	xvstelm.b	$xr2, $sp, 64, 0
 	st.b	$zero, $sp, 223
 	st.h	$zero, $sp, 221
 	st.w	$zero, $sp, 217
@@ -23687,14 +23545,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.w	$zero, $sp, 193
 	xvld	$xr2, $sp, 352
 	vinsgr2vr.d	$vr4, $t0, 0
-	vpickve2gr.b	$t0, $vr2, 3
-	st.b	$t0, $sp, 216
-	vpickve2gr.b	$t0, $vr2, 2
-	st.b	$t0, $sp, 208
-	vpickve2gr.b	$t0, $vr2, 1
-	st.b	$t0, $sp, 200
-	vpickve2gr.b	$t0, $vr2, 0
-	st.b	$t0, $sp, 192
+	xvstelm.b	$xr2, $sp, 216, 3
+	xvstelm.b	$xr2, $sp, 208, 2
+	xvstelm.b	$xr2, $sp, 200, 1
+	xvstelm.b	$xr2, $sp, 192, 0
 	xvld	$xr2, $sp, 64
 	xvld	$xr3, $sp, 192
 	vsrli.d	$vr5, $vr4, 32
@@ -23713,14 +23567,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 101
 	st.w	$zero, $sp, 97
 	xvld	$xr4, $sp, 448
-	vpickve2gr.b	$t0, $vr4, 3
-	st.b	$t0, $sp, 120
-	vpickve2gr.b	$t0, $vr4, 2
-	st.b	$t0, $sp, 112
-	vpickve2gr.b	$t0, $vr4, 1
-	st.b	$t0, $sp, 104
-	vpickve2gr.b	$t0, $vr4, 0
-	st.b	$t0, $sp, 96
+	xvstelm.b	$xr4, $sp, 120, 3
+	xvstelm.b	$xr4, $sp, 112, 2
+	xvstelm.b	$xr4, $sp, 104, 1
+	xvstelm.b	$xr4, $sp, 96, 0
 	st.b	$zero, $sp, 255
 	st.h	$zero, $sp, 253
 	st.w	$zero, $sp, 249
@@ -23735,14 +23585,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.w	$zero, $sp, 225
 	xvld	$xr4, $sp, 320
 	vinsgr2vr.d	$vr5, $a7, 0
-	vpickve2gr.b	$a7, $vr4, 3
-	st.b	$a7, $sp, 248
-	vpickve2gr.b	$a7, $vr4, 2
-	st.b	$a7, $sp, 240
-	vpickve2gr.b	$a7, $vr4, 1
-	st.b	$a7, $sp, 232
-	vpickve2gr.b	$a7, $vr4, 0
-	st.b	$a7, $sp, 224
+	xvstelm.b	$xr4, $sp, 248, 3
+	xvstelm.b	$xr4, $sp, 240, 2
+	xvstelm.b	$xr4, $sp, 232, 1
+	xvstelm.b	$xr4, $sp, 224, 0
 	xvld	$xr4, $sp, 96
 	xvld	$xr6, $sp, 224
 	vsrli.d	$vr7, $vr5, 32
@@ -23761,14 +23607,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 133
 	st.w	$zero, $sp, 129
 	xvld	$xr5, $sp, 416
-	vpickve2gr.b	$a7, $vr5, 3
-	st.b	$a7, $sp, 152
-	vpickve2gr.b	$a7, $vr5, 2
-	st.b	$a7, $sp, 144
-	vpickve2gr.b	$a7, $vr5, 1
-	st.b	$a7, $sp, 136
-	vpickve2gr.b	$a7, $vr5, 0
-	st.b	$a7, $sp, 128
+	xvstelm.b	$xr5, $sp, 152, 3
+	xvstelm.b	$xr5, $sp, 144, 2
+	xvstelm.b	$xr5, $sp, 136, 1
+	xvstelm.b	$xr5, $sp, 128, 0
 	st.b	$zero, $sp, 287
 	st.h	$zero, $sp, 285
 	st.w	$zero, $sp, 281
@@ -23782,14 +23624,10 @@ _Z60benchForTruncOrZextVecInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 261
 	st.w	$zero, $sp, 257
 	xvld	$xr5, $sp, 288
-	vpickve2gr.b	$a7, $vr5, 3
-	st.b	$a7, $sp, 280
-	vpickve2gr.b	$a7, $vr5, 2
-	st.b	$a7, $sp, 272
-	vpickve2gr.b	$a7, $vr5, 1
-	st.b	$a7, $sp, 264
-	vpickve2gr.b	$a7, $vr5, 0
-	st.b	$a7, $sp, 256
+	xvstelm.b	$xr5, $sp, 280, 3
+	xvstelm.b	$xr5, $sp, 272, 2
+	xvstelm.b	$xr5, $sp, 264, 1
+	xvstelm.b	$xr5, $sp, 256, 0
 	xvld	$xr5, $sp, 128
 	xvld	$xr7, $sp, 256
 	xvst	$xr1, $a5, -128
@@ -25540,14 +25378,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.h	$zero, $sp, 133
 	st.w	$zero, $sp, 129
 	xvld	$xr0, $sp, 352
-	vpickve2gr.b	$t3, $vr0, 3
-	st.b	$t3, $sp, 152
-	vpickve2gr.b	$t3, $vr0, 2
-	st.b	$t3, $sp, 144
-	vpickve2gr.b	$t3, $vr0, 1
-	st.b	$t3, $sp, 136
-	vpickve2gr.b	$t3, $vr0, 0
-	st.b	$t3, $sp, 128
+	xvstelm.b	$xr0, $sp, 152, 3
+	xvstelm.b	$xr0, $sp, 144, 2
+	xvstelm.b	$xr0, $sp, 136, 1
+	xvstelm.b	$xr0, $sp, 128, 0
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -25562,14 +25396,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.w	$zero, $sp, 1
 	xvld	$xr0, $sp, 480
 	vinsgr2vr.d	$vr2, $t2, 0
-	vpickve2gr.b	$t2, $vr0, 3
-	st.b	$t2, $sp, 24
-	vpickve2gr.b	$t2, $vr0, 2
-	st.b	$t2, $sp, 16
-	vpickve2gr.b	$t2, $vr0, 1
-	st.b	$t2, $sp, 8
-	vpickve2gr.b	$t2, $vr0, 0
-	st.b	$t2, $sp, 0
+	xvstelm.b	$xr0, $sp, 24, 3
+	xvstelm.b	$xr0, $sp, 16, 2
+	xvstelm.b	$xr0, $sp, 8, 1
+	xvstelm.b	$xr0, $sp, 0, 0
 	xvld	$xr0, $sp, 128
 	xvld	$xr1, $sp, 0
 	vst	$vr2, $sp, 320
@@ -25588,14 +25418,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.h	$zero, $sp, 165
 	st.w	$zero, $sp, 161
 	xvld	$xr2, $sp, 320
-	vpickve2gr.b	$t2, $vr2, 3
-	st.b	$t2, $sp, 184
-	vpickve2gr.b	$t2, $vr2, 2
-	st.b	$t2, $sp, 176
-	vpickve2gr.b	$t2, $vr2, 1
-	st.b	$t2, $sp, 168
-	vpickve2gr.b	$t2, $vr2, 0
-	st.b	$t2, $sp, 160
+	xvstelm.b	$xr2, $sp, 184, 3
+	xvstelm.b	$xr2, $sp, 176, 2
+	xvstelm.b	$xr2, $sp, 168, 1
+	xvstelm.b	$xr2, $sp, 160, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -25610,14 +25436,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.w	$zero, $sp, 33
 	xvld	$xr2, $sp, 448
 	vinsgr2vr.d	$vr4, $t1, 0
-	vpickve2gr.b	$t1, $vr2, 3
-	st.b	$t1, $sp, 56
-	vpickve2gr.b	$t1, $vr2, 2
-	st.b	$t1, $sp, 48
-	vpickve2gr.b	$t1, $vr2, 1
-	st.b	$t1, $sp, 40
-	vpickve2gr.b	$t1, $vr2, 0
-	st.b	$t1, $sp, 32
+	xvstelm.b	$xr2, $sp, 56, 3
+	xvstelm.b	$xr2, $sp, 48, 2
+	xvstelm.b	$xr2, $sp, 40, 1
+	xvstelm.b	$xr2, $sp, 32, 0
 	xvld	$xr2, $sp, 160
 	xvld	$xr3, $sp, 32
 	vst	$vr4, $sp, 288
@@ -25636,14 +25458,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.h	$zero, $sp, 197
 	st.w	$zero, $sp, 193
 	xvld	$xr4, $sp, 288
-	vpickve2gr.b	$t1, $vr4, 3
-	st.b	$t1, $sp, 216
-	vpickve2gr.b	$t1, $vr4, 2
-	st.b	$t1, $sp, 208
-	vpickve2gr.b	$t1, $vr4, 1
-	st.b	$t1, $sp, 200
-	vpickve2gr.b	$t1, $vr4, 0
-	st.b	$t1, $sp, 192
+	xvstelm.b	$xr4, $sp, 216, 3
+	xvstelm.b	$xr4, $sp, 208, 2
+	xvstelm.b	$xr4, $sp, 200, 1
+	xvstelm.b	$xr4, $sp, 192, 0
 	st.b	$zero, $sp, 95
 	st.h	$zero, $sp, 93
 	st.w	$zero, $sp, 89
@@ -25658,14 +25476,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.w	$zero, $sp, 65
 	xvld	$xr4, $sp, 416
 	vinsgr2vr.d	$vr5, $t0, 0
-	vpickve2gr.b	$t0, $vr4, 3
-	st.b	$t0, $sp, 88
-	vpickve2gr.b	$t0, $vr4, 2
-	st.b	$t0, $sp, 80
-	vpickve2gr.b	$t0, $vr4, 1
-	st.b	$t0, $sp, 72
-	vpickve2gr.b	$t0, $vr4, 0
-	st.b	$t0, $sp, 64
+	xvstelm.b	$xr4, $sp, 88, 3
+	xvstelm.b	$xr4, $sp, 80, 2
+	xvstelm.b	$xr4, $sp, 72, 1
+	xvstelm.b	$xr4, $sp, 64, 0
 	xvld	$xr4, $sp, 192
 	xvld	$xr6, $sp, 64
 	vst	$vr5, $sp, 256
@@ -25684,14 +25498,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.h	$zero, $sp, 229
 	st.w	$zero, $sp, 225
 	xvld	$xr5, $sp, 256
-	vpickve2gr.b	$t0, $vr5, 3
-	st.b	$t0, $sp, 248
-	vpickve2gr.b	$t0, $vr5, 2
-	st.b	$t0, $sp, 240
-	vpickve2gr.b	$t0, $vr5, 1
-	st.b	$t0, $sp, 232
-	vpickve2gr.b	$t0, $vr5, 0
-	st.b	$t0, $sp, 224
+	xvstelm.b	$xr5, $sp, 248, 3
+	xvstelm.b	$xr5, $sp, 240, 2
+	xvstelm.b	$xr5, $sp, 232, 1
+	xvstelm.b	$xr5, $sp, 224, 0
 	st.b	$zero, $sp, 127
 	st.h	$zero, $sp, 125
 	st.w	$zero, $sp, 121
@@ -25705,14 +25515,10 @@ _Z67benchForTruncOrZextVecWithAddInLoopWithVW8From_uint8_t_To_uint64_t_RN9benchm
 	st.h	$zero, $sp, 101
 	st.w	$zero, $sp, 97
 	xvld	$xr5, $sp, 384
-	vpickve2gr.b	$t0, $vr5, 3
-	st.b	$t0, $sp, 120
-	vpickve2gr.b	$t0, $vr5, 2
-	st.b	$t0, $sp, 112
-	vpickve2gr.b	$t0, $vr5, 1
-	st.b	$t0, $sp, 104
-	vpickve2gr.b	$t0, $vr5, 0
-	st.b	$t0, $sp, 96
+	xvstelm.b	$xr5, $sp, 120, 3
+	xvstelm.b	$xr5, $sp, 112, 2
+	xvstelm.b	$xr5, $sp, 104, 1
+	xvstelm.b	$xr5, $sp, 96, 0
 	xvld	$xr5, $sp, 224
 	xvld	$xr7, $sp, 96
 	xvld	$xr8, $a6, -128
@@ -26645,14 +26451,10 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint8_t_To_uint64_t_RN9benchmark5Sta
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
 	xvld	$xr0, $sp, 32
-	vpickve2gr.b	$a5, $vr0, 3
-	st.b	$a5, $sp, 24
-	vpickve2gr.b	$a5, $vr0, 2
-	st.b	$a5, $sp, 16
-	vpickve2gr.b	$a5, $vr0, 1
-	st.b	$a5, $sp, 8
-	vpickve2gr.b	$a5, $vr0, 0
-	st.b	$a5, $sp, 0
+	xvstelm.b	$xr0, $sp, 24, 3
+	xvstelm.b	$xr0, $sp, 16, 2
+	xvstelm.b	$xr0, $sp, 8, 1
+	xvstelm.b	$xr0, $sp, 0, 0
 	xvld	$xr0, $sp, 0
 	xvld	$xr1, $a3, 0
 	xvadd.d	$xr0, $xr1, $xr0
@@ -33259,14 +33061,10 @@ _Z61benchForTruncOrZextVecWithAddInLoopFrom_uint16_t_To_uint64_t_RN9benchmark5St
 	st.h	$zero, $sp, 6
 	st.w	$zero, $sp, 2
 	xvld	$xr0, $sp, 32
-	vpickve2gr.h	$a4, $vr0, 3
-	st.h	$a4, $sp, 24
-	vpickve2gr.h	$a4, $vr0, 2
-	st.h	$a4, $sp, 16
-	vpickve2gr.h	$a4, $vr0, 1
-	st.h	$a4, $sp, 8
-	vpickve2gr.h	$a4, $vr0, 0
-	st.h	$a4, $sp, 0
+	xvstelm.h	$xr0, $sp, 24, 3
+	xvstelm.h	$xr0, $sp, 16, 2
+	xvstelm.h	$xr0, $sp, 8, 1
+	xvstelm.h	$xr0, $sp, 0, 0
 	xvld	$xr0, $sp, 0
 	xvld	$xr1, $a2, 0
 	xvadd.d	$xr0, $xr1, $xr0

@@ -2248,54 +2248,34 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	bstrpick.d	$ra, $a1, 31, 0
 	beqz	$a1, .LBB5_8
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a6, $zero, 8
-	bgeu	$a1, $a6, .LBB5_3
+	ori	$a6, $zero, 1
+	bne	$a1, $a6, .LBB5_3
 # %bb.2:
 	move	$a6, $zero
 	b	.LBB5_6
 .LBB5_3:                                # %vector.ph
-	bstrpick.d	$a6, $ra, 31, 3
-	slli.d	$a6, $a6, 3
-	addi.d	$a7, $a0, 32
-	addi.d	$t0, $sp, 584
+	bstrpick.d	$a6, $ra, 31, 1
+	slli.d	$a6, $a6, 1
+	addi.d	$a7, $a0, 8
+	addi.d	$t0, $sp, 572
 	ori	$t1, $a4, 2268
 	move	$t2, $a6
 	.p2align	4, , 16
 .LBB5_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t3, $a7, -32
-	ld.d	$t4, $a7, -24
-	ld.d	$t5, $a7, -16
-	ld.d	$t6, $a7, -8
-	ld.d	$t7, $a7, 0
-	ld.d	$t8, $a7, 8
-	ld.d	$fp, $a7, 16
-	ld.d	$s0, $a7, 24
+	ld.d	$t3, $a7, -8
+	ld.d	$t4, $a7, 0
 	ldx.w	$t3, $t3, $t1
 	ldx.w	$t4, $t4, $t1
-	ldx.w	$t5, $t5, $t1
-	ldx.w	$t6, $t6, $t1
-	vinsgr2vr.w	$vr0, $t3, 0
-	vinsgr2vr.w	$vr0, $t4, 1
-	vinsgr2vr.w	$vr0, $t5, 2
-	vinsgr2vr.w	$vr0, $t6, 3
-	ldx.w	$t3, $t7, $t1
-	ldx.w	$t4, $t8, $t1
-	ldx.w	$t5, $fp, $t1
-	ldx.w	$t6, $s0, $t1
-	vinsgr2vr.w	$vr1, $t3, 0
-	vinsgr2vr.w	$vr1, $t4, 1
-	vinsgr2vr.w	$vr1, $t5, 2
-	vinsgr2vr.w	$vr1, $t6, 3
-	vst	$vr0, $t0, -16
-	vst	$vr1, $t0, 0
-	addi.d	$t2, $t2, -8
-	addi.d	$a7, $a7, 64
-	addi.d	$t0, $t0, 32
+	st.w	$t3, $t0, -4
+	st.w	$t4, $t0, 0
+	addi.d	$a7, $a7, 16
+	addi.d	$t2, $t2, -2
+	addi.d	$t0, $t0, 8
 	bnez	$t2, .LBB5_4
 # %bb.5:                                # %middle.block
 	beq	$a6, $ra, .LBB5_8
-.LBB5_6:                                # %.lr.ph.preheader267
+.LBB5_6:                                # %.lr.ph.preheader252
 	alsl.d	$a0, $a6, $a0, 3
 	addi.d	$a7, $sp, 568
 	alsl.d	$a7, $a6, $a7, 2
@@ -2373,14 +2353,14 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	addi.w	$a4, $a6, -1
 	bnez	$a4, .LBB5_20
 .LBB5_16:                               # %.preheader136
-	beqz	$a1, .LBB5_54
-# %bb.17:                               # %iter.check
-	ori	$a0, $zero, 3
-	bltu	$a0, $a1, .LBB5_30
+	beqz	$a1, .LBB5_48
+# %bb.17:                               # %.lr.ph151.preheader
+	ori	$a0, $zero, 8
+	bgeu	$a1, $a0, .LBB5_30
 # %bb.18:
 	move	$a0, $zero
 	ori	$a4, $zero, 1
-	b	.LBB5_39
+	b	.LBB5_33
 .LBB5_19:
 	addi.w	$a4, $zero, -1
 .LBB5_20:                               # %.lr.ph148.preheader
@@ -2449,123 +2429,34 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	ld.w	$s6, $t7, 0
 	blt	$s6, $s7, .LBB5_25
 	b	.LBB5_26
-.LBB5_30:                               # %vector.main.loop.iter.check
-	ori	$a0, $zero, 16
-	bgeu	$a1, $a0, .LBB5_32
-# %bb.31:
-	move	$a0, $zero
-	ori	$a4, $zero, 1
-	b	.LBB5_36
-.LBB5_32:                               # %vector.ph236
-	bstrpick.d	$a0, $ra, 31, 4
-	slli.d	$a0, $a0, 4
-	addi.d	$a4, $sp, 472
+.LBB5_30:                               # %vector.ph233
+	bstrpick.d	$a0, $ra, 31, 3
+	slli.d	$a0, $a0, 3
+	addi.d	$a4, $sp, 456
 	vrepli.b	$vr0, 0
-	addi.d	$a6, $sp, 600
-	xvrepli.b	$xr1, -1
+	addi.d	$a6, $sp, 584
+	vrepli.b	$vr1, -1
 	move	$a7, $a0
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB5_33:                               # %vector.body239
+.LBB5_31:                               # %vector.body236
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr3, $a6, -32
-	xvld	$xr4, $a4, -32
-	xvld	$xr5, $a6, 0
-	xvld	$xr6, $a4, 0
-	xvseq.w	$xr3, $xr3, $xr4
-	xvxor.v	$xr3, $xr3, $xr1
-	xvpickve2gr.w	$t0, $xr3, 0
-	vinsgr2vr.h	$vr4, $t0, 0
-	xvpickve2gr.w	$t0, $xr3, 1
-	vinsgr2vr.h	$vr4, $t0, 1
-	xvpickve2gr.w	$t0, $xr3, 2
-	vinsgr2vr.h	$vr4, $t0, 2
-	xvpickve2gr.w	$t0, $xr3, 3
-	vinsgr2vr.h	$vr4, $t0, 3
-	xvpickve2gr.w	$t0, $xr3, 4
-	vinsgr2vr.h	$vr4, $t0, 4
-	xvpickve2gr.w	$t0, $xr3, 5
-	vinsgr2vr.h	$vr4, $t0, 5
-	xvpickve2gr.w	$t0, $xr3, 6
-	vinsgr2vr.h	$vr4, $t0, 6
-	xvpickve2gr.w	$t0, $xr3, 7
-	vinsgr2vr.h	$vr4, $t0, 7
-	xvseq.w	$xr3, $xr5, $xr6
-	xvxor.v	$xr3, $xr3, $xr1
-	xvpickve2gr.w	$t0, $xr3, 0
-	vinsgr2vr.h	$vr5, $t0, 0
-	xvpickve2gr.w	$t0, $xr3, 1
-	vinsgr2vr.h	$vr5, $t0, 1
-	xvpickve2gr.w	$t0, $xr3, 2
-	vinsgr2vr.h	$vr5, $t0, 2
-	xvpickve2gr.w	$t0, $xr3, 3
-	vinsgr2vr.h	$vr5, $t0, 3
-	xvpickve2gr.w	$t0, $xr3, 4
-	vinsgr2vr.h	$vr5, $t0, 4
-	xvpickve2gr.w	$t0, $xr3, 5
-	vinsgr2vr.h	$vr5, $t0, 5
-	xvpickve2gr.w	$t0, $xr3, 6
-	vinsgr2vr.h	$vr5, $t0, 6
-	xvpickve2gr.w	$t0, $xr3, 7
-	vinsgr2vr.h	$vr5, $t0, 7
-	vor.v	$vr0, $vr0, $vr4
-	vor.v	$vr2, $vr2, $vr5
-	addi.d	$a7, $a7, -16
-	addi.d	$a4, $a4, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB5_33
-# %bb.34:                               # %middle.block247
+	vld	$vr3, $a6, -16
+	vld	$vr4, $a4, -16
+	vld	$vr5, $a6, 0
+	vld	$vr6, $a4, 0
+	vseq.w	$vr3, $vr3, $vr4
+	vxor.v	$vr3, $vr3, $vr1
+	vseq.w	$vr4, $vr5, $vr6
+	vxor.v	$vr4, $vr4, $vr1
+	vor.v	$vr0, $vr0, $vr3
+	vor.v	$vr2, $vr2, $vr4
+	addi.d	$a7, $a7, -8
+	addi.d	$a4, $a4, 32
+	addi.d	$a6, $a6, 32
+	bnez	$a7, .LBB5_31
+# %bb.32:                               # %middle.block243
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.h	$a4, $vr0, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a4, $a6, 63, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	bstrins.d	$a4, $a6, 2, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	bstrins.d	$a4, $a6, 3, 3
-	vpickve2gr.h	$a6, $vr0, 4
-	bstrins.d	$a4, $a6, 4, 4
-	vpickve2gr.h	$a6, $vr0, 5
-	bstrins.d	$a4, $a6, 5, 5
-	vpickve2gr.h	$a6, $vr0, 6
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a4, $a4, $a6
-	vpickve2gr.h	$a6, $vr0, 7
-	slli.d	$a6, $a6, 7
-	or	$a4, $a4, $a6
-	andi	$a4, $a4, 255
-	sltui	$a4, $a4, 1
-	beq	$a0, $ra, .LBB5_41
-# %bb.35:                               # %vec.epilog.iter.check
-	andi	$a6, $ra, 12
-	beqz	$a6, .LBB5_39
-.LBB5_36:                               # %vec.epilog.ph
-	move	$a7, $a0
-	sltui	$a4, $a4, 1
-	bstrpick.d	$a0, $ra, 31, 2
-	slli.d	$a0, $a0, 2
-	vreplgr2vr.w	$vr0, $a4
-	sub.d	$a4, $a7, $a0
-	addi.d	$a6, $sp, 440
-	alsl.d	$a6, $a7, $a6, 2
-	addi.d	$t0, $sp, 568
-	alsl.d	$a7, $a7, $t0, 2
-	vrepli.b	$vr1, -1
-	.p2align	4, , 16
-.LBB5_37:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr2, $a7, 0
-	vld	$vr3, $a6, 0
-	vseq.w	$vr2, $vr2, $vr3
-	vxor.v	$vr2, $vr2, $vr1
-	vor.v	$vr0, $vr0, $vr2
-	addi.d	$a4, $a4, 4
-	addi.d	$a6, $a6, 16
-	addi.d	$a7, $a7, 16
-	bnez	$a4, .LBB5_37
-# %bb.38:                               # %vec.epilog.middle.block
 	vpickve2gr.w	$a4, $vr0, 0
 	vpickve2gr.w	$a6, $vr0, 1
 	andi	$a6, $a6, 1
@@ -2577,15 +2468,15 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	or	$a4, $a4, $a6
 	andi	$a4, $a4, 15
 	sltui	$a4, $a4, 1
-	beq	$a0, $ra, .LBB5_41
-.LBB5_39:                               # %.lr.ph151.preheader
+	beq	$a0, $ra, .LBB5_35
+.LBB5_33:                               # %.lr.ph151.preheader249
 	addi.d	$a6, $sp, 568
 	alsl.d	$a6, $a0, $a6, 2
 	addi.d	$a7, $sp, 440
 	alsl.d	$a7, $a0, $a7, 2
 	sub.d	$a0, $ra, $a0
 	.p2align	4, , 16
-.LBB5_40:                               # %.lr.ph151
+.LBB5_34:                               # %.lr.ph151
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$t0, $a6, 0
 	ld.w	$t1, $a7, 0
@@ -2595,10 +2486,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	addi.d	$a6, $a6, 4
 	addi.d	$a0, $a0, -1
 	addi.d	$a7, $a7, 4
-	bnez	$a0, .LBB5_40
-.LBB5_41:                               # %._crit_edge
-	bnez	$a4, .LBB5_54
-# %bb.42:                               # %.lr.ph168
+	bnez	$a0, .LBB5_34
+.LBB5_35:                               # %._crit_edge
+	bnez	$a4, .LBB5_48
+# %bb.36:                               # %.lr.ph168
 	pcalau12i	$a0, %got_pc_hi20(img)
 	ld.d	$a0, $a0, %got_pc_lo12(img)
 	ld.d	$s3, $a0, 0
@@ -2632,10 +2523,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$t5, $sp, 0                     # 8-byte Folded Spill
-.LBB5_43:                               # %.lr.ph156.preheader
+.LBB5_37:                               # %.lr.ph156.preheader
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB5_45 Depth 2
-                                        #     Child Loop BB5_49 Depth 2
+                                        #     Child Loop BB5_39 Depth 2
+                                        #     Child Loop BB5_43 Depth 2
 	move	$a0, $s7
 	slli.d	$a4, $s2, 2
 	ldx.w	$s7, $a4, $fp
@@ -2657,48 +2548,48 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	move	$a0, $ra
 	move	$a4, $t6
 	move	$a6, $s2
-	b	.LBB5_45
+	b	.LBB5_39
 	.p2align	4, , 16
-.LBB5_44:                               #   in Loop: Header=BB5_45 Depth=2
+.LBB5_38:                               #   in Loop: Header=BB5_39 Depth=2
 	addi.d	$a0, $a0, -1
 	addi.d	$a4, $a4, 4
-	beqz	$a0, .LBB5_47
-.LBB5_45:                               # %.lr.ph156
-                                        #   Parent Loop BB5_43 Depth=1
+	beqz	$a0, .LBB5_41
+.LBB5_39:                               # %.lr.ph156
+                                        #   Parent Loop BB5_37 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a7, $a4, 0
-	beq	$a7, $s7, .LBB5_44
-# %bb.46:                               #   in Loop: Header=BB5_45 Depth=2
+	beq	$a7, $s7, .LBB5_38
+# %bb.40:                               #   in Loop: Header=BB5_39 Depth=2
 	addi.w	$a6, $a6, 1
 	bstrpick.d	$t0, $a6, 31, 0
 	slli.d	$t0, $t0, 2
 	stx.w	$a7, $t0, $s1
-	b	.LBB5_44
+	b	.LBB5_38
 	.p2align	4, , 16
-.LBB5_47:                               # %._crit_edge157
-                                        #   in Loop: Header=BB5_43 Depth=1
-	beq	$s2, $t5, .LBB5_53
-# %bb.48:                               #   in Loop: Header=BB5_43 Depth=1
+.LBB5_41:                               # %._crit_edge157
+                                        #   in Loop: Header=BB5_37 Depth=1
+	beq	$s2, $t5, .LBB5_47
+# %bb.42:                               #   in Loop: Header=BB5_37 Depth=1
 	st.d	$t6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$ra, $sp, 32                    # 8-byte Folded Spill
 	addi.d	$s2, $s2, 1
 	move	$a0, $s5
 	move	$a1, $s6
 	.p2align	4, , 16
-.LBB5_49:                               # %.lr.ph161
-                                        #   Parent Loop BB5_43 Depth=1
+.LBB5_43:                               # %.lr.ph161
+                                        #   Parent Loop BB5_37 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$a3, $a1, $s1
 	ldx.w	$a4, $a1, $fp
-	bne	$a3, $a4, .LBB5_51
-# %bb.50:                               #   in Loop: Header=BB5_49 Depth=2
+	bne	$a3, $a4, .LBB5_45
+# %bb.44:                               #   in Loop: Header=BB5_43 Depth=2
 	addi.w	$a0, $a0, -1
 	addi.d	$a1, $a1, 4
-	bnez	$a0, .LBB5_49
-	b	.LBB5_52
+	bnez	$a0, .LBB5_43
+	b	.LBB5_46
 	.p2align	4, , 16
-.LBB5_51:                               # %.preheader.preheader
-                                        #   in Loop: Header=BB5_43 Depth=1
+.LBB5_45:                               # %.preheader.preheader
+                                        #   in Loop: Header=BB5_37 Depth=1
 	addi.d	$a0, $sp, 568
 	addi.d	$a1, $sp, 312
 	move	$s0, $a2
@@ -2718,10 +2609,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$t2, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$t5, $sp, 0                     # 8-byte Folded Reload
-	b	.LBB5_43
-.LBB5_52:                               # %.critedge.loopexit
+	b	.LBB5_37
+.LBB5_46:                               # %.critedge.loopexit
 	move	$a1, $s2
-.LBB5_53:                               # %.critedge
+.LBB5_47:                               # %.critedge
 	bstrpick.d	$a0, $a1, 31, 0
 	slli.d	$a0, $a0, 2
 	ori	$a1, $zero, 3
@@ -2735,7 +2626,7 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	or	$a0, $a0, $a1
 	ori	$a1, $zero, 1
 	stx.w	$a1, $a3, $a0
-.LBB5_54:                               # %._crit_edge.thread
+.LBB5_48:                               # %._crit_edge.thread
 	ld.d	$s8, $sp, 696                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 704                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 712                   # 8-byte Folded Reload

@@ -1599,9 +1599,11 @@ build_state_for:                        # @build_state_for
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s0, 0
+	vld	$vr0, $s0, 0
+	vld	$vr1, $s0, 16
 	ld.d	$a1, $fp, 104
-	xvst	$xr0, $a0, 0
+	vst	$vr0, $a0, 0
+	vst	$vr1, $a0, 16
 	st.d	$a0, $s1, 0
 	addi.d	$a3, $fp, 112
 	beqz	$a1, .LBB7_25

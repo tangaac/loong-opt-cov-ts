@@ -1108,7 +1108,7 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 # %bb.90:                               # %.lr.ph427.i
 	ld.d	$a1, $fp, 96
 	ld.w	$a0, $fp, 532
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bgeu	$s2, $a2, .LBB8_93
 # %bb.91:
 	move	$a2, $zero
@@ -1120,49 +1120,38 @@ write_parser_tables_as_C:               # @write_parser_tables_as_C
 	ld.d	$s6, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB8_98
 .LBB8_93:                               # %vector.ph
-	bstrpick.d	$a2, $s2, 31, 3
-	slli.d	$a2, $a2, 3
-	vreplgr2vr.w	$vr0, $a0
+	bstrpick.d	$a2, $s2, 31, 2
+	slli.d	$a2, $a2, 2
+	vinsgr2vr.w	$vr0, $a0, 0
+	vreplvei.w	$vr0, $vr0, 0
 	vrepli.b	$vr1, 0
-	addi.d	$a3, $a1, 32
+	addi.d	$a3, $a1, 16
 	move	$a4, $a2
 	vori.b	$vr2, $vr1, 0
 	.p2align	4, , 16
 .LBB8_94:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, -32
-	ld.d	$a6, $a3, -24
-	ld.d	$a7, $a3, -16
-	ld.d	$t0, $a3, -8
-	ld.d	$t1, $a3, 0
-	ld.d	$t2, $a3, 8
-	ld.d	$t3, $a3, 16
-	ld.d	$t4, $a3, 24
+	ld.d	$a5, $a3, -16
+	ld.d	$a6, $a3, -8
 	ld.w	$a5, $a5, 296
+	ld.d	$a7, $a3, 0
+	ld.d	$t0, $a3, 8
 	ld.w	$a6, $a6, 296
-	ld.w	$a7, $a7, 296
-	ld.w	$t0, $t0, 296
 	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
-	ld.w	$a5, $t1, 296
-	ld.w	$a6, $t2, 296
-	ld.w	$a7, $t3, 296
-	ld.w	$t0, $t4, 296
+	ld.w	$a5, $a7, 296
+	ld.w	$a7, $t0, 296
+	vinsgr2vr.w	$vr4, $a6, 0
+	vpackev.w	$vr3, $vr4, $vr3
 	vinsgr2vr.w	$vr4, $a5, 0
-	vinsgr2vr.w	$vr4, $a6, 1
-	vinsgr2vr.w	$vr4, $a7, 2
-	vinsgr2vr.w	$vr4, $t0, 3
+	vinsgr2vr.w	$vr5, $a7, 0
+	vpackev.w	$vr4, $vr5, $vr4
 	vmadd.w	$vr1, $vr3, $vr0
 	vmadd.w	$vr2, $vr4, $vr0
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_94
 # %bb.95:                               # %middle.block
 	vadd.w	$vr0, $vr2, $vr1
-	vshuf4i.w	$vr1, $vr0, 14
-	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a3, $vr0, 0
@@ -4216,7 +4205,7 @@ write_header_as_C:                      # @write_header_as_C
 	beqz	$a3, .LBB9_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $fp, 56
-	ori	$a2, $zero, 8
+	ori	$a2, $zero, 4
 	bstrpick.d	$a1, $a3, 31, 0
 	bgeu	$a3, $a2, .LBB9_4
 # %bb.2:
@@ -4227,58 +4216,48 @@ write_header_as_C:                      # @write_header_as_C
 	move	$s4, $zero
 	b	.LBB9_9
 .LBB9_4:                                # %vector.ph
-	bstrpick.d	$a2, $a1, 31, 3
-	slli.d	$a2, $a2, 3
+	bstrpick.d	$a2, $a1, 31, 2
+	slli.d	$a2, $a2, 2
 	vrepli.b	$vr0, 0
-	addi.d	$a3, $a0, 32
+	addi.d	$a3, $a0, 16
 	move	$a4, $a2
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB9_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a3, -32
-	ld.d	$a6, $a3, -24
-	ld.d	$a7, $a3, -16
-	ld.d	$t0, $a3, -8
+	ld.d	$a5, $a3, -16
+	ld.d	$a6, $a3, -8
 	ld.w	$a5, $a5, 0
+	ld.d	$a7, $a3, 0
+	ld.d	$t0, $a3, 8
 	ld.w	$a6, $a6, 0
-	ld.w	$a7, $a7, 0
-	ld.w	$t0, $t0, 0
 	vinsgr2vr.w	$vr2, $a5, 0
-	vinsgr2vr.w	$vr2, $a6, 1
-	vinsgr2vr.w	$vr2, $a7, 2
-	vinsgr2vr.w	$vr2, $t0, 3
-	ld.d	$a5, $a3, 0
-	ld.d	$a6, $a3, 8
-	ld.d	$a7, $a3, 16
-	ld.d	$t0, $a3, 24
-	ld.w	$a5, $a5, 0
-	ld.w	$a6, $a6, 0
-	ld.w	$a7, $a7, 0
-	ld.w	$t0, $t0, 0
+	ld.w	$a5, $a7, 0
+	ld.w	$a7, $t0, 0
+	vinsgr2vr.w	$vr3, $a6, 0
+	vpackev.w	$vr2, $vr3, $vr2
 	vinsgr2vr.w	$vr3, $a5, 0
-	vinsgr2vr.w	$vr3, $a6, 1
-	vinsgr2vr.w	$vr3, $a7, 2
-	vinsgr2vr.w	$vr3, $t0, 3
+	vinsgr2vr.w	$vr4, $a7, 0
+	vpackev.w	$vr3, $vr4, $vr3
 	vseqi.w	$vr2, $vr2, 3
+	vshuf4i.w	$vr2, $vr2, 16
+	vslli.d	$vr2, $vr2, 32
+	vsrai.d	$vr2, $vr2, 32
 	vseqi.w	$vr3, $vr3, 3
+	vshuf4i.w	$vr3, $vr3, 16
+	vslli.d	$vr3, $vr3, 32
+	vsrai.d	$vr3, $vr3, 32
 	vor.v	$vr0, $vr0, $vr2
 	vor.v	$vr1, $vr1, $vr3
-	addi.d	$a4, $a4, -8
-	addi.d	$a3, $a3, 64
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a3, $vr0, 0
-	vpickve2gr.w	$a4, $vr0, 1
-	andi	$a4, $a4, 1
-	bstrins.d	$a3, $a4, 63, 1
-	vpickve2gr.w	$a4, $vr0, 2
-	bstrins.d	$a3, $a4, 2, 2
-	vpickve2gr.w	$a4, $vr0, 3
-	slli.d	$a4, $a4, 3
-	or	$a3, $a3, $a4
-	andi	$a3, $a3, 15
+	vpickve2gr.d	$a3, $vr0, 1
+	vpickve2gr.d	$a4, $vr0, 0
+	bstrins.d	$a4, $a3, 63, 1
+	andi	$a3, $a4, 3
 	sltu	$s4, $zero, $a3
 	beq	$a2, $a1, .LBB9_9
 .LBB9_7:                                # %scalar.ph.preheader

@@ -7492,7 +7492,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	move	$s8, $a2
 	st.d	$a1, $sp, 504                   # 8-byte Folded Spill
 	move	$s3, $a0
-	st.d	$a6, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a6, $sp, 376                   # 8-byte Folded Spill
 	addi.w	$a0, $a6, 0
 	pcalau12i	$s0, %pc_hi20(getNeighbour)
 	st.d	$a0, $sp, 464                   # 8-byte Folded Spill
@@ -7554,7 +7554,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	move	$s4, $s6
 	ld.d	$s5, $sp, 464                   # 8-byte Folded Reload
 	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 376                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 504                   # 8-byte Folded Reload
 	ld.d	$a2, $sp, 472                   # 8-byte Folded Reload
 	bnez	$s3, .LBB17_20
@@ -7563,7 +7563,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	st.d	$zero, $sp, 256                 # 8-byte Folded Spill
 .LBB17_8:
 	ld.d	$t0, $sp, 480                   # 8-byte Folded Reload
-	ld.d	$t1, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 376                   # 8-byte Folded Reload
 	ori	$s6, $zero, 1
 	ori	$s4, $zero, 1
 	blt	$a1, $s6, .LBB17_13
@@ -7656,7 +7656,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	sltu	$a2, $zero, $s4
 	sltu	$a3, $zero, $s6
 	and	$a2, $a2, $a3
-	st.d	$a2, $sp, 400                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 416                   # 8-byte Folded Spill
 	sltu	$t2, $zero, $a0
 	srai.d	$t3, $ra, 1
 	addi.d	$t4, $sp, 1032
@@ -7743,11 +7743,11 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(enc_picture)
 	ld.d	$a0, $a0, %got_pc_lo12(enc_picture)
-	st.d	$a0, $sp, 376                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 384                   # 8-byte Folded Spill
 	vrepli.b	$vr10, 0
 	sltu	$a0, $zero, $s3
 	slli.d	$a1, $ra, 1
-	st.d	$a1, $sp, 424                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
 	st.d	$a0, $sp, 200                   # 8-byte Folded Spill
 	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
 	and	$a0, $a0, $t2
@@ -7757,10 +7757,9 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	alsl.w	$a0, $t5, $t5, 2
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	andi	$s8, $t1, 8
-	st.d	$a5, $sp, 456                   # 8-byte Folded Spill
 	sub.d	$s0, $zero, $a5
 	ori	$a0, $zero, 1
-	st.d	$t5, $sp, 440                   # 8-byte Folded Spill
+	st.d	$t5, $sp, 448                   # 8-byte Folded Spill
 	sub.d	$a1, $a0, $t5
 	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
 	st.d	$t3, $sp, 224                   # 8-byte Folded Spill
@@ -7771,13 +7770,14 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 336
-	st.d	$a0, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 424                   # 8-byte Folded Spill
 	ori	$s2, $zero, 3
 	addi.d	$t8, $sp, 568
 	ori	$a1, $zero, 1
 	st.d	$ra, $sp, 504                   # 8-byte Folded Spill
-	st.d	$a4, $sp, 392                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 400                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 392                   # 8-byte Folded Spill
 	xvst	$xr9, $sp, 320                  # 32-byte Folded Spill
 	vst	$vr10, $sp, 272                 # 16-byte Folded Spill
 	st.d	$s6, $sp, 240                   # 8-byte Folded Spill
@@ -7785,7 +7785,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	.p2align	4, , 16
 .LBB17_26:                              # %.thread412
                                         #   in Loop: Header=BB17_27 Depth=1
-	ld.d	$a0, $sp, 432                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 440                   # 8-byte Folded Reload
 	andi	$a0, $a0, 1
 	ori	$t7, $zero, 1
 	move	$a1, $zero
@@ -7806,13 +7806,13 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
                                         #     Child Loop BB17_170 Depth 2
                                         #       Child Loop BB17_173 Depth 3
                                         #       Child Loop BB17_176 Depth 3
-	st.d	$a1, $sp, 432                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
+	st.d	$a1, $sp, 440                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $s7, 0
 	ldptr.d	$a0, $a0, 6472
 	ldptr.w	$a1, $a2, 15528
-	st.d	$t7, $sp, 448                   # 8-byte Folded Spill
+	st.d	$t7, $sp, 456                   # 8-byte Folded Spill
 	slli.d	$a3, $t7, 3
 	ldx.d	$s1, $a0, $a3
 	srai.d	$a0, $a1, 1
@@ -7822,10 +7822,10 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
                                         #   in Loop: Header=BB17_27 Depth=1
 	ld.d	$a1, $sp, 264                   # 8-byte Folded Reload
 	ldx.w	$a1, $a2, $a1
-	ld.d	$a3, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 456                   # 8-byte Folded Reload
 	slli.d	$a3, $a3, 11
 	add.d	$a2, $a2, $a3
-	ld.d	$a3, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 424                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
 	ld.d	$a3, $sp, 296                   # 8-byte Folded Reload
 	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
@@ -8624,7 +8624,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	.p2align	4, , 16
 .LBB17_114:                             # %._crit_edge489
                                         #   in Loop: Header=BB17_27 Depth=1
-	ld.d	$a2, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 432                   # 8-byte Folded Reload
 	beqz	$s3, .LBB17_119
 # %bb.115:                              #   in Loop: Header=BB17_27 Depth=1
 	ld.w	$a0, $sp, 996
@@ -8642,13 +8642,13 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	move	$s6, $s4
 	move	$s4, $s0
 	move	$s0, $s8
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 456                   # 8-byte Folded Reload
 	slli.d	$a0, $a0, 11
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 1360
 	add.d	$s3, $a0, $a1
-	ld.d	$s5, $sp, 408                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 432                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB17_117:                             #   Parent Loop BB17_27 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -8666,11 +8666,11 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	ld.d	$s5, $sp, 464                   # 8-byte Folded Reload
 	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$t4, $sp, 1000
-	ld.d	$t5, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
+	addi.d	$t3, $sp, 1000
+	ld.d	$t4, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 392                   # 8-byte Folded Reload
 	xvld	$xr9, $sp, 320                  # 32-byte Folded Reload
 	vld	$vr10, $sp, 272                 # 16-byte Folded Reload
 	move	$s8, $s0
@@ -8683,11 +8683,11 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	.p2align	4, , 16
 .LBB17_119:                             # %.loopexit455
                                         #   in Loop: Header=BB17_27 Depth=1
-	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$t4, $sp, 1000
-	ld.d	$t5, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
+	addi.d	$t3, $sp, 1000
+	ld.d	$t4, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 392                   # 8-byte Folded Reload
 	beqz	$a0, .LBB17_26
 # %bb.120:                              # %.preheader454
                                         #   in Loop: Header=BB17_27 Depth=1
@@ -8699,24 +8699,26 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	bgeu	$s5, $a0, .LBB17_126
 # %bb.122:                              #   in Loop: Header=BB17_27 Depth=1
 	move	$a2, $zero
-	ld.d	$t2, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 376                   # 8-byte Folded Reload
 	b	.LBB17_129
 	.p2align	4, , 16
 .LBB17_123:                             # %.loopexit455.thread
                                         #   in Loop: Header=BB17_27 Depth=1
 	ld.d	$ra, $sp, 504                   # 8-byte Folded Reload
-	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
-	ld.d	$t3, $sp, 408                   # 8-byte Folded Reload
-	addi.d	$t4, $sp, 1000
-	ld.d	$t5, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
+	addi.d	$t3, $sp, 1000
+	ld.d	$t4, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$t6, $sp, 392                   # 8-byte Folded Reload
 	xvld	$xr9, $sp, 320                  # 32-byte Folded Reload
 	vld	$vr10, $sp, 272                 # 16-byte Folded Reload
 	addi.d	$t8, $sp, 568
 	beqz	$a0, .LBB17_26
 .LBB17_124:                             # %.preheader453
                                         #   in Loop: Header=BB17_27 Depth=1
-	ld.d	$t2, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 480                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 376                   # 8-byte Folded Reload
 	ori	$a0, $zero, 1
 	blt	$ra, $a0, .LBB17_147
 # %bb.125:                              # %.preheader451.lr.ph
@@ -8729,6 +8731,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	addi.d	$a0, $sp, 636
 	addi.d	$a1, $sp, 1002
 	ld.d	$a2, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 376                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB17_127:                             # %vector.body828
                                         #   Parent Loop BB17_27 Depth=1
@@ -8755,12 +8758,12 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
                                         #   in Loop: Header=BB17_27 Depth=1
 	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
 	move	$a2, $a0
-	ld.d	$t2, $sp, 480                   # 8-byte Folded Reload
-	beq	$a0, $t3, .LBB17_131
+	ld.d	$t1, $sp, 480                   # 8-byte Folded Reload
+	beq	$a0, $t2, .LBB17_131
 .LBB17_129:                             # %.lr.ph494.preheader836
                                         #   in Loop: Header=BB17_27 Depth=1
-	alsl.d	$a0, $a2, $t4, 1
-	sub.d	$a1, $t3, $a2
+	alsl.d	$a0, $a2, $t3, 1
+	sub.d	$a1, $t2, $a2
 	slli.d	$a3, $a2, 4
 	alsl.d	$a2, $a2, $a3, 3
 	addi.d	$a3, $sp, 612
@@ -8786,7 +8789,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	blt	$ra, $a0, .LBB17_147
 .LBB17_132:                             #   in Loop: Header=BB17_27 Depth=1
 	ld.d	$a0, $s7, 0
-	ld.d	$a1, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 456                   # 8-byte Folded Reload
 	slli.d	$a1, $a1, 11
 	add.d	$a0, $a0, $a1
 	lu12i.w	$a1, 2
@@ -8803,7 +8806,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	addi.d	$a2, $a2, 2
 	addi.d	$a3, $a3, 2
 	addi.d	$a0, $a0, 2
-	beq	$a1, $t2, .LBB17_147
+	beq	$a1, $t1, .LBB17_147
 .LBB17_134:                             # %iter.check
                                         #   Parent Loop BB17_27 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -8825,7 +8828,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 .LBB17_138:                             # %vec.epilog.ph
                                         #   in Loop: Header=BB17_134 Depth=2
 	add.d	$a4, $s0, $a7
-	alsl.d	$a5, $a7, $t4, 1
+	alsl.d	$a5, $a7, $t3, 1
 	slli.d	$a6, $a7, 5
 	move	$a7, $a3
 	.p2align	4, , 16
@@ -8835,60 +8838,43 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
                                         # =>    This Inner Loop Header: Depth=3
 	vld	$vr0, $a5, 0
 	add.d	$t0, $a7, $a6
-	vpickve2gr.h	$t1, $vr0, 0
-	st.h	$t1, $t0, -224
-	vpickve2gr.h	$t1, $vr0, 1
-	st.h	$t1, $t0, -192
-	vpickve2gr.h	$t1, $vr0, 2
-	st.h	$t1, $t0, -160
-	vpickve2gr.h	$t1, $vr0, 3
-	st.h	$t1, $t0, -128
-	vpickve2gr.h	$t1, $vr0, 4
-	st.h	$t1, $t0, -96
-	vpickve2gr.h	$t1, $vr0, 5
-	st.h	$t1, $t0, -64
-	vpickve2gr.h	$t1, $vr0, 6
-	st.h	$t1, $t0, -32
-	vpickve2gr.h	$t0, $vr0, 7
-	stx.h	$t0, $a7, $a6
+	vstelm.h	$vr0, $t0, -224, 0
+	vstelm.h	$vr0, $t0, -192, 1
+	vstelm.h	$vr0, $t0, -160, 2
+	vstelm.h	$vr0, $t0, -128, 3
+	vstelm.h	$vr0, $t0, -96, 4
+	vstelm.h	$vr0, $t0, -64, 5
+	vstelm.h	$vr0, $t0, -32, 6
+	vstelm.h	$vr0, $t0, 0, 7
 	addi.d	$a4, $a4, 8
 	addi.d	$a5, $a5, 16
 	addi.d	$a7, $a7, 256
 	bnez	$a4, .LBB17_139
 # %bb.140:                              # %vec.epilog.middle.block
                                         #   in Loop: Header=BB17_134 Depth=2
-	ld.d	$a4, $sp, 456                   # 8-byte Folded Reload
-	move	$a6, $a4
-	beq	$a4, $t3, .LBB17_133
+	move	$a6, $t5
+	beq	$t5, $t2, .LBB17_133
 	b	.LBB17_145
 	.p2align	4, , 16
 .LBB17_141:                             # %vector.body810.preheader
                                         #   in Loop: Header=BB17_134 Depth=2
 	addi.d	$a4, $sp, 1000
 	move	$a5, $a2
-	move	$a6, $t5
+	move	$a6, $t4
 	.p2align	4, , 16
 .LBB17_142:                             # %vector.body810
                                         #   Parent Loop BB17_27 Depth=1
                                         #     Parent Loop BB17_134 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	xvld	$xr0, $a4, 0
-	vpickve2gr.h	$a7, $vr0, 0
-	st.h	$a7, $a5, -256
-	vpickve2gr.h	$a7, $vr0, 1
-	st.h	$a7, $a5, -224
-	vpickve2gr.h	$a7, $vr0, 2
-	st.h	$a7, $a5, -192
-	vpickve2gr.h	$a7, $vr0, 3
-	st.h	$a7, $a5, -160
-	vpickve2gr.h	$a7, $vr0, 4
-	st.h	$a7, $a5, -128
-	vpickve2gr.h	$a7, $vr0, 5
-	st.h	$a7, $a5, -96
-	vpickve2gr.h	$a7, $vr0, 6
-	st.h	$a7, $a5, -64
-	vpickve2gr.h	$a7, $vr0, 7
-	st.h	$a7, $a5, -32
+	xvstelm.h	$xr0, $a5, -256, 0
+	xvstelm.h	$xr0, $a5, -224, 1
+	xvstelm.h	$xr0, $a5, -192, 2
+	xvstelm.h	$xr0, $a5, -160, 3
+	xvstelm.h	$xr0, $a5, -128, 4
+	xvstelm.h	$xr0, $a5, -96, 5
+	xvstelm.h	$xr0, $a5, -64, 6
+	xvstelm.h	$xr0, $a5, -32, 7
 	xvst	$xr0, $sp, 512
 	ld.h	$a7, $sp, 528
 	st.h	$a7, $a5, 0
@@ -8912,19 +8898,19 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	bnez	$a6, .LBB17_142
 # %bb.143:                              # %middle.block814
                                         #   in Loop: Header=BB17_134 Depth=2
-	beq	$t5, $t3, .LBB17_133
+	beq	$t4, $t2, .LBB17_133
 # %bb.144:                              # %vec.epilog.iter.check
                                         #   in Loop: Header=BB17_134 Depth=2
-	move	$a7, $t5
-	move	$a6, $t5
+	move	$a7, $t4
+	move	$a6, $t4
 	bnez	$s8, .LBB17_138
 	.p2align	4, , 16
 .LBB17_145:                             # %vec.epilog.scalar.ph.preheader
                                         #   in Loop: Header=BB17_134 Depth=2
-	alsl.d	$a4, $a6, $t4, 1
+	alsl.d	$a4, $a6, $t3, 1
 	slli.d	$a5, $a6, 5
 	add.d	$a5, $a0, $a5
-	sub.d	$a6, $t3, $a6
+	sub.d	$a6, $t2, $a6
 	.p2align	4, , 16
 .LBB17_146:                             # %vec.epilog.scalar.ph
                                         #   Parent Loop BB17_27 Depth=1
@@ -8959,14 +8945,14 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	blt	$t0, $a3, .LBB17_151
 # %bb.149:                              # %.lr.ph503.preheader
                                         #   in Loop: Header=BB17_27 Depth=1
-	ld.d	$t2, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 448                   # 8-byte Folded Reload
 	ori	$a3, $zero, 9
 	bgeu	$t0, $a3, .LBB17_152
 # %bb.150:                              #   in Loop: Header=BB17_27 Depth=1
 	move	$a7, $zero
 	b	.LBB17_155
 .LBB17_151:                             #   in Loop: Header=BB17_27 Depth=1
-	ld.d	$t2, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 448                   # 8-byte Folded Reload
 	b	.LBB17_157
 .LBB17_152:                             # %vector.ph781
                                         #   in Loop: Header=BB17_27 Depth=1
@@ -9151,7 +9137,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	ld.d	$a5, $sp, 88                    # 8-byte Folded Reload
 	sub.d	$a2, $a5, $a2
 	add.d	$a5, $t2, $a7
-	alsl.d	$a5, $a5, $t4, 1
+	alsl.d	$a5, $a5, $t3, 1
 	ld.d	$a6, $sp, 168                   # 8-byte Folded Reload
 	sub.d	$a6, $a6, $a7
 	addi.d	$a7, $a7, 1
@@ -9184,14 +9170,14 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	move	$a4, $zero
 	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
 	mul.d	$a1, $a1, $a5
-	ld.d	$a5, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 432                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $a5
 	ld.d	$a5, $sp, 144                   # 8-byte Folded Reload
 	sra.w	$a1, $a1, $a5
 	ld.d	$a5, $s7, 0
 	add.d	$a0, $a3, $a0
 	slli.d	$a6, $a0, 4
-	ld.d	$a0, $sp, 448                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 456                   # 8-byte Folded Reload
 	slli.d	$a0, $a0, 11
 	add.d	$a0, $a5, $a0
 	lu12i.w	$a3, 2
@@ -9228,7 +9214,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	.p2align	4, , 16
 .LBB17_172:                             # %vector.ph
                                         #   in Loop: Header=BB17_170 Depth=2
-	ld.d	$a7, $sp, 440                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 448                   # 8-byte Folded Reload
 	sub.d	$a7, $a4, $a7
 	addi.d	$a7, $a7, 1
 	pcalau12i	$t0, %pc_hi20(.LCPI17_3)
@@ -9337,7 +9323,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	ld.d	$a0, $sp, 504                   # 8-byte Folded Reload
 	slti	$a0, $a0, 1
 	slti	$a1, $s5, 1
-	ld.d	$a2, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 416                   # 8-byte Folded Reload
 	ld.d	$a3, $sp, 200                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
@@ -9361,11 +9347,11 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	move	$s6, $zero
 .LBB17_183:                             # %.split539.us
                                         #   in Loop: Header=BB17_185 Depth=1
-	ld.d	$a3, $sp, 408                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 400                   # 8-byte Folded Reload
 	slt	$a0, $s6, $a3
 	ld.d	$a1, $sp, 432                   # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
-	ld.d	$a5, $sp, 424                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 408                   # 8-byte Folded Reload
 	maskeqz	$a2, $a5, $a0
 	or	$a4, $a2, $a1
 	masknez	$a1, $a3, $a0
@@ -9379,9 +9365,9 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	ori	$a7, $zero, 4
 .LBB17_184:                             #   in Loop: Header=BB17_185 Depth=1
 	addi.d	$a5, $a5, 1
-	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 424                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 512
-	st.d	$a0, $sp, 416                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 424                   # 8-byte Folded Spill
 	addi.d	$a2, $a2, 512
 	beq	$a5, $a7, .LBB17_204
 .LBB17_185:                             # =>This Loop Header: Depth=1
@@ -9423,16 +9409,16 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	ori	$a0, $zero, 1
 	bne	$a5, $a0, .LBB17_195
 # %bb.193:                              #   in Loop: Header=BB17_185 Depth=1
-	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 416                   # 8-byte Folded Reload
 	beqz	$a0, .LBB17_184
 	b	.LBB17_195
 .LBB17_194:                             #   in Loop: Header=BB17_185 Depth=1
 	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
 	beqz	$a0, .LBB17_184
 .LBB17_195:                             #   in Loop: Header=BB17_185 Depth=1
-	st.d	$a3, $sp, 408                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 400                   # 8-byte Folded Spill
 	st.d	$a2, $sp, 440                   # 8-byte Folded Spill
-	st.d	$a5, $sp, 424                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 408                   # 8-byte Folded Spill
 	st.d	$a4, $sp, 432                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
 	bnez	$a0, .LBB17_182
@@ -9444,7 +9430,7 @@ IntraChromaPrediction:                  # @IntraChromaPrediction
 	move	$a3, $zero
 	move	$s6, $zero
 	move	$a1, $zero
-	ld.d	$s3, $sp, 416                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 424                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB17_197:                             # %.preheader435.us.us.us
                                         #   Parent Loop BB17_185 Depth=1
@@ -9938,22 +9924,14 @@ IntraChromaRDDecision:                  # @IntraChromaRDDecision
 	xvinsgr2vr.w	$xr0, $t1, 6
 	xvinsgr2vr.w	$xr0, $t2, 7
 	xvsrai.w	$xr0, $xr0, 1
-	xvpickve2gr.w	$a3, $xr0, 0
-	st.w	$a3, $a1, -96
-	xvpickve2gr.w	$a3, $xr0, 1
-	st.w	$a3, $a1, -72
-	xvpickve2gr.w	$a3, $xr0, 2
-	st.w	$a3, $a1, -48
-	xvpickve2gr.w	$a3, $xr0, 3
-	st.w	$a3, $a1, -24
-	xvpickve2gr.w	$a3, $xr0, 4
-	st.w	$a3, $a1, 0
-	xvpickve2gr.w	$a3, $xr0, 5
-	st.w	$a3, $a1, 24
-	xvpickve2gr.w	$a3, $xr0, 6
-	st.w	$a3, $a1, 48
-	xvpickve2gr.w	$a3, $xr0, 7
-	st.w	$a3, $a1, 72
+	xvstelm.w	$xr0, $a1, -96, 0
+	xvstelm.w	$xr0, $a1, -72, 1
+	xvstelm.w	$xr0, $a1, -48, 2
+	xvstelm.w	$xr0, $a1, -24, 3
+	xvstelm.w	$xr0, $a1, 0, 4
+	xvstelm.w	$xr0, $a1, 24, 5
+	xvstelm.w	$xr0, $a1, 48, 6
+	xvstelm.w	$xr0, $a1, 72, 7
 	addi.d	$a2, $a2, -8
 	addi.d	$a1, $a1, 192
 	bnez	$a2, .LBB18_30
@@ -16880,77 +16858,77 @@ find_sad_16x16:                         # @find_sad_16x16
 	vinsgr2vr.w	$vr7, $a6, 2
 	vinsgr2vr.w	$vr7, $a7, 3
 	vadd.w	$vr8, $vr7, $vr6
-	vsub.w	$vr7, $vr6, $vr7
+	vsub.w	$vr6, $vr6, $vr7
 	vsub.w	$vr3, $vr3, $vr4
-	vadd.w	$vr12, $vr8, $vr5
+	vadd.w	$vr7, $vr8, $vr5
 	vsub.w	$vr4, $vr5, $vr8
-	vadd.w	$vr6, $vr7, $vr3
-	vsub.w	$vr3, $vr3, $vr7
+	vadd.w	$vr5, $vr6, $vr3
+	vsub.w	$vr3, $vr3, $vr6
 	ld.w	$a1, $t8, -992
 	ld.w	$a2, $t8, -928
 	ld.w	$a6, $t8, -864
 	ld.w	$a7, $t8, -800
-	vinsgr2vr.w	$vr5, $a1, 0
-	vinsgr2vr.w	$vr5, $a2, 1
-	vinsgr2vr.w	$vr5, $a6, 2
-	vinsgr2vr.w	$vr5, $a7, 3
+	vinsgr2vr.w	$vr6, $a1, 0
+	vinsgr2vr.w	$vr6, $a2, 1
+	vinsgr2vr.w	$vr6, $a6, 2
+	vinsgr2vr.w	$vr6, $a7, 3
 	ld.w	$a1, $t8, -224
 	ld.w	$a2, $t8, -160
 	ld.w	$a6, $t8, -96
 	ld.w	$a7, $t8, -32
-	vinsgr2vr.w	$vr7, $a1, 0
-	vinsgr2vr.w	$vr7, $a2, 1
-	vinsgr2vr.w	$vr7, $a6, 2
-	vinsgr2vr.w	$vr7, $a7, 3
-	vadd.w	$vr8, $vr7, $vr5
-	ld.w	$a1, $t8, -736
-	ld.w	$a2, $t8, -672
-	ld.w	$a6, $t8, -608
-	ld.w	$a7, $t8, -544
-	vinsgr2vr.w	$vr9, $a1, 0
-	vinsgr2vr.w	$vr9, $a2, 1
-	vinsgr2vr.w	$vr9, $a6, 2
-	vinsgr2vr.w	$vr9, $a7, 3
-	ld.w	$a1, $t8, -480
-	ld.w	$a2, $t8, -416
-	ld.w	$a6, $t8, -352
-	ld.w	$a7, $t8, -288
-	vinsgr2vr.w	$vr10, $a1, 0
-	vinsgr2vr.w	$vr10, $a2, 1
-	vinsgr2vr.w	$vr10, $a6, 2
-	vinsgr2vr.w	$vr10, $a7, 3
-	vadd.w	$vr11, $vr10, $vr9
-	vsub.w	$vr9, $vr9, $vr10
-	vsub.w	$vr5, $vr5, $vr7
-	vadd.w	$vr10, $vr11, $vr8
-	vsub.w	$vr7, $vr8, $vr11
-	vadd.w	$vr14, $vr9, $vr5
-	vsub.w	$vr5, $vr5, $vr9
-	ld.w	$a1, $t8, -976
-	ld.w	$a2, $t8, -912
-	ld.w	$a6, $t8, -848
-	ld.w	$a7, $t8, -784
 	vinsgr2vr.w	$vr8, $a1, 0
 	vinsgr2vr.w	$vr8, $a2, 1
 	vinsgr2vr.w	$vr8, $a6, 2
 	vinsgr2vr.w	$vr8, $a7, 3
+	vadd.w	$vr9, $vr8, $vr6
+	ld.w	$a1, $t8, -736
+	ld.w	$a2, $t8, -672
+	ld.w	$a6, $t8, -608
+	ld.w	$a7, $t8, -544
+	vinsgr2vr.w	$vr10, $a1, 0
+	vinsgr2vr.w	$vr10, $a2, 1
+	vinsgr2vr.w	$vr10, $a6, 2
+	vinsgr2vr.w	$vr10, $a7, 3
+	ld.w	$a1, $t8, -480
+	ld.w	$a2, $t8, -416
+	ld.w	$a6, $t8, -352
+	ld.w	$a7, $t8, -288
+	vinsgr2vr.w	$vr11, $a1, 0
+	vinsgr2vr.w	$vr11, $a2, 1
+	vinsgr2vr.w	$vr11, $a6, 2
+	vinsgr2vr.w	$vr11, $a7, 3
+	vadd.w	$vr12, $vr11, $vr10
+	vsub.w	$vr10, $vr10, $vr11
+	vsub.w	$vr6, $vr6, $vr8
+	vadd.w	$vr13, $vr12, $vr9
+	vsub.w	$vr8, $vr9, $vr12
+	vadd.w	$vr9, $vr10, $vr6
+	vsub.w	$vr6, $vr6, $vr10
+	ld.w	$a1, $t8, -976
+	ld.w	$a2, $t8, -912
+	ld.w	$a6, $t8, -848
+	ld.w	$a7, $t8, -784
+	vinsgr2vr.w	$vr10, $a1, 0
+	vinsgr2vr.w	$vr10, $a2, 1
+	vinsgr2vr.w	$vr10, $a6, 2
+	vinsgr2vr.w	$vr10, $a7, 3
 	ld.w	$a1, $t8, -208
 	ld.w	$a2, $t8, -144
 	ld.w	$a6, $t8, -80
 	ld.w	$a7, $t8, -16
-	vinsgr2vr.w	$vr9, $a1, 0
-	vinsgr2vr.w	$vr9, $a2, 1
-	vinsgr2vr.w	$vr9, $a6, 2
-	vinsgr2vr.w	$vr9, $a7, 3
-	vadd.w	$vr11, $vr9, $vr8
+	vinsgr2vr.w	$vr11, $a1, 0
+	vinsgr2vr.w	$vr11, $a2, 1
+	vinsgr2vr.w	$vr11, $a6, 2
+	vinsgr2vr.w	$vr11, $a7, 3
+	vadd.w	$vr12, $vr11, $vr10
 	ld.w	$a1, $t8, -720
 	ld.w	$a2, $t8, -656
 	ld.w	$a6, $t8, -592
 	ld.w	$a7, $t8, -528
-	vinsgr2vr.w	$vr13, $a1, 0
-	vinsgr2vr.w	$vr13, $a2, 1
-	vinsgr2vr.w	$vr13, $a6, 2
-	vinsgr2vr.w	$vr13, $a7, 3
+	vinsgr2vr.w	$vr14, $a1, 0
+	vinsgr2vr.w	$vr14, $a2, 1
+	vinsgr2vr.w	$vr14, $a6, 2
+	vinsgr2vr.w	$vr14, $a7, 3
 	ld.w	$a1, $t8, -464
 	ld.w	$a2, $t8, -400
 	ld.w	$a6, $t8, -336
@@ -16959,30 +16937,30 @@ find_sad_16x16:                         # @find_sad_16x16
 	vinsgr2vr.w	$vr15, $a2, 1
 	vinsgr2vr.w	$vr15, $a6, 2
 	vinsgr2vr.w	$vr15, $a7, 3
-	vadd.w	$vr16, $vr15, $vr13
-	vsub.w	$vr13, $vr13, $vr15
-	vsub.w	$vr8, $vr8, $vr9
-	vadd.w	$vr17, $vr16, $vr11
-	vsub.w	$vr15, $vr11, $vr16
-	vadd.w	$vr18, $vr13, $vr8
-	vsub.w	$vr11, $vr8, $vr13
+	vadd.w	$vr16, $vr15, $vr14
+	vsub.w	$vr15, $vr14, $vr15
+	vsub.w	$vr10, $vr10, $vr11
+	vadd.w	$vr17, $vr16, $vr12
+	vsub.w	$vr14, $vr12, $vr16
+	vadd.w	$vr18, $vr15, $vr10
+	vsub.w	$vr10, $vr10, $vr15
 	ld.w	$a1, $t8, -960
 	ld.w	$a2, $t8, -896
 	ld.w	$a6, $t8, -832
 	ld.w	$a7, $t8, -768
-	vinsgr2vr.w	$vr8, $a1, 0
-	vinsgr2vr.w	$vr8, $a2, 1
-	vinsgr2vr.w	$vr8, $a6, 2
-	vinsgr2vr.w	$vr8, $a7, 3
+	vinsgr2vr.w	$vr11, $a1, 0
+	vinsgr2vr.w	$vr11, $a2, 1
+	vinsgr2vr.w	$vr11, $a6, 2
+	vinsgr2vr.w	$vr11, $a7, 3
 	ld.w	$a1, $t8, -192
 	ld.w	$a2, $t8, -128
 	ld.w	$a6, $t8, -64
 	ldx.w	$a7, $t7, $t4
-	vinsgr2vr.w	$vr9, $a1, 0
-	vinsgr2vr.w	$vr9, $a2, 1
-	vinsgr2vr.w	$vr9, $a6, 2
-	vinsgr2vr.w	$vr9, $a7, 3
-	vadd.w	$vr13, $vr9, $vr8
+	vinsgr2vr.w	$vr12, $a1, 0
+	vinsgr2vr.w	$vr12, $a2, 1
+	vinsgr2vr.w	$vr12, $a6, 2
+	vinsgr2vr.w	$vr12, $a7, 3
+	vadd.w	$vr15, $vr12, $vr11
 	ld.w	$a1, $t8, -704
 	ld.w	$a2, $t8, -640
 	ld.w	$a6, $t8, -576
@@ -17001,207 +16979,143 @@ find_sad_16x16:                         # @find_sad_16x16
 	vinsgr2vr.w	$vr19, $a7, 3
 	vadd.w	$vr20, $vr19, $vr16
 	vsub.w	$vr16, $vr16, $vr19
-	vsub.w	$vr8, $vr8, $vr9
-	vadd.w	$vr21, $vr20, $vr13
-	vsub.w	$vr22, $vr13, $vr20
-	vadd.w	$vr20, $vr16, $vr8
-	vsub.w	$vr19, $vr8, $vr16
-	vadd.w	$vr8, $vr21, $vr12
-	vadd.w	$vr9, $vr17, $vr10
-	vsub.w	$vr10, $vr10, $vr17
-	vsub.w	$vr12, $vr12, $vr21
-	vadd.w	$vr13, $vr9, $vr8
-	vpickve2gr.w	$a1, $vr13, 0
-	st.w	$a1, $t8, -1008
-	vpickve2gr.w	$a1, $vr13, 1
-	st.w	$a1, $t8, -944
-	vpickve2gr.w	$a1, $vr13, 2
-	st.w	$a1, $t8, -880
-	vpickve2gr.w	$a1, $vr13, 3
-	st.w	$a1, $t8, -816
-	vsub.w	$vr13, $vr8, $vr9
-	vpickve2gr.w	$a1, $vr13, 0
-	st.w	$a1, $t8, -976
-	vpickve2gr.w	$a1, $vr13, 1
-	st.w	$a1, $t8, -912
-	vpickve2gr.w	$a1, $vr13, 2
-	st.w	$a1, $t8, -848
-	vpickve2gr.w	$a1, $vr13, 3
-	st.w	$a1, $t8, -784
-	vadd.w	$vr13, $vr10, $vr12
-	vpickve2gr.w	$a1, $vr13, 0
-	st.w	$a1, $t8, -992
-	vpickve2gr.w	$a1, $vr13, 1
-	st.w	$a1, $t8, -928
-	vpickve2gr.w	$a1, $vr13, 2
-	st.w	$a1, $t8, -864
-	vpickve2gr.w	$a1, $vr13, 3
-	st.w	$a1, $t8, -800
-	vsub.w	$vr16, $vr12, $vr10
-	vpickve2gr.w	$a1, $vr16, 0
-	st.w	$a1, $t8, -960
-	vpickve2gr.w	$a1, $vr16, 1
-	st.w	$a1, $t8, -896
-	vpickve2gr.w	$a1, $vr16, 2
-	st.w	$a1, $t8, -832
-	vpickve2gr.w	$a1, $vr16, 3
-	st.w	$a1, $t8, -768
-	vadd.w	$vr16, $vr20, $vr6
-	vadd.w	$vr17, $vr18, $vr14
-	vsub.w	$vr14, $vr14, $vr18
-	vsub.w	$vr18, $vr6, $vr20
-	vadd.w	$vr6, $vr17, $vr16
-	vpickve2gr.w	$a1, $vr6, 0
-	st.w	$a1, $t8, -752
-	vpickve2gr.w	$a1, $vr6, 1
-	st.w	$a1, $t8, -688
-	vpickve2gr.w	$a1, $vr6, 2
-	st.w	$a1, $t8, -624
-	vpickve2gr.w	$a1, $vr6, 3
-	st.w	$a1, $t8, -560
+	vsub.w	$vr11, $vr11, $vr12
+	vadd.w	$vr21, $vr20, $vr15
+	vsub.w	$vr22, $vr15, $vr20
+	vadd.w	$vr20, $vr16, $vr11
+	vsub.w	$vr19, $vr11, $vr16
+	vadd.w	$vr11, $vr21, $vr7
+	vadd.w	$vr12, $vr17, $vr13
+	vsub.w	$vr13, $vr13, $vr17
+	vsub.w	$vr7, $vr7, $vr21
+	vadd.w	$vr15, $vr12, $vr11
+	vstelm.w	$vr15, $t8, -1008, 0
+	vstelm.w	$vr15, $t8, -944, 1
+	vstelm.w	$vr15, $t8, -880, 2
+	vstelm.w	$vr15, $t8, -816, 3
+	vsub.w	$vr15, $vr11, $vr12
+	vstelm.w	$vr15, $t8, -976, 0
+	vstelm.w	$vr15, $t8, -912, 1
+	vstelm.w	$vr15, $t8, -848, 2
+	vstelm.w	$vr15, $t8, -784, 3
+	vadd.w	$vr15, $vr13, $vr7
+	vstelm.w	$vr15, $t8, -992, 0
+	vstelm.w	$vr15, $t8, -928, 1
+	vstelm.w	$vr15, $t8, -864, 2
+	vstelm.w	$vr15, $t8, -800, 3
+	vsub.w	$vr16, $vr7, $vr13
+	vstelm.w	$vr16, $t8, -960, 0
+	vstelm.w	$vr16, $t8, -896, 1
+	vstelm.w	$vr16, $t8, -832, 2
+	vstelm.w	$vr16, $t8, -768, 3
+	vadd.w	$vr16, $vr20, $vr5
+	vadd.w	$vr17, $vr18, $vr9
+	vsub.w	$vr9, $vr9, $vr18
+	vsub.w	$vr18, $vr5, $vr20
+	vadd.w	$vr5, $vr17, $vr16
+	vstelm.w	$vr5, $t8, -752, 0
+	vstelm.w	$vr5, $t8, -688, 1
+	vstelm.w	$vr5, $t8, -624, 2
+	vstelm.w	$vr5, $t8, -560, 3
 	vsub.w	$vr20, $vr16, $vr17
-	vpickve2gr.w	$a1, $vr20, 0
-	st.w	$a1, $t8, -720
-	vpickve2gr.w	$a1, $vr20, 1
-	st.w	$a1, $t8, -656
-	vpickve2gr.w	$a1, $vr20, 2
-	st.w	$a1, $t8, -592
-	vpickve2gr.w	$a1, $vr20, 3
-	st.w	$a1, $t8, -528
-	vadd.w	$vr20, $vr14, $vr18
-	vpickve2gr.w	$a1, $vr20, 0
-	st.w	$a1, $t8, -736
-	vpickve2gr.w	$a1, $vr20, 1
-	st.w	$a1, $t8, -672
-	vpickve2gr.w	$a1, $vr20, 2
-	st.w	$a1, $t8, -608
-	vpickve2gr.w	$a1, $vr20, 3
-	st.w	$a1, $t8, -544
-	vsub.w	$vr21, $vr18, $vr14
-	vpickve2gr.w	$a1, $vr21, 0
-	st.w	$a1, $t8, -704
-	vpickve2gr.w	$a1, $vr21, 1
-	st.w	$a1, $t8, -640
-	vpickve2gr.w	$a1, $vr21, 2
-	st.w	$a1, $t8, -576
-	vpickve2gr.w	$a1, $vr21, 3
-	st.w	$a1, $t8, -512
+	vstelm.w	$vr20, $t8, -720, 0
+	vstelm.w	$vr20, $t8, -656, 1
+	vstelm.w	$vr20, $t8, -592, 2
+	vstelm.w	$vr20, $t8, -528, 3
+	vadd.w	$vr20, $vr9, $vr18
+	vstelm.w	$vr20, $t8, -736, 0
+	vstelm.w	$vr20, $t8, -672, 1
+	vstelm.w	$vr20, $t8, -608, 2
+	vstelm.w	$vr20, $t8, -544, 3
+	vsub.w	$vr21, $vr18, $vr9
+	vstelm.w	$vr21, $t8, -704, 0
+	vstelm.w	$vr21, $t8, -640, 1
+	vstelm.w	$vr21, $t8, -576, 2
+	vstelm.w	$vr21, $t8, -512, 3
 	vadd.w	$vr21, $vr22, $vr4
-	vadd.w	$vr23, $vr15, $vr7
-	vsub.w	$vr7, $vr7, $vr15
-	vsub.w	$vr15, $vr4, $vr22
-	vadd.w	$vr4, $vr23, $vr21
-	vpickve2gr.w	$a1, $vr4, 0
-	st.w	$a1, $t8, -496
-	vpickve2gr.w	$a1, $vr4, 1
-	st.w	$a1, $t8, -432
-	vpickve2gr.w	$a1, $vr4, 2
-	st.w	$a1, $t8, -368
-	vpickve2gr.w	$a1, $vr4, 3
-	st.w	$a1, $t8, -304
+	vadd.w	$vr23, $vr14, $vr8
+	vsub.w	$vr8, $vr8, $vr14
+	vsub.w	$vr4, $vr4, $vr22
+	vadd.w	$vr14, $vr23, $vr21
+	vstelm.w	$vr14, $t8, -496, 0
+	vstelm.w	$vr14, $t8, -432, 1
+	vstelm.w	$vr14, $t8, -368, 2
+	vstelm.w	$vr14, $t8, -304, 3
 	vsub.w	$vr22, $vr21, $vr23
-	vpickve2gr.w	$a1, $vr22, 0
-	st.w	$a1, $t8, -464
-	vpickve2gr.w	$a1, $vr22, 1
-	st.w	$a1, $t8, -400
-	vpickve2gr.w	$a1, $vr22, 2
-	st.w	$a1, $t8, -336
-	vpickve2gr.w	$a1, $vr22, 3
-	st.w	$a1, $t8, -272
-	vadd.w	$vr22, $vr7, $vr15
-	vpickve2gr.w	$a1, $vr22, 0
-	st.w	$a1, $t8, -480
-	vpickve2gr.w	$a1, $vr22, 1
-	st.w	$a1, $t8, -416
-	vpickve2gr.w	$a1, $vr22, 2
-	st.w	$a1, $t8, -352
-	vpickve2gr.w	$a1, $vr22, 3
-	st.w	$a1, $t8, -288
-	vsub.w	$vr24, $vr15, $vr7
-	vpickve2gr.w	$a1, $vr24, 0
-	st.w	$a1, $t8, -448
-	vpickve2gr.w	$a1, $vr24, 1
-	st.w	$a1, $t8, -384
-	vpickve2gr.w	$a1, $vr24, 2
-	st.w	$a1, $t8, -320
-	vpickve2gr.w	$a1, $vr24, 3
-	st.w	$a1, $t8, -256
+	vstelm.w	$vr22, $t8, -464, 0
+	vstelm.w	$vr22, $t8, -400, 1
+	vstelm.w	$vr22, $t8, -336, 2
+	vstelm.w	$vr22, $t8, -272, 3
+	vadd.w	$vr22, $vr8, $vr4
+	vstelm.w	$vr22, $t8, -480, 0
+	vstelm.w	$vr22, $t8, -416, 1
+	vstelm.w	$vr22, $t8, -352, 2
+	vstelm.w	$vr22, $t8, -288, 3
+	vsub.w	$vr24, $vr4, $vr8
+	vstelm.w	$vr24, $t8, -448, 0
+	vstelm.w	$vr24, $t8, -384, 1
+	vstelm.w	$vr24, $t8, -320, 2
+	vstelm.w	$vr24, $t8, -256, 3
 	vadd.w	$vr24, $vr19, $vr3
-	vadd.w	$vr25, $vr11, $vr5
-	vsub.w	$vr5, $vr5, $vr11
+	vadd.w	$vr25, $vr10, $vr6
+	vsub.w	$vr6, $vr6, $vr10
 	vsub.w	$vr3, $vr3, $vr19
-	vadd.w	$vr11, $vr25, $vr24
-	vpickve2gr.w	$a1, $vr11, 0
-	st.w	$a1, $t8, -240
-	vpickve2gr.w	$a1, $vr11, 1
-	st.w	$a1, $t8, -176
-	vpickve2gr.w	$a1, $vr11, 2
-	st.w	$a1, $t8, -112
-	vpickve2gr.w	$a1, $vr11, 3
-	st.w	$a1, $t8, -48
+	vadd.w	$vr10, $vr25, $vr24
+	vstelm.w	$vr10, $t8, -240, 0
+	vstelm.w	$vr10, $t8, -176, 1
+	vstelm.w	$vr10, $t8, -112, 2
+	vstelm.w	$vr10, $t8, -48, 3
 	vsub.w	$vr19, $vr24, $vr25
-	vpickve2gr.w	$a1, $vr19, 0
-	st.w	$a1, $t8, -208
-	vpickve2gr.w	$a1, $vr19, 1
-	st.w	$a1, $t8, -144
-	vpickve2gr.w	$a1, $vr19, 2
-	st.w	$a1, $t8, -80
-	vpickve2gr.w	$a1, $vr19, 3
-	st.w	$a1, $t8, -16
-	vadd.w	$vr19, $vr5, $vr3
-	vpickve2gr.w	$a1, $vr19, 0
-	st.w	$a1, $t8, -224
-	vpickve2gr.w	$a1, $vr19, 1
-	st.w	$a1, $t8, -160
-	vpickve2gr.w	$a1, $vr19, 2
-	st.w	$a1, $t8, -96
-	vpickve2gr.w	$a1, $vr19, 3
-	st.w	$a1, $t8, -32
-	vsub.w	$vr26, $vr3, $vr5
-	vpickve2gr.w	$a1, $vr26, 0
-	st.w	$a1, $t8, -192
-	vpickve2gr.w	$a1, $vr26, 1
-	st.w	$a1, $t8, -128
-	vpickve2gr.w	$a1, $vr26, 2
-	st.w	$a1, $t8, -64
-	vpickve2gr.w	$a1, $vr26, 3
-	stx.w	$a1, $t7, $t4
-	vabsd.w	$vr3, $vr3, $vr5
-	vabsd.w	$vr5, $vr24, $vr25
+	vstelm.w	$vr19, $t8, -208, 0
+	vstelm.w	$vr19, $t8, -144, 1
+	vstelm.w	$vr19, $t8, -80, 2
+	vstelm.w	$vr19, $t8, -16, 3
+	vadd.w	$vr19, $vr6, $vr3
+	vstelm.w	$vr19, $t8, -224, 0
+	vstelm.w	$vr19, $t8, -160, 1
+	vstelm.w	$vr19, $t8, -96, 2
+	vstelm.w	$vr19, $t8, -32, 3
+	vsub.w	$vr26, $vr3, $vr6
+	vstelm.w	$vr26, $t8, -192, 0
+	vstelm.w	$vr26, $t8, -128, 1
+	vstelm.w	$vr26, $t8, -64, 2
+	vstelm.w	$vr26, $t8, 0, 3
+	vabsd.w	$vr3, $vr3, $vr6
+	vabsd.w	$vr6, $vr24, $vr25
 	vneg.w	$vr24, $vr19
 	vmax.w	$vr19, $vr19, $vr24
-	vneg.w	$vr24, $vr11
-	vmax.w	$vr11, $vr11, $vr24
-	vabsd.w	$vr7, $vr15, $vr7
-	vabsd.w	$vr15, $vr21, $vr23
+	vneg.w	$vr24, $vr10
+	vmax.w	$vr10, $vr10, $vr24
+	vabsd.w	$vr4, $vr4, $vr8
+	vabsd.w	$vr8, $vr21, $vr23
 	vneg.w	$vr21, $vr22
 	vmax.w	$vr21, $vr22, $vr21
-	vneg.w	$vr22, $vr4
-	vmax.w	$vr4, $vr4, $vr22
-	vabsd.w	$vr14, $vr18, $vr14
+	vneg.w	$vr22, $vr14
+	vmax.w	$vr14, $vr14, $vr22
+	vabsd.w	$vr9, $vr18, $vr9
 	vabsd.w	$vr16, $vr16, $vr17
 	vneg.w	$vr17, $vr20
 	vmax.w	$vr17, $vr20, $vr17
-	vneg.w	$vr18, $vr6
-	vmax.w	$vr6, $vr6, $vr18
-	vabsd.w	$vr10, $vr12, $vr10
-	vabsd.w	$vr8, $vr8, $vr9
-	vneg.w	$vr9, $vr13
-	vmax.w	$vr9, $vr13, $vr9
-	vadd.w	$vr2, $vr9, $vr2
-	vadd.w	$vr2, $vr8, $vr2
-	vadd.w	$vr2, $vr10, $vr2
-	vadd.w	$vr2, $vr6, $vr2
+	vneg.w	$vr18, $vr5
+	vmax.w	$vr5, $vr5, $vr18
+	vabsd.w	$vr7, $vr7, $vr13
+	vabsd.w	$vr11, $vr11, $vr12
+	vneg.w	$vr12, $vr15
+	vmax.w	$vr12, $vr15, $vr12
+	vadd.w	$vr2, $vr12, $vr2
+	vadd.w	$vr2, $vr11, $vr2
+	vadd.w	$vr2, $vr7, $vr2
+	vadd.w	$vr2, $vr5, $vr2
 	vadd.w	$vr2, $vr17, $vr2
 	vadd.w	$vr2, $vr16, $vr2
+	vadd.w	$vr2, $vr9, $vr2
 	vadd.w	$vr2, $vr14, $vr2
-	vadd.w	$vr2, $vr4, $vr2
 	vadd.w	$vr2, $vr21, $vr2
-	vadd.w	$vr2, $vr15, $vr2
-	vadd.w	$vr2, $vr7, $vr2
-	vadd.w	$vr2, $vr11, $vr2
+	vadd.w	$vr2, $vr8, $vr2
+	vadd.w	$vr2, $vr4, $vr2
+	vadd.w	$vr2, $vr10, $vr2
 	vadd.w	$vr2, $vr19, $vr2
-	vadd.w	$vr2, $vr5, $vr2
+	vadd.w	$vr2, $vr6, $vr2
 	vadd.w	$vr2, $vr3, $vr2
 	vshuf4i.w	$vr3, $vr2, 14
 	vadd.w	$vr2, $vr2, $vr3

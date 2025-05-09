@@ -350,8 +350,9 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	b	.LBB1_17
 .LBB1_14:                               # %.loopexit.loopexit85
 	st.w	$zero, $fp, 68
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 36
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 52
+	vst	$vr0, $fp, 36
 	b	.LBB1_17
 .LBB1_15:
 	move	$a1, $zero
@@ -443,25 +444,24 @@ GenerateSequenceParameterSet:           # @GenerateSequenceParameterSet
 	.type	GeneratePictureParameterSet,@function
 GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 # %bb.0:                                # %switch.edge
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a7, %got_pc_hi20(input)
 	ld.d	$s5, $a7, %got_pc_lo12(input)
 	ld.d	$s8, $s5, 0
 	ld.w	$a7, $s8, 0
 	move	$s3, $a6
 	move	$s0, $a5
-	move	$s6, $a4
 	move	$t2, $a3
 	move	$s4, $a1
 	move	$fp, $a0
@@ -470,65 +470,66 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	lu12i.w	$a3, 1024
 	ori	$a3, $a3, 1025
 	lu32i.d	$a3, 4096
-	ld.w	$a4, $s4, 28
+	ld.w	$a5, $s4, 28
 	srl.d	$a0, $a3, $a0
 	ldptr.w	$a3, $s8, 4008
 	and	$s7, $a1, $a0
-	st.w	$a4, $fp, 8
+	st.w	$a5, $fp, 8
 	st.w	$a2, $fp, 4
 	sltu	$a0, $zero, $a3
 	st.w	$a0, $fp, 12
 	ori	$a0, $zero, 1
-	lu12i.w	$t3, 1
+	lu12i.w	$s6, 1
 	bne	$s7, $a0, .LBB2_3
 # %bb.1:
-	ori	$a0, $t3, 1004
+	ori	$a0, $s6, 1004
 	ldx.w	$a0, $s8, $a0
-	ori	$a1, $t3, 1112
+	ori	$a1, $s6, 1112
 	ldx.w	$a1, $s8, $a1
 	sltu	$a2, $zero, $a0
 	st.w	$a2, $fp, 16
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 20
-	ori	$a1, $t3, 1116
+	ori	$a1, $s6, 1116
 	ldx.w	$a1, $s8, $a1
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 24
-	ori	$a1, $t3, 1120
+	ori	$a1, $s6, 1120
 	ldx.w	$a1, $s8, $a1
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 28
-	ori	$a1, $t3, 1124
+	ori	$a1, $s6, 1124
 	ldx.w	$a1, $s8, $a1
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 32
-	ori	$a1, $t3, 1128
+	ori	$a1, $s6, 1128
 	ldx.w	$a1, $s8, $a1
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 36
-	ori	$a1, $t3, 1132
+	ori	$a1, $s6, 1132
 	ldx.w	$a1, $s8, $a1
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 40
-	ori	$a1, $t3, 1136
+	ori	$a1, $s6, 1136
 	ldx.w	$a1, $s8, $a1
 	bstrpick.d	$a1, $a1, 1, 1
 	st.w	$a1, $fp, 44
 	beqz	$a0, .LBB2_4
 # %bb.2:                                # %.loopexit98.loopexit
-	ori	$a0, $t3, 1140
+	ori	$a0, $s6, 1140
 	ldx.w	$a0, $s8, $a0
 	bstrpick.d	$a0, $a0, 1, 1
 	st.w	$a0, $fp, 48
-	ori	$a0, $t3, 1144
+	ori	$a0, $s6, 1144
 	ldx.w	$a0, $s8, $a0
 	bstrpick.d	$a0, $a0, 1, 1
 	st.w	$a0, $fp, 52
 	b	.LBB2_5
 .LBB2_3:
 	st.d	$zero, $fp, 48
-	xvrepli.b	$xr0, 0
-	xvst	$xr0, $fp, 16
+	vrepli.b	$vr0, 0
+	vst	$vr0, $fp, 32
+	vst	$vr0, $fp, 16
 	stptr.w	$zero, $s8, 5100
 	b	.LBB2_5
 .LBB2_4:                                # %.loopexit98.loopexit107
@@ -545,7 +546,8 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	st.w	$a1, $fp, 60
 	beqz	$a1, .LBB2_23
 # %bb.6:
-	st.d	$t2, $sp, 0                     # 8-byte Folded Spill
+	st.d	$t2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a0, $s4, 1144
 	ld.w	$a1, $s4, 1140
 	addi.d	$a0, $a0, 1
@@ -590,31 +592,31 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	ori	$a1, $zero, 2
 	addi.w	$a2, $a0, 0
 	st.w	$a1, $fp, 64
-	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
-	lu12i.w	$t3, 1
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 8                     # 8-byte Folded Reload
 	beqz	$a2, .LBB2_23
 # %bb.13:                               # %.lr.ph
 	ldptr.d	$a2, $s8, 5040
 	ldptr.d	$a1, $s8, 5048
-	ori	$a3, $zero, 16
+	ori	$a3, $zero, 12
 	bgeu	$a0, $a3, .LBB2_26
 # %bb.14:
 	move	$a3, $zero
 .LBB2_15:                               # %scalar.ph.preheader
 	alsl.d	$a2, $a3, $a2, 2
-	alsl.d	$a4, $a3, $fp, 2
-	addi.d	$a4, $a4, 132
+	alsl.d	$a5, $a3, $fp, 2
+	addi.d	$a5, $a5, 132
 	alsl.d	$a1, $a3, $a1, 2
 	sub.d	$a0, $a0, $a3
 	.p2align	4, , 16
 .LBB2_16:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a2, 0
-	st.w	$a3, $a4, -32
+	st.w	$a3, $a5, -32
 	ld.w	$a3, $a1, 0
-	st.w	$a3, $a4, 0
+	st.w	$a3, $a5, 0
 	addi.d	$a2, $a2, 4
-	addi.d	$a4, $a4, 4
+	addi.d	$a5, $a5, 4
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 4
 	bnez	$a0, .LBB2_16
@@ -645,8 +647,8 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	mul.d	$a1, $a1, $a2
 	addi.d	$a1, $a1, -1
 	st.w	$a1, $fp, 172
-	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
-	lu12i.w	$t3, 1
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 8                     # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB2_18:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s5, 0
@@ -659,7 +661,7 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	addi.w	$a0, $a0, 1
 	bgeu	$a1, $a0, .LBB2_18
 	b	.LBB2_23
-.LBB2_19:                               # %iter.check
+.LBB2_19:
 	ld.w	$a1, $fp, 60
 	st.w	$zero, $fp, 64
 	ldptr.d	$a0, $s8, 5064
@@ -669,20 +671,20 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	masknez	$a1, $a1, $a3
 	maskeqz	$a3, $a2, $a3
 	or	$a1, $a3, $a1
-	ori	$a3, $zero, 4
+	ori	$a3, $zero, 8
 	bstrpick.d	$a1, $a1, 31, 0
 	bgeu	$a2, $a3, .LBB2_24
 # %bb.20:
 	move	$a2, $zero
-	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
-	lu12i.w	$t3, 1
-	b	.LBB2_40
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 8                     # 8-byte Folded Reload
+	b	.LBB2_34
 .LBB2_21:
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 64
 .LBB2_22:                               # %.loopexit
-	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
-	lu12i.w	$t3, 1
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 8                     # 8-byte Folded Reload
 .LBB2_23:                               # %.loopexit
 	ld.w	$a0, $s4, 1148
 	ld.w	$a1, $s4, 1132
@@ -692,7 +694,7 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	st.w	$a0, $fp, 184
 	st.w	$a0, $fp, 188
 	st.w	$t2, $fp, 192
-	st.w	$s6, $fp, 196
+	st.w	$a4, $fp, 196
 	st.w	$zero, $fp, 200
 	st.w	$zero, $fp, 204
 	st.w	$s0, $fp, 208
@@ -701,137 +703,109 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	ld.d	$a2, $s5, 0
 	or	$a0, $a1, $a0
 	st.w	$s0, $fp, 212
-	ori	$a1, $t3, 652
+	ori	$a1, $s6, 652
 	ldx.w	$a1, $a2, $a1
 	ld.w	$a3, $a2, 272
-	ori	$a4, $t3, 988
+	ori	$a4, $s6, 988
 	ldx.w	$a2, $a2, $a4
 	st.w	$a0, $fp, 216
 	st.w	$a1, $fp, 220
 	st.w	$a3, $fp, 224
 	st.w	$a2, $fp, 228
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB2_24:                               # %vector.memcheck123
-	sub.d	$a3, $fp, $a0
-	addi.d	$a3, $a3, 68
-	ori	$a4, $zero, 64
-	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
-	lu12i.w	$t3, 1
-	bgeu	$a3, $a4, .LBB2_31
+	sub.d	$a2, $fp, $a0
+	addi.d	$a2, $a2, 68
+	ori	$a3, $zero, 32
+	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 8                     # 8-byte Folded Reload
+	bgeu	$a2, $a3, .LBB2_31
 # %bb.25:
 	move	$a2, $zero
-	b	.LBB2_40
+	b	.LBB2_34
 .LBB2_26:                               # %vector.memcheck
-	addi.d	$a4, $fp, 100
+	addi.d	$t0, $fp, 100
 	alsl.d	$a3, $a0, $fp, 2
 	addi.d	$a5, $a3, 132
 	alsl.d	$a3, $a0, $a2, 2
-	sltu	$a3, $a4, $a3
+	sltu	$a3, $t0, $a3
 	sltu	$a7, $a2, $a5
 	and	$a7, $a3, $a7
 	move	$a3, $zero
 	bnez	$a7, .LBB2_15
 # %bb.27:                               # %vector.memcheck
 	alsl.d	$a7, $a0, $a1, 2
-	sltu	$a4, $a4, $a7
+	sltu	$a7, $t0, $a7
 	sltu	$a5, $a1, $a5
-	and	$a4, $a4, $a5
-	bnez	$a4, .LBB2_15
+	and	$a5, $a7, $a5
+	bnez	$a5, .LBB2_15
 # %bb.28:                               # %vector.ph
-	bstrpick.d	$a3, $a0, 31, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $fp, 132
+	bstrpick.d	$a3, $a0, 31, 2
+	slli.d	$a3, $a3, 2
+	addi.d	$t1, $fp, 132
 	move	$a5, $a2
 	move	$t0, $a1
 	move	$a7, $a3
 	.p2align	4, , 16
 .LBB2_29:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a5, 0
-	xvld	$xr1, $t0, 0
-	xvst	$xr0, $a4, -32
-	xvst	$xr1, $a4, 0
-	addi.d	$a7, $a7, -8
-	addi.d	$a4, $a4, 32
-	addi.d	$t0, $t0, 32
-	addi.d	$a5, $a5, 32
+	vld	$vr0, $a5, 0
+	vld	$vr1, $t0, 0
+	vst	$vr0, $t1, -32
+	vst	$vr1, $t1, 0
+	addi.d	$a7, $a7, -4
+	addi.d	$t1, $t1, 16
+	addi.d	$t0, $t0, 16
+	addi.d	$a5, $a5, 16
 	bnez	$a7, .LBB2_29
 # %bb.30:                               # %middle.block
 	bne	$a3, $a0, .LBB2_15
 	b	.LBB2_23
-.LBB2_31:                               # %vector.main.loop.iter.check
-	ori	$a3, $zero, 16
-	bgeu	$a2, $a3, .LBB2_33
-# %bb.32:
-	move	$a2, $zero
-	b	.LBB2_37
-.LBB2_33:                               # %vector.ph128
-	bstrpick.d	$a2, $a1, 31, 4
-	slli.d	$a2, $a2, 4
-	addi.d	$a3, $fp, 100
-	addi.d	$a4, $a0, 32
+.LBB2_31:                               # %vector.ph126
+	bstrpick.d	$a2, $a1, 31, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $fp, 84
+	addi.d	$a7, $a0, 16
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB2_34:                               # %vector.body131
+.LBB2_32:                               # %vector.body129
                                         # =>This Inner Loop Header: Depth=1
-	xvld	$xr0, $a4, -32
-	xvld	$xr1, $a4, 0
-	xvst	$xr0, $a3, -32
-	xvst	$xr1, $a3, 0
-	addi.d	$a5, $a5, -16
-	addi.d	$a3, $a3, 64
-	addi.d	$a4, $a4, 64
-	bnez	$a5, .LBB2_34
-# %bb.35:                               # %middle.block136
+	vld	$vr0, $a7, -16
+	vld	$vr1, $a7, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
+	addi.d	$a7, $a7, 32
+	bnez	$a5, .LBB2_32
+# %bb.33:                               # %middle.block134
 	beq	$a2, $a1, .LBB2_23
-# %bb.36:                               # %vec.epilog.iter.check
-	andi	$a3, $a1, 12
-	beqz	$a3, .LBB2_40
-.LBB2_37:                               # %vec.epilog.ph
-	move	$a5, $a2
-	bstrpick.d	$a2, $a1, 31, 2
-	slli.d	$a2, $a2, 2
-	sub.d	$a3, $a5, $a2
-	alsl.d	$a4, $a5, $fp, 2
-	addi.d	$a4, $a4, 68
-	alsl.d	$a5, $a5, $a0, 2
-	.p2align	4, , 16
-.LBB2_38:                               # %vec.epilog.vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, 0
-	vst	$vr0, $a4, 0
-	addi.d	$a3, $a3, 4
-	addi.d	$a4, $a4, 16
-	addi.d	$a5, $a5, 16
-	bnez	$a3, .LBB2_38
-# %bb.39:                               # %vec.epilog.middle.block
-	beq	$a2, $a1, .LBB2_23
-.LBB2_40:                               # %vec.epilog.scalar.ph.preheader
+.LBB2_34:                               # %scalar.ph124.preheader
 	alsl.d	$a0, $a2, $a0, 2
 	alsl.d	$a3, $a2, $fp, 2
 	addi.d	$a3, $a3, 68
 	sub.d	$a1, $a1, $a2
 	.p2align	4, , 16
-.LBB2_41:                               # %vec.epilog.scalar.ph
+.LBB2_35:                               # %scalar.ph124
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a0, 0
 	st.w	$a2, $a3, 0
 	addi.d	$a0, $a0, 4
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
-	bnez	$a1, .LBB2_41
+	bnez	$a1, .LBB2_35
 	b	.LBB2_23
 .Lfunc_end2:
 	.size	GeneratePictureParameterSet, .Lfunc_end2-GeneratePictureParameterSet

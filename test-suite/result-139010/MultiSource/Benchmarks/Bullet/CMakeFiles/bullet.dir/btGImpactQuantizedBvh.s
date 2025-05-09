@@ -933,25 +933,19 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	fadd.s	$ft4, $fa3, $ft1
 	fadd.s	$ft5, $fa4, $ft2
 	fadd.s	$ft6, $fa5, $ft3
-	fcmp.clt.s	$fcc0, $fa6, $fs0
-	fsel	$ft3, $fs0, $fa6, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fs0
-	fsel	$ft2, $fs0, $fa7, $fcc0
-	fcmp.clt.s	$fcc0, $ft0, $fs0
-	fsel	$ft1, $fs0, $ft0, $fcc0
-	fcmp.clt.s	$fcc0, $fs1, $ft4
-	fsel	$fa6, $fs1, $ft4, $fcc0
+	fmin.s	$ft3, $fa6, $fs0
+	fmin.s	$ft1, $fa7, $fs0
 	ld.w	$a1, $a2, 12
-	fcmp.clt.s	$fcc0, $fs1, $ft5
-	fsel	$fa7, $fs1, $ft5, $fcc0
-	fcmp.clt.s	$fcc0, $fs1, $ft6
+	fmin.s	$ft2, $ft0, $fs0
+	fmax.s	$fa7, $ft4, $fs1
+	fmax.s	$fa6, $ft5, $fs1
 	slti	$a3, $a1, 0
 	sub.d	$a1, $zero, $a1
 	maskeqz	$a1, $a1, $a3
 	masknez	$a3, $s2, $a3
 	or	$a1, $a1, $a3
 	add.w	$a1, $a1, $s0
-	fsel	$ft0, $fs1, $ft6, $fcc0
+	fmax.s	$ft0, $ft6, $fs1
 	beqz	$a1, .LBB5_6
 # %bb.5:                                #   in Loop: Header=BB5_3 Depth=1
 	slli.d	$a3, $a1, 4
@@ -988,65 +982,65 @@ _ZN21btGImpactQuantizedBvh5refitEv:     # @_ZN21btGImpactQuantizedBvh5refitEv
 	fadd.s	$ft9, $fa5, $ft9
 	fcmp.clt.s	$fcc0, $ft4, $ft3
 	fsel	$ft3, $ft3, $ft4, $fcc0
-	fcmp.clt.s	$fcc0, $ft5, $ft2
-	fsel	$ft2, $ft2, $ft5, $fcc0
-	fcmp.clt.s	$fcc0, $ft6, $ft1
-	fsel	$ft1, $ft1, $ft6, $fcc0
-	fcmp.clt.s	$fcc0, $fa6, $ft7
-	fsel	$fa6, $fa6, $ft7, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $ft8
-	fsel	$fa7, $fa7, $ft8, $fcc0
+	fcmp.clt.s	$fcc0, $ft5, $ft1
+	fsel	$ft1, $ft1, $ft5, $fcc0
+	fcmp.clt.s	$fcc0, $ft6, $ft2
+	fsel	$ft2, $ft2, $ft6, $fcc0
+	fcmp.clt.s	$fcc0, $fa7, $ft7
+	fsel	$fa7, $fa7, $ft7, $fcc0
+	fcmp.clt.s	$fcc0, $fa6, $ft8
+	fsel	$fa6, $fa6, $ft8, $fcc0
 	fcmp.clt.s	$fcc0, $ft0, $ft9
 	fsel	$ft0, $ft0, $ft9, $fcc0
 .LBB5_6:                                #   in Loop: Header=BB5_3 Depth=1
 	fcmp.clt.s	$fcc0, $ft3, $fa3
 	fsel	$ft3, $ft3, $fa3, $fcc0
-	fcmp.clt.s	$fcc0, $ft2, $fa4
-	fsel	$ft2, $ft2, $fa4, $fcc0
+	fcmp.clt.s	$fcc0, $ft1, $fa4
+	fsel	$ft1, $ft1, $fa4, $fcc0
 	fld.s	$ft4, $fp, 56
-	fcmp.clt.s	$fcc0, $ft1, $fa5
-	fsel	$ft1, $ft1, $fa5, $fcc0
+	fcmp.clt.s	$fcc0, $ft2, $fa5
+	fsel	$ft2, $ft2, $fa5, $fcc0
 	fld.s	$ft5, $fp, 60
 	fcmp.clt.s	$fcc0, $ft4, $ft3
 	fld.s	$ft6, $fp, 64
 	fsel	$ft3, $ft3, $ft4, $fcc0
-	fcmp.clt.s	$fcc0, $ft5, $ft2
-	fsel	$ft2, $ft2, $ft5, $fcc0
-	fcmp.clt.s	$fcc0, $ft6, $ft1
-	fsel	$ft1, $ft1, $ft6, $fcc0
+	fcmp.clt.s	$fcc0, $ft5, $ft1
+	fsel	$ft1, $ft1, $ft5, $fcc0
+	fcmp.clt.s	$fcc0, $ft6, $ft2
+	fsel	$ft2, $ft2, $ft6, $fcc0
 	fsub.s	$ft3, $ft3, $fa3
-	fsub.s	$ft2, $ft2, $fa4
-	fsub.s	$ft1, $ft1, $fa5
+	fsub.s	$ft1, $ft1, $fa4
+	fsub.s	$ft2, $ft2, $fa5
 	fmul.s	$ft3, $ft3, $fa0
-	fmul.s	$ft2, $ft2, $fa1
-	fmul.s	$ft1, $ft1, $fa2
+	fmul.s	$ft1, $ft1, $fa1
+	fmul.s	$ft2, $ft2, $fa2
 	vldi	$vr15, -1184
 	fadd.s	$ft3, $ft3, $ft7
 	ftintrz.l.s	$ft3, $ft3
 	movfr2gr.d	$a1, $ft3
 	st.h	$a1, $a2, -16
-	fadd.s	$ft2, $ft2, $ft7
-	ftintrz.l.s	$ft2, $ft2
-	movfr2gr.d	$a1, $ft2
-	st.h	$a1, $a2, -14
 	fadd.s	$ft1, $ft1, $ft7
 	ftintrz.l.s	$ft1, $ft1
 	movfr2gr.d	$a1, $ft1
+	st.h	$a1, $a2, -14
+	fadd.s	$ft1, $ft2, $ft7
+	ftintrz.l.s	$ft1, $ft1
+	movfr2gr.d	$a1, $ft1
 	st.h	$a1, $a2, -12
-	fcmp.clt.s	$fcc0, $fa6, $fa3
-	fsel	$fa6, $fa6, $fa3, $fcc0
-	fcmp.clt.s	$fcc0, $fa7, $fa4
-	fsel	$fa7, $fa7, $fa4, $fcc0
+	fcmp.clt.s	$fcc0, $fa7, $fa3
+	fsel	$fa7, $fa7, $fa3, $fcc0
+	fcmp.clt.s	$fcc0, $fa6, $fa4
+	fsel	$fa6, $fa6, $fa4, $fcc0
 	fcmp.clt.s	$fcc0, $ft0, $fa5
 	fsel	$ft0, $ft0, $fa5, $fcc0
-	fcmp.clt.s	$fcc0, $ft4, $fa6
-	fsel	$fa6, $fa6, $ft4, $fcc0
-	fcmp.clt.s	$fcc0, $ft5, $fa7
-	fsel	$fa7, $fa7, $ft5, $fcc0
+	fcmp.clt.s	$fcc0, $ft4, $fa7
+	fsel	$fa7, $fa7, $ft4, $fcc0
+	fcmp.clt.s	$fcc0, $ft5, $fa6
+	fsel	$fa6, $fa6, $ft5, $fcc0
 	fcmp.clt.s	$fcc0, $ft6, $ft0
 	fsel	$ft0, $ft0, $ft6, $fcc0
-	fsub.s	$fa3, $fa6, $fa3
-	fsub.s	$fa4, $fa7, $fa4
+	fsub.s	$fa3, $fa7, $fa3
+	fsub.s	$fa4, $fa6, $fa4
 	fsub.s	$fa5, $ft0, $fa5
 	fmul.s	$fa0, $fa0, $fa3
 	fmul.s	$fa1, $fa1, $fa4

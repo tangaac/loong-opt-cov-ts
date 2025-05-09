@@ -571,22 +571,21 @@ _Z17b2CollidePolygonsP16btManifoldResultPK12btBox2dShapeRK11btTransformS3_S6_: #
 	fmadd.s	$fs3, $ft7, $fs1, $fs3
 	fmul.s	$fs5, $ft9, $fs5
 	fmadd.s	$fs4, $ft13, $fs4, $fs5
-	fmadd.s	$fs1, $ft5, $fs1, $fs4
-	fld.s	$fs4, $a4, 144
 	fld.s	$fs5, $a4, 148
-	fld.s	$fs6, $a4, 152
+	fld.s	$fs6, $a4, 144
+	fld.s	$fs7, $a4, 152
+	fmadd.s	$fs1, $ft5, $fs1, $fs4
+	fmul.s	$fs4, $fs5, $fs3
+	fmadd.s	$fs4, $fs2, $fs6, $fs4
+	fmadd.s	$fs4, $fs1, $fs7, $fs4
 	pcalau12i	$a5, %pc_hi20(.LCPI5_2)
-	fld.s	$fs7, $a5, %pc_lo12(.LCPI5_2)
-	fmul.s	$fs5, $fs5, $fs3
-	fmadd.s	$fs4, $fs2, $fs4, $fs5
-	fmadd.s	$fs4, $fs1, $fs6, $fs4
-	fcmp.clt.s	$fcc1, $fs4, $fs7
-	fld.s	$fs5, $a4, 164
-	fld.s	$fs6, $a4, 160
+	fld.s	$fs5, $a5, %pc_lo12(.LCPI5_2)
+	fld.s	$fs6, $a4, 164
+	fld.s	$fs7, $a4, 160
 	fld.s	$fa0, $a4, 168
-	fsel	$fs4, $fs7, $fs4, $fcc1
-	fmul.s	$fs5, $fs3, $fs5
-	fmadd.s	$fs5, $fs2, $fs6, $fs5
+	fmin.s	$fs4, $fs4, $fs5
+	fmul.s	$fs5, $fs3, $fs6
+	fmadd.s	$fs5, $fs2, $fs7, $fs5
 	fmadd.s	$fa0, $fs1, $fa0, $fs5
 	fcmp.clt.s	$fcc1, $fa0, $fs4
 	fld.s	$fs5, $a4, 180
@@ -1069,22 +1068,21 @@ _ZL17FindMaxSeparationPiPK12btBox2dShapeRK11btTransformS2_S5_: # @_ZL17FindMaxSe
 	fmadd.s	$fa4, $ft6, $fa1, $fa4
 	fmul.s	$fa2, $ft4, $fa2
 	fmadd.s	$fa0, $fa7, $fa0, $fa2
-	fmadd.s	$fa0, $ft8, $fa1, $fa0
-	fld.s	$fa1, $a1, 144
 	fld.s	$fa2, $a1, 148
-	fld.s	$fa5, $a1, 152
+	fld.s	$fa5, $a1, 144
+	fld.s	$fa6, $a1, 152
+	fmadd.s	$fa0, $ft8, $fa1, $fa0
+	fmul.s	$fa1, $fa4, $fa2
+	fmadd.s	$fa1, $fa5, $fa3, $fa1
+	fmadd.s	$fa1, $fa6, $fa0, $fa1
 	pcalau12i	$a0, %pc_hi20(.LCPI7_0)
-	fld.s	$fa6, $a0, %pc_lo12(.LCPI7_0)
-	fmul.s	$fa2, $fa4, $fa2
-	fmadd.s	$fa1, $fa1, $fa3, $fa2
-	fmadd.s	$fa1, $fa5, $fa0, $fa1
-	fcmp.clt.s	$fcc0, $fa6, $fa1
-	fld.s	$fa2, $a1, 164
-	fld.s	$fa5, $a1, 160
+	fld.s	$fa2, $a0, %pc_lo12(.LCPI7_0)
+	fld.s	$fa5, $a1, 164
+	fld.s	$fa6, $a1, 160
 	fld.s	$fa7, $a1, 168
-	fsel	$fa1, $fa6, $fa1, $fcc0
-	fmul.s	$fa2, $fa4, $fa2
-	fmadd.s	$fa2, $fa5, $fa3, $fa2
+	fmax.s	$fa1, $fa1, $fa2
+	fmul.s	$fa2, $fa4, $fa5
+	fmadd.s	$fa2, $fa6, $fa3, $fa2
 	fmadd.s	$fa2, $fa7, $fa0, $fa2
 	fcmp.clt.s	$fcc0, $fa1, $fa2
 	fld.s	$fa5, $a1, 180
@@ -1435,22 +1433,21 @@ _ZL14EdgeSeparationPK12btBox2dShapeRK11btTransformiS1_S4_: # @_ZL14EdgeSeparatio
 	fmadd.s	$ft14, $fa4, $fa2, $ft14
 	fmul.s	$ft15, $fa1, $ft0
 	fmadd.s	$ft15, $ft3, $fa0, $ft15
-	fmadd.s	$ft15, $fa5, $fa2, $ft15
-	fld.s	$fs0, $a3, 80
-	fld.s	$fs1, $a3, 84
+	fld.s	$fs0, $a3, 84
+	fld.s	$fs1, $a3, 80
 	fld.s	$fs2, $a3, 88
-	pcalau12i	$a2, %pc_hi20(.LCPI9_0)
-	fld.s	$fs3, $a2, %pc_lo12(.LCPI9_0)
-	fmul.s	$fs1, $ft14, $fs1
-	fmadd.s	$fs0, $fs0, $ft13, $fs1
+	fmadd.s	$ft15, $fa5, $fa2, $ft15
+	fmul.s	$fs0, $ft14, $fs0
+	fmadd.s	$fs0, $fs1, $ft13, $fs0
 	fmadd.s	$fs0, $fs2, $ft15, $fs0
-	fcmp.clt.s	$fcc0, $fs0, $fs3
-	fld.s	$fs1, $a3, 100
-	fld.s	$fs2, $a3, 96
+	pcalau12i	$a2, %pc_hi20(.LCPI9_0)
+	fld.s	$fs1, $a2, %pc_lo12(.LCPI9_0)
+	fld.s	$fs2, $a3, 100
+	fld.s	$fs3, $a3, 96
 	fld.s	$fs4, $a3, 104
-	fsel	$fs0, $fs3, $fs0, $fcc0
-	fmul.s	$fs1, $ft14, $fs1
-	fmadd.s	$fs1, $fs2, $ft13, $fs1
+	fmin.s	$fs0, $fs0, $fs1
+	fmul.s	$fs1, $ft14, $fs2
+	fmadd.s	$fs1, $fs3, $ft13, $fs1
 	fmadd.s	$fs1, $fs4, $ft15, $fs1
 	fcmp.clt.s	$fcc0, $fs1, $fs0
 	fld.s	$fs2, $a3, 116

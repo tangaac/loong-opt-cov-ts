@@ -545,28 +545,8 @@ _ZN9btBvhTree10build_treeER18GIM_BVH_DATA_ARRAY: # @_ZN9btBvhTree10build_treeER1
 	.p2align	2, 0x0                          # -- Begin function _ZN12btGImpactBvh5refitEv
 .LCPI4_0:
 	.word	0x7f7fffff                      # float 3.40282347E+38
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0
 .LCPI4_1:
-	.word	4294967295                      # 0xffffffff
-	.word	4294967295                      # 0xffffffff
-	.word	0                               # 0x0
-	.word	4                               # 0x4
-.LCPI4_2:
-	.word	1                               # 0x1
-	.word	0                               # 0x0
-	.word	6                               # 0x6
-	.word	7                               # 0x7
-.LCPI4_3:
 	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0xff7fffff                      # float -3.40282347E+38
-	.word	0x7f7fffff                      # float 3.40282347E+38
-.LCPI4_4:
-	.word	0                               # 0x0
-	.word	1                               # 0x1
-	.word	2                               # 0x2
-	.word	7                               # 0x7
 	.text
 	.globl	_ZN12btGImpactBvh5refitEv
 	.p2align	5
@@ -574,15 +554,16 @@ _ZN9btBvhTree10build_treeER18GIM_BVH_DATA_ARRAY: # @_ZN9btBvhTree10build_treeER1
 _ZN12btGImpactBvh5refitEv:              # @_ZN12btGImpactBvh5refitEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	.cfi_def_cfa_offset 160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 104                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 32                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -590,6 +571,7 @@ _ZN12btGImpactBvh5refitEv:              # @_ZN12btGImpactBvh5refitEv
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 56, -56
+	.cfi_offset 57, -64
 	ld.w	$s0, $a0, 0
 	beqz	$s0, .LBB4_7
 # %bb.1:                                # %.lr.ph
@@ -597,37 +579,24 @@ _ZN12btGImpactBvh5refitEv:              # @_ZN12btGImpactBvh5refitEv
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.s	$fs0, $a0, %pc_lo12(.LCPI4_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
-	vld	$vr7, $a0, %pc_lo12(.LCPI4_1)
-	pcalau12i	$a0, %pc_hi20(.LCPI4_2)
-	vld	$vr8, $a0, %pc_lo12(.LCPI4_2)
-	pcalau12i	$a0, %pc_hi20(.LCPI4_3)
-	vld	$vr0, $a0, %pc_lo12(.LCPI4_3)
-	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI4_4)
-	vld	$vr9, $a0, %pc_lo12(.LCPI4_4)
+	fld.s	$fs1, $a0, %pc_lo12(.LCPI4_1)
 	slli.d	$a0, $s0, 5
 	alsl.d	$s1, $s0, $a0, 2
 	ori	$s2, $zero, 1
 	move	$s3, $s0
-	vst	$vr7, $sp, 48                   # 16-byte Folded Spill
-	vst	$vr8, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr9, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $fp, 40
 	ld.d	$a2, $a0, 0
 	ld.d	$a3, $a2, 32
-	addi.d	$a2, $sp, 72
+	addi.d	$a2, $sp, 0
 	jirl	$ra, $a3, 0
-	vld	$vr9, $sp, 16                   # 16-byte Folded Reload
-	vld	$vr8, $sp, 32                   # 16-byte Folded Reload
-	vld	$vr7, $sp, 48                   # 16-byte Folded Reload
 	ld.d	$a0, $fp, 24
-	vld	$vr0, $sp, 88
+	vld	$vr0, $sp, 16
 	add.d	$a0, $a0, $s1
 	vst	$vr0, $a0, -20
-	vld	$vr0, $sp, 72
+	vld	$vr0, $sp, 0
 	vst	$vr0, $a0, -36
 	addi.d	$s3, $s3, -1
 	addi.d	$s1, $s1, -36
@@ -640,80 +609,68 @@ _ZN12btGImpactBvh5refitEv:              # @_ZN12btGImpactBvh5refitEv
 	bgez	$a1, .LBB4_2
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
 	fldx.s	$fa0, $a2, $s1
-	fld.s	$fa1, $a0, 4
-	fld.s	$fa2, $a0, 8
-	fld.s	$fa3, $a0, 24
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	ld.d	$a1, $a0, 16
-	fsel	$fa0, $fs0, $fa0, $fcc0
-	fcmp.clt.s	$fcc0, $fa1, $fs0
-	fsel	$fa1, $fs0, $fa1, $fcc0
-	vinsgr2vr.d	$vr4, $a1, 0
-	vori.b	$vr5, $vr7, 0
-	vshuf.w	$vr5, $vr2, $vr3
-	vori.b	$vr2, $vr8, 0
-	vshuf.w	$vr2, $vr5, $vr4
+	fld.s	$fa2, $a0, 4
+	fld.s	$fa3, $a0, 8
+	fld.s	$fa5, $a0, 16
+	fld.s	$fa6, $a0, 20
+	fld.s	$fa7, $a0, 24
+	fmin.s	$fa1, $fa0, $fs0
+	fmin.s	$fa0, $fa2, $fs0
 	ld.w	$a1, $a0, 32
-	vld	$vr6, $sp, 0                    # 16-byte Folded Reload
-	vfcmp.clt.s	$vr3, $vr6, $vr2
-	vfcmp.clt.s	$vr4, $vr2, $vr6
-	vori.b	$vr5, $vr9, 0
-	vshuf.w	$vr5, $vr4, $vr3
+	fmin.s	$fa4, $fa3, $fs0
+	fmax.s	$fa3, $fa5, $fs1
+	fmax.s	$fa2, $fa6, $fs1
 	slti	$a3, $a1, 0
 	sub.d	$a1, $zero, $a1
 	maskeqz	$a1, $a1, $a3
 	masknez	$a3, $s2, $a3
 	or	$a1, $a1, $a3
 	add.w	$a1, $a1, $s0
-	vbitsel.v	$vr2, $vr6, $vr2, $vr5
+	fmax.s	$fa5, $fa7, $fs1
 	beqz	$a1, .LBB4_6
 # %bb.5:                                #   in Loop: Header=BB4_3 Depth=1
 	slli.d	$a3, $a1, 5
 	alsl.d	$a1, $a1, $a3, 2
 	add.d	$a3, $a2, $a1
-	fldx.s	$fa3, $a2, $a1
-	fld.s	$fa4, $a3, 4
-	fld.s	$fa5, $a3, 8
-	fld.s	$fa6, $a3, 24
-	fcmp.clt.s	$fcc0, $fa3, $fa0
-	ld.d	$a1, $a3, 16
-	fsel	$fa0, $fa0, $fa3, $fcc0
-	fcmp.clt.s	$fcc0, $fa4, $fa1
-	fsel	$fa1, $fa1, $fa4, $fcc0
-	vinsgr2vr.d	$vr3, $a1, 0
-	vori.b	$vr4, $vr7, 0
-	vshuf.w	$vr4, $vr5, $vr6
-	vori.b	$vr5, $vr8, 0
-	vshuf.w	$vr5, $vr4, $vr3
-	vfcmp.clt.s	$vr3, $vr2, $vr5
-	vfcmp.clt.s	$vr4, $vr5, $vr2
-	vori.b	$vr6, $vr9, 0
-	vshuf.w	$vr6, $vr4, $vr3
-	vbitsel.v	$vr2, $vr2, $vr5, $vr6
+	fldx.s	$fa6, $a2, $a1
+	fld.s	$fa7, $a3, 4
+	fld.s	$ft0, $a3, 8
+	fld.s	$ft1, $a3, 16
+	fld.s	$ft2, $a3, 20
+	fld.s	$ft3, $a3, 24
+	fcmp.clt.s	$fcc0, $fa6, $fa1
+	fsel	$fa1, $fa1, $fa6, $fcc0
+	fcmp.clt.s	$fcc0, $fa7, $fa0
+	fsel	$fa0, $fa0, $fa7, $fcc0
+	fcmp.clt.s	$fcc0, $ft0, $fa4
+	fsel	$fa4, $fa4, $ft0, $fcc0
+	fcmp.clt.s	$fcc0, $fa3, $ft1
+	fsel	$fa3, $fa3, $ft1, $fcc0
+	fcmp.clt.s	$fcc0, $fa2, $ft2
+	fsel	$fa2, $fa2, $ft2, $fcc0
+	fcmp.clt.s	$fcc0, $fa5, $ft3
+	fsel	$fa5, $fa5, $ft3, $fcc0
 .LBB4_6:                                #   in Loop: Header=BB4_3 Depth=1
-	fst.s	$fa0, $a0, -36
-	fst.s	$fa1, $a0, -32
-	vreplvei.w	$vr0, $vr2, 3
-	fst.s	$fa0, $a0, -28
-	vreplvei.w	$vr0, $vr2, 1
-	fst.s	$fa0, $a0, -20
-	vreplvei.w	$vr0, $vr2, 0
-	fst.s	$fa0, $a0, -16
-	vreplvei.w	$vr0, $vr2, 2
-	fst.s	$fa0, $a0, -12
+	fst.s	$fa1, $a0, -36
+	fst.s	$fa0, $a0, -32
+	fst.s	$fa4, $a0, -28
+	fst.s	$fa3, $a0, -20
+	fst.s	$fa2, $a0, -16
+	fst.s	$fa5, $a0, -12
 	addi.d	$s3, $s3, -1
 	addi.d	$s1, $s1, -36
 	addi.d	$s0, $s0, -1
 	bnez	$s3, .LBB4_3
 .LBB4_7:                                # %._crit_edge
-	fld.d	$fs0, $sp, 104                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	fld.d	$fs1, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 40                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end4:
 	.size	_ZN12btGImpactBvh5refitEv, .Lfunc_end4-_ZN12btGImpactBvh5refitEv

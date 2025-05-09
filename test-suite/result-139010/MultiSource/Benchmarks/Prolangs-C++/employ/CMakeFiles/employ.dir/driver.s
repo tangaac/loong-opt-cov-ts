@@ -398,8 +398,7 @@ _ZN4BossC2EPKcS1_f:                     # @_ZN4BossC2EPKcS1_f
 	addi.d	$a0, $a0, %pc_lo12(_ZTV4Boss+16)
 	st.d	$a0, $s1, 0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc0
+	fmax.s	$fa0, $fs0, $fa0
 	fst.s	$fa0, $s1, 28
 	lu12i.w	$a0, 273536
 	st.w	$a0, $s1, 24
@@ -420,8 +419,7 @@ _ZN4BossC2EPKcS1_f:                     # @_ZN4BossC2EPKcS1_f
 _ZN4Boss15SetWeeklySalaryEf:            # @_ZN4Boss15SetWeeklySalaryEf
 # %bb.0:
 	movgr2fr.w	$fa1, $zero
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	fmax.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 28
 	ret
 .Lfunc_end14:
@@ -626,8 +624,7 @@ _ZN18CommissionedWorkerC2EPKcS1_ff:     # @_ZN18CommissionedWorkerC2EPKcS1_ff
 	st.d	$a0, $fp, 0
 	st.w	$zero, $fp, 36
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs1
-	fsel	$fa1, $fa0, $fs1, $fcc0
+	fmax.s	$fa1, $fs1, $fa0
 	fcmp.cule.s	$fcc0, $fa0, $fs0
 	fst.s	$fa1, $fp, 28
 	bcnez	$fcc0, .LBB19_2
@@ -666,8 +663,7 @@ _ZN18CommissionedWorkerC2EPKcS1_ff:     # @_ZN18CommissionedWorkerC2EPKcS1_ff
 _ZN18CommissionedWorker15SetWeeklySalaryEf: # @_ZN18CommissionedWorker15SetWeeklySalaryEf
 # %bb.0:
 	movgr2fr.w	$fa1, $zero
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	fmax.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 28
 	ret
 .Lfunc_end20:
@@ -936,8 +932,7 @@ _ZN10WageWorkerC2EPKcS1_f:              # @_ZN10WageWorkerC2EPKcS1_f
 	addi.d	$a0, $a0, %pc_lo12(_ZTV10WageWorker+16)
 	st.d	$a0, $s1, 0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc0
+	fmax.s	$fa0, $fs0, $fa0
 	fst.s	$fa0, $s1, 28
 	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -956,8 +951,7 @@ _ZN10WageWorkerC2EPKcS1_f:              # @_ZN10WageWorkerC2EPKcS1_f
 _ZN10WageWorker7SetWageEf:              # @_ZN10WageWorker7SetWageEf
 # %bb.0:
 	movgr2fr.w	$fa1, $zero
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	fmax.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 28
 	ret
 .Lfunc_end28:
@@ -1039,8 +1033,7 @@ _ZN11PieceWorkerC2EPKcS1_f:             # @_ZN11PieceWorkerC2EPKcS1_f
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc0
+	fmax.s	$fa0, $fs0, $fa0
 	fst.s	$fa0, $s1, 28
 	pcalau12i	$a0, %pc_hi20(_ZTV11PieceWorker+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV11PieceWorker+16)
@@ -1241,8 +1234,7 @@ _ZN12HourlyWorkerC2EPKcS1_f:            # @_ZN12HourlyWorkerC2EPKcS1_f
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc0
+	fmax.s	$fa0, $fs0, $fa0
 	fst.s	$fa0, $s1, 28
 	pcalau12i	$a0, %pc_hi20(_ZTV12HourlyWorker+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV12HourlyWorker+16)
@@ -1388,8 +1380,7 @@ _ZN12HourlyWorker5RaiseEi:              # @_ZN12HourlyWorker5RaiseEi
 	ffint.s.l	$fa2, $fa2
 	fmadd.s	$fa0, $fa2, $fa1, $fa0
 	movgr2fr.w	$fa1, $zero
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	fsel	$fa0, $fa1, $fa0, $fcc0
+	fmax.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 28
 .LBB39_2:
 	ret
@@ -1453,8 +1444,7 @@ _ZN22HourlyWorkerNoOvertimeC2EPKcS1_f:  # @_ZN22HourlyWorkerNoOvertimeC2EPKcS1_f
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc0
+	fmax.s	$fa0, $fs0, $fa0
 	fst.s	$fa0, $s1, 28
 	lu12i.w	$a0, 258048
 	st.w	$a0, $s1, 24
@@ -1531,8 +1521,7 @@ _ZN20HourlyWorkerOvertimeC2EPKcS1_f:    # @_ZN20HourlyWorkerOvertimeC2EPKcS1_f
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fs0
-	fsel	$fa0, $fa0, $fs0, $fcc0
+	fmax.s	$fa0, $fs0, $fa0
 	fst.s	$fa0, $s1, 28
 	lu12i.w	$a0, 258048
 	st.w	$a0, $s1, 24
@@ -1758,8 +1747,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	st.d	$a0, $s2, 0
-	fcmp.clt.s	$fcc0, $fs0, $fs1
-	fsel	$fa0, $fs0, $fs1, $fcc0
+	fmax.s	$fa0, $fs1, $fs0
 	fst.s	$fa0, $s2, 28
 	lu12i.w	$a0, 273536
 	b	.LBB45_19
@@ -1798,8 +1786,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	fcmp.clt.s	$fcc0, $fs0, $fs1
-	fsel	$fa0, $fs0, $fs1, $fcc0
+	fmax.s	$fa0, $fs1, $fs0
 	fst.s	$fa0, $s2, 28
 	lu12i.w	$a0, 258048
 	st.w	$a0, $s2, 24
@@ -1841,8 +1828,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	fcmp.clt.s	$fcc0, $fs0, $fs1
-	fsel	$fa0, $fs0, $fs1, $fcc0
+	fmax.s	$fa0, $fs1, $fs0
 	fst.s	$fa0, $s2, 28
 	lu12i.w	$a0, 258048
 	st.w	$a0, $s2, 24
@@ -1884,8 +1870,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 48
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	fcmp.clt.s	$fcc0, $fs0, $fs1
-	fsel	$fa0, $fs0, $fs1, $fcc0
+	fmax.s	$fa0, $fs1, $fs0
 	fst.s	$fa0, $s2, 28
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a0, $s2, 0

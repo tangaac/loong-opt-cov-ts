@@ -16137,94 +16137,88 @@ makelocal:                              # @makelocal
 	pcalau12i	$a3, %got_pc_hi20(penalty)
 	ld.d	$a3, $a3, %got_pc_lo12(penalty)
 	ld.w	$a6, $a3, 0
-	move	$a5, $zero
-	move	$a3, $zero
 	move	$a4, $zero
+	move	$a3, $zero
+	move	$a5, $zero
 	movgr2fr.w	$fa0, $a6
-	ffint.d.w	$fa0, $fa0
+	ld.bu	$t2, $a0, 0
 	pcalau12i	$a6, %got_pc_hi20(amino_dis)
-	ld.d	$a7, $a6, %got_pc_lo12(amino_dis)
-	vrepli.b	$vr1, 0
+	ld.d	$a6, $a6, %got_pc_lo12(amino_dis)
+	ffint.d.w	$fa0, $fa0
+	movgr2fr.d	$fa1, $zero
 	ori	$t0, $zero, 45
-	movgr2fr.d	$fa2, $zero
-	move	$a6, $a0
+	fmov.d	$fa2, $fa1
+	move	$a7, $a0
 	move	$t1, $a1
-.LBB67_1:                               # %.outer
-                                        # =>This Loop Header: Depth=1
-                                        #     Child Loop BB67_5 Depth 2
-	ld.bu	$t2, $a6, 0
-	vreplvei.d	$vr3, $vr1, 0
-	andi	$t3, $t2, 255
-	beq	$t3, $t0, .LBB67_5
+	fmov.d	$fa3, $fa1
 	.p2align	4, , 16
-.LBB67_2:                               # %.loopexit
+.LBB67_1:                               # %.loopexit
+                                        # =>This Loop Header: Depth=1
+                                        #     Child Loop BB67_6 Depth 2
+	andi	$t3, $t2, 255
+	beq	$t3, $t0, .LBB67_6
+# %bb.2:                                # %.loopexit
                                         #   in Loop: Header=BB67_1 Depth=1
 	beqz	$t3, .LBB67_9
 # %bb.3:                                #   in Loop: Header=BB67_1 Depth=1
 	ld.b	$t3, $t1, 0
-	beq	$t3, $t0, .LBB67_5
-	b	.LBB67_8
-	.p2align	4, , 16
-.LBB67_4:                               # %.critedge
-                                        #   in Loop: Header=BB67_5 Depth=2
-	addi.d	$a6, $a6, 1
-	addi.d	$t1, $t1, 1
-.LBB67_5:                               #   Parent Loop BB67_1 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t2, $a6, 0
-	beq	$t2, $t0, .LBB67_4
-# %bb.6:                                #   in Loop: Header=BB67_5 Depth=2
-	ld.bu	$t3, $t1, 0
-	beq	$t3, $t0, .LBB67_4
-# %bb.7:                                # %.loopexit.loopexit
-                                        #   in Loop: Header=BB67_5 Depth=2
-	fadd.d	$fa3, $fa3, $fa0
-	andi	$t3, $t2, 255
-	bne	$t3, $t0, .LBB67_2
-	b	.LBB67_5
-	.p2align	4, , 16
-.LBB67_8:                               #   in Loop: Header=BB67_1 Depth=1
+	beq	$t3, $t0, .LBB67_6
+# %bb.4:                                #   in Loop: Header=BB67_1 Depth=1
 	ext.w.b	$t2, $t2
 	slli.d	$t2, $t2, 9
-	add.d	$t2, $a7, $t2
+	add.d	$t2, $a6, $t2
 	slli.d	$t3, $t3, 2
 	ldx.w	$t2, $t2, $t3
-	addi.d	$a6, $a6, 1
+	addi.d	$a7, $a7, 1
 	addi.d	$t1, $t1, 1
 	sub.d	$t2, $t2, $a2
 	movgr2fr.w	$fa4, $t2
 	ffint.d.w	$fa4, $fa4
 	fadd.d	$fa3, $fa3, $fa4
-	vpackev.d	$vr4, $vr3, $vr2
-	movfr2gr.d	$t2, $fa3
-	vinsgr2vr.d	$vr1, $t2, 0
-	vfcmp.clt.d	$vr3, $vr1, $vr4
-	vpickve2gr.d	$t2, $vr3, 1
-	andi	$t2, $t2, 1
+	fcmp.clt.d	$fcc0, $fa2, $fa3
+	fsel	$fa2, $fa2, $fa3, $fcc0
+	movcf2gr	$t2, $fcc0
 	masknez	$a3, $a3, $t2
 	maskeqz	$t2, $a5, $t2
 	or	$a3, $t2, $a3
+	fcmp.clt.d	$fcc0, $fa3, $fa1
 	xor	$t2, $a5, $a3
 	sltui	$t2, $t2, 1
-	sub.w	$t3, $a6, $a0
-	vpickve2gr.d	$t4, $vr3, 0
-	andi	$t4, $t4, 1
-	masknez	$a5, $a5, $t4
+	sub.w	$t3, $a7, $a0
+	fsel	$fa3, $fa3, $fa1, $fcc0
+	movcf2gr	$t4, $fcc0
 	maskeqz	$t5, $t3, $t4
+	masknez	$a5, $a5, $t4
 	or	$a5, $t5, $a5
 	masknez	$t5, $a4, $t2
 	maskeqz	$t2, $t3, $t2
-	or	$t2, $t2, $t5
-	maskeqz	$t2, $t2, $t4
+	or	$t3, $t2, $t5
+	ld.bu	$t2, $a7, 0
+	maskeqz	$t3, $t3, $t4
 	masknez	$a4, $a4, $t4
-	or	$a4, $t2, $a4
-	vbitsel.v	$vr1, $vr1, $vr4, $vr3
+	or	$a4, $t3, $a4
+	b	.LBB67_1
+	.p2align	4, , 16
+.LBB67_5:                               # %.critedge
+                                        #   in Loop: Header=BB67_6 Depth=2
+	addi.d	$a7, $a7, 1
+	addi.d	$t1, $t1, 1
+.LBB67_6:                               #   Parent Loop BB67_1 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ld.bu	$t2, $a7, 0
+	beq	$t2, $t0, .LBB67_5
+# %bb.7:                                #   in Loop: Header=BB67_6 Depth=2
+	ld.bu	$t3, $t1, 0
+	beq	$t3, $t0, .LBB67_5
+# %bb.8:                                # %.loopexit.loopexit
+                                        #   in Loop: Header=BB67_1 Depth=1
+	fadd.d	$fa3, $fa3, $fa0
 	b	.LBB67_1
 .LBB67_9:
 	xor	$a2, $a5, $a3
 	sltui	$a2, $a2, 1
 	nor	$a5, $a0, $zero
-	add.w	$a5, $a6, $a5
+	add.w	$a5, $a7, $a5
 	maskeqz	$a5, $a5, $a2
 	masknez	$a2, $a4, $a2
 	or	$a2, $a5, $a2

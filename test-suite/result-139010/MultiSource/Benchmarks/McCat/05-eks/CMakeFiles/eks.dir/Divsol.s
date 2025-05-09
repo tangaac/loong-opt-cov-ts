@@ -597,8 +597,7 @@ DivideAndSolve:                         # @DivideAndSolve
 .LBB3_5:                                # %.lr.ph107
                                         #   in Loop: Header=BB3_3 Depth=1
 	fadd.d	$fa0, $fs5, $fa2
-	fcmp.clt.d	$fcc0, $fa0, $fs3
-	fsel	$fa0, $fs3, $fa0, $fcc0
+	fmin.d	$fa0, $fa0, $fs3
 	ftintrz.w.d	$fa0, $fa0
 	move	$a1, $s2
 	movfr2gr.s	$s2, $fa0

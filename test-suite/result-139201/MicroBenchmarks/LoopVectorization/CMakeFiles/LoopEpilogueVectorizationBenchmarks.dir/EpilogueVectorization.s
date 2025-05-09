@@ -2404,14 +2404,10 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	st.w	$zero, $sp, 1
 	xvld	$xr2, $sp, 96
 	vinsgr2vr.w	$vr3, $a5, 0
-	vpickve2gr.b	$a5, $vr2, 3
-	st.b	$a5, $sp, 24
-	vpickve2gr.b	$a5, $vr2, 2
-	st.b	$a5, $sp, 16
-	vpickve2gr.b	$a5, $vr2, 1
-	st.b	$a5, $sp, 8
-	vpickve2gr.b	$a5, $vr2, 0
-	st.b	$a5, $sp, 0
+	xvstelm.b	$xr2, $sp, 24, 3
+	xvstelm.b	$xr2, $sp, 16, 2
+	xvstelm.b	$xr2, $sp, 8, 1
+	xvstelm.b	$xr2, $sp, 0, 0
 	xvld	$xr2, $sp, 0
 	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 63
@@ -2427,14 +2423,10 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
 	xvld	$xr3, $sp, 64
-	vpickve2gr.b	$a5, $vr3, 3
-	st.b	$a5, $sp, 56
-	vpickve2gr.b	$a5, $vr3, 2
-	st.b	$a5, $sp, 48
-	vpickve2gr.b	$a5, $vr3, 1
-	st.b	$a5, $sp, 40
-	vpickve2gr.b	$a5, $vr3, 0
-	st.b	$a5, $sp, 32
+	xvstelm.b	$xr3, $sp, 56, 3
+	xvstelm.b	$xr3, $sp, 48, 2
+	xvstelm.b	$xr3, $sp, 40, 1
+	xvstelm.b	$xr3, $sp, 32, 0
 	xvld	$xr3, $sp, 32
 	xvadd.d	$xr0, $xr0, $xr2
 	xvadd.d	$xr1, $xr1, $xr3
@@ -2742,14 +2734,10 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	st.w	$zero, $sp, 2
 	xvld	$xr2, $sp, 96
 	vinsgr2vr.d	$vr3, $a5, 0
-	vpickve2gr.h	$a5, $vr2, 3
-	st.h	$a5, $sp, 24
-	vpickve2gr.h	$a5, $vr2, 2
-	st.h	$a5, $sp, 16
-	vpickve2gr.h	$a5, $vr2, 1
-	st.h	$a5, $sp, 8
-	vpickve2gr.h	$a5, $vr2, 0
-	st.h	$a5, $sp, 0
+	xvstelm.h	$xr2, $sp, 24, 3
+	xvstelm.h	$xr2, $sp, 16, 2
+	xvstelm.h	$xr2, $sp, 8, 1
+	xvstelm.h	$xr2, $sp, 0, 0
 	xvld	$xr2, $sp, 0
 	vst	$vr3, $sp, 64
 	st.h	$zero, $sp, 62
@@ -2761,14 +2749,10 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	st.h	$zero, $sp, 38
 	st.w	$zero, $sp, 34
 	xvld	$xr3, $sp, 64
-	vpickve2gr.h	$a5, $vr3, 3
-	st.h	$a5, $sp, 56
-	vpickve2gr.h	$a5, $vr3, 2
-	st.h	$a5, $sp, 48
-	vpickve2gr.h	$a5, $vr3, 1
-	st.h	$a5, $sp, 40
-	vpickve2gr.h	$a5, $vr3, 0
-	st.h	$a5, $sp, 32
+	xvstelm.h	$xr3, $sp, 56, 3
+	xvstelm.h	$xr3, $sp, 48, 2
+	xvstelm.h	$xr3, $sp, 40, 1
+	xvstelm.h	$xr3, $sp, 32, 0
 	xvld	$xr3, $sp, 32
 	xvadd.d	$xr0, $xr0, $xr2
 	xvadd.d	$xr1, $xr1, $xr3

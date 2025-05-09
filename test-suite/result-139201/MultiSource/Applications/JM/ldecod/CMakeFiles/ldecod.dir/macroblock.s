@@ -13613,10 +13613,8 @@ decode_ipcm_mb:                         # @decode_ipcm_mb
 	vpackev.w	$vr7, $vr8, $vr7
 	vshuf4i.h	$vr6, $vr6, 8
 	vshuf4i.h	$vr7, $vr7, 8
-	vpickve2gr.w	$s1, $vr6, 0
-	st.w	$s1, $t8, -4
-	vpickve2gr.w	$s1, $vr7, 0
-	st.w	$s1, $t8, 0
+	vstelm.w	$vr6, $t8, -4, 0
+	vstelm.w	$vr7, $t8, 0, 0
 	vaddi.du	$vr4, $vr4, 4
 	vaddi.wu	$vr5, $vr5, 4
 	addi.d	$s0, $s0, -4
@@ -13748,10 +13746,8 @@ decode_ipcm_mb:                         # @decode_ipcm_mb
 	vpackev.w	$vr7, $vr8, $vr7
 	vshuf4i.h	$vr6, $vr6, 8
 	vshuf4i.h	$vr7, $vr7, 8
-	vpickve2gr.w	$s0, $vr6, 0
-	st.w	$s0, $t7, -4
-	vpickve2gr.w	$s0, $vr7, 0
-	st.w	$s0, $t7, 0
+	vstelm.w	$vr6, $t7, -4, 0
+	vstelm.w	$vr7, $t7, 0, 0
 	vaddi.du	$vr4, $vr4, 4
 	vaddi.wu	$vr5, $vr5, 4
 	addi.d	$fp, $fp, -4

@@ -457,8 +457,7 @@ getSubImagesChroma:                     # @getSubImagesChroma
 	vadd.w	$vr8, $vr8, $vr1
 	vsrli.w	$vr8, $vr8, 6
 	vpickev.h	$vr8, $vr8, $vr8
-	vpickve2gr.d	$a0, $vr8, 0
-	st.d	$a0, $s0, 0
+	vstelm.d	$vr8, $s0, 0, 0
 	addi.d	$s0, $s0, 8
 	addi.d	$s1, $s1, 8
 	addi.d	$s3, $s3, -4
@@ -514,8 +513,7 @@ getSubImagesChroma:                     # @getSubImagesChroma
                                         #     Parent Loop BB0_10 Depth=2
                                         #       Parent Loop BB0_12 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	vpickve2gr.d	$a0, $vr8, 0
-	st.d	$a0, $s2, 0
+	vstelm.d	$vr8, $s2, 0, 0
 	addi.d	$a4, $a4, -4
 	addi.d	$s2, $s2, 8
 	bnez	$a4, .LBB0_44
@@ -886,8 +884,7 @@ getSubImagesChroma:                     # @getSubImagesChroma
 	vadd.w	$vr8, $vr8, $vr1
 	vsrli.w	$vr8, $vr8, 6
 	vpickev.h	$vr8, $vr8, $vr8
-	vpickve2gr.d	$a0, $vr8, 0
-	st.d	$a0, $s0, 0
+	vstelm.d	$vr8, $s0, 0, 0
 	addi.d	$s0, $s0, 8
 	addi.d	$s1, $s1, 8
 	addi.d	$a2, $a2, -4
@@ -943,8 +940,7 @@ getSubImagesChroma:                     # @getSubImagesChroma
                                         #     Parent Loop BB0_50 Depth=2
                                         #       Parent Loop BB0_52 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	vpickve2gr.d	$a0, $vr8, 0
-	st.d	$a0, $a2, 0
+	vstelm.d	$vr8, $a2, 0, 0
 	addi.d	$t5, $t5, -4
 	addi.d	$a2, $a2, 8
 	bnez	$t5, .LBB0_84

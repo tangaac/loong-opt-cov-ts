@@ -1267,8 +1267,8 @@ ercPixConcealIMB:                       # @ercPixConcealIMB
 	vdiv.w	$vr5, $vr6, $vr0
 	vpickev.h	$vr5, $vr5, $vr5
 	vand.v	$vr5, $vr5, $vr2
-	vpickve2gr.d	$fp, $vr5, 0
-	stx.d	$fp, $a1, $t8
+	add.d	$fp, $a1, $t8
+	vstelm.d	$vr5, $fp, 0, 0
 	addi.d	$t7, $t7, -4
 	addi.d	$t8, $t8, 8
 	bnez	$t7, .LBB2_70

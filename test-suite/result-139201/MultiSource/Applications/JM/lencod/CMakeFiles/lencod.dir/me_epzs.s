@@ -1663,14 +1663,10 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	vreplgr2vr.w	$vr12, $a0
 	vmax.w	$vr11, $vr11, $vr12
 	vmin.w	$vr11, $vr11, $vr6
-	vpickve2gr.w	$a0, $vr11, 0
-	st.w	$a0, $a2, -256
-	vpickve2gr.w	$a0, $vr11, 1
-	st.w	$a0, $a2, -128
-	vpickve2gr.w	$a0, $vr11, 2
-	st.w	$a0, $a2, 0
-	vpickve2gr.w	$a0, $vr11, 3
-	st.w	$a0, $a2, 128
+	vstelm.w	$vr11, $a2, -256, 0
+	vstelm.w	$vr11, $a2, -128, 1
+	vstelm.w	$vr11, $a2, 0, 2
+	vstelm.w	$vr11, $a2, 128, 3
 	addi.d	$t5, $t5, -4
 	addi.d	$a2, $a2, 512
 	addi.d	$a1, $a1, 32
@@ -1843,14 +1839,10 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	vmax.w	$vr10, $vr10, $vr11
 	vmin.w	$vr10, $vr10, $vr6
 	vbitsel.v	$vr10, $vr10, $vr0, $vr12
-	vpickve2gr.w	$a0, $vr10, 0
-	st.w	$a0, $t2, -256
-	vpickve2gr.w	$a0, $vr10, 1
-	st.w	$a0, $t2, -128
-	vpickve2gr.w	$a0, $vr10, 2
-	st.w	$a0, $t2, 0
-	vpickve2gr.w	$a0, $vr10, 3
-	st.w	$a0, $t2, 128
+	vstelm.w	$vr10, $t2, -256, 0
+	vstelm.w	$vr10, $t2, -128, 1
+	vstelm.w	$vr10, $t2, 0, 2
+	vstelm.w	$vr10, $t2, 128, 3
 	addi.d	$t7, $t7, -4
 	addi.d	$t2, $t2, 512
 	addi.d	$t0, $t0, 32

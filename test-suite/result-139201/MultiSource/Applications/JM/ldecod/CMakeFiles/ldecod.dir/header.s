@@ -1757,7 +1757,7 @@ decode_poc:                             # @decode_poc
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$t1, $xr0, 0
-	st.w	$t1, $a7, 0
+	xvstelm.w	$xr0, $a7, 0, 0
 	beq	$t0, $a4, .LBB4_38
 # %bb.89:                               # %vec.epilog.iter.check
 	andi	$t2, $a4, 12
@@ -1788,7 +1788,7 @@ decode_poc:                             # @decode_poc
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t1, $vr0, 0
-	st.w	$t1, $a7, 0
+	vstelm.w	$vr0, $a7, 0, 0
 	bne	$t0, $a4, .LBB4_20
 	b	.LBB4_38
 .LBB4_93:                               # %vector.ph271
@@ -1826,7 +1826,7 @@ decode_poc:                             # @decode_poc
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a7, $xr0, 0
-	st.w	$a7, $a6, 0
+	xvstelm.w	$xr0, $a6, 0, 0
 	beq	$a3, $a5, .LBB4_47
 # %bb.96:                               # %vec.epilog.iter.check288
 	andi	$t0, $a3, 12
@@ -1856,7 +1856,7 @@ decode_poc:                             # @decode_poc
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a7, $vr0, 0
-	st.w	$a7, $a6, 0
+	vstelm.w	$vr0, $a6, 0, 0
 	beq	$a3, $a5, .LBB4_47
 	b	.LBB4_44
 .Lfunc_end4:

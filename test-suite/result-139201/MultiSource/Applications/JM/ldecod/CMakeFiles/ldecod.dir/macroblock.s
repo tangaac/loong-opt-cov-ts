@@ -13530,8 +13530,7 @@ decode_ipcm_mb:                         # @decode_ipcm_mb
 	vinsgr2vr.w	$vr8, $s5, 2
 	vinsgr2vr.w	$vr8, $a5, 3
 	vpickev.h	$vr8, $vr8, $vr8
-	vpickve2gr.d	$a5, $vr8, 0
-	st.d	$a5, $s0, 0
+	vstelm.d	$vr8, $s0, 0, 0
 	vaddi.du	$vr5, $vr5, 4
 	vaddi.du	$vr6, $vr6, 4
 	vaddi.wu	$vr7, $vr7, 4
@@ -13658,8 +13657,7 @@ decode_ipcm_mb:                         # @decode_ipcm_mb
 	vinsgr2vr.w	$vr8, $s2, 2
 	vinsgr2vr.w	$vr8, $s3, 3
 	vpickev.h	$vr8, $vr8, $vr8
-	vpickve2gr.d	$s0, $vr8, 0
-	st.d	$s0, $t7, 0
+	vstelm.d	$vr8, $t7, 0, 0
 	vaddi.du	$vr5, $vr5, 4
 	vaddi.du	$vr6, $vr6, 4
 	vaddi.wu	$vr7, $vr7, 4

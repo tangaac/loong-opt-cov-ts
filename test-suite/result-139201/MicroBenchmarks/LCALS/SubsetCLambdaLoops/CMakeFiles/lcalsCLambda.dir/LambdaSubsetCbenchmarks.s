@@ -1978,12 +1978,11 @@ _ZL16BM_PIC_1D_LAMBDARN9benchmark5StateE: # @_ZL16BM_PIC_1D_LAMBDARN9benchmark5S
 	vst	$vr4, $t5, 0
 	vand.v	$vr5, $vr5, $vr3
 	vaddi.wu	$vr5, $vr5, 1
-	vpickve2gr.d	$t7, $vr5, 0
-	vpickve2gr.w	$t8, $vr5, 0
-	andi	$t8, $t8, 4095
-	movgr2fr.w	$fa6, $t8
+	vpickve2gr.w	$t7, $vr5, 0
+	andi	$t7, $t7, 4095
+	movgr2fr.w	$fa6, $t7
 	ffint.d.w	$fa6, $fa6
-	st.d	$t7, $t4, 0
+	vstelm.d	$vr5, $t4, 0, 0
 	movfr2gr.d	$t7, $fa6
 	vpickve2gr.w	$t8, $vr5, 1
 	andi	$t8, $t8, 4095

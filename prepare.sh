@@ -7,6 +7,9 @@ TEST_SUITE_DIR=$WORK_DIR/test-suite
 LLVM_PROJECT_DIR=$LLVM_DIR/llvm-project
 LLVM_TEST_SUITE_DIR=$TEST_SUITE_DIR/llvm-test-suite
 
+rm -rf $TEST_SUITE_DIR/after
+rm -rf $TEST_SUITE_DIR/before
+rm -rf $TEST_SUITE_DIR/result-*
 
 git checkout master
 

@@ -3840,8 +3840,7 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fsel	$fa4, $fa4, $ft1, $fcc0
 	fmul.s	$fa4, $ft2, $fa4
 	fadd.s	$fa4, $ft3, $fa4
-	fcmp.clt.s	$fcc0, $fa3, $fa4
-	fsel	$fa4, $fa3, $fa4, $fcc0
+	fmax.s	$fa4, $fa4, $fa3
 	fst.s	$fa4, $fp, 564
 	fsub.s	$fa4, $fa4, $ft3
 	fmul.s	$fa6, $fa6, $fa4
@@ -3983,22 +3982,21 @@ _ZN21btConeTwistConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN2
 	fmadd.s	$fa2, $fa1, $ft0, $fa4
 	movgr2fr.w	$fa1, $zero
 	fld.s	$fa3, $fp, 544
-	fld.s	$ft0, $fp, 568
 	fcmp.clt.s	$fcc0, $fa1, $fa0
-	fsel	$fa0, $fa4, $fa2, $fcc0
-	fmul.s	$fa0, $fa3, $fa0
-	fadd.s	$fa0, $ft0, $fa0
+	fld.s	$fa0, $fp, 568
+	fsel	$fa2, $fa4, $fa2, $fcc0
+	fmul.s	$fa2, $fa3, $fa2
 	ld.d	$a0, $fp, 24
-	fcmp.clt.s	$fcc0, $fa1, $fa0
-	fsel	$fa0, $fa1, $fa0, $fcc0
-	fst.s	$fa0, $fp, 568
-	fld.s	$fa2, $a0, 284
-	fsub.s	$fa0, $fa0, $ft0
-	fld.s	$fa3, $a0, 280
-	fmul.s	$fa2, $fa5, $fa2
+	fadd.s	$fa2, $fa0, $fa2
+	fmax.s	$fa2, $fa2, $fa1
+	fst.s	$fa2, $fp, 568
+	fld.s	$fa3, $a0, 284
+	fsub.s	$fa0, $fa2, $fa0
+	fld.s	$fa2, $a0, 280
+	fmul.s	$fa3, $fa5, $fa3
 	fld.s	$fa4, $a0, 288
 	fld.s	$ft0, $a0, 300
-	fmadd.s	$fa2, $fa3, $fa6, $fa2
+	fmadd.s	$fa2, $fa2, $fa6, $fa3
 	fld.s	$fa3, $a0, 296
 	fmadd.s	$fa2, $fa4, $fa7, $fa2
 	fmul.s	$fa4, $fa5, $ft0

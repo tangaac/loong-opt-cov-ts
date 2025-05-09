@@ -2449,8 +2449,7 @@ _ZN17btHingeConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN17btH
 	fmul.s	$fa0, $fa7, $fa0
 	fadd.s	$fa4, $ft0, $fa0
 	movgr2fr.w	$fa0, $zero
-	fcmp.clt.s	$fcc0, $fa0, $fa4
-	fsel	$fa4, $fa0, $fa4, $fcc0
+	fmax.s	$fa4, $fa4, $fa0
 	fst.s	$fa4, $a0, 768
 	fld.s	$fa6, $a4, 284
 	fsub.s	$ft2, $fa4, $ft0

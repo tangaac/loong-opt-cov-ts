@@ -2021,8 +2021,7 @@ blockAlign2:                            # @blockAlign2
 	alsl.d	$t8, $t5, $t8, 3
 	fld.d	$fa1, $t8, -8
 	move	$t8, $zero
-	fcmp.clt.d	$fcc0, $fa0, $fa1
-	fsel	$fa1, $fa0, $fa1, $fcc0
+	fmax.d	$fa1, $fa1, $fa0
 	b	.LBB13_48
 	.p2align	4, , 16
 .LBB13_58:                              # %.lr.ph171.split.preheader

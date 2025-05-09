@@ -378,22 +378,14 @@ init_outer_loop:                        # @init_outer_loop
 	vreplvei.d	$vr0, $vr0, 1
 	fcmp.clt.d	$fcc0, $fa0, $fa4
 	fsel	$fa4, $fa0, $fa4, $fcc0
-	fcmp.clt.d	$fcc0, $fa2, $fa3
-	fsel	$fa3, $fa2, $fa3, $fcc0
-	fcmp.clt.d	$fcc0, $fa2, $fa0
-	fsel	$fa0, $fa2, $fa0, $fcc0
-	movfr2gr.d	$a0, $fa4
-	movfr2gr.d	$a1, $fa1
-	vinsgr2vr.d	$vr4, $a1, 0
-	vinsgr2vr.d	$vr4, $a0, 1
-	vpackev.d	$vr1, $vr1, $vr2
-	vfcmp.clt.d	$vr2, $vr1, $vr4
-	vbitsel.v	$vr1, $vr1, $vr4, $vr2
-	vreplvei.d	$vr2, $vr1, 1
-	fdiv.d	$fs0, $fa3, $fa2
-	fdiv.d	$fs1, $fa0, $fa2
-	vreplvei.d	$vr0, $vr1, 0
-	fdiv.d	$fs2, $fa0, $fa2
+	fcmp.clt.d	$fcc0, $fa1, $fa4
+	fsel	$fa4, $fa1, $fa4, $fcc0
+	fmax.d	$fa3, $fa3, $fa2
+	fdiv.d	$fs0, $fa3, $fa4
+	fmax.d	$fa0, $fa0, $fa2
+	fdiv.d	$fs1, $fa0, $fa4
+	fmax.d	$fa0, $fa1, $fa2
+	fdiv.d	$fs2, $fa0, $fa4
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(log)
 	jirl	$ra, $ra, 0
@@ -2943,8 +2935,7 @@ amp_scalefac_bands:                     # @amp_scalefac_bands
 	fldx.d	$fa0, $a7, $a6
 	fmul.d	$fa1, $fa1, $fa2
 	movgr2fr.d	$fa2, $zero
-	fcmp.clt.d	$fcc0, $fa1, $fa2
-	fsel	$fa1, $fa2, $fa1, $fcc0
+	fmin.d	$fa1, $fa1, $fa2
 	beqz	$a4, .LBB8_20
 # %bb.7:                                # %.lr.ph88.preheader
 	move	$a4, $zero

@@ -82,3 +82,4 @@ c:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym foo

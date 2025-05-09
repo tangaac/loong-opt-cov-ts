@@ -257,4 +257,5 @@ program:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym simulator_kernel
 	.addrsig_sym program

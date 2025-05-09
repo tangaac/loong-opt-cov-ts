@@ -11,29 +11,26 @@ f:                                      # @f
                                         # =>This Inner Loop Header: Depth=1
 	b	.LBB0_1
 .LBB0_2:
-	beqz	$a3, .LBB0_8
+	beqz	$a3, .LBB0_6
 # %bb.3:
-	beqz	$a5, .LBB0_6
+	beqz	$a5, .LBB0_8
 # %bb.4:
 	ld.d	$a0, $a1, 16
 	st.d	$a5, $a1, 8
-	bnez	$a0, .LBB0_9
+	bnez	$a0, .LBB0_7
 # %bb.5:
 	st.d	$zero, $a5, 16
 	ret
-.LBB0_6:
+.LBB0_6:                                # %.thread
+	ld.d	$a0, $a1, 16
+	st.d	$zero, $a1, 8
+.LBB0_7:
+	pcaddu18i	$ra, %call36(g)
+	jirl	$ra, $ra, 0
+.LBB0_8:
 	ld.d	$a0, $a1, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $a1, 8
-	bnez	$a0, .LBB0_9
-# %bb.7:
-	addi.w	$a0, $zero, -1
-	st.d	$a0, $zero, 24
-	ret
-.LBB0_8:                                # %.thread
-	ld.d	$a0, $a1, 16
-	st.d	$zero, $a1, 8
-.LBB0_9:
 	pcaddu18i	$ra, %call36(g)
 	jirl	$ra, $ra, 0
 .Lfunc_end0:

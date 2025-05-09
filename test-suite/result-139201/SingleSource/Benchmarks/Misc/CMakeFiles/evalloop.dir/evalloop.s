@@ -538,3 +538,4 @@ eval.dispatch:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym eval

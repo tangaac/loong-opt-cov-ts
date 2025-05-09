@@ -1962,12 +1962,11 @@ _ZL13BM_PIC_1D_RAWRN9benchmark5StateE:  # @_ZL13BM_PIC_1D_RAWRN9benchmark5StateE
 	vst	$vr4, $t4, 0
 	vand.v	$vr5, $vr5, $vr3
 	vaddi.wu	$vr5, $vr5, 1
-	vpickve2gr.d	$t6, $vr5, 0
-	vpickve2gr.w	$t7, $vr5, 0
-	andi	$t7, $t7, 4095
-	movgr2fr.w	$fa6, $t7
+	vpickve2gr.w	$t6, $vr5, 0
+	andi	$t6, $t6, 4095
+	movgr2fr.w	$fa6, $t6
 	ffint.d.w	$fa6, $fa6
-	st.d	$t6, $t3, 0
+	vstelm.d	$vr5, $t3, 0, 0
 	movfr2gr.d	$t6, $fa6
 	vpickve2gr.w	$t7, $vr5, 1
 	andi	$t7, $t7, 4095

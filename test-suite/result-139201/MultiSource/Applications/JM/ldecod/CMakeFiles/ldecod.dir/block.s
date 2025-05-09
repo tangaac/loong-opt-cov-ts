@@ -1907,199 +1907,195 @@ intrapred_luma_16x16:                   # @intrapred_luma_16x16
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
 	add.d	$s0, $fp, $a0
-	vpickve2gr.h	$s1, $vr20, 0
-	st.h	$s1, $s0, 104
-	vpickve2gr.h	$s1, $vr20, 2
-	st.h	$s1, $s0, 136
-	vpickve2gr.h	$s1, $vr20, 4
-	st.h	$s1, $s0, 168
-	vpickve2gr.h	$s1, $vr20, 6
-	st.h	$s1, $s0, 200
+	vstelm.h	$vr20, $s0, 104, 0
+	vstelm.h	$vr20, $s0, 136, 2
+	vstelm.h	$vr20, $s0, 168, 4
+	vstelm.h	$vr20, $s0, 200, 6
 	vadd.w	$vr20, $vr19, $vr4
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
 	vslli.d	$vr21, $vr14, 5
 	vslli.d	$vr22, $vr15, 5
-	vpickve2gr.d	$s3, $vr22, 0
-	vpickve2gr.d	$s2, $vr22, 1
-	vpickve2gr.d	$s1, $vr21, 0
-	vpickve2gr.d	$s0, $vr21, 1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a1, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a1, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a1, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a1, $s0
+	vpickve2gr.d	$s0, $vr22, 0
+	add.d	$s4, $a1, $s0
+	vpickve2gr.d	$s1, $vr22, 1
+	add.d	$s5, $a1, $s1
+	vpickve2gr.d	$s2, $vr21, 0
+	add.d	$s6, $a1, $s2
+	vpickve2gr.d	$s3, $vr21, 1
+	add.d	$s7, $a1, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr5
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a2, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a2, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a2, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a2, $s0
+	add.d	$s4, $a2, $s0
+	add.d	$s5, $a2, $s1
+	add.d	$s6, $a2, $s2
+	add.d	$s7, $a2, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vsub.w	$vr20, $vr19, $vr6
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a3, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a3, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a3, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a3, $s0
+	add.d	$s4, $a3, $s0
+	add.d	$s5, $a3, $s1
+	add.d	$s6, $a3, $s2
+	add.d	$s7, $a3, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr7
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a4, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a4, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a4, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a4, $s0
+	add.d	$s4, $a4, $s0
+	add.d	$s5, $a4, $s1
+	add.d	$s6, $a4, $s2
+	add.d	$s7, $a4, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vsub.w	$vr20, $vr19, $vr8
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a5, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a5, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a5, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a5, $s0
+	add.d	$s4, $a5, $s0
+	add.d	$s5, $a5, $s1
+	add.d	$s6, $a5, $s2
+	add.d	$s7, $a5, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vsub.w	$vr20, $vr19, $vr12
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a6, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a6, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a6, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a6, $s0
+	add.d	$s4, $a6, $s0
+	add.d	$s5, $a6, $s1
+	add.d	$s6, $a6, $s2
+	add.d	$s7, $a6, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vsrai.w	$vr20, $vr19, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $a7, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $a7, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $a7, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $a7, $s0
+	add.d	$s4, $a7, $s0
+	add.d	$s5, $a7, $s1
+	add.d	$s6, $a7, $s2
+	add.d	$s7, $a7, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr12
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t0, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t0, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t0, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t0, $s0
+	add.d	$s4, $t0, $s0
+	add.d	$s5, $t0, $s1
+	add.d	$s6, $t0, $s2
+	add.d	$s7, $t0, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr8
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t1, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t1, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t1, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t1, $s0
+	add.d	$s4, $t1, $s0
+	add.d	$s5, $t1, $s1
+	add.d	$s6, $t1, $s2
+	add.d	$s7, $t1, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr9
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t2, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t2, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t2, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t2, $s0
+	add.d	$s4, $t2, $s0
+	add.d	$s5, $t2, $s1
+	add.d	$s6, $t2, $s2
+	add.d	$s7, $t2, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr6
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t3, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t3, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t3, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t3, $s0
+	add.d	$s4, $t3, $s0
+	add.d	$s5, $t3, $s1
+	add.d	$s6, $t3, $s2
+	add.d	$s7, $t3, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr10
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t4, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t4, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t4, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t4, $s0
+	add.d	$s4, $t4, $s0
+	add.d	$s5, $t4, $s1
+	add.d	$s6, $t4, $s2
+	add.d	$s7, $t4, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr11
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t5, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t5, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t5, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t5, $s0
+	add.d	$s4, $t5, $s0
+	add.d	$s5, $t5, $s1
+	add.d	$s6, $t5, $s2
+	add.d	$s7, $t5, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr20, $vr19, $vr13
 	vsrai.w	$vr20, $vr20, 5
 	vmaxi.w	$vr20, $vr20, 0
 	vmin.w	$vr20, $vr20, $vr1
-	vpickve2gr.h	$s4, $vr20, 0
-	stx.h	$s4, $t6, $s3
-	vpickve2gr.h	$s4, $vr20, 2
-	stx.h	$s4, $t6, $s2
-	vpickve2gr.h	$s4, $vr20, 4
-	stx.h	$s4, $t6, $s1
-	vpickve2gr.h	$s4, $vr20, 6
-	stx.h	$s4, $t6, $s0
+	add.d	$s4, $t6, $s0
+	add.d	$s5, $t6, $s1
+	add.d	$s6, $t6, $s2
+	add.d	$s7, $t6, $s3
+	vstelm.h	$vr20, $s4, 0, 0
+	vstelm.h	$vr20, $s5, 0, 2
+	vstelm.h	$vr20, $s6, 0, 4
+	vstelm.h	$vr20, $s7, 0, 6
 	vadd.w	$vr19, $vr19, $vr17
 	vsrai.w	$vr19, $vr19, 5
 	vmaxi.w	$vr19, $vr19, 0
 	vmin.w	$vr19, $vr19, $vr1
-	vpickve2gr.h	$s4, $vr19, 0
-	stx.h	$s4, $t7, $s3
-	vpickve2gr.h	$s3, $vr19, 2
-	stx.h	$s3, $t7, $s2
-	vpickve2gr.h	$s2, $vr19, 4
-	stx.h	$s2, $t7, $s1
-	vpickve2gr.h	$s1, $vr19, 6
-	stx.h	$s1, $t7, $s0
+	add.d	$s0, $t7, $s0
+	add.d	$s1, $t7, $s1
+	add.d	$s2, $t7, $s2
+	add.d	$s3, $t7, $s3
+	vstelm.h	$vr19, $s0, 0, 0
+	vstelm.h	$vr19, $s1, 0, 2
+	vstelm.h	$vr19, $s2, 0, 4
+	vstelm.h	$vr19, $s3, 0, 6
 	vaddi.du	$vr15, $vr15, 4
 	vaddi.du	$vr14, $vr14, 4
 	addi.d	$a0, $a0, 128

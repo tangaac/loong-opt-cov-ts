@@ -143,7 +143,8 @@ splay:                                  # @splay
 	ld.d	$a1, $a3, 24
 	ld.d	$a4, $a2, 16
 	beq	$a1, $a4, .LBB2_31
-# %bb.19:                               #   in Loop: Header=BB2_9 Depth=1
+# %bb.19:                               # %rotate.exit54
+                                        #   in Loop: Header=BB2_9 Depth=1
 	st.d	$a2, $a3, 32
 	st.d	$a3, $a2, 16
 	bne	$a1, $a2, .LBB2_48
@@ -177,12 +178,13 @@ splay:                                  # @splay
 	ld.d	$a3, $a1, 16
 	st.d	$a2, $a1, 16
 	bnez	$a3, .LBB2_18
-.LBB2_27:                               # %.rotate.exit54_crit_edge
+.LBB2_27:                               # %rotate.exit54.thread62
                                         #   in Loop: Header=BB2_9 Depth=1
-	ld.d	$a1, $zero, 24
 	st.d	$a3, $a2, 16
-	bne	$a1, $a2, .LBB2_48
-	b	.LBB2_43
+	ld.d	$a1, $a2, 24
+	st.d	$a1, $a3, 32
+	bnez	$a1, .LBB2_49
+	b	.LBB2_50
 .LBB2_28:                               #   in Loop: Header=BB2_9 Depth=1
 	ld.d	$a3, $a2, 32
 	st.d	$a3, $a1, 24
@@ -276,7 +278,7 @@ splay:                                  # @splay
 	ld.d	$a1, $a2, 24
 	st.d	$a1, $a3, 32
 	beqz	$a1, .LBB2_50
-# %bb.49:                               #   in Loop: Header=BB2_9 Depth=1
+.LBB2_49:                               #   in Loop: Header=BB2_9 Depth=1
 	st.d	$a3, $a1, 16
 	ld.d	$a3, $a2, 16
 .LBB2_50:                               #   in Loop: Header=BB2_9 Depth=1

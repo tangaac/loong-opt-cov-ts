@@ -70,3 +70,4 @@ main:                                   # @main
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym x

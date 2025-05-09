@@ -3336,7 +3336,7 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	blt	$a0, $a1, .LBB10_231
 # %bb.3:                                # %.lr.ph712
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 88                    # 8-byte Folded Spill
 	move	$fp, $zero
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
@@ -4397,9 +4397,9 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	move	$s4, $zero
 	move	$s2, $zero
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
 	b	.LBB10_156
 	.p2align	4, , 16
 .LBB10_155:                             #   in Loop: Header=BB10_156 Depth=2
@@ -4463,7 +4463,7 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	andn	$a2, $a1, $a0
 .Ltmp368:
 	addi.d	$a1, $sp, 352
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZNK9NWildcard11CCensorNode9CheckPathERK11CStringBaseIwEb)
 	jirl	$ra, $ra, 0
 .Ltmp369:
@@ -4524,20 +4524,20 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	move	$s8, $zero
 	xori	$a1, $a0, 1
 	ld.d	$a2, $sp, 344
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a3, $a3, $a1
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 288
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	add.d	$a3, $a3, $a0
 	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a2
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 320
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
+	add.d	$a0, $a0, $a2
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 320
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	add.d	$a0, $a0, $a1
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $sp, 304
 .LBB10_176:                             #   in Loop: Header=BB10_156 Depth=2
 	sltui	$a0, $s1, 1
@@ -4664,12 +4664,10 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	st.d	$zero, $sp, 232                 # 8-byte Folded Spill
 	b	.LBB10_65
 .LBB10_198:                             #   in Loop: Header=BB10_5 Depth=1
-	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 	move	$s4, $zero
 	move	$s2, $zero
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 32                  # 8-byte Folded Spill
 .LBB10_199:                             # %.thread518
                                         #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$a0, $sp, 256                   # 8-byte Folded Reload
@@ -4678,8 +4676,7 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
                                         #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$s8, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	bnez	$s2, .LBB10_202
 # %bb.201:                              #   in Loop: Header=BB10_5 Depth=1
 	ld.w	$a0, $sp, 452
@@ -4690,7 +4687,6 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	add.d	$a0, $a0, $a1
 	sltui	$a1, $s5, 1
 	masknez	$a0, $a0, $a1
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 320
 	addi.d	$s2, $sp, 320
 .LBB10_202:                             #   in Loop: Header=BB10_5 Depth=1
@@ -4698,7 +4694,6 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 .LBB10_203:                             #   in Loop: Header=BB10_5 Depth=1
 	bnez	$s5, .LBB10_205
 # %bb.204:                              #   in Loop: Header=BB10_5 Depth=1
-	move	$s6, $zero
 	st.d	$zero, $sp, 304
 	addi.d	$s4, $sp, 304
 .LBB10_205:                             #   in Loop: Header=BB10_5 Depth=1
@@ -4706,7 +4701,7 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	bnez	$a0, .LBB10_219
 # %bb.206:                              #   in Loop: Header=BB10_5 Depth=1
 	st.d	$s1, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
+	move	$s6, $s2
 	ld.w	$a0, $sp, 516
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB10_216
@@ -4780,15 +4775,15 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 	pcaddu18i	$ra, %call36(_ZN13CStdOutStreamlsEPFRS_S0_E)
 	jirl	$ra, $ra, 0
 .Ltmp387:
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
 # %bb.217:                              #   in Loop: Header=BB10_5 Depth=1
 .Ltmp388:
+	move	$s2, $s6
 	addi.d	$a0, $sp, 504
 	move	$a1, $s5
 	move	$a2, $s1
 	move	$a3, $s4
-	move	$a4, $s2
+	move	$a4, $s6
 	pcaddu18i	$ra, %call36(_ZN13CFieldPrinter16PrintSummaryInfoEyyPKyS1_)
 	jirl	$ra, $ra, 0
 .Ltmp389:
@@ -4803,17 +4798,18 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 .LBB10_219:                             #   in Loop: Header=BB10_5 Depth=1
 	beqz	$s2, .LBB10_221
 # %bb.220:                              #   in Loop: Header=BB10_5 Depth=1
-	ld.d	$a0, $sp, 496
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $a1
+	ld.d	$a0, $sp, 320
+	ld.d	$a1, $sp, 496
+	add.d	$a0, $a1, $a0
 	st.d	$a0, $sp, 496
 	addi.d	$a0, $sp, 496
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 .LBB10_221:                             #   in Loop: Header=BB10_5 Depth=1
 	beqz	$s4, .LBB10_223
 # %bb.222:                              #   in Loop: Header=BB10_5 Depth=1
-	ld.d	$a0, $sp, 488
-	add.d	$a0, $a0, $s6
+	ld.d	$a0, $sp, 304
+	ld.d	$a1, $sp, 488
+	add.d	$a0, $a1, $a0
 	st.d	$a0, $sp, 488
 	addi.d	$a0, $sp, 488
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -4858,8 +4854,7 @@ _Z12ListArchivesP7CCodecsRK13CRecordVectorIiEbR13CObjectVectorI11CStringBaseIwEE
 .LBB10_230:                             #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$s8, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	beqz	$s4, .LBB10_203
 	b	.LBB10_205
 .LBB10_231:

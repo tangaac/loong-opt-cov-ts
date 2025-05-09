@@ -120,3 +120,4 @@ main.L:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym main

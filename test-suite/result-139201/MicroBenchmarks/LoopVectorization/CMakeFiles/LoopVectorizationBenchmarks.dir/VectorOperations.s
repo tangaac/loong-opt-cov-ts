@@ -2060,8 +2060,7 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint16_t_To_uint8_t_RN9benchmark5Sta
 	vpickev.b	$vr0, $vr0, $vr0
 	vinsgr2vr.d	$vr1, $a5, 0
 	vadd.b	$vr0, $vr1, $vr0
-	vpickve2gr.d	$a5, $vr0, 0
-	st.d	$a5, $a3, 0
+	vstelm.d	$vr0, $a3, 0, 0
 	addi.d	$a4, $a4, 16
 	addi.d	$a3, $a3, 8
 	bnez	$a4, .LBB5_17
@@ -3350,10 +3349,8 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint32_t_To_uint8_t_RN9benchmark5StateE: # 
 	vld	$vr1, $a2, 16
 	vshuf.b	$vr0, $vr0, $vr0, $vr2
 	vshuf.b	$vr1, $vr0, $vr1, $vr2
-	vpickve2gr.w	$a2, $vr0, 0
-	st.w	$a2, $a1, -4
-	vpickve2gr.w	$a2, $vr1, 0
-	st.w	$a2, $a1, 0
+	vstelm.w	$vr0, $a1, -4, 0
+	vstelm.w	$vr1, $a1, 0, 0
 	addi.d	$a0, $a0, 32
 	addi.d	$a1, $a1, 8
 	bne	$a0, $s3, .LBB8_8
@@ -5891,10 +5888,8 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5StateE: # 
 	vld	$vr1, $a2, 16
 	vshuf.b	$vr0, $vr0, $vr0, $vr2
 	vshuf.b	$vr1, $vr0, $vr1, $vr2
-	vpickve2gr.h	$a2, $vr0, 0
-	st.h	$a2, $a1, -2
-	vpickve2gr.h	$a2, $vr1, 0
-	st.h	$a2, $a1, 0
+	vstelm.h	$vr0, $a1, -2, 0
+	vstelm.h	$vr1, $a1, 0, 0
 	addi.d	$a0, $a0, 32
 	addi.d	$a1, $a1, 4
 	bne	$a0, $s3, .LBB14_8
@@ -5983,10 +5978,10 @@ _Z53benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5StateE: # 
 	vshuf.b	$vr0, $vr0, $vr0, $vr2
 	vshuf.b	$vr1, $vr0, $vr1, $vr2
 	add.d	$t0, $a5, $a7
-	vpickve2gr.h	$t1, $vr0, 0
-	stx.h	$t1, $t0, $s1
-	vpickve2gr.h	$t1, $vr1, 0
-	stx.h	$t1, $t0, $a4
+	add.d	$t1, $t0, $s1
+	add.d	$t0, $t0, $a4
+	vstelm.h	$vr0, $t1, 0, 0
+	vstelm.h	$vr1, $t0, 0, 0
 	addi.d	$a7, $a7, 4
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB14_22
@@ -7066,21 +7061,21 @@ _Z60benchForTruncOrZextVecWithAddInLoopFrom_uint64_t_To_uint8_t_RN9benchmark5Sta
 .LBB17_17:                              # %vector.body
                                         #   Parent Loop BB17_12 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
+	vld	$vr1, $a6, -16
+	vld	$vr2, $a6, 0
 	add.d	$t0, $a5, $a7
 	ldx.h	$t1, $t0, $s1
 	ldx.h	$t2, $t0, $a4
-	vld	$vr1, $a6, -16
-	vld	$vr2, $a6, 0
+	add.d	$t3, $t0, $s1
+	add.d	$t0, $t0, $a4
 	vinsgr2vr.h	$vr3, $t1, 0
 	vinsgr2vr.h	$vr4, $t2, 0
 	vshuf.b	$vr1, $vr0, $vr1, $vr0
 	vshuf.b	$vr2, $vr0, $vr2, $vr0
 	vadd.b	$vr1, $vr3, $vr1
 	vadd.b	$vr2, $vr4, $vr2
-	vpickve2gr.h	$t1, $vr1, 0
-	stx.h	$t1, $t0, $s1
-	vpickve2gr.h	$t1, $vr2, 0
-	stx.h	$t1, $t0, $a4
+	vstelm.h	$vr1, $t3, 0, 0
+	vstelm.h	$vr2, $t0, 0, 0
 	addi.d	$a7, $a7, 4
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB17_17
@@ -10657,10 +10652,8 @@ _Z54benchForTruncOrZextVecInLoopFrom_uint64_t_To_uint16_t_RN9benchmark5StateE: #
 	vshuf.h	$vr2, $vr0, $vr0
 	vori.b	$vr0, $vr3, 0
 	vshuf.h	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a2, $vr2, 0
-	st.w	$a2, $a1, -4
-	vpickve2gr.w	$a2, $vr0, 0
-	st.w	$a2, $a1, 0
+	vstelm.w	$vr2, $a1, -4, 0
+	vstelm.w	$vr0, $a1, 0, 0
 	addi.d	$a0, $a0, 32
 	addi.d	$a1, $a1, 8
 	bne	$a0, $s4, .LBB26_8

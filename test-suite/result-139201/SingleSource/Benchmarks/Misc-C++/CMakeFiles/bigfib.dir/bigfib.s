@@ -789,6 +789,7 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -798,8 +799,9 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
+	.cfi_offset 30, -80
 	move	$s0, $a2
-	move	$s1, $a1
+	move	$s2, $a1
 	move	$fp, $a0
 	st.d	$zero, $a0, 16
 	vrepli.b	$vr0, 0
@@ -830,7 +832,7 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 # %bb.4:
 	sub.d	$a1, $s3, $a3
 .Ltmp27:
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZNSt6vectorImSaImEE17_M_default_appendEm)
 	jirl	$ra, $ra, 0
 .Ltmp28:
@@ -849,8 +851,8 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 	st.d	$a1, $s0, 8
 .LBB1_9:                                # %_ZNSt6vectorImSaImEE6resizeEm.exit14
 	ld.d	$a0, $fp, 8
-	ld.d	$s2, $fp, 0
-	sub.d	$a1, $a0, $s2
+	ld.d	$s1, $fp, 0
+	sub.d	$a1, $a0, $s1
 	srai.d	$a1, $a1, 3
 	bgeu	$a1, $s3, .LBB1_12
 # %bb.10:
@@ -861,48 +863,50 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 	jirl	$ra, $ra, 0
 .Ltmp32:
 # %bb.11:                               # %._ZNSt6vectorImSaImEE6resizeEm.exit18_crit_edge
-	ld.d	$s2, $fp, 0
+	ld.d	$s1, $fp, 0
 	ld.d	$a0, $fp, 8
 	b	.LBB1_15
 .LBB1_12:
 	bgeu	$s3, $a1, .LBB1_15
 # %bb.13:
-	alsl.d	$a1, $s3, $s2, 3
+	alsl.d	$a1, $s3, $s1, 3
 	beq	$a0, $a1, .LBB1_15
 # %bb.14:                               # %_ZSt8_DestroyIPmmEvT_S1_RSaIT0_E.exit.i.i16
 	st.d	$a1, $fp, 8
 	move	$a0, $a1
 .LBB1_15:                               # %_ZNSt6vectorImSaImEE6resizeEm.exit18
-	ld.d	$s4, $s1, 0
-	ld.d	$s5, $s1, 8
+	ld.d	$s4, $s2, 0
+	ld.d	$s5, $s2, 8
 	ld.d	$s6, $s0, 0
 	pcalau12i	$s3, %pc_hi20(_ZN6BigInt6head_sE)
 	st.d	$zero, $s3, %pc_lo12(_ZN6BigInt6head_sE)
-	sub.d	$s0, $a0, $s2
-	beq	$a0, $s2, .LBB1_20
+	beq	$a0, $s1, .LBB1_20
 # %bb.16:
+	sub.d	$s2, $a0, $s1
 	addi.w	$a0, $zero, -7
 	lu52i.d	$a0, $a0, 2047
-	bgeu	$s0, $a0, .LBB1_37
+	bgeu	$s2, $a0, .LBB1_37
 # %bb.17:                               # %_ZNSt15__new_allocatorImE8allocateEmPKv.exit.i.i.i.i.i
 .Ltmp33:
-	move	$a0, $s0
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp34:
 # %bb.18:                               # %.noexc20
-	move	$s1, $a0
+	move	$s0, $a0
 	ori	$a0, $zero, 9
-	bltu	$s0, $a0, .LBB1_41
+	add.d	$s7, $s0, $s2
+	bltu	$s2, $a0, .LBB1_41
 # %bb.19:
-	move	$a0, $s1
-	move	$a1, $s2
-	move	$a2, $s0
+	move	$a0, $s0
+	move	$a1, $s1
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 	b	.LBB1_21
 .LBB1_20:
-	move	$s1, $zero
+	move	$s7, $zero
+	move	$s0, $zero
 .LBB1_21:                               # %_ZN6BigIntC2ERKS_.exit
 	beq	$s4, $s5, .LBB1_24
 # %bb.22:                               # %.lr.ph.i.preheader
@@ -926,16 +930,16 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 	st.d	$a3, $s3, %pc_lo12(_ZN6BigInt6head_sE)
 	mul.d	$a3, $a3, $a1
 	sub.d	$a2, $a2, $a3
-	st.d	$a2, $s2, 0
+	st.d	$a2, $s1, 0
 	addi.d	$s4, $s4, 8
 	addi.d	$s6, $s6, 8
-	addi.d	$s2, $s2, 8
+	addi.d	$s1, $s1, 8
 	bne	$s4, $s5, .LBB1_23
 .LBB1_24:                               # %_ZSt9transformIN9__gnu_cxx17__normal_iteratorIPmSt6vectorImSaImEEEES6_S6_6BigIntET1_T_S9_T0_S8_T2_.exit
-	beqz	$s1, .LBB1_26
+	beqz	$s0, .LBB1_26
 # %bb.25:
-	move	$a0, $s1
-	move	$a1, $s0
+	sub.d	$a1, $s7, $s0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB1_26:                               # %_ZN6BigIntD2Ev.exit
@@ -1004,6 +1008,7 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 	alsl.d	$a0, $s4, $s2, 3
 	st.d	$a0, $fp, 16
 .LBB1_36:                               # %_ZNSt6vectorImSaImEE9push_backERKm.exit
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -1031,10 +1036,10 @@ _ZN6BigIntC2ES_S_:                      # @_ZN6BigIntC2ES_S_
 # %bb.40:                               # %.noexc22
 .LBB1_41:
 	ori	$a0, $zero, 8
-	bne	$s0, $a0, .LBB1_21
+	bne	$s2, $a0, .LBB1_21
 # %bb.42:
-	ld.d	$a0, $s2, 0
-	st.d	$a0, $s1, 0
+	ld.d	$a0, $s1, 0
+	st.d	$a0, $s0, 0
 	b	.LBB1_21
 .LBB1_43:
 .Ltmp41:

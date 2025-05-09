@@ -1425,24 +1425,24 @@ do_calc:                                # @do_calc
 .Ltmp65:
 # %bb.20:                               #   in Loop: Header=BB4_4 Depth=1
 	move	$s1, $a0
-	ld.d	$a0, $sp, 216
-	ld.d	$s6, $sp, 208
 	ld.d	$s2, $s5, %pc_lo12(_ZL5state)
 	ld.w	$s3, $sp, 236
+	ld.d	$a0, $sp, 216
+	ld.d	$s5, $sp, 208
 	ld.w	$s4, $sp, 232
-	sub.d	$s5, $a0, $s6
 	st.d	$zero, $sp, 184
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 192
-	beq	$a0, $s6, .LBB4_25
+	beq	$a0, $s5, .LBB4_25
 # %bb.21:                               #   in Loop: Header=BB4_4 Depth=1
+	sub.d	$s6, $a0, $s5
 	addi.w	$a0, $zero, -3
 	lu52i.d	$a0, $a0, 2047
-	bgeu	$s5, $a0, .LBB4_116
+	bgeu	$s6, $a0, .LBB4_116
 # %bb.22:                               # %_ZNSt15__new_allocatorIiE8allocateEmPKv.exit.i.i.i.i
                                         #   in Loop: Header=BB4_4 Depth=1
 .Ltmp66:
-	move	$a0, $s5
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp67:
@@ -1450,23 +1450,21 @@ do_calc:                                # @do_calc
                                         #   in Loop: Header=BB4_4 Depth=1
 	st.d	$a0, $sp, 184
 	st.d	$a0, $sp, 192
-	add.d	$s7, $a0, $s5
+	add.d	$s7, $a0, $s6
 	st.d	$s7, $sp, 200
 	ori	$a1, $zero, 5
-	bltu	$s5, $a1, .LBB4_60
+	bltu	$s6, $a1, .LBB4_60
 # %bb.24:                               #   in Loop: Header=BB4_4 Depth=1
-	move	$a1, $s6
-	move	$a2, $s5
+	move	$a1, $s5
+	move	$a2, $s6
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 	b	.LBB4_26
 	.p2align	4, , 16
-.LBB4_25:                               # %.thread
+.LBB4_25:                               #   in Loop: Header=BB4_4 Depth=1
+	move	$s7, $zero
+.LBB4_26:                               # %.thread
                                         #   in Loop: Header=BB4_4 Depth=1
-	st.d	$zero, $sp, 184
-	st.d	$s5, $sp, 200
-	move	$s7, $s5
-.LBB4_26:                               #   in Loop: Header=BB4_4 Depth=1
 	st.d	$s7, $sp, 192
 .Ltmp71:
 	addi.d	$a3, $sp, 184
@@ -1593,21 +1591,21 @@ do_calc:                                # @do_calc
 .Ltmp83:
 # %bb.46:                               #   in Loop: Header=BB4_4 Depth=1
 	ld.d	$a0, $sp, 168
-	ld.d	$s3, $sp, 160
+	ld.d	$s2, $sp, 160
 	ld.d	$s1, $s5, %pc_lo12(_ZL5state)
-	sub.d	$s2, $a0, $s3
 	st.d	$zero, $sp, 136
 	vld	$vr0, $sp, 112                  # 16-byte Folded Reload
 	vst	$vr0, $sp, 144
-	beq	$a0, $s3, .LBB4_51
+	beq	$a0, $s2, .LBB4_51
 # %bb.47:                               #   in Loop: Header=BB4_4 Depth=1
+	sub.d	$s3, $a0, $s2
 	addi.w	$a0, $zero, -3
 	lu52i.d	$a0, $a0, 2047
-	bgeu	$s2, $a0, .LBB4_118
+	bgeu	$s3, $a0, .LBB4_118
 # %bb.48:                               # %_ZNSt15__new_allocatorIiE8allocateEmPKv.exit.i.i.i.i111
                                         #   in Loop: Header=BB4_4 Depth=1
 .Ltmp84:
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp85:
@@ -1615,23 +1613,21 @@ do_calc:                                # @do_calc
                                         #   in Loop: Header=BB4_4 Depth=1
 	st.d	$a0, $sp, 136
 	st.d	$a0, $sp, 144
-	add.d	$s4, $a0, $s2
+	add.d	$s4, $a0, $s3
 	st.d	$s4, $sp, 152
 	ori	$a1, $zero, 5
-	bltu	$s2, $a1, .LBB4_62
+	bltu	$s3, $a1, .LBB4_62
 # %bb.50:                               #   in Loop: Header=BB4_4 Depth=1
-	move	$a1, $s3
-	move	$a2, $s2
+	move	$a1, $s2
+	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 	b	.LBB4_52
 	.p2align	4, , 16
-.LBB4_51:                               # %.thread138
+.LBB4_51:                               #   in Loop: Header=BB4_4 Depth=1
+	move	$s4, $zero
+.LBB4_52:                               # %.thread138
                                         #   in Loop: Header=BB4_4 Depth=1
-	st.d	$zero, $sp, 136
-	st.d	$s2, $sp, 152
-	move	$s4, $s2
-.LBB4_52:                               #   in Loop: Header=BB4_4 Depth=1
 	st.d	$s4, $sp, 144
 .Ltmp89:
 	addi.d	$a1, $sp, 136
@@ -1676,18 +1672,19 @@ do_calc:                                # @do_calc
 	b	.LBB4_65
 .LBB4_60:                               #   in Loop: Header=BB4_4 Depth=1
 	ori	$a1, $zero, 4
-	bne	$s5, $a1, .LBB4_26
+	bne	$s6, $a1, .LBB4_26
 # %bb.61:                               #   in Loop: Header=BB4_4 Depth=1
-	ld.w	$a1, $s6, 0
+	ld.w	$a1, $s5, 0
 	st.w	$a1, $a0, 0
 	b	.LBB4_26
 .LBB4_62:                               #   in Loop: Header=BB4_4 Depth=1
 	ori	$a1, $zero, 4
-	bne	$s2, $a1, .LBB4_64
+	bne	$s3, $a1, .LBB4_64
 # %bb.63:                               #   in Loop: Header=BB4_4 Depth=1
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s2, 0
 	st.w	$a1, $a0, 0
-.LBB4_64:                               #   in Loop: Header=BB4_4 Depth=1
+.LBB4_64:                               # %.thread138
+                                        #   in Loop: Header=BB4_4 Depth=1
 	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload

@@ -555,7 +555,7 @@ main:                                   # @main
 	fst.d	$fa0, $a1, 0
 	move	$a1, $a2
 	bne	$a2, $a0, .LBB5_9
-.LBB5_10:                               # %.loopexit703
+.LBB5_10:                               # %.loopexit709
 	st.d	$zero, $sp, 208
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 144                  # 16-byte Folded Spill
@@ -577,7 +577,7 @@ main:                                   # @main
 	ori	$a2, $zero, 24
 	move	$a0, $s2
 	bltu	$a1, $a2, .LBB5_16
-# %bb.13:                               # %vector.ph762
+# %bb.13:                               # %vector.ph768
 	srli.d	$a0, $a1, 3
 	addi.d	$a1, $a0, 1
 	bstrpick.d	$a0, $a1, 61, 2
@@ -588,14 +588,14 @@ main:                                   # @main
 	addi.d	$a3, $s2, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB5_14:                               # %vector.body767
+.LBB5_14:                               # %vector.body773
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr1, $a3, -16
 	vst	$vr1, $a3, 0
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB5_14
-# %bb.15:                               # %middle.block772
+# %bb.15:                               # %middle.block778
 	beq	$a1, $a2, .LBB5_17
 	.p2align	4, , 16
 .LBB5_16:                               # %.lr.ph.i65
@@ -1106,7 +1106,7 @@ main:                                   # @main
 	move	$a0, $fp
 	move	$a1, $s7
 	bltu	$a3, $a4, .LBB5_99
-# %bb.96:                               # %vector.ph777
+# %bb.96:                               # %vector.ph783
 	srli.d	$a0, $a2, 3
 	addi.d	$a2, $a0, 1
 	bstrpick.d	$a0, $a2, 61, 2
@@ -1118,7 +1118,7 @@ main:                                   # @main
 	addi.d	$a5, $fp, 16
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB5_97:                               # %vector.body780
+.LBB5_97:                               # %vector.body786
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a5, -16
 	vld	$vr1, $a5, 0
@@ -1128,7 +1128,7 @@ main:                                   # @main
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB5_97
-# %bb.98:                               # %middle.block788
+# %bb.98:                               # %middle.block794
 	beq	$a2, $a3, .LBB5_100
 	.p2align	4, , 16
 .LBB5_99:                               # %.lr.ph.i146
@@ -1556,13 +1556,13 @@ main:                                   # @main
 	move	$a1, $a6
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	bnez	$a2, .LBB5_162
-# %bb.159:                              # %vector.body799.preheader
+# %bb.159:                              # %vector.body805.preheader
                                         #   in Loop: Header=BB5_157 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_160:                              # %vector.body799
+.LBB5_160:                              # %vector.body805
                                         #   Parent Loop BB5_157 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -1573,7 +1573,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_160
-# %bb.161:                              # %middle.block808
+# %bb.161:                              # %middle.block814
                                         #   in Loop: Header=BB5_157 Depth=1
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
@@ -1704,13 +1704,13 @@ main:                                   # @main
 	move	$a0, $s2
 	move	$a1, $s7
 	bnez	$s6, .LBB5_182
-# %bb.179:                              # %vector.body819.preheader
+# %bb.179:                              # %vector.body825.preheader
                                         #   in Loop: Header=BB5_177 Depth=1
 	move	$a0, $s4
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_180:                              # %vector.body819
+.LBB5_180:                              # %vector.body825
                                         #   Parent Loop BB5_177 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -1721,7 +1721,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_180
-# %bb.181:                              # %middle.block828
+# %bb.181:                              # %middle.block834
                                         #   in Loop: Header=BB5_177 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -1840,13 +1840,13 @@ main:                                   # @main
 	move	$a0, $s2
 	move	$a1, $s7
 	bnez	$s6, .LBB5_202
-# %bb.199:                              # %vector.body839.preheader
+# %bb.199:                              # %vector.body845.preheader
                                         #   in Loop: Header=BB5_197 Depth=1
 	move	$a0, $s4
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_200:                              # %vector.body839
+.LBB5_200:                              # %vector.body845
                                         #   Parent Loop BB5_197 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -1857,7 +1857,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_200
-# %bb.201:                              # %middle.block848
+# %bb.201:                              # %middle.block854
                                         #   in Loop: Header=BB5_197 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -2036,7 +2036,7 @@ main:                                   # @main
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB5_224
 	b	.LBB5_217
-.LBB5_226:                              # %.loopexit646
+.LBB5_226:                              # %.loopexit647
 	ori	$a1, $zero, 1
 	move	$s8, $fp
 	blt	$a0, $a1, .LBB5_290
@@ -2178,7 +2178,7 @@ main:                                   # @main
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB5_246
 	b	.LBB5_239
-.LBB5_248:                              # %.loopexit640
+.LBB5_248:                              # %.loopexit641
 	blez	$a0, .LBB5_290
 # %bb.249:                              # %.lr.ph.i286
 	move	$s0, $zero
@@ -2242,13 +2242,13 @@ main:                                   # @main
 	move	$a1, $s1
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	bnez	$a2, .LBB5_257
-# %bb.254:                              # %vector.body859.preheader
+# %bb.254:                              # %vector.body865.preheader
                                         #   in Loop: Header=BB5_252 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_255:                              # %vector.body859
+.LBB5_255:                              # %vector.body865
                                         #   Parent Loop BB5_252 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -2259,7 +2259,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_255
-# %bb.256:                              # %middle.block868
+# %bb.256:                              # %middle.block874
                                         #   in Loop: Header=BB5_252 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
@@ -2357,13 +2357,13 @@ main:                                   # @main
 	move	$a0, $s2
 	move	$a1, $s7
 	bnez	$s5, .LBB5_271
-# %bb.268:                              # %vector.body879.preheader
+# %bb.268:                              # %vector.body885.preheader
                                         #   in Loop: Header=BB5_266 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_269:                              # %vector.body879
+.LBB5_269:                              # %vector.body885
                                         #   Parent Loop BB5_266 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -2374,7 +2374,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_269
-# %bb.270:                              # %middle.block888
+# %bb.270:                              # %middle.block894
                                         #   in Loop: Header=BB5_266 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -2417,7 +2417,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, 8
 	bcnez	$fcc0, .LBB5_274
 	b	.LBB5_264
-.LBB5_276:                              # %.loopexit634
+.LBB5_276:                              # %.loopexit635
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB5_290
 # %bb.277:                              # %.lr.ph.i313
@@ -2460,13 +2460,13 @@ main:                                   # @main
 	move	$a0, $s2
 	move	$a1, $s7
 	bnez	$s5, .LBB5_285
-# %bb.282:                              # %vector.body899.preheader
+# %bb.282:                              # %vector.body905.preheader
                                         #   in Loop: Header=BB5_280 Depth=1
 	move	$a0, $s6
 	move	$a1, $s0
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_283:                              # %vector.body899
+.LBB5_283:                              # %vector.body905
                                         #   Parent Loop BB5_280 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -2477,7 +2477,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_283
-# %bb.284:                              # %middle.block908
+# %bb.284:                              # %middle.block914
                                         #   in Loop: Header=BB5_280 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -2520,7 +2520,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, 8
 	bcnez	$fcc0, .LBB5_288
 	b	.LBB5_278
-.LBB5_290:                              # %.loopexit630
+.LBB5_290:                              # %.loopexit631
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(dMpb)
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
@@ -2624,7 +2624,7 @@ main:                                   # @main
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB5_301
 	b	.LBB5_294
-.LBB5_303:                              # %.loopexit627
+.LBB5_303:                              # %.loopexit628
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB5_367
 # %bb.304:                              # %.lr.ph.i341.preheader
@@ -2766,7 +2766,7 @@ main:                                   # @main
 	fcmp.cule.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB5_323
 	b	.LBB5_316
-.LBB5_325:                              # %.loopexit621
+.LBB5_325:                              # %.loopexit622
 	blez	$a0, .LBB5_367
 # %bb.326:                              # %.lr.ph.i372
 	move	$s0, $zero
@@ -2830,13 +2830,13 @@ main:                                   # @main
 	move	$a1, $s1
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	bnez	$a2, .LBB5_334
-# %bb.331:                              # %vector.body919.preheader
+# %bb.331:                              # %vector.body925.preheader
                                         #   in Loop: Header=BB5_329 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_332:                              # %vector.body919
+.LBB5_332:                              # %vector.body925
                                         #   Parent Loop BB5_329 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -2847,7 +2847,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_332
-# %bb.333:                              # %middle.block928
+# %bb.333:                              # %middle.block934
                                         #   in Loop: Header=BB5_329 Depth=1
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
@@ -2945,13 +2945,13 @@ main:                                   # @main
 	move	$a0, $s2
 	move	$a1, $s7
 	bnez	$s5, .LBB5_348
-# %bb.345:                              # %vector.body939.preheader
+# %bb.345:                              # %vector.body945.preheader
                                         #   in Loop: Header=BB5_343 Depth=1
 	move	$a0, $s1
 	move	$a1, $s0
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_346:                              # %vector.body939
+.LBB5_346:                              # %vector.body945
                                         #   Parent Loop BB5_343 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -2962,7 +2962,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_346
-# %bb.347:                              # %middle.block948
+# %bb.347:                              # %middle.block954
                                         #   in Loop: Header=BB5_343 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
@@ -3005,7 +3005,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, 8
 	bcnez	$fcc0, .LBB5_351
 	b	.LBB5_341
-.LBB5_353:                              # %.loopexit615
+.LBB5_353:                              # %.loopexit616
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB5_367
 # %bb.354:                              # %.lr.ph.i399
@@ -3048,13 +3048,13 @@ main:                                   # @main
 	move	$a0, $s2
 	move	$a1, $s7
 	bnez	$s5, .LBB5_362
-# %bb.359:                              # %vector.body959.preheader
+# %bb.359:                              # %vector.body965.preheader
                                         #   in Loop: Header=BB5_357 Depth=1
 	move	$a0, $s6
 	move	$a1, $s0
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB5_360:                              # %vector.body959
+.LBB5_360:                              # %vector.body965
                                         #   Parent Loop BB5_357 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a2, -16
@@ -3065,7 +3065,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a0, .LBB5_360
-# %bb.361:                              # %middle.block968
+# %bb.361:                              # %middle.block974
                                         #   in Loop: Header=BB5_357 Depth=1
 	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
@@ -3108,7 +3108,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, 8
 	bcnez	$fcc0, .LBB5_365
 	b	.LBB5_355
-.LBB5_367:                              # %.loopexit611
+.LBB5_367:                              # %.loopexit612
 	ld.d	$a0, $sp, 168
 	beqz	$a0, .LBB5_369
 # %bb.368:

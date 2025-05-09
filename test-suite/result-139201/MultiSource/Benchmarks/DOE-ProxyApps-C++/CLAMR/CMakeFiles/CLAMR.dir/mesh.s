@@ -4944,17 +4944,17 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	addi.d	$a0, $sp, 128
 	st.d	$a0, $sp, 144
 	st.d	$a0, $sp, 152
+	ld.w	$s5, $sp, 172
 	ld.d	$a0, $sp, 184
 	ld.d	$s3, $sp, 176
-	st.d	$zero, $sp, 160
-	ld.w	$s5, $sp, 172
 	ld.w	$s6, $sp, 168
-	sub.d	$s8, $a0, $s3
+	st.d	$zero, $sp, 160
 	st.d	$zero, $sp, 48
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $sp, 56
 	beq	$a0, $s3, .LBB14_98
 # %bb.94:                               #   in Loop: Header=BB14_74 Depth=1
+	sub.d	$s8, $a0, $s3
 	addi.w	$a0, $zero, -3
 	lu52i.d	$a0, $a0, 2047
 	bgeu	$s8, $a0, .LBB14_137
@@ -4981,13 +4981,11 @@ _ZN4Mesh4initEiid16partition_methodi:   # @_ZN4Mesh4initEiid16partition_methodi
 	jirl	$ra, $ra, 0
 	b	.LBB14_99
 	.p2align	4, , 16
-.LBB14_98:                              # %.thread
-                                        #   in Loop: Header=BB14_74 Depth=1
+.LBB14_98:                              #   in Loop: Header=BB14_74 Depth=1
+	move	$s2, $zero
 	move	$s7, $zero
-	st.d	$zero, $sp, 48
-	st.d	$s8, $sp, 64
-	move	$s2, $s8
-.LBB14_99:                              #   in Loop: Header=BB14_74 Depth=1
+.LBB14_99:                              # %.thread
+                                        #   in Loop: Header=BB14_74 Depth=1
 	st.d	$s2, $sp, 56
 .Ltmp105:
 	addi.d	$a3, $sp, 48
@@ -7224,50 +7222,50 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
+	move	$s2, $a1
+	ld.d	$a1, $a1, 8
+	ld.d	$s5, $s2, 0
 	move	$s1, $a3
 	move	$s0, $a2
-	move	$s2, $a1
 	move	$fp, $a0
-	ld.d	$a0, $a1, 8
-	ld.d	$s5, $a1, 0
 	st.d	$zero, $sp, 48
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32
-	sub.d	$s3, $a0, $s5
-	beq	$a0, $s5, .LBB18_15
+	beq	$a1, $s5, .LBB18_15
 # %bb.1:
+	sub.d	$s4, $a1, $s5
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	bltu	$a0, $s3, .LBB18_155
+	bltu	$a0, $s4, .LBB18_155
 # %bb.2:                                # %_ZNSt15__new_allocatorIiE8allocateEmPKv.exit.i.i.i.i
 .Ltmp145:
-	move	$a0, $s3
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp146:
 # %bb.3:                                # %.noexc418
-	move	$s4, $a0
+	move	$s3, $a0
 	ori	$a0, $zero, 5
-	bltu	$s3, $a0, .LBB18_157
+	bltu	$s4, $a0, .LBB18_157
 # %bb.4:
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $s5
-	move	$a2, $s3
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 .LBB18_5:                               # %_ZNSt6vectorIiSaIiEEC2ERKS1_.exit
-	ld.d	$a0, $fp, 1160
-	add.d	$s3, $s4, $s3
-	addi.d	$s5, $fp, 1160
-	bnez	$a0, .LBB18_17
+	ld.d	$a1, $fp, 1160
+	add.d	$a0, $s3, $s4
+	addi.d	$s4, $fp, 1160
+	bnez	$a1, .LBB18_17
 # %bb.6:
+	move	$a3, $zero
 	move	$a2, $zero
-	move	$a1, $zero
 .LBB18_7:                               # %.thread471
-	st.w	$a2, $s0, 0
-	st.w	$a1, $s1, 0
-	sub.d	$a1, $s3, $s4
-	move	$a0, $s4
+	st.w	$a3, $s0, 0
+	st.w	$a2, $s1, 0
+	sub.d	$a1, $a0, $s3
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB18_8:                               # %_ZNSt6vectorIiSaIiEED2Ev.exit
@@ -7316,68 +7314,69 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$a1, $sp, 40
 	b	.LBB18_115
 .LBB18_15:                              # %_ZNSt6vectorIiSaIiEEC2ERKS1_.exit.thread
-	ld.d	$a0, $fp, 1160
-	addi.d	$s5, $fp, 1160
-	beqz	$a0, .LBB18_151
+	ld.d	$a1, $fp, 1160
+	addi.d	$s4, $fp, 1160
+	beqz	$a1, .LBB18_151
 # %bb.16:
-	move	$s4, $zero
+	move	$s3, $zero
+	move	$a0, $zero
 .LBB18_17:                              # %.lr.ph.i
-	move	$a3, $zero
-	move	$a1, $zero
+	move	$a4, $zero
 	move	$a2, $zero
-	ld.d	$a4, $fp, 1360
-	ld.d	$a5, $fp, 1328
-	ld.d	$a6, $fp, 1336
-	ori	$a7, $zero, 1
-	addi.w	$t0, $zero, -1
-	ori	$t1, $zero, 1
-	bstrins.d	$t1, $t1, 32, 31
+	move	$a3, $zero
+	ld.d	$a5, $fp, 1360
+	ld.d	$a6, $fp, 1328
+	ld.d	$a7, $fp, 1336
+	ori	$t0, $zero, 1
+	addi.w	$t1, $zero, -1
 	ori	$t2, $zero, 1
+	bstrins.d	$t2, $t2, 32, 31
+	ori	$t3, $zero, 1
 	b	.LBB18_20
 .LBB18_18:                              #   in Loop: Header=BB18_20 Depth=1
-	addi.d	$a2, $a2, 1
+	addi.d	$a3, $a3, 1
 	.p2align	4, , 16
 .LBB18_19:                              # %.thread.i
                                         #   in Loop: Header=BB18_20 Depth=1
-	bstrpick.d	$t3, $t2, 31, 0
-	addi.d	$a3, $a3, 4
-	addi.w	$t2, $t2, 1
-	bgeu	$t3, $a0, .LBB18_7
+	bstrpick.d	$t4, $t3, 31, 0
+	addi.d	$a4, $a4, 4
+	addi.w	$t3, $t3, 1
+	bgeu	$t4, $a1, .LBB18_7
 .LBB18_20:                              # =>This Inner Loop Header: Depth=1
-	ldx.w	$t3, $s4, $a3
-	bge	$t0, $t3, .LBB18_24
+	ldx.w	$t4, $s3, $a4
+	bge	$t1, $t4, .LBB18_24
 # %bb.21:                               #   in Loop: Header=BB18_20 Depth=1
-	beqz	$t3, .LBB18_19
+	beqz	$t4, .LBB18_19
 # %bb.22:                               #   in Loop: Header=BB18_20 Depth=1
-	ldx.w	$t3, $a4, $a3
-	bne	$t3, $a7, .LBB18_18
+	ldx.w	$t4, $a5, $a4
+	bne	$t4, $t0, .LBB18_18
 # %bb.23:                               #   in Loop: Header=BB18_20 Depth=1
-	addi.d	$a2, $a2, 3
+	addi.d	$a3, $a3, 3
 	b	.LBB18_19
 	.p2align	4, , 16
 .LBB18_24:                              #   in Loop: Header=BB18_20 Depth=1
-	ldx.w	$t5, $a4, $a3
-	ldx.w	$t3, $a5, $a3
-	ldx.w	$t4, $a6, $a3
-	bne	$t5, $a7, .LBB18_26
+	ldx.w	$t6, $a5, $a4
+	ldx.w	$t4, $a6, $a4
+	ldx.w	$t5, $a7, $a4
+	bne	$t6, $t0, .LBB18_26
 # %bb.25:                               #   in Loop: Header=BB18_20 Depth=1
-	or	$t3, $t3, $t4
+	or	$t4, $t4, $t5
 	b	.LBB18_29
 .LBB18_26:                              #   in Loop: Header=BB18_20 Depth=1
-	and	$t5, $t3, $t1
-	addi.w	$t5, $t5, 0
-	bne	$t5, $a7, .LBB18_28
+	and	$t6, $t4, $t2
+	addi.w	$t6, $t6, 0
+	bne	$t6, $t0, .LBB18_28
 # %bb.27:                               #   in Loop: Header=BB18_20 Depth=1
-	move	$t5, $t4
-	bstrins.d	$t5, $zero, 30, 1
-	addi.w	$t5, $t5, 0
-	beq	$t5, $a7, .LBB18_19
+	move	$t6, $t5
+	bstrins.d	$t6, $zero, 30, 1
+	addi.w	$t6, $t6, 0
+	beq	$t6, $t0, .LBB18_19
 .LBB18_28:                              #   in Loop: Header=BB18_20 Depth=1
-	or	$t3, $t4, $t3
+	or	$t4, $t5, $t4
 .LBB18_29:                              # %.thread.i
                                         #   in Loop: Header=BB18_20 Depth=1
-	andi	$t3, $t3, 1
-	sub.d	$a1, $a1, $t3
+	andi	$t4, $t4, 1
+	sub.d	$a2, $a2, $t4
 	b	.LBB18_19
 .LBB18_30:                              # %..critedge_crit_edge
 	ld.d	$a0, $sp, 32
@@ -7414,7 +7413,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$s3, $s2, 0
 	ld.d	$a1, $s2, 8
 	ld.d	$a6, $s2, 16
-	ld.d	$s5, $s5, 0
+	ld.d	$s5, $s4, 0
 	st.d	$a0, $s2, 0
 	st.d	$a5, $s2, 8
 	st.d	$a4, $s2, 16
@@ -7834,7 +7833,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	ld.d	$a3, $sp, 48
 	ld.d	$s7, $s2, 0
 	ld.d	$s6, $s2, 8
-	ld.d	$s4, $s2, 16
+	ld.d	$s5, $s2, 16
 	beqz	$a2, .LBB18_153
 # %bb.116:                              # %.lr.ph.us.preheader
 	ld.d	$a4, $fp, 1352
@@ -7856,8 +7855,8 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	move	$t8, $zero
 	move	$t0, $s7
 	move	$t1, $s6
-	move	$t2, $s4
-	ori	$s4, $zero, 1
+	move	$t2, $s5
+	ori	$s5, $zero, 1
 	b	.LBB18_120
 	.p2align	4, , 16
 .LBB18_118:                             # %.sink.split
@@ -7865,9 +7864,9 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	stx.w	$a5, $a0, $s3
 	addi.w	$t8, $t8, 1
 .LBB18_119:                             #   in Loop: Header=BB18_120 Depth=2
-	bstrpick.d	$a6, $s4, 31, 0
+	bstrpick.d	$a6, $s5, 31, 0
 	addi.d	$s3, $s3, 4
-	addi.w	$s4, $s4, 1
+	addi.w	$s5, $s5, 1
 	bgeu	$a6, $a2, .LBB18_149
 .LBB18_120:                             #   Parent Loop BB18_117 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -8007,7 +8006,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
                                         #   in Loop: Header=BB18_117 Depth=1
 	ld.w	$a6, $fp, 1120
 	addi.w	$a7, $a7, 1
-	move	$s4, $a3
+	move	$s5, $a3
 	move	$s6, $a1
 	move	$s7, $a0
 	move	$a3, $t2
@@ -8032,7 +8031,7 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 	st.d	$a3, $s2, 16
 	move	$t1, $s6
 	move	$t0, $s7
-	move	$t2, $s4
+	move	$t2, $s5
 .LBB18_154:                             # %..critedge.loopexit_crit_edge
 	st.d	$t2, $sp, 48
 	st.d	$t0, $sp, 32
@@ -8049,10 +8048,10 @@ _ZN4Mesh13refine_smoothERSt6vectorIiSaIiEERiS4_: # @_ZN4Mesh13refine_smoothERSt6
 # %bb.156:                              # %.noexc.i.i433.cont
 .LBB18_157:
 	ori	$a0, $zero, 4
-	bne	$s3, $a0, .LBB18_5
+	bne	$s4, $a0, .LBB18_5
 # %bb.158:
 	ld.w	$a0, $s5, 0
-	st.w	$a0, $s4, 0
+	st.w	$a0, $s3, 0
 	b	.LBB18_5
 .LBB18_159:
 	ori	$a0, $zero, 4

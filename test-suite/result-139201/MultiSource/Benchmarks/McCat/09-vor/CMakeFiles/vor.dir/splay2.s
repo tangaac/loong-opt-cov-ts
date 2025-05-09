@@ -181,7 +181,8 @@ CHsplay:                                # @CHsplay
 	ld.d	$a1, $a2, 40
 	ld.d	$a3, $a0, 32
 	beq	$a1, $a3, .LBB2_26
-# %bb.14:                               #   in Loop: Header=BB2_4 Depth=1
+# %bb.14:                               # %CHrotate.exit53
+                                        #   in Loop: Header=BB2_4 Depth=1
 	st.d	$a0, $a2, 48
 	st.d	$a2, $a0, 32
 	bne	$a1, $a0, .LBB2_43
@@ -215,12 +216,13 @@ CHsplay:                                # @CHsplay
 	ld.d	$a2, $a1, 32
 	st.d	$a0, $a1, 32
 	bnez	$a2, .LBB2_13
-.LBB2_22:                               # %.CHrotate.exit53_crit_edge
+.LBB2_22:                               # %CHrotate.exit53.thread61
                                         #   in Loop: Header=BB2_4 Depth=1
-	ld.d	$a1, $zero, 40
 	st.d	$a2, $a0, 32
-	bne	$a1, $a0, .LBB2_43
-	b	.LBB2_38
+	ld.d	$a1, $a0, 40
+	st.d	$a1, $a2, 48
+	bnez	$a1, .LBB2_44
+	b	.LBB2_45
 .LBB2_23:                               #   in Loop: Header=BB2_4 Depth=1
 	ld.d	$a2, $a0, 48
 	st.d	$a2, $a1, 40
@@ -314,7 +316,7 @@ CHsplay:                                # @CHsplay
 	ld.d	$a1, $a0, 40
 	st.d	$a1, $a2, 48
 	beqz	$a1, .LBB2_45
-# %bb.44:                               #   in Loop: Header=BB2_4 Depth=1
+.LBB2_44:                               #   in Loop: Header=BB2_4 Depth=1
 	st.d	$a2, $a1, 32
 	ld.d	$a2, $a0, 32
 .LBB2_45:                               #   in Loop: Header=BB2_4 Depth=1

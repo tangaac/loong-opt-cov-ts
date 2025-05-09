@@ -195,4 +195,5 @@ bar.l:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym bar
 	.addrsig_sym bar.l

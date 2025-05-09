@@ -70,3 +70,4 @@ x.j:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym x

@@ -139,85 +139,83 @@ bigTableSetup:                          # @bigTableSetup
 	addi.d	$a3, $a3, %pc_lo12(lookupTable3B)
 	lu12i.w	$a4, 16
 	vreplgr2vr.w	$vr4, $a4
-	vrepli.w	$vr5, 29
-	pcalau12i	$a5, %pc_hi20(bigTable)
-	addi.d	$a5, $a5, %pc_lo12(bigTable)
-	lu12i.w	$a6, 1
+	ori	$a4, $zero, 994
+	vreplgr2vr.w	$vr5, $a4
+	vrepli.w	$vr6, 29
+	pcalau12i	$a4, %pc_hi20(bigTable)
+	addi.d	$a4, $a4, %pc_lo12(bigTable)
+	lu12i.w	$a5, 1
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vsrli.w	$vr6, $vr0, 9
-	vsrli.w	$vr7, $vr0, 8
-	vand.v	$vr8, $vr7, $vr1
-	srli.d	$a7, $a0, 3
-	vpickve2gr.w	$t0, $vr7, 0
-	bstrins.d	$a7, $t0, 63, 5
-	vand.v	$vr7, $vr0, $vr2
-	vslli.w	$vr8, $vr8, 3
-	vor.v	$vr7, $vr8, $vr7
-	andi	$a7, $a7, 63
+	vsrli.w	$vr7, $vr0, 9
+	vsrli.w	$vr8, $vr0, 8
+	vand.v	$vr9, $vr8, $vr1
+	srli.d	$a6, $a0, 3
+	vpickve2gr.w	$a7, $vr8, 0
+	bstrins.d	$a6, $a7, 63, 5
+	andi	$a6, $a6, 63
+	slli.d	$a6, $a6, 2
+	ldx.w	$a6, $a2, $a6
+	vand.v	$vr8, $vr0, $vr2
+	vslli.w	$vr9, $vr9, 3
+	vor.v	$vr8, $vr9, $vr8
+	vreplgr2vr.w	$vr9, $a6
+	vilvh.w	$vr10, $vr3, $vr8
+	vilvl.w	$vr8, $vr3, $vr8
+	vpickve2gr.d	$a6, $vr8, 0
+	slli.d	$a6, $a6, 2
+	vpickve2gr.d	$a7, $vr8, 1
 	slli.d	$a7, $a7, 2
-	ldx.wu	$a7, $a2, $a7
-	vilvh.w	$vr8, $vr3, $vr7
-	vilvl.w	$vr7, $vr3, $vr7
-	vpickve2gr.d	$t0, $vr7, 0
+	vpickve2gr.d	$t0, $vr10, 0
 	slli.d	$t0, $t0, 2
-	vpickve2gr.d	$t1, $vr7, 1
+	vpickve2gr.d	$t1, $vr10, 1
 	slli.d	$t1, $t1, 2
-	vpickve2gr.d	$t2, $vr8, 0
-	slli.d	$t2, $t2, 2
-	vpickve2gr.d	$t3, $vr8, 1
-	slli.d	$t3, $t3, 2
+	ldx.w	$a6, $a3, $a6
+	ldx.w	$a7, $a3, $a7
 	ldx.w	$t0, $a3, $t0
 	ldx.w	$t1, $a3, $t1
-	ldx.w	$t2, $a3, $t2
-	ldx.w	$t3, $a3, $t3
-	vinsgr2vr.w	$vr7, $t0, 0
-	vinsgr2vr.w	$vr7, $t1, 1
-	vinsgr2vr.w	$vr7, $t2, 2
-	vinsgr2vr.w	$vr7, $t3, 3
-	and	$t0, $a7, $a4
-	sltui	$t0, $t0, 1
-	vreplgr2vr.w	$vr8, $t0
-	vslli.w	$vr8, $vr8, 31
-	vsrai.w	$vr8, $vr8, 31
-	andi	$t0, $a7, 994
-	vreplgr2vr.w	$vr9, $t0
-	bstrpick.d	$t1, $a7, 18, 18
-	vreplgr2vr.w	$vr10, $t1
-	vseq.w	$vr10, $vr6, $vr10
-	xori	$t0, $t0, 994
-	vreplgr2vr.w	$vr11, $t0
-	vbitsel.v	$vr10, $vr11, $vr9, $vr10
-	bstrpick.d	$a7, $a7, 19, 19
-	vreplgr2vr.w	$vr11, $a7
-	vbitsel.v	$vr11, $vr3, $vr11, $vr8
-	vxor.v	$vr6, $vr6, $vr11
-	vbitsel.v	$vr8, $vr9, $vr10, $vr8
-	vand.v	$vr9, $vr7, $vr4
-	vseqi.w	$vr9, $vr9, 0
-	vand.v	$vr10, $vr7, $vr5
-	vsrli.w	$vr11, $vr7, 18
-	vand.v	$vr11, $vr11, $vr1
-	vseq.w	$vr11, $vr6, $vr11
-	vxor.v	$vr12, $vr10, $vr5
-	vbitsel.v	$vr11, $vr12, $vr10, $vr11
-	vsrli.w	$vr7, $vr7, 19
-	vand.v	$vr7, $vr7, $vr1
-	vbitsel.v	$vr7, $vr3, $vr7, $vr9
-	vxor.v	$vr7, $vr6, $vr7
-	vbitsel.v	$vr9, $vr10, $vr11, $vr9
-	vor.v	$vr8, $vr8, $vr9
-	vslli.w	$vr7, $vr7, 16
-	vor.v	$vr7, $vr8, $vr7
-	add.d	$a7, $a5, $a1
-	vstx	$vr7, $a7, $a6
+	vinsgr2vr.w	$vr8, $a6, 0
+	vinsgr2vr.w	$vr8, $a7, 1
+	vinsgr2vr.w	$vr8, $t0, 2
+	vinsgr2vr.w	$vr8, $t1, 3
+	vand.v	$vr10, $vr9, $vr4
+	vseqi.w	$vr10, $vr10, 0
+	vand.v	$vr11, $vr9, $vr5
+	vsrli.w	$vr12, $vr9, 18
+	vand.v	$vr12, $vr12, $vr1
+	vseq.w	$vr12, $vr7, $vr12
+	vxor.v	$vr13, $vr11, $vr5
+	vbitsel.v	$vr12, $vr13, $vr11, $vr12
+	vsrli.w	$vr9, $vr9, 19
+	vand.v	$vr9, $vr9, $vr1
+	vbitsel.v	$vr9, $vr3, $vr9, $vr10
+	vxor.v	$vr7, $vr7, $vr9
+	vbitsel.v	$vr9, $vr11, $vr12, $vr10
+	vand.v	$vr10, $vr8, $vr4
+	vseqi.w	$vr10, $vr10, 0
+	vand.v	$vr11, $vr8, $vr6
+	vsrli.w	$vr12, $vr8, 18
+	vand.v	$vr12, $vr12, $vr1
+	vseq.w	$vr12, $vr7, $vr12
+	vxor.v	$vr13, $vr11, $vr6
+	vbitsel.v	$vr12, $vr13, $vr11, $vr12
+	vsrli.w	$vr8, $vr8, 19
+	vand.v	$vr8, $vr8, $vr1
+	vbitsel.v	$vr8, $vr3, $vr8, $vr10
+	vxor.v	$vr8, $vr7, $vr8
+	vbitsel.v	$vr10, $vr11, $vr12, $vr10
+	vor.v	$vr9, $vr9, $vr10
+	vslli.w	$vr8, $vr8, 16
+	vor.v	$vr8, $vr9, $vr8
+	add.d	$a6, $a4, $a1
+	vstx	$vr8, $a6, $a5
 	vaddi.wu	$vr0, $vr0, 4
 	addi.d	$a1, $a1, 16
 	addi.w	$a0, $a0, 4
 	bnez	$a1, .LBB4_1
 # %bb.2:                                # %middle.block
-	vpickve2gr.w	$a0, $vr6, 3
+	vpickve2gr.w	$a0, $vr7, 3
 	pcalau12i	$a1, %pc_hi20(disparity1)
 	st.w	$a0, $a1, %pc_lo12(disparity1)
 	pcalau12i	$a0, %pc_hi20(disparity0)

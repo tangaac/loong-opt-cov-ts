@@ -1617,10 +1617,8 @@ EPZSSliceInit:                          # @EPZSSliceInit
 	vreplgr2vr.w	$vr7, $a1
 	vmax.w	$vr6, $vr6, $vr7
 	vmin.w	$vr6, $vr6, $vr3
-	vpickve2gr.w	$a1, $vr6, 0
-	st.w	$a1, $s1, -128
-	vpickve2gr.w	$a1, $vr6, 1
-	st.w	$a1, $s1, 0
+	vstelm.w	$vr6, $s1, -128, 0
+	vstelm.w	$vr6, $s1, 0, 1
 	addi.d	$s1, $s1, 256
 	addi.d	$a5, $a5, -2
 	addi.d	$t4, $t4, 16

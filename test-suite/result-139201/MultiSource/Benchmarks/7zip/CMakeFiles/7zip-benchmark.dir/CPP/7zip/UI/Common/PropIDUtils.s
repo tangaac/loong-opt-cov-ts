@@ -7,19 +7,16 @@
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 .LCPI0_1:
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
-.LCPI0_2:
 	.word	0                               # 0x0
 	.word	5                               # 0x5
 	.word	6                               # 0x6
 	.word	7                               # 0x7
-.LCPI0_3:
+.LCPI0_2:
 	.word	4294967295                      # 0xffffffff
 	.word	15                              # 0xf
 	.word	15                              # 0xf
 	.word	15                              # 0xf
-.LCPI0_4:
+.LCPI0_3:
 	.word	2684354560                      # 0xa0000000
 	.word	10                              # 0xa
 	.word	10                              # 0xa
@@ -37,38 +34,36 @@ _Z18ConvertUInt32ToHexjPw:              # @_Z18ConvertUInt32ToHexjPw
 	lu32i.d	$a3, 8
 	vreplgr2vr.d	$vr2, $a3
 	vsrl.w	$vr2, $vr1, $vr2
+	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
+	vld	$vr3, $a3, %pc_lo12(.LCPI0_0)
 	ori	$a3, $zero, 20
 	lu32i.d	$a3, 16
-	vreplgr2vr.d	$vr3, $a3
-	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
-	vld	$vr4, $a3, %pc_lo12(.LCPI0_0)
-	pcalau12i	$a3, %pc_hi20(.LCPI0_1)
-	vld	$vr5, $a3, %pc_lo12(.LCPI0_1)
-	vsrl.w	$vr1, $vr1, $vr3
-	vinsgr2vr.w	$vr3, $a2, 0
-	vshuf.w	$vr4, $vr0, $vr3
-	vshuf.d	$vr5, $vr4, $vr2
-	vrepli.w	$vr2, 15
-	vand.v	$vr3, $vr5, $vr2
-	vslti.wu	$vr4, $vr3, 10
+	vreplgr2vr.d	$vr4, $a3
+	vsrl.w	$vr1, $vr1, $vr4
+	vinsgr2vr.w	$vr4, $a2, 0
+	vshuf.w	$vr3, $vr0, $vr4
+	vshuf4i.d	$vr2, $vr3, 12
+	vrepli.w	$vr3, 15
+	vand.v	$vr2, $vr2, $vr3
+	vslti.wu	$vr4, $vr2, 10
 	vrepli.w	$vr5, 48
-	vor.v	$vr6, $vr3, $vr5
+	vor.v	$vr6, $vr2, $vr5
 	vrepli.w	$vr7, 55
-	vadd.w	$vr3, $vr3, $vr7
-	vbitsel.v	$vr3, $vr3, $vr6, $vr4
-	vst	$vr3, $a1, 16
+	vadd.w	$vr2, $vr2, $vr7
+	vbitsel.v	$vr2, $vr2, $vr6, $vr4
+	vst	$vr2, $a1, 16
 	bstrpick.d	$a0, $a0, 31, 24
-	vsrli.w	$vr3, $vr0, 28
+	vsrli.w	$vr2, $vr0, 28
 	vinsgr2vr.w	$vr0, $a0, 1
 	vpackev.d	$vr0, $vr1, $vr0
+	pcalau12i	$a0, %pc_hi20(.LCPI0_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_2)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_2)
+	vld	$vr4, $a0, %pc_lo12(.LCPI0_2)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_3)
-	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	vld	$vr6, $a0, %pc_lo12(.LCPI0_4)
-	vand.v	$vr2, $vr0, $vr2
-	vshuf.w	$vr1, $vr2, $vr3
+	vld	$vr6, $a0, %pc_lo12(.LCPI0_3)
+	vand.v	$vr3, $vr0, $vr3
+	vshuf.w	$vr1, $vr3, $vr2
 	vand.v	$vr0, $vr0, $vr4
 	vslt.wu	$vr0, $vr0, $vr6
 	vor.v	$vr2, $vr1, $vr5
@@ -122,9 +117,6 @@ _Z18ConvertUInt32ToHexjPw:              # @_Z18ConvertUInt32ToHexjPw
 	.word	4294967295                      # 0xffffffff
 	.word	0                               # 0x0
 	.word	4                               # 0x4
-.LCPI1_8:
-	.dword	0                               # 0x0
-	.dword	3                               # 0x3
 	.text
 	.globl	_Z23ConvertPropertyToStringRK14tagPROPVARIANTjb
 	.p2align	5
@@ -410,19 +402,17 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	srli.d	$a2, $a1, 4
 	vinsgr2vr.w	$vr0, $a1, 0
 	vreplvei.w	$vr1, $vr0, 0
+	pcalau12i	$a3, %pc_hi20(.LCPI1_7)
+	vld	$vr2, $a3, %pc_lo12(.LCPI1_7)
 	ori	$a3, $zero, 12
 	lu32i.d	$a3, 8
-	vreplgr2vr.d	$vr2, $a3
-	pcalau12i	$a3, %pc_hi20(.LCPI1_7)
-	vld	$vr3, $a3, %pc_lo12(.LCPI1_7)
-	pcalau12i	$a3, %pc_hi20(.LCPI1_8)
-	vld	$vr4, $a3, %pc_lo12(.LCPI1_8)
-	vsrl.w	$vr2, $vr1, $vr2
-	vinsgr2vr.w	$vr5, $a2, 0
-	vshuf.w	$vr3, $vr0, $vr5
-	vshuf.d	$vr4, $vr3, $vr2
+	vreplgr2vr.d	$vr3, $a3
+	vsrl.w	$vr3, $vr1, $vr3
+	vinsgr2vr.w	$vr4, $a2, 0
+	vshuf.w	$vr2, $vr0, $vr4
+	vshuf4i.d	$vr3, $vr2, 12
 	vrepli.w	$vr2, 15
-	vand.v	$vr3, $vr4, $vr2
+	vand.v	$vr3, $vr3, $vr2
 	vslti.wu	$vr4, $vr3, 10
 	vrepli.w	$vr5, 48
 	vor.v	$vr6, $vr3, $vr5

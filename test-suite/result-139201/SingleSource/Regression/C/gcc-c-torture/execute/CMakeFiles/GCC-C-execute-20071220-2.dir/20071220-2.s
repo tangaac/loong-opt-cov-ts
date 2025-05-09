@@ -32,11 +32,17 @@ f1:                                     # @f1
 	.type	bar,@function
 bar:                                    # @bar
 # %bb.0:
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(bar.b)
 	addi.d	$a0, $a0, %pc_lo12(bar.b)
-	pcaddu18i	$t8, %call36(baz)
-	jr	$t8
-.Ltmp0:                                 # Address of block that was removed by CodeGen
+	pcaddu18i	$ra, %call36(baz)
+	jirl	$ra, $ra, 0
+.Ltmp0:                                 # Block address taken
+# %bb.1:
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
+	ret
 .Lfunc_end2:
 	.size	bar, .Lfunc_end2-bar
                                         # -- End function
@@ -87,4 +93,5 @@ bar.b:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym bar
 	.addrsig_sym bar.b

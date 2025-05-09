@@ -2729,37 +2729,35 @@ _ZN5State10rezone_allEiiSt6vectorIiSaIiEE: # @_ZN5State10rezone_allEiiSt6vectorI
 	pcaddu18i	$ra, %call36(cpu_timer_start)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 8
-	ld.d	$s4, $s2, 0
+	ld.d	$s3, $s2, 0
 	ld.d	$s2, $fp, 192
-	sub.d	$s3, $a0, $s4
-	st.d	$zero, $sp, 8
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16
-	beq	$a0, $s4, .LBB15_4
+	beq	$a0, $s3, .LBB15_4
 # %bb.1:
+	sub.d	$s4, $a0, $s3
 	addi.w	$a0, $zero, -3
 	lu52i.d	$a0, $a0, 2047
-	bgeu	$s3, $a0, .LBB15_9
+	bgeu	$s4, $a0, .LBB15_9
 # %bb.2:
-	move	$a0, $s3
+	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 8
 	st.d	$a0, $sp, 16
-	add.d	$s5, $a0, $s3
+	add.d	$s5, $a0, $s4
 	ori	$a1, $zero, 5
 	st.d	$s5, $sp, 24
-	bltu	$s3, $a1, .LBB15_10
+	bltu	$s4, $a1, .LBB15_10
 # %bb.3:
-	move	$a1, $s4
-	move	$a2, $s3
+	move	$a1, $s3
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memmove)
 	jirl	$ra, $ra, 0
 	b	.LBB15_5
 .LBB15_4:                               # %.thread6
+	move	$s5, $zero
+	st.d	$zero, $sp, 24
+	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 8
-	st.d	$s3, $sp, 24
-	move	$s5, $s3
 .LBB15_5:                               # %_ZNSt6vectorIiSaIiEEC2ERKS1_.exit
 	st.d	$s5, $sp, 16
 .Ltmp13:
@@ -2822,9 +2820,9 @@ _ZN5State10rezone_allEiiSt6vectorIiSaIiEE: # @_ZN5State10rezone_allEiiSt6vectorI
 	jirl	$ra, $ra, 0
 .LBB15_10:
 	ori	$a1, $zero, 4
-	bne	$s3, $a1, .LBB15_5
+	bne	$s4, $a1, .LBB15_5
 # %bb.11:
-	ld.w	$a1, $s4, 0
+	ld.w	$a1, $s3, 0
 	st.w	$a1, $a0, 0
 	b	.LBB15_5
 .LBB15_12:

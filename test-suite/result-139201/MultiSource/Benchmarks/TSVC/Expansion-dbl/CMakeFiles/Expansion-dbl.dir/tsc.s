@@ -18896,15 +18896,14 @@ s3251:                                  # @s3251
                                         # =>  This Inner Loop Header: Depth=2
 	vldx	$vr1, $a1, $s8
 	vldx	$vr2, $a1, $s0
-	vbsrl.v	$vr3, $vr0, 8
+	vori.b	$vr3, $vr0, 0
+	vldx	$vr4, $a1, $s1
 	vfadd.d	$vr0, $vr1, $vr2
-	vldx	$vr1, $a1, $s1
-	vbsll.v	$vr4, $vr0, 8
-	vor.v	$vr3, $vr4, $vr3
+	vshuf4i.d	$vr3, $vr0, 9
 	vst	$vr0, $a1, 8
-	vfmul.d	$vr2, $vr2, $vr1
-	vstx	$vr2, $a1, $s8
-	vfmul.d	$vr1, $vr1, $vr3
+	vfmul.d	$vr1, $vr2, $vr4
+	vstx	$vr1, $a1, $s8
+	vfmul.d	$vr1, $vr4, $vr3
 	vstx	$vr1, $a1, $s2
 	addi.d	$a0, $a0, -2
 	addi.d	$a1, $a1, 16
@@ -19053,22 +19052,18 @@ s252:                                   # @s252
                                         #   Parent Loop BB10_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a1, $fp, $a0
-	add.d	$a2, $a1, $s0
-	vld	$vr1, $a2, -16
 	add.d	$a2, $a1, $s7
-	vld	$vr2, $a2, 32
-	vld	$vr3, $a2, 48
+	vld	$vr1, $a2, 32
+	vld	$vr2, $a2, 48
+	add.d	$a2, $a1, $s0
+	vld	$vr3, $a2, -16
 	vldx	$vr4, $a1, $s0
-	vfmul.d	$vr1, $vr2, $vr1
-	vbsrl.v	$vr0, $vr0, 8
-	vfmul.d	$vr2, $vr3, $vr4
-	vbsll.v	$vr3, $vr1, 8
-	vor.v	$vr0, $vr3, $vr0
-	vbsrl.v	$vr3, $vr1, 8
-	vbsll.v	$vr4, $vr2, 8
-	vor.v	$vr3, $vr4, $vr3
+	vfmul.d	$vr1, $vr1, $vr3
+	vfmul.d	$vr2, $vr2, $vr4
+	vshuf4i.d	$vr0, $vr1, 9
 	vfadd.d	$vr0, $vr0, $vr1
-	vfadd.d	$vr1, $vr3, $vr2
+	vshuf4i.d	$vr1, $vr2, 9
+	vfadd.d	$vr1, $vr1, $vr2
 	vstx	$vr0, $fp, $a0
 	addi.d	$a0, $a0, 32
 	vst	$vr1, $a1, 16
@@ -19327,7 +19322,7 @@ s254:                                   # @s254
 	ori	$s7, $a1, 2080
 	ori	$s0, $a1, 2096
 	lu52i.d	$a2, $zero, 1022
-	vreplgr2vr.d	$vr5, $a2
+	vreplgr2vr.d	$vr3, $a2
 	ori	$s1, $a1, 2048
 	add.d	$a1, $fp, $s7
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
@@ -19350,7 +19345,7 @@ s254:                                   # @s254
 	ori	$a0, $a0, 2464
 	add.d	$s6, $fp, $a0
 	movgr2fr.d	$fs0, $zero
-	vst	$vr5, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr3, $sp, 16                   # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB12_2:                               # %vector.ph
                                         # =>This Loop Header: Depth=1
@@ -19365,17 +19360,13 @@ s254:                                   # @s254
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a1, $fp, $a0
 	vldx	$vr1, $a1, $s7
-	vbsrl.v	$vr0, $vr0, 8
 	vldx	$vr2, $a1, $s0
-	vbsll.v	$vr3, $vr1, 8
-	vor.v	$vr0, $vr3, $vr0
-	vbsrl.v	$vr3, $vr1, 8
-	vbsll.v	$vr4, $vr2, 8
-	vor.v	$vr3, $vr4, $vr3
+	vshuf4i.d	$vr0, $vr1, 9
 	vfadd.d	$vr0, $vr0, $vr1
-	vfadd.d	$vr1, $vr3, $vr2
-	vfmul.d	$vr0, $vr0, $vr5
-	vfmul.d	$vr1, $vr1, $vr5
+	vshuf4i.d	$vr1, $vr2, 9
+	vfadd.d	$vr1, $vr1, $vr2
+	vfmul.d	$vr0, $vr0, $vr3
+	vfmul.d	$vr1, $vr1, $vr3
 	vstx	$vr0, $fp, $a0
 	addi.d	$a0, $a0, 32
 	vst	$vr1, $a1, 16
@@ -19394,7 +19385,7 @@ s254:                                   # @s254
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(dummy)
 	jirl	$ra, $ra, 0
-	vld	$vr5, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr3, $sp, 16                   # 16-byte Folded Reload
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
 	addi.w	$s8, $s8, 1
@@ -19516,26 +19507,25 @@ s255:                                   # @s255
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	fldx.d	$fa0, $fp, $a0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	fldx.d	$fa1, $fp, $a0
+	fldx.d	$fa2, $fp, $a0
 	move	$a0, $zero
-	vreplvei.d	$vr0, $vr0, 0
-	vreplvei.d	$vr1, $vr1, 0
+	vreplvei.d	$vr1, $vr0, 0
+	vreplvei.d	$vr0, $vr2, 0
 	.p2align	4, , 16
 .LBB13_3:                               # %vector.body
                                         #   Parent Loop BB13_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a1, $fp, $a0
 	vldx	$vr2, $a1, $s7
-	vbsrl.v	$vr3, $vr0, 8
-	vpackod.d	$vr0, $vr0, $vr1
-	vbsll.v	$vr1, $vr2, 8
-	vor.v	$vr1, $vr1, $vr3
-	vfadd.d	$vr3, $vr1, $vr2
-	vfadd.d	$vr0, $vr0, $vr3
-	vfmul.d	$vr0, $vr0, $vr4
-	vstx	$vr0, $fp, $a0
+	vpackod.d	$vr3, $vr1, $vr0
+	vori.b	$vr0, $vr1, 0
+	vshuf4i.d	$vr0, $vr2, 9
+	vfadd.d	$vr1, $vr0, $vr2
+	vfadd.d	$vr1, $vr3, $vr1
+	vfmul.d	$vr1, $vr1, $vr4
+	vstx	$vr1, $fp, $a0
 	addi.d	$a0, $a0, 16
-	vori.b	$vr0, $vr2, 0
+	vori.b	$vr1, $vr2, 0
 	bne	$a0, $s0, .LBB13_3
 # %bb.4:                                # %middle.block
                                         #   in Loop: Header=BB13_2 Depth=1

@@ -138,5 +138,6 @@ p:
 
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
+	.addrsig_sym execute
 	.addrsig_sym buf
 	.addrsig_sym p

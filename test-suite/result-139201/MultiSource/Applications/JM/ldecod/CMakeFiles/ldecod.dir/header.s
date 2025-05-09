@@ -1720,7 +1720,7 @@ decode_poc:                             # @decode_poc
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$t1, $vr0, 0
-	st.w	$t1, $a7, 0
+	vstelm.w	$vr0, $a7, 0, 0
 	bne	$t0, $a4, .LBB4_20
 	b	.LBB4_38
 .LBB4_84:
@@ -1759,7 +1759,7 @@ decode_poc:                             # @decode_poc
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a4, $vr0, 0
-	st.w	$a4, $a7, 0
+	vstelm.w	$vr0, $a7, 0, 0
 	beq	$a5, $a3, .LBB4_47
 	b	.LBB4_44
 .Lfunc_end4:

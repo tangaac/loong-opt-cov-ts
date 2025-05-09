@@ -706,29 +706,25 @@ matgen:                                 # @matgen
 	.p2align	4, , 16
 .LBB1_49:                               # %pred.store.if
                                         #   in Loop: Header=BB1_45 Depth=2
-	vreplvei.w	$vr13, $vr12, 0
-	fst.s	$ft5, $t1, 0
+	vstelm.w	$vr12, $t1, 0, 0
 	vpickve2gr.w	$t3, $vr11, 1
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_47
 .LBB1_50:                               # %pred.store.if721
                                         #   in Loop: Header=BB1_45 Depth=2
-	vreplvei.w	$vr13, $vr12, 1
-	fst.s	$ft5, $t1, 4
+	vstelm.w	$vr12, $t1, 4, 1
 	vpickve2gr.w	$t3, $vr11, 2
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_48
 .LBB1_51:                               # %pred.store.if723
                                         #   in Loop: Header=BB1_45 Depth=2
-	vreplvei.w	$vr13, $vr12, 2
-	fst.s	$ft5, $t1, 8
+	vstelm.w	$vr12, $t1, 8, 2
 	vpickve2gr.w	$t3, $vr11, 3
 	andi	$t3, $t3, 1
 	beqz	$t3, .LBB1_44
 .LBB1_52:                               # %pred.store.if725
                                         #   in Loop: Header=BB1_45 Depth=2
-	vreplvei.w	$vr11, $vr12, 3
-	fst.s	$ft3, $t1, 12
+	vstelm.w	$vr12, $t1, 12, 3
 	b	.LBB1_44
 	.p2align	4, , 16
 .LBB1_53:                               # %middle.block728
@@ -1889,9 +1885,9 @@ matgen:                                 # @matgen
 	.p2align	4, , 16
 .LBB1_192:                              # %vector.body760
                                         # =>This Inner Loop Header: Depth=1
+	add.d	$a7, $a0, $a5
 	vbitrevi.w	$vr0, $vr0, 31
-	vpickve2gr.d	$a7, $vr0, 0
-	stx.d	$a7, $a0, $a5
+	vstelm.d	$vr0, $a7, 0, 0
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 8
 	bnez	$a6, .LBB1_192

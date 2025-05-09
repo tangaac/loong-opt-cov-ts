@@ -13864,8 +13864,8 @@ update_offset_params:                   # @update_offset_params
 	slli.d	$t7, $t4, 1
 	ldx.d	$fp, $a3, $t7
 	ldx.d	$s0, $a5, $t7
-	alsl.d	$t8, $t4, $a3, 1
-	alsl.d	$t7, $t4, $a5, 1
+	alsl.d	$t7, $t4, $a3, 1
+	alsl.d	$t8, $t4, $a5, 1
 	vinsgr2vr.d	$vr3, $fp, 0
 	vinsgr2vr.d	$vr2, $s0, 0
 	move	$fp, $t5
@@ -13895,10 +13895,8 @@ update_offset_params:                   # @update_offset_params
 	bnez	$s1, .LBB21_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB21_10 Depth=1
-	vpickve2gr.d	$fp, $vr3, 0
-	st.d	$fp, $t8, 0
-	vpickve2gr.d	$t8, $vr2, 0
-	st.d	$t8, $t7, 0
+	vstelm.d	$vr3, $t7, 0, 0
+	vstelm.d	$vr2, $t8, 0, 0
 	move	$t7, $t3
 	beq	$t3, $a1, .LBB21_9
 	b	.LBB21_14

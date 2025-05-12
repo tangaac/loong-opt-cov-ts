@@ -8,7 +8,6 @@ BRANCH_NAME=pr-$1-$(date +%s)
 git checkout -b $BRANCH_NAME
 
 
-rm -rf $RESULTS_DIR
 mkdir -p $RESULTS_DIR
 
 cd $TEST_SUITE_DIR

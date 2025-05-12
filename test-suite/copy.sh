@@ -17,6 +17,6 @@ cd $BUILD_TEST_SUITE_DIR
 echo "copy *.s files to $DST"
 fd -es -x cp --parents {} $DST
 
-echo "copy *.ll files to $DST"
-fd -ebc -x llvm-dis {} -o "$DST/{//}/{/.}.ll"
+# echo "copy *.ll files to $DST"
+# fd -ebc -x llvm-dis {} -o "$DST/{//}/{/.}.ll"
 echo "done"

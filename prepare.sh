@@ -9,6 +9,7 @@ LLVM_TEST_SUITE_DIR=$TEST_SUITE_DIR/llvm-test-suite
 
 rm -rf $TEST_SUITE_DIR/after
 rm -rf $TEST_SUITE_DIR/before
+rm -rf $TEST_SUITE_DIR/build-test-suite
 rm -rf $TEST_SUITE_DIR/result-*
 
 git checkout master

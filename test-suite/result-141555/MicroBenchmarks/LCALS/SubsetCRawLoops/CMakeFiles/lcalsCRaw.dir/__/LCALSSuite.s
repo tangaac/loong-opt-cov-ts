@@ -5100,7 +5100,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.99:
 	ld.bu	$a1, $fp, 67
 	b	.LBB8_271
-.LBB8_100:                              # %vector.ph3646
+.LBB8_100:                              # %vector.ph3650
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5120,7 +5120,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_101:                              # %vector.body3651
+.LBB8_101:                              # %vector.body3655
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -5161,7 +5161,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_101
-# %bb.102:                              # %middle.block3657
+# %bb.102:                              # %middle.block3661
 	beq	$a2, $a3, .LBB8_105
 .LBB8_103:                              # %.lr.ph.i184.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -5200,7 +5200,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.107:
 	move	$a1, $zero
 	b	.LBB8_111
-.LBB8_108:                              # %vector.ph3662
+.LBB8_108:                              # %vector.ph3666
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5220,7 +5220,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_109:                              # %vector.body3667
+.LBB8_109:                              # %vector.body3671
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -5261,7 +5261,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_109
-# %bb.110:                              # %middle.block3673
+# %bb.110:                              # %middle.block3677
 	beq	$a1, $a2, .LBB8_113
 .LBB8_111:                              # %.lr.ph.i192.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -5301,7 +5301,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.115:
 	move	$a2, $zero
 	b	.LBB8_119
-.LBB8_116:                              # %vector.ph3678
+.LBB8_116:                              # %vector.ph3682
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5321,7 +5321,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_117:                              # %vector.body3683
+.LBB8_117:                              # %vector.body3687
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -5362,7 +5362,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_117
-# %bb.118:                              # %middle.block3689
+# %bb.118:                              # %middle.block3693
 	beq	$a2, $a3, .LBB8_121
 .LBB8_119:                              # %.lr.ph.i200.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -5401,7 +5401,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.123:
 	move	$a1, $zero
 	b	.LBB8_127
-.LBB8_124:                              # %vector.ph3694
+.LBB8_124:                              # %vector.ph3698
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5421,7 +5421,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_125:                              # %vector.body3699
+.LBB8_125:                              # %vector.body3703
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -5462,7 +5462,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_125
-# %bb.126:                              # %middle.block3705
+# %bb.126:                              # %middle.block3709
 	beq	$a1, $a2, .LBB8_129
 .LBB8_127:                              # %.lr.ph.i208.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -5502,7 +5502,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.131:
 	move	$a2, $zero
 	b	.LBB8_135
-.LBB8_132:                              # %vector.ph3710
+.LBB8_132:                              # %vector.ph3714
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5522,7 +5522,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_133:                              # %vector.body3715
+.LBB8_133:                              # %vector.body3719
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -5563,7 +5563,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_133
-# %bb.134:                              # %middle.block3721
+# %bb.134:                              # %middle.block3725
 	beq	$a2, $a3, .LBB8_137
 .LBB8_135:                              # %.lr.ph.i216.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -5602,7 +5602,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.139:
 	move	$a0, $zero
 	b	.LBB8_143
-.LBB8_140:                              # %vector.ph3726
+.LBB8_140:                              # %vector.ph3730
 	bstrpick.d	$a0, $a2, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5622,7 +5622,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_141:                              # %vector.body3731
+.LBB8_141:                              # %vector.body3735
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -5663,7 +5663,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_141
-# %bb.142:                              # %middle.block3737
+# %bb.142:                              # %middle.block3741
 	beq	$a0, $a2, .LBB8_1187
 .LBB8_143:                              # %.lr.ph.i224.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
@@ -5688,7 +5688,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB8_144
 	b	.LBB8_1187
-.LBB8_145:                              # %vector.ph3390
+.LBB8_145:                              # %vector.ph3394
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5708,7 +5708,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_146:                              # %vector.body3395
+.LBB8_146:                              # %vector.body3399
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -5749,7 +5749,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_146
-# %bb.147:                              # %middle.block3401
+# %bb.147:                              # %middle.block3405
 	beq	$a2, $a3, .LBB8_150
 .LBB8_148:                              # %.lr.ph.i232.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -5788,7 +5788,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.152:
 	move	$a1, $zero
 	b	.LBB8_156
-.LBB8_153:                              # %vector.ph3406
+.LBB8_153:                              # %vector.ph3410
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5808,7 +5808,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_154:                              # %vector.body3411
+.LBB8_154:                              # %vector.body3415
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -5849,7 +5849,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_154
-# %bb.155:                              # %middle.block3417
+# %bb.155:                              # %middle.block3421
 	beq	$a1, $a2, .LBB8_158
 .LBB8_156:                              # %.lr.ph.i240.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -5889,7 +5889,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.160:
 	move	$a2, $zero
 	b	.LBB8_164
-.LBB8_161:                              # %vector.ph3422
+.LBB8_161:                              # %vector.ph3426
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -5909,7 +5909,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_162:                              # %vector.body3427
+.LBB8_162:                              # %vector.body3431
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -5950,7 +5950,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_162
-# %bb.163:                              # %middle.block3433
+# %bb.163:                              # %middle.block3437
 	beq	$a2, $a3, .LBB8_166
 .LBB8_164:                              # %.lr.ph.i248.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -5989,7 +5989,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.168:
 	move	$a1, $zero
 	b	.LBB8_172
-.LBB8_169:                              # %vector.ph3438
+.LBB8_169:                              # %vector.ph3442
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6009,7 +6009,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_170:                              # %vector.body3443
+.LBB8_170:                              # %vector.body3447
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -6050,7 +6050,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_170
-# %bb.171:                              # %middle.block3449
+# %bb.171:                              # %middle.block3453
 	beq	$a1, $a2, .LBB8_174
 .LBB8_172:                              # %.lr.ph.i256.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -6090,7 +6090,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.176:
 	move	$a2, $zero
 	b	.LBB8_180
-.LBB8_177:                              # %vector.ph3454
+.LBB8_177:                              # %vector.ph3458
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6110,7 +6110,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_178:                              # %vector.body3459
+.LBB8_178:                              # %vector.body3463
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -6151,7 +6151,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_178
-# %bb.179:                              # %middle.block3465
+# %bb.179:                              # %middle.block3469
 	beq	$a2, $a3, .LBB8_182
 .LBB8_180:                              # %.lr.ph.i264.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -6190,7 +6190,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.184:
 	move	$a1, $zero
 	b	.LBB8_188
-.LBB8_185:                              # %vector.ph3470
+.LBB8_185:                              # %vector.ph3474
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6210,7 +6210,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_186:                              # %vector.body3475
+.LBB8_186:                              # %vector.body3479
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -6251,7 +6251,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_186
-# %bb.187:                              # %middle.block3481
+# %bb.187:                              # %middle.block3485
 	beq	$a1, $a2, .LBB8_190
 .LBB8_188:                              # %.lr.ph.i272.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -6291,7 +6291,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.192:
 	move	$a2, $zero
 	b	.LBB8_196
-.LBB8_193:                              # %vector.ph3486
+.LBB8_193:                              # %vector.ph3490
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6311,7 +6311,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_194:                              # %vector.body3491
+.LBB8_194:                              # %vector.body3495
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -6352,7 +6352,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_194
-# %bb.195:                              # %middle.block3497
+# %bb.195:                              # %middle.block3501
 	beq	$a2, $a3, .LBB8_198
 .LBB8_196:                              # %.lr.ph.i280.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -6391,7 +6391,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.200:
 	move	$a1, $zero
 	b	.LBB8_204
-.LBB8_201:                              # %vector.ph3502
+.LBB8_201:                              # %vector.ph3506
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6411,7 +6411,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_202:                              # %vector.body3507
+.LBB8_202:                              # %vector.body3511
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -6452,7 +6452,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_202
-# %bb.203:                              # %middle.block3513
+# %bb.203:                              # %middle.block3517
 	beq	$a1, $a2, .LBB8_206
 .LBB8_204:                              # %.lr.ph.i288.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -6492,7 +6492,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.208:
 	move	$a2, $zero
 	b	.LBB8_212
-.LBB8_209:                              # %vector.ph3518
+.LBB8_209:                              # %vector.ph3522
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6512,7 +6512,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_210:                              # %vector.body3523
+.LBB8_210:                              # %vector.body3527
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -6553,7 +6553,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_210
-# %bb.211:                              # %middle.block3529
+# %bb.211:                              # %middle.block3533
 	beq	$a2, $a3, .LBB8_214
 .LBB8_212:                              # %.lr.ph.i296.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -6592,7 +6592,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.216:
 	move	$a1, $zero
 	b	.LBB8_220
-.LBB8_217:                              # %vector.ph3534
+.LBB8_217:                              # %vector.ph3538
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6612,7 +6612,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_218:                              # %vector.body3539
+.LBB8_218:                              # %vector.body3543
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -6653,7 +6653,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_218
-# %bb.219:                              # %middle.block3545
+# %bb.219:                              # %middle.block3549
 	beq	$a1, $a2, .LBB8_222
 .LBB8_220:                              # %.lr.ph.i304.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -6693,7 +6693,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.224:
 	move	$a2, $zero
 	b	.LBB8_228
-.LBB8_225:                              # %vector.ph3550
+.LBB8_225:                              # %vector.ph3554
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6713,7 +6713,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_226:                              # %vector.body3555
+.LBB8_226:                              # %vector.body3559
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -6754,7 +6754,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_226
-# %bb.227:                              # %middle.block3561
+# %bb.227:                              # %middle.block3565
 	beq	$a2, $a3, .LBB8_230
 .LBB8_228:                              # %.lr.ph.i312.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -6793,7 +6793,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.232:
 	move	$a1, $zero
 	b	.LBB8_236
-.LBB8_233:                              # %vector.ph3566
+.LBB8_233:                              # %vector.ph3570
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6813,7 +6813,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_234:                              # %vector.body3571
+.LBB8_234:                              # %vector.body3575
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -6854,7 +6854,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_234
-# %bb.235:                              # %middle.block3577
+# %bb.235:                              # %middle.block3581
 	beq	$a1, $a2, .LBB8_238
 .LBB8_236:                              # %.lr.ph.i320.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -6894,7 +6894,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.240:
 	move	$a2, $zero
 	b	.LBB8_244
-.LBB8_241:                              # %vector.ph3582
+.LBB8_241:                              # %vector.ph3586
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -6914,7 +6914,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_242:                              # %vector.body3587
+.LBB8_242:                              # %vector.body3591
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -6955,7 +6955,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_242
-# %bb.243:                              # %middle.block3593
+# %bb.243:                              # %middle.block3597
 	beq	$a2, $a3, .LBB8_246
 .LBB8_244:                              # %.lr.ph.i328.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -6994,7 +6994,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.248:
 	move	$a1, $zero
 	b	.LBB8_252
-.LBB8_249:                              # %vector.ph3598
+.LBB8_249:                              # %vector.ph3602
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -7014,7 +7014,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_250:                              # %vector.body3603
+.LBB8_250:                              # %vector.body3607
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -7055,7 +7055,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_250
-# %bb.251:                              # %middle.block3609
+# %bb.251:                              # %middle.block3613
 	beq	$a1, $a2, .LBB8_254
 .LBB8_252:                              # %.lr.ph.i336.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -7095,7 +7095,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.256:
 	move	$a2, $zero
 	b	.LBB8_260
-.LBB8_257:                              # %vector.ph3614
+.LBB8_257:                              # %vector.ph3618
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -7115,7 +7115,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_258:                              # %vector.body3619
+.LBB8_258:                              # %vector.body3623
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -7156,7 +7156,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_258
-# %bb.259:                              # %middle.block3625
+# %bb.259:                              # %middle.block3629
 	beq	$a2, $a3, .LBB8_262
 .LBB8_260:                              # %.lr.ph.i344.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -7195,7 +7195,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.264:
 	move	$a0, $zero
 	b	.LBB8_268
-.LBB8_265:                              # %vector.ph3630
+.LBB8_265:                              # %vector.ph3634
 	bstrpick.d	$a0, $a2, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -7215,7 +7215,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_266:                              # %vector.body3635
+.LBB8_266:                              # %vector.body3639
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -7256,7 +7256,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_266
-# %bb.267:                              # %middle.block3641
+# %bb.267:                              # %middle.block3645
 	beq	$a0, $a2, .LBB8_1187
 .LBB8_268:                              # %.lr.ph.i352.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
@@ -8637,7 +8637,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB8_368
 	b	.LBB8_1187
-.LBB8_369:                              # %vector.ph3742
+.LBB8_369:                              # %vector.ph3746
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -8657,7 +8657,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_370:                              # %vector.body3747
+.LBB8_370:                              # %vector.body3751
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -8698,7 +8698,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_370
-# %bb.371:                              # %middle.block3753
+# %bb.371:                              # %middle.block3757
 	beq	$a2, $a3, .LBB8_374
 .LBB8_372:                              # %.lr.ph.i.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -8737,7 +8737,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.376:
 	move	$a1, $zero
 	b	.LBB8_380
-.LBB8_377:                              # %vector.ph3758
+.LBB8_377:                              # %vector.ph3762
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -8757,7 +8757,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_378:                              # %vector.body3763
+.LBB8_378:                              # %vector.body3767
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -8798,7 +8798,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_378
-# %bb.379:                              # %middle.block3769
+# %bb.379:                              # %middle.block3773
 	beq	$a1, $a2, .LBB8_382
 .LBB8_380:                              # %.lr.ph.i168.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -8838,7 +8838,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.384:
 	move	$a0, $zero
 	b	.LBB8_388
-.LBB8_385:                              # %vector.ph3774
+.LBB8_385:                              # %vector.ph3778
 	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -8858,7 +8858,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_386:                              # %vector.body3779
+.LBB8_386:                              # %vector.body3783
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -8899,7 +8899,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_386
-# %bb.387:                              # %middle.block3785
+# %bb.387:                              # %middle.block3789
 	beq	$a0, $a1, .LBB8_1187
 .LBB8_388:                              # %.lr.ph.i176.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
@@ -11232,30 +11232,30 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bstrpick.d	$a3, $a4, 30, 1
 	slli.d	$a3, $a3, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr3, $a6
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a5
 	move	$a7, $a3
 	.p2align	4, , 16
 .LBB8_573:                              # %vector.body3168
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
+	vpickve2gr.w	$t0, $vr3, 0
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$fa7, $t0
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
+	vpickve2gr.w	$t0, $vr3, 1
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$ft0, $t0
 	movfr2gr.d	$t0, $fa7
@@ -11265,15 +11265,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vinsgr2vr.d	$vr8, $t0, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a6, 16
+	vst	$vr8, $a6, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB8_573
@@ -11325,30 +11325,30 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bstrpick.d	$a2, $a3, 30, 1
 	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr4, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr5, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr6, $a6
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr3, $a5
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr5, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr6, $a5
+	move	$a5, $a4
 	move	$a6, $a2
 	.p2align	4, , 16
 .LBB8_581:                              # %vector.body3185
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a7, $vr4, 0
+	vpickve2gr.w	$a7, $vr3, 0
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a7, $vr4, 1
+	vpickve2gr.w	$a7, $vr3, 1
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$ft0, $a7
 	movfr2gr.d	$a7, $fa7
@@ -11358,19 +11358,19 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a5, 16
+	vst	$vr8, $a5, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_581
-# %bb.582:                              # %middle.block3190
+# %bb.582:                              # %middle.block3191
 	beq	$a2, $a3, .LBB8_585
 .LBB8_583:                              # %.lr.ph.i441.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -11414,34 +11414,34 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.587:
 	move	$a3, $zero
 	b	.LBB8_591
-.LBB8_588:                              # %vector.ph3195
+.LBB8_588:                              # %vector.ph3196
 	bstrpick.d	$a3, $a4, 30, 1
 	slli.d	$a3, $a3, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr3, $a6
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a5
 	move	$a7, $a3
 	.p2align	4, , 16
-.LBB8_589:                              # %vector.body3202
+.LBB8_589:                              # %vector.body3203
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
+	vpickve2gr.w	$t0, $vr3, 0
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$fa7, $t0
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
+	vpickve2gr.w	$t0, $vr3, 1
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$ft0, $t0
 	movfr2gr.d	$t0, $fa7
@@ -11451,19 +11451,19 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vinsgr2vr.d	$vr8, $t0, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a6, 16
+	vst	$vr8, $a6, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB8_589
-# %bb.590:                              # %middle.block3207
+# %bb.590:                              # %middle.block3209
 	beq	$a3, $a4, .LBB8_593
 .LBB8_591:                              # %.lr.ph.i452.preheader
 	pcalau12i	$a6, %pc_hi20(.LCPI8_1)
@@ -11507,34 +11507,34 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.595:
 	move	$a2, $zero
 	b	.LBB8_599
-.LBB8_596:                              # %vector.ph3212
+.LBB8_596:                              # %vector.ph3214
 	bstrpick.d	$a2, $a3, 30, 1
 	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr4, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr5, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr6, $a6
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr3, $a5
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr5, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr6, $a5
+	move	$a5, $a4
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_597:                              # %vector.body3219
+.LBB8_597:                              # %vector.body3221
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a7, $vr4, 0
+	vpickve2gr.w	$a7, $vr3, 0
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a7, $vr4, 1
+	vpickve2gr.w	$a7, $vr3, 1
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$ft0, $a7
 	movfr2gr.d	$a7, $fa7
@@ -11544,19 +11544,19 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a5, 16
+	vst	$vr8, $a5, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_597
-# %bb.598:                              # %middle.block3224
+# %bb.598:                              # %middle.block3227
 	beq	$a2, $a3, .LBB8_601
 .LBB8_599:                              # %.lr.ph.i463.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -11600,34 +11600,34 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.603:
 	move	$a0, $zero
 	b	.LBB8_607
-.LBB8_604:                              # %vector.ph3229
+.LBB8_604:                              # %vector.ph3232
 	bstrpick.d	$a0, $a2, 30, 1
 	slli.d	$a0, $a0, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a3, $a1, 16
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 1
-	vreplgr2vr.d	$vr4, $a4
-	lu12i.w	$a4, -419431
-	ori	$a4, $a4, 2458
-	lu32i.d	$a4, 104857
-	lu52i.d	$a4, $a4, 1023
-	vreplgr2vr.d	$vr5, $a4
-	lu12i.w	$a4, -307024
-	ori	$a4, $a4, 3880
-	lu32i.d	$a4, 129446
-	lu52i.d	$a4, $a4, 1023
-	vreplgr2vr.d	$vr6, $a4
+	ori	$a3, $zero, 0
+	lu32i.d	$a3, 1
+	vreplgr2vr.d	$vr3, $a3
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a3, -419431
+	ori	$a3, $a3, 2458
+	lu32i.d	$a3, 104857
+	lu52i.d	$a3, $a3, 1023
+	vreplgr2vr.d	$vr5, $a3
+	lu12i.w	$a3, -307024
+	ori	$a3, $a3, 3880
+	lu32i.d	$a3, 129446
+	lu52i.d	$a3, $a3, 1023
+	vreplgr2vr.d	$vr6, $a3
+	move	$a3, $a1
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_605:                              # %vector.body3236
+.LBB8_605:                              # %vector.body3239
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a5, $vr4, 0
+	vpickve2gr.w	$a5, $vr3, 0
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$fa7, $a5
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a5, $vr4, 1
+	vpickve2gr.w	$a5, $vr3, 1
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$ft0, $a5
 	movfr2gr.d	$a5, $fa7
@@ -11637,19 +11637,19 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vinsgr2vr.d	$vr8, $a5, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a3, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a3, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a3, 16
+	vst	$vr8, $a3, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a4, $a4, -2
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_605
-# %bb.606:                              # %middle.block3241
+# %bb.606:                              # %middle.block3245
 	beq	$a0, $a2, .LBB8_1187
 .LBB8_607:                              # %.lr.ph.i474.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
@@ -12739,7 +12739,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB8_687
 	b	.LBB8_1187
-.LBB8_688:                              # %vector.ph3326
+.LBB8_688:                              # %vector.ph3330
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -12759,7 +12759,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_689:                              # %vector.body3331
+.LBB8_689:                              # %vector.body3335
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -12800,7 +12800,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_689
-# %bb.690:                              # %middle.block3337
+# %bb.690:                              # %middle.block3341
 	beq	$a2, $a3, .LBB8_693
 .LBB8_691:                              # %.lr.ph.i360.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -12839,7 +12839,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.695:
 	move	$a1, $zero
 	b	.LBB8_699
-.LBB8_696:                              # %vector.ph3342
+.LBB8_696:                              # %vector.ph3346
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -12859,7 +12859,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_697:                              # %vector.body3347
+.LBB8_697:                              # %vector.body3351
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -12900,7 +12900,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_697
-# %bb.698:                              # %middle.block3353
+# %bb.698:                              # %middle.block3357
 	beq	$a1, $a2, .LBB8_701
 .LBB8_699:                              # %.lr.ph.i368.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -12940,7 +12940,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.703:
 	move	$a2, $zero
 	b	.LBB8_707
-.LBB8_704:                              # %vector.ph3358
+.LBB8_704:                              # %vector.ph3362
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -12960,7 +12960,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_705:                              # %vector.body3363
+.LBB8_705:                              # %vector.body3367
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -13001,7 +13001,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_705
-# %bb.706:                              # %middle.block3369
+# %bb.706:                              # %middle.block3373
 	beq	$a2, $a3, .LBB8_709
 .LBB8_707:                              # %.lr.ph.i376.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -13040,7 +13040,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.711:
 	move	$a0, $zero
 	b	.LBB8_715
-.LBB8_712:                              # %vector.ph3374
+.LBB8_712:                              # %vector.ph3378
 	bstrpick.d	$a0, $a2, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -13060,7 +13060,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_713:                              # %vector.body3379
+.LBB8_713:                              # %vector.body3383
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -13101,7 +13101,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_713
-# %bb.714:                              # %middle.block3385
+# %bb.714:                              # %middle.block3389
 	beq	$a0, $a2, .LBB8_1187
 .LBB8_715:                              # %.lr.ph.i384.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
@@ -13699,7 +13699,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB8_758
 	b	.LBB8_1187
-.LBB8_759:                              # %vector.ph3246
+.LBB8_759:                              # %vector.ph3250
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -13719,7 +13719,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_760:                              # %vector.body3251
+.LBB8_760:                              # %vector.body3255
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -13760,7 +13760,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_760
-# %bb.761:                              # %middle.block3257
+# %bb.761:                              # %middle.block3261
 	beq	$a2, $a3, .LBB8_764
 .LBB8_762:                              # %.lr.ph.i392.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -13799,7 +13799,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.766:
 	move	$a1, $zero
 	b	.LBB8_770
-.LBB8_767:                              # %vector.ph3262
+.LBB8_767:                              # %vector.ph3266
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -13819,7 +13819,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_768:                              # %vector.body3267
+.LBB8_768:                              # %vector.body3271
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -13860,7 +13860,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_768
-# %bb.769:                              # %middle.block3273
+# %bb.769:                              # %middle.block3277
 	beq	$a1, $a2, .LBB8_772
 .LBB8_770:                              # %.lr.ph.i400.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -13900,7 +13900,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.774:
 	move	$a2, $zero
 	b	.LBB8_778
-.LBB8_775:                              # %vector.ph3278
+.LBB8_775:                              # %vector.ph3282
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -13920,7 +13920,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB8_776:                              # %vector.body3283
+.LBB8_776:                              # %vector.body3287
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -13961,7 +13961,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB8_776
-# %bb.777:                              # %middle.block3289
+# %bb.777:                              # %middle.block3293
 	beq	$a2, $a3, .LBB8_780
 .LBB8_778:                              # %.lr.ph.i408.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI8_1)
@@ -14000,7 +14000,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.782:
 	move	$a1, $zero
 	b	.LBB8_786
-.LBB8_783:                              # %vector.ph3294
+.LBB8_783:                              # %vector.ph3298
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -14020,7 +14020,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB8_784:                              # %vector.body3299
+.LBB8_784:                              # %vector.body3303
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -14061,7 +14061,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB8_784
-# %bb.785:                              # %middle.block3305
+# %bb.785:                              # %middle.block3309
 	beq	$a1, $a2, .LBB8_788
 .LBB8_786:                              # %.lr.ph.i416.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI8_1)
@@ -14101,7 +14101,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 # %bb.790:
 	move	$a0, $zero
 	b	.LBB8_794
-.LBB8_791:                              # %vector.ph3310
+.LBB8_791:                              # %vector.ph3314
 	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -14121,7 +14121,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB8_792:                              # %vector.body3315
+.LBB8_792:                              # %vector.body3319
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -14162,7 +14162,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB8_792
-# %bb.793:                              # %middle.block3321
+# %bb.793:                              # %middle.block3325
 	beq	$a0, $a1, .LBB8_1187
 .LBB8_794:                              # %.lr.ph.i424.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
@@ -20039,7 +20039,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.99:
 	ld.bu	$a1, $fp, 67
 	b	.LBB9_271
-.LBB9_100:                              # %vector.ph3645
+.LBB9_100:                              # %vector.ph3649
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20059,7 +20059,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_101:                              # %vector.body3650
+.LBB9_101:                              # %vector.body3654
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -20100,7 +20100,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_101
-# %bb.102:                              # %middle.block3656
+# %bb.102:                              # %middle.block3660
 	beq	$a2, $a3, .LBB9_105
 .LBB9_103:                              # %.lr.ph.i183.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -20139,7 +20139,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.107:
 	move	$a1, $zero
 	b	.LBB9_111
-.LBB9_108:                              # %vector.ph3661
+.LBB9_108:                              # %vector.ph3665
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20159,7 +20159,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_109:                              # %vector.body3666
+.LBB9_109:                              # %vector.body3670
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -20200,7 +20200,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_109
-# %bb.110:                              # %middle.block3672
+# %bb.110:                              # %middle.block3676
 	beq	$a1, $a2, .LBB9_113
 .LBB9_111:                              # %.lr.ph.i191.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -20240,7 +20240,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.115:
 	move	$a2, $zero
 	b	.LBB9_119
-.LBB9_116:                              # %vector.ph3677
+.LBB9_116:                              # %vector.ph3681
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20260,7 +20260,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_117:                              # %vector.body3682
+.LBB9_117:                              # %vector.body3686
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -20301,7 +20301,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_117
-# %bb.118:                              # %middle.block3688
+# %bb.118:                              # %middle.block3692
 	beq	$a2, $a3, .LBB9_121
 .LBB9_119:                              # %.lr.ph.i199.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -20340,7 +20340,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.123:
 	move	$a1, $zero
 	b	.LBB9_127
-.LBB9_124:                              # %vector.ph3693
+.LBB9_124:                              # %vector.ph3697
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20360,7 +20360,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_125:                              # %vector.body3698
+.LBB9_125:                              # %vector.body3702
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -20401,7 +20401,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_125
-# %bb.126:                              # %middle.block3704
+# %bb.126:                              # %middle.block3708
 	beq	$a1, $a2, .LBB9_129
 .LBB9_127:                              # %.lr.ph.i207.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -20441,7 +20441,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.131:
 	move	$a2, $zero
 	b	.LBB9_135
-.LBB9_132:                              # %vector.ph3709
+.LBB9_132:                              # %vector.ph3713
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20461,7 +20461,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_133:                              # %vector.body3714
+.LBB9_133:                              # %vector.body3718
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -20502,7 +20502,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_133
-# %bb.134:                              # %middle.block3720
+# %bb.134:                              # %middle.block3724
 	beq	$a2, $a3, .LBB9_137
 .LBB9_135:                              # %.lr.ph.i215.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -20541,7 +20541,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.139:
 	move	$a0, $zero
 	b	.LBB9_143
-.LBB9_140:                              # %vector.ph3725
+.LBB9_140:                              # %vector.ph3729
 	bstrpick.d	$a0, $a2, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20561,7 +20561,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB9_141:                              # %vector.body3730
+.LBB9_141:                              # %vector.body3734
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -20602,7 +20602,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_141
-# %bb.142:                              # %middle.block3736
+# %bb.142:                              # %middle.block3740
 	beq	$a0, $a2, .LBB9_1187
 .LBB9_143:                              # %.lr.ph.i223.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
@@ -20627,7 +20627,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB9_144
 	b	.LBB9_1187
-.LBB9_145:                              # %vector.ph3389
+.LBB9_145:                              # %vector.ph3393
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20647,7 +20647,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_146:                              # %vector.body3394
+.LBB9_146:                              # %vector.body3398
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -20688,7 +20688,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_146
-# %bb.147:                              # %middle.block3400
+# %bb.147:                              # %middle.block3404
 	beq	$a2, $a3, .LBB9_150
 .LBB9_148:                              # %.lr.ph.i231.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -20727,7 +20727,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.152:
 	move	$a1, $zero
 	b	.LBB9_156
-.LBB9_153:                              # %vector.ph3405
+.LBB9_153:                              # %vector.ph3409
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20747,7 +20747,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_154:                              # %vector.body3410
+.LBB9_154:                              # %vector.body3414
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -20788,7 +20788,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_154
-# %bb.155:                              # %middle.block3416
+# %bb.155:                              # %middle.block3420
 	beq	$a1, $a2, .LBB9_158
 .LBB9_156:                              # %.lr.ph.i239.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -20828,7 +20828,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.160:
 	move	$a2, $zero
 	b	.LBB9_164
-.LBB9_161:                              # %vector.ph3421
+.LBB9_161:                              # %vector.ph3425
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20848,7 +20848,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_162:                              # %vector.body3426
+.LBB9_162:                              # %vector.body3430
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -20889,7 +20889,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_162
-# %bb.163:                              # %middle.block3432
+# %bb.163:                              # %middle.block3436
 	beq	$a2, $a3, .LBB9_166
 .LBB9_164:                              # %.lr.ph.i247.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -20928,7 +20928,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.168:
 	move	$a1, $zero
 	b	.LBB9_172
-.LBB9_169:                              # %vector.ph3437
+.LBB9_169:                              # %vector.ph3441
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -20948,7 +20948,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_170:                              # %vector.body3442
+.LBB9_170:                              # %vector.body3446
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -20989,7 +20989,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_170
-# %bb.171:                              # %middle.block3448
+# %bb.171:                              # %middle.block3452
 	beq	$a1, $a2, .LBB9_174
 .LBB9_172:                              # %.lr.ph.i255.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -21029,7 +21029,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.176:
 	move	$a2, $zero
 	b	.LBB9_180
-.LBB9_177:                              # %vector.ph3453
+.LBB9_177:                              # %vector.ph3457
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21049,7 +21049,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_178:                              # %vector.body3458
+.LBB9_178:                              # %vector.body3462
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -21090,7 +21090,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_178
-# %bb.179:                              # %middle.block3464
+# %bb.179:                              # %middle.block3468
 	beq	$a2, $a3, .LBB9_182
 .LBB9_180:                              # %.lr.ph.i263.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -21129,7 +21129,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.184:
 	move	$a1, $zero
 	b	.LBB9_188
-.LBB9_185:                              # %vector.ph3469
+.LBB9_185:                              # %vector.ph3473
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21149,7 +21149,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_186:                              # %vector.body3474
+.LBB9_186:                              # %vector.body3478
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -21190,7 +21190,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_186
-# %bb.187:                              # %middle.block3480
+# %bb.187:                              # %middle.block3484
 	beq	$a1, $a2, .LBB9_190
 .LBB9_188:                              # %.lr.ph.i271.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -21230,7 +21230,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.192:
 	move	$a2, $zero
 	b	.LBB9_196
-.LBB9_193:                              # %vector.ph3485
+.LBB9_193:                              # %vector.ph3489
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21250,7 +21250,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_194:                              # %vector.body3490
+.LBB9_194:                              # %vector.body3494
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -21291,7 +21291,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_194
-# %bb.195:                              # %middle.block3496
+# %bb.195:                              # %middle.block3500
 	beq	$a2, $a3, .LBB9_198
 .LBB9_196:                              # %.lr.ph.i279.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -21330,7 +21330,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.200:
 	move	$a1, $zero
 	b	.LBB9_204
-.LBB9_201:                              # %vector.ph3501
+.LBB9_201:                              # %vector.ph3505
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21350,7 +21350,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_202:                              # %vector.body3506
+.LBB9_202:                              # %vector.body3510
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -21391,7 +21391,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_202
-# %bb.203:                              # %middle.block3512
+# %bb.203:                              # %middle.block3516
 	beq	$a1, $a2, .LBB9_206
 .LBB9_204:                              # %.lr.ph.i287.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -21431,7 +21431,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.208:
 	move	$a2, $zero
 	b	.LBB9_212
-.LBB9_209:                              # %vector.ph3517
+.LBB9_209:                              # %vector.ph3521
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21451,7 +21451,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_210:                              # %vector.body3522
+.LBB9_210:                              # %vector.body3526
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -21492,7 +21492,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_210
-# %bb.211:                              # %middle.block3528
+# %bb.211:                              # %middle.block3532
 	beq	$a2, $a3, .LBB9_214
 .LBB9_212:                              # %.lr.ph.i295.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -21531,7 +21531,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.216:
 	move	$a1, $zero
 	b	.LBB9_220
-.LBB9_217:                              # %vector.ph3533
+.LBB9_217:                              # %vector.ph3537
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21551,7 +21551,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_218:                              # %vector.body3538
+.LBB9_218:                              # %vector.body3542
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -21592,7 +21592,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_218
-# %bb.219:                              # %middle.block3544
+# %bb.219:                              # %middle.block3548
 	beq	$a1, $a2, .LBB9_222
 .LBB9_220:                              # %.lr.ph.i303.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -21632,7 +21632,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.224:
 	move	$a2, $zero
 	b	.LBB9_228
-.LBB9_225:                              # %vector.ph3549
+.LBB9_225:                              # %vector.ph3553
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21652,7 +21652,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_226:                              # %vector.body3554
+.LBB9_226:                              # %vector.body3558
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -21693,7 +21693,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_226
-# %bb.227:                              # %middle.block3560
+# %bb.227:                              # %middle.block3564
 	beq	$a2, $a3, .LBB9_230
 .LBB9_228:                              # %.lr.ph.i311.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -21732,7 +21732,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.232:
 	move	$a1, $zero
 	b	.LBB9_236
-.LBB9_233:                              # %vector.ph3565
+.LBB9_233:                              # %vector.ph3569
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21752,7 +21752,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_234:                              # %vector.body3570
+.LBB9_234:                              # %vector.body3574
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -21793,7 +21793,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_234
-# %bb.235:                              # %middle.block3576
+# %bb.235:                              # %middle.block3580
 	beq	$a1, $a2, .LBB9_238
 .LBB9_236:                              # %.lr.ph.i319.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -21833,7 +21833,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.240:
 	move	$a2, $zero
 	b	.LBB9_244
-.LBB9_241:                              # %vector.ph3581
+.LBB9_241:                              # %vector.ph3585
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21853,7 +21853,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_242:                              # %vector.body3586
+.LBB9_242:                              # %vector.body3590
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -21894,7 +21894,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_242
-# %bb.243:                              # %middle.block3592
+# %bb.243:                              # %middle.block3596
 	beq	$a2, $a3, .LBB9_246
 .LBB9_244:                              # %.lr.ph.i327.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -21933,7 +21933,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.248:
 	move	$a1, $zero
 	b	.LBB9_252
-.LBB9_249:                              # %vector.ph3597
+.LBB9_249:                              # %vector.ph3601
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -21953,7 +21953,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_250:                              # %vector.body3602
+.LBB9_250:                              # %vector.body3606
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -21994,7 +21994,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_250
-# %bb.251:                              # %middle.block3608
+# %bb.251:                              # %middle.block3612
 	beq	$a1, $a2, .LBB9_254
 .LBB9_252:                              # %.lr.ph.i335.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -22034,7 +22034,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.256:
 	move	$a2, $zero
 	b	.LBB9_260
-.LBB9_257:                              # %vector.ph3613
+.LBB9_257:                              # %vector.ph3617
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -22054,7 +22054,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_258:                              # %vector.body3618
+.LBB9_258:                              # %vector.body3622
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -22095,7 +22095,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_258
-# %bb.259:                              # %middle.block3624
+# %bb.259:                              # %middle.block3628
 	beq	$a2, $a3, .LBB9_262
 .LBB9_260:                              # %.lr.ph.i343.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -22134,7 +22134,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.264:
 	move	$a0, $zero
 	b	.LBB9_268
-.LBB9_265:                              # %vector.ph3629
+.LBB9_265:                              # %vector.ph3633
 	bstrpick.d	$a0, $a2, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -22154,7 +22154,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB9_266:                              # %vector.body3634
+.LBB9_266:                              # %vector.body3638
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -22195,7 +22195,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_266
-# %bb.267:                              # %middle.block3640
+# %bb.267:                              # %middle.block3644
 	beq	$a0, $a2, .LBB9_1187
 .LBB9_268:                              # %.lr.ph.i351.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
@@ -23576,7 +23576,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_368
 	b	.LBB9_1187
-.LBB9_369:                              # %vector.ph3741
+.LBB9_369:                              # %vector.ph3745
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -23596,7 +23596,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_370:                              # %vector.body3746
+.LBB9_370:                              # %vector.body3750
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -23637,7 +23637,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_370
-# %bb.371:                              # %middle.block3752
+# %bb.371:                              # %middle.block3756
 	beq	$a2, $a3, .LBB9_374
 .LBB9_372:                              # %.lr.ph.i.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -23676,7 +23676,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.376:
 	move	$a1, $zero
 	b	.LBB9_380
-.LBB9_377:                              # %vector.ph3757
+.LBB9_377:                              # %vector.ph3761
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -23696,7 +23696,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_378:                              # %vector.body3762
+.LBB9_378:                              # %vector.body3766
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -23737,7 +23737,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_378
-# %bb.379:                              # %middle.block3768
+# %bb.379:                              # %middle.block3772
 	beq	$a1, $a2, .LBB9_382
 .LBB9_380:                              # %.lr.ph.i167.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -23777,7 +23777,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.384:
 	move	$a0, $zero
 	b	.LBB9_388
-.LBB9_385:                              # %vector.ph3773
+.LBB9_385:                              # %vector.ph3777
 	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -23797,7 +23797,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB9_386:                              # %vector.body3778
+.LBB9_386:                              # %vector.body3782
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -23838,7 +23838,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_386
-# %bb.387:                              # %middle.block3784
+# %bb.387:                              # %middle.block3788
 	beq	$a0, $a1, .LBB9_1187
 .LBB9_388:                              # %.lr.ph.i175.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
@@ -26171,30 +26171,30 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bstrpick.d	$a3, $a4, 30, 1
 	slli.d	$a3, $a3, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr3, $a6
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a5
 	move	$a7, $a3
 	.p2align	4, , 16
 .LBB9_573:                              # %vector.body3167
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
+	vpickve2gr.w	$t0, $vr3, 0
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$fa7, $t0
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
+	vpickve2gr.w	$t0, $vr3, 1
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$ft0, $t0
 	movfr2gr.d	$t0, $fa7
@@ -26204,15 +26204,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vinsgr2vr.d	$vr8, $t0, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a6, 16
+	vst	$vr8, $a6, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB9_573
@@ -26264,30 +26264,30 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bstrpick.d	$a2, $a3, 30, 1
 	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr4, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr5, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr6, $a6
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr3, $a5
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr5, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr6, $a5
+	move	$a5, $a4
 	move	$a6, $a2
 	.p2align	4, , 16
 .LBB9_581:                              # %vector.body3184
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a7, $vr4, 0
+	vpickve2gr.w	$a7, $vr3, 0
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a7, $vr4, 1
+	vpickve2gr.w	$a7, $vr3, 1
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$ft0, $a7
 	movfr2gr.d	$a7, $fa7
@@ -26297,19 +26297,19 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a5, 16
+	vst	$vr8, $a5, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_581
-# %bb.582:                              # %middle.block3189
+# %bb.582:                              # %middle.block3190
 	beq	$a2, $a3, .LBB9_585
 .LBB9_583:                              # %.lr.ph.i440.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -26353,34 +26353,34 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.587:
 	move	$a3, $zero
 	b	.LBB9_591
-.LBB9_588:                              # %vector.ph3194
+.LBB9_588:                              # %vector.ph3195
 	bstrpick.d	$a3, $a4, 30, 1
 	slli.d	$a3, $a3, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a6, $a5, 16
-	ori	$a7, $zero, 0
-	lu32i.d	$a7, 1
-	vreplgr2vr.d	$vr4, $a7
-	lu12i.w	$a7, -419431
-	ori	$a7, $a7, 2458
-	lu32i.d	$a7, 104857
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr5, $a7
-	lu12i.w	$a7, -307024
-	ori	$a7, $a7, 3880
-	lu32i.d	$a7, 129446
-	lu52i.d	$a7, $a7, 1023
-	vreplgr2vr.d	$vr6, $a7
+	ori	$a6, $zero, 0
+	lu32i.d	$a6, 1
+	vreplgr2vr.d	$vr3, $a6
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a6, -419431
+	ori	$a6, $a6, 2458
+	lu32i.d	$a6, 104857
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr5, $a6
+	lu12i.w	$a6, -307024
+	ori	$a6, $a6, 3880
+	lu32i.d	$a6, 129446
+	lu52i.d	$a6, $a6, 1023
+	vreplgr2vr.d	$vr6, $a6
+	move	$a6, $a5
 	move	$a7, $a3
 	.p2align	4, , 16
-.LBB9_589:                              # %vector.body3201
+.LBB9_589:                              # %vector.body3202
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$t0, $vr4, 0
+	vpickve2gr.w	$t0, $vr3, 0
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$fa7, $t0
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$t0, $vr4, 1
+	vpickve2gr.w	$t0, $vr3, 1
 	bstrpick.d	$t0, $t0, 31, 0
 	movgr2fr.d	$ft0, $t0
 	movfr2gr.d	$t0, $fa7
@@ -26390,19 +26390,19 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vinsgr2vr.d	$vr8, $t0, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a6, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a6, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a6, 16
+	vst	$vr8, $a6, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a7, $a7, -2
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB9_589
-# %bb.590:                              # %middle.block3206
+# %bb.590:                              # %middle.block3208
 	beq	$a3, $a4, .LBB9_593
 .LBB9_591:                              # %.lr.ph.i451.preheader
 	pcalau12i	$a6, %pc_hi20(.LCPI9_1)
@@ -26446,34 +26446,34 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.595:
 	move	$a2, $zero
 	b	.LBB9_599
-.LBB9_596:                              # %vector.ph3211
+.LBB9_596:                              # %vector.ph3213
 	bstrpick.d	$a2, $a3, 30, 1
 	slli.d	$a2, $a2, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a5, $a4, 16
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	vreplgr2vr.d	$vr4, $a6
-	lu12i.w	$a6, -419431
-	ori	$a6, $a6, 2458
-	lu32i.d	$a6, 104857
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr5, $a6
-	lu12i.w	$a6, -307024
-	ori	$a6, $a6, 3880
-	lu32i.d	$a6, 129446
-	lu52i.d	$a6, $a6, 1023
-	vreplgr2vr.d	$vr6, $a6
+	ori	$a5, $zero, 0
+	lu32i.d	$a5, 1
+	vreplgr2vr.d	$vr3, $a5
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a5, -419431
+	ori	$a5, $a5, 2458
+	lu32i.d	$a5, 104857
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr5, $a5
+	lu12i.w	$a5, -307024
+	ori	$a5, $a5, 3880
+	lu32i.d	$a5, 129446
+	lu52i.d	$a5, $a5, 1023
+	vreplgr2vr.d	$vr6, $a5
+	move	$a5, $a4
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_597:                              # %vector.body3218
+.LBB9_597:                              # %vector.body3220
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a7, $vr4, 0
+	vpickve2gr.w	$a7, $vr3, 0
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$fa7, $a7
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a7, $vr4, 1
+	vpickve2gr.w	$a7, $vr3, 1
 	bstrpick.d	$a7, $a7, 31, 0
 	movgr2fr.d	$ft0, $a7
 	movfr2gr.d	$a7, $fa7
@@ -26483,19 +26483,19 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vinsgr2vr.d	$vr8, $a7, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a5, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a5, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a5, 16
+	vst	$vr8, $a5, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_597
-# %bb.598:                              # %middle.block3223
+# %bb.598:                              # %middle.block3226
 	beq	$a2, $a3, .LBB9_601
 .LBB9_599:                              # %.lr.ph.i462.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -26539,34 +26539,34 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.603:
 	move	$a0, $zero
 	b	.LBB9_607
-.LBB9_604:                              # %vector.ph3228
+.LBB9_604:                              # %vector.ph3231
 	bstrpick.d	$a0, $a2, 30, 1
 	slli.d	$a0, $a0, 1
 	vreplvei.d	$vr2, $vr0, 0
-	vreplvei.d	$vr3, $vr1, 0
-	addi.d	$a3, $a1, 16
-	ori	$a4, $zero, 0
-	lu32i.d	$a4, 1
-	vreplgr2vr.d	$vr4, $a4
-	lu12i.w	$a4, -419431
-	ori	$a4, $a4, 2458
-	lu32i.d	$a4, 104857
-	lu52i.d	$a4, $a4, 1023
-	vreplgr2vr.d	$vr5, $a4
-	lu12i.w	$a4, -307024
-	ori	$a4, $a4, 3880
-	lu32i.d	$a4, 129446
-	lu52i.d	$a4, $a4, 1023
-	vreplgr2vr.d	$vr6, $a4
+	ori	$a3, $zero, 0
+	lu32i.d	$a3, 1
+	vreplgr2vr.d	$vr3, $a3
+	vreplvei.d	$vr4, $vr1, 0
+	lu12i.w	$a3, -419431
+	ori	$a3, $a3, 2458
+	lu32i.d	$a3, 104857
+	lu52i.d	$a3, $a3, 1023
+	vreplgr2vr.d	$vr5, $a3
+	lu12i.w	$a3, -307024
+	ori	$a3, $a3, 3880
+	lu32i.d	$a3, 129446
+	lu52i.d	$a3, $a3, 1023
+	vreplgr2vr.d	$vr6, $a3
+	move	$a3, $a1
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB9_605:                              # %vector.body3235
+.LBB9_605:                              # %vector.body3238
                                         # =>This Inner Loop Header: Depth=1
-	vpickve2gr.w	$a5, $vr4, 0
+	vpickve2gr.w	$a5, $vr3, 0
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$fa7, $a5
 	ffint.d.l	$fa7, $fa7
-	vpickve2gr.w	$a5, $vr4, 1
+	vpickve2gr.w	$a5, $vr3, 1
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$ft0, $a5
 	movfr2gr.d	$a5, $fa7
@@ -26576,19 +26576,19 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vinsgr2vr.d	$vr8, $a5, 1
 	vfadd.d	$vr7, $vr8, $vr5
 	vfmul.d	$vr9, $vr2, $vr7
-	vfmul.d	$vr7, $vr3, $vr7
+	vfmul.d	$vr7, $vr4, $vr7
 	vfadd.d	$vr8, $vr8, $vr6
 	vfdiv.d	$vr9, $vr9, $vr8
 	vfdiv.d	$vr7, $vr7, $vr8
 	vpackev.d	$vr8, $vr7, $vr9
-	vst	$vr8, $a3, -16
 	vpackod.d	$vr7, $vr7, $vr9
-	vst	$vr7, $a3, 0
-	vaddi.wu	$vr4, $vr4, 2
+	vst	$vr7, $a3, 16
+	vst	$vr8, $a3, 0
+	vaddi.wu	$vr3, $vr3, 2
 	addi.d	$a4, $a4, -2
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_605
-# %bb.606:                              # %middle.block3240
+# %bb.606:                              # %middle.block3244
 	beq	$a0, $a2, .LBB9_1187
 .LBB9_607:                              # %.lr.ph.i473.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
@@ -27678,7 +27678,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB9_687
 	b	.LBB9_1187
-.LBB9_688:                              # %vector.ph3325
+.LBB9_688:                              # %vector.ph3329
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -27698,7 +27698,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_689:                              # %vector.body3330
+.LBB9_689:                              # %vector.body3334
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -27739,7 +27739,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_689
-# %bb.690:                              # %middle.block3336
+# %bb.690:                              # %middle.block3340
 	beq	$a2, $a3, .LBB9_693
 .LBB9_691:                              # %.lr.ph.i359.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -27778,7 +27778,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.695:
 	move	$a1, $zero
 	b	.LBB9_699
-.LBB9_696:                              # %vector.ph3341
+.LBB9_696:                              # %vector.ph3345
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -27798,7 +27798,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_697:                              # %vector.body3346
+.LBB9_697:                              # %vector.body3350
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -27839,7 +27839,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_697
-# %bb.698:                              # %middle.block3352
+# %bb.698:                              # %middle.block3356
 	beq	$a1, $a2, .LBB9_701
 .LBB9_699:                              # %.lr.ph.i367.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -27879,7 +27879,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.703:
 	move	$a2, $zero
 	b	.LBB9_707
-.LBB9_704:                              # %vector.ph3357
+.LBB9_704:                              # %vector.ph3361
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -27899,7 +27899,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_705:                              # %vector.body3362
+.LBB9_705:                              # %vector.body3366
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -27940,7 +27940,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_705
-# %bb.706:                              # %middle.block3368
+# %bb.706:                              # %middle.block3372
 	beq	$a2, $a3, .LBB9_709
 .LBB9_707:                              # %.lr.ph.i375.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -27979,7 +27979,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.711:
 	move	$a0, $zero
 	b	.LBB9_715
-.LBB9_712:                              # %vector.ph3373
+.LBB9_712:                              # %vector.ph3377
 	bstrpick.d	$a0, $a2, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -27999,7 +27999,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB9_713:                              # %vector.body3378
+.LBB9_713:                              # %vector.body3382
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -28040,7 +28040,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_713
-# %bb.714:                              # %middle.block3384
+# %bb.714:                              # %middle.block3388
 	beq	$a0, $a2, .LBB9_1187
 .LBB9_715:                              # %.lr.ph.i383.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
@@ -28638,7 +28638,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB9_758
 	b	.LBB9_1187
-.LBB9_759:                              # %vector.ph3245
+.LBB9_759:                              # %vector.ph3249
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -28658,7 +28658,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_760:                              # %vector.body3250
+.LBB9_760:                              # %vector.body3254
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -28699,7 +28699,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_760
-# %bb.761:                              # %middle.block3256
+# %bb.761:                              # %middle.block3260
 	beq	$a2, $a3, .LBB9_764
 .LBB9_762:                              # %.lr.ph.i391.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -28738,7 +28738,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.766:
 	move	$a1, $zero
 	b	.LBB9_770
-.LBB9_767:                              # %vector.ph3261
+.LBB9_767:                              # %vector.ph3265
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -28758,7 +28758,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_768:                              # %vector.body3266
+.LBB9_768:                              # %vector.body3270
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -28799,7 +28799,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_768
-# %bb.769:                              # %middle.block3272
+# %bb.769:                              # %middle.block3276
 	beq	$a1, $a2, .LBB9_772
 .LBB9_770:                              # %.lr.ph.i399.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -28839,7 +28839,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.774:
 	move	$a2, $zero
 	b	.LBB9_778
-.LBB9_775:                              # %vector.ph3277
+.LBB9_775:                              # %vector.ph3281
 	bstrpick.d	$a2, $a3, 30, 2
 	slli.d	$a2, $a2, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -28859,7 +28859,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a6
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB9_776:                              # %vector.body3282
+.LBB9_776:                              # %vector.body3286
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a7, $vr2, 0
@@ -28900,7 +28900,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB9_776
-# %bb.777:                              # %middle.block3288
+# %bb.777:                              # %middle.block3292
 	beq	$a2, $a3, .LBB9_780
 .LBB9_778:                              # %.lr.ph.i407.preheader
 	pcalau12i	$a5, %pc_hi20(.LCPI9_1)
@@ -28939,7 +28939,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.782:
 	move	$a1, $zero
 	b	.LBB9_786
-.LBB9_783:                              # %vector.ph3293
+.LBB9_783:                              # %vector.ph3297
 	bstrpick.d	$a1, $a2, 30, 2
 	slli.d	$a1, $a1, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -28959,7 +28959,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a5
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB9_784:                              # %vector.body3298
+.LBB9_784:                              # %vector.body3302
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a6, $vr2, 0
@@ -29000,7 +29000,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB9_784
-# %bb.785:                              # %middle.block3304
+# %bb.785:                              # %middle.block3308
 	beq	$a1, $a2, .LBB9_788
 .LBB9_786:                              # %.lr.ph.i415.preheader
 	pcalau12i	$a4, %pc_hi20(.LCPI9_1)
@@ -29040,7 +29040,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 # %bb.790:
 	move	$a0, $zero
 	b	.LBB9_794
-.LBB9_791:                              # %vector.ph3309
+.LBB9_791:                              # %vector.ph3313
 	bstrpick.d	$a0, $a1, 30, 2
 	slli.d	$a0, $a0, 2
 	vreplvei.d	$vr1, $vr0, 0
@@ -29060,7 +29060,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	vreplgr2vr.d	$vr4, $a4
 	move	$a4, $a0
 	.p2align	4, , 16
-.LBB9_792:                              # %vector.body3314
+.LBB9_792:                              # %vector.body3318
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr5, $vr2, 2
 	vpickve2gr.w	$a5, $vr2, 0
@@ -29101,7 +29101,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_792
-# %bb.793:                              # %middle.block3320
+# %bb.793:                              # %middle.block3324
 	beq	$a0, $a1, .LBB9_1187
 .LBB9_794:                              # %.lr.ph.i423.preheader
 	pcalau12i	$a3, %pc_hi20(.LCPI9_1)
@@ -36358,10 +36358,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
-	addi.d	$a0, $s3, 16
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	vreplgr2vr.d	$vr2, $a1
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr2, $a0
+	move	$a0, $s3
 	move	$a1, $s5
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
@@ -36387,9 +36387,9 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
 	vpackev.d	$vr4, $vr3, $vr5
-	vst	$vr4, $a0, -16
 	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vst	$vr3, $a0, 16
+	vst	$vr4, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36435,10 +36435,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
-	addi.d	$a0, $s3, 16
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	vreplgr2vr.d	$vr2, $a1
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr2, $a0
+	move	$a0, $s3
 	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_31:                              # %vector.body306
@@ -36462,9 +36462,9 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
 	vpackev.d	$vr4, $vr3, $vr5
-	vst	$vr4, $a0, -16
 	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vst	$vr3, $a0, 16
+	vst	$vr4, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36501,7 +36501,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s7, $a0, .LBB11_39
-# %bb.36:                               # %vector.ph316
+# %bb.36:                               # %vector.ph317
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -36510,13 +36510,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
-	addi.d	$a0, $s3, 16
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	vreplgr2vr.d	$vr2, $a1
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr2, $a0
+	move	$a0, $s3
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_37:                              # %vector.body323
+.LBB11_37:                              # %vector.body324
                                         # =>This Inner Loop Header: Depth=1
 	vpickve2gr.w	$a2, $vr2, 0
 	bstrpick.d	$a2, $a2, 31, 0
@@ -36537,9 +36537,9 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
 	vpackev.d	$vr4, $vr3, $vr5
-	vst	$vr4, $a0, -16
 	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vst	$vr3, $a0, 16
+	vst	$vr4, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36576,7 +36576,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s7, $a0, .LBB11_45
-# %bb.42:                               # %vector.ph333
+# %bb.42:                               # %vector.ph335
 	ld.bu	$a0, $fp, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -36585,13 +36585,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
-	addi.d	$a0, $s3, 16
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	vreplgr2vr.d	$vr2, $a1
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr2, $a0
+	move	$a0, $s3
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_43:                              # %vector.body340
+.LBB11_43:                              # %vector.body342
                                         # =>This Inner Loop Header: Depth=1
 	vpickve2gr.w	$a2, $vr2, 0
 	bstrpick.d	$a2, $a2, 31, 0
@@ -36612,9 +36612,9 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
 	vpackev.d	$vr4, $vr3, $vr5
-	vst	$vr4, $a0, -16
 	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vst	$vr3, $a0, 16
+	vst	$vr4, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36650,7 +36650,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s7, $s1, .LBB11_50
-# %bb.48:                               # %vector.ph350
+# %bb.48:                               # %vector.ph353
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -36659,13 +36659,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	alsl.d	$a0, $a0, $a2, 3
 	vldrepl.d	$vr0, $a0, 0
 	vldrepl.d	$vr1, $a1, 0
-	addi.d	$a0, $s2, 16
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	vreplgr2vr.d	$vr2, $a1
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 1
+	vreplgr2vr.d	$vr2, $a0
+	move	$a0, $s2
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_49:                              # %vector.body357
+.LBB11_49:                              # %vector.body360
                                         # =>This Inner Loop Header: Depth=1
 	vpickve2gr.w	$a2, $vr2, 0
 	bstrpick.d	$a2, $a2, 31, 0
@@ -36686,9 +36686,9 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vfdiv.d	$vr5, $vr5, $vr4
 	vfdiv.d	$vr3, $vr3, $vr4
 	vpackev.d	$vr4, $vr3, $vr5
-	vst	$vr4, $a0, -16
 	vpackod.d	$vr3, $vr3, $vr5
-	vst	$vr3, $a0, 0
+	vst	$vr3, $a0, 16
+	vst	$vr4, $a0, 0
 	vaddi.wu	$vr2, $vr2, 2
 	addi.d	$a1, $a1, -2
 	addi.d	$a0, $a0, 32
@@ -36716,7 +36716,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	st.d	$fp, $s8, 1144
 	st.w	$s4, $s8, 1152
 	blt	$s0, $s1, .LBB11_53
-# %bb.51:                               # %vector.ph367
+# %bb.51:                               # %vector.ph371
 	ld.bu	$a0, $s8, 1136
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -36729,7 +36729,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr1, $a1
 	move	$a1, $s3
 	.p2align	4, , 16
-.LBB11_52:                              # %vector.body372
+.LBB11_52:                              # %vector.body376
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a2, $vr1, 0
@@ -36780,13 +36780,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vrepli.d	$vr4, 200
 	vrepli.d	$vr5, 400
 	beqz	$s7, .LBB11_56
-# %bb.54:                               # %vector.body386.preheader
+# %bb.54:                               # %vector.body390.preheader
 	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_55:                              # %vector.body386
+.LBB11_55:                              # %vector.body390
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr2, $vr1, 0
 	vmadd.d	$vr2, $vr0, $vr4
@@ -36816,7 +36816,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
 	blt	$s0, $a0, .LBB11_59
-# %bb.57:                               # %vector.ph397
+# %bb.57:                               # %vector.ph401
 	ld.bu	$a0, $s1, 1160
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -36829,7 +36829,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr1, $a1
 	move	$a1, $s3
 	.p2align	4, , 16
-.LBB11_58:                              # %vector.body402
+.LBB11_58:                              # %vector.body406
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a2, $vr1, 0
@@ -36879,13 +36879,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr4, $sp, 80                   # 16-byte Folded Reload
 	vld	$vr5, $sp, 64                   # 16-byte Folded Reload
 	beqz	$s7, .LBB11_62
-# %bb.60:                               # %vector.body416.preheader
+# %bb.60:                               # %vector.body420.preheader
 	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_61:                              # %vector.body416
+.LBB11_61:                              # %vector.body420
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr2, $vr1, 0
 	vmadd.d	$vr2, $vr0, $vr4
@@ -36912,7 +36912,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s0, $a0, .LBB11_65
-# %bb.63:                               # %vector.ph427
+# %bb.63:                               # %vector.ph431
 	ld.bu	$a0, $s1, 1184
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -36925,7 +36925,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr1, $a1
 	move	$a1, $s3
 	.p2align	4, , 16
-.LBB11_64:                              # %vector.body432
+.LBB11_64:                              # %vector.body436
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a2, $vr1, 0
@@ -36975,13 +36975,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr4, $sp, 80                   # 16-byte Folded Reload
 	vld	$vr5, $sp, 64                   # 16-byte Folded Reload
 	beqz	$s7, .LBB11_68
-# %bb.66:                               # %vector.body446.preheader
+# %bb.66:                               # %vector.body450.preheader
 	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_67:                              # %vector.body446
+.LBB11_67:                              # %vector.body450
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr2, $vr1, 0
 	vmadd.d	$vr2, $vr0, $vr4
@@ -37008,7 +37008,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s0, $a0, .LBB11_71
-# %bb.69:                               # %vector.ph457
+# %bb.69:                               # %vector.ph461
 	ld.bu	$a0, $s1, 1208
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -37020,7 +37020,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	lu32i.d	$a1, 1
 	vreplgr2vr.d	$vr1, $a1
 	.p2align	4, , 16
-.LBB11_70:                              # %vector.body462
+.LBB11_70:                              # %vector.body466
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a1, $vr1, 0
@@ -37071,13 +37071,13 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr4, $sp, 80                   # 16-byte Folded Reload
 	vld	$vr5, $sp, 64                   # 16-byte Folded Reload
 	beqz	$s7, .LBB11_74
-# %bb.72:                               # %vector.body476.preheader
+# %bb.72:                               # %vector.body480.preheader
 	vld	$vr0, $s4, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
 	vreplgr2vr.d	$vr1, $fp
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_73:                              # %vector.body476
+.LBB11_73:                              # %vector.body480
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr2, $vr1, 0
 	vmadd.d	$vr2, $vr0, $vr4
@@ -37162,7 +37162,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	ori	$a0, $zero, 1
 	blt	$s0, $a0, .LBB11_75
-# %bb.77:                               # %vector.ph487
+# %bb.77:                               # %vector.ph491
                                         #   in Loop: Header=BB11_76 Depth=1
 	addi.d	$a0, $s3, 1232
 	ld.bu	$a0, $a0, 0
@@ -37175,7 +37175,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	vld	$vr1, $sp, 32                   # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB11_78:                              # %vector.body492
+.LBB11_78:                              # %vector.body496
                                         #   Parent Loop BB11_76 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vaddi.wu	$vr2, $vr1, 2
@@ -37218,7 +37218,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB11_78
 	b	.LBB11_75
-.LBB11_79:                              # %vector.ph502
+.LBB11_79:                              # %vector.ph506
 	ori	$a0, $zero, 1
 	st.w	$a0, $s3, 1496
 	st.d	$zero, $sp, 144
@@ -37245,7 +37245,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB11_80:                              # %vector.body505
+.LBB11_80:                              # %vector.body509
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a1, $vr1, 0
@@ -37443,7 +37443,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	blt	$s8, $fp, .LBB11_84
-# %bb.82:                               # %vector.ph525
+# %bb.82:                               # %vector.ph529
 	ld.bu	$a0, $s2, 1520
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -37456,7 +37456,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr1, $a1
 	move	$a1, $s3
 	.p2align	4, , 16
-.LBB11_83:                              # %vector.body530
+.LBB11_83:                              # %vector.body534
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a2, $vr1, 0
@@ -37516,19 +37516,19 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s2, 8
 	beqz	$s7, .LBB11_89
-# %bb.85:                               # %vector.ph541
+# %bb.85:                               # %vector.ph545
 	vreplgr2vr.d	$vr0, $s1
 	addi.d	$a1, $fp, 16
 	move	$a2, $s5
 	.p2align	4, , 16
-.LBB11_86:                              # %vector.body546
+.LBB11_86:                              # %vector.body550
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a1, -16
 	vst	$vr0, $a1, 0
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB11_86
-# %bb.87:                               # %vector.body557.preheader
+# %bb.87:                               # %vector.body561.preheader
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	vld	$vr1, $a1, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
@@ -37537,7 +37537,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr2, $a1
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_88:                              # %vector.body557
+.LBB11_88:                              # %vector.body561
                                         # =>This Inner Loop Header: Depth=1
 	vslli.d	$vr3, $vr1, 2
 	vaddi.du	$vr4, $vr3, 8
@@ -37569,7 +37569,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s8, $a0, .LBB11_92
-# %bb.90:                               # %vector.ph568
+# %bb.90:                               # %vector.ph572
 	ld.bu	$a0, $s4, 1544
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -37582,7 +37582,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr1, $a1
 	move	$a1, $s3
 	.p2align	4, , 16
-.LBB11_91:                              # %vector.body573
+.LBB11_91:                              # %vector.body577
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a2, $vr1, 0
@@ -37642,19 +37642,19 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s2, 8
 	beqz	$s7, .LBB11_97
-# %bb.93:                               # %vector.ph584
+# %bb.93:                               # %vector.ph588
 	vreplgr2vr.d	$vr0, $s1
 	addi.d	$a1, $fp, 16
 	move	$a2, $s5
 	.p2align	4, , 16
-.LBB11_94:                              # %vector.body589
+.LBB11_94:                              # %vector.body593
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a1, -16
 	vst	$vr0, $a1, 0
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB11_94
-# %bb.95:                               # %vector.body600.preheader
+# %bb.95:                               # %vector.body604.preheader
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	vld	$vr1, $a1, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
@@ -37663,7 +37663,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vreplgr2vr.d	$vr2, $a1
 	move	$a1, $s5
 	.p2align	4, , 16
-.LBB11_96:                              # %vector.body600
+.LBB11_96:                              # %vector.body604
                                         # =>This Inner Loop Header: Depth=1
 	vslli.d	$vr3, $vr1, 2
 	vaddi.du	$vr4, $vr3, 8
@@ -37695,7 +37695,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	vld	$vr6, $sp, 128                  # 16-byte Folded Reload
 	vld	$vr7, $sp, 112                  # 16-byte Folded Reload
 	blt	$s8, $a0, .LBB11_100
-# %bb.98:                               # %vector.ph611
+# %bb.98:                               # %vector.ph615
 	ld.bu	$a0, $s4, 1568
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
@@ -37707,7 +37707,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	lu32i.d	$a1, 1
 	vreplgr2vr.d	$vr1, $a1
 	.p2align	4, , 16
-.LBB11_99:                              # %vector.body616
+.LBB11_99:                              # %vector.body620
                                         # =>This Inner Loop Header: Depth=1
 	vaddi.wu	$vr2, $vr1, 2
 	vpickve2gr.w	$a1, $vr1, 0
@@ -37767,19 +37767,19 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 8
 	beqz	$s7, .LBB11_105
-# %bb.101:                              # %vector.ph627
+# %bb.101:                              # %vector.ph631
 	vreplgr2vr.d	$vr0, $s1
 	addi.d	$a1, $fp, 16
 	move	$a2, $s5
 	.p2align	4, , 16
-.LBB11_102:                             # %vector.body632
+.LBB11_102:                             # %vector.body636
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a1, -16
 	vst	$vr0, $a1, 0
 	addi.d	$a2, $a2, -4
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB11_102
-# %bb.103:                              # %vector.body643.preheader
+# %bb.103:                              # %vector.body647.preheader
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	vld	$vr1, $a1, %pc_lo12(.LCPI11_2)
 	addi.d	$a0, $a0, 16
@@ -37787,7 +37787,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	lu32i.d	$a1, 0
 	vreplgr2vr.d	$vr2, $a1
 	.p2align	4, , 16
-.LBB11_104:                             # %vector.body643
+.LBB11_104:                             # %vector.body647
                                         # =>This Inner Loop Header: Depth=1
 	vslli.d	$vr3, $vr1, 2
 	vaddi.du	$vr4, $vr3, 8

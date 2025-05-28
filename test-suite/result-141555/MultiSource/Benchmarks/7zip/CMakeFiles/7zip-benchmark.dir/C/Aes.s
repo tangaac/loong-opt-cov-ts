@@ -743,7 +743,61 @@ AesCtr_Code:                            # @AesCtr_Code
 .Lfunc_end3:
 	.size	AesCtr_Code, .Lfunc_end3-AesCtr_Code
                                         # -- End function
-	.globl	Aes_SetKey_Enc                  # -- Begin function Aes_SetKey_Enc
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function Aes_SetKey_Enc
+.LCPI4_0:
+	.byte	0                               # 0x0
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	4                               # 0x4
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	8                               # 0x8
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	12                              # 0xc
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+.LCPI4_1:
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+.LCPI4_2:
+	.byte	2                               # 0x2
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	6                               # 0x6
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	10                              # 0xa
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	14                              # 0xe
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+	.text
+	.globl	Aes_SetKey_Enc
 	.p2align	5
 	.type	Aes_SetKey_Enc,@function
 Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
@@ -761,26 +815,40 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	bgeu	$a2, $a6, .LBB4_2
 # %bb.1:
 	move	$a1, $zero
-	addi.w	$a6, $a1, 0
-	bltu	$a6, $a5, .LBB4_5
-	b	.LBB4_13
+	b	.LBB4_9
 .LBB4_2:                                # %.lr.ph.preheader
-	addi.w	$a6, $a3, 0
-	move	$a7, $a4
+	ori	$a7, $zero, 16
+	bstrpick.d	$a6, $a3, 31, 0
+	bltu	$a2, $a7, .LBB4_5
+# %bb.3:                                # %vector.memcheck
+	alsl.d	$a7, $a6, $a1, 2
+	bgeu	$a4, $a7, .LBB4_19
+# %bb.4:                                # %vector.memcheck
+	alsl.d	$a7, $a6, $a0, 2
+	addi.d	$a7, $a7, 16
+	bgeu	$a1, $a7, .LBB4_19
+.LBB4_5:
+	move	$t0, $zero
+	move	$a7, $a1
+.LBB4_6:                                # %.lr.ph.preheader63
+	alsl.d	$a1, $t0, $a0, 2
+	addi.d	$a1, $a1, 16
+	sub.d	$a6, $a6, $t0
 	.p2align	4, , 16
-.LBB4_3:                                # %.lr.ph
+.LBB4_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a1, 0
-	st.w	$t0, $a7, 0
-	addi.d	$a1, $a1, 4
-	addi.d	$a6, $a6, -1
+	ld.w	$t0, $a7, 0
+	st.w	$t0, $a1, 0
 	addi.d	$a7, $a7, 4
-	bnez	$a6, .LBB4_3
-# %bb.4:
+	addi.d	$a6, $a6, -1
+	addi.d	$a1, $a1, 4
+	bnez	$a6, .LBB4_7
+# %bb.8:
 	move	$a1, $a3
+.LBB4_9:                                # %.preheader
 	addi.w	$a6, $a1, 0
-	bgeu	$a6, $a5, .LBB4_13
-.LBB4_5:                                # %.lr.ph47
+	bgeu	$a6, $a5, .LBB4_18
+# %bb.10:                               # %.lr.ph47
 	bstrpick.d	$a7, $a1, 31, 0
 	bstrpick.d	$t0, $a5, 31, 0
 	addi.w	$a5, $zero, -1
@@ -797,9 +865,9 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	addi.d	$t2, $t2, %pc_lo12(Rcon)
 	ori	$t3, $zero, 28
 	ori	$t4, $zero, 4
-	b	.LBB4_9
+	b	.LBB4_14
 	.p2align	4, , 16
-.LBB4_6:                                #   in Loop: Header=BB4_9 Depth=1
+.LBB4_11:                               #   in Loop: Header=BB4_14 Depth=1
 	bstrpick.d	$t7, $t5, 15, 8
 	ldx.bu	$t7, $t1, $t7
 	bstrpick.d	$t6, $t6, 31, 0
@@ -814,12 +882,12 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	slli.d	$t7, $fp, 16
 	or	$t6, $t6, $t7
 	andi	$t5, $t5, 255
-.LBB4_7:                                # %.sink.split
-                                        #   in Loop: Header=BB4_9 Depth=1
+.LBB4_12:                               # %.sink.split
+                                        #   in Loop: Header=BB4_14 Depth=1
 	ldx.bu	$t5, $t1, $t5
 	slli.d	$t5, $t5, 24
 	or	$t5, $t6, $t5
-.LBB4_8:                                #   in Loop: Header=BB4_9 Depth=1
+.LBB4_13:                               #   in Loop: Header=BB4_14 Depth=1
 	add.d	$t6, $a6, $a1
 	bstrpick.d	$t6, $t6, 31, 0
 	slli.d	$t6, $t6, 2
@@ -830,8 +898,8 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	addi.d	$a0, $a0, 4
 	addi.d	$a7, $a7, -1
 	addi.w	$a1, $a1, 1
-	beqz	$a7, .LBB4_13
-.LBB4_9:                                # =>This Inner Loop Header: Depth=1
+	beqz	$a7, .LBB4_18
+.LBB4_14:                               # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$t5, $a5, 31, 0
 	slli.d	$t5, $t5, 2
 	ldx.wu	$t5, $a4, $t5
@@ -839,12 +907,12 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	div.wu	$t6, $t6, $t0
 	mul.d	$t7, $t6, $a3
 	sub.w	$t7, $a1, $t7
-	beqz	$t7, .LBB4_6
-# %bb.10:                               #   in Loop: Header=BB4_9 Depth=1
-	bltu	$a2, $t3, .LBB4_8
-# %bb.11:                               #   in Loop: Header=BB4_9 Depth=1
-	bne	$t7, $t4, .LBB4_8
-# %bb.12:                               #   in Loop: Header=BB4_9 Depth=1
+	beqz	$t7, .LBB4_11
+# %bb.15:                               #   in Loop: Header=BB4_14 Depth=1
+	bltu	$a2, $t3, .LBB4_13
+# %bb.16:                               #   in Loop: Header=BB4_14 Depth=1
+	bne	$t7, $t4, .LBB4_13
+# %bb.17:                               #   in Loop: Header=BB4_14 Depth=1
 	andi	$t6, $t5, 255
 	ldx.bu	$t6, $t1, $t6
 	bstrpick.d	$t7, $t5, 15, 8
@@ -856,11 +924,47 @@ Aes_SetKey_Enc:                         # @Aes_SetKey_Enc
 	slli.d	$t7, $t8, 16
 	or	$t6, $t6, $t7
 	srli.d	$t5, $t5, 24
-	b	.LBB4_7
-.LBB4_13:                               # %._crit_edge
+	b	.LBB4_12
+.LBB4_18:                               # %._crit_edge
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$sp, $sp, 16
 	ret
+.LBB4_19:                               # %vector.ph
+	bstrpick.d	$a7, $a6, 29, 2
+	pcalau12i	$t0, %pc_hi20(.LCPI4_0)
+	vld	$vr0, $t0, %pc_lo12(.LCPI4_0)
+	pcalau12i	$t0, %pc_hi20(.LCPI4_1)
+	vld	$vr1, $t0, %pc_lo12(.LCPI4_1)
+	pcalau12i	$t0, %pc_hi20(.LCPI4_2)
+	vld	$vr2, $t0, %pc_lo12(.LCPI4_2)
+	slli.d	$t0, $a7, 2
+	alsl.d	$a7, $a7, $a1, 4
+	vrepli.b	$vr3, 0
+	move	$t1, $a4
+	move	$t2, $t0
+	.p2align	4, , 16
+.LBB4_20:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr4, $a1, 0
+	vshuf.b	$vr5, $vr3, $vr4, $vr0
+	vshuf.b	$vr6, $vr3, $vr4, $vr1
+	vslli.w	$vr6, $vr6, 8
+	vor.v	$vr5, $vr6, $vr5
+	vshuf.b	$vr6, $vr3, $vr4, $vr2
+	vslli.w	$vr6, $vr6, 16
+	vor.v	$vr5, $vr5, $vr6
+	vshuf4i.b	$vr4, $vr4, 3
+	vslli.w	$vr4, $vr4, 24
+	vor.v	$vr4, $vr5, $vr4
+	vst	$vr4, $t1, 0
+	addi.d	$a1, $a1, 16
+	addi.d	$t2, $t2, -4
+	addi.d	$t1, $t1, 16
+	bnez	$t2, .LBB4_20
+# %bb.21:                               # %middle.block
+	move	$a1, $a3
+	bne	$t0, $a6, .LBB4_6
+	b	.LBB4_9
 .Lfunc_end4:
 	.size	Aes_SetKey_Enc, .Lfunc_end4-Aes_SetKey_Enc
                                         # -- End function

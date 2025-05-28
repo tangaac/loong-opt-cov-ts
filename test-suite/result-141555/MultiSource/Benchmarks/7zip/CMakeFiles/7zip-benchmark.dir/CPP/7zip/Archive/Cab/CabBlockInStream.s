@@ -226,20 +226,70 @@ GCC_except_table3:
 	.word	4                               # 0x4
 	.word	4                               # 0x4
 	.word	4                               # 0x4
+.LCPI4_1:
+	.byte	0                               # 0x0
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	4                               # 0x4
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	8                               # 0x8
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	12                              # 0xc
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+.LCPI4_2:
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
+.LCPI4_3:
+	.byte	2                               # 0x2
+	.byte	17                              # 0x11
+	.byte	18                              # 0x12
+	.byte	19                              # 0x13
+	.byte	6                               # 0x6
+	.byte	21                              # 0x15
+	.byte	22                              # 0x16
+	.byte	23                              # 0x17
+	.byte	10                              # 0xa
+	.byte	25                              # 0x19
+	.byte	26                              # 0x1a
+	.byte	27                              # 0x1b
+	.byte	14                              # 0xe
+	.byte	29                              # 0x1d
+	.byte	30                              # 0x1e
+	.byte	31                              # 0x1f
 	.text
 	.globl	_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj
 	.p2align	5
 	.type	_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj,@function
 _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	ld.w	$t0, $a0, 0
+	ld.w	$a4, $a0, 0
 	beqz	$a2, .LBB4_6
 # %bb.1:                                # %.lr.ph
-	ld.w	$a6, $a0, 4
-	ld.bu	$a4, $a0, 8
+	ld.w	$a7, $a0, 4
+	ld.bu	$a5, $a0, 8
 	addi.d	$a3, $a0, 8
-	ori	$a5, $zero, 3
+	ori	$a6, $zero, 3
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                # %.loopexit
@@ -248,183 +298,114 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	addi.d	$a1, $a1, 1
 	beqz	$a2, .LBB4_6
 .LBB4_3:                                # =>This Inner Loop Header: Depth=1
-	beqz	$a6, .LBB4_7
+	beqz	$a7, .LBB4_7
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
-	ld.b	$a7, $a1, 0
-	stx.b	$a7, $a3, $a6
-	ld.wu	$a7, $a0, 4
-	addi.d	$a6, $a7, 1
-	andi	$a6, $a6, 3
+	ld.b	$t0, $a1, 0
+	stx.b	$t0, $a3, $a7
+	ld.wu	$t0, $a0, 4
+	addi.d	$a7, $t0, 1
 	andi	$a7, $a7, 3
-	st.w	$a6, $a0, 4
-	bne	$a7, $a5, .LBB4_2
+	andi	$t0, $t0, 3
+	st.w	$a7, $a0, 4
+	bne	$t0, $a6, .LBB4_2
 # %bb.5:                                # %.preheader.preheader
                                         #   in Loop: Header=BB4_3 Depth=1
-	ld.bu	$a7, $a0, 9
+	ld.bu	$t0, $a0, 9
 	ld.bu	$t1, $a0, 10
-	slli.d	$a7, $a7, 8
+	slli.d	$t0, $t0, 8
 	ld.b	$t2, $a0, 11
-	or	$a7, $a7, $a4
+	or	$t0, $t0, $a5
 	slli.d	$t1, $t1, 16
-	or	$a7, $a7, $t1
+	or	$t0, $t0, $t1
 	slli.d	$t1, $t2, 24
-	or	$a7, $a7, $t1
-	xor	$t0, $a7, $t0
+	or	$t0, $t0, $t1
+	xor	$a4, $t0, $a4
 	b	.LBB4_2
 .LBB4_6:                                # %._crit_edge.thread
-	st.w	$t0, $a0, 0
-	addi.d	$sp, $sp, 128
+	st.w	$a4, $a0, 0
 	ret
 .LBB4_7:                                # %.critedge
-	ori	$a4, $zero, 4
-	bltu	$a2, $a4, .LBB4_13
+	ori	$a5, $zero, 4
+	bltu	$a2, $a5, .LBB4_13
 # %bb.8:                                # %.lr.ph52.preheader
-	bstrpick.d	$a4, $a2, 31, 2
-	addi.d	$a5, $a4, -1
-	ori	$a6, $zero, 7
-	bltu	$a5, $a6, .LBB4_12
+	bstrpick.d	$a5, $a2, 31, 2
+	addi.d	$a6, $a5, -1
+	ori	$a7, $zero, 7
+	bltu	$a6, $a7, .LBB4_12
 # %bb.9:                                # %vector.ph
-	addi.d	$a7, $a1, 15
-	bstrpick.d	$a5, $a5, 31, 0
-	addi.d	$a5, $a5, 1
-	bstrpick.d	$a6, $a5, 32, 3
-	slli.d	$a6, $a6, 3
-	sub.d	$a4, $a4, $a6
-	pcalau12i	$t1, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $t1, %pc_lo12(.LCPI4_0)
-	slli.d	$t1, $a5, 2
+	addi.d	$t0, $a1, 16
+	bstrpick.d	$a6, $a6, 31, 0
+	addi.d	$a6, $a6, 1
+	bstrpick.d	$a7, $a6, 32, 3
+	slli.d	$a7, $a7, 3
+	sub.d	$a5, $a5, $a7
+	slli.d	$t1, $a6, 2
 	bstrpick.d	$t1, $t1, 34, 5
 	slli.d	$t1, $t1, 5
-	vinsgr2vr.w	$vr1, $t0, 0
-	vinsgr2vr.w	$vr2, $zero, 0
-	vshuf.w	$vr0, $vr2, $vr1
-	vrepli.b	$vr1, 0
+	vinsgr2vr.w	$vr4, $a4, 0
+	vinsgr2vr.w	$vr5, $zero, 0
+	pcalau12i	$a4, %pc_hi20(.LCPI4_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_2)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_3)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_3)
+	vshuf.w	$vr0, $vr5, $vr4
+	vrepli.b	$vr4, 0
 	add.d	$a1, $a1, $t1
-	move	$t0, $a6
-	vori.b	$vr2, $vr1, 0
+	move	$a4, $a7
+	vori.b	$vr5, $vr4, 0
 	.p2align	4, , 16
 .LBB4_10:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$t1, $a7, -3
-	ld.b	$t2, $a7, -7
-	ld.b	$t3, $a7, -11
-	ld.b	$t4, $a7, -15
-	st.b	$t1, $sp, 115
-	st.b	$t2, $sp, 114
-	st.b	$t3, $sp, 113
-	st.b	$t4, $sp, 112
-	vld	$vr3, $sp, 112
-	ld.b	$t1, $a7, 13
-	ld.b	$t2, $a7, 9
-	ld.b	$t3, $a7, 5
-	ld.b	$t4, $a7, 1
-	st.b	$t1, $sp, 99
-	st.b	$t2, $sp, 98
-	st.b	$t3, $sp, 97
-	st.b	$t4, $sp, 96
-	vld	$vr4, $sp, 96
-	vilvl.b	$vr3, $vr1, $vr3
-	vilvl.h	$vr3, $vr1, $vr3
-	vilvl.b	$vr4, $vr1, $vr4
-	ld.b	$t1, $a7, -2
-	ld.b	$t2, $a7, -6
-	ld.b	$t3, $a7, -10
-	ld.b	$t4, $a7, -14
-	st.b	$t1, $sp, 83
-	st.b	$t2, $sp, 82
-	st.b	$t3, $sp, 81
-	st.b	$t4, $sp, 80
-	vld	$vr5, $sp, 80
-	ld.b	$t1, $a7, 14
-	ld.b	$t2, $a7, 10
-	ld.b	$t3, $a7, 6
-	ld.b	$t4, $a7, 2
-	st.b	$t1, $sp, 67
-	st.b	$t2, $sp, 66
-	st.b	$t3, $sp, 65
-	st.b	$t4, $sp, 64
-	vld	$vr6, $sp, 64
-	vilvl.h	$vr4, $vr1, $vr4
-	vilvl.b	$vr5, $vr1, $vr5
-	vilvl.h	$vr5, $vr1, $vr5
-	vilvl.b	$vr6, $vr1, $vr6
-	vilvl.h	$vr6, $vr1, $vr6
-	vslli.w	$vr5, $vr5, 8
-	vslli.w	$vr6, $vr6, 8
-	vor.v	$vr3, $vr5, $vr3
-	ld.b	$t1, $a7, -1
-	ld.b	$t2, $a7, -5
-	ld.b	$t3, $a7, -9
-	ld.b	$t4, $a7, -13
-	st.b	$t1, $sp, 51
-	st.b	$t2, $sp, 50
-	st.b	$t3, $sp, 49
-	st.b	$t4, $sp, 48
-	vld	$vr5, $sp, 48
-	ld.b	$t1, $a7, 15
-	ld.b	$t2, $a7, 11
-	ld.b	$t3, $a7, 7
-	ld.b	$t4, $a7, 3
-	st.b	$t1, $sp, 35
-	st.b	$t2, $sp, 34
-	st.b	$t3, $sp, 33
-	st.b	$t4, $sp, 32
-	vld	$vr7, $sp, 32
-	vor.v	$vr4, $vr6, $vr4
-	vilvl.b	$vr5, $vr1, $vr5
-	vilvl.h	$vr5, $vr1, $vr5
-	vilvl.b	$vr6, $vr1, $vr7
-	vilvl.h	$vr6, $vr1, $vr6
-	vslli.w	$vr5, $vr5, 16
-	vor.v	$vr3, $vr3, $vr5
-	ld.b	$t1, $a7, -12
-	ld.b	$t2, $a7, -8
-	ld.b	$t3, $a7, -4
-	ld.b	$t4, $a7, 0
-	ld.b	$t5, $a7, 4
-	ld.b	$t6, $a7, 8
-	ld.b	$t7, $a7, 12
-	ld.b	$t8, $a7, 16
-	st.b	$t4, $sp, 28
-	st.b	$t3, $sp, 24
-	st.b	$t2, $sp, 20
-	st.b	$t1, $sp, 16
-	vld	$vr5, $sp, 16
-	st.b	$t8, $sp, 12
-	st.b	$t7, $sp, 8
-	st.b	$t6, $sp, 4
-	st.b	$t5, $sp, 0
-	vld	$vr7, $sp, 0
-	vslli.w	$vr6, $vr6, 16
-	vor.v	$vr4, $vr4, $vr6
-	vslli.w	$vr5, $vr5, 24
-	vslli.w	$vr6, $vr7, 24
-	vor.v	$vr3, $vr3, $vr5
-	vor.v	$vr4, $vr4, $vr6
-	vxor.v	$vr0, $vr3, $vr0
-	vxor.v	$vr2, $vr4, $vr2
-	addi.d	$t0, $t0, -8
-	addi.d	$a7, $a7, 32
-	bnez	$t0, .LBB4_10
+	vld	$vr6, $t0, -16
+	vld	$vr7, $t0, 0
+	vshuf.b	$vr8, $vr4, $vr6, $vr1
+	vshuf.b	$vr9, $vr4, $vr7, $vr1
+	vshuf.b	$vr10, $vr4, $vr6, $vr2
+	vshuf.b	$vr11, $vr4, $vr7, $vr2
+	vslli.w	$vr10, $vr10, 8
+	vslli.w	$vr11, $vr11, 8
+	vor.v	$vr8, $vr10, $vr8
+	vor.v	$vr9, $vr11, $vr9
+	vshuf.b	$vr10, $vr4, $vr6, $vr3
+	vshuf.b	$vr11, $vr4, $vr7, $vr3
+	vslli.w	$vr10, $vr10, 16
+	vslli.w	$vr11, $vr11, 16
+	vor.v	$vr8, $vr8, $vr10
+	vor.v	$vr9, $vr9, $vr11
+	vshuf4i.b	$vr6, $vr6, 3
+	vshuf4i.b	$vr7, $vr7, 3
+	vslli.w	$vr6, $vr6, 24
+	vslli.w	$vr7, $vr7, 24
+	vor.v	$vr6, $vr8, $vr6
+	vor.v	$vr7, $vr9, $vr7
+	vxor.v	$vr0, $vr6, $vr0
+	vxor.v	$vr5, $vr7, $vr5
+	addi.d	$a4, $a4, -8
+	addi.d	$t0, $t0, 32
+	bnez	$a4, .LBB4_10
 # %bb.11:                               # %middle.block
-	vxor.v	$vr0, $vr2, $vr0
+	vxor.v	$vr0, $vr5, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vxor.v	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vxor.v	$vr0, $vr0, $vr1
-	vpickve2gr.w	$t0, $vr0, 0
-	beq	$a5, $a6, .LBB4_13
+	vpickve2gr.w	$a4, $vr0, 0
+	beq	$a6, $a7, .LBB4_13
 	.p2align	4, , 16
 .LBB4_12:                               # %.lr.ph52
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a1, 0
-	addi.w	$a4, $a4, -1
+	ld.w	$a6, $a1, 0
+	addi.w	$a5, $a5, -1
 	addi.d	$a1, $a1, 4
-	xor	$t0, $a5, $t0
-	bnez	$a4, .LBB4_12
+	xor	$a4, $a6, $a4
+	bnez	$a5, .LBB4_12
 .LBB4_13:                               # %._crit_edge
 	andi	$a2, $a2, 3
-	st.w	$t0, $a0, 0
+	st.w	$a4, $a0, 0
 	beqz	$a2, .LBB4_16
 # %bb.14:                               # %.lr.ph59
 	ld.w	$a4, $a0, 4
@@ -440,7 +421,6 @@ _ZN8NArchive4NCab10CCheckSum26UpdateEPKvj: # @_ZN8NArchive4NCab10CCheckSum26Upda
 	st.w	$a4, $a0, 4
 	bnez	$a2, .LBB4_15
 .LBB4_16:                               # %._crit_edge60
-	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end4:
 	.size	_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj, .Lfunc_end4-_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj

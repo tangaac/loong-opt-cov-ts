@@ -2678,7 +2678,15 @@ _ZN4Mesh10initChunksEv:                 # @_ZN4Mesh10initChunksEv
 	.size	_ZN4Mesh10initChunksEv, .Lfunc_end5-_ZN4Mesh10initChunksEv
 	.cfi_endproc
                                         # -- End function
-	.globl	_ZN4Mesh10initInvMapEv          # -- Begin function _ZN4Mesh10initInvMapEv
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN4Mesh10initInvMapEv
+.LCPI6_0:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.text
+	.globl	_ZN4Mesh10initInvMapEv
 	.p2align	5
 	.type	_ZN4Mesh10initInvMapEv,@function
 _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
@@ -2713,7 +2721,7 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	jirl	$ra, $ra, 0
 	addi.w	$s2, $zero, -1
 	st.d	$a0, $fp, 144
-	bge	$s2, $s3, .LBB6_19
+	bge	$s2, $s3, .LBB6_26
 # %bb.1:                                # %_ZNSt6vectorISt4pairIiiESaIS1_EE17_S_check_init_lenEmRKS2_.exit.i
 	beqz	$s3, .LBB6_3
 # %bb.2:                                # %.lr.ph.preheader.i.i.i.i.i
@@ -2731,32 +2739,45 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	ld.w	$a0, $fp, 76
 	ori	$a1, $zero, 1
 	bge	$a0, $a1, .LBB6_4
-	b	.LBB6_6
+	b	.LBB6_10
 .LBB6_3:
 	move	$s0, $zero
 	move	$s3, $zero
 	move	$s1, $zero
 	ld.w	$a0, $fp, 76
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_6
+	blt	$a0, $a1, .LBB6_10
 .LBB6_4:                                # %.lr.ph
-	ld.d	$a1, $fp, 88
-	move	$a2, $zero
-	addi.d	$a3, $s0, 4
-	move	$a4, $a0
+	ld.d	$a2, $fp, 88
+	ori	$a1, $zero, 8
+	bltu	$a0, $a1, .LBB6_7
+# %bb.5:                                # %vector.memcheck
+	alsl.d	$a1, $a0, $a2, 2
+	bgeu	$s0, $a1, .LBB6_22
+# %bb.6:                                # %vector.memcheck
+	alsl.d	$a1, $a0, $s0, 3
+	bgeu	$a2, $a1, .LBB6_22
+.LBB6_7:
+	move	$a1, $zero
+.LBB6_8:                                # %scalar.ph.preheader
+	alsl.d	$a3, $a1, $s0, 3
+	addi.d	$a3, $a3, 4
+	alsl.d	$a2, $a1, $a2, 2
+	sub.d	$a4, $a0, $a1
 	.p2align	4, , 16
-.LBB6_5:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a1, 0
+.LBB6_9:                                # %scalar.ph
+                                        # =>This Inner Loop Header: Depth=1
+	ld.w	$a5, $a2, 0
 	st.w	$a5, $a3, -4
-	st.w	$a2, $a3, 0
-	addi.d	$a2, $a2, 1
+	st.w	$a1, $a3, 0
+	addi.d	$a1, $a1, 1
 	addi.d	$a3, $a3, 8
 	addi.d	$a4, $a4, -1
-	addi.d	$a1, $a1, 4
-	bnez	$a4, .LBB6_5
-.LBB6_6:                                # %._crit_edge
-	beq	$s1, $s0, .LBB6_10
-# %bb.7:
+	addi.d	$a2, $a2, 4
+	bnez	$a4, .LBB6_9
+.LBB6_10:                               # %._crit_edge
+	beq	$s1, $s0, .LBB6_14
+# %bb.11:
 	sub.d	$a0, $s1, $s0
 	srai.d	$a0, $a0, 3
 	clz.d	$a0, $a0
@@ -2769,7 +2790,7 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	pcaddu18i	$ra, %call36(_ZSt16__introsort_loopIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS3_EEEElNS0_5__ops15_Iter_less_iterEEvT_SB_T0_T1_)
 	jirl	$ra, $ra, 0
 .Ltmp65:
-# %bb.8:                                # %.noexc32
+# %bb.12:                               # %.noexc32
 .Ltmp66:
 	move	$a0, $s0
 	move	$a1, $s1
@@ -2777,12 +2798,12 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	pcaddu18i	$ra, %call36(_ZSt22__final_insertion_sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS3_EEEENS0_5__ops15_Iter_less_iterEEvT_SB_T0_)
 	jirl	$ra, $ra, 0
 .Ltmp67:
-# %bb.9:                                # %.noexc32._ZSt4sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS3_EEEEEvT_S9_.exit_crit_edge
+# %bb.13:                               # %.noexc32._ZSt4sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS3_EEEEEvT_S9_.exit_crit_edge
 	ld.w	$a0, $fp, 76
-.LBB6_10:                               # %_ZSt4sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS3_EEEEEvT_S9_.exit
+.LBB6_14:                               # %_ZSt4sortIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS3_EEEEEvT_S9_.exit
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_16
-# %bb.11:
+	blt	$a0, $a1, .LBB6_20
+# %bb.15:
 	ld.d	$a0, $fp, 136
 	ld.d	$a1, $fp, 144
 	ld.w	$a2, $s0, 0
@@ -2806,13 +2827,13 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	stx.w	$a2, $a1, $a3
 	ld.w	$a4, $fp, 76
 	ori	$a2, $zero, 2
-	blt	$a4, $a2, .LBB6_17
-# %bb.12:                               # %.peel.next.preheader
+	blt	$a4, $a2, .LBB6_21
+# %bb.16:                               # %.peel.next.preheader
 	addi.d	$a2, $s0, 12
 	ori	$a3, $zero, 1
-	b	.LBB6_14
+	b	.LBB6_18
 	.p2align	4, , 16
-.LBB6_13:                               #   in Loop: Header=BB6_14 Depth=1
+.LBB6_17:                               #   in Loop: Header=BB6_18 Depth=1
 	addi.d	$a3, $a3, 1
 	bstrpick.d	$a4, $a4, 31, 0
 	xor	$a4, $a3, $a4
@@ -2829,23 +2850,23 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	stx.w	$a4, $a1, $a7
 	ld.w	$a4, $fp, 76
 	addi.d	$a2, $a2, 8
-	bge	$a3, $a4, .LBB6_17
-.LBB6_14:                               # %.peel.next
+	bge	$a3, $a4, .LBB6_21
+.LBB6_18:                               # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a2, -4
 	ld.w	$a7, $a2, 4
 	ld.w	$t1, $a2, -12
 	ld.w	$t0, $a2, 0
 	ld.w	$a6, $a2, 8
-	beq	$a5, $t1, .LBB6_13
-# %bb.15:                               #   in Loop: Header=BB6_14 Depth=1
+	beq	$a5, $t1, .LBB6_17
+# %bb.19:                               #   in Loop: Header=BB6_18 Depth=1
 	slli.d	$a4, $a5, 2
 	stx.w	$t0, $a0, $a4
 	ld.w	$a4, $fp, 76
-	b	.LBB6_13
-.LBB6_16:                               # %._crit_edge58
-	beqz	$s0, .LBB6_18
-.LBB6_17:                               # %._crit_edge58.thread
+	b	.LBB6_17
+.LBB6_20:                               # %._crit_edge58
+	beqz	$s0, .LBB6_25
+.LBB6_21:                               # %._crit_edge58.thread
 	sub.d	$a1, $s3, $s0
 	move	$a0, $s0
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
@@ -2857,7 +2878,31 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(_ZdlPvm)
 	jr	$t8
-.LBB6_18:                               # %_ZNSt6vectorISt4pairIiiESaIS1_EED2Ev.exit
+.LBB6_22:                               # %vector.ph
+	pcalau12i	$a1, %pc_hi20(.LCPI6_0)
+	vld	$vr0, $a1, %pc_lo12(.LCPI6_0)
+	bstrpick.d	$a1, $a0, 30, 2
+	slli.d	$a1, $a1, 2
+	move	$a3, $a2
+	move	$a4, $s0
+	move	$a5, $a1
+	.p2align	4, , 16
+.LBB6_23:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr1, $a3, 0
+	vilvl.w	$vr2, $vr0, $vr1
+	vilvh.w	$vr1, $vr0, $vr1
+	vst	$vr1, $a4, 16
+	vst	$vr2, $a4, 0
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a5, $a5, -4
+	addi.d	$a4, $a4, 32
+	addi.d	$a3, $a3, 16
+	bnez	$a5, .LBB6_23
+# %bb.24:                               # %middle.block
+	beq	$a1, $a0, .LBB6_10
+	b	.LBB6_8
+.LBB6_25:                               # %_ZNSt6vectorISt4pairIiiESaIS1_EED2Ev.exit
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -2866,21 +2911,21 @@ _ZN4Mesh10initInvMapEv:                 # @_ZN4Mesh10initInvMapEv
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
-.LBB6_19:                               # %.noexc
+.LBB6_26:                               # %.noexc
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
-.LBB6_20:
+.LBB6_27:
 .Ltmp68:
 	move	$fp, $a0
-	beqz	$s0, .LBB6_22
-# %bb.21:
+	beqz	$s0, .LBB6_29
+# %bb.28:
 	sub.d	$a1, $s3, $s0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-.LBB6_22:                               # %_ZNSt6vectorISt4pairIiiESaIS1_EED2Ev.exit35
+.LBB6_29:                               # %_ZNSt6vectorISt4pairIiiESaIS1_EED2Ev.exit35
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0

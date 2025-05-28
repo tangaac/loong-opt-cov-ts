@@ -1313,7 +1313,7 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB4_39
 # %bb.31:                               # %.lr.ph376.preheader
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 5
 	bgeu	$a0, $a1, .LBB4_34
 # %bb.32:
 	move	$a1, $zero
@@ -1323,15 +1323,20 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	move	$fp, $zero
 	b	.LBB4_40
 .LBB4_34:                               # %vector.ph
-	bstrpick.d	$a1, $a0, 30, 2
-	slli.d	$a1, $a1, 2
+	andi	$a1, $a0, 3
+	sltui	$a2, $a1, 1
+	masknez	$a1, $a1, $a2
+	ori	$a3, $zero, 4
+	maskeqz	$a2, $a3, $a2
+	or	$a1, $a2, $a1
+	sub.d	$a1, $a0, $a1
 	vinsgr2vr.w	$vr0, $fp, 0
 	vinsgr2vr.w	$vr1, $zero, 0
 	vpackev.w	$vr0, $vr1, $vr0
+	addi.d	$a2, $sp, 368
 	ld.d	$t1, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$a2, $t1, 16
+	addi.d	$a3, $t1, 16
 	vrepli.b	$vr1, 0
-	addi.d	$a3, $sp, 368
 	lu52i.d	$a4, $zero, 1022
 	vreplgr2vr.d	$vr2, $a4
 	lu12i.w	$a4, 335544
@@ -1346,8 +1351,8 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	.p2align	4, , 16
 .LBB4_35:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr6, $a2, -16
-	vld	$vr7, $a2, 0
+	vld	$vr6, $a3, -16
+	vld	$vr7, $a3, 0
 	vfsub.d	$vr6, $vr2, $vr6
 	vfsub.d	$vr7, $vr2, $vr7
 	vfmul.d	$vr6, $vr6, $vr3
@@ -1358,26 +1363,28 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	vfsub.d	$vr9, $vr4, $vr7
 	vfadd.d	$vr6, $vr6, $vr4
 	vfadd.d	$vr7, $vr7, $vr4
+	vld	$vr10, $a2, -16
 	vfdiv.d	$vr6, $vr8, $vr6
-	ld.w	$a5, $a3, -16
+	vld	$vr8, $a2, 0
 	vfdiv.d	$vr7, $vr9, $vr7
-	ld.w	$a6, $a3, -8
-	ld.w	$a7, $a3, 0
+	vpickve2gr.w	$a5, $vr10, 2
+	vpickve2gr.w	$a6, $vr10, 0
+	vpickve2gr.w	$a7, $vr8, 2
+	movgr2fr.w	$ft1, $a6
+	ffint.d.w	$ft1, $ft1
+	vpickve2gr.w	$a6, $vr8, 0
+	movfr2gr.d	$t0, $ft1
 	movgr2fr.w	$ft0, $a5
-	ffint.d.w	$ft0, $ft0
-	ld.w	$a5, $a3, 8
-	movfr2gr.d	$t0, $ft0
-	movgr2fr.w	$ft0, $a6
 	ffint.d.w	$ft0, $ft0
 	vinsgr2vr.d	$vr9, $t0, 0
-	movfr2gr.d	$a6, $ft0
+	movfr2gr.d	$a5, $ft0
+	movgr2fr.w	$ft0, $a6
+	ffint.d.w	$ft0, $ft0
+	vinsgr2vr.d	$vr9, $a5, 1
+	movfr2gr.d	$a5, $ft0
 	movgr2fr.w	$ft0, $a7
 	ffint.d.w	$ft0, $ft0
-	vinsgr2vr.d	$vr9, $a6, 1
-	movfr2gr.d	$a6, $ft0
-	movgr2fr.w	$ft0, $a5
-	ffint.d.w	$ft0, $ft0
-	vinsgr2vr.d	$vr10, $a6, 0
+	vinsgr2vr.d	$vr10, $a5, 0
 	movfr2gr.d	$a5, $ft0
 	vinsgr2vr.d	$vr10, $a5, 1
 	vfmul.d	$vr6, $vr6, $vr9
@@ -1402,14 +1409,14 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	vpackev.w	$vr7, $vr7, $vr8
 	vmax.w	$vr6, $vr6, $vr5
 	vmax.w	$vr7, $vr7, $vr5
-	vstelm.w	$vr6, $a3, -12, 0
-	vstelm.w	$vr6, $a3, -4, 1
-	vstelm.w	$vr7, $a3, 4, 0
-	vstelm.w	$vr7, $a3, 12, 1
+	vstelm.w	$vr6, $a2, -12, 0
+	vstelm.w	$vr6, $a2, -4, 1
+	vstelm.w	$vr7, $a2, 4, 0
+	vstelm.w	$vr7, $a2, 12, 1
 	vadd.w	$vr0, $vr6, $vr0
 	vadd.w	$vr1, $vr7, $vr1
-	addi.d	$a4, $a4, -4
 	addi.d	$a2, $a2, 32
+	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB4_35
 # %bb.36:                               # %middle.block
@@ -1417,8 +1424,7 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$fp, $vr0, 0
-	beq	$a1, $a0, .LBB4_39
-.LBB4_37:                               # %.lr.ph376.preheader523
+.LBB4_37:                               # %.lr.ph376.preheader524
 	addi.d	$a2, $sp, 352
 	alsl.d	$a2, $a1, $a2, 3
 	addi.d	$a2, $a2, 4
@@ -1529,12 +1535,12 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	move	$t1, $zero
 	b	.LBB4_56
 	.p2align	4, , 16
-.LBB4_53:                               # %vector.body510.preheader
+.LBB4_53:                               # %vector.body512.preheader
                                         #   in Loop: Header=BB4_51 Depth=1
 	move	$t0, $a6
 	move	$t1, $a4
 	.p2align	4, , 16
-.LBB4_54:                               # %vector.body510
+.LBB4_54:                               # %vector.body512
                                         #   Parent Loop BB4_51 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $t0, -16
@@ -1548,16 +1554,16 @@ VBR_iteration_loop:                     # @VBR_iteration_loop
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB4_54
-# %bb.55:                               # %middle.block515
+# %bb.55:                               # %middle.block517
                                         #   in Loop: Header=BB4_51 Depth=1
 	move	$t1, $a4
 	beq	$a4, $a0, .LBB4_50
-.LBB4_56:                               # %scalar.ph503.preheader
+.LBB4_56:                               # %scalar.ph505.preheader
                                         #   in Loop: Header=BB4_51 Depth=1
 	alsl.d	$t0, $t1, $a5, 2
 	sub.d	$t1, $a0, $t1
 	.p2align	4, , 16
-.LBB4_57:                               # %scalar.ph503
+.LBB4_57:                               # %scalar.ph505
                                         #   Parent Loop BB4_51 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t2, $t0, 0

@@ -581,20 +581,153 @@ _ZNK10btBoxShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_ZNK10b
 	.size	_ZNK10btBoxShape37localGetSupportingVertexWithoutMarginERK9btVector3, .Lfunc_end9-_ZNK10btBoxShape37localGetSupportingVertexWithoutMarginERK9btVector3
 	.cfi_endproc
                                         # -- End function
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
+.LCPI10_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+.LCPI10_1:
+	.word	4294967295                      # 0xffffffff
+	.word	1                               # 0x1
+	.word	5                               # 0x5
+	.word	4294967295                      # 0xffffffff
+.LCPI10_2:
+	.word	0                               # 0x0
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	3                               # 0x3
+.LCPI10_3:
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.word	4294967295                      # 0xffffffff
+.LCPI10_4:
+	.word	4294967295                      # 0xffffffff
+	.word	3                               # 0x3
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+.LCPI10_5:
+	.word	4294967295                      # 0xffffffff
+	.word	2                               # 0x2
+	.word	6                               # 0x6
+	.word	4294967295                      # 0xffffffff
 	.section	.text._ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,"axG",@progbits,_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,comdat
-	.weak	_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i # -- Begin function _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
+	.weak	_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.p2align	5
 	.type	_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
 	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB10_5
+	blt	$a3, $a4, .LBB10_9
 # %bb.1:                                # %.lr.ph
-	ori	$a4, $zero, 8
-	bgeu	$a3, $a4, .LBB10_6
+	ori	$a4, $zero, 4
+	bltu	$a4, $a3, .LBB10_3
 # %bb.2:
 	move	$a4, $zero
-.LBB10_3:                               # %scalar.ph.preheader
+	b	.LBB10_7
+.LBB10_3:                               # %vector.memcheck
+	alsl.d	$a5, $a3, $a2, 4
+	alsl.d	$a4, $a3, $a1, 4
+	addi.d	$a4, $a4, -4
+	sltu	$a4, $a2, $a4
+	sltu	$a6, $a1, $a5
+	and	$a6, $a4, $a6
+	move	$a4, $zero
+	bnez	$a6, .LBB10_7
+# %bb.4:                                # %vector.memcheck
+	addi.d	$a6, $a0, 40
+	addi.d	$a7, $a0, 52
+	sltu	$a7, $a2, $a7
+	sltu	$a5, $a6, $a5
+	and	$a5, $a7, $a5
+	bnez	$a5, .LBB10_7
+# %bb.5:                                # %vector.ph
+	andi	$a4, $a3, 3
+	sltui	$a5, $a4, 1
+	masknez	$a4, $a4, $a5
+	ori	$a6, $zero, 4
+	maskeqz	$a5, $a6, $a5
+	pcalau12i	$a6, %pc_hi20(.LCPI10_0)
+	vld	$vr0, $a6, %pc_lo12(.LCPI10_0)
+	pcalau12i	$a6, %pc_hi20(.LCPI10_1)
+	vld	$vr1, $a6, %pc_lo12(.LCPI10_1)
+	pcalau12i	$a6, %pc_hi20(.LCPI10_2)
+	vld	$vr2, $a6, %pc_lo12(.LCPI10_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI10_3)
+	vld	$vr3, $a6, %pc_lo12(.LCPI10_3)
+	pcalau12i	$a6, %pc_hi20(.LCPI10_4)
+	vld	$vr4, $a6, %pc_lo12(.LCPI10_4)
+	pcalau12i	$a6, %pc_hi20(.LCPI10_5)
+	vld	$vr5, $a6, %pc_lo12(.LCPI10_5)
+	or	$a4, $a5, $a4
+	sub.d	$a4, $a3, $a4
+	vrepli.b	$vr6, 0
+	move	$a5, $a1
+	move	$a6, $a2
+	move	$a7, $a4
+	.p2align	4, , 16
+.LBB10_6:                               # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vld	$vr7, $a5, 0
+	vld	$vr8, $a5, 32
+	vld	$vr9, $a5, 48
+	vld	$vr10, $a5, 16
+	vori.b	$vr11, $vr0, 0
+	vshuf.w	$vr11, $vr9, $vr8
+	vpackev.w	$vr12, $vr10, $vr7
+	vshuf4i.d	$vr12, $vr11, 12
+	vilvl.w	$vr11, $vr9, $vr8
+	vpackod.w	$vr13, $vr10, $vr7
+	vshuf4i.d	$vr13, $vr11, 12
+	vld	$vr11, $a0, 40
+	vpackev.w	$vr8, $vr9, $vr8
+	vilvh.w	$vr7, $vr10, $vr7
+	vshuf4i.d	$vr7, $vr8, 12
+	vreplvei.w	$vr8, $vr11, 0
+	vld	$vr9, $a0, 44
+	vbitrevi.w	$vr10, $vr8, 31
+	vfcmp.cle.s	$vr11, $vr6, $vr12
+	vbitsel.v	$vr8, $vr10, $vr8, $vr11
+	vreplvei.w	$vr9, $vr9, 0
+	vld	$vr10, $a0, 48
+	vbitrevi.w	$vr11, $vr9, 31
+	vfcmp.cle.s	$vr12, $vr6, $vr13
+	vbitsel.v	$vr9, $vr11, $vr9, $vr12
+	vreplvei.w	$vr10, $vr10, 0
+	vbitrevi.w	$vr11, $vr10, 31
+	vfcmp.cle.s	$vr7, $vr6, $vr7
+	vbitsel.v	$vr7, $vr11, $vr10, $vr7
+	vori.b	$vr10, $vr1, 0
+	vshuf.w	$vr10, $vr7, $vr9
+	vsrli.d	$vr11, $vr8, 32
+	vori.b	$vr12, $vr2, 0
+	vshuf.w	$vr12, $vr10, $vr11
+	vori.b	$vr10, $vr3, 0
+	vshuf.w	$vr10, $vr7, $vr9
+	vilvl.w	$vr11, $vr6, $vr8
+	vori.b	$vr13, $vr2, 0
+	vshuf.w	$vr13, $vr10, $vr11
+	vori.b	$vr10, $vr4, 0
+	vshuf.w	$vr10, $vr7, $vr9
+	vbsrl.v	$vr11, $vr8, 12
+	vori.b	$vr14, $vr2, 0
+	vshuf.w	$vr14, $vr10, $vr11
+	vori.b	$vr10, $vr5, 0
+	vshuf.w	$vr10, $vr7, $vr9
+	vilvh.w	$vr7, $vr6, $vr8
+	vori.b	$vr8, $vr2, 0
+	vshuf.w	$vr8, $vr10, $vr7
+	vst	$vr8, $a6, 32
+	vst	$vr14, $a6, 48
+	vst	$vr13, $a6, 0
+	vst	$vr12, $a6, 16
+	addi.d	$a7, $a7, -4
+	addi.d	$a6, $a6, 64
+	addi.d	$a5, $a5, 64
+	bnez	$a7, .LBB10_6
+.LBB10_7:                               # %scalar.ph.preheader
 	sub.d	$a3, $a3, $a4
 	slli.d	$a4, $a4, 4
 	addi.d	$a4, $a4, 8
@@ -602,7 +735,7 @@ _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3
 	add.d	$a2, $a2, $a4
 	movgr2fr.w	$fa0, $zero
 	.p2align	4, , 16
-.LBB10_4:                               # %scalar.ph
+.LBB10_8:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a0, 40
 	fld.s	$fa2, $a1, -8
@@ -626,109 +759,9 @@ _ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3
 	addi.d	$a3, $a3, -1
 	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a2, 16
-	bnez	$a3, .LBB10_4
-.LBB10_5:                               # %._crit_edge
+	bnez	$a3, .LBB10_8
+.LBB10_9:                               # %._crit_edge
 	ret
-.LBB10_6:                               # %vector.memcheck
-	alsl.d	$a5, $a3, $a2, 4
-	alsl.d	$a4, $a3, $a1, 4
-	addi.d	$a4, $a4, -4
-	sltu	$a4, $a2, $a4
-	sltu	$a6, $a1, $a5
-	and	$a6, $a4, $a6
-	move	$a4, $zero
-	bnez	$a6, .LBB10_3
-# %bb.7:                                # %vector.memcheck
-	addi.d	$a6, $a0, 40
-	addi.d	$a7, $a0, 52
-	sltu	$a7, $a2, $a7
-	sltu	$a5, $a6, $a5
-	and	$a5, $a7, $a5
-	bnez	$a5, .LBB10_3
-# %bb.8:                                # %vector.ph
-	bstrpick.d	$a4, $a3, 30, 2
-	slli.d	$a4, $a4, 2
-	addi.d	$a5, $a1, 32
-	addi.d	$a6, $a2, 32
-	vrepli.b	$vr0, 0
-	move	$a7, $a4
-	.p2align	4, , 16
-.LBB10_9:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	fld.s	$fa1, $a5, -32
-	fld.s	$fa2, $a5, -16
-	fld.s	$fa3, $a5, 0
-	fld.s	$fa4, $a5, 16
-	movfr2gr.s	$t0, $fa1
-	vinsgr2vr.w	$vr1, $t0, 0
-	movfr2gr.s	$t0, $fa2
-	vld	$vr2, $a0, 40
-	vinsgr2vr.w	$vr1, $t0, 1
-	movfr2gr.s	$t0, $fa3
-	vinsgr2vr.w	$vr1, $t0, 2
-	movfr2gr.s	$t0, $fa4
-	vinsgr2vr.w	$vr1, $t0, 3
-	vreplvei.w	$vr2, $vr2, 0
-	vbitrevi.w	$vr3, $vr2, 31
-	vfcmp.cle.s	$vr1, $vr0, $vr1
-	fld.s	$fa4, $a5, -28
-	fld.s	$fa5, $a5, -12
-	vbitsel.v	$vr1, $vr3, $vr2, $vr1
-	fld.s	$fa2, $a5, 4
-	fld.s	$fa3, $a5, 20
-	movfr2gr.s	$t0, $fa4
-	vinsgr2vr.w	$vr4, $t0, 0
-	movfr2gr.s	$t0, $fa5
-	vld	$vr5, $a0, 44
-	vinsgr2vr.w	$vr4, $t0, 1
-	movfr2gr.s	$t0, $fa2
-	vinsgr2vr.w	$vr4, $t0, 2
-	movfr2gr.s	$t0, $fa3
-	vinsgr2vr.w	$vr4, $t0, 3
-	vreplvei.w	$vr2, $vr5, 0
-	vbitrevi.w	$vr3, $vr2, 31
-	vfcmp.cle.s	$vr4, $vr0, $vr4
-	fld.s	$fa5, $a5, -24
-	fld.s	$fa6, $a5, -8
-	vbitsel.v	$vr2, $vr3, $vr2, $vr4
-	fld.s	$fa3, $a5, 8
-	fld.s	$fa4, $a5, 24
-	movfr2gr.s	$t0, $fa5
-	vinsgr2vr.w	$vr5, $t0, 0
-	movfr2gr.s	$t0, $fa6
-	vld	$vr6, $a0, 48
-	vinsgr2vr.w	$vr5, $t0, 1
-	movfr2gr.s	$t0, $fa3
-	vinsgr2vr.w	$vr5, $t0, 2
-	movfr2gr.s	$t0, $fa4
-	vinsgr2vr.w	$vr5, $t0, 3
-	vreplvei.w	$vr3, $vr6, 0
-	vbitrevi.w	$vr4, $vr3, 31
-	vfcmp.cle.s	$vr5, $vr0, $vr5
-	vbitsel.v	$vr3, $vr4, $vr3, $vr5
-	vstelm.w	$vr1, $a6, -32, 0
-	vstelm.w	$vr1, $a6, -16, 1
-	vstelm.w	$vr1, $a6, 0, 2
-	vstelm.w	$vr1, $a6, 16, 3
-	vstelm.w	$vr2, $a6, -28, 0
-	vstelm.w	$vr2, $a6, -12, 1
-	vstelm.w	$vr2, $a6, 4, 2
-	vstelm.w	$vr2, $a6, 20, 3
-	vstelm.w	$vr3, $a6, -24, 0
-	vstelm.w	$vr3, $a6, -8, 1
-	vstelm.w	$vr3, $a6, 8, 2
-	vstelm.w	$vr3, $a6, 24, 3
-	st.w	$zero, $a6, -20
-	st.w	$zero, $a6, -4
-	st.w	$zero, $a6, 12
-	st.w	$zero, $a6, 28
-	addi.d	$a7, $a7, -4
-	addi.d	$a5, $a5, 64
-	addi.d	$a6, $a6, 64
-	bnez	$a7, .LBB10_9
-# %bb.10:                               # %middle.block
-	bne	$a4, $a3, .LBB10_3
-	b	.LBB10_5
 .Lfunc_end10:
 	.size	_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i, .Lfunc_end10-_ZNK10btBoxShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
                                         # -- End function

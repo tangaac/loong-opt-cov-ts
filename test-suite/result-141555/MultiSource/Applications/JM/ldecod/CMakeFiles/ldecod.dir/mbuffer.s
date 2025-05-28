@@ -7842,7 +7842,7 @@ dpb_combine_field:                      # @dpb_combine_field
 	maskeqz	$a3, $a3, $a5
 	or	$t2, $a3, $a4
 	add.d	$a0, $a1, $a2
-	bltz	$t2, .LBB32_11
+	bltz	$t2, .LBB32_13
 # %bb.1:                                # %.preheader208.lr.ph
 	ld.d	$t5, $fp, 48
 	move	$a3, $zero
@@ -7886,194 +7886,174 @@ dpb_combine_field:                      # @dpb_combine_field
 	move	$s1, $a6
 	move	$s2, $a4
 	move	$s3, $a5
-	b	.LBB32_4
 	.p2align	4, , 16
-.LBB32_2:                               # %vector.body
-                                        #   in Loop: Header=BB32_4 Depth=1
-	add.d	$s6, $a7, $s4
-	ld.d	$s7, $s6, 0
-	ld.d	$s8, $s6, 16
-	add.d	$s5, $t0, $s4
-	add.d	$s4, $t1, $s4
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 0
-	ld.d	$s8, $s5, 16
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 32
-	ld.d	$s8, $s6, 48
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 0
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 32
-	ld.d	$s8, $s5, 48
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 64
-	ld.d	$s8, $s6, 80
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 16
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 64
-	ld.d	$s8, $s5, 80
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 96
-	ld.d	$s8, $s6, 112
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 32
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 96
-	ld.d	$s8, $s5, 112
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 128
-	ld.d	$s8, $s6, 144
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 48
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 128
-	ld.d	$s8, $s5, 144
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 160
-	ld.d	$s8, $s6, 176
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 64
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 160
-	ld.d	$s8, $s5, 176
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 192
-	ld.d	$s8, $s6, 208
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 80
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s8, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s5, 192
-	ld.d	$s8, $s5, 208
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s7, 0
-	vinsgr2vr.d	$vr1, $s8, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s7, $s6, 224
-	ld.d	$s6, $s6, 240
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 96
-	vinsgr2vr.d	$vr0, $s7, 0
-	vinsgr2vr.d	$vr0, $s6, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s6, $s5, 224
-	ld.d	$s5, $s5, 240
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s6, 0
-	vinsgr2vr.d	$vr1, $s5, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s4, 112
-.LBB32_3:                               # %middle.block
-                                        #   in Loop: Header=BB32_4 Depth=1
-	addi.d	$a3, $a3, 1
-	addi.d	$s3, $s3, 1584
-	addi.d	$s2, $s2, 1584
-	addi.d	$s1, $s1, 1584
-	addi.d	$s0, $s0, 1584
-	addi.d	$t8, $t8, 1584
-	addi.d	$t7, $t7, 1584
-	beq	$a3, $t2, .LBB32_11
-.LBB32_4:                               # %.preheader208
+.LBB32_2:                               # %.preheader208
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB32_6 Depth 2
-                                        #     Child Loop BB32_10 Depth 2
-	mul.d	$s4, $a3, $t3
-	beqz	$t4, .LBB32_8
-# %bb.5:                                # %scalar.ph245.preheader
-                                        #   in Loop: Header=BB32_4 Depth=1
-	move	$s5, $zero
-	move	$s6, $s1
+                                        #     Child Loop BB32_11 Depth 2
+	mul.d	$s5, $a3, $t3
+	beqz	$t4, .LBB32_4
+# %bb.3:                                #   in Loop: Header=BB32_2 Depth=1
+	move	$s4, $zero
+	b	.LBB32_5
 	.p2align	4, , 16
-.LBB32_6:                               # %scalar.ph245
-                                        #   Parent Loop BB32_4 Depth=1
-                                        # =>  This Inner Loop Header: Depth=2
-	ldx.d	$s7, $s2, $s5
-	srli.d	$s8, $s7, 63
-	ldx.d	$ra, $s3, $s5
-	add.d	$s7, $s7, $s8
-	addi.w	$s8, $zero, -2
-	and	$s7, $s7, $s8
-	srli.d	$a2, $ra, 63
-	add.d	$a2, $ra, $a2
-	and	$a2, $a2, $s8
-	slt	$s8, $s7, $a2
-	masknez	$a2, $a2, $s8
-	maskeqz	$s7, $s7, $s8
-	or	$a2, $s7, $a2
-	st.d	$a2, $s6, 0
-	addi.d	$s5, $s5, 16
-	addi.d	$s6, $s6, 8
-	bne	$s5, $t6, .LBB32_6
-# %bb.7:                                # %.preheader207
-                                        #   in Loop: Header=BB32_4 Depth=1
-	beqz	$t5, .LBB32_2
-	b	.LBB32_9
-	.p2align	4, , 16
-.LBB32_8:                               # %vector.body247
-                                        #   in Loop: Header=BB32_4 Depth=1
-	add.d	$s7, $a4, $s4
+.LBB32_4:                               # %vector.body247
+                                        #   in Loop: Header=BB32_2 Depth=1
+	add.d	$s7, $a4, $s5
 	ld.d	$s8, $s7, 0
 	ld.d	$ra, $s7, 16
-	add.d	$s6, $a5, $s4
-	add.d	$s5, $a6, $s4
+	add.d	$s6, $a5, $s5
+	add.d	$s4, $a6, $s5
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $ra, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s8, $s6, 0
+	ld.d	$ra, $s6, 16
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s8, 0
+	vinsgr2vr.d	$vr1, $ra, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	ld.d	$s8, $s7, 32
+	ld.d	$ra, $s7, 48
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 0
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $ra, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s8, $s6, 32
+	ld.d	$ra, $s6, 48
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s8, 0
+	vinsgr2vr.d	$vr1, $ra, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	ld.d	$s8, $s7, 64
+	ld.d	$ra, $s7, 80
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 16
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $ra, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s8, $s6, 64
+	ld.d	$ra, $s6, 80
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s8, 0
+	vinsgr2vr.d	$vr1, $ra, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	ld.d	$s8, $s7, 96
+	ld.d	$ra, $s7, 112
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 32
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $ra, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s8, $s6, 96
+	ld.d	$ra, $s6, 112
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s8, 0
+	vinsgr2vr.d	$vr1, $ra, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	ld.d	$s8, $s7, 128
+	ld.d	$ra, $s7, 144
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 48
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $ra, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s8, $s6, 128
+	ld.d	$ra, $s6, 144
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s8, 0
+	vinsgr2vr.d	$vr1, $ra, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	ld.d	$s8, $s7, 160
+	ld.d	$ra, $s7, 176
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 64
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $ra, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s8, $s6, 160
+	ld.d	$ra, $s6, 176
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s8, 0
+	vinsgr2vr.d	$vr1, $ra, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	ld.d	$s8, $s7, 192
+	ld.d	$s7, $s7, 208
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 80
+	vinsgr2vr.d	$vr0, $s8, 0
+	vinsgr2vr.d	$vr0, $s7, 1
+	vsrli.d	$vr1, $vr0, 63
+	ld.d	$s7, $s6, 192
+	ld.d	$s6, $s6, 208
+	vadd.d	$vr0, $vr0, $vr1
+	vbitclri.d	$vr0, $vr0, 0
+	vinsgr2vr.d	$vr1, $s7, 0
+	vinsgr2vr.d	$vr1, $s6, 1
+	vsrli.d	$vr2, $vr1, 63
+	vadd.d	$vr1, $vr1, $vr2
+	vbitclri.d	$vr1, $vr1, 0
+	vmin.d	$vr0, $vr0, $vr1
+	vst	$vr0, $s4, 96
+	ori	$s4, $zero, 14
+.LBB32_5:                               # %scalar.ph245.preheader
+                                        #   in Loop: Header=BB32_2 Depth=1
+	slli.d	$s6, $s4, 4
+	alsl.d	$s7, $s4, $s1, 3
+	.p2align	4, , 16
+.LBB32_6:                               # %scalar.ph245
+                                        #   Parent Loop BB32_2 Depth=1
+                                        # =>  This Inner Loop Header: Depth=2
+	ldx.d	$s4, $s2, $s6
+	srli.d	$s8, $s4, 63
+	ldx.d	$ra, $s3, $s6
+	add.d	$s8, $s4, $s8
+	addi.w	$s4, $zero, -2
+	and	$s8, $s8, $s4
+	srli.d	$a2, $ra, 63
+	add.d	$a2, $ra, $a2
+	and	$a2, $a2, $s4
+	slt	$ra, $s8, $a2
+	masknez	$a2, $a2, $ra
+	maskeqz	$s8, $s8, $ra
+	or	$a2, $s8, $a2
+	st.d	$a2, $s7, 0
+	addi.d	$s6, $s6, 16
+	addi.d	$s7, $s7, 8
+	bne	$s6, $t6, .LBB32_6
+# %bb.7:                                # %.preheader207
+                                        #   in Loop: Header=BB32_2 Depth=1
+	beqz	$t5, .LBB32_9
+# %bb.8:                                #   in Loop: Header=BB32_2 Depth=1
+	move	$s6, $zero
+	b	.LBB32_10
+	.p2align	4, , 16
+.LBB32_9:                               # %vector.body
+                                        #   in Loop: Header=BB32_2 Depth=1
+	add.d	$s7, $a7, $s5
+	ld.d	$s8, $s7, 0
+	ld.d	$ra, $s7, 16
+	add.d	$s6, $t0, $s5
+	add.d	$s5, $t1, $s5
 	vinsgr2vr.d	$vr0, $s8, 0
 	vinsgr2vr.d	$vr0, $ra, 1
 	vsrli.d	$vr1, $vr0, 63
@@ -8167,30 +8147,14 @@ dpb_combine_field:                      # @dpb_combine_field
 	vadd.d	$vr1, $vr1, $vr2
 	vbitclri.d	$vr1, $vr1, 0
 	ld.d	$s8, $s7, 192
-	ld.d	$ra, $s7, 208
+	ld.d	$s7, $s7, 208
 	vmin.d	$vr0, $vr0, $vr1
 	vst	$vr0, $s5, 80
 	vinsgr2vr.d	$vr0, $s8, 0
-	vinsgr2vr.d	$vr0, $ra, 1
-	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s8, $s6, 192
-	ld.d	$ra, $s6, 208
-	vadd.d	$vr0, $vr0, $vr1
-	vbitclri.d	$vr0, $vr0, 0
-	vinsgr2vr.d	$vr1, $s8, 0
-	vinsgr2vr.d	$vr1, $ra, 1
-	vsrli.d	$vr2, $vr1, 63
-	vadd.d	$vr1, $vr1, $vr2
-	vbitclri.d	$vr1, $vr1, 0
-	ld.d	$s8, $s7, 224
-	ld.d	$s7, $s7, 240
-	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s5, 96
-	vinsgr2vr.d	$vr0, $s8, 0
 	vinsgr2vr.d	$vr0, $s7, 1
 	vsrli.d	$vr1, $vr0, 63
-	ld.d	$s7, $s6, 224
-	ld.d	$s6, $s6, 240
+	ld.d	$s7, $s6, 192
+	ld.d	$s6, $s6, 208
 	vadd.d	$vr0, $vr0, $vr1
 	vbitclri.d	$vr0, $vr0, 0
 	vinsgr2vr.d	$vr1, $s7, 0
@@ -8199,39 +8163,46 @@ dpb_combine_field:                      # @dpb_combine_field
 	vadd.d	$vr1, $vr1, $vr2
 	vbitclri.d	$vr1, $vr1, 0
 	vmin.d	$vr0, $vr0, $vr1
-	vst	$vr0, $s5, 112
-	beqz	$t5, .LBB32_2
-.LBB32_9:                               # %scalar.ph.preheader
-                                        #   in Loop: Header=BB32_4 Depth=1
-	move	$s4, $zero
-	move	$s5, $t7
+	vst	$vr0, $s5, 96
+	ori	$s6, $zero, 14
+.LBB32_10:                              # %scalar.ph.preheader
+                                        #   in Loop: Header=BB32_2 Depth=1
+	slli.d	$s5, $s6, 4
+	alsl.d	$s6, $s6, $t7, 3
 	.p2align	4, , 16
-.LBB32_10:                              # %scalar.ph
-                                        #   Parent Loop BB32_4 Depth=1
+.LBB32_11:                              # %scalar.ph
+                                        #   Parent Loop BB32_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$a2, $t8, $s4
-	srli.d	$s6, $a2, 63
-	ldx.d	$s7, $s0, $s4
-	add.d	$a2, $a2, $s6
-	addi.w	$s6, $zero, -2
-	and	$a2, $a2, $s6
+	ldx.d	$a2, $t8, $s5
+	ldx.d	$s7, $s0, $s5
+	srli.d	$s8, $a2, 63
+	add.d	$a2, $a2, $s8
+	and	$a2, $a2, $s4
 	srli.d	$s8, $s7, 63
 	add.d	$s7, $s7, $s8
-	and	$s6, $s7, $s6
-	slt	$s7, $a2, $s6
-	masknez	$s6, $s6, $s7
-	maskeqz	$a2, $a2, $s7
-	or	$a2, $a2, $s6
-	st.d	$a2, $s5, 0
-	addi.d	$s4, $s4, 16
-	addi.d	$s5, $s5, 8
-	bne	$s4, $t6, .LBB32_10
-	b	.LBB32_3
-.LBB32_11:                              # %.preheader
+	and	$s7, $s7, $s4
+	slt	$s8, $a2, $s7
+	masknez	$s7, $s7, $s8
+	maskeqz	$a2, $a2, $s8
+	or	$a2, $a2, $s7
+	st.d	$a2, $s6, 0
+	addi.d	$s5, $s5, 16
+	addi.d	$s6, $s6, 8
+	bne	$s5, $t6, .LBB32_11
+# %bb.12:                               #   in Loop: Header=BB32_2 Depth=1
+	addi.d	$a3, $a3, 1
+	addi.d	$s3, $s3, 1584
+	addi.d	$s2, $s2, 1584
+	addi.d	$s1, $s1, 1584
+	addi.d	$s0, $s0, 1584
+	addi.d	$t8, $t8, 1584
+	addi.d	$t7, $t7, 1584
+	bne	$a3, $t2, .LBB32_2
+.LBB32_13:                              # %.preheader
 	ld.w	$a3, $a0, 8
 	ori	$a0, $zero, 4
-	blt	$a3, $a0, .LBB32_38
-# %bb.12:                               # %.lr.ph216
+	blt	$a3, $a0, .LBB32_40
+# %bb.14:                               # %.lr.ph216
 	move	$a3, $zero
 	lu12i.w	$a0, 77
 	ori	$a4, $a0, 1472
@@ -8247,10 +8218,10 @@ dpb_combine_field:                      # @dpb_combine_field
 	ori	$t3, $zero, 1584
 	lu12i.w	$t4, 19
 	ori	$t5, $t4, 1400
-	b	.LBB32_14
+	b	.LBB32_16
 	.p2align	4, , 16
-.LBB32_13:                              # %._crit_edge
-                                        #   in Loop: Header=BB32_14 Depth=1
+.LBB32_15:                              # %._crit_edge
+                                        #   in Loop: Header=BB32_16 Depth=1
 	lu12i.w	$a0, 77
 	ori	$a0, $a0, 1476
 	ldx.w	$a0, $a1, $a0
@@ -8258,14 +8229,14 @@ dpb_combine_field:                      # @dpb_combine_field
 	bstrpick.d	$a2, $a0, 62, 61
 	add.w	$a0, $a0, $a2
 	srai.d	$a0, $a0, 2
-	bge	$a3, $a0, .LBB32_38
-.LBB32_14:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB32_17 Depth 2
+	bge	$a3, $a0, .LBB32_40
+.LBB32_16:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB32_19 Depth 2
 	ldx.w	$t6, $a1, $a4
 	ori	$a0, $zero, 4
-	blt	$t6, $a0, .LBB32_13
-# %bb.15:                               # %.lr.ph
-                                        #   in Loop: Header=BB32_14 Depth=1
+	blt	$t6, $a0, .LBB32_15
+# %bb.17:                               # %.lr.ph
+                                        #   in Loop: Header=BB32_16 Depth=1
 	move	$t6, $zero
 	move	$t7, $zero
 	srli.d	$a1, $a3, 1
@@ -8279,9 +8250,9 @@ dpb_combine_field:                      # @dpb_combine_field
 	slli.d	$s0, $s0, 3
 	slli.d	$s1, $a3, 3
 	slli.d	$s2, $s2, 3
-	b	.LBB32_17
+	b	.LBB32_19
 	.p2align	4, , 16
-.LBB32_16:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_18:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $fp, 56
 	ld.d	$a1, $s6, 8
 	ldx.d	$a0, $a0, $a6
@@ -8300,8 +8271,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.w	$a0, $a0, $a2
 	srai.d	$a0, $a0, 2
 	addi.d	$t6, $t6, 8
-	bge	$t7, $a0, .LBB32_13
-.LBB32_17:                              #   Parent Loop BB32_14 Depth=1
+	bge	$t7, $a0, .LBB32_15
+.LBB32_19:                              #   Parent Loop BB32_16 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $fp, 48
 	ldx.d	$a1, $a1, $a6
@@ -8358,8 +8329,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	ld.d	$s5, $fp, 56
 	add.d	$s6, $s5, $t1
 	srli.d	$a1, $t7, 1
-	bltz	$s3, .LBB32_19
-# %bb.18:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s3, .LBB32_21
+# %bb.20:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s7, $s6, 0
 	ldx.d	$s7, $s7, $s2
 	and	$s8, $a1, $t2
@@ -8368,17 +8339,17 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$s7, $s5, $s7
 	alsl.d	$s7, $s3, $s7, 3
 	ld.d	$s8, $s7, 24
-	b	.LBB32_20
+	b	.LBB32_22
 	.p2align	4, , 16
-.LBB32_19:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_21:                              #   in Loop: Header=BB32_19 Depth=2
 	move	$s8, $zero
-.LBB32_20:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_22:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s7, $s6, 24
 	ld.d	$ra, $s7, 0
 	ldx.d	$ra, $ra, $s1
 	stx.d	$s8, $ra, $t6
-	bltz	$s4, .LBB32_23
-# %bb.21:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s4, .LBB32_25
+# %bb.23:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s8, $s6, 0
 	ldx.d	$s8, $s8, $s2
 	and	$ra, $a1, $t2
@@ -8390,8 +8361,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	ld.d	$s7, $s7, 8
 	ldx.d	$s7, $s7, $s1
 	stx.d	$s8, $s7, $t6
-	bltz	$s3, .LBB32_24
-.LBB32_22:                              #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s3, .LBB32_26
+.LBB32_24:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s7, $s6, 0
 	ldx.d	$s7, $s7, $s2
 	and	$s8, $a1, $t2
@@ -8400,17 +8371,17 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$s7, $s5, $s7
 	alsl.d	$s3, $s3, $s7, 3
 	ldx.d	$s3, $s3, $t5
-	b	.LBB32_25
+	b	.LBB32_27
 	.p2align	4, , 16
-.LBB32_23:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_25:                              #   in Loop: Header=BB32_19 Depth=2
 	move	$s8, $zero
 	ld.d	$s7, $s7, 8
 	ldx.d	$s7, $s7, $s1
 	stx.d	$s8, $s7, $t6
-	bgez	$s3, .LBB32_22
-.LBB32_24:                              #   in Loop: Header=BB32_17 Depth=2
+	bgez	$s3, .LBB32_24
+.LBB32_26:                              #   in Loop: Header=BB32_19 Depth=2
 	move	$s3, $zero
-.LBB32_25:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_27:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s7, $fp, 48
 	add.d	$s7, $s7, $t0
 	ld.d	$s8, $s7, 16
@@ -8418,8 +8389,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	ldx.d	$ra, $ra, $s0
 	stx.d	$s3, $ra, $t6
 	ori	$s3, $t4, 1664
-	bltz	$s4, .LBB32_27
-# %bb.26:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s4, .LBB32_29
+# %bb.28:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s6, $s6, 0
 	ldx.d	$s6, $s6, $s2
 	and	$ra, $a1, $t2
@@ -8428,11 +8399,11 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$s5, $s5, $s6
 	alsl.d	$s4, $s4, $s5, 3
 	ldx.d	$s4, $s4, $s3
-	b	.LBB32_28
+	b	.LBB32_30
 	.p2align	4, , 16
-.LBB32_27:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_29:                              #   in Loop: Header=BB32_19 Depth=2
 	move	$s4, $zero
-.LBB32_28:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_30:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s5, $fp, 64
 	add.d	$s6, $s5, $t0
 	ld.d	$s6, $s6, 24
@@ -8480,8 +8451,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	stx.b	$s4, $a0, $t7
 	ld.d	$s5, $fp, 64
 	add.d	$s7, $s5, $t1
-	bltz	$s6, .LBB32_30
-# %bb.29:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s6, .LBB32_32
+# %bb.31:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $s7, 0
 	ldx.d	$a0, $a0, $s2
 	and	$a2, $a1, $t2
@@ -8490,17 +8461,17 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$a0, $s5, $a0
 	alsl.d	$a0, $s6, $a0, 3
 	ld.d	$ra, $a0, 24
-	b	.LBB32_31
+	b	.LBB32_33
 	.p2align	4, , 16
-.LBB32_30:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_32:                              #   in Loop: Header=BB32_19 Depth=2
 	move	$ra, $zero
-.LBB32_31:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_33:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$s8, $s7, 24
 	ld.d	$a0, $s8, 0
 	ldx.d	$a0, $a0, $s1
 	stx.d	$ra, $a0, $t6
-	bltz	$s4, .LBB32_33
-# %bb.32:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s4, .LBB32_35
+# %bb.34:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $s7, 0
 	ldx.d	$a0, $a0, $s2
 	and	$a2, $a1, $t2
@@ -8509,18 +8480,18 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$a0, $s5, $a0
 	alsl.d	$a0, $s4, $a0, 3
 	ld.d	$ra, $a0, 288
-	b	.LBB32_34
+	b	.LBB32_36
 	.p2align	4, , 16
-.LBB32_33:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_35:                              #   in Loop: Header=BB32_19 Depth=2
 	move	$ra, $zero
-.LBB32_34:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_36:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $s8, 8
 	ldx.d	$a0, $a0, $s1
 	addi.w	$s8, $zero, -1
 	stx.d	$ra, $a0, $t6
 	move	$ra, $s8
-	bltz	$s6, .LBB32_36
-# %bb.35:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s6, .LBB32_38
+# %bb.37:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $s7, 0
 	ldx.d	$a0, $a0, $s2
 	and	$a2, $a1, $t2
@@ -8529,7 +8500,7 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$a0, $s5, $a0
 	alsl.d	$a0, $s6, $a0, 3
 	ldx.d	$ra, $a0, $t5
-.LBB32_36:                              #   in Loop: Header=BB32_17 Depth=2
+.LBB32_38:                              #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $fp, 48
 	lu12i.w	$a2, 77
 	ori	$a2, $a2, 1576
@@ -8537,8 +8508,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	ld.d	$a0, $s6, 0
 	ldx.d	$a0, $a0, $t8
 	stx.d	$ra, $a0, $t6
-	bltz	$s4, .LBB32_16
-# %bb.37:                               #   in Loop: Header=BB32_17 Depth=2
+	bltz	$s4, .LBB32_18
+# %bb.39:                               #   in Loop: Header=BB32_19 Depth=2
 	ld.d	$a0, $s7, 0
 	ldx.d	$a0, $a0, $s2
 	and	$a1, $a1, $t2
@@ -8547,8 +8518,8 @@ dpb_combine_field:                      # @dpb_combine_field
 	add.d	$a0, $s5, $a0
 	alsl.d	$a0, $s4, $a0, 3
 	ldx.d	$s8, $a0, $s3
-	b	.LBB32_16
-.LBB32_38:                              # %._crit_edge217
+	b	.LBB32_18
+.LBB32_40:                              # %._crit_edge217
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload

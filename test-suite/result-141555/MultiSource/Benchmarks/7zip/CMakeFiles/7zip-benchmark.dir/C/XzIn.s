@@ -226,7 +226,7 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	beqz	$a1, .LBB6_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $a0, 16
-	ori	$a0, $zero, 4
+	ori	$a0, $zero, 5
 	bgeu	$a1, $a0, .LBB6_4
 # %bb.2:
 	move	$a3, $zero
@@ -236,8 +236,13 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	move	$a0, $zero
 	ret
 .LBB6_4:                                # %vector.ph
-	move	$a3, $a1
-	bstrins.d	$a3, $zero, 1, 0
+	andi	$a0, $a1, 3
+	sltui	$a3, $a0, 1
+	masknez	$a0, $a0, $a3
+	ori	$a4, $zero, 4
+	maskeqz	$a3, $a4, $a3
+	or	$a0, $a3, $a0
+	sub.d	$a3, $a1, $a0
 	vrepli.b	$vr0, 0
 	addi.d	$a0, $a2, 88
 	move	$a4, $a3
@@ -263,7 +268,6 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	vreplvei.d	$vr1, $vr0, 1
 	vadd.d	$vr0, $vr0, $vr1
 	vpickve2gr.d	$a0, $vr0, 0
-	beq	$a1, $a3, .LBB6_9
 .LBB6_7:                                # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a3
 	slli.d	$a4, $a3, 5
@@ -278,7 +282,7 @@ Xzs_GetNumBlocks:                       # @Xzs_GetNumBlocks
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 40
 	bnez	$a1, .LBB6_8
-.LBB6_9:                                # %._crit_edge
+# %bb.9:                                # %._crit_edge
 	ret
 .Lfunc_end6:
 	.size	Xzs_GetNumBlocks, .Lfunc_end6-Xzs_GetNumBlocks

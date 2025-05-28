@@ -55,180 +55,286 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	.cfi_offset 62, -144
 	.cfi_offset 63, -152
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -480
-	.cfi_def_cfa_offset 4560
-	move	$a0, $a2
-	ld.w	$a2, $a2, 8
-	addi.w	$t0, $a2, -17
+	addi.d	$sp, $sp, -624
+	.cfi_def_cfa_offset 4704
+	move	$t0, $a2
+	ld.w	$a0, $a2, 8
+	addi.w	$a0, $a0, -17
 	ori	$a2, $zero, 1
 	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 24                    # 8-byte Folded Spill
 	move	$s1, $a5
 	move	$s2, $a4
-	move	$s4, $a3
-	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	bltu	$a2, $t0, .LBB0_2
+	move	$s3, $a3
+	move	$s4, $a1
+	bltu	$a2, $a0, .LBB0_2
 # %bb.1:
-	ld.w	$a1, $s4, 8
-	addi.w	$a1, $a1, -17
-	sltui	$a1, $a1, 2
-	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
+	ld.w	$a0, $s3, 8
+	addi.w	$a0, $a0, -17
+	sltui	$a0, $a0, 2
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB0_3
 .LBB0_2:
-	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
 .LBB0_3:                                # %.preheader463
-	move	$a5, $zero
+	move	$a0, $zero
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 472
+	ori	$a1, $a1, 616
 	add.d	$a1, $sp, $a1
-	ld.d	$s3, $a1, 0
+	ld.d	$a1, $a1, 0
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 464
+	ori	$a1, $a1, 608
 	add.d	$a1, $sp, $a1
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	fld.s	$ft1, $s2, 0
 	addi.d	$a1, $s2, 16
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	addi.d	$a1, $s2, 32
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a1, $s1, 16
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$a1, $s1, 32
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	vld	$vr17, $s1, 40
-	vld	$vr16, $s1, 24
-	vld	$vr15, $s1, 8
-	vld	$vr14, $s1, 36
-	vld	$vr13, $s1, 20
-	vld	$vr12, $s1, 4
-	vld	$vr11, $s1, 32
-	vld	$vr10, $s1, 16
-	vld	$vr9, $s1, 0
-	vld	$vr8, $s2, 40
-	vld	$vr7, $s2, 24
-	vld	$vr6, $s2, 8
-	vld	$vr5, $s2, 36
-	vld	$vr4, $s2, 20
-	vld	$vr0, $s2, 0
-	vld	$vr1, $s2, 16
-	vld	$vr2, $s2, 32
-	vld	$vr3, $s2, 4
-	vreplvei.w	$vr0, $vr0, 0
-	vreplvei.w	$vr1, $vr1, 0
-	vreplvei.w	$vr2, $vr2, 0
-	vreplvei.w	$vr3, $vr3, 0
-	vreplvei.w	$vr4, $vr4, 0
-	vreplvei.w	$vr5, $vr5, 0
-	vreplvei.w	$vr6, $vr6, 0
-	vreplvei.w	$vr7, $vr7, 0
-	vreplvei.w	$vr8, $vr8, 0
-	vreplvei.w	$vr9, $vr9, 0
-	vreplvei.w	$vr10, $vr10, 0
-	vreplvei.w	$vr11, $vr11, 0
-	vreplvei.w	$vr12, $vr12, 0
-	vreplvei.w	$vr13, $vr13, 0
-	vreplvei.w	$vr14, $vr14, 0
-	vreplvei.w	$vr15, $vr15, 0
-	vreplvei.w	$vr16, $vr16, 0
-	vreplvei.w	$vr17, $vr17, 0
+	fld.s	$ft4, $s2, 16
+	addi.d	$a1, $s2, 32
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	fld.s	$ft5, $s2, 32
+	fld.s	$ft2, $s2, 4
+	fld.s	$ft8, $s2, 20
+	fld.s	$ft6, $s2, 36
+	fld.s	$ft3, $s2, 8
+	fld.s	$ft9, $s2, 24
+	fld.s	$ft7, $s2, 40
+	fld.s	$fa0, $s1, 0
+	addi.d	$a1, $s1, 16
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	fld.s	$fa3, $s1, 16
+	addi.d	$a1, $s1, 32
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	fld.s	$fa4, $s1, 32
+	fld.s	$fa1, $s1, 4
+	fld.s	$fa7, $s1, 20
+	fld.s	$fa5, $s1, 36
+	fld.s	$fa2, $s1, 8
+	fld.s	$ft0, $s1, 24
+	fld.s	$fa6, $s1, 40
+	vst	$vr9, $sp, 128                  # 16-byte Folded Spill
+	vreplvei.w	$vr18, $vr9, 0
+	vreplvei.w	$vr19, $vr12, 0
+	vreplvei.w	$vr20, $vr13, 0
+	vst	$vr10, $sp, 112                 # 16-byte Folded Spill
+	vreplvei.w	$vr21, $vr10, 0
+	vreplvei.w	$vr22, $vr16, 0
+	vreplvei.w	$vr23, $vr14, 0
+	vst	$vr11, $sp, 96                  # 16-byte Folded Spill
+	vreplvei.w	$vr24, $vr11, 0
+	vreplvei.w	$vr25, $vr17, 0
+	vreplvei.w	$vr26, $vr15, 0
+	vst	$vr0, $sp, 272                  # 16-byte Folded Spill
+	vreplvei.w	$vr27, $vr0, 0
+	vst	$vr3, $sp, 224                  # 16-byte Folded Spill
+	vreplvei.w	$vr28, $vr3, 0
+	vst	$vr4, $sp, 208                  # 16-byte Folded Spill
+	vreplvei.w	$vr29, $vr4, 0
+	vst	$vr1, $sp, 256                  # 16-byte Folded Spill
+	vreplvei.w	$vr30, $vr1, 0
+	vst	$vr7, $sp, 160                  # 16-byte Folded Spill
+	vreplvei.w	$vr31, $vr7, 0
 	pcalau12i	$a1, %pc_hi20(_ZL22sPenetrationDirections)
-	addi.d	$s5, $a1, %pc_lo12(_ZL22sPenetrationDirections)
-	vrepli.b	$vr18, 0
-	addi.d	$a1, $sp, 1432
-	addi.d	$a2, $sp, 440
-	ori	$a3, $zero, 672
+	addi.d	$s6, $a1, %pc_lo12(_ZL22sPenetrationDirections)
+	addi.d	$a1, $sp, 1576
+	addi.d	$a2, $sp, 584
+	ori	$a3, $zero, 640
+	vst	$vr5, $sp, 192                  # 16-byte Folded Spill
+	vreplvei.w	$vr0, $vr5, 0
+	vst	$vr2, $sp, 240                  # 16-byte Folded Spill
+	vreplvei.w	$vr1, $vr2, 0
+	vst	$vr8, $sp, 144                  # 16-byte Folded Spill
+	vreplvei.w	$vr2, $vr8, 0
+	vst	$vr6, $sp, 176                  # 16-byte Folded Spill
+	vreplvei.w	$vr3, $vr6, 0
 	.p2align	4, , 16
 .LBB0_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a4, $s5, $a5
-	fldx.s	$ft11, $s5, $a5
-	fld.s	$ft12, $a4, 16
-	fld.s	$ft13, $a4, 4
-	fld.s	$ft14, $a4, 20
-	fld.s	$ft15, $a4, 8
-	fld.s	$fs0, $a4, 24
-	vpackev.w	$vr19, $vr20, $vr19
-	vpackev.w	$vr20, $vr22, $vr21
-	vpackev.w	$vr21, $vr24, $vr23
-	vbitrevi.w	$vr22, $vr19, 31
-	vbitrevi.w	$vr23, $vr20, 31
-	vbitrevi.w	$vr24, $vr21, 31
-	vfmul.s	$vr25, $vr1, $vr23
-	vfmadd.s	$vr25, $vr0, $vr22, $vr25
-	vfmadd.s	$vr25, $vr2, $vr24, $vr25
-	vfmul.s	$vr26, $vr4, $vr23
-	vfmadd.s	$vr26, $vr3, $vr22, $vr26
-	vfmadd.s	$vr26, $vr5, $vr24, $vr26
-	vfmul.s	$vr23, $vr7, $vr23
-	vfmadd.s	$vr22, $vr6, $vr22, $vr23
-	vfmadd.s	$vr22, $vr8, $vr24, $vr22
-	vshuf4i.w	$vr23, $vr26, 16
-	vslli.d	$vr23, $vr23, 32
-	vilvl.w	$vr24, $vr18, $vr25
-	vor.v	$vr23, $vr23, $vr24
-	vilvl.w	$vr22, $vr18, $vr22
-	add.d	$a4, $a1, $a5
-	vpackev.d	$vr24, $vr22, $vr23
-	vstx	$vr24, $a5, $a1
-	vpackod.d	$vr22, $vr22, $vr23
-	vst	$vr22, $a4, 16
-	vfmul.s	$vr22, $vr20, $vr10
-	vfmadd.s	$vr22, $vr9, $vr19, $vr22
-	vfmadd.s	$vr22, $vr11, $vr21, $vr22
-	vfmul.s	$vr23, $vr20, $vr13
-	vfmadd.s	$vr23, $vr12, $vr19, $vr23
-	vfmadd.s	$vr23, $vr14, $vr21, $vr23
-	vfmul.s	$vr20, $vr20, $vr16
-	vfmadd.s	$vr19, $vr15, $vr19, $vr20
-	vfmadd.s	$vr19, $vr17, $vr21, $vr19
-	vshuf4i.w	$vr20, $vr23, 16
-	vslli.d	$vr20, $vr20, 32
-	vilvl.w	$vr21, $vr18, $vr22
-	vor.v	$vr20, $vr20, $vr21
-	vilvl.w	$vr19, $vr18, $vr19
-	add.d	$a4, $a2, $a5
-	vpackev.d	$vr21, $vr19, $vr20
-	vstx	$vr21, $a5, $a2
-	vpackod.d	$vr19, $vr19, $vr20
-	addi.d	$a5, $a5, 32
-	vst	$vr19, $a4, 16
-	bne	$a5, $a3, .LBB0_4
-# %bb.5:                                # %middle.block
-	ld.d	$a1, $a0, 0
-	ld.d	$a1, $a1, 128
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	add.d	$a4, $s6, $a0
+	vldx	$vr4, $s6, $a0
+	vld	$vr5, $a4, 16
+	vpackev.w	$vr6, $vr5, $vr4
+	vpackod.w	$vr7, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vbitrevi.w	$vr5, $vr6, 31
+	vbitrevi.w	$vr8, $vr7, 31
+	vbitrevi.w	$vr9, $vr4, 31
+	vfmul.s	$vr10, $vr19, $vr8
+	vfmadd.s	$vr10, $vr18, $vr5, $vr10
+	vfmadd.s	$vr10, $vr20, $vr9, $vr10
+	vfmul.s	$vr11, $vr22, $vr8
+	vfmadd.s	$vr11, $vr21, $vr5, $vr11
+	vfmadd.s	$vr11, $vr23, $vr9, $vr11
+	vfmul.s	$vr8, $vr25, $vr8
+	vfmadd.s	$vr5, $vr24, $vr5, $vr8
+	vfmadd.s	$vr5, $vr26, $vr9, $vr5
+	vshuf4i.w	$vr8, $vr11, 16
+	vslli.d	$vr8, $vr8, 32
+	vrepli.b	$vr9, 0
+	vilvl.w	$vr10, $vr9, $vr10
+	vor.v	$vr8, $vr8, $vr10
+	vilvl.w	$vr5, $vr9, $vr5
+	add.d	$a4, $a1, $a0
+	vpackod.d	$vr10, $vr5, $vr8
+	vpackev.d	$vr5, $vr5, $vr8
+	vstx	$vr5, $a0, $a1
+	vst	$vr10, $a4, 16
+	vfmul.s	$vr5, $vr7, $vr28
+	vfmadd.s	$vr5, $vr27, $vr6, $vr5
+	vfmadd.s	$vr5, $vr29, $vr4, $vr5
+	vfmul.s	$vr8, $vr7, $vr31
+	vfmadd.s	$vr8, $vr30, $vr6, $vr8
+	vfmadd.s	$vr8, $vr0, $vr4, $vr8
+	vfmul.s	$vr7, $vr7, $vr2
+	vfmadd.s	$vr6, $vr1, $vr6, $vr7
+	vfmadd.s	$vr4, $vr3, $vr4, $vr6
+	vshuf4i.w	$vr6, $vr8, 16
+	vslli.d	$vr6, $vr6, 32
+	vilvl.w	$vr5, $vr9, $vr5
+	vor.v	$vr5, $vr6, $vr5
+	vilvl.w	$vr4, $vr9, $vr4
+	add.d	$a4, $a2, $a0
+	vpackod.d	$vr6, $vr4, $vr5
+	vpackev.d	$vr4, $vr4, $vr5
+	vstx	$vr4, $a0, $a2
+	addi.d	$a0, $a0, 32
+	vst	$vr6, $a4, 16
+	bne	$a0, $a3, .LBB0_4
+# %bb.5:                                # %scalar.ph
+	fld.s	$fa0, $s6, 640
+	fld.s	$fa1, $s6, 644
+	fld.s	$fa2, $s6, 648
+	fneg.s	$fa3, $fa0
+	fneg.s	$fa4, $fa1
+	fneg.s	$fa5, $fa2
+	fmul.s	$fa6, $ft4, $fa4
+	vld	$vr23, $sp, 128                 # 16-byte Folded Reload
+	fmadd.s	$fa6, $ft15, $fa3, $fa6
+	fmadd.s	$fa6, $ft5, $fa5, $fa6
+	fmul.s	$fa7, $ft8, $fa4
+	vld	$vr24, $sp, 112                 # 16-byte Folded Reload
+	fmadd.s	$fa7, $fs0, $fa3, $fa7
+	fmadd.s	$fa7, $ft6, $fa5, $fa7
+	fmul.s	$fa4, $ft9, $fa4
+	vld	$vr25, $sp, 96                  # 16-byte Folded Reload
+	fmadd.s	$fa3, $fs1, $fa3, $fa4
+	fmadd.s	$fa3, $ft7, $fa5, $fa3
+	movfr2gr.s	$a0, $fa6
+	movfr2gr.s	$a1, $fa7
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa3
+	bstrpick.d	$a1, $a1, 31, 0
+	ori	$a2, $zero, 2216
+	add.d	$a2, $sp, $a2
+	st.d	$a0, $a2, 0
+	ori	$a0, $zero, 2224
+	add.d	$a0, $sp, $a0
+	st.d	$a1, $a0, 0
+	vld	$vr11, $sp, 224                 # 16-byte Folded Reload
+	fmul.s	$fa3, $fa1, $ft3
+	vld	$vr8, $sp, 272                  # 16-byte Folded Reload
+	fmadd.s	$fa3, $ft0, $fa0, $fa3
+	vld	$vr18, $sp, 208                 # 16-byte Folded Reload
+	fmadd.s	$fa3, $ft10, $fa2, $fa3
+	vld	$vr21, $sp, 160                 # 16-byte Folded Reload
+	fmul.s	$fa4, $fa1, $ft13
+	vld	$vr9, $sp, 256                  # 16-byte Folded Reload
+	fmadd.s	$fa4, $ft1, $fa0, $fa4
+	vld	$vr19, $sp, 192                 # 16-byte Folded Reload
+	fmadd.s	$fa4, $ft11, $fa2, $fa4
+	vld	$vr22, $sp, 144                 # 16-byte Folded Reload
+	fmul.s	$fa1, $fa1, $ft14
+	vld	$vr10, $sp, 240                 # 16-byte Folded Reload
+	fmadd.s	$fa0, $ft2, $fa0, $fa1
+	vld	$vr20, $sp, 176                 # 16-byte Folded Reload
+	fmadd.s	$fa0, $ft12, $fa2, $fa0
+	movfr2gr.s	$a0, $fa3
+	movfr2gr.s	$a1, $fa4
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa0
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a0, $sp, 1224
+	fld.s	$fa0, $s6, 656
+	fld.s	$fa1, $s6, 660
+	fld.s	$fa2, $s6, 664
+	st.d	$a1, $sp, 1232
+	fneg.s	$fa3, $fa0
+	fneg.s	$fa4, $fa1
+	fneg.s	$fa5, $fa2
+	fmul.s	$fa6, $ft4, $fa4
+	fmadd.s	$fa6, $ft15, $fa3, $fa6
+	fmadd.s	$fa6, $ft5, $fa5, $fa6
+	fmul.s	$fa7, $ft8, $fa4
+	fmadd.s	$fa7, $fs0, $fa3, $fa7
+	fmadd.s	$fa7, $ft6, $fa5, $fa7
+	fmul.s	$fa4, $ft9, $fa4
+	fmadd.s	$fa3, $fs1, $fa3, $fa4
+	fmadd.s	$fa3, $ft7, $fa5, $fa3
+	movfr2gr.s	$a0, $fa6
+	movfr2gr.s	$a1, $fa7
+	bstrins.d	$a0, $a1, 63, 32
+	movfr2gr.s	$a1, $fa3
+	bstrpick.d	$a1, $a1, 31, 0
+	ori	$a2, $zero, 2232
+	add.d	$a2, $sp, $a2
+	st.d	$a0, $a2, 0
+	ori	$a0, $zero, 2240
+	add.d	$a0, $sp, $a0
+	st.d	$a1, $a0, 0
+	fmul.s	$fa3, $fa1, $ft3
+	fmadd.s	$fa3, $ft0, $fa0, $fa3
+	fmadd.s	$fa3, $ft10, $fa2, $fa3
+	fmul.s	$fa4, $fa1, $ft13
+	fmadd.s	$fa4, $ft1, $fa0, $fa4
+	fmadd.s	$fa4, $ft11, $fa2, $fa4
+	fmul.s	$fa1, $fa1, $ft14
+	fmadd.s	$fa0, $ft2, $fa0, $fa1
+	fmadd.s	$fa0, $ft12, $fa2, $fa0
+	movfr2gr.s	$a0, $fa3
+	movfr2gr.s	$a1, $fa4
+	bstrins.d	$a0, $a1, 63, 32
+	st.d	$a0, $sp, 1240
+	ld.d	$a0, $t0, 0
+	movfr2gr.s	$a1, $fa0
+	bstrpick.d	$a1, $a1, 31, 0
+	st.d	$a1, $sp, 1248
+	ld.d	$a1, $a0, 128
+	st.d	$t0, $sp, 96                    # 8-byte Folded Spill
+	move	$a0, $t0
 	jirl	$ra, $a1, 0
 	ori	$s0, $zero, 1
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
 	blt	$a0, $s0, .LBB0_9
 # %bb.6:                                # %.lr.ph
 	move	$s7, $a0
 	move	$s0, $zero
-	addi.d	$s8, $sp, 1120
-	addi.d	$s3, $s5, 672
-	ori	$a0, $zero, 2112
+	addi.d	$s8, $sp, 1264
+	addi.d	$s4, $s6, 672
+	ori	$a0, $zero, 2256
 	add.d	$fp, $sp, $a0
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_7:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s6, 0
+	ld.d	$a0, $s5, 0
 	ld.d	$a3, $a0, 136
-	ori	$a0, $zero, 3416
+	ori	$a0, $zero, 3560
 	add.d	$a2, $sp, $a0
-	move	$a0, $s6
+	move	$a0, $s5
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
 	fld.s	$fa0, $s2, 4
-	ori	$a0, $zero, 3420
+	ori	$a0, $zero, 3564
 	add.d	$a0, $sp, $a0
 	fld.s	$fa1, $a0, 0
 	fld.s	$fa2, $s2, 0
-	ori	$a0, $zero, 3416
+	ori	$a0, $zero, 3560
 	add.d	$a0, $sp, $a0
 	fld.s	$fa3, $a0, 0
 	fmul.s	$fa0, $fa0, $fa1
 	fld.s	$fa4, $s2, 8
-	ori	$a0, $zero, 3424
+	ori	$a0, $zero, 3568
 	add.d	$a0, $sp, $a0
 	fld.s	$fa5, $a0, 0
 	fld.s	$fa6, $s2, 20
@@ -250,11 +356,11 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	ori	$a2, $zero, 3416
+	ori	$a2, $zero, 3560
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	st.d	$a0, $s3, 0
-	st.d	$a1, $s3, 8
+	st.d	$a0, $s4, 0
+	st.d	$a1, $s4, 8
 	fnmadd.s	$fa4, $fa4, $fa5, $ft0
 	fld.s	$ft0, $s2, 16
 	fld.s	$ft1, $s2, 0
@@ -273,7 +379,7 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	fld.s	$ft0, $s2, 24
 	fld.s	$ft1, $s2, 8
 	fld.s	$ft2, $s2, 40
-	ori	$a0, $zero, 3424
+	ori	$a0, $zero, 3568
 	add.d	$a0, $sp, $a0
 	st.d	$a1, $a0, 0
 	fmul.s	$fa6, $ft0, $fa6
@@ -314,19 +420,19 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	addi.w	$s0, $s0, 1
 	addi.d	$s8, $s8, 16
 	addi.d	$fp, $fp, 16
-	addi.d	$s3, $s3, 16
+	addi.d	$s4, $s4, 16
 	bne	$s7, $s0, .LBB0_7
 # %bb.8:                                # %.loopexit462.loopexit
 	addi.w	$s7, $s0, 42
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 	ori	$s0, $zero, 1
 	b	.LBB0_10
 .LBB0_9:
 	ori	$s7, $zero, 42
 .LBB0_10:                               # %.loopexit462
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a1, $a0, 128
-	move	$a0, $s4
+	move	$a0, $s3
 	jirl	$ra, $a1, 0
 	blt	$a0, $s0, .LBB0_14
 # %bb.11:                               # %.lr.ph469
@@ -335,31 +441,31 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	bstrpick.d	$a0, $s7, 31, 0
 	ori	$a1, $zero, 8
 	bstrins.d	$a1, $s7, 35, 4
-	addi.d	$a2, $sp, 440
+	addi.d	$a2, $sp, 584
 	add.d	$fp, $a2, $a1
-	addi.d	$a2, $sp, 1432
-	add.d	$s3, $a2, $a1
-	alsl.d	$s6, $a0, $s5, 4
+	addi.d	$a2, $sp, 1576
+	add.d	$s4, $a2, $a1
+	alsl.d	$s5, $a0, $s6, 4
 	.p2align	4, , 16
 .LBB0_12:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a3, $a0, 136
-	ori	$a0, $zero, 3416
+	ori	$a0, $zero, 3560
 	add.d	$a2, $sp, $a0
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $s0
 	jirl	$ra, $a3, 0
 	fld.s	$fa0, $s1, 4
-	ori	$a0, $zero, 3420
+	ori	$a0, $zero, 3564
 	add.d	$a0, $sp, $a0
 	fld.s	$fa1, $a0, 0
 	fld.s	$fa2, $s1, 0
-	ori	$a0, $zero, 3416
+	ori	$a0, $zero, 3560
 	add.d	$a0, $sp, $a0
 	fld.s	$fa3, $a0, 0
 	fmul.s	$fa0, $fa0, $fa1
 	fld.s	$fa4, $s1, 8
-	ori	$a0, $zero, 3424
+	ori	$a0, $zero, 3568
 	add.d	$a0, $sp, $a0
 	fld.s	$fa5, $a0, 0
 	fld.s	$fa6, $s1, 20
@@ -381,11 +487,11 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa2
 	bstrpick.d	$a1, $a1, 31, 0
-	ori	$a2, $zero, 3416
+	ori	$a2, $zero, 3560
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	st.d	$a0, $s6, 0
-	st.d	$a1, $s6, 8
+	st.d	$a0, $s5, 0
+	st.d	$a1, $s5, 8
 	fnmadd.s	$fa4, $fa4, $fa5, $ft0
 	fld.s	$ft0, $s2, 16
 	fld.s	$ft1, $s2, 0
@@ -404,7 +510,7 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	fld.s	$ft0, $s2, 24
 	fld.s	$ft1, $s2, 8
 	fld.s	$ft2, $s2, 40
-	ori	$a0, $zero, 3424
+	ori	$a0, $zero, 3568
 	add.d	$a0, $sp, $a0
 	st.d	$a1, $a0, 0
 	fmul.s	$fa6, $ft0, $fa6
@@ -416,8 +522,8 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	movfr2gr.s	$a1, $fa3
 	bstrpick.d	$a1, $a1, 31, 0
 	fld.s	$fa3, $s1, 16
-	st.d	$a0, $s3, -8
-	st.d	$a1, $s3, 0
+	st.d	$a0, $s4, -8
+	st.d	$a1, $s4, 0
 	fld.s	$fa4, $s1, 0
 	fmul.s	$fa3, $fa1, $fa3
 	fld.s	$fa5, $s1, 32
@@ -444,50 +550,50 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	st.d	$a1, $fp, 0
 	addi.w	$s0, $s0, 1
 	addi.d	$fp, $fp, 16
-	addi.d	$s3, $s3, 16
-	addi.d	$s6, $s6, 16
+	addi.d	$s4, $s4, 16
+	addi.d	$s5, $s5, 16
 	bne	$s8, $s0, .LBB0_12
 # %bb.13:                               # %.loopexit.loopexit
 	add.w	$s7, $s7, $s0
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 .LBB0_14:                               # %.loopexit
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $s0, 0
 	ld.d	$a4, $a0, 112
-	addi.d	$a1, $sp, 1432
-	ori	$a0, $zero, 3416
+	addi.d	$a1, $sp, 1576
+	ori	$a0, $zero, 3560
 	add.d	$a2, $sp, $a0
 	move	$a0, $s0
 	move	$a3, $s7
 	jirl	$ra, $a4, 0
-	ld.d	$a0, $s4, 0
+	ld.d	$a0, $s3, 0
 	ld.d	$a4, $a0, 112
-	addi.d	$a1, $sp, 440
-	ori	$a0, $zero, 2424
+	addi.d	$a1, $sp, 584
+	ori	$a0, $zero, 2568
 	add.d	$a2, $sp, $a0
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a3, $s7
 	jirl	$ra, $a4, 0
 	movgr2fr.w	$fa0, $zero
 	ori	$a0, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	fst.s	$fa0, $sp, 76                   # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 84                   # 4-byte Folded Spill
 	blt	$s7, $a0, .LBB0_20
 # %bb.15:                               # %.lr.ph477
 	fld.s	$fa0, $s2, 0
-	fst.s	$fa0, $sp, 148                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 272                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 4
-	fst.s	$fa0, $sp, 144                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 256                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 8
-	fst.s	$fa0, $sp, 140                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 240                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 48
-	fst.s	$fa0, $sp, 136                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 224                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 16
-	fst.s	$fa0, $sp, 132                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 208                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 20
-	fst.s	$fa0, $sp, 128                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 192                  # 4-byte Folded Spill
 	fld.s	$fa0, $s2, 24
-	fst.s	$fa0, $sp, 124                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 176                  # 4-byte Folded Spill
 	fld.s	$fa7, $s2, 52
 	fld.s	$ft0, $s2, 32
 	fld.s	$ft1, $s2, 36
@@ -505,21 +611,21 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	fld.s	$ft13, $s1, 36
 	fld.s	$ft14, $s1, 40
 	fld.s	$ft15, $s1, 56
-	ori	$a0, $zero, 2432
+	ori	$a0, $zero, 2576
 	add.d	$a0, $sp, $a0
 	fld.s	$fs1, $a1, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_1)
 	fld.d	$fs6, $a1, %pc_lo12(.LCPI0_1)
-	addi.d	$a1, $s5, 8
+	addi.d	$a1, $s6, 8
 	movgr2fr.w	$fs7, $zero
-	ori	$a2, $zero, 3420
+	ori	$a2, $zero, 3564
 	add.d	$a2, $sp, $a2
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	movgr2cf	$fcc0, $a3
-	fst.s	$fs7, $sp, 100                  # 4-byte Folded Spill
-	fst.s	$fs7, $sp, 104                  # 4-byte Folded Spill
-	fst.s	$fs7, $sp, 108                  # 4-byte Folded Spill
 	fst.s	$fs7, $sp, 112                  # 4-byte Folded Spill
+	fst.s	$fs7, $sp, 128                  # 4-byte Folded Spill
+	fst.s	$fs7, $sp, 144                  # 4-byte Folded Spill
+	fst.s	$fs7, $sp, 160                  # 4-byte Folded Spill
 	b	.LBB0_17
 	.p2align	4, , 16
 .LBB0_16:                               #   in Loop: Header=BB0_17 Depth=1
@@ -546,17 +652,17 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	fld.s	$fa1, $a0, -8
 	fld.s	$fa2, $a0, -4
 	fld.s	$fa3, $a0, 0
-	fld.s	$fa4, $sp, 144                  # 4-byte Folded Reload
+	fld.s	$fa4, $sp, 256                  # 4-byte Folded Reload
 	fmul.s	$fa4, $fs0, $fa4
-	fld.s	$fa5, $sp, 148                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 272                  # 4-byte Folded Reload
 	fmadd.s	$fa4, $fa5, $fs5, $fa4
-	fld.s	$fa5, $sp, 140                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 240                  # 4-byte Folded Reload
 	fmadd.s	$fa4, $fa5, $fa0, $fa4
-	fld.s	$fa5, $sp, 128                  # 4-byte Folded Reload
+	fld.s	$fa5, $sp, 192                  # 4-byte Folded Reload
 	fmul.s	$fa5, $fs0, $fa5
-	fld.s	$fa6, $sp, 132                  # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 208                  # 4-byte Folded Reload
 	fmadd.s	$fa5, $fa6, $fs5, $fa5
-	fld.s	$fa6, $sp, 124                  # 4-byte Folded Reload
+	fld.s	$fa6, $sp, 176                  # 4-byte Folded Reload
 	fmadd.s	$fa5, $fa6, $fa0, $fa5
 	fmul.s	$fs0, $fs0, $ft1
 	fmadd.s	$fs0, $ft0, $fs5, $fs0
@@ -570,7 +676,7 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	fmadd.s	$fa2, $ft6, $fa3, $fs0
 	fmadd.s	$fs0, $ft10, $fa3, $fs5
 	fmadd.s	$fa1, $ft14, $fa3, $fa1
-	fld.s	$fa3, $sp, 136                  # 4-byte Folded Reload
+	fld.s	$fa3, $sp, 224                  # 4-byte Folded Reload
 	fadd.s	$fa3, $fa3, $fa4
 	fadd.s	$fa2, $ft7, $fa2
 	fsub.s	$fa2, $fa2, $fa3
@@ -589,26 +695,26 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	bcnez	$fcc1, .LBB0_16
 # %bb.19:                               #   in Loop: Header=BB0_17 Depth=1
 	fld.s	$fa0, $a1, 4
-	fst.s	$fa0, $sp, 100                  # 4-byte Folded Spill
-	fst.s	$fs2, $sp, 112                  # 4-byte Folded Spill
-	fst.s	$fs3, $sp, 108                  # 4-byte Folded Spill
-	fst.s	$fs4, $sp, 104                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 112                  # 4-byte Folded Spill
+	fst.s	$fs2, $sp, 160                  # 4-byte Folded Spill
+	fst.s	$fs3, $sp, 144                  # 4-byte Folded Spill
+	fst.s	$fs4, $sp, 128                  # 4-byte Folded Spill
 	fmov.s	$fs1, $fs5
 	b	.LBB0_16
 .LBB0_20:
 	fld.s	$fs1, $a1, %pc_lo12(.LCPI0_0)
+	fst.s	$fa0, $sp, 160                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 144                  # 4-byte Folded Spill
+	fst.s	$fa0, $sp, 128                  # 4-byte Folded Spill
 	fst.s	$fa0, $sp, 112                  # 4-byte Folded Spill
-	fst.s	$fa0, $sp, 108                  # 4-byte Folded Spill
-	fst.s	$fa0, $sp, 104                  # 4-byte Folded Spill
-	fst.s	$fa0, $sp, 100                  # 4-byte Folded Spill
 .LBB0_21:                               # %._crit_edge
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK13btConvexShape19getMarginNonVirtualEv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZNK13btConvexShape19getMarginNonVirtualEv)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $sp, 76                   # 4-byte Folded Reload
+	fld.s	$fa0, $sp, 84                   # 4-byte Folded Reload
 	fcmp.clt.s	$fcc0, $fs1, $fa0
 	bceqz	$fcc0, .LBB0_23
 # %bb.22:
@@ -619,68 +725,68 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	pcaddu18i	$ra, %call36(_ZNK13btConvexShape19getMarginNonVirtualEv)
 	jirl	$ra, $ra, 0
 	fmov.s	$fs0, $fa0
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZNK13btConvexShape19getMarginNonVirtualEv)
 	jirl	$ra, $ra, 0
 	fadd.s	$fa0, $fs0, $fa0
 	vldi	$vr1, -1184
 	fadd.s	$fa0, $fa0, $fa1
 	fadd.s	$fs0, $fs1, $fa0
-	addi.d	$a0, $sp, 344
+	addi.d	$a0, $sp, 488
 	move	$a1, $s0
-	move	$a2, $s4
-	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
+	move	$a2, $s3
+	move	$a3, $s4
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetectorC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver)
 	jirl	$ra, $ra, 0
-	fld.s	$fs1, $sp, 112                  # 4-byte Folded Reload
+	fld.s	$fs1, $sp, 160                  # 4-byte Folded Reload
 	fmul.s	$fa0, $fs1, $fs0
 	movfr2gr.s	$a0, $fs1
 	fld.s	$fa1, $s2, 48
 	fld.s	$fa2, $s2, 52
-	fld.s	$fs2, $sp, 108                  # 4-byte Folded Reload
+	fld.s	$fs2, $sp, 144                  # 4-byte Folded Reload
 	fmul.s	$fa3, $fs2, $fs0
 	movfr2gr.s	$a1, $fs2
 	fadd.s	$fa0, $fa0, $fa1
 	fadd.s	$fa1, $fa3, $fa2
 	fld.s	$fa2, $s2, 56
-	fld.s	$fs3, $sp, 104                  # 4-byte Folded Reload
+	fld.s	$fs3, $sp, 128                  # 4-byte Folded Reload
 	fmul.s	$fa3, $fs3, $fs0
 	movfr2gr.s	$a2, $fs3
-	st.d	$zero, $sp, 336
+	st.d	$zero, $sp, 480
 	fadd.s	$fa2, $fa3, $fa2
 	movfr2gr.s	$a3, $fa0
 	movfr2gr.s	$a4, $fa1
 	bstrins.d	$a3, $a4, 63, 32
 	movfr2gr.s	$a4, $fa2
 	vld	$vr0, $s2, 0
-	ld.d	$a5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
 	vld	$vr1, $a5, 0
-	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a5, $sp, 48                    # 8-byte Folded Reload
 	vld	$vr2, $a5, 0
 	bstrpick.d	$a4, $a4, 31, 0
-	vst	$vr0, $sp, 200
-	vst	$vr1, $sp, 216
-	vst	$vr2, $sp, 232
-	st.d	$a3, $sp, 248
-	st.d	$a4, $sp, 256
+	vst	$vr0, $sp, 344
+	vst	$vr1, $sp, 360
+	vst	$vr2, $sp, 376
+	st.d	$a3, $sp, 392
+	st.d	$a4, $sp, 400
 	vld	$vr0, $s1, 0
-	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a3, 0
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
 	vld	$vr2, $a3, 0
 	vld	$vr3, $s1, 48
-	vst	$vr0, $sp, 264
-	vst	$vr1, $sp, 280
-	vst	$vr2, $sp, 296
-	vst	$vr3, $sp, 312
+	vst	$vr0, $sp, 408
+	vst	$vr1, $sp, 424
+	vst	$vr2, $sp, 440
+	vst	$vr3, $sp, 456
 	lu12i.w	$a3, 382432
 	ori	$a3, $a3, 2923
-	st.w	$a3, $sp, 328
+	st.w	$a3, $sp, 472
 	pcalau12i	$a3, %pc_hi20(_ZTVZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK13btConvexShapeS4_RK11btTransformS7_R9btVector3S9_S9_P12btIDebugDrawP12btStackAllocE20btIntermediateResult+16)
 	addi.d	$a3, $a3, %pc_lo12(_ZTVZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK13btConvexShapeS4_RK11btTransformS7_R9btVector3S9_S9_P12btIDebugDrawP12btStackAllocE20btIntermediateResult+16)
-	st.d	$a3, $sp, 152
-	st.b	$zero, $sp, 196
+	st.d	$a3, $sp, 296
+	st.b	$zero, $sp, 340
 	lu12i.w	$a3, -524288
 	lu32i.d	$a3, 0
 	xor	$a0, $a0, $a3
@@ -688,26 +794,26 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	bstrins.d	$a0, $a1, 63, 32
 	xor	$a1, $a2, $a3
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $sp, 352
-	st.d	$a1, $sp, 360
-	addi.d	$a0, $sp, 344
-	addi.d	$a1, $sp, 200
-	addi.d	$a2, $sp, 152
-	move	$a3, $s3
+	st.d	$a0, $sp, 496
+	st.d	$a1, $sp, 504
+	addi.d	$a0, $sp, 488
+	addi.d	$a1, $sp, 344
+	addi.d	$a2, $sp, 296
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a4, $zero
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetector16getClosestPointsERKN36btDiscreteCollisionDetectorInterface17ClosestPointInputERNS0_6ResultEP12btIDebugDrawb)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 196
+	ld.bu	$a0, $sp, 340
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB0_25
 # %bb.24:
-	fld.s	$fa0, $sp, 192
-	fld.s	$fa1, $sp, 176
+	fld.s	$fa0, $sp, 336
+	fld.s	$fa1, $sp, 320
 	fsub.s	$fa0, $fs0, $fa0
 	fmul.s	$fa2, $fs1, $fa0
-	fld.s	$fa3, $sp, 180
+	fld.s	$fa3, $sp, 324
 	fsub.s	$fa1, $fa1, $fa2
-	fld.s	$fa2, $sp, 184
+	fld.s	$fa2, $sp, 328
 	fmul.s	$fa4, $fs2, $fa0
 	fsub.s	$fa3, $fa3, $fa4
 	fmul.s	$fa0, $fs3, $fa0
@@ -716,7 +822,7 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	movfr2gr.s	$a2, $fa3
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
-	vld	$vr0, $sp, 176
+	vld	$vr0, $sp, 320
 	bstrpick.d	$a2, $a2, 31, 0
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a1, $a3, 0
@@ -727,11 +833,11 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	fst.s	$fs1, $a1, 0
 	fst.s	$fs2, $a1, 4
 	fst.s	$fs3, $a1, 8
-	fld.s	$fa0, $sp, 100                  # 4-byte Folded Reload
+	fld.s	$fa0, $sp, 112                  # 4-byte Folded Reload
 	fst.s	$fa0, $a1, 12
 .LBB0_25:
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 496
+	addi.d	$sp, $sp, 640
 	fld.d	$fs7, $sp, 1880                 # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 1888                 # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 1896                 # 8-byte Folded Reload

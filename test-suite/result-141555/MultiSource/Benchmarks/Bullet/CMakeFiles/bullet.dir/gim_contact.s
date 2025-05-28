@@ -1,19 +1,26 @@
 	.file	"gim_contact.cpp"
-	.section	.rodata.cst4,"aM",@progbits,4
-	.p2align	2, 0x0                          # -- Begin function _ZN17gim_contact_array14merge_contactsERKS_b
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN17gim_contact_array14merge_contactsERKS_b
 .LCPI0_0:
-	.word	0x447a0000                      # float 1000
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.section	.rodata.cst4,"aM",@progbits,4
+	.p2align	2, 0x0
 .LCPI0_1:
-	.word	0x44a6a000                      # float 1333
+	.word	0x447a0000                      # float 1000
 .LCPI0_2:
-	.word	0x45055000                      # float 2133
+	.word	0x44a6a000                      # float 1333
 .LCPI0_3:
-	.word	0x3727c5ac                      # float 9.99999974E-6
+	.word	0x45055000                      # float 2133
 .LCPI0_4:
-	.word	0x7f7fffff                      # float 3.40282347E+38
+	.word	0x3727c5ac                      # float 9.99999974E-6
 .LCPI0_5:
-	.word	0x33d6bf95                      # float 1.00000001E-7
+	.word	0x7f7fffff                      # float 3.40282347E+38
 .LCPI0_6:
+	.word	0x33d6bf95                      # float 1.00000001E-7
+.LCPI0_7:
 	.word	0xb727c5ac                      # float -9.99999974E-6
 	.text
 	.globl	_ZN17gim_contact_array14merge_contactsERKS_b
@@ -157,87 +164,81 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	move	$a1, $zero
 	b	.LBB0_20
 .LBB0_17:                               # %vector.ph
-	move	$a4, $zero
 	bstrpick.d	$a1, $a3, 31, 2
 	slli.d	$a1, $a1, 2
-	addi.d	$a5, $a0, 16
-	addi.d	$a6, $a2, 96
-	lu12i.w	$a7, 260096
-	vreplgr2vr.w	$vr0, $a7
-	lu12i.w	$a7, 280480
-	vreplgr2vr.w	$vr1, $a7
-	lu12i.w	$a7, 281194
-	vreplgr2vr.w	$vr2, $a7
-	lu12i.w	$a7, 263168
-	vreplgr2vr.w	$vr3, $a7
-	lu12i.w	$a7, 282709
-	vreplgr2vr.w	$vr4, $a7
-	move	$a7, $a1
+	pcalau12i	$a4, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI0_0)
+	addi.d	$a4, $a2, 96
+	lu12i.w	$a5, 260096
+	vreplgr2vr.w	$vr1, $a5
+	lu12i.w	$a5, 280480
+	vreplgr2vr.w	$vr2, $a5
+	lu12i.w	$a5, 281194
+	vreplgr2vr.w	$vr3, $a5
+	lu12i.w	$a5, 263168
+	vreplgr2vr.w	$vr4, $a5
+	lu12i.w	$a5, 282709
+	vreplgr2vr.w	$vr5, $a5
+	move	$a5, $a0
+	move	$a6, $a1
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$t0, $a4, 1
-	addi.d	$t1, $a4, 2
-	fld.s	$fa5, $a6, -96
-	fld.s	$fa6, $a6, -48
-	fld.s	$fa7, $a6, 0
-	fld.s	$ft0, $a6, 48
-	addi.d	$t2, $a4, 3
-	movfr2gr.s	$t3, $fa5
-	vinsgr2vr.w	$vr5, $t3, 0
-	movfr2gr.s	$t3, $fa6
-	vinsgr2vr.w	$vr5, $t3, 1
-	movfr2gr.s	$t3, $fa7
-	vinsgr2vr.w	$vr5, $t3, 2
-	movfr2gr.s	$t3, $ft0
-	vinsgr2vr.w	$vr5, $t3, 3
-	vfmadd.s	$vr5, $vr5, $vr1, $vr0
-	fld.s	$fa6, $a6, -92
-	fld.s	$fa7, $a6, -44
-	fld.s	$ft0, $a6, 4
-	fld.s	$ft1, $a6, 52
-	vftintrz.w.s	$vr5, $vr5
-	movfr2gr.s	$t3, $fa6
-	vinsgr2vr.w	$vr6, $t3, 0
-	movfr2gr.s	$t3, $fa7
-	vinsgr2vr.w	$vr6, $t3, 1
-	movfr2gr.s	$t3, $ft0
-	vinsgr2vr.w	$vr6, $t3, 2
-	movfr2gr.s	$t3, $ft1
-	vinsgr2vr.w	$vr6, $t3, 3
-	vfmul.s	$vr6, $vr6, $vr2
-	fld.s	$fa7, $a6, -88
-	fld.s	$ft0, $a6, -40
-	fld.s	$ft1, $a6, 8
-	fld.s	$ft2, $a6, 56
+	fld.s	$fa6, $a4, -96
+	fld.s	$fa7, $a4, -48
+	fld.s	$ft0, $a4, 0
+	fld.s	$ft1, $a4, 48
+	movfr2gr.s	$a7, $fa6
+	vinsgr2vr.w	$vr6, $a7, 0
+	movfr2gr.s	$a7, $fa7
+	vinsgr2vr.w	$vr6, $a7, 1
+	movfr2gr.s	$a7, $ft0
+	vinsgr2vr.w	$vr6, $a7, 2
+	movfr2gr.s	$a7, $ft1
+	vinsgr2vr.w	$vr6, $a7, 3
+	vfmadd.s	$vr6, $vr6, $vr2, $vr1
+	fld.s	$fa7, $a4, -92
+	fld.s	$ft0, $a4, -44
+	fld.s	$ft1, $a4, 4
+	fld.s	$ft2, $a4, 52
 	vftintrz.w.s	$vr6, $vr6
-	movfr2gr.s	$t3, $fa7
-	vinsgr2vr.w	$vr7, $t3, 0
-	movfr2gr.s	$t3, $ft0
-	vinsgr2vr.w	$vr7, $t3, 1
-	movfr2gr.s	$t3, $ft1
-	vinsgr2vr.w	$vr7, $t3, 2
-	movfr2gr.s	$t3, $ft2
-	vinsgr2vr.w	$vr7, $t3, 3
-	vfmadd.s	$vr7, $vr7, $vr4, $vr3
+	movfr2gr.s	$a7, $fa7
+	vinsgr2vr.w	$vr7, $a7, 0
+	movfr2gr.s	$a7, $ft0
+	vinsgr2vr.w	$vr7, $a7, 1
+	movfr2gr.s	$a7, $ft1
+	vinsgr2vr.w	$vr7, $a7, 2
+	movfr2gr.s	$a7, $ft2
+	vinsgr2vr.w	$vr7, $a7, 3
+	vfmul.s	$vr7, $vr7, $vr3
+	fld.s	$ft0, $a4, -88
+	fld.s	$ft1, $a4, -40
+	fld.s	$ft2, $a4, 8
+	fld.s	$ft3, $a4, 56
 	vftintrz.w.s	$vr7, $vr7
-	vslli.w	$vr6, $vr6, 4
-	vadd.w	$vr5, $vr6, $vr5
-	vslli.w	$vr6, $vr7, 8
-	vadd.w	$vr5, $vr5, $vr6
-	vstelm.w	$vr5, $a5, -16, 0
-	vstelm.w	$vr5, $a5, -8, 1
-	vstelm.w	$vr5, $a5, 0, 2
-	vstelm.w	$vr5, $a5, 8, 3
-	st.w	$a4, $a5, -12
-	st.w	$t0, $a5, -4
-	st.w	$t1, $a5, 4
-	st.w	$t2, $a5, 12
-	addi.d	$a4, $a4, 4
-	addi.d	$a7, $a7, -4
+	movfr2gr.s	$a7, $ft0
+	vinsgr2vr.w	$vr8, $a7, 0
+	movfr2gr.s	$a7, $ft1
+	vinsgr2vr.w	$vr8, $a7, 1
+	movfr2gr.s	$a7, $ft2
+	vinsgr2vr.w	$vr8, $a7, 2
+	movfr2gr.s	$a7, $ft3
+	vinsgr2vr.w	$vr8, $a7, 3
+	vfmadd.s	$vr8, $vr8, $vr5, $vr4
+	vftintrz.w.s	$vr8, $vr8
+	vslli.w	$vr7, $vr7, 4
+	vadd.w	$vr6, $vr7, $vr6
+	vslli.w	$vr7, $vr8, 8
+	vadd.w	$vr6, $vr6, $vr7
+	vilvl.w	$vr7, $vr0, $vr6
+	vilvh.w	$vr6, $vr0, $vr6
+	vst	$vr6, $a5, 16
+	vst	$vr7, $a5, 0
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
-	addi.d	$a6, $a6, 192
-	bnez	$a7, .LBB0_18
+	addi.d	$a4, $a4, 192
+	bnez	$a6, .LBB0_18
 # %bb.19:                               # %middle.block
 	beq	$a1, $a3, .LBB0_22
 .LBB0_20:                               # %scalar.ph.preheader
@@ -247,12 +248,12 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	add.d	$a2, $a4, $a2
 	addi.d	$a2, $a2, 8
 	alsl.d	$a4, $a1, $a0, 3
-	pcalau12i	$a5, %pc_hi20(.LCPI0_0)
-	fld.s	$fa0, $a5, %pc_lo12(.LCPI0_0)
 	pcalau12i	$a5, %pc_hi20(.LCPI0_1)
-	fld.s	$fa1, $a5, %pc_lo12(.LCPI0_1)
+	fld.s	$fa0, $a5, %pc_lo12(.LCPI0_1)
 	pcalau12i	$a5, %pc_hi20(.LCPI0_2)
-	fld.s	$fa2, $a5, %pc_lo12(.LCPI0_2)
+	fld.s	$fa1, $a5, %pc_lo12(.LCPI0_2)
+	pcalau12i	$a5, %pc_hi20(.LCPI0_3)
+	fld.s	$fa2, $a5, %pc_lo12(.LCPI0_3)
 	addi.d	$a4, $a4, 4
 	vldi	$vr3, -1168
 	vldi	$vr4, -1272
@@ -360,14 +361,14 @@ _ZN17gim_contact_array14merge_contactsERKS_b: # @_ZN17gim_contact_array14merge_c
 	add.d	$a0, $a1, $a0
 	bstrpick.d	$s3, $s5, 31, 0
 	ori	$s5, $zero, 1
-	pcalau12i	$a1, %pc_hi20(.LCPI0_6)
-	fld.s	$fs0, $a1, %pc_lo12(.LCPI0_6)
-	pcalau12i	$a1, %pc_hi20(.LCPI0_3)
-	fld.s	$fs1, $a1, %pc_lo12(.LCPI0_3)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_7)
+	fld.s	$fs0, $a1, %pc_lo12(.LCPI0_7)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_4)
-	fld.s	$fs2, $a1, %pc_lo12(.LCPI0_4)
+	fld.s	$fs1, $a1, %pc_lo12(.LCPI0_4)
 	pcalau12i	$a1, %pc_hi20(.LCPI0_5)
-	fld.s	$fs3, $a1, %pc_lo12(.LCPI0_5)
+	fld.s	$fs2, $a1, %pc_lo12(.LCPI0_5)
+	pcalau12i	$a1, %pc_hi20(.LCPI0_6)
+	fld.s	$fs3, $a1, %pc_lo12(.LCPI0_6)
 	lu12i.w	$a1, 390005
 	ori	$a1, $a1, 2527
 	st.d	$a1, $sp, 0                     # 8-byte Folded Spill

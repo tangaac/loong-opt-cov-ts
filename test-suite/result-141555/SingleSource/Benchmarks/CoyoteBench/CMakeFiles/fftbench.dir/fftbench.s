@@ -485,7 +485,7 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	bnez	$a5, .LBB1_4
 # %bb.5:                                # %middle.block
 	beq	$s4, $a2, .LBB1_8
-.LBB1_6:                                # %.lr.ph.i.i.preheader143
+.LBB1_6:                                # %.lr.ph.i.i.preheader142
 	sub.d	$a3, $s4, $a2
 	alsl.d	$a0, $a2, $a0, 3
 	alsl.d	$a1, $a2, $a1, 3
@@ -543,7 +543,7 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	bnez	$a5, .LBB1_13
 # %bb.14:                               # %middle.block90
 	beq	$s1, $a2, .LBB1_17
-.LBB1_15:                               # %.lr.ph.i.i33.preheader142
+.LBB1_15:                               # %.lr.ph.i.i33.preheader141
 	sub.d	$a3, $s1, $a2
 	alsl.d	$a0, $a2, $a0, 3
 	alsl.d	$a1, $a2, $a1, 3
@@ -612,7 +612,7 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	bnez	$a4, .LBB1_25
 # %bb.26:                               # %middle.block120
 	beq	$s1, $a1, .LBB1_40
-.LBB1_27:                               # %.lr.ph.i.preheader140
+.LBB1_27:                               # %.lr.ph.i.preheader139
 	sub.d	$a2, $s1, $a1
 	alsl.d	$a3, $a1, $a0, 3
 	alsl.d	$a1, $a1, $s5, 3
@@ -680,7 +680,7 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	bnez	$a4, .LBB1_36
 # %bb.37:                               # %middle.block105
 	beq	$s1, $a1, .LBB1_40
-.LBB1_38:                               # %.lr.ph.i40.preheader141
+.LBB1_38:                               # %.lr.ph.i40.preheader140
 	sub.d	$a2, $s1, $a1
 	alsl.d	$a3, $a1, $a0, 3
 	alsl.d	$a1, $a1, $s5, 3
@@ -842,69 +842,46 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 # %bb.65:                               # %_ZN10polynomialIdEC2Em.exit
 	ld.d	$a0, $sp, 32
 	st.d	$a1, $fp, 8
-	beqz	$s1, .LBB1_73
+	beqz	$s1, .LBB1_70
 # %bb.66:                               # %.lr.ph70.preheader
 	ori	$a2, $zero, 14
-	bltu	$s1, $a2, .LBB1_69
+	bgeu	$a2, $s1, .LBB1_69
 # %bb.67:                               # %vector.memcheck123
 	alsl.d	$a2, $s4, $a0, 4
 	addi.d	$a2, $a2, -24
-	bgeu	$a1, $a2, .LBB1_82
+	bgeu	$a1, $a2, .LBB1_78
 # %bb.68:                               # %vector.memcheck123
 	alsl.d	$a2, $s4, $a1, 3
 	addi.d	$a2, $a2, -8
-	bgeu	$a0, $a2, .LBB1_82
+	bgeu	$a0, $a2, .LBB1_78
 .LBB1_69:
 	move	$a2, $zero
-.LBB1_70:                               # %.lr.ph70.preheader139
-	nor	$a3, $a2, $zero
-	add.d	$a3, $a3, $s4
-	alsl.d	$a4, $a2, $a0, 4
-	alsl.d	$a1, $a2, $a1, 3
-	.p2align	4, , 16
-.LBB1_71:                               # %.lr.ph70
-                                        # =>This Inner Loop Header: Depth=1
-	fld.d	$fa0, $a4, 0
-	fst.d	$fa0, $a1, 0
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, 16
-	addi.d	$a1, $a1, 8
-	bnez	$a3, .LBB1_71
-.LBB1_72:                               # %._crit_edge71.thread
+	b	.LBB1_80
+.LBB1_70:                               # %._crit_edge71
 	st.d	$s0, $sp, 24
-	b	.LBB1_74
-.LBB1_73:                               # %._crit_edge71
-	st.d	$s0, $sp, 24
-	beqz	$a0, .LBB1_75
-.LBB1_74:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
+	bnez	$a0, .LBB1_83
+# %bb.71:                               # %_ZN10polynomialISt7complexIdEED2Ev.exit58
 	ld.d	$a0, $sp, 56
 	st.d	$s0, $sp, 48
-	bnez	$a0, .LBB1_76
-	b	.LBB1_77
-.LBB1_75:                               # %_ZN10polynomialISt7complexIdEED2Ev.exit58
-	ld.d	$a0, $sp, 56
-	st.d	$s0, $sp, 48
-	beqz	$a0, .LBB1_77
-.LBB1_76:
+	beqz	$a0, .LBB1_73
+.LBB1_72:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB1_77:                               # %_ZN10polynomialISt7complexIdEED2Ev.exit60
+.LBB1_73:                               # %_ZN10polynomialISt7complexIdEED2Ev.exit60
 	ld.d	$a0, $sp, 80
 	st.d	$s2, $sp, 72
-	beqz	$a0, .LBB1_79
-# %bb.78:
+	beqz	$a0, .LBB1_75
+# %bb.74:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB1_79:                               # %_ZN10polynomialIdED2Ev.exit
+.LBB1_75:                               # %_ZN10polynomialIdED2Ev.exit
 	ld.d	$a0, $sp, 104
 	st.d	$s2, $sp, 96
-	beqz	$a0, .LBB1_81
-# %bb.80:
+	beqz	$a0, .LBB1_77
+# %bb.76:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-.LBB1_81:                               # %_ZN10polynomialIdED2Ev.exit61
+.LBB1_77:                               # %_ZN10polynomialIdED2Ev.exit61
 	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
@@ -916,14 +893,19 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 192
 	ret
-.LBB1_82:                               # %vector.ph127
-	move	$a2, $s1
-	bstrins.d	$a2, $zero, 1, 0
+.LBB1_78:                               # %vector.ph127
+	andi	$a2, $s1, 3
+	sltui	$a3, $a2, 1
+	masknez	$a2, $a2, $a3
+	ori	$a4, $zero, 4
+	maskeqz	$a3, $a4, $a3
+	or	$a2, $a3, $a2
+	sub.d	$a2, $s1, $a2
 	addi.d	$a3, $a0, 32
 	addi.d	$a4, $a1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB1_83:                               # %vector.body130
+.LBB1_79:                               # %vector.body130
                                         # =>This Inner Loop Header: Depth=1
 	fld.d	$fa0, $a3, -32
 	fld.d	$fa1, $a3, -16
@@ -942,100 +924,120 @@ _ZNK10polynomialIdEmlERKS0_:            # @_ZNK10polynomialIdEmlERKS0_
 	addi.d	$a3, $a3, 64
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB1_83
-# %bb.84:                               # %middle.block133
-	beq	$s1, $a2, .LBB1_72
-	b	.LBB1_70
-.LBB1_85:
+	bnez	$a5, .LBB1_79
+.LBB1_80:                               # %.lr.ph70.preheader138
+	nor	$a3, $a2, $zero
+	add.d	$a3, $a3, $s4
+	alsl.d	$a4, $a2, $a0, 4
+	alsl.d	$a1, $a2, $a1, 3
+	.p2align	4, , 16
+.LBB1_81:                               # %.lr.ph70
+                                        # =>This Inner Loop Header: Depth=1
+	fld.d	$fa0, $a4, 0
+	fst.d	$fa0, $a1, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a4, $a4, 16
+	addi.d	$a1, $a1, 8
+	bnez	$a3, .LBB1_81
+# %bb.82:                               # %._crit_edge71.thread
+	st.d	$s0, $sp, 24
+.LBB1_83:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 56
+	st.d	$s0, $sp, 48
+	bnez	$a0, .LBB1_72
+	b	.LBB1_73
+.LBB1_84:
 .Ltmp46:
 	ld.d	$a1, $sp, 8
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	st.d	$a0, $sp, 0
-	beqz	$a1, .LBB1_90
-# %bb.86:
+	beqz	$a1, .LBB1_89
+# %bb.85:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB1_90
-.LBB1_87:
-.Ltmp49:
 	b	.LBB1_89
-.LBB1_88:
+.LBB1_86:
+.Ltmp49:
+	b	.LBB1_88
+.LBB1_87:
 .Ltmp43:
-.LBB1_89:
+.LBB1_88:
 	move	$fp, $a0
-.LBB1_90:
+.LBB1_89:
 	ld.d	$a0, $sp, 32
 	pcalau12i	$a1, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	st.d	$a1, $sp, 24
-	beqz	$a0, .LBB1_93
-# %bb.91:
+	beqz	$a0, .LBB1_92
+# %bb.90:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	b	.LBB1_93
-.LBB1_92:
+	b	.LBB1_92
+.LBB1_91:
 .Ltmp40:
 	move	$fp, $a0
-.LBB1_93:                               # %_ZN10polynomialISt7complexIdEED2Ev.exit63
+.LBB1_92:                               # %_ZN10polynomialISt7complexIdEED2Ev.exit63
 	ld.d	$a0, $sp, 56
 	pcalau12i	$a1, %pc_hi20(_ZTV10polynomialISt7complexIdEE+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV10polynomialISt7complexIdEE+16)
 	st.d	$a1, $sp, 48
-	bnez	$a0, .LBB1_97
-# %bb.94:
+	bnez	$a0, .LBB1_96
+# %bb.93:
 	ld.d	$a0, $sp, 80
 	st.d	$s2, $sp, 72
-	bnez	$a0, .LBB1_98
-.LBB1_95:                               # %_ZN10polynomialIdED2Ev.exit66
+	bnez	$a0, .LBB1_97
+.LBB1_94:                               # %_ZN10polynomialIdED2Ev.exit66
 	ld.d	$a0, $sp, 104
 	st.d	$s2, $sp, 96
-	bnez	$a0, .LBB1_99
-.LBB1_96:                               # %_ZN10polynomialIdED2Ev.exit67
+	bnez	$a0, .LBB1_98
+.LBB1_95:                               # %_ZN10polynomialIdED2Ev.exit67
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB1_97:
+.LBB1_96:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 80
 	st.d	$s2, $sp, 72
+	beqz	$a0, .LBB1_94
+.LBB1_97:
+	pcaddu18i	$ra, %call36(_ZdaPv)
+	jirl	$ra, $ra, 0
+	ld.d	$a0, $sp, 104
+	st.d	$s2, $sp, 96
 	beqz	$a0, .LBB1_95
 .LBB1_98:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 104
-	st.d	$s2, $sp, 96
-	beqz	$a0, .LBB1_96
-.LBB1_99:
-	pcaddu18i	$ra, %call36(_ZdaPv)
-	jirl	$ra, $ra, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB1_100:
+.LBB1_99:
 .Ltmp37:
 	move	$fp, $a0
 	ld.d	$a0, $sp, 80
 	st.d	$s2, $sp, 72
-	beqz	$a0, .LBB1_95
-	b	.LBB1_98
-.LBB1_101:
+	beqz	$a0, .LBB1_94
+	b	.LBB1_97
+.LBB1_100:
 .Ltmp25:
 	move	$fp, $a0
 	ld.d	$a0, $sp, 104
 	st.d	$s2, $sp, 96
-	beqz	$a0, .LBB1_96
-	b	.LBB1_99
-.LBB1_102:
+	beqz	$a0, .LBB1_95
+	b	.LBB1_98
+.LBB1_101:
 .Ltmp34:
 	move	$fp, $a0
 	ld.d	$a0, $sp, 80
 	st.d	$s2, $sp, 72
-	beqz	$a0, .LBB1_95
-	b	.LBB1_98
+	beqz	$a0, .LBB1_94
+	b	.LBB1_97
 .Lfunc_end1:
 	.size	_ZNK10polynomialIdEmlERKS0_, .Lfunc_end1-_ZNK10polynomialIdEmlERKS0_
 	.cfi_endproc

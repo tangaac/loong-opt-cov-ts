@@ -11,7 +11,257 @@ encode_char:                            # @encode_char
 .Lfunc_end0:
 	.size	encode_char, .Lfunc_end0-encode_char
                                         # -- End function
-	.globl	encode_line                     # -- Begin function encode_line
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function encode_line
+.LCPI1_0:
+	.byte	0                               # 0x0
+	.byte	3                               # 0x3
+	.byte	6                               # 0x6
+	.byte	9                               # 0x9
+	.byte	12                              # 0xc
+	.byte	15                              # 0xf
+	.byte	18                              # 0x12
+	.byte	21                              # 0x15
+	.byte	24                              # 0x18
+	.byte	27                              # 0x1b
+	.byte	30                              # 0x1e
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_1:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	17                              # 0x11
+	.byte	20                              # 0x14
+	.byte	23                              # 0x17
+	.byte	26                              # 0x1a
+	.byte	29                              # 0x1d
+.LCPI1_2:
+	.byte	1                               # 0x1
+	.byte	4                               # 0x4
+	.byte	7                               # 0x7
+	.byte	10                              # 0xa
+	.byte	13                              # 0xd
+	.byte	16                              # 0x10
+	.byte	19                              # 0x13
+	.byte	22                              # 0x16
+	.byte	25                              # 0x19
+	.byte	28                              # 0x1c
+	.byte	31                              # 0x1f
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_3:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	18                              # 0x12
+	.byte	21                              # 0x15
+	.byte	24                              # 0x18
+	.byte	27                              # 0x1b
+	.byte	30                              # 0x1e
+.LCPI1_4:
+	.byte	2                               # 0x2
+	.byte	5                               # 0x5
+	.byte	8                               # 0x8
+	.byte	11                              # 0xb
+	.byte	14                              # 0xe
+	.byte	17                              # 0x11
+	.byte	20                              # 0x14
+	.byte	23                              # 0x17
+	.byte	26                              # 0x1a
+	.byte	29                              # 0x1d
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_5:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	16                              # 0x10
+	.byte	19                              # 0x13
+	.byte	22                              # 0x16
+	.byte	25                              # 0x19
+	.byte	28                              # 0x1c
+	.byte	31                              # 0x1f
+.LCPI1_6:
+	.byte	0                               # 0x0
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	2                               # 0x2
+	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	3                               # 0x3
+	.byte	19                              # 0x13
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_7:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	2                               # 0x2
+	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	3                               # 0x3
+	.byte	19                              # 0x13
+.LCPI1_8:
+	.half	0                               # 0x0
+	.half	9                               # 0x9
+	.half	2                               # 0x2
+	.half	11                              # 0xb
+	.half	4                               # 0x4
+	.half	13                              # 0xd
+	.half	6                               # 0x6
+	.half	15                              # 0xf
+.LCPI1_9:
+	.byte	4                               # 0x4
+	.byte	20                              # 0x14
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	6                               # 0x6
+	.byte	22                              # 0x16
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	23                              # 0x17
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_10:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	4                               # 0x4
+	.byte	20                              # 0x14
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	6                               # 0x6
+	.byte	22                              # 0x16
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	23                              # 0x17
+.LCPI1_11:
+	.byte	8                               # 0x8
+	.byte	24                              # 0x18
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	10                              # 0xa
+	.byte	26                              # 0x1a
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	11                              # 0xb
+	.byte	27                              # 0x1b
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_12:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	8                               # 0x8
+	.byte	24                              # 0x18
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	10                              # 0xa
+	.byte	26                              # 0x1a
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	11                              # 0xb
+	.byte	27                              # 0x1b
+.LCPI1_13:
+	.byte	12                              # 0xc
+	.byte	28                              # 0x1c
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	14                              # 0xe
+	.byte	30                              # 0x1e
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	15                              # 0xf
+	.byte	31                              # 0x1f
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI1_14:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	12                              # 0xc
+	.byte	28                              # 0x1c
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	14                              # 0xe
+	.byte	30                              # 0x1e
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	15                              # 0xf
+	.byte	31                              # 0x1f
+	.text
+	.globl	encode_line
 	.p2align	5
 	.type	encode_line,@function
 encode_line:                            # @encode_line
@@ -20,16 +270,10 @@ encode_line:                            # @encode_line
 	addi.d	$a5, $a4, 32
 	ori	$a4, $zero, 1
 	st.b	$a5, $a3, 0
-	blt	$a2, $a4, .LBB1_16
+	blt	$a2, $a4, .LBB1_15
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$sp, $sp, -64
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
 	bstrpick.d	$a4, $a2, 31, 0
 	lu12i.w	$a5, -349526
 	ori	$a5, $a5, 2731
@@ -41,328 +285,126 @@ encode_line:                            # @encode_line
 	sltu	$a6, $a4, $a5
 	masknez	$a5, $a5, $a6
 	maskeqz	$a4, $a4, $a6
-	or	$a5, $a4, $a5
-	ori	$a6, $zero, 16
-	ori	$a4, $zero, 1
-	bltu	$a5, $a6, .LBB1_7
+	or	$a6, $a4, $a5
+	ori	$a4, $zero, 16
+	ori	$a7, $zero, 1
+	bltu	$a6, $a4, .LBB1_6
 # %bb.2:                                # %vector.memcheck
-	addi.d	$a7, $a3, 1
-	add.d	$a6, $a0, $a1
-	alsl.d	$t0, $a5, $a5, 1
-	add.d	$t0, $a6, $t0
+	addi.d	$a4, $a3, 1
+	add.d	$a5, $a0, $a1
+	alsl.d	$t0, $a6, $a6, 1
+	add.d	$t0, $a5, $t0
 	addi.d	$t0, $t0, 3
-	bgeu	$a7, $t0, .LBB1_4
+	bgeu	$a4, $t0, .LBB1_4
 # %bb.3:                                # %vector.memcheck
-	alsl.d	$a7, $a5, $a3, 2
-	addi.d	$a7, $a7, 5
-	bltu	$a6, $a7, .LBB1_7
+	alsl.d	$t0, $a6, $a3, 2
+	addi.d	$t0, $t0, 5
+	bltu	$a5, $t0, .LBB1_6
 .LBB1_4:                                # %vector.ph
-	addi.d	$a4, $a5, 1
-	andi	$a5, $a4, 15
-	sltui	$a6, $a5, 1
-	masknez	$a5, $a5, $a6
-	ori	$a7, $zero, 16
-	maskeqz	$a6, $a7, $a6
-	or	$a5, $a6, $a5
-	sub.d	$a5, $a4, $a5
-	alsl.d	$a7, $a5, $a5, 1
-	add.d	$a6, $a7, $a1
-	slli.d	$a4, $a5, 2
-	addi.d	$a4, $a4, 1
-	sub.w	$a2, $a2, $a7
-	add.d	$a1, $a1, $a0
-	addi.d	$a1, $a1, 23
-	addi.d	$a7, $a3, 32
-	vrepli.b	$vr0, 32
+	addi.d	$a6, $a6, 1
+	andi	$a7, $a6, 15
+	sltui	$t0, $a7, 1
+	masknez	$a7, $a7, $t0
+	ori	$t1, $zero, 16
+	maskeqz	$t0, $t1, $t0
+	or	$a7, $t0, $a7
+	sub.d	$a6, $a6, $a7
+	alsl.d	$t0, $a6, $a6, 1
+	add.d	$a1, $t0, $a1
+	slli.d	$a7, $a6, 2
+	pcalau12i	$t1, %pc_hi20(.LCPI1_0)
+	vld	$vr0, $t1, %pc_lo12(.LCPI1_0)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_1)
+	vld	$vr1, $t1, %pc_lo12(.LCPI1_1)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_2)
+	vld	$vr2, $t1, %pc_lo12(.LCPI1_2)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_3)
+	vld	$vr3, $t1, %pc_lo12(.LCPI1_3)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_4)
+	vld	$vr4, $t1, %pc_lo12(.LCPI1_4)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_5)
+	vld	$vr5, $t1, %pc_lo12(.LCPI1_5)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_6)
+	vld	$vr6, $t1, %pc_lo12(.LCPI1_6)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_7)
+	vld	$vr7, $t1, %pc_lo12(.LCPI1_7)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_8)
+	vld	$vr8, $t1, %pc_lo12(.LCPI1_8)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_9)
+	vld	$vr9, $t1, %pc_lo12(.LCPI1_9)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_10)
+	vld	$vr10, $t1, %pc_lo12(.LCPI1_10)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_11)
+	vld	$vr11, $t1, %pc_lo12(.LCPI1_11)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_12)
+	vld	$vr12, $t1, %pc_lo12(.LCPI1_12)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_13)
+	vld	$vr13, $t1, %pc_lo12(.LCPI1_13)
+	pcalau12i	$t1, %pc_hi20(.LCPI1_14)
+	vld	$vr14, $t1, %pc_lo12(.LCPI1_14)
+	addi.d	$a7, $a7, 1
+	sub.w	$a2, $a2, $t0
+	vrepli.b	$vr15, 32
 	.p2align	4, , 16
 .LBB1_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$t0, $a1, -23
-	ld.b	$t1, $a1, -20
-	ld.b	$t2, $a1, -17
-	ld.b	$t3, $a1, -14
-	ld.b	$t4, $a1, -11
-	ld.b	$t5, $a1, -8
-	ld.b	$t6, $a1, -5
-	ld.b	$t7, $a1, -2
-	ld.b	$t8, $a1, 1
-	ld.b	$fp, $a1, 4
-	ld.b	$s0, $a1, 7
-	ld.b	$s1, $a1, 10
-	ld.b	$s2, $a1, 13
-	ld.b	$s3, $a1, 16
-	ld.b	$s4, $a1, 19
-	ld.b	$s5, $a1, 22
-	vinsgr2vr.b	$vr1, $t0, 0
-	vinsgr2vr.b	$vr1, $t1, 1
-	vinsgr2vr.b	$vr1, $t2, 2
-	vinsgr2vr.b	$vr1, $t3, 3
-	vinsgr2vr.b	$vr1, $t4, 4
-	vinsgr2vr.b	$vr1, $t5, 5
-	vinsgr2vr.b	$vr1, $t6, 6
-	vinsgr2vr.b	$vr1, $t7, 7
-	vinsgr2vr.b	$vr1, $t8, 8
-	vinsgr2vr.b	$vr1, $fp, 9
-	vinsgr2vr.b	$vr1, $s0, 10
-	vinsgr2vr.b	$vr1, $s1, 11
-	vinsgr2vr.b	$vr1, $s2, 12
-	vinsgr2vr.b	$vr1, $s3, 13
-	vinsgr2vr.b	$vr1, $s4, 14
-	vinsgr2vr.b	$vr1, $s5, 15
-	vsrli.b	$vr1, $vr1, 2
-	vadd.b	$vr1, $vr1, $vr0
-	vstelm.b	$vr1, $a7, -31, 0
-	vstelm.b	$vr1, $a7, -27, 1
-	vstelm.b	$vr1, $a7, -23, 2
-	vstelm.b	$vr1, $a7, -19, 3
-	vstelm.b	$vr1, $a7, -15, 4
-	vstelm.b	$vr1, $a7, -11, 5
-	vstelm.b	$vr1, $a7, -7, 6
-	vstelm.b	$vr1, $a7, -3, 7
-	vstelm.b	$vr1, $a7, 1, 8
-	vstelm.b	$vr1, $a7, 5, 9
-	vstelm.b	$vr1, $a7, 9, 10
-	vstelm.b	$vr1, $a7, 13, 11
-	vstelm.b	$vr1, $a7, 17, 12
-	vstelm.b	$vr1, $a7, 21, 13
-	vstelm.b	$vr1, $a7, 25, 14
-	vstelm.b	$vr1, $a7, 29, 15
-	ld.b	$t0, $a1, -23
-	ld.b	$t1, $a1, -20
-	ld.b	$t2, $a1, -17
-	ld.b	$t3, $a1, -14
-	ld.b	$t4, $a1, -11
-	ld.b	$t5, $a1, -8
-	ld.b	$t6, $a1, -5
-	ld.b	$t7, $a1, -2
-	ld.b	$t8, $a1, 1
-	ld.b	$fp, $a1, 4
-	ld.b	$s0, $a1, 7
-	ld.b	$s1, $a1, 10
-	ld.b	$s2, $a1, 13
-	ld.b	$s3, $a1, 16
-	ld.b	$s4, $a1, 19
-	ld.b	$s5, $a1, 22
-	vinsgr2vr.b	$vr1, $t0, 0
-	vinsgr2vr.b	$vr1, $t1, 1
-	vinsgr2vr.b	$vr1, $t2, 2
-	vinsgr2vr.b	$vr1, $t3, 3
-	vinsgr2vr.b	$vr1, $t4, 4
-	vinsgr2vr.b	$vr1, $t5, 5
-	vinsgr2vr.b	$vr1, $t6, 6
-	vinsgr2vr.b	$vr1, $t7, 7
-	vinsgr2vr.b	$vr1, $t8, 8
-	vinsgr2vr.b	$vr1, $fp, 9
-	vinsgr2vr.b	$vr1, $s0, 10
-	vinsgr2vr.b	$vr1, $s1, 11
-	vinsgr2vr.b	$vr1, $s2, 12
-	vinsgr2vr.b	$vr1, $s3, 13
-	vinsgr2vr.b	$vr1, $s4, 14
-	vinsgr2vr.b	$vr1, $s5, 15
-	vslli.b	$vr1, $vr1, 4
-	ld.b	$t0, $a1, -22
-	ld.b	$t1, $a1, -19
-	ld.b	$t2, $a1, -16
-	ld.b	$t3, $a1, -13
-	ld.b	$t4, $a1, -10
-	ld.b	$t5, $a1, -7
-	ld.b	$t6, $a1, -4
-	ld.b	$t7, $a1, -1
-	ld.b	$t8, $a1, 2
-	ld.b	$fp, $a1, 5
-	ld.b	$s0, $a1, 8
-	ld.b	$s1, $a1, 11
-	ld.b	$s2, $a1, 14
-	ld.b	$s3, $a1, 17
-	ld.b	$s4, $a1, 20
-	ld.b	$s5, $a1, 23
-	vinsgr2vr.b	$vr2, $t0, 0
-	vinsgr2vr.b	$vr2, $t1, 1
-	vinsgr2vr.b	$vr2, $t2, 2
-	vinsgr2vr.b	$vr2, $t3, 3
-	vinsgr2vr.b	$vr2, $t4, 4
-	vinsgr2vr.b	$vr2, $t5, 5
-	vinsgr2vr.b	$vr2, $t6, 6
-	vinsgr2vr.b	$vr2, $t7, 7
-	vinsgr2vr.b	$vr2, $t8, 8
-	vinsgr2vr.b	$vr2, $fp, 9
-	vinsgr2vr.b	$vr2, $s0, 10
-	vinsgr2vr.b	$vr2, $s1, 11
-	vinsgr2vr.b	$vr2, $s2, 12
-	vinsgr2vr.b	$vr2, $s3, 13
-	vinsgr2vr.b	$vr2, $s4, 14
-	vinsgr2vr.b	$vr2, $s5, 15
-	vsrai.b	$vr2, $vr2, 4
-	vor.v	$vr1, $vr2, $vr1
-	vandi.b	$vr1, $vr1, 63
-	vadd.b	$vr1, $vr1, $vr0
-	vstelm.b	$vr1, $a7, -30, 0
-	vstelm.b	$vr1, $a7, -26, 1
-	vstelm.b	$vr1, $a7, -22, 2
-	vstelm.b	$vr1, $a7, -18, 3
-	vstelm.b	$vr1, $a7, -14, 4
-	vstelm.b	$vr1, $a7, -10, 5
-	vstelm.b	$vr1, $a7, -6, 6
-	vstelm.b	$vr1, $a7, -2, 7
-	vstelm.b	$vr1, $a7, 2, 8
-	vstelm.b	$vr1, $a7, 6, 9
-	vstelm.b	$vr1, $a7, 10, 10
-	vstelm.b	$vr1, $a7, 14, 11
-	vstelm.b	$vr1, $a7, 18, 12
-	vstelm.b	$vr1, $a7, 22, 13
-	vstelm.b	$vr1, $a7, 26, 14
-	vstelm.b	$vr1, $a7, 30, 15
-	ld.b	$t0, $a1, -22
-	ld.b	$t1, $a1, -19
-	ld.b	$t2, $a1, -16
-	ld.b	$t3, $a1, -13
-	ld.b	$t4, $a1, -10
-	ld.b	$t5, $a1, -7
-	ld.b	$t6, $a1, -4
-	ld.b	$t7, $a1, -1
-	ld.b	$t8, $a1, 2
-	ld.b	$fp, $a1, 5
-	ld.b	$s0, $a1, 8
-	ld.b	$s1, $a1, 11
-	ld.b	$s2, $a1, 14
-	ld.b	$s3, $a1, 17
-	ld.b	$s4, $a1, 20
-	ld.b	$s5, $a1, 23
-	vinsgr2vr.b	$vr1, $t0, 0
-	vinsgr2vr.b	$vr1, $t1, 1
-	vinsgr2vr.b	$vr1, $t2, 2
-	vinsgr2vr.b	$vr1, $t3, 3
-	vinsgr2vr.b	$vr1, $t4, 4
-	vinsgr2vr.b	$vr1, $t5, 5
-	vinsgr2vr.b	$vr1, $t6, 6
-	vinsgr2vr.b	$vr1, $t7, 7
-	vinsgr2vr.b	$vr1, $t8, 8
-	vinsgr2vr.b	$vr1, $fp, 9
-	vinsgr2vr.b	$vr1, $s0, 10
-	vinsgr2vr.b	$vr1, $s1, 11
-	vinsgr2vr.b	$vr1, $s2, 12
-	vinsgr2vr.b	$vr1, $s3, 13
-	vinsgr2vr.b	$vr1, $s4, 14
-	vinsgr2vr.b	$vr1, $s5, 15
-	vslli.b	$vr1, $vr1, 2
-	ld.b	$t0, $a1, -21
-	ld.b	$t1, $a1, -18
-	ld.b	$t2, $a1, -15
-	ld.b	$t3, $a1, -12
-	ld.b	$t4, $a1, -9
-	ld.b	$t5, $a1, -6
-	ld.b	$t6, $a1, -3
-	ld.b	$t7, $a1, 0
-	ld.b	$t8, $a1, 3
-	ld.b	$fp, $a1, 6
-	ld.b	$s0, $a1, 9
-	ld.b	$s1, $a1, 12
-	ld.b	$s2, $a1, 15
-	ld.b	$s3, $a1, 18
-	ld.b	$s4, $a1, 21
-	ld.b	$s5, $a1, 24
-	vinsgr2vr.b	$vr2, $t0, 0
-	vinsgr2vr.b	$vr2, $t1, 1
-	vinsgr2vr.b	$vr2, $t2, 2
-	vinsgr2vr.b	$vr2, $t3, 3
-	vinsgr2vr.b	$vr2, $t4, 4
-	vinsgr2vr.b	$vr2, $t5, 5
-	vinsgr2vr.b	$vr2, $t6, 6
-	vinsgr2vr.b	$vr2, $t7, 7
-	vinsgr2vr.b	$vr2, $t8, 8
-	vinsgr2vr.b	$vr2, $fp, 9
-	vinsgr2vr.b	$vr2, $s0, 10
-	vinsgr2vr.b	$vr2, $s1, 11
-	vinsgr2vr.b	$vr2, $s2, 12
-	vinsgr2vr.b	$vr2, $s3, 13
-	vinsgr2vr.b	$vr2, $s4, 14
-	vinsgr2vr.b	$vr2, $s5, 15
-	vsrai.b	$vr2, $vr2, 6
-	vor.v	$vr1, $vr2, $vr1
-	vandi.b	$vr1, $vr1, 63
-	vadd.b	$vr1, $vr1, $vr0
-	vstelm.b	$vr1, $a7, -29, 0
-	vstelm.b	$vr1, $a7, -25, 1
-	vstelm.b	$vr1, $a7, -21, 2
-	vstelm.b	$vr1, $a7, -17, 3
-	vstelm.b	$vr1, $a7, -13, 4
-	vstelm.b	$vr1, $a7, -9, 5
-	vstelm.b	$vr1, $a7, -5, 6
-	vstelm.b	$vr1, $a7, -1, 7
-	vstelm.b	$vr1, $a7, 3, 8
-	vstelm.b	$vr1, $a7, 7, 9
-	vstelm.b	$vr1, $a7, 11, 10
-	vstelm.b	$vr1, $a7, 15, 11
-	vstelm.b	$vr1, $a7, 19, 12
-	vstelm.b	$vr1, $a7, 23, 13
-	vstelm.b	$vr1, $a7, 27, 14
-	vstelm.b	$vr1, $a7, 31, 15
-	ld.b	$t0, $a1, -21
-	ld.b	$t1, $a1, -18
-	ld.b	$t2, $a1, -15
-	ld.b	$t3, $a1, -12
-	ld.b	$t4, $a1, -9
-	ld.b	$t5, $a1, -6
-	ld.b	$t6, $a1, -3
-	ld.b	$t7, $a1, 0
-	ld.b	$t8, $a1, 3
-	ld.b	$fp, $a1, 6
-	ld.b	$s0, $a1, 9
-	ld.b	$s1, $a1, 12
-	ld.b	$s2, $a1, 15
-	ld.b	$s3, $a1, 18
-	ld.b	$s4, $a1, 21
-	ld.b	$s5, $a1, 24
-	vinsgr2vr.b	$vr1, $t0, 0
-	vinsgr2vr.b	$vr1, $t1, 1
-	vinsgr2vr.b	$vr1, $t2, 2
-	vinsgr2vr.b	$vr1, $t3, 3
-	vinsgr2vr.b	$vr1, $t4, 4
-	vinsgr2vr.b	$vr1, $t5, 5
-	vinsgr2vr.b	$vr1, $t6, 6
-	vinsgr2vr.b	$vr1, $t7, 7
-	vinsgr2vr.b	$vr1, $t8, 8
-	vinsgr2vr.b	$vr1, $fp, 9
-	vinsgr2vr.b	$vr1, $s0, 10
-	vinsgr2vr.b	$vr1, $s1, 11
-	vinsgr2vr.b	$vr1, $s2, 12
-	vinsgr2vr.b	$vr1, $s3, 13
-	vinsgr2vr.b	$vr1, $s4, 14
-	vinsgr2vr.b	$vr1, $s5, 15
-	vandi.b	$vr1, $vr1, 63
-	vadd.b	$vr1, $vr1, $vr0
-	vstelm.b	$vr1, $a7, -28, 0
-	vstelm.b	$vr1, $a7, -24, 1
-	vstelm.b	$vr1, $a7, -20, 2
-	vstelm.b	$vr1, $a7, -16, 3
-	vstelm.b	$vr1, $a7, -12, 4
-	vstelm.b	$vr1, $a7, -8, 5
-	vstelm.b	$vr1, $a7, -4, 6
-	vstelm.b	$vr1, $a7, 0, 7
-	vstelm.b	$vr1, $a7, 4, 8
-	vstelm.b	$vr1, $a7, 8, 9
-	vstelm.b	$vr1, $a7, 12, 10
-	vstelm.b	$vr1, $a7, 16, 11
-	vstelm.b	$vr1, $a7, 20, 12
-	vstelm.b	$vr1, $a7, 24, 13
-	vstelm.b	$vr1, $a7, 28, 14
-	vstelm.b	$vr1, $a7, 32, 15
-	addi.d	$a1, $a1, 48
-	addi.d	$a5, $a5, -16
-	addi.d	$a7, $a7, 64
-	bnez	$a5, .LBB1_5
-# %bb.6:
-	move	$a1, $a6
-.LBB1_7:                                # %.lr.ph.preheader104
+	vld	$vr16, $a5, 0
+	vld	$vr17, $a5, 16
+	vld	$vr18, $a5, 32
+	vshuf.b	$vr19, $vr17, $vr16, $vr0
+	vshuf.b	$vr19, $vr18, $vr19, $vr1
+	vshuf.b	$vr20, $vr17, $vr16, $vr2
+	vshuf.b	$vr20, $vr18, $vr20, $vr3
+	vshuf.b	$vr16, $vr17, $vr16, $vr4
+	vshuf.b	$vr16, $vr18, $vr16, $vr5
+	vsrli.b	$vr17, $vr19, 2
+	vadd.b	$vr17, $vr17, $vr15
+	vslli.b	$vr18, $vr19, 4
+	vsrai.b	$vr19, $vr20, 4
+	vor.v	$vr18, $vr19, $vr18
+	vandi.b	$vr18, $vr18, 63
+	vadd.b	$vr18, $vr18, $vr15
+	vslli.b	$vr19, $vr20, 2
+	vsrai.b	$vr20, $vr16, 6
+	vor.v	$vr19, $vr20, $vr19
+	vandi.b	$vr19, $vr19, 63
+	vadd.b	$vr19, $vr19, $vr15
+	vandi.b	$vr16, $vr16, 63
+	vadd.b	$vr16, $vr16, $vr15
+	vshuf.b	$vr20, $vr18, $vr17, $vr6
+	vshuf.b	$vr21, $vr16, $vr19, $vr7
+	vori.b	$vr22, $vr8, 0
+	vshuf.h	$vr22, $vr21, $vr20
+	vshuf.b	$vr20, $vr18, $vr17, $vr9
+	vshuf.b	$vr21, $vr16, $vr19, $vr10
+	vori.b	$vr23, $vr8, 0
+	vshuf.h	$vr23, $vr21, $vr20
+	vshuf.b	$vr20, $vr18, $vr17, $vr11
+	vshuf.b	$vr21, $vr16, $vr19, $vr12
+	vori.b	$vr24, $vr8, 0
+	vshuf.h	$vr24, $vr21, $vr20
+	vshuf.b	$vr17, $vr18, $vr17, $vr13
+	vshuf.b	$vr16, $vr16, $vr19, $vr14
+	vori.b	$vr18, $vr8, 0
+	vshuf.h	$vr18, $vr16, $vr17
+	vst	$vr18, $a4, 48
+	vst	$vr24, $a4, 32
+	vst	$vr23, $a4, 16
+	vst	$vr22, $a4, 0
+	addi.d	$a4, $a4, 64
+	addi.d	$a6, $a6, -16
+	addi.d	$a5, $a5, 48
+	bnez	$a6, .LBB1_5
+.LBB1_6:                                # %.lr.ph.preheader110
 	add.d	$a0, $a1, $a0
 	addi.d	$a1, $a0, 1
-	addi.d	$a0, $a4, 4
+	addi.d	$a0, $a7, 4
 	ori	$a4, $zero, 2
 	.p2align	4, , 16
-.LBB1_8:                                # %.lr.ph
+.LBB1_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	bgeu	$a4, $a2, .LBB1_11
-# %bb.9:                                #   in Loop: Header=BB1_8 Depth=1
+	bgeu	$a4, $a2, .LBB1_10
+# %bb.8:                                #   in Loop: Header=BB1_7 Depth=1
 	ld.bu	$a5, $a1, -1
 	srli.d	$a5, $a5, 2
 	addi.d	$a5, $a5, 32
@@ -391,11 +433,11 @@ encode_line:                            # @encode_line
 	addi.w	$a2, $a2, -3
 	addi.d	$a1, $a1, 3
 	addi.d	$a0, $a0, 4
-	bnez	$a2, .LBB1_8
-# %bb.10:                               # %._crit_edge.loopexit.loopexit
+	bnez	$a2, .LBB1_7
+# %bb.9:                                # %._crit_edge.loopexit.loopexit
 	addi.d	$a0, $a0, -4
-	b	.LBB1_15
-.LBB1_11:
+	b	.LBB1_14
+.LBB1_10:
 	ld.bu	$a4, $a1, -1
 	srli.d	$a4, $a4, 2
 	addi.d	$a5, $a4, 32
@@ -404,14 +446,14 @@ encode_line:                            # @encode_line
 	ld.b	$a5, $a1, -1
 	ori	$a6, $zero, 1
 	slli.d	$a5, $a5, 4
-	bne	$a2, $a6, .LBB1_13
-# %bb.12:
+	bne	$a2, $a6, .LBB1_12
+# %bb.11:
 	andi	$a1, $a5, 48
 	addi.d	$a1, $a1, 32
 	st.b	$a1, $a4, -3
 	ori	$a1, $zero, 61
-	b	.LBB1_14
-.LBB1_13:
+	b	.LBB1_13
+.LBB1_12:
 	ld.b	$a2, $a1, 0
 	srli.d	$a2, $a2, 4
 	or	$a2, $a2, $a5
@@ -422,21 +464,15 @@ encode_line:                            # @encode_line
 	slli.d	$a1, $a1, 2
 	andi	$a1, $a1, 60
 	addi.d	$a1, $a1, 32
-.LBB1_14:                               # %.thread
+.LBB1_13:                               # %.thread
 	st.b	$a1, $a4, -2
 	ori	$a1, $zero, 61
 	st.b	$a1, $a4, -1
-.LBB1_15:                               # %._crit_edge.loopexit
+.LBB1_14:                               # %._crit_edge.loopexit
 	bstrpick.d	$a4, $a0, 31, 0
-	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
-.LBB1_16:                               # %._crit_edge
+	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
+.LBB1_15:                               # %._crit_edge
 	ori	$a0, $zero, 10
 	stx.h	$a0, $a3, $a4
 	ret
@@ -621,7 +657,257 @@ do_encode:                              # @do_encode
 .Lfunc_end3:
 	.size	do_encode, .Lfunc_end3-do_encode
                                         # -- End function
-	.globl	main                            # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
+.LCPI4_0:
+	.byte	0                               # 0x0
+	.byte	3                               # 0x3
+	.byte	6                               # 0x6
+	.byte	9                               # 0x9
+	.byte	12                              # 0xc
+	.byte	15                              # 0xf
+	.byte	18                              # 0x12
+	.byte	21                              # 0x15
+	.byte	24                              # 0x18
+	.byte	27                              # 0x1b
+	.byte	30                              # 0x1e
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_1:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	17                              # 0x11
+	.byte	20                              # 0x14
+	.byte	23                              # 0x17
+	.byte	26                              # 0x1a
+	.byte	29                              # 0x1d
+.LCPI4_2:
+	.byte	1                               # 0x1
+	.byte	4                               # 0x4
+	.byte	7                               # 0x7
+	.byte	10                              # 0xa
+	.byte	13                              # 0xd
+	.byte	16                              # 0x10
+	.byte	19                              # 0x13
+	.byte	22                              # 0x16
+	.byte	25                              # 0x19
+	.byte	28                              # 0x1c
+	.byte	31                              # 0x1f
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_3:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	10                              # 0xa
+	.byte	18                              # 0x12
+	.byte	21                              # 0x15
+	.byte	24                              # 0x18
+	.byte	27                              # 0x1b
+	.byte	30                              # 0x1e
+.LCPI4_4:
+	.byte	2                               # 0x2
+	.byte	5                               # 0x5
+	.byte	8                               # 0x8
+	.byte	11                              # 0xb
+	.byte	14                              # 0xe
+	.byte	17                              # 0x11
+	.byte	20                              # 0x14
+	.byte	23                              # 0x17
+	.byte	26                              # 0x1a
+	.byte	29                              # 0x1d
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_5:
+	.byte	0                               # 0x0
+	.byte	1                               # 0x1
+	.byte	2                               # 0x2
+	.byte	3                               # 0x3
+	.byte	4                               # 0x4
+	.byte	5                               # 0x5
+	.byte	6                               # 0x6
+	.byte	7                               # 0x7
+	.byte	8                               # 0x8
+	.byte	9                               # 0x9
+	.byte	16                              # 0x10
+	.byte	19                              # 0x13
+	.byte	22                              # 0x16
+	.byte	25                              # 0x19
+	.byte	28                              # 0x1c
+	.byte	31                              # 0x1f
+.LCPI4_6:
+	.byte	0                               # 0x0
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	2                               # 0x2
+	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	3                               # 0x3
+	.byte	19                              # 0x13
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_7:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	0                               # 0x0
+	.byte	16                              # 0x10
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	1                               # 0x1
+	.byte	17                              # 0x11
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	2                               # 0x2
+	.byte	18                              # 0x12
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	3                               # 0x3
+	.byte	19                              # 0x13
+.LCPI4_8:
+	.half	0                               # 0x0
+	.half	9                               # 0x9
+	.half	2                               # 0x2
+	.half	11                              # 0xb
+	.half	4                               # 0x4
+	.half	13                              # 0xd
+	.half	6                               # 0x6
+	.half	15                              # 0xf
+.LCPI4_9:
+	.byte	4                               # 0x4
+	.byte	20                              # 0x14
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	6                               # 0x6
+	.byte	22                              # 0x16
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	23                              # 0x17
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_10:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	4                               # 0x4
+	.byte	20                              # 0x14
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	5                               # 0x5
+	.byte	21                              # 0x15
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	6                               # 0x6
+	.byte	22                              # 0x16
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	7                               # 0x7
+	.byte	23                              # 0x17
+.LCPI4_11:
+	.byte	8                               # 0x8
+	.byte	24                              # 0x18
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	10                              # 0xa
+	.byte	26                              # 0x1a
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	11                              # 0xb
+	.byte	27                              # 0x1b
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_12:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	8                               # 0x8
+	.byte	24                              # 0x18
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	9                               # 0x9
+	.byte	25                              # 0x19
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	10                              # 0xa
+	.byte	26                              # 0x1a
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	11                              # 0xb
+	.byte	27                              # 0x1b
+.LCPI4_13:
+	.byte	12                              # 0xc
+	.byte	28                              # 0x1c
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	14                              # 0xe
+	.byte	30                              # 0x1e
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	15                              # 0xf
+	.byte	31                              # 0x1f
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+.LCPI4_14:
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	12                              # 0xc
+	.byte	28                              # 0x1c
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	13                              # 0xd
+	.byte	29                              # 0x1d
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	14                              # 0xe
+	.byte	30                              # 0x1e
+	.byte	255                             # 0xff
+	.byte	255                             # 0xff
+	.byte	15                              # 0xf
+	.byte	31                              # 0x1f
+	.text
+	.globl	main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
@@ -641,11 +927,11 @@ main:                                   # @main
 	move	$s3, $a1
 	move	$s2, $a0
 	lu12i.w	$a0, 244
-	ori	$s0, $a0, 576
-	move	$a0, $s0
+	ori	$s1, $a0, 576
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
+	move	$s0, $a0
 	lu12i.w	$a0, 488
 	ori	$a0, $a0, 1152
 	pcaddu18i	$ra, %call36(malloc)
@@ -674,10 +960,9 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	bne	$s2, $a0, .LBB4_29
 .LBB4_4:
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	ori	$a1, $zero, 1
-	move	$a0, $s1
-	move	$a2, $s0
+	move	$a0, $s0
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -685,63 +970,61 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $s7, 0
-	blez	$s3, .LBB4_30
+	addi.w	$s4, $s7, 0
+	blez	$s4, .LBB4_30
 # %bb.5:                                # %.lr.ph.i.i.preheader.us.preheader
 	move	$a2, $zero
-	addi.d	$a0, $s1, 23
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	addi.d	$s2, $s1, 1
-	addi.d	$s4, $sp, 140
-	addi.d	$s6, $s1, 2
+	addi.d	$a0, $s0, 1
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$s3, $s0, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	ld.w	$a1, $a0, 7
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
 	ld.d	$a1, $a0, 0
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 7
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	ld.h	$a1, $a0, 0
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ld.b	$a0, $a0, 2
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	ori	$s6, $zero, 44
+	ori	$s5, $zero, 10
 	addi.d	$s8, $sp, 136
 	lu12i.w	$a0, -349526
 	ori	$a0, $a0, 2731
 	lu32i.d	$a0, 0
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	lu12i.w	$a0, 349525
 	ori	$a0, $a0, 1365
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	ori	$s5, $zero, 2
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	ori	$s0, $zero, 2
 	vrepli.b	$vr0, 32
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
 	b	.LBB4_7
 	.p2align	4, , 16
 .LBB4_6:                                # %do_encode.exit.loopexit.us
                                         #   in Loop: Header=BB4_7 Depth=1
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
 	ld.w	$a2, $a1, 0
 	ld.h	$a1, $a1, 4
-	add.d	$a3, $s1, $a0
-	stx.w	$a2, $s1, $a0
+	add.d	$a3, $s2, $a0
+	stx.w	$a2, $s2, $a0
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
 	st.h	$a1, $a3, 4
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ori	$a0, $zero, 1000
 	beq	$a2, $a0, .LBB4_32
 .LBB4_7:                                # %.lr.ph.i.i.preheader.us
@@ -751,32 +1034,31 @@ main:                                   # @main
                                         #       Child Loop BB4_23 Depth 3
                                         #       Child Loop BB4_15 Depth 3
 	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	st.w	$a0, $fp, 7
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	st.d	$a0, $fp, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	add.d	$a1, $fp, $a0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	stx.d	$a2, $fp, $a0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 7
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	add.d	$a1, $fp, $a0
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	stx.h	$a2, $fp, $a0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.b	$a0, $a1, 2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	move	$s0, $zero
-	add.d	$s1, $fp, $a0
-	ori	$fp, $zero, 44
+	move	$s1, $zero
+	add.d	$s2, $fp, $a0
 	b	.LBB4_13
 .LBB4_8:                                #   in Loop: Header=BB4_13 Depth=2
 	andi	$a0, $a4, 48
@@ -793,34 +1075,33 @@ main:                                   # @main
 	bstrpick.d	$a1, $a1, 31, 0
 .LBB4_11:                               # %encode_line.exit.us
                                         #   in Loop: Header=BB4_13 Depth=2
-	ori	$a0, $zero, 10
-	stx.h	$a0, $a1, $s8
-	move	$s0, $s7
+	stx.h	$s5, $a1, $s8
+	move	$s1, $s7
 .LBB4_12:                               #   in Loop: Header=BB4_13 Depth=2
 	addi.d	$a1, $sp, 136
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strcat)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $s0, 0
-	add.d	$s1, $s1, $a0
-	bge	$a1, $s3, .LBB4_6
+	addi.w	$a1, $s1, 0
+	add.d	$s2, $s2, $a0
+	bge	$a1, $s4, .LBB4_6
 .LBB4_13:                               # %.lr.ph.i.i.us
                                         #   Parent Loop BB4_7 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_20 Depth 3
                                         #       Child Loop BB4_23 Depth 3
                                         #       Child Loop BB4_15 Depth 3
-	sub.w	$a0, $s7, $s0
-	bge	$fp, $a0, .LBB4_17
+	sub.w	$a0, $s7, $s1
+	bge	$s6, $a0, .LBB4_17
 # %bb.14:                               #   in Loop: Header=BB4_13 Depth=2
 	ori	$a0, $zero, 77
 	st.b	$a0, $sp, 136
-	addi.w	$a0, $s0, 0
-	add.d	$a0, $s6, $a0
-	move	$a1, $s4
+	addi.w	$a0, $s1, 0
+	add.d	$a0, $s3, $a0
+	addi.d	$a1, $sp, 140
 	addi.d	$a2, $zero, -45
 	.p2align	4, , 16
 .LBB4_15:                               #   Parent Loop BB4_7 Depth=1
@@ -853,9 +1134,8 @@ main:                                   # @main
 	bnez	$a2, .LBB4_15
 # %bb.16:                               # %encode_line.exit40.us
                                         #   in Loop: Header=BB4_13 Depth=2
-	ori	$a0, $zero, 10
-	st.h	$a0, $sp, 197
-	addi.d	$s0, $s0, 45
+	st.h	$s5, $sp, 197
+	addi.d	$s1, $s1, 45
 	b	.LBB4_12
 	.p2align	4, , 16
 .LBB4_17:                               #   in Loop: Header=BB4_13 Depth=2
@@ -866,13 +1146,13 @@ main:                                   # @main
 	blt	$a0, $a1, .LBB4_11
 # %bb.18:                               # %.lr.ph.preheader.i.us
                                         #   in Loop: Header=BB4_13 Depth=2
-	addi.w	$a3, $s0, 0
+	addi.w	$a3, $s1, 0
 	bstrpick.d	$a4, $a0, 31, 0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	mul.d	$a1, $a4, $a1
 	srli.d	$a1, $a1, 33
-	sub.d	$a2, $s0, $s7
-	ld.d	$a5, $sp, 104                   # 8-byte Folded Reload
+	sub.d	$a2, $s1, $s7
+	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	mul.d	$a2, $a2, $a5
 	addi.w	$a5, $a2, -1
 	sltu	$a2, $a1, $a5
@@ -884,7 +1164,6 @@ main:                                   # @main
 	bltu	$a2, $a7, .LBB4_22
 # %bb.19:                               # %vector.ph
                                         #   in Loop: Header=BB4_13 Depth=2
-	move	$s4, $s2
 	addi.w	$a1, $a2, 1
 	andi	$a2, $a1, 15
 	sltui	$a6, $a2, 1
@@ -897,7 +1176,7 @@ main:                                   # @main
 	slli.d	$a1, $a1, 2
 	addi.d	$a1, $a1, 1
 	sub.w	$a0, $a0, $a7
-	ld.d	$a7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a3, $a7, $a3
 	lu12i.w	$a7, 349525
 	ori	$a7, $a7, 1366
@@ -911,207 +1190,102 @@ main:                                   # @main
 	or	$a4, $a4, $a5
 	nor	$a4, $a4, $zero
 	add.d	$a4, $a4, $a6
-	addi.d	$a5, $sp, 168
-	vld	$vr3, $sp, 64                   # 16-byte Folded Reload
+	addi.d	$a5, $sp, 137
+	vld	$vr12, $sp, 64                  # 16-byte Folded Reload
 	.p2align	4, , 16
 .LBB4_20:                               # %vector.body
                                         #   Parent Loop BB4_7 Depth=1
                                         #     Parent Loop BB4_13 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.b	$a6, $a3, -23
-	ld.b	$a7, $a3, -20
-	ld.b	$t0, $a3, -17
-	ld.b	$t1, $a3, -14
-	ld.b	$t2, $a3, -11
-	ld.b	$t3, $a3, -8
-	ld.b	$t4, $a3, -5
-	ld.b	$t5, $a3, -2
-	ld.b	$t6, $a3, 1
-	ld.b	$t7, $a3, 4
-	ld.b	$t8, $a3, 7
-	ld.b	$s0, $a3, 10
-	ld.b	$ra, $a3, 13
-	ld.b	$fp, $a3, 16
-	ld.b	$s2, $a3, 19
-	ld.b	$s6, $a3, 22
-	vinsgr2vr.b	$vr0, $a6, 0
-	vinsgr2vr.b	$vr0, $a7, 1
-	vinsgr2vr.b	$vr0, $t0, 2
-	vinsgr2vr.b	$vr0, $t1, 3
-	vinsgr2vr.b	$vr0, $t2, 4
-	vinsgr2vr.b	$vr0, $t3, 5
-	vinsgr2vr.b	$vr0, $t4, 6
-	vinsgr2vr.b	$vr0, $t5, 7
-	vinsgr2vr.b	$vr0, $t6, 8
-	vinsgr2vr.b	$vr0, $t7, 9
-	vinsgr2vr.b	$vr0, $t8, 10
-	vinsgr2vr.b	$vr0, $s0, 11
-	vinsgr2vr.b	$vr0, $ra, 12
-	vinsgr2vr.b	$vr0, $fp, 13
-	vinsgr2vr.b	$vr0, $s2, 14
-	vinsgr2vr.b	$vr0, $s6, 15
-	vsrli.b	$vr1, $vr0, 2
-	vadd.b	$vr1, $vr1, $vr3
-	vstelm.b	$vr1, $a5, -31, 0
-	vstelm.b	$vr1, $a5, -27, 1
-	vstelm.b	$vr1, $a5, -23, 2
-	vstelm.b	$vr1, $a5, -19, 3
-	vstelm.b	$vr1, $a5, -15, 4
-	vstelm.b	$vr1, $a5, -11, 5
-	vstelm.b	$vr1, $a5, -7, 6
-	vstelm.b	$vr1, $a5, -3, 7
-	vstelm.b	$vr1, $a5, 1, 8
-	vstelm.b	$vr1, $a5, 5, 9
-	vstelm.b	$vr1, $a5, 9, 10
-	vstelm.b	$vr1, $a5, 13, 11
-	vstelm.b	$vr1, $a5, 17, 12
-	vstelm.b	$vr1, $a5, 21, 13
-	vstelm.b	$vr1, $a5, 25, 14
-	vstelm.b	$vr1, $a5, 29, 15
-	vslli.b	$vr0, $vr0, 4
-	ld.b	$a6, $a3, -22
-	ld.b	$a7, $a3, -19
-	ld.b	$t0, $a3, -16
-	ld.b	$t1, $a3, -13
-	ld.b	$t2, $a3, -10
-	ld.b	$t3, $a3, -7
-	ld.b	$t4, $a3, -4
-	ld.b	$t5, $a3, -1
-	ld.b	$t6, $a3, 2
-	ld.b	$t7, $a3, 5
-	ld.b	$t8, $a3, 8
-	ld.b	$fp, $a3, 11
-	ld.b	$s0, $a3, 14
-	ld.b	$s2, $a3, 17
-	ld.b	$s6, $a3, 20
-	ld.b	$ra, $a3, 23
-	vinsgr2vr.b	$vr1, $a6, 0
-	vinsgr2vr.b	$vr1, $a7, 1
-	vinsgr2vr.b	$vr1, $t0, 2
-	vinsgr2vr.b	$vr1, $t1, 3
-	vinsgr2vr.b	$vr1, $t2, 4
-	vinsgr2vr.b	$vr1, $t3, 5
-	vinsgr2vr.b	$vr1, $t4, 6
-	vinsgr2vr.b	$vr1, $t5, 7
-	vinsgr2vr.b	$vr1, $t6, 8
-	vinsgr2vr.b	$vr1, $t7, 9
-	vinsgr2vr.b	$vr1, $t8, 10
-	vinsgr2vr.b	$vr1, $fp, 11
-	vinsgr2vr.b	$vr1, $s0, 12
-	vinsgr2vr.b	$vr1, $s2, 13
-	vinsgr2vr.b	$vr1, $s6, 14
-	vinsgr2vr.b	$vr1, $ra, 15
-	vsrai.b	$vr2, $vr1, 4
-	vor.v	$vr0, $vr2, $vr0
+	vld	$vr0, $a3, 32
+	vld	$vr1, $a3, 0
+	vld	$vr2, $a3, 16
+	pcalau12i	$a6, %pc_hi20(.LCPI4_0)
+	vld	$vr3, $a6, %pc_lo12(.LCPI4_0)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_1)
+	vld	$vr4, $a6, %pc_lo12(.LCPI4_1)
+	vshuf.b	$vr3, $vr2, $vr1, $vr3
+	vshuf.b	$vr3, $vr0, $vr3, $vr4
+	pcalau12i	$a6, %pc_hi20(.LCPI4_2)
+	vld	$vr4, $a6, %pc_lo12(.LCPI4_2)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_3)
+	vld	$vr5, $a6, %pc_lo12(.LCPI4_3)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_4)
+	vld	$vr6, $a6, %pc_lo12(.LCPI4_4)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_5)
+	vld	$vr7, $a6, %pc_lo12(.LCPI4_5)
+	vshuf.b	$vr4, $vr2, $vr1, $vr4
+	vshuf.b	$vr4, $vr0, $vr4, $vr5
+	vshuf.b	$vr1, $vr2, $vr1, $vr6
+	vshuf.b	$vr0, $vr0, $vr1, $vr7
+	vsrli.b	$vr1, $vr3, 2
+	vadd.b	$vr1, $vr1, $vr12
+	vslli.b	$vr2, $vr3, 4
+	vsrai.b	$vr3, $vr4, 4
+	vor.v	$vr2, $vr3, $vr2
+	vandi.b	$vr2, $vr2, 63
+	vadd.b	$vr2, $vr2, $vr12
+	vslli.b	$vr3, $vr4, 2
+	vsrai.b	$vr4, $vr0, 6
+	vor.v	$vr3, $vr4, $vr3
+	vandi.b	$vr3, $vr3, 63
+	vadd.b	$vr3, $vr3, $vr12
+	pcalau12i	$a6, %pc_hi20(.LCPI4_6)
+	vld	$vr4, $a6, %pc_lo12(.LCPI4_6)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_7)
+	vld	$vr5, $a6, %pc_lo12(.LCPI4_7)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_8)
+	vld	$vr6, $a6, %pc_lo12(.LCPI4_8)
 	vandi.b	$vr0, $vr0, 63
-	vadd.b	$vr0, $vr0, $vr3
-	vstelm.b	$vr0, $a5, -30, 0
-	vstelm.b	$vr0, $a5, -26, 1
-	vstelm.b	$vr0, $a5, -22, 2
-	vstelm.b	$vr0, $a5, -18, 3
-	vstelm.b	$vr0, $a5, -14, 4
-	vstelm.b	$vr0, $a5, -10, 5
-	vstelm.b	$vr0, $a5, -6, 6
-	vstelm.b	$vr0, $a5, -2, 7
-	vstelm.b	$vr0, $a5, 2, 8
-	vstelm.b	$vr0, $a5, 6, 9
-	vstelm.b	$vr0, $a5, 10, 10
-	vstelm.b	$vr0, $a5, 14, 11
-	vstelm.b	$vr0, $a5, 18, 12
-	vstelm.b	$vr0, $a5, 22, 13
-	vstelm.b	$vr0, $a5, 26, 14
-	vstelm.b	$vr0, $a5, 30, 15
-	vslli.b	$vr0, $vr1, 2
-	ld.b	$a6, $a3, -21
-	ld.b	$a7, $a3, -18
-	ld.b	$t0, $a3, -15
-	ld.b	$t1, $a3, -12
-	ld.b	$t2, $a3, -9
-	ld.b	$t3, $a3, -6
-	ld.b	$t4, $a3, -3
-	ld.b	$t5, $a3, 0
-	ld.b	$t6, $a3, 3
-	ld.b	$t7, $a3, 6
-	ld.b	$t8, $a3, 9
-	ld.b	$fp, $a3, 12
-	ld.b	$s0, $a3, 15
-	ld.b	$s2, $a3, 18
-	ld.b	$s6, $a3, 21
-	ld.b	$ra, $a3, 24
-	vinsgr2vr.b	$vr1, $a6, 0
-	vinsgr2vr.b	$vr1, $a7, 1
-	vinsgr2vr.b	$vr1, $t0, 2
-	vinsgr2vr.b	$vr1, $t1, 3
-	vinsgr2vr.b	$vr1, $t2, 4
-	vinsgr2vr.b	$vr1, $t3, 5
-	vinsgr2vr.b	$vr1, $t4, 6
-	vinsgr2vr.b	$vr1, $t5, 7
-	vinsgr2vr.b	$vr1, $t6, 8
-	vinsgr2vr.b	$vr1, $t7, 9
-	vinsgr2vr.b	$vr1, $t8, 10
-	vinsgr2vr.b	$vr1, $fp, 11
-	vinsgr2vr.b	$vr1, $s0, 12
-	vinsgr2vr.b	$vr1, $s2, 13
-	vinsgr2vr.b	$vr1, $s6, 14
-	vinsgr2vr.b	$vr1, $ra, 15
-	vsrai.b	$vr2, $vr1, 6
-	vor.v	$vr0, $vr2, $vr0
-	vandi.b	$vr0, $vr0, 63
-	vadd.b	$vr0, $vr0, $vr3
-	vstelm.b	$vr0, $a5, -29, 0
-	vstelm.b	$vr0, $a5, -25, 1
-	vstelm.b	$vr0, $a5, -21, 2
-	vstelm.b	$vr0, $a5, -17, 3
-	vstelm.b	$vr0, $a5, -13, 4
-	vstelm.b	$vr0, $a5, -9, 5
-	vstelm.b	$vr0, $a5, -5, 6
-	vstelm.b	$vr0, $a5, -1, 7
-	vstelm.b	$vr0, $a5, 3, 8
-	vstelm.b	$vr0, $a5, 7, 9
-	vstelm.b	$vr0, $a5, 11, 10
-	vstelm.b	$vr0, $a5, 15, 11
-	vstelm.b	$vr0, $a5, 19, 12
-	vstelm.b	$vr0, $a5, 23, 13
-	vstelm.b	$vr0, $a5, 27, 14
-	vstelm.b	$vr0, $a5, 31, 15
-	vandi.b	$vr0, $vr1, 63
-	vadd.b	$vr0, $vr0, $vr3
-	vstelm.b	$vr0, $a5, -28, 0
-	vstelm.b	$vr0, $a5, -24, 1
-	vstelm.b	$vr0, $a5, -20, 2
-	vstelm.b	$vr0, $a5, -16, 3
-	vstelm.b	$vr0, $a5, -12, 4
-	vstelm.b	$vr0, $a5, -8, 5
-	vstelm.b	$vr0, $a5, -4, 6
-	vstelm.b	$vr0, $a5, 0, 7
-	vstelm.b	$vr0, $a5, 4, 8
-	vstelm.b	$vr0, $a5, 8, 9
-	vstelm.b	$vr0, $a5, 12, 10
-	vstelm.b	$vr0, $a5, 16, 11
-	vstelm.b	$vr0, $a5, 20, 12
-	vstelm.b	$vr0, $a5, 24, 13
-	vstelm.b	$vr0, $a5, 28, 14
-	vstelm.b	$vr0, $a5, 32, 15
-	addi.d	$a3, $a3, 48
-	addi.d	$a4, $a4, 16
+	vadd.b	$vr0, $vr0, $vr12
+	vshuf.b	$vr4, $vr2, $vr1, $vr4
+	vshuf.b	$vr5, $vr0, $vr3, $vr5
+	vori.b	$vr7, $vr6, 0
+	vshuf.h	$vr7, $vr5, $vr4
+	pcalau12i	$a6, %pc_hi20(.LCPI4_9)
+	vld	$vr4, $a6, %pc_lo12(.LCPI4_9)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_10)
+	vld	$vr5, $a6, %pc_lo12(.LCPI4_10)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_11)
+	vld	$vr8, $a6, %pc_lo12(.LCPI4_11)
+	vshuf.b	$vr4, $vr2, $vr1, $vr4
+	vshuf.b	$vr5, $vr0, $vr3, $vr5
+	vori.b	$vr9, $vr6, 0
+	vshuf.h	$vr9, $vr5, $vr4
+	vshuf.b	$vr4, $vr2, $vr1, $vr8
+	pcalau12i	$a6, %pc_hi20(.LCPI4_12)
+	vld	$vr5, $a6, %pc_lo12(.LCPI4_12)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_13)
+	vld	$vr8, $a6, %pc_lo12(.LCPI4_13)
+	pcalau12i	$a6, %pc_hi20(.LCPI4_14)
+	vld	$vr10, $a6, %pc_lo12(.LCPI4_14)
+	vshuf.b	$vr5, $vr0, $vr3, $vr5
+	vori.b	$vr11, $vr6, 0
+	vshuf.h	$vr11, $vr5, $vr4
+	vshuf.b	$vr1, $vr2, $vr1, $vr8
+	vshuf.b	$vr0, $vr0, $vr3, $vr10
+	vshuf.h	$vr6, $vr0, $vr1
+	vst	$vr6, $a5, 48
+	vst	$vr11, $a5, 32
+	vst	$vr9, $a5, 16
+	vst	$vr7, $a5, 0
 	addi.d	$a5, $a5, 64
+	addi.d	$a4, $a4, 16
+	addi.d	$a3, $a3, 48
 	bnez	$a4, .LBB4_20
 # %bb.21:                               #   in Loop: Header=BB4_13 Depth=2
 	move	$a3, $a2
-	move	$s2, $s4
-	addi.d	$s4, $sp, 140
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ori	$fp, $zero, 44
 .LBB4_22:                               # %.lr.ph.i.us.preheader
                                         #   in Loop: Header=BB4_13 Depth=2
-	add.d	$a2, $s2, $a3
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	add.d	$a2, $a2, $a3
 	addi.d	$a1, $a1, 4
 	.p2align	4, , 16
 .LBB4_23:                               # %.lr.ph.i.us
                                         #   Parent Loop BB4_7 Depth=1
                                         #     Parent Loop BB4_13 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	bgeu	$s5, $a0, .LBB4_26
+	bgeu	$s0, $a0, .LBB4_26
 # %bb.24:                               #   in Loop: Header=BB4_23 Depth=3
 	ld.bu	$a3, $a2, -1
 	srli.d	$a4, $a3, 2
@@ -1193,7 +1367,6 @@ main:                                   # @main
 	ld.w	$s7, $a0, 0
 	ld.h	$s8, $a0, 4
 	ori	$s1, $zero, 1000
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB4_31:                               # %do_encode.exit
                                         # =>This Inner Loop Header: Depth=1

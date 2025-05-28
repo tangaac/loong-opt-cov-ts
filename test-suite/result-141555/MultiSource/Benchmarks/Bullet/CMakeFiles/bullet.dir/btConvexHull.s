@@ -1112,7 +1112,15 @@ _Z9PlaneTestRK7btPlaneRK9btVector3:     # @_Z9PlaneTestRK7btPlaneRK9btVector3
 .Lfunc_end10:
 	.size	_Z9PlaneTestRK7btPlaneRK9btVector3, .Lfunc_end10-_Z9PlaneTestRK7btPlaneRK9btVector3
                                         # -- End function
-	.globl	_Z9SplitTestR7ConvexHRK7btPlane # -- Begin function _Z9SplitTestR7ConvexHRK7btPlane
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _Z9SplitTestR7ConvexHRK7btPlane
+.LCPI11_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.text
+	.globl	_Z9SplitTestR7ConvexHRK7btPlane
 	.p2align	5
 	.type	_Z9SplitTestR7ConvexHRK7btPlane,@function
 _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
@@ -1121,6 +1129,10 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	ori	$a3, $zero, 1
 	blt	$a2, $a3, .LBB11_3
 # %bb.1:                                # %.lr.ph
+	addi.d	$sp, $sp, -32
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 16
 	fld.s	$fa0, $a1, 0
 	fld.s	$fa1, $a1, 4
@@ -1128,7 +1140,7 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	pcalau12i	$a3, %pc_hi20(planetestepsilon)
 	fld.s	$fa3, $a3, %pc_lo12(planetestepsilon)
 	fld.s	$fa4, $a1, 16
-	ori	$a1, $zero, 8
+	ori	$a1, $zero, 9
 	fneg.s	$fa5, $fa3
 	bgeu	$a2, $a1, .LBB11_4
 # %bb.2:
@@ -1136,12 +1148,16 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	move	$a3, $zero
 	b	.LBB11_7
 .LBB11_3:
-	move	$a3, $zero
-	addi.w	$a0, $a3, 0
+	addi.w	$a0, $zero, 0
 	ret
 .LBB11_4:                               # %vector.ph
-	bstrpick.d	$a1, $a2, 30, 3
-	slli.d	$a1, $a1, 3
+	andi	$a1, $a2, 7
+	sltui	$a3, $a1, 1
+	masknez	$a1, $a1, $a3
+	ori	$a4, $zero, 8
+	maskeqz	$a3, $a4, $a3
+	or	$a1, $a3, $a1
+	sub.d	$a1, $a2, $a1
 	vreplvei.w	$vr6, $vr0, 0
 	vreplvei.w	$vr7, $vr1, 0
 	vreplvei.w	$vr8, $vr2, 0
@@ -1149,115 +1165,72 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	vreplvei.w	$vr10, $vr3, 0
 	vreplvei.w	$vr11, $vr5, 0
 	addi.d	$a3, $a0, 64
+	pcalau12i	$a4, %pc_hi20(.LCPI11_0)
+	vld	$vr13, $a4, %pc_lo12(.LCPI11_0)
 	vrepli.b	$vr12, 0
-	vrepli.w	$vr13, 1
-	vrepli.w	$vr14, 2
+	vrepli.w	$vr14, 1
+	vrepli.w	$vr15, 2
 	move	$a4, $a1
-	vori.b	$vr15, $vr12, 0
+	vori.b	$vr16, $vr12, 0
 	.p2align	4, , 16
 .LBB11_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$ft8, $a3, -64
-	fld.s	$ft9, $a3, -48
-	fld.s	$ft10, $a3, -32
-	fld.s	$ft11, $a3, -16
-	movfr2gr.s	$a5, $ft8
-	vinsgr2vr.w	$vr16, $a5, 0
-	movfr2gr.s	$a5, $ft9
-	vinsgr2vr.w	$vr16, $a5, 1
-	movfr2gr.s	$a5, $ft10
-	vinsgr2vr.w	$vr16, $a5, 2
-	movfr2gr.s	$a5, $ft11
-	fld.s	$ft9, $a3, 0
-	fld.s	$ft10, $a3, 16
-	fld.s	$ft11, $a3, 32
-	fld.s	$ft12, $a3, 48
-	vinsgr2vr.w	$vr16, $a5, 3
-	movfr2gr.s	$a5, $ft9
-	vinsgr2vr.w	$vr17, $a5, 0
-	movfr2gr.s	$a5, $ft10
-	vinsgr2vr.w	$vr17, $a5, 1
-	movfr2gr.s	$a5, $ft11
-	vinsgr2vr.w	$vr17, $a5, 2
-	movfr2gr.s	$a5, $ft12
-	fld.s	$ft10, $a3, -60
-	fld.s	$ft11, $a3, -44
-	fld.s	$ft12, $a3, -28
-	fld.s	$ft13, $a3, -12
-	vinsgr2vr.w	$vr17, $a5, 3
-	movfr2gr.s	$a5, $ft10
-	vinsgr2vr.w	$vr18, $a5, 0
-	movfr2gr.s	$a5, $ft11
-	vinsgr2vr.w	$vr18, $a5, 1
-	movfr2gr.s	$a5, $ft12
-	vinsgr2vr.w	$vr18, $a5, 2
-	movfr2gr.s	$a5, $ft13
-	fld.s	$ft11, $a3, 4
-	fld.s	$ft12, $a3, 20
-	fld.s	$ft13, $a3, 36
-	fld.s	$ft14, $a3, 52
-	vinsgr2vr.w	$vr18, $a5, 3
-	movfr2gr.s	$a5, $ft11
-	vinsgr2vr.w	$vr19, $a5, 0
-	movfr2gr.s	$a5, $ft12
-	vinsgr2vr.w	$vr19, $a5, 1
-	movfr2gr.s	$a5, $ft13
-	vinsgr2vr.w	$vr19, $a5, 2
-	movfr2gr.s	$a5, $ft14
-	vinsgr2vr.w	$vr19, $a5, 3
-	vfmul.s	$vr18, $vr18, $vr7
-	vfmul.s	$vr19, $vr19, $vr7
-	vfmadd.s	$vr16, $vr16, $vr6, $vr18
-	fld.s	$ft10, $a3, -56
-	fld.s	$ft12, $a3, -40
-	fld.s	$ft13, $a3, -24
-	fld.s	$ft14, $a3, -8
-	vfmadd.s	$vr17, $vr17, $vr6, $vr19
-	movfr2gr.s	$a5, $ft10
-	vinsgr2vr.w	$vr18, $a5, 0
-	movfr2gr.s	$a5, $ft12
-	vinsgr2vr.w	$vr18, $a5, 1
-	movfr2gr.s	$a5, $ft13
-	vinsgr2vr.w	$vr18, $a5, 2
-	movfr2gr.s	$a5, $ft14
-	fld.s	$ft11, $a3, 8
-	fld.s	$ft12, $a3, 24
-	fld.s	$ft13, $a3, 40
-	fld.s	$ft14, $a3, 56
-	vinsgr2vr.w	$vr18, $a5, 3
-	movfr2gr.s	$a5, $ft11
-	vinsgr2vr.w	$vr19, $a5, 0
-	movfr2gr.s	$a5, $ft12
-	vinsgr2vr.w	$vr19, $a5, 1
-	movfr2gr.s	$a5, $ft13
-	vinsgr2vr.w	$vr19, $a5, 2
-	movfr2gr.s	$a5, $ft14
-	vinsgr2vr.w	$vr19, $a5, 3
-	vfmadd.s	$vr16, $vr18, $vr8, $vr16
-	vfmadd.s	$vr17, $vr19, $vr8, $vr17
-	vfadd.s	$vr16, $vr16, $vr9
+	vld	$vr17, $a3, -64
+	vld	$vr18, $a3, -32
+	vld	$vr19, $a3, -16
+	vld	$vr20, $a3, -48
+	vori.b	$vr21, $vr13, 0
+	vshuf.w	$vr21, $vr19, $vr18
+	vpackev.w	$vr22, $vr20, $vr17
+	vshuf4i.d	$vr22, $vr21, 12
+	vilvl.w	$vr21, $vr19, $vr18
+	vpackod.w	$vr23, $vr20, $vr17
+	vshuf4i.d	$vr23, $vr21, 12
+	vpackev.w	$vr18, $vr19, $vr18
+	vld	$vr19, $a3, 0
+	vld	$vr21, $a3, 32
+	vld	$vr24, $a3, 48
+	vld	$vr25, $a3, 16
+	vilvh.w	$vr17, $vr20, $vr17
+	vshuf4i.d	$vr17, $vr18, 12
+	vori.b	$vr18, $vr13, 0
+	vshuf.w	$vr18, $vr24, $vr21
+	vpackev.w	$vr20, $vr25, $vr19
+	vshuf4i.d	$vr20, $vr18, 12
+	vilvl.w	$vr18, $vr24, $vr21
+	vpackod.w	$vr26, $vr25, $vr19
+	vshuf4i.d	$vr26, $vr18, 12
+	vpackev.w	$vr18, $vr24, $vr21
+	vilvh.w	$vr19, $vr25, $vr19
+	vshuf4i.d	$vr19, $vr18, 12
+	vfmul.s	$vr18, $vr23, $vr7
+	vfmul.s	$vr21, $vr26, $vr7
+	vfmadd.s	$vr18, $vr22, $vr6, $vr18
+	vfmadd.s	$vr20, $vr20, $vr6, $vr21
+	vfmadd.s	$vr17, $vr17, $vr8, $vr18
+	vfmadd.s	$vr18, $vr19, $vr8, $vr20
 	vfadd.s	$vr17, $vr17, $vr9
-	vfcmp.clt.s	$vr18, $vr10, $vr16
+	vfadd.s	$vr18, $vr18, $vr9
 	vfcmp.clt.s	$vr19, $vr10, $vr17
-	vfcmp.clt.s	$vr16, $vr16, $vr11
-	vand.v	$vr16, $vr16, $vr13
+	vfcmp.clt.s	$vr20, $vr10, $vr18
 	vfcmp.clt.s	$vr17, $vr17, $vr11
-	vand.v	$vr17, $vr17, $vr13
-	vbitsel.v	$vr16, $vr16, $vr14, $vr18
-	vbitsel.v	$vr17, $vr17, $vr14, $vr19
-	vor.v	$vr12, $vr16, $vr12
-	vor.v	$vr15, $vr17, $vr15
+	vand.v	$vr17, $vr17, $vr14
+	vfcmp.clt.s	$vr18, $vr18, $vr11
+	vand.v	$vr18, $vr18, $vr14
+	vbitsel.v	$vr17, $vr17, $vr15, $vr19
+	vbitsel.v	$vr18, $vr18, $vr15, $vr20
+	vor.v	$vr12, $vr17, $vr12
+	vor.v	$vr16, $vr18, $vr16
 	addi.d	$a4, $a4, -8
 	addi.d	$a3, $a3, 128
 	bnez	$a4, .LBB11_5
 # %bb.6:                                # %middle.block
-	vor.v	$vr6, $vr15, $vr12
+	vor.v	$vr6, $vr16, $vr12
 	vshuf4i.w	$vr7, $vr6, 14
 	vor.v	$vr6, $vr6, $vr7
 	vreplvei.w	$vr7, $vr6, 1
 	vor.v	$vr6, $vr6, $vr7
 	vpickve2gr.w	$a3, $vr6, 0
-	beq	$a1, $a2, .LBB11_9
 .LBB11_7:                               # %scalar.ph.preheader
 	alsl.d	$a0, $a1, $a0, 4
 	addi.d	$a0, $a0, 8
@@ -1284,7 +1257,11 @@ _Z9SplitTestR7ConvexHRK7btPlane:        # @_Z9SplitTestR7ConvexHRK7btPlane
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 16
 	bnez	$a1, .LBB11_8
-.LBB11_9:                               # %._crit_edge
+# %bb.9:
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	addi.w	$a0, $a3, 0
 	ret
 .Lfunc_end11:

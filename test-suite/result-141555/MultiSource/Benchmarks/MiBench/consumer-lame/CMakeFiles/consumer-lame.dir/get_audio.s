@@ -391,22 +391,7 @@ lame_readframe:                         # @lame_readframe
 .Lfunc_end7:
 	.size	lame_readframe, .Lfunc_end7-lame_readframe
                                         # -- End function
-	.section	.rodata.cst16,"aM",@progbits,16
-	.p2align	4, 0x0                          # -- Begin function get_audio
-.LCPI8_0:
-	.dword	6                               # 0x6
-	.dword	7                               # 0x7
-.LCPI8_1:
-	.dword	4                               # 0x4
-	.dword	5                               # 0x5
-.LCPI8_2:
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI8_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.text
-	.globl	get_audio
+	.globl	get_audio                       # -- Begin function get_audio
 	.p2align	5
 	.type	get_audio,@function
 get_audio:                              # @get_audio
@@ -524,7 +509,7 @@ get_audio:                              # @get_audio
 	bnez	$a6, .LBB8_14
 # %bb.15:                               # %middle.block
 	beq	$a1, $a2, .LBB8_23
-.LBB8_16:                               # %.lr.ph.split.preheader57
+.LBB8_16:                               # %.lr.ph.split.preheader58
 	mul.d	$a3, $a1, $s2
 	addi.d	$a4, $sp, 8
 	alsl.d	$a3, $a3, $a4, 1
@@ -544,14 +529,6 @@ get_audio:                              # @get_audio
 	bnez	$a1, .LBB8_17
 	b	.LBB8_23
 .LBB8_18:                               # %vector.ph47
-	pcalau12i	$a2, %pc_hi20(.LCPI8_0)
-	vld	$vr0, $a2, %pc_lo12(.LCPI8_0)
-	pcalau12i	$a2, %pc_hi20(.LCPI8_1)
-	vld	$vr1, $a2, %pc_lo12(.LCPI8_1)
-	pcalau12i	$a2, %pc_hi20(.LCPI8_2)
-	vld	$vr2, $a2, %pc_lo12(.LCPI8_2)
-	pcalau12i	$a2, %pc_hi20(.LCPI8_3)
-	vld	$vr3, $a2, %pc_lo12(.LCPI8_3)
 	bstrpick.d	$a2, $a1, 30, 6
 	slli.d	$a2, $a2, 6
 	addi.d	$a3, $sp, 8
@@ -561,90 +538,19 @@ get_audio:                              # @get_audio
 	.p2align	4, , 16
 .LBB8_19:                               # %vector.body50
                                         # =>This Inner Loop Header: Depth=1
-	vslli.d	$vr4, $vr0, 1
-	vslli.d	$vr5, $vr1, 1
-	vslli.d	$vr6, $vr2, 1
-	vslli.d	$vr7, $vr3, 1
-	vpickve2gr.d	$a7, $vr7, 0
-	slli.d	$a7, $a7, 1
-	vpickve2gr.d	$t0, $vr7, 1
-	slli.d	$t0, $t0, 1
-	vpickve2gr.d	$t1, $vr6, 0
-	slli.d	$t1, $t1, 1
-	vpickve2gr.d	$t2, $vr6, 1
-	slli.d	$t2, $t2, 1
-	vpickve2gr.d	$t3, $vr5, 0
-	slli.d	$t3, $t3, 1
-	vpickve2gr.d	$t4, $vr5, 1
-	slli.d	$t4, $t4, 1
-	vpickve2gr.d	$t5, $vr4, 0
-	slli.d	$t5, $t5, 1
-	vpickve2gr.d	$t6, $vr4, 1
-	slli.d	$t6, $t6, 1
-	ldx.h	$a7, $a7, $a3
-	ldx.h	$t0, $t0, $a3
-	ldx.h	$t1, $t1, $a3
-	ldx.h	$t2, $t2, $a3
-	ldx.h	$t3, $t3, $a3
-	ldx.h	$t4, $t4, $a3
-	ldx.h	$t5, $t5, $a3
-	ldx.h	$t6, $t6, $a3
-	vinsgr2vr.h	$vr8, $a7, 0
-	vinsgr2vr.h	$vr8, $t0, 1
-	vinsgr2vr.h	$vr8, $t1, 2
-	vinsgr2vr.h	$vr8, $t2, 3
-	vinsgr2vr.h	$vr8, $t3, 4
-	vinsgr2vr.h	$vr8, $t4, 5
-	vinsgr2vr.h	$vr8, $t5, 6
-	vinsgr2vr.h	$vr8, $t6, 7
-	vst	$vr8, $a5, 0
-	vbitseti.d	$vr4, $vr4, 0
-	vbitseti.d	$vr5, $vr5, 0
-	vbitseti.d	$vr6, $vr6, 0
-	vbitseti.d	$vr7, $vr7, 0
-	vpickve2gr.d	$a7, $vr7, 0
-	slli.d	$a7, $a7, 1
-	vpickve2gr.d	$t0, $vr7, 1
-	slli.d	$t0, $t0, 1
-	vpickve2gr.d	$t1, $vr6, 0
-	slli.d	$t1, $t1, 1
-	vpickve2gr.d	$t2, $vr6, 1
-	slli.d	$t2, $t2, 1
-	vpickve2gr.d	$t3, $vr5, 0
-	slli.d	$t3, $t3, 1
-	vpickve2gr.d	$t4, $vr5, 1
-	slli.d	$t4, $t4, 1
-	vpickve2gr.d	$t5, $vr4, 0
-	slli.d	$t5, $t5, 1
-	vpickve2gr.d	$t6, $vr4, 1
-	slli.d	$t6, $t6, 1
-	ldx.h	$a7, $a7, $a3
-	ldx.h	$t0, $t0, $a3
-	ldx.h	$t1, $t1, $a3
-	ldx.h	$t2, $t2, $a3
-	ldx.h	$t3, $t3, $a3
-	ldx.h	$t4, $t4, $a3
-	ldx.h	$t5, $t5, $a3
-	ldx.h	$t6, $t6, $a3
-	vinsgr2vr.h	$vr4, $a7, 0
-	vinsgr2vr.h	$vr4, $t0, 1
-	vinsgr2vr.h	$vr4, $t1, 2
-	vinsgr2vr.h	$vr4, $t2, 3
-	vinsgr2vr.h	$vr4, $t3, 4
-	vinsgr2vr.h	$vr4, $t4, 5
-	vinsgr2vr.h	$vr4, $t5, 6
-	vinsgr2vr.h	$vr4, $t6, 7
-	vstx	$vr4, $a5, $a4
-	vaddi.du	$vr3, $vr3, 8
-	vaddi.du	$vr2, $vr2, 8
-	vaddi.du	$vr1, $vr1, 8
-	vaddi.du	$vr0, $vr0, 8
+	vld	$vr0, $a3, 0
+	vld	$vr1, $a3, 16
+	vpickev.h	$vr2, $vr1, $vr0
+	vpickod.h	$vr0, $vr1, $vr0
+	vst	$vr2, $a5, 0
+	vstx	$vr0, $a5, $a4
 	addi.d	$a6, $a6, -8
 	addi.d	$a5, $a5, 16
+	addi.d	$a3, $a3, 32
 	bnez	$a6, .LBB8_19
-# %bb.20:                               # %middle.block53
+# %bb.20:                               # %middle.block54
 	beq	$a2, $a1, .LBB8_23
-.LBB8_21:                               # %.lr.ph.split.us.preheader56
+.LBB8_21:                               # %.lr.ph.split.us.preheader57
 	addi.d	$a3, $sp, 8
 	alsl.d	$a3, $a2, $a3, 2
 	addi.d	$a3, $a3, 2

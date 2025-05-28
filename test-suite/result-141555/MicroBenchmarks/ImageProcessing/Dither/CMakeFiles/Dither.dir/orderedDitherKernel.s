@@ -286,11 +286,17 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	blt	$a1, $a2, .LBB0_62
 # %bb.31:                               # %.preheader124.us.preheader
 	move	$a2, $zero
-	sltui	$a1, $a1, 4
+	sltui	$a1, $a1, 5
 	addi.d	$a4, $a7, -5
 	sltui	$a4, $a4, -4
 	or	$a1, $a1, $a4
-	andi	$a4, $a7, 4
+	andi	$a4, $a7, 3
+	sltui	$a5, $a4, 1
+	masknez	$a4, $a4, $a5
+	ori	$a6, $zero, 4
+	maskeqz	$a5, $a6, $a5
+	or	$a4, $a5, $a4
+	sub.d	$a4, $a7, $a4
 	slli.d	$a5, $a7, 2
 	pcalau12i	$a6, %pc_hi20(.L__const.orderedDitherKernel.dither.2)
 	addi.d	$a6, $a6, %pc_lo12(.L__const.orderedDitherKernel.dither.2)
@@ -302,33 +308,27 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	vrepli.d	$vr2, 3
 	vrepli.w	$vr3, 255
 	vrepli.b	$vr4, 0
-	b	.LBB0_33
 	.p2align	4, , 16
-.LBB0_32:                               # %._crit_edge.us144
-                                        #   in Loop: Header=BB0_33 Depth=1
-	addi.d	$a2, $a2, 1
-	add.d	$a3, $a3, $a5
-	beq	$a2, $a0, .LBB0_62
-.LBB0_33:                               # %.preheader124.us
+.LBB0_32:                               # %.preheader124.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_36 Depth 2
-                                        #     Child Loop BB0_39 Depth 2
+                                        #     Child Loop BB0_35 Depth 2
+                                        #     Child Loop BB0_38 Depth 2
 	andi	$t1, $a2, 3
 	slli.d	$t1, $t1, 2
-	beqz	$a1, .LBB0_35
-# %bb.34:                               #   in Loop: Header=BB0_33 Depth=1
+	beqz	$a1, .LBB0_34
+# %bb.33:                               #   in Loop: Header=BB0_32 Depth=1
 	move	$t2, $zero
-	b	.LBB0_38
+	b	.LBB0_37
 	.p2align	4, , 16
-.LBB0_35:                               # %vector.body249.preheader
-                                        #   in Loop: Header=BB0_33 Depth=1
+.LBB0_34:                               # %vector.body248.preheader
+                                        #   in Loop: Header=BB0_32 Depth=1
 	move	$t2, $a3
 	move	$t3, $a4
 	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	.p2align	4, , 16
-.LBB0_36:                               # %vector.body249
-                                        #   Parent Loop BB0_33 Depth=1
+.LBB0_35:                               # %vector.body248
+                                        #   Parent Loop BB0_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vand.v	$vr7, $vr6, $vr2
 	vand.v	$vr8, $vr5, $vr2
@@ -356,17 +356,15 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	vaddi.du	$vr6, $vr6, 4
 	addi.d	$t3, $t3, -4
 	addi.d	$t2, $t2, 16
-	bnez	$t3, .LBB0_36
-# %bb.37:                               # %middle.block255
-                                        #   in Loop: Header=BB0_33 Depth=1
+	bnez	$t3, .LBB0_35
+# %bb.36:                               #   in Loop: Header=BB0_32 Depth=1
 	move	$t2, $a4
-	beq	$a4, $a7, .LBB0_32
-.LBB0_38:                               # %scalar.ph244.preheader
-                                        #   in Loop: Header=BB0_33 Depth=1
+.LBB0_37:                               # %scalar.ph243.preheader
+                                        #   in Loop: Header=BB0_32 Depth=1
 	slli.d	$t3, $t2, 2
 	.p2align	4, , 16
-.LBB0_39:                               # %scalar.ph244
-                                        #   Parent Loop BB0_33 Depth=1
+.LBB0_38:                               # %scalar.ph243
+                                        #   Parent Loop BB0_32 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	andi	$t4, $t2, 3
 	ldx.w	$t5, $a3, $t3
@@ -377,8 +375,13 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	stx.w	$t4, $a3, $t3
 	addi.d	$t2, $t2, 1
 	addi.d	$t3, $t3, 4
-	bne	$a7, $t2, .LBB0_39
-	b	.LBB0_32
+	bne	$a7, $t2, .LBB0_38
+# %bb.39:                               # %._crit_edge.us144
+                                        #   in Loop: Header=BB0_32 Depth=1
+	addi.d	$a2, $a2, 1
+	add.d	$a3, $a3, $a5
+	bne	$a2, $a0, .LBB0_32
+	b	.LBB0_62
 .LBB0_40:                               # %.preheader122
 	ori	$a2, $zero, 1
 	blt	$a0, $a2, .LBB0_62
@@ -424,13 +427,13 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	move	$t5, $zero
 	b	.LBB0_49
 	.p2align	4, , 16
-.LBB0_46:                               # %vector.body263.preheader
+.LBB0_46:                               # %vector.body261.preheader
                                         #   in Loop: Header=BB0_44 Depth=1
 	move	$t5, $a3
 	move	$t6, $a4
 	vori.b	$vr5, $vr0, 0
 	.p2align	4, , 16
-.LBB0_47:                               # %vector.body263
+.LBB0_47:                               # %vector.body261
                                         #   Parent Loop BB0_44 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmuh.wu	$vr6, $vr5, $vr1
@@ -467,16 +470,16 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	addi.d	$t6, $t6, -4
 	addi.d	$t5, $t5, 16
 	bnez	$t6, .LBB0_47
-# %bb.48:                               # %middle.block269
+# %bb.48:                               # %middle.block267
                                         #   in Loop: Header=BB0_44 Depth=1
 	move	$t5, $a4
 	beq	$a4, $a7, .LBB0_43
-.LBB0_49:                               # %scalar.ph258.preheader
+.LBB0_49:                               # %scalar.ph256.preheader
                                         #   in Loop: Header=BB0_44 Depth=1
 	slli.d	$t6, $t5, 2
 	sub.d	$t7, $a7, $t5
 	.p2align	4, , 16
-.LBB0_50:                               # %scalar.ph258
+.LBB0_50:                               # %scalar.ph256
                                         #   Parent Loop BB0_44 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	bstrpick.d	$t8, $t5, 31, 0
@@ -505,11 +508,17 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	blt	$a1, $a2, .LBB0_62
 # %bb.53:                               # %.preheader127.us.preheader
 	move	$a2, $zero
-	sltui	$a1, $a1, 4
+	sltui	$a1, $a1, 5
 	addi.d	$a4, $a7, -9
 	sltui	$a4, $a4, -8
 	or	$a1, $a1, $a4
-	andi	$a4, $a7, 12
+	andi	$a4, $a7, 3
+	sltui	$a5, $a4, 1
+	masknez	$a4, $a4, $a5
+	ori	$a6, $zero, 4
+	maskeqz	$a5, $a6, $a5
+	or	$a4, $a5, $a4
+	sub.d	$a4, $a7, $a4
 	slli.d	$a5, $a7, 2
 	pcalau12i	$a6, %pc_hi20(.L__const.orderedDitherKernel.dither.3)
 	addi.d	$a6, $a6, %pc_lo12(.L__const.orderedDitherKernel.dither.3)
@@ -521,33 +530,27 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	vrepli.d	$vr2, 7
 	vrepli.w	$vr3, 255
 	vrepli.b	$vr4, 0
-	b	.LBB0_55
 	.p2align	4, , 16
-.LBB0_54:                               # %._crit_edge.us141
-                                        #   in Loop: Header=BB0_55 Depth=1
-	addi.d	$a2, $a2, 1
-	add.d	$a3, $a3, $a5
-	beq	$a2, $a0, .LBB0_62
-.LBB0_55:                               # %.preheader127.us
+.LBB0_54:                               # %.preheader127.us
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB0_58 Depth 2
-                                        #     Child Loop BB0_61 Depth 2
+                                        #     Child Loop BB0_57 Depth 2
+                                        #     Child Loop BB0_60 Depth 2
 	andi	$t1, $a2, 7
 	slli.d	$t1, $t1, 2
-	beqz	$a1, .LBB0_57
-# %bb.56:                               #   in Loop: Header=BB0_55 Depth=1
+	beqz	$a1, .LBB0_56
+# %bb.55:                               #   in Loop: Header=BB0_54 Depth=1
 	move	$t2, $zero
-	b	.LBB0_60
+	b	.LBB0_59
 	.p2align	4, , 16
-.LBB0_57:                               # %vector.body236.preheader
-                                        #   in Loop: Header=BB0_55 Depth=1
+.LBB0_56:                               # %vector.body236.preheader
+                                        #   in Loop: Header=BB0_54 Depth=1
 	move	$t2, $a3
 	move	$t3, $a4
 	vori.b	$vr5, $vr1, 0
 	vori.b	$vr6, $vr0, 0
 	.p2align	4, , 16
-.LBB0_58:                               # %vector.body236
-                                        #   Parent Loop BB0_55 Depth=1
+.LBB0_57:                               # %vector.body236
+                                        #   Parent Loop BB0_54 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vand.v	$vr7, $vr6, $vr2
 	vand.v	$vr8, $vr5, $vr2
@@ -579,17 +582,15 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	vaddi.du	$vr6, $vr6, 4
 	addi.d	$t3, $t3, -4
 	addi.d	$t2, $t2, 16
-	bnez	$t3, .LBB0_58
-# %bb.59:                               # %middle.block240
-                                        #   in Loop: Header=BB0_55 Depth=1
+	bnez	$t3, .LBB0_57
+# %bb.58:                               #   in Loop: Header=BB0_54 Depth=1
 	move	$t2, $a4
-	beq	$a4, $a7, .LBB0_54
-.LBB0_60:                               # %scalar.ph231.preheader
-                                        #   in Loop: Header=BB0_55 Depth=1
+.LBB0_59:                               # %scalar.ph231.preheader
+                                        #   in Loop: Header=BB0_54 Depth=1
 	slli.d	$t3, $t2, 2
 	.p2align	4, , 16
-.LBB0_61:                               # %scalar.ph231
-                                        #   Parent Loop BB0_55 Depth=1
+.LBB0_60:                               # %scalar.ph231
+                                        #   Parent Loop BB0_54 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	andi	$t4, $t2, 7
 	ldx.w	$t5, $a3, $t3
@@ -601,8 +602,12 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	stx.w	$t4, $a3, $t3
 	addi.d	$t2, $t2, 1
 	addi.d	$t3, $t3, 4
-	bne	$a7, $t2, .LBB0_61
-	b	.LBB0_54
+	bne	$a7, $t2, .LBB0_60
+# %bb.61:                               # %._crit_edge.us141
+                                        #   in Loop: Header=BB0_54 Depth=1
+	addi.d	$a2, $a2, 1
+	add.d	$a3, $a3, $a5
+	bne	$a2, $a0, .LBB0_54
 .LBB0_62:                               # %.loopexit
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload

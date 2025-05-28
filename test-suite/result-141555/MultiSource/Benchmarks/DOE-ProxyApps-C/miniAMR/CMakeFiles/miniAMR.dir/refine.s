@@ -1694,7 +1694,7 @@ refine_level:                           # @refine_level
 	ld.d	$a1, $a0, %pc_lo12(blocks)
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a3, $a0, %pc_lo12(sorted_list)
-	ori	$a0, $zero, 8
+	ori	$a0, $zero, 9
 	bgeu	$a2, $a0, .LBB2_202
 # %bb.200:
 	move	$a4, $zero
@@ -1704,8 +1704,13 @@ refine_level:                           # @refine_level
 	move	$a0, $zero
 	b	.LBB2_207
 .LBB2_202:                              # %vector.ph
-	bstrpick.d	$a0, $a2, 30, 3
-	slli.d	$a4, $a0, 3
+	andi	$a0, $a2, 7
+	sltui	$a4, $a0, 1
+	masknez	$a0, $a0, $a4
+	ori	$a5, $zero, 8
+	maskeqz	$a4, $a5, $a4
+	or	$a0, $a4, $a0
+	sub.d	$a4, $a2, $a0
 	addi.d	$a0, $a3, 36
 	vrepli.b	$vr0, 0
 	ori	$a5, $zero, 192
@@ -1714,32 +1719,16 @@ refine_level:                           # @refine_level
 	.p2align	4, , 16
 .LBB2_203:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a7, $a0, -32
-	ld.w	$t0, $a0, -24
-	ld.w	$t1, $a0, -16
-	ld.w	$t2, $a0, -8
-	ld.w	$t3, $a0, 0
-	ld.w	$t4, $a0, 8
-	ld.w	$t5, $a0, 16
-	ld.w	$t6, $a0, 24
-	vinsgr2vr.w	$vr2, $t1, 0
-	vinsgr2vr.w	$vr3, $t2, 0
-	vpickev.w	$vr2, $vr3, $vr2
+	vld	$vr2, $a0, -16
+	vld	$vr3, $a0, -32
 	vslli.d	$vr2, $vr2, 32
 	vsrai.d	$vr2, $vr2, 32
-	vinsgr2vr.w	$vr3, $a7, 0
-	vinsgr2vr.w	$vr4, $t0, 0
-	vpickev.w	$vr3, $vr4, $vr3
+	vld	$vr4, $a0, 16
 	vslli.d	$vr3, $vr3, 32
+	vld	$vr5, $a0, 0
 	vsrai.d	$vr3, $vr3, 32
-	vinsgr2vr.w	$vr4, $t5, 0
-	vinsgr2vr.w	$vr5, $t6, 0
-	vpickev.w	$vr4, $vr5, $vr4
 	vslli.d	$vr4, $vr4, 32
 	vsrai.d	$vr4, $vr4, 32
-	vinsgr2vr.w	$vr5, $t3, 0
-	vinsgr2vr.w	$vr6, $t4, 0
-	vpickev.w	$vr5, $vr6, $vr5
 	vslli.d	$vr5, $vr5, 32
 	vsrai.d	$vr5, $vr5, 32
 	vpickve2gr.d	$a7, $vr3, 0
@@ -1796,7 +1785,6 @@ refine_level:                           # @refine_level
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a0, $vr0, 0
-	beq	$a4, $a2, .LBB2_207
 .LBB2_205:                              # %scalar.ph.preheader
 	alsl.d	$a3, $a4, $a3, 3
 	addi.d	$a3, $a3, 4

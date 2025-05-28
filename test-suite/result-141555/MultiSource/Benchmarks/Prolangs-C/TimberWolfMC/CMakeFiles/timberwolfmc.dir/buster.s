@@ -8,15 +8,15 @@ buster:                                 # @buster
 	pcalau12i	$a0, %got_pc_hi20(A)
 	ld.d	$a0, $a0, %got_pc_lo12(A)
 	ld.d	$a0, $a0, 0
-	ld.w	$a5, $a0, 0
+	ld.w	$a1, $a0, 0
 	ori	$a4, $zero, 1
 	lu12i.w	$a2, 244140
-	blt	$a5, $a4, .LBB0_3
+	blt	$a1, $a4, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$a1, $a5, 1
-	ori	$a6, $zero, 8
-	bstrpick.d	$a3, $a1, 31, 0
-	bgeu	$a5, $a6, .LBB0_4
+	addi.d	$a3, $a1, 1
+	ori	$a5, $zero, 9
+	bstrpick.d	$a3, $a3, 31, 0
+	bgeu	$a1, $a5, .LBB0_4
 # %bb.2:
 	ori	$a1, $a2, 2560
 	b	.LBB0_7
@@ -27,40 +27,32 @@ buster:                                 # @buster
 	move	$a5, $a6
 	b	.LBB0_20
 .LBB0_4:                                # %vector.ph
-	bstrpick.d	$a1, $a5, 30, 3
-	slli.d	$a6, $a1, 3
-	srli.d	$a1, $a5, 3
-	ori	$a4, $zero, 1
-	bstrins.d	$a4, $a1, 30, 3
-	ori	$a1, $a2, 2560
-	vreplgr2vr.w	$vr0, $a1
-	addi.d	$a1, $a0, 36
-	move	$a7, $a6
+	andi	$a4, $a1, 7
+	sltui	$a5, $a4, 1
+	masknez	$a4, $a4, $a5
+	ori	$a6, $zero, 8
+	maskeqz	$a5, $a6, $a5
+	or	$a4, $a5, $a4
+	sub.d	$a1, $a1, $a4
+	addi.d	$a4, $a1, 1
+	ori	$a5, $a2, 2560
+	vreplgr2vr.w	$vr0, $a5
+	addi.d	$a5, $a0, 44
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a1, -24
-	ld.w	$t1, $a1, -16
-	ld.w	$t2, $a1, -8
-	ld.w	$t3, $a1, 0
-	vinsgr2vr.w	$vr2, $t0, 0
-	vinsgr2vr.w	$vr2, $t1, 1
-	vinsgr2vr.w	$vr2, $t2, 2
-	vinsgr2vr.w	$vr2, $t3, 3
-	ld.w	$t0, $a1, 8
-	ld.w	$t1, $a1, 16
-	ld.w	$t2, $a1, 24
-	ld.w	$t3, $a1, 32
-	vinsgr2vr.w	$vr3, $t0, 0
-	vinsgr2vr.w	$vr3, $t1, 1
-	vinsgr2vr.w	$vr3, $t2, 2
-	vinsgr2vr.w	$vr3, $t3, 3
+	vld	$vr2, $a5, -32
+	vld	$vr3, $a5, -16
+	vld	$vr4, $a5, 0
+	vld	$vr5, $a5, 16
+	vpickev.w	$vr2, $vr3, $vr2
+	vpickev.w	$vr3, $vr5, $vr4
 	vmin.w	$vr0, $vr2, $vr0
 	vmin.w	$vr1, $vr3, $vr1
-	addi.d	$a7, $a7, -8
-	addi.d	$a1, $a1, 64
-	bnez	$a7, .LBB0_5
+	addi.d	$a1, $a1, -8
+	addi.d	$a5, $a5, 64
+	bnez	$a1, .LBB0_5
 # %bb.6:                                # %middle.block
 	vmin.w	$vr0, $vr0, $vr1
 	vshuf4i.w	$vr1, $vr0, 14
@@ -68,8 +60,7 @@ buster:                                 # @buster
 	vreplvei.w	$vr1, $vr0, 1
 	vmin.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
-	beq	$a6, $a5, .LBB0_9
-.LBB0_7:                                # %.lr.ph.preheader293
+.LBB0_7:                                # %.lr.ph.preheader295
 	alsl.d	$a5, $a4, $a0, 3
 	addi.d	$a5, $a5, 4
 	sub.d	$a4, $a3, $a4
@@ -84,7 +75,7 @@ buster:                                 # @buster
 	addi.d	$a4, $a4, -1
 	addi.d	$a5, $a5, 8
 	bnez	$a4, .LBB0_8
-.LBB0_9:                                # %.lr.ph148.preheader
+# %bb.9:                                # %.lr.ph148.preheader
 	addi.d	$a5, $a0, 12
 	addi.d	$a6, $a3, -1
 	ori	$a7, $zero, 1

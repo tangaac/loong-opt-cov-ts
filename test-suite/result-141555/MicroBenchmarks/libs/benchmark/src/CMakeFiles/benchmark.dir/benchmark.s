@@ -2896,11 +2896,11 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 	ori	$a0, $a0, 1536
 	add.d	$s0, $sp, $a0
 	ori	$s1, $zero, 1
+	ori	$s8, $zero, 192
 	lu12i.w	$a0, -349526
 	ori	$a0, $a0, 2731
 	lu32i.d	$a0, -349526
-	lu52i.d	$s8, $a0, -1366
-	ori	$s2, $zero, 144
+	lu52i.d	$s2, $a0, -1366
 	b	.LBB22_48
 	.p2align	4, , 16
 .LBB22_47:                              # %._crit_edge.i
@@ -2947,58 +2947,60 @@ _ZN9benchmark22RunSpecifiedBenchmarksEPNS_17BenchmarkReporterES1_NSt7__cxx1112ba
 .LBB22_51:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit.i
                                         #   in Loop: Header=BB22_48 Depth=1
 	ld.d	$a0, $s5, 360
-	ld.d	$a5, $a0, 0
+	ld.d	$a4, $a0, 0
 	ld.d	$a1, $a0, 8
 	ld.w	$a0, $s5, 368
-	beq	$a5, $a1, .LBB22_47
+	beq	$a4, $a1, .LBB22_47
 # %bb.52:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB22_48 Depth=1
-	sub.d	$a2, $a1, $a5
+	sub.d	$a2, $a1, $a4
 	addi.d	$a2, $a2, -48
-	bgeu	$a2, $s2, .LBB22_54
+	bgeu	$a2, $s8, .LBB22_54
 # %bb.53:                               #   in Loop: Header=BB22_48 Depth=1
-	move	$a2, $a5
+	move	$a2, $a4
 	b	.LBB22_57
 	.p2align	4, , 16
 .LBB22_54:                              # %vector.ph
                                         #   in Loop: Header=BB22_48 Depth=1
-	mulh.du	$a2, $a2, $s8
+	mulh.du	$a2, $a2, $s2
 	srli.d	$a2, $a2, 5
-	addi.d	$a3, $a2, 1
-	bstrpick.d	$a2, $a3, 59, 2
-	slli.d	$a4, $a2, 2
-	slli.d	$a6, $a2, 6
-	slli.d	$a2, $a2, 7
-	add.d	$a2, $a2, $a6
-	add.d	$a2, $a5, $a2
+	addi.d	$a2, $a2, 1
+	andi	$a3, $a2, 3
+	sltui	$a5, $a3, 1
+	masknez	$a3, $a3, $a5
+	ori	$a6, $zero, 4
+	maskeqz	$a5, $a6, $a5
+	or	$a3, $a5, $a3
+	sub.d	$a3, $a2, $a3
+	slli.d	$a2, $a3, 5
+	alsl.d	$a2, $a3, $a2, 4
+	add.d	$a2, $a4, $a2
 	vreplgr2vr.d	$vr0, $s3
-	addi.d	$a5, $a5, 104
-	move	$a6, $a4
+	addi.d	$a4, $a4, 104
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
 .LBB22_55:                              # %vector.body
                                         #   Parent Loop BB22_48 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a7, $a5, -96
-	ld.d	$t0, $a5, -48
-	ld.d	$t1, $a5, 0
-	ld.d	$t2, $a5, 48
-	vinsgr2vr.d	$vr2, $a7, 0
-	vinsgr2vr.d	$vr2, $t0, 1
-	vinsgr2vr.d	$vr3, $t1, 0
-	vinsgr2vr.d	$vr3, $t2, 1
+	ld.d	$a5, $a4, -96
+	ld.d	$a6, $a4, -48
+	ld.d	$a7, $a4, 0
+	ld.d	$t0, $a4, 48
+	vinsgr2vr.d	$vr2, $a5, 0
+	vinsgr2vr.d	$vr2, $a6, 1
+	vinsgr2vr.d	$vr3, $a7, 0
+	vinsgr2vr.d	$vr3, $t0, 1
 	vmax.du	$vr0, $vr0, $vr2
 	vmax.du	$vr1, $vr1, $vr3
-	addi.d	$a6, $a6, -4
-	addi.d	$a5, $a5, 192
-	bnez	$a6, .LBB22_55
+	addi.d	$a3, $a3, -4
+	addi.d	$a4, $a4, 192
+	bnez	$a3, .LBB22_55
 # %bb.56:                               # %middle.block
                                         #   in Loop: Header=BB22_48 Depth=1
 	vmax.du	$vr0, $vr0, $vr1
 	vreplvei.d	$vr1, $vr0, 1
 	vmax.du	$vr0, $vr0, $vr1
 	vpickve2gr.d	$s3, $vr0, 0
-	beq	$a3, $a4, .LBB22_47
 	.p2align	4, , 16
 .LBB22_57:                              # %.lr.ph.i
                                         #   Parent Loop BB22_48 Depth=1

@@ -285,7 +285,15 @@ _ZN11btUnionFind8allocateEi:            # @_ZN11btUnionFind8allocateEi
 	.size	_ZN11btUnionFind8allocateEi, .Lfunc_end5-_ZN11btUnionFind8allocateEi
 	.cfi_endproc
                                         # -- End function
-	.globl	_ZN11btUnionFind5resetEi        # -- Begin function _ZN11btUnionFind5resetEi
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function _ZN11btUnionFind5resetEi
+.LCPI6_0:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.text
+	.globl	_ZN11btUnionFind5resetEi
 	.p2align	5
 	.type	_ZN11btUnionFind5resetEi,@function
 _ZN11btUnionFind5resetEi:               # @_ZN11btUnionFind5resetEi
@@ -370,29 +378,30 @@ _ZN11btUnionFind5resetEi:               # @_ZN11btUnionFind5resetEi
 	blt	$a1, $a0, .LBB6_21
 # %bb.14:                               # %.lr.ph
 	ld.d	$a2, $fp, 16
-	bne	$a1, $a0, .LBB6_16
+	ori	$a0, $zero, 4
+	bgeu	$a1, $a0, .LBB6_16
 # %bb.15:
 	move	$a0, $zero
 	b	.LBB6_19
 .LBB6_16:                               # %vector.ph
-	bstrpick.d	$a0, $a1, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a3, $a2, 8
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 1
-	move	$a6, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI6_0)
+	bstrpick.d	$a0, $a1, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.w	$vr1, 1
+	move	$a3, $a2
+	move	$a4, $a0
 	.p2align	4, , 16
 .LBB6_17:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a7, $a5, -1
-	st.w	$a7, $a3, -8
-	st.w	$a5, $a3, 0
-	st.w	$a4, $a3, -4
-	st.w	$a4, $a3, 4
-	addi.d	$a3, $a3, 16
-	addi.d	$a6, $a6, -2
-	addi.d	$a5, $a5, 2
-	bnez	$a6, .LBB6_17
+	vilvl.w	$vr2, $vr1, $vr0
+	vilvh.w	$vr3, $vr1, $vr0
+	vst	$vr3, $a3, 16
+	vst	$vr2, $a3, 0
+	vaddi.wu	$vr0, $vr0, 4
+	addi.d	$a4, $a4, -4
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB6_17
 # %bb.18:                               # %middle.block
 	beq	$a0, $a1, .LBB6_21
 .LBB6_19:                               # %scalar.ph.preheader

@@ -1,164 +1,220 @@
 	.file	"jfdctfst.c"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function jpeg_fdct_ifast
+.LCPI0_0:
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+.LCPI0_1:
+	.word	3                               # 0x3
+	.word	7                               # 0x7
+	.word	4294967295                      # 0xffffffff
+	.word	4294967295                      # 0xffffffff
 	.text
-	.globl	jpeg_fdct_ifast                 # -- Begin function jpeg_fdct_ifast
+	.globl	jpeg_fdct_ifast
 	.p2align	5
 	.type	jpeg_fdct_ifast,@function
 jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
-# %bb.0:
-	addi.w	$a2, $zero, -8
-	ori	$a1, $zero, 181
-	ori	$a3, $zero, 98
-	ori	$a4, $zero, 139
-	ori	$a5, $zero, 334
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	move	$a7, $a0
-	.p2align	4, , 16
-.LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a7, 0
-	ld.w	$t1, $a7, 28
-	ld.w	$t2, $a7, 4
-	ld.w	$t3, $a7, 24
-	add.d	$t4, $t1, $t0
-	sub.d	$t0, $t0, $t1
-	add.d	$t1, $t3, $t2
-	ld.w	$t5, $a7, 8
-	ld.w	$t6, $a7, 20
-	ld.w	$t7, $a7, 12
-	ld.w	$t8, $a7, 16
-	sub.d	$t2, $t2, $t3
-	add.d	$t3, $t6, $t5
-	sub.d	$t5, $t5, $t6
-	add.d	$t6, $t8, $t7
-	sub.d	$t7, $t7, $t8
-	add.d	$t8, $t6, $t4
-	sub.d	$t4, $t4, $t6
-	add.d	$t6, $t3, $t1
-	sub.d	$t1, $t1, $t3
-	add.d	$t3, $t8, $t6
-	st.w	$t3, $a7, 0
-	sub.d	$t3, $t8, $t6
-	st.w	$t3, $a7, 16
-	add.w	$t1, $t1, $t4
-	mul.d	$t1, $t1, $a1
-	srli.d	$t1, $t1, 8
-	add.d	$t3, $t4, $t1
-	st.w	$t3, $a7, 8
-	sub.d	$t1, $t4, $t1
-	st.w	$t1, $a7, 24
-	add.w	$t1, $t7, $t5
-	add.w	$t3, $t5, $t2
-	add.w	$t2, $t2, $t0
-	sub.w	$t4, $t1, $t2
-	mul.d	$t4, $t4, $a3
-	srli.d	$t4, $t4, 8
-	mul.d	$t1, $t1, $a4
-	srli.d	$t1, $t1, 8
-	add.d	$t1, $t4, $t1
-	mul.d	$t2, $t2, $a5
-	srli.d	$t2, $t2, 8
-	add.d	$t2, $t4, $t2
-	mul.d	$t3, $t3, $a1
-	srli.d	$t3, $t3, 8
-	add.d	$t4, $t0, $t3
-	sub.d	$t0, $t0, $t3
-	add.d	$t3, $t1, $t0
-	st.w	$t3, $a7, 20
-	sub.d	$t0, $t0, $t1
-	st.w	$t0, $a7, 12
-	add.d	$t0, $t2, $t4
-	st.w	$t0, $a7, 4
-	sub.d	$t0, $t4, $t2
-	st.w	$t0, $a7, 28
-	bstrpick.d	$a2, $a2, 31, 0
-	addi.d	$a2, $a2, 1
-	and	$t0, $a2, $a6
-	addi.d	$a7, $a7, 32
-	beqz	$t0, .LBB0_1
-# %bb.2:                                # %vector.body
-	vld	$vr0, $a0, 0
-	vld	$vr1, $a0, 224
-	vld	$vr2, $a0, 32
-	vld	$vr3, $a0, 192
-	vadd.w	$vr5, $vr1, $vr0
-	vsub.w	$vr4, $vr0, $vr1
-	vadd.w	$vr0, $vr3, $vr2
-	vld	$vr1, $a0, 64
-	vld	$vr6, $a0, 160
-	vld	$vr7, $a0, 96
-	vld	$vr8, $a0, 128
-	vsub.w	$vr2, $vr2, $vr3
-	vadd.w	$vr3, $vr6, $vr1
-	vsub.w	$vr1, $vr1, $vr6
-	vadd.w	$vr6, $vr8, $vr7
-	vsub.w	$vr7, $vr7, $vr8
-	vadd.w	$vr8, $vr6, $vr5
-	vsub.w	$vr5, $vr5, $vr6
-	vadd.w	$vr6, $vr3, $vr0
-	vsub.w	$vr0, $vr0, $vr3
-	vadd.w	$vr3, $vr8, $vr6
-	vst	$vr3, $a0, 0
-	vsub.w	$vr3, $vr8, $vr6
-	vst	$vr3, $a0, 128
-	vadd.w	$vr0, $vr0, $vr5
-	vshuf4i.w	$vr3, $vr0, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr3, $vr3, 32
-	vshuf4i.w	$vr0, $vr0, 50
-	vslli.d	$vr0, $vr0, 32
-	vsrai.d	$vr6, $vr0, 32
+# %bb.0:                                # %vector.ph
+	move	$a1, $zero
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr4, $a2, %pc_lo12(.LCPI0_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI0_1)
+	vld	$vr5, $a2, %pc_lo12(.LCPI0_1)
 	vrepli.d	$vr0, 181
-	vmul.d	$vr6, $vr6, $vr0
-	vmul.d	$vr3, $vr3, $vr0
-	vsrli.d	$vr3, $vr3, 8
-	vsrli.d	$vr6, $vr6, 8
-	vpickev.w	$vr3, $vr6, $vr3
-	vadd.w	$vr6, $vr5, $vr3
-	vst	$vr6, $a0, 64
-	vsub.w	$vr3, $vr5, $vr3
-	vst	$vr3, $a0, 192
-	vadd.w	$vr3, $vr7, $vr1
-	vadd.w	$vr5, $vr1, $vr2
-	vadd.w	$vr6, $vr2, $vr4
-	vsub.w	$vr1, $vr3, $vr6
-	vshuf4i.w	$vr2, $vr1, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr2, $vr2, 32
-	vshuf4i.w	$vr1, $vr1, 50
-	vslli.d	$vr1, $vr1, 32
-	vsrai.d	$vr7, $vr1, 32
-	vrepli.d	$vr1, 98
-	vmul.d	$vr7, $vr7, $vr1
-	vmul.d	$vr2, $vr2, $vr1
-	vsrli.d	$vr2, $vr2, 8
-	vsrli.d	$vr7, $vr7, 8
-	vpickev.w	$vr7, $vr7, $vr2
-	vshuf4i.w	$vr2, $vr3, 16
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr8, $vr2, 32
-	vshuf4i.w	$vr2, $vr3, 50
-	vslli.d	$vr2, $vr2, 32
-	vsrai.d	$vr3, $vr2, 32
+	vrepli.d	$vr3, 98
 	vrepli.d	$vr2, 139
-	vmul.d	$vr3, $vr3, $vr2
-	vmul.d	$vr8, $vr8, $vr2
+	vrepli.d	$vr1, 334
+	ori	$a2, $zero, 256
+	.p2align	4, , 16
+.LBB0_1:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	add.d	$a3, $a0, $a1
+	vld	$vr6, $a3, 16
+	vld	$vr7, $a3, 48
+	vldx	$vr8, $a0, $a1
+	vld	$vr9, $a3, 64
+	vld	$vr10, $a3, 96
+	vld	$vr11, $a3, 32
+	vld	$vr12, $a3, 80
+	vld	$vr13, $a3, 112
+	vori.b	$vr14, $vr4, 0
+	vshuf.w	$vr14, $vr10, $vr9
+	vpackev.w	$vr15, $vr11, $vr8
+	vshuf4i.d	$vr15, $vr14, 12
+	vilvl.w	$vr14, $vr10, $vr9
+	vpackod.w	$vr16, $vr11, $vr8
+	vshuf4i.d	$vr16, $vr14, 12
+	vpackev.w	$vr14, $vr10, $vr9
+	vilvh.w	$vr17, $vr11, $vr8
+	vshuf4i.d	$vr17, $vr14, 12
+	vori.b	$vr14, $vr5, 0
+	vshuf.w	$vr14, $vr11, $vr8
+	vpackod.w	$vr8, $vr10, $vr9
+	vshuf4i.d	$vr14, $vr8, 12
+	vori.b	$vr8, $vr4, 0
+	vshuf.w	$vr8, $vr13, $vr12
+	vpackev.w	$vr10, $vr7, $vr6
+	vshuf4i.d	$vr10, $vr8, 12
+	vilvl.w	$vr8, $vr13, $vr12
+	vpackod.w	$vr11, $vr7, $vr6
+	vshuf4i.d	$vr11, $vr8, 12
+	vpackev.w	$vr8, $vr13, $vr12
+	vilvh.w	$vr18, $vr7, $vr6
+	vshuf4i.d	$vr18, $vr8, 12
+	vori.b	$vr8, $vr5, 0
+	vshuf.w	$vr8, $vr7, $vr6
+	vpackod.w	$vr6, $vr13, $vr12
+	vshuf4i.d	$vr8, $vr6, 12
+	vadd.w	$vr6, $vr8, $vr15
+	vsub.w	$vr9, $vr15, $vr8
+	vadd.w	$vr7, $vr18, $vr16
+	vsub.w	$vr12, $vr16, $vr18
+	vadd.w	$vr8, $vr11, $vr17
+	vsub.w	$vr11, $vr17, $vr11
+	vadd.w	$vr13, $vr10, $vr14
+	vsub.w	$vr14, $vr14, $vr10
+	vadd.w	$vr10, $vr13, $vr6
+	vsub.w	$vr13, $vr6, $vr13
+	vadd.w	$vr15, $vr8, $vr7
+	vsub.w	$vr8, $vr7, $vr8
+	vadd.w	$vr6, $vr10, $vr15
+	vsub.w	$vr7, $vr10, $vr15
+	vadd.w	$vr8, $vr8, $vr13
+	vshuf4i.w	$vr10, $vr8, 16
+	vslli.d	$vr10, $vr10, 32
+	vsrai.d	$vr10, $vr10, 32
+	vshuf4i.w	$vr8, $vr8, 50
+	vslli.d	$vr8, $vr8, 32
+	vsrai.d	$vr8, $vr8, 32
+	vmul.d	$vr8, $vr8, $vr0
+	vmul.d	$vr10, $vr10, $vr0
+	vsrli.d	$vr10, $vr10, 8
 	vsrli.d	$vr8, $vr8, 8
-	vsrli.d	$vr3, $vr3, 8
-	vpickev.w	$vr3, $vr3, $vr8
-	vadd.w	$vr8, $vr7, $vr3
-	vshuf4i.w	$vr3, $vr6, 16
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr9, $vr3, 32
-	vshuf4i.w	$vr3, $vr6, 50
-	vslli.d	$vr3, $vr3, 32
-	vsrai.d	$vr6, $vr3, 32
-	vrepli.d	$vr3, 334
-	vmul.d	$vr6, $vr6, $vr3
-	vmul.d	$vr9, $vr9, $vr3
-	vsrli.d	$vr9, $vr9, 8
-	vsrli.d	$vr6, $vr6, 8
-	vpickev.w	$vr6, $vr6, $vr9
-	vadd.w	$vr6, $vr7, $vr6
+	vpickev.w	$vr10, $vr8, $vr10
+	vadd.w	$vr8, $vr13, $vr10
+	vsub.w	$vr10, $vr13, $vr10
+	vadd.w	$vr13, $vr14, $vr11
+	vadd.w	$vr11, $vr11, $vr12
+	vadd.w	$vr12, $vr12, $vr9
+	vsub.w	$vr14, $vr13, $vr12
+	vshuf4i.w	$vr15, $vr14, 16
+	vslli.d	$vr15, $vr15, 32
+	vsrai.d	$vr15, $vr15, 32
+	vshuf4i.w	$vr14, $vr14, 50
+	vslli.d	$vr14, $vr14, 32
+	vsrai.d	$vr14, $vr14, 32
+	vmul.d	$vr14, $vr14, $vr3
+	vmul.d	$vr15, $vr15, $vr3
+	vsrli.d	$vr15, $vr15, 8
+	vsrli.d	$vr14, $vr14, 8
+	vpickev.w	$vr14, $vr14, $vr15
+	vshuf4i.w	$vr15, $vr13, 16
+	vslli.d	$vr15, $vr15, 32
+	vsrai.d	$vr15, $vr15, 32
+	vshuf4i.w	$vr13, $vr13, 50
+	vslli.d	$vr13, $vr13, 32
+	vsrai.d	$vr13, $vr13, 32
+	vmul.d	$vr13, $vr13, $vr2
+	vmul.d	$vr15, $vr15, $vr2
+	vsrli.d	$vr15, $vr15, 8
+	vsrli.d	$vr13, $vr13, 8
+	vpickev.w	$vr13, $vr13, $vr15
+	vadd.w	$vr13, $vr14, $vr13
+	vshuf4i.w	$vr15, $vr12, 16
+	vslli.d	$vr15, $vr15, 32
+	vsrai.d	$vr15, $vr15, 32
+	vshuf4i.w	$vr12, $vr12, 50
+	vslli.d	$vr12, $vr12, 32
+	vsrai.d	$vr12, $vr12, 32
+	vmul.d	$vr12, $vr12, $vr1
+	vmul.d	$vr15, $vr15, $vr1
+	vsrli.d	$vr15, $vr15, 8
+	vsrli.d	$vr12, $vr12, 8
+	vpickev.w	$vr12, $vr12, $vr15
+	vadd.w	$vr12, $vr14, $vr12
+	vshuf4i.w	$vr14, $vr11, 16
+	vslli.d	$vr14, $vr14, 32
+	vsrai.d	$vr14, $vr14, 32
+	vshuf4i.w	$vr11, $vr11, 50
+	vslli.d	$vr11, $vr11, 32
+	vsrai.d	$vr11, $vr11, 32
+	vmul.d	$vr11, $vr11, $vr0
+	vmul.d	$vr14, $vr14, $vr0
+	vsrli.d	$vr14, $vr14, 8
+	vsrli.d	$vr11, $vr11, 8
+	vpickev.w	$vr11, $vr11, $vr14
+	vadd.w	$vr14, $vr9, $vr11
+	vsub.w	$vr9, $vr9, $vr11
+	vadd.w	$vr11, $vr13, $vr9
+	vsub.w	$vr9, $vr9, $vr13
+	vadd.w	$vr13, $vr12, $vr14
+	vsub.w	$vr12, $vr14, $vr12
+	vori.b	$vr14, $vr4, 0
+	vshuf.w	$vr14, $vr12, $vr10
+	vpackev.w	$vr15, $vr11, $vr7
+	vshuf4i.d	$vr15, $vr14, 12
+	vilvl.w	$vr14, $vr12, $vr10
+	vpackod.w	$vr16, $vr11, $vr7
+	vshuf4i.d	$vr16, $vr14, 12
+	vilvl.w	$vr14, $vr9, $vr8
+	vpackod.w	$vr17, $vr13, $vr6
+	vshuf4i.d	$vr17, $vr14, 12
+	vpackev.w	$vr14, $vr12, $vr10
+	vilvh.w	$vr18, $vr11, $vr7
+	vshuf4i.d	$vr18, $vr14, 12
+	vpackev.w	$vr14, $vr9, $vr8
+	vilvh.w	$vr19, $vr13, $vr6
+	vshuf4i.d	$vr19, $vr14, 12
+	vpackod.w	$vr10, $vr12, $vr10
+	vori.b	$vr12, $vr5, 0
+	vshuf.w	$vr12, $vr11, $vr7
+	vshuf4i.d	$vr12, $vr10, 12
+	vpackod.w	$vr7, $vr9, $vr8
+	vori.b	$vr10, $vr5, 0
+	vshuf.w	$vr10, $vr13, $vr6
+	vshuf4i.d	$vr10, $vr7, 12
+	vori.b	$vr7, $vr4, 0
+	vshuf.w	$vr7, $vr9, $vr8
+	vpackev.w	$vr6, $vr13, $vr6
+	vshuf4i.d	$vr6, $vr7, 12
+	vstx	$vr6, $a0, $a1
+	vst	$vr10, $a3, 96
+	vst	$vr12, $a3, 112
+	vst	$vr19, $a3, 64
+	vst	$vr18, $a3, 80
+	vst	$vr17, $a3, 32
+	vst	$vr16, $a3, 48
+	addi.d	$a1, $a1, 128
+	vst	$vr15, $a3, 16
+	bne	$a1, $a2, .LBB0_1
+# %bb.2:                                # %vector.body159
+	vld	$vr4, $a0, 0
+	vld	$vr5, $a0, 224
+	vld	$vr6, $a0, 32
+	vld	$vr7, $a0, 192
+	vadd.w	$vr8, $vr5, $vr4
+	vsub.w	$vr4, $vr4, $vr5
+	vadd.w	$vr5, $vr7, $vr6
+	vld	$vr9, $a0, 64
+	vld	$vr10, $a0, 160
+	vld	$vr11, $a0, 96
+	vld	$vr12, $a0, 128
+	vsub.w	$vr6, $vr6, $vr7
+	vadd.w	$vr7, $vr10, $vr9
+	vsub.w	$vr9, $vr9, $vr10
+	vadd.w	$vr10, $vr12, $vr11
+	vsub.w	$vr11, $vr11, $vr12
+	vadd.w	$vr12, $vr10, $vr8
+	vsub.w	$vr8, $vr8, $vr10
+	vadd.w	$vr10, $vr7, $vr5
+	vsub.w	$vr5, $vr5, $vr7
+	vadd.w	$vr7, $vr12, $vr10
+	vst	$vr7, $a0, 0
+	vsub.w	$vr7, $vr12, $vr10
+	vst	$vr7, $a0, 128
+	vadd.w	$vr5, $vr5, $vr8
 	vshuf4i.w	$vr7, $vr5, 16
 	vslli.d	$vr7, $vr7, 32
 	vsrai.d	$vr7, $vr7, 32
@@ -170,15 +226,69 @@ jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 	vsrli.d	$vr7, $vr7, 8
 	vsrli.d	$vr5, $vr5, 8
 	vpickev.w	$vr5, $vr5, $vr7
-	vadd.w	$vr7, $vr4, $vr5
+	vadd.w	$vr7, $vr8, $vr5
+	vst	$vr7, $a0, 64
+	vsub.w	$vr5, $vr8, $vr5
+	vst	$vr5, $a0, 192
+	vadd.w	$vr5, $vr11, $vr9
+	vadd.w	$vr7, $vr9, $vr6
+	vadd.w	$vr6, $vr6, $vr4
+	vsub.w	$vr8, $vr5, $vr6
+	vshuf4i.w	$vr9, $vr8, 16
+	vslli.d	$vr9, $vr9, 32
+	vsrai.d	$vr9, $vr9, 32
+	vshuf4i.w	$vr8, $vr8, 50
+	vslli.d	$vr8, $vr8, 32
+	vsrai.d	$vr8, $vr8, 32
+	vmul.d	$vr8, $vr8, $vr3
+	vmul.d	$vr9, $vr9, $vr3
+	vsrli.d	$vr9, $vr9, 8
+	vsrli.d	$vr8, $vr8, 8
+	vpickev.w	$vr8, $vr8, $vr9
+	vshuf4i.w	$vr9, $vr5, 16
+	vslli.d	$vr9, $vr9, 32
+	vsrai.d	$vr9, $vr9, 32
+	vshuf4i.w	$vr5, $vr5, 50
+	vslli.d	$vr5, $vr5, 32
+	vsrai.d	$vr5, $vr5, 32
+	vmul.d	$vr5, $vr5, $vr2
+	vmul.d	$vr9, $vr9, $vr2
+	vsrli.d	$vr9, $vr9, 8
+	vsrli.d	$vr5, $vr5, 8
+	vpickev.w	$vr5, $vr5, $vr9
+	vadd.w	$vr5, $vr8, $vr5
+	vshuf4i.w	$vr9, $vr6, 16
+	vslli.d	$vr9, $vr9, 32
+	vsrai.d	$vr9, $vr9, 32
+	vshuf4i.w	$vr6, $vr6, 50
+	vslli.d	$vr6, $vr6, 32
+	vsrai.d	$vr6, $vr6, 32
+	vmul.d	$vr6, $vr6, $vr1
+	vmul.d	$vr9, $vr9, $vr1
+	vsrli.d	$vr9, $vr9, 8
+	vsrli.d	$vr6, $vr6, 8
+	vpickev.w	$vr6, $vr6, $vr9
+	vadd.w	$vr6, $vr8, $vr6
+	vshuf4i.w	$vr8, $vr7, 16
+	vslli.d	$vr8, $vr8, 32
+	vsrai.d	$vr8, $vr8, 32
+	vshuf4i.w	$vr7, $vr7, 50
+	vslli.d	$vr7, $vr7, 32
+	vsrai.d	$vr7, $vr7, 32
+	vmul.d	$vr7, $vr7, $vr0
+	vmul.d	$vr8, $vr8, $vr0
+	vsrli.d	$vr8, $vr8, 8
+	vsrli.d	$vr7, $vr7, 8
+	vpickev.w	$vr7, $vr7, $vr8
+	vadd.w	$vr8, $vr4, $vr7
+	vsub.w	$vr4, $vr4, $vr7
+	vadd.w	$vr7, $vr5, $vr4
+	vst	$vr7, $a0, 160
 	vsub.w	$vr4, $vr4, $vr5
-	vadd.w	$vr5, $vr8, $vr4
-	vst	$vr5, $a0, 160
-	vsub.w	$vr4, $vr4, $vr8
 	vst	$vr4, $a0, 96
-	vadd.w	$vr4, $vr6, $vr7
+	vadd.w	$vr4, $vr6, $vr8
 	vst	$vr4, $a0, 32
-	vsub.w	$vr4, $vr7, $vr6
+	vsub.w	$vr4, $vr8, $vr6
 	vld	$vr5, $a0, 16
 	vld	$vr6, $a0, 240
 	vld	$vr7, $a0, 48
@@ -230,11 +340,11 @@ jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 	vshuf4i.w	$vr8, $vr8, 50
 	vslli.d	$vr8, $vr8, 32
 	vsrai.d	$vr8, $vr8, 32
-	vmul.d	$vr8, $vr8, $vr1
-	vmul.d	$vr1, $vr9, $vr1
-	vsrli.d	$vr1, $vr1, 8
+	vmul.d	$vr8, $vr8, $vr3
+	vmul.d	$vr3, $vr9, $vr3
+	vsrli.d	$vr3, $vr3, 8
 	vsrli.d	$vr8, $vr8, 8
-	vpickev.w	$vr1, $vr8, $vr1
+	vpickev.w	$vr3, $vr8, $vr3
 	vshuf4i.w	$vr8, $vr5, 16
 	vslli.d	$vr8, $vr8, 32
 	vsrai.d	$vr8, $vr8, 32
@@ -246,19 +356,19 @@ jpeg_fdct_ifast:                        # @jpeg_fdct_ifast
 	vsrli.d	$vr2, $vr2, 8
 	vsrli.d	$vr5, $vr5, 8
 	vpickev.w	$vr2, $vr5, $vr2
-	vadd.w	$vr2, $vr1, $vr2
+	vadd.w	$vr2, $vr3, $vr2
 	vshuf4i.w	$vr5, $vr7, 16
 	vslli.d	$vr5, $vr5, 32
 	vsrai.d	$vr5, $vr5, 32
 	vshuf4i.w	$vr7, $vr7, 50
 	vslli.d	$vr7, $vr7, 32
 	vsrai.d	$vr7, $vr7, 32
-	vmul.d	$vr7, $vr7, $vr3
-	vmul.d	$vr3, $vr5, $vr3
-	vsrli.d	$vr3, $vr3, 8
+	vmul.d	$vr7, $vr7, $vr1
+	vmul.d	$vr1, $vr5, $vr1
+	vsrli.d	$vr1, $vr1, 8
 	vsrli.d	$vr5, $vr7, 8
-	vpickev.w	$vr3, $vr5, $vr3
-	vadd.w	$vr1, $vr1, $vr3
+	vpickev.w	$vr1, $vr5, $vr1
+	vadd.w	$vr1, $vr3, $vr1
 	vshuf4i.w	$vr3, $vr6, 16
 	vslli.d	$vr3, $vr3, 32
 	vsrai.d	$vr3, $vr3, 32

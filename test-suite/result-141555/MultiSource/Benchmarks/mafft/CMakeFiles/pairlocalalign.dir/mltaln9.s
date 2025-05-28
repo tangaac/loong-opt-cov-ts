@@ -5823,11 +5823,24 @@ fixed_musclesupg_float_realloc_nobk_halfmtx: # @fixed_musclesupg_float_realloc_n
 .Lfunc_end20:
 	.size	fixed_musclesupg_float_realloc_nobk_halfmtx, .Lfunc_end20-fixed_musclesupg_float_realloc_nobk_halfmtx
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function veryfastsupg_double_loadtop
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function veryfastsupg_double_loadtop
 .LCPI21_0:
-	.dword	0x3fb999999999999a              # double 0.10000000000000001
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI21_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+.LCPI21_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI21_3:
+	.dword	0x3fb999999999999a              # double 0.10000000000000001
+.LCPI21_4:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
 	.text
 	.globl	veryfastsupg_double_loadtop
@@ -5894,8 +5907,8 @@ veryfastsupg_double_loadtop:            # @veryfastsupg_double_loadtop
 # %bb.5:                                # %.lr.ph206
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, %pc_lo12(veryfastsupg_double_loadtop.ac)
-	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB21_9
+	ori	$a0, $zero, 4
+	bgeu	$s7, $a0, .LBB21_9
 # %bb.6:
 	move	$a0, $zero
 	b	.LBB21_12
@@ -5949,25 +5962,33 @@ veryfastsupg_double_loadtop:            # @veryfastsupg_double_loadtop
 	jirl	$ra, $ra, 0
 	b	.LBB21_15
 .LBB21_9:                               # %vector.ph
-	bstrpick.d	$a0, $s7, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a2, $a1, 8
-	ori	$a3, $zero, 2
-	move	$a4, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI21_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI21_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI21_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI21_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI21_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI21_2)
+	bstrpick.d	$a0, $s7, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.b	$vr3, -1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB21_10:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a3, -2
-	addi.d	$a6, $a3, -1
-	st.w	$a6, $a2, -8
-	st.w	$a3, $a2, 0
-	addi.d	$a6, $a3, -3
-	st.w	$a6, $a2, -4
-	st.w	$a5, $a2, 4
-	addi.d	$a3, $a3, 2
-	addi.d	$a4, $a4, -2
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB21_10
+	vpickev.w	$vr4, $vr0, $vr1
+	vaddi.wu	$vr4, $vr4, 1
+	vadd.w	$vr5, $vr2, $vr3
+	vilvl.w	$vr6, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vst	$vr4, $a2, 16
+	vst	$vr6, $a2, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB21_10
 # %bb.11:                               # %middle.block
 	beq	$a0, $s7, .LBB21_14
 .LBB21_12:                              # %scalar.ph.preheader
@@ -6363,10 +6384,10 @@ veryfastsupg_double_loadtop:            # @veryfastsupg_double_loadtop
 	fldx.d	$fa1, $a5, $a7
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fsel	$fa2, $fa1, $fa0, $fcc0
-	pcalau12i	$a5, %pc_hi20(.LCPI21_0)
-	fld.d	$fa3, $a5, %pc_lo12(.LCPI21_0)
-	pcalau12i	$a5, %pc_hi20(.LCPI21_1)
-	fld.d	$fa4, $a5, %pc_lo12(.LCPI21_1)
+	pcalau12i	$a5, %pc_hi20(.LCPI21_3)
+	fld.d	$fa3, $a5, %pc_lo12(.LCPI21_3)
+	pcalau12i	$a5, %pc_hi20(.LCPI21_4)
+	fld.d	$fa4, $a5, %pc_lo12(.LCPI21_4)
 	fadd.d	$fa0, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa5
 	fmul.d	$fa0, $fa0, $fa3
@@ -6451,11 +6472,24 @@ veryfastsupg_double_loadtop:            # @veryfastsupg_double_loadtop
 .Lfunc_end21:
 	.size	veryfastsupg_double_loadtop, .Lfunc_end21-veryfastsupg_double_loadtop
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function veryfastsupg_double_loadtree
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function veryfastsupg_double_loadtree
 .LCPI22_0:
-	.dword	0x3fb999999999999a              # double 0.10000000000000001
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI22_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+.LCPI22_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI22_3:
+	.dword	0x3fb999999999999a              # double 0.10000000000000001
+.LCPI22_4:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
 	.text
 	.globl	veryfastsupg_double_loadtree
@@ -6522,8 +6556,8 @@ veryfastsupg_double_loadtree:           # @veryfastsupg_double_loadtree
 # %bb.5:                                # %.lr.ph195
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, %pc_lo12(veryfastsupg_double_loadtree.ac)
-	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB22_9
+	ori	$a0, $zero, 4
+	bgeu	$s7, $a0, .LBB22_9
 # %bb.6:
 	move	$a0, $zero
 	b	.LBB22_12
@@ -6577,25 +6611,33 @@ veryfastsupg_double_loadtree:           # @veryfastsupg_double_loadtree
 	jirl	$ra, $ra, 0
 	b	.LBB22_15
 .LBB22_9:                               # %vector.ph
-	bstrpick.d	$a0, $s7, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a2, $a1, 8
-	ori	$a3, $zero, 2
-	move	$a4, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI22_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI22_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI22_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI22_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI22_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI22_2)
+	bstrpick.d	$a0, $s7, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.b	$vr3, -1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB22_10:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a3, -2
-	addi.d	$a6, $a3, -1
-	st.w	$a6, $a2, -8
-	st.w	$a3, $a2, 0
-	addi.d	$a6, $a3, -3
-	st.w	$a6, $a2, -4
-	st.w	$a5, $a2, 4
-	addi.d	$a3, $a3, 2
-	addi.d	$a4, $a4, -2
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB22_10
+	vpickev.w	$vr4, $vr0, $vr1
+	vaddi.wu	$vr4, $vr4, 1
+	vadd.w	$vr5, $vr2, $vr3
+	vilvl.w	$vr6, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vst	$vr4, $a2, 16
+	vst	$vr6, $a2, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB22_10
 # %bb.11:                               # %middle.block
 	beq	$a0, $s7, .LBB22_14
 .LBB22_12:                              # %scalar.ph.preheader
@@ -6990,10 +7032,10 @@ veryfastsupg_double_loadtree:           # @veryfastsupg_double_loadtree
 	fldx.d	$fa1, $a4, $a7
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fsel	$fa2, $fa1, $fa0, $fcc0
-	pcalau12i	$a4, %pc_hi20(.LCPI22_0)
-	fld.d	$fa3, $a4, %pc_lo12(.LCPI22_0)
-	pcalau12i	$a4, %pc_hi20(.LCPI22_1)
-	fld.d	$fa4, $a4, %pc_lo12(.LCPI22_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI22_3)
+	fld.d	$fa3, $a4, %pc_lo12(.LCPI22_3)
+	pcalau12i	$a4, %pc_hi20(.LCPI22_4)
+	fld.d	$fa4, $a4, %pc_lo12(.LCPI22_4)
 	fadd.d	$fa0, $fa0, $fa1
 	fmul.d	$fa0, $fa0, $fa5
 	fmul.d	$fa0, $fa0, $fa3
@@ -7078,11 +7120,24 @@ veryfastsupg_double_loadtree:           # @veryfastsupg_double_loadtree
 .Lfunc_end22:
 	.size	veryfastsupg_double_loadtree, .Lfunc_end22-veryfastsupg_double_loadtree
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function veryfastsupg_double_outtree
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function veryfastsupg_double_outtree
 .LCPI23_0:
-	.dword	0x40e869fe66666666              # double 49999.949999999997
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI23_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+.LCPI23_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI23_3:
+	.dword	0x40e869fe66666666              # double 49999.949999999997
+.LCPI23_4:
 	.dword	0x40f869fe66666666              # double 99999.899999999994
 	.text
 	.globl	veryfastsupg_double_outtree
@@ -7216,9 +7271,9 @@ veryfastsupg_double_outtree:            # @veryfastsupg_double_outtree
 # %bb.12:                               # %.preheader226
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, %pc_lo12(veryfastsupg_double_outtree.ac)
-	ori	$a0, $zero, 1
+	ori	$a0, $zero, 4
 	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	bne	$fp, $a0, .LBB23_16
+	bgeu	$fp, $a0, .LBB23_16
 # %bb.13:
 	move	$a0, $zero
 	b	.LBB23_19
@@ -7278,25 +7333,33 @@ veryfastsupg_double_outtree:            # @veryfastsupg_double_outtree
 	jirl	$ra, $ra, 0
 	b	.LBB23_22
 .LBB23_16:                              # %vector.ph
-	bstrpick.d	$a0, $fp, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a2, $a1, 8
-	ori	$a3, $zero, 2
-	move	$a4, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI23_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI23_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI23_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI23_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI23_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI23_2)
+	bstrpick.d	$a0, $fp, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.b	$vr3, -1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB23_17:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a3, -2
-	addi.d	$a6, $a3, -1
-	st.w	$a6, $a2, -8
-	st.w	$a3, $a2, 0
-	addi.d	$a6, $a3, -3
-	st.w	$a6, $a2, -4
-	st.w	$a5, $a2, 4
-	addi.d	$a3, $a3, 2
-	addi.d	$a4, $a4, -2
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB23_17
+	vpickev.w	$vr4, $vr0, $vr1
+	vaddi.wu	$vr4, $vr4, 1
+	vadd.w	$vr5, $vr2, $vr3
+	vilvl.w	$vr6, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vst	$vr4, $a2, 16
+	vst	$vr6, $a2, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB23_17
 # %bb.18:                               # %middle.block
 	beq	$a0, $fp, .LBB23_21
 .LBB23_19:                              # %scalar.ph.preheader
@@ -7411,8 +7474,8 @@ veryfastsupg_double_outtree:            # @veryfastsupg_double_outtree
 	lu12i.w	$a0, 104857
 	ori	$a0, $a0, 2457
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI23_0)
-	fld.d	$fs0, $a0, %pc_lo12(.LCPI23_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI23_3)
+	fld.d	$fs0, $a0, %pc_lo12(.LCPI23_3)
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
@@ -7467,8 +7530,8 @@ veryfastsupg_double_outtree:            # @veryfastsupg_double_outtree
 	beq	$a4, $s4, .LBB23_32
 # %bb.27:                               # %.preheader.preheader
                                         #   in Loop: Header=BB23_25 Depth=1
-	pcalau12i	$a1, %pc_hi20(.LCPI23_1)
-	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_1)
+	pcalau12i	$a1, %pc_hi20(.LCPI23_4)
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI23_4)
 	move	$a1, $zero
 	.p2align	4, , 16
 .LBB23_28:                              # %.preheader
@@ -7804,12 +7867,25 @@ cluster_minimum_double:                 # @cluster_minimum_double
 	.p2align	3, 0x0                          # -- Begin function veryfastsupg
 .LCPI27_0:
 	.dword	0x412e848000000000              # double 1.0E+6
-.LCPI27_1:
+.LCPI27_4:
 	.dword	0x413e848000000000              # double 2.0E+6
-.LCPI27_2:
+.LCPI27_5:
 	.dword	0x3fb999999999999a              # double 0.10000000000000001
-.LCPI27_3:
+.LCPI27_6:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0
+.LCPI27_1:
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
+.LCPI27_2:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+.LCPI27_3:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
 	.text
 	.globl	veryfastsupg
 	.p2align	5
@@ -7940,8 +8016,8 @@ veryfastsupg:                           # @veryfastsupg
 	b	.LBB27_3
 .LBB27_11:                              # %.preheader207
 	ld.d	$a1, $t3, %pc_lo12(veryfastsupg.ac)
-	ori	$a0, $zero, 1
-	bne	$fp, $a0, .LBB27_15
+	ori	$a0, $zero, 4
+	bgeu	$fp, $a0, .LBB27_15
 # %bb.12:
 	move	$a0, $zero
 	b	.LBB27_18
@@ -7990,26 +8066,34 @@ veryfastsupg:                           # @veryfastsupg
 	jirl	$ra, $ra, 0
 	b	.LBB27_21
 .LBB27_15:                              # %vector.ph309
-	bstrpick.d	$a0, $fp, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a2, $a1, 8
-	ori	$a3, $zero, 2
-	move	$a4, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI27_1)
+	vld	$vr0, $a0, %pc_lo12(.LCPI27_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI27_2)
+	vld	$vr1, $a0, %pc_lo12(.LCPI27_2)
+	pcalau12i	$a0, %pc_hi20(.LCPI27_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI27_3)
+	bstrpick.d	$a0, $fp, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.b	$vr3, -1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB27_16:                              # %vector.body312
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a3, -2
-	addi.d	$a6, $a3, -1
-	st.w	$a6, $a2, -8
-	st.w	$a3, $a2, 0
-	addi.d	$a6, $a3, -3
-	st.w	$a6, $a2, -4
-	st.w	$a5, $a2, 4
-	addi.d	$a3, $a3, 2
-	addi.d	$a4, $a4, -2
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB27_16
-# %bb.17:                               # %middle.block315
+	vpickev.w	$vr4, $vr0, $vr1
+	vaddi.wu	$vr4, $vr4, 1
+	vadd.w	$vr5, $vr2, $vr3
+	vilvl.w	$vr6, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vst	$vr4, $a2, 16
+	vst	$vr6, $a2, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB27_16
+# %bb.17:                               # %middle.block317
 	beq	$a0, $fp, .LBB27_20
 .LBB27_18:                              # %scalar.ph307.preheader
 	addi.d	$a2, $a0, -1
@@ -8101,8 +8185,8 @@ veryfastsupg:                           # @veryfastsupg
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.LCPI27_1)
-	fld.d	$fs1, $a0, %pc_lo12(.LCPI27_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI27_4)
+	fld.d	$fs1, $a0, %pc_lo12(.LCPI27_4)
 	vldi	$vr3, -928
 	lu12i.w	$a0, 976
 	ori	$a0, $a0, 2304
@@ -8394,11 +8478,11 @@ veryfastsupg:                           # @veryfastsupg
 	add.d	$a4, $a4, $t0
 	movgr2fr.w	$fa0, $a4
 	ffint.d.w	$fa0, $fa0
-	pcalau12i	$a4, %pc_hi20(.LCPI27_2)
-	fld.d	$fa1, $a4, %pc_lo12(.LCPI27_2)
+	pcalau12i	$a4, %pc_hi20(.LCPI27_5)
+	fld.d	$fa1, $a4, %pc_lo12(.LCPI27_5)
 	fmul.d	$fa0, $fa0, $fa3
-	pcalau12i	$a4, %pc_hi20(.LCPI27_3)
-	fld.d	$fa2, $a4, %pc_lo12(.LCPI27_3)
+	pcalau12i	$a4, %pc_hi20(.LCPI27_6)
+	fld.d	$fa2, $a4, %pc_lo12(.LCPI27_6)
 	fmul.d	$fa0, $fa0, $fa1
 	movgr2fr.w	$fa1, $a5
 	ffint.d.w	$fa1, $fa1
@@ -8439,11 +8523,24 @@ veryfastsupg:                           # @veryfastsupg
 .Lfunc_end27:
 	.size	veryfastsupg, .Lfunc_end27-veryfastsupg
                                         # -- End function
-	.section	.rodata.cst8,"aM",@progbits,8
-	.p2align	3, 0x0                          # -- Begin function veryfastsupg_int
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function veryfastsupg_int
 .LCPI28_0:
-	.dword	0x3fb999999999999a              # double 0.10000000000000001
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI28_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+.LCPI28_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.section	.rodata.cst8,"aM",@progbits,8
+	.p2align	3, 0x0
+.LCPI28_3:
+	.dword	0x3fb999999999999a              # double 0.10000000000000001
+.LCPI28_4:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
 	.text
 	.globl	veryfastsupg_int
@@ -8543,8 +8640,8 @@ veryfastsupg_int:                       # @veryfastsupg_int
 	b	.LBB28_3
 .LBB28_11:                              # %.preheader207
 	ld.d	$a1, $t3, %pc_lo12(veryfastsupg_int.ac)
-	ori	$a0, $zero, 1
-	bne	$fp, $a0, .LBB28_15
+	ori	$a0, $zero, 4
+	bgeu	$fp, $a0, .LBB28_15
 # %bb.12:
 	move	$a0, $zero
 	b	.LBB28_18
@@ -8593,26 +8690,34 @@ veryfastsupg_int:                       # @veryfastsupg_int
 	jirl	$ra, $ra, 0
 	b	.LBB28_21
 .LBB28_15:                              # %vector.ph309
-	bstrpick.d	$a0, $fp, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a2, $a1, 8
-	ori	$a3, $zero, 2
-	move	$a4, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI28_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI28_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI28_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI28_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI28_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI28_2)
+	bstrpick.d	$a0, $fp, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.b	$vr3, -1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB28_16:                              # %vector.body312
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a3, -2
-	addi.d	$a6, $a3, -1
-	st.w	$a6, $a2, -8
-	st.w	$a3, $a2, 0
-	addi.d	$a6, $a3, -3
-	st.w	$a6, $a2, -4
-	st.w	$a5, $a2, 4
-	addi.d	$a3, $a3, 2
-	addi.d	$a4, $a4, -2
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB28_16
-# %bb.17:                               # %middle.block315
+	vpickev.w	$vr4, $vr0, $vr1
+	vaddi.wu	$vr4, $vr4, 1
+	vadd.w	$vr5, $vr2, $vr3
+	vilvl.w	$vr6, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vst	$vr4, $a2, 16
+	vst	$vr6, $a2, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB28_16
+# %bb.17:                               # %middle.block317
 	beq	$a0, $fp, .LBB28_20
 .LBB28_18:                              # %scalar.ph307.preheader
 	addi.d	$a2, $a0, -1
@@ -8998,14 +9103,14 @@ veryfastsupg_int:                       # @veryfastsupg_int
 	or	$a3, $a3, $t0
 	add.d	$a2, $a2, $a7
 	movgr2fr.w	$fa0, $a2
-	pcalau12i	$a2, %pc_hi20(.LCPI28_0)
-	fld.d	$fa1, $a2, %pc_lo12(.LCPI28_0)
+	pcalau12i	$a2, %pc_hi20(.LCPI28_3)
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI28_3)
 	ffint.s.w	$fa0, $fa0
 	fcvt.d.s	$fa0, $fa0
 	fmul.d	$fa0, $fa0, $fa3
 	fmul.d	$fa0, $fa0, $fa1
-	pcalau12i	$a2, %pc_hi20(.LCPI28_1)
-	fld.d	$fa1, $a2, %pc_lo12(.LCPI28_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI28_4)
+	fld.d	$fa1, $a2, %pc_lo12(.LCPI28_4)
 	movgr2fr.w	$fa2, $a3
 	ffint.s.w	$fa2, $fa2
 	fcvt.d.s	$fa2, $fa2
@@ -9048,17 +9153,30 @@ veryfastsupg_int:                       # @veryfastsupg_int
 .Lfunc_end28:
 	.size	veryfastsupg_int, .Lfunc_end28-veryfastsupg_int
                                         # -- End function
-	.section	.rodata.cst4,"aM",@progbits,4
-	.p2align	2, 0x0                          # -- Begin function fastsupg
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function fastsupg
 .LCPI29_0:
-	.word	0x459c3c00                      # float 4999.5
+	.dword	2                               # 0x2
+	.dword	3                               # 0x3
 .LCPI29_1:
+	.dword	0                               # 0x0
+	.dword	1                               # 0x1
+.LCPI29_2:
+	.word	0                               # 0x0
+	.word	1                               # 0x1
+	.word	2                               # 0x2
+	.word	3                               # 0x3
+	.section	.rodata.cst4,"aM",@progbits,4
+	.p2align	2, 0x0
+.LCPI29_3:
+	.word	0x459c3c00                      # float 4999.5
+.LCPI29_4:
 	.word	0x461c3c00                      # float 9999
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	3, 0x0
-.LCPI29_2:
+.LCPI29_5:
 	.dword	0x3fb999999999999a              # double 0.10000000000000001
-.LCPI29_3:
+.LCPI29_6:
 	.dword	0x3feccccccccccccd              # double 0.90000000000000002
 	.text
 	.globl	fastsupg
@@ -9155,8 +9273,8 @@ fastsupg:                               # @fastsupg
 	pcalau12i	$a0, %pc_hi20(fastsupg.ac)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a1, $a0, %pc_lo12(fastsupg.ac)
-	ori	$a0, $zero, 1
-	bne	$fp, $a0, .LBB29_15
+	ori	$a0, $zero, 4
+	bgeu	$fp, $a0, .LBB29_15
 # %bb.12:
 	move	$a0, $zero
 	b	.LBB29_18
@@ -9206,26 +9324,34 @@ fastsupg:                               # @fastsupg
 	jirl	$ra, $ra, 0
 	b	.LBB29_27
 .LBB29_15:                              # %vector.ph284
-	bstrpick.d	$a0, $fp, 30, 1
-	slli.d	$a0, $a0, 1
-	addi.d	$a2, $a1, 8
-	ori	$a3, $zero, 2
-	move	$a4, $a0
+	pcalau12i	$a0, %pc_hi20(.LCPI29_0)
+	vld	$vr0, $a0, %pc_lo12(.LCPI29_0)
+	pcalau12i	$a0, %pc_hi20(.LCPI29_1)
+	vld	$vr1, $a0, %pc_lo12(.LCPI29_1)
+	pcalau12i	$a0, %pc_hi20(.LCPI29_2)
+	vld	$vr2, $a0, %pc_lo12(.LCPI29_2)
+	bstrpick.d	$a0, $fp, 30, 2
+	slli.d	$a0, $a0, 2
+	vrepli.b	$vr3, -1
+	move	$a2, $a1
+	move	$a3, $a0
 	.p2align	4, , 16
 .LBB29_16:                              # %vector.body287
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a5, $a3, -2
-	addi.d	$a6, $a3, -1
-	st.w	$a6, $a2, -8
-	st.w	$a3, $a2, 0
-	addi.d	$a6, $a3, -3
-	st.w	$a6, $a2, -4
-	st.w	$a5, $a2, 4
-	addi.d	$a3, $a3, 2
-	addi.d	$a4, $a4, -2
-	addi.d	$a2, $a2, 16
-	bnez	$a4, .LBB29_16
-# %bb.17:                               # %middle.block290
+	vpickev.w	$vr4, $vr0, $vr1
+	vaddi.wu	$vr4, $vr4, 1
+	vadd.w	$vr5, $vr2, $vr3
+	vilvl.w	$vr6, $vr5, $vr4
+	vilvh.w	$vr4, $vr5, $vr4
+	vst	$vr4, $a2, 16
+	vst	$vr6, $a2, 0
+	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
+	vaddi.wu	$vr2, $vr2, 4
+	addi.d	$a3, $a3, -4
+	addi.d	$a2, $a2, 32
+	bnez	$a3, .LBB29_16
+# %bb.17:                               # %middle.block292
 	beq	$a0, $fp, .LBB29_20
 .LBB29_18:                              # %scalar.ph282.preheader
 	addi.d	$a2, $a0, -1
@@ -9334,8 +9460,8 @@ fastsupg:                               # @fastsupg
 	lu12i.w	$a0, 104857
 	ori	$s3, $a0, 2457
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
-	pcalau12i	$a1, %pc_hi20(.LCPI29_0)
-	fld.s	$fs0, $a1, %pc_lo12(.LCPI29_0)
+	pcalau12i	$a1, %pc_hi20(.LCPI29_3)
+	fld.s	$fs0, $a1, %pc_lo12(.LCPI29_3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.24)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	vldi	$vr4, -928
@@ -9372,8 +9498,8 @@ fastsupg:                               # @fastsupg
 .LBB29_32:                              # %.preheader.lr.ph
                                         #   in Loop: Header=BB29_30 Depth=1
 	ld.d	$a1, $s4, %pc_lo12(fastsupg.eff)
-	pcalau12i	$a2, %pc_hi20(.LCPI29_1)
-	fld.s	$fa0, $a2, %pc_lo12(.LCPI29_1)
+	pcalau12i	$a2, %pc_hi20(.LCPI29_4)
+	fld.s	$fa0, $a2, %pc_lo12(.LCPI29_4)
 	move	$a2, $zero
 	.p2align	4, , 16
 .LBB29_33:                              # %.preheader
@@ -9566,10 +9692,10 @@ fastsupg:                               # @fastsupg
 	fsel	$fa2, $fa1, $fa0, $fcc0
 	fadd.s	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa0, $fa0
-	pcalau12i	$a5, %pc_hi20(.LCPI29_2)
-	fld.d	$fa1, $a5, %pc_lo12(.LCPI29_2)
-	pcalau12i	$a5, %pc_hi20(.LCPI29_3)
-	fld.d	$fa3, $a5, %pc_lo12(.LCPI29_3)
+	pcalau12i	$a5, %pc_hi20(.LCPI29_5)
+	fld.d	$fa1, $a5, %pc_lo12(.LCPI29_5)
+	pcalau12i	$a5, %pc_hi20(.LCPI29_6)
+	fld.d	$fa3, $a5, %pc_lo12(.LCPI29_6)
 	fmul.d	$fa0, $fa0, $fa4
 	fmul.d	$fa0, $fa0, $fa1
 	fcvt.d.s	$fa1, $fa2

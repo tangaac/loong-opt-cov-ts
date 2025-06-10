@@ -5797,22 +5797,22 @@ display_main_menu:                      # @display_main_menu
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB27_3:                               # %.preheader568
-	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.122)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.122)
 	ori	$s5, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.83)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.83)
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.123)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.123)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.126)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.126)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.139)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.139)
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.142)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.142)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -5821,30 +5821,30 @@ display_main_menu:                      # @display_main_menu
 	ori	$s7, $zero, 10
 	pcalau12i	$a0, %pc_hi20(.L.str.136)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.136)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.141)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.141)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ori	$s2, $zero, 32
 	ori	$s3, $zero, 1536
 	lu32i.d	$s3, 1
 	ori	$a0, $zero, 1537
 	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB27_9
 .LBB27_4:                               #   in Loop: Header=BB27_9 Depth=1
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 .LBB27_5:                               #   in Loop: Header=BB27_9 Depth=1
 	bnez	$s6, .LBB27_264
 # %bb.6:                                #   in Loop: Header=BB27_9 Depth=1
 	ori	$a1, $zero, 23
 	ori	$a2, $zero, 1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 .LBB27_7:                               # %prompt.exit.thread
                                         #   in Loop: Header=BB27_9 Depth=1
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	move	$a1, $zero
@@ -5883,7 +5883,7 @@ display_main_menu:                      # @display_main_menu
 	ori	$a1, $zero, 31
 	ori	$a2, $zero, 1
 	move	$a0, $s0
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 .LBB27_11:                              #   in Loop: Header=BB27_9 Depth=1
@@ -5892,7 +5892,7 @@ display_main_menu:                      # @display_main_menu
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
 	ori	$a2, $zero, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB27_13
@@ -5903,19 +5903,19 @@ display_main_menu:                      # @display_main_menu
 	beqz	$a0, .LBB27_38
 .LBB27_13:                              #   in Loop: Header=BB27_9 Depth=1
 	ori	$a0, $zero, 10
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(terminate)
 	ld.d	$a0, $a0, %got_pc_lo12(terminate)
 	ori	$a2, $zero, 1
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	st.w	$a2, $a0, 0
 .LBB27_14:                              #   in Loop: Header=BB27_9 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s6
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_17
@@ -5933,7 +5933,7 @@ display_main_menu:                      # @display_main_menu
 .LBB27_17:                              #   in Loop: Header=BB27_9 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s6
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_39
@@ -5974,7 +5974,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.25:                               # %.lr.ph.split.i
                                         #   in Loop: Header=BB27_24 Depth=2
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_23
 # %bb.26:                               # %.critedge.i.preheader.loopexit
@@ -6032,16 +6032,16 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a0, .LBB27_8
 	b	.LBB27_262
 .LBB27_38:                              #   in Loop: Header=BB27_9 Depth=1
-	st.d	$zero, $sp, 120                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
 	b	.LBB27_14
 .LBB27_39:                              #   in Loop: Header=BB27_9 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s6
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_84
@@ -6081,7 +6081,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.47:                               # %.lr.ph.split.i179
                                         #   in Loop: Header=BB27_46 Depth=2
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_45
 # %bb.48:                               # %.critedge.i181.preheader.loopexit
@@ -6204,7 +6204,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.72:                               # %.lr.ph.split.i196
                                         #   in Loop: Header=BB27_71 Depth=2
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_70
 # %bb.73:                               # %.critedge.i198.preheader.loopexit
@@ -6247,11 +6247,11 @@ display_main_menu:                      # @display_main_menu
 	b	.LBB27_75
 .LBB27_83:                              # %skip_first.exit210
                                         #   in Loop: Header=BB27_9 Depth=1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(find_name)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a0, .LBB27_249
 	b	.LBB27_266
 .LBB27_84:                              #   in Loop: Header=BB27_9 Depth=1
@@ -6260,7 +6260,7 @@ display_main_menu:                      # @display_main_menu
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a0, .LBB27_8
 	b	.LBB27_269
 .LBB27_85:                              # %.lr.ph.i268
@@ -6289,7 +6289,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.90:                               # %.lr.ph.split.i270
                                         #   in Loop: Header=BB27_89 Depth=2
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_88
 # %bb.91:                               # %.critedge.i272.preheader.loopexit
@@ -6334,7 +6334,7 @@ display_main_menu:                      # @display_main_menu
                                         #   in Loop: Header=BB27_9 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $s6
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB27_4
@@ -6411,11 +6411,11 @@ display_main_menu:                      # @display_main_menu
 	pcalau12i	$a0, %got_pc_hi20(num_games)
 	ld.d	$a0, $a0, %got_pc_lo12(num_games)
 	ld.w	$a0, $a0, 0
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	blt	$a0, $a1, .LBB27_249
 # %bb.112:                              #   in Loop: Header=BB27_9 Depth=1
 	move	$s6, $s0
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_week)
 	jirl	$ra, $ra, 0
@@ -6456,7 +6456,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.119:                              # %.lr.ph.split.i287
                                         #   in Loop: Header=BB27_118 Depth=2
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_117
 # %bb.120:                              # %.critedge.i289.preheader.loopexit
@@ -6550,7 +6550,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.139:                              # %.lr.ph.split.i215
                                         #   in Loop: Header=BB27_138 Depth=2
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_137
 # %bb.140:                              # %.critedge.i217.preheader.loopexit
@@ -6641,17 +6641,17 @@ display_main_menu:                      # @display_main_menu
 # %bb.160:                              # %.lr.ph369.preheader
                                         #   in Loop: Header=BB27_9 Depth=1
 	move	$s8, $zero
-	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB27_162
 	.p2align	4, , 16
 .LBB27_161:                             # %skip_white_space.exit259
                                         #   in Loop: Header=BB27_162 Depth=2
 	sltui	$a1, $s0, 1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $s5, $a1
 	or	$a1, $a1, $a2
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	beqz	$s0, .LBB27_251
 .LBB27_162:                             # %.lr.ph369
                                         #   Parent Loop BB27_9 Depth=1
@@ -6739,14 +6739,14 @@ display_main_menu:                      # @display_main_menu
 .LBB27_178:                             # %find_next_name.exit
                                         #   in Loop: Header=BB27_162 Depth=2
 	st.b	$zero, $fp, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(find_name)
 	jirl	$ra, $ra, 0
 	st.b	$s0, $fp, 0
 	beqz	$a0, .LBB27_243
 # %bb.179:                              # %.preheader
                                         #   in Loop: Header=BB27_162 Depth=2
-	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
 	blt	$s8, $s5, .LBB27_188
 # %bb.180:                              # %.lr.ph.preheader
                                         #   in Loop: Header=BB27_162 Depth=2
@@ -6783,15 +6783,10 @@ display_main_menu:                      # @display_main_menu
 # %bb.184:                              # %middle.block
                                         #   in Loop: Header=BB27_162 Depth=2
 	vor.v	$vr0, $vr2, $vr1
-	vpickve2gr.w	$a2, $vr0, 0
-	vpickve2gr.w	$a3, $vr0, 1
-	andi	$a3, $a3, 1
-	bstrins.d	$a2, $a3, 63, 1
-	vpickve2gr.w	$a3, $vr0, 2
-	bstrins.d	$a2, $a3, 2, 2
-	vpickve2gr.w	$a3, $vr0, 3
-	slli.d	$a3, $a3, 3
-	or	$a2, $a2, $a3
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a2, $vr0, 0
 	andi	$a2, $a2, 15
 	sltui	$a2, $a2, 1
 	beq	$a1, $s8, .LBB27_187
@@ -6859,7 +6854,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.196:                              # %.lr.ph.split.i239
                                         #   in Loop: Header=BB27_195 Depth=3
 	sll.d	$a2, $s5, $a1
-	ld.d	$a3, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	and	$a2, $a2, $a3
 	beqz	$a2, .LBB27_194
 # %bb.197:                              # %.critedge.i241.preheader.loopexit
@@ -6956,7 +6951,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.217:                              # %skip_white_space.exit259.thread.loopexit
                                         #   in Loop: Header=BB27_162 Depth=2
 	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
 	bnez	$s0, .LBB27_162
 	b	.LBB27_251
 .LBB27_218:                             #   in Loop: Header=BB27_162 Depth=2
@@ -6988,7 +6983,7 @@ display_main_menu:                      # @display_main_menu
 # %bb.224:                              # %.lr.ph.split.i304
                                         #   in Loop: Header=BB27_223 Depth=2
 	sll.d	$a3, $s5, $a1
-	ld.d	$a4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	and	$a3, $a3, $a4
 	beqz	$a3, .LBB27_222
 # %bb.225:                              # %.critedge.i306.preheader.loopexit
@@ -7040,12 +7035,12 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a0, .LBB27_5
 # %bb.237:                              #   in Loop: Header=BB27_9 Depth=1
 	ld.w	$a2, $sp, 136
 	move	$s6, $s0
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(enter_prompt_week)
@@ -7056,7 +7051,7 @@ display_main_menu:                      # @display_main_menu
 	b	.LBB27_19
 .LBB27_239:                             #   in Loop: Header=BB27_9 Depth=1
 	move	$s6, $s0
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(enter_week)
@@ -7092,22 +7087,22 @@ display_main_menu:                      # @display_main_menu
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(matches)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a0, .LBB27_249
 	b	.LBB27_275
 .LBB27_243:                             # %.thread
                                         #   in Loop: Header=BB27_9 Depth=1
 	st.b	$zero, $s6, 0
-	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
 .LBB27_244:                             # %._crit_edge370.thread
                                         #   in Loop: Header=BB27_9 Depth=1
 	move	$s8, $zero
 	move	$a0, $zero
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	beqz	$s6, .LBB27_248
 .LBB27_245:                             #   in Loop: Header=BB27_9 Depth=1
 	addi.d	$a1, $sp, 136
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(display_multi_tiebreaker)
@@ -7147,14 +7142,14 @@ display_main_menu:                      # @display_main_menu
 	b	.LBB27_7
 .LBB27_251:                             # %._crit_edge370
                                         #   in Loop: Header=BB27_9 Depth=1
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 128                   # 8-byte Folded Reload
 	bne	$s8, $s5, .LBB27_257
 # %bb.252:                              # %._crit_edge370
                                         #   in Loop: Header=BB27_9 Depth=1
 	beqz	$s6, .LBB27_257
 # %bb.253:                              #   in Loop: Header=BB27_9 Depth=1
 	ld.w	$a1, $sp, 136
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_tiebreaker)
 	jirl	$ra, $ra, 0
@@ -7166,7 +7161,7 @@ display_main_menu:                      # @display_main_menu
 	move	$s6, $a3
 	b	.LBB27_41
 .LBB27_256:                             #   in Loop: Header=BB27_9 Depth=1
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	beqz	$a2, .LBB27_250
 	b	.LBB27_264
 .LBB27_257:                             #   in Loop: Header=BB27_9 Depth=1
@@ -7184,7 +7179,7 @@ display_main_menu:                      # @display_main_menu
 	b	.LBB27_133
 .LBB27_261:
 	ori	$a0, $zero, 10
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(team_info)
@@ -7196,7 +7191,7 @@ display_main_menu:                      # @display_main_menu
 	b	.LBB27_263
 .LBB27_262:
 	ori	$a0, $zero, 10
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fputc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(team_info)
@@ -7223,14 +7218,14 @@ display_main_menu:                      # @display_main_menu
 	addi.d	$sp, $sp, 336
 	ret
 .LBB27_265:
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(display_standings)
 	jirl	$ra, $ra, 0
 	b	.LBB27_267
 .LBB27_266:
 	move	$a1, $a0
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(display_info)
 	jirl	$ra, $ra, 0
@@ -7255,42 +7250,42 @@ display_main_menu:                      # @display_main_menu
 .LBB27_269:
 	pcalau12i	$a0, %got_pc_hi20(input_score)
 	ld.d	$a1, $a0, %got_pc_lo12(input_score)
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(save_scores)
 	jirl	$ra, $ra, 0
 	b	.LBB27_264
 .LBB27_270:
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(display_records)
 	jirl	$ra, $ra, 0
 	b	.LBB27_267
 .LBB27_271:
-	ld.d	$s1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(display_rankings)
 	jirl	$ra, $ra, 0
 	b	.LBB27_267
 .LBB27_272:
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_defence)
 	jirl	$ra, $ra, 0
 	b	.LBB27_276
 .LBB27_273:
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_offence)
 	jirl	$ra, $ra, 0
 	b	.LBB27_276
 .LBB27_274:
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_net)
 	jirl	$ra, $ra, 0
 	b	.LBB27_276
 .LBB27_275:
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(display_team)
 	jirl	$ra, $ra, 0

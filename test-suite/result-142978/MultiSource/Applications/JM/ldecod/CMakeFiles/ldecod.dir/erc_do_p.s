@@ -1444,13 +1444,13 @@ update_ref_list_for_concealment:        # @update_ref_list_for_concealment
 	.type	init_lists_for_non_reference_loss,@function
 init_lists_for_non_reference_loss:      # @init_lists_for_non_reference_loss
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$s1, $a0
 	pcalau12i	$s2, %pc_hi20(active_sps)
@@ -1782,10 +1782,11 @@ init_lists_for_non_reference_loss:      # @init_lists_for_non_reference_loss
 	bnez	$a7, .LBB5_48
 # %bb.49:                               # %middle.block194
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.d	$a5, $vr0, 1
-	vpickve2gr.d	$a6, $vr0, 0
-	bstrins.d	$a6, $a5, 63, 1
-	andi	$a5, $a6, 3
+	vslli.d	$vr0, $vr0, 63
+	vsrai.d	$vr0, $vr0, 63
+	vmskltz.d	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
+	andi	$a5, $a5, 3
 	sltu	$a5, $zero, $a5
 	beq	$a4, $a3, .LBB5_52
 .LBB5_50:                               # %scalar.ph181.preheader
@@ -1847,13 +1848,13 @@ init_lists_for_non_reference_loss:      # @init_lists_for_non_reference_loss
 	ld.d	$a0, $a0, 8
 	ori	$a2, $zero, 264
 	move	$a1, $zero
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB5_57:                               # %vector.ph

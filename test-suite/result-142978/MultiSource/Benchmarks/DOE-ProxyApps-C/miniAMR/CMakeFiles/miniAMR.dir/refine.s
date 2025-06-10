@@ -484,7 +484,6 @@ refine:                                 # @refine
 	.type	reset_all,@function
 reset_all:                              # @reset_all
 # %bb.0:
-	addi.d	$sp, $sp, -16
 	pcalau12i	$a0, %pc_hi20(sorted_index)
 	ld.d	$a0, $a0, %pc_lo12(sorted_index)
 	pcalau12i	$a1, %pc_hi20(num_refine)
@@ -555,28 +554,26 @@ reset_all:                              # @reset_all
 	vld	$vr1, $a3, 8
 	masknez	$t1, $t1, $t2
 	slti	$t2, $a6, 0
-	masknez	$t5, $t1, $t2
+	masknez	$t1, $t1, $t2
 	vslt.w	$vr1, $vr0, $vr1
-	vpickve2gr.w	$t1, $vr1, 0
-	andi	$t6, $t1, 1
-	vpickve2gr.w	$t2, $vr1, 1
-	andi	$t3, $t2, 1
-	vpickve2gr.w	$t2, $vr1, 2
-	andi	$t7, $t2, 1
-	vpickve2gr.w	$t4, $vr1, 3
-	andi	$t8, $t4, 1
-	maskeqz	$t5, $t5, $t6
-	ld.w	$t6, $a3, 24
-	maskeqz	$t5, $t5, $t3
-	maskeqz	$t5, $t5, $t7
-	maskeqz	$t5, $t5, $t8
-	st.w	$t5, $a3, -8
-	bge	$a4, $t6, .LBB1_13
+	vpickve2gr.w	$t2, $vr1, 0
+	andi	$t2, $t2, 1
+	vpickve2gr.w	$t3, $vr1, 1
+	andi	$t3, $t3, 1
+	vpickve2gr.w	$t4, $vr1, 2
+	andi	$t4, $t4, 1
+	vpickve2gr.w	$t5, $vr1, 3
+	andi	$t5, $t5, 1
+	maskeqz	$t1, $t1, $t2
+	ld.w	$t2, $a3, 24
+	maskeqz	$t1, $t1, $t3
+	maskeqz	$t1, $t1, $t4
+	maskeqz	$t1, $t1, $t5
+	st.w	$t1, $a3, -8
+	bge	$a4, $t2, .LBB1_13
 # %bb.10:                               #   in Loop: Header=BB1_8 Depth=1
-	bstrins.d	$t1, $t3, 63, 1
-	bstrins.d	$t1, $t2, 2, 2
-	slli.d	$t2, $t4, 3
-	or	$t1, $t1, $t2
+	vmskltz.w	$vr1, $vr1
+	vpickve2gr.hu	$t1, $vr1, 0
 	andi	$t1, $t1, 15
 	bne	$t1, $a5, .LBB1_14
 # %bb.11:                               #   in Loop: Header=BB1_8 Depth=1
@@ -702,7 +699,6 @@ reset_all:                              # @reset_all
 	bgez	$a7, .LBB1_35
 	b	.LBB1_7
 .LBB1_38:                               # %._crit_edge
-	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end1:
 	.size	reset_all, .Lfunc_end1-reset_all

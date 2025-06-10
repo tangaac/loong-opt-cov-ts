@@ -395,38 +395,43 @@ foo:                                    # @foo
 	.word	0x429c0000                      # float 78
 	.word	0x429e0000                      # float 79
 .LCPI1_25:
-	.word	0x42a00000                      # float 80
-	.word	0x42b40000                      # float 90
-	.word	0x42c80000                      # float 100
-	.word	0x42dc0000                      # float 110
-.LCPI1_26:
-	.word	0x42f00000                      # float 120
-	.word	0x43020000                      # float 130
-	.word	0x430c0000                      # float 140
-	.word	0x43160000                      # float 150
-.LCPI1_27:
 	.word	0x00000000                      # float 0
 	.word	0x41200000                      # float 10
 	.word	0x41a00000                      # float 20
 	.word	0x41f00000                      # float 30
-.LCPI1_28:
+.LCPI1_26:
 	.word	0x42200000                      # float 40
 	.word	0x42480000                      # float 50
 	.word	0x42700000                      # float 60
 	.word	0x428c0000                      # float 70
+.LCPI1_27:
+	.word	0x42a00000                      # float 80
+	.word	0x42b40000                      # float 90
+	.word	0x42c80000                      # float 100
+	.word	0x42dc0000                      # float 110
+.LCPI1_28:
+	.word	0x42f00000                      # float 120
+	.word	0x43020000                      # float 130
+	.word	0x430c0000                      # float 140
+	.word	0x43160000                      # float 150
 .LCPI1_29:
 	.word	0x43200000                      # float 160
 	.word	0x432a0000                      # float 170
 	.word	0x43340000                      # float 180
 	.word	0x433e0000                      # float 190
+.LCPI1_30:
+	.word	0                               # 0x0
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
 	.text
 	.globl	main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %.preheader.preheader
-	addi.d	$sp, $sp, -16
-	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(input)
 	addi.d	$a0, $a0, %pc_lo12(input)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
@@ -552,31 +557,29 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(results)
 	addi.d	$a0, $a0, %pc_lo12(results)
-	vld	$vr0, $a0, 32
+	vld	$vr0, $a0, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI1_25)
 	vld	$vr1, $a1, %pc_lo12(.LCPI1_25)
-	vld	$vr2, $a0, 48
-	vld	$vr3, $a0, 0
-	vld	$vr4, $a0, 16
-	vfcmp.cune.s	$vr1, $vr0, $vr1
+	vld	$vr2, $a0, 16
+	vld	$vr3, $a0, 32
+	vfcmp.cune.s	$vr0, $vr0, $vr1
 	pcalau12i	$a1, %pc_hi20(.LCPI1_26)
-	vld	$vr0, $a1, %pc_lo12(.LCPI1_26)
+	vld	$vr1, $a1, %pc_lo12(.LCPI1_26)
 	pcalau12i	$a1, %pc_hi20(.LCPI1_27)
-	vld	$vr5, $a1, %pc_lo12(.LCPI1_27)
+	vld	$vr4, $a1, %pc_lo12(.LCPI1_27)
+	vld	$vr5, $a0, 48
+	vfcmp.cune.s	$vr1, $vr2, $vr1
+	vpickev.h	$vr0, $vr1, $vr0
+	vfcmp.cune.s	$vr1, $vr3, $vr4
 	pcalau12i	$a1, %pc_hi20(.LCPI1_28)
-	vld	$vr6, $a1, %pc_lo12(.LCPI1_28)
-	vfcmp.cune.s	$vr0, $vr2, $vr0
-	vfcmp.cune.s	$vr2, $vr3, $vr5
-	vpickev.h	$vr0, $vr0, $vr1
-	vfcmp.cune.s	$vr3, $vr4, $vr6
-	vpickev.h	$vr2, $vr3, $vr2
-	vpickve2gr.b	$a1, $vr2, 6
+	vld	$vr2, $a1, %pc_lo12(.LCPI1_28)
+	vpickve2gr.b	$a1, $vr0, 6
 	vld	$vr3, $a0, 64
 	pcalau12i	$a0, %pc_hi20(.LCPI1_29)
 	vld	$vr4, $a0, %pc_lo12(.LCPI1_29)
-	vpickve2gr.b	$a0, $vr2, 4
-	vpickve2gr.b	$a2, $vr2, 2
-	vpickve2gr.b	$a3, $vr2, 0
+	vpickve2gr.b	$a0, $vr0, 4
+	vpickve2gr.b	$a2, $vr0, 2
+	vpickve2gr.b	$a3, $vr0, 0
 	vfcmp.cune.s	$vr3, $vr3, $vr4
 	vinsgr2vr.w	$vr4, $a3, 0
 	vinsgr2vr.w	$vr4, $a2, 1
@@ -584,60 +587,28 @@ main:                                   # @main
 	vinsgr2vr.w	$vr4, $a1, 3
 	vor.v	$vr3, $vr4, $vr3
 	vpickve2gr.w	$a0, $vr3, 3
-	vpickve2gr.w	$a1, $vr3, 2
-	vpickve2gr.w	$a2, $vr3, 0
-	vpickve2gr.w	$a3, $vr3, 1
-	andi	$a3, $a3, 1
-	bstrins.d	$a2, $a3, 63, 1
-	bstrins.d	$a2, $a1, 2, 2
-	bstrins.d	$a2, $a0, 3, 3
-	vpickve2gr.b	$a0, $vr2, 8
-	bstrins.d	$a2, $a0, 4, 4
-	vpickve2gr.b	$a0, $vr2, 10
-	bstrins.d	$a2, $a0, 5, 5
-	vpickve2gr.b	$a0, $vr2, 12
-	andi	$a0, $a0, 1
-	slli.d	$a0, $a0, 6
-	or	$a0, $a2, $a0
-	vpickve2gr.b	$a1, $vr2, 14
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr1, 0
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 8
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 2
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 9
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 4
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 10
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 6
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 11
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 8
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 12
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 10
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 13
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 12
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 14
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 14
-	slli.d	$a1, $a1, 15
-	or	$a0, $a0, $a1
+	st.b	$a0, $sp, 3
+	vpickve2gr.w	$a0, $vr3, 2
+	st.b	$a0, $sp, 2
+	vpickve2gr.w	$a0, $vr3, 1
+	st.b	$a0, $sp, 1
+	vpickve2gr.w	$a0, $vr3, 0
+	st.b	$a0, $sp, 0
+	vld	$vr3, $sp, 0
+	pcalau12i	$a0, %pc_hi20(.LCPI1_30)
+	vld	$vr4, $a0, %pc_lo12(.LCPI1_30)
+	vfcmp.cune.s	$vr2, $vr5, $vr2
+	vpickev.h	$vr1, $vr2, $vr1
+	vpickev.b	$vr0, $vr1, $vr0
+	vshuf.w	$vr4, $vr0, $vr3
+	vslli.b	$vr0, $vr4, 7
+	vsrai.b	$vr0, $vr0, 7
+	vmskltz.b	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bstrpick.d	$a0, $a0, 15, 0
 	sltu	$a0, $zero, $a0
-	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end1:
 	.size	main, .Lfunc_end1-main

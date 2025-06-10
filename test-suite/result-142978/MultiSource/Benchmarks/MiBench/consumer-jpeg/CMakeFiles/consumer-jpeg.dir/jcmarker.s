@@ -2031,19 +2031,12 @@ emit_dqt:                               # @emit_dqt
 	vslt.hu	$vr0, $vr1, $vr0
 	vilvl.h	$vr0, $vr0, $vr0
 	vslli.w	$vr0, $vr0, 16
+	ld.w	$a0, $s1, 128
 	vsrai.w	$vr0, $vr0, 16
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	vpickve2gr.w	$a1, $vr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	ld.w	$a1, $s1, 128
-	vpickve2gr.w	$a2, $vr0, 3
-	slli.d	$a2, $a2, 3
-	or	$a0, $a0, $a2
-	andi	$s2, $a0, 15
-	bnez	$a1, .LBB7_31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
+	andi	$s2, $a1, 15
+	bnez	$a0, .LBB7_31
 # %bb.3:
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 0

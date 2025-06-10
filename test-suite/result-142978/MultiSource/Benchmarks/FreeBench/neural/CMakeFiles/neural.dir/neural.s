@@ -790,15 +790,10 @@ main:                                   # @main
 # %bb.83:                               # %middle.block133
                                         #   in Loop: Header=BB0_75 Depth=2
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a4, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a4, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a4, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a4, $a4, $a5
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	andi	$a4, $a4, 15
 	sltui	$a4, $a4, 1
 	maskeqz	$s5, $s5, $a4

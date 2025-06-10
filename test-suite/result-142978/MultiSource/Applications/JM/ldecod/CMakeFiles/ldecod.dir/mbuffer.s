@@ -3209,10 +3209,11 @@ init_lists:                             # @init_lists
 	bnez	$t0, .LBB11_392
 # %bb.393:                              # %middle.block1134
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.d	$a6, $vr0, 1
-	vpickve2gr.d	$a7, $vr0, 0
-	bstrins.d	$a7, $a6, 63, 1
-	andi	$a6, $a7, 3
+	vslli.d	$vr0, $vr0, 63
+	vsrai.d	$vr0, $vr0, 63
+	vmskltz.d	$vr0, $vr0
+	vpickve2gr.hu	$a6, $vr0, 0
+	andi	$a6, $a6, 3
 	sltu	$a6, $zero, $a6
 	beq	$a5, $a4, .LBB11_396
 .LBB11_394:                             # %scalar.ph1121.preheader

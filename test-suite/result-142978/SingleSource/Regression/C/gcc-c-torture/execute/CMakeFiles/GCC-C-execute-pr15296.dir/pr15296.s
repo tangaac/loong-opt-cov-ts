@@ -118,15 +118,8 @@ main:                                   # @main
 	vxor.v	$vr2, $vr3, $vr2
 	vpickev.w	$vr1, $vr2, $vr1
 	vor.v	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	vpickve2gr.w	$a1, $vr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	vpickve2gr.w	$a1, $vr0, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	andi	$a0, $a0, 15
 	bnez	$a0, .LBB2_2
 # %bb.1:

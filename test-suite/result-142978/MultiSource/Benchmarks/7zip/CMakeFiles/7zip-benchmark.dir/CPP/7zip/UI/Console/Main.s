@@ -7414,57 +7414,8 @@ _ZN7CCodecs14QueryInterfaceERK4GUIDPPv: # @_ZN7CCodecs14QueryInterfaceERK4GUIDPP
 	vld	$vr1, $a1, %pc_lo12(.LCPI40_0)
 	vseq.b	$vr0, $vr0, $vr1
 	vxori.b	$vr0, $vr0, 255
-	vpickve2gr.b	$a1, $vr0, 0
-	vpickve2gr.b	$a3, $vr0, 1
-	andi	$a3, $a3, 1
-	bstrins.d	$a1, $a3, 63, 1
-	vpickve2gr.b	$a3, $vr0, 2
-	bstrins.d	$a1, $a3, 2, 2
-	vpickve2gr.b	$a3, $vr0, 3
-	bstrins.d	$a1, $a3, 3, 3
-	vpickve2gr.b	$a3, $vr0, 4
-	bstrins.d	$a1, $a3, 4, 4
-	vpickve2gr.b	$a3, $vr0, 5
-	bstrins.d	$a1, $a3, 5, 5
-	vpickve2gr.b	$a3, $vr0, 6
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 6
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 7
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 7
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 8
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 8
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 9
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 9
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 10
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 10
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 11
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 11
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 12
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 12
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 13
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 13
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 14
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 14
-	or	$a1, $a1, $a3
-	vpickve2gr.b	$a3, $vr0, 15
-	slli.d	$a3, $a3, 15
-	or	$a1, $a1, $a3
+	vmskltz.b	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bstrpick.d	$a1, $a1, 15, 0
 	beqz	$a1, .LBB40_2
 # %bb.1:

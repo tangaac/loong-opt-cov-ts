@@ -68,59 +68,53 @@ g:                                      # @g
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 128
 	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a0, %pc_hi20(.L__const.main.uv)
 	xvld	$xr0, $a0, %pc_lo12(.L__const.main.uv)
-	xvst	$xr0, $sp, 104
-	st.d	$zero, $sp, 80
+	xvst	$xr0, $sp, 72
+	st.d	$zero, $sp, 48
 	pcalau12i	$a0, %pc_hi20(.LCPI2_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI2_0)
-	st.d	$zero, $sp, 64
+	st.d	$zero, $sp, 32
 	ori	$a0, $zero, 555
-	st.d	$a0, $sp, 72
-	vst	$vr0, $sp, 88
+	st.d	$a0, $sp, 40
+	vst	$vr0, $sp, 56
 	lu12i.w	$a0, 4
 	ori	$a3, $a0, 3616
 	lu12i.w	$a0, 2
 	ori	$a4, $a0, 1808
-	addi.d	$a1, $sp, 64
-	addi.d	$a5, $sp, 104
-	addi.d	$s0, $sp, 104
+	addi.d	$a1, $sp, 32
+	addi.d	$a5, $sp, 72
+	addi.d	$s0, $sp, 72
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(f)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $sp, 72
+	xvld	$xr0, $sp, 40
 	ori	$a0, $zero, 777
 	st.d	$a0, $sp, 24
 	ori	$a0, $zero, 999
 	st.d	$a0, $sp, 16
 	st.d	$zero, $sp, 8
 	st.d	$s0, $sp, 0
-	xvld	$xr1, $sp, 0
-	xvld	$xr2, $sp, 104
+	xvld	$xr1, $sp, 72
 	pcalau12i	$a0, %pc_hi20(.LCPI2_1)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_1)
-	xvseq.d	$xr0, $xr0, $xr1
-	xvrepli.b	$xr1, -1
-	xvxor.v	$xr0, $xr0, $xr1
-	xvseq.d	$xr2, $xr2, $xr3
-	xvxor.v	$xr1, $xr2, $xr1
+	xvld	$xr2, $a0, %pc_lo12(.LCPI2_1)
+	xvld	$xr3, $sp, 0
+	xvseq.d	$xr1, $xr1, $xr2
+	xvrepli.b	$xr2, -1
+	xvxor.v	$xr1, $xr1, $xr2
+	xvseq.d	$xr0, $xr0, $xr3
+	xvxor.v	$xr0, $xr0, $xr2
 	xvor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a0, $xr0, 0
-	xvpickve2gr.d	$a1, $xr0, 1
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 1
-	sub.d	$a0, $a1, $a0
-	xvpickve2gr.d	$a1, $xr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.d	$a1, $xr0, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
+	xvmskltz.d	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 3, 2
 	andi	$a0, $a0, 15
 	bnez	$a0, .LBB2_2
 # %bb.1:

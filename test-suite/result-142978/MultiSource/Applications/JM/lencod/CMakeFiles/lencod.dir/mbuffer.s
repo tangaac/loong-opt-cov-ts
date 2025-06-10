@@ -3097,15 +3097,10 @@ init_lists:                             # @init_lists
 	bnez	$t0, .LBB11_392
 # %bb.393:                              # %middle.block1131
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.w	$a6, $vr0, 0
-	vpickve2gr.w	$a7, $vr0, 1
-	andi	$a7, $a7, 1
-	bstrins.d	$a6, $a7, 63, 1
-	vpickve2gr.w	$a7, $vr0, 2
-	bstrins.d	$a6, $a7, 2, 2
-	vpickve2gr.w	$a7, $vr0, 3
-	slli.d	$a7, $a7, 3
-	or	$a6, $a6, $a7
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a6, $vr0, 0
 	andi	$a6, $a6, 15
 	sltu	$a6, $zero, $a6
 	beq	$a5, $a4, .LBB11_396

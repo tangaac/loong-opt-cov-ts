@@ -10924,15 +10924,10 @@ DoNNetIteration:                        # @DoNNetIteration
 # %bb.80:                               # %middle.block86
                                         #   in Loop: Header=BB15_25 Depth=2
 	vor.v	$vr0, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a3, $vr0, 1
-	andi	$a3, $a3, 1
-	bstrins.d	$a1, $a3, 63, 1
-	vpickve2gr.w	$a3, $vr0, 2
-	bstrins.d	$a1, $a3, 2, 2
-	vpickve2gr.w	$a3, $vr0, 3
-	slli.d	$a3, $a3, 3
-	or	$a1, $a1, $a3
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	andi	$a1, $a1, 15
 	sltu	$a1, $zero, $a1
 	beq	$a0, $a2, .LBB15_83
@@ -11030,15 +11025,10 @@ DoNNetIteration:                        # @DoNNetIteration
 # %bb.91:                               # %middle.block
                                         #   in Loop: Header=BB15_5 Depth=1
 	vor.v	$vr0, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a4, $vr0, 1
-	andi	$a4, $a4, 1
-	bstrins.d	$a1, $a4, 63, 1
-	vpickve2gr.w	$a4, $vr0, 2
-	bstrins.d	$a1, $a4, 2, 2
-	vpickve2gr.w	$a4, $vr0, 3
-	slli.d	$a4, $a4, 3
-	or	$a1, $a1, $a4
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	andi	$a1, $a1, 15
 	sltu	$a1, $zero, $a1
 	beq	$a0, $a2, .LBB15_94

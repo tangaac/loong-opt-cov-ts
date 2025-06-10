@@ -1544,6 +1544,11 @@ _ZN8NArchive3N7z8CInByte210ReadStringER11CStringBaseIwE: # @_ZN8NArchive3N7z8CIn
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
 	.half	65535                           # 0xffff
+.LCPI14_2:
+	.word	0                               # 0x0
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
 	.text
 	.globl	_ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy
 	.p2align	5
@@ -1581,39 +1586,38 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 	move	$s2, $a2
 	move	$fp, $a1
 	move	$s1, $a0
-	addi.d	$s5, $a0, 56
+	addi.d	$s4, $a0, 56
 	ori	$a2, $zero, 32
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(_Z16ReadStream_FALSEP19ISequentialInStreamPvm)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB14_38
 # %bb.1:
 	pcalau12i	$a0, %got_pc_hi20(_ZN8NArchive3N7z10kSignatureE)
-	ld.d	$a2, $a0, %got_pc_lo12(_ZN8NArchive3N7z10kSignatureE)
-	ld.bu	$a0, $s5, 0
-	ld.bu	$a1, $a2, 0
-	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$s5, $a0, %got_pc_lo12(_ZN8NArchive3N7z10kSignatureE)
+	ld.bu	$a0, $s4, 0
+	ld.bu	$a1, $s5, 0
 	bne	$a0, $a1, .LBB14_12
 # %bb.2:
 	ld.bu	$a0, $s1, 57
-	ld.bu	$a1, $a2, 1
+	ld.bu	$a1, $s5, 1
 	bne	$a0, $a1, .LBB14_12
 # %bb.3:
 	ld.bu	$a0, $s1, 58
-	ld.bu	$a1, $a2, 2
+	ld.bu	$a1, $s5, 2
 	bne	$a0, $a1, .LBB14_12
 # %bb.4:
 	ld.bu	$a0, $s1, 59
-	ld.bu	$a1, $a2, 3
+	ld.bu	$a1, $s5, 3
 	bne	$a0, $a1, .LBB14_12
 # %bb.5:
 	ld.bu	$a0, $s1, 60
-	ld.bu	$a1, $a2, 4
+	ld.bu	$a1, $s5, 4
 	bne	$a0, $a1, .LBB14_12
 # %bb.6:
 	ld.bu	$a0, $s1, 61
-	ld.bu	$a1, $a2, 5
+	ld.bu	$a1, $s5, 5
 	bne	$a0, $a1, .LBB14_12
 # %bb.7:
 	addi.d	$a0, $s1, 68
@@ -1660,72 +1664,37 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 	vilvl.h	$vr1, $vr1, $vr1
 	vslli.w	$vr1, $vr1, 24
 	vsrai.w	$vr1, $vr1, 24
-	vpickve2gr.b	$a0, $vr0, 0
-	vinsgr2vr.w	$vr2, $a0, 0
-	vpickve2gr.b	$a0, $vr0, 1
-	vinsgr2vr.w	$vr2, $a0, 1
-	vpickve2gr.b	$a0, $vr0, 2
-	vinsgr2vr.w	$vr2, $a0, 2
-	vpickve2gr.b	$a0, $vr0, 3
-	vinsgr2vr.w	$vr2, $a0, 3
-	vand.v	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a0, $vr1, 3
-	vpickve2gr.w	$a1, $vr1, 2
-	vpickve2gr.w	$a2, $vr1, 0
-	vpickve2gr.w	$a3, $vr1, 1
-	andi	$a3, $a3, 1
-	bstrins.d	$a2, $a3, 63, 1
-	bstrins.d	$a2, $a1, 2, 2
-	bstrins.d	$a2, $a0, 3, 3
-	vpickve2gr.b	$a0, $vr0, 4
-	bstrins.d	$a2, $a0, 4, 4
-	vpickve2gr.b	$a0, $vr0, 5
-	bstrins.d	$a2, $a0, 5, 5
-	vpickve2gr.b	$a0, $vr0, 6
-	andi	$a0, $a0, 1
-	slli.d	$a0, $a0, 6
-	or	$a0, $a2, $a0
-	vpickve2gr.b	$a1, $vr0, 7
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 8
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 8
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 9
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 9
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 10
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 10
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 11
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 11
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 12
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 12
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 13
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 13
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 14
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 14
-	or	$a0, $a0, $a1
-	vpickve2gr.b	$a1, $vr0, 15
-	slli.d	$a1, $a1, 15
-	or	$a0, $a0, $a1
-	bstrpick.d	$a0, $a0, 15, 0
-	lu12i.w	$a1, 15
-	ori	$a1, $a1, 4095
-	bne	$a0, $a1, .LBB14_12
-# %bb.10:                               # %.preheader.preheader.i
 	ld.bu	$a0, $s1, 87
+	vpickve2gr.b	$a1, $vr0, 0
+	vinsgr2vr.w	$vr2, $a1, 0
+	vpickve2gr.b	$a1, $vr0, 1
+	vinsgr2vr.w	$vr2, $a1, 1
+	vpickve2gr.b	$a1, $vr0, 2
+	vinsgr2vr.w	$vr2, $a1, 2
+	vpickve2gr.b	$a1, $vr0, 3
+	vinsgr2vr.w	$vr2, $a1, 3
+	vand.v	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a1, $vr1, 3
+	st.b	$a1, $sp, 35
+	vpickve2gr.w	$a1, $vr1, 2
+	st.b	$a1, $sp, 34
+	vpickve2gr.w	$a1, $vr1, 1
+	st.b	$a1, $sp, 33
+	vpickve2gr.w	$a1, $vr1, 0
+	st.b	$a1, $sp, 32
+	vld	$vr1, $sp, 32
+	pcalau12i	$a1, %pc_hi20(.LCPI14_2)
+	vld	$vr2, $a1, %pc_lo12(.LCPI14_2)
+	vshuf.w	$vr2, $vr0, $vr1
+	vslli.b	$vr0, $vr2, 7
+	vsrai.b	$vr0, $vr0, 7
+	vmskltz.b	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
+	bstrpick.d	$a1, $a1, 15, 0
+	lu12i.w	$a2, 15
+	ori	$a2, $a2, 4095
+	bne	$a1, $a2, .LBB14_12
+# %bb.10:                               # %.preheader.preheader.i
 	bnez	$a0, .LBB14_12
 # %bb.11:
 	ld.b	$a0, $s1, 63
@@ -1734,21 +1703,20 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 	or	$a0, $a1, $a0
 	bnez	$a0, .LBB14_8
 .LBB14_12:                              # %_ZN8NArchive3N7zL14TestSignature2EPKh.exit.thread
-	lu12i.w	$s4, 16
-	move	$a0, $s4
+	lu12i.w	$s6, 16
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	xvld	$xr0, $s5, 0
+	xvld	$xr0, $s4, 0
 	move	$s3, $a0
-	ld.d	$s6, $s1, 48
+	ld.d	$s7, $s1, 48
 	xvst	$xr0, $a0, 0
-	ori	$s7, $zero, 33
 	ori	$s8, $zero, 55
 	beqz	$s2, .LBB14_14
 .LBB14_13:
 	ld.d	$a0, $s1, 48
 	ld.d	$a1, $s2, 0
-	sub.d	$a0, $s6, $a0
+	sub.d	$a0, $s7, $a0
 	bltu	$a1, $a0, .LBB14_34
 .LBB14_14:                              # %.preheader225
                                         # =>This Loop Header: Depth=1
@@ -1762,7 +1730,7 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 	ld.d	$a1, $fp, 0
 	ld.d	$a4, $a1, 40
 	move	$s0, $a0
-	sub.w	$a2, $s4, $a0
+	sub.w	$a2, $s6, $a0
 	add.d	$a1, $s3, $a0
 .Ltmp22:
 	addi.d	$a3, $sp, 52
@@ -1776,19 +1744,19 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 	beqz	$a1, .LBB14_34
 # %bb.18:                               #   in Loop: Header=BB14_15 Depth=2
 	add.w	$a0, $a1, $s0
-	bltu	$a0, $s7, .LBB14_15
+	ori	$a2, $zero, 33
+	bltu	$a0, $a2, .LBB14_15
 # %bb.19:                               # %.preheader.preheader
                                         #   in Loop: Header=BB14_14 Depth=1
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	move	$s6, $zero
 	addi.w	$s2, $a0, -32
 	bstrpick.d	$s1, $s2, 31, 0
 	add.d	$a0, $s0, $a1
 	addi.w	$s0, $a0, -31
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB14_21
 	.p2align	4, , 16
 .LBB14_20:                              # %_ZN8NArchive3N7zL13TestSignatureEPKh.exit.thread
@@ -1813,31 +1781,31 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 .LBB14_24:                              #   in Loop: Header=BB14_21 Depth=2
 	beq	$s0, $s6, .LBB14_33
 # %bb.25:                               #   in Loop: Header=BB14_21 Depth=2
-	ld.bu	$a1, $a2, 0
+	ld.bu	$a1, $s5, 0
 	bne	$a0, $a1, .LBB14_20
 # %bb.26:                               #   in Loop: Header=BB14_21 Depth=2
 	ldx.bu	$a0, $s3, $s7
-	ld.bu	$a1, $a2, 1
+	ld.bu	$a1, $s5, 1
 	bne	$a0, $a1, .LBB14_20
 # %bb.27:                               #   in Loop: Header=BB14_21 Depth=2
-	add.d	$s5, $s3, $s7
-	ld.bu	$a0, $s5, 1
-	ld.bu	$a1, $a2, 2
+	add.d	$s4, $s3, $s7
+	ld.bu	$a0, $s4, 1
+	ld.bu	$a1, $s5, 2
 	bne	$a0, $a1, .LBB14_20
 # %bb.28:                               #   in Loop: Header=BB14_21 Depth=2
-	ld.bu	$a0, $s5, 2
-	ld.bu	$a1, $a2, 3
+	ld.bu	$a0, $s4, 2
+	ld.bu	$a1, $s5, 3
 	bne	$a0, $a1, .LBB14_20
 # %bb.29:                               #   in Loop: Header=BB14_21 Depth=2
-	ld.bu	$a0, $s5, 3
-	ld.bu	$a1, $a2, 4
+	ld.bu	$a0, $s4, 3
+	ld.bu	$a1, $s5, 4
 	bne	$a0, $a1, .LBB14_20
 # %bb.30:                               #   in Loop: Header=BB14_21 Depth=2
-	ld.bu	$a0, $s5, 4
-	ld.bu	$a1, $a2, 5
+	ld.bu	$a0, $s4, 4
+	ld.bu	$a1, $s5, 5
 	bne	$a0, $a1, .LBB14_20
 # %bb.31:                               #   in Loop: Header=BB14_21 Depth=2
-	addi.d	$a0, $s5, 11
+	addi.d	$a0, $s4, 11
 .Ltmp25:
 	ori	$a1, $zero, 20
 	pcaddu18i	$ra, %call36(CrcCalc)
@@ -1845,34 +1813,33 @@ _ZN8NArchive3N7z10CInArchive20FindAndReadSignatureEP9IInStreamPKy: # @_ZN8NArchi
 .Ltmp26:
 # %bb.32:                               # %_ZN8NArchive3N7zL13TestSignatureEPKh.exit
                                         #   in Loop: Header=BB14_21 Depth=2
-	ld.w	$a1, $s5, 7
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.w	$a1, $s4, 7
 	bne	$a0, $a1, .LBB14_20
 	b	.LBB14_35
 .LBB14_33:                              # %._crit_edge
                                         #   in Loop: Header=BB14_14 Depth=1
 	xvldx	$xr0, $s3, $s1
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	add.d	$s6, $s6, $s1
+	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
+	add.d	$s7, $s7, $s1
 	xvst	$xr0, $s3, 0
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ori	$s7, $zero, 33
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	lu12i.w	$s6, 16
 	bnez	$s2, .LBB14_13
 	b	.LBB14_14
 .LBB14_34:
 	ori	$fp, $zero, 1
 	b	.LBB14_37
 .LBB14_35:
-	xvld	$xr0, $s5, -1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	xvld	$xr0, $s4, -1
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	xvst	$xr0, $a0, 0
 	ld.d	$a0, $fp, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a1, $a1, $s7
 	addi.d	$a2, $a1, -1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	st.d	$a2, $a3, 48
 	ld.d	$a4, $a0, 48
 	addi.d	$a1, $a1, 31

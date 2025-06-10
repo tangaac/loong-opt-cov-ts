@@ -29,16 +29,16 @@ yc_decrypt:                             # @yc_decrypt
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$s7, $a3
-	move	$s1, $a2
+	move	$s5, $a2
 	move	$fp, $a0
-	bstrpick.d	$s5, $a3, 31, 0
-	slli.d	$s3, $s5, 5
-	alsl.d	$a0, $s5, $s3, 2
+	bstrpick.d	$s1, $a3, 31, 0
+	slli.d	$s3, $s1, 5
+	alsl.d	$a0, $s1, $s3, 2
 	add.d	$s2, $a2, $a0
 	ld.wu	$s0, $s2, 8
 	bstrpick.d	$a0, $a4, 31, 0
-	add.d	$s6, $fp, $a0
-	ld.hu	$s8, $s6, 20
+	add.d	$s8, $fp, $a0
+	ld.hu	$s6, $s8, 20
 	move	$s4, $a5
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -61,23 +61,22 @@ yc_decrypt:                             # @yc_decrypt
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	move	$a4, $s6
 	beqz	$s7, .LBB0_9
 # %bb.2:                                # %.lr.ph
 	move	$a1, $s3
 	move	$s4, $zero
 	move	$s2, $zero
-	add.d	$a0, $a4, $s8
+	add.d	$a0, $s8, $s6
 	addi.d	$s7, $a0, 24
 	addi.d	$a0, $s0, 1111
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	addi.d	$s3, $s1, 32
-	alsl.d	$s5, $s5, $a1, 3
+	addi.d	$s3, $s5, 32
+	alsl.d	$s5, $s1, $a1, 3
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI0_0)
 	xvst	$xr0, $sp, 64                   # 32-byte Folded Spill
 	lu12i.w	$a0, 4
-	ori	$s6, $a0, 889
+	ori	$s1, $a0, 889
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
@@ -102,35 +101,20 @@ yc_decrypt:                             # @yc_decrypt
 	xvreplgr2vr.w	$xr0, $a0
 	xvld	$xr1, $sp, 64                   # 32-byte Folded Reload
 	xvseq.w	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a1, $xr0, 0
-	xvpickve2gr.w	$a2, $xr0, 1
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
-	xvpickve2gr.w	$a2, $xr0, 2
-	bstrins.d	$a1, $a2, 2, 2
-	xvpickve2gr.w	$a2, $xr0, 3
-	bstrins.d	$a1, $a2, 3, 3
-	xvpickve2gr.w	$a2, $xr0, 4
-	bstrins.d	$a1, $a2, 4, 4
-	xvpickve2gr.w	$a2, $xr0, 5
-	bstrins.d	$a1, $a2, 5, 5
-	xvpickve2gr.w	$a2, $xr0, 6
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 6
-	or	$a1, $a1, $a2
-	xvpickve2gr.w	$a2, $xr0, 7
-	slli.d	$a2, $a2, 7
-	or	$a1, $a1, $a2
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a1, $xr0, 0
+	xvpickve2gr.wu	$a2, $xr0, 4
+	bstrins.d	$a1, $a2, 7, 4
 	andi	$a1, $a1, 255
 	bnez	$a1, .LBB0_3
 # %bb.7:                                #   in Loop: Header=BB0_4 Depth=1
 	bstrpick.d	$a0, $a0, 15, 0
-	beq	$a0, $s6, .LBB0_3
+	beq	$a0, $s1, .LBB0_3
 # %bb.8:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	move	$a1, $s4
-	move	$s1, $a3
-	move	$s8, $a4
+	move	$s6, $s8
+	move	$s8, $a3
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $s3, -24
@@ -139,24 +123,24 @@ yc_decrypt:                             # @yc_decrypt
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(yc_poly_emulator)
 	jirl	$ra, $ra, 0
-	move	$a4, $s8
-	move	$a3, $s1
+	move	$a3, $s8
+	move	$s8, $s6
 	beqz	$a0, .LBB0_3
 	b	.LBB0_11
 .LBB0_9:                                # %._crit_edge
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	st.h	$a0, $a4, 6
-	st.d	$zero, $a4, 128
+	st.h	$a0, $s8, 6
+	st.d	$zero, $s8, 128
 	ori	$a0, $zero, 2575
 	ldx.w	$a0, $s0, $a0
-	st.w	$a0, $a4, 40
-	ld.w	$a0, $a4, 80
+	st.w	$a0, $s8, 40
+	ld.w	$a0, $s8, 80
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 4
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	sub.w	$a2, $a3, $a2
 	sub.d	$a0, $a0, $a1
-	st.w	$a0, $a4, 80
+	st.w	$a0, $s8, 80
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(cli_writen)

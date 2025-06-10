@@ -230,16 +230,10 @@ main:                                   # @main
 	xvseq.d	$xr0, $xr0, $xr1
 	xvrepli.b	$xr1, -1
 	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.d	$a0, $xr0, 0
-	xvpickve2gr.d	$a1, $xr0, 1
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 1
-	sub.d	$a0, $a1, $a0
-	xvpickve2gr.d	$a1, $xr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.d	$a1, $xr0, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
+	xvmskltz.d	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 3, 2
 	andi	$a0, $a0, 15
 	bnez	$a0, .LBB3_13
 # %bb.12:

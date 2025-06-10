@@ -33,168 +33,163 @@ test:                                   # @test
 .Lfunc_end0:
 	.size	test, .Lfunc_end0-test
                                         # -- End function
-	.globl	main                            # -- Begin function main
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4, 0x0                          # -- Begin function main
+.LCPI1_0:
+	.word	0                               # 0x0
+	.word	5                               # 0x5
+	.word	6                               # 0x6
+	.word	7                               # 0x7
+	.text
+	.globl	main
 	.p2align	5
 	.type	main,@function
 main:                                   # @main
 # %bb.0:                                # %.preheader
-	addi.d	$sp, $sp, -32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(test)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(tmp)
 	addi.d	$a0, $a0, %pc_lo12(tmp)
-	xvld	$xr0, $a0, 32
-	xvld	$xr1, $a0, 0
-	xvld	$xr2, $a0, 96
+	xvld	$xr0, $a0, 0
+	xvld	$xr2, $a0, 32
 	xvld	$xr3, $a0, 64
+	xvld	$xr4, $a0, 96
 	lu52i.d	$a1, $zero, -1025
-	xvreplgr2vr.d	$xr4, $a1
-	xvfcmp.ceq.d	$xr0, $xr0, $xr4
-	xvpickve2gr.d	$a1, $xr0, 3
-	st.b	$a1, $sp, 7
-	xvpickve2gr.d	$a1, $xr0, 2
-	st.b	$a1, $sp, 6
-	xvpickve2gr.d	$a1, $xr0, 1
-	st.b	$a1, $sp, 5
-	xvpickve2gr.d	$a1, $xr0, 0
-	st.b	$a1, $sp, 4
-	xvfcmp.ceq.d	$xr0, $xr1, $xr4
-	xvpickve2gr.d	$a1, $xr0, 3
-	st.b	$a1, $sp, 3
-	xvpickve2gr.d	$a1, $xr0, 2
-	st.b	$a1, $sp, 2
-	xvpickve2gr.d	$a1, $xr0, 1
-	st.b	$a1, $sp, 1
-	xvpickve2gr.d	$a1, $xr0, 0
-	st.b	$a1, $sp, 0
-	xvfcmp.ceq.d	$xr0, $xr2, $xr4
-	xvpickve2gr.d	$a1, $xr0, 3
-	xvpickve2gr.d	$a2, $xr0, 2
-	xvpickve2gr.d	$a3, $xr0, 1
-	xvpickve2gr.d	$a4, $xr0, 0
-	xvfcmp.ceq.d	$xr0, $xr3, $xr4
-	xvpickve2gr.d	$a5, $xr0, 3
-	xvpickve2gr.d	$a6, $xr0, 2
-	xvpickve2gr.d	$a7, $xr0, 1
-	xvld	$xr1, $a0, 128
-	xvpickve2gr.d	$t0, $xr0, 0
-	vld	$vr0, $sp, 0
+	xvreplgr2vr.d	$xr1, $a1
+	xvfcmp.ceq.d	$xr5, $xr0, $xr1
+	xvpickve2gr.d	$a1, $xr5, 0
+	vinsgr2vr.b	$vr0, $a1, 0
+	xvpickve2gr.d	$a1, $xr5, 1
+	vinsgr2vr.b	$vr0, $a1, 1
+	xvpickve2gr.d	$a1, $xr5, 2
+	vinsgr2vr.b	$vr0, $a1, 2
+	xvpickve2gr.d	$a1, $xr5, 3
+	vinsgr2vr.b	$vr0, $a1, 3
+	xvfcmp.ceq.d	$xr2, $xr2, $xr1
+	xvpickve2gr.d	$a1, $xr2, 0
+	vinsgr2vr.b	$vr0, $a1, 4
+	xvpickve2gr.d	$a1, $xr2, 1
+	vinsgr2vr.b	$vr0, $a1, 5
+	xvpickve2gr.d	$a2, $xr2, 2
+	vinsgr2vr.b	$vr0, $a2, 6
+	xvpickve2gr.d	$a3, $xr2, 3
+	vinsgr2vr.b	$vr0, $a3, 7
+	xvfcmp.ceq.d	$xr2, $xr3, $xr1
+	xvpickve2gr.d	$a4, $xr2, 0
+	vinsgr2vr.b	$vr0, $a4, 8
+	xvpickve2gr.d	$a4, $xr2, 1
+	vinsgr2vr.b	$vr0, $a4, 9
+	xvpickve2gr.d	$a4, $xr2, 2
+	vinsgr2vr.b	$vr0, $a4, 10
+	xvpickve2gr.d	$a4, $xr2, 3
+	vinsgr2vr.b	$vr0, $a4, 11
+	xvfcmp.ceq.d	$xr2, $xr4, $xr1
+	xvpickve2gr.d	$a4, $xr2, 0
+	vinsgr2vr.b	$vr0, $a4, 12
+	xvpickve2gr.d	$a4, $xr2, 1
+	vinsgr2vr.b	$vr0, $a4, 13
+	xvpickve2gr.d	$a4, $xr2, 2
+	vinsgr2vr.b	$vr0, $a4, 14
+	xvld	$xr3, $a0, 128
+	xvpickve2gr.d	$a4, $xr2, 3
+	vinsgr2vr.b	$vr0, $a4, 15
 	xvld	$xr2, $a0, 160
-	xvfcmp.ceq.d	$xr3, $xr1, $xr4
-	xvpickve2gr.d	$t1, $xr3, 0
-	vinsgr2vr.h	$vr1, $t1, 0
-	xvpickve2gr.d	$t1, $xr3, 1
-	vinsgr2vr.h	$vr1, $t1, 1
-	xvpickve2gr.d	$t1, $xr3, 2
-	vinsgr2vr.h	$vr1, $t1, 2
-	xvpickve2gr.d	$t1, $xr3, 3
-	vinsgr2vr.h	$vr1, $t1, 3
-	xvfcmp.ceq.d	$xr2, $xr2, $xr4
-	xvpickve2gr.d	$t1, $xr2, 0
-	vinsgr2vr.h	$vr1, $t1, 4
-	xvpickve2gr.d	$t1, $xr2, 1
-	vinsgr2vr.h	$vr1, $t1, 5
-	xvpickve2gr.d	$t1, $xr2, 2
+	xvfcmp.ceq.d	$xr3, $xr3, $xr1
+	xvpickve2gr.d	$a4, $xr3, 0
+	vinsgr2vr.h	$vr4, $a4, 0
+	xvpickve2gr.d	$a4, $xr3, 1
+	vinsgr2vr.h	$vr4, $a4, 1
+	xvpickve2gr.d	$a4, $xr3, 2
+	vinsgr2vr.h	$vr4, $a4, 2
+	xvpickve2gr.d	$a4, $xr3, 3
+	vinsgr2vr.h	$vr4, $a4, 3
+	xvfcmp.ceq.d	$xr2, $xr2, $xr1
+	xvpickve2gr.d	$a4, $xr2, 0
+	vinsgr2vr.h	$vr4, $a4, 4
+	xvpickve2gr.d	$a4, $xr2, 1
+	vinsgr2vr.h	$vr4, $a4, 5
+	xvpickve2gr.d	$a4, $xr2, 2
 	xvld	$xr3, $a0, 192
-	vinsgr2vr.h	$vr1, $t1, 6
-	xvpickve2gr.d	$t1, $xr2, 3
-	vinsgr2vr.h	$vr1, $t1, 7
-	xvfcmp.ceq.d	$xr2, $xr3, $xr4
-	xvpickve2gr.d	$t1, $xr2, 0
-	vinsgr2vr.w	$vr3, $t1, 0
-	xvpickve2gr.d	$t1, $xr2, 1
-	vinsgr2vr.w	$vr3, $t1, 1
-	xvpickve2gr.d	$t1, $xr2, 2
-	vinsgr2vr.w	$vr3, $t1, 2
-	fld.d	$fa4, $a0, 224
-	xvpickve2gr.d	$t1, $xr2, 3
-	vinsgr2vr.w	$vr3, $t1, 3
-	vldi	$vr2, -784
-	fcmp.ceq.d	$fcc0, $fa4, $fa2
-	vpickve2gr.b	$t1, $vr0, 0
-	vinsgr2vr.h	$vr2, $t1, 0
-	vpickve2gr.b	$t1, $vr0, 1
-	vinsgr2vr.h	$vr2, $t1, 1
-	vpickve2gr.b	$t1, $vr0, 2
-	vinsgr2vr.h	$vr2, $t1, 2
-	vpickve2gr.b	$t1, $vr0, 3
-	vinsgr2vr.h	$vr2, $t1, 3
-	vpickve2gr.b	$t1, $vr0, 4
-	vinsgr2vr.h	$vr2, $t1, 4
-	vpickve2gr.b	$t1, $vr0, 5
-	vinsgr2vr.h	$vr2, $t1, 5
-	vpickve2gr.b	$t1, $vr0, 6
-	vinsgr2vr.h	$vr2, $t1, 6
-	vpickve2gr.b	$t1, $vr0, 7
-	vinsgr2vr.h	$vr2, $t1, 7
-	vor.v	$vr0, $vr2, $vr1
-	vpickve2gr.h	$t1, $vr0, 7
-	vpickve2gr.h	$t2, $vr0, 6
-	vpickve2gr.h	$t3, $vr0, 5
-	vpickve2gr.h	$t4, $vr0, 4
-	vpickve2gr.h	$t5, $vr0, 3
-	vpickve2gr.h	$t6, $vr0, 2
-	vpickve2gr.h	$t7, $vr0, 1
-	vpickve2gr.h	$t8, $vr0, 0
-	vinsgr2vr.w	$vr0, $t8, 0
-	vinsgr2vr.w	$vr0, $t7, 1
-	vinsgr2vr.w	$vr0, $t6, 2
-	vinsgr2vr.w	$vr0, $t5, 3
-	vor.v	$vr0, $vr0, $vr3
-	vpickve2gr.w	$t5, $vr0, 3
-	vpickve2gr.w	$t6, $vr0, 2
-	vpickve2gr.w	$t7, $vr0, 0
-	vpickve2gr.w	$t8, $vr0, 1
-	andi	$t8, $t8, 1
-	bstrins.d	$t7, $t8, 63, 1
-	bstrins.d	$t7, $t6, 2, 2
-	bstrins.d	$t7, $t5, 3, 3
-	bstrins.d	$t7, $t4, 4, 4
-	bstrins.d	$t7, $t3, 5, 5
-	andi	$t2, $t2, 1
-	slli.d	$t2, $t2, 6
-	or	$t2, $t7, $t2
-	andi	$t1, $t1, 1
-	slli.d	$t1, $t1, 7
-	or	$t1, $t2, $t1
-	andi	$t0, $t0, 1
-	slli.d	$t0, $t0, 8
-	or	$t0, $t1, $t0
-	andi	$a7, $a7, 1
-	slli.d	$a7, $a7, 9
-	or	$a7, $t0, $a7
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 10
-	or	$a6, $a7, $a6
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 11
-	or	$a5, $a6, $a5
-	andi	$a4, $a4, 1
-	slli.d	$a4, $a4, 12
-	or	$a4, $a5, $a4
-	andi	$a3, $a3, 1
-	slli.d	$a3, $a3, 13
-	or	$a3, $a4, $a3
-	andi	$a2, $a2, 1
-	slli.d	$a2, $a2, 14
-	or	$a2, $a3, $a2
-	slli.d	$a1, $a1, 15
-	or	$a1, $a2, $a1
-	bstrpick.d	$a1, $a1, 15, 0
-	sltu	$a1, $zero, $a1
-	movcf2gr	$a2, $fcc0
-	or	$a1, $a1, $a2
-	bnez	$a1, .LBB1_3
+	vinsgr2vr.h	$vr4, $a4, 6
+	xvpickve2gr.d	$a4, $xr2, 3
+	vinsgr2vr.h	$vr4, $a4, 7
+	xvfcmp.ceq.d	$xr1, $xr3, $xr1
+	xvpickve2gr.d	$a4, $xr1, 0
+	vinsgr2vr.w	$vr2, $a4, 0
+	xvpickve2gr.d	$a4, $xr1, 1
+	vinsgr2vr.w	$vr2, $a4, 1
+	xvpickve2gr.d	$a4, $xr1, 2
+	vinsgr2vr.w	$vr2, $a4, 2
+	xvpickve2gr.d	$a4, $xr1, 3
+	vinsgr2vr.w	$vr2, $a4, 3
+	fld.d	$fa3, $a0, 224
+	fld.d	$fa1, $a0, 232
+	vpickve2gr.b	$a0, $vr0, 0
+	vinsgr2vr.h	$vr5, $a0, 0
+	vpickve2gr.b	$a0, $vr0, 1
+	vinsgr2vr.h	$vr5, $a0, 1
+	vpickve2gr.b	$a0, $vr0, 2
+	vinsgr2vr.h	$vr5, $a0, 2
+	vpickve2gr.b	$a0, $vr0, 3
+	vinsgr2vr.h	$vr5, $a0, 3
+	vpickve2gr.b	$a0, $vr0, 4
+	vinsgr2vr.h	$vr5, $a0, 4
+	vinsgr2vr.h	$vr5, $a1, 5
+	vinsgr2vr.h	$vr5, $a2, 6
+	vinsgr2vr.h	$vr5, $a3, 7
+	vor.v	$vr4, $vr5, $vr4
+	vpickve2gr.h	$a0, $vr4, 7
+	st.b	$a0, $sp, 7
+	vpickve2gr.h	$a0, $vr4, 6
+	st.b	$a0, $sp, 6
+	vpickve2gr.h	$a0, $vr4, 5
+	st.b	$a0, $sp, 5
+	vpickve2gr.h	$a0, $vr4, 4
+	st.b	$a0, $sp, 4
+	vpickve2gr.h	$a0, $vr4, 3
+	vpickve2gr.h	$a1, $vr4, 2
+	vpickve2gr.h	$a2, $vr4, 1
+	vpickve2gr.h	$a3, $vr4, 0
+	vld	$vr4, $sp, 0
+	vinsgr2vr.w	$vr5, $a3, 0
+	vinsgr2vr.w	$vr5, $a2, 1
+	vinsgr2vr.w	$vr5, $a1, 2
+	vinsgr2vr.w	$vr5, $a0, 3
+	vor.v	$vr2, $vr5, $vr2
+	vpickve2gr.w	$a0, $vr2, 3
+	st.b	$a0, $sp, 19
+	vpickve2gr.w	$a0, $vr2, 2
+	st.b	$a0, $sp, 18
+	vpickve2gr.w	$a0, $vr2, 1
+	st.b	$a0, $sp, 17
+	vpickve2gr.w	$a0, $vr2, 0
+	st.b	$a0, $sp, 16
+	vld	$vr2, $sp, 16
+	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
+	vld	$vr5, $a0, %pc_lo12(.LCPI1_0)
+	vldi	$vr6, -784
+	fcmp.ceq.d	$fcc0, $fa3, $fa6
+	vshuf4i.d	$vr4, $vr0, 12
+	vshuf.w	$vr5, $vr4, $vr2
+	vslli.b	$vr0, $vr5, 7
+	vsrai.b	$vr0, $vr0, 7
+	vmskltz.b	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
+	bstrpick.d	$a0, $a0, 15, 0
+	sltu	$a0, $zero, $a0
+	movcf2gr	$a1, $fcc0
+	or	$a0, $a0, $a1
+	bnez	$a0, .LBB1_3
 # %bb.1:                                # %.preheader
-	fld.d	$fa0, $a0, 232
-	vldi	$vr1, -784
-	fcmp.ceq.d	$fcc0, $fa0, $fa1
+	vldi	$vr0, -784
+	fcmp.ceq.d	$fcc0, $fa1, $fa0
 	bcnez	$fcc0, .LBB1_3
 # %bb.2:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB1_3:
 	pcaddu18i	$ra, %call36(abort)

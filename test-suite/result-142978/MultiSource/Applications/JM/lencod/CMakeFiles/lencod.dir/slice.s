@@ -2516,25 +2516,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	bnez	$a7, .LBB5_33
 # %bb.34:                               # %middle.block247
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.h	$a4, $vr0, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a4, $a6, 63, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	bstrins.d	$a4, $a6, 2, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	bstrins.d	$a4, $a6, 3, 3
-	vpickve2gr.h	$a6, $vr0, 4
-	bstrins.d	$a4, $a6, 4, 4
-	vpickve2gr.h	$a6, $vr0, 5
-	bstrins.d	$a4, $a6, 5, 5
-	vpickve2gr.h	$a6, $vr0, 6
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a4, $a4, $a6
-	vpickve2gr.h	$a6, $vr0, 7
-	slli.d	$a6, $a6, 7
-	or	$a4, $a4, $a6
+	vslli.h	$vr0, $vr0, 15
+	vsrai.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	andi	$a4, $a4, 255
 	sltui	$a4, $a4, 1
 	beq	$a0, $ra, .LBB5_41
@@ -2566,15 +2551,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	addi.d	$a7, $a7, 16
 	bnez	$a4, .LBB5_37
 # %bb.38:                               # %vec.epilog.middle.block
-	vpickve2gr.w	$a4, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a4, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a4, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a4, $a4, $a6
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	andi	$a4, $a4, 15
 	sltui	$a4, $a4, 1
 	beq	$a0, $ra, .LBB5_41
@@ -2628,10 +2608,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	ori	$s6, $zero, 4
 	addi.d	$fp, $sp, 440
 	addi.d	$s1, $sp, 312
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
-	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$t5, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 8                     # 8-byte Folded Spill
 .LBB5_43:                               # %.lr.ph156.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_45 Depth 2
@@ -2679,8 +2659,8 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
                                         #   in Loop: Header=BB5_43 Depth=1
 	beq	$s2, $t5, .LBB5_53
 # %bb.48:                               #   in Loop: Header=BB5_43 Depth=1
-	st.d	$t6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$ra, $sp, 32                    # 8-byte Folded Spill
+	st.d	$t6, $sp, 48                    # 8-byte Folded Spill
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$s2, $s2, 1
 	move	$a0, $s5
 	move	$a1, $s6
@@ -2708,16 +2688,16 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	jirl	$ra, $ra, 0
 	move	$a2, $s0
 	move	$a5, $s8
-	ld.d	$t6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 48                    # 8-byte Folded Reload
 	addi.d	$t6, $t6, 4
-	ld.d	$ra, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$ra, $ra, -1
 	addi.d	$s6, $s6, 4
 	addi.d	$s5, $s5, -1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$t2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB5_43
 .LBB5_52:                               # %.critedge.loopexit
 	move	$a1, $s2

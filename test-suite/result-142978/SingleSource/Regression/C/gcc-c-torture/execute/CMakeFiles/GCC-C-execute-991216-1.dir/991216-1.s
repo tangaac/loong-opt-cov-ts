@@ -206,8 +206,7 @@ test6:                                  # @test6
 	.type	test7,@function
 test7:                                  # @test7
 # %bb.0:
-	addi.d	$sp, $sp, -16
-	ld.d	$t0, $sp, 16
+	ld.d	$t0, $sp, 0
 	xvinsgr2vr.w	$xr0, $a0, 0
 	xvinsgr2vr.w	$xr0, $a1, 1
 	xvinsgr2vr.w	$xr0, $a2, 2
@@ -221,25 +220,10 @@ test7:                                  # @test7
 	xvseq.w	$xr0, $xr0, $xr1
 	xvrepli.b	$xr1, -1
 	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	bstrins.d	$a0, $a1, 3, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 4, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	bstrins.d	$a0, $a1, 5, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a0, $a0, $a1
-	xvpickve2gr.w	$a1, $xr0, 7
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB6_3
 # %bb.1:
@@ -249,7 +233,6 @@ test7:                                  # @test7
 	lu52i.d	$a0, $a0, 18
 	bne	$a7, $a0, .LBB6_3
 # %bb.2:
-	addi.d	$sp, $sp, 16
 	ret
 .LBB6_3:
 	pcaddu18i	$ra, %call36(abort)
@@ -274,7 +257,6 @@ test7:                                  # @test7
 	.type	test8,@function
 test8:                                  # @test8
 # %bb.0:
-	addi.d	$sp, $sp, -16
 	xvinsgr2vr.w	$xr0, $a0, 0
 	xvinsgr2vr.w	$xr0, $a1, 1
 	xvinsgr2vr.w	$xr0, $a2, 2
@@ -288,40 +270,24 @@ test8:                                  # @test8
 	xvseq.w	$xr0, $xr0, $xr1
 	xvrepli.b	$xr1, -1
 	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	bstrins.d	$a0, $a1, 3, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 4, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	bstrins.d	$a0, $a1, 5, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a0, $a0, $a1
-	xvpickve2gr.w	$a1, $xr0, 7
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB7_4
 # %bb.1:
-	ld.d	$a0, $sp, 24
+	ld.d	$a0, $sp, 8
 	ori	$a1, $zero, 85
 	bne	$a0, $a1, .LBB7_4
 # %bb.2:
-	ld.d	$a0, $sp, 16
+	ld.d	$a0, $sp, 0
 	lu12i.w	$a1, -484676
 	ori	$a1, $a1, 3567
 	lu32i.d	$a1, 214375
 	lu52i.d	$a1, $a1, 18
 	bne	$a0, $a1, .LBB7_4
 # %bb.3:
-	addi.d	$sp, $sp, 16
 	ret
 .LBB7_4:
 	pcaddu18i	$ra, %call36(abort)

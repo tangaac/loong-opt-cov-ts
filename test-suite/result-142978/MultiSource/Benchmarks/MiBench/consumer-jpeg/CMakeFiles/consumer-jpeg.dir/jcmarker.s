@@ -2011,29 +2011,12 @@ emit_dqt:                               # @emit_dqt
 	vor.v	$vr1, $vr1, $vr5
 	vor.v	$vr0, $vr1, $vr0
 	vrepli.h	$vr1, 255
+	ld.w	$a0, $s1, 128
 	vslt.hu	$vr0, $vr1, $vr0
-	vpickve2gr.h	$a0, $vr0, 0
-	vpickve2gr.h	$a1, $vr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	vpickve2gr.h	$a1, $vr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	vpickve2gr.h	$a1, $vr0, 3
-	bstrins.d	$a0, $a1, 3, 3
-	vpickve2gr.h	$a1, $vr0, 4
-	bstrins.d	$a0, $a1, 4, 4
-	vpickve2gr.h	$a1, $vr0, 5
-	bstrins.d	$a0, $a1, 5, 5
-	vpickve2gr.h	$a1, $vr0, 6
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a0, $a0, $a1
-	ld.w	$a1, $s1, 128
-	vpickve2gr.h	$a2, $vr0, 7
-	slli.d	$a2, $a2, 7
-	or	$a0, $a0, $a2
-	andi	$s2, $a0, 255
-	bnez	$a1, .LBB7_31
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
+	andi	$s2, $a1, 255
+	bnez	$a0, .LBB7_31
 # %bb.3:
 	ld.d	$a0, $fp, 32
 	ld.d	$a1, $a0, 0

@@ -4208,7 +4208,7 @@ write_header_as_C:                      # @write_header_as_C
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	addi.d	$sp, $sp, -2048
-	addi.d	$sp, $sp, -128
+	addi.d	$sp, $sp, -112
 	move	$fp, $a0
 	ld.w	$a3, $a0, 48
 	move	$s1, $a2
@@ -4269,15 +4269,10 @@ write_header_as_C:                      # @write_header_as_C
 	bnez	$a4, .LBB9_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a3, $vr0, 0
-	vpickve2gr.w	$a4, $vr0, 1
-	andi	$a4, $a4, 1
-	bstrins.d	$a3, $a4, 63, 1
-	vpickve2gr.w	$a4, $vr0, 2
-	bstrins.d	$a3, $a4, 2, 2
-	vpickve2gr.w	$a4, $vr0, 3
-	slli.d	$a4, $a4, 3
-	or	$a3, $a3, $a4
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a3, $vr0, 0
 	andi	$a3, $a3, 15
 	sltu	$s4, $zero, $a3
 	beq	$a2, $a1, .LBB9_9
@@ -4327,12 +4322,12 @@ write_header_as_C:                      # @write_header_as_C
 	ld.w	$a0, $fp, 544
 	blez	$a0, .LBB9_40
 .LBB9_14:
-	addi.d	$a0, $sp, 24
-	addi.d	$s2, $sp, 24
+	addi.d	$a0, $sp, 8
+	addi.d	$s2, $sp, 8
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(strcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 24
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.17)
@@ -4349,7 +4344,7 @@ write_header_as_C:                      # @write_header_as_C
 # %bb.15:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a1, $sp, 24
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(d_fail)
 	jirl	$ra, $ra, 0
 .LBB9_16:
@@ -4532,7 +4527,7 @@ write_header_as_C:                      # @write_header_as_C
 .LBB9_43:
 	move	$a0, $fp
 	addi.d	$sp, $sp, 2032
-	addi.d	$sp, $sp, 144
+	addi.d	$sp, $sp, 128
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
 	ld.d	$s6, $sp, 1960                  # 8-byte Folded Reload

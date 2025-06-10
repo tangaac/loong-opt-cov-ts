@@ -9,26 +9,20 @@ CountTree:                              # @CountTree
 	xvseqi.d	$xr1, $xr0, 0
 	xvrepli.b	$xr2, -1
 	xvxor.v	$xr1, $xr1, $xr2
-	xvpickve2gr.d	$a0, $xr1, 0
-	xvpickve2gr.d	$a1, $xr1, 1
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 1
-	sub.d	$a0, $a1, $a0
-	xvpickve2gr.d	$a1, $xr1, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.d	$a1, $xr1, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
+	xvmskltz.d	$xr1, $xr1
+	xvpickve2gr.wu	$a0, $xr1, 0
+	xvpickve2gr.wu	$a1, $xr1, 4
+	bstrins.d	$a0, $a1, 3, 2
 	andi	$a0, $a0, 15
 	beqz	$a0, .LBB0_4
 # %bb.1:                                # %tailrecurse.preheader
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	move	$s3, $zero
 	xvpickve2gr.d	$s2, $xr0, 3
 	xvpickve2gr.d	$fp, $xr0, 2
@@ -59,28 +53,22 @@ CountTree:                              # @CountTree
 	ld.d	$s2, $s2, 32
 	xvseqi.d	$xr0, $xr0, 0
 	xvxor.v	$xr0, $xr0, $xr2
-	xvpickve2gr.d	$a3, $xr0, 0
-	xvpickve2gr.d	$a4, $xr0, 1
-	andi	$a4, $a4, 1
-	slli.d	$a4, $a4, 1
-	sub.d	$a3, $a4, $a3
-	xvpickve2gr.d	$a4, $xr0, 2
-	bstrins.d	$a3, $a4, 2, 2
-	xvpickve2gr.d	$a4, $xr0, 3
-	slli.d	$a4, $a4, 3
-	or	$a3, $a3, $a4
+	xvmskltz.d	$xr0, $xr0
+	xvpickve2gr.wu	$a3, $xr0, 0
+	xvpickve2gr.wu	$a4, $xr0, 4
+	bstrins.d	$a3, $a4, 3, 2
 	andi	$a3, $a3, 15
 	add.d	$s3, $a2, $a1
 	bnez	$a3, .LBB0_2
 # %bb.3:                                # %tailrecurse._crit_edge.loopexit
 	addi.w	$a0, $s3, 1
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB0_4:
 	ori	$a0, $zero, 1

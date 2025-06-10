@@ -928,25 +928,10 @@ main:                                   # @main
 # %bb.93:                               # %middle.block158
                                         #   in Loop: Header=BB0_83 Depth=2
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.h	$a4, $vr0, 0
-	vpickve2gr.h	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a4, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr0, 2
-	bstrins.d	$a4, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr0, 3
-	bstrins.d	$a4, $a5, 3, 3
-	vpickve2gr.h	$a5, $vr0, 4
-	bstrins.d	$a4, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr0, 5
-	bstrins.d	$a4, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr0, 6
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a4, $a4, $a5
-	vpickve2gr.h	$a5, $vr0, 7
-	slli.d	$a5, $a5, 7
-	or	$a4, $a4, $a5
+	vslli.h	$vr0, $vr0, 15
+	vsrai.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	andi	$a4, $a4, 255
 	sltui	$a4, $a4, 1
 	maskeqz	$a4, $s5, $a4
@@ -987,15 +972,10 @@ main:                                   # @main
 	bnez	$a4, .LBB0_96
 # %bb.97:                               # %vec.epilog.middle.block177
                                         #   in Loop: Header=BB0_83 Depth=2
-	vpickve2gr.w	$a4, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a4, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a4, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a4, $a4, $a5
+	vslli.w	$vr0, $vr0, 31
+	vsrai.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	andi	$a4, $a4, 15
 	sltui	$a4, $a4, 1
 	maskeqz	$a4, $s5, $a4

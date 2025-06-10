@@ -52,25 +52,10 @@ main:                                   # @main
 	xvseq.w	$xr0, $xr0, $xr1
 	xvrepli.b	$xr1, -1
 	xvxor.v	$xr0, $xr0, $xr1
-	xvpickve2gr.w	$a0, $xr0, 0
-	xvpickve2gr.w	$a1, $xr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	xvpickve2gr.w	$a1, $xr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	xvpickve2gr.w	$a1, $xr0, 3
-	bstrins.d	$a0, $a1, 3, 3
-	xvpickve2gr.w	$a1, $xr0, 4
-	bstrins.d	$a0, $a1, 4, 4
-	xvpickve2gr.w	$a1, $xr0, 5
-	bstrins.d	$a0, $a1, 5, 5
-	xvpickve2gr.w	$a1, $xr0, 6
-	andi	$a1, $a1, 1
-	slli.d	$a1, $a1, 6
-	or	$a0, $a0, $a1
-	xvpickve2gr.w	$a1, $xr0, 7
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
+	xvmskltz.w	$xr0, $xr0
+	xvpickve2gr.wu	$a0, $xr0, 0
+	xvpickve2gr.wu	$a1, $xr0, 4
+	bstrins.d	$a0, $a1, 7, 4
 	andi	$a0, $a0, 255
 	bnez	$a0, .LBB1_2
 # %bb.1:

@@ -656,7 +656,7 @@ _ZN12HexxagonGame8saveGameEPc:          # @_ZN12HexxagonGame8saveGameEPc
 
 	.globl	_ZN12HexxagonGameC1Ev
 	.type	_ZN12HexxagonGameC1Ev,@function
-.set _ZN12HexxagonGameC1Ev, _ZN12HexxagonGameC2Ev
+_ZN12HexxagonGameC1Ev = _ZN12HexxagonGameC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

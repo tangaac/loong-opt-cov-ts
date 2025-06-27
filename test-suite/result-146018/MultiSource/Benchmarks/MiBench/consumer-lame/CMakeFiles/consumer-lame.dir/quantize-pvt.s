@@ -2048,7 +2048,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	move	$s1, $t8
 	vori.b	$vr5, $vr4, 0
 	.p2align	4, , 16
-.LBB8_54:                               # %vector.body286
+.LBB8_54:                               # %vector.body289
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $t5, -84
 	ld.w	$a5, $t5, -72
@@ -2355,7 +2355,7 @@ scale_bitcount_lsf:                     # @scale_bitcount_lsf
 	move	$fp, $t6
 	vori.b	$vr5, $vr4, 0
 	.p2align	4, , 16
-.LBB8_70:                               # %vector.body309
+.LBB8_70:                               # %vector.body312
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $t2, -84
 	ld.w	$a4, $t2, -72

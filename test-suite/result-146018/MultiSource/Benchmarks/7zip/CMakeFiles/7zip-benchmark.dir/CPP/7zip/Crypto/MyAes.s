@@ -863,13 +863,13 @@ _ZTSN7NCrypto14CAesCbcDecoderE:
 	.dword	_GLOBAL__sub_I_MyAes.cpp
 	.globl	_ZN7NCrypto12CAesCbcCoderC1Ev
 	.type	_ZN7NCrypto12CAesCbcCoderC1Ev,@function
-.set _ZN7NCrypto12CAesCbcCoderC1Ev, _ZN7NCrypto12CAesCbcCoderC2Ev
+_ZN7NCrypto12CAesCbcCoderC1Ev = _ZN7NCrypto12CAesCbcCoderC2Ev
 	.globl	_ZN7NCrypto14CAesCbcEncoderC1Ev
 	.type	_ZN7NCrypto14CAesCbcEncoderC1Ev,@function
-.set _ZN7NCrypto14CAesCbcEncoderC1Ev, _ZN7NCrypto14CAesCbcEncoderC2Ev
+_ZN7NCrypto14CAesCbcEncoderC1Ev = _ZN7NCrypto14CAesCbcEncoderC2Ev
 	.globl	_ZN7NCrypto14CAesCbcDecoderC1Ev
 	.type	_ZN7NCrypto14CAesCbcDecoderC1Ev,@function
-.set _ZN7NCrypto14CAesCbcDecoderC1Ev, _ZN7NCrypto14CAesCbcDecoderC2Ev
+_ZN7NCrypto14CAesCbcDecoderC1Ev = _ZN7NCrypto14CAesCbcDecoderC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

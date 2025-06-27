@@ -349,8 +349,8 @@ PLA_permute:                            # @PLA_permute
 	bge	$s1, $s3, .LBB2_19
 # %bb.18:                               # %.lr.ph71.preheader
 	alsl.d	$a0, $s1, $s2, 3
-	nor	$a1, $s1, $zero
-	add.d	$a1, $s3, $a1
+	sub.d	$a1, $s1, $s3
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

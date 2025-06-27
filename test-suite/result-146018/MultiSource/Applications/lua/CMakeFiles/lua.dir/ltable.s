@@ -142,15 +142,16 @@ luaH_next:                              # @luaH_next
 	bge	$a1, $a2, .LBB0_23
 # %bb.20:                               # %.lr.ph
 	ld.d	$a3, $s0, 32
-	slli.d	$a0, $a1, 5
-	alsl.d	$a0, $a1, $a0, 3
+	bstrpick.d	$a0, $a1, 31, 0
+	slli.d	$a4, $a0, 5
+	alsl.d	$a0, $a0, $a4, 3
 	.p2align	4, , 16
 .LBB0_21:                               # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a3, $a0
 	ld.w	$a5, $a4, 8
 	bnez	$a5, .LBB0_29
 # %bb.22:                               #   in Loop: Header=BB0_21 Depth=1
-	addi.d	$a1, $a1, 1
+	addi.w	$a1, $a1, 1
 	addi.d	$a0, $a0, 40
 	blt	$a1, $a2, .LBB0_21
 .LBB0_23:

@@ -92,7 +92,8 @@ StringEndsWith:                         # @StringEndsWith
 	addi.w	$a1, $a0, 0
 	blt	$s2, $a1, .LBB2_5
 # %bb.1:
-	sub.w	$a0, $s1, $a0
+	sub.d	$a0, $s1, $a0
+	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a0, $s0, $a0
 	.p2align	4, , 16
 .LBB2_2:                                # =>This Inner Loop Header: Depth=1

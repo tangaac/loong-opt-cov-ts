@@ -1475,13 +1475,13 @@ _ZTS16btCylinderShapeZ:
 
 	.globl	_ZN15btCylinderShapeC1ERK9btVector3
 	.type	_ZN15btCylinderShapeC1ERK9btVector3,@function
-.set _ZN15btCylinderShapeC1ERK9btVector3, _ZN15btCylinderShapeC2ERK9btVector3
+_ZN15btCylinderShapeC1ERK9btVector3 = _ZN15btCylinderShapeC2ERK9btVector3
 	.globl	_ZN16btCylinderShapeXC1ERK9btVector3
 	.type	_ZN16btCylinderShapeXC1ERK9btVector3,@function
-.set _ZN16btCylinderShapeXC1ERK9btVector3, _ZN16btCylinderShapeXC2ERK9btVector3
+_ZN16btCylinderShapeXC1ERK9btVector3 = _ZN16btCylinderShapeXC2ERK9btVector3
 	.globl	_ZN16btCylinderShapeZC1ERK9btVector3
 	.type	_ZN16btCylinderShapeZC1ERK9btVector3,@function
-.set _ZN16btCylinderShapeZC1ERK9btVector3, _ZN16btCylinderShapeZC2ERK9btVector3
+_ZN16btCylinderShapeZC1ERK9btVector3 = _ZN16btCylinderShapeZC2ERK9btVector3
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

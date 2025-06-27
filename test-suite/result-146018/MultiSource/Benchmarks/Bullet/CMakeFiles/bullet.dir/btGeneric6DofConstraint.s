@@ -3734,10 +3734,10 @@ _ZTS13btTypedObject:
 
 	.globl	_ZN23btGeneric6DofConstraintC1Ev
 	.type	_ZN23btGeneric6DofConstraintC1Ev,@function
-.set _ZN23btGeneric6DofConstraintC1Ev, _ZN23btGeneric6DofConstraintC2Ev
+_ZN23btGeneric6DofConstraintC1Ev = _ZN23btGeneric6DofConstraintC2Ev
 	.globl	_ZN23btGeneric6DofConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b
 	.type	_ZN23btGeneric6DofConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b,@function
-.set _ZN23btGeneric6DofConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b, _ZN23btGeneric6DofConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
+_ZN23btGeneric6DofConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b = _ZN23btGeneric6DofConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

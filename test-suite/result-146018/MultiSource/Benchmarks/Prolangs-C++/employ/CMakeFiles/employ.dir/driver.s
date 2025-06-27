@@ -2714,28 +2714,28 @@ _ZTS20HourlyWorkerOvertime:
 
 	.globl	_ZN8EmployeeD1Ev
 	.type	_ZN8EmployeeD1Ev,@function
-.set _ZN8EmployeeD1Ev, _ZN8EmployeeD2Ev
+_ZN8EmployeeD1Ev = _ZN8EmployeeD2Ev
 	.globl	_ZN12EmployeeNodeC1EP8EmployeePS_
 	.type	_ZN12EmployeeNodeC1EP8EmployeePS_,@function
-.set _ZN12EmployeeNodeC1EP8EmployeePS_, _ZN12EmployeeNodeC2EP8EmployeePS_
+_ZN12EmployeeNodeC1EP8EmployeePS_ = _ZN12EmployeeNodeC2EP8EmployeePS_
 	.globl	_ZN7CompanyC1Ev
 	.type	_ZN7CompanyC1Ev,@function
-.set _ZN7CompanyC1Ev, _ZN7CompanyC2Ev
+_ZN7CompanyC1Ev = _ZN7CompanyC2Ev
 	.globl	_ZN4BossC1EPKcS1_f
 	.type	_ZN4BossC1EPKcS1_f,@function
-.set _ZN4BossC1EPKcS1_f, _ZN4BossC2EPKcS1_f
+_ZN4BossC1EPKcS1_f = _ZN4BossC2EPKcS1_f
 	.globl	_ZN18CommissionedWorkerC1EPKcS1_ff
 	.type	_ZN18CommissionedWorkerC1EPKcS1_ff,@function
-.set _ZN18CommissionedWorkerC1EPKcS1_ff, _ZN18CommissionedWorkerC2EPKcS1_ff
+_ZN18CommissionedWorkerC1EPKcS1_ff = _ZN18CommissionedWorkerC2EPKcS1_ff
 	.globl	_ZN11PieceWorkerC1EPKcS1_f
 	.type	_ZN11PieceWorkerC1EPKcS1_f,@function
-.set _ZN11PieceWorkerC1EPKcS1_f, _ZN11PieceWorkerC2EPKcS1_f
+_ZN11PieceWorkerC1EPKcS1_f = _ZN11PieceWorkerC2EPKcS1_f
 	.globl	_ZN22HourlyWorkerNoOvertimeC1EPKcS1_f
 	.type	_ZN22HourlyWorkerNoOvertimeC1EPKcS1_f,@function
-.set _ZN22HourlyWorkerNoOvertimeC1EPKcS1_f, _ZN22HourlyWorkerNoOvertimeC2EPKcS1_f
+_ZN22HourlyWorkerNoOvertimeC1EPKcS1_f = _ZN22HourlyWorkerNoOvertimeC2EPKcS1_f
 	.globl	_ZN20HourlyWorkerOvertimeC1EPKcS1_f
 	.type	_ZN20HourlyWorkerOvertimeC1EPKcS1_f,@function
-.set _ZN20HourlyWorkerOvertimeC1EPKcS1_f, _ZN20HourlyWorkerOvertimeC2EPKcS1_f
+_ZN20HourlyWorkerOvertimeC1EPKcS1_f = _ZN20HourlyWorkerOvertimeC2EPKcS1_f
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

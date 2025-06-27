@@ -6825,7 +6825,7 @@ _ZN17btSoftBodyHelpers20CreateFromTetGenDataER19btSoftBodyWorldInfoPKcS3_S3_bbb:
 .LBB19_3:                               # %_ZL8nextLinePKc.exit
 	ld.w	$s5, $sp, 52
 	blt	$s5, $a0, .LBB19_9
-# %bb.4:                                # %.lr.ph.i44
+# %bb.4:                                # %.lr.ph.preheader
 	slli.d	$a0, $s5, 4
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)

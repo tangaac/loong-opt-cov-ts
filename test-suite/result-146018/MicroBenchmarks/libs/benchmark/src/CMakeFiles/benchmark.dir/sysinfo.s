@@ -6381,11 +6381,11 @@ _GLOBAL__sub_I_sysinfo.cc:              # @_GLOBAL__sub_I_sysinfo.cc
 	.globl	_ZN9benchmark7CPUInfoC1Ev
 	.type	_ZN9benchmark7CPUInfoC1Ev,@function
 	.hidden	_ZN9benchmark7CPUInfoC1Ev
-.set _ZN9benchmark7CPUInfoC1Ev, _ZN9benchmark7CPUInfoC2Ev
+_ZN9benchmark7CPUInfoC1Ev = _ZN9benchmark7CPUInfoC2Ev
 	.globl	_ZN9benchmark10SystemInfoC1Ev
 	.type	_ZN9benchmark10SystemInfoC1Ev,@function
 	.hidden	_ZN9benchmark10SystemInfoC1Ev
-.set _ZN9benchmark10SystemInfoC1Ev, _ZN9benchmark10SystemInfoC2Ev
+_ZN9benchmark10SystemInfoC1Ev = _ZN9benchmark10SystemInfoC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

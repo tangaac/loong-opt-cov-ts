@@ -361,7 +361,6 @@ inflate_table:                          # @inflate_table
 	b	.LBB0_69
 .LBB0_68:                               #   in Loop: Header=BB0_64 Depth=2
 	sub.d	$s4, $s8, $t2
-	bstrpick.d	$s4, $s4, 31, 0
 	slli.d	$s4, $s4, 1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ldx.b	$ra, $a0, $s4

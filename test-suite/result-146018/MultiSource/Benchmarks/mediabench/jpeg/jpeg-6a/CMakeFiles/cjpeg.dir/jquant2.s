@@ -3096,7 +3096,7 @@ fill_inverse_cmap:                      # @fill_inverse_cmap
 # %bb.91:                               #   in Loop: Header=BB10_86 Depth=1
 	sub.d	$t7, $s7, $t5
 	alsl.d	$t7, $t7, $t7, 1
-	mulw.d.wu	$t7, $t7, $t7
+	mulw.d.w	$t7, $t7, $t7
 	add.d	$s5, $t7, $s5
 	move	$s8, $a6
 	ld.bu	$ra, $a4, 0
@@ -3135,7 +3135,7 @@ fill_inverse_cmap:                      # @fill_inverse_cmap
 	bgeu	$t7, $ra, .LBB10_97
 # %bb.96:                               #   in Loop: Header=BB10_86 Depth=1
 	sub.d	$t7, $ra, $t1
-	mulw.d.wu	$t7, $t7, $t7
+	mulw.d.w	$t7, $t7, $t7
 	add.d	$s5, $t7, $s5
 	move	$t7, $a7
 	b	.LBB10_85

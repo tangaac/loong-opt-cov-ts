@@ -976,7 +976,7 @@ _ZTSZN23btStridingMeshInterface23calculateAabbBruteForceER9btVector3S1_E23AabbCa
 
 	.globl	_ZN23btStridingMeshInterfaceD1Ev
 	.type	_ZN23btStridingMeshInterfaceD1Ev,@function
-.set _ZN23btStridingMeshInterfaceD1Ev, _ZN23btStridingMeshInterfaceD2Ev
+_ZN23btStridingMeshInterfaceD1Ev = _ZN23btStridingMeshInterfaceD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

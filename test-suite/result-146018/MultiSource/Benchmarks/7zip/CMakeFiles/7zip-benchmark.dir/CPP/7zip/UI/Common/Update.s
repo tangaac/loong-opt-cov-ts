@@ -636,14 +636,14 @@ _ZN18COutMultiVolStream5WriteEPKvjPj:   # @_ZN18COutMultiVolStream5WriteEPKvjPj
 	.p2align	4, , 16
 .LBB1_69:                               #   in Loop: Header=BB1_3 Depth=1
 	ld.w	$a0, $s1, 84
-	slt	$a1, $s2, $a0
 	addi.w	$a0, $a0, -1
-	maskeqz	$a2, $s2, $a1
-	ld.d	$a3, $s1, 88
+	slt	$a1, $s2, $a0
 	masknez	$a0, $a0, $a1
-	or	$a0, $a2, $a0
+	ld.d	$a2, $s1, 88
+	maskeqz	$a1, $s2, $a1
+	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 3
-	ldx.d	$s5, $a3, $a0
+	ldx.d	$s5, $a2, $a0
 	ld.d	$s4, $s1, 16
 	bgeu	$s4, $s5, .LBB1_75
 # %bb.70:                               #   in Loop: Header=BB1_3 Depth=1

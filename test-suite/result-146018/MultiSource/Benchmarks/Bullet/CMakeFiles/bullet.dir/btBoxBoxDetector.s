@@ -2327,7 +2327,7 @@ _ZTS36btDiscreteCollisionDetectorInterface:
 
 	.globl	_ZN16btBoxBoxDetectorC1EP10btBoxShapeS1_
 	.type	_ZN16btBoxBoxDetectorC1EP10btBoxShapeS1_,@function
-.set _ZN16btBoxBoxDetectorC1EP10btBoxShapeS1_, _ZN16btBoxBoxDetectorC2EP10btBoxShapeS1_
+_ZN16btBoxBoxDetectorC1EP10btBoxShapeS1_ = _ZN16btBoxBoxDetectorC2EP10btBoxShapeS1_
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

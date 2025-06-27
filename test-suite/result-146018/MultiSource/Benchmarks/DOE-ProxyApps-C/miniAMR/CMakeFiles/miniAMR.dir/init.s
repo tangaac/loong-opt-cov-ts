@@ -91,14 +91,11 @@ init:                                   # @init
 	pcalau12i	$a2, %pc_hi20(num_blocks)
 	ld.d	$a3, $a2, %pc_lo12(num_blocks)
 	mul.d	$a0, $a0, $a7
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 2
-	add.d	$a7, $a3, $a6
+	addi.w	$a6, $zero, -1
 	addi.d	$a2, $a3, 4
-	bgeu	$t0, $a7, .LBB0_8
+	beq	$t0, $a6, .LBB0_8
 # %bb.5:                                # %.lver.check
-	add.d	$a6, $t0, $a6
-	bgeu	$a2, $a6, .LBB0_8
+	beq	$a2, $a6, .LBB0_8
 # %bb.6:                                # %.ph.lver.orig.preheader
 	move	$a2, $zero
 	addi.d	$a3, $a3, 4

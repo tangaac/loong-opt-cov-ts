@@ -1857,62 +1857,63 @@ _ZL21BM_DEL_DOT_VEC_2D_RAWRN9benchmark5StateE: # @_ZL21BM_DEL_DOT_VEC_2D_RAWRN9b
 	vldx	$vr11, $s2, $t4
 	fldx.d	$fa6, $s2, $t4
 	vpackod.d	$vr12, $vr9, $vr8
-	vpackod.d	$vr13, $vr10, $vr8
-	vpackev.d	$vr14, $vr10, $vr8
+	vpackev.d	$vr13, $vr10, $vr8
 	vshuf4i.d	$vr8, $vr7, 12
-	vldx	$vr15, $s4, $t4
+	vldx	$vr14, $s4, $t4
 	vfadd.d	$vr8, $vr12, $vr8
 	vpackev.d	$vr7, $vr7, $vr11
 	vfsub.d	$vr7, $vr8, $vr7
-	vpackod.d	$vr8, $vr15, $vr11
-	vpackev.d	$vr12, $vr15, $vr11
+	vpackev.d	$vr8, $vr14, $vr11
 	vshuf4i.d	$vr11, $vr9, 9
 	vfsub.d	$vr7, $vr7, $vr11
 	vfmul.d	$vr7, $vr7, $vr3
-	fldx.d	$ft1, $a6, $t4
-	fldx.d	$ft3, $a7, $t4
-	vldx	$vr16, $a7, $t4
+	vldx	$vr9, $a7, $t4
+	fldx.d	$ft7, $a6, $t4
+	fldx.d	$ft8, $a7, $t4
 	fldx.d	$ft9, $s3, $t4
 	fldx.d	$ft10, $a5, $t4
-	fadd.d	$ft1, $ft1, $ft3
-	vldx	$vr11, $s3, $t4
-	fsub.d	$ft1, $ft1, $ft9
-	fsub.d	$ft1, $ft1, $ft10
-	fmul.d	$ft1, $ft1, $fa2
-	fldx.d	$ft9, $t0, $t4
-	fldx.d	$ft10, $s4, $t4
-	vfadd.d	$vr8, $vr8, $vr13
-	vfsub.d	$vr13, $vr8, $vr14
-	vfsub.d	$vr12, $vr13, $vr12
-	vpackod.d	$vr13, $vr10, $vr11
-	vpackev.d	$vr14, $vr15, $vr16
-	vshuf4i.d	$vr16, $vr10, 9
-	vfadd.d	$vr10, $vr13, $vr16
-	vfsub.d	$vr10, $vr10, $vr14
-	vshuf4i.d	$vr11, $vr15, 12
-	vfsub.d	$vr10, $vr10, $vr11
-	vfmul.d	$vr10, $vr10, $vr3
-	vfmul.d	$vr11, $vr12, $vr0
-	vreplvei.d	$vr12, $vr11, 0
-	fmul.d	$ft4, $fa5, $ft4
-	vreplvei.d	$vr13, $vr7, 0
-	vreplvei.d	$vr14, $vr7, 1
-	fmadd.d	$ft4, $ft6, $ft5, $ft4
-	fadd.d	$ft4, $ft4, $fa1
-	frecip.d	$ft4, $ft4
+	vldx	$vr19, $s3, $t4
+	fadd.d	$ft7, $ft7, $ft8
+	fsub.d	$ft7, $ft7, $ft9
+	fsub.d	$ft7, $ft7, $ft10
+	fmul.d	$ft7, $ft7, $fa2
+	fldx.d	$ft8, $t0, $t4
+	fldx.d	$ft9, $s4, $t4
+	vshuf4i.d	$vr11, $vr14, 12
+	vshuf4i.d	$vr12, $vr10, 12
+	vfadd.d	$vr12, $vr11, $vr12
+	vfsub.d	$vr13, $vr12, $vr13
+	vfsub.d	$vr13, $vr13, $vr8
+	vpackod.d	$vr14, $vr10, $vr19
+	vori.b	$vr18, $vr9, 0
+	vshuf4i.d	$vr18, $vr10, 9
+	vfadd.d	$vr10, $vr14, $vr18
+	vshuf4i.d	$vr9, $vr8, 12
+	vfsub.d	$vr8, $vr10, $vr9
+	vshuf4i.d	$vr19, $vr11, 12
+	vfsub.d	$vr8, $vr8, $vr19
+	vfmul.d	$vr8, $vr8, $vr3
+	vfmul.d	$vr9, $vr13, $vr0
+	vreplvei.d	$vr10, $vr9, 0
+	fmul.d	$ft2, $fa5, $ft2
+	vreplvei.d	$vr11, $vr7, 0
+	vreplvei.d	$vr13, $vr7, 1
+	fmadd.d	$ft2, $ft5, $ft3, $ft2
+	fadd.d	$ft2, $ft2, $fa1
+	frecip.d	$ft2, $ft2
 	fneg.d	$fa5, $fa5
-	movfr2gr.d	$t5, $ft1
-	vinsgr2vr.d	$vr9, $t5, 0
+	movfr2gr.d	$t5, $ft7
+	vinsgr2vr.d	$vr11, $t5, 0
 	movfr2gr.d	$t5, $fa5
-	vinsgr2vr.d	$vr9, $t5, 1
-	vfmul.d	$vr5, $vr11, $vr9
-	vfmadd.d	$vr5, $vr10, $vr7, $vr5
-	vreplvei.d	$vr7, $vr12, 0
+	vinsgr2vr.d	$vr11, $t5, 1
+	vfmul.d	$vr5, $vr9, $vr11
+	vfmadd.d	$vr5, $vr8, $vr7, $vr5
+	vreplvei.d	$vr7, $vr10, 0
 	vfmul.d	$vr5, $vr7, $vr5
-	vreplvei.d	$vr7, $vr8, 1
+	vreplvei.d	$vr7, $vr12, 1
+	fadd.d	$fa7, $fa7, $ft8
 	fadd.d	$fa7, $fa7, $ft9
-	fadd.d	$fa7, $fa7, $ft10
-	vreplvei.d	$vr8, $vr8, 0
+	vreplvei.d	$vr8, $vr12, 0
 	fadd.d	$fa4, $ft0, $fa4
 	fadd.d	$fa4, $fa4, $fa6
 	fdiv.d	$fa4, $fa7, $fa4

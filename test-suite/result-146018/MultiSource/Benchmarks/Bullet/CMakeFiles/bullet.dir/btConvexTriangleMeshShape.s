@@ -1866,7 +1866,7 @@ _ZTSZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransfo
 
 	.globl	_ZN25btConvexTriangleMeshShapeC1EP23btStridingMeshInterfaceb
 	.type	_ZN25btConvexTriangleMeshShapeC1EP23btStridingMeshInterfaceb,@function
-.set _ZN25btConvexTriangleMeshShapeC1EP23btStridingMeshInterfaceb, _ZN25btConvexTriangleMeshShapeC2EP23btStridingMeshInterfaceb
+_ZN25btConvexTriangleMeshShapeC1EP23btStridingMeshInterfaceb = _ZN25btConvexTriangleMeshShapeC2EP23btStridingMeshInterfaceb
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

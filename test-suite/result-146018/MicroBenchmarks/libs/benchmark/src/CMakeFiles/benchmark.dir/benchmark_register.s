@@ -43281,40 +43281,36 @@ _ZNSt8__detail9_ExecutorIN9__gnu_cxx17__normal_iteratorIPKcNSt7__cxx1112basic_st
 	beqz	$a0, .LBB261_13
 # %bb.8:                                # %.preheader
 	ld.d	$a0, $sp, 160
-	ld.d	$a2, $sp, 152
-	beq	$a0, $a2, .LBB261_13
+	ld.d	$a1, $sp, 152
+	beq	$a0, $a1, .LBB261_13
 # %bb.9:                                # %.lr.ph
-	sub.d	$a0, $a0, $a2
+	sub.d	$a0, $a0, $a1
 	srai.d	$a0, $a0, 3
-	lu12i.w	$a1, -349526
-	ori	$a1, $a1, 2731
-	lu32i.d	$a1, -349526
-	lu52i.d	$a1, $a1, -1366
-	mul.d	$a1, $a0, $a1
+	lu12i.w	$a2, -349526
+	ori	$a2, $a2, 2731
+	lu32i.d	$a2, -349526
 	ld.d	$a3, $s0, 0
-	ori	$a0, $zero, 1
-	sltu	$a4, $a0, $a1
-	maskeqz	$a1, $a1, $a4
-	masknez	$a4, $a0, $a4
-	or	$a1, $a1, $a4
-	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
+	lu52i.d	$a2, $a2, -1366
+	mul.d	$a0, $a0, $a2
+	addi.d	$a1, $a1, 16
+	addi.d	$a2, $a3, 16
+	ori	$a3, $zero, 1
 	b	.LBB261_11
 	.p2align	4, , 16
 .LBB261_10:                             #   in Loop: Header=BB261_11 Depth=1
-	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 24
 	addi.d	$a2, $a2, 24
-	addi.d	$a3, $a3, 24
-	beqz	$a1, .LBB261_13
+	beqz	$a0, .LBB261_13
 .LBB261_11:                             # =>This Inner Loop Header: Depth=1
-	ld.bu	$a4, $a2, 0
-	bne	$a4, $a0, .LBB261_10
+	ld.bu	$a4, $a1, 0
+	bne	$a4, $a3, .LBB261_10
 # %bb.12:                               #   in Loop: Header=BB261_11 Depth=1
-	ld.d	$a4, $a2, -16
-	st.d	$a4, $a3, -16
-	ld.d	$a4, $a2, -8
-	st.d	$a4, $a3, -8
-	st.b	$a0, $a3, 0
+	ld.d	$a4, $a1, -16
+	st.d	$a4, $a2, -16
+	ld.d	$a4, $a1, -8
+	st.d	$a4, $a2, -8
+	st.b	$a3, $a2, 0
 	b	.LBB261_10
 .LBB261_13:                             # %.loopexit
 	ld.d	$a0, $sp, 128
@@ -44750,36 +44746,32 @@ _ZNSt8__detail9_ExecutorIN9__gnu_cxx17__normal_iteratorIPKcNSt7__cxx1112basic_st
 	bne	$s0, $s2, .LBB268_23
 # %bb.18:                               # %.preheader
 	ld.d	$a0, $sp, 152
-	ld.d	$a2, $sp, 144
-	beq	$a0, $a2, .LBB268_23
+	ld.d	$a1, $sp, 144
+	beq	$a0, $a1, .LBB268_23
 # %bb.19:                               # %.lr.ph
-	sub.d	$a0, $a0, $a2
+	sub.d	$a0, $a0, $a1
+	ld.d	$a2, $fp, 0
 	srai.d	$a0, $a0, 3
-	mul.d	$a1, $a0, $s1
-	ld.d	$a3, $fp, 0
-	ori	$a0, $zero, 1
-	sltu	$a4, $a0, $a1
-	maskeqz	$a1, $a1, $a4
-	masknez	$a4, $a0, $a4
-	or	$a1, $a1, $a4
+	mul.d	$a0, $a0, $s1
+	addi.d	$a1, $a1, 16
 	addi.d	$a2, $a2, 16
-	addi.d	$a3, $a3, 16
+	ori	$a3, $zero, 1
 	b	.LBB268_21
 	.p2align	4, , 16
 .LBB268_20:                             #   in Loop: Header=BB268_21 Depth=1
-	addi.d	$a1, $a1, -1
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 24
 	addi.d	$a2, $a2, 24
-	addi.d	$a3, $a3, 24
-	beqz	$a1, .LBB268_23
+	beqz	$a0, .LBB268_23
 .LBB268_21:                             # =>This Inner Loop Header: Depth=1
-	ld.bu	$a4, $a2, 0
-	bne	$a4, $a0, .LBB268_20
+	ld.bu	$a4, $a1, 0
+	bne	$a4, $a3, .LBB268_20
 # %bb.22:                               #   in Loop: Header=BB268_21 Depth=1
-	ld.d	$a4, $a2, -16
-	st.d	$a4, $a3, -16
-	ld.d	$a4, $a2, -8
-	st.d	$a4, $a3, -8
-	st.b	$a0, $a3, 0
+	ld.d	$a4, $a1, -16
+	st.d	$a4, $a2, -16
+	ld.d	$a4, $a1, -8
+	st.d	$a4, $a2, -8
+	st.b	$a3, $a2, 0
 	b	.LBB268_20
 .LBB268_23:                             # %.loopexit
 	ld.d	$a0, $sp, 96
@@ -49320,7 +49312,7 @@ _ZZNKSt8__detail9_ExecutorIN9__gnu_cxx17__normal_iteratorIPKcNSt7__cxx1112basic_
 	.globl	_ZN9benchmark8internal9BenchmarkD1Ev
 	.type	_ZN9benchmark8internal9BenchmarkD1Ev,@function
 	.hidden	_ZN9benchmark8internal9BenchmarkD1Ev
-.set _ZN9benchmark8internal9BenchmarkD1Ev, _ZN9benchmark8internal9BenchmarkD2Ev
+_ZN9benchmark8internal9BenchmarkD1Ev = _ZN9benchmark8internal9BenchmarkD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -48,7 +48,6 @@ foo:                                    # @foo
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -16
 	pcalau12i	$a0, %pc_hi20(u)
 	addi.d	$a0, $a0, %pc_lo12(u)
 	ld.d	$a1, $a0, 0
@@ -79,20 +78,11 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
 	vld	$vr0, $a0, %pc_lo12(.LCPI1_1)
 	vfcmp.cune.s	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	vpickve2gr.w	$a1, $vr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	vpickve2gr.w	$a1, $vr0, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
-	andi	$a0, $a0, 15
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	bnez	$a0, .LBB1_4
 # %bb.3:
 	move	$a0, $zero
-	addi.d	$sp, $sp, 16
 	ret
 .LBB1_4:
 	pcaddu18i	$ra, %call36(abort)

@@ -2162,7 +2162,7 @@ _ZTSN2kc21printer_functor_classE:
 	.dword	_GLOBAL__sub_I_error.cc
 	.globl	_ZN14kc_filePrinterC1EP8_IO_FILE
 	.type	_ZN14kc_filePrinterC1EP8_IO_FILE,@function
-.set _ZN14kc_filePrinterC1EP8_IO_FILE, _ZN14kc_filePrinterC2EP8_IO_FILE
+_ZN14kc_filePrinterC1EP8_IO_FILE = _ZN14kc_filePrinterC2EP8_IO_FILE
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

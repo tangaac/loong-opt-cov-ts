@@ -594,7 +594,7 @@ _ZTS13CMyUnknownImp:
 
 	.globl	_ZN14CLocalProgressC1Ev
 	.type	_ZN14CLocalProgressC1Ev,@function
-.set _ZN14CLocalProgressC1Ev, _ZN14CLocalProgressC2Ev
+_ZN14CLocalProgressC1Ev = _ZN14CLocalProgressC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

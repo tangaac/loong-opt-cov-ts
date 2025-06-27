@@ -3445,16 +3445,16 @@ _ZTSZN28btSortedOverlappingPairCache37removeOverlappingPairsContainingProxyEP17b
 
 	.globl	_ZN28btHashedOverlappingPairCacheC1Ev
 	.type	_ZN28btHashedOverlappingPairCacheC1Ev,@function
-.set _ZN28btHashedOverlappingPairCacheC1Ev, _ZN28btHashedOverlappingPairCacheC2Ev
+_ZN28btHashedOverlappingPairCacheC1Ev = _ZN28btHashedOverlappingPairCacheC2Ev
 	.globl	_ZN28btHashedOverlappingPairCacheD1Ev
 	.type	_ZN28btHashedOverlappingPairCacheD1Ev,@function
-.set _ZN28btHashedOverlappingPairCacheD1Ev, _ZN28btHashedOverlappingPairCacheD2Ev
+_ZN28btHashedOverlappingPairCacheD1Ev = _ZN28btHashedOverlappingPairCacheD2Ev
 	.globl	_ZN28btSortedOverlappingPairCacheC1Ev
 	.type	_ZN28btSortedOverlappingPairCacheC1Ev,@function
-.set _ZN28btSortedOverlappingPairCacheC1Ev, _ZN28btSortedOverlappingPairCacheC2Ev
+_ZN28btSortedOverlappingPairCacheC1Ev = _ZN28btSortedOverlappingPairCacheC2Ev
 	.globl	_ZN28btSortedOverlappingPairCacheD1Ev
 	.type	_ZN28btSortedOverlappingPairCacheD1Ev,@function
-.set _ZN28btSortedOverlappingPairCacheD1Ev, _ZN28btSortedOverlappingPairCacheD2Ev
+_ZN28btSortedOverlappingPairCacheD1Ev = _ZN28btSortedOverlappingPairCacheD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

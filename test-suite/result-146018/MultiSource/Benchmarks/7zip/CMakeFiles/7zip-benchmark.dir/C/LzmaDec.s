@@ -274,7 +274,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	addi.d	$a3, $a0, 16
 	move	$a4, $a2
 	.p2align	4, , 16
-.LBB2_36:                               # %vector.body314
+.LBB2_36:                               # %vector.body312
                                         #   Parent Loop BB2_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vst	$vr0, $a3, -16
@@ -328,7 +328,7 @@ LzmaDec_DecodeToDic:                    # @LzmaDec_DecodeToDic
 	bgeu	$a0, $a2, .LBB2_52
 .LBB2_43:                               #   in Loop: Header=BB2_17 Depth=1
 	move	$s7, $zero
-.LBB2_44:                               # %.lr.ph224.preheader325
+.LBB2_44:                               # %.lr.ph224.preheader323
                                         #   in Loop: Header=BB2_17 Depth=1
 	move	$a0, $fp
 	.p2align	4, , 16

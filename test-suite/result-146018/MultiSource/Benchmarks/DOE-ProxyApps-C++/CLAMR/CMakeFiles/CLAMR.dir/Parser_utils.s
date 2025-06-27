@@ -2034,7 +2034,7 @@ _ZN2PPL10index_baseE:
 
 	.globl	_ZN2PP12Parser_utilsC1Ei
 	.type	_ZN2PP12Parser_utilsC1Ei,@function
-.set _ZN2PP12Parser_utilsC1Ei, _ZN2PP12Parser_utilsC2Ei
+_ZN2PP12Parser_utilsC1Ei = _ZN2PP12Parser_utilsC2Ei
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -182,10 +182,10 @@ _ZTS17btCollisionObject:
 
 	.globl	_ZN17btCollisionObjectC1Ev
 	.type	_ZN17btCollisionObjectC1Ev,@function
-.set _ZN17btCollisionObjectC1Ev, _ZN17btCollisionObjectC2Ev
+_ZN17btCollisionObjectC1Ev = _ZN17btCollisionObjectC2Ev
 	.globl	_ZN17btCollisionObjectD1Ev
 	.type	_ZN17btCollisionObjectD1Ev,@function
-.set _ZN17btCollisionObjectD1Ev, _ZN17btCollisionObjectD2Ev
+_ZN17btCollisionObjectD1Ev = _ZN17btCollisionObjectD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

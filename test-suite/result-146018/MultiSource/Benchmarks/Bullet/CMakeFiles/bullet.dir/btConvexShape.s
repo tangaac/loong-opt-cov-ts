@@ -1106,7 +1106,7 @@ _ZTS13btConvexShape:
 
 	.globl	_ZN13btConvexShapeD1Ev
 	.type	_ZN13btConvexShapeD1Ev,@function
-.set _ZN13btConvexShapeD1Ev, _ZN13btConvexShapeD2Ev
+_ZN13btConvexShapeD1Ev = _ZN13btConvexShapeD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI13btConvexShape

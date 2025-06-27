@@ -119,7 +119,7 @@ _ZTS20btCollisionAlgorithm:
 
 	.globl	_ZN30btActivatingCollisionAlgorithmD1Ev
 	.type	_ZN30btActivatingCollisionAlgorithmD1Ev,@function
-.set _ZN30btActivatingCollisionAlgorithmD1Ev, _ZN30btActivatingCollisionAlgorithmD2Ev
+_ZN30btActivatingCollisionAlgorithmD1Ev = _ZN30btActivatingCollisionAlgorithmD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI30btActivatingCollisionAlgorithm

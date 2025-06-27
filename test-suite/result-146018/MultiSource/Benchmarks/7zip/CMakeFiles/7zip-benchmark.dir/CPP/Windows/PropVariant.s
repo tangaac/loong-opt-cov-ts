@@ -1486,16 +1486,16 @@ _ZN8NWindows4NCOM12CPropVariant7CompareERKS1_: # @_ZN8NWindows4NCOM12CPropVarian
 
 	.globl	_ZN8NWindows4NCOM12CPropVariantC1ERK14tagPROPVARIANT
 	.type	_ZN8NWindows4NCOM12CPropVariantC1ERK14tagPROPVARIANT,@function
-.set _ZN8NWindows4NCOM12CPropVariantC1ERK14tagPROPVARIANT, _ZN8NWindows4NCOM12CPropVariantC2ERK14tagPROPVARIANT
+_ZN8NWindows4NCOM12CPropVariantC1ERK14tagPROPVARIANT = _ZN8NWindows4NCOM12CPropVariantC2ERK14tagPROPVARIANT
 	.globl	_ZN8NWindows4NCOM12CPropVariantC1ERKS1_
 	.type	_ZN8NWindows4NCOM12CPropVariantC1ERKS1_,@function
-.set _ZN8NWindows4NCOM12CPropVariantC1ERKS1_, _ZN8NWindows4NCOM12CPropVariantC2ERKS1_
+_ZN8NWindows4NCOM12CPropVariantC1ERKS1_ = _ZN8NWindows4NCOM12CPropVariantC2ERKS1_
 	.globl	_ZN8NWindows4NCOM12CPropVariantC1EPw
 	.type	_ZN8NWindows4NCOM12CPropVariantC1EPw,@function
-.set _ZN8NWindows4NCOM12CPropVariantC1EPw, _ZN8NWindows4NCOM12CPropVariantC2EPw
+_ZN8NWindows4NCOM12CPropVariantC1EPw = _ZN8NWindows4NCOM12CPropVariantC2EPw
 	.globl	_ZN8NWindows4NCOM12CPropVariantC1EPKw
 	.type	_ZN8NWindows4NCOM12CPropVariantC1EPKw,@function
-.set _ZN8NWindows4NCOM12CPropVariantC1EPKw, _ZN8NWindows4NCOM12CPropVariantC2EPKw
+_ZN8NWindows4NCOM12CPropVariantC1EPKw = _ZN8NWindows4NCOM12CPropVariantC2EPKw
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTIPKc

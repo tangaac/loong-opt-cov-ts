@@ -9044,10 +9044,10 @@ _ZN8NArchive3NXzL9g_ArcInfoE:
 	.dword	_ZTIPKc
 	.globl	_ZN8NArchive3NXz8CHandlerC1Ev
 	.type	_ZN8NArchive3NXz8CHandlerC1Ev,@function
-.set _ZN8NArchive3NXz8CHandlerC1Ev, _ZN8NArchive3NXz8CHandlerC2Ev
+_ZN8NArchive3NXz8CHandlerC1Ev = _ZN8NArchive3NXz8CHandlerC2Ev
 	.globl	_ZN8NArchive3NXz17COpenCallbackWrapC1EP20IArchiveOpenCallback
 	.type	_ZN8NArchive3NXz17COpenCallbackWrapC1EP20IArchiveOpenCallback,@function
-.set _ZN8NArchive3NXz17COpenCallbackWrapC1EP20IArchiveOpenCallback, _ZN8NArchive3NXz17COpenCallbackWrapC2EP20IArchiveOpenCallback
+_ZN8NArchive3NXz17COpenCallbackWrapC1EP20IArchiveOpenCallback = _ZN8NArchive3NXz17COpenCallbackWrapC2EP20IArchiveOpenCallback
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

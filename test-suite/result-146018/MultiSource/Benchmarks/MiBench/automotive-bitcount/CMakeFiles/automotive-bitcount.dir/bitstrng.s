@@ -31,8 +31,8 @@ bitstring:                              # @bitstring
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s1, $s4
-	nor	$a1, $s5, $zero
-	add.d	$a0, $a0, $a1
+	sub.d	$a0, $s5, $a0
+	nor	$a0, $a0, $zero
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a0, $s2, $a0
 	addi.d	$a0, $a0, 1

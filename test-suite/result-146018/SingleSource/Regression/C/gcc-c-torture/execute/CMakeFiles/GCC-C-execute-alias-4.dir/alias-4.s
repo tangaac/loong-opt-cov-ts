@@ -36,9 +36,9 @@ c:
 	.size	c, 4
 
 	.globl	b
-.set b, a
+b = a
 	.globl	d
-.set d, c
+d = c
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym a

@@ -2518,7 +2518,7 @@ _ZTS7CBufferIhE:
 
 	.globl	_ZN7NCrypto6NWzAes8CAesCtr2C1Ev
 	.type	_ZN7NCrypto6NWzAes8CAesCtr2C1Ev,@function
-.set _ZN7NCrypto6NWzAes8CAesCtr2C1Ev, _ZN7NCrypto6NWzAes8CAesCtr2C2Ev
+_ZN7NCrypto6NWzAes8CAesCtr2C1Ev = _ZN7NCrypto6NWzAes8CAesCtr2C2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym g_RandomGenerator

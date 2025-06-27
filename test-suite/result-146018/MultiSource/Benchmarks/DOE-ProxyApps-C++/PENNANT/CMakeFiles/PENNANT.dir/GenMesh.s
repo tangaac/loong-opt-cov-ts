@@ -11586,10 +11586,10 @@ _ZNSt6vectorIiSaIiEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPiS1_EEEEvS
 
 	.globl	_ZN7GenMeshC1EPK9InputFile
 	.type	_ZN7GenMeshC1EPK9InputFile,@function
-.set _ZN7GenMeshC1EPK9InputFile, _ZN7GenMeshC2EPK9InputFile
+_ZN7GenMeshC1EPK9InputFile = _ZN7GenMeshC2EPK9InputFile
 	.globl	_ZN7GenMeshD1Ev
 	.type	_ZN7GenMeshD1Ev,@function
-.set _ZN7GenMeshD1Ev, _ZN7GenMeshD2Ev
+_ZN7GenMeshD1Ev = _ZN7GenMeshD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

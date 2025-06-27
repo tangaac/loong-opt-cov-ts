@@ -3293,10 +3293,10 @@ _ZTS11ALACEncoder:
 
 	.globl	_ZN11ALACEncoderC1Ev
 	.type	_ZN11ALACEncoderC1Ev,@function
-.set _ZN11ALACEncoderC1Ev, _ZN11ALACEncoderC2Ev
+_ZN11ALACEncoderC1Ev = _ZN11ALACEncoderC2Ev
 	.globl	_ZN11ALACEncoderD1Ev
 	.type	_ZN11ALACEncoderD1Ev,@function
-.set _ZN11ALACEncoderD1Ev, _ZN11ALACEncoderD2Ev
+_ZN11ALACEncoderD1Ev = _ZN11ALACEncoderD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI11ALACEncoder

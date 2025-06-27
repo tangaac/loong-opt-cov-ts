@@ -1326,10 +1326,10 @@ _ZTS21btBroadphaseInterface:
 
 	.globl	_ZN18btSimpleBroadphaseC1EiP22btOverlappingPairCache
 	.type	_ZN18btSimpleBroadphaseC1EiP22btOverlappingPairCache,@function
-.set _ZN18btSimpleBroadphaseC1EiP22btOverlappingPairCache, _ZN18btSimpleBroadphaseC2EiP22btOverlappingPairCache
+_ZN18btSimpleBroadphaseC1EiP22btOverlappingPairCache = _ZN18btSimpleBroadphaseC2EiP22btOverlappingPairCache
 	.globl	_ZN18btSimpleBroadphaseD1Ev
 	.type	_ZN18btSimpleBroadphaseD1Ev,@function
-.set _ZN18btSimpleBroadphaseD1Ev, _ZN18btSimpleBroadphaseD2Ev
+_ZN18btSimpleBroadphaseD1Ev = _ZN18btSimpleBroadphaseD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

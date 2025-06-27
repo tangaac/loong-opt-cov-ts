@@ -1320,8 +1320,7 @@ _ZL7topdownP6btDbvtR20btAlignedObjectArrayIP10btDbvtNodeEi: # @_ZL7topdownP6btDb
 .LBB11_32:
 	bstrpick.d	$a0, $a0, 31, 1
 	addi.w	$fp, $a0, 1
-	bstrpick.d	$a0, $fp, 31, 0
-	slli.d	$a0, $a0, 3
+	slli.d	$a0, $fp, 3
 .Ltmp30:
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -4767,10 +4766,10 @@ _ZTSN6btDbvt8ICollideE:
 
 	.globl	_ZN6btDbvtC1Ev
 	.type	_ZN6btDbvtC1Ev,@function
-.set _ZN6btDbvtC1Ev, _ZN6btDbvtC2Ev
+_ZN6btDbvtC1Ev = _ZN6btDbvtC2Ev
 	.globl	_ZN6btDbvtD1Ev
 	.type	_ZN6btDbvtD1Ev,@function
-.set _ZN6btDbvtD1Ev, _ZN6btDbvtD2Ev
+_ZN6btDbvtD1Ev = _ZN6btDbvtD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

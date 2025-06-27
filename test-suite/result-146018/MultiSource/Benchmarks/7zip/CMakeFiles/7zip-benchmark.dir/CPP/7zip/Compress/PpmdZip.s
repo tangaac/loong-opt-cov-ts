@@ -1837,16 +1837,16 @@ _ZTSN9NCompress8NPpmdZip8CEncoderE:
 
 	.globl	_ZN9NCompress8NPpmdZip8CDecoderC1Eb
 	.type	_ZN9NCompress8NPpmdZip8CDecoderC1Eb,@function
-.set _ZN9NCompress8NPpmdZip8CDecoderC1Eb, _ZN9NCompress8NPpmdZip8CDecoderC2Eb
+_ZN9NCompress8NPpmdZip8CDecoderC1Eb = _ZN9NCompress8NPpmdZip8CDecoderC2Eb
 	.globl	_ZN9NCompress8NPpmdZip8CDecoderD1Ev
 	.type	_ZN9NCompress8NPpmdZip8CDecoderD1Ev,@function
-.set _ZN9NCompress8NPpmdZip8CDecoderD1Ev, _ZN9NCompress8NPpmdZip8CDecoderD2Ev
+_ZN9NCompress8NPpmdZip8CDecoderD1Ev = _ZN9NCompress8NPpmdZip8CDecoderD2Ev
 	.globl	_ZN9NCompress8NPpmdZip8CEncoderD1Ev
 	.type	_ZN9NCompress8NPpmdZip8CEncoderD1Ev,@function
-.set _ZN9NCompress8NPpmdZip8CEncoderD1Ev, _ZN9NCompress8NPpmdZip8CEncoderD2Ev
+_ZN9NCompress8NPpmdZip8CEncoderD1Ev = _ZN9NCompress8NPpmdZip8CEncoderD2Ev
 	.globl	_ZN9NCompress8NPpmdZip8CEncoderC1Ev
 	.type	_ZN9NCompress8NPpmdZip8CEncoderC1Ev,@function
-.set _ZN9NCompress8NPpmdZip8CEncoderC1Ev, _ZN9NCompress8NPpmdZip8CEncoderC2Ev
+_ZN9NCompress8NPpmdZip8CEncoderC1Ev = _ZN9NCompress8NPpmdZip8CEncoderC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -394,8 +394,8 @@ more_arrays:                            # @more_arrays
 	bge	$a3, $a1, .LBB3_11
 # %bb.10:                               # %.lr.ph13.preheader
 	alsl.d	$a0, $a3, $s1, 3
-	nor	$a2, $a3, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $a3, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

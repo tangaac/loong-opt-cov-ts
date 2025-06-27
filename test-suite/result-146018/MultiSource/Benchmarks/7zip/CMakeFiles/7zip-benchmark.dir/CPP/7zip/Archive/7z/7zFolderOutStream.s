@@ -1713,7 +1713,7 @@ _ZTS13CMyUnknownImp:
 
 	.globl	_ZN8NArchive3N7z16CFolderOutStreamC1Ev
 	.type	_ZN8NArchive3N7z16CFolderOutStreamC1Ev,@function
-.set _ZN8NArchive3N7z16CFolderOutStreamC1Ev, _ZN8NArchive3N7z16CFolderOutStreamC2Ev
+_ZN8NArchive3N7z16CFolderOutStreamC1Ev = _ZN8NArchive3N7z16CFolderOutStreamC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -443,9 +443,9 @@ alocv:                                  # @alocv
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	nor	$a1, $s0, $zero
-	add.d	$a0, $a0, $a1
-	bstrins.d	$a0, $zero, 1, 0
+	sub.d	$a0, $s0, $a0
+	addi.w	$a1, $zero, -4
+	andn	$a0, $a1, $a0
 	addi.d	$a2, $a0, 4
 	move	$a0, $s0
 	move	$a1, $zero

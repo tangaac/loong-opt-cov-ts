@@ -483,9 +483,8 @@ orderedDitherKernel:                    # @orderedDitherKernel
 	mul.d	$t8, $t8, $a6
 	srli.d	$t8, $t8, 33
 	alsl.d	$t8, $t8, $t8, 1
-	sub.d	$t8, $t5, $t8
+	sub.w	$t8, $t5, $t8
 	ldx.w	$fp, $a3, $t6
-	bstrpick.d	$t8, $t8, 31, 0
 	slli.d	$s0, $t8, 3
 	alsl.d	$t8, $t8, $s0, 2
 	add.d	$t8, $t1, $t8

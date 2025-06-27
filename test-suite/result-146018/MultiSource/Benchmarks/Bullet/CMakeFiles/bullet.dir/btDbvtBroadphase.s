@@ -1791,30 +1791,28 @@ _ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE: # @_ZN6btD
 	st.d	$a1, $a0, 0
 	st.d	$a2, $a0, 8
 	ori	$s4, $zero, 1
-	ori	$s3, $zero, 124
+	ori	$s7, $zero, 124
 	ori	$s6, $zero, 1
 	b	.LBB12_14
 .LBB12_12:                              #   in Loop: Header=BB12_14 Depth=1
-	ld.d	$a1, $s0, 48
-	ld.d	$a2, $s2, 40
-	alsl.d	$a3, $s5, $a1, 4
-	stx.d	$a0, $a1, $s7
-	st.d	$a2, $a3, 8
+	ld.d	$a1, $s2, 40
+	stx.d	$a2, $s3, $s8
+	st.d	$a1, $a0, 8
 	ld.d	$a0, $s1, 48
-	ld.d	$a2, $s2, 40
-	alsl.d	$a3, $s6, $a1, 4
-	slli.d	$a4, $s6, 4
-	stx.d	$a0, $a1, $a4
-	st.d	$a2, $a3, 8
+	ld.d	$a1, $s2, 40
+	alsl.d	$a2, $s6, $s3, 4
+	slli.d	$a3, $s6, 4
+	stx.d	$a0, $s3, $a3
+	st.d	$a1, $a2, 8
 	ld.d	$a0, $s1, 40
 	ld.d	$a1, $s2, 48
-	st.d	$a0, $a3, 16
-	st.d	$a1, $a3, 24
+	st.d	$a0, $a2, 16
+	st.d	$a1, $a2, 24
 	ld.d	$a0, $s1, 48
 	ld.d	$a1, $s2, 48
 	addi.w	$s5, $s6, 3
-	st.d	$a0, $a3, 32
-	st.d	$a1, $a3, 40
+	st.d	$a0, $a2, 32
+	st.d	$a1, $a2, 40
 	.p2align	4, , 16
 .LBB12_13:                              # %_Z9IntersectRK12btDbvtAabbMmS1_.exit.thread
                                         #   in Loop: Header=BB12_14 Depth=1
@@ -1822,25 +1820,25 @@ _ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE: # @_ZN6btD
 	beqz	$s5, .LBB12_42
 .LBB12_14:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_20 Depth 2
-	ld.d	$a0, $s0, 48
+	ld.d	$s3, $s0, 48
 	addi.w	$s5, $s6, -1
-	alsl.d	$a1, $s5, $a0, 4
-	slli.d	$s7, $s5, 4
-	ldx.d	$s1, $a0, $s7
-	ld.d	$s2, $a1, 8
-	bge	$s3, $s5, .LBB12_27
+	alsl.d	$a0, $s5, $s3, 4
+	slli.d	$s8, $s5, 4
+	ldx.d	$s1, $s3, $s8
+	ld.d	$s2, $a0, 8
+	bge	$s7, $s5, .LBB12_27
 # %bb.15:                               #   in Loop: Header=BB12_14 Depth=1
 	ld.w	$a0, $s0, 36
-	slli.w	$s8, $a0, 1
-	bge	$a0, $s8, .LBB12_26
+	slli.w	$s7, $a0, 1
+	bge	$a0, $s7, .LBB12_26
 # %bb.16:                               #   in Loop: Header=BB12_14 Depth=1
 	ld.w	$a1, $s0, 40
-	bge	$a1, $s8, .LBB12_26
+	bge	$a1, $s7, .LBB12_26
 # %bb.17:                               #   in Loop: Header=BB12_14 Depth=1
 	beqz	$a0, .LBB12_22
 # %bb.18:                               # %_ZN20btAlignedObjectArrayIN6btDbvt6sStkNNEE8allocateEi.exit.i.i
                                         #   in Loop: Header=BB12_14 Depth=1
-	slli.d	$a0, $s8, 4
+	slli.d	$a0, $s7, 4
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
@@ -1880,11 +1878,11 @@ _ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE: # @_ZN6btD
                                         #   in Loop: Header=BB12_14 Depth=1
 	st.b	$s4, $s0, 56
 	st.d	$s3, $s0, 48
-	st.w	$s8, $s0, 40
+	st.w	$s7, $s0, 40
 .LBB12_26:                              # %_ZN20btAlignedObjectArrayIN6btDbvt6sStkNNEE6resizeEiRKS1_.exit69
                                         #   in Loop: Header=BB12_14 Depth=1
-	st.w	$s8, $s0, 36
-	addi.w	$s3, $s8, -4
+	st.w	$s7, $s0, 36
+	addi.w	$s7, $s7, -4
 .LBB12_27:                              #   in Loop: Header=BB12_14 Depth=1
 	beq	$s1, $s2, .LBB12_37
 # %bb.28:                               #   in Loop: Header=BB12_14 Depth=1
@@ -1923,53 +1921,50 @@ _ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE: # @_ZN6btD
 	ld.d	$a1, $s2, 48
 	beqz	$a0, .LBB12_39
 # %bb.35:                               #   in Loop: Header=BB12_14 Depth=1
-	ld.d	$a0, $s1, 40
+	ld.d	$a2, $s1, 40
+	alsl.d	$a0, $s5, $s3, 4
 	bnez	$a1, .LBB12_12
 # %bb.36:                               #   in Loop: Header=BB12_14 Depth=1
-	ld.d	$a1, $s0, 48
-	alsl.d	$a2, $s5, $a1, 4
-	stx.d	$a0, $a1, $s7
-	st.d	$s2, $a2, 8
+	stx.d	$a2, $s3, $s8
+	st.d	$s2, $a0, 8
 	ld.d	$a0, $s1, 48
 	addi.w	$s5, $s6, 1
-	alsl.d	$a2, $s6, $a1, 4
-	slli.d	$a3, $s6, 4
-	stx.d	$a0, $a1, $a3
-	st.d	$s2, $a2, 8
+	alsl.d	$a1, $s6, $s3, 4
+	slli.d	$a2, $s6, 4
+	stx.d	$a0, $s3, $a2
+	st.d	$s2, $a1, 8
 	b	.LBB12_13
 	.p2align	4, , 16
 .LBB12_37:                              #   in Loop: Header=BB12_14 Depth=1
 	ld.d	$a0, $s1, 48
 	beqz	$a0, .LBB12_13
 # %bb.38:                               #   in Loop: Header=BB12_14 Depth=1
-	ld.d	$a0, $s0, 48
-	ld.d	$a1, $s1, 40
-	alsl.d	$a2, $s5, $a0, 4
-	stx.d	$a1, $a0, $s7
-	st.d	$a1, $a2, 8
-	ld.d	$a1, $s1, 48
-	alsl.d	$a2, $s6, $a0, 4
-	slli.d	$a3, $s6, 4
-	stx.d	$a1, $a0, $a3
-	st.d	$a1, $a2, 8
+	ld.d	$a0, $s1, 40
+	alsl.d	$a1, $s5, $s3, 4
+	stx.d	$a0, $s3, $s8
+	st.d	$a0, $a1, 8
+	ld.d	$a0, $s1, 48
+	alsl.d	$a1, $s6, $s3, 4
+	slli.d	$a2, $s6, 4
+	stx.d	$a0, $s3, $a2
+	st.d	$a0, $a1, 8
 	vld	$vr0, $s1, 40
 	addi.w	$s5, $s6, 2
-	vst	$vr0, $a2, 16
+	vst	$vr0, $a1, 16
 	b	.LBB12_13
 .LBB12_39:                              #   in Loop: Header=BB12_14 Depth=1
 	beqz	$a1, .LBB12_41
 # %bb.40:                               #   in Loop: Header=BB12_14 Depth=1
-	ld.d	$a0, $s0, 48
-	ld.d	$a1, $s2, 40
-	alsl.d	$a2, $s5, $a0, 4
-	stx.d	$s1, $a0, $s7
-	st.d	$a1, $a2, 8
-	ld.d	$a1, $s2, 48
+	ld.d	$a0, $s2, 40
+	alsl.d	$a1, $s5, $s3, 4
+	stx.d	$s1, $s3, $s8
+	st.d	$a0, $a1, 8
+	ld.d	$a0, $s2, 48
 	addi.w	$s5, $s6, 1
-	alsl.d	$a2, $s6, $a0, 4
-	slli.d	$a3, $s6, 4
-	stx.d	$s1, $a0, $a3
-	st.d	$a1, $a2, 8
+	alsl.d	$a1, $s6, $s3, 4
+	slli.d	$a2, $s6, 4
+	stx.d	$s1, $s3, $a2
+	st.d	$a0, $a1, 8
 	b	.LBB12_13
 .LBB12_41:                              #   in Loop: Header=BB12_14 Depth=1
 	ld.d	$a0, $fp, 0
@@ -3257,10 +3252,10 @@ _ZTS19BroadphaseRayTester:
 
 	.globl	_ZN16btDbvtBroadphaseC1EP22btOverlappingPairCache
 	.type	_ZN16btDbvtBroadphaseC1EP22btOverlappingPairCache,@function
-.set _ZN16btDbvtBroadphaseC1EP22btOverlappingPairCache, _ZN16btDbvtBroadphaseC2EP22btOverlappingPairCache
+_ZN16btDbvtBroadphaseC1EP22btOverlappingPairCache = _ZN16btDbvtBroadphaseC2EP22btOverlappingPairCache
 	.globl	_ZN16btDbvtBroadphaseD1Ev
 	.type	_ZN16btDbvtBroadphaseD1Ev,@function
-.set _ZN16btDbvtBroadphaseD1Ev, _ZN16btDbvtBroadphaseD2Ev
+_ZN16btDbvtBroadphaseD1Ev = _ZN16btDbvtBroadphaseD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

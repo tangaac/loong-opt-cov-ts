@@ -3049,7 +3049,7 @@ jump_lookups:
 
 	.globl	_ZN13HexxagonBoardC1ERKS_
 	.type	_ZN13HexxagonBoardC1ERKS_,@function
-.set _ZN13HexxagonBoardC1ERKS_, _ZN13HexxagonBoardC2ERKS_
+_ZN13HexxagonBoardC1ERKS_ = _ZN13HexxagonBoardC2ERKS_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

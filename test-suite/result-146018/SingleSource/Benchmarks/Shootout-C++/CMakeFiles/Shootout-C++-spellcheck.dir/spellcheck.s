@@ -181,9 +181,8 @@ _ZN13spell_checkerC2Ev:                 # @_ZN13spell_checkerC2Ev
 	ldx.d	$s1, $s4, $a0
 	beqz	$s1, .LBB1_43
 # %bb.2:
-	addi.d	$s5, $sp, 15
 	addi.d	$s6, $sp, 16
-	ori	$s7, $zero, 2
+	ori	$s7, $zero, 3
 	pcalau12i	$a0, %pc_hi20(_ZSt19piecewise_construct)
 	addi.d	$s0, $a0, %pc_lo12(_ZSt19piecewise_construct)
 	b	.LBB1_7
@@ -253,13 +252,14 @@ _ZN13spell_checkerC2Ev:                 # @_ZN13spell_checkerC2Ev
 	andi	$a0, $a0, 5
 	bnez	$a0, .LBB1_42
 # %bb.13:                               #   in Loop: Header=BB1_7 Depth=1
-	ld.d	$a0, $sp, 56
-	ld.d	$s8, $fp, 16
-	add.d	$a0, $s5, $a0
-	beqz	$s8, .LBB1_23
+	ld.d	$s5, $fp, 16
+	ld.d	$s8, $sp, 56
+	beqz	$s5, .LBB1_23
 # %bb.14:                               # %.lr.ph.i.i.i.preheader
                                         #   in Loop: Header=BB1_7 Depth=1
-	move	$a1, $s8
+	addi.d	$a0, $sp, 15
+	add.d	$a0, $a0, $s8
+	move	$a1, $s5
 	move	$a2, $s3
 	b	.LBB1_17
 	.p2align	4, , 16
@@ -299,7 +299,7 @@ _ZN13spell_checkerC2Ev:                 # @_ZN13spell_checkerC2Ev
 	bgeu	$s6, $a1, .LBB1_38
 .LBB1_23:                               # %.thread
                                         #   in Loop: Header=BB1_7 Depth=1
-	sub.d	$s2, $a0, $s6
+	addi.d	$s2, $s8, -1
 .Ltmp18:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
@@ -307,7 +307,7 @@ _ZN13spell_checkerC2Ev:                 # @_ZN13spell_checkerC2Ev
 .Ltmp19:
 # %bb.24:                               #   in Loop: Header=BB1_7 Depth=1
 	move	$s1, $a0
-	blt	$s2, $s7, .LBB1_40
+	blt	$s8, $s7, .LBB1_40
 # %bb.25:                               #   in Loop: Header=BB1_7 Depth=1
 	addi.d	$a1, $sp, 16
 	move	$a0, $s1
@@ -320,7 +320,7 @@ _ZN13spell_checkerC2Ev:                 # @_ZN13spell_checkerC2Ev
 	st.d	$s1, $sp, 0
 	st.d	$a2, $sp, 8
 	move	$a1, $s3
-	beqz	$s8, .LBB1_4
+	beqz	$s5, .LBB1_4
 # %bb.27:                               # %.lr.ph.i.i.i.i.preheader
                                         #   in Loop: Header=BB1_7 Depth=1
 	move	$a0, $s3
@@ -332,25 +332,25 @@ _ZN13spell_checkerC2Ev:                 # @_ZN13spell_checkerC2Ev
 	move	$a0, $a3
 .LBB1_29:                               # %_ZNKSt4lessISt4pairIPKcS2_EEclERKS3_S6_.exit.thread10.i.i.i.i
                                         #   in Loop: Header=BB1_30 Depth=2
-	ldx.d	$s8, $s8, $a1
-	beqz	$s8, .LBB1_34
+	ldx.d	$s5, $s5, $a1
+	beqz	$s5, .LBB1_34
 .LBB1_30:                               # %.lr.ph.i.i.i.i
                                         #   Parent Loop BB1_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a4, $s8, 32
+	ld.d	$a4, $s5, 32
 	move	$a3, $a0
 	bltu	$a4, $s1, .LBB1_28
 # %bb.31:                               #   in Loop: Header=BB1_30 Depth=2
 	ori	$a1, $zero, 16
 	bgeu	$s1, $a4, .LBB1_33
 # %bb.32:                               #   in Loop: Header=BB1_30 Depth=2
-	move	$a0, $s8
+	move	$a0, $s5
 	b	.LBB1_29
 	.p2align	4, , 16
 .LBB1_33:                               # %_ZNKSt4lessISt4pairIPKcS2_EEclERKS3_S6_.exit.i.i.i.i
                                         #   in Loop: Header=BB1_30 Depth=2
-	ld.d	$a4, $s8, 40
-	move	$a0, $s8
+	ld.d	$a4, $s5, 40
+	move	$a0, $s5
 	bltu	$a4, $a2, .LBB1_28
 	b	.LBB1_29
 	.p2align	4, , 16

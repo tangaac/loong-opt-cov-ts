@@ -1938,7 +1938,7 @@ _ZTSN8NWindows5NFile3NIO9CFileBaseE:
 
 	.globl	_ZN8NWindows5NFile3NIO9CFileBaseD1Ev
 	.type	_ZN8NWindows5NFile3NIO9CFileBaseD1Ev,@function
-.set _ZN8NWindows5NFile3NIO9CFileBaseD1Ev, _ZN8NWindows5NFile3NIO9CFileBaseD2Ev
+_ZN8NWindows5NFile3NIO9CFileBaseD1Ev = _ZN8NWindows5NFile3NIO9CFileBaseD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

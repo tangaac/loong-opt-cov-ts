@@ -3051,7 +3051,7 @@ _ZTS7CBufferIhE:
 
 	.globl	_ZN8NArchive4NZip10CAddCommonC1ERKNS0_22CCompressionMethodModeE
 	.type	_ZN8NArchive4NZip10CAddCommonC1ERKNS0_22CCompressionMethodModeE,@function
-.set _ZN8NArchive4NZip10CAddCommonC1ERKNS0_22CCompressionMethodModeE, _ZN8NArchive4NZip10CAddCommonC2ERKNS0_22CCompressionMethodModeE
+_ZN8NArchive4NZip10CAddCommonC1ERKNS0_22CCompressionMethodModeE = _ZN8NArchive4NZip10CAddCommonC2ERKNS0_22CCompressionMethodModeE
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

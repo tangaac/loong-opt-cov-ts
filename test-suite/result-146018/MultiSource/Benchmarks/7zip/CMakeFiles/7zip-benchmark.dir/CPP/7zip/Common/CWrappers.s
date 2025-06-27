@@ -747,22 +747,22 @@ _ZL14Wrap_WriteBytePvh:                 # @_ZL14Wrap_WriteBytePvh
 
 	.globl	_ZN21CCompressProgressWrapC1EP21ICompressProgressInfo
 	.type	_ZN21CCompressProgressWrapC1EP21ICompressProgressInfo,@function
-.set _ZN21CCompressProgressWrapC1EP21ICompressProgressInfo, _ZN21CCompressProgressWrapC2EP21ICompressProgressInfo
+_ZN21CCompressProgressWrapC1EP21ICompressProgressInfo = _ZN21CCompressProgressWrapC2EP21ICompressProgressInfo
 	.globl	_ZN16CSeqInStreamWrapC1EP19ISequentialInStream
 	.type	_ZN16CSeqInStreamWrapC1EP19ISequentialInStream,@function
-.set _ZN16CSeqInStreamWrapC1EP19ISequentialInStream, _ZN16CSeqInStreamWrapC2EP19ISequentialInStream
+_ZN16CSeqInStreamWrapC1EP19ISequentialInStream = _ZN16CSeqInStreamWrapC2EP19ISequentialInStream
 	.globl	_ZN17CSeqOutStreamWrapC1EP20ISequentialOutStream
 	.type	_ZN17CSeqOutStreamWrapC1EP20ISequentialOutStream,@function
-.set _ZN17CSeqOutStreamWrapC1EP20ISequentialOutStream, _ZN17CSeqOutStreamWrapC2EP20ISequentialOutStream
+_ZN17CSeqOutStreamWrapC1EP20ISequentialOutStream = _ZN17CSeqOutStreamWrapC2EP20ISequentialOutStream
 	.globl	_ZN17CSeekInStreamWrapC1EP9IInStream
 	.type	_ZN17CSeekInStreamWrapC1EP9IInStream,@function
-.set _ZN17CSeekInStreamWrapC1EP9IInStream, _ZN17CSeekInStreamWrapC2EP9IInStream
+_ZN17CSeekInStreamWrapC1EP9IInStream = _ZN17CSeekInStreamWrapC2EP9IInStream
 	.globl	_ZN14CByteInBufWrapC1Ev
 	.type	_ZN14CByteInBufWrapC1Ev,@function
-.set _ZN14CByteInBufWrapC1Ev, _ZN14CByteInBufWrapC2Ev
+_ZN14CByteInBufWrapC1Ev = _ZN14CByteInBufWrapC2Ev
 	.globl	_ZN15CByteOutBufWrapC1Ev
 	.type	_ZN15CByteOutBufWrapC1Ev,@function
-.set _ZN15CByteOutBufWrapC1Ev, _ZN15CByteOutBufWrapC2Ev
+_ZN15CByteOutBufWrapC1Ev = _ZN15CByteOutBufWrapC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZL16CompressProgressPvyy

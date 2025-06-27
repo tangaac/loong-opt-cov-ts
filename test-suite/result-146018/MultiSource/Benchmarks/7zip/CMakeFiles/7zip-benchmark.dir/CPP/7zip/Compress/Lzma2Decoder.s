@@ -3053,10 +3053,10 @@ _ZTS13CMyUnknownImp:
 
 	.globl	_ZN9NCompress6NLzma28CDecoderC1Ev
 	.type	_ZN9NCompress6NLzma28CDecoderC1Ev,@function
-.set _ZN9NCompress6NLzma28CDecoderC1Ev, _ZN9NCompress6NLzma28CDecoderC2Ev
+_ZN9NCompress6NLzma28CDecoderC1Ev = _ZN9NCompress6NLzma28CDecoderC2Ev
 	.globl	_ZN9NCompress6NLzma28CDecoderD1Ev
 	.type	_ZN9NCompress6NLzma28CDecoderD1Ev,@function
-.set _ZN9NCompress6NLzma28CDecoderD1Ev, _ZN9NCompress6NLzma28CDecoderD2Ev
+_ZN9NCompress6NLzma28CDecoderD1Ev = _ZN9NCompress6NLzma28CDecoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

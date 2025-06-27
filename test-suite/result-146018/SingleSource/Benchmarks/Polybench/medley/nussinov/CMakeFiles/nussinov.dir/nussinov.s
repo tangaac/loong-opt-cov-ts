@@ -403,7 +403,7 @@ main:                                   # @main
 	addi.d	$a0, $a0, 32
 	vadd.d	$vr0, $vr0, $vr11
 	bnez	$a0, .LBB7_18
-# %bb.19:                               # %vec.epilog.vector.body102
+# %bb.19:                               # %vec.epilog.vector.body105
 	stptr.w	$s8, $fp, 2496
 	move	$a0, $s1
 	move	$a1, $zero

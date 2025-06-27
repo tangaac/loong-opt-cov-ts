@@ -517,7 +517,7 @@ _ZTSN36btDiscreteCollisionDetectorInterface6ResultE:
 
 	.globl	_ZN16btManifoldResultC1EP17btCollisionObjectS1_
 	.type	_ZN16btManifoldResultC1EP17btCollisionObjectS1_,@function
-.set _ZN16btManifoldResultC1EP17btCollisionObjectS1_, _ZN16btManifoldResultC2EP17btCollisionObjectS1_
+_ZN16btManifoldResultC1EP17btCollisionObjectS1_ = _ZN16btManifoldResultC2EP17btCollisionObjectS1_
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

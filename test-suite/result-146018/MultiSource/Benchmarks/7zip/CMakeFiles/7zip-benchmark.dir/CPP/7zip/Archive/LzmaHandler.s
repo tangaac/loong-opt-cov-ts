@@ -3852,7 +3852,7 @@ _ZN8NArchive5NLzma9NLzma86ArL9g_ArcInfoE:
 	.dword	_ZTIPKc
 	.globl	_ZN8NArchive5NLzma8CDecoderD1Ev
 	.type	_ZN8NArchive5NLzma8CDecoderD1Ev,@function
-.set _ZN8NArchive5NLzma8CDecoderD1Ev, _ZN8NArchive5NLzma8CDecoderD2Ev
+_ZN8NArchive5NLzma8CDecoderD1Ev = _ZN8NArchive5NLzma8CDecoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

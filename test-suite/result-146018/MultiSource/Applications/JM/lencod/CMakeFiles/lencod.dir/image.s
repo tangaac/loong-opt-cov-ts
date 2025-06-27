@@ -1160,7 +1160,7 @@ encode_one_frame:                       # @encode_one_frame
 	ldptr.w	$a6, $a1, 15240
 	mul.d	$a3, $a3, $a7
 	ori	$a7, $zero, 2
-	add.w	$a3, $a3, $a5
+	add.d	$a3, $a3, $a5
 	blt	$a6, $a7, .LBB2_15
 # %bb.13:                               # %.lr.ph72.i.preheader
 	ld.w	$a5, $a4, 0
@@ -1290,8 +1290,8 @@ encode_one_frame:                       # @encode_one_frame
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a6, $fa0
 	add.w	$a2, $a2, $a6
-	slt	$a6, $a2, $a3
 	addi.w	$a3, $a3, -1
+	slt	$a6, $a2, $a3
 	ldptr.w	$a7, $a0, 5116
 	maskeqz	$a2, $a2, $a6
 	masknez	$a3, $a3, $a6

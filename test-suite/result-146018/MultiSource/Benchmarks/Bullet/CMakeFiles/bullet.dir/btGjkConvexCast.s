@@ -503,7 +503,7 @@ _ZTSN36btDiscreteCollisionDetectorInterface6ResultE:
 
 	.globl	_ZN15btGjkConvexCastC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolver
 	.type	_ZN15btGjkConvexCastC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolver,@function
-.set _ZN15btGjkConvexCastC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolver, _ZN15btGjkConvexCastC2EPK13btConvexShapeS2_P22btVoronoiSimplexSolver
+_ZN15btGjkConvexCastC1EPK13btConvexShapeS2_P22btVoronoiSimplexSolver = _ZN15btGjkConvexCastC2EPK13btConvexShapeS2_P22btVoronoiSimplexSolver
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

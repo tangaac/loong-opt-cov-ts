@@ -703,49 +703,34 @@ hypre_BoxGetStrideSize:                 # @hypre_BoxGetStrideSize
 # %bb.0:
 	ld.w	$a3, $a0, 12
 	ld.w	$a4, $a0, 0
-	sub.w	$a4, $a3, $a4
-	addi.w	$a3, $zero, -1
-	slt	$a5, $a3, $a4
-	maskeqz	$a4, $a4, $a5
-	masknez	$a5, $a3, $a5
-	or	$a5, $a4, $a5
-	lu12i.w	$a4, 524287
-	ori	$a4, $a4, 4094
-	bltu	$a4, $a5, .LBB15_2
+	sub.w	$a3, $a3, $a4
+	bltz	$a3, .LBB15_2
 # %bb.1:
-	ld.w	$a6, $a1, 0
-	div.w	$a5, $a5, $a6
-	addi.d	$a5, $a5, 1
+	ld.w	$a4, $a1, 0
+	div.w	$a3, $a3, $a4
+	addi.d	$a3, $a3, 1
 	b	.LBB15_3
 .LBB15_2:
-	move	$a5, $zero
+	move	$a3, $zero
 .LBB15_3:
-	st.w	$a5, $a2, 0
-	ld.w	$a5, $a0, 16
-	ld.w	$a6, $a0, 4
-	sub.w	$a5, $a5, $a6
-	slt	$a6, $a3, $a5
-	maskeqz	$a5, $a5, $a6
-	masknez	$a6, $a3, $a6
-	or	$a5, $a5, $a6
-	bltu	$a4, $a5, .LBB15_5
+	st.w	$a3, $a2, 0
+	ld.w	$a3, $a0, 16
+	ld.w	$a4, $a0, 4
+	sub.w	$a3, $a3, $a4
+	bltz	$a3, .LBB15_5
 # %bb.4:
-	ld.w	$a6, $a1, 4
-	div.w	$a5, $a5, $a6
-	addi.d	$a5, $a5, 1
+	ld.w	$a4, $a1, 4
+	div.w	$a3, $a3, $a4
+	addi.d	$a3, $a3, 1
 	b	.LBB15_6
 .LBB15_5:
-	move	$a5, $zero
+	move	$a3, $zero
 .LBB15_6:
-	st.w	$a5, $a2, 4
-	ld.w	$a5, $a0, 20
+	st.w	$a3, $a2, 4
+	ld.w	$a3, $a0, 20
 	ld.w	$a0, $a0, 8
-	sub.w	$a0, $a5, $a0
-	slt	$a5, $a3, $a0
-	maskeqz	$a0, $a0, $a5
-	masknez	$a3, $a3, $a5
-	or	$a0, $a0, $a3
-	bltu	$a4, $a0, .LBB15_8
+	sub.w	$a0, $a3, $a0
+	bltz	$a0, .LBB15_8
 # %bb.7:
 	ld.w	$a1, $a1, 8
 	div.w	$a0, $a0, $a1

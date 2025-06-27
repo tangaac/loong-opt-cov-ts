@@ -95,10 +95,10 @@ _ZTS31btInternalTriangleIndexCallback:
 
 	.globl	_ZN18btTriangleCallbackD1Ev
 	.type	_ZN18btTriangleCallbackD1Ev,@function
-.set _ZN18btTriangleCallbackD1Ev, _ZN18btTriangleCallbackD2Ev
+_ZN18btTriangleCallbackD1Ev = _ZN18btTriangleCallbackD2Ev
 	.globl	_ZN31btInternalTriangleIndexCallbackD1Ev
 	.type	_ZN31btInternalTriangleIndexCallbackD1Ev,@function
-.set _ZN31btInternalTriangleIndexCallbackD1Ev, _ZN31btInternalTriangleIndexCallbackD2Ev
+_ZN31btInternalTriangleIndexCallbackD1Ev = _ZN31btInternalTriangleIndexCallbackD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI18btTriangleCallback

@@ -39577,9 +39577,9 @@ _ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi:
 	bgeu	$s2, $a1, .LBB23_16
 # %bb.6:
 	slli.d	$a2, $s2, 2
-	ori	$a0, $zero, 5
+	ori	$a0, $zero, 2
 	sub.d	$s3, $s0, $a2
-	blt	$a2, $a0, .LBB23_48
+	blt	$s2, $a0, .LBB23_48
 # %bb.7:
 	move	$a0, $s0
 	move	$a1, $s3
@@ -39811,9 +39811,9 @@ _ZNSt6vectorIiSaIiEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPiS1_EEmRKi:
 	st.w	$a0, $s2, 0
 	b	.LBB23_40
 .LBB23_48:
-	ori	$a1, $zero, 4
+	ori	$a1, $zero, 1
 	move	$a0, $s0
-	bne	$a2, $a1, .LBB23_8
+	bne	$s2, $a1, .LBB23_8
 # %bb.49:
 	ld.w	$a0, $s3, 0
 	st.w	$a0, $s0, 0
@@ -39921,9 +39921,9 @@ _ZNSt6vectorIeSaIeEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPeS1_EEmRKe:
 	bgeu	$s2, $a1, .LBB24_16
 # %bb.6:
 	slli.d	$a2, $s2, 4
-	ori	$a0, $zero, 17
+	ori	$a0, $zero, 2
 	sub.d	$s3, $s0, $a2
-	blt	$a2, $a0, .LBB24_49
+	blt	$s2, $a0, .LBB24_49
 # %bb.7:
 	move	$a0, $s0
 	move	$a1, $s3
@@ -40169,9 +40169,9 @@ _ZNSt6vectorIeSaIeEE14_M_fill_insertEN9__gnu_cxx17__normal_iteratorIPeS1_EEmRKe:
 	vst	$vr0, $s5, 0
 	b	.LBB24_41
 .LBB24_49:
-	ori	$a1, $zero, 16
+	ori	$a1, $zero, 1
 	move	$a0, $s0
-	bne	$a2, $a1, .LBB24_8
+	bne	$s2, $a1, .LBB24_8
 # %bb.50:
 	vld	$vr0, $s3, 0
 	vst	$vr0, $s0, 0

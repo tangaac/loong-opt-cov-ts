@@ -1079,7 +1079,7 @@ _ZTS13CMyUnknownImp:
 
 	.globl	_ZN9NCompress10CCopyCoderD1Ev
 	.type	_ZN9NCompress10CCopyCoderD1Ev,@function
-.set _ZN9NCompress10CCopyCoderD1Ev, _ZN9NCompress10CCopyCoderD2Ev
+_ZN9NCompress10CCopyCoderD1Ev = _ZN9NCompress10CCopyCoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

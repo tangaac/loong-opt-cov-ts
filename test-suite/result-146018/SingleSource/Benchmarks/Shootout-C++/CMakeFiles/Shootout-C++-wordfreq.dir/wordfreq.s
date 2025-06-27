@@ -404,28 +404,23 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp11:
 .LBB1_33:                               # %.lr.ph.preheader
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $s5
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $s5, $a1
-	or	$s0, $a1, $a0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$s2, $s3, 8
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$s0, $s2, 8
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	.p2align	4, , 16
 .LBB1_34:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a1, $s2, 0
-	ld.d	$a2, $s2, -8
+	ld.w	$a1, $s0, 0
+	ld.d	$a2, $s0, -8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.d	$s0, $s0, -1
-	addi.d	$s2, $s2, 16
-	bnez	$s0, .LBB1_34
+	addi.d	$s5, $s5, -1
+	addi.d	$s0, $s0, 16
+	bnez	$s5, .LBB1_34
 # %bb.35:                               # %._crit_edge
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0

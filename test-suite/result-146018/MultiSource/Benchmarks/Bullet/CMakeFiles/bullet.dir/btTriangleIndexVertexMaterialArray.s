@@ -618,7 +618,7 @@ _ZTS34btTriangleIndexVertexMaterialArray:
 
 	.globl	_ZN34btTriangleIndexVertexMaterialArrayC1EiPiiiPfiiPhiS0_i
 	.type	_ZN34btTriangleIndexVertexMaterialArrayC1EiPiiiPfiiPhiS0_i,@function
-.set _ZN34btTriangleIndexVertexMaterialArrayC1EiPiiiPfiiPhiS0_i, _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i
+_ZN34btTriangleIndexVertexMaterialArrayC1EiPiiiPfiiPhiS0_i = _ZN34btTriangleIndexVertexMaterialArrayC2EiPiiiPfiiPhiS0_i
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

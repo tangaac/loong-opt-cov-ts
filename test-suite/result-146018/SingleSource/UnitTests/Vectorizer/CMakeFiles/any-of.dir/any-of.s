@@ -6770,7 +6770,6 @@ _ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB12_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -6808,16 +6807,9 @@ _ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bnez	$a6, .LBB12_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a0, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a0, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a0, $a0, $a5
-	andi	$a0, $a0, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	sltui	$a0, $a0, 1
 	sub.w	$a0, $zero, $a0
 	ori	$a0, $a0, 3
@@ -6840,8 +6832,7 @@ _ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB12_8
-.LBB12_9:
-	addi.d	$sp, $sp, 16
+.LBB12_9:                               # %"_ZSt10__invoke_rIiRZ4mainE3$_1JPiS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end12:
 	.size	_ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end12-_ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -7217,7 +7208,6 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB17_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -7255,16 +7245,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bnez	$a6, .LBB17_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a0, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a0, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a0, $a0, $a5
-	andi	$a0, $a0, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	sltui	$a0, $a0, 1
 	sub.w	$a0, $zero, $a0
 	ori	$a0, $a0, 3
@@ -7288,8 +7271,7 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB17_8
-.LBB17_9:
-	addi.d	$sp, $sp, 16
+.LBB17_9:                               # %"_ZSt10__invoke_rIiRZ4mainE3$_1JPfS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end17:
 	.size	_ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end17-_ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -7477,7 +7459,6 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	lu12i.w	$a4, 15
 	beqz	$a3, .LBB22_3
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -16
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ori	$a5, $zero, 8
@@ -7486,7 +7467,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 # %bb.2:
 	move	$a3, $zero
 	ori	$a5, $a4, 4095
-	b	.LBB22_13
+	b	.LBB22_14
 .LBB22_3:
 	ori	$a5, $a4, 4095
 	ext.w.h	$a0, $a5
@@ -7494,7 +7475,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 .LBB22_4:                               # %vector.main.loop.iter.check
 	ori	$a5, $zero, 16
 	ori	$a4, $a4, 4095
-	bgeu	$a3, $a5, .LBB22_9
+	bgeu	$a3, $a5, .LBB22_10
 # %bb.5:
 	move	$a3, $zero
 	move	$a5, $a4
@@ -7521,32 +7502,17 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a6, $a6, 16
 	bnez	$a4, .LBB22_7
 # %bb.8:                                # %vec.epilog.middle.block
-	vpickve2gr.h	$a4, $vr0, 0
-	vpickve2gr.h	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a4, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr0, 2
-	bstrins.d	$a4, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr0, 3
-	bstrins.d	$a4, $a5, 3, 3
-	vpickve2gr.h	$a5, $vr0, 4
-	bstrins.d	$a4, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr0, 5
-	bstrins.d	$a4, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr0, 6
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a4, $a4, $a5
-	vpickve2gr.h	$a5, $vr0, 7
-	slli.d	$a5, $a5, 7
-	or	$a4, $a4, $a5
-	andi	$a4, $a4, 255
+	vslli.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	sltui	$a4, $a4, 1
 	sub.d	$a4, $zero, $a4
 	ori	$a5, $a4, 3
-	bne	$a3, $a2, .LBB22_13
-	b	.LBB22_15
-.LBB22_9:                               # %vector.ph
+	bne	$a3, $a2, .LBB22_14
+.LBB22_9:                               # %"_ZSt10__invoke_rIsRZ4mainE3$_3JPsS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
+	ext.w.h	$a0, $a5
+	ret
+.LBB22_10:                              # %vector.ph
 	bstrpick.d	$a3, $a2, 31, 4
 	slli.d	$a3, $a3, 4
 	addi.d	$a5, $a1, 16
@@ -7555,7 +7521,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	move	$a7, $a3
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB22_10:                              # %vector.body
+.LBB22_11:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a6, -16
 	vld	$vr3, $a6, 0
@@ -7568,43 +7534,26 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a7, $a7, -16
 	addi.d	$a5, $a5, 32
 	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB22_10
-# %bb.11:                               # %middle.block
+	bnez	$a7, .LBB22_11
+# %bb.12:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.h	$a5, $vr0, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	bstrins.d	$a5, $a6, 3, 3
-	vpickve2gr.h	$a6, $vr0, 4
-	bstrins.d	$a5, $a6, 4, 4
-	vpickve2gr.h	$a6, $vr0, 5
-	bstrins.d	$a5, $a6, 5, 5
-	vpickve2gr.h	$a6, $vr0, 6
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a5, $a5, $a6
-	vpickve2gr.h	$a6, $vr0, 7
-	slli.d	$a6, $a6, 7
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 255
+	vslli.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	sub.d	$a5, $zero, $a5
 	ori	$a5, $a5, 3
-	beq	$a3, $a2, .LBB22_15
-# %bb.12:                               # %vec.epilog.iter.check
+	beq	$a3, $a2, .LBB22_9
+# %bb.13:                               # %vec.epilog.iter.check
 	andi	$a6, $a2, 8
 	bnez	$a6, .LBB22_6
-.LBB22_13:                              # %.lr.ph.i.i.i.preheader
+.LBB22_14:                              # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a1, $a3, $a1, 1
 	alsl.d	$a0, $a3, $a0, 1
 	ori	$a3, $zero, 3
 	.p2align	4, , 16
-.LBB22_14:                              # %.lr.ph.i.i.i
+.LBB22_15:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a4, $a0, 0
 	ld.h	$a6, $a1, 0
@@ -7615,11 +7564,8 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2
 	addi.d	$a0, $a0, 2
-	bnez	$a2, .LBB22_14
-.LBB22_15:
-	addi.d	$sp, $sp, 16
-	ext.w.h	$a0, $a5
-	ret
+	bnez	$a2, .LBB22_15
+	b	.LBB22_9
 .Lfunc_end22:
 	.size	_ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end22-_ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
                                         # -- End function
@@ -7708,7 +7654,6 @@ _ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB26_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -7746,16 +7691,9 @@ _ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bnez	$a6, .LBB26_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a0, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a0, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a0, $a0, $a5
-	andi	$a0, $a0, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	sltui	$a0, $a0, 1
 	sub.w	$a0, $zero, $a0
 	ori	$a0, $a0, 3
@@ -7778,8 +7716,7 @@ _ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB26_8
-.LBB26_9:
-	addi.d	$sp, $sp, 16
+.LBB26_9:                               # %"_ZSt10__invoke_rIiRZ4mainE3$_5JPiS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end26:
 	.size	_ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end26-_ZNSt17_Function_handlerIFiPiS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -7870,7 +7807,6 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB30_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -7908,16 +7844,9 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bnez	$a6, .LBB30_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a0, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a0, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a0, $a0, $a5
-	andi	$a0, $a0, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	sltui	$a0, $a0, 1
 	sub.w	$a0, $zero, $a0
 	ori	$a0, $a0, 3
@@ -7941,8 +7870,7 @@ _ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB30_8
-.LBB30_9:
-	addi.d	$sp, $sp, 16
+.LBB30_9:                               # %"_ZSt10__invoke_rIiRZ4mainE3$_5JPfS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end30:
 	.size	_ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end30-_ZNSt17_Function_handlerIFiPfS0_jEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -8036,7 +7964,6 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	lu12i.w	$a4, 15
 	beqz	$a3, .LBB34_3
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -16
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ori	$a5, $zero, 8
@@ -8045,7 +7972,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 # %bb.2:
 	move	$a3, $zero
 	ori	$a5, $a4, 4095
-	b	.LBB34_13
+	b	.LBB34_14
 .LBB34_3:
 	ori	$a5, $a4, 4095
 	ext.w.h	$a0, $a5
@@ -8053,7 +7980,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 .LBB34_4:                               # %vector.main.loop.iter.check
 	ori	$a5, $zero, 16
 	ori	$a4, $a4, 4095
-	bgeu	$a3, $a5, .LBB34_9
+	bgeu	$a3, $a5, .LBB34_10
 # %bb.5:
 	move	$a3, $zero
 	move	$a5, $a4
@@ -8080,32 +8007,17 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a6, $a6, 16
 	bnez	$a4, .LBB34_7
 # %bb.8:                                # %vec.epilog.middle.block
-	vpickve2gr.h	$a4, $vr0, 0
-	vpickve2gr.h	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a4, $a5, 63, 1
-	vpickve2gr.h	$a5, $vr0, 2
-	bstrins.d	$a4, $a5, 2, 2
-	vpickve2gr.h	$a5, $vr0, 3
-	bstrins.d	$a4, $a5, 3, 3
-	vpickve2gr.h	$a5, $vr0, 4
-	bstrins.d	$a4, $a5, 4, 4
-	vpickve2gr.h	$a5, $vr0, 5
-	bstrins.d	$a4, $a5, 5, 5
-	vpickve2gr.h	$a5, $vr0, 6
-	andi	$a5, $a5, 1
-	slli.d	$a5, $a5, 6
-	or	$a4, $a4, $a5
-	vpickve2gr.h	$a5, $vr0, 7
-	slli.d	$a5, $a5, 7
-	or	$a4, $a4, $a5
-	andi	$a4, $a4, 255
+	vslli.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	sltui	$a4, $a4, 1
 	sub.d	$a4, $zero, $a4
 	ori	$a5, $a4, 3
-	bne	$a3, $a2, .LBB34_13
-	b	.LBB34_15
-.LBB34_9:                               # %vector.ph
+	bne	$a3, $a2, .LBB34_14
+.LBB34_9:                               # %"_ZSt10__invoke_rIsRZ4mainE3$_7JPsS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
+	ext.w.h	$a0, $a5
+	ret
+.LBB34_10:                              # %vector.ph
 	bstrpick.d	$a3, $a2, 31, 4
 	slli.d	$a3, $a3, 4
 	addi.d	$a5, $a1, 16
@@ -8114,7 +8026,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	move	$a7, $a3
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB34_10:                              # %vector.body
+.LBB34_11:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a6, -16
 	vld	$vr3, $a6, 0
@@ -8127,43 +8039,26 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a7, $a7, -16
 	addi.d	$a5, $a5, 32
 	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB34_10
-# %bb.11:                               # %middle.block
+	bnez	$a7, .LBB34_11
+# %bb.12:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.h	$a5, $vr0, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	bstrins.d	$a5, $a6, 3, 3
-	vpickve2gr.h	$a6, $vr0, 4
-	bstrins.d	$a5, $a6, 4, 4
-	vpickve2gr.h	$a6, $vr0, 5
-	bstrins.d	$a5, $a6, 5, 5
-	vpickve2gr.h	$a6, $vr0, 6
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a5, $a5, $a6
-	vpickve2gr.h	$a6, $vr0, 7
-	slli.d	$a6, $a6, 7
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 255
+	vslli.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	sub.d	$a5, $zero, $a5
 	ori	$a5, $a5, 3
-	beq	$a3, $a2, .LBB34_15
-# %bb.12:                               # %vec.epilog.iter.check
+	beq	$a3, $a2, .LBB34_9
+# %bb.13:                               # %vec.epilog.iter.check
 	andi	$a6, $a2, 8
 	bnez	$a6, .LBB34_6
-.LBB34_13:                              # %.lr.ph.i.i.i.preheader
+.LBB34_14:                              # %.lr.ph.i.i.i.preheader
 	sub.d	$a2, $a2, $a3
 	alsl.d	$a1, $a3, $a1, 1
 	alsl.d	$a0, $a3, $a0, 1
 	ori	$a3, $zero, 3
 	.p2align	4, , 16
-.LBB34_14:                              # %.lr.ph.i.i.i
+.LBB34_15:                              # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.h	$a4, $a0, 0
 	ld.h	$a6, $a1, 0
@@ -8174,11 +8069,8 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 2
 	addi.d	$a0, $a0, 2
-	bnez	$a2, .LBB34_14
-.LBB34_15:
-	addi.d	$sp, $sp, 16
-	ext.w.h	$a0, $a5
-	ret
+	bnez	$a2, .LBB34_15
+	b	.LBB34_9
 .Lfunc_end34:
 	.size	_ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end34-_ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
                                         # -- End function
@@ -8372,7 +8264,6 @@ _ZNSt17_Function_handlerIFjPjS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB39_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -8409,16 +8300,9 @@ _ZNSt17_Function_handlerIFjPjS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bnez	$a7, .LBB39_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a5, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	ori	$a6, $zero, 3
 	masknez	$a6, $a6, $a5
@@ -8443,8 +8327,7 @@ _ZNSt17_Function_handlerIFjPjS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB39_8
-.LBB39_9:
-	addi.d	$sp, $sp, 16
+.LBB39_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_9JPjS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end39:
 	.size	_ZNSt17_Function_handlerIFjPjS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end39-_ZNSt17_Function_handlerIFjPjS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -8535,7 +8418,6 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB43_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -8572,16 +8454,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	bnez	$a7, .LBB43_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a5, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	ori	$a6, $zero, 3
 	masknez	$a6, $a6, $a5
@@ -8607,8 +8482,7 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a3, .LBB43_8
-.LBB43_9:
-	addi.d	$sp, $sp, 16
+.LBB43_9:                               # %"_ZSt10__invoke_rIjRZ4mainE3$_9JPfS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end43:
 	.size	_ZNSt17_Function_handlerIFjPfS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end43-_ZNSt17_Function_handlerIFjPfS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -8793,7 +8667,6 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB48_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -8840,16 +8713,9 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a7, .LBB48_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a5, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	ori	$a6, $zero, 3
 	masknez	$a6, $a6, $a5
@@ -8874,8 +8740,7 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a2, $a2, 2
 	addi.d	$a1, $a1, 2
 	bnez	$a3, .LBB48_8
-.LBB48_9:                               # %._crit_edge.loopexit.i.i.i
-	addi.d	$sp, $sp, 16
+.LBB48_9:                               # %"_ZSt10__invoke_rItRZ4mainE4$_11JPtS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	bstrpick.d	$a0, $a0, 15, 0
 	ret
 .Lfunc_end48:
@@ -8966,7 +8831,6 @@ _ZNSt17_Function_handlerIFjPjS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a3, $a3, 0
 	beqz	$a3, .LBB52_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a0, $zero, 8
@@ -9004,16 +8868,9 @@ _ZNSt17_Function_handlerIFjPjS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a7, .LBB52_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a0, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a0, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a0, $a0, $a6
-	andi	$a0, $a0, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	sltui	$a0, $a0, 1
 	masknez	$a6, $a3, $a0
 	ori	$a7, $zero, 3
@@ -9037,8 +8894,7 @@ _ZNSt17_Function_handlerIFjPjS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a4, .LBB52_8
-.LBB52_9:
-	addi.d	$sp, $sp, 16
+.LBB52_9:                               # %"_ZSt10__invoke_rIjRZ4mainE4$_13JPjS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end52:
 	.size	_ZNSt17_Function_handlerIFjPjS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end52-_ZNSt17_Function_handlerIFjPjS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -9129,7 +8985,6 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a3, $a3, 0
 	beqz	$a3, .LBB56_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a0, $zero, 8
@@ -9167,16 +9022,9 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	bnez	$a7, .LBB56_5
 # %bb.6:                                # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a0, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a0, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a0, $a0, $a6
-	andi	$a0, $a0, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	sltui	$a0, $a0, 1
 	masknez	$a6, $a3, $a0
 	ori	$a7, $zero, 3
@@ -9201,8 +9049,7 @@ _ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a2, $a2, 4
 	addi.d	$a1, $a1, 4
 	bnez	$a4, .LBB56_8
-.LBB56_9:
-	addi.d	$sp, $sp, 16
+.LBB56_9:                               # %"_ZSt10__invoke_rIjRZ4mainE4$_13JPfS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end56:
 	.size	_ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end56-_ZNSt17_Function_handlerIFjPfS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
@@ -9293,7 +9140,6 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB60_3
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -9302,14 +9148,14 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.2:
 	move	$a4, $zero
 	ori	$a5, $zero, 3
-	b	.LBB60_13
+	b	.LBB60_14
 .LBB60_3:
 	ori	$a5, $zero, 3
 	bstrpick.d	$a0, $a5, 15, 0
 	ret
 .LBB60_4:                               # %vector.main.loop.iter.check
 	ori	$a4, $zero, 16
-	bgeu	$a0, $a4, .LBB60_9
+	bgeu	$a0, $a4, .LBB60_10
 # %bb.5:
 	move	$a4, $zero
 	ori	$a5, $zero, 3
@@ -9336,34 +9182,19 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a7, $a7, 16
 	bnez	$a5, .LBB60_7
 # %bb.8:                                # %vec.epilog.middle.block
-	vpickve2gr.h	$a5, $vr0, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	bstrins.d	$a5, $a6, 3, 3
-	vpickve2gr.h	$a6, $vr0, 4
-	bstrins.d	$a5, $a6, 4, 4
-	vpickve2gr.h	$a6, $vr0, 5
-	bstrins.d	$a5, $a6, 5, 5
-	vpickve2gr.h	$a6, $vr0, 6
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a5, $a5, $a6
-	vpickve2gr.h	$a6, $vr0, 7
-	slli.d	$a6, $a6, 7
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 255
+	vslli.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	masknez	$a6, $a0, $a5
 	ori	$a7, $zero, 3
 	maskeqz	$a5, $a7, $a5
 	or	$a5, $a5, $a6
-	bne	$a4, $a3, .LBB60_13
-	b	.LBB60_15
-.LBB60_9:                               # %vector.ph
+	bne	$a4, $a3, .LBB60_14
+.LBB60_9:                               # %"_ZSt10__invoke_rItRZ4mainE4$_15JPtS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
+	bstrpick.d	$a0, $a5, 15, 0
+	ret
+.LBB60_10:                              # %vector.ph
 	bstrpick.d	$a4, $a3, 31, 4
 	slli.d	$a4, $a4, 4
 	addi.d	$a5, $a2, 16
@@ -9372,7 +9203,7 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	move	$a7, $a4
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB60_10:                              # %vector.body
+.LBB60_11:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a6, -16
 	vld	$vr3, $a6, 0
@@ -9385,44 +9216,27 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a7, $a7, -16
 	addi.d	$a5, $a5, 32
 	addi.d	$a6, $a6, 32
-	bnez	$a7, .LBB60_10
-# %bb.11:                               # %middle.block
+	bnez	$a7, .LBB60_11
+# %bb.12:                               # %middle.block
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.h	$a5, $vr0, 0
-	vpickve2gr.h	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a5, $a6, 63, 1
-	vpickve2gr.h	$a6, $vr0, 2
-	bstrins.d	$a5, $a6, 2, 2
-	vpickve2gr.h	$a6, $vr0, 3
-	bstrins.d	$a5, $a6, 3, 3
-	vpickve2gr.h	$a6, $vr0, 4
-	bstrins.d	$a5, $a6, 4, 4
-	vpickve2gr.h	$a6, $vr0, 5
-	bstrins.d	$a5, $a6, 5, 5
-	vpickve2gr.h	$a6, $vr0, 6
-	andi	$a6, $a6, 1
-	slli.d	$a6, $a6, 6
-	or	$a5, $a5, $a6
-	vpickve2gr.h	$a6, $vr0, 7
-	slli.d	$a6, $a6, 7
-	or	$a5, $a5, $a6
-	andi	$a5, $a5, 255
+	vslli.h	$vr0, $vr0, 15
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a5, $vr0, 0
 	sltui	$a5, $a5, 1
 	masknez	$a6, $a0, $a5
 	ori	$a7, $zero, 3
 	maskeqz	$a5, $a7, $a5
 	or	$a5, $a5, $a6
-	beq	$a4, $a3, .LBB60_15
-# %bb.12:                               # %vec.epilog.iter.check
+	beq	$a4, $a3, .LBB60_9
+# %bb.13:                               # %vec.epilog.iter.check
 	andi	$a6, $a3, 8
 	bnez	$a6, .LBB60_6
-.LBB60_13:                              # %vec.epilog.scalar.ph.preheader
+.LBB60_14:                              # %vec.epilog.scalar.ph.preheader
 	sub.d	$a3, $a3, $a4
 	alsl.d	$a2, $a4, $a2, 1
 	alsl.d	$a1, $a4, $a1, 1
 	.p2align	4, , 16
-.LBB60_14:                              # %vec.epilog.scalar.ph
+.LBB60_15:                              # %vec.epilog.scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.hu	$a4, $a1, 0
 	ld.hu	$a6, $a2, 0
@@ -9433,11 +9247,8 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a3, $a3, -1
 	addi.d	$a2, $a2, 2
 	addi.d	$a1, $a1, 2
-	bnez	$a3, .LBB60_14
-.LBB60_15:
-	addi.d	$sp, $sp, 16
-	bstrpick.d	$a0, $a5, 15, 0
-	ret
+	bnez	$a3, .LBB60_15
+	b	.LBB60_9
 .Lfunc_end60:
 	.size	_ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_Oj, .Lfunc_end60-_ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
                                         # -- End function

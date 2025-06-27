@@ -768,11 +768,11 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $s4, 288
-.LBB9_32:                               # %.thread261
+.LBB9_32:                               # %.thread259
 	ori	$a1, $zero, 1
 	move	$a0, $s0
 	b	.LBB9_44
-.LBB9_33:                               # %.thread264
+.LBB9_33:                               # %.thread262
 	ori	$a0, $zero, 7
 	slt	$a1, $a0, $s5
 	masknez	$a0, $a0, $a1
@@ -830,13 +830,13 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a1, $s5, 1, 1
 	addi.d	$s3, $s4, 336
-.LBB9_37:                               # %.thread261
+.LBB9_37:                               # %.thread259
 	move	$a0, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
 	andi	$a1, $s5, 1
-.LBB9_38:                               # %.thread261
+.LBB9_38:                               # %.thread259
 	move	$a0, $s0
 	move	$a2, $s3
 	b	.LBB9_44
@@ -863,7 +863,7 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 	b	.LBB9_43
 .LBB9_41:
 	addi.d	$a2, $s4, 240
-.LBB9_42:                               # %.thread261
+.LBB9_42:                               # %.thread259
 	ori	$a1, $zero, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
@@ -872,10 +872,10 @@ writeMB_typeInfo_CABAC:                 # @writeMB_typeInfo_CABAC
 .LBB9_43:
 	move	$a0, $s0
 	move	$a1, $zero
-.LBB9_44:                               # %.thread261
+.LBB9_44:                               # %.thread259
 	pcaddu18i	$ra, %call36(biari_encode_symbol)
 	jirl	$ra, $ra, 0
-.LBB9_45:                               # %.thread261
+.LBB9_45:                               # %.thread259
 	ld.d	$a0, $s1, 0
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 40

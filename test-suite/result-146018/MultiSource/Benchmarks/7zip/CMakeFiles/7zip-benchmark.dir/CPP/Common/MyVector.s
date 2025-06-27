@@ -451,7 +451,7 @@ _ZTS17CBaseRecordVector:
 
 	.globl	_ZN17CBaseRecordVectorD1Ev
 	.type	_ZN17CBaseRecordVectorD1Ev,@function
-.set _ZN17CBaseRecordVectorD1Ev, _ZN17CBaseRecordVectorD2Ev
+_ZN17CBaseRecordVectorD1Ev = _ZN17CBaseRecordVectorD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

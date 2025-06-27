@@ -306,7 +306,7 @@ _ZTS16CSystemException:
 
 	.globl	_ZN9CInBufferC1Ev
 	.type	_ZN9CInBufferC1Ev,@function
-.set _ZN9CInBufferC1Ev, _ZN9CInBufferC2Ev
+_ZN9CInBufferC1Ev = _ZN9CInBufferC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

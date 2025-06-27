@@ -1466,10 +1466,10 @@ _ZTS5Truck:
 
 	.globl	_ZN6GarageC1Ei
 	.type	_ZN6GarageC1Ei,@function
-.set _ZN6GarageC1Ei, _ZN6GarageC2Ei
+_ZN6GarageC1Ei = _ZN6GarageC2Ei
 	.globl	_ZN6GarageD1Ev
 	.type	_ZN6GarageD1Ev,@function
-.set _ZN6GarageD1Ev, _ZN6GarageD2Ev
+_ZN6GarageD1Ev = _ZN6GarageD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

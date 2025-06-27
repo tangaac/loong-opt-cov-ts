@@ -97,7 +97,7 @@ _ZTS14btConcaveShape:
 
 	.globl	_ZN14btConcaveShapeD1Ev
 	.type	_ZN14btConcaveShapeD1Ev,@function
-.set _ZN14btConcaveShapeD1Ev, _ZN14btConcaveShapeD2Ev
+_ZN14btConcaveShapeD1Ev = _ZN14btConcaveShapeD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI14btConcaveShape

@@ -232,8 +232,9 @@ terminate_slice:                        # @terminate_slice
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $a0, 3060
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	lu12i.w	$a0, 349525
-	ori	$a0, $a0, 1366
+	lu12i.w	$a0, -349526
+	ori	$a0, $a0, 2731
+	lu32i.d	$a0, 0
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
 	b	.LBB2_6
@@ -325,11 +326,10 @@ terminate_slice:                        # @terminate_slice
 	bge	$a0, $a1, .LBB2_4
 # %bb.10:                               #   in Loop: Header=BB2_6 Depth=1
 	sub.w	$s7, $a1, $a0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	mul.d	$a0, $s7, $a0
-	srli.d	$a1, $a0, 63
-	srli.d	$a0, $a0, 32
-	add.w	$a1, $a0, $a1
+	bstrpick.d	$a0, $s7, 31, 0
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	mul.d	$a0, $a0, $a1
+	srli.d	$a1, $a0, 33
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(printf)
@@ -2457,16 +2457,9 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	bnez	$a7, .LBB5_31
 # %bb.32:                               # %middle.block243
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.w	$a4, $vr0, 0
-	vpickve2gr.w	$a6, $vr0, 1
-	andi	$a6, $a6, 1
-	bstrins.d	$a4, $a6, 63, 1
-	vpickve2gr.w	$a6, $vr0, 2
-	bstrins.d	$a4, $a6, 2, 2
-	vpickve2gr.w	$a6, $vr0, 3
-	slli.d	$a6, $a6, 3
-	or	$a4, $a4, $a6
-	andi	$a4, $a4, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	sltui	$a4, $a4, 1
 	beq	$a0, $ra, .LBB5_35
 .LBB5_33:                               # %.lr.ph151.preheader249
@@ -2519,10 +2512,10 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	ori	$s6, $zero, 4
 	addi.d	$fp, $sp, 440
 	addi.d	$s1, $sp, 312
-	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
-	st.d	$t2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$t5, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$t2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 8                     # 8-byte Folded Spill
 .LBB5_37:                               # %.lr.ph156.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_39 Depth 2
@@ -2570,8 +2563,8 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
                                         #   in Loop: Header=BB5_37 Depth=1
 	beq	$s2, $t5, .LBB5_47
 # %bb.42:                               #   in Loop: Header=BB5_37 Depth=1
-	st.d	$t6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$ra, $sp, 32                    # 8-byte Folded Spill
+	st.d	$t6, $sp, 48                    # 8-byte Folded Spill
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$s2, $s2, 1
 	move	$a0, $s5
 	move	$a1, $s6
@@ -2599,16 +2592,16 @@ poc_ref_pic_reorder:                    # @poc_ref_pic_reorder
 	jirl	$ra, $ra, 0
 	move	$a2, $s0
 	move	$a5, $s8
-	ld.d	$t6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$t6, $sp, 48                    # 8-byte Folded Reload
 	addi.d	$t6, $t6, 4
-	ld.d	$ra, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$ra, $ra, -1
 	addi.d	$s6, $s6, 4
 	addi.d	$s5, $s5, -1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$t2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$t5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$t2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB5_37
 .LBB5_46:                               # %.critedge.loopexit
 	move	$a1, $s2

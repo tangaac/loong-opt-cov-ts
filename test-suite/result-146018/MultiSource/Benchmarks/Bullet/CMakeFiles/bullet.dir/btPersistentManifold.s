@@ -648,6 +648,6 @@ gContactProcessedCallback:
 
 	.globl	_ZN20btPersistentManifoldC1Ev
 	.type	_ZN20btPersistentManifoldC1Ev,@function
-.set _ZN20btPersistentManifoldC1Ev, _ZN20btPersistentManifoldC2Ev
+_ZN20btPersistentManifoldC1Ev = _ZN20btPersistentManifoldC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

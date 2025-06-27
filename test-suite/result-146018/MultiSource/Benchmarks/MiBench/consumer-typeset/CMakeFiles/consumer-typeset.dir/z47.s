@@ -82,8 +82,7 @@ EnvWriteRetrieve:                       # @EnvWriteRetrieve
 	ori	$a7, $zero, 211
 	mul.d	$a6, $a6, $a7
 	ld.w	$a7, $a4, %pc_lo12(stat_writes)
-	sub.d	$a5, $a5, $a6
-	bstrpick.d	$a5, $a5, 31, 0
+	sub.w	$a5, $a5, $a6
 	slli.d	$a5, $a5, 3
 	pcalau12i	$a6, %pc_hi20(tab)
 	addi.d	$a6, $a6, %pc_lo12(tab)
@@ -361,8 +360,7 @@ EnvWriteInsert:                         # @EnvWriteInsert
 	srli.d	$a1, $a1, 39
 	ori	$a2, $zero, 211
 	mul.d	$a1, $a1, $a2
-	sub.d	$a0, $a0, $a1
-	bstrpick.d	$a0, $a0, 31, 0
+	sub.w	$a0, $a0, $a1
 	pcalau12i	$a1, %pc_hi20(tab)
 	addi.d	$a1, $a1, %pc_lo12(tab)
 	slli.d	$a2, $a0, 3

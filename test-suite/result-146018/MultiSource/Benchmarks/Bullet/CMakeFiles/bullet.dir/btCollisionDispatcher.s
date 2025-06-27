@@ -1234,10 +1234,10 @@ _ZTS17btOverlapCallback:
 
 	.globl	_ZN21btCollisionDispatcherC1EP24btCollisionConfiguration
 	.type	_ZN21btCollisionDispatcherC1EP24btCollisionConfiguration,@function
-.set _ZN21btCollisionDispatcherC1EP24btCollisionConfiguration, _ZN21btCollisionDispatcherC2EP24btCollisionConfiguration
+_ZN21btCollisionDispatcherC1EP24btCollisionConfiguration = _ZN21btCollisionDispatcherC2EP24btCollisionConfiguration
 	.globl	_ZN21btCollisionDispatcherD1Ev
 	.type	_ZN21btCollisionDispatcherD1Ev,@function
-.set _ZN21btCollisionDispatcherD1Ev, _ZN21btCollisionDispatcherD2Ev
+_ZN21btCollisionDispatcherD1Ev = _ZN21btCollisionDispatcherD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

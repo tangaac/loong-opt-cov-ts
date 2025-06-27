@@ -1138,7 +1138,7 @@ Fgetlag:                                # @Fgetlag
 	sub.d	$a5, $a0, $a2
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB0_124
-# %bb.121:                              # %vector.ph658
+# %bb.121:                              # %vector.ph660
 	move	$a5, $zero
 	bstrpick.d	$a4, $s8, 30, 2
 	slli.d	$a4, $a4, 2
@@ -1152,7 +1152,7 @@ Fgetlag:                                # @Fgetlag
 	vrepli.d	$vr3, 96
 	vreplgr2vr.d	$vr4, $a3
 	.p2align	4, , 16
-.LBB0_122:                              # %vector.body661
+.LBB0_122:                              # %vector.body663
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr5, $vr1, 0
 	vmadd.d	$vr5, $vr0, $vr2
@@ -1171,10 +1171,10 @@ Fgetlag:                                # @Fgetlag
 	addi.d	$a5, $a5, 32
 	vaddi.du	$vr0, $vr0, 4
 	bne	$a6, $a5, .LBB0_122
-# %bb.123:                              # %middle.block667
+# %bb.123:                              # %middle.block669
 	ori	$s0, $zero, 1
 	beq	$a4, $s8, .LBB0_135
-.LBB0_124:                              # %scalar.ph656.preheader
+.LBB0_124:                              # %scalar.ph658.preheader
 	slli.d	$a5, $a4, 3
 	slli.d	$a6, $a4, 5
 	alsl.d	$a6, $a4, $a6, 4
@@ -1182,7 +1182,7 @@ Fgetlag:                                # @Fgetlag
 	add.d	$a1, $a1, $a6
 	sub.d	$a4, $s8, $a4
 	.p2align	4, , 16
-.LBB0_125:                              # %scalar.ph656
+.LBB0_125:                              # %scalar.ph658
                                         # =>This Inner Loop Header: Depth=1
 	stx.d	$a1, $a2, $a5
 	stx.d	$a3, $a0, $a5
@@ -1234,7 +1234,7 @@ Fgetlag:                                # @Fgetlag
 	addi.d	$a5, $a5, 24
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB0_132:                              # %vector.body645
+.LBB0_132:                              # %vector.body647
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
 	vsubi.wu	$vr3, $vr2, 2
@@ -1270,7 +1270,7 @@ Fgetlag:                                # @Fgetlag
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB0_132
-# %bb.133:                              # %middle.block651
+# %bb.133:                              # %middle.block653
 	move	$a5, $a4
 	bne	$a1, $a3, .LBB0_104
 	b	.LBB0_106
@@ -1298,13 +1298,13 @@ Fgetlag:                                # @Fgetlag
 # %bb.137:
 	move	$a2, $zero
 	b	.LBB0_141
-.LBB0_138:                              # %vector.ph672
+.LBB0_138:                              # %vector.ph674
 	move	$a4, $zero
 	slli.d	$a2, $a1, 2
 	addi.d	$a5, $a3, 16
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB0_139:                              # %vector.body675
+.LBB0_139:                              # %vector.body677
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a7, $a4, 1
 	addi.d	$t0, $a4, 2
@@ -1321,13 +1321,13 @@ Fgetlag:                                # @Fgetlag
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB0_139
-# %bb.140:                              # %middle.block679
+# %bb.140:                              # %middle.block681
 	beq	$a2, $a0, .LBB0_143
-.LBB0_141:                              # %scalar.ph670.preheader
+.LBB0_141:                              # %scalar.ph672.preheader
 	alsl.d	$a3, $a2, $a3, 3
 	sub.d	$a4, $a0, $a2
 	.p2align	4, , 16
-.LBB0_142:                              # %scalar.ph670
+.LBB0_142:                              # %scalar.ph672
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a3, 0
 	st.w	$a2, $a5, 40
@@ -1343,13 +1343,13 @@ Fgetlag:                                # @Fgetlag
 # %bb.144:
 	move	$a1, $zero
 	b	.LBB0_148
-.LBB0_145:                              # %vector.ph684
+.LBB0_145:                              # %vector.ph686
 	move	$a3, $zero
 	slli.d	$a1, $a1, 2
 	addi.d	$a4, $a2, 16
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB0_146:                              # %vector.body687
+.LBB0_146:                              # %vector.body689
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a3, 1
 	addi.d	$a7, $a3, 2
@@ -1366,13 +1366,13 @@ Fgetlag:                                # @Fgetlag
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB0_146
-# %bb.147:                              # %middle.block692
+# %bb.147:                              # %middle.block694
 	beq	$a1, $a0, .LBB0_150
-.LBB0_148:                              # %scalar.ph682.preheader
+.LBB0_148:                              # %scalar.ph684.preheader
 	alsl.d	$a2, $a1, $a2, 3
 	sub.d	$a0, $a0, $a1
 	.p2align	4, , 16
-.LBB0_149:                              # %scalar.ph682
+.LBB0_149:                              # %scalar.ph684
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a2, 0
 	st.w	$a1, $a3, 40
@@ -3337,7 +3337,7 @@ Falign:                                 # @Falign
 	sub.d	$a5, $a0, $a2
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB2_130
-# %bb.127:                              # %vector.ph768
+# %bb.127:                              # %vector.ph770
 	move	$a5, $zero
 	bstrpick.d	$a4, $s4, 30, 2
 	slli.d	$a4, $a4, 2
@@ -3351,7 +3351,7 @@ Falign:                                 # @Falign
 	vrepli.d	$vr3, 96
 	vreplgr2vr.d	$vr4, $a3
 	.p2align	4, , 16
-.LBB2_128:                              # %vector.body771
+.LBB2_128:                              # %vector.body773
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr5, $vr1, 0
 	vmadd.d	$vr5, $vr0, $vr2
@@ -3370,10 +3370,10 @@ Falign:                                 # @Falign
 	addi.d	$a5, $a5, 32
 	vaddi.du	$vr0, $vr0, 4
 	bne	$a6, $a5, .LBB2_128
-# %bb.129:                              # %middle.block777
+# %bb.129:                              # %middle.block779
 	ori	$s8, $zero, 1
 	beq	$a4, $s4, .LBB2_134
-.LBB2_130:                              # %scalar.ph766.preheader
+.LBB2_130:                              # %scalar.ph768.preheader
 	slli.d	$a5, $a4, 3
 	slli.d	$a6, $a4, 5
 	alsl.d	$a6, $a4, $a6, 4
@@ -3381,7 +3381,7 @@ Falign:                                 # @Falign
 	add.d	$a1, $a1, $a6
 	sub.d	$a4, $s4, $a4
 	.p2align	4, , 16
-.LBB2_131:                              # %scalar.ph766
+.LBB2_131:                              # %scalar.ph768
                                         # =>This Inner Loop Header: Depth=1
 	stx.d	$a1, $a2, $a5
 	stx.d	$a3, $a0, $a5
@@ -3424,14 +3424,14 @@ Falign:                                 # @Falign
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(Falign.cut2)
 	b	.LBB2_154
-.LBB2_139:                              # %vector.ph782
+.LBB2_139:                              # %vector.ph784
 	move	$a3, $zero
 	bstrpick.d	$a1, $a0, 30, 2
 	slli.d	$a1, $a1, 2
 	addi.d	$a4, $a2, 16
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB2_140:                              # %vector.body785
+.LBB2_140:                              # %vector.body787
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a3, 1
 	addi.d	$a7, $a3, 2
@@ -3448,13 +3448,13 @@ Falign:                                 # @Falign
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB2_140
-# %bb.141:                              # %middle.block789
+# %bb.141:                              # %middle.block791
 	beq	$a1, $a0, .LBB2_144
-.LBB2_142:                              # %scalar.ph780.preheader
+.LBB2_142:                              # %scalar.ph782.preheader
 	alsl.d	$a2, $a1, $a2, 3
 	sub.d	$a3, $a0, $a1
 	.p2align	4, , 16
-.LBB2_143:                              # %scalar.ph780
+.LBB2_143:                              # %scalar.ph782
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	st.w	$a1, $a4, 40
@@ -3469,14 +3469,14 @@ Falign:                                 # @Falign
 # %bb.145:
 	move	$a1, $zero
 	b	.LBB2_149
-.LBB2_146:                              # %vector.ph794
+.LBB2_146:                              # %vector.ph796
 	move	$a3, $zero
 	bstrpick.d	$a1, $a0, 30, 2
 	slli.d	$a1, $a1, 2
 	addi.d	$a4, $a2, 16
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB2_147:                              # %vector.body797
+.LBB2_147:                              # %vector.body799
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a3, 1
 	addi.d	$a7, $a3, 2
@@ -3493,13 +3493,13 @@ Falign:                                 # @Falign
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB2_147
-# %bb.148:                              # %middle.block802
+# %bb.148:                              # %middle.block804
 	beq	$a1, $a0, .LBB2_151
-.LBB2_149:                              # %scalar.ph792.preheader
+.LBB2_149:                              # %scalar.ph794.preheader
 	alsl.d	$a2, $a1, $a2, 3
 	sub.d	$a0, $a0, $a1
 	.p2align	4, , 16
-.LBB2_150:                              # %scalar.ph792
+.LBB2_150:                              # %scalar.ph794
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a2, 0
 	st.w	$a1, $a3, 40
@@ -4288,7 +4288,7 @@ Falign:                                 # @Falign
 	addi.d	$a5, $a5, 24
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB2_238:                              # %vector.body755
+.LBB2_238:                              # %vector.body757
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
 	vsubi.wu	$vr3, $vr2, 2
@@ -4324,7 +4324,7 @@ Falign:                                 # @Falign
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB2_238
-# %bb.239:                              # %middle.block761
+# %bb.239:                              # %middle.block763
 	move	$a5, $a4
 	bne	$a1, $a3, .LBB2_105
 	b	.LBB2_107
@@ -5761,7 +5761,7 @@ Falign_noudp:                           # @Falign_noudp
 	sub.d	$a5, $a3, $a2
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB3_160
-# %bb.157:                              # %vector.ph867
+# %bb.157:                              # %vector.ph869
 	bstrpick.d	$a4, $s2, 30, 2
 	slli.d	$a4, $a4, 2
 	addi.d	$a5, $a3, 16
@@ -5774,7 +5774,7 @@ Falign_noudp:                           # @Falign_noudp
 	vreplgr2vr.d	$vr4, $a1
 	move	$a7, $a4
 	.p2align	4, , 16
-.LBB3_158:                              # %vector.body870
+.LBB3_158:                              # %vector.body872
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr5, $vr1, 0
 	vmadd.d	$vr5, $vr0, $vr2
@@ -5793,9 +5793,9 @@ Falign_noudp:                           # @Falign_noudp
 	addi.d	$a5, $a5, 32
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB3_158
-# %bb.159:                              # %middle.block876
+# %bb.159:                              # %middle.block878
 	beq	$a4, $s2, .LBB3_162
-.LBB3_160:                              # %scalar.ph865.preheader
+.LBB3_160:                              # %scalar.ph867.preheader
 	alsl.d	$a3, $a4, $a3, 3
 	slli.d	$a5, $a4, 5
 	alsl.d	$a6, $a4, $a5, 4
@@ -5804,7 +5804,7 @@ Falign_noudp:                           # @Falign_noudp
 	add.d	$a0, $a0, $a6
 	sub.d	$a4, $s2, $a4
 	.p2align	4, , 16
-.LBB3_161:                              # %scalar.ph865
+.LBB3_161:                              # %scalar.ph867
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a0, $a5, 0
 	st.d	$a1, $a3, 0
@@ -5833,13 +5833,13 @@ Falign_noudp:                           # @Falign_noudp
 	ld.d	$t6, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$t7, $sp, 136                   # 8-byte Folded Reload
 	bltu	$s2, $a4, .LBB3_166
-# %bb.163:                              # %vector.ph881
+# %bb.163:                              # %vector.ph883
 	move	$a4, $zero
 	slli.d	$a1, $a0, 2
 	addi.d	$a5, $a2, 16
 	move	$a6, $a1
 	.p2align	4, , 16
-.LBB3_164:                              # %vector.body884
+.LBB3_164:                              # %vector.body886
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a7, $a4, 1
 	addi.d	$t0, $a4, 2
@@ -5856,13 +5856,13 @@ Falign_noudp:                           # @Falign_noudp
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB3_164
-# %bb.165:                              # %middle.block888
+# %bb.165:                              # %middle.block890
 	beq	$a1, $a3, .LBB3_168
-.LBB3_166:                              # %scalar.ph879.preheader
+.LBB3_166:                              # %scalar.ph881.preheader
 	alsl.d	$a2, $a1, $a2, 3
 	sub.d	$a4, $a3, $a1
 	.p2align	4, , 16
-.LBB3_167:                              # %scalar.ph879
+.LBB3_167:                              # %scalar.ph881
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a2, 0
 	st.w	$a1, $a5, 40
@@ -5910,13 +5910,13 @@ Falign_noudp:                           # @Falign_noudp
 	ld.d	$t6, $sp, 280                   # 8-byte Folded Reload
 	ld.d	$a5, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB3_184
-.LBB3_174:                              # %vector.ph893
+.LBB3_174:                              # %vector.ph895
 	move	$a2, $zero
 	slli.d	$a0, $a0, 2
 	addi.d	$a4, $a1, 16
 	move	$a5, $a0
 	.p2align	4, , 16
-.LBB3_175:                              # %vector.body896
+.LBB3_175:                              # %vector.body898
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a2, 1
 	addi.d	$a7, $a2, 2
@@ -5933,13 +5933,13 @@ Falign_noudp:                           # @Falign_noudp
 	addi.d	$a2, $a2, 4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB3_175
-# %bb.176:                              # %middle.block901
+# %bb.176:                              # %middle.block903
 	beq	$a0, $a3, .LBB3_179
-.LBB3_177:                              # %scalar.ph891.preheader
+.LBB3_177:                              # %scalar.ph893.preheader
 	alsl.d	$a1, $a0, $a1, 3
 	sub.d	$a2, $a3, $a0
 	.p2align	4, , 16
-.LBB3_178:                              # %scalar.ph891
+.LBB3_178:                              # %scalar.ph893
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a1, 0
 	st.w	$a0, $a4, 40
@@ -6577,7 +6577,7 @@ Falign_noudp:                           # @Falign_noudp
 	add.d	$a5, $a7, $a2
 	addi.d	$a5, $a5, 24
 	move	$a6, $a3
-.LBB3_261:                              # %vector.body854
+.LBB3_261:                              # %vector.body856
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
 	vsubi.wu	$vr3, $vr2, 2
@@ -6613,7 +6613,7 @@ Falign_noudp:                           # @Falign_noudp
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB3_261
-# %bb.262:                              # %middle.block860
+# %bb.262:                              # %middle.block862
 	move	$a5, $a4
 	bne	$a1, $a3, .LBB3_148
 	b	.LBB3_150
@@ -7422,7 +7422,7 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	sub.d	$a5, $a0, $a2
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB4_59
-# %bb.56:                               # %vector.ph788
+# %bb.56:                               # %vector.ph790
 	move	$a5, $zero
 	bstrpick.d	$a4, $s3, 30, 2
 	slli.d	$a4, $a4, 2
@@ -7436,7 +7436,7 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	vrepli.d	$vr3, 96
 	vreplgr2vr.d	$vr4, $a3
 	.p2align	4, , 16
-.LBB4_57:                               # %vector.body791
+.LBB4_57:                               # %vector.body793
                                         # =>This Inner Loop Header: Depth=1
 	vori.b	$vr5, $vr1, 0
 	vmadd.d	$vr5, $vr0, $vr2
@@ -7455,10 +7455,10 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	addi.d	$a5, $a5, 32
 	vaddi.du	$vr0, $vr0, 4
 	bne	$a6, $a5, .LBB4_57
-# %bb.58:                               # %middle.block797
+# %bb.58:                               # %middle.block799
 	ori	$s6, $zero, 1
 	beq	$a4, $s3, .LBB4_63
-.LBB4_59:                               # %scalar.ph786.preheader
+.LBB4_59:                               # %scalar.ph788.preheader
 	slli.d	$a5, $a4, 3
 	slli.d	$a6, $a4, 5
 	alsl.d	$a6, $a4, $a6, 4
@@ -7466,7 +7466,7 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	add.d	$a1, $a1, $a6
 	sub.d	$a4, $s3, $a4
 	.p2align	4, , 16
-.LBB4_60:                               # %scalar.ph786
+.LBB4_60:                               # %scalar.ph788
                                         # =>This Inner Loop Header: Depth=1
 	stx.d	$a1, $a2, $a5
 	stx.d	$a3, $a0, $a5
@@ -7513,13 +7513,13 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(Falign_udpari_long.cut2)
 	b	.LBB4_83
-.LBB4_68:                               # %vector.ph802
+.LBB4_68:                               # %vector.ph804
 	move	$a4, $zero
 	slli.d	$a2, $a1, 2
 	addi.d	$a5, $a3, 16
 	move	$a6, $a2
 	.p2align	4, , 16
-.LBB4_69:                               # %vector.body805
+.LBB4_69:                               # %vector.body807
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a7, $a4, 1
 	addi.d	$t0, $a4, 2
@@ -7536,13 +7536,13 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB4_69
-# %bb.70:                               # %middle.block809
+# %bb.70:                               # %middle.block811
 	beq	$a2, $a0, .LBB4_73
-.LBB4_71:                               # %scalar.ph800.preheader
+.LBB4_71:                               # %scalar.ph802.preheader
 	alsl.d	$a3, $a2, $a3, 3
 	sub.d	$a4, $a0, $a2
 	.p2align	4, , 16
-.LBB4_72:                               # %scalar.ph800
+.LBB4_72:                               # %scalar.ph802
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a3, 0
 	st.w	$a2, $a5, 40
@@ -7557,13 +7557,13 @@ Falign_udpari_long:                     # @Falign_udpari_long
 # %bb.74:
 	move	$a1, $zero
 	b	.LBB4_78
-.LBB4_75:                               # %vector.ph814
+.LBB4_75:                               # %vector.ph816
 	move	$a3, $zero
 	slli.d	$a1, $a1, 2
 	addi.d	$a4, $a2, 16
 	move	$a5, $a1
 	.p2align	4, , 16
-.LBB4_76:                               # %vector.body817
+.LBB4_76:                               # %vector.body819
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a6, $a3, 1
 	addi.d	$a7, $a3, 2
@@ -7580,13 +7580,13 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	addi.d	$a3, $a3, 4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB4_76
-# %bb.77:                               # %middle.block822
+# %bb.77:                               # %middle.block824
 	beq	$a1, $a0, .LBB4_80
-.LBB4_78:                               # %scalar.ph812.preheader
+.LBB4_78:                               # %scalar.ph814.preheader
 	alsl.d	$a2, $a1, $a2, 3
 	sub.d	$a0, $a0, $a1
 	.p2align	4, , 16
-.LBB4_79:                               # %scalar.ph812
+.LBB4_79:                               # %scalar.ph814
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $a2, 0
 	st.w	$a1, $a3, 40
@@ -8953,7 +8953,7 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	add.d	$a5, $a7, $a2
 	addi.d	$a5, $a5, 24
 	move	$a6, $a3
-.LBB4_266:                              # %vector.body775
+.LBB4_266:                              # %vector.body777
                                         # =>This Inner Loop Header: Depth=1
 	vsub.w	$vr2, $vr0, $vr1
 	vsubi.wu	$vr3, $vr2, 2
@@ -8989,7 +8989,7 @@ Falign_udpari_long:                     # @Falign_udpari_long
 	addi.d	$a6, $a6, -4
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB4_266
-# %bb.267:                              # %middle.block781
+# %bb.267:                              # %middle.block783
 	move	$a5, $a4
 	bne	$a1, $a3, .LBB4_256
 	b	.LBB4_258

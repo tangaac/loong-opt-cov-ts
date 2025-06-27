@@ -2784,7 +2784,7 @@ progname:
 
 	.globl	_ZN9ClassfileC1EiPPc
 	.type	_ZN9ClassfileC1EiPPc,@function
-.set _ZN9ClassfileC1EiPPc, _ZN9ClassfileC2EiPPc
+_ZN9ClassfileC1EiPPc = _ZN9ClassfileC2EiPPc
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

@@ -717,13 +717,13 @@ _ZTV15simulation_unit:
 
 	.globl	_ZN17screen_controllerC1Eii
 	.type	_ZN17screen_controllerC1Eii,@function
-.set _ZN17screen_controllerC1Eii, _ZN17screen_controllerC2Eii
+_ZN17screen_controllerC1Eii = _ZN17screen_controllerC2Eii
 	.globl	_ZN17screen_controllerD1Ev
 	.type	_ZN17screen_controllerD1Ev,@function
-.set _ZN17screen_controllerD1Ev, _ZN17screen_controllerD2Ev
+_ZN17screen_controllerD1Ev = _ZN17screen_controllerD2Ev
 	.globl	_ZN9init_gridC1Ev
 	.type	_ZN9init_gridC1Ev,@function
-.set _ZN9init_gridC1Ev, _ZN9init_gridC2Ev
+_ZN9init_gridC1Ev = _ZN9init_gridC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

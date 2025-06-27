@@ -45,8 +45,7 @@ prestrict:                              # @prestrict
 	ori	$a0, $zero, 12
 	mul.d	$a0, $s2, $a0
 	add.d	$s7, $s4, $a0
-	bstrpick.d	$a0, $s2, 31, 0
-	addi.d	$s8, $a0, -1
+	addi.d	$s8, $s2, -1
 	addi.d	$s0, $s4, 12
 	lu12i.w	$a0, 244140
 	ori	$fp, $a0, 2560

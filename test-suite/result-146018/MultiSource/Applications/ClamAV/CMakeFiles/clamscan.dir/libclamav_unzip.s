@@ -624,12 +624,12 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	addi.d	$a0, $a0, 33
 	andi	$a1, $a0, 1
 	add.d	$a0, $a0, $a1
-	andi	$a1, $a0, 2
-	add.d	$a0, $a0, $a1
-	sub.d	$a0, $a0, $s1
+	andi	$a0, $a0, 2
+	add.d	$a1, $s4, $a1
+	add.d	$a0, $a1, $a0
+	addi.d	$a0, $a0, 33
 	addi.d	$s3, $s1, 16
 	st.h	$a0, $s1, 16
-	bstrpick.d	$a0, $a0, 15, 0
 	addi.d	$fp, $fp, -1
 	bstrpick.d	$a1, $fp, 15, 0
 	add.d	$s1, $s1, $a0

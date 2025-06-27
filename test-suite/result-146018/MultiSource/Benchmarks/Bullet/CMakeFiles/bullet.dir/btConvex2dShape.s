@@ -379,10 +379,10 @@ _ZTS15btConvex2dShape:
 
 	.globl	_ZN15btConvex2dShapeC1EP13btConvexShape
 	.type	_ZN15btConvex2dShapeC1EP13btConvexShape,@function
-.set _ZN15btConvex2dShapeC1EP13btConvexShape, _ZN15btConvex2dShapeC2EP13btConvexShape
+_ZN15btConvex2dShapeC1EP13btConvexShape = _ZN15btConvex2dShapeC2EP13btConvexShape
 	.globl	_ZN15btConvex2dShapeD1Ev
 	.type	_ZN15btConvex2dShapeD1Ev,@function
-.set _ZN15btConvex2dShapeD1Ev, _ZN15btConvex2dShapeD2Ev
+_ZN15btConvex2dShapeD1Ev = _ZN15btConvex2dShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

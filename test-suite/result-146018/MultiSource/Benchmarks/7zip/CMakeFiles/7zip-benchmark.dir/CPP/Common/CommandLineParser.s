@@ -2380,10 +2380,10 @@ _ZTS13CRecordVectorIPvE:
 
 	.globl	_ZN18NCommandLineParser7CParserC1Ei
 	.type	_ZN18NCommandLineParser7CParserC1Ei,@function
-.set _ZN18NCommandLineParser7CParserC1Ei, _ZN18NCommandLineParser7CParserC2Ei
+_ZN18NCommandLineParser7CParserC1Ei = _ZN18NCommandLineParser7CParserC2Ei
 	.globl	_ZN18NCommandLineParser7CParserD1Ev
 	.type	_ZN18NCommandLineParser7CParserD1Ev,@function
-.set _ZN18NCommandLineParser7CParserD1Ev, _ZN18NCommandLineParser7CParserD2Ev
+_ZN18NCommandLineParser7CParserD1Ev = _ZN18NCommandLineParser7CParserD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

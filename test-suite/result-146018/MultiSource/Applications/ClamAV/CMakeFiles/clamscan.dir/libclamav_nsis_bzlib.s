@@ -776,7 +776,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	vreplgr2vr.b	$vr0, $t2
 	addi.d	$a3, $a3, 16
 	.p2align	4, , 16
-.LBB3_49:                               # %vector.body657
+.LBB3_49:                               # %vector.body659
                                         #   Parent Loop BB3_4 Depth=1
                                         #     Parent Loop BB3_44 Depth=2
                                         #       Parent Loop BB3_45 Depth=3
@@ -1248,7 +1248,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	bge	$a2, $t0, .LBB3_163
 .LBB3_113:                              #   in Loop: Header=BB3_4 Depth=1
 	move	$t5, $zero
-.LBB3_114:                              # %.preheader671
+.LBB3_114:                              # %.preheader673
                                         #   in Loop: Header=BB3_4 Depth=1
 	ld.w	$a1, $s5, 36
 .LBB3_115:                              #   Parent Loop BB3_4 Depth=1
@@ -2186,7 +2186,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a1, $a0
 	beq	$a0, $s0, .LBB3_248
-.LBB3_246:                              # %.lr.ph1534.i.preheader667
+.LBB3_246:                              # %.lr.ph1534.i.preheader669
                                         #   in Loop: Header=BB3_239 Depth=2
 	sub.d	$a0, $s0, $a1
 	add.d	$a1, $s6, $a1
@@ -4434,7 +4434,7 @@ nsis_BZ2_bzDecompress:                  # @nsis_BZ2_bzDecompress
 	move	$t2, $a6
 	ld.d	$t4, $sp, 536                   # 8-byte Folded Reload
 	b	.LBB3_451
-.LBB3_473:                              # %unRLE_obuf_to_output_SMALL.exit.thread.loopexit907
+.LBB3_473:                              # %unRLE_obuf_to_output_SMALL.exit.thread.loopexit909
 	addi.w	$a0, $zero, -1
 .LBB3_474:                              # %unRLE_obuf_to_output_SMALL.exit.thread
 	ld.d	$s8, $sp, 696                   # 8-byte Folded Reload

@@ -1047,10 +1047,10 @@ vba_decompress:                         # @vba_decompress
 	addi.d	$s5, $sp, 36
 	ori	$s6, $zero, 2
 	ori	$s7, $zero, 128
-	ori	$s8, $zero, 32
 	addi.w	$s4, $zero, -1
 	ori	$s2, $zero, 29
-	ori	$fp, $zero, 1
+	ori	$s3, $zero, 4095
+	ori	$s8, $zero, 1
 	b	.LBB2_6
 .LBB2_3:                                #   in Loop: Header=BB2_6 Depth=1
 	lu12i.w	$a0, 1
@@ -1067,7 +1067,7 @@ vba_decompress:                         # @vba_decompress
 	lu12i.w	$a2, 1
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
-	move	$fp, $zero
+	move	$s8, $zero
 	.p2align	4, , 16
 .LBB2_5:                                # %.loopexit89
                                         #   in Loop: Header=BB2_6 Depth=1
@@ -1085,8 +1085,8 @@ vba_decompress:                         # @vba_decompress
                                         #     Child Loop BB2_10 Depth 2
                                         #       Child Loop BB2_32 Depth 3
                                         #       Child Loop BB2_26 Depth 3
-	sltu	$fp, $zero, $fp
-	ori	$s3, $zero, 1
+	sltu	$s8, $zero, $s8
+	ori	$fp, $zero, 1
 	b	.LBB2_10
 .LBB2_7:                                #   in Loop: Header=BB2_10 Depth=2
 	move	$a0, $zero
@@ -1102,9 +1102,9 @@ vba_decompress:                         # @vba_decompress
 	add.w	$s0, $s0, $a0
 .LBB2_9:                                # %.loopexit
                                         #   in Loop: Header=BB2_10 Depth=2
-	addi.w	$a0, $s3, 0
-	slli.d	$s3, $s3, 1
-	ori	$fp, $zero, 1
+	addi.w	$a0, $fp, 0
+	slli.d	$fp, $fp, 1
+	ori	$s8, $zero, 1
 	bgeu	$a0, $s7, .LBB2_5
 .LBB2_10:                               #   Parent Loop BB2_6 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1114,7 +1114,7 @@ vba_decompress:                         # @vba_decompress
 	ori	$a0, $a0, 39
 	add.d	$a0, $sp, $a0
 	ld.bu	$a0, $a0, 0
-	and	$a0, $s3, $a0
+	and	$a0, $fp, $a0
 	beqz	$a0, .LBB2_15
 # %bb.11:                               #   in Loop: Header=BB2_10 Depth=2
 	lu12i.w	$a0, 1
@@ -1129,7 +1129,8 @@ vba_decompress:                         # @vba_decompress
 	andi	$a3, $s0, 4095
 	bltu	$s7, $a3, .LBB2_17
 # %bb.13:                               #   in Loop: Header=BB2_10 Depth=2
-	bltu	$s8, $a3, .LBB2_19
+	ori	$a0, $zero, 32
+	bltu	$a0, $a3, .LBB2_19
 # %bb.14:                               #   in Loop: Header=BB2_10 Depth=2
 	sltui	$a0, $a3, 17
 	addi.d	$a0, $a0, 11
@@ -1140,7 +1141,7 @@ vba_decompress:                         # @vba_decompress
 # %bb.16:                               #   in Loop: Header=BB2_10 Depth=2
 	andi	$a0, $s0, 4095
 	sltu	$a1, $zero, $a0
-	orn	$a1, $a1, $fp
+	orn	$a1, $a1, $s8
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB2_8
 	b	.LBB2_3
@@ -1203,26 +1204,25 @@ vba_decompress:                         # @vba_decompress
                                         #   in Loop: Header=BB2_10 Depth=2
 	addi.d	$a2, $a1, 2
 	andi	$a5, $a2, 4095
-	ori	$a2, $zero, 4095
-	andn	$a6, $a2, $s0
+	andn	$a6, $s3, $s0
 	move	$a2, $zero
 	bltu	$a6, $a5, .LBB2_24
 # %bb.28:                               # %vector.scevcheck
                                         #   in Loop: Header=BB2_10 Depth=2
 	sub.d	$a4, $a4, $s0
-	andi	$a4, $a4, 4095
-	bltu	$a4, $a5, .LBB2_24
+	andi	$a6, $a4, 4095
+	bltu	$a6, $a5, .LBB2_24
 # %bb.29:                               # %vector.scevcheck
                                         #   in Loop: Header=BB2_10 Depth=2
-	srli.d	$a4, $a1, 1
-	ori	$a5, $zero, 2046
-	bltu	$a5, $a4, .LBB2_24
+	srli.d	$a5, $a1, 1
+	ori	$a6, $zero, 2046
+	bltu	$a6, $a5, .LBB2_24
 # %bb.30:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_10 Depth=2
-	add.d	$a2, $a0, $s0
-	andi	$a2, $a2, 4095
+	andn	$a2, $s3, $a4
 	sub.d	$a2, $a3, $a2
-	bltu	$a2, $s8, .LBB2_23
+	ori	$a3, $zero, 32
+	bltu	$a2, $a3, .LBB2_23
 # %bb.31:                               # %vector.ph
                                         #   in Loop: Header=BB2_10 Depth=2
 	addi.d	$a2, $a1, 3

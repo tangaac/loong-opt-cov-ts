@@ -6134,10 +6134,10 @@ _ZSt13__adjust_heapIN9__gnu_cxx17__normal_iteratorIPSt4pairIiiESt6vectorIS3_SaIS
 
 	.globl	_ZN4MeshC1EPK9InputFile
 	.type	_ZN4MeshC1EPK9InputFile,@function
-.set _ZN4MeshC1EPK9InputFile, _ZN4MeshC2EPK9InputFile
+_ZN4MeshC1EPK9InputFile = _ZN4MeshC2EPK9InputFile
 	.globl	_ZN4MeshD1Ev
 	.type	_ZN4MeshD1Ev,@function
-.set _ZN4MeshD1Ev, _ZN4MeshD2Ev
+_ZN4MeshD1Ev = _ZN4MeshD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

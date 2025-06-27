@@ -97,7 +97,7 @@ main:                                   # @main
 	vori.b	$vr3, $vr0, 0
 	b	.LBB0_8
 	.p2align	4, , 16
-.LBB0_7:                                # %pred.store.continue165
+.LBB0_7:                                # %pred.store.continue164
                                         #   in Loop: Header=BB0_8 Depth=2
 	addi.d	$a5, $a5, -4
 	vaddi.du	$vr3, $vr3, 4
@@ -120,11 +120,11 @@ main:                                   # @main
 	vpickve2gr.d	$a6, $vr5, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB0_12
-# %bb.11:                               # %pred.store.if160
+# %bb.11:                               # %pred.store.if159
                                         #   in Loop: Header=BB0_8 Depth=2
 	vpickve2gr.d	$a6, $vr4, 1
 	stx.d	$a2, $a4, $a6
-.LBB0_12:                               # %pred.store.continue161
+.LBB0_12:                               # %pred.store.continue160
                                         #   in Loop: Header=BB0_8 Depth=2
 	vaddi.du	$vr4, $vr3, 2
 	vand.v	$vr5, $vr4, $vr2
@@ -133,21 +133,21 @@ main:                                   # @main
 	andi	$a6, $a6, 1
 	vslli.d	$vr4, $vr4, 4
 	bnez	$a6, .LBB0_14
-# %bb.13:                               # %pred.store.continue163
+# %bb.13:                               # %pred.store.continue162
                                         #   in Loop: Header=BB0_8 Depth=2
 	vpickve2gr.d	$a6, $vr5, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB0_7
 	b	.LBB0_15
 	.p2align	4, , 16
-.LBB0_14:                               # %pred.store.if162
+.LBB0_14:                               # %pred.store.if161
                                         #   in Loop: Header=BB0_8 Depth=2
 	vpickve2gr.d	$a6, $vr4, 0
 	stx.d	$a2, $a4, $a6
 	vpickve2gr.d	$a6, $vr5, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB0_7
-.LBB0_15:                               # %pred.store.if164
+.LBB0_15:                               # %pred.store.if163
                                         #   in Loop: Header=BB0_8 Depth=2
 	vpickve2gr.d	$a6, $vr4, 1
 	stx.d	$a2, $a4, $a6

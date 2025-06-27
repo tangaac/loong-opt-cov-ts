@@ -1011,17 +1011,17 @@ is_long_ref:                            # @is_long_ref
 	.type	init_lists,@function
 init_lists:                             # @init_lists
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(log2_max_frame_num_minus4)
 	ld.w	$a2, $a2, %pc_lo12(log2_max_frame_num_minus4)
 	move	$fp, $a1
@@ -2025,8 +2025,8 @@ init_lists:                             # @init_lists
 .LBB11_189:                             # %.preheader648
 	bge	$s3, $s7, .LBB11_191
 # %bb.190:                              # %.lr.ph747.preheader
-	nor	$a0, $s3, $zero
-	add.d	$a0, $s7, $a0
+	sub.d	$a0, $s3, $s7
+	nor	$a0, $a0, $zero
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 3
 	addi.d	$a2, $a0, 8
@@ -3081,10 +3081,9 @@ init_lists:                             # @init_lists
 	bnez	$t0, .LBB11_392
 # %bb.393:                              # %middle.block1131
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.d	$a6, $vr0, 1
-	vpickve2gr.d	$a7, $vr0, 0
-	bstrins.d	$a7, $a6, 63, 1
-	andi	$a6, $a7, 3
+	vslli.d	$vr0, $vr0, 63
+	vmskltz.d	$vr0, $vr0
+	vpickve2gr.hu	$a6, $vr0, 0
 	sltu	$a6, $zero, $a6
 	beq	$a5, $a4, .LBB11_396
 .LBB11_394:                             # %scalar.ph1118.preheader
@@ -3157,31 +3156,31 @@ init_lists:                             # @init_lists
 	bstrpick.d	$a1, $a1, 31, 3
 	slli.d	$a2, $a1, 3
 	move	$a1, $zero
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB11_402:                             # %.loopexit
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB11_403:                             # %.preheader.i492.preheader
 	ld.w	$a3, $s5, 4
@@ -4035,8 +4034,8 @@ update_ref_list:                        # @update_ref_list
 	ld.d	$a0, $a0, 8
 	bstrpick.d	$a3, $a1, 31, 0
 	alsl.d	$a0, $a3, $a0, 3
+	sub.d	$a1, $a1, $a2
 	nor	$a1, $a1, $zero
-	add.d	$a1, $a2, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8
@@ -4124,8 +4123,8 @@ update_ltref_list:                      # @update_ltref_list
 	ld.d	$a0, $a0, 16
 	bstrpick.d	$a3, $a1, 31, 0
 	alsl.d	$a0, $a3, $a0, 3
+	sub.d	$a1, $a1, $a2
 	nor	$a1, $a1, $zero
-	add.d	$a1, $a2, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

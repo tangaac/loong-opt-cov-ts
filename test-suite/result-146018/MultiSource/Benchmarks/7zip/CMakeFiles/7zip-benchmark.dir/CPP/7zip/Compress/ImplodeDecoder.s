@@ -2385,7 +2385,7 @@ _ZTS13CMyUnknownImp:
 	.dword	_ZTI19COutBufferException
 	.globl	_ZN9NCompress8NImplode8NDecoder6CCoderC1Ev
 	.type	_ZN9NCompress8NImplode8NDecoder6CCoderC1Ev,@function
-.set _ZN9NCompress8NImplode8NDecoder6CCoderC1Ev, _ZN9NCompress8NImplode8NDecoder6CCoderC2Ev
+_ZN9NCompress8NImplode8NDecoder6CCoderC1Ev = _ZN9NCompress8NImplode8NDecoder6CCoderC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -2173,8 +2173,8 @@ TrieInsert:                             # @TrieInsert
 	masknez	$a3, $a3, $a4
 	maskeqz	$a1, $a1, $a4
 	or	$a1, $a1, $a3
-	nor	$a2, $a2, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $a2, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 1
 	addi.d	$a2, $a1, 2
@@ -2331,8 +2331,8 @@ TrieInsert:                             # @TrieInsert
 	masknez	$a2, $a2, $a3
 	maskeqz	$a1, $a1, $a3
 	or	$a1, $a1, $a2
-	nor	$a2, $s7, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $s7, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 1
 	addi.d	$a2, $a1, 2
@@ -2411,13 +2411,14 @@ TrieInsert:                             # @TrieInsert
 	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	nor	$a0, $a0, $zero
-	add.d	$a0, $a0, $s0
-	lu12i.w	$a1, 8
-	and	$a1, $a0, $a1
+	sub.d	$a1, $a0, $s0
+	lu12i.w	$a2, 8
+	andn	$a1, $a2, $a1
 	bnez	$a1, .LBB3_40
 # %bb.38:
+	nor	$a0, $a0, $zero
 	ld.d	$a1, $fp, 280
+	add.d	$a0, $a0, $s0
 	bstrpick.d	$a0, $a0, 14, 0
 	st.w	$a0, $fp, 292
 	add.d	$a0, $a1, $a0

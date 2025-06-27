@@ -510,13 +510,11 @@ _ZN16CInOutTempBuffer5WriteEPKvj:       # @_ZN16CInOutTempBuffer5WriteEPKvj
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
-	.cfi_offset 26, -48
 	addi.w	$a4, $a3, 0
 	lu12i.w	$a5, 256
 	sub.w	$a3, $a5, $a3
@@ -524,9 +522,8 @@ _ZN16CInOutTempBuffer5WriteEPKvj:       # @_ZN16CInOutTempBuffer5WriteEPKvj
 	ld.d	$a6, $a0, 1112
 	maskeqz	$a3, $a3, $a5
 	masknez	$a5, $a2, $a5
-	or	$s3, $a3, $a5
+	or	$s0, $a3, $a5
 	add.d	$a3, $a6, $a4
-	bstrpick.d	$s0, $s3, 31, 0
 	move	$s1, $a0
 	move	$a0, $a3
 	move	$fp, $a1
@@ -543,14 +540,13 @@ _ZN16CInOutTempBuffer5WriteEPKvj:       # @_ZN16CInOutTempBuffer5WriteEPKvj
 	move	$a3, $a0
 	move	$a0, $s1
 	st.w	$a3, $s1, 1160
-	add.d	$a3, $a4, $s3
+	add.d	$a3, $a4, $s0
 	ld.d	$a4, $s1, 1152
 	st.w	$a3, $s1, 1120
-	sub.w	$a2, $s2, $s3
+	sub.w	$a2, $s2, $s0
 	add.d	$a1, $fp, $s0
 	add.d	$a3, $a4, $s0
 	st.d	$a3, $s1, 1152
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -798,22 +794,20 @@ GCC_except_table7:
 _ZN27CSequentialOutTempBufferImp5WriteEPKvjPj: # @_ZN27CSequentialOutTempBufferImp5WriteEPKvjPj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	ld.d	$s1, $a0, 16
 	ld.wu	$a0, $s1, 1120
 	srli.d	$a4, $a0, 20
@@ -828,9 +822,8 @@ _ZN27CSequentialOutTempBufferImp5WriteEPKvjPj: # @_ZN27CSequentialOutTempBufferI
 	ld.d	$a4, $s1, 1112
 	maskeqz	$a0, $a0, $a3
 	masknez	$a3, $s0, $a3
-	or	$s4, $a0, $a3
+	or	$s3, $a0, $a3
 	add.d	$a0, $a4, $a2
-	bstrpick.d	$s3, $s4, 31, 0
 	move	$s2, $a1
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
@@ -842,10 +835,10 @@ _ZN27CSequentialOutTempBufferImp5WriteEPKvjPj: # @_ZN27CSequentialOutTempBufferI
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s1, 1120
 	st.w	$a0, $s1, 1160
-	add.d	$a0, $a2, $s4
+	add.d	$a0, $a2, $s3
 	ld.d	$a3, $s1, 1152
 	st.w	$a0, $s1, 1120
-	sub.w	$a2, $s0, $s4
+	sub.w	$a2, $s0, $s3
 	add.d	$a1, $s2, $s3
 	add.d	$a0, $a3, $s3
 	st.d	$a0, $s1, 1152
@@ -867,14 +860,13 @@ _ZN27CSequentialOutTempBufferImp5WriteEPKvjPj: # @_ZN27CSequentialOutTempBufferI
 	lu12i.w	$a1, -524284
 	ori	$a1, $a1, 5
 	masknez	$a0, $a1, $a0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end8:
 	.size	_ZN27CSequentialOutTempBufferImp5WriteEPKvjPj, .Lfunc_end8-_ZN27CSequentialOutTempBufferImp5WriteEPKvjPj
@@ -1251,10 +1243,10 @@ _ZTSN8NWindows5NFile3NIO7CInFileE:
 
 	.globl	_ZN16CInOutTempBufferC1Ev
 	.type	_ZN16CInOutTempBufferC1Ev,@function
-.set _ZN16CInOutTempBufferC1Ev, _ZN16CInOutTempBufferC2Ev
+_ZN16CInOutTempBufferC1Ev = _ZN16CInOutTempBufferC2Ev
 	.globl	_ZN16CInOutTempBufferD1Ev
 	.type	_ZN16CInOutTempBufferD1Ev,@function
-.set _ZN16CInOutTempBufferD1Ev, _ZN16CInOutTempBufferD2Ev
+_ZN16CInOutTempBufferD1Ev = _ZN16CInOutTempBufferD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -1448,10 +1448,10 @@ _ZTS13CRecordVectorIPKyE:
 
 	.globl	_ZN11NCoderMixer21CBindReverseConverterC1ERKNS_9CBindInfoE
 	.type	_ZN11NCoderMixer21CBindReverseConverterC1ERKNS_9CBindInfoE,@function
-.set _ZN11NCoderMixer21CBindReverseConverterC1ERKNS_9CBindInfoE, _ZN11NCoderMixer21CBindReverseConverterC2ERKNS_9CBindInfoE
+_ZN11NCoderMixer21CBindReverseConverterC1ERKNS_9CBindInfoE = _ZN11NCoderMixer21CBindReverseConverterC2ERKNS_9CBindInfoE
 	.globl	_ZN11NCoderMixer11CCoderInfo2C1Ejj
 	.type	_ZN11NCoderMixer11CCoderInfo2C1Ejj,@function
-.set _ZN11NCoderMixer11CCoderInfo2C1Ejj, _ZN11NCoderMixer11CCoderInfo2C2Ejj
+_ZN11NCoderMixer11CCoderInfo2C1Ejj = _ZN11NCoderMixer11CCoderInfo2C2Ejj
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -2869,58 +2869,56 @@ LzmaEnc_InitPrices:                     # @LzmaEnc_InitPrices
 	ld.hu	$a5, $s1, 0
 	lu12i.w	$a6, 3
 	ori	$a6, $a6, 4092
-	ori	$a7, $zero, 1
-	ori	$t0, $zero, 64
+	ori	$a7, $zero, 64
 	.p2align	4, , 16
 .LBB14_2:                               # %.lr.ph.i.i
                                         # =>This Inner Loop Header: Depth=1
-	andi	$t1, $a0, 1
-	sub.d	$t1, $zero, $t1
-	srli.d	$t2, $a0, 1
-	andi	$t1, $t1, 2032
-	xor	$t1, $t1, $a5
-	srli.d	$t1, $t1, 2
-	and	$t1, $t1, $a6
-	ldx.w	$t1, $a3, $t1
-	move	$t3, $a0
-	bstrins.d	$t3, $a7, 63, 1
-	bstrpick.d	$t4, $a0, 1, 1
-	slli.d	$t5, $t3, 1
-	ldx.h	$t5, $a2, $t5
-	sub.d	$t4, $zero, $t4
-	srli.d	$t6, $a0, 2
-	andi	$t4, $t4, 2032
-	xor	$t4, $t4, $t5
-	srli.d	$t4, $t4, 2
-	and	$t4, $t4, $a6
-	ldx.w	$t4, $a3, $t4
-	slli.d	$t3, $t3, 2
-	bstrins.d	$t3, $t2, 1, 1
-	ldx.h	$t2, $a2, $t3
-	bstrpick.d	$t5, $a0, 2, 2
-	sub.d	$t5, $zero, $t5
-	andi	$t5, $t5, 2032
-	xor	$t2, $t5, $t2
+	andi	$t0, $a0, 1
+	sub.d	$t0, $zero, $t0
+	srli.d	$t1, $a0, 1
+	andi	$t0, $t0, 2032
+	xor	$t0, $t0, $a5
+	srli.d	$t0, $t0, 2
+	and	$t0, $t0, $a6
+	ldx.w	$t0, $a3, $t0
+	bstrpick.d	$t2, $a0, 1, 1
+	ori	$t3, $zero, 4
+	bstrins.d	$t3, $a0, 1, 1
+	ldx.h	$t4, $a2, $t3
+	sub.d	$t2, $zero, $t2
+	srli.d	$t5, $a0, 2
+	andi	$t2, $t2, 2032
+	xor	$t2, $t2, $t4
 	srli.d	$t2, $t2, 2
 	and	$t2, $t2, $a6
 	ldx.w	$t2, $a3, $t2
-	bstrins.d	$t3, $t6, 0, 0
-	slli.d	$t3, $t3, 1
+	bstrins.d	$t3, $t1, 0, 0
+	slli.d	$t1, $t3, 1
+	ldx.h	$t1, $a2, $t1
+	bstrpick.d	$t4, $a0, 2, 2
+	sub.d	$t4, $zero, $t4
+	andi	$t4, $t4, 2032
+	xor	$t1, $t4, $t1
+	srli.d	$t1, $t1, 2
+	and	$t1, $t1, $a6
+	ldx.w	$t1, $a3, $t1
+	bstrins.d	$t5, $t3, 63, 1
+	slli.d	$t3, $t5, 1
 	ldx.h	$t3, $a2, $t3
-	slli.d	$t5, $a0, 60
-	srai.d	$t5, $t5, 63
-	andi	$t5, $t5, 2032
-	xor	$t3, $t5, $t3
+	slli.d	$t4, $a0, 60
+	srai.d	$t4, $t4, 63
+	andi	$t4, $t4, 2032
+	xor	$t3, $t4, $t3
 	srli.d	$t3, $t3, 2
 	and	$t3, $t3, $a6
 	ldx.w	$t3, $a3, $t3
-	add.d	$t1, $t4, $t1
-	add.d	$t1, $t1, $t2
-	add.d	$t1, $t1, $t3
-	stx.w	$t1, $a4, $a1
+	add.d	$t0, $t2, $t0
+	add.d	$t0, $t0, $t1
+	add.d	$t0, $t0, $t3
+	stx.w	$t0, $a4, $a1
 	addi.d	$a1, $a1, 4
 	addi.w	$a0, $a0, 1
-	bne	$a1, $t0, .LBB14_2
+	bne	$a1, $a7, .LBB14_2
 # %bb.3:                                # %FillAlignPrices.exit
 	stptr.w	$zero, $s4, 3164
 .LBB14_4:
@@ -6248,7 +6246,6 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	st.w	$a1, $s6, 4
 	add.w	$s2, $a2, $s2
 	ld.d	$fp, $sp, 512                   # 8-byte Folded Reload
-	ori	$s0, $zero, 64
 	bne	$a0, $a2, .LBB24_27
 # %bb.288:                              #   in Loop: Header=BB24_27 Depth=1
 	ld.w	$a0, $s4, 0
@@ -6261,7 +6258,6 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(FillDistancesPrices)
 	jirl	$ra, $ra, 0
-	ori	$t6, $zero, 1
 .LBB24_291:                             #   in Loop: Header=BB24_27 Depth=1
 	ldptr.w	$a0, $s6, 3164
 	ori	$a1, $zero, 16
@@ -6273,6 +6269,7 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	move	$a2, $zero
 	ld.d	$t1, $sp, 536                   # 8-byte Folded Reload
 	ld.d	$t2, $sp, 520                   # 8-byte Folded Reload
+	ori	$t3, $zero, 64
 	.p2align	4, , 16
 .LBB24_293:                             # %.lr.ph.i.i334
                                         #   Parent Loop BB24_27 Depth=1
@@ -6285,21 +6282,20 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	srli.d	$a3, $a3, 2
 	and	$a3, $a3, $t2
 	ldx.w	$a3, $t1, $a3
-	move	$a5, $a1
-	bstrins.d	$a5, $t6, 63, 1
-	bstrpick.d	$a6, $a1, 1, 1
-	slli.d	$a7, $a5, 1
-	ldx.h	$a7, $fp, $a7
-	sub.d	$a6, $zero, $a6
+	bstrpick.d	$a5, $a1, 1, 1
+	ori	$a6, $zero, 4
+	bstrins.d	$a6, $a1, 1, 1
+	ldx.h	$a7, $fp, $a6
+	sub.d	$a5, $zero, $a5
 	srli.d	$t0, $a1, 2
-	andi	$a6, $a6, 2032
-	xor	$a6, $a6, $a7
-	srli.d	$a6, $a6, 2
-	and	$a6, $a6, $t2
-	ldx.w	$a6, $t1, $a6
-	slli.d	$a5, $a5, 2
-	bstrins.d	$a5, $a4, 1, 1
-	ldx.h	$a4, $fp, $a5
+	andi	$a5, $a5, 2032
+	xor	$a5, $a5, $a7
+	srli.d	$a5, $a5, 2
+	and	$a5, $a5, $t2
+	ldx.w	$a5, $t1, $a5
+	bstrins.d	$a6, $a4, 0, 0
+	slli.d	$a4, $a6, 1
+	ldx.h	$a4, $fp, $a4
 	bstrpick.d	$a7, $a1, 2, 2
 	sub.d	$a7, $zero, $a7
 	andi	$a7, $a7, 2032
@@ -6307,23 +6303,23 @@ LzmaEnc_CodeOneBlock:                   # @LzmaEnc_CodeOneBlock
 	srli.d	$a4, $a4, 2
 	and	$a4, $a4, $t2
 	ldx.w	$a4, $t1, $a4
-	bstrins.d	$a5, $t0, 0, 0
-	slli.d	$a5, $a5, 1
-	ldx.h	$a5, $fp, $a5
+	bstrins.d	$t0, $a6, 63, 1
+	slli.d	$a6, $t0, 1
+	ldx.h	$a6, $fp, $a6
 	slli.d	$a7, $a1, 60
 	srai.d	$a7, $a7, 63
 	andi	$a7, $a7, 2032
-	xor	$a5, $a7, $a5
-	srli.d	$a5, $a5, 2
-	and	$a5, $a5, $t2
-	ldx.w	$a5, $t1, $a5
-	add.d	$a3, $a6, $a3
+	xor	$a6, $a7, $a6
+	srli.d	$a6, $a6, 2
+	and	$a6, $a6, $t2
+	ldx.w	$a6, $t1, $a6
+	add.d	$a3, $a5, $a3
 	add.d	$a3, $a3, $a4
-	add.d	$a3, $a3, $a5
+	add.d	$a3, $a3, $a6
 	stx.w	$a3, $s8, $a2
 	addi.d	$a2, $a2, 4
 	addi.w	$a1, $a1, 1
-	bne	$a2, $s0, .LBB24_293
+	bne	$a2, $t3, .LBB24_293
 # %bb.294:                              # %FillAlignPrices.exit
                                         #   in Loop: Header=BB24_27 Depth=1
 	stptr.w	$zero, $s6, 3164

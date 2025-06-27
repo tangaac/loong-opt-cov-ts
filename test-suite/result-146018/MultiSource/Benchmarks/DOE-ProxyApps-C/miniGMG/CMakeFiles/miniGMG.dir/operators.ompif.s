@@ -5774,7 +5774,7 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
                                         #   in Loop: Header=BB12_11 Depth=3
 	move	$s6, $s7
 	beq	$s4, $a6, .LBB12_10
-.LBB12_17:                              # %.lr.ph.split.us84.us.us.preheader167
+.LBB12_17:                              # %.lr.ph.split.us84.us.us.preheader169
                                         #   in Loop: Header=BB12_11 Depth=3
 	move	$ra, $s6
 	.p2align	4, , 16
@@ -5810,12 +5810,12 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
 	add.w	$ra, $ra, $a4
 	move	$s6, $s1
 	blt	$ra, $a0, .LBB12_24
-# %bb.21:                               # %vector.body141.preheader
+# %bb.21:                               # %vector.body143.preheader
                                         #   in Loop: Header=BB12_11 Depth=3
 	move	$a0, $a6
 	move	$s6, $s3
 	.p2align	4, , 16
-.LBB12_22:                              # %vector.body141
+.LBB12_22:                              # %vector.body143
                                         #   Parent Loop BB12_3 Depth=1
                                         #     Parent Loop BB12_8 Depth=2
                                         #       Parent Loop BB12_11 Depth=3
@@ -5827,11 +5827,11 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
 	addi.d	$a0, $a0, -4
 	addi.w	$s6, $s6, 4
 	bnez	$a0, .LBB12_22
-# %bb.23:                               # %middle.block145
+# %bb.23:                               # %middle.block147
                                         #   in Loop: Header=BB12_11 Depth=3
 	move	$s6, $s7
 	beq	$s4, $a6, .LBB12_10
-.LBB12_24:                              # %.lr.ph.split.us.us.us.us.preheader168
+.LBB12_24:                              # %.lr.ph.split.us.us.us.us.preheader170
                                         #   in Loop: Header=BB12_11 Depth=3
 	add.w	$a0, $s8, $s6
 	sub.d	$s6, $t4, $s6
@@ -5873,19 +5873,19 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
                                         #         Child Loop BB12_34 Depth 4
 	move	$s6, $s1
 	bltu	$s2, $a5, .LBB12_33
-# %bb.29:                               # %vector.scevcheck148
+# %bb.29:                               # %vector.scevcheck150
                                         #   in Loop: Header=BB12_28 Depth=3
 	mul.d	$t0, $t5, $a0
 	add.w	$t6, $fp, $t0
 	add.w	$t0, $t0, $a4
 	move	$s6, $s1
 	blt	$t0, $t6, .LBB12_33
-# %bb.30:                               # %vector.body156.preheader
+# %bb.30:                               # %vector.body158.preheader
                                         #   in Loop: Header=BB12_28 Depth=3
 	move	$s3, $a6
 	move	$s6, $s0
 	.p2align	4, , 16
-.LBB12_31:                              # %vector.body156
+.LBB12_31:                              # %vector.body158
                                         #   Parent Loop BB12_3 Depth=1
                                         #     Parent Loop BB12_8 Depth=2
                                         #       Parent Loop BB12_28 Depth=3
@@ -5897,17 +5897,17 @@ initialize_grid_to_scalar:              # @initialize_grid_to_scalar
 	addi.d	$s3, $s3, -4
 	addi.w	$s6, $s6, 4
 	bnez	$s3, .LBB12_31
-# %bb.32:                               # %middle.block160
+# %bb.32:                               # %middle.block162
                                         #   in Loop: Header=BB12_28 Depth=3
 	move	$s6, $s7
 	beq	$s4, $a6, .LBB12_27
 	.p2align	4, , 16
-.LBB12_33:                              # %scalar.ph151.preheader
+.LBB12_33:                              # %scalar.ph153.preheader
                                         #   in Loop: Header=BB12_28 Depth=3
 	add.w	$s3, $a7, $s6
 	sub.d	$s6, $t4, $s6
 	.p2align	4, , 16
-.LBB12_34:                              # %scalar.ph151
+.LBB12_34:                              # %scalar.ph153
                                         #   Parent Loop BB12_3 Depth=1
                                         #     Parent Loop BB12_8 Depth=2
                                         #       Parent Loop BB12_28 Depth=3

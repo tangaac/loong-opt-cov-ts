@@ -1230,7 +1230,7 @@ _ZTS22GIM_STANDARD_ALLOCATOR:
 	.dword	_GLOBAL__sub_I_btGenericPoolAllocator.cpp
 	.globl	_ZN22btGenericPoolAllocatorD1Ev
 	.type	_ZN22btGenericPoolAllocatorD1Ev,@function
-.set _ZN22btGenericPoolAllocatorD1Ev, _ZN22btGenericPoolAllocatorD2Ev
+_ZN22btGenericPoolAllocatorD1Ev = _ZN22btGenericPoolAllocatorD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

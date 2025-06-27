@@ -3070,57 +3070,61 @@ cli_scanpe:                             # @cli_scanpe
 	ld.w	$a1, $a1, 4
 	ld.w	$a2, $s4, 0
 	sub.w	$a0, $a1, $a0
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	bne	$a0, $a2, .LBB0_770
 # %bb.479:                              # %.preheader3353
 	addi.w	$a1, $s3, -4
 	ori	$a0, $zero, 13
-	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	bltu	$a1, $a0, .LBB0_662
 # %bb.480:                              # %.lr.ph3455.preheader
 	st.d	$zero, $sp, 192                 # 8-byte Folded Spill
 	ld.d	$a0, $sp, 216                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 8
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	ori	$s0, $zero, 12
 	pcalau12i	$a0, %pc_hi20(.L.str.172)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.172)
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 .LBB0_481:                              # %.lr.ph3455
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a2, $s0, 31, 0
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
-	ldx.w	$a1, $a1, $a2
-	beqz	$a1, .LBB0_834
+	ldx.w	$s3, $a1, $a2
+	beqz	$s3, .LBB0_834
 # %bb.482:                              #   in Loop: Header=BB0_481 Depth=1
 	move	$s2, $a2
-	lu12i.w	$a2, 2
-	ori	$a2, $a2, 476
-	add.d	$a2, $sp, $a2
-	ld.w	$a2, $a2, 0
-	nor	$a2, $a2, $zero
-	add.w	$s3, $a1, $a2
-	andi	$a1, $s3, 4095
+	lu12i.w	$a1, 2
+	ori	$a1, $a1, 476
+	add.d	$a1, $sp, $a1
+	ld.w	$a1, $a1, 0
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	sub.d	$a1, $a1, $s3
+	ori	$a2, $zero, 4095
+	andn	$a1, $a2, $a1
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
 	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
 	beqz	$a1, .LBB0_484
 # %bb.483:                              #   in Loop: Header=BB0_481 Depth=1
-	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 0
 .LBB0_484:                              #   in Loop: Header=BB0_481 Depth=1
-	bltu	$s3, $a0, .LBB0_833
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	nor	$a1, $a1, $zero
+	add.w	$a1, $s3, $a1
+	bltu	$a1, $a0, .LBB0_833
 # %bb.485:                              #   in Loop: Header=BB0_481 Depth=1
-	ld.w	$a1, $s4, 4
-	sub.w	$a2, $s3, $a0
-	bgeu	$a2, $a1, .LBB0_833
+	ld.w	$a2, $s4, 4
+	sub.w	$a1, $a1, $a0
+	bgeu	$a1, $a2, .LBB0_833
 # %bb.486:                              #   in Loop: Header=BB0_481 Depth=1
 	addi.w	$s0, $s0, 4
-	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	bltu	$s0, $a1, .LBB0_481
 	b	.LBB0_662
 .LBB0_487:
@@ -5112,7 +5116,7 @@ cli_scanpe:                             # @cli_scanpe
 .LBB0_770:
 	pcalau12i	$a0, %pc_hi20(.L.str.171)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.171)
-	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_662
@@ -5640,7 +5644,7 @@ cli_scanpe:                             # @cli_scanpe
 	beqz	$a0, .LBB0_898
 # %bb.835:
 	move	$s3, $a0
-	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $s3, 0
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	beqz	$a0, .LBB0_846
@@ -5710,7 +5714,7 @@ cli_scanpe:                             # @cli_scanpe
 	add.d	$t1, $sp, $t1
 	vld	$vr1, $t1, 0
 	and	$t0, $t0, $a7
-	ld.d	$t1, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 128                   # 8-byte Folded Reload
 	vldx	$vr2, $t1, $t0
 	vxor.v	$vr1, $vr1, $vr0
 	vreplvei.w	$vr1, $vr1, 0
@@ -5738,7 +5742,7 @@ cli_scanpe:                             # @cli_scanpe
 	ori	$a4, $a4, 476
 	add.d	$a4, $sp, $a4
 	ld.w	$a4, $a4, 0
-	ld.d	$a5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 128                   # 8-byte Folded Reload
 	ldx.w	$a1, $a5, $a1
 	nor	$a4, $a4, $zero
 	add.d	$a1, $a1, $a4

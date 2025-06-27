@@ -1362,9 +1362,9 @@ _ZN9NCompress6NBZip28CDecoder6CreateEv: # @_ZN9NCompress6NBZip28CDecoder6CreateE
 	move	$a0, $zero
 	stptr.d	$a1, $fp, 28696
 	b	.LBB15_30
-.LBB15_28:                              # %.loopexit.loopexit68
+.LBB15_28:                              # %.lr.ph.split.us
 	st.d	$fp, $a0, 16
-.LBB15_29:                              # %.loopexit
+.LBB15_29:
 	move	$a0, $zero
 .LBB15_30:                              # %.loopexit
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
@@ -7052,8 +7052,8 @@ _ZN9NCompress8NHuffman8CDecoderILi20ELj258EE14SetCodeLengthsEPKh: # @_ZN9NCompre
                                         #   in Loop: Header=BB66_6 Depth=1
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s4
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s4, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $s1
@@ -8096,10 +8096,10 @@ _ZN9NCompress6NBZip2L9kRandNumsE:
 	.dword	_ZTI19COutBufferException
 	.globl	_ZN9NCompress6NBZip28CDecoderC1Ev
 	.type	_ZN9NCompress6NBZip28CDecoderC1Ev,@function
-.set _ZN9NCompress6NBZip28CDecoderC1Ev, _ZN9NCompress6NBZip28CDecoderC2Ev
+_ZN9NCompress6NBZip28CDecoderC1Ev = _ZN9NCompress6NBZip28CDecoderC2Ev
 	.globl	_ZN9NCompress6NBZip28CDecoderD1Ev
 	.type	_ZN9NCompress6NBZip28CDecoderD1Ev,@function
-.set _ZN9NCompress6NBZip28CDecoderD1Ev, _ZN9NCompress6NBZip28CDecoderD2Ev
+_ZN9NCompress6NBZip28CDecoderD1Ev = _ZN9NCompress6NBZip28CDecoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

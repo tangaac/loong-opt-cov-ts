@@ -5283,7 +5283,7 @@ _ZTS13CRecordVectorIPKyE:
 
 	.globl	_ZN11NCoderMixer7CCoder2C1Ejj
 	.type	_ZN11NCoderMixer7CCoder2C1Ejj,@function
-.set _ZN11NCoderMixer7CCoder2C1Ejj, _ZN11NCoderMixer7CCoder2C2Ejj
+_ZN11NCoderMixer7CCoder2C1Ejj = _ZN11NCoderMixer7CCoder2C2Ejj
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

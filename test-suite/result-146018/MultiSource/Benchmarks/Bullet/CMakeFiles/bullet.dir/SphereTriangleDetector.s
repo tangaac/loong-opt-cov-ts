@@ -839,7 +839,7 @@ _ZTS36btDiscreteCollisionDetectorInterface:
 
 	.globl	_ZN22SphereTriangleDetectorC1EP13btSphereShapeP15btTriangleShapef
 	.type	_ZN22SphereTriangleDetectorC1EP13btSphereShapeP15btTriangleShapef,@function
-.set _ZN22SphereTriangleDetectorC1EP13btSphereShapeP15btTriangleShapef, _ZN22SphereTriangleDetectorC2EP13btSphereShapeP15btTriangleShapef
+_ZN22SphereTriangleDetectorC1EP13btSphereShapeP15btTriangleShapef = _ZN22SphereTriangleDetectorC2EP13btSphereShapeP15btTriangleShapef
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

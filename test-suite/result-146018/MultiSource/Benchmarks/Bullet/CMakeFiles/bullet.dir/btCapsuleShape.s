@@ -1318,13 +1318,13 @@ _ZTS15btCapsuleShapeZ:
 
 	.globl	_ZN14btCapsuleShapeC1Eff
 	.type	_ZN14btCapsuleShapeC1Eff,@function
-.set _ZN14btCapsuleShapeC1Eff, _ZN14btCapsuleShapeC2Eff
+_ZN14btCapsuleShapeC1Eff = _ZN14btCapsuleShapeC2Eff
 	.globl	_ZN15btCapsuleShapeXC1Eff
 	.type	_ZN15btCapsuleShapeXC1Eff,@function
-.set _ZN15btCapsuleShapeXC1Eff, _ZN15btCapsuleShapeXC2Eff
+_ZN15btCapsuleShapeXC1Eff = _ZN15btCapsuleShapeXC2Eff
 	.globl	_ZN15btCapsuleShapeZC1Eff
 	.type	_ZN15btCapsuleShapeZC1Eff,@function
-.set _ZN15btCapsuleShapeZC1Eff, _ZN15btCapsuleShapeZC2Eff
+_ZN15btCapsuleShapeZC1Eff = _ZN15btCapsuleShapeZC2Eff
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

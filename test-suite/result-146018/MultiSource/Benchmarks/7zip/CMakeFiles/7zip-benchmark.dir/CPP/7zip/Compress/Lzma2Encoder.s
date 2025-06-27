@@ -1485,10 +1485,10 @@ _ZTS13CMyUnknownImp:
 
 	.globl	_ZN9NCompress6NLzma28CEncoderC1Ev
 	.type	_ZN9NCompress6NLzma28CEncoderC1Ev,@function
-.set _ZN9NCompress6NLzma28CEncoderC1Ev, _ZN9NCompress6NLzma28CEncoderC2Ev
+_ZN9NCompress6NLzma28CEncoderC1Ev = _ZN9NCompress6NLzma28CEncoderC2Ev
 	.globl	_ZN9NCompress6NLzma28CEncoderD1Ev
 	.type	_ZN9NCompress6NLzma28CEncoderD1Ev,@function
-.set _ZN9NCompress6NLzma28CEncoderD1Ev, _ZN9NCompress6NLzma28CEncoderD2Ev
+_ZN9NCompress6NLzma28CEncoderD1Ev = _ZN9NCompress6NLzma28CEncoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

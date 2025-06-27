@@ -102,7 +102,7 @@ _ZTS3bar:
 
 	.globl	_ZN3barC1Ev
 	.type	_ZN3barC1Ev,@function
-.set _ZN3barC1Ev, _ZN3barC2Ev
+_ZN3barC1Ev = _ZN3barC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI3foo

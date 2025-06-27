@@ -3721,7 +3721,7 @@ _ZN8NArchive5NPpmdL9g_ArcInfoE:
 	.dword	_ZTIPKc
 	.globl	_ZN8NArchive5NPpmd13CRangeDecoderC1Ev
 	.type	_ZN8NArchive5NPpmd13CRangeDecoderC1Ev,@function
-.set _ZN8NArchive5NPpmd13CRangeDecoderC1Ev, _ZN8NArchive5NPpmd13CRangeDecoderC2Ev
+_ZN8NArchive5NPpmd13CRangeDecoderC1Ev = _ZN8NArchive5NPpmd13CRangeDecoderC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

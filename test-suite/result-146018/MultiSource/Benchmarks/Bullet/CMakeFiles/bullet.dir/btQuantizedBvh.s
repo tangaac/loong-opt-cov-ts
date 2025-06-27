@@ -237,16 +237,18 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	pcaddu18i	$ra, %call36(_ZN14btQuantizedBvh9buildTreeEii)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 64
-	bne	$a0, $s1, .LBB4_24
-# %bb.14:
-	ld.w	$a0, $fp, 212
-	bnez	$a0, .LBB4_24
+	ld.w	$a1, $fp, 212
+	bne	$a0, $s1, .LBB4_25
+# %bb.14:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE6resizeEiRKS0_.exit
+	bnez	$a1, .LBB4_25
 # %bb.15:
-	ld.w	$a1, $fp, 216
-	ori	$s1, $zero, 1
-	ori	$a0, $zero, 1
-	bnez	$a1, .LBB4_23
-# %bb.16:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE8allocateEi.exit.i.i
+	ld.w	$a0, $fp, 216
+	beqz	$a0, .LBB4_17
+# %bb.16:                               # %._ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit_crit_edge
+	ld.d	$s0, $fp, 224
+	ori	$a1, $zero, 1
+	b	.LBB4_24
+.LBB4_17:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE8allocateEi.exit.i.i
 	ori	$a0, $zero, 32
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -254,12 +256,12 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	ld.w	$a1, $fp, 212
 	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB4_19
-# %bb.17:                               # %.lr.ph.i.i.i10
+	blt	$a1, $a2, .LBB4_20
+# %bb.18:                               # %.lr.ph.i.i.i10
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
 	.p2align	4, , 16
-.LBB4_18:                               # =>This Inner Loop Header: Depth=1
+.LBB4_19:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 224
 	vldx	$vr0, $a2, $a0
 	add.d	$a2, $a2, $a0
@@ -268,76 +270,75 @@ _ZN14btQuantizedBvh13buildInternalEv:   # @_ZN14btQuantizedBvh13buildInternalEv
 	add.d	$a2, $s0, $a0
 	addi.d	$a0, $a0, 32
 	vst	$vr0, $a2, 16
-	bne	$a1, $a0, .LBB4_18
-.LBB4_19:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
+	bne	$a1, $a0, .LBB4_19
+.LBB4_20:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $fp, 224
-	beqz	$a0, .LBB4_22
-# %bb.20:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
+	beqz	$a0, .LBB4_23
+# %bb.21:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
 	ld.b	$a1, $fp, 232
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_22
-# %bb.21:
+	beqz	$a1, .LBB4_23
+# %bb.22:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_22:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE10deallocateEv.exit.i.i
+.LBB4_23:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	ld.w	$a1, $fp, 212
 	st.b	$a0, $fp, 232
 	st.d	$s0, $fp, 224
 	st.w	$a0, $fp, 216
-	addi.d	$a0, $a1, 1
-.LBB4_23:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit
-	ld.d	$a1, $fp, 184
-	ld.d	$a2, $fp, 224
-	ld.h	$a3, $a1, 0
-	st.h	$a3, $a2, 0
-	ld.h	$a3, $a1, 2
-	st.h	$a3, $a2, 2
-	ld.h	$a3, $a1, 4
-	st.h	$a3, $a2, 4
-	ld.h	$a3, $a1, 6
-	st.h	$a3, $a2, 6
-	ld.h	$a3, $a1, 8
-	st.h	$a3, $a2, 8
-	ld.h	$a3, $a1, 10
-	st.w	$a0, $fp, 212
-	ld.w	$a0, $a1, 12
-	st.h	$a3, $a2, 10
-	st.w	$zero, $a2, 12
-	addi.w	$a1, $zero, -1
-	slt	$a1, $a1, $a0
+	addi.d	$a1, $a1, 1
+.LBB4_24:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit
+	ld.d	$a0, $fp, 184
+	ld.h	$a2, $a0, 0
+	st.h	$a2, $s0, 0
+	ld.h	$a2, $a0, 2
+	st.h	$a2, $s0, 2
+	ld.h	$a2, $a0, 4
+	st.h	$a2, $s0, 4
+	ld.h	$a2, $a0, 6
+	st.h	$a2, $s0, 6
+	ld.h	$a2, $a0, 8
+	st.h	$a2, $s0, 8
+	ld.h	$a2, $a0, 10
+	st.w	$a1, $fp, 212
+	ld.w	$a0, $a0, 12
+	st.h	$a2, $s0, 10
+	st.w	$zero, $s0, 12
+	addi.w	$a2, $zero, -1
+	slt	$a2, $a2, $a0
 	sub.d	$a0, $zero, $a0
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $s1, $a1
-	or	$a0, $a1, $a0
-	st.w	$a0, $a2, 16
-.LBB4_24:
-	ld.w	$a1, $fp, 212
+	masknez	$a0, $a0, $a2
+	ori	$a3, $zero, 1
+	maskeqz	$a2, $a3, $a2
+	or	$a0, $a2, $a0
+	st.w	$a0, $s0, 16
+.LBB4_25:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE6resizeEiRKS0_.exit._crit_edge
 	ld.d	$a0, $fp, 152
 	st.w	$a1, $fp, 240
-	beqz	$a0, .LBB4_27
-# %bb.25:
+	beqz	$a0, .LBB4_28
+# %bb.26:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE6resizeEiRKS0_.exit._crit_edge
 	ld.b	$a1, $fp, 160
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_27
-# %bb.26:
+	beqz	$a1, .LBB4_28
+# %bb.27:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_27:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
+.LBB4_28:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
 	ld.d	$a0, $fp, 88
 	ori	$s0, $zero, 1
 	st.b	$s0, $fp, 160
 	st.d	$zero, $fp, 152
 	st.d	$zero, $fp, 140
-	beqz	$a0, .LBB4_30
-# %bb.28:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
+	beqz	$a0, .LBB4_31
+# %bb.29:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
 	ld.b	$a1, $fp, 96
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_30
-# %bb.29:
+	beqz	$a1, .LBB4_31
+# %bb.30:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_30:                               # %_ZN20btAlignedObjectArrayI18btOptimizedBvhNodeE5clearEv.exit
+.LBB4_31:                               # %_ZN20btAlignedObjectArrayI18btOptimizedBvhNodeE5clearEv.exit
 	st.b	$s0, $fp, 96
 	st.d	$zero, $fp, 88
 	st.d	$zero, $fp, 76
@@ -1881,11 +1882,12 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	st.w	$a1, $a3, 12
 	st.w	$s4, $a3, 16
 .LBB13_14:
-	bltu	$s5, $s2, .LBB13_28
-# %bb.15:
 	ld.w	$s3, $fp, 212
-	ld.w	$a0, $fp, 216
-	bne	$s3, $a0, .LBB13_19
+	bltu	$s5, $s2, .LBB13_27
+# %bb.15:
+	ld.w	$a1, $fp, 216
+	move	$a0, $s3
+	bne	$s3, $a1, .LBB13_26
 # %bb.16:
 	sltui	$a0, $s3, 1
 	slli.w	$a1, $s3, 1
@@ -1893,10 +1895,11 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	ori	$a3, $zero, 1
 	maskeqz	$a0, $a3, $a0
 	or	$s4, $a0, $a1
-	bge	$s3, $s4, .LBB13_19
+	move	$a0, $s3
+	bge	$s3, $s4, .LBB13_26
 # %bb.17:
 	move	$s5, $a2
-	beqz	$s4, .LBB13_20
+	beqz	$s4, .LBB13_19
 # %bb.18:
 	slli.d	$a0, $s4, 5
 	ori	$a1, $zero, 16
@@ -1905,21 +1908,18 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	ld.w	$a1, $fp, 212
 	move	$s0, $a0
 	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB13_21
-	b	.LBB13_23
+	bge	$a1, $a0, .LBB13_20
+	b	.LBB13_22
 .LBB13_19:
-	move	$a0, $s3
-	b	.LBB13_27
-.LBB13_20:
 	move	$s0, $zero
 	move	$a1, $s3
 	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB13_23
-.LBB13_21:                              # %.lr.ph.i.i.i32
+	blt	$a1, $a0, .LBB13_22
+.LBB13_20:                              # %.lr.ph.i.i.i32
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
 	.p2align	4, , 16
-.LBB13_22:                              # =>This Inner Loop Header: Depth=1
+.LBB13_21:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 224
 	vldx	$vr0, $a2, $a0
 	add.d	$a2, $a2, $a0
@@ -1928,25 +1928,25 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	add.d	$a2, $s0, $a0
 	addi.d	$a0, $a0, 32
 	vst	$vr0, $a2, 16
-	bne	$a1, $a0, .LBB13_22
-.LBB13_23:                              # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i27
+	bne	$a1, $a0, .LBB13_21
+.LBB13_22:                              # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i27
 	ld.d	$a0, $fp, 224
-	beqz	$a0, .LBB13_26
-# %bb.24:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i27
+	beqz	$a0, .LBB13_25
+# %bb.23:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i27
 	ld.b	$a1, $fp, 232
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB13_26
-# %bb.25:
+	beqz	$a1, .LBB13_25
+# %bb.24:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB13_26:                              # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE10deallocateEv.exit.i.i30
+.LBB13_25:                              # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE10deallocateEv.exit.i.i30
 	ori	$a1, $zero, 1
 	ld.w	$a0, $fp, 212
 	st.b	$a1, $fp, 232
 	st.d	$s0, $fp, 224
 	st.w	$s4, $fp, 216
 	move	$a2, $s5
-.LBB13_27:                              # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit37
+.LBB13_26:                              # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit37
 	ld.d	$a1, $fp, 224
 	ld.h	$a3, $s1, 0
 	slli.d	$a4, $s3, 5
@@ -1961,14 +1961,13 @@ _ZN14btQuantizedBvh20updateSubtreeHeadersEii: # @_ZN14btQuantizedBvh20updateSubt
 	ld.h	$a3, $s1, 8
 	st.h	$a3, $a1, 8
 	ld.h	$a3, $s1, 10
-	addi.d	$a0, $a0, 1
-	st.w	$a0, $fp, 212
+	addi.d	$s3, $a0, 1
+	st.w	$s3, $fp, 212
 	st.h	$a3, $a1, 10
 	st.w	$a2, $a1, 12
 	st.w	$s2, $a1, 16
-.LBB13_28:
-	ld.w	$a0, $fp, 212
-	st.w	$a0, $fp, 240
+.LBB13_27:                              # %._crit_edge
+	st.w	$s3, $fp, 240
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -4812,13 +4811,13 @@ _ZTS14btQuantizedBvh:
 
 	.globl	_ZN14btQuantizedBvhC1Ev
 	.type	_ZN14btQuantizedBvhC1Ev,@function
-.set _ZN14btQuantizedBvhC1Ev, _ZN14btQuantizedBvhC2Ev
+_ZN14btQuantizedBvhC1Ev = _ZN14btQuantizedBvhC2Ev
 	.globl	_ZN14btQuantizedBvhD1Ev
 	.type	_ZN14btQuantizedBvhD1Ev,@function
-.set _ZN14btQuantizedBvhD1Ev, _ZN14btQuantizedBvhD2Ev
+_ZN14btQuantizedBvhD1Ev = _ZN14btQuantizedBvhD2Ev
 	.globl	_ZN14btQuantizedBvhC1ERS_b
 	.type	_ZN14btQuantizedBvhC1ERS_b,@function
-.set _ZN14btQuantizedBvhC1ERS_b, _ZN14btQuantizedBvhC2ERS_b
+_ZN14btQuantizedBvhC1ERS_b = _ZN14btQuantizedBvhC2ERS_b
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

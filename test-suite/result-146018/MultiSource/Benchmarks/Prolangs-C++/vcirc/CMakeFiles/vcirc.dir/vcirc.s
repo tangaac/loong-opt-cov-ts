@@ -262,7 +262,7 @@ _ZTS6Circle:
 
 	.globl	_ZN8LocationC1Eii
 	.type	_ZN8LocationC1Eii,@function
-.set _ZN8LocationC1Eii, _ZN8LocationC2Eii
+_ZN8LocationC1Eii = _ZN8LocationC2Eii
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI5Point

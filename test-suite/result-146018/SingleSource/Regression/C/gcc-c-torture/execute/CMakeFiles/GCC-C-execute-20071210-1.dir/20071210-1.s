@@ -112,8 +112,8 @@ bar:                                    # @bar
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	move	$a0, $zero
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(bar)
@@ -124,45 +124,37 @@ main:                                   # @main
 	addi.d	$a2, $a2, %pc_lo12(.L__const.main.s)
 	ld.d	$a3, $a2, 16
 	vld	$vr0, $a2, 0
-	st.d	$a1, $sp, 40
-	st.d	$a0, $sp, 48
-	st.d	$a3, $sp, 32
-	vst	$vr0, $sp, 16
-	addi.d	$a1, $sp, 20
-	addi.d	$a0, $sp, 40
+	st.d	$a1, $sp, 24
+	st.d	$a0, $sp, 32
+	st.d	$a3, $sp, 16
+	vst	$vr0, $sp, 0
+	addi.d	$a1, $sp, 4
+	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 16
+	vld	$vr0, $sp, 0
 	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
 	vld	$vr1, $a1, %pc_lo12(.LCPI2_0)
 	vseq.w	$vr0, $vr0, $vr1
 	vrepli.b	$vr1, -1
 	vxor.v	$vr0, $vr0, $vr1
-	vpickve2gr.w	$a1, $vr0, 0
-	vpickve2gr.w	$a2, $vr0, 1
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
-	vpickve2gr.w	$a2, $vr0, 2
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 3
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	bnez	$a1, .LBB2_5
 # %bb.1:
-	ld.w	$a1, $sp, 32
+	ld.w	$a1, $sp, 16
 	ori	$a2, $zero, 11
 	bne	$a1, $a2, .LBB2_5
 # %bb.2:
 	bnez	$a0, .LBB2_5
 # %bb.3:
-	ld.w	$a0, $sp, 36
+	ld.w	$a0, $sp, 20
 	ori	$a1, $zero, 12
 	bne	$a0, $a1, .LBB2_5
 # %bb.4:
 	move	$a0, $zero
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB2_5:
 	pcaddu18i	$ra, %call36(abort)

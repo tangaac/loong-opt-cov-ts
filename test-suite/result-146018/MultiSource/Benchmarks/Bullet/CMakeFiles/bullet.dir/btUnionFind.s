@@ -586,10 +586,10 @@ _ZN20btAlignedObjectArrayI9btElementE17quickSortInternalI31btUnionFindElementSor
                                         # -- End function
 	.globl	_ZN11btUnionFindD1Ev
 	.type	_ZN11btUnionFindD1Ev,@function
-.set _ZN11btUnionFindD1Ev, _ZN11btUnionFindD2Ev
+_ZN11btUnionFindD1Ev = _ZN11btUnionFindD2Ev
 	.globl	_ZN11btUnionFindC1Ev
 	.type	_ZN11btUnionFindC1Ev,@function
-.set _ZN11btUnionFindC1Ev, _ZN11btUnionFindC2Ev
+_ZN11btUnionFindC1Ev = _ZN11btUnionFindC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

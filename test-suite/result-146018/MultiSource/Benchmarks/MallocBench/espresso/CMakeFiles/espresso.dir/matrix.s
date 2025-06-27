@@ -225,8 +225,8 @@ sm_resize:                              # @sm_resize
 	bge	$s2, $s1, .LBB4_4
 .LBB4_3:                                # %.lr.ph.preheader
 	alsl.d	$a0, $s2, $a0, 3
-	nor	$a1, $s2, $zero
-	add.d	$a1, $s1, $a1
+	sub.d	$a1, $s2, $s1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8
@@ -256,8 +256,8 @@ sm_resize:                              # @sm_resize
 	bge	$s1, $s0, .LBB4_9
 .LBB4_8:                                # %.lr.ph56.preheader
 	alsl.d	$a0, $s1, $a0, 3
-	nor	$a1, $s1, $zero
-	add.d	$a1, $s0, $a1
+	sub.d	$a1, $s1, $s0
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

@@ -126,7 +126,7 @@ _ZTS20btCollisionAlgorithm:
 
 	.globl	_ZN16btEmptyAlgorithmC1ERK36btCollisionAlgorithmConstructionInfo
 	.type	_ZN16btEmptyAlgorithmC1ERK36btCollisionAlgorithmConstructionInfo,@function
-.set _ZN16btEmptyAlgorithmC1ERK36btCollisionAlgorithmConstructionInfo, _ZN16btEmptyAlgorithmC2ERK36btCollisionAlgorithmConstructionInfo
+_ZN16btEmptyAlgorithmC1ERK36btCollisionAlgorithmConstructionInfo = _ZN16btEmptyAlgorithmC2ERK36btCollisionAlgorithmConstructionInfo
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

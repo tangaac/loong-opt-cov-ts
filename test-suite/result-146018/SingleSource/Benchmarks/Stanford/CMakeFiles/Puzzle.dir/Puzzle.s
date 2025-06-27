@@ -638,7 +638,7 @@ Trial:                                  # @Trial
 	bstrins.d	$a5, $zero, 4, 0
 	b	.LBB5_13
 	.p2align	4, , 16
-.LBB5_12:                               # %pred.store.continue81
+.LBB5_12:                               # %pred.store.continue80
                                         #   in Loop: Header=BB5_13 Depth=2
 	vaddi.du	$vr1, $vr1, 8
 	addi.d	$a4, $a4, 32
@@ -654,28 +654,28 @@ Trial:                                  # @Trial
 	andi	$a6, $a6, 1
 	vadd.d	$vr3, $vr1, $vr4
 	bnez	$a6, .LBB5_22
-# %bb.14:                               # %pred.store.continue67
+# %bb.14:                               # %pred.store.continue66
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.w	$a6, $vr2, 1
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB5_23
-.LBB5_15:                               # %pred.store.continue69
+.LBB5_15:                               # %pred.store.continue68
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.w	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	vadd.d	$vr3, $vr0, $vr4
 	bnez	$a6, .LBB5_24
-.LBB5_16:                               # %pred.store.continue71
+.LBB5_16:                               # %pred.store.continue70
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.w	$a6, $vr2, 3
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB5_18
-.LBB5_17:                               # %pred.store.if72
+.LBB5_17:                               # %pred.store.if71
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 1
 	slli.d	$a6, $a6, 2
 	stx.w	$fp, $s2, $a6
-.LBB5_18:                               # %pred.store.continue73
+.LBB5_18:                               # %pred.store.continue72
                                         #   in Loop: Header=BB5_13 Depth=2
 	add.d	$a6, $s5, $a4
 	vld	$vr2, $a6, 16
@@ -685,25 +685,25 @@ Trial:                                  # @Trial
 	andi	$a6, $a6, 1
 	vadd.d	$vr3, $vr1, $vr5
 	bnez	$a6, .LBB5_25
-# %bb.19:                               # %pred.store.continue75
+# %bb.19:                               # %pred.store.continue74
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.w	$a6, $vr2, 1
 	andi	$a6, $a6, 1
 	bnez	$a6, .LBB5_26
-.LBB5_20:                               # %pred.store.continue77
+.LBB5_20:                               # %pred.store.continue76
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.w	$a6, $vr2, 2
 	andi	$a6, $a6, 1
 	vadd.d	$vr3, $vr0, $vr5
 	bnez	$a6, .LBB5_27
-.LBB5_21:                               # %pred.store.continue79
+.LBB5_21:                               # %pred.store.continue78
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.w	$a6, $vr2, 3
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB5_12
 	b	.LBB5_28
 	.p2align	4, , 16
-.LBB5_22:                               # %pred.store.if66
+.LBB5_22:                               # %pred.store.if65
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 0
 	slli.d	$a6, $a6, 2
@@ -711,7 +711,7 @@ Trial:                                  # @Trial
 	vpickve2gr.w	$a6, $vr2, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB5_15
-.LBB5_23:                               # %pred.store.if68
+.LBB5_23:                               # %pred.store.if67
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 1
 	slli.d	$a6, $a6, 2
@@ -720,7 +720,7 @@ Trial:                                  # @Trial
 	andi	$a6, $a6, 1
 	vadd.d	$vr3, $vr0, $vr4
 	beqz	$a6, .LBB5_16
-.LBB5_24:                               # %pred.store.if70
+.LBB5_24:                               # %pred.store.if69
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 0
 	slli.d	$a6, $a6, 2
@@ -730,7 +730,7 @@ Trial:                                  # @Trial
 	bnez	$a6, .LBB5_17
 	b	.LBB5_18
 	.p2align	4, , 16
-.LBB5_25:                               # %pred.store.if74
+.LBB5_25:                               # %pred.store.if73
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 0
 	slli.d	$a6, $a6, 2
@@ -738,7 +738,7 @@ Trial:                                  # @Trial
 	vpickve2gr.w	$a6, $vr2, 1
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB5_20
-.LBB5_26:                               # %pred.store.if76
+.LBB5_26:                               # %pred.store.if75
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 1
 	slli.d	$a6, $a6, 2
@@ -747,7 +747,7 @@ Trial:                                  # @Trial
 	andi	$a6, $a6, 1
 	vadd.d	$vr3, $vr0, $vr5
 	beqz	$a6, .LBB5_21
-.LBB5_27:                               # %pred.store.if78
+.LBB5_27:                               # %pred.store.if77
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 0
 	slli.d	$a6, $a6, 2
@@ -755,7 +755,7 @@ Trial:                                  # @Trial
 	vpickve2gr.w	$a6, $vr2, 3
 	andi	$a6, $a6, 1
 	beqz	$a6, .LBB5_12
-.LBB5_28:                               # %pred.store.if80
+.LBB5_28:                               # %pred.store.if79
                                         #   in Loop: Header=BB5_13 Depth=2
 	vpickve2gr.d	$a6, $vr3, 1
 	slli.d	$a6, $a6, 2

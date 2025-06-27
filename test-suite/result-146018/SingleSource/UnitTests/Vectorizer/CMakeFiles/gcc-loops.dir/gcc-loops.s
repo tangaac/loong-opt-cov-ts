@@ -2089,7 +2089,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp1:
-# %bb.43:
+# %bb.43:                               # %.lr.ph.i170.preheader
 	move	$fp, $a0
 	st.w	$s1, $a0, 0
 	addi.d	$a0, $sp, 32
@@ -2107,20 +2107,14 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	lu12i.w	$s1, 256
-	.p2align	4, , 16
-.LBB24_44:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1024
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(_Z9example2aii)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $s1, -1
-	bnez	$s1, .LBB24_44
-# %bb.45:                               # %.lr.ph.i170.preheader
 	ori	$s1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_46:                              # %.lr.ph.i170
+.LBB24_44:                              # %.lr.ph.i170
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s0, $a0
 	ldx.bu	$a1, $a1, $s6
@@ -2130,14 +2124,14 @@ main:                                   # @main
 	slli.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 1
 	xor	$s1, $a1, $a2
-	bnez	$a0, .LBB24_46
-# %bb.47:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i176
+	bnez	$a0, .LBB24_44
+# %bb.45:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i176
 .Ltmp3:
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp4:
-# %bb.48:                               # %.noexc182
+# %bb.46:                               # %.noexc182
 	move	$s0, $a0
 	ld.w	$a0, $fp, 0
 	st.w	$s1, $s0, 4
@@ -2162,17 +2156,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$fp, 128
 	.p2align	4, , 16
-.LBB24_49:                              # =>This Inner Loop Header: Depth=1
+.LBB24_47:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1024
 	pcaddu18i	$ra, %call36(_Z9example2bii)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_49
-# %bb.50:                               # %.lr.ph.i184.preheader
+	bnez	$fp, .LBB24_47
+# %bb.48:                               # %.lr.ph.i184.preheader
 	ori	$s1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_51:                              # %.lr.ph.i184
+.LBB24_49:                              # %.lr.ph.i184
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s7, $a0
 	ldx.bu	$a1, $a1, $s6
@@ -2182,14 +2176,14 @@ main:                                   # @main
 	slli.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 1
 	xor	$s1, $a1, $a2
-	bnez	$a0, .LBB24_51
-# %bb.52:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i190
+	bnez	$a0, .LBB24_49
+# %bb.50:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i190
 .Ltmp6:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp7:
-# %bb.53:                               # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i194
+# %bb.51:                               # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i194
 	move	$fp, $a0
 	ld.d	$a0, $s0, 0
 	st.w	$s1, $fp, 8
@@ -2220,19 +2214,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s2, 128
 	.p2align	4, , 16
-.LBB24_54:                              # =>This Inner Loop Header: Depth=1
+.LBB24_52:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1024
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(_Z8example3iPiS_)
 	jirl	$ra, $ra, 0
 	addi.w	$s2, $s2, -1
-	bnez	$s2, .LBB24_54
-# %bb.55:                               # %.lr.ph.i198.preheader
+	bnez	$s2, .LBB24_52
+# %bb.53:                               # %.lr.ph.i198.preheader
 	ori	$a1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_56:                              # %.lr.ph.i198
+.LBB24_54:                              # %.lr.ph.i198
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $s0, $a0
 	ldx.bu	$a2, $a2, $s6
@@ -2242,8 +2236,8 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$a1, $a2, $a1
-	bnez	$a0, .LBB24_56
-# %bb.57:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit211
+	bnez	$a0, .LBB24_54
+# %bb.55:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit211
 	addi.d	$s5, $fp, 16
 	st.w	$a1, $fp, 12
 	addi.d	$a0, $sp, 32
@@ -2268,19 +2262,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s0, 128
 	.p2align	4, , 16
-.LBB24_58:                              # =>This Inner Loop Header: Depth=1
+.LBB24_56:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1024
 	move	$a1, $s2
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(_Z9example4aiPiS_)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s0, -1
-	bnez	$s0, .LBB24_58
-# %bb.59:                               # %.lr.ph.i212.preheader
+	bnez	$s0, .LBB24_56
+# %bb.57:                               # %.lr.ph.i212.preheader
 	ori	$s4, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_60:                              # %.lr.ph.i212
+.LBB24_58:                              # %.lr.ph.i212
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s2, $a0
 	ldx.bu	$a1, $a1, $s6
@@ -2290,14 +2284,14 @@ main:                                   # @main
 	slli.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 1
 	xor	$s4, $a1, $a2
-	bnez	$a0, .LBB24_60
-# %bb.61:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i218
+	bnez	$a0, .LBB24_58
+# %bb.59:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i218
 .Ltmp9:
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp10:
-# %bb.62:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit225
+# %bb.60:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit225
 	move	$s0, $a0
 	vld	$vr0, $fp, 0
 	st.w	$s4, $a0, 16
@@ -2323,17 +2317,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$fp, 128
 	.p2align	4, , 16
-.LBB24_63:                              # =>This Inner Loop Header: Depth=1
+.LBB24_61:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1014
 	pcaddu18i	$ra, %call36(_Z9example4biPiS_)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_63
-# %bb.64:                               # %.lr.ph.i226.preheader
+	bnez	$fp, .LBB24_61
+# %bb.62:                               # %.lr.ph.i226.preheader
 	ori	$a1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_65:                              # %.lr.ph.i226
+.LBB24_63:                              # %.lr.ph.i226
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $s2, $a0
 	ldx.bu	$a2, $a2, $s6
@@ -2343,8 +2337,8 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$a1, $a2, $a1
-	bnez	$a0, .LBB24_65
-# %bb.66:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit239
+	bnez	$a0, .LBB24_63
+# %bb.64:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit239
 	st.w	$a1, $s0, 20
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
@@ -2362,17 +2356,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$fp, 128
 	.p2align	4, , 16
-.LBB24_67:                              # =>This Inner Loop Header: Depth=1
+.LBB24_65:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1024
 	pcaddu18i	$ra, %call36(_Z9example4ciPiS_)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_67
-# %bb.68:                               # %.lr.ph.i240.preheader
+	bnez	$fp, .LBB24_65
+# %bb.66:                               # %.lr.ph.i240.preheader
 	ori	$a1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_69:                              # %.lr.ph.i240
+.LBB24_67:                              # %.lr.ph.i240
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $s1, $a0
 	ldx.bu	$a2, $a2, $s6
@@ -2382,8 +2376,8 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$a1, $a2, $a1
-	bnez	$a0, .LBB24_69
-# %bb.70:                               # %_Z13digest_memoryPvS_.exit244
+	bnez	$a0, .LBB24_67
+# %bb.68:                               # %_Z13digest_memoryPvS_.exit244
 	st.w	$a1, $s0, 24
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
@@ -2401,17 +2395,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$fp, 256
 	.p2align	4, , 16
-.LBB24_71:                              # =>This Inner Loop Header: Depth=1
+.LBB24_69:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(_Z8example7i)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_71
-# %bb.72:                               # %.lr.ph.i254.preheader
+	bnez	$fp, .LBB24_69
+# %bb.70:                               # %.lr.ph.i254.preheader
 	ori	$a1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_73:                              # %.lr.ph.i254
+.LBB24_71:                              # %.lr.ph.i254
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $s7, $a0
 	ldx.bu	$a2, $a2, $s6
@@ -2421,8 +2415,8 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$a1, $a2, $a1
-	bnez	$a0, .LBB24_73
-# %bb.74:                               # %_Z13digest_memoryPvS_.exit258
+	bnez	$a0, .LBB24_71
+# %bb.72:                               # %_Z13digest_memoryPvS_.exit258
 	st.w	$a1, $s0, 28
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
@@ -2438,19 +2432,13 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	lu12i.w	$fp, 16
-	.p2align	4, , 16
-.LBB24_75:                              # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(_Z8example8i)
 	jirl	$ra, $ra, 0
-	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_75
-# %bb.76:                               # %.lr.ph.i268.preheader
 	ori	$s1, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_77:                              # %.lr.ph.i268
+.LBB24_73:                              # %.lr.ph.i268
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s3, $a0
 	ldx.bu	$a1, $a1, $s6
@@ -2460,14 +2448,14 @@ main:                                   # @main
 	slli.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 1
 	xor	$s1, $a1, $a2
-	bnez	$a0, .LBB24_77
-# %bb.78:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i274
+	bnez	$a0, .LBB24_73
+# %bb.74:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i274
 .Ltmp12:
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp13:
-# %bb.79:                               # %.noexc280
+# %bb.75:                               # %.noexc280
 	move	$fp, $a0
 	vld	$vr0, $s0, 0
 	vld	$vr1, $s0, 16
@@ -2496,13 +2484,13 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s0, 128
 	.p2align	4, , 16
-.LBB24_80:                              # =>This Inner Loop Header: Depth=1
+.LBB24_76:                              # =>This Inner Loop Header: Depth=1
 	addi.d	$a0, $sp, 84
 	pcaddu18i	$ra, %call36(_Z8example9Pj)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s0, -1
-	bnez	$s0, .LBB24_80
-# %bb.81:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit290
+	bnez	$s0, .LBB24_76
+# %bb.77:                               # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit290
 	ld.w	$a0, $sp, 84
 	st.w	$a0, $fp, 36
 	addi.d	$a0, $fp, 40
@@ -2541,7 +2529,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s8, 128
 	.p2align	4, , 16
-.LBB24_82:                              # =>This Inner Loop Header: Depth=1
+.LBB24_78:                              # =>This Inner Loop Header: Depth=1
 	move	$a0, $s0
 	move	$a1, $s2
 	move	$a2, $s3
@@ -2551,12 +2539,12 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Z10example10aPsS_S_PiS0_S0_)
 	jirl	$ra, $ra, 0
 	addi.w	$s8, $s8, -1
-	bnez	$s8, .LBB24_82
-# %bb.83:                               # %.lr.ph.i291.preheader
+	bnez	$s8, .LBB24_78
+# %bb.79:                               # %.lr.ph.i291.preheader
 	ori	$a0, $zero, 1
 	lu12i.w	$a1, -1
 	.p2align	4, , 16
-.LBB24_84:                              # %.lr.ph.i291
+.LBB24_80:                              # %.lr.ph.i291
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $s1, $a1
 	ldx.bu	$a2, $a2, $s6
@@ -2566,8 +2554,8 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a1, $a1, 1
 	xor	$a0, $a2, $a0
-	bnez	$a1, .LBB24_84
-# %bb.85:                               # %.lr.ph.i296.preheader
+	bnez	$a1, .LBB24_80
+# %bb.81:                               # %.lr.ph.i296.preheader
 	move	$a1, $zero
 	ori	$a3, $zero, 1
 	ori	$a2, $zero, 2048
@@ -2575,7 +2563,7 @@ main:                                   # @main
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB24_86:                              # %.lr.ph.i296
+.LBB24_82:                              # %.lr.ph.i296
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a4, $s0, $a1
 	alsl.w	$a3, $a3, $a3, 1
@@ -2584,20 +2572,20 @@ main:                                   # @main
 	slli.d	$a4, $a4, 8
 	addi.d	$a1, $a1, 1
 	xor	$a3, $a4, $a3
-	bne	$a1, $a2, .LBB24_86
-# %bb.87:                               # %_Z13digest_memoryPvS_.exit300
+	bne	$a1, $a2, .LBB24_82
+# %bb.83:                               # %_Z13digest_memoryPvS_.exit300
 	add.d	$s1, $a3, $a0
-	beq	$s3, $s5, .LBB24_89
-# %bb.88:
+	beq	$s3, $s5, .LBB24_85
+# %bb.84:
 	st.w	$s1, $s3, 0
-	b	.LBB24_91
-.LBB24_89:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i302
+	b	.LBB24_87
+.LBB24_85:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i302
 .Ltmp15:
 	ori	$a0, $zero, 128
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp16:
-# %bb.90:                               # %.noexc308
+# %bb.86:                               # %.noexc308
 	move	$s0, $a0
 	addi.d	$s3, $a0, 64
 	st.w	$s1, $a0, 64
@@ -2615,7 +2603,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	addi.d	$s5, $s0, 128
 	move	$fp, $s0
-.LBB24_91:                              # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit309
+.LBB24_87:                              # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit309
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -2637,18 +2625,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s2, 256
 	.p2align	4, , 16
-.LBB24_92:                              # =>This Inner Loop Header: Depth=1
+.LBB24_88:                              # =>This Inner Loop Header: Depth=1
 	move	$a1, $s1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(_Z10example10bPsS_S_PiS0_S0_)
 	jirl	$ra, $ra, 0
 	addi.w	$s2, $s2, -1
-	bnez	$s2, .LBB24_92
-# %bb.93:                               # %.lr.ph.i310.preheader
+	bnez	$s2, .LBB24_88
+# %bb.89:                               # %.lr.ph.i310.preheader
 	ori	$s2, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_94:                              # %.lr.ph.i310
+.LBB24_90:                              # %.lr.ph.i310
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s0, $a0
 	ldx.bu	$a1, $a1, $s6
@@ -2658,21 +2646,21 @@ main:                                   # @main
 	slli.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 1
 	xor	$s2, $a1, $a2
-	bnez	$a0, .LBB24_94
-# %bb.95:                               # %_Z13digest_memoryPvS_.exit314
+	bnez	$a0, .LBB24_90
+# %bb.91:                               # %_Z13digest_memoryPvS_.exit314
 	addi.d	$a0, $s3, 4
-	beq	$a0, $s5, .LBB24_97
-# %bb.96:
+	beq	$a0, $s5, .LBB24_93
+# %bb.92:
 	st.w	$s2, $s3, 4
 	addi.d	$s2, $s3, 8
 	move	$s0, $fp
-	b	.LBB24_102
-.LBB24_97:
+	b	.LBB24_98
+.LBB24_93:
 	sub.d	$s1, $s5, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_174
-# %bb.98:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i316
+	beq	$s1, $a0, .LBB24_168
+# %bb.94:                               # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i316
 	srai.d	$a0, $s1, 2
 	ori	$s4, $zero, 1
 	sltu	$a1, $s4, $a0
@@ -2695,25 +2683,25 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp19:
-# %bb.99:                               # %.noexc322
+# %bb.95:                               # %.noexc322
 	move	$s0, $a0
 	add.d	$s5, $a0, $s1
 	stx.w	$s2, $a0, $s1
-	blt	$s1, $s4, .LBB24_101
-# %bb.100:
+	blt	$s1, $s4, .LBB24_97
+# %bb.96:
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB24_101:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i320
+.LBB24_97:                              # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i320
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	addi.d	$s2, $s5, 4
 	alsl.d	$s5, $s3, $s0, 2
-.LBB24_102:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit323
+.LBB24_98:                              # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit323
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -2729,18 +2717,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$fp, 128
 	.p2align	4, , 16
-.LBB24_103:                             # =>This Inner Loop Header: Depth=1
+.LBB24_99:                              # =>This Inner Loop Header: Depth=1
 	pcaddu18i	$ra, %call36(_Z9example11v)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_103
-# %bb.104:                              # %.lr.ph.i324.preheader
+	bnez	$fp, .LBB24_99
+# %bb.100:                              # %.lr.ph.i324.preheader
 	ori	$s3, $zero, 1
 	lu12i.w	$a0, -1
 	pcalau12i	$a1, %pc_hi20(d)
 	addi.d	$a1, $a1, %pc_lo12(d)
 	.p2align	4, , 16
-.LBB24_105:                             # %.lr.ph.i324
+.LBB24_101:                             # %.lr.ph.i324
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $a1, $a0
 	ldx.bu	$a2, $a2, $s6
@@ -2750,19 +2738,19 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$s3, $a2, $a3
-	bnez	$a0, .LBB24_105
-# %bb.106:                              # %_Z13digest_memoryPvS_.exit328
-	beq	$s2, $s5, .LBB24_108
-# %bb.107:
+	bnez	$a0, .LBB24_101
+# %bb.102:                              # %_Z13digest_memoryPvS_.exit328
+	beq	$s2, $s5, .LBB24_104
+# %bb.103:
 	st.w	$s3, $s2, 0
 	move	$fp, $s0
-	b	.LBB24_113
-.LBB24_108:
+	b	.LBB24_109
+.LBB24_104:
 	sub.d	$s1, $s5, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_176
-# %bb.109:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i330
+	beq	$s1, $a0, .LBB24_170
+# %bb.105:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i330
 	srai.d	$a0, $s1, 2
 	ori	$s2, $zero, 1
 	sltu	$a1, $s2, $a0
@@ -2785,24 +2773,24 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp21:
-# %bb.110:                              # %.noexc336
+# %bb.106:                              # %.noexc336
 	move	$fp, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_112
-# %bb.111:
+	blt	$s1, $s2, .LBB24_108
+# %bb.107:
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB24_112:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i334
+.LBB24_108:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i334
 	add.d	$s2, $fp, $s1
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s4, $fp, 2
-.LBB24_113:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit337
+.LBB24_109:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit337
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -2816,18 +2804,12 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	lu12i.w	$s0, 256
-	.p2align	4, , 16
-.LBB24_114:                             # =>This Inner Loop Header: Depth=1
 	pcaddu18i	$ra, %call36(_Z9example12v)
 	jirl	$ra, $ra, 0
-	addi.w	$s0, $s0, -1
-	bnez	$s0, .LBB24_114
-# %bb.115:                              # %.lr.ph.i338.preheader
 	ori	$s3, $zero, 1
 	lu12i.w	$a0, -1
 	.p2align	4, , 16
-.LBB24_116:                             # %.lr.ph.i338
+.LBB24_110:                             # %.lr.ph.i338
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s7, $a0
 	ldx.bu	$a1, $a1, $s6
@@ -2837,21 +2819,21 @@ main:                                   # @main
 	slli.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 1
 	xor	$s3, $a1, $a2
-	bnez	$a0, .LBB24_116
-# %bb.117:                              # %_Z13digest_memoryPvS_.exit342
+	bnez	$a0, .LBB24_110
+# %bb.111:                              # %_Z13digest_memoryPvS_.exit342
 	addi.d	$a0, $s2, 4
-	beq	$a0, $s5, .LBB24_119
-# %bb.118:
+	beq	$a0, $s5, .LBB24_113
+# %bb.112:
 	st.w	$s3, $s2, 4
 	addi.d	$s2, $s2, 8
 	move	$s0, $fp
-	b	.LBB24_124
-.LBB24_119:
+	b	.LBB24_118
+.LBB24_113:
 	sub.d	$s1, $s5, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_178
-# %bb.120:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i344
+	beq	$s1, $a0, .LBB24_172
+# %bb.114:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i344
 	srai.d	$a0, $s1, 2
 	ori	$s2, $zero, 1
 	sltu	$a1, $s2, $a0
@@ -2874,25 +2856,25 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp23:
-# %bb.121:                              # %.noexc350
+# %bb.115:                              # %.noexc350
 	move	$s0, $a0
 	add.d	$s5, $a0, $s1
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_123
-# %bb.122:
+	blt	$s1, $s2, .LBB24_117
+# %bb.116:
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB24_123:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i348
+.LBB24_117:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i348
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	addi.d	$s2, $s5, 4
 	alsl.d	$s5, $s4, $s0, 2
-.LBB24_124:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit351
+.LBB24_118:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit351
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -2914,19 +2896,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s3, 512
 	.p2align	4, , 16
-.LBB24_125:                             # =>This Inner Loop Header: Depth=1
+.LBB24_119:                             # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_Z9example23PtPj)
 	jirl	$ra, $ra, 0
 	addi.w	$s3, $s3, -1
-	bnez	$s3, .LBB24_125
-# %bb.126:                              # %.lr.ph.i352.preheader
+	bnez	$s3, .LBB24_119
+# %bb.120:                              # %.lr.ph.i352.preheader
 	move	$a0, $zero
 	ori	$s3, $zero, 1
 	ori	$a1, $zero, 512
 	.p2align	4, , 16
-.LBB24_127:                             # %.lr.ph.i352
+.LBB24_121:                             # %.lr.ph.i352
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a2, $fp, $a0
 	alsl.w	$a3, $s3, $s3, 1
@@ -2935,19 +2917,19 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$s3, $a2, $a3
-	bne	$a0, $a1, .LBB24_127
-# %bb.128:                              # %_Z13digest_memoryPvS_.exit356
-	beq	$s2, $s5, .LBB24_130
-# %bb.129:
+	bne	$a0, $a1, .LBB24_121
+# %bb.122:                              # %_Z13digest_memoryPvS_.exit356
+	beq	$s2, $s5, .LBB24_124
+# %bb.123:
 	st.w	$s3, $s2, 0
 	move	$fp, $s0
-	b	.LBB24_135
-.LBB24_130:
+	b	.LBB24_129
+.LBB24_124:
 	sub.d	$s1, $s5, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_180
-# %bb.131:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i358
+	beq	$s1, $a0, .LBB24_174
+# %bb.125:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i358
 	srai.d	$a0, $s1, 2
 	ori	$s2, $zero, 1
 	sltu	$a1, $s2, $a0
@@ -2970,24 +2952,24 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp25:
-# %bb.132:                              # %.noexc364
+# %bb.126:                              # %.noexc364
 	move	$fp, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_134
-# %bb.133:
+	blt	$s1, $s2, .LBB24_128
+# %bb.127:
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB24_134:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i362
+.LBB24_128:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i362
 	add.d	$s2, $fp, $s1
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s4, $fp, 2
-.LBB24_135:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit365
+.LBB24_129:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit365
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -3005,27 +2987,27 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$s0, 128
 	.p2align	4, , 16
-.LBB24_136:                             # =>This Inner Loop Header: Depth=1
+.LBB24_130:                             # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 2
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(_Z9example24ss)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s0, -1
-	bnez	$s0, .LBB24_136
-# %bb.137:
+	bnez	$s0, .LBB24_130
+# %bb.131:
 	addi.d	$a0, $s2, 4
-	beq	$a0, $s5, .LBB24_139
-# %bb.138:
+	beq	$a0, $s5, .LBB24_133
+# %bb.132:
 	st.w	$zero, $s2, 4
 	addi.d	$s2, $s2, 8
 	move	$s0, $fp
-	b	.LBB24_144
-.LBB24_139:
+	b	.LBB24_138
+.LBB24_133:
 	sub.d	$s1, $s5, $fp
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_182
-# %bb.140:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i367
+	beq	$s1, $a0, .LBB24_176
+# %bb.134:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i367
 	srai.d	$a0, $s1, 2
 	ori	$s2, $zero, 1
 	sltu	$a1, $s2, $a0
@@ -3048,25 +3030,25 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp27:
-# %bb.141:                              # %.noexc373
+# %bb.135:                              # %.noexc373
 	move	$s0, $a0
 	add.d	$s4, $a0, $s1
 	stx.w	$zero, $a0, $s1
-	blt	$s1, $s2, .LBB24_143
-# %bb.142:
+	blt	$s1, $s2, .LBB24_137
+# %bb.136:
 	move	$a0, $s0
 	move	$a1, $fp
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB24_143:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i371
+.LBB24_137:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i371
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	addi.d	$s2, $s4, 4
 	alsl.d	$s5, $s3, $s0, 2
-.LBB24_144:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit374
+.LBB24_138:                             # %_ZNSt6vectorIjSaIjEE9push_backERKj.exit374
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -3082,18 +3064,18 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	lu12i.w	$fp, 128
 	.p2align	4, , 16
-.LBB24_145:                             # =>This Inner Loop Header: Depth=1
+.LBB24_139:                             # =>This Inner Loop Header: Depth=1
 	pcaddu18i	$ra, %call36(_Z9example25v)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, -1
-	bnez	$fp, .LBB24_145
-# %bb.146:                              # %.lr.ph.i375.preheader
+	bnez	$fp, .LBB24_139
+# %bb.140:                              # %.lr.ph.i375.preheader
 	ori	$s3, $zero, 1
 	lu12i.w	$a0, -1
 	pcalau12i	$a1, %pc_hi20(dj)
 	addi.d	$a1, $a1, %pc_lo12(dj)
 	.p2align	4, , 16
-.LBB24_147:                             # %.lr.ph.i375
+.LBB24_141:                             # %.lr.ph.i375
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a2, $a1, $a0
 	ldx.bu	$a2, $a2, $s6
@@ -3103,19 +3085,19 @@ main:                                   # @main
 	slli.d	$a2, $a2, 8
 	addi.d	$a0, $a0, 1
 	xor	$s3, $a2, $a3
-	bnez	$a0, .LBB24_147
-# %bb.148:                              # %_Z13digest_memoryPvS_.exit379
-	beq	$s2, $s5, .LBB24_150
-# %bb.149:
+	bnez	$a0, .LBB24_141
+# %bb.142:                              # %_Z13digest_memoryPvS_.exit379
+	beq	$s2, $s5, .LBB24_144
+# %bb.143:
 	st.w	$s3, $s2, 0
 	move	$fp, $s0
-	b	.LBB24_155
-.LBB24_150:
+	b	.LBB24_149
+.LBB24_144:
 	sub.d	$s1, $s5, $s0
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
-	beq	$s1, $a0, .LBB24_184
-# %bb.151:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i381
+	beq	$s1, $a0, .LBB24_178
+# %bb.145:                              # %_ZNSt12_Vector_baseIjSaIjEE11_M_allocateEm.exit.i.i381
 	srai.d	$a0, $s1, 2
 	ori	$s2, $zero, 1
 	sltu	$a1, $s2, $a0
@@ -3138,24 +3120,24 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp29:
-# %bb.152:                              # %.noexc387
+# %bb.146:                              # %.noexc387
 	move	$fp, $a0
 	stx.w	$s3, $a0, $s1
-	blt	$s1, $s2, .LBB24_154
-# %bb.153:
+	blt	$s1, $s2, .LBB24_148
+# %bb.147:
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-.LBB24_154:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i385
+.LBB24_148:                             # %_ZNSt6vectorIjSaIjEE17_M_realloc_appendIJRKjEEEvDpOT_.exit.i385
 	add.d	$s2, $fp, $s1
 	move	$a0, $s0
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 	alsl.d	$s5, $s4, $fp, 2
-.LBB24_155:
+.LBB24_149:
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
@@ -3177,21 +3159,21 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp31:
-# %bb.156:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
+# %bb.150:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit
 	addi.d	$s0, $s2, 4
-	beq	$fp, $s0, .LBB24_159
-# %bb.157:                              # %.lr.ph.i391.preheader
+	beq	$fp, $s0, .LBB24_153
+# %bb.151:                              # %.lr.ph.i391.preheader
 	sub.d	$a0, $s2, $fp
 	ori	$a1, $zero, 28
-	bgeu	$a0, $a1, .LBB24_160
-# %bb.158:
+	bgeu	$a0, $a1, .LBB24_154
+# %bb.152:
 	move	$a1, $zero
 	move	$a0, $fp
-	b	.LBB24_163
-.LBB24_159:
+	b	.LBB24_157
+.LBB24_153:
 	move	$a1, $zero
-	b	.LBB24_165
-.LBB24_160:                             # %vector.ph
+	b	.LBB24_159
+.LBB24_154:                             # %vector.ph
 	srli.d	$a0, $a0, 2
 	addi.d	$a2, $a0, 1
 	bstrpick.d	$a0, $a2, 62, 3
@@ -3203,7 +3185,7 @@ main:                                   # @main
 	move	$a4, $a3
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
-.LBB24_161:                             # %vector.body
+.LBB24_155:                             # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a1, -16
 	vld	$vr3, $a1, 0
@@ -3211,33 +3193,33 @@ main:                                   # @main
 	vadd.w	$vr1, $vr3, $vr1
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 32
-	bnez	$a4, .LBB24_161
-# %bb.162:                              # %middle.block
+	bnez	$a4, .LBB24_155
+# %bb.156:                              # %middle.block
 	vadd.w	$vr0, $vr1, $vr0
 	vshuf4i.w	$vr1, $vr0, 14
 	vadd.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vadd.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$a1, $vr0, 0
-	beq	$a2, $a3, .LBB24_165
-.LBB24_163:                             # %.lr.ph.i391.preheader614
+	beq	$a2, $a3, .LBB24_159
+.LBB24_157:                             # %.lr.ph.i391.preheader608
 	addi.d	$a0, $a0, -4
 	.p2align	4, , 16
-.LBB24_164:                             # %.lr.ph.i391
+.LBB24_158:                             # %.lr.ph.i391
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a0, 4
 	addi.d	$a3, $a0, 4
 	add.w	$a1, $a2, $a1
 	move	$a0, $a3
-	bne	$a3, $s2, .LBB24_164
-.LBB24_165:                             # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPjSt6vectorIjSaIjEEEEiET0_T_S8_S7_.exit
+	bne	$a3, $s2, .LBB24_158
+.LBB24_159:                             # %_ZSt10accumulateIN9__gnu_cxx17__normal_iteratorIPjSt6vectorIjSaIjEEEEiET0_T_S8_S7_.exit
 .Ltmp32:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 .Ltmp33:
-# %bb.166:
+# %bb.160:
 .Ltmp34:
 	pcalau12i	$a1, %pc_hi20(.L.str.18)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.18)
@@ -3245,9 +3227,9 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp35:
-# %bb.167:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394.preheader
-	beq	$s0, $fp, .LBB24_172
-# %bb.168:                              # %.lr.ph.preheader
+# %bb.161:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394.preheader
+	beq	$s0, $fp, .LBB24_166
+# %bb.162:                              # %.lr.ph.preheader
 	move	$s4, $zero
 	sub.d	$a0, $s0, $fp
 	srai.d	$s2, $a0, 2
@@ -3257,7 +3239,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.19)
 	.p2align	4, , 16
-.LBB24_169:                             # %.lr.ph
+.LBB24_163:                             # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 .Ltmp36:
 	ori	$a2, $zero, 1
@@ -3266,8 +3248,8 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp37:
-# %bb.170:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit398
-                                        #   in Loop: Header=BB24_169 Depth=1
+# %bb.164:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit398
+                                        #   in Loop: Header=BB24_163 Depth=1
 	slli.d	$a0, $s4, 2
 	ldx.wu	$a1, $fp, $a0
 .Ltmp38:
@@ -3275,12 +3257,12 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
 	jirl	$ra, $ra, 0
 .Ltmp39:
-# %bb.171:                              # %_ZNSolsEj.exit
-                                        #   in Loop: Header=BB24_169 Depth=1
+# %bb.165:                              # %_ZNSolsEj.exit
+                                        #   in Loop: Header=BB24_163 Depth=1
 	bstrpick.d	$s4, $s3, 31, 0
 	addi.w	$s3, $s3, 1
-	bltu	$s4, $s2, .LBB24_169
-.LBB24_172:                             # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394._crit_edge
+	bltu	$s4, $s2, .LBB24_163
+.LBB24_166:                             # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit394._crit_edge
 .Ltmp41:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -3290,7 +3272,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 .Ltmp42:
-# %bb.173:                              # %_ZNSt6vectorIjSaIjEED2Ev.exit
+# %bb.167:                              # %_ZNSt6vectorIjSaIjEED2Ev.exit
 	sub.d	$a1, $s5, $fp
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -3309,112 +3291,112 @@ main:                                   # @main
 	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 176
 	ret
-.LBB24_174:
+.LBB24_168:
 .Ltmp59:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp60:
-# %bb.175:                              # %.noexc321
-.LBB24_176:
+# %bb.169:                              # %.noexc321
+.LBB24_170:
 .Ltmp56:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp57:
-# %bb.177:                              # %.noexc335
-.LBB24_178:
+# %bb.171:                              # %.noexc335
+.LBB24_172:
 .Ltmp53:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp54:
-# %bb.179:                              # %.noexc349
-.LBB24_180:
+# %bb.173:                              # %.noexc349
+.LBB24_174:
 .Ltmp50:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp51:
-# %bb.181:                              # %.noexc363
-.LBB24_182:
+# %bb.175:                              # %.noexc363
+.LBB24_176:
 .Ltmp47:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp48:
-# %bb.183:                              # %.noexc372
-.LBB24_184:
+# %bb.177:                              # %.noexc372
+.LBB24_178:
 .Ltmp44:
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	pcaddu18i	$ra, %call36(_ZSt20__throw_length_errorPKc)
 	jirl	$ra, $ra, 0
 .Ltmp45:
-# %bb.185:                              # %.noexc386
-.LBB24_186:
+# %bb.179:                              # %.noexc386
+.LBB24_180:
 .Ltmp17:
-	b	.LBB24_198
-.LBB24_187:
+	b	.LBB24_192
+.LBB24_181:
 .Ltmp46:
-	b	.LBB24_192
-.LBB24_188:
+	b	.LBB24_186
+.LBB24_182:
 .Ltmp49:
-	b	.LBB24_197
-.LBB24_189:
+	b	.LBB24_191
+.LBB24_183:
 .Ltmp52:
-	b	.LBB24_192
-.LBB24_190:
+	b	.LBB24_186
+.LBB24_184:
 .Ltmp55:
-	b	.LBB24_197
-.LBB24_191:
+	b	.LBB24_191
+.LBB24_185:
 .Ltmp58:
-.LBB24_192:                             # %.thread
+.LBB24_186:                             # %.thread
 	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
-	b	.LBB24_195
-.LBB24_193:
+	b	.LBB24_189
+.LBB24_187:
 .Ltmp61:
-	b	.LBB24_197
-.LBB24_194:
+	b	.LBB24_191
+.LBB24_188:
 .Ltmp14:
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-.LBB24_195:                             # %.thread
+.LBB24_189:                             # %.thread
 	move	$s1, $a0
-	b	.LBB24_200
-.LBB24_196:
+	b	.LBB24_194
+.LBB24_190:
 .Ltmp11:
-.LBB24_197:                             # %.thread
+.LBB24_191:                             # %.thread
 	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
-.LBB24_198:                             # %.thread
+.LBB24_192:                             # %.thread
 	move	$s1, $a0
-	b	.LBB24_202
-.LBB24_199:
+	b	.LBB24_196
+.LBB24_193:
 .Ltmp8:
 	move	$s1, $a0
 	addi.d	$a0, $s0, 8
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-.LBB24_200:                             # %.thread
+.LBB24_194:                             # %.thread
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
 	move	$fp, $s0
-	b	.LBB24_207
-.LBB24_201:
+	b	.LBB24_201
+.LBB24_195:
 .Ltmp5:
 	move	$s1, $a0
 	addi.d	$a0, $fp, 4
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-.LBB24_202:                             # %.thread
+.LBB24_196:                             # %.thread
 	addi.d	$a0, $sp, 32
 	pcaddu18i	$ra, %call36(_ZN5TimerD2Ev)
 	jirl	$ra, $ra, 0
-	b	.LBB24_207
-.LBB24_203:                             # %.thread500
+	b	.LBB24_201
+.LBB24_197:                             # %.thread500
 .Ltmp2:
 	move	$s1, $a0
 	addi.d	$a0, $sp, 32
@@ -3423,15 +3405,15 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB24_204:
+.LBB24_198:
 .Ltmp43:
-	b	.LBB24_206
-.LBB24_205:
+	b	.LBB24_200
+.LBB24_199:
 .Ltmp40:
-.LBB24_206:                             # %.thread
+.LBB24_200:                             # %.thread
 	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
 	move	$s1, $a0
-.LBB24_207:                             # %.thread
+.LBB24_201:                             # %.thread
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a1, $a0, $fp
 	move	$a0, $fp

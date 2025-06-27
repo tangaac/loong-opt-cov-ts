@@ -1964,10 +1964,10 @@ restore_type:
 
 	.globl	_ZN4CruxC1Eiib
 	.type	_ZN4CruxC1Eiib,@function
-.set _ZN4CruxC1Eiib, _ZN4CruxC2Eiib
+_ZN4CruxC1Eiib = _ZN4CruxC2Eiib
 	.globl	_ZN4CruxD1Ev
 	.type	_ZN4CruxD1Ev,@function
-.set _ZN4CruxD1Ev, _ZN4CruxD2Ev
+_ZN4CruxD1Ev = _ZN4CruxD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

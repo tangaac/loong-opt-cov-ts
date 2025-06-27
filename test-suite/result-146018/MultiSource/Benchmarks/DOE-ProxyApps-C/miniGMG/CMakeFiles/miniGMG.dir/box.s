@@ -235,26 +235,27 @@ create_box:                             # @create_box
 	ret
 .LBB0_19:                               # %vector.ph
 	bstrpick.d	$a1, $s3, 30, 2
-	vldrepl.d	$vr0, $sp, 8
-	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
-	vld	$vr1, $a2, %pc_lo12(.LCPI0_0)
 	slli.d	$a1, $a1, 2
-	vreplgr2vr.d	$vr2, $s4
+	ld.d	$a3, $sp, 8
+	pcalau12i	$a2, %pc_hi20(.LCPI0_0)
+	vld	$vr0, $a2, %pc_lo12(.LCPI0_0)
+	vreplgr2vr.d	$vr1, $s4
 	addi.d	$a2, $a0, 16
+	vreplgr2vr.d	$vr2, $a3
 	move	$a3, $a1
 	.p2align	4, , 16
 .LBB0_20:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vaddi.du	$vr3, $vr1, 2
-	vmul.d	$vr4, $vr1, $vr2
-	vmul.d	$vr3, $vr3, $vr2
+	vaddi.du	$vr3, $vr0, 2
+	vmul.d	$vr4, $vr0, $vr1
+	vmul.d	$vr3, $vr3, $vr1
 	vslli.d	$vr4, $vr4, 3
-	vadd.d	$vr4, $vr0, $vr4
+	vadd.d	$vr4, $vr2, $vr4
 	vslli.d	$vr3, $vr3, 3
-	vadd.d	$vr3, $vr0, $vr3
+	vadd.d	$vr3, $vr2, $vr3
 	vst	$vr4, $a2, -16
 	vst	$vr3, $a2, 0
-	vaddi.du	$vr1, $vr1, 4
+	vaddi.du	$vr0, $vr0, 4
 	addi.d	$a3, $a3, -4
 	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB0_20

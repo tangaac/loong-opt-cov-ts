@@ -12128,7 +12128,7 @@ _ZTVN8NWindows16NSynchronization14CBaseEventWFMOE:
 
 	.globl	_ZN8NArchive4NZip15CCacheOutStreamD1Ev
 	.type	_ZN8NArchive4NZip15CCacheOutStreamD1Ev,@function
-.set _ZN8NArchive4NZip15CCacheOutStreamD1Ev, _ZN8NArchive4NZip15CCacheOutStreamD2Ev
+_ZN8NArchive4NZip15CCacheOutStreamD1Ev = _ZN8NArchive4NZip15CCacheOutStreamD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

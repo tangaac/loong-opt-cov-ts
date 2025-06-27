@@ -559,7 +559,7 @@ _ZGVZN11btMatrix3x311getIdentityEvE14identityMatrix:
 
 	.globl	_ZN21btUniversalConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_
 	.type	_ZN21btUniversalConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_,@function
-.set _ZN21btUniversalConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_, _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_
+_ZN21btUniversalConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_ = _ZN21btUniversalConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

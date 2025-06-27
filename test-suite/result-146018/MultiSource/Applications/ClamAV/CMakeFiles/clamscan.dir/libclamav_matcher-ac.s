@@ -2522,12 +2522,8 @@ cli_ac_addsig:                          # @cli_ac_addsig
 	move	$a4, $zero
 	move	$a5, $zero
 	sub.d	$t1, $t1, $a1
-	bstrpick.d	$t2, $t1, 15, 0
-	ori	$t1, $zero, 1
-	sltu	$t3, $t1, $t2
-	maskeqz	$t2, $t2, $t3
-	masknez	$t3, $t1, $t3
-	or	$t2, $t2, $t3
+	bstrpick.d	$t1, $t1, 15, 0
+	ori	$t2, $zero, 1
 	ori	$t3, $zero, 255
 	b	.LBB8_74
 	.p2align	4, , 16
@@ -2535,8 +2531,8 @@ cli_ac_addsig:                          # @cli_ac_addsig
 	addi.w	$a7, $a7, 1
 	addi.d	$t0, $t0, 1
 	addi.d	$a6, $a6, 2
-	addi.d	$t1, $t1, 1
-	beq	$t0, $t2, .LBB8_54
+	addi.d	$t2, $t2, 1
+	beq	$t0, $t1, .LBB8_54
 .LBB8_74:                               # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_77 Depth 2
@@ -2550,7 +2546,7 @@ cli_ac_addsig:                          # @cli_ac_addsig
 	add.w	$t5, $a7, $a2
 	add.d	$t6, $t4, $a6
 	ori	$t7, $zero, 1
-	move	$t8, $t1
+	move	$t8, $t2
 	.p2align	4, , 16
 .LBB8_77:                               #   Parent Loop BB8_74 Depth=1
                                         # =>  This Inner Loop Header: Depth=2

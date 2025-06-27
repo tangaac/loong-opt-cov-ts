@@ -1118,8 +1118,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj20EE14SetCodeLengthsEPKh: # @_ZN9NCompres
                                         #   in Loop: Header=BB7_23 Depth=1
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s4
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s4, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $fp
@@ -2462,8 +2462,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj8EE14SetCodeLengthsEPKh: # @_ZN9NCompress
                                         #   in Loop: Header=BB11_11 Depth=1
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
-	nor	$a2, $a3, $zero
-	add.d	$a2, $s8, $a2
+	sub.d	$a2, $a3, $s8
+	nor	$a2, $a2, $zero
 	bstrpick.d	$a2, $a2, 31, 0
 	addi.d	$a2, $a2, 1
 	move	$s3, $a1
@@ -2691,8 +2691,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj656EE14SetCodeLengthsEPKh: # @_ZN9NCompre
                                         #   in Loop: Header=BB12_6 Depth=1
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s4
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s4, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $s0
@@ -2847,8 +2847,8 @@ _ZN9NCompress8NHuffman8CDecoderILi16ELj249EE14SetCodeLengthsEPKh: # @_ZN9NCompre
                                         #   in Loop: Header=BB13_6 Depth=1
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s4
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s4, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $s0
@@ -5258,7 +5258,7 @@ _ZTS13CMyUnknownImp:
 	.dword	_ZTI19COutBufferException
 	.globl	_ZN9NCompress4NLzx8CDecoderC1Eb
 	.type	_ZN9NCompress4NLzx8CDecoderC1Eb,@function
-.set _ZN9NCompress4NLzx8CDecoderC1Eb, _ZN9NCompress4NLzx8CDecoderC2Eb
+_ZN9NCompress4NLzx8CDecoderC1Eb = _ZN9NCompress4NLzx8CDecoderC2Eb
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -4357,10 +4357,10 @@ _ZN5Hydro16writeEnergyCheckEv:          # @_ZN5Hydro16writeEnergyCheckEv
 
 	.globl	_ZN5HydroC1EPK9InputFileP4Mesh
 	.type	_ZN5HydroC1EPK9InputFileP4Mesh,@function
-.set _ZN5HydroC1EPK9InputFileP4Mesh, _ZN5HydroC2EPK9InputFileP4Mesh
+_ZN5HydroC1EPK9InputFileP4Mesh = _ZN5HydroC2EPK9InputFileP4Mesh
 	.globl	_ZN5HydroD1Ev
 	.type	_ZN5HydroD1Ev,@function
-.set _ZN5HydroD1Ev, _ZN5HydroD2Ev
+_ZN5HydroD1Ev = _ZN5HydroD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

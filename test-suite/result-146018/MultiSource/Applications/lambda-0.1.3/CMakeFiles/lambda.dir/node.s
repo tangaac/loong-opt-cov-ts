@@ -9676,46 +9676,46 @@ _ZTS11stack_frame:
 
 	.globl	_ZN8arg_nodeC1EPKcPK8exp_nodes
 	.type	_ZN8arg_nodeC1EPKcPK8exp_nodes,@function
-.set _ZN8arg_nodeC1EPKcPK8exp_nodes, _ZN8arg_nodeC2EPKcPK8exp_nodes
+_ZN8arg_nodeC1EPKcPK8exp_nodes = _ZN8arg_nodeC2EPKcPK8exp_nodes
 	.globl	_ZN8arg_nodeC1ERKS_
 	.type	_ZN8arg_nodeC1ERKS_,@function
-.set _ZN8arg_nodeC1ERKS_, _ZN8arg_nodeC2ERKS_
+_ZN8arg_nodeC1ERKS_ = _ZN8arg_nodeC2ERKS_
 	.globl	_ZN8arg_nodeD1Ev
 	.type	_ZN8arg_nodeD1Ev,@function
-.set _ZN8arg_nodeD1Ev, _ZN8arg_nodeD2Ev
+_ZN8arg_nodeD1Ev = _ZN8arg_nodeD2Ev
 	.globl	_ZN8var_nodeC1EPKc
 	.type	_ZN8var_nodeC1EPKc,@function
-.set _ZN8var_nodeC1EPKc, _ZN8var_nodeC2EPKc
+_ZN8var_nodeC1EPKc = _ZN8var_nodeC2EPKc
 	.globl	_ZN8var_nodeC1ERKS_
 	.type	_ZN8var_nodeC1ERKS_,@function
-.set _ZN8var_nodeC1ERKS_, _ZN8var_nodeC2ERKS_
+_ZN8var_nodeC1ERKS_ = _ZN8var_nodeC2ERKS_
 	.globl	_ZN8lam_nodeC1EP8arg_nodeP8exp_nodes
 	.type	_ZN8lam_nodeC1EP8arg_nodeP8exp_nodes,@function
-.set _ZN8lam_nodeC1EP8arg_nodeP8exp_nodes, _ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
+_ZN8lam_nodeC1EP8arg_nodeP8exp_nodes = _ZN8lam_nodeC2EP8arg_nodeP8exp_nodes
 	.globl	_ZN8lam_nodeC1ERKS_
 	.type	_ZN8lam_nodeC1ERKS_,@function
-.set _ZN8lam_nodeC1ERKS_, _ZN8lam_nodeC2ERKS_
+_ZN8lam_nodeC1ERKS_ = _ZN8lam_nodeC2ERKS_
 	.globl	_ZN8lam_nodeD1Ev
 	.type	_ZN8lam_nodeD1Ev,@function
-.set _ZN8lam_nodeD1Ev, _ZN8lam_nodeD2Ev
+_ZN8lam_nodeD1Ev = _ZN8lam_nodeD2Ev
 	.globl	_ZN8app_nodeC1EP8exp_nodeS1_s
 	.type	_ZN8app_nodeC1EP8exp_nodeS1_s,@function
-.set _ZN8app_nodeC1EP8exp_nodeS1_s, _ZN8app_nodeC2EP8exp_nodeS1_s
+_ZN8app_nodeC1EP8exp_nodeS1_s = _ZN8app_nodeC2EP8exp_nodeS1_s
 	.globl	_ZN8app_nodeC1ERKS_
 	.type	_ZN8app_nodeC1ERKS_,@function
-.set _ZN8app_nodeC1ERKS_, _ZN8app_nodeC2ERKS_
+_ZN8app_nodeC1ERKS_ = _ZN8app_nodeC2ERKS_
 	.globl	_ZN8app_nodeD1Ev
 	.type	_ZN8app_nodeD1Ev,@function
-.set _ZN8app_nodeD1Ev, _ZN8app_nodeD2Ev
+_ZN8app_nodeD1Ev = _ZN8app_nodeD2Ev
 	.globl	_ZN11arglst_nodeC1EP8arg_nodePS_s
 	.type	_ZN11arglst_nodeC1EP8arg_nodePS_s,@function
-.set _ZN11arglst_nodeC1EP8arg_nodePS_s, _ZN11arglst_nodeC2EP8arg_nodePS_s
+_ZN11arglst_nodeC1EP8arg_nodePS_s = _ZN11arglst_nodeC2EP8arg_nodePS_s
 	.globl	_ZN11arglst_nodeC1ERKS_
 	.type	_ZN11arglst_nodeC1ERKS_,@function
-.set _ZN11arglst_nodeC1ERKS_, _ZN11arglst_nodeC2ERKS_
+_ZN11arglst_nodeC1ERKS_ = _ZN11arglst_nodeC2ERKS_
 	.globl	_ZN11arglst_nodeD1Ev
 	.type	_ZN11arglst_nodeD1Ev,@function
-.set _ZN11arglst_nodeD1Ev, _ZN11arglst_nodeD2Ev
+_ZN11arglst_nodeD1Ev = _ZN11arglst_nodeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

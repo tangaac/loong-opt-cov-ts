@@ -587,8 +587,8 @@ gpass2:                                 # @gpass2
 	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $s0, $a2
 	or	$a1, $a2, $a1
-	nor	$a2, $s1, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $s1, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

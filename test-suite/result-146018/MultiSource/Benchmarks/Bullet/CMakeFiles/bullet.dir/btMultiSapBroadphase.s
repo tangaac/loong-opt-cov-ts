@@ -2315,10 +2315,10 @@ _ZTS21btNodeOverlapCallback:
 
 	.globl	_ZN20btMultiSapBroadphaseC1EiP22btOverlappingPairCache
 	.type	_ZN20btMultiSapBroadphaseC1EiP22btOverlappingPairCache,@function
-.set _ZN20btMultiSapBroadphaseC1EiP22btOverlappingPairCache, _ZN20btMultiSapBroadphaseC2EiP22btOverlappingPairCache
+_ZN20btMultiSapBroadphaseC1EiP22btOverlappingPairCache = _ZN20btMultiSapBroadphaseC2EiP22btOverlappingPairCache
 	.globl	_ZN20btMultiSapBroadphaseD1Ev
 	.type	_ZN20btMultiSapBroadphaseD1Ev,@function
-.set _ZN20btMultiSapBroadphaseD1Ev, _ZN20btMultiSapBroadphaseD2Ev
+_ZN20btMultiSapBroadphaseD1Ev = _ZN20btMultiSapBroadphaseD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

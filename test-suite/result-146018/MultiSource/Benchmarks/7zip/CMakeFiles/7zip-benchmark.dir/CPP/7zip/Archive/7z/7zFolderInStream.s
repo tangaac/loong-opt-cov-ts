@@ -1853,7 +1853,7 @@ _ZTS13CRecordVectorIbE:
 
 	.globl	_ZN8NArchive3N7z15CFolderInStreamC1Ev
 	.type	_ZN8NArchive3N7z15CFolderInStreamC1Ev,@function
-.set _ZN8NArchive3N7z15CFolderInStreamC1Ev, _ZN8NArchive3N7z15CFolderInStreamC2Ev
+_ZN8NArchive3N7z15CFolderInStreamC1Ev = _ZN8NArchive3N7z15CFolderInStreamC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

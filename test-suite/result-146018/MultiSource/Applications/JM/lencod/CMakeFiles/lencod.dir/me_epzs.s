@@ -4166,9 +4166,8 @@ EPZSPelBlockMotionSearch:               # @EPZSPelBlockMotionSearch
 	sltu	$a6, $zero, $a6
 	sub.d	$a5, $a6, $a5
 	addi.d	$a5, $a5, 6
-	bstrpick.d	$a7, $a5, 31, 0
 	add.d	$a6, $t2, $s7
-	alsl.d	$a3, $a7, $a3, 4
+	alsl.d	$a3, $a5, $a3, 4
 	bge	$a6, $a4, .LBB9_57
 # %bb.55:
 	ori	$a7, $zero, 1

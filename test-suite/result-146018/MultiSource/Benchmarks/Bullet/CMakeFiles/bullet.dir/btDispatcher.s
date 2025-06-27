@@ -59,7 +59,7 @@ _ZTS12btDispatcher:
 
 	.globl	_ZN12btDispatcherD1Ev
 	.type	_ZN12btDispatcherD1Ev,@function
-.set _ZN12btDispatcherD1Ev, _ZN12btDispatcherD2Ev
+_ZN12btDispatcherD1Ev = _ZN12btDispatcherD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI12btDispatcher

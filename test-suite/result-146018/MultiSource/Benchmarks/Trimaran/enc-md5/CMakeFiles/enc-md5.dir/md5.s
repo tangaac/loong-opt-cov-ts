@@ -1075,7 +1075,7 @@ md5_finish:                             # @md5_finish
 # %bb.16:
 	ori	$a0, $zero, 56
 	bltu	$s3, $a0, .LBB3_20
-# %bb.17:                               # %._crit_edge.i53
+# %bb.17:
 	ori	$a0, $zero, 64
 	sub.d	$s1, $a0, $s3
 	addi.d	$s2, $fp, 48

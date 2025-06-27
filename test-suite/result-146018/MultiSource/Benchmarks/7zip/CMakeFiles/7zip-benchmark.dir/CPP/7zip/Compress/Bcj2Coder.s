@@ -3799,10 +3799,10 @@ _ZTS19ICompressSetBufSize:
 	.dword	_ZTI19COutBufferException
 	.globl	_ZN9NCompress5NBcj28CEncoderD1Ev
 	.type	_ZN9NCompress5NBcj28CEncoderD1Ev,@function
-.set _ZN9NCompress5NBcj28CEncoderD1Ev, _ZN9NCompress5NBcj28CEncoderD2Ev
+_ZN9NCompress5NBcj28CEncoderD1Ev = _ZN9NCompress5NBcj28CEncoderD2Ev
 	.globl	_ZN9NCompress5NBcj28CDecoderC1Ev
 	.type	_ZN9NCompress5NBcj28CDecoderC1Ev,@function
-.set _ZN9NCompress5NBcj28CDecoderC1Ev, _ZN9NCompress5NBcj28CDecoderC2Ev
+_ZN9NCompress5NBcj28CDecoderC1Ev = _ZN9NCompress5NBcj28CDecoderC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

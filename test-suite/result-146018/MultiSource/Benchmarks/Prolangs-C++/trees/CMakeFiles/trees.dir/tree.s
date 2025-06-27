@@ -1943,31 +1943,31 @@ _ZTS10BinaryNode:
 
 	.globl	_ZN4TreeC1Ef
 	.type	_ZN4TreeC1Ef,@function
-.set _ZN4TreeC1Ef, _ZN4TreeC2Ef
+_ZN4TreeC1Ef = _ZN4TreeC2Ef
 	.globl	_ZN4TreeC1EPc
 	.type	_ZN4TreeC1EPc,@function
-.set _ZN4TreeC1EPc, _ZN4TreeC2EPc
+_ZN4TreeC1EPc = _ZN4TreeC2EPc
 	.globl	_ZN4TreeC1EPcS_
 	.type	_ZN4TreeC1EPcS_,@function
-.set _ZN4TreeC1EPcS_, _ZN4TreeC2EPcS_
+_ZN4TreeC1EPcS_ = _ZN4TreeC2EPcS_
 	.globl	_ZN4TreeC1ES_PcS_
 	.type	_ZN4TreeC1ES_PcS_,@function
-.set _ZN4TreeC1ES_PcS_, _ZN4TreeC2ES_PcS_
+_ZN4TreeC1ES_PcS_ = _ZN4TreeC2ES_PcS_
 	.globl	_ZN4TreeD1Ev
 	.type	_ZN4TreeD1Ev,@function
-.set _ZN4TreeD1Ev, _ZN4TreeD2Ev
+_ZN4TreeD1Ev = _ZN4TreeD2Ev
 	.globl	_ZN4TreeC1ERKS_
 	.type	_ZN4TreeC1ERKS_,@function
-.set _ZN4TreeC1ERKS_, _ZN4TreeC2ERKS_
+_ZN4TreeC1ERKS_ = _ZN4TreeC2ERKS_
 	.globl	_ZN10BinaryNodeC1EPc4TreeS1_
 	.type	_ZN10BinaryNodeC1EPc4TreeS1_,@function
-.set _ZN10BinaryNodeC1EPc4TreeS1_, _ZN10BinaryNodeC2EPc4TreeS1_
+_ZN10BinaryNodeC1EPc4TreeS1_ = _ZN10BinaryNodeC2EPc4TreeS1_
 	.globl	_ZN9UnaryNodeC1EPc4Tree
 	.type	_ZN9UnaryNodeC1EPc4Tree,@function
-.set _ZN9UnaryNodeC1EPc4Tree, _ZN9UnaryNodeC2EPc4Tree
+_ZN9UnaryNodeC1EPc4Tree = _ZN9UnaryNodeC2EPc4Tree
 	.globl	_ZN8RealNodeC1EfPc
 	.type	_ZN8RealNodeC1EfPc,@function
-.set _ZN8RealNodeC1EfPc, _ZN8RealNodeC2EfPc
+_ZN8RealNodeC1EfPc = _ZN8RealNodeC2EfPc
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

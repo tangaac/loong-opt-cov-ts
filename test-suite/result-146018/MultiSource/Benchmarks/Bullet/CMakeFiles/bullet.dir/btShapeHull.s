@@ -391,15 +391,16 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 .Ltmp14:
 # %bb.8:
 	move	$s0, $a0
-	beq	$a0, $s1, .LBB5_49
+	beq	$a0, $s1, .LBB5_48
 # %bb.9:
 	ld.w	$s2, $sp, 12
 	ld.w	$a0, $fp, 4
 	move	$a1, $s2
-	bge	$a0, $s2, .LBB5_22
+	bge	$a0, $s2, .LBB5_21
 # %bb.10:
-	ld.w	$a1, $fp, 8
-	bge	$a1, $s2, .LBB5_21
+	ld.w	$a2, $fp, 8
+	move	$a1, $s2
+	bge	$a2, $s2, .LBB5_21
 # %bb.11:
 	beqz	$s2, .LBB5_14
 # %bb.12:
@@ -443,20 +444,19 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 .Ltmp18:
 .LBB5_20:                               # %_ZN20btAlignedObjectArrayI9btVector3E10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
+	ld.w	$a1, $sp, 12
 	st.b	$a0, $fp, 24
 	st.d	$s1, $fp, 16
 	st.w	$s2, $fp, 8
-.LBB5_21:                               # %.loopexit65.loopexit
-	ld.w	$a1, $sp, 12
-.LBB5_22:                               # %.loopexit65
+.LBB5_21:                               # %.loopexit65
 	ori	$a0, $zero, 1
 	st.w	$s2, $fp, 4
-	blt	$a1, $a0, .LBB5_25
-# %bb.23:                               # %.lr.ph72
+	blt	$a1, $a0, .LBB5_24
+# %bb.22:                               # %.lr.ph72
 	move	$a0, $zero
 	move	$a1, $zero
 	.p2align	4, , 16
-.LBB5_24:                               # =>This Inner Loop Header: Depth=1
+.LBB5_23:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $sp, 32
 	ld.d	$a3, $fp, 16
 	vldx	$vr0, $a2, $a0
@@ -464,47 +464,47 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	ld.w	$a2, $sp, 12
 	addi.d	$a1, $a1, 1
 	addi.d	$a0, $a0, 16
-	blt	$a1, $a2, .LBB5_24
-.LBB5_25:                               # %._crit_edge
+	blt	$a1, $a2, .LBB5_23
+.LBB5_24:                               # %._crit_edge
 	ld.w	$s2, $sp, 52
 	ld.w	$s3, $fp, 36
 	st.w	$s2, $fp, 64
 	move	$a0, $s2
-	bge	$s3, $s2, .LBB5_45
-# %bb.26:
+	bge	$s3, $s2, .LBB5_44
+# %bb.25:
 	ld.w	$a0, $fp, 40
-	bge	$a0, $s2, .LBB5_38
+	bge	$a0, $s2, .LBB5_37
+# %bb.26:
+	beqz	$s2, .LBB5_38
 # %bb.27:
-	beqz	$s2, .LBB5_39
-# %bb.28:
 	slli.d	$a0, $s2, 2
 .Ltmp20:
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 .Ltmp21:
-# %bb.29:                               # %.noexc52
+# %bb.28:                               # %.noexc52
 	move	$s1, $a0
 	ld.w	$a1, $fp, 36
 	ld.d	$a0, $fp, 48
 	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_40
-.LBB5_30:                               # %.lr.ph.i.i.i47
+	blt	$a1, $a2, .LBB5_39
+.LBB5_29:                               # %.lr.ph.i.i.i47
 	ori	$a3, $zero, 8
 	move	$a2, $zero
-	bltu	$a1, $a3, .LBB5_35
-# %bb.31:                               # %.lr.ph.i.i.i47
+	bltu	$a1, $a3, .LBB5_34
+# %bb.30:                               # %.lr.ph.i.i.i47
 	sub.d	$a3, $s1, $a0
 	ori	$a4, $zero, 32
-	bltu	$a3, $a4, .LBB5_35
-# %bb.32:                               # %vector.ph
+	bltu	$a3, $a4, .LBB5_34
+# %bb.31:                               # %vector.ph
 	bstrpick.d	$a2, $a1, 30, 3
 	slli.d	$a2, $a2, 3
 	addi.d	$a3, $a0, 16
 	addi.d	$a4, $s1, 16
 	move	$a5, $a2
 	.p2align	4, , 16
-.LBB5_33:                               # %vector.body
+.LBB5_32:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, -16
 	vld	$vr1, $a3, 0
@@ -513,53 +513,53 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	addi.d	$a5, $a5, -8
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB5_33
-# %bb.34:                               # %middle.block
-	beq	$a2, $a1, .LBB5_37
-.LBB5_35:                               # %scalar.ph.preheader
+	bnez	$a5, .LBB5_32
+# %bb.33:                               # %middle.block
+	beq	$a2, $a1, .LBB5_36
+.LBB5_34:                               # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
 	alsl.d	$a3, $a2, $a0, 2
 	alsl.d	$a2, $a2, $s1, 2
 	.p2align	4, , 16
-.LBB5_36:                               # %scalar.ph
+.LBB5_35:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
 	st.w	$a4, $a2, 0
 	addi.d	$a1, $a1, -1
 	addi.d	$a3, $a3, 4
 	addi.d	$a2, $a2, 4
-	bnez	$a1, .LBB5_36
-.LBB5_37:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.thread.i.i
+	bnez	$a1, .LBB5_35
+.LBB5_36:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.thread.i.i
 	ld.bu	$a1, $fp, 56
 	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB5_42
-	b	.LBB5_43
-.LBB5_38:                               # %..lr.ph.i38_crit_edge
+	beq	$a1, $a2, .LBB5_41
+	b	.LBB5_42
+.LBB5_37:                               # %..lr.ph.i38_crit_edge
 	ld.d	$s1, $fp, 48
-	b	.LBB5_44
-.LBB5_39:
+	b	.LBB5_43
+.LBB5_38:
 	move	$s1, $zero
 	move	$a1, $s3
 	ld.d	$a0, $fp, 48
 	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB5_30
-.LBB5_40:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
-	beqz	$a0, .LBB5_43
-# %bb.41:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
+	bge	$a1, $a2, .LBB5_29
+.LBB5_39:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
+	beqz	$a0, .LBB5_42
+# %bb.40:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
 	ld.b	$a1, $fp, 56
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB5_43
-.LBB5_42:
+	beqz	$a1, .LBB5_42
+.LBB5_41:
 .Ltmp22:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp23:
-.LBB5_43:                               # %_ZN20btAlignedObjectArrayIjE10deallocateEv.exit.i.i
+.LBB5_42:                               # %_ZN20btAlignedObjectArrayIjE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 56
 	st.d	$s1, $fp, 48
 	st.w	$s2, $fp, 40
-.LBB5_44:                               # %.lr.ph.i38
+.LBB5_43:                               # %.lr.ph.i38
 	alsl.d	$a0, $s3, $s1, 2
 	sub.d	$a1, $s2, $s3
 	slli.d	$a2, $a1, 2
@@ -567,85 +567,85 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 64
-.LBB5_45:                               # %.loopexit
+.LBB5_44:                               # %.loopexit
 	ori	$a1, $zero, 1
 	st.w	$s2, $fp, 36
-	blt	$a0, $a1, .LBB5_48
-# %bb.46:                               # %.lr.ph75
+	blt	$a0, $a1, .LBB5_47
+# %bb.45:                               # %.lr.ph75
 	ld.d	$a0, $sp, 72
 	ld.d	$a1, $fp, 48
 	move	$a2, $zero
 	.p2align	4, , 16
-.LBB5_47:                               # =>This Inner Loop Header: Depth=1
+.LBB5_46:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a3, $a0, 0
 	st.w	$a3, $a1, 0
 	ld.w	$a3, $fp, 64
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 4
 	addi.d	$a0, $a0, 4
-	blt	$a2, $a3, .LBB5_47
-.LBB5_48:                               # %._crit_edge76
+	blt	$a2, $a3, .LBB5_46
+.LBB5_47:                               # %._crit_edge76
 .Ltmp25:
 	addi.d	$a0, $sp, 88
 	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN11HullLibrary13ReleaseResultER10HullResult)
 	jirl	$ra, $ra, 0
 .Ltmp26:
-.LBB5_49:
+.LBB5_48:
 	ld.d	$a0, $sp, 72
-	beqz	$a0, .LBB5_52
-# %bb.50:
+	beqz	$a0, .LBB5_51
+# %bb.49:
 	ld.b	$a1, $sp, 80
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB5_52
-# %bb.51:
+	beqz	$a1, .LBB5_51
+# %bb.50:
 .Ltmp30:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp31:
-.LBB5_52:
+.LBB5_51:
 	ld.d	$a0, $sp, 32
 	ori	$a1, $zero, 1
 	st.b	$a1, $sp, 80
 	st.d	$zero, $sp, 72
 	st.d	$zero, $sp, 60
-	beqz	$a0, .LBB5_55
-# %bb.53:
+	beqz	$a0, .LBB5_54
+# %bb.52:
 	ld.b	$a1, $sp, 40
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB5_55
-# %bb.54:
+	beqz	$a1, .LBB5_54
+# %bb.53:
 .Ltmp36:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp37:
-.LBB5_55:
+.LBB5_54:
 	ld.d	$a0, $sp, 136
-	beqz	$a0, .LBB5_58
-# %bb.56:
+	beqz	$a0, .LBB5_57
+# %bb.55:
 	ld.b	$a1, $sp, 144
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB5_58
-# %bb.57:
+	beqz	$a1, .LBB5_57
+# %bb.56:
 .Ltmp42:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp43:
-.LBB5_58:
+.LBB5_57:
 	ld.d	$a0, $sp, 104
 	ori	$a1, $zero, 1
 	st.b	$a1, $sp, 144
 	st.d	$zero, $sp, 136
 	st.d	$zero, $sp, 124
-	beqz	$a0, .LBB5_61
-# %bb.59:
+	beqz	$a0, .LBB5_60
+# %bb.58:
 	ld.b	$a1, $sp, 112
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB5_61
-# %bb.60:
+	beqz	$a1, .LBB5_60
+# %bb.59:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB5_61:                               # %_ZN11HullLibraryD2Ev.exit
+.LBB5_60:                               # %_ZN11HullLibraryD2Ev.exit
 	addi.d	$a0, $s0, -1
 	sltu	$a0, $zero, $a0
 	ld.d	$s4, $sp, 1176                  # 8-byte Folded Reload
@@ -657,76 +657,76 @@ _ZN11btShapeHull9buildHullEf:           # @_ZN11btShapeHull9buildHullEf
 	ld.d	$ra, $sp, 1224                  # 8-byte Folded Reload
 	addi.d	$sp, $sp, 1232
 	ret
-.LBB5_62:
+.LBB5_61:
 .Ltmp24:
-	b	.LBB5_74
-.LBB5_63:
+	b	.LBB5_73
+.LBB5_62:
 .Ltmp19:
-	b	.LBB5_74
-.LBB5_64:
+	b	.LBB5_73
+.LBB5_63:
 .Ltmp44:
 	ld.d	$a1, $sp, 104
 	move	$fp, $a0
-	beqz	$a1, .LBB5_76
-# %bb.65:
+	beqz	$a1, .LBB5_75
+# %bb.64:
 	ld.b	$a0, $sp, 112
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB5_76
-# %bb.66:
+	beqz	$a0, .LBB5_75
+# %bb.65:
 .Ltmp45:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp46:
-	b	.LBB5_76
-.LBB5_67:
+	b	.LBB5_75
+.LBB5_66:
 .Ltmp47:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_68:
+.LBB5_67:
 .Ltmp38:
 	move	$fp, $a0
-	b	.LBB5_75
-.LBB5_69:
+	b	.LBB5_74
+.LBB5_68:
 .Ltmp32:
 	ld.d	$a1, $sp, 32
 	move	$fp, $a0
-	beqz	$a1, .LBB5_75
-# %bb.70:
+	beqz	$a1, .LBB5_74
+# %bb.69:
 	ld.b	$a0, $sp, 40
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB5_75
-# %bb.71:
+	beqz	$a0, .LBB5_74
+# %bb.70:
 .Ltmp33:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp34:
-	b	.LBB5_75
-.LBB5_72:
+	b	.LBB5_74
+.LBB5_71:
 .Ltmp35:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
-.LBB5_73:
+.LBB5_72:
 .Ltmp27:
-.LBB5_74:
+.LBB5_73:
 	move	$fp, $a0
 .Ltmp28:
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN10HullResultD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp29:
-.LBB5_75:                               # %.body
+.LBB5_74:                               # %.body
 .Ltmp39:
 	addi.d	$a0, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN11HullLibraryD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp40:
-.LBB5_76:                               # %common.resume
+.LBB5_75:                               # %common.resume
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB5_77:
+.LBB5_76:
 .Ltmp41:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -1304,10 +1304,10 @@ _ZL18btUnitSpherePoints:
 
 	.globl	_ZN11btShapeHullC1EPK13btConvexShape
 	.type	_ZN11btShapeHullC1EPK13btConvexShape,@function
-.set _ZN11btShapeHullC1EPK13btConvexShape, _ZN11btShapeHullC2EPK13btConvexShape
+_ZN11btShapeHullC1EPK13btConvexShape = _ZN11btShapeHullC2EPK13btConvexShape
 	.globl	_ZN11btShapeHullD1Ev
 	.type	_ZN11btShapeHullD1Ev,@function
-.set _ZN11btShapeHullD1Ev, _ZN11btShapeHullD2Ev
+_ZN11btShapeHullD1Ev = _ZN11btShapeHullD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

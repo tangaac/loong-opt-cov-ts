@@ -1182,7 +1182,8 @@ cli_strbcasestr:                        # @cli_strbcasestr
 	move	$a0, $zero
 	b	.LBB5_3
 .LBB5_2:
-	sub.w	$a0, $s1, $a0
+	sub.d	$a0, $s1, $a0
+	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a0, $s0, $a0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(strcasecmp)

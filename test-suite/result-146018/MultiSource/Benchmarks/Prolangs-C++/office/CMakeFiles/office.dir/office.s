@@ -1034,16 +1034,16 @@ _ZTS10consultant:
 
 	.globl	_ZN10supervisorC1EPciS0_
 	.type	_ZN10supervisorC1EPciS0_,@function
-.set _ZN10supervisorC1EPciS0_, _ZN10supervisorC2EPciS0_
+_ZN10supervisorC1EPciS0_ = _ZN10supervisorC2EPciS0_
 	.globl	_ZN10programmerC1EPciS0_S0_
 	.type	_ZN10programmerC1EPciS0_S0_,@function
-.set _ZN10programmerC1EPciS0_S0_, _ZN10programmerC2EPciS0_S0_
+_ZN10programmerC1EPciS0_S0_ = _ZN10programmerC2EPciS0_S0_
 	.globl	_ZN9secretaryC1EPciii
 	.type	_ZN9secretaryC1EPciii,@function
-.set _ZN9secretaryC1EPciii, _ZN9secretaryC2EPciii
+_ZN9secretaryC1EPciii = _ZN9secretaryC2EPciii
 	.globl	_ZN10consultantC1EPciS0_i
 	.type	_ZN10consultantC1EPciS0_i,@function
-.set _ZN10consultantC1EPciS0_i, _ZN10consultantC2EPciS0_i
+_ZN10consultantC1EPciS0_i = _ZN10consultantC2EPciS0_i
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

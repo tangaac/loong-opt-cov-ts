@@ -174,21 +174,24 @@ inflateReset2:                          # @inflateReset2
 .LBB2_8:
 	move	$s2, $zero
 	sub.w	$s3, $zero, $a1
-.LBB2_9:                                # %select.unfold
-	addi.d	$a1, $s3, -8
+.LBB2_9:
+	beqz	$s3, .LBB2_11
+# %bb.10:
+	bstrpick.d	$a1, $s3, 30, 3
+	slli.w	$a1, $a1, 3
 	ori	$a2, $zero, 8
-	bgeu	$a1, $a2, .LBB2_21
-.LBB2_10:
+	bne	$a1, $a2, .LBB2_22
+.LBB2_11:
 	ld.d	$a1, $s1, 72
-	beqz	$a1, .LBB2_12
-# %bb.11:
+	beqz	$a1, .LBB2_13
+# %bb.12:
 	ld.w	$a2, $s1, 56
-	bne	$a2, $s3, .LBB2_13
-.LBB2_12:                               # %.thread
+	bne	$a2, $s3, .LBB2_14
+.LBB2_13:                               # %.thread
 	st.w	$s2, $s1, 16
 	st.w	$s3, $s1, 56
-	b	.LBB2_14
-.LBB2_13:
+	b	.LBB2_15
+.LBB2_14:
 	ld.d	$a2, $fp, 80
 	move	$s4, $a0
 	move	$a0, $a2
@@ -199,21 +202,21 @@ inflateReset2:                          # @inflateReset2
 	st.w	$s2, $s1, 16
 	st.w	$s3, $s1, 56
 	beqz	$a1, .LBB2_22
-.LBB2_14:
+.LBB2_15:
 	ld.d	$a1, $fp, 72
 	beqz	$a1, .LBB2_22
-# %bb.15:
+# %bb.16:
 	ld.d	$a1, $fp, 56
 	beqz	$a1, .LBB2_22
-# %bb.16:
+# %bb.17:
 	ld.d	$a2, $a1, 0
 	bne	$a2, $fp, .LBB2_22
-# %bb.17:                               # %inflateStateCheck.exit.i
+# %bb.18:                               # %inflateStateCheck.exit.i
 	ld.w	$a2, $a1, 8
 	add.w	$a2, $a2, $s0
 	ori	$a3, $zero, 31
 	bltu	$a3, $a2, .LBB2_22
-# %bb.18:
+# %bb.19:
 	st.d	$zero, $a1, 60
 	st.w	$zero, $a1, 68
 	st.d	$zero, $a1, 40
@@ -221,11 +224,11 @@ inflateReset2:                          # @inflateReset2
 	vst	$vr0, $fp, 40
 	ld.w	$a0, $a1, 16
 	st.d	$zero, $fp, 16
-	beqz	$a0, .LBB2_20
-# %bb.19:
+	beqz	$a0, .LBB2_21
+# %bb.20:
 	andi	$a0, $a0, 1
 	st.d	$a0, $fp, 96
-.LBB2_20:
+.LBB2_21:
 	move	$a0, $zero
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 3892
@@ -243,9 +246,6 @@ inflateReset2:                          # @inflateReset2
 	st.d	$zero, $a1, 48
 	st.d	$zero, $a1, 80
 	st.w	$zero, $a1, 88
-	b	.LBB2_22
-.LBB2_21:                               # %select.unfold
-	beqz	$s3, .LBB2_10
 .LBB2_22:                               # %inflateReset.exit
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload

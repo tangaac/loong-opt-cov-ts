@@ -14049,7 +14049,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	ori	$s0, $zero, 1
 	b	.LBB27_5
 	.p2align	4, , 16
-.LBB27_4:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit58
+.LBB27_4:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit64
                                         #   in Loop: Header=BB27_5 Depth=1
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$s8, $a1, 0
@@ -14104,13 +14104,13 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	sub.d	$s4, $a0, $a2
 	move	$a2, $s8
 	bge	$a1, $s0, .LBB27_12
-# %bb.10:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.i43
+# %bb.10:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.i44
                                         #   in Loop: Header=BB27_8 Depth=2
 	sub.d	$a0, $a1, $s7
 	bgez	$a0, .LBB27_15
 	b	.LBB27_6
 	.p2align	4, , 16
-.LBB27_11:                              # %.thread132
+.LBB27_11:                              # %.thread.i63
                                         #   in Loop: Header=BB27_8 Depth=2
 	ld.d	$a1, $s5, -8
 	addi.d	$a2, $a1, 512
@@ -14123,7 +14123,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$a1, $s7, 7
 	sub.d	$s4, $a0, $a1
-.LBB27_12:                              # %.lr.ph.i.i.i.i47.preheader
+.LBB27_12:                              # %.lr.ph.i.i.i.preheader.i49
                                         #   in Loop: Header=BB27_8 Depth=2
 	move	$s1, $s8
 	move	$s8, $a4
@@ -14132,7 +14132,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	addi.d	$s2, $a2, -128
 	addi.d	$s3, $a0, -128
 	.p2align	4, , 16
-.LBB27_13:                              # %.lr.ph.i.i.i.i47
+.LBB27_13:                              # %.lr.ph.i.i.i.i52
                                         #   Parent Loop BB27_5 Depth=1
                                         #     Parent Loop BB27_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -14148,7 +14148,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	addi.d	$s2, $s2, -128
 	addi.d	$s3, $s3, -128
 	bltu	$s0, $s5, .LBB27_13
-# %bb.14:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i51
+# %bb.14:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i56
                                         #   in Loop: Header=BB27_8 Depth=2
 	move	$a4, $s8
 	move	$s8, $s1
@@ -14211,7 +14211,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	bgez	$a0, .LBB27_27
 	b	.LBB27_18
 	.p2align	4, , 16
-.LBB27_23:                              # %.thread
+.LBB27_23:                              # %.thread.i
                                         #   in Loop: Header=BB27_20 Depth=1
 	ld.d	$a1, $s5, -8
 	addi.d	$a2, $a1, 512
@@ -14224,7 +14224,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$a1, $s2, 7
 	sub.d	$s7, $a0, $a1
-.LBB27_24:                              # %.lr.ph.i.i.i.i.preheader
+.LBB27_24:                              # %.lr.ph.i.i.i.preheader.i
                                         #   in Loop: Header=BB27_20 Depth=1
 	move	$s6, $a4
 	addi.d	$s1, $s2, 1
@@ -14309,13 +14309,13 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	sub.d	$s7, $a0, $a2
 	move	$a2, $s8
 	bge	$a1, $s2, .LBB27_37
-# %bb.35:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.i16
+# %bb.35:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.i14
                                         #   in Loop: Header=BB27_33 Depth=1
 	sub.d	$a0, $a1, $s3
 	bgez	$a0, .LBB27_40
 	b	.LBB27_31
 	.p2align	4, , 16
-.LBB27_36:                              # %.thread125
+.LBB27_36:                              # %.thread.i33
                                         #   in Loop: Header=BB27_33 Depth=1
 	ld.d	$a1, $s5, -8
 	addi.d	$a2, $a1, 512
@@ -14328,14 +14328,14 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$a1, $s3, 7
 	sub.d	$s7, $a0, $a1
-.LBB27_37:                              # %.lr.ph.i.i.i.i20.preheader
+.LBB27_37:                              # %.lr.ph.i.i.i.preheader.i19
                                         #   in Loop: Header=BB27_33 Depth=1
 	move	$s6, $a4
 	addi.d	$s4, $s3, 1
 	addi.d	$s0, $a2, -128
 	addi.d	$s1, $a0, -128
 	.p2align	4, , 16
-.LBB27_38:                              # %.lr.ph.i.i.i.i20
+.LBB27_38:                              # %.lr.ph.i.i.i.i22
                                         #   Parent Loop BB27_33 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$a0, $sp, 56
@@ -14350,7 +14350,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	addi.d	$s0, $s0, -128
 	addi.d	$s1, $s1, -128
 	bltu	$s2, $s4, .LBB27_38
-# %bb.39:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i24
+# %bb.39:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i26
                                         #   in Loop: Header=BB27_33 Depth=1
 	move	$a4, $s6
 	sub.d	$a0, $s8, $s6
@@ -14384,7 +14384,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	srai.d	$fp, $a1, 7
 	ori	$s2, $zero, 1
 	bge	$fp, $s2, .LBB27_47
-.LBB27_44:                              # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit31
+.LBB27_44:                              # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES1_EN9__gnu_cxx11__enable_ifIXsr23__is_random_access_iterIT0_EE7__valueESt15_Deque_iteratorIT1_RS7_PS7_EE6__typeES5_S5_SA_.exit34
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.d	$s8, $a0, 0
 	st.d	$a4, $a0, 8
@@ -14420,7 +14420,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	sub.d	$fp, $fp, $s7
 	move	$a0, $s3
 	blez	$fp, .LBB27_44
-.LBB27_47:                              # %.lr.ph.i62
+.LBB27_47:                              # %.lr.ph.i68
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB27_52 Depth 2
 	beq	$s8, $a4, .LBB27_50
@@ -14437,13 +14437,13 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	sub.d	$s3, $a0, $a2
 	move	$a2, $s8
 	bge	$a1, $s2, .LBB27_51
-# %bb.49:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.i70
+# %bb.49:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.i74
                                         #   in Loop: Header=BB27_47 Depth=1
 	sub.d	$a0, $a1, $s7
 	bgez	$a0, .LBB27_54
 	b	.LBB27_45
 	.p2align	4, , 16
-.LBB27_50:                              # %.thread139
+.LBB27_50:                              # %.thread.i93
                                         #   in Loop: Header=BB27_47 Depth=1
 	ld.d	$a1, $s5, -8
 	addi.d	$a2, $a1, 512
@@ -14456,7 +14456,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	slli.d	$a1, $s7, 7
 	sub.d	$s3, $a0, $a1
-.LBB27_51:                              # %.lr.ph.i.i.i.i74.preheader
+.LBB27_51:                              # %.lr.ph.i.i.i.preheader.i79
                                         #   in Loop: Header=BB27_47 Depth=1
 	move	$s4, $s8
 	move	$s8, $a4
@@ -14465,7 +14465,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	addi.d	$s0, $a2, -128
 	addi.d	$s1, $a0, -128
 	.p2align	4, , 16
-.LBB27_52:                              # %.lr.ph.i.i.i.i74
+.LBB27_52:                              # %.lr.ph.i.i.i.i82
                                         #   Parent Loop BB27_47 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$a0, $sp, 56
@@ -14480,7 +14480,7 @@ _ZSt24__copy_move_backward_ditILb1EN2PP4WordERS1_PS1_St15_Deque_iteratorIS1_S2_S
 	addi.d	$s0, $s0, -128
 	addi.d	$s1, $s1, -128
 	bltu	$s2, $s5, .LBB27_52
-# %bb.53:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i78
+# %bb.53:                               # %_ZSt23__copy_move_backward_a1ILb1EPN2PP4WordES2_ET1_T0_S4_S3_.exit.loopexit.i86
                                         #   in Loop: Header=BB27_47 Depth=1
 	move	$a4, $s8
 	move	$s8, $s4
@@ -16067,10 +16067,10 @@ GCC_except_table32:
 
 	.globl	_ZN2PP12RestartblockC1Ev
 	.type	_ZN2PP12RestartblockC1Ev,@function
-.set _ZN2PP12RestartblockC1Ev, _ZN2PP12RestartblockC2Ev
+_ZN2PP12RestartblockC1Ev = _ZN2PP12RestartblockC2Ev
 	.globl	_ZN2PP12RestartblockC1ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_
 	.type	_ZN2PP12RestartblockC1ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_,@function
-.set _ZN2PP12RestartblockC1ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_, _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_
+_ZN2PP12RestartblockC1ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_ = _ZN2PP12RestartblockC2ERiRNS_3CmdERbS4_RSt5dequeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESaISB_EERS5_IbSaIbEERS5_IiSaIiEESH_RNS6_18basic_stringstreamIcS9_SA_EES1_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

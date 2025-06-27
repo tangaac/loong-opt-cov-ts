@@ -1339,10 +1339,10 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 
 	.globl	_ZN3QCSC1EPK9InputFileP5Hydro
 	.type	_ZN3QCSC1EPK9InputFileP5Hydro,@function
-.set _ZN3QCSC1EPK9InputFileP5Hydro, _ZN3QCSC2EPK9InputFileP5Hydro
+_ZN3QCSC1EPK9InputFileP5Hydro = _ZN3QCSC2EPK9InputFileP5Hydro
 	.globl	_ZN3QCSD1Ev
 	.type	_ZN3QCSD1Ev,@function
-.set _ZN3QCSD1Ev, _ZN3QCSD2Ev
+_ZN3QCSD1Ev = _ZN3QCSD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

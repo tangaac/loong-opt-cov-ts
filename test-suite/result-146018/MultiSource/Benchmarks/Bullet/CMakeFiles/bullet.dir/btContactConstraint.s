@@ -384,13 +384,13 @@ _ZTS13btTypedObject:
 
 	.globl	_ZN19btContactConstraintC1Ev
 	.type	_ZN19btContactConstraintC1Ev,@function
-.set _ZN19btContactConstraintC1Ev, _ZN19btContactConstraintC2Ev
+_ZN19btContactConstraintC1Ev = _ZN19btContactConstraintC2Ev
 	.globl	_ZN19btContactConstraintC1EP20btPersistentManifoldR11btRigidBodyS3_
 	.type	_ZN19btContactConstraintC1EP20btPersistentManifoldR11btRigidBodyS3_,@function
-.set _ZN19btContactConstraintC1EP20btPersistentManifoldR11btRigidBodyS3_, _ZN19btContactConstraintC2EP20btPersistentManifoldR11btRigidBodyS3_
+_ZN19btContactConstraintC1EP20btPersistentManifoldR11btRigidBodyS3_ = _ZN19btContactConstraintC2EP20btPersistentManifoldR11btRigidBodyS3_
 	.globl	_ZN19btContactConstraintD1Ev
 	.type	_ZN19btContactConstraintD1Ev,@function
-.set _ZN19btContactConstraintD1Ev, _ZN19btContactConstraintD2Ev
+_ZN19btContactConstraintD1Ev = _ZN19btContactConstraintD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

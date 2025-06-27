@@ -773,9 +773,9 @@ _ZN7ConvexHC2Eiii:                      # @_ZN7ConvexHC2Eiii
 	bge	$s2, $s0, .LBB5_40
 # %bb.22:
 	ld.w	$a0, $fp, 72
-	bge	$a0, $s0, .LBB5_33
+	bge	$a0, $s0, .LBB5_26
 # %bb.23:
-	beqz	$s0, .LBB5_26
+	beqz	$s0, .LBB5_28
 # %bb.24:
 	slli.d	$a0, $s0, 4
 	alsl.d	$a0, $s0, $a0, 2
@@ -788,19 +788,27 @@ _ZN7ConvexHC2Eiii:                      # @_ZN7ConvexHC2Eiii
 	move	$s1, $a0
 	ld.w	$a1, $fp, 68
 	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB5_27
-	b	.LBB5_29
-.LBB5_26:
+	bge	$a1, $a0, .LBB5_29
+	b	.LBB5_31
+.LBB5_26:                               # %..lr.ph.i29_crit_edge
+	ld.d	$s1, $fp, 80
+	sub.d	$a1, $s0, $s2
+	ori	$a0, $zero, 2
+	bgeu	$a1, $a0, .LBB5_35
+.LBB5_27:
+	move	$a0, $s2
+	b	.LBB5_38
+.LBB5_28:
 	move	$s1, $zero
 	move	$a1, $s2
 	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB5_29
-.LBB5_27:                               # %.lr.ph.i.i.i39
+	blt	$a1, $a0, .LBB5_31
+.LBB5_29:                               # %.lr.ph.i.i.i39
 	move	$a0, $zero
 	slli.d	$a2, $a1, 4
 	alsl.d	$a1, $a1, $a2, 2
 	.p2align	4, , 16
-.LBB5_28:                               # =>This Inner Loop Header: Depth=1
+.LBB5_30:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 80
 	vldx	$vr0, $a2, $a0
 	add.d	$a2, $a2, $a0
@@ -809,64 +817,59 @@ _ZN7ConvexHC2Eiii:                      # @_ZN7ConvexHC2Eiii
 	add.d	$a3, $s1, $a0
 	addi.d	$a0, $a0, 20
 	st.w	$a2, $a3, 16
-	bne	$a1, $a0, .LBB5_28
-.LBB5_29:                               # %_ZNK20btAlignedObjectArrayI7btPlaneE4copyEiiPS0_.exit.i.i
+	bne	$a1, $a0, .LBB5_30
+.LBB5_31:                               # %_ZNK20btAlignedObjectArrayI7btPlaneE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $fp, 80
-	beqz	$a0, .LBB5_32
-# %bb.30:                               # %_ZNK20btAlignedObjectArrayI7btPlaneE4copyEiiPS0_.exit.i.i
+	beqz	$a0, .LBB5_34
+# %bb.32:                               # %_ZNK20btAlignedObjectArrayI7btPlaneE4copyEiiPS0_.exit.i.i
 	ld.b	$a1, $fp, 88
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB5_32
-# %bb.31:
+	beqz	$a1, .LBB5_34
+# %bb.33:
 .Ltmp12:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp13:
-.LBB5_32:                               # %_ZN20btAlignedObjectArrayI7btPlaneE10deallocateEv.exit.i.i
+.LBB5_34:                               # %_ZN20btAlignedObjectArrayI7btPlaneE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 88
 	st.d	$s1, $fp, 80
 	st.w	$s0, $fp, 72
-.LBB5_33:                               # %.lr.ph.i29
-	ld.d	$a0, $fp, 80
-	sub.d	$a2, $s0, $s2
-	ori	$a1, $zero, 2
-	bgeu	$a2, $a1, .LBB5_35
-# %bb.34:
-	move	$a1, $s2
-	b	.LBB5_38
+	sub.d	$a1, $s0, $s2
+	ori	$a0, $zero, 2
+	bltu	$a1, $a0, .LBB5_27
 .LBB5_35:                               # %vector.ph
-	move	$a3, $a2
-	bstrins.d	$a3, $zero, 0, 0
-	add.d	$a1, $a3, $s2
-	slli.d	$a4, $s2, 4
-	alsl.d	$a4, $s2, $a4, 2
-	add.d	$a4, $a4, $a0
-	addi.d	$a4, $a4, 36
-	move	$a5, $a3
+	move	$a2, $a1
+	bstrins.d	$a2, $zero, 0, 0
+	add.d	$a0, $a2, $s2
+	slli.d	$a3, $s2, 4
+	alsl.d	$a3, $s2, $a3, 2
+	add.d	$a3, $a3, $s1
+	addi.d	$a3, $a3, 36
+	move	$a4, $a2
 	.p2align	4, , 16
 .LBB5_36:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a4, -20
-	st.w	$zero, $a4, 0
-	addi.d	$a5, $a5, -2
-	addi.d	$a4, $a4, 40
-	bnez	$a5, .LBB5_36
+	st.w	$zero, $a3, -20
+	st.w	$zero, $a3, 0
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 40
+	bnez	$a4, .LBB5_36
 # %bb.37:                               # %middle.block
-	beq	$a2, $a3, .LBB5_40
+	beq	$a1, $a2, .LBB5_40
 .LBB5_38:                               # %scalar.ph.preheader
-	slli.d	$a2, $a1, 4
-	alsl.d	$a2, $a1, $a2, 2
-	add.d	$a0, $a2, $a0
-	addi.d	$a0, $a0, 16
-	sub.d	$a1, $s0, $a1
+	slli.d	$a1, $a0, 4
+	alsl.d	$a1, $a0, $a1, 2
+	add.d	$a1, $a1, $s1
+	addi.d	$a1, $a1, 16
+	sub.d	$a0, $s0, $a0
 	.p2align	4, , 16
 .LBB5_39:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a0, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 20
-	bnez	$a1, .LBB5_39
+	st.w	$zero, $a1, 0
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 20
+	bnez	$a0, .LBB5_39
 .LBB5_40:                               # %.loopexit
 	st.w	$s0, $fp, 68
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
@@ -5398,7 +5401,7 @@ _ZN11HullLibrary16CreateConvexHullERK8HullDescR10HullResult: # @_ZN11HullLibrary
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 .Ltmp100:
-# %bb.2:                                # %_ZN20btAlignedObjectArrayI9btVector3E6resizeEiRKS0_.exit.loopexit
+# %bb.2:                                # %.lr.ph.i
 	move	$fp, $a0
 	ld.w	$a1, $s0, 4
 	b	.LBB32_4
@@ -7056,7 +7059,7 @@ _ZZN14btHullTriangle4neibEiiE2er:
 
 	.globl	_ZN7ConvexHC1Eiii
 	.type	_ZN7ConvexHC1Eiii,@function
-.set _ZN7ConvexHC1Eiii, _ZN7ConvexHC2Eiii
+_ZN7ConvexHC1Eiii = _ZN7ConvexHC2Eiii
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

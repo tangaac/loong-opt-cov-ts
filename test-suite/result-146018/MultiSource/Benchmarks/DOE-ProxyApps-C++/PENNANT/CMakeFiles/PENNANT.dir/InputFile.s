@@ -3038,10 +3038,10 @@ _ZSt19piecewise_construct:
 
 	.globl	_ZN9InputFileC1EPKc
 	.type	_ZN9InputFileC1EPKc,@function
-.set _ZN9InputFileC1EPKc, _ZN9InputFileC2EPKc
+_ZN9InputFileC1EPKc = _ZN9InputFileC2EPKc
 	.globl	_ZN9InputFileD1Ev
 	.type	_ZN9InputFileD1Ev,@function
-.set _ZN9InputFileD1Ev, _ZN9InputFileD2Ev
+_ZN9InputFileD1Ev = _ZN9InputFileD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -2128,8 +2128,8 @@ init_lists:                             # @init_lists
 .LBB11_189:                             # %.preheader649
 	bge	$s3, $s8, .LBB11_191
 # %bb.190:                              # %.lr.ph748.preheader
-	nor	$a0, $s3, $zero
-	add.d	$a0, $s8, $a0
+	sub.d	$a0, $s3, $s8
+	nor	$a0, $a0, $zero
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 3
 	addi.d	$a2, $a0, 8
@@ -3209,10 +3209,9 @@ init_lists:                             # @init_lists
 	bnez	$t0, .LBB11_392
 # %bb.393:                              # %middle.block1134
 	vor.v	$vr0, $vr2, $vr0
-	vpickve2gr.d	$a6, $vr0, 1
-	vpickve2gr.d	$a7, $vr0, 0
-	bstrins.d	$a7, $a6, 63, 1
-	andi	$a6, $a7, 3
+	vslli.d	$vr0, $vr0, 63
+	vmskltz.d	$vr0, $vr0
+	vpickve2gr.hu	$a6, $vr0, 0
 	sltu	$a6, $zero, $a6
 	beq	$a5, $a4, .LBB11_396
 .LBB11_394:                             # %scalar.ph1121.preheader
@@ -4384,8 +4383,8 @@ update_ref_list:                        # @update_ref_list
 	ld.d	$a0, $a0, 8
 	bstrpick.d	$a3, $a2, 31, 0
 	alsl.d	$a0, $a3, $a0, 3
-	nor	$a2, $a2, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $a2, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8
@@ -4478,8 +4477,8 @@ update_ltref_list:                      # @update_ltref_list
 	ld.d	$a0, $a0, 16
 	bstrpick.d	$a3, $a2, 31, 0
 	alsl.d	$a0, $a3, $a0, 3
-	nor	$a2, $a2, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $a2, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

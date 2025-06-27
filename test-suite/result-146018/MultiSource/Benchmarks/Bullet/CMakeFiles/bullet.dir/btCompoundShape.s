@@ -1888,10 +1888,10 @@ _ZTS15btCompoundShape:
 
 	.globl	_ZN15btCompoundShapeC1Eb
 	.type	_ZN15btCompoundShapeC1Eb,@function
-.set _ZN15btCompoundShapeC1Eb, _ZN15btCompoundShapeC2Eb
+_ZN15btCompoundShapeC1Eb = _ZN15btCompoundShapeC2Eb
 	.globl	_ZN15btCompoundShapeD1Ev
 	.type	_ZN15btCompoundShapeD1Ev,@function
-.set _ZN15btCompoundShapeD1Ev, _ZN15btCompoundShapeD2Ev
+_ZN15btCompoundShapeD1Ev = _ZN15btCompoundShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

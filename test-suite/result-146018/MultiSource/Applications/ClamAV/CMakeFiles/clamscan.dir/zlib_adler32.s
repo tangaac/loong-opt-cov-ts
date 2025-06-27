@@ -312,8 +312,7 @@ adler32_combine:                        # @adler32_combine
 	mul.d	$a7, $a6, $a7
 	srli.d	$a7, $a7, 47
 	mul.d	$a5, $a7, $a5
-	sub.d	$a5, $a6, $a5
-	bstrpick.d	$a5, $a5, 31, 0
+	sub.w	$a5, $a6, $a5
 	bstrpick.d	$a6, $a1, 15, 0
 	add.d	$a3, $a3, $a6
 	addu16i.d	$a6, $a3, 1
@@ -390,8 +389,7 @@ adler32_combine64:                      # @adler32_combine64
 	mul.d	$a7, $a6, $a7
 	srli.d	$a7, $a7, 47
 	mul.d	$a5, $a7, $a5
-	sub.d	$a5, $a6, $a5
-	bstrpick.d	$a5, $a5, 31, 0
+	sub.w	$a5, $a6, $a5
 	bstrpick.d	$a6, $a1, 15, 0
 	add.d	$a3, $a3, $a6
 	addu16i.d	$a6, $a3, 1

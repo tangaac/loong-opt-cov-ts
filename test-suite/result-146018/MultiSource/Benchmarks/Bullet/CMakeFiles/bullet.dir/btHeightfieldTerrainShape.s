@@ -1933,13 +1933,13 @@ _ZTS25btHeightfieldTerrainShape:
 
 	.globl	_ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb
 	.type	_ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb,@function
-.set _ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb, _ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb
+_ZN25btHeightfieldTerrainShapeC1EiiPvfffi14PHY_ScalarTypeb = _ZN25btHeightfieldTerrainShapeC2EiiPvfffi14PHY_ScalarTypeb
 	.globl	_ZN25btHeightfieldTerrainShapeC1EiiPvfibb
 	.type	_ZN25btHeightfieldTerrainShapeC1EiiPvfibb,@function
-.set _ZN25btHeightfieldTerrainShapeC1EiiPvfibb, _ZN25btHeightfieldTerrainShapeC2EiiPvfibb
+_ZN25btHeightfieldTerrainShapeC1EiiPvfibb = _ZN25btHeightfieldTerrainShapeC2EiiPvfibb
 	.globl	_ZN25btHeightfieldTerrainShapeD1Ev
 	.type	_ZN25btHeightfieldTerrainShapeD1Ev,@function
-.set _ZN25btHeightfieldTerrainShapeD1Ev, _ZN25btHeightfieldTerrainShapeD2Ev
+_ZN25btHeightfieldTerrainShapeD1Ev = _ZN25btHeightfieldTerrainShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

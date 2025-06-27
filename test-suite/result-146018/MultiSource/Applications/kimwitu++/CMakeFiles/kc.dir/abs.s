@@ -48,7 +48,7 @@ _ZN2kc22impl_fileline_FileLineC2EPNS_20impl_casestring__StrEi: # @_ZN2kc22impl_f
 
 	.globl	_ZN2kc22impl_fileline_FileLineC1EPNS_20impl_casestring__StrEi
 	.type	_ZN2kc22impl_fileline_FileLineC1EPNS_20impl_casestring__StrEi,@function
-.set _ZN2kc22impl_fileline_FileLineC1EPNS_20impl_casestring__StrEi, _ZN2kc22impl_fileline_FileLineC2EPNS_20impl_casestring__StrEi
+_ZN2kc22impl_fileline_FileLineC1EPNS_20impl_casestring__StrEi = _ZN2kc22impl_fileline_FileLineC2EPNS_20impl_casestring__StrEi
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

@@ -1281,13 +1281,13 @@ _ZN15CProfileManager9ResetTimeE:
 
 	.globl	_ZN12CProfileNodeC1EPKcPS_
 	.type	_ZN12CProfileNodeC1EPKcPS_,@function
-.set _ZN12CProfileNodeC1EPKcPS_, _ZN12CProfileNodeC2EPKcPS_
+_ZN12CProfileNodeC1EPKcPS_ = _ZN12CProfileNodeC2EPKcPS_
 	.globl	_ZN12CProfileNodeD1Ev
 	.type	_ZN12CProfileNodeD1Ev,@function
-.set _ZN12CProfileNodeD1Ev, _ZN12CProfileNodeD2Ev
+_ZN12CProfileNodeD1Ev = _ZN12CProfileNodeD2Ev
 	.globl	_ZN16CProfileIteratorC1EP12CProfileNode
 	.type	_ZN16CProfileIteratorC1EP12CProfileNode,@function
-.set _ZN16CProfileIteratorC1EP12CProfileNode, _ZN16CProfileIteratorC2EP12CProfileNode
+_ZN16CProfileIteratorC1EP12CProfileNode = _ZN16CProfileIteratorC2EP12CProfileNode
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

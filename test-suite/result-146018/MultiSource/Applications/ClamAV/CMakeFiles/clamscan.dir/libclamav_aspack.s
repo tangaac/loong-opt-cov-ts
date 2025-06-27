@@ -489,14 +489,15 @@ unaspack212:                            # @unaspack212
 	bltu	$a3, $a2, .LBB0_51
 # %bb.56:                               # %vector.scevcheck
                                         #   in Loop: Header=BB0_14 Depth=2
-	sub.w	$a1, $a1, $s2
-	bltu	$a1, $a2, .LBB0_51
+	sub.d	$a1, $a1, $s2
+	addi.w	$a3, $a1, 0
+	bltu	$a3, $a2, .LBB0_51
 # %bb.57:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_14 Depth=2
-	bstrpick.d	$a1, $s2, 31, 0
-	add.d	$a2, $s2, $a0
-	bstrpick.d	$a2, $a2, 31, 0
-	sub.d	$a1, $a1, $a2
+	bstrpick.d	$a2, $s2, 31, 0
+	nor	$a1, $a1, $zero
+	bstrpick.d	$a1, $a1, 31, 0
+	sub.d	$a1, $a2, $a1
 	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
 	ori	$a2, $zero, 32

@@ -1509,17 +1509,9 @@ _ZN30btConvexSeparatingDistanceUtil24updateSeparatingDistanceERK11btTransformS2_
 	vpickev.w	$vr2, $vr2, $vr4
 	fld.s	$fs2, $fp, 40
 	vfcmp.cune.s	$vr2, $vr3, $vr2
-	vpickve2gr.w	$a0, $vr2, 0
-	vpickve2gr.w	$a1, $vr2, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	vpickve2gr.w	$a1, $vr2, 2
-	bstrins.d	$a0, $a1, 2, 2
-	vpickve2gr.w	$a1, $vr2, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
-	andi	$a0, $a0, 15
-	vpickev.w	$vr12, $vr1, $vr0
+	vmskltz.w	$vr2, $vr2
+	vpickve2gr.hu	$a0, $vr2, 0
+	vpickev.w	$vr10, $vr1, $vr0
 	fmov.s	$fa4, $fs0
 	fmov.s	$ft3, $fs0
 	fmov.s	$fs6, $fs0
@@ -1529,10 +1521,10 @@ _ZN30btConvexSeparatingDistanceUtil24updateSeparatingDistanceERK11btTransformS2_
 	addi.d	$a2, $sp, 80
 	addi.d	$a3, $sp, 76
 	move	$a0, $fp
-	vst	$vr12, $sp, 16                  # 16-byte Folded Spill
+	vst	$vr10, $sp, 16                  # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(_ZN15btTransformUtil32calculateDiffAxisAngleQuaternionERK12btQuaternionS2_R9btVector3Rf)
 	jirl	$ra, $ra, 0
-	vld	$vr12, $sp, 16                  # 16-byte Folded Reload
+	vld	$vr10, $sp, 16                  # 16-byte Folded Reload
 	fld.s	$fa0, $sp, 80
 	fld.s	$fa1, $sp, 76
 	fld.s	$fa2, $sp, 84
@@ -1550,21 +1542,13 @@ _ZN30btConvexSeparatingDistanceUtil24updateSeparatingDistanceERK11btTransformS2_
 	fsub.s	$fs3, $fs4, $fs2
 	fsub.s	$fs2, $fa0, $fa1
 	vld	$vr0, $fp, 16
-	fsub.s	$fs4, $fa2, $fa3
+	fsub.s	$ft4, $fa2, $fa3
 	fld.s	$fa1, $s0, 56
 	fld.s	$fa2, $fp, 56
-	vfcmp.cune.s	$vr0, $vr0, $vr12
-	vpickve2gr.w	$a0, $vr0, 0
-	vpickve2gr.w	$a1, $vr0, 1
-	andi	$a1, $a1, 1
-	bstrins.d	$a0, $a1, 63, 1
-	vpickve2gr.w	$a1, $vr0, 2
-	bstrins.d	$a0, $a1, 2, 2
-	vpickve2gr.w	$a1, $vr0, 3
-	slli.d	$a1, $a1, 3
-	or	$a0, $a0, $a1
-	andi	$a0, $a0, 15
-	fsub.s	$ft4, $fa1, $fa2
+	vfcmp.cune.s	$vr0, $vr0, $vr10
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
+	fsub.s	$fs4, $fa1, $fa2
 	fmov.s	$fa0, $fs0
 	fmov.s	$fa2, $fs0
 	fmov.s	$fa1, $fs0
@@ -1607,11 +1591,11 @@ _ZN30btConvexSeparatingDistanceUtil24updateSeparatingDistanceERK11btTransformS2_
 	fmul.s	$fa0, $fa0, $fa5
 	fmadd.s	$fa0, $fa3, $fa4, $fa0
 	fsub.s	$fa1, $fs2, $fa7
-	fsub.s	$fa2, $fs4, $ft0
+	fsub.s	$fa2, $ft4, $ft0
 	fld.s	$fa3, $fp, 68
 	fld.s	$fa4, $fp, 64
 	fld.s	$fa5, $fp, 72
-	fsub.s	$fa6, $ft4, $fs3
+	fsub.s	$fa6, $fs4, $fs3
 	fmul.s	$fa2, $fa2, $fa3
 	fmadd.s	$fa1, $fa1, $fa4, $fa2
 	fmadd.s	$fa1, $fa6, $fa5, $fa1
@@ -2423,7 +2407,7 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	mul.d	$a5, $a5, $a6
 	srli.d	$a5, $a5, 33
 	alsl.d	$a5, $a5, $a5, 1
-	sub.d	$a4, $a4, $a5
+	sub.w	$a4, $a4, $a5
 	addi.w	$a2, $a2, 0
 	alsl.d	$fp, $a2, $a0, 4
 	slli.d	$s1, $a2, 2
@@ -2431,9 +2415,8 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	alsl.d	$s4, $a3, $a0, 4
 	slli.d	$s0, $a3, 2
 	fldx.s	$fa1, $s4, $s0
-	bstrpick.d	$a2, $a4, 31, 0
-	alsl.d	$s3, $a2, $a0, 4
-	slli.d	$s2, $a2, 2
+	alsl.d	$s3, $a4, $a0, 4
+	slli.d	$s2, $a4, 2
 	fldx.s	$fa2, $s3, $s2
 	fsub.s	$fa0, $fa0, $fa1
 	fsub.s	$fa0, $fa0, $fa2
@@ -3114,16 +3097,16 @@ _ZTSN12btConvexCast10CastResultE:
 
 	.globl	_ZN23btConvexConvexAlgorithm10CreateFuncC1EP22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver
 	.type	_ZN23btConvexConvexAlgorithm10CreateFuncC1EP22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver,@function
-.set _ZN23btConvexConvexAlgorithm10CreateFuncC1EP22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver, _ZN23btConvexConvexAlgorithm10CreateFuncC2EP22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver
+_ZN23btConvexConvexAlgorithm10CreateFuncC1EP22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver = _ZN23btConvexConvexAlgorithm10CreateFuncC2EP22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolver
 	.globl	_ZN23btConvexConvexAlgorithm10CreateFuncD1Ev
 	.type	_ZN23btConvexConvexAlgorithm10CreateFuncD1Ev,@function
-.set _ZN23btConvexConvexAlgorithm10CreateFuncD1Ev, _ZN23btConvexConvexAlgorithm10CreateFuncD2Ev
+_ZN23btConvexConvexAlgorithm10CreateFuncD1Ev = _ZN23btConvexConvexAlgorithm10CreateFuncD2Ev
 	.globl	_ZN23btConvexConvexAlgorithmC1EP20btPersistentManifoldRK36btCollisionAlgorithmConstructionInfoP17btCollisionObjectS6_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolverii
 	.type	_ZN23btConvexConvexAlgorithmC1EP20btPersistentManifoldRK36btCollisionAlgorithmConstructionInfoP17btCollisionObjectS6_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolverii,@function
-.set _ZN23btConvexConvexAlgorithmC1EP20btPersistentManifoldRK36btCollisionAlgorithmConstructionInfoP17btCollisionObjectS6_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolverii, _ZN23btConvexConvexAlgorithmC2EP20btPersistentManifoldRK36btCollisionAlgorithmConstructionInfoP17btCollisionObjectS6_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolverii
+_ZN23btConvexConvexAlgorithmC1EP20btPersistentManifoldRK36btCollisionAlgorithmConstructionInfoP17btCollisionObjectS6_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolverii = _ZN23btConvexConvexAlgorithmC2EP20btPersistentManifoldRK36btCollisionAlgorithmConstructionInfoP17btCollisionObjectS6_P22btVoronoiSimplexSolverP30btConvexPenetrationDepthSolverii
 	.globl	_ZN23btConvexConvexAlgorithmD1Ev
 	.type	_ZN23btConvexConvexAlgorithmD1Ev,@function
-.set _ZN23btConvexConvexAlgorithmD1Ev, _ZN23btConvexConvexAlgorithmD2Ev
+_ZN23btConvexConvexAlgorithmD1Ev = _ZN23btConvexConvexAlgorithmD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -3069,11 +3069,13 @@ nodeFromABranch:                        # @nodeFromABranch
 	ldx.w	$a7, $a7, $t1
 	ldx.w	$a6, $a6, $t1
 	add.d	$a7, $a7, $t0
+	nor	$t0, $a6, $zero
+	add.d	$t0, $a7, $t0
+	sub.d	$a6, $a6, $a7
 	nor	$a6, $a6, $zero
-	add.d	$a6, $a7, $a6
 	slli.d	$a5, $a5, 2
-	bstrpick.d	$a7, $a6, 31, 31
-	add.w	$a6, $a6, $a7
+	bstrpick.d	$a6, $a6, 31, 31
+	add.w	$a6, $t0, $a6
 	srli.d	$a6, $a6, 1
 	stx.w	$a6, $s0, $a5
 	ld.wu	$a5, $a4, 0

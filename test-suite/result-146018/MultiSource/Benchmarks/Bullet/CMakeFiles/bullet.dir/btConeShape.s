@@ -1191,13 +1191,13 @@ _ZTS12btConeShapeX:
 
 	.globl	_ZN11btConeShapeC1Eff
 	.type	_ZN11btConeShapeC1Eff,@function
-.set _ZN11btConeShapeC1Eff, _ZN11btConeShapeC2Eff
+_ZN11btConeShapeC1Eff = _ZN11btConeShapeC2Eff
 	.globl	_ZN12btConeShapeZC1Eff
 	.type	_ZN12btConeShapeZC1Eff,@function
-.set _ZN12btConeShapeZC1Eff, _ZN12btConeShapeZC2Eff
+_ZN12btConeShapeZC1Eff = _ZN12btConeShapeZC2Eff
 	.globl	_ZN12btConeShapeXC1Eff
 	.type	_ZN12btConeShapeXC1Eff,@function
-.set _ZN12btConeShapeXC1Eff, _ZN12btConeShapeXC2Eff
+_ZN12btConeShapeXC1Eff = _ZN12btConeShapeXC2Eff
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

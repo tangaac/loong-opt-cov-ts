@@ -183,25 +183,24 @@ set_fill:                               # @set_fill
 	ori	$a4, $zero, 1
 	maskeqz	$a4, $a4, $a2
 	masknez	$a2, $a3, $a2
-	or	$a3, $a4, $a2
-	st.w	$a3, $a0, 0
-	slli.d	$a2, $a3, 2
-	slli.d	$a4, $a3, 5
+	or	$a2, $a4, $a2
+	st.w	$a2, $a0, 0
+	slli.d	$a3, $a2, 2
+	slli.d	$a4, $a2, 5
 	sub.d	$a1, $a4, $a1
 	addi.d	$a4, $zero, -1
 	srl.w	$a1, $a4, $a1
 	ori	$a4, $zero, 2
-	stx.w	$a1, $a0, $a2
-	bltu	$a3, $a4, .LBB4_2
+	stx.w	$a1, $a0, $a3
+	bltu	$a2, $a4, .LBB4_2
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	addi.w	$a1, $a3, -1
-	slli.d	$a2, $a1, 2
-	addi.w	$a3, $a3, -2
-	sub.d	$a1, $a1, $a3
-	alsl.d	$a3, $a1, $a0, 2
+	addi.w	$a1, $a2, 0
+	slli.d	$a1, $a1, 2
+	addi.d	$a2, $a1, -4
+	addi.d	$a3, $a0, 4
 	ori	$a1, $zero, 255
 	move	$fp, $a0
 	move	$a0, $a3
@@ -979,20 +978,19 @@ sf_or:                                  # @sf_or
 	.type	sf_and,@function
 sf_and:                                 # @sf_and
 # %bb.0:                                # %._crit_edge27
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a0
-	ld.w	$s5, $a0, 4
-	slti	$s1, $s5, 33
-	addi.d	$s2, $s5, -1
+	ld.w	$s4, $a0, 4
+	slti	$s1, $s4, 33
+	addi.d	$s2, $s4, -1
 	srli.d	$a0, $s2, 3
 	lu12i.w	$a1, 131071
 	ori	$a1, $a1, 4092
@@ -1007,31 +1005,28 @@ sf_and:                                 # @sf_and
 	move	$fp, $a0
 	bstrpick.d	$a0, $s2, 31, 5
 	addi.d	$a0, $a0, 1
-	ori	$s2, $zero, 1
-	maskeqz	$a1, $s2, $s1
+	ori	$s3, $zero, 1
+	maskeqz	$a1, $s3, $s1
 	masknez	$a0, $a0, $s1
-	or	$s3, $a1, $a0
-	slli.d	$s6, $s3, 2
-	addi.d	$s4, $s3, -1
-	slli.d	$s1, $s4, 2
-	sub.d	$a0, $s6, $s1
+	or	$s5, $a1, $a0
+	slli.d	$s2, $s5, 2
+	addi.d	$s1, $s2, -4
+	sub.d	$a0, $s2, $s1
 	add.d	$a0, $fp, $a0
-	addi.d	$a2, $s1, 4
 	move	$a1, $zero
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	st.w	$s3, $fp, 0
-	slli.d	$a0, $s3, 5
-	sub.d	$a0, $a0, $s5
+	st.w	$s5, $fp, 0
+	slli.d	$a0, $s5, 5
+	sub.d	$a0, $a0, $s4
 	addi.d	$a1, $zero, -1
 	srl.w	$a0, $a1, $a0
 	ori	$a1, $zero, 2
-	stx.w	$a0, $fp, $s6
-	bltu	$s3, $a1, .LBB19_2
+	stx.w	$a0, $fp, $s2
+	bltu	$s5, $a1, .LBB19_2
 # %bb.1:                                # %.lr.ph.preheader.i
-	addi.w	$a0, $s3, -2
-	sub.d	$a0, $s4, $a0
-	alsl.d	$a0, $a0, $fp, 2
+	addi.d	$a0, $fp, 4
 	ori	$a1, $zero, 255
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
@@ -1040,7 +1035,7 @@ sf_and:                                 # @sf_and
 	ld.w	$a0, $s0, 12
 	ld.w	$a2, $s0, 0
 	mul.w	$a1, $a2, $a0
-	blt	$a1, $s2, .LBB19_12
+	blt	$a1, $s3, .LBB19_12
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $s0, 24
 	alsl.d	$a1, $a1, $a0, 2
@@ -1111,16 +1106,15 @@ sf_and:                                 # @sf_and
 	b	.LBB19_4
 .LBB19_12:                              # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end19:
 	.size	sf_and, .Lfunc_end19-sf_and

@@ -250,8 +250,8 @@ acttab_insert:                          # @acttab_insert
 	bge	$s0, $a1, .LBB4_4
 # %bb.3:                                # %.lr.ph.preheader
 	alsl.d	$a0, $s0, $a0, 3
-	nor	$a2, $s0, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $s0, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

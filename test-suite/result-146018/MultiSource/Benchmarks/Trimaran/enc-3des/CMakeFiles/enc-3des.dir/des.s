@@ -1361,18 +1361,16 @@ des3_set_2keys:                         # @des3_set_2keys
 	.type	des3_set_3keys,@function
 des3_set_3keys:                         # @des3_set_3keys
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(des_main_ks)
 	jirl	$ra, $ra, 0
-	addi.d	$s2, $s1, 768
 	addi.d	$a0, $s1, 1024
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(des_main_ks)
@@ -1381,35 +1379,33 @@ des3_set_3keys:                         # @des3_set_3keys
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(des_main_ks)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $s1, 752
-	addi.w	$a1, $zero, -2
-	ori	$a2, $zero, 30
+	addi.d	$a0, $s1, 1288
+	addi.d	$a1, $s1, 1272
+	addi.w	$a2, $zero, -2
+	ori	$a3, $zero, 30
 	.p2align	4, , 16
 .LBB6_1:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a3, $a0, 0
-	st.d	$a3, $s2, 0
-	ld.d	$a3, $a0, 8
-	st.d	$a3, $s2, 8
-	ld.d	$a3, $a0, 512
-	st.d	$a3, $s2, -512
-	ld.d	$a3, $a0, 520
-	st.d	$a3, $s2, -504
-	ld.d	$a3, $a0, -512
-	st.d	$a3, $s2, 512
-	ld.d	$a3, $a0, -504
-	st.d	$a3, $s2, 520
-	addi.d	$a1, $a1, 2
-	addi.d	$s2, $s2, 16
-	addi.d	$a0, $a0, -16
-	bltu	$a1, $a2, .LBB6_1
+	vld	$vr0, $a1, -520
+	vst	$vr0, $a0, -520
+	ld.d	$a4, $a1, -8
+	st.d	$a4, $a0, -1032
+	ld.d	$a4, $a1, 0
+	st.d	$a4, $a0, -1024
+	ld.d	$a4, $a1, -1032
+	st.d	$a4, $a0, -8
+	ld.d	$a4, $a1, -1024
+	st.d	$a4, $a0, 0
+	addi.d	$a2, $a2, 2
+	addi.d	$a0, $a0, 16
+	addi.d	$a1, $a1, -16
+	bltu	$a2, $a3, .LBB6_1
 # %bb.2:
 	move	$a0, $zero
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end6:
 	.size	des3_set_3keys, .Lfunc_end6-des3_set_3keys

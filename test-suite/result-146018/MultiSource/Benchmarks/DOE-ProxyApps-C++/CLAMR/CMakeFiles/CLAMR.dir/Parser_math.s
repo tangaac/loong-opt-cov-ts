@@ -5043,7 +5043,7 @@ GCC_except_table5:
 
 	.globl	_ZN2PP11Parser_mathC1Ev
 	.type	_ZN2PP11Parser_mathC1Ev,@function
-.set _ZN2PP11Parser_mathC1Ev, _ZN2PP11Parser_mathC2Ev
+_ZN2PP11Parser_mathC1Ev = _ZN2PP11Parser_mathC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

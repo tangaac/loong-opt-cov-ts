@@ -383,17 +383,19 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 	pcaddu18i	$ra, %call36(_ZN14btQuantizedBvh9buildTreeEii)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 64
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_44
+	ld.w	$a1, $fp, 212
+	ori	$a2, $zero, 1
+	bne	$a0, $a2, .LBB4_45
 # %bb.34:
-	ld.w	$a0, $fp, 212
-	bnez	$a0, .LBB4_44
+	bnez	$a1, .LBB4_45
 # %bb.35:
-	ld.w	$a1, $fp, 216
-	ori	$s1, $zero, 1
-	ori	$a0, $zero, 1
-	bnez	$a1, .LBB4_43
-# %bb.36:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE8allocateEi.exit.i.i
+	ld.w	$a0, $fp, 216
+	beqz	$a0, .LBB4_37
+# %bb.36:                               # %._ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit_crit_edge
+	ld.d	$s0, $fp, 224
+	ori	$a1, $zero, 1
+	b	.LBB4_44
+.LBB4_37:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE8allocateEi.exit.i.i
 	ori	$a0, $zero, 32
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -401,12 +403,12 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 	ld.w	$a1, $fp, 212
 	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB4_39
-# %bb.37:                               # %.lr.ph.i.i.i44
+	blt	$a1, $a2, .LBB4_40
+# %bb.38:                               # %.lr.ph.i.i.i44
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
 	.p2align	4, , 16
-.LBB4_38:                               # =>This Inner Loop Header: Depth=1
+.LBB4_39:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 224
 	vldx	$vr0, $a2, $a0
 	add.d	$a2, $a2, $a0
@@ -415,76 +417,75 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 	add.d	$a2, $s0, $a0
 	addi.d	$a0, $a0, 32
 	vst	$vr0, $a2, 16
-	bne	$a1, $a0, .LBB4_38
-.LBB4_39:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
+	bne	$a1, $a0, .LBB4_39
+.LBB4_40:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $fp, 224
-	beqz	$a0, .LBB4_42
-# %bb.40:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
+	beqz	$a0, .LBB4_43
+# %bb.41:                               # %_ZNK20btAlignedObjectArrayI16btBvhSubtreeInfoE4copyEiiPS0_.exit.i.i
 	ld.b	$a1, $fp, 232
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_42
-# %bb.41:
+	beqz	$a1, .LBB4_43
+# %bb.42:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_42:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE10deallocateEv.exit.i.i
+.LBB4_43:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	ld.w	$a1, $fp, 212
 	st.b	$a0, $fp, 232
 	st.d	$s0, $fp, 224
 	st.w	$a0, $fp, 216
-	addi.d	$a0, $a1, 1
-.LBB4_43:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit
-	ld.d	$a1, $fp, 184
-	st.w	$a0, $fp, 212
-	ld.d	$a0, $fp, 224
-	ld.h	$a2, $a1, 0
-	st.h	$a2, $a0, 0
-	ld.h	$a2, $a1, 2
-	st.h	$a2, $a0, 2
-	ld.h	$a2, $a1, 4
-	st.h	$a2, $a0, 4
-	ld.h	$a2, $a1, 6
-	st.h	$a2, $a0, 6
-	ld.h	$a2, $a1, 8
-	st.h	$a2, $a0, 8
-	ld.h	$a2, $a1, 10
-	st.h	$a2, $a0, 10
-	st.w	$zero, $a0, 12
-	ld.w	$a1, $a1, 12
+	addi.d	$a1, $a1, 1
+.LBB4_44:                               # %_ZN20btAlignedObjectArrayI16btBvhSubtreeInfoE6expandERKS0_.exit
+	ld.d	$a0, $fp, 184
+	st.w	$a1, $fp, 212
+	ld.h	$a2, $a0, 0
+	st.h	$a2, $s0, 0
+	ld.h	$a2, $a0, 2
+	st.h	$a2, $s0, 2
+	ld.h	$a2, $a0, 4
+	st.h	$a2, $s0, 4
+	ld.h	$a2, $a0, 6
+	st.h	$a2, $s0, 6
+	ld.h	$a2, $a0, 8
+	st.h	$a2, $s0, 8
+	ld.h	$a2, $a0, 10
+	st.h	$a2, $s0, 10
+	st.w	$zero, $s0, 12
+	ld.w	$a0, $a0, 12
 	addi.w	$a2, $zero, -1
-	slt	$a2, $a2, $a1
-	sub.d	$a1, $zero, $a1
-	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $s1, $a2
-	or	$a1, $a2, $a1
-	st.w	$a1, $a0, 16
-.LBB4_44:
-	ld.w	$a1, $fp, 212
+	slt	$a2, $a2, $a0
+	sub.d	$a0, $zero, $a0
+	masknez	$a0, $a0, $a2
+	ori	$a3, $zero, 1
+	maskeqz	$a2, $a3, $a2
+	or	$a0, $a2, $a0
+	st.w	$a0, $s0, 16
+.LBB4_45:                               # %._crit_edge
 	ld.d	$a0, $fp, 152
 	st.w	$a1, $fp, 240
-	beqz	$a0, .LBB4_47
-# %bb.45:
+	beqz	$a0, .LBB4_48
+# %bb.46:                               # %._crit_edge
 	ld.b	$a1, $fp, 160
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_47
-# %bb.46:
+	beqz	$a1, .LBB4_48
+# %bb.47:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_47:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
+.LBB4_48:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
 	ld.d	$a0, $fp, 88
 	ori	$s0, $zero, 1
 	st.b	$s0, $fp, 160
 	st.d	$zero, $fp, 152
 	st.d	$zero, $fp, 140
-	beqz	$a0, .LBB4_50
-# %bb.48:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
+	beqz	$a0, .LBB4_51
+# %bb.49:                               # %_ZN20btAlignedObjectArrayI18btQuantizedBvhNodeE5clearEv.exit
 	ld.b	$a1, $fp, 96
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_50
-# %bb.49:
+	beqz	$a1, .LBB4_51
+# %bb.50:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_50:                               # %_ZN20btAlignedObjectArrayI18btOptimizedBvhNodeE5clearEv.exit
+.LBB4_51:                               # %_ZN20btAlignedObjectArrayI18btOptimizedBvhNodeE5clearEv.exit
 	st.b	$s0, $fp, 96
 	st.d	$zero, $fp, 88
 	st.d	$zero, $fp, 76
@@ -496,36 +497,36 @@ _ZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_: # @_ZN14bt
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB4_51:
-.Ltmp13:
-	b	.LBB4_54
 .LBB4_52:
-.Ltmp23:
-	b	.LBB4_56
+.Ltmp13:
+	b	.LBB4_55
 .LBB4_53:
-.Ltmp8:
+.Ltmp23:
+	b	.LBB4_57
 .LBB4_54:
+.Ltmp8:
+.LBB4_55:
 	move	$fp, $a0
 .Ltmp14:
 	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN31btInternalTriangleIndexCallbackD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp15:
-	b	.LBB4_57
-.LBB4_55:
-.Ltmp18:
+	b	.LBB4_58
 .LBB4_56:
+.Ltmp18:
+.LBB4_57:
 	move	$fp, $a0
 .Ltmp24:
 	addi.d	$a0, $sp, 40
 	pcaddu18i	$ra, %call36(_ZN31btInternalTriangleIndexCallbackD2Ev)
 	jirl	$ra, $ra, 0
 .Ltmp25:
-.LBB4_57:
+.LBB4_58:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB4_58:
+.LBB4_59:
 .Ltmp26:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -1938,10 +1939,10 @@ _ZTSZN14btOptimizedBvh5buildEP23btStridingMeshInterfacebRK9btVector3S4_E20NodeTr
 
 	.globl	_ZN14btOptimizedBvhC1Ev
 	.type	_ZN14btOptimizedBvhC1Ev,@function
-.set _ZN14btOptimizedBvhC1Ev, _ZN14btOptimizedBvhC2Ev
+_ZN14btOptimizedBvhC1Ev = _ZN14btOptimizedBvhC2Ev
 	.globl	_ZN14btOptimizedBvhD1Ev
 	.type	_ZN14btOptimizedBvhD1Ev,@function
-.set _ZN14btOptimizedBvhD1Ev, _ZN14btOptimizedBvhD2Ev
+_ZN14btOptimizedBvhD1Ev = _ZN14btOptimizedBvhD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

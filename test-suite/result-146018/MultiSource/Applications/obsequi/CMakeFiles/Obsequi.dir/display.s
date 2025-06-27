@@ -5,65 +5,65 @@
 	.type	check_hash_code_sanity,@function
 check_hash_code_sanity:                 # @check_hash_code_sanity
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(g_board_size)
 	ld.d	$s6, $a0, %got_pc_lo12(g_board_size)
 	ld.w	$t4, $s6, 0
-	ld.w	$s7, $s6, 4
+	ld.w	$s8, $s6, 4
 	ori	$a0, $zero, 1
 	blt	$t4, $a0, .LBB0_48
 # %bb.1:                                # %.preheader.lr.ph
-	blt	$s7, $a0, .LBB0_48
+	blt	$s8, $a0, .LBB0_48
 # %bb.2:                                # %.preheader.us.preheader
 	move	$a1, $zero
 	pcalau12i	$a0, %got_pc_hi20(g_board)
 	ld.d	$a0, $a0, %got_pc_lo12(g_board)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(g_norm_hashkey)
 	ld.d	$a0, $a0, %got_pc_lo12(g_norm_hashkey)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$s4, $sp, 128
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$s7, $sp, 112
 	pcalau12i	$a0, %got_pc_hi20(g_flipV_hashkey)
-	ld.d	$s8, $a0, %got_pc_lo12(g_flipV_hashkey)
+	ld.d	$a0, $a0, %got_pc_lo12(g_flipV_hashkey)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(g_flipH_hashkey)
 	ld.d	$s1, $a0, %got_pc_lo12(g_flipH_hashkey)
 	pcalau12i	$a0, %got_pc_hi20(g_flipVH_hashkey)
 	ld.d	$s2, $a0, %got_pc_lo12(g_flipVH_hashkey)
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.18)
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.28)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.28)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
-	st.d	$t4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$t4, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_3:                                # %._crit_edge.us
                                         #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$t4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t4, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	beq	$a1, $t4, .LBB0_81
 .LBB0_4:                                # %.preheader.us
                                         # =>This Loop Header: Depth=1
@@ -78,43 +78,42 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
                                         #       Child Loop BB0_47 Depth 3
 	move	$fp, $zero
 	move	$a0, $a1
-	mul.d	$a3, $a1, $s7
+	mul.d	$a3, $a1, $s8
 	nor	$a1, $a1, $zero
 	addi.d	$a2, $a0, 1
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	alsl.d	$a0, $a2, $a0, 2
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
-	add.d	$a0, $a3, $s7
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	add.d	$a0, $t4, $a1
-	mul.d	$a0, $a0, $s7
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	add.d	$a0, $s7, $a0
+	st.d	$a3, $sp, 96                    # 8-byte Folded Spill
+	add.d	$s3, $a3, $s8
+	add.d	$a0, $t4, $a1
+	mul.d	$a0, $a0, $s8
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	add.d	$a0, $s8, $a0
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_5:                                # %print_bitboard.exit.i147.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 38
 	ori	$a2, $zero, 1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 .LBB0_6:                                #   in Loop: Header=BB0_8 Depth=2
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
 .LBB0_7:                                #   in Loop: Header=BB0_8 Depth=2
 	addi.w	$fp, $fp, 1
-	beq	$fp, $s7, .LBB0_3
+	beq	$fp, $s8, .LBB0_3
 .LBB0_8:                                #   Parent Loop BB0_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_12 Depth 3
@@ -125,24 +124,24 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
                                         #       Child Loop BB0_37 Depth 3
                                         #       Child Loop BB0_42 Depth 3
                                         #       Child Loop BB0_47 Depth 3
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
 	srl.w	$a0, $a0, $fp
 	andi	$a0, $a0, 2
 	beqz	$a0, .LBB0_29
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, 16
 	vld	$vr0, $a1, 0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.w	$a1, $fp, $a1
 	bstrpick.d	$a2, $a1, 31, 5
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	slli.d	$a0, $a2, 2
 	bstrpick.d	$a0, $a0, 60, 2
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s7
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB0_14
@@ -157,71 +156,9 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 # %bb.11:                               # %.lr.ph.i.i.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(g_board)
-	ld.d	$s3, $a0, %got_pc_lo12(g_board)
-	.p2align	4, , 16
-.LBB0_12:                               # %.lr.ph.i.i.us
-                                        #   Parent Loop BB0_4 Depth=1
-                                        #     Parent Loop BB0_8 Depth=2
-                                        # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s3, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.18)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, 0
-	addi.d	$s5, $s5, 1
-	addi.d	$s3, $s3, 4
-	bge	$a0, $s5, .LBB0_12
-.LBB0_13:                               # %print_bitboard.exit.i.us
-                                        #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
-	pcalau12i	$a0, %pc_hi20(.L.str.19)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
-	pcalau12i	$a1, %pc_hi20(.L.str.28)
-	addi.d	$a3, $a1, %pc_lo12(.L.str.28)
-	ori	$a1, $zero, 23
-	ori	$a2, $zero, 1
-	pcaddu18i	$ra, %call36(_fatal_error_aux)
-	jirl	$ra, $ra, 0
-.LBB0_14:                               # %check_hashkey_bit_set.exit.us
-                                        #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a0, $s8, 16
-	vld	$vr0, $s8, 0
-	nor	$s5, $fp, $zero
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	add.w	$a1, $a1, $s5
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
-	bstrpick.d	$a0, $a1, 62, 58
-	add.w	$a0, $a1, $a0
-	srai.d	$a0, $a0, 5
-	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
-	srl.w	$a0, $a0, $a1
-	andi	$a0, $a0, 1
-	bnez	$a0, .LBB0_19
-# %bb.15:                               #   in Loop: Header=BB0_8 Depth=2
-	pcalau12i	$a0, %pc_hi20(.L.str.21)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
-	pcaddu18i	$ra, %call36(printf)
-	jirl	$ra, $ra, 0
-	ld.w	$a0, $s6, 0
-	addi.w	$s3, $zero, -1
-	blt	$a0, $s3, .LBB0_18
-# %bb.16:                               # %.lr.ph.i.i62.us.preheader
-                                        #   in Loop: Header=BB0_8 Depth=2
-	pcalau12i	$a0, %got_pc_hi20(g_board)
 	ld.d	$s7, $a0, %got_pc_lo12(g_board)
 	.p2align	4, , 16
-.LBB0_17:                               # %.lr.ph.i.i62.us
+.LBB0_12:                               # %.lr.ph.i.i.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -231,16 +168,16 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.d	$s3, $s3, 1
+	addi.d	$s5, $s5, 1
 	addi.d	$s7, $s7, 4
-	bge	$a0, $s3, .LBB0_17
-.LBB0_18:                               # %print_bitboard.exit.i52.us
+	bge	$a0, $s5, .LBB0_12
+.LBB0_13:                               # %print_bitboard.exit.i.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(printf)
@@ -253,20 +190,85 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
-.LBB0_19:                               # %check_hashkey_bit_set.exit66.us
+	addi.d	$s7, $sp, 112
+.LBB0_14:                               # %check_hashkey_bit_set.exit.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a0, $s1, 16
-	vld	$vr0, $s1, 0
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
-	add.w	$a1, $fp, $a1
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.w	$a0, $a1, 16
+	vld	$vr0, $a1, 0
+	nor	$s5, $fp, $zero
+	add.w	$a1, $s3, $s5
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	bstrpick.d	$a0, $a1, 62, 58
 	add.w	$a0, $a1, $a0
 	srai.d	$a0, $a0, 5
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s7
+	sub.d	$a2, $fp, $s3
+	nor	$a2, $a2, $zero
+	srl.w	$a0, $a0, $a2
+	andi	$a0, $a0, 1
+	bnez	$a0, .LBB0_19
+# %bb.15:                               #   in Loop: Header=BB0_8 Depth=2
+	pcalau12i	$a0, %pc_hi20(.L.str.21)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.21)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $s6, 0
+	addi.w	$s7, $zero, -1
+	blt	$a0, $s7, .LBB0_18
+# %bb.16:                               # %.lr.ph.i.i62.us.preheader
+                                        #   in Loop: Header=BB0_8 Depth=2
+	pcalau12i	$a0, %got_pc_hi20(g_board)
+	ld.d	$s4, $a0, %got_pc_lo12(g_board)
+	.p2align	4, , 16
+.LBB0_17:                               # %.lr.ph.i.i62.us
+                                        #   Parent Loop BB0_4 Depth=1
+                                        #     Parent Loop BB0_8 Depth=2
+                                        # =>    This Inner Loop Header: Depth=3
+	ld.w	$a1, $s4, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.18)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	ld.w	$a0, $s6, 0
+	addi.d	$s7, $s7, 1
+	addi.d	$s4, $s4, 4
+	bge	$a0, $s7, .LBB0_17
+.LBB0_18:                               # %print_bitboard.exit.i52.us
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
+	pcalau12i	$a0, %pc_hi20(.L.str.19)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
+	pcaddu18i	$ra, %call36(printf)
+	jirl	$ra, $ra, 0
+	pcalau12i	$a0, %pc_hi20(.L.str.1)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
+	pcalau12i	$a1, %pc_hi20(.L.str.28)
+	addi.d	$a3, $a1, %pc_lo12(.L.str.28)
+	ori	$a1, $zero, 23
+	ori	$a2, $zero, 1
+	pcaddu18i	$ra, %call36(_fatal_error_aux)
+	jirl	$ra, $ra, 0
+	addi.d	$s7, $sp, 112
+.LBB0_19:                               # %check_hashkey_bit_set.exit66.us
+                                        #   in Loop: Header=BB0_8 Depth=2
+	ld.w	$a0, $s1, 16
+	vld	$vr0, $s1, 0
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	add.w	$a1, $fp, $a1
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
+	bstrpick.d	$a0, $a1, 62, 58
+	add.w	$a0, $a1, $a0
+	srai.d	$a0, $a0, 5
+	slli.d	$a0, $a0, 2
+	ldx.w	$a0, $a0, $s7
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB0_24
@@ -276,33 +278,33 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.w	$s3, $zero, -1
-	blt	$a0, $s3, .LBB0_23
+	addi.w	$s7, $zero, -1
+	blt	$a0, $s7, .LBB0_23
 # %bb.21:                               # %.lr.ph.i.i78.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(g_board)
-	ld.d	$s7, $a0, %got_pc_lo12(g_board)
+	ld.d	$s4, $a0, %got_pc_lo12(g_board)
 	.p2align	4, , 16
 .LBB0_22:                               # %.lr.ph.i.i78.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s7, 0
+	ld.w	$a1, $s4, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$s7, $s7, 4
-	bge	$a0, $s3, .LBB0_22
+	addi.d	$s7, $s7, 1
+	addi.d	$s4, $s4, 4
+	bge	$a0, $s7, .LBB0_22
 .LBB0_23:                               # %print_bitboard.exit.i68.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(printf)
@@ -315,20 +317,20 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$s7, $sp, 112
 .LBB0_24:                               # %check_hashkey_bit_set.exit82.us
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.w	$a0, $s2, 16
 	vld	$vr0, $s2, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $s5
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	bstrpick.d	$a0, $a1, 62, 58
 	add.w	$a0, $a1, $a0
 	srai.d	$a0, $a0, 5
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s7
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB0_7
@@ -338,33 +340,33 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.w	$s3, $zero, -1
-	blt	$a0, $s3, .LBB0_28
+	addi.w	$s5, $zero, -1
+	blt	$a0, $s5, .LBB0_28
 # %bb.26:                               # %.lr.ph.i.i94.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(g_board)
-	ld.d	$s5, $a0, %got_pc_lo12(g_board)
+	ld.d	$s4, $a0, %got_pc_lo12(g_board)
 	.p2align	4, , 16
 .LBB0_27:                               # %.lr.ph.i.i94.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s5, 0
+	ld.w	$a1, $s4, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$s5, $s5, 4
-	bge	$a0, $s3, .LBB0_27
+	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 4
+	bge	$a0, $s5, .LBB0_27
 .LBB0_28:                               # %print_bitboard.exit.i84.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(printf)
@@ -378,18 +380,18 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	b	.LBB0_6
 	.p2align	4, , 16
 .LBB0_29:                               #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, 16
 	vld	$vr0, $a1, 0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	add.w	$a1, $fp, $a1
 	bstrpick.d	$a2, $a1, 31, 5
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	slli.d	$a0, $a2, 2
 	bstrpick.d	$a0, $a0, 60, 2
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s7
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_34
@@ -399,33 +401,33 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.w	$s3, $zero, -1
-	blt	$a0, $s3, .LBB0_33
+	addi.w	$s5, $zero, -1
+	blt	$a0, $s5, .LBB0_33
 # %bb.31:                               # %.lr.ph.i.i110.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	pcalau12i	$a0, %got_pc_hi20(g_board)
-	ld.d	$s5, $a0, %got_pc_lo12(g_board)
+	ld.d	$s4, $a0, %got_pc_lo12(g_board)
 	.p2align	4, , 16
 .LBB0_32:                               # %.lr.ph.i.i110.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s5, 0
+	ld.w	$a1, $s4, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.18)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$s5, $s5, 4
-	bge	$a0, $s3, .LBB0_32
+	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 4
+	bge	$a0, $s5, .LBB0_32
 .LBB0_33:                               # %print_bitboard.exit.i100.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(printf)
@@ -440,52 +442,54 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	jirl	$ra, $ra, 0
 .LBB0_34:                               # %check_hashkey_bit_not_set.exit.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a0, $s8, 16
-	vld	$vr0, $s8, 0
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.w	$a0, $a1, 16
+	vld	$vr0, $a1, 0
 	nor	$s5, $fp, $zero
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	add.w	$a1, $a1, $s5
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	add.w	$a1, $s3, $s5
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	bstrpick.d	$a0, $a1, 62, 58
 	add.w	$a0, $a1, $a0
 	srai.d	$a0, $a0, 5
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
-	srl.w	$a0, $a0, $a1
+	ldx.w	$a0, $a0, $s7
+	sub.d	$a2, $fp, $s3
+	nor	$a2, $a2, $zero
+	srl.w	$a0, $a0, $a2
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_39
 # %bb.35:                               #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	blt	$a0, $a1, .LBB0_38
 # %bb.36:                               # %.lr.ph.i.i125.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_37:                               # %.lr.ph.i.i125.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s4, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
 	addi.d	$s7, $s7, 1
-	addi.d	$s3, $s3, 4
+	addi.d	$s4, $s4, 4
 	bge	$a0, $s7, .LBB0_37
 .LBB0_38:                               # %print_bitboard.exit.i115.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	pcaddu18i	$ra, %call36(printf)
@@ -498,103 +502,103 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$s7, $sp, 112
 .LBB0_39:                               # %check_hashkey_bit_not_set.exit129.us
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.w	$a0, $s1, 16
 	vld	$vr0, $s1, 0
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	add.w	$a1, $fp, $a1
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	bstrpick.d	$a0, $a1, 62, 58
 	add.w	$a0, $a1, $a0
 	srai.d	$a0, $a0, 5
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s7
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_44
 # %bb.40:                               #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	blt	$a0, $a1, .LBB0_43
 # %bb.41:                               # %.lr.ph.i.i141.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_42:                               # %.lr.ph.i.i141.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s4, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
 	addi.d	$s7, $s7, 1
-	addi.d	$s3, $s3, 4
+	addi.d	$s4, $s4, 4
 	bge	$a0, $s7, .LBB0_42
 .LBB0_43:                               # %print_bitboard.exit.i131.us
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a1, $sp, 128
-	ld.w	$a2, $sp, 132
-	ld.w	$a3, $sp, 136
-	ld.w	$a4, $sp, 140
-	ld.w	$a5, $sp, 144
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.w	$a1, $sp, 112
+	ld.w	$a2, $sp, 116
+	ld.w	$a3, $sp, 120
+	ld.w	$a4, $sp, 124
+	ld.w	$a5, $sp, 128
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 38
 	ori	$a2, $zero, 1
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	addi.d	$s7, $sp, 112
 .LBB0_44:                               # %check_hashkey_bit_not_set.exit145.us
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.w	$a0, $s2, 16
 	vld	$vr0, $s2, 0
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	add.w	$a1, $a1, $s5
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 	bstrpick.d	$a0, $a1, 62, 58
 	add.w	$a0, $a1, $a0
 	srai.d	$a0, $a0, 5
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $a0, $s4
+	ldx.w	$a0, $a0, $s7
 	srl.w	$a0, $a0, $a1
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB0_7
 # %bb.45:                               #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	blt	$a0, $a1, .LBB0_5
 # %bb.46:                               # %.lr.ph.i.i157.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 104                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_47:                               # %.lr.ph.i.i157.us
                                         #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$a1, $s3, 0
+	ld.w	$a1, $s4, 0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 0
 	addi.d	$s5, $s5, 1
-	addi.d	$s3, $s3, 4
+	addi.d	$s4, $s4, 4
 	bge	$a0, $s5, .LBB0_47
 	b	.LBB0_5
 .LBB0_48:                               # %._crit_edge231.thread
@@ -602,8 +606,8 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	ld.d	$a1, $a0, %got_pc_lo12(g_norm_hashkey)
 	ld.w	$a0, $a1, 16
 	vld	$vr0, $a1, 0
-	st.w	$a0, $sp, 144
-	vst	$vr0, $sp, 128
+	st.w	$a0, $sp, 128
+	vst	$vr0, $sp, 112
 .LBB0_49:                               # %._crit_edge23.i
 	beqz	$a0, .LBB0_51
 # %bb.50:
@@ -616,18 +620,18 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
 	ld.w	$t4, $s6, 0
-	ld.w	$s7, $s6, 4
+	ld.w	$s8, $s6, 4
 .LBB0_51:                               # %check_hashkey_code.exit
 	pcalau12i	$a0, %got_pc_hi20(g_flipV_hashkey)
 	ld.d	$a1, $a0, %got_pc_lo12(g_flipV_hashkey)
 	ld.w	$a0, $a1, 16
 	vld	$vr0, $a1, 0
-	st.w	$a0, $sp, 144
+	st.w	$a0, $sp, 128
 	ori	$a1, $zero, 1
-	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
 	blt	$t4, $a1, .LBB0_59
 # %bb.52:                               # %check_hashkey_code.exit
-	blt	$s7, $a1, .LBB0_59
+	blt	$s8, $a1, .LBB0_59
 # %bb.53:                               # %.preheader.us.preheader.i167
 	pcalau12i	$a1, %got_pc_hi20(g_zobrist)
 	ld.d	$a4, $a1, %got_pc_lo12(g_zobrist)
@@ -637,14 +641,14 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	addi.d	$a4, $a4, 132
 	lu12i.w	$a5, 131071
 	ori	$a5, $a5, 4092
-	addi.d	$a6, $sp, 128
+	addi.d	$a6, $sp, 112
 	b	.LBB0_55
 	.p2align	4, , 16
 .LBB0_54:                               # %._crit_edge.us.i180
                                         #   in Loop: Header=BB0_55 Depth=1
 	addi.d	$a4, $a4, 128
-	add.d	$a2, $a2, $s7
-	add.d	$a1, $a1, $s7
+	add.d	$a2, $a2, $s8
+	add.d	$a1, $a1, $s8
 	beq	$a3, $t4, .LBB0_59
 .LBB0_55:                               # %.preheader.us.i169
                                         # =>This Loop Header: Depth=1
@@ -653,7 +657,7 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	move	$a7, $a1
 	move	$t0, $a2
 	move	$t1, $a4
-	move	$t2, $s7
+	move	$t2, $s8
 	b	.LBB0_57
 	.p2align	4, , 16
 .LBB0_56:                               # %._crit_edge.i177
@@ -687,18 +691,18 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
 	ld.w	$t4, $s6, 0
-	ld.w	$s7, $s6, 4
+	ld.w	$s8, $s6, 4
 .LBB0_61:                               # %check_hashkey_code.exit182
 	pcalau12i	$a0, %got_pc_hi20(g_flipH_hashkey)
 	ld.d	$a1, $a0, %got_pc_lo12(g_flipH_hashkey)
 	ld.w	$a0, $a1, 16
 	vld	$vr0, $a1, 0
-	st.w	$a0, $sp, 144
+	st.w	$a0, $sp, 128
 	ori	$a1, $zero, 1
-	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
 	blt	$t4, $a1, .LBB0_69
 # %bb.62:                               # %check_hashkey_code.exit182
-	blt	$s7, $a1, .LBB0_69
+	blt	$s8, $a1, .LBB0_69
 # %bb.63:                               # %.preheader.us.preheader.i187
 	pcalau12i	$a1, %got_pc_hi20(g_zobrist)
 	ld.d	$a4, $a1, %got_pc_lo12(g_zobrist)
@@ -708,14 +712,14 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	addi.d	$a4, $a4, 132
 	lu12i.w	$a5, 131071
 	ori	$a5, $a5, 4092
-	addi.d	$a6, $sp, 128
+	addi.d	$a6, $sp, 112
 	b	.LBB0_65
 	.p2align	4, , 16
 .LBB0_64:                               # %._crit_edge.us.i200
                                         #   in Loop: Header=BB0_65 Depth=1
 	addi.d	$a4, $a4, 128
-	add.d	$a2, $a2, $s7
-	add.d	$a1, $a1, $s7
+	add.d	$a2, $a2, $s8
+	add.d	$a1, $a1, $s8
 	beq	$a3, $t4, .LBB0_69
 .LBB0_65:                               # %.preheader.us.i189
                                         # =>This Loop Header: Depth=1
@@ -724,7 +728,7 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	move	$a7, $a1
 	move	$t0, $a2
 	move	$t1, $a4
-	move	$t2, $s7
+	move	$t2, $s8
 	b	.LBB0_67
 	.p2align	4, , 16
 .LBB0_66:                               # %._crit_edge.i197
@@ -758,18 +762,18 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	pcaddu18i	$ra, %call36(_fatal_error_aux)
 	jirl	$ra, $ra, 0
 	ld.w	$t4, $s6, 0
-	ld.w	$s7, $s6, 4
+	ld.w	$s8, $s6, 4
 .LBB0_71:                               # %check_hashkey_code.exit202
 	pcalau12i	$a0, %got_pc_hi20(g_flipVH_hashkey)
 	ld.d	$a1, $a0, %got_pc_lo12(g_flipVH_hashkey)
 	ld.w	$a0, $a1, 16
 	vld	$vr0, $a1, 0
-	st.w	$a0, $sp, 144
+	st.w	$a0, $sp, 128
 	ori	$a1, $zero, 1
-	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
 	blt	$t4, $a1, .LBB0_79
 # %bb.72:                               # %check_hashkey_code.exit202
-	blt	$s7, $a1, .LBB0_79
+	blt	$s8, $a1, .LBB0_79
 # %bb.73:                               # %.preheader.us.preheader.i207
 	pcalau12i	$a1, %got_pc_hi20(g_zobrist)
 	ld.d	$a4, $a1, %got_pc_lo12(g_zobrist)
@@ -779,14 +783,14 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	addi.d	$a4, $a4, 132
 	lu12i.w	$a5, 131071
 	ori	$a5, $a5, 4092
-	addi.d	$a6, $sp, 128
+	addi.d	$a6, $sp, 112
 	b	.LBB0_75
 	.p2align	4, , 16
 .LBB0_74:                               # %._crit_edge.us.i220
                                         #   in Loop: Header=BB0_75 Depth=1
 	addi.d	$a4, $a4, 128
-	add.d	$a2, $a2, $s7
-	add.d	$a1, $a1, $s7
+	add.d	$a2, $a2, $s8
+	add.d	$a1, $a1, $s8
 	beq	$a3, $t4, .LBB0_79
 .LBB0_75:                               # %.preheader.us.i209
                                         # =>This Loop Header: Depth=1
@@ -795,7 +799,7 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	move	$a7, $a1
 	move	$t0, $a2
 	move	$t1, $a4
-	move	$t2, $s7
+	move	$t2, $s8
 	b	.LBB0_77
 	.p2align	4, , 16
 .LBB0_76:                               # %._crit_edge.i217
@@ -826,32 +830,32 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	addi.d	$a3, $a1, %pc_lo12(.L.str.29)
 	ori	$a1, $zero, 59
 	ori	$a2, $zero, 1
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	pcaddu18i	$t8, %call36(_fatal_error_aux)
 	jr	$t8
 .LBB0_81:                               # %._crit_edge231
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a1, 16
 	ld.w	$t4, $s6, 0
 	vld	$vr0, $a1, 0
-	ld.w	$s7, $s6, 4
-	st.w	$a0, $sp, 144
+	ld.w	$s8, $s6, 4
+	st.w	$a0, $sp, 128
 	ori	$a1, $zero, 1
-	vst	$vr0, $sp, 128
+	vst	$vr0, $sp, 112
 	blt	$t4, $a1, .LBB0_49
 # %bb.82:                               # %._crit_edge231
-	blt	$s7, $a1, .LBB0_49
+	blt	$s8, $a1, .LBB0_49
 # %bb.83:                               # %.preheader.us.preheader.i
 	pcalau12i	$a1, %got_pc_hi20(g_zobrist)
 	ld.d	$a4, $a1, %got_pc_lo12(g_zobrist)
@@ -861,14 +865,14 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	addi.d	$a4, $a4, 132
 	lu12i.w	$a5, 131071
 	ori	$a5, $a5, 4092
-	addi.d	$a6, $sp, 128
+	addi.d	$a6, $sp, 112
 	b	.LBB0_85
 	.p2align	4, , 16
 .LBB0_84:                               # %._crit_edge.us.i
                                         #   in Loop: Header=BB0_85 Depth=1
 	addi.d	$a4, $a4, 128
-	add.d	$a2, $a2, $s7
-	add.d	$a1, $a1, $s7
+	add.d	$a2, $a2, $s8
+	add.d	$a1, $a1, $s8
 	beq	$a3, $t4, .LBB0_49
 .LBB0_85:                               # %.preheader.us.i
                                         # =>This Loop Header: Depth=1
@@ -877,7 +881,7 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	move	$a7, $a1
 	move	$t0, $a2
 	move	$t1, $a4
-	move	$t2, $s7
+	move	$t2, $s8
 	b	.LBB0_87
 	.p2align	4, , 16
 .LBB0_86:                               # %._crit_edge.i
@@ -900,18 +904,18 @@ check_hash_code_sanity:                 # @check_hash_code_sanity
 	xor	$a0, $t3, $a0
 	b	.LBB0_86
 .LBB0_89:                               # %check_hashkey_code.exit222
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end0:
 	.size	check_hash_code_sanity, .Lfunc_end0-check_hash_code_sanity

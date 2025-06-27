@@ -1249,7 +1249,7 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	move	$t2, $zero
 	b	.LBB3_9
 	.p2align	4, , 16
-.LBB3_6:                                # %vector.ph72
+.LBB3_6:                                # %vector.ph74
                                         #   in Loop: Header=BB3_4 Depth=1
 	pcalau12i	$t2, %pc_hi20(.LCPI3_0)
 	vld	$vr0, $t2, %pc_lo12(.LCPI3_0)
@@ -1257,7 +1257,7 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	move	$t2, $a4
 	move	$t3, $a3
 	.p2align	4, , 16
-.LBB3_7:                                # %vector.body77
+.LBB3_7:                                # %vector.body79
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vaddi.wu	$vr2, $vr0, 4
@@ -1269,16 +1269,16 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	addi.d	$t3, $t3, -8
 	addi.d	$t2, $t2, 32
 	bnez	$t3, .LBB3_7
-# %bb.8:                                # %middle.block83
+# %bb.8:                                # %middle.block85
                                         #   in Loop: Header=BB3_4 Depth=1
 	move	$t2, $a3
 	beq	$a3, $s6, .LBB3_3
-.LBB3_9:                                # %scalar.ph70.preheader
+.LBB3_9:                                # %scalar.ph72.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
 	alsl.d	$t3, $t2, $t0, 2
 	sub.d	$t4, $s6, $t2
 	.p2align	4, , 16
-.LBB3_10:                               # %scalar.ph70
+.LBB3_10:                               # %scalar.ph72
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	mul.d	$t5, $t1, $t2
@@ -1321,7 +1321,7 @@ kernel_measureSparseMatMult:            # @kernel_measureSparseMatMult
 	bnez	$a4, .LBB3_14
 # %bb.15:                               # %middle.block
 	beq	$a1, $s3, .LBB3_18
-.LBB3_16:                               # %.loopexit.preheader86
+.LBB3_16:                               # %.loopexit.preheader88
 	add.d	$a2, $a2, $s6
 	sub.d	$a3, $s3, $a1
 	alsl.d	$a1, $a1, $s5, 2

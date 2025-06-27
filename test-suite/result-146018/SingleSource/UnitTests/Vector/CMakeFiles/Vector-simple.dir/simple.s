@@ -12,11 +12,6 @@
 	.word	0                               # 0x0
 	.word	4                               # 0x4
 	.word	4                               # 0x4
-.LCPI0_6:
-	.word	0                               # 0x0
-	.word	0                               # 0x0
-	.word	6                               # 0x6
-	.word	7                               # 0x7
 	.section	.rodata.cst8,"aM",@progbits,8
 	.p2align	2, 0x0
 .LCPI0_2:
@@ -59,41 +54,38 @@ main:                                   # @main
 	sltui	$a0, $a0, 1
 	movfr2gr.d	$a2, $fa0
 	vfadd.d	$vr0, $vr1, $vr1
-	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	vinsgr2vr.d	$vr1, $a2, 1
-	vfadd.d	$vr0, $vr1, $vr1
 	vst	$vr0, $sp, 64                   # 16-byte Folded Spill
 	slli.d	$a0, $a0, 2
-	pcalau12i	$a2, %pc_hi20(.LCPI0_2)
-	addi.d	$a2, $a2, %pc_lo12(.LCPI0_2)
-	fldx.s	$fa0, $a2, $a0
+	pcalau12i	$a3, %pc_hi20(.LCPI0_2)
+	addi.d	$a3, $a3, %pc_lo12(.LCPI0_2)
+	fldx.s	$fa0, $a3, $a0
 	pcalau12i	$a0, %pc_hi20(.LCPI0_3)
-	vld	$vr1, $a0, %pc_lo12(.LCPI0_3)
+	vld	$vr2, $a0, %pc_lo12(.LCPI0_3)
 	pcalau12i	$a0, %pc_hi20(.LCPI0_4)
-	fld.s	$fa2, $a0, %pc_lo12(.LCPI0_4)
+	fld.s	$fa3, $a0, %pc_lo12(.LCPI0_4)
 	slli.d	$a0, $a1, 2
 	pcalau12i	$a1, %pc_hi20(.LCPI0_5)
 	addi.d	$a1, $a1, %pc_lo12(.LCPI0_5)
-	fldx.s	$fa3, $a1, $a0
-	pcalau12i	$a0, %pc_hi20(.LCPI0_6)
-	vld	$vr4, $a0, %pc_lo12(.LCPI0_6)
-	vshuf.w	$vr1, $vr2, $vr0
-	vfadd.s	$vr1, $vr1, $vr1
-	vst	$vr1, $sp, 32                   # 16-byte Folded Spill
-	vrepli.b	$vr1, 0
-	vshuf.w	$vr4, $vr1, $vr3
-	vfmul.s	$vr1, $vr3, $vr3
-	movfr2gr.s	$a0, $fa3
-	vinsgr2vr.w	$vr2, $a0, 0
-	vinsgr2vr.w	$vr2, $a0, 1
+	fldx.s	$fa4, $a1, $a0
+	vinsgr2vr.d	$vr1, $a2, 1
+	vfadd.d	$vr1, $vr1, $vr1
+	vst	$vr1, $sp, 48                   # 16-byte Folded Spill
+	vshuf.w	$vr2, $vr3, $vr0
+	vreplvei.w	$vr1, $vr4, 0
+	vfadd.s	$vr2, $vr2, $vr2
+	vst	$vr2, $sp, 32                   # 16-byte Folded Spill
 	movfr2gr.s	$a0, $fa0
-	vinsgr2vr.w	$vr2, $a0, 2
-	vinsgr2vr.w	$vr2, $a0, 3
-	vfadd.s	$vr0, $vr2, $vr2
+	vori.b	$vr0, $vr1, 0
+	vinsgr2vr.w	$vr0, $a0, 2
+	vinsgr2vr.w	$vr0, $a0, 3
+	vfadd.s	$vr0, $vr0, $vr0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vfadd.s	$vr0, $vr4, $vr4
+	vrepli.b	$vr0, 0
+	vshuf4i.d	$vr1, $vr0, 12
+	vfadd.s	$vr0, $vr1, $vr1
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-	vreplvei.w	$vr0, $vr1, 0
+	vfmul.s	$vr0, $vr4, $vr4
+	vreplvei.w	$vr0, $vr0, 0
 	fcvt.d.s	$fa0, $fa0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -152,7 +144,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 64                   # 16-byte Folded Reload
 	vreplvei.d	$vr0, $vr0, 0
 	movfr2gr.d	$a1, $fa0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -161,7 +153,7 @@ main:                                   # @main
 	move	$a2, $a1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	vld	$vr1, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
 	vreplvei.d	$vr0, $vr1, 0
 	vreplvei.d	$vr1, $vr1, 1
 	movfr2gr.d	$a1, $fa0

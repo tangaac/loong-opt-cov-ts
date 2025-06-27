@@ -5,22 +5,22 @@
 	.type	wwunpack,@function
 wwunpack:                               # @wwunpack
 # %bb.0:
-	addi.d	$sp, $sp, -240
-	st.d	$ra, $sp, 232                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -256
+	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
 	move	$s1, $a7
 	move	$s2, $a6
-	move	$s7, $a5
-	move	$s0, $a4
+	move	$fp, $a5
+	move	$s7, $a4
 	move	$s8, $a3
 	move	$s3, $a2
 	move	$s6, $a1
@@ -31,24 +31,25 @@ wwunpack:                               # @wwunpack
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 17
 	bgeu	$s1, $a0, .LBB0_2
-.LBB0_1:                                # %.split146
+.LBB0_1:                                # %.split149
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	b	.LBB0_224
 .LBB0_2:                                # %.split
 	beqz	$s6, .LBB0_227
 # %bb.3:                                # %.split.split.preheader
-	ld.d	$s4, $sp, 240
+	ld.d	$s4, $sp, 256
+	add.w	$a2, $s6, $s8
 	bstrpick.d	$a0, $s1, 31, 0
-	add.d	$a2, $s2, $a0
+	add.d	$a3, $s2, $a0
 	bstrpick.d	$a0, $s3, 31, 0
 	add.d	$a0, $s5, $a0
 	bstrpick.d	$a1, $s8, 31, 0
 	sub.d	$a0, $a0, $a1
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	bstrpick.d	$a0, $s6, 31, 0
 	add.d	$a0, $s5, $a0
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a1, $s2, 673
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 4065
@@ -56,7 +57,7 @@ wwunpack:                               # @wwunpack
 	lu12i.w	$a0, 5
 	ori	$a0, $a0, 4065
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	move	$a3, $a1
+	move	$a4, $a1
 .LBB0_4:                                # %.split.split
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_16 Depth 2
@@ -64,26 +65,27 @@ wwunpack:                               # @wwunpack
                                         #       Child Loop BB0_217 Depth 3
 	bltu	$a1, $s2, .LBB0_1
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
-	addi.d	$a4, $a3, 17
-	bltu	$a2, $a4, .LBB0_1
+	addi.d	$a5, $a4, 17
+	bltu	$a3, $a5, .LBB0_1
 # %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
-	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
-	ld.w	$s0, $a3, 8
-	ld.w	$a0, $a3, 12
+	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
+	ld.w	$s0, $a4, 8
+	ld.w	$a0, $a4, 12
 	slli.d	$fp, $s0, 2
-	addi.w	$a5, $fp, 0
+	addi.w	$a6, $fp, 0
 	addi.w	$a0, $a0, 4
-	st.d	$a5, $sp, 96                    # 8-byte Folded Spill
-	bne	$a5, $a0, .LBB0_231
+	st.d	$a6, $sp, 120                   # 8-byte Folded Spill
+	bne	$a6, $a0, .LBB0_231
 # %bb.7:                                #   in Loop: Header=BB0_4 Depth=1
-	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 72                    # 8-byte Folded Spill
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
-	ld.w	$s2, $a3, 0
+	st.d	$s3, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
+	ld.w	$s2, $a4, 0
 	bstrpick.d	$s3, $fp, 31, 0
 	ori	$a1, $zero, 1
 	move	$a0, $s3
@@ -94,78 +96,80 @@ wwunpack:                               # @wwunpack
 	move	$s7, $a0
 	beqz	$s0, .LBB0_230
 # %bb.9:                                #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	bltu	$s6, $a0, .LBB0_230
 # %bb.10:                               #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
-	sub.d	$a0, $a0, $s2
-	bstrpick.d	$a0, $a0, 31, 0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	add.d	$fp, $a1, $a0
-	bltu	$fp, $s5, .LBB0_230
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	sub.w	$fp, $a0, $s2
+	bstrpick.d	$a0, $fp, 31, 0
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	add.d	$s0, $a1, $a0
+	bltu	$s0, $s5, .LBB0_230
 # %bb.11:                               #   in Loop: Header=BB0_4 Depth=1
-	add.d	$a0, $fp, $s3
-	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
+	add.d	$a0, $s0, $s3
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	bltu	$a1, $a0, .LBB0_230
 # %bb.12:                               #   in Loop: Header=BB0_4 Depth=1
 	bgeu	$s5, $a0, .LBB0_230
 # %bb.13:                               #   in Loop: Header=BB0_4 Depth=1
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	move	$a0, $s7
-	move	$a1, $fp
+	move	$a1, $s0
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	sub.d	$a0, $s5, $fp
-	add.w	$s0, $s6, $a0
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	add.w	$fp, $a0, $fp
+	ld.d	$t0, $sp, 104                   # 8-byte Folded Reload
+	sub.w	$t7, $t0, $fp
 	addi.d	$a1, $s7, 4
 	ld.w	$a0, $s7, 0
-	st.d	$a1, $sp, 144
+	st.d	$a1, $sp, 160
 	add.d	$s3, $s7, $s3
-	bstrpick.d	$a1, $s0, 31, 0
-	add.d	$s8, $fp, $a1
+	bstrpick.d	$a1, $t7, 31, 0
+	add.d	$s8, $s0, $a1
 	ori	$a2, $zero, 32
-	move	$s4, $fp
-	ori	$t0, $zero, 1
-	ori	$t1, $zero, 32
-	ori	$t2, $zero, 3
-	ori	$t3, $zero, 2
-	ori	$t4, $zero, 4
-	ori	$t5, $zero, 511
+	move	$s4, $s0
+	ori	$t1, $zero, 1
+	ori	$t2, $zero, 32
+	ori	$t3, $zero, 3
+	ori	$t4, $zero, 2
+	ori	$t5, $zero, 4
+	ori	$t6, $zero, 511
 	b	.LBB0_16
 	.p2align	4, , 16
 .LBB0_14:                               #   in Loop: Header=BB0_16 Depth=2
 	ld.b	$a0, $a0, 0
-	st.d	$a2, $sp, 144
+	st.d	$a2, $sp, 160
 	st.b	$a0, $s4, 0
 .LBB0_15:                               # %thread-pre-split.i
                                         #   in Loop: Header=BB0_16 Depth=2
-	ld.w	$a0, $sp, 140
-	ld.bu	$a2, $sp, 135
+	ld.w	$a0, $sp, 156
+	ld.bu	$a2, $sp, 151
 	move	$s4, $a1
 .LBB0_16:                               #   Parent Loop BB0_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_213 Depth 3
                                         #       Child Loop BB0_217 Depth 3
 	slli.d	$a3, $a0, 1
-	st.w	$a3, $sp, 140
+	st.w	$a3, $sp, 156
 	addi.d	$a1, $a2, -1
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	andi	$a4, $a1, 255
 	bltz	$a0, .LBB0_23
 # %bb.17:                               #   in Loop: Header=BB0_16 Depth=2
 	beqz	$a4, .LBB0_23
 # %bb.18:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a0, $sp, 144
+	ld.d	$a0, $sp, 160
 	bltu	$a0, $s7, .LBB0_223
 # %bb.19:                               #   in Loop: Header=BB0_16 Depth=2
-	beqz	$s0, .LBB0_223
+	beq	$t0, $fp, .LBB0_223
 # %bb.20:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a2, $a0, 1
 	bltu	$s3, $a2, .LBB0_223
 # %bb.21:                               #   in Loop: Header=BB0_16 Depth=2
-	bltu	$s4, $fp, .LBB0_223
+	bltu	$s4, $s0, .LBB0_223
 # %bb.22:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $s4, 1
 	bgeu	$s8, $a1, .LBB0_14
@@ -175,11 +179,11 @@ wwunpack:                               # @wwunpack
 	beqz	$a4, .LBB0_30
 # %bb.24:                               #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 30
-	bltu	$t3, $a4, .LBB0_43
+	bltu	$t4, $a4, .LBB0_43
 # %bb.25:                               #   in Loop: Header=BB0_16 Depth=2
-	bne	$a4, $t3, .LBB0_38
+	bne	$a4, $t4, .LBB0_38
 # %bb.26:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.27:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a2, $a1, 4
@@ -187,65 +191,65 @@ wwunpack:                               # @wwunpack
 # %bb.28:                               # %.thread531.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a1, 0
-	st.d	$a2, $sp, 144
+	st.d	$a2, $sp, 160
 	addi.w	$a1, $a0, 0
-	st.b	$t1, $sp, 135
-	bne	$a1, $t2, .LBB0_75
+	st.b	$t2, $sp, 151
+	bne	$a1, $t3, .LBB0_75
 # %bb.29:                               # %.thread532.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 30
-	st.w	$a0, $sp, 136
+	st.w	$a0, $sp, 152
 	ori	$a4, $zero, 32
 	b	.LBB0_45
 .LBB0_30:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.31:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a2, $a1, 4
 	bltu	$s3, $a2, .LBB0_223
 # %bb.32:                               #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a1, 0
-	st.w	$a3, $sp, 140
-	st.d	$a2, $sp, 144
-	st.b	$t1, $sp, 135
+	st.w	$a3, $sp, 156
+	st.d	$a2, $sp, 160
+	st.b	$t2, $sp, 151
 	addi.w	$a4, $zero, -1
-	st.w	$a3, $sp, 136
+	st.w	$a3, $sp, 152
 	bge	$a4, $a0, .LBB0_42
 # %bb.33:                               #   in Loop: Header=BB0_16 Depth=2
-	beqz	$s0, .LBB0_223
+	beq	$t0, $fp, .LBB0_223
 # %bb.34:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a0, $a1, 5
 	bltu	$s3, $a0, .LBB0_223
 # %bb.35:                               #   in Loop: Header=BB0_16 Depth=2
-	bltu	$s4, $fp, .LBB0_223
+	bltu	$s4, $s0, .LBB0_223
 # %bb.36:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $s4, 1
 	bltu	$s8, $a1, .LBB0_223
 # %bb.37:                               #   in Loop: Header=BB0_16 Depth=2
 	ld.b	$a2, $a2, 0
-	st.d	$a0, $sp, 144
+	st.d	$a0, $sp, 160
 	st.b	$a2, $s4, 0
 	b	.LBB0_15
 .LBB0_38:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.39:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a1, 4
 	bltu	$s3, $a3, .LBB0_223
 # %bb.40:                               # %.thread
                                         #   in Loop: Header=BB0_16 Depth=2
-	sub.d	$a2, $t2, $a2
+	sub.d	$a2, $t3, $a2
 	andi	$a4, $a2, 255
 	ld.wu	$a1, $a1, 0
 	srl.w	$a0, $a0, $a2
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a1
 	andi	$a2, $a4, 31
 	sll.d	$a0, $a0, $a2
 	bstrpick.d	$a0, $a0, 39, 32
 	sll.w	$a3, $a1, $a4
-	bgeu	$t3, $a0, .LBB0_81
+	bgeu	$t4, $a0, .LBB0_81
 # %bb.41:                               # %.thread123
                                         #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 30
@@ -260,10 +264,10 @@ wwunpack:                               # @wwunpack
 	addi.d	$a4, $a1, -2
 	addi.w	$a2, $a0, 0
 	andi	$a5, $a4, 255
-	bne	$a2, $t2, .LBB0_48
+	bne	$a2, $t3, .LBB0_48
 # %bb.44:                               #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 30
-	bltu	$a5, $t2, .LBB0_60
+	bltu	$a5, $t3, .LBB0_60
 .LBB0_45:                               #   in Loop: Header=BB0_16 Depth=2
 	slli.d	$a3, $a3, 2
 	addi.d	$a1, $a4, -2
@@ -274,17 +278,17 @@ wwunpack:                               # @wwunpack
 # %bb.47:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a0, 6
 	andi	$a5, $a4, 255
-	sll.w	$a0, $t0, $a4
+	sll.w	$a0, $t1, $a4
 	addu16i.d	$a0, $a0, 1
 	addi.w	$a0, $a0, -159
 	b	.LBB0_54
 .LBB0_48:                               #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a2, $a3, 31, 29
-	bgeu	$a5, $t4, .LBB0_76
+	bgeu	$a5, $t5, .LBB0_76
 # %bb.49:                               #   in Loop: Header=BB0_16 Depth=2
-	bne	$a5, $t2, .LBB0_89
+	bne	$a5, $t3, .LBB0_89
 # %bb.50:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.51:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a1, 4
@@ -292,33 +296,33 @@ wwunpack:                               # @wwunpack
 # %bb.52:                               # %getbitmap.exit41.i335.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a1, 0
-	st.d	$a4, $sp, 144
+	st.d	$a4, $sp, 160
 	ori	$a1, $zero, 32
 	andi	$a4, $a2, 255
-	bgeu	$t2, $a4, .LBB0_77
+	bgeu	$t3, $a4, .LBB0_77
 	b	.LBB0_82
 .LBB0_53:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a0, 5
 	andi	$a5, $a4, 255
-	sll.w	$a2, $t0, $a4
+	sll.w	$a2, $t1, $a4
 	addi.d	$a0, $a2, 225
 	bstrpick.d	$a2, $a2, 15, 8
 	bstrins.d	$a0, $a2, 63, 8
 .LBB0_54:                               #   in Loop: Header=BB0_16 Depth=2
-	sub.d	$a2, $t1, $a5
+	sub.d	$a2, $t2, $a5
 	andi	$a6, $a1, 255
 	andi	$a7, $a4, 255
 	srl.w	$a2, $a3, $a2
 	bgeu	$a7, $a6, .LBB0_56
 # %bb.55:                               #   in Loop: Header=BB0_16 Depth=2
 	sll.w	$a3, $a3, $a5
-	st.w	$a3, $sp, 140
+	st.w	$a3, $sp, 156
 	sub.d	$a1, $a1, $a4
 	b	.LBB0_67
 .LBB0_56:                               #   in Loop: Header=BB0_16 Depth=2
 	bgeu	$a6, $a7, .LBB0_64
 # %bb.57:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a3, $sp, 144
+	ld.d	$a3, $sp, 160
 	bltu	$a3, $s7, .LBB0_223
 # %bb.58:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a5, $a3, 4
@@ -327,21 +331,21 @@ wwunpack:                               # @wwunpack
 	sub.d	$a1, $a4, $a1
 	andi	$a4, $a1, 255
 	ld.w	$a3, $a3, 0
-	st.d	$a5, $sp, 144
+	st.d	$a5, $sp, 160
 	addi.d	$a5, $zero, -1
 	sll.w	$a5, $a5, $a4
 	and	$a2, $a5, $a2
-	sub.d	$a5, $t1, $a4
+	sub.d	$a5, $t2, $a4
 	srl.w	$a5, $a3, $a5
 	or	$a2, $a5, $a2
 	sll.w	$a3, $a3, $a4
-	st.w	$a3, $sp, 140
-	sub.d	$a1, $t1, $a1
+	st.w	$a3, $sp, 156
+	sub.d	$a1, $t2, $a1
 	b	.LBB0_67
 .LBB0_60:                               #   in Loop: Header=BB0_16 Depth=2
-	bne	$a5, $t3, .LBB0_92
+	bne	$a5, $t4, .LBB0_92
 # %bb.61:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.62:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a2, $a1, 4
@@ -349,11 +353,11 @@ wwunpack:                               # @wwunpack
 # %bb.63:                               # %getbitmap.exit41.i311.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a1, 0
-	st.d	$a2, $sp, 144
+	st.d	$a2, $sp, 160
 	ori	$a1, $zero, 32
 	b	.LBB0_46
 .LBB0_64:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.65:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a1, 4
@@ -361,28 +365,28 @@ wwunpack:                               # @wwunpack
 # %bb.66:                               # %getbitmap.exit41.i323.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a1, $a1, 0
-	st.w	$a1, $sp, 140
-	st.d	$a3, $sp, 144
+	st.w	$a1, $sp, 156
+	st.d	$a3, $sp, 160
 	ori	$a1, $zero, 32
 .LBB0_67:                               #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a3, $a2, 15, 0
-	st.b	$a1, $sp, 135
-	beq	$a3, $t5, .LBB0_218
+	st.b	$a1, $sp, 151
+	beq	$a3, $t6, .LBB0_218
 # %bb.68:                               #   in Loop: Header=BB0_16 Depth=2
-	st.w	$a3, $sp, 136
-	bltu	$s0, $t3, .LBB0_223
+	st.w	$a3, $sp, 152
+	bltu	$t7, $t4, .LBB0_223
 # %bb.69:                               #   in Loop: Header=BB0_16 Depth=2
 	add.d	$a0, $a2, $a0
 	bstrpick.d	$a0, $a0, 15, 0
 	sub.d	$a1, $s4, $a0
-	bltu	$a1, $fp, .LBB0_223
+	bltu	$a1, $s0, .LBB0_223
 # %bb.70:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $a1, 2
 	bltu	$s8, $a1, .LBB0_223
 # %bb.71:                               #   in Loop: Header=BB0_16 Depth=2
-	bgeu	$fp, $a1, .LBB0_223
+	bgeu	$s0, $a1, .LBB0_223
 # %bb.72:                               #   in Loop: Header=BB0_16 Depth=2
-	bltu	$s4, $fp, .LBB0_223
+	bltu	$s4, $s0, .LBB0_223
 # %bb.73:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $s4, 2
 	bltu	$s8, $a1, .LBB0_223
@@ -397,15 +401,15 @@ wwunpack:                               # @wwunpack
 .LBB0_75:                               # %.thread533.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a2, $a3, 31, 29
-	st.w	$a2, $sp, 136
+	st.w	$a2, $sp, 152
 	ori	$a4, $zero, 32
 .LBB0_76:                               #   in Loop: Header=BB0_16 Depth=2
 	slli.d	$a3, $a3, 3
 	addi.d	$a1, $a4, -3
 	andi	$a4, $a2, 255
-	bltu	$t2, $a4, .LBB0_82
+	bltu	$t3, $a4, .LBB0_82
 .LBB0_77:                               #   in Loop: Header=BB0_16 Depth=2
-	bne	$a4, $t2, .LBB0_80
+	bne	$a4, $t3, .LBB0_80
 # %bb.78:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $a1, -1
 	andi	$a5, $a1, 255
@@ -424,9 +428,9 @@ wwunpack:                               # @wwunpack
 	slli.d	$a3, $a3, 3
 	addi.d	$a1, $a4, -3
 	andi	$a4, $a2, 255
-	bgeu	$t2, $a4, .LBB0_77
+	bgeu	$t3, $a4, .LBB0_77
 .LBB0_82:                               #   in Loop: Header=BB0_16 Depth=2
-	bne	$a4, $t4, .LBB0_85
+	bne	$a4, $t5, .LBB0_85
 # %bb.83:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $a1, -1
 	andi	$a4, $a1, 255
@@ -448,11 +452,11 @@ wwunpack:                               # @wwunpack
 	bltu	$a2, $a5, .LBB0_138
 # %bb.88:                               #   in Loop: Header=BB0_16 Depth=2
 	slli.d	$a2, $a3, 14
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a1, -14
 	b	.LBB0_158
 .LBB0_89:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a3, $sp, 144
+	ld.d	$a3, $sp, 160
 	bltu	$a3, $s7, .LBB0_223
 # %bb.90:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a3, 4
@@ -463,7 +467,7 @@ wwunpack:                               # @wwunpack
 	andi	$a6, $a5, 255
 	ld.wu	$a3, $a3, 0
 	srl.w	$a2, $a2, $a5
-	st.d	$a4, $sp, 144
+	st.d	$a4, $sp, 160
 	slli.d	$a2, $a2, 32
 	or	$a2, $a2, $a3
 	andi	$a4, $a6, 31
@@ -472,20 +476,20 @@ wwunpack:                               # @wwunpack
 	sll.w	$a3, $a3, $a6
 	addi.d	$a1, $a1, 27
 	andi	$a4, $a2, 255
-	bgeu	$t2, $a4, .LBB0_77
+	bgeu	$t3, $a4, .LBB0_77
 	b	.LBB0_82
 .LBB0_92:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a2, $sp, 144
+	ld.d	$a2, $sp, 160
 	bltu	$a2, $s7, .LBB0_223
 # %bb.93:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a2, 4
 	bltu	$s3, $a3, .LBB0_223
 # %bb.94:                               #   in Loop: Header=BB0_16 Depth=2
-	sub.d	$a1, $t4, $a1
+	sub.d	$a1, $t5, $a1
 	andi	$a4, $a1, 255
 	ld.wu	$a2, $a2, 0
 	srl.w	$a0, $a0, $a1
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a2
 	andi	$a1, $a4, 31
@@ -495,7 +499,7 @@ wwunpack:                               # @wwunpack
 	ori	$a1, $zero, 31
 	b	.LBB0_46
 .LBB0_95:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.96:                               #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a5, $a1, 4
@@ -503,14 +507,14 @@ wwunpack:                               # @wwunpack
 # %bb.97:                               # %getbitmap.exit348.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a1, 0
-	st.d	$a5, $sp, 144
+	st.d	$a5, $sp, 160
 	ori	$a1, $zero, 32
 .LBB0_98:                               #   in Loop: Header=BB0_16 Depth=2
 	add.d	$a2, $a2, $a4
 	addi.d	$a6, $a2, 5
 	b	.LBB0_103
 .LBB0_99:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.100:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a5, $a1, 4
@@ -518,7 +522,7 @@ wwunpack:                               # @wwunpack
 # %bb.101:                              # %getbitmap.exit353.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a4, $a1, 0
-	st.d	$a5, $sp, 144
+	st.d	$a5, $sp, 160
 	ori	$a1, $zero, 32
 .LBB0_102:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a3, $a3, 31, 31
@@ -528,19 +532,19 @@ wwunpack:                               # @wwunpack
 .LBB0_103:                              # %.critedge.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	andi	$a4, $a6, 255
-	sub.d	$a5, $t1, $a4
+	sub.d	$a5, $t2, $a4
 	andi	$a2, $a1, 255
 	srl.w	$a5, $a3, $a5
 	bgeu	$a4, $a2, .LBB0_105
 # %bb.104:                              #   in Loop: Header=BB0_16 Depth=2
 	sll.w	$a2, $a3, $a4
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	sub.d	$a1, $a1, $a6
 	b	.LBB0_112
 .LBB0_105:                              #   in Loop: Header=BB0_16 Depth=2
 	bgeu	$a2, $a4, .LBB0_109
 # %bb.106:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a2, $sp, 144
+	ld.d	$a2, $sp, 160
 	bltu	$a2, $s7, .LBB0_223
 # %bb.107:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a2, 4
@@ -549,19 +553,19 @@ wwunpack:                               # @wwunpack
 	sub.d	$a1, $a6, $a1
 	andi	$a6, $a1, 255
 	ld.w	$a2, $a2, 0
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	addi.d	$a3, $zero, -1
 	sll.w	$a3, $a3, $a6
 	and	$a3, $a3, $a5
-	sub.d	$a5, $t1, $a6
+	sub.d	$a5, $t2, $a6
 	srl.w	$a5, $a2, $a5
 	or	$a5, $a5, $a3
 	sll.w	$a2, $a2, $a6
-	st.w	$a2, $sp, 140
-	sub.d	$a1, $t1, $a1
+	st.w	$a2, $sp, 156
+	sub.d	$a1, $t2, $a1
 	b	.LBB0_112
 .LBB0_109:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.110:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a1, 4
@@ -569,24 +573,24 @@ wwunpack:                               # @wwunpack
 # %bb.111:                              # %getbitmap.exit41.i381.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a2, $a1, 0
-	st.w	$a2, $sp, 140
-	st.d	$a3, $sp, 144
+	st.w	$a2, $sp, 156
+	st.d	$a3, $sp, 160
 	ori	$a1, $zero, 32
 .LBB0_112:                              #   in Loop: Header=BB0_16 Depth=2
-	st.b	$a1, $sp, 135
-	sll.w	$a3, $t0, $a4
+	st.b	$a1, $sp, 151
+	sll.w	$a3, $t1, $a4
 	add.d	$a3, $a3, $a5
 	addu16i.d	$a3, $a3, 1
 	addi.w	$a3, $a3, -31
 .LBB0_113:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$s2, $a3, 15, 0
 	addi.w	$a0, $a0, 0
-	st.w	$s2, $sp, 136
+	st.w	$s2, $sp, 152
 	beqz	$a0, .LBB0_115
 # %bb.114:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a0, $a0, -1
 	sltui	$a0, $a0, 1
-	sub.d	$a0, $t4, $a0
+	sub.d	$a0, $t5, $a0
 	b	.LBB0_202
 .LBB0_115:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a1, -1
@@ -600,13 +604,13 @@ wwunpack:                               # @wwunpack
 # %bb.117:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 31
 	slli.d	$a2, $a2, 2
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a1, -2
 	andi	$a2, $a1, 255
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	bnez	$a2, .LBB0_126
 # %bb.118:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.119:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a2, $a1, 4
@@ -614,12 +618,12 @@ wwunpack:                               # @wwunpack
 # %bb.120:                              # %getbitmap.exit399.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a1, $a1, 0
-	st.w	$a1, $sp, 140
-	st.d	$a2, $sp, 144
+	st.w	$a1, $sp, 156
+	st.d	$a2, $sp, 160
 	ori	$a1, $zero, 32
 	b	.LBB0_125
 .LBB0_121:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a0, $sp, 144
+	ld.d	$a0, $sp, 160
 	bltu	$a0, $s7, .LBB0_223
 # %bb.122:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a1, $a0, 4
@@ -628,27 +632,27 @@ wwunpack:                               # @wwunpack
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a0, 0
 	addi.w	$a0, $a2, 0
-	st.d	$a1, $sp, 144
+	st.d	$a1, $sp, 160
 	bltz	$a0, .LBB0_135
 # %bb.124:                              # %.thread540.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 31
 	slli.d	$a1, $a3, 1
-	st.w	$a1, $sp, 140
+	st.w	$a1, $sp, 156
 	ori	$a1, $zero, 31
 .LBB0_125:                              # %.sink.split.i
                                         #   in Loop: Header=BB0_16 Depth=2
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 .LBB0_126:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.w	$a0, $a0, 5
 	b	.LBB0_201
 .LBB0_127:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 29
-	bgeu	$a5, $t4, .LBB0_136
+	bgeu	$a5, $t5, .LBB0_136
 # %bb.128:                              #   in Loop: Header=BB0_16 Depth=2
-	bne	$a5, $t2, .LBB0_146
+	bne	$a5, $t3, .LBB0_146
 # %bb.129:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.130:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a1, 4
@@ -656,15 +660,15 @@ wwunpack:                               # @wwunpack
 # %bb.131:                              # %.thread537.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a2, $a1, 0
-	st.w	$a2, $sp, 140
-	st.d	$a4, $sp, 144
+	st.w	$a2, $sp, 156
+	st.d	$a4, $sp, 160
 	bstrpick.d	$a1, $a3, 31, 29
-	st.b	$t1, $sp, 135
+	st.b	$t2, $sp, 151
 	bnez	$a1, .LBB0_137
 # %bb.132:                              # %.thread539.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a2, 31, 28
-	st.w	$a0, $sp, 136
+	st.w	$a0, $sp, 152
 	ori	$a1, $zero, 32
 	b	.LBB0_150
 .LBB0_133:                              #   in Loop: Header=BB0_16 Depth=2
@@ -674,7 +678,7 @@ wwunpack:                               # @wwunpack
 	bltu	$a2, $a5, .LBB0_142
 # %bb.134:                              #   in Loop: Header=BB0_16 Depth=2
 	slli.d	$a2, $a3, 15
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a1, -15
 	b	.LBB0_162
 .LBB0_135:                              # %.thread536.i
@@ -683,10 +687,10 @@ wwunpack:                               # @wwunpack
 	ori	$a4, $zero, 32
 .LBB0_136:                              #   in Loop: Header=BB0_16 Depth=2
 	slli.d	$a2, $a3, 3
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a4, -3
 	andi	$a3, $a0, 255
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	beqz	$a3, .LBB0_149
 .LBB0_137:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.w	$a0, $a0, 6
@@ -695,7 +699,7 @@ wwunpack:                               # @wwunpack
 	ori	$a3, $zero, 14
 	bne	$a2, $a3, .LBB0_155
 # %bb.139:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.140:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a1, 4
@@ -703,15 +707,15 @@ wwunpack:                               # @wwunpack
 # %bb.141:                              # %getbitmap.exit41.i357.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a2, $a1, 0
-	st.w	$a2, $sp, 140
-	st.d	$a3, $sp, 144
+	st.w	$a2, $sp, 156
+	st.d	$a3, $sp, 160
 	ori	$a1, $zero, 32
 	b	.LBB0_158
 .LBB0_142:                              #   in Loop: Header=BB0_16 Depth=2
 	ori	$a3, $zero, 15
 	bne	$a2, $a3, .LBB0_159
 # %bb.143:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.144:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a1, 4
@@ -719,48 +723,48 @@ wwunpack:                               # @wwunpack
 # %bb.145:                              # %getbitmap.exit41.i369.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a2, $a1, 0
-	st.w	$a2, $sp, 140
-	st.d	$a3, $sp, 144
+	st.w	$a2, $sp, 156
+	st.d	$a3, $sp, 160
 	ori	$a1, $zero, 32
 	b	.LBB0_162
 .LBB0_146:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a2, $sp, 144
+	ld.d	$a2, $sp, 160
 	bltu	$a2, $s7, .LBB0_223
 # %bb.147:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a2, 4
 	bltu	$s3, $a3, .LBB0_223
 # %bb.148:                              #   in Loop: Header=BB0_16 Depth=2
-	sub.d	$a4, $t4, $a1
+	sub.d	$a4, $t5, $a1
 	andi	$a5, $a4, 255
 	ld.wu	$a2, $a2, 0
 	srl.w	$a0, $a0, $a4
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a2
 	andi	$a3, $a5, 31
 	sll.d	$a0, $a0, $a3
 	srli.d	$a0, $a0, 32
 	sll.w	$a2, $a2, $a5
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a1, 28
 	andi	$a3, $a0, 255
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	bnez	$a3, .LBB0_137
 .LBB0_149:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a2, 31, 28
 	andi	$a3, $a1, 255
-	st.w	$a0, $sp, 136
+	st.w	$a0, $sp, 152
 	ori	$a4, $zero, 5
 	bltu	$a3, $a4, .LBB0_151
 .LBB0_150:                              #   in Loop: Header=BB0_16 Depth=2
 	slli.w	$a3, $a2, 4
-	st.w	$a3, $sp, 140
+	st.w	$a3, $sp, 156
 	addi.d	$a1, $a1, -4
 	b	.LBB0_166
 .LBB0_151:                              #   in Loop: Header=BB0_16 Depth=2
-	bne	$a3, $t4, .LBB0_163
+	bne	$a3, $t5, .LBB0_163
 # %bb.152:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a1, $sp, 144
+	ld.d	$a1, $sp, 160
 	bltu	$a1, $s7, .LBB0_223
 # %bb.153:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a2, $a1, 4
@@ -768,12 +772,12 @@ wwunpack:                               # @wwunpack
 # %bb.154:                              # %getbitmap.exit41.i415.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a3, $a1, 0
-	st.w	$a3, $sp, 140
-	st.d	$a2, $sp, 144
+	st.w	$a3, $sp, 156
+	st.d	$a2, $sp, 160
 	ori	$a1, $zero, 32
 	b	.LBB0_166
 .LBB0_155:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a2, $sp, 144
+	ld.d	$a2, $sp, 160
 	bltu	$a2, $s7, .LBB0_223
 # %bb.156:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a2, 4
@@ -784,23 +788,23 @@ wwunpack:                               # @wwunpack
 	andi	$a6, $a5, 255
 	ld.wu	$a2, $a2, 0
 	srl.w	$a4, $a4, $a5
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	slli.d	$a3, $a4, 32
 	or	$a3, $a3, $a2
 	andi	$a4, $a6, 31
 	sll.d	$a3, $a3, $a4
 	srli.d	$a4, $a3, 32
-	st.w	$a4, $sp, 136
+	st.w	$a4, $sp, 152
 	sll.w	$a2, $a2, $a6
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a1, 18
 .LBB0_158:                              #   in Loop: Header=BB0_16 Depth=2
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
 	add.w	$a3, $a4, $a3
 	b	.LBB0_113
 .LBB0_159:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a2, $sp, 144
+	ld.d	$a2, $sp, 160
 	bltu	$a2, $s7, .LBB0_223
 # %bb.160:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a2, 4
@@ -811,52 +815,52 @@ wwunpack:                               # @wwunpack
 	andi	$a6, $a5, 255
 	ld.wu	$a2, $a2, 0
 	srl.w	$a4, $a4, $a5
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	slli.d	$a3, $a4, 32
 	or	$a3, $a3, $a2
 	andi	$a4, $a6, 31
 	sll.d	$a3, $a3, $a4
 	srli.d	$a4, $a3, 32
-	st.w	$a4, $sp, 136
+	st.w	$a4, $sp, 152
 	sll.w	$a2, $a2, $a6
-	st.w	$a2, $sp, 140
+	st.w	$a2, $sp, 156
 	addi.d	$a1, $a1, 17
 .LBB0_162:                              #   in Loop: Header=BB0_16 Depth=2
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	add.w	$a3, $a4, $a3
 	b	.LBB0_113
 .LBB0_163:                              #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a2, $sp, 144
+	ld.d	$a2, $sp, 160
 	bltu	$a2, $s7, .LBB0_223
 # %bb.164:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a3, $a2, 4
 	bltu	$s3, $a3, .LBB0_223
 # %bb.165:                              #   in Loop: Header=BB0_16 Depth=2
-	sub.d	$a4, $t4, $a1
+	sub.d	$a4, $t5, $a1
 	andi	$a5, $a4, 255
 	ld.wu	$a2, $a2, 0
 	srl.w	$a0, $a0, $a4
-	st.d	$a3, $sp, 144
+	st.d	$a3, $sp, 160
 	slli.d	$a0, $a0, 32
 	or	$a0, $a0, $a2
 	andi	$a3, $a5, 31
 	sll.d	$a0, $a0, $a3
 	srli.d	$a0, $a0, 32
-	st.w	$a0, $sp, 136
+	st.w	$a0, $sp, 152
 	sll.w	$a3, $a2, $a5
-	st.w	$a3, $sp, 140
+	st.w	$a3, $sp, 156
 	addi.d	$a1, $a1, 28
 .LBB0_166:                              #   in Loop: Header=BB0_16 Depth=2
 	andi	$a2, $a0, 255
-	st.b	$a1, $sp, 135
+	st.b	$a1, $sp, 151
 	beqz	$a2, .LBB0_168
 # %bb.167:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.w	$a0, $a0, 13
 	b	.LBB0_201
 .LBB0_168:                              # %.preheader488.i
                                         #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a0, $sp, 144
+	ld.d	$a0, $sp, 160
 	addi.d	$a1, $a1, -1
 	andi	$a2, $a1, 255
 	beqz	$a2, .LBB0_170
@@ -924,43 +928,46 @@ wwunpack:                               # @wwunpack
 	addi.w	$a3, $zero, -1
 	bge	$a3, $a4, .LBB0_190
 # %bb.188:                              #   in Loop: Header=BB0_16 Depth=2
-	st.w	$a2, $sp, 140
-	st.b	$a1, $sp, 135
-	st.d	$a0, $sp, 144
+	st.w	$a2, $sp, 156
+	st.b	$a1, $sp, 151
+	st.d	$a0, $sp, 160
 	ori	$a0, $zero, 14
-	addi.d	$a1, $sp, 136
-	addi.d	$a2, $sp, 140
-	addi.d	$a3, $sp, 135
-	addi.d	$a4, $sp, 144
+	addi.d	$a1, $sp, 152
+	addi.d	$a2, $sp, 156
+	addi.d	$a3, $sp, 151
+	addi.d	$a4, $sp, 160
 	move	$a5, $s7
-	ld.d	$a6, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
+	st.d	$t7, $sp, 8                     # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(getbits)
 	jirl	$ra, $ra, 0
-	ori	$t5, $zero, 511
-	ori	$t4, $zero, 4
-	ori	$t3, $zero, 2
-	ori	$t2, $zero, 3
-	ori	$t1, $zero, 32
-	ori	$t0, $zero, 1
+	ld.d	$t7, $sp, 8                     # 8-byte Folded Reload
+	ori	$t6, $zero, 511
+	ori	$t5, $zero, 4
+	ori	$t4, $zero, 2
+	ori	$t3, $zero, 3
+	ori	$t2, $zero, 32
+	ori	$t1, $zero, 1
+	ld.d	$t0, $sp, 104                   # 8-byte Folded Reload
 	bnez	$a0, .LBB0_223
 # %bb.189:                              # %..critedge297_crit_edge.i
                                         #   in Loop: Header=BB0_16 Depth=2
-	ld.w	$a0, $sp, 136
+	ld.w	$a0, $sp, 152
 	b	.LBB0_202
 .LBB0_190:                              #   in Loop: Header=BB0_16 Depth=2
 	ori	$a3, $zero, 125
 	ori	$a5, $zero, 7
 .LBB0_191:                              #   in Loop: Header=BB0_16 Depth=2
-	st.w	$a2, $sp, 140
-	st.d	$a0, $sp, 144
+	st.w	$a2, $sp, 156
+	st.d	$a0, $sp, 160
 	sub.d	$a4, $zero, $a5
 	srl.w	$a4, $a2, $a4
 	andi	$a6, $a1, 255
-	st.w	$a4, $sp, 136
+	st.w	$a4, $sp, 152
 	bgeu	$a5, $a6, .LBB0_193
 # %bb.192:                              #   in Loop: Header=BB0_16 Depth=2
 	sll.w	$a0, $a2, $a5
-	st.w	$a0, $sp, 140
+	st.w	$a0, $sp, 156
 	sub.d	$a0, $a1, $a5
 	b	.LBB0_200
 .LBB0_193:                              #   in Loop: Header=BB0_16 Depth=2
@@ -968,7 +975,7 @@ wwunpack:                               # @wwunpack
 # %bb.194:                              #   in Loop: Header=BB0_16 Depth=2
 	sub.d	$a1, $a5, $a1
 	srl.w	$a2, $a4, $a1
-	st.w	$a2, $sp, 136
+	st.w	$a2, $sp, 152
 	bltu	$a0, $s7, .LBB0_223
 # %bb.195:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.d	$a4, $a0, 4
@@ -976,15 +983,15 @@ wwunpack:                               # @wwunpack
 # %bb.196:                              #   in Loop: Header=BB0_16 Depth=2
 	ld.wu	$a0, $a0, 0
 	andi	$a5, $a1, 255
-	st.d	$a4, $sp, 144
+	st.d	$a4, $sp, 160
 	slli.d	$a2, $a2, 32
 	or	$a2, $a2, $a0
 	andi	$a4, $a5, 31
 	sll.d	$a2, $a2, $a4
 	srli.d	$a4, $a2, 32
 	sll.w	$a0, $a0, $a5
-	st.w	$a0, $sp, 140
-	sub.d	$a0, $t1, $a1
+	st.w	$a0, $sp, 156
+	sub.d	$a0, $t2, $a1
 	b	.LBB0_200
 .LBB0_197:                              #   in Loop: Header=BB0_16 Depth=2
 	bltu	$a0, $s7, .LBB0_223
@@ -994,43 +1001,43 @@ wwunpack:                               # @wwunpack
 # %bb.199:                              # %getbitmap.exit41.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$a0, $a0, 0
-	st.w	$a0, $sp, 140
-	st.d	$a1, $sp, 144
+	st.w	$a0, $sp, 156
+	st.d	$a1, $sp, 160
 	ori	$a0, $zero, 32
 .LBB0_200:                              #   in Loop: Header=BB0_16 Depth=2
-	st.b	$a0, $sp, 135
+	st.b	$a0, $sp, 151
 	add.d	$a0, $a4, $a3
 	srli.d	$a1, $a4, 8
 	bstrins.d	$a0, $a1, 63, 8
 .LBB0_201:                              #   in Loop: Header=BB0_16 Depth=2
-	st.w	$a0, $sp, 136
+	st.w	$a0, $sp, 152
 .LBB0_202:                              #   in Loop: Header=BB0_16 Depth=2
-	beqz	$s0, .LBB0_223
+	beq	$t0, $fp, .LBB0_223
 # %bb.203:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a3, $a0, 15, 0
 	beqz	$a3, .LBB0_223
 # %bb.204:                              #   in Loop: Header=BB0_16 Depth=2
-	bltu	$s0, $a3, .LBB0_223
+	bltu	$t7, $a3, .LBB0_223
 # %bb.205:                              #   in Loop: Header=BB0_16 Depth=2
 	sub.d	$a1, $s4, $s2
-	bltu	$a1, $fp, .LBB0_223
+	bltu	$a1, $s0, .LBB0_223
 # %bb.206:                              #   in Loop: Header=BB0_16 Depth=2
 	add.d	$a1, $a1, $a3
 	bltu	$s8, $a1, .LBB0_223
 # %bb.207:                              #   in Loop: Header=BB0_16 Depth=2
-	bgeu	$fp, $a1, .LBB0_223
+	bgeu	$s0, $a1, .LBB0_223
 # %bb.208:                              #   in Loop: Header=BB0_16 Depth=2
-	bltu	$s4, $fp, .LBB0_223
+	bltu	$s4, $s0, .LBB0_223
 # %bb.209:                              #   in Loop: Header=BB0_16 Depth=2
 	add.d	$a1, $s4, $a3
 	bltu	$s8, $a1, .LBB0_223
 # %bb.210:                              # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_16 Depth=2
 	sub.d	$a2, $zero, $s2
-	bltu	$a3, $t1, .LBB0_216
+	bltu	$a3, $t2, .LBB0_216
 # %bb.211:                              # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_16 Depth=2
-	bltu	$s2, $t1, .LBB0_215
+	bltu	$s2, $t2, .LBB0_215
 # %bb.212:                              # %vector.ph
                                         #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a1, $a3, 15, 5
@@ -1076,24 +1083,25 @@ wwunpack:                               # @wwunpack
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 16
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	bnez	$a0, .LBB0_4
 # %bb.219:
-	bstrpick.d	$a0, $s7, 31, 0
+	bstrpick.d	$a0, $fp, 31, 0
 	add.d	$fp, $s5, $a0
 	st.h	$s4, $fp, 6
 	ld.w	$a0, $s2, 661
-	add.d	$a0, $s0, $a0
+	add.d	$a0, $s7, $a0
 	addi.w	$s2, $a0, 665
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
@@ -1157,18 +1165,18 @@ wwunpack:                               # @wwunpack
 .LBB0_225:
 	ori	$a0, $zero, 1
 .LBB0_226:
-	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 232                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 240
+	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 256
 	ret
 .LBB0_227:                              # %.split.split.us
 	ori	$a0, $zero, 690
@@ -1187,18 +1195,18 @@ wwunpack:                               # @wwunpack
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
 	beqz	$a0, .LBB0_232
-.LBB0_230:                              # %.split154.us
+.LBB0_230:                              # %.split157.us
 	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
 	b	.LBB0_224
-.LBB0_231:                              # %.split150.us
+.LBB0_231:                              # %.split153.us
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	b	.LBB0_224
-.LBB0_232:                              # %.split152.us
+.LBB0_232:                              # %.split155.us
 	addi.w	$a1, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)

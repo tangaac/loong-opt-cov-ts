@@ -542,7 +542,7 @@ _ZTS19btMinkowskiSumShape:
 
 	.globl	_ZN19btMinkowskiSumShapeC1EPK13btConvexShapeS2_
 	.type	_ZN19btMinkowskiSumShapeC1EPK13btConvexShapeS2_,@function
-.set _ZN19btMinkowskiSumShapeC1EPK13btConvexShapeS2_, _ZN19btMinkowskiSumShapeC2EPK13btConvexShapeS2_
+_ZN19btMinkowskiSumShapeC1EPK13btConvexShapeS2_ = _ZN19btMinkowskiSumShapeC2EPK13btConvexShapeS2_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

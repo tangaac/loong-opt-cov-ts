@@ -261,29 +261,12 @@ main:                                   # @main
 	vseq.d	$vr3, $vr3, $vr5
 	vseq.d	$vr2, $vr2, $vr5
 	vpickev.w	$vr2, $vr2, $vr3
-	vpickve2gr.h	$a0, $vr2, 2
-	andi	$a0, $a0, 1
-	vpickve2gr.h	$a1, $vr3, 0
-	bstrins.d	$a1, $a0, 63, 1
-	vpickve2gr.h	$a0, $vr2, 4
-	bstrins.d	$a1, $a0, 2, 2
-	vpickve2gr.h	$a0, $vr2, 6
-	bstrins.d	$a1, $a0, 3, 3
 	vseq.d	$vr1, $vr1, $vr5
 	vseq.d	$vr0, $vr0, $vr4
 	vpickev.w	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	bstrins.d	$a1, $a0, 4, 4
-	vpickve2gr.h	$a0, $vr0, 2
-	bstrins.d	$a1, $a0, 5, 5
-	vpickve2gr.h	$a0, $vr0, 4
-	andi	$a0, $a0, 1
-	slli.d	$a0, $a0, 6
-	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr0, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
-	andi	$a0, $a0, 255
+	vpickev.h	$vr0, $vr0, $vr2
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	ori	$a1, $zero, 255
 	bne	$a0, $a1, .LBB1_17
 # %bb.2:                                # %.preheader29.preheader
@@ -356,30 +339,13 @@ main:                                   # @main
 	vreplgr2vr.d	$vr4, $a0
 	vseq.d	$vr2, $vr2, $vr4
 	vseq.d	$vr3, $vr3, $vr4
-	vpickev.w	$vr3, $vr3, $vr2
-	vpickve2gr.h	$a0, $vr3, 2
-	andi	$a0, $a0, 1
-	vpickve2gr.h	$a1, $vr2, 0
-	bstrins.d	$a1, $a0, 63, 1
-	vpickve2gr.h	$a0, $vr3, 4
-	bstrins.d	$a1, $a0, 2, 2
-	vpickve2gr.h	$a0, $vr3, 6
-	bstrins.d	$a1, $a0, 3, 3
+	vpickev.w	$vr2, $vr3, $vr2
 	vseq.d	$vr1, $vr1, $vr4
 	vseq.d	$vr0, $vr0, $vr4
 	vpickev.w	$vr0, $vr0, $vr1
-	vpickve2gr.h	$a0, $vr0, 0
-	bstrins.d	$a1, $a0, 4, 4
-	vpickve2gr.h	$a0, $vr0, 2
-	bstrins.d	$a1, $a0, 5, 5
-	vpickve2gr.h	$a0, $vr0, 4
-	andi	$a0, $a0, 1
-	slli.d	$a0, $a0, 6
-	or	$a0, $a1, $a0
-	vpickve2gr.h	$a1, $vr0, 6
-	slli.d	$a1, $a1, 7
-	or	$a0, $a0, $a1
-	andi	$a0, $a0, 255
+	vpickev.h	$vr0, $vr0, $vr2
+	vmskltz.h	$vr0, $vr0
+	vpickve2gr.hu	$a0, $vr0, 0
 	ori	$a1, $zero, 255
 	bne	$a0, $a1, .LBB1_17
 # %bb.16:                               # %.split37.us

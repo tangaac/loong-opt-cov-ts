@@ -7572,10 +7572,10 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 
 	.globl	_ZN10ExportGoldC1EP4Mesh
 	.type	_ZN10ExportGoldC1EP4Mesh,@function
-.set _ZN10ExportGoldC1EP4Mesh, _ZN10ExportGoldC2EP4Mesh
+_ZN10ExportGoldC1EP4Mesh = _ZN10ExportGoldC2EP4Mesh
 	.globl	_ZN10ExportGoldD1Ev
 	.type	_ZN10ExportGoldD1Ev,@function
-.set _ZN10ExportGoldD1Ev, _ZN10ExportGoldD2Ev
+_ZN10ExportGoldD1Ev = _ZN10ExportGoldD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

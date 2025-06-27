@@ -2144,11 +2144,11 @@ findfiletype:                           # @findfiletype
 	addi.d	$s2, $s2, -1
 	addi.d	$fp, $fp, 24
 	bnez	$s2, .LBB15_3
-.LBB15_5:                               # %.loopexit38
+.LBB15_5:                               # %.loopexit37
 	ori	$a0, $zero, 1
 	addi.d	$s4, $zero, -1
 	blt	$s5, $a0, .LBB15_18
-# %bb.6:                                # %.lr.ph49
+# %bb.6:                                # %.lr.ph48
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(chartypes)
 	ld.d	$a0, $a0, %got_pc_lo12(chartypes)
@@ -2182,7 +2182,7 @@ findfiletype:                           # @findfiletype
 	ldx.bu	$a1, $s2, $a0
 	add.d	$s2, $s2, $a0
 	beqz	$a1, .LBB15_7
-.LBB15_10:                              # %.lr.ph46
+.LBB15_10:                              # %.lr.ph45
                                         #   Parent Loop BB15_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $s2
@@ -2192,7 +2192,8 @@ findfiletype:                           # @findfiletype
 	addi.w	$a0, $a0, 0
 	blt	$s8, $a0, .LBB15_9
 # %bb.11:                               #   in Loop: Header=BB15_10 Depth=2
-	sub.w	$a0, $s1, $s3
+	sub.d	$a0, $s1, $s3
+	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a0, $s0, $a0
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(strcmp)

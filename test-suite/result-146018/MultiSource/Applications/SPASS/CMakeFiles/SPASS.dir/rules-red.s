@@ -12126,8 +12126,8 @@ clause_UpdateSplitDataFromPartner:      # @clause_UpdateSplitDataFromPartner
 	bgeu	$a0, $s2, .LBB29_9
 .LBB29_8:                               # %.lr.ph27.preheader.i.i
 	alsl.d	$a0, $a1, $s1, 3
+	sub.d	$a1, $a1, $s2
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s2, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

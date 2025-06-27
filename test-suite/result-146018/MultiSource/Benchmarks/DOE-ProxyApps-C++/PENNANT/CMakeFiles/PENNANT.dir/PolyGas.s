@@ -573,7 +573,7 @@ _ZN7PolyGas9calcForceEPKdPK7double2PS2_ii: # @_ZN7PolyGas9calcForceEPKdPK7double
 
 	.globl	_ZN7PolyGasC1EPK9InputFileP5Hydro
 	.type	_ZN7PolyGasC1EPK9InputFileP5Hydro,@function
-.set _ZN7PolyGasC1EPK9InputFileP5Hydro, _ZN7PolyGasC2EPK9InputFileP5Hydro
+_ZN7PolyGasC1EPK9InputFileP5Hydro = _ZN7PolyGasC2EPK9InputFileP5Hydro
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

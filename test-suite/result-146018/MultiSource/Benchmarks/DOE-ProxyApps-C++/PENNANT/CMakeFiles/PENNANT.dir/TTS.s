@@ -209,10 +209,10 @@ _ZN3TTS9calcForceEPKdS1_S1_S1_S1_PK7double2PS2_ii: # @_ZN3TTS9calcForceEPKdS1_S1
 
 	.globl	_ZN3TTSC1EPK9InputFileP5Hydro
 	.type	_ZN3TTSC1EPK9InputFileP5Hydro,@function
-.set _ZN3TTSC1EPK9InputFileP5Hydro, _ZN3TTSC2EPK9InputFileP5Hydro
+_ZN3TTSC1EPK9InputFileP5Hydro = _ZN3TTSC2EPK9InputFileP5Hydro
 	.globl	_ZN3TTSD1Ev
 	.type	_ZN3TTSD1Ev,@function
-.set _ZN3TTSD1Ev, _ZN3TTSD2Ev
+_ZN3TTSD1Ev = _ZN3TTSD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

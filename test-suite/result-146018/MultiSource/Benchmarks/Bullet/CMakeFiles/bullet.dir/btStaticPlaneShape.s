@@ -466,10 +466,10 @@ _ZTS18btStaticPlaneShape:
 
 	.globl	_ZN18btStaticPlaneShapeC1ERK9btVector3f
 	.type	_ZN18btStaticPlaneShapeC1ERK9btVector3f,@function
-.set _ZN18btStaticPlaneShapeC1ERK9btVector3f, _ZN18btStaticPlaneShapeC2ERK9btVector3f
+_ZN18btStaticPlaneShapeC1ERK9btVector3f = _ZN18btStaticPlaneShapeC2ERK9btVector3f
 	.globl	_ZN18btStaticPlaneShapeD1Ev
 	.type	_ZN18btStaticPlaneShapeD1Ev,@function
-.set _ZN18btStaticPlaneShapeD1Ev, _ZN18btStaticPlaneShapeD2Ev
+_ZN18btStaticPlaneShapeD1Ev = _ZN18btStaticPlaneShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

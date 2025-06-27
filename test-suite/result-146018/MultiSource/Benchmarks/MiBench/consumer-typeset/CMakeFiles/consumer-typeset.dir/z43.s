@@ -1020,11 +1020,12 @@ LanguageWordEndsSentence:               # @LanguageWordEndsSentence
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	nor	$a0, $a0, $zero
-	add.d	$a0, $s3, $a0
-	and	$a1, $a0, $s6
+	sub.d	$a1, $a0, $s3
+	andn	$a1, $s6, $a1
 	bnez	$a1, .LBB3_5
 # %bb.10:                               #   in Loop: Header=BB3_6 Depth=1
+	nor	$a0, $a0, $zero
+	add.d	$a0, $s3, $a0
 	bstrpick.d	$a0, $a0, 30, 0
 	ldx.bu	$s2, $s0, $a0
 	ld.wu	$a0, $fp, 40

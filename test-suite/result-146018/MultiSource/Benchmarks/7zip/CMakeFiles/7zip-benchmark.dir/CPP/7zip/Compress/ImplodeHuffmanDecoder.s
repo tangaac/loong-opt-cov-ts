@@ -332,9 +332,9 @@ _ZN9NCompress8NImplode8NHuffman8CDecoder12DecodeSymbolEPN5NBitl8CDecoderI9CInBuf
                                         # -- End function
 	.globl	_ZN9NCompress8NImplode8NHuffman8CDecoderC1Ej
 	.type	_ZN9NCompress8NImplode8NHuffman8CDecoderC1Ej,@function
-.set _ZN9NCompress8NImplode8NHuffman8CDecoderC1Ej, _ZN9NCompress8NImplode8NHuffman8CDecoderC2Ej
+_ZN9NCompress8NImplode8NHuffman8CDecoderC1Ej = _ZN9NCompress8NImplode8NHuffman8CDecoderC2Ej
 	.globl	_ZN9NCompress8NImplode8NHuffman8CDecoderD1Ev
 	.type	_ZN9NCompress8NImplode8NHuffman8CDecoderD1Ev,@function
-.set _ZN9NCompress8NImplode8NHuffman8CDecoderD1Ev, _ZN9NCompress8NImplode8NHuffman8CDecoderD2Ev
+_ZN9NCompress8NImplode8NHuffman8CDecoderD1Ev = _ZN9NCompress8NImplode8NHuffman8CDecoderD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

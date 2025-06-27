@@ -1778,7 +1778,7 @@ _ZTS4line:
 
 	.globl	_ZN9rectangleC1EP5pointS1_
 	.type	_ZN9rectangleC1EP5pointS1_,@function
-.set _ZN9rectangleC1EP5pointS1_, _ZN9rectangleC2EP5pointS1_
+_ZN9rectangleC1EP5pointS1_ = _ZN9rectangleC2EP5pointS1_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -3163,8 +3163,8 @@ small_pass:                             # @small_pass
 	ld.d	$s2, $t7, %pc_lo12(FF)
 	alsl.d	$a0, $a7, $a1, 2
 	addi.d	$a0, $a0, 4
-	nor	$a1, $a7, $zero
-	add.d	$a1, $t0, $a1
+	sub.d	$a1, $a7, $t0
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 2
 	addi.d	$a2, $a1, 4
@@ -4144,7 +4144,7 @@ diff:                                   # @diff
 	move	$t0, $a6
 	ori	$a5, $zero, 8
 	bltu	$s0, $a5, .LBB8_9
-# %bb.6:                                # %vector.ph509
+# %bb.6:                                # %vector.ph511
                                         #   in Loop: Header=BB8_4 Depth=1
 	bstrpick.d	$t1, $s0, 31, 0
 	sub.d	$a5, $zero, $a2
@@ -4171,7 +4171,7 @@ diff:                                   # @diff
 	addi.d	$t3, $a3, 20
 	move	$t4, $t2
 	.p2align	4, , 16
-.LBB8_7:                                # %vector.body519
+.LBB8_7:                                # %vector.body526
                                         #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vadd.w	$vr5, $vr3, $vr0
@@ -4188,17 +4188,17 @@ diff:                                   # @diff
 	addi.d	$t4, $t4, -8
 	addi.d	$t3, $t3, 32
 	bnez	$t4, .LBB8_7
-# %bb.8:                                # %middle.block530
+# %bb.8:                                # %middle.block532
                                         #   in Loop: Header=BB8_4 Depth=1
 	beq	$t2, $t1, .LBB8_11
-.LBB8_9:                                # %scalar.ph507.preheader
+.LBB8_9:                                # %scalar.ph509.preheader
                                         #   in Loop: Header=BB8_4 Depth=1
 	alsl.d	$a3, $t5, $a3, 2
 	alsl.d	$a5, $t5, $a0, 2
 	sub.d	$t2, $a1, $t5
 	sub.d	$t0, $t0, $a2
 	.p2align	4, , 16
-.LBB8_10:                               # %scalar.ph507
+.LBB8_10:                               # %scalar.ph509
                                         #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	st.w	$t0, $a5, 0

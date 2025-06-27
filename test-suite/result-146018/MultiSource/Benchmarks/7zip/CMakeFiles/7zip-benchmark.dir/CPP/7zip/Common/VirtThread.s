@@ -311,7 +311,7 @@ _ZTS11CVirtThread:
 
 	.globl	_ZN11CVirtThreadD1Ev
 	.type	_ZN11CVirtThreadD1Ev,@function
-.set _ZN11CVirtThreadD1Ev, _ZN11CVirtThreadD2Ev
+_ZN11CVirtThreadD1Ev = _ZN11CVirtThreadD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

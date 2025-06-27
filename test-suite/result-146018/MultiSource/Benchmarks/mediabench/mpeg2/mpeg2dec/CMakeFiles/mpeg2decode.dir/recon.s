@@ -803,13 +803,13 @@ form_component_prediction:              # @form_component_prediction
 	ori	$t3, $zero, 16
 	b	.LBB2_4
 	.p2align	4, , 16
-.LBB2_3:                                # %.loopexit619
+.LBB2_3:                                # %.loopexit611
                                         #   in Loop: Header=BB2_4 Depth=1
 	add.d	$t0, $t0, $a3
 	addi.w	$t1, $t1, 1
 	add.d	$a7, $a7, $a3
 	beq	$t1, $a5, .LBB2_95
-.LBB2_4:                                # %vector.memcheck552
+.LBB2_4:                                # %vector.memcheck546
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_10 Depth 2
                                         #     Child Loop BB2_12 Depth 2
@@ -818,14 +818,14 @@ form_component_prediction:              # @form_component_prediction
 	move	$t5, $zero
 	b	.LBB2_12
 	.p2align	4, , 16
-.LBB2_6:                                # %vector.main.loop.iter.check564
+.LBB2_6:                                # %vector.main.loop.iter.check557
                                         #   in Loop: Header=BB2_4 Depth=1
 	bgeu	$a4, $t3, .LBB2_8
 # %bb.7:                                #   in Loop: Header=BB2_4 Depth=1
 	move	$t4, $zero
 	b	.LBB2_10
 	.p2align	4, , 16
-.LBB2_8:                                # %vector.ph565
+.LBB2_8:                                # %vector.ph558
                                         #   in Loop: Header=BB2_4 Depth=1
 	vld	$vr0, $a7, 0
 	vld	$vr1, $t0, 0
@@ -835,13 +835,13 @@ form_component_prediction:              # @form_component_prediction
 	vsub.b	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
 	beq	$a1, $a2, .LBB2_3
-# %bb.9:                                # %vec.epilog.iter.check576
+# %bb.9:                                # %vec.epilog.iter.check569
                                         #   in Loop: Header=BB2_4 Depth=1
 	move	$t4, $a1
 	move	$t5, $a1
 	beqz	$a6, .LBB2_12
 	.p2align	4, , 16
-.LBB2_10:                               # %vec.epilog.vector.body581
+.LBB2_10:                               # %vec.epilog.vector.body574
                                         #   Parent Loop BB2_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t5, $a7, $t4
@@ -856,12 +856,12 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t4, $t4, 4
 	vstelm.w	$vr0, $t7, 0, 0
 	bne	$t2, $t4, .LBB2_10
-# %bb.11:                               # %vec.epilog.middle.block586
+# %bb.11:                               # %vec.epilog.middle.block579
                                         #   in Loop: Header=BB2_4 Depth=1
 	move	$t5, $t2
 	beq	$t2, $a2, .LBB2_3
 	.p2align	4, , 16
-.LBB2_12:                               # %vec.epilog.scalar.ph574
+.LBB2_12:                               # %vec.epilog.scalar.ph567
                                         #   Parent Loop BB2_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$t4, $a7, $t5
@@ -914,14 +914,14 @@ form_component_prediction:              # @form_component_prediction
 	ori	$t5, $zero, 16
 	b	.LBB2_18
 	.p2align	4, , 16
-.LBB2_17:                               # %.loopexit621
+.LBB2_17:                               # %.loopexit613
                                         #   in Loop: Header=BB2_18 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
 	addi.w	$t4, $t4, 1
 	add.d	$a0, $a0, $a3
 	beq	$t4, $a5, .LBB2_95
-.LBB2_18:                               # %iter.check491
+.LBB2_18:                               # %iter.check486
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_24 Depth 2
                                         #     Child Loop BB2_26 Depth 2
@@ -930,14 +930,14 @@ form_component_prediction:              # @form_component_prediction
 	move	$t7, $zero
 	b	.LBB2_26
 	.p2align	4, , 16
-.LBB2_20:                               # %vector.main.loop.iter.check493
+.LBB2_20:                               # %vector.main.loop.iter.check488
                                         #   in Loop: Header=BB2_18 Depth=1
 	bgeu	$a4, $t5, .LBB2_22
 # %bb.21:                               #   in Loop: Header=BB2_18 Depth=1
 	move	$t6, $zero
 	b	.LBB2_24
 	.p2align	4, , 16
-.LBB2_22:                               # %vector.ph494
+.LBB2_22:                               # %vector.ph489
                                         #   in Loop: Header=BB2_18 Depth=1
 	vld	$vr0, $t0, 0
 	vldx	$vr1, $t0, $a2
@@ -952,13 +952,13 @@ form_component_prediction:              # @form_component_prediction
 	vsub.b	$vr0, $vr1, $vr0
 	vst	$vr0, $a7, 0
 	beq	$a6, $t1, .LBB2_17
-# %bb.23:                               # %vec.epilog.iter.check506
+# %bb.23:                               # %vec.epilog.iter.check501
                                         #   in Loop: Header=BB2_18 Depth=1
 	move	$t6, $a6
 	move	$t7, $a6
 	beqz	$t2, .LBB2_26
 	.p2align	4, , 16
-.LBB2_24:                               # %vec.epilog.vector.body511
+.LBB2_24:                               # %vec.epilog.vector.body506
                                         #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t7, $a7, $t6
@@ -979,12 +979,12 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t6, $t6, 4
 	vstelm.w	$vr0, $t7, 0, 0
 	bne	$t3, $t6, .LBB2_24
-# %bb.25:                               # %vec.epilog.middle.block517
+# %bb.25:                               # %vec.epilog.middle.block512
                                         #   in Loop: Header=BB2_18 Depth=1
 	move	$t7, $t3
 	beq	$t3, $t1, .LBB2_17
 	.p2align	4, , 16
-.LBB2_26:                               # %vec.epilog.scalar.ph504
+.LBB2_26:                               # %vec.epilog.scalar.ph499
                                         #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$t6, $t0, $t7
@@ -1031,7 +1031,7 @@ form_component_prediction:              # @form_component_prediction
 	bnez	$t6, .LBB2_31
 	b	.LBB2_41
 	.p2align	4, , 16
-.LBB2_30:                               # %.loopexit625
+.LBB2_30:                               # %.loopexit617
                                         #   in Loop: Header=BB2_31 Depth=1
 	add.d	$t0, $t0, $a3
 	addi.w	$a0, $a0, 1
@@ -1120,13 +1120,13 @@ form_component_prediction:              # @form_component_prediction
 	bne	$a2, $t8, .LBB2_39
 	b	.LBB2_30
 	.p2align	4, , 16
-.LBB2_40:                               # %.loopexit624
+.LBB2_40:                               # %.loopexit616
                                         #   in Loop: Header=BB2_41 Depth=1
 	add.d	$t0, $t0, $a3
 	addi.w	$a0, $a0, 1
 	add.d	$a7, $a7, $a3
 	beq	$a0, $a5, .LBB2_95
-.LBB2_41:                               # %vector.memcheck337
+.LBB2_41:                               # %vector.memcheck336
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_47 Depth 2
                                         #     Child Loop BB2_49 Depth 2
@@ -1135,14 +1135,14 @@ form_component_prediction:              # @form_component_prediction
 	move	$t5, $zero
 	b	.LBB2_49
 	.p2align	4, , 16
-.LBB2_43:                               # %vector.main.loop.iter.check349
+.LBB2_43:                               # %vector.main.loop.iter.check347
                                         #   in Loop: Header=BB2_41 Depth=1
 	bgeu	$a4, $t3, .LBB2_45
 # %bb.44:                               #   in Loop: Header=BB2_41 Depth=1
 	move	$t4, $zero
 	b	.LBB2_47
 	.p2align	4, , 16
-.LBB2_45:                               # %vector.ph350
+.LBB2_45:                               # %vector.ph348
                                         #   in Loop: Header=BB2_41 Depth=1
 	vld	$vr0, $t0, 0
 	vld	$vr1, $t0, 1
@@ -1152,13 +1152,13 @@ form_component_prediction:              # @form_component_prediction
 	vsub.b	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
 	beq	$a6, $a2, .LBB2_40
-# %bb.46:                               # %vec.epilog.iter.check361
+# %bb.46:                               # %vec.epilog.iter.check359
                                         #   in Loop: Header=BB2_41 Depth=1
 	move	$t4, $a6
 	move	$t5, $a6
 	beqz	$t1, .LBB2_49
 	.p2align	4, , 16
-.LBB2_47:                               # %vec.epilog.vector.body366
+.LBB2_47:                               # %vec.epilog.vector.body364
                                         #   Parent Loop BB2_41 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t5, $t0, $t4
@@ -1174,12 +1174,12 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t4, $t4, 4
 	vstelm.w	$vr0, $t5, 0, 0
 	bne	$t2, $t4, .LBB2_47
-# %bb.48:                               # %vec.epilog.middle.block371
+# %bb.48:                               # %vec.epilog.middle.block369
                                         #   in Loop: Header=BB2_41 Depth=1
 	move	$t5, $t2
 	beq	$t2, $a2, .LBB2_40
 	.p2align	4, , 16
-.LBB2_49:                               # %vec.epilog.scalar.ph359
+.LBB2_49:                               # %vec.epilog.scalar.ph357
                                         #   Parent Loop BB2_41 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t4, $t0, $t5
@@ -1204,13 +1204,13 @@ form_component_prediction:              # @form_component_prediction
 	ori	$t3, $zero, 16
 	b	.LBB2_52
 	.p2align	4, , 16
-.LBB2_51:                               # %.loopexit618
+.LBB2_51:                               # %.loopexit610
                                         #   in Loop: Header=BB2_52 Depth=1
 	add.d	$t0, $t0, $a3
 	addi.w	$a1, $a1, 1
 	add.d	$a7, $a7, $a3
 	beq	$a1, $a5, .LBB2_95
-.LBB2_52:                               # %vector.memcheck589
+.LBB2_52:                               # %vector.memcheck582
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_58 Depth 2
                                         #     Child Loop BB2_60 Depth 2
@@ -1219,37 +1219,37 @@ form_component_prediction:              # @form_component_prediction
 	move	$t4, $zero
 	b	.LBB2_60
 	.p2align	4, , 16
-.LBB2_54:                               # %vector.main.loop.iter.check595
+.LBB2_54:                               # %vector.main.loop.iter.check587
                                         #   in Loop: Header=BB2_52 Depth=1
 	bgeu	$a4, $t3, .LBB2_56
 # %bb.55:                               #   in Loop: Header=BB2_52 Depth=1
 	move	$t5, $zero
 	b	.LBB2_58
 	.p2align	4, , 16
-.LBB2_56:                               # %vector.ph596
+.LBB2_56:                               # %vector.ph588
                                         #   in Loop: Header=BB2_52 Depth=1
 	vld	$vr0, $t0, 0
 	vst	$vr0, $a7, 0
 	beq	$a6, $a2, .LBB2_51
-# %bb.57:                               # %vec.epilog.iter.check606
+# %bb.57:                               # %vec.epilog.iter.check598
                                         #   in Loop: Header=BB2_52 Depth=1
 	move	$t5, $a6
 	move	$t4, $a6
 	beqz	$t1, .LBB2_60
 	.p2align	4, , 16
-.LBB2_58:                               # %vec.epilog.vector.body611
+.LBB2_58:                               # %vec.epilog.vector.body603
                                         #   Parent Loop BB2_52 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t4, $t0, $t5
 	stx.w	$t4, $a7, $t5
 	addi.d	$t5, $t5, 4
 	bne	$t2, $t5, .LBB2_58
-# %bb.59:                               # %vec.epilog.middle.block615
+# %bb.59:                               # %vec.epilog.middle.block607
                                         #   in Loop: Header=BB2_52 Depth=1
 	move	$t4, $t2
 	beq	$t2, $a2, .LBB2_51
 	.p2align	4, , 16
-.LBB2_60:                               # %vec.epilog.scalar.ph604
+.LBB2_60:                               # %vec.epilog.scalar.ph596
                                         #   Parent Loop BB2_52 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.b	$t5, $t0, $t4
@@ -1276,7 +1276,7 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t8, $t7, $a2
 	move	$a1, $zero
 	beqz	$t6, .LBB2_84
-# %bb.62:                               # %iter.check391.preheader
+# %bb.62:                               # %iter.check388.preheader
 	sltu	$t6, $a7, $t8
 	sltu	$t5, $t5, $t4
 	and	$t5, $t6, $t5
@@ -1298,7 +1298,7 @@ form_component_prediction:              # @form_component_prediction
 	vrepli.b	$vr0, 0
 	b	.LBB2_64
 	.p2align	4, , 16
-.LBB2_63:                               # %.loopexit623
+.LBB2_63:                               # %.loopexit615
                                         #   in Loop: Header=BB2_64 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
@@ -1306,7 +1306,7 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t2, $t2, $a3
 	add.d	$a0, $a0, $a3
 	beq	$a1, $a5, .LBB2_95
-.LBB2_64:                               # %iter.check391
+.LBB2_64:                               # %iter.check388
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_70 Depth 2
                                         #     Child Loop BB2_72 Depth 2
@@ -1315,14 +1315,14 @@ form_component_prediction:              # @form_component_prediction
 	move	$t8, $zero
 	b	.LBB2_72
 	.p2align	4, , 16
-.LBB2_66:                               # %vector.main.loop.iter.check393
+.LBB2_66:                               # %vector.main.loop.iter.check390
                                         #   in Loop: Header=BB2_64 Depth=1
 	bgeu	$a4, $t3, .LBB2_68
 # %bb.67:                               #   in Loop: Header=BB2_64 Depth=1
 	move	$t7, $zero
 	b	.LBB2_70
 	.p2align	4, , 16
-.LBB2_68:                               # %vector.ph394
+.LBB2_68:                               # %vector.ph391
                                         #   in Loop: Header=BB2_64 Depth=1
 	vld	$vr1, $a7, 0
 	add.d	$t7, $t0, $a2
@@ -1359,13 +1359,13 @@ form_component_prediction:              # @form_component_prediction
 	vpickev.b	$vr1, $vr2, $vr1
 	vst	$vr1, $a7, 0
 	beq	$t5, $t1, .LBB2_63
-# %bb.69:                               # %vec.epilog.iter.check408
+# %bb.69:                               # %vec.epilog.iter.check405
                                         #   in Loop: Header=BB2_64 Depth=1
 	move	$t7, $t5
 	move	$t8, $t5
 	beqz	$t6, .LBB2_72
 	.p2align	4, , 16
-.LBB2_70:                               # %vec.epilog.vector.body413
+.LBB2_70:                               # %vec.epilog.vector.body410
                                         #   Parent Loop BB2_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t8, $a7, $t7
@@ -1399,12 +1399,12 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t7, $t7, 4
 	vstelm.w	$vr1, $fp, 0, 0
 	bne	$a6, $t7, .LBB2_70
-# %bb.71:                               # %vec.epilog.middle.block421
+# %bb.71:                               # %vec.epilog.middle.block418
                                         #   in Loop: Header=BB2_64 Depth=1
 	move	$t8, $a6
 	beq	$a6, $t1, .LBB2_63
 	.p2align	4, , 16
-.LBB2_72:                               # %vec.epilog.scalar.ph406
+.LBB2_72:                               # %vec.epilog.scalar.ph403
                                         #   Parent Loop BB2_64 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$t7, $a7, $t8
@@ -1447,14 +1447,14 @@ form_component_prediction:              # @form_component_prediction
 	ori	$t2, $zero, 16
 	b	.LBB2_75
 	.p2align	4, , 16
-.LBB2_74:                               # %.loopexit620
+.LBB2_74:                               # %.loopexit612
                                         #   in Loop: Header=BB2_75 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
 	addi.w	$a1, $a1, 1
 	add.d	$a0, $a0, $a3
 	beq	$a1, $a5, .LBB2_95
-.LBB2_75:                               # %iter.check525
+.LBB2_75:                               # %iter.check519
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_81 Depth 2
                                         #     Child Loop BB2_83 Depth 2
@@ -1463,14 +1463,14 @@ form_component_prediction:              # @form_component_prediction
 	move	$t7, $zero
 	b	.LBB2_83
 	.p2align	4, , 16
-.LBB2_77:                               # %vector.main.loop.iter.check527
+.LBB2_77:                               # %vector.main.loop.iter.check521
                                         #   in Loop: Header=BB2_75 Depth=1
 	bgeu	$a4, $t2, .LBB2_79
 # %bb.78:                               #   in Loop: Header=BB2_75 Depth=1
 	move	$t3, $zero
 	b	.LBB2_81
 	.p2align	4, , 16
-.LBB2_79:                               # %vector.ph528
+.LBB2_79:                               # %vector.ph522
                                         #   in Loop: Header=BB2_75 Depth=1
 	vld	$vr0, $t0, 0
 	vldx	$vr1, $t0, $a2
@@ -1480,13 +1480,13 @@ form_component_prediction:              # @form_component_prediction
 	vsub.b	$vr0, $vr2, $vr0
 	vst	$vr0, $a7, 0
 	beq	$t5, $t1, .LBB2_74
-# %bb.80:                               # %vec.epilog.iter.check539
+# %bb.80:                               # %vec.epilog.iter.check533
                                         #   in Loop: Header=BB2_75 Depth=1
 	move	$t3, $t5
 	move	$t7, $t5
 	beqz	$t6, .LBB2_83
 	.p2align	4, , 16
-.LBB2_81:                               # %vec.epilog.vector.body544
+.LBB2_81:                               # %vec.epilog.vector.body538
                                         #   Parent Loop BB2_75 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t7, $t0, $t3
@@ -1501,12 +1501,12 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t3, $t3, 4
 	vstelm.w	$vr0, $t7, 0, 0
 	bne	$a6, $t3, .LBB2_81
-# %bb.82:                               # %vec.epilog.middle.block549
+# %bb.82:                               # %vec.epilog.middle.block543
                                         #   in Loop: Header=BB2_75 Depth=1
 	move	$t7, $a6
 	beq	$a6, $t1, .LBB2_74
 	.p2align	4, , 16
-.LBB2_83:                               # %vec.epilog.scalar.ph537
+.LBB2_83:                               # %vec.epilog.scalar.ph531
                                         #   Parent Loop BB2_75 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$t3, $t0, $t7
@@ -1518,7 +1518,7 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t7, $t7, 1
 	bne	$t1, $t7, .LBB2_83
 	b	.LBB2_74
-.LBB2_84:                               # %iter.check442.preheader
+.LBB2_84:                               # %iter.check438.preheader
 	sltu	$t6, $a7, $t8
 	sltu	$t5, $t5, $t4
 	and	$t5, $t6, $t5
@@ -1540,7 +1540,7 @@ form_component_prediction:              # @form_component_prediction
 	vrepli.b	$vr0, 0
 	b	.LBB2_86
 	.p2align	4, , 16
-.LBB2_85:                               # %.loopexit622
+.LBB2_85:                               # %.loopexit614
                                         #   in Loop: Header=BB2_86 Depth=1
 	add.d	$t0, $t0, $a3
 	add.d	$a7, $a7, $a3
@@ -1548,7 +1548,7 @@ form_component_prediction:              # @form_component_prediction
 	add.d	$t2, $t2, $a3
 	add.d	$a0, $a0, $a3
 	beq	$a1, $a5, .LBB2_95
-.LBB2_86:                               # %iter.check442
+.LBB2_86:                               # %iter.check438
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_92 Depth 2
                                         #     Child Loop BB2_94 Depth 2
@@ -1557,14 +1557,14 @@ form_component_prediction:              # @form_component_prediction
 	move	$t8, $zero
 	b	.LBB2_94
 	.p2align	4, , 16
-.LBB2_88:                               # %vector.main.loop.iter.check444
+.LBB2_88:                               # %vector.main.loop.iter.check440
                                         #   in Loop: Header=BB2_86 Depth=1
 	bgeu	$a4, $t3, .LBB2_90
 # %bb.89:                               #   in Loop: Header=BB2_86 Depth=1
 	move	$t7, $zero
 	b	.LBB2_92
 	.p2align	4, , 16
-.LBB2_90:                               # %vector.ph445
+.LBB2_90:                               # %vector.ph441
                                         #   in Loop: Header=BB2_86 Depth=1
 	vld	$vr1, $t0, 0
 	add.d	$t7, $t0, $a2
@@ -1592,13 +1592,13 @@ form_component_prediction:              # @form_component_prediction
 	vpickev.b	$vr1, $vr2, $vr1
 	vst	$vr1, $a7, 0
 	beq	$t5, $t1, .LBB2_85
-# %bb.91:                               # %vec.epilog.iter.check458
+# %bb.91:                               # %vec.epilog.iter.check454
                                         #   in Loop: Header=BB2_86 Depth=1
 	move	$t7, $t5
 	move	$t8, $t5
 	beqz	$t6, .LBB2_94
 	.p2align	4, , 16
-.LBB2_92:                               # %vec.epilog.vector.body463
+.LBB2_92:                               # %vec.epilog.vector.body459
                                         #   Parent Loop BB2_86 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.w	$t8, $t0, $t7
@@ -1625,12 +1625,12 @@ form_component_prediction:              # @form_component_prediction
 	addi.d	$t7, $t7, 4
 	vstelm.w	$vr1, $t8, 0, 0
 	bne	$a6, $t7, .LBB2_92
-# %bb.93:                               # %vec.epilog.middle.block470
+# %bb.93:                               # %vec.epilog.middle.block466
                                         #   in Loop: Header=BB2_86 Depth=1
 	move	$t8, $a6
 	beq	$a6, $t1, .LBB2_85
 	.p2align	4, , 16
-.LBB2_94:                               # %vec.epilog.scalar.ph456
+.LBB2_94:                               # %vec.epilog.scalar.ph452
                                         #   Parent Loop BB2_86 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$t7, $t0, $t8

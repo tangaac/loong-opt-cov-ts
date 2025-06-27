@@ -783,8 +783,8 @@ read_samples_pcm:                       # @read_samples_pcm
 	slli.d	$a0, $a1, 1
 	bstrpick.d	$a0, $a0, 31, 1
 	alsl.d	$a0, $a0, $s0, 1
+	sub.d	$a1, $a1, $fp
 	nor	$a1, $a1, $zero
-	add.d	$a1, $fp, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 1
 	addi.d	$a2, $a1, 2

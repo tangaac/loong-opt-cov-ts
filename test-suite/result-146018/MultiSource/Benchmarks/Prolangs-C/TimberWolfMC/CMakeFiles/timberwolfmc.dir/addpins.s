@@ -321,8 +321,8 @@ subpins:                                # @subpins
 	maskeqz	$a1, $a1, $a4
 	masknez	$a3, $a3, $a4
 	or	$a1, $a1, $a3
-	nor	$a2, $a2, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $a2, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

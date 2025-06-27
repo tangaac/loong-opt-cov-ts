@@ -2462,14 +2462,14 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	sub.d	$a3, $s1, $a1
 	ori	$a4, $zero, 32
 	bltu	$a3, $a4, .LBB25_45
-# %bb.42:                               # %vector.ph301
+# %bb.42:                               # %vector.ph299
 	bstrpick.d	$a0, $a2, 30, 3
 	slli.d	$a0, $a0, 3
 	addi.d	$a3, $a1, 16
 	addi.d	$a4, $s1, 16
 	move	$a5, $a0
 	.p2align	4, , 16
-.LBB25_43:                              # %vector.body304
+.LBB25_43:                              # %vector.body302
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, -16
 	vld	$vr1, $a3, 0
@@ -2479,14 +2479,14 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB25_43
-# %bb.44:                               # %middle.block309
+# %bb.44:                               # %middle.block307
 	beq	$a0, $a2, .LBB25_47
-.LBB25_45:                              # %scalar.ph299.preheader
+.LBB25_45:                              # %scalar.ph297.preheader
 	sub.d	$a2, $a2, $a0
 	alsl.d	$a3, $a0, $a1, 2
 	alsl.d	$a0, $a0, $s1, 2
 	.p2align	4, , 16
-.LBB25_46:                              # %scalar.ph299
+.LBB25_46:                              # %scalar.ph297
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $a3, 0
 	fst.s	$fa0, $a0, 0
@@ -2539,7 +2539,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	sub.d	$a4, $a2, $a1
 	ori	$a5, $zero, 32
 	bltu	$a4, $a5, .LBB25_59
-# %bb.56:                               # %vector.ph316
+# %bb.56:                               # %vector.ph314
 	bstrpick.d	$a3, $a0, 30, 3
 	slli.d	$a3, $a3, 3
 	addi.d	$a4, $a2, 16
@@ -2547,7 +2547,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	vrepli.b	$vr0, 0
 	move	$a6, $a3
 	.p2align	4, , 16
-.LBB25_57:                              # %vector.body319
+.LBB25_57:                              # %vector.body317
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a5, -16
 	vst	$vr0, $a5, 0
@@ -2557,14 +2557,14 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 32
 	bnez	$a6, .LBB25_57
-# %bb.58:                               # %middle.block322
+# %bb.58:                               # %middle.block320
 	beq	$a3, $a0, .LBB25_61
-.LBB25_59:                              # %scalar.ph314.preheader
+.LBB25_59:                              # %scalar.ph312.preheader
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a1, $a3, $a1, 2
 	sub.d	$a3, $a0, $a3
 	.p2align	4, , 16
-.LBB25_60:                              # %scalar.ph314
+.LBB25_60:                              # %scalar.ph312
                                         # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a1, 0
 	st.w	$zero, $a2, 0
@@ -3690,10 +3690,10 @@ _ZTSN16btCollisionWorld17RayResultCallbackE:
 	.dword	_GLOBAL__sub_I_btRaycastVehicle.cpp
 	.globl	_ZN16btRaycastVehicleC1ERKNS_15btVehicleTuningEP11btRigidBodyP18btVehicleRaycaster
 	.type	_ZN16btRaycastVehicleC1ERKNS_15btVehicleTuningEP11btRigidBodyP18btVehicleRaycaster,@function
-.set _ZN16btRaycastVehicleC1ERKNS_15btVehicleTuningEP11btRigidBodyP18btVehicleRaycaster, _ZN16btRaycastVehicleC2ERKNS_15btVehicleTuningEP11btRigidBodyP18btVehicleRaycaster
+_ZN16btRaycastVehicleC1ERKNS_15btVehicleTuningEP11btRigidBodyP18btVehicleRaycaster = _ZN16btRaycastVehicleC2ERKNS_15btVehicleTuningEP11btRigidBodyP18btVehicleRaycaster
 	.globl	_ZN16btRaycastVehicleD1Ev
 	.type	_ZN16btRaycastVehicleD1Ev,@function
-.set _ZN16btRaycastVehicleD1Ev, _ZN16btRaycastVehicleD2Ev
+_ZN16btRaycastVehicleD1Ev = _ZN16btRaycastVehicleD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

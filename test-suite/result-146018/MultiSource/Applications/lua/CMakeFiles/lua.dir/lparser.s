@@ -4326,8 +4326,8 @@ pushclosure:                            # @pushclosure
 # %bb.2:                                # %.lr.ph
 	ld.d	$s5, $s2, 32
 	alsl.d	$a0, $s4, $s5, 3
-	nor	$a2, $s4, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $s4, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8
@@ -4856,8 +4856,8 @@ singlevaraux:                           # @singlevaraux
 	bge	$s4, $a2, .LBB17_26
 .LBB17_25:                              # %.lr.ph51.i
 	alsl.d	$a0, $s4, $s2, 3
-	nor	$a1, $s4, $zero
-	add.d	$a1, $a2, $a1
+	sub.d	$a1, $s4, $a2
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a1, 8

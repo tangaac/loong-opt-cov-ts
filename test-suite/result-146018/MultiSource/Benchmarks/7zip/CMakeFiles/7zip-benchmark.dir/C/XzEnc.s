@@ -566,12 +566,11 @@ Xz_Encode:                              # @Xz_Encode
 	ld.d	$s4, $sp, 344
 	ld.d	$s1, $sp, 368
 	sub.d	$a0, $s4, $s3
-	andi	$a0, $a0, 3
-	beqz	$a0, .LBB6_14
+	andi	$a1, $a0, 3
+	beqz	$a1, .LBB6_14
 # %bb.13:                               # %.lr.ph.preheader.i
-	nor	$a0, $s4, $zero
-	add.d	$a0, $s3, $a0
-	andi	$a0, $a0, 3
+	ori	$a1, $zero, 3
+	andn	$a0, $a1, $a0
 	addi.d	$a2, $a0, 1
 	addi.d	$a0, $sp, 48
 	move	$a1, $zero

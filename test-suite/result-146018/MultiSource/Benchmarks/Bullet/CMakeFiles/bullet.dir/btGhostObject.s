@@ -1986,7 +1986,7 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	mul.d	$a5, $a5, $a6
 	srli.d	$a5, $a5, 33
 	alsl.d	$a5, $a5, $a5, 1
-	sub.d	$a4, $a4, $a5
+	sub.w	$a4, $a4, $a5
 	addi.w	$a2, $a2, 0
 	alsl.d	$fp, $a2, $a0, 4
 	slli.d	$s1, $a2, 2
@@ -1994,9 +1994,8 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	alsl.d	$s4, $a3, $a0, 4
 	slli.d	$s0, $a3, 2
 	fldx.s	$fa1, $s4, $s0
-	bstrpick.d	$a2, $a4, 31, 0
-	alsl.d	$s3, $a2, $a0, 4
-	slli.d	$s2, $a2, 2
+	alsl.d	$s3, $a4, $a0, 4
+	slli.d	$s2, $a4, 2
 	fldx.s	$fa2, $s3, $s2
 	fsub.s	$fa0, $fa0, $fa1
 	fsub.s	$fa0, $fa0, $fa2
@@ -2124,16 +2123,16 @@ _ZTS24btPairCachingGhostObject:
 
 	.globl	_ZN13btGhostObjectC1Ev
 	.type	_ZN13btGhostObjectC1Ev,@function
-.set _ZN13btGhostObjectC1Ev, _ZN13btGhostObjectC2Ev
+_ZN13btGhostObjectC1Ev = _ZN13btGhostObjectC2Ev
 	.globl	_ZN13btGhostObjectD1Ev
 	.type	_ZN13btGhostObjectD1Ev,@function
-.set _ZN13btGhostObjectD1Ev, _ZN13btGhostObjectD2Ev
+_ZN13btGhostObjectD1Ev = _ZN13btGhostObjectD2Ev
 	.globl	_ZN24btPairCachingGhostObjectC1Ev
 	.type	_ZN24btPairCachingGhostObjectC1Ev,@function
-.set _ZN24btPairCachingGhostObjectC1Ev, _ZN24btPairCachingGhostObjectC2Ev
+_ZN24btPairCachingGhostObjectC1Ev = _ZN24btPairCachingGhostObjectC2Ev
 	.globl	_ZN24btPairCachingGhostObjectD1Ev
 	.type	_ZN24btPairCachingGhostObjectD1Ev,@function
-.set _ZN24btPairCachingGhostObjectD1Ev, _ZN24btPairCachingGhostObjectD2Ev
+_ZN24btPairCachingGhostObjectD1Ev = _ZN24btPairCachingGhostObjectD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

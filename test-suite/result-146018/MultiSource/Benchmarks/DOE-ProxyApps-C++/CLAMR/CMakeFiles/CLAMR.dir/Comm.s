@@ -44,9 +44,9 @@ _ZN2PP4Comm19global_abort_parserEv:     # @_ZN2PP4Comm19global_abort_parserEv
                                         # -- End function
 	.globl	_ZN2PP4CommC1Ev
 	.type	_ZN2PP4CommC1Ev,@function
-.set _ZN2PP4CommC1Ev, _ZN2PP4CommC2Ev
+_ZN2PP4CommC1Ev = _ZN2PP4CommC2Ev
 	.globl	_ZN2PP4CommD1Ev
 	.type	_ZN2PP4CommD1Ev,@function
-.set _ZN2PP4CommD1Ev, _ZN2PP4CommD2Ev
+_ZN2PP4CommD1Ev = _ZN2PP4CommD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

@@ -1677,8 +1677,8 @@ _ZN9NCompress8NHuffman8CDecoderILi15ELj19EE14SetCodeLengthsEPKh: # @_ZN9NCompres
                                         #   in Loop: Header=BB6_22 Depth=1
 	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s3
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s3, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $fp
@@ -2034,8 +2034,8 @@ _ZN9NCompress8NHuffman8CDecoderILi15ELj288EE14SetCodeLengthsEPKh: # @_ZN9NCompre
                                         #   in Loop: Header=BB7_6 Depth=1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s3
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s3, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $s0
@@ -2192,8 +2192,8 @@ _ZN9NCompress8NHuffman8CDecoderILi15ELj32EE14SetCodeLengthsEPKh: # @_ZN9NCompres
                                         #   in Loop: Header=BB8_6 Depth=1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
+	sub.d	$a1, $a1, $s3
 	nor	$a1, $a1, $zero
-	add.d	$a1, $s3, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $s0
@@ -5747,7 +5747,7 @@ _ZTS13CMyUnknownImp:
 	.dword	_ZTI19COutBufferException
 	.globl	_ZN9NCompress8NDeflate8NDecoder6CCoderC1Ebb
 	.type	_ZN9NCompress8NDeflate8NDecoder6CCoderC1Ebb,@function
-.set _ZN9NCompress8NDeflate8NDecoder6CCoderC1Ebb, _ZN9NCompress8NDeflate8NDecoder6CCoderC2Ebb
+_ZN9NCompress8NDeflate8NDecoder6CCoderC1Ebb = _ZN9NCompress8NDeflate8NDecoder6CCoderC2Ebb
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

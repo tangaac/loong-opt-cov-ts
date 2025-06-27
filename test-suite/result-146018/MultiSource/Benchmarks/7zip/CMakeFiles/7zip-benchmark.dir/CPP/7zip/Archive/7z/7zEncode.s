@@ -7953,10 +7953,10 @@ _ZTS13CRecordVectorIP20ISequentialOutStreamE:
 
 	.globl	_ZN8NArchive3N7z8CEncoderC1ERKNS0_22CCompressionMethodModeE
 	.type	_ZN8NArchive3N7z8CEncoderC1ERKNS0_22CCompressionMethodModeE,@function
-.set _ZN8NArchive3N7z8CEncoderC1ERKNS0_22CCompressionMethodModeE, _ZN8NArchive3N7z8CEncoderC2ERKNS0_22CCompressionMethodModeE
+_ZN8NArchive3N7z8CEncoderC1ERKNS0_22CCompressionMethodModeE = _ZN8NArchive3N7z8CEncoderC2ERKNS0_22CCompressionMethodModeE
 	.globl	_ZN8NArchive3N7z8CEncoderD1Ev
 	.type	_ZN8NArchive3N7z8CEncoderD1Ev,@function
-.set _ZN8NArchive3N7z8CEncoderD1Ev, _ZN8NArchive3N7z8CEncoderD2Ev
+_ZN8NArchive3N7z8CEncoderD1Ev = _ZN8NArchive3N7z8CEncoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

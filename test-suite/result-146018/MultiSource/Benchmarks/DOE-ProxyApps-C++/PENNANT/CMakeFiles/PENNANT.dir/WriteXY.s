@@ -1068,10 +1068,10 @@ GCC_except_table2:
 
 	.globl	_ZN7WriteXYC1EP4Mesh
 	.type	_ZN7WriteXYC1EP4Mesh,@function
-.set _ZN7WriteXYC1EP4Mesh, _ZN7WriteXYC2EP4Mesh
+_ZN7WriteXYC1EP4Mesh = _ZN7WriteXYC2EP4Mesh
 	.globl	_ZN7WriteXYD1Ev
 	.type	_ZN7WriteXYD1Ev,@function
-.set _ZN7WriteXYD1Ev, _ZN7WriteXYD2Ev
+_ZN7WriteXYD1Ev = _ZN7WriteXYD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

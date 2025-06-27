@@ -195,8 +195,8 @@ RandTree:                               # @RandTree
 	pcalau12i	$a0, %pc_hi20(NDim)
 	ld.w	$a0, $a0, %pc_lo12(NDim)
 	slt	$a4, $a3, $a0
-	nor	$a5, $a3, $zero
-	add.d	$a0, $a0, $a5
+	sub.d	$a0, $a3, $a0
+	nor	$a0, $a0, $zero
 	ori	$a5, $zero, 1
 	sll.w	$a0, $a5, $a0
 	maskeqz	$a0, $a0, $a4

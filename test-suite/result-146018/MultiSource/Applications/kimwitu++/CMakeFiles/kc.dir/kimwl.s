@@ -3941,20 +3941,15 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	beqz	$a2, .LBB9_36
 # %bb.27:                               # %.lr.ph49
 	move	$fp, $zero
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $s0
-	masknez	$a0, $a0, $a1
-	maskeqz	$a1, $s0, $a1
-	or	$s7, $a1, $a0
-	pcalau12i	$s0, %pc_hi20(yyin)
-	addi.w	$s1, $zero, -1
+	pcalau12i	$s1, %pc_hi20(yyin)
+	addi.w	$s7, $zero, -1
 	ori	$s8, $zero, 10
 	.p2align	4, , 16
 .LBB9_28:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s0, %pc_lo12(yyin)
+	ld.d	$a0, $s1, %pc_lo12(yyin)
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s1, .LBB9_32
+	beq	$a0, $s7, .LBB9_32
 # %bb.29:                               #   in Loop: Header=BB9_28 Depth=1
 	beq	$a0, $s8, .LBB9_32
 # %bb.30:                               #   in Loop: Header=BB9_28 Depth=1
@@ -3966,11 +3961,11 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	add.d	$a1, $a1, $s4
 	stx.b	$a0, $a1, $fp
 	addi.d	$fp, $fp, 1
-	bne	$s7, $fp, .LBB9_28
+	bne	$s0, $fp, .LBB9_28
 # %bb.31:
-	move	$fp, $s7
+	move	$fp, $s0
 .LBB9_32:                               # %.critedge
-	beq	$a0, $s1, .LBB9_42
+	beq	$a0, $s7, .LBB9_42
 # %bb.33:                               # %.critedge
 	ori	$a1, $zero, 10
 	bne	$a0, $a1, .LBB9_43
@@ -4056,7 +4051,7 @@ _ZL18yy_get_next_bufferv:               # @_ZL18yy_get_next_bufferv
 	st.w	$fp, $s1, 28
 	b	.LBB9_45
 .LBB9_42:
-	ld.d	$a0, $s0, %pc_lo12(yyin)
+	ld.d	$a0, $s1, %pc_lo12(yyin)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB9_49

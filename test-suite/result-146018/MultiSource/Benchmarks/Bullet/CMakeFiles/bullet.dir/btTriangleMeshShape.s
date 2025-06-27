@@ -1348,10 +1348,10 @@ _ZTS21SupportVertexCallback:
 
 	.globl	_ZN19btTriangleMeshShapeC1EP23btStridingMeshInterface
 	.type	_ZN19btTriangleMeshShapeC1EP23btStridingMeshInterface,@function
-.set _ZN19btTriangleMeshShapeC1EP23btStridingMeshInterface, _ZN19btTriangleMeshShapeC2EP23btStridingMeshInterface
+_ZN19btTriangleMeshShapeC1EP23btStridingMeshInterface = _ZN19btTriangleMeshShapeC2EP23btStridingMeshInterface
 	.globl	_ZN19btTriangleMeshShapeD1Ev
 	.type	_ZN19btTriangleMeshShapeD1Ev,@function
-.set _ZN19btTriangleMeshShapeD1Ev, _ZN19btTriangleMeshShapeD2Ev
+_ZN19btTriangleMeshShapeD1Ev = _ZN19btTriangleMeshShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

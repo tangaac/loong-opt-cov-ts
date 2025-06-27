@@ -236,10 +236,10 @@ _ZN7HydroBC12applyFixedBCEP7double2S1_ii: # @_ZN7HydroBC12applyFixedBCEP7double2
                                         # -- End function
 	.globl	_ZN7HydroBCC1EP4Mesh7double2RKSt6vectorIiSaIiEE
 	.type	_ZN7HydroBCC1EP4Mesh7double2RKSt6vectorIiSaIiEE,@function
-.set _ZN7HydroBCC1EP4Mesh7double2RKSt6vectorIiSaIiEE, _ZN7HydroBCC2EP4Mesh7double2RKSt6vectorIiSaIiEE
+_ZN7HydroBCC1EP4Mesh7double2RKSt6vectorIiSaIiEE = _ZN7HydroBCC2EP4Mesh7double2RKSt6vectorIiSaIiEE
 	.globl	_ZN7HydroBCD1Ev
 	.type	_ZN7HydroBCD1Ev,@function
-.set _ZN7HydroBCD1Ev, _ZN7HydroBCD2Ev
+_ZN7HydroBCD1Ev = _ZN7HydroBCD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

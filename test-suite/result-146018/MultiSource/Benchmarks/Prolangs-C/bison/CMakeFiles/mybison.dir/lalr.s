@@ -1813,7 +1813,8 @@ compute_lookaheads:                     # @compute_lookaheads
 	addi.d	$a5, $a2, 4
 	addi.d	$a6, $a2, 16
 	pcalau12i	$a7, %pc_hi20(tokensetsize)
-	ori	$t0, $zero, 28
+	addi.w	$t0, $zero, -4
+	ori	$t1, $zero, 28
 	b	.LBB11_3
 	.p2align	4, , 16
 .LBB11_2:                               # %._crit_edge
@@ -1824,106 +1825,106 @@ compute_lookaheads:                     # @compute_lookaheads
                                         #     Child Loop BB11_7 Depth 2
                                         #       Child Loop BB11_13 Depth 3
                                         #       Child Loop BB11_15 Depth 3
-	ld.w	$t3, $a7, %pc_lo12(tokensetsize)
-	slli.d	$t1, $a1, 3
-	ldx.d	$t1, $a3, $t1
-	move	$t2, $a4
-	alsl.d	$a4, $t3, $a4, 2
-	beqz	$t1, .LBB11_2
+	ld.w	$t4, $a7, %pc_lo12(tokensetsize)
+	slli.d	$t2, $a1, 3
+	ldx.d	$t2, $a3, $t2
+	move	$t3, $a4
+	alsl.d	$a4, $t4, $a4, 2
+	beqz	$t2, .LBB11_2
 # %bb.4:                                #   in Loop: Header=BB11_3 Depth=1
-	blt	$t3, $a0, .LBB11_2
+	blt	$t4, $a0, .LBB11_2
 # %bb.5:                                # %.lr.ph.us.preheader
                                         #   in Loop: Header=BB11_3 Depth=1
-	addi.d	$t4, $t2, 4
-	alsl.d	$t3, $t3, $t2, 2
-	sltu	$t5, $t4, $t3
-	maskeqz	$t3, $t3, $t5
-	masknez	$t5, $t4, $t5
-	or	$t3, $t3, $t5
-	nor	$t5, $t2, $zero
-	add.d	$t3, $t3, $t5
-	move	$t5, $t3
-	bstrins.d	$t5, $zero, 1, 0
-	add.d	$t4, $t4, $t5
-	add.d	$t5, $a5, $t5
-	srli.d	$t6, $t3, 2
-	addi.d	$t6, $t6, 1
-	bstrpick.d	$t8, $t6, 62, 3
-	slli.d	$t7, $t8, 3
-	slli.d	$t8, $t8, 5
-	add.d	$s2, $t2, $t8
-	addi.d	$s3, $t2, 16
+	addi.d	$t5, $t3, 4
+	alsl.d	$t4, $t4, $t3, 2
+	sltu	$t6, $t5, $t4
+	maskeqz	$t4, $t4, $t6
+	masknez	$t6, $t5, $t6
+	or	$t6, $t4, $t6
+	nor	$t4, $t3, $zero
+	add.d	$t4, $t6, $t4
+	sub.d	$t6, $t3, $t6
+	andn	$t6, $t0, $t6
+	add.d	$t5, $t5, $t6
+	add.d	$t6, $a5, $t6
+	srli.d	$t7, $t4, 2
+	addi.d	$t7, $t7, 1
+	bstrpick.d	$s2, $t7, 62, 3
+	slli.d	$t8, $s2, 3
+	slli.d	$s2, $s2, 5
+	add.d	$s3, $t3, $s2
+	addi.d	$s4, $t3, 16
 	b	.LBB11_7
 	.p2align	4, , 16
 .LBB11_6:                               # %..loopexit_crit_edge.us
                                         #   in Loop: Header=BB11_7 Depth=2
-	ld.d	$t1, $t1, 0
-	beqz	$t1, .LBB11_2
+	ld.d	$t2, $t2, 0
+	beqz	$t2, .LBB11_2
 .LBB11_7:                               # %.lr.ph.us
                                         #   Parent Loop BB11_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB11_13 Depth 3
                                         #       Child Loop BB11_15 Depth 3
-	ld.w	$s4, $a7, %pc_lo12(tokensetsize)
-	ld.h	$s5, $t1, 8
-	mul.w	$s5, $s4, $s5
-	alsl.d	$s4, $s5, $a2, 2
-	bgeu	$t3, $t0, .LBB11_9
+	ld.w	$s5, $a7, %pc_lo12(tokensetsize)
+	ld.h	$s6, $t2, 8
+	mul.w	$s6, $s5, $s6
+	alsl.d	$s5, $s6, $a2, 2
+	bgeu	$t4, $t1, .LBB11_9
 # %bb.8:                                #   in Loop: Header=BB11_7 Depth=2
-	move	$s5, $t2
+	move	$s6, $t3
 	b	.LBB11_15
 	.p2align	4, , 16
 .LBB11_9:                               # %vector.memcheck
                                         #   in Loop: Header=BB11_7 Depth=2
-	alsl.d	$s6, $s5, $t5, 2
-	bgeu	$t2, $s6, .LBB11_12
+	alsl.d	$s7, $s6, $t6, 2
+	bgeu	$t3, $s7, .LBB11_12
 # %bb.10:                               # %vector.memcheck
                                         #   in Loop: Header=BB11_7 Depth=2
-	bgeu	$s4, $t4, .LBB11_12
+	bgeu	$s5, $t5, .LBB11_12
 # %bb.11:                               #   in Loop: Header=BB11_7 Depth=2
-	move	$s5, $t2
+	move	$s6, $t3
 	b	.LBB11_15
 	.p2align	4, , 16
 .LBB11_12:                              # %vector.ph
                                         #   in Loop: Header=BB11_7 Depth=2
-	add.d	$s4, $s4, $t8
-	alsl.d	$s5, $s5, $a6, 2
-	move	$s6, $t7
-	move	$s7, $s3
+	add.d	$s5, $s5, $s2
+	alsl.d	$s6, $s6, $a6, 2
+	move	$s7, $t8
+	move	$s8, $s4
 	.p2align	4, , 16
 .LBB11_13:                              # %vector.body
                                         #   Parent Loop BB11_3 Depth=1
                                         #     Parent Loop BB11_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	vld	$vr0, $s5, -16
-	vld	$vr1, $s5, 0
-	vld	$vr2, $s7, -16
-	vld	$vr3, $s7, 0
+	vld	$vr0, $s6, -16
+	vld	$vr1, $s6, 0
+	vld	$vr2, $s8, -16
+	vld	$vr3, $s8, 0
 	vor.v	$vr0, $vr2, $vr0
 	vor.v	$vr1, $vr3, $vr1
-	vst	$vr0, $s7, -16
-	vst	$vr1, $s7, 0
-	addi.d	$s5, $s5, 32
-	addi.d	$s6, $s6, -8
-	addi.d	$s7, $s7, 32
-	bnez	$s6, .LBB11_13
+	vst	$vr0, $s8, -16
+	vst	$vr1, $s8, 0
+	addi.d	$s6, $s6, 32
+	addi.d	$s7, $s7, -8
+	addi.d	$s8, $s8, 32
+	bnez	$s7, .LBB11_13
 # %bb.14:                               # %middle.block
                                         #   in Loop: Header=BB11_7 Depth=2
-	move	$s5, $s2
-	beq	$t6, $t7, .LBB11_6
+	move	$s6, $s3
+	beq	$t7, $t8, .LBB11_6
 	.p2align	4, , 16
 .LBB11_15:                              # %scalar.ph
                                         #   Parent Loop BB11_3 Depth=1
                                         #     Parent Loop BB11_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$s6, $s4, 0
 	ld.w	$s7, $s5, 0
-	addi.d	$s4, $s4, 4
-	addi.d	$s8, $s5, 4
-	or	$s6, $s7, $s6
-	st.w	$s6, $s5, 0
-	move	$s5, $s8
-	bltu	$s8, $a4, .LBB11_15
+	ld.w	$s8, $s6, 0
+	addi.d	$s5, $s5, 4
+	addi.d	$ra, $s6, 4
+	or	$s7, $s8, $s7
+	st.w	$s7, $s6, 0
+	move	$s6, $ra
+	bltu	$ra, $a4, .LBB11_15
 	b	.LBB11_6
 .LBB11_16:                              # %.lr.ph48.preheader
 	move	$s2, $zero

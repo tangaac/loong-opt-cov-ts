@@ -473,7 +473,7 @@ g_StdErr:
 	.dword	_GLOBAL__sub_I_StdOutStream.cpp
 	.globl	_ZN13CStdOutStreamD1Ev
 	.type	_ZN13CStdOutStreamD1Ev,@function
-.set _ZN13CStdOutStreamD1Ev, _ZN13CStdOutStreamD2Ev
+_ZN13CStdOutStreamD1Ev = _ZN13CStdOutStreamD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

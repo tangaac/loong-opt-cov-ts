@@ -292,9 +292,7 @@ regex_list_match:                       # @regex_list_match
                                         #     Parent Loop BB0_27 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	sub.d	$a5, $t1, $t0
-	bstrpick.d	$t2, $a5, 31, 31
-	add.w	$a5, $a5, $t2
-	srli.d	$a5, $a5, 1
+	bstrpick.d	$a5, $a5, 31, 1
 	add.w	$t2, $a5, $t0
 	slli.d	$a5, $t2, 3
 	ldx.d	$a5, $a4, $a5
@@ -1343,9 +1341,7 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #     Parent Loop BB3_82 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	sub.d	$t0, $a7, $a5
-	bstrpick.d	$t1, $t0, 31, 31
-	add.w	$t0, $t0, $t1
-	srli.d	$t0, $t0, 1
+	bstrpick.d	$t0, $t0, 31, 1
 	add.w	$t0, $t0, $a5
 	slli.d	$t1, $t0, 3
 	ldx.d	$s8, $a4, $t1

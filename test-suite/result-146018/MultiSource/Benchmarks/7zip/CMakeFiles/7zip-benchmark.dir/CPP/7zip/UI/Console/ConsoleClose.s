@@ -238,10 +238,10 @@ _ZTSN13NConsoleClose18CCtrlHandlerSetterE:
 
 	.globl	_ZN13NConsoleClose18CCtrlHandlerSetterC1Ev
 	.type	_ZN13NConsoleClose18CCtrlHandlerSetterC1Ev,@function
-.set _ZN13NConsoleClose18CCtrlHandlerSetterC1Ev, _ZN13NConsoleClose18CCtrlHandlerSetterC2Ev
+_ZN13NConsoleClose18CCtrlHandlerSetterC1Ev = _ZN13NConsoleClose18CCtrlHandlerSetterC2Ev
 	.globl	_ZN13NConsoleClose18CCtrlHandlerSetterD1Ev
 	.type	_ZN13NConsoleClose18CCtrlHandlerSetterD1Ev,@function
-.set _ZN13NConsoleClose18CCtrlHandlerSetterD1Ev, _ZN13NConsoleClose18CCtrlHandlerSetterD2Ev
+_ZN13NConsoleClose18CCtrlHandlerSetterD1Ev = _ZN13NConsoleClose18CCtrlHandlerSetterD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZN13NConsoleCloseL14HandlerRoutineEi

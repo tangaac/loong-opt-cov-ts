@@ -544,16 +544,16 @@ _ZTS6sample:
 
 	.globl	_ZN5stateC1Ev
 	.type	_ZN5stateC1Ev,@function
-.set _ZN5stateC1Ev, _ZN5stateC2Ev
+_ZN5stateC1Ev = _ZN5stateC2Ev
 	.globl	_ZN3fsmC1EP6triple
 	.type	_ZN3fsmC1EP6triple,@function
-.set _ZN3fsmC1EP6triple, _ZN3fsmC2EP6triple
+_ZN3fsmC1EP6triple = _ZN3fsmC2EP6triple
 	.globl	_ZN3fsmD1Ev
 	.type	_ZN3fsmD1Ev,@function
-.set _ZN3fsmD1Ev, _ZN3fsmD2Ev
+_ZN3fsmD1Ev = _ZN3fsmD2Ev
 	.globl	_ZN6sampleC1Ev
 	.type	_ZN6sampleC1Ev,@function
-.set _ZN6sampleC1Ev, _ZN6sampleC2Ev
+_ZN6sampleC1Ev = _ZN6sampleC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

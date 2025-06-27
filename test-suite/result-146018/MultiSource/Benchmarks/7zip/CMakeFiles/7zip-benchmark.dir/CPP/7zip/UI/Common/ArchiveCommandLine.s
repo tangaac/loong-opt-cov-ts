@@ -9970,7 +9970,7 @@ _ZTS13CRecordVectorIjE:
 	.dword	_GLOBAL__sub_I_ArchiveCommandLine.cpp
 	.globl	_ZN25CArchiveCommandLineParserC1Ev
 	.type	_ZN25CArchiveCommandLineParserC1Ev,@function
-.set _ZN25CArchiveCommandLineParserC1Ev, _ZN25CArchiveCommandLineParserC2Ev
+_ZN25CArchiveCommandLineParserC1Ev = _ZN25CArchiveCommandLineParserC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

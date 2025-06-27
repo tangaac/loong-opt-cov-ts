@@ -48,7 +48,7 @@ _ZTS12btConvexCast:
 
 	.globl	_ZN12btConvexCastD1Ev
 	.type	_ZN12btConvexCastD1Ev,@function
-.set _ZN12btConvexCastD1Ev, _ZN12btConvexCastD2Ev
+_ZN12btConvexCastD1Ev = _ZN12btConvexCastD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym _ZTI12btConvexCast

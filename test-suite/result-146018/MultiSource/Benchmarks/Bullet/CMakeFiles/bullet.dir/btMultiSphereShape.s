@@ -78,7 +78,7 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp3:
-.LBB0_8:                                # %.lr.ph.i
+.LBB0_8:                                # %.loopexit37
 	ori	$a0, $zero, 1
 	ld.w	$s4, $fp, 140
 	st.b	$a0, $fp, 128
@@ -1145,7 +1145,7 @@ _ZTS18btMultiSphereShape:
 
 	.globl	_ZN18btMultiSphereShapeC1EPK9btVector3PKfi
 	.type	_ZN18btMultiSphereShapeC1EPK9btVector3PKfi,@function
-.set _ZN18btMultiSphereShapeC1EPK9btVector3PKfi, _ZN18btMultiSphereShapeC2EPK9btVector3PKfi
+_ZN18btMultiSphereShapeC1EPK9btVector3PKfi = _ZN18btMultiSphereShapeC2EPK9btVector3PKfi
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

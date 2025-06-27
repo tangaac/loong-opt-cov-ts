@@ -935,8 +935,7 @@ MapLoad:                                # @MapLoad
 	ori	$a2, $zero, 353
 	mul.d	$a1, $a1, $a2
 	sub.w	$s8, $a0, $a1
-	bstrpick.d	$a0, $s8, 31, 0
-	ldx.bu	$fp, $s4, $a0
+	ldx.bu	$fp, $s4, $s8
 	beqz	$fp, .LBB0_27
 	.p2align	4, , 16
 .LBB0_40:                               # %.lr.ph.i111
@@ -1031,7 +1030,7 @@ MapLoad:                                # @MapLoad
                                         #     Child Loop BB0_68 Depth 2
                                         #     Child Loop BB0_70 Depth 2
                                         #     Child Loop BB0_73 Depth 2
-                                        #     Child Loop BB0_76 Depth 2
+                                        #     Child Loop BB0_75 Depth 2
 	move	$a0, $zero
 	addi.w	$s5, $s5, 1
 	addi.d	$a1, $sp, 1640
@@ -1231,8 +1230,7 @@ MapLoad:                                # @MapLoad
 	ori	$a2, $zero, 353
 	mul.d	$a1, $a1, $a2
 	sub.w	$s7, $a0, $a1
-	bstrpick.d	$a0, $s7, 31, 0
-	ldx.bu	$a0, $s4, $a0
+	ldx.bu	$a0, $s4, $s7
 	beqz	$a0, .LBB0_72
 	.p2align	4, , 16
 .LBB0_70:                               # %.lr.ph.i
@@ -1275,16 +1273,12 @@ MapLoad:                                # @MapLoad
 	srli.d	$a1, $a1, 8
 	ori	$a2, $zero, 353
 	mul.d	$a1, $a1, $a2
-	sub.w	$a0, $a0, $a1
-	bstrpick.d	$fp, $a0, 31, 0
-	ldx.bu	$a1, $s4, $fp
+	sub.w	$fp, $a0, $a1
+	ldx.bu	$a0, $s4, $fp
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	beqz	$a1, .LBB0_77
-# %bb.75:                               # %.lr.ph.i104.preheader
-                                        #   in Loop: Header=BB0_47 Depth=1
-	move	$fp, $a0
+	beqz	$a0, .LBB0_76
 	.p2align	4, , 16
-.LBB0_76:                               # %.lr.ph.i104
+.LBB0_75:                               # %.lr.ph.i104
                                         #   Parent Loop BB0_47 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$a0, $fp, 1
@@ -1292,8 +1286,8 @@ MapLoad:                                # @MapLoad
 	sltui	$a1, $a1, 1
 	masknez	$fp, $a0, $a1
 	ldx.bu	$a0, $s4, $fp
-	bnez	$a0, .LBB0_76
-.LBB0_77:                               # %NameInsert.exit
+	bnez	$a0, .LBB0_75
+.LBB0_76:                               # %NameInsert.exit
                                         #   in Loop: Header=BB0_47 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 0
@@ -1353,8 +1347,7 @@ MapCharEncoding:                        # @MapCharEncoding
 	sub.w	$s1, $a1, $a2
 	addi.d	$a1, $a0, 2047
 	addi.d	$s0, $a1, 33
-	bstrpick.d	$a1, $s1, 31, 0
-	ldx.bu	$s2, $s0, $a1
+	ldx.bu	$s2, $s0, $s1
 	beqz	$s2, .LBB1_6
 # %bb.3:                                # %.lr.ph.i.preheader
 	addi.d	$s3, $a0, 32

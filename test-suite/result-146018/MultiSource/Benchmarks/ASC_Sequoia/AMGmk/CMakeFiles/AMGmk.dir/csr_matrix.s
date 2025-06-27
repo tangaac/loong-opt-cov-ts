@@ -1021,10 +1021,10 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	ld.d	$s3, $a1, 16
 	move	$fp, $a3
 	move	$s0, $a2
-	st.d	$t5, $sp, 24                    # 8-byte Folded Spill
+	st.d	$t5, $sp, 32                    # 8-byte Folded Spill
 	beqz	$a2, .LBB9_35
 # %bb.1:
-	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
 	ori	$a1, $zero, 4
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -1069,7 +1069,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	vori.b	$vr2, $vr0, 0
 	vori.b	$vr3, $vr0, 0
 	.p2align	4, , 16
-.LBB9_8:                                # %vector.body391
+.LBB9_8:                                # %vector.body393
                                         #   Parent Loop BB9_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr4, $a7, -16
@@ -1081,19 +1081,12 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.d	$t0, $t0, -8
 	addi.d	$a7, $a7, 32
 	bnez	$t0, .LBB9_8
-# %bb.9:                                # %middle.block396
+# %bb.9:                                # %middle.block398
                                         #   in Loop: Header=BB9_5 Depth=1
 	vor.v	$vr1, $vr3, $vr2
-	vpickve2gr.w	$a7, $vr1, 0
-	vpickve2gr.w	$t0, $vr1, 1
-	andi	$t0, $t0, 1
-	bstrins.d	$a7, $t0, 63, 1
-	vpickve2gr.w	$t0, $vr1, 2
-	bstrins.d	$a7, $t0, 2, 2
-	vpickve2gr.w	$t0, $vr1, 3
-	slli.d	$t0, $t0, 3
-	or	$a7, $a7, $t0
-	andi	$a7, $a7, 15
+	vslli.w	$vr1, $vr1, 31
+	vmskltz.w	$vr1, $vr1
+	vpickve2gr.hu	$a7, $vr1, 0
 	sltu	$a7, $zero, $a7
 	move	$t1, $a1
 	beq	$a1, $s2, .LBB9_12
@@ -1122,15 +1115,15 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.w	$a0, $a0, 1
 	b	.LBB9_4
 .LBB9_14:                               # %._crit_edge221
-	st.d	$s6, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	ori	$a1, $zero, 4
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$s6, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
-	ld.d	$t5, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 32                    # 8-byte Folded Reload
 	blt	$s2, $s6, .LBB9_22
 # %bb.15:                               # %.lr.ph.preheader
 	ori	$a2, $zero, 8
@@ -1140,14 +1133,14 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	sub.d	$a2, $a0, $s0
 	ori	$a3, $zero, 32
 	bltu	$a2, $a3, .LBB9_20
-# %bb.17:                               # %vector.ph401
+# %bb.17:                               # %vector.ph403
 	bstrpick.d	$a1, $s2, 30, 3
 	slli.d	$a1, $a1, 3
 	addi.d	$a2, $a0, 16
 	addi.d	$a3, $s0, 16
 	move	$a4, $a1
 	.p2align	4, , 16
-.LBB9_18:                               # %vector.body404
+.LBB9_18:                               # %vector.body406
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr0, $a3, -16
 	vld	$vr1, $a3, 0
@@ -1157,9 +1150,9 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.d	$a2, $a2, 32
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB9_18
-# %bb.19:                               # %middle.block409
+# %bb.19:                               # %middle.block411
 	beq	$a1, $s2, .LBB9_22
-.LBB9_20:                               # %.lr.ph.preheader461
+.LBB9_20:                               # %.lr.ph.preheader463
 	alsl.d	$a2, $a1, $a0, 2
 	alsl.d	$a3, $a1, $s0, 2
 	sub.d	$a1, $s2, $a1
@@ -1174,7 +1167,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bnez	$a1, .LBB9_21
 .LBB9_22:                               # %.preheader
 	ori	$a1, $zero, 1
-	ld.d	$s6, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	blt	$s4, $a1, .LBB9_46
 # %bb.23:                               # %.lr.ph228
 	blez	$s2, .LBB9_44
@@ -1203,7 +1196,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	move	$t0, $zero
 	b	.LBB9_31
 	.p2align	4, , 16
-.LBB9_28:                               # %vector.ph414
+.LBB9_28:                               # %vector.ph416
                                         #   in Loop: Header=BB9_26 Depth=1
 	vreplgr2vr.w	$vr1, $a6
 	move	$t0, $a3
@@ -1211,7 +1204,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	vori.b	$vr2, $vr0, 0
 	vori.b	$vr3, $vr0, 0
 	.p2align	4, , 16
-.LBB9_29:                               # %vector.body419
+.LBB9_29:                               # %vector.body421
                                         #   Parent Loop BB9_26 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr4, $t0, -16
@@ -1223,28 +1216,21 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.d	$t1, $t1, -8
 	addi.d	$t0, $t0, 32
 	bnez	$t1, .LBB9_29
-# %bb.30:                               # %middle.block426
+# %bb.30:                               # %middle.block428
                                         #   in Loop: Header=BB9_26 Depth=1
 	vor.v	$vr1, $vr3, $vr2
-	vpickve2gr.w	$t0, $vr1, 0
-	vpickve2gr.w	$t1, $vr1, 1
-	andi	$t1, $t1, 1
-	bstrins.d	$t0, $t1, 63, 1
-	vpickve2gr.w	$t1, $vr1, 2
-	bstrins.d	$t0, $t1, 2, 2
-	vpickve2gr.w	$t1, $vr1, 3
-	slli.d	$t1, $t1, 3
-	or	$t0, $t0, $t1
-	andi	$t0, $t0, 15
+	vslli.w	$vr1, $vr1, 31
+	vmskltz.w	$vr1, $vr1
+	vpickve2gr.hu	$t0, $vr1, 0
 	sltu	$t0, $zero, $t0
 	move	$t2, $a2
 	beq	$a2, $s2, .LBB9_33
-.LBB9_31:                               # %scalar.ph412.preheader
+.LBB9_31:                               # %scalar.ph414.preheader
                                         #   in Loop: Header=BB9_26 Depth=1
 	alsl.d	$t1, $t2, $s0, 2
 	sub.d	$t2, $s2, $t2
 	.p2align	4, , 16
-.LBB9_32:                               # %scalar.ph412
+.LBB9_32:                               # %scalar.ph414
                                         #   Parent Loop BB9_26 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t3, $t1, 0
@@ -1270,7 +1256,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	masknez	$a1, $s4, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB9_46
 .LBB9_36:                               # %.lr.ph220.split.preheader
 	ori	$a0, $zero, 8
@@ -1301,7 +1287,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bnez	$a2, .LBB9_39
 # %bb.40:                               # %middle.block
 	beq	$a3, $s4, .LBB9_43
-.LBB9_41:                               # %.lr.ph220.split.preheader465
+.LBB9_41:                               # %.lr.ph220.split.preheader467
 	alsl.d	$a1, $a3, $s1, 2
 	sub.d	$a2, $s4, $a3
 	.p2align	4, , 16
@@ -1314,12 +1300,12 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bnez	$a2, .LBB9_42
 .LBB9_43:                               # %.preheader.thread
 	ori	$a1, $zero, 4
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
-	ld.d	$t5, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$t5, $sp, 32                    # 8-byte Folded Reload
 .LBB9_44:                               # %.lr.ph228.split.preheader
 	move	$a1, $zero
 	.p2align	4, , 16
@@ -1479,7 +1465,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 8
 	st.w	$s6, $a0, 24
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 28
 	st.w	$s4, $a1, 32
 	st.w	$s2, $a1, 52
@@ -1502,7 +1488,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 .LBB9_72:                               # %.thread369
 	addi.d	$s2, $s6, 8
 .LBB9_73:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	addi.w	$a0, $a0, 1
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
@@ -1519,11 +1505,11 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s6, 16
 .LBB9_76:                               # %hypre_CSRMatrixInitialize.exit
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a1, $s2, 0
 	ori	$a2, $zero, 1
 	st.w	$zero, $a1, 0
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
 	blt	$s6, $a2, .LBB9_100
 # %bb.77:                               # %.lr.ph282
 	move	$a2, $zero
@@ -1555,7 +1541,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	sub.d	$t5, $t2, $t1
 	addi.w	$a4, $a4, 0
 	bltu	$t5, $a6, .LBB9_82
-# %bb.81:                               # %vector.memcheck432
+# %bb.81:                               # %vector.memcheck434
                                         #   in Loop: Header=BB9_79 Depth=1
 	alsl.d	$t4, $a4, $a0, 2
 	alsl.d	$t6, $t1, $s8, 2
@@ -1563,7 +1549,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	bgeu	$t4, $a7, .LBB9_97
 .LBB9_82:                               #   in Loop: Header=BB9_79 Depth=1
 	move	$t4, $t1
-.LBB9_83:                               # %.lr.ph262.preheader452
+.LBB9_83:                               # %.lr.ph262.preheader454
                                         #   in Loop: Header=BB9_79 Depth=1
 	alsl.d	$t5, $t4, $s8, 2
 	sub.d	$t6, $t2, $t4
@@ -1656,7 +1642,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.d	$t3, $t3, 1
 	blt	$t3, $t5, .LBB9_88
 	b	.LBB9_78
-.LBB9_97:                               # %vector.ph436
+.LBB9_97:                               # %vector.ph438
                                         #   in Loop: Header=BB9_79 Depth=1
 	slli.d	$t7, $a4, 2
 	slli.d	$t8, $t1, 2
@@ -1668,7 +1654,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	add.d	$t8, $a5, $t8
 	move	$s2, $t6
 	.p2align	4, , 16
-.LBB9_98:                               # %vector.body439
+.LBB9_98:                               # %vector.body441
                                         #   Parent Loop BB9_79 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $t8, -16
@@ -1679,7 +1665,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	addi.d	$s2, $s2, -8
 	addi.d	$t8, $t8, 32
 	bnez	$s2, .LBB9_98
-# %bb.99:                               # %middle.block445
+# %bb.99:                               # %middle.block447
                                         #   in Loop: Header=BB9_79 Depth=1
 	beq	$t5, $t6, .LBB9_85
 	b	.LBB9_83
@@ -1690,7 +1676,7 @@ hypre_CSRMatrixUnion:                   # @hypre_CSRMatrixUnion
 	pcaddu18i	$ra, %call36(hypre_Free)
 	jirl	$ra, $ra, 0
 .LBB9_102:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload

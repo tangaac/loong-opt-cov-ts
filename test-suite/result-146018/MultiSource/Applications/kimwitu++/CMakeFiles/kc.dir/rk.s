@@ -346,14 +346,14 @@ _ZN2kc16impl_phylumnames7rewriteERNS_11rview_classE: # @_ZN2kc16impl_phylumnames
 _ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -394,17 +394,10 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE: # @
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB7_2
 # %bb.1:
@@ -423,13 +416,13 @@ _ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE: # @
 	move	$fp, $s0
 .LBB7_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end7:
 	.size	_ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE, .Lfunc_end7-_ZN2kc40impl_phylumdeclaration_PhylumDeclaration7rewriteERNS_11rview_classE
@@ -4694,14 +4687,14 @@ _ZN2kc19impl_fndeclarations7rewriteERNS_11rview_classE: # @_ZN2kc19impl_fndeclar
 _ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4742,17 +4735,10 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE: # @_Z
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB81_2
 # %bb.1:
@@ -4771,13 +4757,13 @@ _ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE: # @_Z
 	move	$fp, $s0
 .LBB81_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end81:
 	.size	_ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE, .Lfunc_end81-_ZN2kc38impl_fndeclaration_AcMemberDeclaration7rewriteERNS_11rview_classE
@@ -4813,49 +4799,49 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc
 	ld.d	$a0, $a0, 40
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 24
-	move	$s5, $a1
+	move	$s4, $a1
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 48
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s0, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 56
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s1, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 64
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s2, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 72
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s3, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 80
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
-	move	$s4, $a0
+	move	$s5, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	ld.d	$a1, $fp, 88
 	ld.d	$a2, $a1, 0
 	ld.d	$a2, $a2, 24
 	move	$s6, $a0
 	move	$a0, $a1
-	move	$a1, $s5
+	move	$a1, $s4
 	jirl	$ra, $a2, 0
 	vld	$vr0, $fp, 56
 	vld	$vr1, $fp, 40
@@ -4864,23 +4850,16 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a6, $a0
 	bne	$a1, $a2, .LBB82_4
 # %bb.1:
 	ld.d	$a0, $fp, 72
-	bne	$s4, $a0, .LBB82_4
+	bne	$s5, $a0, .LBB82_4
 # %bb.2:
 	ld.d	$a0, $fp, 80
 	bne	$s6, $a0, .LBB82_4
@@ -4892,7 +4871,7 @@ _ZN2kc34impl_fndeclaration_FnAcDeclaration7rewriteERNS_11rview_classE: # @_ZN2kc
 	move	$a1, $s1
 	move	$a2, $s2
 	move	$a3, $s3
-	move	$a4, $s4
+	move	$a4, $s5
 	move	$a5, $s6
 	pcaddu18i	$ra, %call36(_ZN2kc15FnAcDeclarationEPNS_30impl_ac_declaration_specifiersEPNS_18impl_ac_declaratorEPNS_24impl_ac_declaration_listEPNS_26impl_ac_opt_base_init_listEPNS_10impl_CtextEPNS_7impl_IDEPNS_12impl_fnclassE)
 	jirl	$ra, $ra, 0
@@ -5207,17 +5186,10 @@ _ZN2kc38impl_Ctext_elem_CTextForeachexpression7rewriteERNS_11rview_classE: # @_Z
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a4, $a0
 	bne	$a1, $a2, .LBB91_2
@@ -5511,14 +5483,14 @@ _ZN2kc25impl_Ctext_elem_CTextLine7rewriteERNS_11rview_classE: # @_ZN2kc25impl_Ct
 _ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE: # @_ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5559,17 +5531,10 @@ _ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE: # @_ZN2kc31i
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB98_2
 # %bb.1:
@@ -5588,13 +5553,13 @@ _ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE: # @_ZN2kc31i
 	move	$fp, $s0
 .LBB98_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end98:
 	.size	_ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE, .Lfunc_end98-_ZN2kc31impl_foreach_after_ForeachAfter7rewriteERNS_11rview_classE
@@ -7228,14 +7193,14 @@ _ZN2kc27impl_scopetypefilelinestack7rewriteERNS_11rview_classE: # @_ZN2kc27impl_
 _ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE: # @_ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -7276,17 +7241,10 @@ _ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE: # @
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB133_2
 # %bb.1:
@@ -7305,13 +7263,13 @@ _ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE: # @
 	move	$fp, $s0
 .LBB133_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end133:
 	.size	_ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE, .Lfunc_end133-_ZN2kc40impl_scopetypefileline_ScopeTypeFileLine7rewriteERNS_11rview_classE
@@ -10257,14 +10215,14 @@ _ZN2kc38impl_ac_direct_declarator_AcMemberDecl7rewriteERNS_11rview_classE: # @_Z
 _ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_classE: # @_ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -10305,17 +10263,10 @@ _ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_class
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB204_2
 # %bb.1:
@@ -10334,13 +10285,13 @@ _ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_class
 	move	$fp, $s0
 .LBB204_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end204:
 	.size	_ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_classE, .Lfunc_end204-_ZN2kc46impl_ac_direct_declarator_AcQualifiedDeclProto7rewriteERNS_11rview_classE
@@ -12319,16 +12270,16 @@ _ZN2kc16impl_error_Fatal7rewriteERNS_11rview_classE: # @_ZN2kc16impl_error_Fatal
 _ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE: # @_ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -12385,17 +12336,10 @@ _ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a5, $a0
 	bne	$a1, $a2, .LBB246_3
@@ -12422,15 +12366,15 @@ _ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$fp, $s0
 .LBB246_4:
 	move	$a0, $fp
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end246:
 	.size	_ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE, .Lfunc_end246-_ZN2kc21impl_problem_Problem67rewriteERNS_11rview_classE
@@ -12499,17 +12443,10 @@ _ZN2kc21impl_problem_Problem57rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a4, $a0
 	bne	$a1, $a2, .LBB247_2
@@ -12551,14 +12488,14 @@ _ZN2kc21impl_problem_Problem57rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 _ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE: # @_ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -12599,17 +12536,10 @@ _ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB248_2
 # %bb.1:
@@ -12628,13 +12558,13 @@ _ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 	move	$fp, $s0
 .LBB248_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end248:
 	.size	_ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE, .Lfunc_end248-_ZN2kc21impl_problem_Problem47rewriteERNS_11rview_classE
@@ -12703,17 +12633,10 @@ _ZN2kc25impl_problem_Problem3int17rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a4, $a0
 	bne	$a1, $a2, .LBB249_2
@@ -12885,14 +12808,14 @@ _ZN2kc21impl_problem_Problem27rewriteERNS_11rview_classE: # @_ZN2kc21impl_proble
 _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -12933,17 +12856,10 @@ _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB252_2
 # %bb.1:
@@ -12962,13 +12878,13 @@ _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN
 	move	$fp, $s0
 .LBB252_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end252:
 	.size	_ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE, .Lfunc_end252-_ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE
@@ -12980,16 +12896,16 @@ _ZN2kc37impl_problem_Problem1storageoption1ID7rewriteERNS_11rview_classE: # @_ZN
 _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -13046,17 +12962,10 @@ _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30im
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a5, $a0
 	bne	$a1, $a2, .LBB253_3
@@ -13083,15 +12992,15 @@ _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30im
 	move	$fp, $s0
 .LBB253_4:
 	move	$a0, $fp
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end253:
 	.size	_ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE, .Lfunc_end253-_ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE
@@ -13103,16 +13012,16 @@ _ZN2kc30impl_problem_Problem1INT1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc30im
 _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -13169,17 +13078,10 @@ _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29imp
 	vinsgr2vr.d	$vr3, $s2, 0
 	vinsgr2vr.d	$vr3, $s3, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	move	$a5, $a0
 	bne	$a1, $a2, .LBB254_3
@@ -13206,15 +13108,15 @@ _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29imp
 	move	$fp, $s0
 .LBB254_4:
 	move	$a0, $fp
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end254:
 	.size	_ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE, .Lfunc_end254-_ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE
@@ -13226,14 +13128,14 @@ _ZN2kc29impl_problem_Problem1ID1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc29imp
 _ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE: # @_ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -13274,17 +13176,10 @@ _ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE: # @_ZN2kc27impl_
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB255_2
 # %bb.1:
@@ -13303,13 +13198,13 @@ _ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE: # @_ZN2kc27impl_
 	move	$fp, $s0
 .LBB255_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end255:
 	.size	_ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE, .Lfunc_end255-_ZN2kc27impl_problem_Problem1INT1ID7rewriteERNS_11rview_classE
@@ -13451,14 +13346,14 @@ _ZN2kc24impl_problem_Problem1INT7rewriteERNS_11rview_classE: # @_ZN2kc24impl_pro
 _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -13499,17 +13394,10 @@ _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB258_2
 # %bb.1:
@@ -13528,13 +13416,13 @@ _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 	move	$fp, $s0
 .LBB258_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end258:
 	.size	_ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE, .Lfunc_end258-_ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE
@@ -13546,14 +13434,14 @@ _ZN2kc25impl_problem_Problem1t1ID7rewriteERNS_11rview_classE: # @_ZN2kc25impl_pr
 _ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -13594,17 +13482,10 @@ _ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc26impl_p
 	vinsgr2vr.d	$vr3, $s1, 0
 	vinsgr2vr.d	$vr3, $a0, 1
 	vseq.d	$vr1, $vr2, $vr1
-	vpickve2gr.w	$a1, $vr1, 0
-	vpickve2gr.w	$a2, $vr1, 2
-	andi	$a2, $a2, 1
-	bstrins.d	$a1, $a2, 63, 1
 	vseq.d	$vr0, $vr3, $vr0
-	vpickve2gr.w	$a2, $vr0, 0
-	bstrins.d	$a1, $a2, 2, 2
-	vpickve2gr.w	$a2, $vr0, 2
-	slli.d	$a2, $a2, 3
-	or	$a1, $a1, $a2
-	andi	$a1, $a1, 15
+	vpickev.w	$vr0, $vr0, $vr1
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	ori	$a2, $zero, 15
 	beq	$a1, $a2, .LBB259_2
 # %bb.1:
@@ -13623,13 +13504,13 @@ _ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE: # @_ZN2kc26impl_p
 	move	$fp, $s0
 .LBB259_2:
 	move	$a0, $fp
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end259:
 	.size	_ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE, .Lfunc_end259-_ZN2kc26impl_problem_Problem1ID1ID7rewriteERNS_11rview_classE

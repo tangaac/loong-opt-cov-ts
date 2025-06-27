@@ -70485,8 +70485,8 @@ _ZN2PP11PowerParser13chars_to_vstrEPcRSt6vectorINSt7__cxx1112basic_stringIcSt11c
 	masknez	$a2, $a2, $a3
 	maskeqz	$a1, $a1, $a3
 	or	$a1, $a1, $a2
-	nor	$a2, $a0, $zero
-	add.d	$a1, $a1, $a2
+	sub.d	$a1, $a0, $a1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	addi.w	$a0, $a0, 0
@@ -85908,16 +85908,16 @@ _ZSt19piecewise_construct:
 
 	.globl	_ZN2PP11PowerParserC1Ev
 	.type	_ZN2PP11PowerParserC1Ev,@function
-.set _ZN2PP11PowerParserC1Ev, _ZN2PP11PowerParserC2Ev
+_ZN2PP11PowerParserC1Ev = _ZN2PP11PowerParserC2Ev
 	.globl	_ZN2PP11PowerParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	.type	_ZN2PP11PowerParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE,@function
-.set _ZN2PP11PowerParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE, _ZN2PP11PowerParserC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
+_ZN2PP11PowerParserC1ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE = _ZN2PP11PowerParserC2ENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE
 	.globl	_ZN2PP11PowerParserC1EPKc
 	.type	_ZN2PP11PowerParserC1EPKc,@function
-.set _ZN2PP11PowerParserC1EPKc, _ZN2PP11PowerParserC2EPKc
+_ZN2PP11PowerParserC1EPKc = _ZN2PP11PowerParserC2EPKc
 	.globl	_ZN2PP11PowerParserD1Ev
 	.type	_ZN2PP11PowerParserD1Ev,@function
-.set _ZN2PP11PowerParserD1Ev, _ZN2PP11PowerParserD2Ev
+_ZN2PP11PowerParserD1Ev = _ZN2PP11PowerParserD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -595,7 +595,7 @@ _ZGVZN11btMatrix3x311getIdentityEvE14identityMatrix:
 
 	.globl	_ZN18btHinge2ConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_
 	.type	_ZN18btHinge2ConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_,@function
-.set _ZN18btHinge2ConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_, _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_
+_ZN18btHinge2ConstraintC1ER11btRigidBodyS1_R9btVector3S3_S3_ = _ZN18btHinge2ConstraintC2ER11btRigidBodyS1_R9btVector3S3_S3_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

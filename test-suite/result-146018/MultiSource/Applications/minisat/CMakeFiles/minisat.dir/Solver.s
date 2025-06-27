@@ -4846,8 +4846,8 @@ _ZN6Solver5solveERK3vecI3LitE:          # @_ZN6Solver5solveERK3vecI3LitE
 # %bb.38:                               # %.lr.ph.i21
 	ld.d	$a0, $fp, 0
 	add.d	$a0, $a0, $a2
-	nor	$a1, $a2, $zero
-	add.d	$a1, $s1, $a1
+	sub.d	$a1, $a2, $s1
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a2, $a1, 1
 	move	$a1, $zero
@@ -5887,10 +5887,10 @@ _Z4sortIP6Clause11reduceDB_ltEvPT_iT0_: # @_Z4sortIP6Clause11reduceDB_ltEvPT_iT0
 
 	.globl	_ZN6SolverC1Ev
 	.type	_ZN6SolverC1Ev,@function
-.set _ZN6SolverC1Ev, _ZN6SolverC2Ev
+_ZN6SolverC1Ev = _ZN6SolverC2Ev
 	.globl	_ZN6SolverD1Ev
 	.type	_ZN6SolverD1Ev,@function
-.set _ZN6SolverD1Ev, _ZN6SolverD2Ev
+_ZN6SolverD1Ev = _ZN6SolverD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

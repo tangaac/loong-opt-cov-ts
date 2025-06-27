@@ -2709,9 +2709,8 @@ backward_compatibility_hack:            # @backward_compatibility_hack
 	and	$a4, $a3, $a5
 	add.d	$a2, $a4, $s0
 	bstrpick.d	$a6, $s0, 31, 0
-	nor	$a7, $a6, $zero
-	add.d	$a7, $a7, $a1
-	and	$a5, $a7, $a5
+	sub.d	$a7, $a6, $a1
+	andn	$a5, $a5, $a7
 	alsl.d	$a6, $a6, $fp, 3
 	addi.d	$a6, $a6, 16
 	.p2align	4, , 16

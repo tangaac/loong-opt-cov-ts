@@ -5475,18 +5475,17 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	srli.d	$a0, $a0, 36
 	ori	$a1, $zero, 29
 	mul.d	$a0, $a0, $a1
-	move	$s3, $s1
-	sub.d	$s1, $s1, $a0
+	move	$s5, $s1
+	sub.w	$s1, $s1, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	st.d	$s3, $a0, 8
 	pcalau12i	$a0, %got_pc_hi20(hash_TABLE)
 	ld.d	$s3, $a0, %got_pc_lo12(hash_TABLE)
+	st.d	$s5, $fp, 8
 	st.d	$s4, $fp, 0
-	bstrpick.d	$a0, $s1, 31, 0
-	slli.d	$s1, $a0, 3
+	slli.d	$s1, $s1, 3
 	ldx.d	$s5, $s3, $s1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)

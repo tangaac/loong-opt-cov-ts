@@ -3347,9 +3347,9 @@ build_regex_nfa:                        # @build_regex_nfa
 	masknez	$a4, $a4, $a5
 	maskeqz	$a3, $a3, $a5
 	or	$a4, $a3, $a4
-	nor	$a3, $a0, $zero
-	add.d	$a3, $a4, $a3
-	andi	$a3, $a3, 255
+	sub.d	$a3, $a0, $a4
+	ori	$a5, $zero, 255
+	andn	$a3, $a5, $a3
 	ori	$a5, $zero, 31
 	bltu	$a3, $a5, .LBB1_38
 # %bb.37:                               # %vector.scevcheck

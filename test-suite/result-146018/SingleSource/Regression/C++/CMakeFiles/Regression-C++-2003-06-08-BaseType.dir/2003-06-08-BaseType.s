@@ -30,9 +30,9 @@ main:                                   # @main
                                         # -- End function
 	.globl	_ZN3barC1Ev
 	.type	_ZN3barC1Ev,@function
-.set _ZN3barC1Ev, _ZN3barC2Ev
+_ZN3barC1Ev = _ZN3barC2Ev
 	.globl	_ZN3fooC1Ev
 	.type	_ZN3fooC1Ev,@function
-.set _ZN3fooC1Ev, _ZN3fooC2Ev
+_ZN3fooC1Ev = _ZN3fooC2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

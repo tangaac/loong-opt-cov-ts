@@ -660,9 +660,9 @@ _ZN18btQuantizedBvhTree10build_treeER18GIM_BVH_DATA_ARRAY: # @_ZN18btQuantizedBv
 	bge	$s3, $s2, .LBB4_19
 # %bb.1:
 	ld.w	$a0, $s0, 16
-	bge	$a0, $s2, .LBB4_11
+	bge	$a0, $s2, .LBB4_4
 # %bb.2:
-	beqz	$a3, .LBB4_4
+	beqz	$a3, .LBB4_8
 # %bb.3:
 	slli.d	$a0, $s2, 4
 	ori	$a1, $zero, 16
@@ -671,74 +671,77 @@ _ZN18btQuantizedBvhTree10build_treeER18GIM_BVH_DATA_ARRAY: # @_ZN18btQuantizedBv
 	ld.w	$a1, $s0, 12
 	move	$s1, $a0
 	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB4_5
-	b	.LBB4_7
-.LBB4_4:
+	bge	$a1, $a0, .LBB4_9
+	b	.LBB4_11
+.LBB4_4:                                # %..lr.ph.i_crit_edge
+	ld.d	$s1, $s0, 24
+	sub.d	$a1, $s2, $s3
+	ori	$a0, $zero, 2
+	bltu	$a1, $a0, .LBB4_15
+.LBB4_5:                                # %vector.ph
+	move	$a2, $a1
+	bstrins.d	$a2, $zero, 0, 0
+	add.d	$a0, $a2, $s3
+	alsl.d	$a3, $s3, $s1, 4
+	addi.d	$a3, $a3, 28
+	move	$a4, $a2
+	.p2align	4, , 16
+.LBB4_6:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	st.w	$zero, $a3, -16
+	st.w	$zero, $a3, 0
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, 32
+	bnez	$a4, .LBB4_6
+# %bb.7:                                # %middle.block
+	bne	$a1, $a2, .LBB4_16
+	b	.LBB4_18
+.LBB4_8:
 	move	$s1, $zero
 	move	$a1, $s3
 	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB4_7
-.LBB4_5:                                # %.lr.ph.i.i.i
+	blt	$a1, $a0, .LBB4_11
+.LBB4_9:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
 	.p2align	4, , 16
-.LBB4_6:                                # =>This Inner Loop Header: Depth=1
+.LBB4_10:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $s0, 24
 	vldx	$vr0, $a2, $a0
 	vstx	$vr0, $s1, $a0
 	addi.d	$a0, $a0, 16
-	bne	$a1, $a0, .LBB4_6
-.LBB4_7:                                # %_ZNK20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE4copyEiiPS0_.exit.i.i
+	bne	$a1, $a0, .LBB4_10
+.LBB4_11:                               # %_ZNK20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE4copyEiiPS0_.exit.i.i
 	ld.d	$a0, $s0, 24
-	beqz	$a0, .LBB4_10
-# %bb.8:                                # %_ZNK20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE4copyEiiPS0_.exit.i.i
+	beqz	$a0, .LBB4_14
+# %bb.12:                               # %_ZNK20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE4copyEiiPS0_.exit.i.i
 	ld.b	$a1, $s0, 32
 	andi	$a1, $a1, 1
-	beqz	$a1, .LBB4_10
-# %bb.9:
+	beqz	$a1, .LBB4_14
+# %bb.13:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-.LBB4_10:                               # %_ZN20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE10deallocateEv.exit.i.i
+.LBB4_14:                               # %_ZN20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE10deallocateEv.exit.i.i
 	ori	$a0, $zero, 1
 	st.b	$a0, $s0, 32
 	st.d	$s1, $s0, 24
 	st.w	$s2, $s0, 16
-.LBB4_11:                               # %.lr.ph.i
-	ld.d	$a0, $s0, 24
-	sub.d	$a2, $s2, $s3
-	ori	$a1, $zero, 2
-	bgeu	$a2, $a1, .LBB4_13
-# %bb.12:
-	move	$a1, $s3
-	b	.LBB4_16
-.LBB4_13:                               # %vector.ph
-	move	$a3, $a2
-	bstrins.d	$a3, $zero, 0, 0
-	add.d	$a1, $a3, $s3
-	alsl.d	$a4, $s3, $a0, 4
-	addi.d	$a4, $a4, 28
-	move	$a5, $a3
-	.p2align	4, , 16
-.LBB4_14:                               # %vector.body
-                                        # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a4, -16
-	st.w	$zero, $a4, 0
-	addi.d	$a5, $a5, -2
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB4_14
-# %bb.15:                               # %middle.block
-	beq	$a2, $a3, .LBB4_18
+	sub.d	$a1, $s2, $s3
+	ori	$a0, $zero, 2
+	bgeu	$a1, $a0, .LBB4_5
+.LBB4_15:
+	move	$a0, $s3
 .LBB4_16:                               # %scalar.ph.preheader
-	alsl.d	$a0, $a1, $a0, 4
-	addi.d	$a0, $a0, 12
-	sub.d	$a1, $s2, $a1
+	alsl.d	$a1, $a0, $s1, 4
+	addi.d	$a1, $a1, 12
+	sub.d	$a0, $s2, $a0
 	.p2align	4, , 16
 .LBB4_17:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a0, 0
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 16
-	bnez	$a1, .LBB4_17
+	st.w	$zero, $a1, 0
+	addi.d	$a0, $a0, -1
+	addi.d	$a1, $a1, 16
+	bnez	$a0, .LBB4_17
 .LBB4_18:                               # %_ZN20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE6resizeEiRKS0_.exit.loopexit
 	ld.w	$a3, $fp, 4
 .LBB4_19:                               # %_ZN20btAlignedObjectArrayI21BT_QUANTIZED_BVH_NODEE6resizeEiRKS0_.exit
@@ -1085,14 +1088,14 @@ _ZN21btGImpactQuantizedBvh8buildSetEv:  # @_ZN21btGImpactQuantizedBvh8buildSetEv
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1101,23 +1104,19 @@ _ZN21btGImpactQuantizedBvh8buildSetEv:  # @_ZN21btGImpactQuantizedBvh8buildSetEv
 	.cfi_offset 26, -48
 	move	$fp, $a0
 	ld.d	$a0, $a0, 88
-	st.d	$zero, $sp, 52
+	st.d	$zero, $sp, 4
 	ld.d	$a1, $a0, 0
 	ori	$s1, $zero, 1
-	st.b	$s1, $sp, 72
+	st.b	$s1, $sp, 24
 	ld.d	$a1, $a1, 24
-	st.d	$zero, $sp, 64
+	st.d	$zero, $sp, 16
 .Ltmp0:
 	jirl	$ra, $a1, 0
 .Ltmp1:
 # %bb.1:
 	move	$s0, $a0
-	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 32
-	vst	$vr0, $sp, 16
 	blt	$a0, $s1, .LBB6_8
 # %bb.2:
-	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	slli.d	$a0, $s0, 5
 	alsl.d	$s1, $s0, $a0, 2
 .Ltmp2:
@@ -1129,25 +1128,23 @@ _ZN21btGImpactQuantizedBvh8buildSetEv:  # @_ZN21btGImpactQuantizedBvh8buildSetEv
 # %bb.3:                                # %.lr.ph.i
 	move	$a1, $zero
 	ori	$a2, $zero, 1
-	st.b	$a2, $sp, 72
-	st.d	$a0, $sp, 64
-	st.w	$s0, $sp, 56
-	addi.d	$a2, $sp, 32
-	vld	$vr1, $sp, 0                    # 16-byte Folded Reload
+	st.b	$a2, $sp, 24
+	st.d	$a0, $sp, 16
+	st.w	$s0, $sp, 8
+	vrepli.b	$vr0, 0
 	.p2align	4, , 16
 .LBB6_4:                                # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a2, 0
-	add.d	$a3, $a0, $a1
-	vstx	$vr1, $a0, $a1
-	vst	$vr0, $a3, 16
+	add.d	$a2, $a0, $a1
+	vstx	$vr0, $a0, $a1
+	st.w	$zero, $a2, 32
 	addi.d	$a1, $a1, 36
-	st.w	$zero, $a3, 32
+	vst	$vr0, $a2, 16
 	bne	$s1, $a1, .LBB6_4
 # %bb.5:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	move	$s1, $zero
 	move	$s3, $zero
-	st.w	$s0, $sp, 52
+	st.w	$s0, $sp, 4
 	.p2align	4, , 16
 .LBB6_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -1161,9 +1158,9 @@ _ZN21btGImpactQuantizedBvh8buildSetEv:  # @_ZN21btGImpactQuantizedBvh8buildSetEv
 	jirl	$ra, $a3, 0
 .Ltmp6:
 # %bb.7:                                #   in Loop: Header=BB6_6 Depth=1
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 16
 	add.d	$a1, $a0, $s2
-	ld.w	$a2, $sp, 52
+	ld.w	$a2, $sp, 4
 	st.w	$s1, $a1, 32
 	addi.d	$s3, $s3, 1
 	addi.w	$s1, $s1, 1
@@ -1171,32 +1168,32 @@ _ZN21btGImpactQuantizedBvh8buildSetEv:  # @_ZN21btGImpactQuantizedBvh8buildSetEv
 	blt	$s3, $a2, .LBB6_6
 	b	.LBB6_9
 .LBB6_8:                                # %.loopexit
-	st.w	$s0, $sp, 52
+	st.w	$s0, $sp, 4
 .LBB6_9:                                # %._crit_edge
 .Ltmp8:
-	addi.d	$a1, $sp, 48
+	addi.d	$a1, $sp, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN18btQuantizedBvhTree10build_treeER18GIM_BVH_DATA_ARRAY)
 	jirl	$ra, $ra, 0
 .Ltmp9:
 # %bb.10:
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 16
 	beqz	$a0, .LBB6_13
 # %bb.11:
-	ld.b	$a1, $sp, 72
+	ld.b	$a1, $sp, 24
 	andi	$a1, $a1, 1
 	beqz	$a1, .LBB6_13
 # %bb.12:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .LBB6_13:                               # %_ZN20btAlignedObjectArrayI12GIM_BVH_DATAED2Ev.exit
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB6_14:
 .Ltmp4:
@@ -1208,10 +1205,10 @@ _ZN21btGImpactQuantizedBvh8buildSetEv:  # @_ZN21btGImpactQuantizedBvh8buildSetEv
 .Ltmp7:
 .LBB6_17:
 	move	$fp, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 16
 	beqz	$a0, .LBB6_20
 # %bb.18:
-	ld.b	$a1, $sp, 72
+	ld.b	$a1, $sp, 24
 	andi	$a1, $a1, 1
 	beqz	$a1, .LBB6_20
 # %bb.19:

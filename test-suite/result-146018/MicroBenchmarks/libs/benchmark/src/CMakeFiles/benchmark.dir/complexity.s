@@ -419,12 +419,7 @@ _ZN9benchmark14MinimalLeastSqERKSt6vectorIlSaIlEERKS0_IdSaIdEENS_4BigOE: # @_ZN9
 # %bb.14:                               # %.lr.ph.i.preheader
 	ld.d	$a1, $s0, 0
 	sub.d	$a0, $a0, $a2
-	srai.d	$a0, $a0, 3
-	ori	$a2, $zero, 1
-	sltu	$a3, $a2, $a0
-	maskeqz	$a4, $a0, $a3
-	masknez	$a2, $a2, $a3
-	or	$a2, $a4, $a2
+	srai.d	$a2, $a0, 3
 	movgr2fr.d	$fa0, $zero
 	vldi	$vr1, -912
 	fmov.d	$fa2, $fa0
@@ -440,14 +435,11 @@ _ZN9benchmark14MinimalLeastSqERKSt6vectorIlSaIlEERKS0_IdSaIdEENS_4BigOE: # @_ZN9
 	addi.d	$a1, $a1, 8
 	bnez	$a2, .LBB3_15
 # %bb.16:                               # %.lr.ph47.i.preheader
-	fdiv.d	$fs0, $fa3, $fa0
 	ld.d	$a1, $s0, 0
-	ori	$a2, $zero, 1
-	sltu	$a3, $a2, $a0
-	maskeqz	$a4, $a0, $a3
-	masknez	$a2, $a2, $a3
-	or	$a2, $a4, $a2
+	fdiv.d	$fs0, $fa3, $fa0
+	srai.d	$a0, $a0, 3
 	movgr2fr.d	$fa0, $zero
+	move	$a2, $a0
 	.p2align	4, , 16
 .LBB3_17:                               # %.lr.ph47.i
                                         # =>This Inner Loop Header: Depth=1
@@ -884,10 +876,10 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	.cfi_offset 60, -128
 	.cfi_offset 61, -136
 	.cfi_offset 62, -144
-	move	$s5, $a1
+	move	$s6, $a1
 	ld.d	$a2, $a1, 8
 	ld.d	$s7, $a1, 0
-	move	$s6, $a0
+	move	$s5, $a0
 	st.d	$zero, $a0, 16
 	vrepli.b	$vr0, 0
 	sub.d	$a0, $a2, $s7
@@ -898,7 +890,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	lu52i.d	$a1, $a1, -1288
 	mul.d	$a0, $a0, $a1
 	ori	$a1, $zero, 2
-	vst	$vr0, $s6, 0
+	vst	$vr0, $s5, 0
 	bltu	$a0, $a1, .LBB4_117
 # %bb.1:
 	st.d	$zero, $sp, 1496
@@ -907,8 +899,8 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	vst	$vr0, $sp, 1456
 	st.d	$zero, $sp, 1448
 	vst	$vr0, $sp, 1432
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	beq	$s7, $a2, .LBB4_52
 # %bb.2:
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
@@ -1164,30 +1156,25 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	b	.LBB4_5
 .LBB4_35:                               # %._crit_edge.loopexit
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $s5, 0
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $s6, 0
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a3, $s7, 460
 	ori	$a0, $zero, 8
 	bne	$a3, $a0, .LBB4_53
 .LBB4_36:
-	ld.d	$s0, $sp, 1480
+	ld.d	$fp, $sp, 1480
 	pcalau12i	$s4, %pc_hi20(.LCPI4_0)
-	sub.d	$s2, $s8, $s0
+	sub.d	$s2, $s8, $fp
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	beq	$s8, $s0, .LBB4_61
+	beq	$s8, $fp, .LBB4_61
 # %bb.37:                               # %.lr.ph.i.preheader
-	ld.d	$s6, $s7, 464
-	ld.d	$s7, $sp, 1432
-	srai.d	$s5, $s2, 3
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $s5
-	maskeqz	$a2, $s5, $a1
-	masknez	$a0, $a0, $a1
+	ld.d	$s5, $s7, 464
+	ld.d	$s6, $sp, 1432
 	movgr2fr.d	$fs0, $zero
-	or	$fp, $a2, $a0
-	move	$s1, $s0
+	srai.d	$s7, $s2, 3
+	move	$s1, $fp
 	fmov.d	$fs2, $fs0
 	fmov.d	$fs1, $fs0
 	.p2align	4, , 16
@@ -1195,48 +1182,45 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
 .Ltmp35:
-	jirl	$ra, $s6, 0
+	jirl	$ra, $s5, 0
 .Ltmp36:
 # %bb.39:                               # %.noexc71
                                         #   in Loop: Header=BB4_38 Depth=1
-	fld.d	$fa1, $s7, 0
+	fld.d	$fa1, $s6, 0
 	fmadd.d	$fs0, $fa0, $fa0, $fs0
 	fadd.d	$fs2, $fs2, $fa1
 	fmadd.d	$fs1, $fa1, $fa0, $fs1
-	addi.d	$fp, $fp, -1
-	addi.d	$s7, $s7, 8
+	addi.d	$s7, $s7, -1
+	addi.d	$s6, $s6, 8
 	addi.d	$s1, $s1, 8
-	bnez	$fp, .LBB4_38
+	bnez	$s7, .LBB4_38
 # %bb.40:                               # %._crit_edge.i
+	ld.d	$s1, $sp, 1432
 	fdiv.d	$fs1, $fs1, $fs0
-	ld.d	$s7, $sp, 1432
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $s5
-	maskeqz	$a2, $s5, $a1
-	masknez	$a0, $a0, $a1
-	or	$fp, $a2, $a0
+	srai.d	$s0, $s2, 3
 	movgr2fr.d	$fs0, $zero
-	move	$s1, $s0
+	move	$s7, $fp
+	move	$s6, $s0
 	.p2align	4, , 16
 .LBB4_41:                               # %.lr.ph47.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s1, 0
+	ld.d	$a0, $s7, 0
 .Ltmp38:
-	jirl	$ra, $s6, 0
+	jirl	$ra, $s5, 0
 .Ltmp39:
 # %bb.42:                               # %.noexc72
                                         #   in Loop: Header=BB4_41 Depth=1
-	fld.d	$fa1, $s7, 0
+	fld.d	$fa1, $s1, 0
 	fmul.d	$fa0, $fs1, $fa0
 	fsub.d	$fa0, $fa1, $fa0
 	fmul.d	$fa0, $fa0, $fa0
 	fadd.d	$fs0, $fs0, $fa0
-	addi.d	$fp, $fp, -1
-	addi.d	$s7, $s7, 8
+	addi.d	$s6, $s6, -1
 	addi.d	$s1, $s1, 8
-	bnez	$fp, .LBB4_41
+	addi.d	$s7, $s7, 8
+	bnez	$s6, .LBB4_41
 # %bb.43:                               # %.loopexit175.loopexit
-	srli.d	$a0, $s5, 32
+	srli.d	$a0, $s0, 32
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	fld.d	$fa0, $a1, %pc_lo12(.LCPI4_1)
 	lu52i.d	$a1, $zero, 1107
@@ -1244,30 +1228,25 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	movgr2fr.d	$fa1, $a0
 	fsub.d	$fa0, $fa1, $fa0
 	lu12i.w	$a0, 275200
-	bstrins.d	$s5, $a0, 63, 32
-	movgr2fr.d	$fa1, $s5
+	bstrins.d	$s0, $a0, 63, 32
+	movgr2fr.d	$fa1, $s0
 	fadd.d	$fs4, $fa1, $fa0
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	fdiv.d	$fa0, $fs0, $fs4
 	fsqrt.d	$fs0, $fa0
 	fcmp.cor.d	$fcc0, $fs0, $fs0
 	bceqz	$fcc0, .LBB4_62
 .LBB4_44:                               # %.loopexit175.split
-	beq	$s8, $s0, .LBB4_63
+	beq	$s8, $fp, .LBB4_63
 .LBB4_45:                               # %.lr.ph.i74.preheader
-	move	$s7, $s5
-	ld.d	$a0, $s5, 0
+	move	$s7, $s6
+	ld.d	$a0, $s6, 0
 	ld.d	$s4, $a0, 464
 	ld.d	$s5, $sp, 1456
-	srai.d	$s2, $s2, 3
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $s2
-	maskeqz	$a2, $s2, $a1
-	masknez	$a0, $a0, $a1
 	movgr2fr.d	$fs3, $zero
-	or	$fp, $a2, $a0
-	move	$s1, $s0
+	srai.d	$s6, $s2, 3
+	move	$s1, $fp
 	fmov.d	$fs5, $fs3
 	fmov.d	$fs6, $fs3
 	.p2align	4, , 16
@@ -1283,37 +1262,36 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	fmadd.d	$fs3, $fa0, $fa0, $fs3
 	fadd.d	$fs5, $fs5, $fa1
 	fmadd.d	$fs6, $fa1, $fa0, $fs6
-	addi.d	$fp, $fp, -1
+	addi.d	$s6, $s6, -1
 	addi.d	$s5, $s5, 8
 	addi.d	$s1, $s1, 8
-	bnez	$fp, .LBB4_46
+	bnez	$s6, .LBB4_46
 # %bb.48:                               # %._crit_edge.i80
+	ld.d	$s1, $sp, 1456
 	fdiv.d	$fs3, $fs6, $fs3
-	ld.d	$s5, $sp, 1456
-	ori	$a0, $zero, 1
-	sltu	$a1, $a0, $s2
-	maskeqz	$a2, $s2, $a1
-	masknez	$a0, $a0, $a1
-	or	$fp, $a2, $a0
+	srai.d	$s2, $s2, 3
 	movgr2fr.d	$fs6, $zero
+	move	$s0, $s2
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	move	$s6, $s7
 	.p2align	4, , 16
 .LBB4_49:                               # %.lr.ph47.i84
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 .Ltmp44:
 	jirl	$ra, $s4, 0
 .Ltmp45:
 # %bb.50:                               # %.noexc96
                                         #   in Loop: Header=BB4_49 Depth=1
-	fld.d	$fa1, $s5, 0
+	fld.d	$fa1, $s1, 0
 	fmul.d	$fa0, $fs3, $fa0
 	fsub.d	$fa0, $fa1, $fa0
 	fmul.d	$fa0, $fa0, $fa0
 	fadd.d	$fs6, $fs6, $fa0
-	addi.d	$fp, $fp, -1
-	addi.d	$s5, $s5, 8
-	addi.d	$s0, $s0, 8
-	bnez	$fp, .LBB4_49
+	addi.d	$s0, $s0, -1
+	addi.d	$s1, $s1, 8
+	addi.d	$fp, $fp, 8
+	bnez	$s0, .LBB4_49
 # %bb.51:                               # %.loopexit169.loopexit
 	srli.d	$a0, $s2, 32
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
@@ -1326,7 +1304,6 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	bstrins.d	$s2, $a0, 63, 32
 	movgr2fr.d	$fa1, $s2
 	fadd.d	$fa2, $fa1, $fa0
-	move	$s5, $s7
 	b	.LBB4_64
 .LBB4_52:
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
@@ -1395,7 +1372,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs0, $fa0
-	bne	$s8, $s0, .LBB4_45
+	bne	$s8, $fp, .LBB4_45
 .LBB4_63:
 	fld.d	$fs3, $s4, %pc_lo12(.LCPI4_0)
 	movgr2fr.d	$fs5, $zero
@@ -1413,7 +1390,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	fdiv.d	$fs0, $fa0, $fs4
 	ori	$s1, $zero, 8
 .LBB4_66:
-	ld.d	$a1, $s5, 0
+	ld.d	$a1, $s6, 0
 .Ltmp47:
 	addi.d	$a0, $sp, 1176
 	pcaddu18i	$ra, %call36(_ZN9benchmark13BenchmarkNameC2ERKS0_)
@@ -1489,7 +1466,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	jirl	$ra, $ra, 0
 .Ltmp68:
 # %bb.76:                               # %_ZN9benchmark13BenchmarkNameaSERKS0_.exit
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s6, 0
 	vld	$vr0, $a0, 256
 	ld.d	$a1, $a0, 416
 	vst	$vr0, $sp, 872
@@ -1511,7 +1488,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	jirl	$ra, $ra, 0
 .Ltmp70:
 # %bb.77:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSEPKc.exit
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s6, 0
 	st.w	$zero, $sp, 928
 	addi.d	$a1, $a0, 320
 	addi.d	$s2, $sp, 936
@@ -1523,7 +1500,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 # %bb.78:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSERKS4_.exit
 	fst.d	$fs3, $sp, 1048
 	fst.d	$fs1, $sp, 1056
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s6, 0
 	ori	$a1, $zero, 1
 	st.b	$a1, $sp, 1104
 	st.w	$s1, $sp, 1076
@@ -1595,7 +1572,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	jirl	$ra, $ra, 0
 .Ltmp92:
 # %bb.87:                               # %_ZN9benchmark13BenchmarkNameaSERKS0_.exit116
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s6, 0
 	vld	$vr0, $a0, 256
 	vst	$vr0, $sp, 312
 	ld.d	$a2, $sp, 344
@@ -1619,7 +1596,7 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	jirl	$ra, $ra, 0
 .Ltmp96:
 # %bb.89:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSERKS4_.exit120
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s6, 0
 	ld.d	$a1, $a0, 416
 	st.d	$fp, $sp, 464
 	st.d	$a1, $sp, 472
@@ -1632,8 +1609,8 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	st.b	$a2, $sp, 545
 	st.w	$s1, $sp, 516
 	ld.w	$a2, $a0, 424
-	ld.d	$a0, $s6, 8
-	ld.d	$a3, $s6, 16
+	ld.d	$a0, $s5, 8
+	ld.d	$a3, $s5, 16
 	st.d	$a1, $sp, 456
 	st.d	$zero, $sp, 448
 	st.w	$a2, $sp, 480
@@ -1645,10 +1622,10 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	jirl	$ra, $ra, 0
 .Ltmp98:
 # %bb.91:                               # %.noexc122
-	ld.d	$a0, $s6, 8
+	ld.d	$a0, $s5, 8
 	addi.d	$a0, $a0, 560
-	st.d	$a0, $s6, 8
-	ld.d	$a1, $s6, 16
+	st.d	$a0, $s5, 8
+	ld.d	$a1, $s5, 16
 	beq	$a0, $a1, .LBB4_96
 .LBB4_92:
 .Ltmp101:
@@ -1657,25 +1634,25 @@ _ZN9benchmark11ComputeBigOERKSt6vectorINS_17BenchmarkReporter3RunESaIS2_EE: # @_
 	jirl	$ra, $ra, 0
 .Ltmp102:
 # %bb.93:                               # %.noexc125
-	ld.d	$a0, $s6, 8
+	ld.d	$a0, $s5, 8
 	addi.d	$a0, $a0, 560
-	st.d	$a0, $s6, 8
+	st.d	$a0, $s5, 8
 	b	.LBB4_97
 .LBB4_94:
 .Ltmp99:
 	addi.d	$a1, $sp, 616
-	move	$a0, $s6
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIN9benchmark17BenchmarkReporter3RunESaIS2_EE17_M_realloc_appendIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp100:
 # %bb.95:                               # %._ZNSt6vectorIN9benchmark17BenchmarkReporter3RunESaIS2_EE9push_backERKS2_.exit_crit_edge
-	ld.d	$a0, $s6, 8
-	ld.d	$a1, $s6, 16
+	ld.d	$a0, $s5, 8
+	ld.d	$a1, $s5, 16
 	bne	$a0, $a1, .LBB4_92
 .LBB4_96:
 .Ltmp103:
 	addi.d	$a1, $sp, 56
-	move	$a0, $s6
+	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZNSt6vectorIN9benchmark17BenchmarkReporter3RunESaIS2_EE17_M_realloc_appendIJRKS2_EEEvDpOT_)
 	jirl	$ra, $ra, 0
 .Ltmp104:

@@ -1971,10 +1971,10 @@ reduce_fully:
 
 	.globl	_ZN24lambda_expression_parserC1EP12token_stream
 	.type	_ZN24lambda_expression_parserC1EP12token_stream,@function
-.set _ZN24lambda_expression_parserC1EP12token_stream, _ZN24lambda_expression_parserC2EP12token_stream
+_ZN24lambda_expression_parserC1EP12token_stream = _ZN24lambda_expression_parserC2EP12token_stream
 	.globl	_ZN24lambda_expression_parserD1Ev
 	.type	_ZN24lambda_expression_parserD1Ev,@function
-.set _ZN24lambda_expression_parserD1Ev, _ZN24lambda_expression_parserD2Ev
+_ZN24lambda_expression_parserD1Ev = _ZN24lambda_expression_parserD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

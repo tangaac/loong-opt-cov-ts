@@ -10380,10 +10380,9 @@ DoNNetIteration:                        # @DoNNetIteration
 # %bb.81:                               # %middle.block86
                                         #   in Loop: Header=BB15_25 Depth=2
 	vor.v	$vr0, $vr2, $vr1
-	vpickve2gr.d	$a1, $vr0, 1
-	vpickve2gr.d	$a3, $vr0, 0
-	bstrins.d	$a3, $a1, 63, 1
-	andi	$a1, $a3, 3
+	vslli.d	$vr0, $vr0, 63
+	vmskltz.d	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	sltu	$a1, $zero, $a1
 	beq	$a0, $a2, .LBB15_84
 .LBB15_82:                              # %.lr.ph.split.i.preheader196
@@ -10456,10 +10455,9 @@ DoNNetIteration:                        # @DoNNetIteration
 # %bb.91:                               # %middle.block
                                         #   in Loop: Header=BB15_5 Depth=1
 	vor.v	$vr0, $vr2, $vr1
-	vpickve2gr.d	$a1, $vr0, 1
-	vpickve2gr.d	$a4, $vr0, 0
-	bstrins.d	$a4, $a1, 63, 1
-	andi	$a1, $a4, 3
+	vslli.d	$vr0, $vr0, 63
+	vmskltz.d	$vr0, $vr0
+	vpickve2gr.hu	$a1, $vr0, 0
 	sltu	$a1, $zero, $a1
 	beq	$a0, $a2, .LBB15_94
 .LBB15_92:                              # %.lr.ph.split.us.i.preheader197

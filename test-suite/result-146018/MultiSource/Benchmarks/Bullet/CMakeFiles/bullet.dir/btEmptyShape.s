@@ -304,10 +304,10 @@ _ZTS12btEmptyShape:
 
 	.globl	_ZN12btEmptyShapeC1Ev
 	.type	_ZN12btEmptyShapeC1Ev,@function
-.set _ZN12btEmptyShapeC1Ev, _ZN12btEmptyShapeC2Ev
+_ZN12btEmptyShapeC1Ev = _ZN12btEmptyShapeC2Ev
 	.globl	_ZN12btEmptyShapeD1Ev
 	.type	_ZN12btEmptyShapeD1Ev,@function
-.set _ZN12btEmptyShapeD1Ev, _ZN12btEmptyShapeD2Ev
+_ZN12btEmptyShapeD1Ev = _ZN12btEmptyShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

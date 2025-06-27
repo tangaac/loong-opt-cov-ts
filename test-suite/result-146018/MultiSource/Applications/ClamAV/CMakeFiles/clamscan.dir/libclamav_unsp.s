@@ -443,7 +443,7 @@ very_real_unpack:                       # @very_real_unpack
 	bgeu	$a0, $t0, .LBB1_41
 # %bb.28:                               #   in Loop: Header=BB1_15 Depth=1
 	ori	$t5, $zero, 1
-.LBB1_29:                               # %.preheader.preheader669
+.LBB1_29:                               # %.preheader.preheader671
                                         #   in Loop: Header=BB1_15 Depth=1
 	sub.w	$a1, $zero, $a2
 	addi.w	$a5, $a4, -1
@@ -544,7 +544,7 @@ very_real_unpack:                       # @very_real_unpack
 	sub.w	$a5, $zero, $a2
 	move	$a6, $a1
 	.p2align	4, , 16
-.LBB1_45:                               # %vector.body644
+.LBB1_45:                               # %vector.body646
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a7, $a5, $s8
@@ -559,7 +559,7 @@ very_real_unpack:                       # @very_real_unpack
 	addi.w	$a6, $a6, -32
 	addi.w	$s8, $s8, 32
 	bnez	$a6, .LBB1_45
-# %bb.46:                               # %middle.block649
+# %bb.46:                               # %middle.block651
                                         #   in Loop: Header=BB1_15 Depth=1
 	bne	$a0, $a1, .LBB1_82
 # %bb.47:                               #   in Loop: Header=BB1_15 Depth=1
@@ -1576,7 +1576,7 @@ very_real_unpack:                       # @very_real_unpack
 	st.w	$s1, $sp, 192
 	ori	$a6, $zero, 255
 	b	.LBB1_243
-.LBB1_220:                              # %vector.ph655
+.LBB1_220:                              # %vector.ph657
                                         #   in Loop: Header=BB1_15 Depth=1
 	pcalau12i	$a3, %pc_hi20(.LCPI1_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI1_0)
@@ -1584,7 +1584,7 @@ very_real_unpack:                       # @very_real_unpack
 	move	$a3, $a5
 	vld	$vr2, $sp, 0                    # 16-byte Folded Reload
 	vori.b	$vr1, $vr2, 0
-.LBB1_221:                              # %vector.body658
+.LBB1_221:                              # %vector.body660
                                         #   Parent Loop BB1_15 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vaddi.wu	$vr3, $vr0, 4
@@ -1595,7 +1595,7 @@ very_real_unpack:                       # @very_real_unpack
 	addi.w	$a3, $a3, -8
 	vaddi.wu	$vr0, $vr0, 8
 	bnez	$a3, .LBB1_221
-# %bb.222:                              # %middle.block665
+# %bb.222:                              # %middle.block667
                                         #   in Loop: Header=BB1_15 Depth=1
 	vor.v	$vr0, $vr2, $vr1
 	vshuf4i.w	$vr1, $vr0, 14

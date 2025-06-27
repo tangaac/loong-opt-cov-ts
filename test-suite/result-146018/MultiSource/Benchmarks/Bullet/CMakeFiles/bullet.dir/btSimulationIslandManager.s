@@ -1864,10 +1864,10 @@ _ZTS25btSimulationIslandManager:
 
 	.globl	_ZN25btSimulationIslandManagerC1Ev
 	.type	_ZN25btSimulationIslandManagerC1Ev,@function
-.set _ZN25btSimulationIslandManagerC1Ev, _ZN25btSimulationIslandManagerC2Ev
+_ZN25btSimulationIslandManagerC1Ev = _ZN25btSimulationIslandManagerC2Ev
 	.globl	_ZN25btSimulationIslandManagerD1Ev
 	.type	_ZN25btSimulationIslandManagerD1Ev,@function
-.set _ZN25btSimulationIslandManagerD1Ev, _ZN25btSimulationIslandManagerD2Ev
+_ZN25btSimulationIslandManagerD1Ev = _ZN25btSimulationIslandManagerD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -107,8 +107,7 @@ packet_size:                            # @packet_size
 	srli.d	$a1, $a1, 37
 	ori	$a2, $zero, 100
 	mul.d	$a1, $a1, $a2
-	sub.d	$a0, $a0, $a1
-	bstrpick.d	$a0, $a0, 31, 0
+	sub.w	$a0, $a0, $a1
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(packet_lengths)
 	addi.d	$a1, $a1, %pc_lo12(packet_lengths)

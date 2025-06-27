@@ -1385,7 +1385,7 @@ _ZTV5light:
 
 	.globl	_ZN16intersection_4x4C1EPKc
 	.type	_ZN16intersection_4x4C1EPKc,@function
-.set _ZN16intersection_4x4C1EPKc, _ZN16intersection_4x4C2EPKc
+_ZN16intersection_4x4C1EPKc = _ZN16intersection_4x4C2EPKc
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

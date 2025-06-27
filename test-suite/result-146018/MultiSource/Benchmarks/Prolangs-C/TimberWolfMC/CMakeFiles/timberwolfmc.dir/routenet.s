@@ -259,7 +259,7 @@ routenet:                               # @routenet
 	ori	$a4, $zero, 1
 	st.w	$fp, $a2, 0
 	blt	$a1, $a4, .LBB0_42
-# %bb.28:                               # %iter.check262
+# %bb.28:                               # %iter.check264
 	pcalau12i	$a2, %got_pc_hi20(targetList)
 	ld.d	$a2, $a2, %got_pc_lo12(targetList)
 	pcalau12i	$a3, %got_pc_hi20(addTargetList)
@@ -268,16 +268,16 @@ routenet:                               # @routenet
 	ld.d	$a3, $a3, 0
 	ori	$a5, $zero, 8
 	bltu	$a1, $a5, .LBB0_40
-# %bb.29:                               # %iter.check262
+# %bb.29:                               # %iter.check264
 	sub.d	$a5, $a3, $a2
 	ori	$a6, $zero, 32
 	bltu	$a5, $a6, .LBB0_40
-# %bb.30:                               # %vector.main.loop.iter.check264
+# %bb.30:                               # %vector.main.loop.iter.check266
 	ori	$a4, $zero, 16
 	bgeu	$a1, $a4, .LBB0_35
 # %bb.31:
 	move	$a5, $zero
-.LBB0_32:                               # %vec.epilog.ph275
+.LBB0_32:                               # %vec.epilog.ph277
 	bstrpick.d	$a4, $a1, 30, 3
 	slli.d	$a6, $a4, 3
 	srli.d	$a7, $a1, 3
@@ -290,7 +290,7 @@ routenet:                               # @routenet
 	sub.d	$a5, $a5, $a6
 	vrepli.b	$vr0, 0
 	.p2align	4, , 16
-.LBB0_33:                               # %vec.epilog.vector.body281
+.LBB0_33:                               # %vec.epilog.vector.body283
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a7, 0
 	vst	$vr0, $t0, 0
@@ -298,10 +298,10 @@ routenet:                               # @routenet
 	addi.d	$a5, $a5, 8
 	addi.d	$t0, $t0, 16
 	bnez	$a5, .LBB0_33
-# %bb.34:                               # %vec.epilog.middle.block285
+# %bb.34:                               # %vec.epilog.middle.block287
 	bne	$a6, $a1, .LBB0_40
 	b	.LBB0_42
-.LBB0_35:                               # %vector.ph265
+.LBB0_35:                               # %vector.ph267
 	bstrpick.d	$a4, $a1, 30, 4
 	slli.d	$a5, $a4, 4
 	addi.d	$a4, $a2, 18
@@ -309,7 +309,7 @@ routenet:                               # @routenet
 	vrepli.b	$vr0, 0
 	move	$a7, $a5
 	.p2align	4, , 16
-.LBB0_36:                               # %vector.body268
+.LBB0_36:                               # %vector.body270
                                         # =>This Inner Loop Header: Depth=1
 	vst	$vr0, $a4, -16
 	vst	$vr0, $a4, 0
@@ -319,21 +319,21 @@ routenet:                               # @routenet
 	addi.d	$a7, $a7, -16
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB0_36
-# %bb.37:                               # %middle.block271
+# %bb.37:                               # %middle.block273
 	beq	$a5, $a1, .LBB0_42
-# %bb.38:                               # %vec.epilog.iter.check276
+# %bb.38:                               # %vec.epilog.iter.check278
 	andi	$a4, $a1, 8
 	bnez	$a4, .LBB0_32
 # %bb.39:
 	addi.d	$a4, $a5, 1
-.LBB0_40:                               # %vec.epilog.scalar.ph274.preheader
+.LBB0_40:                               # %vec.epilog.scalar.ph276.preheader
 	addi.d	$a5, $a1, 1
 	bstrpick.d	$a5, $a5, 31, 0
 	alsl.d	$a3, $a4, $a3, 1
 	alsl.d	$a2, $a4, $a2, 1
 	sub.d	$a4, $a5, $a4
 	.p2align	4, , 16
-.LBB0_41:                               # %vec.epilog.scalar.ph274
+.LBB0_41:                               # %vec.epilog.scalar.ph276
                                         # =>This Inner Loop Header: Depth=1
 	st.h	$zero, $a2, 0
 	st.h	$zero, $a3, 0

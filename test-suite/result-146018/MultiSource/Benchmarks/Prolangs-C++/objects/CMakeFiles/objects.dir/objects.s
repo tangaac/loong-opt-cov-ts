@@ -1519,13 +1519,13 @@ _ZTS1A:
 
 	.globl	_ZN5ArrayC1Ei7TblType
 	.type	_ZN5ArrayC1Ei7TblType,@function
-.set _ZN5ArrayC1Ei7TblType, _ZN5ArrayC2Ei7TblType
+_ZN5ArrayC1Ei7TblType = _ZN5ArrayC2Ei7TblType
 	.globl	_ZN5ArrayD1Ev
 	.type	_ZN5ArrayD1Ev,@function
-.set _ZN5ArrayD1Ev, _ZN5ArrayD2Ev
+_ZN5ArrayD1Ev = _ZN5ArrayD2Ev
 	.globl	_ZN7SpArrayD1Ev
 	.type	_ZN7SpArrayD1Ev,@function
-.set _ZN7SpArrayD1Ev, _ZN7SpArrayD2Ev
+_ZN7SpArrayD1Ev = _ZN7SpArrayD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

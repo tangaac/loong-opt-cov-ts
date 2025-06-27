@@ -1521,9 +1521,9 @@ _ZN11ALACDecoder11FillElementEP9BitBuffer: # @_ZN11ALACDecoder11FillElementEP9Bi
                                         # -- End function
 	.globl	_ZN11ALACDecoderC1Ev
 	.type	_ZN11ALACDecoderC1Ev,@function
-.set _ZN11ALACDecoderC1Ev, _ZN11ALACDecoderC2Ev
+_ZN11ALACDecoderC1Ev = _ZN11ALACDecoderC2Ev
 	.globl	_ZN11ALACDecoderD1Ev
 	.type	_ZN11ALACDecoderD1Ev,@function
-.set _ZN11ALACDecoderD1Ev, _ZN11ALACDecoderD2Ev
+_ZN11ALACDecoderD1Ev = _ZN11ALACDecoderD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig

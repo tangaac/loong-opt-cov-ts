@@ -2990,8 +2990,8 @@ read_significance_map:                  # @read_significance_map
                                         #   in Loop: Header=BB22_8 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	alsl.d	$a0, $s3, $a0, 2
-	nor	$a1, $s3, $zero
-	add.d	$a1, $s2, $a1
+	sub.d	$a1, $s3, $s2
+	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 2
 	addi.d	$a2, $a1, 4

@@ -4547,7 +4547,7 @@ _ZTS13CRecordVectorIP19ISequentialInStreamE:
 
 	.globl	_ZN8NArchive3N7z8CDecoderC1Eb
 	.type	_ZN8NArchive3N7z8CDecoderC1Eb,@function
-.set _ZN8NArchive3N7z8CDecoderC1Eb, _ZN8NArchive3N7z8CDecoderC2Eb
+_ZN8NArchive3N7z8CDecoderC1Eb = _ZN8NArchive3N7z8CDecoderC2Eb
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

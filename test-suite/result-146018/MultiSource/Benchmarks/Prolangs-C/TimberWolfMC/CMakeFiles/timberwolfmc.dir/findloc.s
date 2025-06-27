@@ -92,7 +92,7 @@ findLoc:                                # @findLoc
 # %bb.12:
 	ori	$a6, $zero, 2
 	blt	$a0, $a6, .LBB0_102
-# %bb.13:                               # %.lr.ph486.preheader
+# %bb.13:                               # %.lr.ph482.preheader
 	add.d	$a1, $a5, $a3
 	bstrpick.d	$a3, $a1, 31, 31
 	add.w	$a1, $a1, $a3
@@ -107,7 +107,7 @@ findLoc:                                # @findLoc
 	addi.d	$a4, $a1, -2
 	ori	$a1, $zero, 1
 	.p2align	4, , 16
-.LBB0_14:                               # %.lr.ph486
+.LBB0_14:                               # %.lr.ph482
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a2, 0
 	move	$a7, $a5
@@ -140,7 +140,7 @@ findLoc:                                # @findLoc
 # %bb.22:
 	ori	$a5, $zero, 2
 	blt	$a0, $a5, .LBB0_102
-# %bb.23:                               # %.lr.ph540.preheader
+# %bb.23:                               # %.lr.ph536.preheader
 	add.d	$a1, $a4, $a6
 	bstrpick.d	$a4, $a1, 31, 31
 	add.w	$a1, $a1, $a4
@@ -154,7 +154,7 @@ findLoc:                                # @findLoc
 	addi.d	$a2, $a2, 40
 	addi.d	$a3, $a1, -2
 	ori	$a1, $zero, 1
-.LBB0_24:                               # %.lr.ph540
+.LBB0_24:                               # %.lr.ph536
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a2, 0
 	move	$a7, $a5
@@ -183,7 +183,7 @@ findLoc:                                # @findLoc
 # %bb.31:
 	ori	$a6, $zero, 2
 	blt	$a0, $a6, .LBB0_102
-# %bb.32:                               # %.lr.ph459.preheader
+# %bb.32:                               # %.lr.ph455.preheader
 	add.d	$a1, $a5, $a3
 	bstrpick.d	$a3, $a1, 31, 31
 	add.w	$a1, $a1, $a3
@@ -198,7 +198,7 @@ findLoc:                                # @findLoc
 	addi.d	$a4, $a1, -2
 	ori	$a1, $zero, 1
 	.p2align	4, , 16
-.LBB0_33:                               # %.lr.ph459
+.LBB0_33:                               # %.lr.ph455
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a2, 0
 	move	$a7, $a5
@@ -227,7 +227,7 @@ findLoc:                                # @findLoc
 # %bb.40:
 	ori	$a5, $zero, 2
 	blt	$a0, $a5, .LBB0_102
-# %bb.41:                               # %.lr.ph513.preheader
+# %bb.41:                               # %.lr.ph509.preheader
 	add.d	$a1, $a4, $a6
 	bstrpick.d	$a4, $a1, 31, 31
 	add.w	$a1, $a1, $a4
@@ -241,7 +241,7 @@ findLoc:                                # @findLoc
 	addi.d	$a2, $a2, 40
 	addi.d	$a3, $a1, -2
 	ori	$a1, $zero, 1
-.LBB0_42:                               # %.lr.ph513
+.LBB0_42:                               # %.lr.ph509
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a2, 0
 	move	$a7, $a5
@@ -267,14 +267,14 @@ findLoc:                                # @findLoc
 # %bb.48:
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB0_100
-# %bb.49:                               # %.lr.ph504.preheader
+# %bb.49:                               # %.lr.ph500.preheader
 	sub.w	$a6, $a5, $a4
 	addi.w	$a3, $a0, 1
 	bstrpick.d	$a1, $a3, 31, 0
 	addi.d	$a2, $a2, 44
 	addi.d	$a4, $a1, -2
 	ori	$a1, $zero, 2
-.LBB0_50:                               # %.lr.ph504
+.LBB0_50:                               # %.lr.ph500
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a2, 0
 	move	$t0, $a6
@@ -282,7 +282,7 @@ findLoc:                                # @findLoc
 	srai.d	$a7, $a6, 31
 	xor	$a6, $a6, $a7
 	sub.w	$a6, $a6, $a7
-	bge	$a6, $t0, .LBB0_100
+	bgeu	$a6, $t0, .LBB0_100
 # %bb.51:                               #   in Loop: Header=BB0_50 Depth=1
 	addi.w	$a1, $a1, 1
 	addi.d	$a4, $a4, -1
@@ -298,7 +298,7 @@ findLoc:                                # @findLoc
 # %bb.55:
 	ori	$a3, $zero, 2
 	blt	$a0, $a3, .LBB0_102
-# %bb.56:                               # %.lr.ph477.preheader
+# %bb.56:                               # %.lr.ph473.preheader
 	sub.w	$a1, $a5, $a4
 	srai.d	$a4, $a1, 31
 	xor	$a1, $a1, $a4
@@ -307,7 +307,7 @@ findLoc:                                # @findLoc
 	bstrpick.d	$a6, $a0, 31, 0
 	addi.d	$a1, $a2, 44
 	addi.d	$a2, $a6, -2
-.LBB0_57:                               # %.lr.ph477
+.LBB0_57:                               # %.lr.ph473
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a1, 0
 	move	$a7, $a4
@@ -323,7 +323,7 @@ findLoc:                                # @findLoc
 	bnez	$a2, .LBB0_57
 # %bb.59:
 	move	$a3, $a0
-.LBB0_60:                               # %._crit_edge478.loopexit
+.LBB0_60:                               # %._crit_edge474.loopexit
 	bstrpick.d	$a1, $a3, 31, 1
 	addi.w	$a0, $a1, 0
 	ret
@@ -336,14 +336,14 @@ findLoc:                                # @findLoc
 # %bb.64:
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB0_100
-# %bb.65:                               # %.lr.ph558.preheader
+# %bb.65:                               # %.lr.ph554.preheader
 	sub.w	$a5, $a6, $a3
 	addi.w	$a3, $a0, 1
 	bstrpick.d	$a1, $a3, 31, 0
 	addi.d	$a2, $a2, 40
 	addi.d	$a4, $a1, -2
 	ori	$a1, $zero, 2
-.LBB0_66:                               # %.lr.ph558
+.LBB0_66:                               # %.lr.ph554
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a2, 0
 	move	$t0, $a5
@@ -351,7 +351,7 @@ findLoc:                                # @findLoc
 	srai.d	$a7, $a5, 31
 	xor	$a5, $a5, $a7
 	sub.w	$a5, $a5, $a7
-	bge	$a5, $t0, .LBB0_100
+	bgeu	$a5, $t0, .LBB0_100
 # %bb.67:                               #   in Loop: Header=BB0_66 Depth=1
 	addi.w	$a1, $a1, 1
 	addi.d	$a4, $a4, -1
@@ -370,7 +370,7 @@ findLoc:                                # @findLoc
 # %bb.72:
 	ori	$a4, $zero, 2
 	blt	$a0, $a4, .LBB0_102
-# %bb.73:                               # %.lr.ph531.preheader
+# %bb.73:                               # %.lr.ph527.preheader
 	sub.w	$a1, $a6, $a3
 	srai.d	$a3, $a1, 31
 	xor	$a1, $a1, $a3
@@ -379,7 +379,7 @@ findLoc:                                # @findLoc
 	bstrpick.d	$a5, $a0, 31, 0
 	addi.d	$a1, $a2, 40
 	addi.d	$a2, $a5, -2
-.LBB0_74:                               # %.lr.ph531
+.LBB0_74:                               # %.lr.ph527
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a1, 0
 	move	$a7, $a3
@@ -395,14 +395,14 @@ findLoc:                                # @findLoc
 	bnez	$a2, .LBB0_74
 # %bb.76:
 	move	$a4, $a0
-.LBB0_77:                               # %._crit_edge532.loopexit
+.LBB0_77:                               # %._crit_edge528.loopexit
 	bstrpick.d	$a1, $a4, 31, 1
 	addi.w	$a0, $a1, 0
 	ret
 .LBB0_78:
 	ori	$a5, $zero, 2
 	blt	$a0, $a5, .LBB0_102
-# %bb.79:                               # %.lr.ph495.preheader
+# %bb.79:                               # %.lr.ph491.preheader
 	sub.w	$a1, $a3, $a4
 	srai.d	$a4, $a1, 31
 	xor	$a1, $a1, $a4
@@ -411,7 +411,7 @@ findLoc:                                # @findLoc
 	bstrpick.d	$a6, $a0, 31, 0
 	addi.d	$a1, $a2, 44
 	addi.d	$a2, $a6, -2
-.LBB0_80:                               # %.lr.ph495
+.LBB0_80:                               # %.lr.ph491
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a1, 0
 	move	$a7, $a4
@@ -427,14 +427,14 @@ findLoc:                                # @findLoc
 	bnez	$a2, .LBB0_80
 # %bb.82:
 	move	$a5, $a0
-.LBB0_83:                               # %._crit_edge496.loopexit
+.LBB0_83:                               # %._crit_edge492.loopexit
 	bstrpick.d	$a1, $a5, 31, 1
 	addi.w	$a0, $a1, 0
 	ret
 .LBB0_84:
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB0_100
-# %bb.85:                               # %.lr.ph468.preheader
+# %bb.85:                               # %.lr.ph464.preheader
 	sub.w	$a1, $a3, $a4
 	srai.d	$a4, $a1, 31
 	xor	$a1, $a1, $a4
@@ -444,7 +444,7 @@ findLoc:                                # @findLoc
 	addi.d	$a2, $a2, 44
 	addi.d	$a5, $a1, -2
 	ori	$a1, $zero, 2
-.LBB0_86:                               # %.lr.ph468
+.LBB0_86:                               # %.lr.ph464
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a2, 0
 	move	$t0, $a6
@@ -464,7 +464,7 @@ findLoc:                                # @findLoc
 .LBB0_89:
 	ori	$a5, $zero, 2
 	blt	$a0, $a5, .LBB0_102
-# %bb.90:                               # %.lr.ph549.preheader
+# %bb.90:                               # %.lr.ph545.preheader
 	sub.w	$a1, $a4, $a3
 	srai.d	$a3, $a1, 31
 	xor	$a1, $a1, $a3
@@ -473,7 +473,7 @@ findLoc:                                # @findLoc
 	bstrpick.d	$a6, $a0, 31, 0
 	addi.d	$a1, $a2, 40
 	addi.d	$a2, $a6, -2
-.LBB0_91:                               # %.lr.ph549
+.LBB0_91:                               # %.lr.ph545
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a6, $a1, 0
 	move	$a7, $a3
@@ -489,14 +489,14 @@ findLoc:                                # @findLoc
 	bnez	$a2, .LBB0_91
 # %bb.93:
 	move	$a5, $a0
-.LBB0_94:                               # %._crit_edge550.loopexit
+.LBB0_94:                               # %._crit_edge546.loopexit
 	bstrpick.d	$a1, $a5, 31, 1
 	addi.w	$a0, $a1, 0
 	ret
 .LBB0_95:
 	ori	$a1, $zero, 2
 	blt	$a0, $a1, .LBB0_100
-# %bb.96:                               # %.lr.ph522.preheader
+# %bb.96:                               # %.lr.ph518.preheader
 	sub.w	$a1, $a4, $a3
 	srai.d	$a3, $a1, 31
 	xor	$a1, $a1, $a3
@@ -506,7 +506,7 @@ findLoc:                                # @findLoc
 	addi.d	$a2, $a2, 40
 	addi.d	$a5, $a1, -2
 	ori	$a1, $zero, 2
-.LBB0_97:                               # %.lr.ph522
+.LBB0_97:                               # %.lr.ph518
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a7, $a2, 0
 	move	$t0, $a6
@@ -522,13 +522,13 @@ findLoc:                                # @findLoc
 	bnez	$a5, .LBB0_97
 .LBB0_99:
 	move	$a1, $a3
-.LBB0_100:                              # %._crit_edge523
+.LBB0_100:                              # %._crit_edge519
 	add.d	$a0, $a1, $a0
-.LBB0_101:                              # %._crit_edge487
+.LBB0_101:                              # %._crit_edge483
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
 	srai.d	$a1, $a0, 1
-.LBB0_102:                              # %._crit_edge487
+.LBB0_102:                              # %._crit_edge483
 	addi.w	$a0, $a1, 0
 	ret
 .Lfunc_end0:

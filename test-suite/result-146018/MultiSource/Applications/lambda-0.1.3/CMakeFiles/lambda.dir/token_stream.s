@@ -943,10 +943,10 @@ _ZN12token_stream9get_tokenEPPc:        # @_ZN12token_stream9get_tokenEPPc
 
 	.globl	_ZN12token_streamC1EPKc
 	.type	_ZN12token_streamC1EPKc,@function
-.set _ZN12token_streamC1EPKc, _ZN12token_streamC2EPKc
+_ZN12token_streamC1EPKc = _ZN12token_streamC2EPKc
 	.globl	_ZN12token_streamD1Ev
 	.type	_ZN12token_streamD1Ev,@function
-.set _ZN12token_streamD1Ev, _ZN12token_streamD2Ev
+_ZN12token_streamD1Ev = _ZN12token_streamD2Ev
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

@@ -79,14 +79,15 @@ TC:                                     # @TC
 	sltu	$fp, $t8, $t7
 	maskeqz	$t7, $t7, $fp
 	masknez	$fp, $t8, $fp
-	or	$t7, $t7, $fp
-	nor	$fp, $t6, $zero
-	add.d	$t7, $t7, $fp
+	or	$fp, $t7, $fp
+	nor	$t7, $t6, $zero
+	add.d	$t7, $fp, $t7
 	bltu	$t7, $a7, .LBB0_10
 # %bb.8:                                # %vector.memcheck
                                         #   in Loop: Header=BB0_5 Depth=2
-	move	$fp, $t7
-	bstrins.d	$fp, $zero, 1, 0
+	sub.d	$fp, $t6, $fp
+	addi.w	$s0, $zero, -4
+	andn	$fp, $s0, $fp
 	add.d	$s0, $t3, $fp
 	bgeu	$t6, $s0, .LBB0_13
 # %bb.9:                                # %vector.memcheck
@@ -236,14 +237,15 @@ RTC:                                    # @RTC
 	sltu	$t8, $t7, $t6
 	maskeqz	$t6, $t6, $t8
 	masknez	$t8, $t7, $t8
-	or	$t6, $t6, $t8
-	nor	$t8, $t5, $zero
-	add.d	$t6, $t6, $t8
+	or	$t8, $t6, $t8
+	nor	$t6, $t5, $zero
+	add.d	$t6, $t8, $t6
 	bltu	$t6, $a6, .LBB1_11
 # %bb.9:                                # %vector.memcheck
                                         #   in Loop: Header=BB1_7 Depth=2
-	move	$t8, $t6
-	bstrins.d	$t8, $zero, 1, 0
+	sub.d	$t8, $t5, $t8
+	addi.w	$fp, $zero, -4
+	andn	$t8, $fp, $t8
 	add.d	$fp, $t2, $t8
 	bgeu	$t5, $fp, .LBB1_14
 # %bb.10:                               # %vector.memcheck

@@ -33,7 +33,7 @@ off:
 	.size	off, 4
 
 	.globl	b
-.set b, a
+b = a
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym a

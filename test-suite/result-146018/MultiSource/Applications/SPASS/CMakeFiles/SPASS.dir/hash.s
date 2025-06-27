@@ -189,8 +189,7 @@ hash_Get:                               # @hash_Get
 	srli.d	$a1, $a1, 36
 	ori	$a2, $zero, 29
 	mul.d	$a1, $a1, $a2
-	sub.d	$a1, $a0, $a1
-	bstrpick.d	$a1, $a1, 31, 0
+	sub.w	$a1, $a0, $a1
 	pcalau12i	$a2, %pc_hi20(hash_TABLE)
 	addi.d	$a2, $a2, %pc_lo12(hash_TABLE)
 	alsl.d	$a1, $a1, $a2, 3

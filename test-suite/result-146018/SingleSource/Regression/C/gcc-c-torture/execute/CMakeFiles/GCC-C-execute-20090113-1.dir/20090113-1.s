@@ -187,8 +187,8 @@ msum_i4:                                # @msum_i4
 	addi.d	$sp, $sp, 128
 	ret
 .LBB0_19:                               # %.split.preheader
+	sub.d	$a1, $a1, $a7
 	nor	$a1, $a1, $zero
-	add.d	$a1, $a7, $a1
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 2
 	addi.d	$a2, $a1, 4

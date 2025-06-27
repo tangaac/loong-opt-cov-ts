@@ -804,7 +804,7 @@ _ZN14HybridIndexSet21addRangeStrideIndicesEiii: # @_ZN14HybridIndexSet21addRange
 
 	.globl	_ZN14HybridIndexSetD1Ev
 	.type	_ZN14HybridIndexSetD1Ev,@function
-.set _ZN14HybridIndexSetD1Ev, _ZN14HybridIndexSetD2Ev
+_ZN14HybridIndexSetD1Ev = _ZN14HybridIndexSetD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -5403,7 +5403,7 @@ _ZTS7CBufferIhE:
 	.dword	_GLOBAL__sub_I_7zAes.cpp
 	.globl	_ZN7NCrypto7NSevenZ5CBaseC1Ev
 	.type	_ZN7NCrypto7NSevenZ5CBaseC1Ev,@function
-.set _ZN7NCrypto7NSevenZ5CBaseC1Ev, _ZN7NCrypto7NSevenZ5CBaseC2Ev
+_ZN7NCrypto7NSevenZ5CBaseC1Ev = _ZN7NCrypto7NSevenZ5CBaseC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

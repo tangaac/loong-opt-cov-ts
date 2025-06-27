@@ -541,7 +541,7 @@ main:                                   # @main
 	vpickve2gr.d	$a3, $vr9, 0
 	vaddi.du	$vr10, $vr10, 1
 	bne	$a3, $a1, .LBB0_35
-# %bb.36:                               # %vector.latch345
+# %bb.36:                               # %vector.latch343
                                         #   in Loop: Header=BB0_34 Depth=1
 	vadd.w	$vr8, $vr8, $vr2
 	vadd.d	$vr6, $vr5, $vr6
@@ -802,7 +802,7 @@ main:                                   # @main
 	vpickve2gr.d	$a4, $vr9, 0
 	vaddi.du	$vr10, $vr10, 1
 	bne	$a4, $a2, .LBB0_59
-# %bb.60:                               # %vector.latch361
+# %bb.60:                               # %vector.latch360
                                         #   in Loop: Header=BB0_58 Depth=1
 	vslli.d	$vr9, $vr0, 2
 	vadd.d	$vr9, $vr7, $vr9
@@ -1119,7 +1119,7 @@ main:                                   # @main
 	vld	$vr19, $sp, 240                 # 16-byte Folded Reload
 	vld	$vr0, $sp, 224                  # 16-byte Folded Reload
 	.p2align	4, , 16
-.LBB0_75:                               # %.preheader.i183372
+.LBB0_75:                               # %.preheader.i183371
                                         #   Parent Loop BB0_74 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vmul.d	$vr24, $vr9, $vr17
@@ -1968,7 +1968,7 @@ main:                                   # @main
 	vpickve2gr.d	$a0, $vr9, 0
 	vaddi.du	$vr10, $vr10, 1
 	bne	$a0, $a4, .LBB0_75
-# %bb.76:                               # %vector.latch374
+# %bb.76:                               # %vector.latch373
                                         #   in Loop: Header=BB0_74 Depth=1
 	addi.d	$a3, $a3, 4
 	vaddi.du	$vr17, $vr17, 4

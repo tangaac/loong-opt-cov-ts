@@ -4075,7 +4075,7 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	mul.d	$a5, $a5, $a6
 	srli.d	$a5, $a5, 33
 	alsl.d	$a5, $a5, $a5, 1
-	sub.d	$a4, $a4, $a5
+	sub.w	$a4, $a4, $a5
 	addi.w	$a2, $a2, 0
 	alsl.d	$fp, $a2, $a0, 4
 	slli.d	$s1, $a2, 2
@@ -4083,9 +4083,8 @@ _ZNK11btMatrix3x311getRotationER12btQuaternion: # @_ZNK11btMatrix3x311getRotatio
 	alsl.d	$s4, $a3, $a0, 4
 	slli.d	$s0, $a3, 2
 	fldx.s	$fa1, $s4, $s0
-	bstrpick.d	$a2, $a4, 31, 0
-	alsl.d	$s3, $a2, $a0, 4
-	slli.d	$s2, $a2, 2
+	alsl.d	$s3, $a4, $a0, 4
+	slli.d	$s2, $a4, 2
 	fldx.s	$fa2, $s3, $s2
 	fsub.s	$fa0, $fa0, $fa1
 	fsub.s	$fa0, $fa0, $fa2
@@ -4218,19 +4217,19 @@ _ZTS13btTypedObject:
 
 	.globl	_ZN17btHingeConstraintC1Ev
 	.type	_ZN17btHingeConstraintC1Ev,@function
-.set _ZN17btHingeConstraintC1Ev, _ZN17btHingeConstraintC2Ev
+_ZN17btHingeConstraintC1Ev = _ZN17btHingeConstraintC2Ev
 	.globl	_ZN17btHingeConstraintC1ER11btRigidBodyS1_RK9btVector3S4_RS2_S5_b
 	.type	_ZN17btHingeConstraintC1ER11btRigidBodyS1_RK9btVector3S4_RS2_S5_b,@function
-.set _ZN17btHingeConstraintC1ER11btRigidBodyS1_RK9btVector3S4_RS2_S5_b, _ZN17btHingeConstraintC2ER11btRigidBodyS1_RK9btVector3S4_RS2_S5_b
+_ZN17btHingeConstraintC1ER11btRigidBodyS1_RK9btVector3S4_RS2_S5_b = _ZN17btHingeConstraintC2ER11btRigidBodyS1_RK9btVector3S4_RS2_S5_b
 	.globl	_ZN17btHingeConstraintC1ER11btRigidBodyRK9btVector3RS2_b
 	.type	_ZN17btHingeConstraintC1ER11btRigidBodyRK9btVector3RS2_b,@function
-.set _ZN17btHingeConstraintC1ER11btRigidBodyRK9btVector3RS2_b, _ZN17btHingeConstraintC2ER11btRigidBodyRK9btVector3RS2_b
+_ZN17btHingeConstraintC1ER11btRigidBodyRK9btVector3RS2_b = _ZN17btHingeConstraintC2ER11btRigidBodyRK9btVector3RS2_b
 	.globl	_ZN17btHingeConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b
 	.type	_ZN17btHingeConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b,@function
-.set _ZN17btHingeConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b, _ZN17btHingeConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
+_ZN17btHingeConstraintC1ER11btRigidBodyS1_RK11btTransformS4_b = _ZN17btHingeConstraintC2ER11btRigidBodyS1_RK11btTransformS4_b
 	.globl	_ZN17btHingeConstraintC1ER11btRigidBodyRK11btTransformb
 	.type	_ZN17btHingeConstraintC1ER11btRigidBodyRK11btTransformb,@function
-.set _ZN17btHingeConstraintC1ER11btRigidBodyRK11btTransformb, _ZN17btHingeConstraintC2ER11btRigidBodyRK11btTransformb
+_ZN17btHingeConstraintC1ER11btRigidBodyRK11btTransformb = _ZN17btHingeConstraintC2ER11btRigidBodyRK11btTransformb
 	.section	".note.GNU-stack","",@progbits
 	.addrsig
 	.addrsig_sym __gxx_personality_v0

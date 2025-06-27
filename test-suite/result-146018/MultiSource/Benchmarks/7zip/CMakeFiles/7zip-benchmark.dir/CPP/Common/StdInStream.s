@@ -745,7 +745,7 @@ g_StdIn:
 	.dword	_GLOBAL__sub_I_StdInStream.cpp
 	.globl	_ZN12CStdInStreamD1Ev
 	.type	_ZN12CStdInStreamD1Ev,@function
-.set _ZN12CStdInStreamD1Ev, _ZN12CStdInStreamD2Ev
+_ZN12CStdInStreamD1Ev = _ZN12CStdInStreamD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

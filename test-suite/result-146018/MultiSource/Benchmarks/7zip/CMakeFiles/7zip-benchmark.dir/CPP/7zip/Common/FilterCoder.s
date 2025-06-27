@@ -3701,10 +3701,10 @@ _ZTS13CMyUnknownImp:
 
 	.globl	_ZN12CFilterCoderC1Ev
 	.type	_ZN12CFilterCoderC1Ev,@function
-.set _ZN12CFilterCoderC1Ev, _ZN12CFilterCoderC2Ev
+_ZN12CFilterCoderC1Ev = _ZN12CFilterCoderC2Ev
 	.globl	_ZN12CFilterCoderD1Ev
 	.type	_ZN12CFilterCoderD1Ev,@function
-.set _ZN12CFilterCoderD1Ev, _ZN12CFilterCoderD2Ev
+_ZN12CFilterCoderD1Ev = _ZN12CFilterCoderD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

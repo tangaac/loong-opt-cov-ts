@@ -73,7 +73,7 @@ _ZN17btConvexHullShapeC2EPKfii:         # @_ZN17btConvexHullShapeC2EPKfii
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp3:
-.LBB0_8:                                # %.lr.ph.i
+.LBB0_8:                                # %.lr.ph
 	move	$a0, $zero
 	ori	$a1, $zero, 1
 	st.b	$a1, $fp, 128
@@ -1144,7 +1144,7 @@ _ZTS17btConvexHullShape:
 
 	.globl	_ZN17btConvexHullShapeC1EPKfii
 	.type	_ZN17btConvexHullShapeC1EPKfii,@function
-.set _ZN17btConvexHullShapeC1EPKfii, _ZN17btConvexHullShapeC2EPKfii
+_ZN17btConvexHullShapeC1EPKfii = _ZN17btConvexHullShapeC2EPKfii
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

@@ -382,7 +382,7 @@ main:                                   # @main
 	move	$t5, $zero
 	b	.LBB0_39
 	.p2align	4, , 16
-.LBB0_36:                               # %vector.body105.preheader
+.LBB0_36:                               # %vector.body107.preheader
                                         #   in Loop: Header=BB0_34 Depth=2
 	addi.d	$t5, $t4, 16
 	move	$t6, $t2
@@ -390,7 +390,7 @@ main:                                   # @main
 	vori.b	$vr1, $vr0, 0
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB0_37:                               # %vector.body105
+.LBB0_37:                               # %vector.body107
                                         #   Parent Loop BB0_31 Depth=1
                                         #     Parent Loop BB0_34 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -408,7 +408,7 @@ main:                                   # @main
 	addi.d	$t5, $t5, 32
 	addi.d	$t6, $t6, 32
 	bnez	$t7, .LBB0_37
-# %bb.38:                               # %middle.block114
+# %bb.38:                               # %middle.block116
                                         #   in Loop: Header=BB0_34 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
 	vshuf4i.w	$vr2, $vr1, 14
@@ -445,7 +445,7 @@ main:                                   # @main
 	move	$t6, $zero
 	b	.LBB0_46
 	.p2align	4, , 16
-.LBB0_43:                               # %vector.body87.preheader
+.LBB0_43:                               # %vector.body89.preheader
                                         #   in Loop: Header=BB0_34 Depth=2
 	addi.d	$t6, $t4, 16
 	move	$t7, $t2
@@ -453,7 +453,7 @@ main:                                   # @main
 	vori.b	$vr1, $vr0, 0
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
-.LBB0_44:                               # %vector.body87
+.LBB0_44:                               # %vector.body89
                                         #   Parent Loop BB0_31 Depth=1
                                         #     Parent Loop BB0_34 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -473,7 +473,7 @@ main:                                   # @main
 	addi.d	$t6, $t6, 32
 	addi.d	$t7, $t7, 32
 	bnez	$t8, .LBB0_44
-# %bb.45:                               # %middle.block95
+# %bb.45:                               # %middle.block97
                                         #   in Loop: Header=BB0_34 Depth=2
 	vadd.w	$vr1, $vr2, $vr1
 	vshuf4i.w	$vr2, $vr1, 14
@@ -483,7 +483,7 @@ main:                                   # @main
 	vpickve2gr.w	$t6, $vr1, 0
 	move	$t8, $a5
 	beq	$a5, $a4, .LBB0_33
-.LBB0_46:                               # %.lr.ph.i18.us.us.i.preheader165
+.LBB0_46:                               # %.lr.ph.i18.us.us.i.preheader167
                                         #   in Loop: Header=BB0_34 Depth=2
 	sub.d	$t7, $a4, $t8
 	alsl.d	$t4, $t8, $t4, 2
@@ -751,7 +751,7 @@ main:                                   # @main
 	move	$a3, $zero
 	b	.LBB0_84
 	.p2align	4, , 16
-.LBB0_81:                               # %vector.ph121
+.LBB0_81:                               # %vector.ph123
                                         #   in Loop: Header=BB0_75 Depth=2
 	bstrpick.d	$a3, $a0, 30, 3
 	slli.d	$a3, $a3, 3
@@ -762,7 +762,7 @@ main:                                   # @main
 	vori.b	$vr0, $vr7, 0
 	vori.b	$vr1, $vr7, 0
 	.p2align	4, , 16
-.LBB0_82:                               # %vector.body124
+.LBB0_82:                               # %vector.body126
                                         #   Parent Loop BB0_72 Depth=1
                                         #     Parent Loop BB0_75 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -787,30 +787,23 @@ main:                                   # @main
 	addi.d	$a4, $a4, 32
 	addi.d	$a5, $a5, 32
 	bnez	$a7, .LBB0_82
-# %bb.83:                               # %middle.block133
+# %bb.83:                               # %middle.block135
                                         #   in Loop: Header=BB0_75 Depth=2
 	vor.v	$vr0, $vr1, $vr0
-	vpickve2gr.w	$a4, $vr0, 0
-	vpickve2gr.w	$a5, $vr0, 1
-	andi	$a5, $a5, 1
-	bstrins.d	$a4, $a5, 63, 1
-	vpickve2gr.w	$a5, $vr0, 2
-	bstrins.d	$a4, $a5, 2, 2
-	vpickve2gr.w	$a5, $vr0, 3
-	slli.d	$a5, $a5, 3
-	or	$a4, $a4, $a5
-	andi	$a4, $a4, 15
+	vslli.w	$vr0, $vr0, 31
+	vmskltz.w	$vr0, $vr0
+	vpickve2gr.hu	$a4, $vr0, 0
 	sltui	$a4, $a4, 1
 	maskeqz	$s5, $s5, $a4
 	beq	$a3, $a0, .LBB0_86
-.LBB0_84:                               # %scalar.ph119.preheader
+.LBB0_84:                               # %scalar.ph121.preheader
                                         #   in Loop: Header=BB0_75 Depth=2
 	sub.d	$a4, $a0, $a3
 	alsl.d	$a5, $a3, $fp, 2
 	alsl.d	$a2, $a3, $a2, 2
 	alsl.d	$a1, $a3, $a1, 2
 	.p2align	4, , 16
-.LBB0_85:                               # %scalar.ph119
+.LBB0_85:                               # %scalar.ph121
                                         #   Parent Loop BB0_72 Depth=1
                                         #     Parent Loop BB0_75 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
@@ -962,7 +955,7 @@ main:                                   # @main
 	move	$a2, $zero
 	b	.LBB0_107
 	.p2align	4, , 16
-.LBB0_104:                              # %vector.ph140
+.LBB0_104:                              # %vector.ph142
                                         #   in Loop: Header=BB0_101 Depth=1
 	bstrpick.d	$a2, $a1, 30, 3
 	slli.d	$a5, $a2, 3
@@ -972,7 +965,7 @@ main:                                   # @main
 	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
 	vori.b	$vr0, $vr1, 0
 	.p2align	4, , 16
-.LBB0_105:                              # %vector.body143
+.LBB0_105:                              # %vector.body145
                                         #   Parent Loop BB0_101 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr2, $a6, -16
@@ -989,7 +982,7 @@ main:                                   # @main
 	addi.d	$a2, $a2, 32
 	addi.d	$a6, $a6, 32
 	bnez	$a7, .LBB0_105
-# %bb.106:                              # %middle.block152
+# %bb.106:                              # %middle.block154
                                         #   in Loop: Header=BB0_101 Depth=1
 	vadd.w	$vr0, $vr1, $vr0
 	vshuf4i.w	$vr1, $vr0, 14

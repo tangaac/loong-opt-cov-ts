@@ -4824,7 +4824,7 @@ _ZTS13CRecordVectorIyE:
 	.dword	_ZTIPKc
 	.globl	_ZN22CArchiveUpdateCallbackC1Ev
 	.type	_ZN22CArchiveUpdateCallbackC1Ev,@function
-.set _ZN22CArchiveUpdateCallbackC1Ev, _ZN22CArchiveUpdateCallbackC2Ev
+_ZN22CArchiveUpdateCallbackC1Ev = _ZN22CArchiveUpdateCallbackC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

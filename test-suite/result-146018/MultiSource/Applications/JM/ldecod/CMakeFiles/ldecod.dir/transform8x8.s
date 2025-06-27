@@ -1947,6 +1947,11 @@ intrapred8x8:                           # @intrapred8x8
 	.word	4                               # 0x4
 	.word	5                               # 0x5
 	.word	6                               # 0x6
+.LCPI1_1:
+	.word	0                               # 0x0
+	.word	4                               # 0x4
+	.word	5                               # 0x5
+	.word	4294967295                      # 0xffffffff
 	.text
 	.globl	LowPassForIntra8x8Pred
 	.p2align	5
@@ -1960,17 +1965,17 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	ld.hu	$a7, $a0, 24
 	ld.hu	$a4, $a0, 26
 	ld.hu	$a5, $a0, 28
-	vrepli.b	$vr0, 0
+	vrepli.b	$vr1, 0
 	beqz	$a2, .LBB1_3
 # %bb.1:
 	ld.hu	$t4, $a0, 4
-	vld	$vr1, $a0, 6
+	vld	$vr0, $a0, 6
 	beqz	$a1, .LBB1_6
 # %bb.2:
 	alsl.d	$t5, $t2, $a6, 1
 	b	.LBB1_7
 .LBB1_3:
-	vld	$vr1, $a0, 4
+	vld	$vr0, $a0, 4
 	ld.hu	$t3, $a0, 30
 	ld.hu	$t4, $a0, 32
 	vld	$vr2, $a0, 34
@@ -1989,19 +1994,19 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	add.d	$t5, $t3, $t5
 	addi.d	$t6, $t2, 2
 	srli.d	$t2, $t5, 2
-	vilvh.h	$vr2, $vr0, $vr1
-	vilvl.h	$vr1, $vr0, $vr1
-	vaddi.wu	$vr3, $vr1, 2
+	vilvh.h	$vr2, $vr1, $vr0
+	vilvl.h	$vr0, $vr1, $vr0
+	vaddi.wu	$vr3, $vr0, 2
 	vinsgr2vr.w	$vr4, $t4, 0
 	pcalau12i	$t4, %pc_hi20(.LCPI1_0)
 	vld	$vr5, $t4, %pc_lo12(.LCPI1_0)
-	vbsrl.v	$vr6, $vr1, 12
+	vbsrl.v	$vr6, $vr0, 12
 	vbsll.v	$vr7, $vr2, 4
 	vor.v	$vr6, $vr7, $vr6
-	vshuf.w	$vr5, $vr1, $vr4
+	vshuf.w	$vr5, $vr0, $vr4
 	vslli.w	$vr4, $vr5, 1
 	vslli.w	$vr5, $vr6, 1
-	vbsrl.v	$vr6, $vr1, 8
+	vbsrl.v	$vr6, $vr0, 8
 	vbsll.v	$vr7, $vr2, 8
 	vor.v	$vr6, $vr7, $vr6
 	vadd.w	$vr5, $vr6, $vr5
@@ -2012,10 +2017,10 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	vadd.w	$vr3, $vr3, $vr4
 	vadd.w	$vr4, $vr5, $vr2
 	vaddi.wu	$vr4, $vr4, 2
-	vadd.w	$vr1, $vr3, $vr1
-	vsrli.w	$vr1, $vr1, 2
+	vadd.w	$vr0, $vr3, $vr0
+	vsrli.w	$vr0, $vr0, 2
 	vsrli.w	$vr3, $vr4, 2
-	vpickev.h	$vr1, $vr3, $vr1
+	vpickev.h	$vr0, $vr3, $vr0
 	vpickve2gr.w	$t3, $vr2, 2
 	alsl.d	$t3, $t1, $t3, 1
 	add.d	$t3, $t3, $t0
@@ -2085,9 +2090,6 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 .LBB1_16:
 	addi.d	$a3, $t5, 2
 	add.d	$a1, $a3, $a1
-	addi.d	$sp, $sp, -16
-	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	ld.hu	$t6, $a0, 38
 	alsl.d	$a2, $t5, $a2, 1
 	ld.d	$t5, $a0, 40
@@ -2096,45 +2098,40 @@ LowPassForIntra8x8Pred:                 # @LowPassForIntra8x8Pred
 	alsl.d	$a3, $t6, $a3, 1
 	vinsgr2vr.d	$vr2, $t5, 0
 	ld.hu	$t5, $a0, 48
-	vilvl.h	$vr0, $vr0, $vr2
-	vpickve2gr.w	$t7, $vr0, 0
+	vilvl.h	$vr1, $vr1, $vr2
+	vpickve2gr.w	$t7, $vr1, 0
 	alsl.d	$t6, $t7, $t6, 1
 	slli.d	$t8, $t5, 1
 	add.d	$a3, $a3, $t7
 	bstrpick.d	$a3, $a3, 18, 0
-	vpickve2gr.w	$t7, $vr0, 1
+	pcalau12i	$t7, %pc_hi20(.LCPI1_1)
+	vld	$vr2, $t7, %pc_lo12(.LCPI1_1)
+	vpickve2gr.w	$t7, $vr1, 1
 	add.d	$t6, $t6, $t7
 	addi.d	$t6, $t6, 2
 	bstrpick.d	$t6, $t6, 19, 0
 	slli.d	$t7, $t7, 1
-	vpickve2gr.w	$fp, $vr0, 2
-	slli.d	$fp, $fp, 1
-	vpickve2gr.w	$s0, $vr0, 3
-	slli.d	$s0, $s0, 1
-	vinsgr2vr.w	$vr2, $t7, 0
-	vinsgr2vr.w	$vr2, $fp, 1
-	vinsgr2vr.w	$vr2, $s0, 2
+	vshuf4i.w	$vr3, $vr1, 14
+	vslli.w	$vr4, $vr3, 1
+	vinsgr2vr.w	$vr5, $t7, 0
+	vshuf.w	$vr2, $vr4, $vr5
 	vinsgr2vr.w	$vr2, $t5, 3
-	vadd.w	$vr2, $vr0, $vr2
-	vshuf4i.w	$vr0, $vr0, 14
-	vinsgr2vr.w	$vr0, $t5, 2
-	vinsgr2vr.w	$vr0, $t8, 3
-	vadd.w	$vr0, $vr2, $vr0
-	vaddi.wu	$vr0, $vr0, 2
+	vadd.w	$vr1, $vr1, $vr2
+	vinsgr2vr.w	$vr3, $t5, 2
+	vinsgr2vr.w	$vr3, $t8, 3
+	vadd.w	$vr1, $vr1, $vr3
+	vaddi.wu	$vr1, $vr1, 2
 	vinsgr2vr.w	$vr2, $a1, 0
 	vinsgr2vr.w	$vr2, $a2, 1
 	vinsgr2vr.w	$vr2, $a3, 2
 	vinsgr2vr.w	$vr2, $t6, 3
 	vsrli.w	$vr2, $vr2, 2
-	vsrli.w	$vr0, $vr0, 2
-	vpickev.h	$vr2, $vr0, $vr2
-	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$sp, $sp, 16
+	vsrli.w	$vr1, $vr1, 2
+	vpickev.h	$vr2, $vr1, $vr2
 .LBB1_17:                               # %.thread59
 	st.h	$a6, $a0, 0
 	st.h	$t2, $a0, 2
-	vst	$vr1, $a0, 4
+	vst	$vr0, $a0, 4
 	st.h	$t1, $a0, 20
 	st.h	$t0, $a0, 22
 	st.h	$a7, $a0, 24

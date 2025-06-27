@@ -422,58 +422,53 @@ symhash_add:                            # @symhash_add
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	ld.w	$a2, $a1, 12
-	ld.w	$s3, $a0, 8
+	ld.w	$a3, $a1, 12
+	ld.w	$a2, $a0, 8
 	ld.d	$fp, $a0, 16
-	mod.wu	$a2, $a2, $s3
-	bstrpick.d	$a2, $a2, 31, 0
-	slli.d	$a3, $a2, 3
-	ldx.d	$a4, $fp, $a3
-	ld.w	$a5, $a0, 0
-	ld.wu	$a2, $a0, 4
-	st.d	$a4, $a1, 24
-	stx.d	$a1, $fp, $a3
-	addi.d	$a1, $a5, 1
-	addi.w	$s1, $a2, 0
+	mod.wu	$a3, $a3, $a2
+	bstrpick.d	$a3, $a3, 31, 0
+	slli.d	$a4, $a3, 3
+	ldx.d	$a5, $fp, $a4
+	ld.w	$a6, $a0, 0
+	ld.wu	$a3, $a0, 4
+	st.d	$a5, $a1, 24
+	stx.d	$a1, $fp, $a4
+	addi.d	$a1, $a6, 1
+	addi.w	$s1, $a3, 0
 	st.w	$a1, $a0, 0
-	blt	$a5, $s1, .LBB7_18
+	blt	$a6, $s1, .LBB7_18
 # %bb.1:
+	bstrpick.d	$s2, $a2, 31, 0
 	st.w	$s1, $a0, 8
 	slli.d	$a1, $s1, 1
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a0, 4
-	slli.d	$a1, $a2, 3
+	slli.d	$a1, $a3, 3
 	move	$s4, $a0
 	ori	$a0, $zero, 1
-	ori	$s5, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	move	$s2, $zero
+	move	$s3, $zero
 	st.d	$a0, $s4, 16
 	st.w	$zero, $sp, 0
 	st.d	$zero, $sp, 8
 	addi.d	$s4, $sp, 16
-	sltu	$a0, $s5, $s3
-	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s3, $a0
-	or	$a0, $a0, $a1
-	bstrpick.d	$s3, $a0, 31, 0
 	ori	$s5, $zero, 2
 	b	.LBB7_3
 	.p2align	4, , 16
 .LBB7_2:                                # %._crit_edge
                                         #   in Loop: Header=BB7_3 Depth=1
-	addi.d	$s2, $s2, 1
-	beq	$s2, $s3, .LBB7_14
+	addi.d	$s3, $s3, 1
+	beq	$s3, $s2, .LBB7_14
 .LBB7_3:                                # %.preheader58
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_7 Depth 2
-	slli.d	$a0, $s2, 3
+	slli.d	$a0, $s3, 3
 	ldx.d	$a1, $fp, $a0
 	beqz	$a1, .LBB7_2
 # %bb.4:                                #   in Loop: Header=BB7_3 Depth=1
-	alsl.d	$s6, $s2, $fp, 3
+	alsl.d	$s6, $s3, $fp, 3
 	b	.LBB7_7
 	.p2align	4, , 16
 .LBB7_5:                                #   in Loop: Header=BB7_7 Depth=2
@@ -523,11 +518,11 @@ symhash_add:                            # @symhash_add
 	b	.LBB7_6
 .LBB7_14:                               # %.preheader
 	ld.d	$a1, $sp, 8
-	slli.d	$a0, $s3, 3
+	slli.d	$a0, $s2, 3
 	ldx.d	$a0, $a1, $a0
 	beqz	$a0, .LBB7_17
 # %bb.15:
-	alsl.d	$a1, $s3, $a1, 3
+	alsl.d	$a1, $s2, $a1, 3
 	.p2align	4, , 16
 .LBB7_16:                               # %.lr.ph62
                                         # =>This Inner Loop Header: Depth=1

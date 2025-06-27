@@ -1005,11 +1005,11 @@ _ZGVZN9benchmark8internal18GetNullLogInstanceEvE8null_log:
 	.globl	_ZN9benchmark17BenchmarkReporterD1Ev
 	.type	_ZN9benchmark17BenchmarkReporterD1Ev,@function
 	.hidden	_ZN9benchmark17BenchmarkReporterD1Ev
-.set _ZN9benchmark17BenchmarkReporterD1Ev, _ZN9benchmark17BenchmarkReporterD2Ev
+_ZN9benchmark17BenchmarkReporterD1Ev = _ZN9benchmark17BenchmarkReporterD2Ev
 	.globl	_ZN9benchmark17BenchmarkReporter7ContextC1Ev
 	.type	_ZN9benchmark17BenchmarkReporter7ContextC1Ev,@function
 	.hidden	_ZN9benchmark17BenchmarkReporter7ContextC1Ev
-.set _ZN9benchmark17BenchmarkReporter7ContextC1Ev, _ZN9benchmark17BenchmarkReporter7ContextC2Ev
+_ZN9benchmark17BenchmarkReporter7ContextC1Ev = _ZN9benchmark17BenchmarkReporter7ContextC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

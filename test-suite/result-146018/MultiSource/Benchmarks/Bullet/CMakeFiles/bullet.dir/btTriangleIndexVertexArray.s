@@ -672,10 +672,10 @@ _ZTS26btTriangleIndexVertexArray:
 
 	.globl	_ZN26btTriangleIndexVertexArrayC1EiPiiiPfi
 	.type	_ZN26btTriangleIndexVertexArrayC1EiPiiiPfi,@function
-.set _ZN26btTriangleIndexVertexArrayC1EiPiiiPfi, _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi
+_ZN26btTriangleIndexVertexArrayC1EiPiiiPfi = _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi
 	.globl	_ZN26btTriangleIndexVertexArrayD1Ev
 	.type	_ZN26btTriangleIndexVertexArrayD1Ev,@function
-.set _ZN26btTriangleIndexVertexArrayD1Ev, _ZN26btTriangleIndexVertexArrayD2Ev
+_ZN26btTriangleIndexVertexArrayD1Ev = _ZN26btTriangleIndexVertexArrayD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

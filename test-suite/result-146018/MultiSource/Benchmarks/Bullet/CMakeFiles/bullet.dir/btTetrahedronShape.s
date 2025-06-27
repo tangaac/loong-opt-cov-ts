@@ -961,19 +961,19 @@ _ZTS16btBU_Simplex1to4:
 
 	.globl	_ZN16btBU_Simplex1to4C1Ev
 	.type	_ZN16btBU_Simplex1to4C1Ev,@function
-.set _ZN16btBU_Simplex1to4C1Ev, _ZN16btBU_Simplex1to4C2Ev
+_ZN16btBU_Simplex1to4C1Ev = _ZN16btBU_Simplex1to4C2Ev
 	.globl	_ZN16btBU_Simplex1to4C1ERK9btVector3
 	.type	_ZN16btBU_Simplex1to4C1ERK9btVector3,@function
-.set _ZN16btBU_Simplex1to4C1ERK9btVector3, _ZN16btBU_Simplex1to4C2ERK9btVector3
+_ZN16btBU_Simplex1to4C1ERK9btVector3 = _ZN16btBU_Simplex1to4C2ERK9btVector3
 	.globl	_ZN16btBU_Simplex1to4C1ERK9btVector3S2_
 	.type	_ZN16btBU_Simplex1to4C1ERK9btVector3S2_,@function
-.set _ZN16btBU_Simplex1to4C1ERK9btVector3S2_, _ZN16btBU_Simplex1to4C2ERK9btVector3S2_
+_ZN16btBU_Simplex1to4C1ERK9btVector3S2_ = _ZN16btBU_Simplex1to4C2ERK9btVector3S2_
 	.globl	_ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_
 	.type	_ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_,@function
-.set _ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_, _ZN16btBU_Simplex1to4C2ERK9btVector3S2_S2_
+_ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_ = _ZN16btBU_Simplex1to4C2ERK9btVector3S2_S2_
 	.globl	_ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_S2_
 	.type	_ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_S2_,@function
-.set _ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_S2_, _ZN16btBU_Simplex1to4C2ERK9btVector3S2_S2_S2_
+_ZN16btBU_Simplex1to4C1ERK9btVector3S2_S2_S2_ = _ZN16btBU_Simplex1to4C2ERK9btVector3S2_S2_S2_
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

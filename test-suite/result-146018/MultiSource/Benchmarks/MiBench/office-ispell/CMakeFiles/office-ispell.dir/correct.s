@@ -2817,8 +2817,7 @@ makepossibilities:                      # @makepossibilities
 	ori	$a0, $zero, 120
 	mul.d	$a0, $a1, $a0
 	add.d	$a0, $s5, $a0
-	sub.d	$a1, $a2, $a1
-	bstrpick.d	$a1, $a1, 31, 0
+	sub.w	$a1, $a2, $a1
 	pcalau12i	$a2, %pc_hi20(posscmp)
 	addi.d	$a3, $a2, %pc_lo12(posscmp)
 	ori	$a2, $zero, 120

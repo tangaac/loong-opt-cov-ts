@@ -10530,10 +10530,10 @@ _ZTS13CObjectVectorIN8NArchive4NZip7CItemExEE:
 	.dword	_ZTIPKc
 	.globl	_ZN8NArchive4NZip8CHandlerC1Ev
 	.type	_ZN8NArchive4NZip8CHandlerC1Ev,@function
-.set _ZN8NArchive4NZip8CHandlerC1Ev, _ZN8NArchive4NZip8CHandlerC2Ev
+_ZN8NArchive4NZip8CHandlerC1Ev = _ZN8NArchive4NZip8CHandlerC2Ev
 	.globl	_ZN8NArchive4NZip12CLzmaDecoderC1Ev
 	.type	_ZN8NArchive4NZip12CLzmaDecoderC1Ev,@function
-.set _ZN8NArchive4NZip12CLzmaDecoderC1Ev, _ZN8NArchive4NZip12CLzmaDecoderC2Ev
+_ZN8NArchive4NZip12CLzmaDecoderC1Ev = _ZN8NArchive4NZip12CLzmaDecoderC2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

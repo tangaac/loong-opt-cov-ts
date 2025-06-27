@@ -161,12 +161,12 @@ main:                                   # @main
 	beq	$a1, $a3, .LBB0_22
 # %bb.6:                                # %.preheader95.preheader.i
                                         #   in Loop: Header=BB0_1 Depth=1
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a1, $a2, 32
-	vld	$vr0, $a2, 16
-	vld	$vr1, $a2, 0
-	move	$a3, $zero
-	st.d	$a1, $s6, 32
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $a1, 32
+	vld	$vr0, $a1, 16
+	vld	$vr1, $a1, 0
+	move	$a1, $zero
+	st.d	$a2, $s6, 32
 	vst	$vr0, $s6, 16
 	vst	$vr1, $s6, 0
 	move	$a2, $a0
@@ -174,17 +174,16 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB0_7:                                # %._crit_edge109.i
                                         #   in Loop: Header=BB0_8 Depth=2
-	slli.d	$a4, $a2, 2
-	ldx.w	$a5, $fp, $a4
-	addi.d	$a3, $a1, 1
-	stx.w	$a2, $fp, $a4
-	move	$a2, $a5
-	beqz	$a5, .LBB0_21
+	slli.d	$a3, $a2, 2
+	ldx.w	$a4, $fp, $a3
+	addi.d	$a1, $a1, 1
+	stx.w	$a2, $fp, $a3
+	move	$a2, $a4
+	beqz	$a4, .LBB0_21
 .LBB0_8:                                # %.preheader.i
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_10 Depth 3
-	move	$a1, $a3
 	bge	$s7, $a2, .LBB0_7
 # %bb.9:                                # %.lr.ph108.preheader.i
                                         #   in Loop: Header=BB0_8 Depth=2
@@ -280,11 +279,11 @@ main:                                   # @main
 	b	.LBB0_12
 	.p2align	4, , 16
 .LBB0_21:                               #   in Loop: Header=BB0_1 Depth=1
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
-	slt	$a1, $a1, $a4
-	masknez	$a2, $a3, $a1
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $a2
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	slt	$a2, $a1, $a3
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a3, $a2
+	or	$a1, $a2, $a1
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill

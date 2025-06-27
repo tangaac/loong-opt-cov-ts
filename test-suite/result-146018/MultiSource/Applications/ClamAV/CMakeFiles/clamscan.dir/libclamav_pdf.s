@@ -1609,7 +1609,7 @@ ascii85decode:                          # @ascii85decode
 	vmul.w	$vr0, $vr0, $vr1
 	vpickve2gr.w	$s4, $vr0, 0
 	beq	$a1, $a2, .LBB4_36
-.LBB4_34:                               # %.lr.ph138.preheader240
+.LBB4_34:                               # %.lr.ph138.preheader242
 	addi.w	$a1, $a0, -5
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1

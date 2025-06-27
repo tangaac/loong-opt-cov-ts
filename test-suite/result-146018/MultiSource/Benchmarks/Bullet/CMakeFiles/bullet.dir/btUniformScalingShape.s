@@ -642,10 +642,10 @@ _ZTS21btUniformScalingShape:
 
 	.globl	_ZN21btUniformScalingShapeC1EP13btConvexShapef
 	.type	_ZN21btUniformScalingShapeC1EP13btConvexShapef,@function
-.set _ZN21btUniformScalingShapeC1EP13btConvexShapef, _ZN21btUniformScalingShapeC2EP13btConvexShapef
+_ZN21btUniformScalingShapeC1EP13btConvexShapef = _ZN21btUniformScalingShapeC2EP13btConvexShapef
 	.globl	_ZN21btUniformScalingShapeD1Ev
 	.type	_ZN21btUniformScalingShapeD1Ev,@function
-.set _ZN21btUniformScalingShapeD1Ev, _ZN21btUniformScalingShapeD2Ev
+_ZN21btUniformScalingShapeD1Ev = _ZN21btUniformScalingShapeD2Ev
 	.hidden	DW.ref.__gxx_personality_v0
 	.weak	DW.ref.__gxx_personality_v0
 	.section	.data.DW.ref.__gxx_personality_v0,"awG",@progbits,DW.ref.__gxx_personality_v0,comdat

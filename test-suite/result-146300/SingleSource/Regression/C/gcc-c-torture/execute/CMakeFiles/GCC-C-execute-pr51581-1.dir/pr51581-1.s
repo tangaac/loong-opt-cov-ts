@@ -262,11 +262,6 @@ f7:                                     # @f7
 	.type	f8,@function
 f8:                                     # @f8
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	lu12i.w	$a0, -4
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
@@ -282,8 +277,19 @@ f8:                                     # @f8
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
 	xvldx	$xr1, $a4, $a2
-	xvst	$xr1, $sp, 0
-	vld	$vr1, $sp, 16
+	xvpermi.q	$xr2, $xr1, 1
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 0
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 1
+	vpickve2gr.w	$a4, $vr2, 2
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 2
+	vpickve2gr.w	$a4, $vr2, 3
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 3
 	vpickve2gr.w	$a4, $vr1, 0
 	bstrpick.d	$a4, $a4, 31, 0
 	xvinsgr2vr.d	$xr2, $a4, 0
@@ -293,24 +299,11 @@ f8:                                     # @f8
 	vpickve2gr.w	$a4, $vr1, 2
 	bstrpick.d	$a4, $a4, 31, 0
 	xvinsgr2vr.d	$xr2, $a4, 2
-	vld	$vr3, $sp, 0
 	vpickve2gr.w	$a4, $vr1, 3
 	bstrpick.d	$a4, $a4, 31, 0
 	xvinsgr2vr.d	$xr2, $a4, 3
-	vpickve2gr.w	$a4, $vr3, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 1
-	vpickve2gr.w	$a4, $vr3, 2
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 2
-	vpickve2gr.w	$a4, $vr3, 3
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 3
-	xvmul.d	$xr1, $xr1, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
+	xvmul.d	$xr1, $xr2, $xr0
+	xvmul.d	$xr2, $xr3, $xr0
 	xvsrli.d	$xr2, $xr2, 33
 	xvsrli.d	$xr1, $xr1, 33
 	xvpickve2gr.d	$a4, $xr1, 0
@@ -334,10 +327,6 @@ f8:                                     # @f8
 	xvstx	$xr3, $a4, $a2
 	bnez	$a0, .LBB7_1
 # %bb.2:                                # %middle.block
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end7:
 	.size	f8, .Lfunc_end7-f8
@@ -347,11 +336,6 @@ f8:                                     # @f8
 	.type	f9,@function
 f9:                                     # @f9
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	lu12i.w	$a0, -4
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
@@ -366,37 +350,35 @@ f9:                                     # @f9
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
 	xvldx	$xr1, $a4, $a2
-	xvst	$xr1, $sp, 0
-	vld	$vr2, $sp, 0
-	vpickve2gr.w	$a4, $vr2, 0
-	xvinsgr2vr.d	$xr3, $a4, 0
-	vpickve2gr.w	$a4, $vr2, 1
-	xvinsgr2vr.d	$xr3, $a4, 1
-	vpickve2gr.w	$a4, $vr2, 2
-	vld	$vr4, $sp, 16
-	xvinsgr2vr.d	$xr3, $a4, 2
-	vpickve2gr.w	$a4, $vr2, 3
-	xvinsgr2vr.d	$xr3, $a4, 3
-	vpickve2gr.w	$a4, $vr4, 0
+	vpickve2gr.w	$a4, $vr1, 0
 	xvinsgr2vr.d	$xr2, $a4, 0
-	vpickve2gr.w	$a4, $vr4, 1
+	vpickve2gr.w	$a4, $vr1, 1
 	xvinsgr2vr.d	$xr2, $a4, 1
-	vpickve2gr.w	$a4, $vr4, 2
+	vpickve2gr.w	$a4, $vr1, 2
 	xvinsgr2vr.d	$xr2, $a4, 2
-	vpickve2gr.w	$a4, $vr4, 3
+	vpickve2gr.w	$a4, $vr1, 3
 	xvinsgr2vr.d	$xr2, $a4, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickve2gr.w	$a4, $vr3, 0
+	xvinsgr2vr.d	$xr4, $a4, 0
+	vpickve2gr.w	$a4, $vr3, 1
+	xvinsgr2vr.d	$xr4, $a4, 1
+	vpickve2gr.w	$a4, $vr3, 2
+	xvinsgr2vr.d	$xr4, $a4, 2
+	vpickve2gr.w	$a4, $vr3, 3
+	xvinsgr2vr.d	$xr4, $a4, 3
+	xvmul.d	$xr3, $xr4, $xr0
 	xvmul.d	$xr2, $xr2, $xr0
-	xvmul.d	$xr3, $xr3, $xr0
-	xvsrai.d	$xr3, $xr3, 34
-	xvpickve2gr.d	$a4, $xr3, 0
-	xvinsgr2vr.w	$xr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	xvinsgr2vr.w	$xr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	xvinsgr2vr.w	$xr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	xvinsgr2vr.w	$xr4, $a4, 3
 	xvsrai.d	$xr2, $xr2, 34
+	xvpickve2gr.d	$a4, $xr2, 0
+	xvinsgr2vr.w	$xr4, $a4, 0
+	xvpickve2gr.d	$a4, $xr2, 1
+	xvinsgr2vr.w	$xr4, $a4, 1
+	xvpickve2gr.d	$a4, $xr2, 2
+	xvinsgr2vr.w	$xr4, $a4, 2
+	xvpickve2gr.d	$a4, $xr2, 3
+	xvinsgr2vr.w	$xr4, $a4, 3
+	xvsrai.d	$xr2, $xr3, 34
 	xvpickve2gr.d	$a4, $xr2, 0
 	xvinsgr2vr.w	$xr4, $a4, 4
 	xvpickve2gr.d	$a4, $xr2, 1
@@ -412,10 +394,6 @@ f9:                                     # @f9
 	xvstx	$xr1, $a4, $a2
 	bnez	$a0, .LBB8_1
 # %bb.2:                                # %middle.block
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end8:
 	.size	f9, .Lfunc_end8-f9
@@ -425,11 +403,6 @@ f9:                                     # @f9
 	.type	f10,@function
 f10:                                    # @f10
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	lu12i.w	$a0, -4
 	pcalau12i	$a1, %pc_hi20(b)
 	addi.d	$a1, $a1, %pc_lo12(b)
@@ -444,8 +417,19 @@ f10:                                    # @f10
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
 	xvldx	$xr1, $a4, $a2
-	xvst	$xr1, $sp, 0
-	vld	$vr1, $sp, 16
+	xvpermi.q	$xr2, $xr1, 1
+	vpickve2gr.w	$a4, $vr2, 0
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 0
+	vpickve2gr.w	$a4, $vr2, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 1
+	vpickve2gr.w	$a4, $vr2, 2
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 2
+	vpickve2gr.w	$a4, $vr2, 3
+	bstrpick.d	$a4, $a4, 31, 0
+	xvinsgr2vr.d	$xr3, $a4, 3
 	vpickve2gr.w	$a4, $vr1, 0
 	bstrpick.d	$a4, $a4, 31, 0
 	xvinsgr2vr.d	$xr2, $a4, 0
@@ -455,24 +439,11 @@ f10:                                    # @f10
 	vpickve2gr.w	$a4, $vr1, 2
 	bstrpick.d	$a4, $a4, 31, 0
 	xvinsgr2vr.d	$xr2, $a4, 2
-	vld	$vr3, $sp, 0
 	vpickve2gr.w	$a4, $vr1, 3
 	bstrpick.d	$a4, $a4, 31, 0
 	xvinsgr2vr.d	$xr2, $a4, 3
-	vpickve2gr.w	$a4, $vr3, 0
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 0
-	vpickve2gr.w	$a4, $vr3, 1
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 1
-	vpickve2gr.w	$a4, $vr3, 2
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 2
-	vpickve2gr.w	$a4, $vr3, 3
-	bstrpick.d	$a4, $a4, 31, 0
-	xvinsgr2vr.d	$xr1, $a4, 3
-	xvmul.d	$xr1, $xr1, $xr0
-	xvmul.d	$xr2, $xr2, $xr0
+	xvmul.d	$xr1, $xr2, $xr0
+	xvmul.d	$xr2, $xr3, $xr0
 	xvsrli.d	$xr2, $xr2, 34
 	xvsrli.d	$xr1, $xr1, 34
 	xvpickve2gr.d	$a4, $xr1, 0
@@ -496,10 +467,6 @@ f10:                                    # @f10
 	xvstx	$xr3, $a4, $a2
 	bnez	$a0, .LBB9_1
 # %bb.2:                                # %middle.block
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end9:
 	.size	f10, .Lfunc_end9-f10
@@ -509,11 +476,6 @@ f10:                                    # @f10
 	.type	f11,@function
 f11:                                    # @f11
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	lu12i.w	$a0, -4
 	pcalau12i	$a1, %pc_hi20(a)
 	addi.d	$a1, $a1, %pc_lo12(a)
@@ -528,37 +490,35 @@ f11:                                    # @f11
                                         # =>This Inner Loop Header: Depth=1
 	add.d	$a4, $a1, $a0
 	xvldx	$xr1, $a4, $a2
-	xvst	$xr1, $sp, 0
-	vld	$vr2, $sp, 0
-	vpickve2gr.w	$a4, $vr2, 0
-	xvinsgr2vr.d	$xr3, $a4, 0
-	vpickve2gr.w	$a4, $vr2, 1
-	xvinsgr2vr.d	$xr3, $a4, 1
-	vpickve2gr.w	$a4, $vr2, 2
-	vld	$vr4, $sp, 16
-	xvinsgr2vr.d	$xr3, $a4, 2
-	vpickve2gr.w	$a4, $vr2, 3
-	xvinsgr2vr.d	$xr3, $a4, 3
-	vpickve2gr.w	$a4, $vr4, 0
+	vpickve2gr.w	$a4, $vr1, 0
 	xvinsgr2vr.d	$xr2, $a4, 0
-	vpickve2gr.w	$a4, $vr4, 1
+	vpickve2gr.w	$a4, $vr1, 1
 	xvinsgr2vr.d	$xr2, $a4, 1
-	vpickve2gr.w	$a4, $vr4, 2
+	vpickve2gr.w	$a4, $vr1, 2
 	xvinsgr2vr.d	$xr2, $a4, 2
-	vpickve2gr.w	$a4, $vr4, 3
+	vpickve2gr.w	$a4, $vr1, 3
 	xvinsgr2vr.d	$xr2, $a4, 3
+	xvpermi.q	$xr3, $xr1, 1
+	vpickve2gr.w	$a4, $vr3, 0
+	xvinsgr2vr.d	$xr4, $a4, 0
+	vpickve2gr.w	$a4, $vr3, 1
+	xvinsgr2vr.d	$xr4, $a4, 1
+	vpickve2gr.w	$a4, $vr3, 2
+	xvinsgr2vr.d	$xr4, $a4, 2
+	vpickve2gr.w	$a4, $vr3, 3
+	xvinsgr2vr.d	$xr4, $a4, 3
+	xvmul.d	$xr3, $xr4, $xr0
 	xvmul.d	$xr2, $xr2, $xr0
-	xvmul.d	$xr3, $xr3, $xr0
-	xvsrai.d	$xr3, $xr3, 35
-	xvpickve2gr.d	$a4, $xr3, 0
-	xvinsgr2vr.w	$xr4, $a4, 0
-	xvpickve2gr.d	$a4, $xr3, 1
-	xvinsgr2vr.w	$xr4, $a4, 1
-	xvpickve2gr.d	$a4, $xr3, 2
-	xvinsgr2vr.w	$xr4, $a4, 2
-	xvpickve2gr.d	$a4, $xr3, 3
-	xvinsgr2vr.w	$xr4, $a4, 3
 	xvsrai.d	$xr2, $xr2, 35
+	xvpickve2gr.d	$a4, $xr2, 0
+	xvinsgr2vr.w	$xr4, $a4, 0
+	xvpickve2gr.d	$a4, $xr2, 1
+	xvinsgr2vr.w	$xr4, $a4, 1
+	xvpickve2gr.d	$a4, $xr2, 2
+	xvinsgr2vr.w	$xr4, $a4, 2
+	xvpickve2gr.d	$a4, $xr2, 3
+	xvinsgr2vr.w	$xr4, $a4, 3
+	xvsrai.d	$xr2, $xr3, 35
 	xvpickve2gr.d	$a4, $xr2, 0
 	xvinsgr2vr.w	$xr4, $a4, 4
 	xvpickve2gr.d	$a4, $xr2, 1
@@ -574,10 +534,6 @@ f11:                                    # @f11
 	xvstx	$xr1, $a4, $a2
 	bnez	$a0, .LBB10_1
 # %bb.2:                                # %middle.block
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end10:
 	.size	f11, .Lfunc_end10-f11

@@ -7657,15 +7657,11 @@ merge:                                  # @merge
 	.type	is_polyAT_exon_p,@function
 is_polyAT_exon_p:                       # @is_polyAT_exon_p
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 232                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 224                  # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 216                  # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 208                  # 8-byte Folded Spill
-	addi.d	$fp, $sp, 256
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -32
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 0                    # 8-byte Folded Spill
 	addi.w	$a4, $a1, 0
 	addi.w	$a3, $a0, -1
 	bgeu	$a3, $a4, .LBB8_3
@@ -7749,14 +7745,11 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 .LBB8_13:
 	move	$a0, $zero
 .LBB8_14:
-	addi.d	$sp, $fp, -256
-	fld.d	$fs3, $sp, 208                  # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 216                  # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 224                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 232                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	fld.d	$fs3, $sp, 0                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB8_15:                               # %vector.main.loop.iter.check
 	bstrpick.d	$a3, $a5, 31, 0
@@ -7802,30 +7795,30 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	ld.d	$t1, $a6, 0
 	vinsgr2vr.d	$vr17, $t0, 0
 	vinsgr2vr.d	$vr24, $t1, 0
-	vseq.b	$vr23, $vr17, $vr0
-	vseq.b	$vr19, $vr24, $vr0
-	vseq.b	$vr22, $vr17, $vr1
-	vilvl.b	$vr26, $vr22, $vr22
-	vseq.b	$vr21, $vr24, $vr1
-	vilvl.b	$vr25, $vr21, $vr21
-	vseq.b	$vr20, $vr17, $vr2
-	vilvl.b	$vr27, $vr20, $vr20
-	vseq.b	$vr18, $vr17, $vr3
-	vxor.v	$vr17, $vr26, $vr27
-	vilvl.b	$vr26, $vr18, $vr18
+	vseq.b	$vr18, $vr17, $vr0
+	vseq.b	$vr22, $vr24, $vr0
+	vseq.b	$vr21, $vr17, $vr1
+	vilvl.b	$vr23, $vr21, $vr21
+	vseq.b	$vr20, $vr24, $vr1
+	vilvl.b	$vr25, $vr20, $vr20
+	vseq.b	$vr19, $vr17, $vr2
+	vilvl.b	$vr26, $vr19, $vr19
+	vseq.b	$vr17, $vr17, $vr3
+	vxor.v	$vr23, $vr23, $vr26
+	vilvl.b	$vr26, $vr17, $vr17
 	vslli.h	$vr26, $vr26, 8
 	vsrai.h	$vr26, $vr26, 8
-	vor.v	$vr23, $vr23, $vr22
-	vor.v	$vr23, $vr23, $vr20
-	vilvl.b	$vr23, $vr23, $vr23
-	vslli.h	$vr23, $vr23, 8
-	vsrai.h	$vr23, $vr23, 8
-	vslli.h	$vr17, $vr17, 8
-	vsrai.h	$vr17, $vr17, 8
-	vor.v	$vr27, $vr26, $vr17
-	vnor.v	$vr17, $vr23, $vr26
-	vxor.v	$vr26, $vr27, $vr4
-	vand.v	$vr26, $vr23, $vr26
+	vor.v	$vr18, $vr18, $vr21
+	vor.v	$vr18, $vr18, $vr19
+	vilvl.b	$vr18, $vr18, $vr18
+	vslli.h	$vr18, $vr18, 8
+	vsrai.h	$vr27, $vr18, 8
+	vslli.h	$vr18, $vr23, 8
+	vsrai.h	$vr18, $vr18, 8
+	vor.v	$vr23, $vr26, $vr18
+	vnor.v	$vr18, $vr27, $vr26
+	vxor.v	$vr23, $vr23, $vr4
+	vand.v	$vr26, $vr27, $vr23
 	vseq.b	$vr23, $vr24, $vr2
 	vpickve2gr.h	$t0, $vr26, 0
 	vpickve2gr.h	$t1, $vr26, 1
@@ -7851,15 +7844,15 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	vilvl.b	$vr26, $vr24, $vr24
 	vslli.h	$vr26, $vr26, 8
 	vsrai.h	$vr26, $vr26, 8
-	vor.v	$vr19, $vr19, $vr21
-	vor.v	$vr19, $vr19, $vr23
-	vilvl.b	$vr19, $vr19, $vr19
-	vslli.h	$vr19, $vr19, 8
-	vsrai.h	$vr27, $vr19, 8
-	vslli.h	$vr19, $vr25, 8
-	vsrai.h	$vr19, $vr19, 8
-	vor.v	$vr25, $vr26, $vr19
-	vnor.v	$vr19, $vr27, $vr26
+	vor.v	$vr22, $vr22, $vr20
+	vor.v	$vr22, $vr22, $vr23
+	vilvl.b	$vr22, $vr22, $vr22
+	vslli.h	$vr22, $vr22, 8
+	vsrai.h	$vr27, $vr22, 8
+	vslli.h	$vr22, $vr25, 8
+	vsrai.h	$vr22, $vr22, 8
+	vor.v	$vr25, $vr26, $vr22
+	vnor.v	$vr22, $vr27, $vr26
 	vxor.v	$vr25, $vr25, $vr4
 	vand.v	$vr25, $vr27, $vr25
 	vpickve2gr.h	$t0, $vr25, 0
@@ -7877,53 +7870,41 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	xvinsgr2vr.w	$xr25, $t4, 4
 	xvinsgr2vr.w	$xr25, $t5, 5
 	xvinsgr2vr.w	$xr25, $t6, 6
-	vst	$vr22, $sp, 96
-	xvld	$xr22, $sp, 96
 	xvinsgr2vr.w	$xr25, $t7, 7
 	xvand.v	$xr25, $xr25, $xr15
 	xvadd.w	$xr6, $xr6, $xr25
-	xvpermi.d	$xr22, $xr22, 68
-	vst	$vr21, $sp, 0
-	xvld	$xr21, $sp, 0
-	xvshuf.b	$xr22, $xr0, $xr22, $xr13
-	xvand.v	$xr22, $xr22, $xr15
-	xvadd.w	$xr7, $xr7, $xr22
 	xvpermi.d	$xr21, $xr21, 68
-	vst	$vr20, $sp, 128
-	xvld	$xr20, $sp, 128
 	xvshuf.b	$xr21, $xr0, $xr21, $xr13
 	xvand.v	$xr21, $xr21, $xr15
-	xvadd.w	$xr8, $xr8, $xr21
+	xvadd.w	$xr7, $xr7, $xr21
 	xvpermi.d	$xr20, $xr20, 68
-	vst	$vr23, $sp, 32
-	xvld	$xr21, $sp, 32
 	xvshuf.b	$xr20, $xr0, $xr20, $xr13
 	xvand.v	$xr20, $xr20, $xr15
-	xvadd.w	$xr9, $xr9, $xr20
-	xvpermi.d	$xr20, $xr21, 68
-	vst	$vr18, $sp, 160
-	xvld	$xr18, $sp, 160
-	xvshuf.b	$xr20, $xr0, $xr20, $xr13
-	xvand.v	$xr20, $xr20, $xr15
-	xvadd.w	$xr10, $xr10, $xr20
-	xvpermi.d	$xr18, $xr18, 68
-	vst	$vr24, $sp, 64
-	xvld	$xr20, $sp, 64
-	xvshuf.b	$xr18, $xr0, $xr18, $xr13
-	xvand.v	$xr18, $xr18, $xr15
-	xvadd.w	$xr11, $xr11, $xr18
-	xvpermi.d	$xr18, $xr20, 68
-	xvshuf.b	$xr18, $xr0, $xr18, $xr13
-	xvand.v	$xr18, $xr18, $xr15
-	xvadd.w	$xr12, $xr12, $xr18
-	vpickve2gr.h	$t0, $vr17, 0
-	vpickve2gr.h	$t1, $vr17, 1
-	vpickve2gr.h	$t2, $vr17, 2
-	vpickve2gr.h	$t3, $vr17, 3
-	vpickve2gr.h	$t4, $vr17, 4
-	vpickve2gr.h	$t5, $vr17, 5
-	vpickve2gr.h	$t6, $vr17, 6
-	vpickve2gr.h	$t7, $vr17, 7
+	xvadd.w	$xr8, $xr8, $xr20
+	xvpermi.d	$xr19, $xr19, 68
+	xvshuf.b	$xr19, $xr0, $xr19, $xr13
+	xvand.v	$xr19, $xr19, $xr15
+	xvadd.w	$xr9, $xr9, $xr19
+	xvpermi.d	$xr19, $xr23, 68
+	xvshuf.b	$xr19, $xr0, $xr19, $xr13
+	xvand.v	$xr19, $xr19, $xr15
+	xvadd.w	$xr10, $xr10, $xr19
+	xvpermi.d	$xr17, $xr17, 68
+	xvshuf.b	$xr17, $xr0, $xr17, $xr13
+	xvand.v	$xr17, $xr17, $xr15
+	xvadd.w	$xr11, $xr11, $xr17
+	xvpermi.d	$xr17, $xr24, 68
+	xvshuf.b	$xr17, $xr0, $xr17, $xr13
+	xvand.v	$xr17, $xr17, $xr15
+	xvadd.w	$xr12, $xr12, $xr17
+	vpickve2gr.h	$t0, $vr18, 0
+	vpickve2gr.h	$t1, $vr18, 1
+	vpickve2gr.h	$t2, $vr18, 2
+	vpickve2gr.h	$t3, $vr18, 3
+	vpickve2gr.h	$t4, $vr18, 4
+	vpickve2gr.h	$t5, $vr18, 5
+	vpickve2gr.h	$t6, $vr18, 6
+	vpickve2gr.h	$t7, $vr18, 7
 	xvinsgr2vr.w	$xr17, $t0, 0
 	xvinsgr2vr.w	$xr17, $t1, 1
 	xvinsgr2vr.w	$xr17, $t2, 2
@@ -7934,14 +7915,14 @@ is_polyAT_exon_p:                       # @is_polyAT_exon_p
 	xvinsgr2vr.w	$xr17, $t7, 7
 	xvand.v	$xr17, $xr17, $xr15
 	xvadd.w	$xr14, $xr14, $xr17
-	vpickve2gr.h	$t0, $vr19, 0
-	vpickve2gr.h	$t1, $vr19, 1
-	vpickve2gr.h	$t2, $vr19, 2
-	vpickve2gr.h	$t3, $vr19, 3
-	vpickve2gr.h	$t4, $vr19, 4
-	vpickve2gr.h	$t5, $vr19, 5
-	vpickve2gr.h	$t6, $vr19, 6
-	vpickve2gr.h	$t7, $vr19, 7
+	vpickve2gr.h	$t0, $vr22, 0
+	vpickve2gr.h	$t1, $vr22, 1
+	vpickve2gr.h	$t2, $vr22, 2
+	vpickve2gr.h	$t3, $vr22, 3
+	vpickve2gr.h	$t4, $vr22, 4
+	vpickve2gr.h	$t5, $vr22, 5
+	vpickve2gr.h	$t6, $vr22, 6
+	vpickve2gr.h	$t7, $vr22, 7
 	xvinsgr2vr.w	$xr17, $t0, 0
 	xvinsgr2vr.w	$xr17, $t1, 1
 	xvinsgr2vr.w	$xr17, $t2, 2

@@ -16,12 +16,12 @@
 	.type	calculate_bm_table,@function
 calculate_bm_table:                     # @calculate_bm_table
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a1
 	move	$s1, $a0
@@ -83,9 +83,6 @@ calculate_bm_table:                     # @calculate_bm_table
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
-	vst	$vr4, $sp, 96
-	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -98,11 +95,11 @@ calculate_bm_table:                     # @calculate_bm_table
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr3, $sp, 96
-	xvstelm.b	$xr3, $sp, 24, 3
-	xvstelm.b	$xr3, $sp, 16, 2
-	xvstelm.b	$xr3, $sp, 8, 1
-	xvstelm.b	$xr3, $sp, 0, 0
+	vsrli.d	$vr4, $vr3, 32
+	xvstelm.b	$xr4, $sp, 24, 3
+	xvstelm.b	$xr4, $sp, 16, 2
+	xvstelm.b	$xr4, $sp, 8, 1
+	xvstelm.b	$xr4, $sp, 0, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -115,7 +112,6 @@ calculate_bm_table:                     # @calculate_bm_table
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 64
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
@@ -170,12 +166,12 @@ calculate_bm_table:                     # @calculate_bm_table
 	addi.d	$a3, $a3, 1
 	bnez	$a1, .LBB0_8
 .LBB0_9:                                # %._crit_edge
-	addi.d	$sp, $fp, -160
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -96
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB0_10:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -522,16 +518,16 @@ find_destination:                       # @find_destination
 	.type	NewPatternNode,@function
 NewPatternNode:                         # @NewPatternNode
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 192
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 128
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s3, $a4
 	move	$s1, $a3
@@ -616,9 +612,6 @@ NewPatternNode:                         # @NewPatternNode
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
-	vst	$vr4, $sp, 96
-	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -631,11 +624,11 @@ NewPatternNode:                         # @NewPatternNode
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr3, $sp, 96
-	xvstelm.b	$xr3, $sp, 24, 3
-	xvstelm.b	$xr3, $sp, 16, 2
-	xvstelm.b	$xr3, $sp, 8, 1
-	xvstelm.b	$xr3, $sp, 0, 0
+	vsrli.d	$vr4, $vr3, 32
+	xvstelm.b	$xr4, $sp, 24, 3
+	xvstelm.b	$xr4, $sp, 16, 2
+	xvstelm.b	$xr4, $sp, 8, 1
+	xvstelm.b	$xr4, $sp, 0, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -648,7 +641,6 @@ NewPatternNode:                         # @NewPatternNode
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 64
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
@@ -705,16 +697,16 @@ NewPatternNode:                         # @NewPatternNode
 .LBB3_11:                               # %calculate_bm_table.exit
 	st.d	$a0, $s0, 40
 	move	$a0, $s0
-	addi.d	$sp, $fp, -192
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	addi.d	$sp, $fp, -128
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .LBB3_12:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -766,14 +758,14 @@ NewPatternNode:                         # @NewPatternNode
 	.type	NewStrTreeNode,@function
 NewStrTreeNode:                         # @NewStrTreeNode
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 192
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 128
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s1, $a2
 	move	$s3, $a1
@@ -855,9 +847,6 @@ NewStrTreeNode:                         # @NewStrTreeNode
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
-	vst	$vr4, $sp, 96
-	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -870,11 +859,11 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr3, $sp, 96
-	xvstelm.b	$xr3, $sp, 24, 3
-	xvstelm.b	$xr3, $sp, 16, 2
-	xvstelm.b	$xr3, $sp, 8, 1
-	xvstelm.b	$xr3, $sp, 0, 0
+	vsrli.d	$vr4, $vr3, 32
+	xvstelm.b	$xr4, $sp, 24, 3
+	xvstelm.b	$xr4, $sp, 16, 2
+	xvstelm.b	$xr4, $sp, 8, 1
+	xvstelm.b	$xr4, $sp, 0, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -887,7 +876,6 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 64
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
@@ -944,14 +932,14 @@ NewStrTreeNode:                         # @NewStrTreeNode
 .LBB4_11:                               # %calculate_bm_table.exit
 	st.d	$a0, $s0, 24
 	move	$a0, $s0
-	addi.d	$sp, $fp, -192
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	addi.d	$sp, $fp, -128
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .LBB4_12:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -1003,16 +991,16 @@ NewStrTreeNode:                         # @NewStrTreeNode
 	.type	find_lcs,@function
 find_lcs:                               # @find_lcs
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 192
+	addi.d	$sp, $sp, -128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 128
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a4
 	move	$s1, $a3
@@ -1086,9 +1074,6 @@ find_lcs:                               # @find_lcs
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a2, 0
 	vinsgr2vr.d	$vr3, $a4, 0
-	vsrli.d	$vr4, $vr3, 32
-	vst	$vr4, $sp, 96
-	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -1101,11 +1086,11 @@ find_lcs:                               # @find_lcs
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr3, $sp, 96
-	xvstelm.b	$xr3, $sp, 24, 3
-	xvstelm.b	$xr3, $sp, 16, 2
-	xvstelm.b	$xr3, $sp, 8, 1
-	xvstelm.b	$xr3, $sp, 0, 0
+	vsrli.d	$vr4, $vr3, 32
+	xvstelm.b	$xr4, $sp, 24, 3
+	xvstelm.b	$xr4, $sp, 16, 2
+	xvstelm.b	$xr4, $sp, 8, 1
+	xvstelm.b	$xr4, $sp, 0, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -1118,7 +1103,6 @@ find_lcs:                               # @find_lcs
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 64
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
@@ -1280,16 +1264,16 @@ find_lcs:                               # @find_lcs
 	jirl	$ra, $ra, 0
 .LBB5_33:
 	move	$a0, $s3
-	addi.d	$sp, $fp, -192
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	addi.d	$sp, $fp, -128
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .LBB5_34:
 	st.w	$s4, $s0, 0

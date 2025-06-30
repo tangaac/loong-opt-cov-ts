@@ -3117,13 +3117,13 @@ output_check:                           # @output_check
 	.type	action_row,@function
 action_row:                             # @action_row
 # %bb.0:
-	addi.d	$sp, $sp, -352
-	st.d	$ra, $sp, 344                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 312                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 352
+	addi.d	$sp, $sp, -320
+	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 320
 	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a1, %got_pc_hi20(ntokens)
 	ld.d	$a1, $a1, %got_pc_lo12(ntokens)
@@ -3779,13 +3779,13 @@ action_row:                             # @action_row
 	move	$a0, $zero
 .LBB21_111:                             # %.loopexit
 	addi.w	$a0, $a0, 0
-	addi.d	$sp, $fp, -352
-	ld.d	$s2, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 344                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 352
+	addi.d	$sp, $fp, -320
+	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 320
 	ret
 .LBB21_112:                             # %vector.main.loop.iter.check
 	ori	$a2, $zero, 16
@@ -3809,34 +3809,31 @@ action_row:                             # @action_row
 .LBB21_116:                             # %vector.body212
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a3, -16
-	xvst	$xr1, $sp, 256
-	vld	$vr2, $sp, 256
-	vld	$vr1, $sp, 272
-	vpickve2gr.h	$a5, $vr2, 0
+	vpickve2gr.h	$a5, $vr1, 0
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 0
-	vpickve2gr.h	$a5, $vr2, 1
+	xvinsgr2vr.w	$xr2, $a5, 0
+	vpickve2gr.h	$a5, $vr1, 1
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 1
-	vpickve2gr.h	$a5, $vr2, 2
+	xvinsgr2vr.w	$xr2, $a5, 1
+	vpickve2gr.h	$a5, $vr1, 2
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 2
-	vpickve2gr.h	$a5, $vr2, 3
+	xvinsgr2vr.w	$xr2, $a5, 2
+	vpickve2gr.h	$a5, $vr1, 3
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 3
-	vpickve2gr.h	$a5, $vr2, 4
+	xvinsgr2vr.w	$xr2, $a5, 3
+	vpickve2gr.h	$a5, $vr1, 4
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 4
-	vpickve2gr.h	$a5, $vr2, 5
+	xvinsgr2vr.w	$xr2, $a5, 4
+	vpickve2gr.h	$a5, $vr1, 5
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 5
-	vpickve2gr.h	$a5, $vr2, 6
+	xvinsgr2vr.w	$xr2, $a5, 5
+	vpickve2gr.h	$a5, $vr1, 6
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 6
-	vpickve2gr.h	$a5, $vr2, 7
+	xvinsgr2vr.w	$xr2, $a5, 6
+	vpickve2gr.h	$a5, $vr1, 7
 	ext.w.h	$a5, $a5
-	xvinsgr2vr.w	$xr3, $a5, 7
-	xvseq.w	$xr2, $xr0, $xr3
+	xvinsgr2vr.w	$xr2, $a5, 7
+	xvseq.w	$xr2, $xr0, $xr2
 	xvpickve2gr.w	$a5, $xr2, 0
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_124
@@ -3924,6 +3921,7 @@ action_row:                             # @action_row
 	st.h	$zero, $a3, -2
 .LBB21_132:                             # %pred.store.continue228
                                         #   in Loop: Header=BB21_116 Depth=1
+	xvpermi.q	$xr1, $xr1, 1
 	vpickve2gr.h	$a5, $vr1, 0
 	ext.w.h	$a5, $a5
 	xvinsgr2vr.w	$xr2, $a5, 0

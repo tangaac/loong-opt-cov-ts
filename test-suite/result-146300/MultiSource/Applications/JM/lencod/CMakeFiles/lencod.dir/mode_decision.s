@@ -84,15 +84,15 @@ rc_store_diff:                          # @rc_store_diff
 	.type	fast_mode_intra_decision,@function
 fast_mode_intra_decision:               # @fast_mode_intra_decision
 # %bb.0:
-	addi.d	$sp, $sp, -896
-	st.d	$ra, $sp, 888                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 880                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 872                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 864                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 856                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 848                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 840                  # 8-byte Folded Spill
-	addi.d	$fp, $sp, 896
+	addi.d	$sp, $sp, -640
+	st.d	$ra, $sp, 632                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 624                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 616                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 608                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 600                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 592                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 584                  # 8-byte Folded Spill
+	addi.d	$fp, $sp, 640
 	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a1, %got_pc_hi20(img)
 	ld.d	$s2, $a1, %got_pc_lo12(img)
@@ -103,7 +103,7 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	fmov.d	$fs0, $fa0
 	move	$s0, $a0
 	addi.w	$s1, $zero, -1
-	addi.d	$a4, $sp, 768
+	addi.d	$a4, $sp, 512
 	move	$a0, $a1
 	move	$a1, $s1
 	move	$a2, $s1
@@ -112,7 +112,7 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	ld.d	$a0, $s2, 0
 	ld.d	$a5, $s3, %pc_lo12(getNeighbour)
 	ld.w	$a0, $a0, 12
-	addi.d	$a4, $sp, 792
+	addi.d	$a4, $sp, 536
 	move	$a1, $s1
 	move	$a2, $zero
 	move	$a3, $zero
@@ -120,50 +120,50 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	ld.d	$a0, $s2, 0
 	ld.d	$a5, $s3, %pc_lo12(getNeighbour)
 	ld.w	$a0, $a0, 12
-	addi.d	$a4, $sp, 816
+	addi.d	$a4, $sp, 560
 	move	$a1, $zero
 	move	$a2, $s1
 	move	$a3, $zero
 	jirl	$ra, $a5, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
-	ld.d	$a1, $s2, 0
-	fld.d	$fa0, $a0, %pc_lo12(.LCPI1_0)
-	lu12i.w	$a0, 3
-	ori	$a2, $a0, 3056
-	ldx.w	$a2, $a1, $a2
-	ld.w	$a3, $a1, 164
+	pcalau12i	$a1, %pc_hi20(.LCPI1_0)
+	ld.d	$a0, $s2, 0
+	fld.d	$fa0, $a1, %pc_lo12(.LCPI1_0)
+	lu12i.w	$a1, 3
+	ori	$a2, $a1, 3056
+	ldx.w	$a2, $a0, $a2
+	ld.w	$a3, $a0, 164
 	fmul.d	$fa0, $fs0, $fa0
 	addi.w	$a2, $a2, -1
 	movgr2fr.d	$fa1, $zero
 	beq	$a3, $a2, .LBB1_5
 # %bb.1:
-	ori	$a0, $a0, 3048
-	ldx.w	$a0, $a1, $a0
-	ld.w	$a2, $a1, 160
-	addi.w	$a0, $a0, -1
-	beq	$a2, $a0, .LBB1_5
+	ori	$a1, $a1, 3048
+	ldx.w	$a1, $a0, $a1
+	ld.w	$a2, $a0, 160
+	addi.w	$a1, $a1, -1
+	beq	$a2, $a1, .LBB1_5
 # %bb.2:
-	ld.w	$a0, $sp, 792
-	beqz	$a0, .LBB1_5
+	ld.w	$a1, $sp, 536
+	beqz	$a1, .LBB1_5
 # %bb.3:
-	ld.w	$a0, $sp, 816
-	beqz	$a0, .LBB1_5
+	ld.w	$a1, $sp, 560
+	beqz	$a1, .LBB1_5
 # %bb.4:                                # %vector.body66
-	pcalau12i	$a0, %got_pc_hi20(enc_picture)
-	ld.d	$a0, $a0, %got_pc_lo12(enc_picture)
+	pcalau12i	$a1, %got_pc_hi20(enc_picture)
+	ld.d	$a1, $a1, %got_pc_lo12(enc_picture)
 	pcalau12i	$a2, %pc_hi20(imgY_org)
 	ld.d	$a2, $a2, %pc_lo12(imgY_org)
-	ld.w	$a3, $a1, 196
-	ld.d	$a0, $a0, 0
+	ld.w	$a3, $a0, 196
+	ld.d	$a1, $a1, 0
 	alsl.d	$a4, $a3, $a2, 3
-	ldptr.d	$t0, $a0, 6440
-	ld.w	$t2, $a1, 180
+	ldptr.d	$t0, $a1, 6440
+	ld.w	$t2, $a0, 180
 	slli.d	$a3, $a3, 3
 	ldx.d	$t1, $a2, $a3
-	ld.w	$a5, $a1, 192
+	ld.w	$a5, $a0, 192
 	alsl.d	$a3, $t2, $t0, 3
 	ld.d	$t3, $a3, -8
-	ld.w	$a2, $a1, 176
+	ld.w	$a2, $a0, 176
 	alsl.d	$a6, $a5, $t1, 1
 	ld.d	$t4, $a6, 8
 	slli.d	$a5, $a5, 1
@@ -203,14 +203,14 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.h	$t6, $sp, 434
 	st.h	$t5, $sp, 432
 	vld	$vr4, $sp, 432
-	vabsd.hu	$vr1, $vr1, $vr2
-	vrepli.b	$vr2, 0
-	vilvl.h	$vr1, $vr2, $vr1
+	vabsd.hu	$vr2, $vr1, $vr2
+	vrepli.b	$vr1, 0
+	vilvl.h	$vr2, $vr1, $vr2
 	vabsd.hu	$vr3, $vr3, $vr4
 	ld.d	$t5, $a6, 24
 	ld.d	$t6, $a7, 24
-	vilvl.h	$vr3, $vr2, $vr3
-	vadd.w	$vr1, $vr1, $vr3
+	vilvl.h	$vr3, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr3
 	vinsgr2vr.d	$vr3, $t5, 0
 	vinsgr2vr.d	$vr4, $t6, 0
 	ld.d	$t5, $a4, 120
@@ -244,10 +244,10 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.h	$t5, $sp, 416
 	vld	$vr6, $sp, 416
 	vabsd.hu	$vr3, $vr3, $vr4
-	vilvl.h	$vr3, $vr2, $vr3
-	vadd.w	$vr1, $vr1, $vr3
+	vilvl.h	$vr3, $vr1, $vr3
+	vadd.w	$vr2, $vr2, $vr3
 	vabsd.hu	$vr3, $vr5, $vr6
-	vilvl.h	$vr3, $vr2, $vr3
+	vilvl.h	$vr3, $vr1, $vr3
 	ldx.d	$t5, $t1, $a5
 	ld.d	$t6, $a4, 24
 	ld.d	$t7, $a4, 16
@@ -262,8 +262,8 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.h	$t7, $sp, 306
 	st.h	$t1, $sp, 304
 	ldx.d	$t0, $t0, $t2
-	vadd.w	$vr3, $vr1, $vr3
-	vinsgr2vr.d	$vr1, $t5, 0
+	vadd.w	$vr2, $vr2, $vr3
+	vinsgr2vr.d	$vr3, $t5, 0
 	vld	$vr4, $sp, 304
 	alsl.d	$t0, $a2, $t0, 1
 	ld.d	$t1, $a3, 8
@@ -282,70 +282,93 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.h	$t1, $sp, 402
 	vld	$vr5, $sp, 400
 	vinsgr2vr.d	$vr6, $t3, 0
-	vabsd.hu	$vr1, $vr1, $vr6
-	vilvl.h	$vr1, $vr2, $vr1
-	vabsd.hu	$vr5, $vr4, $vr5
+	vabsd.hu	$vr3, $vr3, $vr6
+	vilvl.h	$vr3, $vr1, $vr3
+	vabsd.hu	$vr4, $vr4, $vr5
 	ld.d	$a6, $a6, 16
-	ld.d	$t1, $a7, 16
-	ld.d	$a7, $a4, 88
-	ld.d	$t0, $a4, 80
-	ld.d	$t2, $a4, 72
+	ld.d	$a7, $a7, 16
+	vilvl.h	$vr4, $vr1, $vr4
+	vadd.w	$vr3, $vr3, $vr4
+	vinsgr2vr.d	$vr4, $a6, 0
+	vinsgr2vr.d	$vr5, $a7, 0
+	ld.d	$a6, $a4, 88
+	ld.d	$a7, $a4, 80
+	ld.d	$t0, $a4, 72
 	ld.d	$a4, $a4, 64
+	ldx.h	$a6, $a6, $a5
 	ldx.h	$a7, $a7, $a5
 	ldx.h	$t0, $t0, $a5
-	ldx.h	$t2, $t2, $a5
 	ldx.h	$a4, $a4, $a5
-	st.h	$a7, $sp, 294
-	st.h	$t0, $sp, 292
-	st.h	$t2, $sp, 290
+	st.h	$a6, $sp, 294
+	st.h	$a7, $sp, 292
+	st.h	$t0, $sp, 290
 	st.h	$a4, $sp, 288
-	vld	$vr4, $sp, 288
+	vld	$vr6, $sp, 288
 	ld.d	$a4, $a3, 64
 	ld.d	$a5, $a3, 72
-	ld.d	$a7, $a3, 80
+	ld.d	$a6, $a3, 80
 	ld.d	$a3, $a3, 88
 	alsl.d	$a4, $a2, $a4, 1
 	alsl.d	$a5, $a2, $a5, 1
-	alsl.d	$a7, $a2, $a7, 1
+	alsl.d	$a6, $a2, $a6, 1
 	alsl.d	$a2, $a2, $a3, 1
 	ld.h	$a2, $a2, -2
-	ld.h	$a3, $a7, -2
+	ld.h	$a3, $a6, -2
 	ld.h	$a5, $a5, -2
 	ld.h	$a4, $a4, -2
 	st.h	$a2, $sp, 390
 	st.h	$a3, $sp, 388
 	st.h	$a5, $sp, 386
 	st.h	$a4, $sp, 384
-	ldptr.d	$a2, $a0, 6472
-	vilvl.h	$vr5, $vr2, $vr5
-	vadd.w	$vr6, $vr1, $vr5
-	vinsgr2vr.d	$vr7, $a6, 0
-	ld.d	$a0, $a2, 8
-	ld.w	$t7, $a1, 188
-	pcalau12i	$a3, %pc_hi20(imgUV_org)
-	ld.d	$a4, $a3, %pc_lo12(imgUV_org)
-	ld.w	$t6, $a1, 204
-	vld	$vr5, $sp, 384
-	alsl.d	$t5, $t7, $a0, 3
-	ld.d	$a3, $a4, 8
-	slli.d	$a7, $t6, 3
-	ld.d	$t0, $a4, 0
-	ld.d	$a6, $a2, 0
-	ld.w	$a2, $a1, 184
-	ld.w	$a1, $a1, 200
-	ldx.d	$t3, $t0, $a7
-	alsl.d	$t8, $t7, $a6, 3
-	ld.d	$t2, $t8, -8
-	slli.d	$a1, $a1, 1
-	ldx.d	$s1, $t3, $a1
-	slli.d	$t4, $a2, 1
-	ldx.d	$s2, $t2, $t4
+	vld	$vr7, $sp, 384
+	vabsd.hu	$vr4, $vr4, $vr5
+	vilvl.h	$vr4, $vr1, $vr4
+	vadd.w	$vr3, $vr3, $vr4
+	vabsd.hu	$vr4, $vr6, $vr7
+	vilvl.h	$vr1, $vr1, $vr4
+	vadd.w	$vr1, $vr3, $vr1
+	vadd.w	$vr1, $vr2, $vr1
+	vpickve2gr.w	$a2, $vr1, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	xvinsgr2vr.d	$xr3, $a2, 0
+	vpickve2gr.w	$a2, $vr1, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	xvinsgr2vr.d	$xr3, $a2, 1
+	vpickve2gr.w	$a2, $vr1, 2
+	bstrpick.d	$a2, $a2, 31, 0
+	ldptr.d	$a5, $a1, 6472
+	xvinsgr2vr.d	$xr3, $a2, 2
+	vpickve2gr.w	$a1, $vr1, 3
+	bstrpick.d	$a2, $a1, 31, 0
+	ld.d	$a1, $a5, 8
+	ld.w	$t2, $a0, 188
+	xvinsgr2vr.d	$xr3, $a2, 3
+	pcalau12i	$a2, %pc_hi20(.LCPI1_1)
+	xvld	$xr1, $a2, %pc_lo12(.LCPI1_1)
+	alsl.d	$t5, $t2, $a1, 3
+	pcalau12i	$a2, %pc_hi20(imgUV_org)
+	ld.d	$a2, $a2, %pc_lo12(imgUV_org)
+	ld.w	$t6, $a0, 204
+	slli.d	$a6, $t2, 3
 	ld.d	$a4, $t5, -8
-	ldx.d	$a5, $a3, $a7
-	vinsgr2vr.d	$vr1, $s1, 0
-	vinsgr2vr.d	$vr8, $s2, 0
-	vabsd.hu	$vr1, $vr1, $vr8
-	vst	$vr1, $sp, 576
+	ld.d	$a3, $a2, 8
+	slli.d	$t0, $t6, 3
+	ld.d	$t1, $a2, 0
+	ld.d	$a7, $a5, 0
+	ld.w	$a2, $a0, 184
+	ld.w	$a0, $a0, 200
+	ldx.d	$t3, $t1, $t0
+	alsl.d	$t7, $t2, $a7, 3
+	ld.d	$t2, $t7, -8
+	slli.d	$a0, $a0, 1
+	ldx.d	$t8, $t3, $a0
+	slli.d	$t4, $a2, 1
+	ldx.d	$s1, $t2, $t4
+	ldx.d	$a5, $a3, $t0
+	alsl.d	$s2, $t6, $t1, 3
+	vinsgr2vr.d	$vr2, $t8, 0
+	vinsgr2vr.d	$vr4, $s1, 0
+	vabsd.hu	$vr2, $vr2, $vr4
 	st.h	$zero, $sp, 190
 	st.w	$zero, $sp, 186
 	st.h	$zero, $sp, 182
@@ -354,49 +377,45 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 170
 	st.h	$zero, $sp, 166
 	st.w	$zero, $sp, 162
-	xvld	$xr1, $sp, 576
-	vinsgr2vr.d	$vr8, $t1, 0
-	slli.d	$t1, $t7, 3
-	alsl.d	$t7, $t6, $t0, 3
-	xvstelm.h	$xr1, $sp, 184, 3
-	xvstelm.h	$xr1, $sp, 176, 2
-	xvstelm.h	$xr1, $sp, 168, 1
-	xvstelm.h	$xr1, $sp, 160, 0
-	xvld	$xr1, $sp, 160
-	ld.d	$s1, $t7, 24
-	ld.d	$s2, $t7, 16
-	ld.d	$t7, $t7, 8
-	ldx.h	$s3, $t3, $a1
-	ldx.h	$s1, $s1, $a1
-	ldx.h	$s2, $s2, $a1
-	ldx.h	$t7, $t7, $a1
+	xvstelm.h	$xr2, $sp, 184, 3
+	xvstelm.h	$xr2, $sp, 176, 2
+	xvstelm.h	$xr2, $sp, 168, 1
+	xvstelm.h	$xr2, $sp, 160, 0
+	xvld	$xr2, $sp, 160
+	ld.d	$t8, $s2, 24
+	ld.d	$s1, $s2, 16
+	ld.d	$s2, $s2, 8
+	ldx.h	$s3, $t3, $a0
+	ldx.h	$t8, $t8, $a0
+	ldx.h	$s1, $s1, $a0
+	ldx.h	$s2, $s2, $a0
 	st.h	$s3, $sp, 256
-	st.h	$s1, $sp, 262
-	st.h	$s2, $sp, 260
-	st.h	$t7, $sp, 258
-	vld	$vr9, $sp, 256
-	ldx.d	$t7, $a6, $t1
-	ld.d	$s1, $t8, 8
-	ld.d	$s2, $t8, 16
-	ld.d	$t8, $t8, 24
-	alsl.d	$t7, $a2, $t7, 1
+	st.h	$t8, $sp, 262
+	st.h	$s1, $sp, 260
+	st.h	$s2, $sp, 258
+	vld	$vr4, $sp, 256
+	ldx.d	$t8, $a7, $a6
+	ld.d	$s1, $t7, 8
+	ld.d	$s2, $t7, 16
+	ld.d	$t7, $t7, 24
+	alsl.d	$t8, $a2, $t8, 1
 	alsl.d	$s1, $a2, $s1, 1
 	alsl.d	$s2, $a2, $s2, 1
-	alsl.d	$t8, $a2, $t8, 1
-	ld.h	$t7, $t7, -2
+	alsl.d	$t7, $a2, $t7, 1
 	ld.h	$t8, $t8, -2
+	ld.h	$t7, $t7, -2
 	ld.h	$s2, $s2, -2
 	ld.h	$s1, $s1, -2
-	st.h	$t7, $sp, 448
-	st.h	$t8, $sp, 454
+	st.h	$t8, $sp, 448
+	st.h	$t7, $sp, 454
 	st.h	$s2, $sp, 452
 	st.h	$s1, $sp, 450
-	vld	$vr10, $sp, 448
-	vabsd.hu	$vr7, $vr7, $vr8
-	vilvl.h	$vr7, $vr2, $vr7
-	vadd.w	$vr6, $vr6, $vr7
-	vabsd.hu	$vr7, $vr9, $vr10
-	vst	$vr7, $sp, 512
+	vld	$vr6, $sp, 448
+	xvpermi.d	$xr5, $xr3, 78
+	xvori.b	$xr7, $xr1, 0
+	xvshuf.d	$xr7, $xr0, $xr5
+	xvadd.d	$xr5, $xr3, $xr7
+	vabsd.hu	$vr3, $vr4, $vr6
 	st.h	$zero, $sp, 254
 	st.w	$zero, $sp, 250
 	st.h	$zero, $sp, 246
@@ -405,22 +424,17 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 234
 	st.h	$zero, $sp, 230
 	st.w	$zero, $sp, 226
-	xvld	$xr7, $sp, 512
-	vabsd.hu	$vr4, $vr4, $vr5
-	vilvl.h	$vr2, $vr2, $vr4
-	vadd.w	$vr2, $vr6, $vr2
-	xvstelm.h	$xr7, $sp, 248, 3
-	xvstelm.h	$xr7, $sp, 240, 2
-	xvstelm.h	$xr7, $sp, 232, 1
-	xvstelm.h	$xr7, $sp, 224, 0
-	ldx.d	$t7, $a5, $a1
+	xvstelm.h	$xr3, $sp, 248, 3
+	xvstelm.h	$xr3, $sp, 240, 2
+	xvstelm.h	$xr3, $sp, 232, 1
+	xvstelm.h	$xr3, $sp, 224, 0
+	ldx.d	$t7, $a5, $a0
 	ldx.d	$t8, $a4, $t4
-	vadd.w	$vr5, $vr3, $vr2
-	xvld	$xr2, $sp, 224
-	vinsgr2vr.d	$vr3, $t7, 0
-	vinsgr2vr.d	$vr4, $t8, 0
-	vabsd.hu	$vr3, $vr3, $vr4
-	vst	$vr3, $sp, 736
+	alsl.d	$t6, $t6, $a3, 3
+	xvld	$xr3, $sp, 224
+	vinsgr2vr.d	$vr4, $t7, 0
+	vinsgr2vr.d	$vr6, $t8, 0
+	vabsd.hu	$vr4, $vr4, $vr6
 	st.h	$zero, $sp, 30
 	st.w	$zero, $sp, 26
 	st.h	$zero, $sp, 22
@@ -429,49 +443,44 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 10
 	st.h	$zero, $sp, 6
 	st.w	$zero, $sp, 2
-	xvld	$xr3, $sp, 736
-	vpickve2gr.w	$t7, $vr5, 0
-	bstrpick.d	$t7, $t7, 31, 0
-	alsl.d	$t6, $t6, $a3, 3
-	xvstelm.h	$xr3, $sp, 24, 3
-	xvstelm.h	$xr3, $sp, 16, 2
-	xvstelm.h	$xr3, $sp, 8, 1
-	xvstelm.h	$xr3, $sp, 0, 0
-	xvld	$xr3, $sp, 0
-	ld.d	$t8, $t6, 24
-	ld.d	$s1, $t6, 16
+	xvstelm.h	$xr4, $sp, 24, 3
+	xvstelm.h	$xr4, $sp, 16, 2
+	xvstelm.h	$xr4, $sp, 8, 1
+	xvstelm.h	$xr4, $sp, 0, 0
+	xvld	$xr4, $sp, 0
+	ld.d	$t7, $t6, 24
+	ld.d	$t8, $t6, 16
 	ld.d	$t6, $t6, 8
-	ldx.h	$s2, $a5, $a1
-	ldx.h	$t8, $t8, $a1
-	ldx.h	$s1, $s1, $a1
-	ldx.h	$t6, $t6, $a1
-	st.h	$s2, $sp, 272
-	st.h	$t8, $sp, 278
-	st.h	$s1, $sp, 276
+	ldx.h	$s1, $a5, $a0
+	ldx.h	$t7, $t7, $a0
+	ldx.h	$t8, $t8, $a0
+	ldx.h	$t6, $t6, $a0
+	st.h	$s1, $sp, 272
+	st.h	$t7, $sp, 278
+	st.h	$t8, $sp, 276
 	st.h	$t6, $sp, 274
-	vld	$vr4, $sp, 272
-	ldx.d	$t6, $a0, $t1
-	ld.d	$t8, $t5, 8
-	ld.d	$s1, $t5, 16
+	vld	$vr6, $sp, 272
+	ldx.d	$t6, $a1, $a6
+	ld.d	$t7, $t5, 8
+	ld.d	$t8, $t5, 16
 	ld.d	$t5, $t5, 24
 	alsl.d	$t6, $a2, $t6, 1
+	alsl.d	$t7, $a2, $t7, 1
 	alsl.d	$t8, $a2, $t8, 1
-	alsl.d	$s1, $a2, $s1, 1
 	alsl.d	$t5, $a2, $t5, 1
 	ld.h	$t6, $t6, -2
 	ld.h	$t5, $t5, -2
-	ld.h	$s1, $s1, -2
 	ld.h	$t8, $t8, -2
+	ld.h	$t7, $t7, -2
 	st.h	$t6, $sp, 496
 	st.h	$t5, $sp, 502
-	st.h	$s1, $sp, 500
-	st.h	$t8, $sp, 498
-	vld	$vr6, $sp, 496
-	xvinsgr2vr.d	$xr7, $t7, 0
-	vpickve2gr.w	$t5, $vr5, 1
-	bstrpick.d	$t5, $t5, 31, 0
-	vabsd.hu	$vr4, $vr4, $vr6
-	vst	$vr4, $sp, 672
+	st.h	$t8, $sp, 500
+	st.h	$t7, $sp, 498
+	vld	$vr7, $sp, 496
+	xvpermi.d	$xr8, $xr5, 68
+	xvrepl128vei.d	$xr8, $xr8, 1
+	pcalau12i	$t6, %pc_hi20(.LCPI1_2)
+	vabsd.hu	$vr6, $vr6, $vr7
 	st.h	$zero, $sp, 94
 	st.w	$zero, $sp, 90
 	st.h	$zero, $sp, 86
@@ -480,24 +489,19 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 74
 	st.h	$zero, $sp, 70
 	st.w	$zero, $sp, 66
-	xvld	$xr4, $sp, 672
-	xvinsgr2vr.d	$xr7, $t5, 1
-	vpickve2gr.w	$t5, $vr5, 2
-	bstrpick.d	$t6, $t5, 31, 0
-	xvstelm.h	$xr4, $sp, 88, 3
-	xvstelm.h	$xr4, $sp, 80, 2
-	xvstelm.h	$xr4, $sp, 72, 1
-	xvstelm.h	$xr4, $sp, 64, 0
-	addi.d	$t5, $a1, 8
+	xvstelm.h	$xr6, $sp, 88, 3
+	xvstelm.h	$xr6, $sp, 80, 2
+	xvstelm.h	$xr6, $sp, 72, 1
+	xvstelm.h	$xr6, $sp, 64, 0
+	addi.d	$t5, $a0, 8
 	ldx.d	$t7, $t3, $t5
 	addi.d	$t3, $t4, 8
 	ldx.d	$t2, $t2, $t3
-	xvinsgr2vr.d	$xr7, $t6, 2
-	xvld	$xr4, $sp, 64
-	vinsgr2vr.d	$vr6, $t7, 0
-	vinsgr2vr.d	$vr8, $t2, 0
-	vabsd.hu	$vr6, $vr6, $vr8
-	vst	$vr6, $sp, 544
+	xvld	$xr9, $t6, %pc_lo12(.LCPI1_2)
+	xvld	$xr6, $sp, 64
+	vinsgr2vr.d	$vr7, $t7, 0
+	vinsgr2vr.d	$vr10, $t2, 0
+	vabsd.hu	$vr7, $vr7, $vr10
 	st.h	$zero, $sp, 222
 	st.w	$zero, $sp, 218
 	st.h	$zero, $sp, 214
@@ -506,55 +510,49 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 202
 	st.h	$zero, $sp, 198
 	st.w	$zero, $sp, 194
-	xvld	$xr6, $sp, 544
-	vpickve2gr.w	$t2, $vr5, 3
-	pcalau12i	$t4, %pc_hi20(.LCPI1_1)
-	xvld	$xr5, $t4, %pc_lo12(.LCPI1_1)
-	xvstelm.h	$xr6, $sp, 216, 3
-	xvstelm.h	$xr6, $sp, 208, 2
-	xvstelm.h	$xr6, $sp, 200, 1
-	xvstelm.h	$xr6, $sp, 192, 0
-	xvld	$xr6, $sp, 192
-	addi.d	$a7, $a7, 32
-	add.d	$t4, $t0, $a7
-	ldx.d	$t0, $t0, $a7
-	ld.d	$t6, $t4, 24
-	ld.d	$t7, $t4, 16
-	ld.d	$t4, $t4, 8
-	ldx.h	$t0, $t0, $a1
-	ldx.h	$t6, $t6, $a1
-	ldx.h	$t7, $t7, $a1
-	ldx.h	$t4, $t4, $a1
-	st.h	$t0, $sp, 352
-	st.h	$t6, $sp, 358
-	st.h	$t7, $sp, 356
-	st.h	$t4, $sp, 354
-	vld	$vr8, $sp, 352
-	addi.d	$t0, $t1, 32
-	add.d	$t1, $a6, $t0
-	ldx.d	$a6, $a6, $t0
-	ld.d	$t4, $t1, 8
-	ld.d	$t6, $t1, 16
+	xvstelm.h	$xr7, $sp, 216, 3
+	xvstelm.h	$xr7, $sp, 208, 2
+	xvstelm.h	$xr7, $sp, 200, 1
+	xvstelm.h	$xr7, $sp, 192, 0
+	xvld	$xr7, $sp, 192
+	addi.d	$t0, $t0, 32
+	add.d	$t2, $t1, $t0
+	ldx.d	$t1, $t1, $t0
+	ld.d	$t4, $t2, 24
+	ld.d	$t6, $t2, 16
+	ld.d	$t2, $t2, 8
+	ldx.h	$t1, $t1, $a0
+	ldx.h	$t4, $t4, $a0
+	ldx.h	$t6, $t6, $a0
+	ldx.h	$t2, $t2, $a0
+	st.h	$t1, $sp, 352
+	st.h	$t4, $sp, 358
+	st.h	$t6, $sp, 356
+	st.h	$t2, $sp, 354
+	vld	$vr10, $sp, 352
+	addi.d	$a6, $a6, 32
+	add.d	$t1, $a7, $a6
+	ldx.d	$a7, $a7, $a6
+	ld.d	$t2, $t1, 8
+	ld.d	$t4, $t1, 16
 	ld.d	$t1, $t1, 24
-	alsl.d	$a6, $a2, $a6, 1
+	alsl.d	$a7, $a2, $a7, 1
+	alsl.d	$t2, $a2, $t2, 1
 	alsl.d	$t4, $a2, $t4, 1
-	alsl.d	$t6, $a2, $t6, 1
 	alsl.d	$t1, $a2, $t1, 1
-	ld.h	$a6, $a6, -2
+	ld.h	$a7, $a7, -2
 	ld.h	$t1, $t1, -2
-	ld.h	$t6, $t6, -2
 	ld.h	$t4, $t4, -2
-	st.h	$a6, $sp, 464
+	ld.h	$t2, $t2, -2
+	st.h	$a7, $sp, 464
 	st.h	$t1, $sp, 470
-	st.h	$t6, $sp, 468
-	st.h	$t4, $sp, 466
-	vld	$vr9, $sp, 464
-	bstrpick.d	$a6, $t2, 31, 0
-	xvinsgr2vr.d	$xr7, $a6, 3
-	xvpermi.d	$xr10, $xr7, 78
-	xvori.b	$xr11, $xr5, 0
-	vabsd.hu	$vr8, $vr8, $vr9
-	vst	$vr8, $sp, 608
+	st.h	$t4, $sp, 468
+	st.h	$t2, $sp, 466
+	vld	$vr11, $sp, 464
+	xvadd.d	$xr5, $xr5, $xr8
+	xvrepli.b	$xr8, 0
+	xvshuf.d	$xr9, $xr8, $xr5
+	vabsd.hu	$vr5, $vr10, $vr11
 	st.h	$zero, $sp, 158
 	st.w	$zero, $sp, 154
 	st.h	$zero, $sp, 150
@@ -563,22 +561,17 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 138
 	st.h	$zero, $sp, 134
 	st.w	$zero, $sp, 130
-	xvld	$xr8, $sp, 608
-	xvshuf.d	$xr11, $xr0, $xr10
-	xvadd.d	$xr9, $xr7, $xr11
-	xvpermi.d	$xr7, $xr9, 68
-	xvstelm.h	$xr8, $sp, 152, 3
-	xvstelm.h	$xr8, $sp, 144, 2
-	xvstelm.h	$xr8, $sp, 136, 1
-	xvstelm.h	$xr8, $sp, 128, 0
+	xvstelm.h	$xr5, $sp, 152, 3
+	xvstelm.h	$xr5, $sp, 144, 2
+	xvstelm.h	$xr5, $sp, 136, 1
+	xvstelm.h	$xr5, $sp, 128, 0
 	ldx.d	$a5, $a5, $t5
 	ldx.d	$a4, $a4, $t3
-	xvrepl128vei.d	$xr8, $xr7, 1
-	xvld	$xr7, $sp, 128
-	vinsgr2vr.d	$vr10, $a5, 0
-	vinsgr2vr.d	$vr11, $a4, 0
-	vabsd.hu	$vr10, $vr10, $vr11
-	vst	$vr10, $sp, 704
+	xvadd.d	$xr5, $xr9, $xr2
+	xvld	$xr2, $sp, 128
+	vinsgr2vr.d	$vr8, $a5, 0
+	vinsgr2vr.d	$vr9, $a4, 0
+	vabsd.hu	$vr8, $vr8, $vr9
 	st.h	$zero, $sp, 62
 	st.w	$zero, $sp, 58
 	st.h	$zero, $sp, 54
@@ -587,52 +580,47 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 42
 	st.h	$zero, $sp, 38
 	st.w	$zero, $sp, 34
-	xvld	$xr10, $sp, 704
-	xvadd.d	$xr9, $xr9, $xr8
-	pcalau12i	$a4, %pc_hi20(.LCPI1_2)
-	xvld	$xr11, $a4, %pc_lo12(.LCPI1_2)
-	xvstelm.h	$xr10, $sp, 56, 3
-	xvstelm.h	$xr10, $sp, 48, 2
-	xvstelm.h	$xr10, $sp, 40, 1
-	xvstelm.h	$xr10, $sp, 32, 0
+	xvstelm.h	$xr8, $sp, 56, 3
+	xvstelm.h	$xr8, $sp, 48, 2
+	xvstelm.h	$xr8, $sp, 40, 1
+	xvstelm.h	$xr8, $sp, 32, 0
 	xvld	$xr8, $sp, 32
-	add.d	$a4, $a3, $a7
-	ldx.d	$a3, $a3, $a7
+	add.d	$a4, $a3, $t0
+	ldx.d	$a3, $a3, $t0
 	ld.d	$a5, $a4, 24
-	ld.d	$a6, $a4, 16
+	ld.d	$a7, $a4, 16
 	ld.d	$a4, $a4, 8
-	ldx.h	$a3, $a3, $a1
-	ldx.h	$a5, $a5, $a1
-	ldx.h	$a6, $a6, $a1
-	ldx.h	$a1, $a4, $a1
+	ldx.h	$a3, $a3, $a0
+	ldx.h	$a5, $a5, $a0
+	ldx.h	$a7, $a7, $a0
+	ldx.h	$a0, $a4, $a0
 	st.h	$a3, $sp, 368
 	st.h	$a5, $sp, 374
-	st.h	$a6, $sp, 372
-	st.h	$a1, $sp, 370
-	vld	$vr10, $sp, 368
-	add.d	$a1, $a0, $t0
-	ldx.d	$a0, $a0, $t0
-	ld.d	$a3, $a1, 8
-	ld.d	$a4, $a1, 16
-	ld.d	$a1, $a1, 24
-	alsl.d	$a0, $a2, $a0, 1
+	st.h	$a7, $sp, 372
+	st.h	$a0, $sp, 370
+	vld	$vr9, $sp, 368
+	add.d	$a0, $a1, $a6
+	ldx.d	$a1, $a1, $a6
+	ld.d	$a3, $a0, 8
+	ld.d	$a4, $a0, 16
+	ld.d	$a0, $a0, 24
+	alsl.d	$a1, $a2, $a1, 1
 	alsl.d	$a3, $a2, $a3, 1
 	alsl.d	$a4, $a2, $a4, 1
-	alsl.d	$a1, $a2, $a1, 1
-	ld.h	$a0, $a0, -2
+	alsl.d	$a0, $a2, $a0, 1
 	ld.h	$a1, $a1, -2
+	ld.h	$a0, $a0, -2
 	ld.h	$a2, $a4, -2
 	ld.h	$a3, $a3, -2
-	st.h	$a0, $sp, 480
-	st.h	$a1, $sp, 486
+	st.h	$a1, $sp, 480
+	st.h	$a0, $sp, 486
 	st.h	$a2, $sp, 484
 	st.h	$a3, $sp, 482
-	vld	$vr12, $sp, 480
-	xvrepli.b	$xr13, 0
-	xvshuf.d	$xr11, $xr13, $xr9
-	xvadd.d	$xr1, $xr11, $xr1
-	vabsd.hu	$vr9, $vr10, $vr12
-	vst	$vr9, $sp, 640
+	vld	$vr10, $sp, 480
+	xvadd.d	$xr3, $xr5, $xr3
+	xvadd.d	$xr3, $xr3, $xr4
+	xvadd.d	$xr3, $xr3, $xr6
+	vabsd.hu	$vr4, $vr9, $vr10
 	st.h	$zero, $sp, 126
 	st.w	$zero, $sp, 122
 	st.h	$zero, $sp, 118
@@ -641,22 +629,18 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	st.w	$zero, $sp, 106
 	st.h	$zero, $sp, 102
 	st.w	$zero, $sp, 98
-	xvld	$xr9, $sp, 640
-	xvadd.d	$xr1, $xr1, $xr2
-	xvadd.d	$xr1, $xr1, $xr3
-	xvadd.d	$xr1, $xr1, $xr4
-	xvstelm.h	$xr9, $sp, 120, 3
-	xvstelm.h	$xr9, $sp, 112, 2
-	xvstelm.h	$xr9, $sp, 104, 1
-	xvstelm.h	$xr9, $sp, 96, 0
-	xvld	$xr2, $sp, 96
-	xvadd.d	$xr1, $xr1, $xr6
-	xvadd.d	$xr1, $xr1, $xr7
-	xvadd.d	$xr1, $xr1, $xr8
-	xvadd.d	$xr1, $xr1, $xr2
-	xvpermi.d	$xr2, $xr1, 78
-	xvshuf.d	$xr5, $xr0, $xr2
-	xvadd.d	$xr1, $xr1, $xr5
+	xvstelm.h	$xr4, $sp, 120, 3
+	xvstelm.h	$xr4, $sp, 112, 2
+	xvstelm.h	$xr4, $sp, 104, 1
+	xvstelm.h	$xr4, $sp, 96, 0
+	xvld	$xr4, $sp, 96
+	xvadd.d	$xr3, $xr3, $xr7
+	xvadd.d	$xr2, $xr3, $xr2
+	xvadd.d	$xr2, $xr2, $xr8
+	xvadd.d	$xr2, $xr2, $xr4
+	xvpermi.d	$xr3, $xr2, 78
+	xvshuf.d	$xr1, $xr0, $xr3
+	xvadd.d	$xr1, $xr2, $xr1
 	xvpermi.d	$xr2, $xr1, 68
 	xvrepl128vei.d	$xr2, $xr2, 1
 	xvadd.d	$xr1, $xr1, $xr2
@@ -673,15 +657,15 @@ fast_mode_intra_decision:               # @fast_mode_intra_decision
 	ori	$a0, $zero, 1
 	st.h	$a0, $s0, 0
 .LBB1_7:
-	addi.d	$sp, $fp, -896
-	fld.d	$fs0, $sp, 840                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 848                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 856                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 864                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 872                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 880                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 888                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 896
+	addi.d	$sp, $fp, -640
+	fld.d	$fs0, $sp, 584                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 600                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 608                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 616                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 624                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 632                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 640
 	ret
 .Lfunc_end1:
 	.size	fast_mode_intra_decision, .Lfunc_end1-fast_mode_intra_decision

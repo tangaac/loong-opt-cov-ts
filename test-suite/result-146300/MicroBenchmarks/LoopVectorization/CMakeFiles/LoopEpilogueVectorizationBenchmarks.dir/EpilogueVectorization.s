@@ -2369,10 +2369,10 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB10_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
 	bstrins.d	$sp, $zero, 4, 0
 	ori	$a1, $zero, 8
 	bgeu	$a3, $a1, .LBB10_4
@@ -2394,9 +2394,9 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 .LBB10_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a1, -4
+	ld.w	$a6, $a1, 0
 	vinsgr2vr.w	$vr2, $a5, 0
-	ld.w	$a5, $a1, 0
-	vst	$vr2, $sp, 96
+	vinsgr2vr.w	$vr3, $a6, 0
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -2409,14 +2409,11 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr2, $sp, 96
-	vinsgr2vr.w	$vr3, $a5, 0
 	xvstelm.b	$xr2, $sp, 24, 3
 	xvstelm.b	$xr2, $sp, 16, 2
 	xvstelm.b	$xr2, $sp, 8, 1
 	xvstelm.b	$xr2, $sp, 0, 0
 	xvld	$xr2, $sp, 0
-	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -2429,7 +2426,6 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 64
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
@@ -2464,10 +2460,10 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	addi.d	$a0, $a0, 1
 	bnez	$a2, .LBB10_8
 .LBB10_9:
-	addi.d	$sp, $fp, -160
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -96
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	move	$a0, $a1
 	ret
 .Lfunc_end10:
@@ -2712,10 +2708,10 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB14_3
 # %bb.1:                                # %.lr.ph.preheader
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
 	bstrins.d	$sp, $zero, 4, 0
 	ori	$a1, $zero, 8
 	bgeu	$a3, $a1, .LBB14_4
@@ -2737,9 +2733,9 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 .LBB14_5:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a1, -8
+	ld.d	$a6, $a1, 0
 	vinsgr2vr.d	$vr2, $a5, 0
-	ld.d	$a5, $a1, 0
-	vst	$vr2, $sp, 96
+	vinsgr2vr.d	$vr3, $a6, 0
 	st.h	$zero, $sp, 30
 	st.w	$zero, $sp, 26
 	st.h	$zero, $sp, 22
@@ -2748,14 +2744,11 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	st.w	$zero, $sp, 10
 	st.h	$zero, $sp, 6
 	st.w	$zero, $sp, 2
-	xvld	$xr2, $sp, 96
-	vinsgr2vr.d	$vr3, $a5, 0
 	xvstelm.h	$xr2, $sp, 24, 3
 	xvstelm.h	$xr2, $sp, 16, 2
 	xvstelm.h	$xr2, $sp, 8, 1
 	xvstelm.h	$xr2, $sp, 0, 0
 	xvld	$xr2, $sp, 0
-	vst	$vr3, $sp, 64
 	st.h	$zero, $sp, 62
 	st.w	$zero, $sp, 58
 	st.h	$zero, $sp, 54
@@ -2764,7 +2757,6 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	st.w	$zero, $sp, 42
 	st.h	$zero, $sp, 38
 	st.w	$zero, $sp, 34
-	xvld	$xr3, $sp, 64
 	xvstelm.h	$xr3, $sp, 56, 3
 	xvstelm.h	$xr3, $sp, 48, 2
 	xvstelm.h	$xr3, $sp, 40, 1
@@ -2799,10 +2791,10 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	addi.d	$a0, $a0, 2
 	bnez	$a2, .LBB14_8
 .LBB14_9:
-	addi.d	$sp, $fp, -160
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -96
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	move	$a0, $a1
 	ret
 .Lfunc_end14:

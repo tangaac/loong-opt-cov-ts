@@ -2045,71 +2045,70 @@ dct_luma_16x16:                         # @dct_luma_16x16
 	ori	$t0, $zero, 16
 	.p2align	4, , 16
 .LBB2_3:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$t6, $a4, 0
-	andi	$t5, $t1, 3
-	vldx	$vr0, $t6, $a7
-	alsl.d	$t6, $a3, $t6, 1
+	ld.d	$t5, $a4, 0
+	andi	$t8, $t1, 3
+	alsl.d	$t6, $a3, $t5, 1
 	slli.d	$t7, $t1, 6
 	bstrpick.d	$t7, $t7, 37, 8
-	vpickve2gr.h	$t8, $vr0, 0
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 0
-	vpickve2gr.h	$t8, $vr0, 1
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 1
-	vpickve2gr.h	$t8, $vr0, 2
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 2
-	vpickve2gr.h	$t8, $vr0, 3
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 3
-	vpickve2gr.h	$t8, $vr0, 4
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 4
-	vpickve2gr.h	$t8, $vr0, 5
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 5
-	vpickve2gr.h	$t8, $vr0, 6
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 6
-	vld	$vr2, $a5, -16
-	vpickve2gr.h	$t8, $vr0, 7
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr1, $t8, 7
-	vpickve2gr.h	$t8, $vr2, 0
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 0
-	vpickve2gr.h	$t8, $vr2, 1
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 1
-	vpickve2gr.h	$t8, $vr2, 2
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 2
-	vpickve2gr.h	$t8, $vr2, 3
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 3
-	vpickve2gr.h	$t8, $vr2, 4
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 4
-	vpickve2gr.h	$t8, $vr2, 5
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 5
-	vpickve2gr.h	$t8, $vr2, 6
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 6
-	vpickve2gr.h	$t8, $vr2, 7
-	bstrpick.d	$t8, $t8, 15, 0
-	xvinsgr2vr.w	$xr0, $t8, 7
-	xvsub.w	$xr0, $xr1, $xr0
-	xvst	$xr0, $a6, -32
-	vld	$vr0, $a6, -32
 	slli.d	$t7, $t7, 8
+	vldx	$vr0, $t5, $a7
 	add.d	$t7, $t2, $t7
-	slli.d	$t8, $t5, 4
+	alsl.d	$t5, $t8, $t7, 4
+	slli.d	$t8, $t8, 4
+	vpickve2gr.h	$fp, $vr0, 0
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 0
+	vpickve2gr.h	$fp, $vr0, 1
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 1
+	vpickve2gr.h	$fp, $vr0, 2
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 2
+	vpickve2gr.h	$fp, $vr0, 3
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 3
+	vpickve2gr.h	$fp, $vr0, 4
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 4
+	vpickve2gr.h	$fp, $vr0, 5
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 5
+	vpickve2gr.h	$fp, $vr0, 6
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 6
+	vld	$vr2, $a5, -16
+	vpickve2gr.h	$fp, $vr0, 7
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr1, $fp, 7
+	vpickve2gr.h	$fp, $vr2, 0
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 0
+	vpickve2gr.h	$fp, $vr2, 1
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 1
+	vpickve2gr.h	$fp, $vr2, 2
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 2
+	vpickve2gr.h	$fp, $vr2, 3
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 3
+	vpickve2gr.h	$fp, $vr2, 4
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 4
+	vpickve2gr.h	$fp, $vr2, 5
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 5
+	vpickve2gr.h	$fp, $vr2, 6
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 6
+	vpickve2gr.h	$fp, $vr2, 7
+	bstrpick.d	$fp, $fp, 15, 0
+	xvinsgr2vr.w	$xr0, $fp, 7
+	xvsub.w	$xr0, $xr1, $xr0
 	vstx	$vr0, $t7, $t8
-	vld	$vr0, $a6, -16
 	vld	$vr1, $t6, 16
-	alsl.d	$t5, $t5, $t7, 4
+	xvst	$xr0, $a6, -32
+	xvpermi.q	$xr0, $xr0, 1
 	vst	$vr0, $t5, 64
 	vpickve2gr.h	$t6, $vr1, 0
 	bstrpick.d	$t6, $t6, 15, 0
@@ -2161,10 +2160,9 @@ dct_luma_16x16:                         # @dct_luma_16x16
 	bstrpick.d	$t6, $t6, 15, 0
 	xvinsgr2vr.w	$xr1, $t6, 7
 	xvsub.w	$xr0, $xr0, $xr1
-	xvst	$xr0, $a6, 0
-	vld	$vr0, $a6, 0
 	vst	$vr0, $t5, 128
-	vld	$vr0, $a6, 16
+	xvst	$xr0, $a6, 0
+	xvpermi.q	$xr0, $xr0, 1
 	vst	$vr0, $t5, 192
 	addi.d	$t1, $t1, 1
 	addi.d	$a4, $a4, 8

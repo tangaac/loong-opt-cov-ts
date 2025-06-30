@@ -252,11 +252,6 @@ _ZNK15MatrixBenchmark9oop_styleEv:      # @_ZNK15MatrixBenchmark9oop_styleEv
 	.type	_ZNK15MatrixBenchmark4initEv,@function
 _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI6_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI6_0)
 	lu12i.w	$a0, -5
@@ -278,31 +273,23 @@ _ZNK15MatrixBenchmark4initEv:           # @_ZNK15MatrixBenchmark4initEv
 	vaddi.wu	$vr2, $vr2, 3
 	vext2xv.du.wu	$xr3, $xr3
 	xvffint.d.lu	$xr3, $xr3
-	xvst	$xr3, $sp, 32
-	vld	$vr4, $sp, 32
 	vext2xv.du.wu	$xr2, $xr2
 	xvffint.d.lu	$xr2, $xr2
-	xvst	$xr2, $sp, 0
-	vld	$vr5, $sp, 0
 	add.d	$a5, $a1, $a0
-	xvpermi.d	$xr3, $xr3, 68
-	xvpermi.d	$xr2, $xr2, 68
+	xvpermi.d	$xr4, $xr3, 68
+	xvpermi.d	$xr5, $xr2, 68
 	xvori.b	$xr6, $xr1, 0
-	xvshuf.d	$xr6, $xr2, $xr3
+	xvshuf.d	$xr6, $xr5, $xr4
 	xvstx	$xr6, $a5, $a2
-	vfrecip.d	$vr2, $vr4
-	vfrecip.d	$vr3, $vr5
+	vfrecip.d	$vr3, $vr3
+	vfrecip.d	$vr2, $vr2
 	add.d	$a5, $a3, $a0
-	vstx	$vr2, $a5, $a2
-	vstx	$vr3, $a5, $a4
+	vstx	$vr3, $a5, $a2
+	vstx	$vr2, $a5, $a4
 	addi.d	$a0, $a0, 32
 	vaddi.du	$vr0, $vr0, 4
 	bnez	$a0, .LBB6_1
 # %bb.2:                                # %middle.block
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end6:
 	.size	_ZNK15MatrixBenchmark4initEv, .Lfunc_end6-_ZNK15MatrixBenchmark4initEv
@@ -421,11 +408,6 @@ _ZNK17IteratorBenchmark9oop_styleEv:    # @_ZNK17IteratorBenchmark9oop_styleEv
 	.type	_ZNK17IteratorBenchmark4initEv,@function
 _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI10_0)
 	vld	$vr0, $a0, %pc_lo12(.LCPI10_0)
 	lu12i.w	$a0, -2
@@ -447,31 +429,23 @@ _ZNK17IteratorBenchmark4initEv:         # @_ZNK17IteratorBenchmark4initEv
 	vaddi.wu	$vr2, $vr2, 3
 	vext2xv.du.wu	$xr3, $xr3
 	xvffint.d.lu	$xr3, $xr3
-	xvst	$xr3, $sp, 32
-	vld	$vr4, $sp, 32
 	vext2xv.du.wu	$xr2, $xr2
 	xvffint.d.lu	$xr2, $xr2
-	xvst	$xr2, $sp, 0
-	vld	$vr5, $sp, 0
 	add.d	$a5, $a1, $a0
-	xvpermi.d	$xr3, $xr3, 68
-	xvpermi.d	$xr2, $xr2, 68
+	xvpermi.d	$xr4, $xr3, 68
+	xvpermi.d	$xr5, $xr2, 68
 	xvori.b	$xr6, $xr1, 0
-	xvshuf.d	$xr6, $xr2, $xr3
+	xvshuf.d	$xr6, $xr5, $xr4
 	xvstx	$xr6, $a5, $a2
-	vfrecip.d	$vr2, $vr4
-	vfrecip.d	$vr3, $vr5
+	vfrecip.d	$vr3, $vr3
+	vfrecip.d	$vr2, $vr2
 	add.d	$a5, $a3, $a0
-	vstx	$vr2, $a5, $a2
-	vstx	$vr3, $a5, $a4
+	vstx	$vr3, $a5, $a2
+	vstx	$vr2, $a5, $a4
 	addi.d	$a0, $a0, 32
 	vaddi.du	$vr0, $vr0, 4
 	bnez	$a0, .LBB10_1
 # %bb.2:                                # %middle.block
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end10:
 	.size	_ZNK17IteratorBenchmark4initEv, .Lfunc_end10-_ZNK17IteratorBenchmark4initEv

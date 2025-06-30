@@ -5861,7 +5861,6 @@ cli_scanpe:                             # @cli_scanpe
 	and	$t0, $t0, $a7
 	ld.d	$t1, $sp, 128                   # 8-byte Folded Reload
 	xvldx	$xr2, $t1, $t0
-	xvpermi.q	$xr1, $xr0, 2
 	xvxor.v	$xr1, $xr1, $xr0
 	xvpermi.d	$xr1, $xr1, 68
 	xvrepl128vei.w	$xr1, $xr1, 0

@@ -16,19 +16,19 @@
 	.type	bmh_init,@function
 bmh_init:                               # @bmh_init
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -224
-	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 224
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 160
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(pat)
@@ -96,9 +96,6 @@ bmh_init:                               # @bmh_init
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a7, $a5, 0
 	vinsgr2vr.d	$vr3, $a7, 0
-	vsrli.d	$vr4, $vr3, 32
-	vst	$vr4, $sp, 96
-	vst	$vr3, $sp, 64
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -111,11 +108,11 @@ bmh_init:                               # @bmh_init
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr3, $sp, 96
-	xvstelm.b	$xr3, $sp, 24, 3
-	xvstelm.b	$xr3, $sp, 16, 2
-	xvstelm.b	$xr3, $sp, 8, 1
-	xvstelm.b	$xr3, $sp, 0, 0
+	vsrli.d	$vr4, $vr3, 32
+	xvstelm.b	$xr4, $sp, 24, 3
+	xvstelm.b	$xr4, $sp, 16, 2
+	xvstelm.b	$xr4, $sp, 8, 1
+	xvstelm.b	$xr4, $sp, 0, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -128,7 +125,6 @@ bmh_init:                               # @bmh_init
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 64
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
@@ -298,19 +294,19 @@ bmh_init:                               # @bmh_init
 .LBB0_22:                               # %middle.block63
 	bne	$a1, $a4, .LBB0_24
 .LBB0_23:                               # %._crit_edge21
-	addi.d	$sp, $fp, -224
-	ld.d	$s8, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 224
+	addi.d	$sp, $fp, -160
+	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .LBB0_24:                               # %.lr.ph20.preheader84
 	add.d	$a5, $s0, $a4

@@ -1054,19 +1054,19 @@ color_quantize3:                        # @color_quantize3
 	.type	color_quantize,@function
 color_quantize:                         # @color_quantize
 # %bb.0:
-	addi.d	$sp, $sp, -320
-	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 320
+	addi.d	$sp, $sp, -256
+	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 256
 	bstrins.d	$sp, $zero, 4, 0
 	ori	$a4, $zero, 1
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
@@ -1143,12 +1143,12 @@ color_quantize:                         # @color_quantize
                                         #   Parent Loop BB6_5 Depth=1
                                         #     Parent Loop BB6_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.w	$t5, $a7, $t3
-	add.d	$t6, $a7, $t3
+	add.d	$t5, $a7, $t3
+	ldx.w	$t6, $a7, $t3
+	ld.w	$t5, $t5, 4
 	xvld	$xr3, $t4, 16
-	vinsgr2vr.w	$vr4, $t5, 0
-	ld.w	$t5, $t6, 4
-	vst	$vr4, $sp, 128
+	vinsgr2vr.w	$vr4, $t6, 0
+	vinsgr2vr.w	$vr5, $t5, 0
 	st.b	$zero, $sp, 127
 	st.h	$zero, $sp, 125
 	st.w	$zero, $sp, 121
@@ -1161,14 +1161,11 @@ color_quantize:                         # @color_quantize
 	st.b	$zero, $sp, 103
 	st.h	$zero, $sp, 101
 	st.w	$zero, $sp, 97
-	xvld	$xr4, $sp, 128
-	vinsgr2vr.w	$vr5, $t5, 0
 	xvstelm.b	$xr4, $sp, 120, 3
 	xvstelm.b	$xr4, $sp, 112, 2
 	xvstelm.b	$xr4, $sp, 104, 1
 	xvstelm.b	$xr4, $sp, 96, 0
 	xvld	$xr4, $sp, 96
-	vst	$vr5, $sp, 160
 	st.b	$zero, $sp, 95
 	st.h	$zero, $sp, 93
 	st.w	$zero, $sp, 89
@@ -1181,7 +1178,6 @@ color_quantize:                         # @color_quantize
 	st.b	$zero, $sp, 71
 	st.h	$zero, $sp, 69
 	st.w	$zero, $sp, 65
-	xvld	$xr5, $sp, 160
 	xvstelm.b	$xr5, $sp, 88, 3
 	xvstelm.b	$xr5, $sp, 80, 2
 	xvstelm.b	$xr5, $sp, 72, 1
@@ -1207,20 +1203,20 @@ color_quantize:                         # @color_quantize
 	ldx.b	$s3, $s3, $s4
 	ldx.b	$t7, $t7, $t8
 	ldx.b	$t5, $t5, $t6
-	st.b	$s5, $sp, 195
-	st.b	$s3, $sp, 194
-	st.b	$t7, $sp, 193
-	st.b	$t5, $sp, 192
-	vld	$vr3, $sp, 192
+	st.b	$s5, $sp, 131
+	st.b	$s3, $sp, 130
+	st.b	$t7, $sp, 129
+	st.b	$t5, $sp, 128
+	vld	$vr3, $sp, 128
 	ldx.b	$a1, $a3, $a1
 	ldx.b	$a3, $s1, $s0
 	ldx.b	$t5, $ra, $s2
 	ldx.b	$t6, $s7, $s8
-	st.b	$a1, $sp, 211
-	st.b	$a3, $sp, 210
-	st.b	$t5, $sp, 209
-	st.b	$t6, $sp, 208
-	vld	$vr4, $sp, 208
+	st.b	$a1, $sp, 147
+	st.b	$a3, $sp, 146
+	st.b	$t5, $sp, 145
+	st.b	$t6, $sp, 144
+	vld	$vr4, $sp, 144
 	vilvl.b	$vr3, $vr0, $vr3
 	vilvl.h	$vr3, $vr0, $vr3
 	vilvl.b	$vr4, $vr0, $vr4
@@ -1274,19 +1270,19 @@ color_quantize:                         # @color_quantize
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	bnez	$a0, .LBB6_14
 .LBB6_15:                               # %._crit_edge
-	addi.d	$sp, $fp, -320
-	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 320
+	addi.d	$sp, $fp, -256
+	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 256
 	ret
 .Lfunc_end6:
 	.size	color_quantize, .Lfunc_end6-color_quantize

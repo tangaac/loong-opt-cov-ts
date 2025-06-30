@@ -1321,7 +1321,6 @@ _ZN3QCS10setVelDiffEii:                 # @_ZN3QCS10setVelDiffEii
 .LBB6_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr1, $a2, 0
-	xvpermi.q	$xr1, $xr0, 2
 	xvpermi.d	$xr1, $xr1, 68
 	xvrepl128vei.d	$xr1, $xr1, 0
 	xvld	$xr2, $a5, -32

@@ -257,14 +257,10 @@ HadamardSAD4x4:                         # @HadamardSAD4x4
 	.type	distortion8x8,@function
 distortion8x8:                          # @distortion8x8
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 192
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -32
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(input)
 	ld.d	$a1, $a1, %got_pc_lo12(input)
 	ld.d	$a1, $a1, 0
@@ -287,28 +283,24 @@ distortion8x8:                          # @distortion8x8
 	xvldx	$xr2, $a0, $a2
 	add.d	$a4, $a0, $a2
 	xvld	$xr3, $a4, 32
-	xvst	$xr2, $sp, 0
-	vld	$vr2, $sp, 16
-	vpickve2gr.w	$a4, $vr2, 3
-	vld	$vr4, $sp, 0
-	vpickve2gr.w	$a5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 1
-	vpickve2gr.w	$a7, $vr2, 0
-	vpickve2gr.w	$t0, $vr4, 3
-	xvst	$xr3, $sp, 32
-	vld	$vr2, $sp, 48
-	vpickve2gr.w	$t1, $vr4, 2
-	vpickve2gr.w	$t2, $vr4, 1
-	vpickve2gr.w	$t3, $vr4, 0
+	xvpermi.q	$xr4, $xr2, 1
+	vpickve2gr.w	$a4, $vr4, 3
+	vpickve2gr.w	$a5, $vr4, 2
+	vpickve2gr.w	$a6, $vr4, 1
+	vpickve2gr.w	$a7, $vr4, 0
+	vpickve2gr.w	$t0, $vr2, 3
+	vpickve2gr.w	$t1, $vr2, 2
+	vpickve2gr.w	$t2, $vr2, 1
+	vpickve2gr.w	$t3, $vr2, 0
+	xvpermi.q	$xr2, $xr3, 1
 	vpickve2gr.w	$t4, $vr2, 3
-	vld	$vr3, $sp, 32
 	vpickve2gr.w	$t5, $vr2, 2
 	vpickve2gr.w	$t6, $vr2, 1
 	vpickve2gr.w	$t7, $vr2, 0
 	vpickve2gr.w	$t8, $vr3, 3
-	vpickve2gr.w	$s0, $vr3, 2
-	vpickve2gr.w	$s1, $vr3, 1
-	vpickve2gr.w	$s2, $vr3, 0
+	vpickve2gr.w	$fp, $vr3, 2
+	vpickve2gr.w	$s0, $vr3, 1
+	vpickve2gr.w	$s1, $vr3, 0
 	slli.d	$t3, $t3, 2
 	slli.d	$t2, $t2, 2
 	slli.d	$t1, $t1, 2
@@ -317,9 +309,9 @@ distortion8x8:                          # @distortion8x8
 	slli.d	$a6, $a6, 2
 	slli.d	$a5, $a5, 2
 	slli.d	$a4, $a4, 2
-	slli.d	$s2, $s2, 2
 	slli.d	$s1, $s1, 2
 	slli.d	$s0, $s0, 2
+	slli.d	$fp, $fp, 2
 	slli.d	$t8, $t8, 2
 	slli.d	$t7, $t7, 2
 	slli.d	$t6, $t6, 2
@@ -341,9 +333,9 @@ distortion8x8:                          # @distortion8x8
 	xvinsgr2vr.w	$xr2, $a6, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a4, 7
-	ldx.w	$a4, $a1, $s2
-	ldx.w	$a5, $a1, $s1
-	ldx.w	$a6, $a1, $s0
+	ldx.w	$a4, $a1, $s1
+	ldx.w	$a5, $a1, $s0
+	ldx.w	$a6, $a1, $fp
 	ldx.w	$a7, $a1, $t8
 	ldx.w	$t0, $a1, $t7
 	ldx.w	$t1, $a1, $t6
@@ -377,28 +369,24 @@ distortion8x8:                          # @distortion8x8
 	xvldx	$xr2, $a0, $a2
 	add.d	$a4, $a0, $a2
 	xvld	$xr3, $a4, 32
-	xvst	$xr2, $sp, 64
-	vld	$vr2, $sp, 80
-	vpickve2gr.w	$a4, $vr2, 3
-	vld	$vr4, $sp, 64
-	vpickve2gr.w	$a5, $vr2, 2
-	vpickve2gr.w	$a6, $vr2, 1
-	vpickve2gr.w	$a7, $vr2, 0
-	vpickve2gr.w	$t0, $vr4, 3
-	xvst	$xr3, $sp, 96
-	vld	$vr2, $sp, 112
-	vpickve2gr.w	$t1, $vr4, 2
-	vpickve2gr.w	$t2, $vr4, 1
-	vpickve2gr.w	$t3, $vr4, 0
+	xvpermi.q	$xr4, $xr2, 1
+	vpickve2gr.w	$a4, $vr4, 3
+	vpickve2gr.w	$a5, $vr4, 2
+	vpickve2gr.w	$a6, $vr4, 1
+	vpickve2gr.w	$a7, $vr4, 0
+	vpickve2gr.w	$t0, $vr2, 3
+	vpickve2gr.w	$t1, $vr2, 2
+	vpickve2gr.w	$t2, $vr2, 1
+	vpickve2gr.w	$t3, $vr2, 0
+	xvpermi.q	$xr2, $xr3, 1
 	vpickve2gr.w	$t4, $vr2, 3
-	vld	$vr3, $sp, 96
 	vpickve2gr.w	$t5, $vr2, 2
 	vpickve2gr.w	$t6, $vr2, 1
 	vpickve2gr.w	$t7, $vr2, 0
 	vpickve2gr.w	$t8, $vr3, 3
-	vpickve2gr.w	$s0, $vr3, 2
-	vpickve2gr.w	$s1, $vr3, 1
-	vpickve2gr.w	$s2, $vr3, 0
+	vpickve2gr.w	$fp, $vr3, 2
+	vpickve2gr.w	$s0, $vr3, 1
+	vpickve2gr.w	$s1, $vr3, 0
 	slli.d	$t3, $t3, 2
 	slli.d	$t2, $t2, 2
 	slli.d	$t1, $t1, 2
@@ -407,9 +395,9 @@ distortion8x8:                          # @distortion8x8
 	slli.d	$a6, $a6, 2
 	slli.d	$a5, $a5, 2
 	slli.d	$a4, $a4, 2
-	slli.d	$s2, $s2, 2
 	slli.d	$s1, $s1, 2
 	slli.d	$s0, $s0, 2
+	slli.d	$fp, $fp, 2
 	slli.d	$t8, $t8, 2
 	slli.d	$t7, $t7, 2
 	slli.d	$t6, $t6, 2
@@ -431,9 +419,9 @@ distortion8x8:                          # @distortion8x8
 	xvinsgr2vr.w	$xr2, $a6, 5
 	xvinsgr2vr.w	$xr2, $a5, 6
 	xvinsgr2vr.w	$xr2, $a4, 7
-	ldx.w	$a4, $a1, $s2
-	ldx.w	$a5, $a1, $s1
-	ldx.w	$a6, $a1, $s0
+	ldx.w	$a4, $a1, $s1
+	ldx.w	$a5, $a1, $s0
+	ldx.w	$a6, $a1, $fp
 	ldx.w	$a7, $a1, $t8
 	ldx.w	$t0, $a1, $t7
 	ldx.w	$t1, $a1, $t6
@@ -463,22 +451,16 @@ distortion8x8:                          # @distortion8x8
 	xvrepl128vei.w	$xr1, $xr1, 1
 	xvadd.w	$xr0, $xr0, $xr1
 	xvpickve2gr.w	$a0, $xr0, 0
-	addi.d	$sp, $fp, -192
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB2_7:
-	addi.d	$sp, $fp, -192
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(HadamardSAD8x8)
 	jr	$t8
 .Lfunc_end2:

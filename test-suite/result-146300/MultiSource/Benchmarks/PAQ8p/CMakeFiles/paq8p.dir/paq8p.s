@@ -1749,37 +1749,32 @@ _ZN5ArrayIjLi0EED2Ev:                   # @_ZN5ArrayIjLi0EED2Ev
 _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
-	addi.d	$fp, $sp, 128
-	.cfi_def_cfa 22, 0
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s1, $a1
-	move	$s0, $a0
-	slli.d	$s2, $a1, 4
-	alsl.d	$a0, $a1, $s2, 3
-	st.w	$a0, $s0, 0
-	st.w	$zero, $s0, 4
-	st.w	$a0, $s0, 12
+	move	$s0, $a1
+	move	$fp, $a0
+	slli.d	$s1, $a1, 4
+	alsl.d	$a0, $a1, $s1, 3
+	st.w	$a0, $fp, 0
+	st.w	$zero, $fp, 4
+	st.w	$a0, $fp, 12
 	ori	$a1, $zero, 1
-	st.w	$a0, $s0, 8
-	blt	$s1, $a1, .LBB23_8
+	st.w	$a0, $fp, 8
+	blt	$s0, $a1, .LBB23_8
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(programChecker)
 	addi.d	$a1, $a0, %pc_lo12(programChecker)
 	ld.w	$a2, $a1, 0
 	ld.w	$a3, $a1, 4
-	alsl.d	$a0, $s1, $s1, 1
+	alsl.d	$a0, $s0, $s0, 1
 	slli.w	$a0, $a0, 5
 	add.w	$a2, $a2, $a0
 	st.w	$a2, $a1, 0
@@ -1790,11 +1785,11 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s0, 16
+	st.d	$a0, $fp, 16
 	beqz	$a0, .LBB23_18
 # %bb.4:                                # %iter.check
-	alsl.w	$a3, $s1, $s2, 3
-	st.d	$a0, $s0, 24
+	alsl.w	$a3, $s0, $s1, 3
+	st.d	$a0, $fp, 24
 	bstrpick.d	$a1, $a3, 31, 0
 	ori	$a4, $zero, 16
 	lu12i.w	$a2, -524288
@@ -1815,7 +1810,7 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	b	.LBB23_15
 .LBB23_8:                               # %_ZN8StateMapC2Ei.exit
 	vrepli.b	$vr0, 0
-	vst	$vr0, $s0, 16
+	vst	$vr0, $fp, 16
 	b	.LBB23_17
 .LBB23_9:                               # %vector.ph
 	bstrpick.d	$a3, $a1, 30, 4
@@ -1882,27 +1877,25 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	xvbitseti.w	$xr10, $xr10, 12
 	xvmuh.wu	$xr10, $xr10, $xr4
 	xvadd.w	$xr11, $xr10, $xr5
+	xvand.v	$xr10, $xr10, $xr6
 	xvsrai.w	$xr11, $xr11, 7
 	xvaddi.wu	$xr12, $xr11, 16
-	xvst	$xr12, $sp, 32
-	vld	$vr12, $sp, 48
-	xvand.v	$xr10, $xr10, $xr6
-	vpickve2gr.w	$a3, $vr12, 3
+	xvpermi.q	$xr13, $xr12, 1
+	vpickve2gr.w	$a3, $vr13, 3
 	bstrpick.d	$a3, $a3, 31, 0
-	vpickve2gr.w	$a4, $vr12, 2
+	vpickve2gr.w	$a4, $vr13, 2
 	bstrpick.d	$a4, $a4, 31, 0
-	vpickve2gr.w	$a5, $vr12, 1
-	vld	$vr13, $sp, 32
+	vpickve2gr.w	$a5, $vr13, 1
 	bstrpick.d	$a5, $a5, 31, 0
-	vpickve2gr.w	$a6, $vr12, 0
+	vpickve2gr.w	$a6, $vr13, 0
 	bstrpick.d	$a6, $a6, 31, 0
-	vpickve2gr.w	$a7, $vr13, 3
+	vpickve2gr.w	$a7, $vr12, 3
 	bstrpick.d	$a7, $a7, 31, 0
-	vpickve2gr.w	$t0, $vr13, 2
+	vpickve2gr.w	$t0, $vr12, 2
 	bstrpick.d	$t0, $t0, 31, 0
-	vpickve2gr.w	$t1, $vr13, 1
+	vpickve2gr.w	$t1, $vr12, 1
 	bstrpick.d	$t1, $t1, 31, 0
-	vpickve2gr.w	$t2, $vr13, 0
+	vpickve2gr.w	$t2, $vr12, 0
 	bstrpick.d	$t2, $t2, 31, 0
 	slli.d	$t2, $t2, 2
 	slli.d	$t1, $t1, 2
@@ -1927,28 +1920,26 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	xvinsgr2vr.w	$xr12, $a6, 4
 	xvinsgr2vr.w	$xr12, $a5, 5
 	xvinsgr2vr.w	$xr12, $a4, 6
-	xvaddi.wu	$xr11, $xr11, 17
-	xvst	$xr11, $sp, 0
-	vld	$vr11, $sp, 16
 	xvinsgr2vr.w	$xr12, $a3, 7
 	xvsub.w	$xr13, $xr7, $xr10
 	xvmul.w	$xr12, $xr12, $xr13
-	vpickve2gr.w	$a3, $vr11, 3
+	xvaddi.wu	$xr11, $xr11, 17
+	xvpermi.q	$xr13, $xr11, 1
+	vpickve2gr.w	$a3, $vr13, 3
 	bstrpick.d	$a3, $a3, 31, 0
-	vpickve2gr.w	$a4, $vr11, 2
+	vpickve2gr.w	$a4, $vr13, 2
 	bstrpick.d	$a4, $a4, 31, 0
-	vpickve2gr.w	$a5, $vr11, 1
-	vld	$vr13, $sp, 0
+	vpickve2gr.w	$a5, $vr13, 1
 	bstrpick.d	$a5, $a5, 31, 0
-	vpickve2gr.w	$a6, $vr11, 0
+	vpickve2gr.w	$a6, $vr13, 0
 	bstrpick.d	$a6, $a6, 31, 0
-	vpickve2gr.w	$a7, $vr13, 3
+	vpickve2gr.w	$a7, $vr11, 3
 	bstrpick.d	$a7, $a7, 31, 0
-	vpickve2gr.w	$t0, $vr13, 2
+	vpickve2gr.w	$t0, $vr11, 2
 	bstrpick.d	$t0, $t0, 31, 0
-	vpickve2gr.w	$t1, $vr13, 1
+	vpickve2gr.w	$t1, $vr11, 1
 	bstrpick.d	$t1, $t1, 31, 0
-	vpickve2gr.w	$t2, $vr13, 0
+	vpickve2gr.w	$t2, $vr11, 0
 	bstrpick.d	$t2, $t2, 31, 0
 	slli.d	$t2, $t2, 2
 	slli.d	$t1, $t1, 2
@@ -1985,13 +1976,11 @@ _ZN3APMC2Ei:                            # @_ZN3APMC2Ei
 	addi.d	$a0, $a0, 32
 	bnez	$a1, .LBB23_16
 .LBB23_17:                              # %._crit_edge
-	addi.d	$sp, $fp, -128
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB23_18:
 	pcalau12i	$a0, %pc_hi20(.L.str.59)

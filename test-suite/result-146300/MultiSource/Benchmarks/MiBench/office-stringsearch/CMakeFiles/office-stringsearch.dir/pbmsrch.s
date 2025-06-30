@@ -12,11 +12,11 @@
 	.type	init_search,@function
 init_search:                            # @init_search
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 64
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(strlen)
@@ -110,7 +110,6 @@ init_search:                            # @init_search
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a5, $a3, 0
 	vinsgr2vr.w	$vr3, $a5, 0
-	vst	$vr3, $sp, 32
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.w	$zero, $sp, 25
@@ -123,7 +122,6 @@ init_search:                            # @init_search
 	st.b	$zero, $sp, 7
 	st.h	$zero, $sp, 5
 	st.w	$zero, $sp, 1
-	xvld	$xr3, $sp, 32
 	xvstelm.b	$xr3, $sp, 24, 3
 	xvstelm.b	$xr3, $sp, 16, 2
 	xvstelm.b	$xr3, $sp, 8, 1
@@ -166,11 +164,11 @@ init_search:                            # @init_search
 .LBB0_8:                                # %._crit_edge
 	pcalau12i	$a0, %pc_hi20(findme)
 	st.d	$s0, $a0, %pc_lo12(findme)
-	addi.d	$sp, $fp, -96
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	addi.d	$sp, $fp, -64
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end0:
 	.size	init_search, .Lfunc_end0-init_search
@@ -264,19 +262,19 @@ strsearch:                              # @strsearch
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -320
-	st.d	$ra, $sp, 312                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 232                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 320
+	addi.d	$sp, $sp, -288
+	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 288
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s1, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -435,7 +433,6 @@ main:                                   # @main
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$a3, $a1, 0
 	vinsgr2vr.w	$vr2, $a3, 0
-	vst	$vr2, $sp, 192
 	st.b	$zero, $sp, 191
 	st.h	$zero, $sp, 189
 	st.w	$zero, $sp, 185
@@ -448,7 +445,6 @@ main:                                   # @main
 	st.b	$zero, $sp, 167
 	st.h	$zero, $sp, 165
 	st.w	$zero, $sp, 161
-	xvld	$xr2, $sp, 192
 	addi.d	$a3, $sp, 184
 	xvstelm.b	$xr2, $a3, 0, 3
 	addi.d	$a3, $sp, 176
@@ -562,19 +558,19 @@ main:                                   # @main
 	b	.LBB2_2
 .LBB2_20:
 	move	$a0, $zero
-	addi.d	$sp, $fp, -320
-	ld.d	$s8, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 312                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 320
+	addi.d	$sp, $fp, -288
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 288
 	ret
 .Lfunc_end2:
 	.size	main, .Lfunc_end2-main

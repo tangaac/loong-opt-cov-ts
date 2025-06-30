@@ -700,29 +700,26 @@ free_tracks:                            # @free_tracks
 	.type	generate_polar_angles,@function
 generate_polar_angles:                  # @generate_polar_angles
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
-	ld.w	$s0, $a0, 32
-	slli.d	$a0, $s0, 2
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	ld.w	$fp, $a0, 32
+	slli.d	$a0, $fp, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB6_8
+	blt	$fp, $a1, .LBB6_8
 # %bb.1:                                # %.lr.ph
-	bstrpick.d	$a1, $s0, 31, 0
+	bstrpick.d	$a1, $fp, 31, 0
 	movgr2fr.d	$fa0, $a1
 	ori	$a1, $zero, 8
 	ffint.d.l	$fa0, $fa0
-	bgeu	$s0, $a1, .LBB6_3
+	bgeu	$fp, $a1, .LBB6_3
 # %bb.2:
 	move	$a1, $zero
 	b	.LBB6_6
 .LBB6_3:                                # %vector.ph
-	bstrpick.d	$a1, $s0, 30, 3
+	bstrpick.d	$a1, $fp, 30, 3
 	slli.d	$a1, $a1, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI6_0)
 	xvld	$xr1, $a2, %pc_lo12(.LCPI6_0)
@@ -739,56 +736,54 @@ generate_polar_angles:                  # @generate_polar_angles
 	.p2align	4, , 16
 .LBB6_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvst	$xr1, $sp, 0
-	vld	$vr5, $sp, 0
-	vld	$vr6, $sp, 16
+	xvpermi.q	$xr5, $xr1, 1
 	vext2xv.du.wu	$xr5, $xr5
 	xvffint.d.lu	$xr5, $xr5
-	vext2xv.du.wu	$xr6, $xr6
+	vext2xv.du.wu	$xr6, $xr1
 	xvffint.d.lu	$xr6, $xr6
-	xvfadd.d	$xr6, $xr6, $xr3
 	xvfadd.d	$xr5, $xr5, $xr3
-	xvfmul.d	$xr5, $xr5, $xr4
+	xvfadd.d	$xr6, $xr6, $xr3
 	xvfmul.d	$xr6, $xr6, $xr4
-	xvfdiv.d	$xr6, $xr6, $xr2
+	xvfmul.d	$xr5, $xr5, $xr4
 	xvfdiv.d	$xr5, $xr5, $xr2
-	xvpickve2gr.d	$a4, $xr5, 0
+	xvfdiv.d	$xr6, $xr6, $xr2
+	xvpickve2gr.d	$a4, $xr6, 0
 	movgr2fr.d	$fa7, $a4
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a4, $xr5, 1
+	xvpickve2gr.d	$a4, $xr6, 1
 	movgr2fr.d	$ft0, $a4
 	movfr2gr.s	$a4, $fa7
 	fcvt.s.d	$fa7, $ft0
 	xvinsgr2vr.w	$xr8, $a4, 0
 	movfr2gr.s	$a4, $fa7
 	xvinsgr2vr.w	$xr8, $a4, 1
-	xvpickve2gr.d	$a4, $xr5, 2
+	xvpickve2gr.d	$a4, $xr6, 2
 	movgr2fr.d	$fa7, $a4
 	fcvt.s.d	$fa7, $fa7
-	xvpickve2gr.d	$a4, $xr5, 3
-	movgr2fr.d	$fa5, $a4
-	movfr2gr.s	$a4, $fa7
-	fcvt.s.d	$fa5, $fa5
-	xvinsgr2vr.w	$xr8, $a4, 2
-	movfr2gr.s	$a4, $fa5
-	xvinsgr2vr.w	$xr8, $a4, 3
-	xvpickve2gr.d	$a4, $xr6, 0
-	movgr2fr.d	$fa5, $a4
-	fcvt.s.d	$fa5, $fa5
-	xvpickve2gr.d	$a4, $xr6, 1
-	movgr2fr.d	$fa7, $a4
-	movfr2gr.s	$a4, $fa5
-	fcvt.s.d	$fa5, $fa7
-	xvinsgr2vr.w	$xr8, $a4, 4
-	movfr2gr.s	$a4, $fa5
-	xvinsgr2vr.w	$xr8, $a4, 5
-	xvpickve2gr.d	$a4, $xr6, 2
-	movgr2fr.d	$fa5, $a4
-	fcvt.s.d	$fa5, $fa5
 	xvpickve2gr.d	$a4, $xr6, 3
 	movgr2fr.d	$fa6, $a4
-	movfr2gr.s	$a4, $fa5
-	fcvt.s.d	$fa5, $fa6
+	movfr2gr.s	$a4, $fa7
+	fcvt.s.d	$fa6, $fa6
+	xvinsgr2vr.w	$xr8, $a4, 2
+	movfr2gr.s	$a4, $fa6
+	xvinsgr2vr.w	$xr8, $a4, 3
+	xvpickve2gr.d	$a4, $xr5, 0
+	movgr2fr.d	$fa6, $a4
+	fcvt.s.d	$fa6, $fa6
+	xvpickve2gr.d	$a4, $xr5, 1
+	movgr2fr.d	$fa7, $a4
+	movfr2gr.s	$a4, $fa6
+	fcvt.s.d	$fa6, $fa7
+	xvinsgr2vr.w	$xr8, $a4, 4
+	movfr2gr.s	$a4, $fa6
+	xvinsgr2vr.w	$xr8, $a4, 5
+	xvpickve2gr.d	$a4, $xr5, 2
+	movgr2fr.d	$fa6, $a4
+	fcvt.s.d	$fa6, $fa6
+	xvpickve2gr.d	$a4, $xr5, 3
+	movgr2fr.d	$fa5, $a4
+	movfr2gr.s	$a4, $fa6
+	fcvt.s.d	$fa5, $fa5
 	xvinsgr2vr.w	$xr8, $a4, 6
 	movfr2gr.s	$a4, $fa5
 	xvinsgr2vr.w	$xr8, $a4, 7
@@ -798,12 +793,12 @@ generate_polar_angles:                  # @generate_polar_angles
 	addi.d	$a2, $a2, 32
 	bnez	$a3, .LBB6_4
 # %bb.5:                                # %middle.block
-	beq	$a1, $s0, .LBB6_8
+	beq	$a1, $fp, .LBB6_8
 .LBB6_6:                                # %scalar.ph.preheader
 	pcalau12i	$a2, %pc_hi20(.LCPI6_1)
 	fld.d	$fa1, $a2, %pc_lo12(.LCPI6_1)
 	alsl.d	$a2, $a1, $a0, 2
-	sub.d	$a3, $s0, $a1
+	sub.d	$a3, $fp, $a1
 	vldi	$vr2, -928
 	.p2align	4, , 16
 .LBB6_7:                                # %scalar.ph
@@ -821,11 +816,9 @@ generate_polar_angles:                  # @generate_polar_angles
 	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB6_7
 .LBB6_8:                                # %._crit_edge
-	addi.d	$sp, $fp, -64
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end6:
 	.size	generate_polar_angles, .Lfunc_end6-generate_polar_angles

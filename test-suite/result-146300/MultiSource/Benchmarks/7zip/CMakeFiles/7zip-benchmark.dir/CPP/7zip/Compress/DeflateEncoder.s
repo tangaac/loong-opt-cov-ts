@@ -5639,17 +5639,17 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder13GetBlockPriceEii: # @_ZN9NCompress8NDefl
 _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -352
-	.cfi_def_cfa_offset 352
-	st.d	$ra, $sp, 344                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 296                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 280                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -224
+	.cfi_def_cfa_offset 224
+	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 152                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5659,7 +5659,7 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	addi.d	$fp, $sp, 352
+	addi.d	$fp, $sp, 224
 	.cfi_def_cfa 22, 0
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a0
@@ -5790,7 +5790,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 # %bb.7:                                # %.preheader
 	ldptr.d	$a1, $s0, 2224
 	vinsgr2vr.d	$vr0, $a1, 0
-	vst	$vr0, $sp, 224
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.b	$zero, $sp, 27
@@ -5807,7 +5806,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	st.h	$zero, $sp, 5
 	st.b	$zero, $sp, 3
 	st.h	$zero, $sp, 1
-	xvld	$xr0, $sp, 224
 	xvstelm.b	$xr0, $sp, 28, 7
 	xvstelm.b	$xr0, $sp, 24, 6
 	xvstelm.b	$xr0, $sp, 20, 5
@@ -5825,7 +5823,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	xvsll.w	$xr2, $xr1, $xr2
 	xvstx	$xr2, $s0, $a1
 	vinsgr2vr.d	$vr2, $a2, 0
-	vst	$vr2, $sp, 192
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.b	$zero, $sp, 59
@@ -5842,7 +5839,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	st.h	$zero, $sp, 37
 	st.b	$zero, $sp, 35
 	st.h	$zero, $sp, 33
-	xvld	$xr2, $sp, 192
 	xvstelm.b	$xr2, $sp, 60, 7
 	xvstelm.b	$xr2, $sp, 56, 6
 	xvstelm.b	$xr2, $sp, 52, 5
@@ -5858,7 +5854,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	ori	$a3, $zero, 3440
 	xvstx	$xr2, $s0, $a3
 	vinsgr2vr.d	$vr2, $a2, 0
-	vst	$vr2, $sp, 160
 	st.b	$zero, $sp, 95
 	st.h	$zero, $sp, 93
 	st.b	$zero, $sp, 91
@@ -5875,7 +5870,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	st.h	$zero, $sp, 69
 	st.b	$zero, $sp, 67
 	st.h	$zero, $sp, 65
-	xvld	$xr2, $sp, 160
 	xvstelm.b	$xr2, $sp, 92, 7
 	xvstelm.b	$xr2, $sp, 88, 6
 	xvstelm.b	$xr2, $sp, 84, 5
@@ -5891,7 +5885,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	ori	$a3, $zero, 3472
 	xvstx	$xr2, $s0, $a3
 	vinsgr2vr.d	$vr2, $a2, 0
-	vst	$vr2, $sp, 128
 	st.b	$zero, $sp, 127
 	st.h	$zero, $sp, 125
 	st.b	$zero, $sp, 123
@@ -5908,7 +5901,6 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	st.h	$zero, $sp, 101
 	st.b	$zero, $sp, 99
 	st.h	$zero, $sp, 97
-	xvld	$xr2, $sp, 128
 	xvstelm.b	$xr2, $sp, 124, 7
 	xvstelm.b	$xr2, $sp, 120, 6
 	xvstelm.b	$xr2, $sp, 116, 5
@@ -6110,17 +6102,17 @@ _ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib: # @_ZN9NCompress8NDeflate8N
 	ld.w	$a1, $s0, 1380
 	sub.d	$a0, $a1, $a0
 	st.w	$a0, $s0, 1380
-	addi.d	$sp, $fp, -352
-	ld.d	$s6, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 344                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 352
+	addi.d	$sp, $fp, -224
+	ld.d	$s6, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 224
 	ret
 .Lfunc_end28:
 	.size	_ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib, .Lfunc_end28-_ZN9NCompress8NDeflate8NEncoder6CCoder9CodeBlockEib

@@ -2248,11 +2248,6 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	.dword	0x3ff0000000000000              # double 1
 	.dword	0x0000000000000000              # double 0
 	.dword	0x0000000000000000              # double 0
-.LCPI1_4:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
 	.text
 	.globl	CABiCGStab
 	.p2align	5
@@ -3068,9 +3063,9 @@ CABiCGStab:                             # @CABiCGStab
 	xvpickve2gr.d	$a1, $xr4, 3
 	movgr2fr.d	$ft15, $a1
 	xvpickve2gr.d	$a1, $xr3, 0
-	movgr2fr.d	$fs0, $a1
-	xvpickve2gr.d	$a1, $xr3, 1
 	movgr2fr.d	$fs1, $a1
+	xvpickve2gr.d	$a1, $xr3, 1
+	movgr2fr.d	$fs2, $a1
 	xvpickve2gr.d	$a1, $xr3, 2
 	movgr2fr.d	$fs3, $a1
 	xvst	$xr3, $sp, 1040                 # 32-byte Folded Spill
@@ -3096,8 +3091,8 @@ CABiCGStab:                             # @CABiCGStab
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa1, $a1, -64
 	fld.d	$fa2, $a1, -56
-	movgr2fr.d	$fs2, $zero
-	fmadd.d	$fa1, $fa1, $fa7, $fs2
+	movgr2fr.d	$fs0, $zero
+	fmadd.d	$fa1, $fa1, $fa7, $fs0
 	fmadd.d	$fa1, $fa2, $ft0, $fa1
 	fld.d	$fa2, $a1, -48
 	fld.d	$fa3, $a1, -40
@@ -3113,8 +3108,8 @@ CABiCGStab:                             # @CABiCGStab
 	fld.d	$fa5, $a1, 8
 	fmadd.d	$fa1, $fa2, $ft6, $fa1
 	fmadd.d	$fa1, $fa3, $ft15, $fa1
-	fmadd.d	$fa1, $fa4, $fs0, $fa1
-	fmadd.d	$fa1, $fa5, $fs1, $fa1
+	fmadd.d	$fa1, $fa4, $fs1, $fa1
+	fmadd.d	$fa1, $fa5, $fs2, $fa1
 	fld.d	$fa2, $a1, 16
 	fld.d	$fa3, $a1, 24
 	fld.d	$fa4, $a1, 32
@@ -3130,7 +3125,7 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$fa1, $fa2, $fs7, $fa1
 	fmadd.d	$fa1, $fa3, $fa0, $fa1
 	fmadd.d	$fa1, $fa4, $fa6, $fa1
-	fmul.d	$fa2, $fa5, $fs2
+	fmul.d	$fa2, $fa5, $fs0
 	fadd.d	$fa1, $fa1, $fa2
 	fstx.d	$fa1, $a0, $s5
 	addi.d	$a0, $a0, 8
@@ -3194,7 +3189,7 @@ CABiCGStab:                             # @CABiCGStab
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa1, $a1, -64
 	fld.d	$fa2, $a1, -56
-	fmadd.d	$fa1, $fa1, $ft14, $fs2
+	fmadd.d	$fa1, $fa1, $ft14, $fs0
 	fmadd.d	$fa1, $fa2, $ft13, $fa1
 	fld.d	$fa2, $a1, -48
 	fld.d	$fa3, $a1, -40
@@ -3227,7 +3222,7 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$fa1, $fa2, $fa7, $fa1
 	fmadd.d	$fa1, $fa3, $ft0, $fa1
 	fmadd.d	$fa1, $fa4, $fa6, $fa1
-	fmul.d	$fa2, $fa5, $fs2
+	fmul.d	$fa2, $fa5, $fs0
 	fadd.d	$fa1, $fa1, $fa2
 	fstx.d	$fa1, $a0, $s3
 	addi.d	$a0, $a0, 8
@@ -3268,7 +3263,7 @@ CABiCGStab:                             # @CABiCGStab
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa1, $a1, -64
 	fld.d	$fa2, $a1, -56
-	fmadd.d	$fa1, $fa1, $fa7, $fs2
+	fmadd.d	$fa1, $fa1, $fa7, $fs0
 	fmadd.d	$fa1, $fa2, $ft0, $fa1
 	fld.d	$fa2, $a1, -48
 	fld.d	$fa3, $a1, -40
@@ -3284,8 +3279,8 @@ CABiCGStab:                             # @CABiCGStab
 	fld.d	$fa5, $a1, 8
 	fmadd.d	$fa1, $fa2, $ft5, $fa1
 	fmadd.d	$fa1, $fa3, $ft15, $fa1
-	fmadd.d	$fa1, $fa4, $fs0, $fa1
-	fmadd.d	$fa1, $fa5, $fs1, $fa1
+	fmadd.d	$fa1, $fa4, $fs1, $fa1
+	fmadd.d	$fa1, $fa5, $fs2, $fa1
 	fld.d	$fa2, $a1, 16
 	fld.d	$fa3, $a1, 24
 	fld.d	$fa4, $a1, 32
@@ -3301,7 +3296,7 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$fa1, $fa2, $fs7, $fa1
 	fmadd.d	$fa1, $fa3, $fa0, $fa1
 	fmadd.d	$fa1, $fa4, $fa6, $fa1
-	fmul.d	$fa2, $fa5, $fs2
+	fmul.d	$fa2, $fa5, $fs0
 	fadd.d	$fa1, $fa1, $fa2
 	fstx.d	$fa1, $a0, $s8
 	addi.d	$a0, $a0, 8
@@ -3314,7 +3309,7 @@ CABiCGStab:                             # @CABiCGStab
 	add.d	$a0, $sp, $a0
 	fld.d	$fa0, $a0, 0
 	fld.d	$fa1, $sp, 944                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $fa1, $fa0, $fs2
+	fmadd.d	$fa0, $fa1, $fa0, $fs0
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 2392
 	add.d	$a0, $sp, $a0
@@ -3411,7 +3406,7 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$fa0, $fa1, $fa3, $fa0
 	fld.d	$fa1, $sp, 816                  # 8-byte Folded Reload
 	fmadd.d	$fa0, $fa1, $fa4, $fa0
-	fcmp.ceq.d	$fcc0, $fa0, $fs2
+	fcmp.ceq.d	$fcc0, $fa0, $fs0
 	ori	$fp, $zero, 1
 	fld.d	$ft5, $sp, 808                  # 8-byte Folded Reload
 	fld.d	$ft6, $sp, 800                  # 8-byte Folded Reload
@@ -3590,7 +3585,7 @@ CABiCGStab:                             # @CABiCGStab
 	lu12i.w	$a1, 2
 	ori	$a1, $a1, 3208
 	add.d	$a1, $sp, $a1
-	fld.d	$fs0, $a1, 0
+	fld.d	$fs2, $a1, 0
 	fmul.d	$fa1, $ft10, $fa1
 	fsub.d	$fs1, $fa0, $fa1
 	lu12i.w	$a1, 2
@@ -3605,14 +3600,14 @@ CABiCGStab:                             # @CABiCGStab
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$fa0, $a1, -64
 	fld.d	$fa1, $a1, -56
-	fmadd.d	$fa0, $fa0, $fs4, $fs2
+	fmadd.d	$fa0, $fa0, $fs4, $fs0
 	fmadd.d	$fa0, $fa1, $fs6, $fa0
 	fld.d	$fa1, $a1, -48
 	fld.d	$fa2, $a1, -40
 	fld.d	$fa3, $a1, -32
 	fld.d	$fa4, $a1, -24
 	fmadd.d	$fa0, $fa1, $fs7, $fa0
-	fmadd.d	$fa0, $fa2, $fs0, $fa0
+	fmadd.d	$fa0, $fa2, $fs2, $fa0
 	fmadd.d	$fa0, $fa3, $ft9, $fa0
 	fmadd.d	$fa0, $fa4, $ft14, $fa0
 	fld.d	$fa1, $a1, -16
@@ -3638,7 +3633,7 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$fa0, $fa1, $fs5, $fa0
 	fmadd.d	$fa0, $fa2, $fs3, $fa0
 	fmadd.d	$fa0, $fa3, $fs1, $fa0
-	fmul.d	$fa1, $fa4, $fs2
+	fmul.d	$fa1, $fa4, $fs0
 	fadd.d	$fa0, $fa0, $fa1
 	fstx.d	$fa0, $a0, $s2
 	addi.d	$a0, $a0, 8
@@ -3998,7 +3993,7 @@ CABiCGStab:                             # @CABiCGStab
                                         # =>    This Inner Loop Header: Depth=3
 	fld.d	$ft9, $a1, -64
 	fld.d	$ft10, $a1, -56
-	fmadd.d	$ft9, $ft9, $ft3, $fs2
+	fmadd.d	$ft9, $ft9, $ft3, $fs0
 	fmadd.d	$ft9, $ft10, $fa2, $ft9
 	fld.d	$ft10, $a1, -48
 	fld.d	$ft11, $a1, -40
@@ -4031,7 +4026,7 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$ft9, $ft10, $ft7, $ft9
 	fmadd.d	$ft9, $ft11, $ft8, $ft9
 	fmadd.d	$ft9, $ft12, $fa0, $ft9
-	fmul.d	$ft10, $ft13, $fs2
+	fmul.d	$ft10, $ft13, $fs0
 	fadd.d	$ft9, $ft9, $ft10
 	fstx.d	$ft9, $a0, $s2
 	addi.d	$a0, $a0, 8
@@ -4043,7 +4038,7 @@ CABiCGStab:                             # @CABiCGStab
 	ori	$a0, $a0, 3048
 	add.d	$a0, $sp, $a0
 	fld.d	$ft9, $a0, 0
-	fmadd.d	$ft3, $ft3, $ft9, $fs2
+	fmadd.d	$ft3, $ft3, $ft9, $fs0
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 3056
 	add.d	$a0, $sp, $a0
@@ -4124,8 +4119,8 @@ CABiCGStab:                             # @CABiCGStab
 	fmadd.d	$fa1, $ft7, $fa3, $fa1
 	fmadd.d	$fa1, $ft8, $fa4, $fa1
 	fmadd.d	$fa0, $fa0, $fa5, $fa1
-	fcmp.clt.d	$fcc0, $fa0, $fs2
-	fmov.d	$fa1, $fs2
+	fcmp.clt.d	$fcc0, $fa0, $fs0
+	fmov.d	$fa1, $fs0
 	bcnez	$fcc0, .LBB1_20
 # %bb.19:                               #   in Loop: Header=BB1_6 Depth=2
 	fsqrt.d	$fa1, $fa0
@@ -4144,13 +4139,13 @@ CABiCGStab:                             # @CABiCGStab
 	bcnez	$fcc0, .LBB1_35
 # %bb.21:                               #   in Loop: Header=BB1_6 Depth=2
 	fld.d	$ft1, $sp, 808                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $fs4, $ft1, $fs2
+	fmadd.d	$fa0, $fs4, $ft1, $fs0
 	fld.d	$ft2, $sp, 800                  # 8-byte Folded Reload
 	fmadd.d	$fa0, $fs6, $ft2, $fa0
 	fld.d	$ft3, $sp, 768                  # 8-byte Folded Reload
 	fmadd.d	$fa0, $fs7, $ft3, $fa0
 	fld.d	$ft4, $sp, 760                  # 8-byte Folded Reload
-	fmadd.d	$fa0, $fs0, $ft4, $fa0
+	fmadd.d	$fa0, $fs2, $ft4, $fa0
 	fld.d	$fa1, $sp, 496                  # 8-byte Folded Reload
 	fld.d	$ft5, $sp, 720                  # 8-byte Folded Reload
 	fmadd.d	$fa0, $fa1, $ft5, $fa0
@@ -4191,7 +4186,7 @@ CABiCGStab:                             # @CABiCGStab
 	bcnez	$fcc0, .LBB1_37
 # %bb.22:                               #   in Loop: Header=BB1_6 Depth=2
 	fld.d	$fa2, $sp, 464                  # 8-byte Folded Reload
-	fmadd.d	$fa2, $fa2, $ft1, $fs2
+	fmadd.d	$fa2, $fa2, $ft1, $fs0
 	fld.d	$fa3, $sp, 456                  # 8-byte Folded Reload
 	fmadd.d	$fa2, $fa3, $ft2, $fa2
 	fld.d	$fa3, $sp, 448                  # 8-byte Folded Reload
@@ -4629,27 +4624,24 @@ CABiCGStab:                             # @CABiCGStab
 	fmul.d	$fa1, $fa1, $ft10
 	xvfadd.d	$xr2, $xr7, $xr2
 	xvfadd.d	$xr5, $xr12, $xr5
-	xvld	$xr7, $sp, 1312                 # 32-byte Folded Reload
-	xvfadd.d	$xr4, $xr7, $xr4
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 2384
 	add.d	$a0, $sp, $a0
 	vld	$vr7, $a0, 0
-	pcalau12i	$a0, %pc_hi20(.LCPI1_4)
-	xvld	$xr8, $a0, %pc_lo12(.LCPI1_4)
-	xvld	$xr9, $sp, 1344                 # 32-byte Folded Reload
-	xvfadd.d	$xr3, $xr9, $xr3
-	xvreplve0.d	$xr9, $xr1
-	xvpermi.q	$xr7, $xr0, 2
-	xvshuf.d	$xr8, $xr20, $xr7
-	xvfmul.d	$xr7, $xr9, $xr8
-	xvfmul.d	$xr8, $xr9, $xr14
-	xvfmul.d	$xr10, $xr9, $xr19
-	xvfmul.d	$xr9, $xr9, $xr13
-	xvfadd.d	$xr3, $xr3, $xr9
+	xvld	$xr8, $sp, 1312                 # 32-byte Folded Reload
+	xvfadd.d	$xr4, $xr8, $xr4
+	xvld	$xr8, $sp, 1344                 # 32-byte Folded Reload
+	xvfadd.d	$xr3, $xr8, $xr3
+	xvreplve0.d	$xr8, $xr1
+	xvpermi.q	$xr20, $xr7, 48
+	xvfmul.d	$xr7, $xr8, $xr20
+	xvfmul.d	$xr9, $xr8, $xr14
+	xvfmul.d	$xr10, $xr8, $xr19
+	xvfmul.d	$xr8, $xr8, $xr13
+	xvfadd.d	$xr3, $xr3, $xr8
 	xvfadd.d	$xr4, $xr4, $xr10
 	xvfadd.d	$xr5, $xr5, $xr7
-	xvfadd.d	$xr2, $xr2, $xr8
+	xvfadd.d	$xr2, $xr2, $xr9
 	fld.d	$fa7, $sp, 800                  # 8-byte Folded Reload
 	fmul.d	$fa1, $fa1, $fa7
 	addi.w	$s4, $s4, 1

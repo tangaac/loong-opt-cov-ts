@@ -40,11 +40,6 @@
 	.type	AesGenTables,@function
 AesGenTables:                           # @AesGenTables
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 256
-	bstrins.d	$sp, $zero, 4, 0
 	move	$a2, $zero
 	pcalau12i	$a0, %pc_hi20(Sbox)
 	addi.d	$a0, $a0, %pc_lo12(Sbox)
@@ -55,89 +50,87 @@ AesGenTables:                           # @AesGenTables
 .LBB0_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvldx	$xr0, $a0, $a2
-	xvst	$xr0, $sp, 192
-	vld	$vr1, $sp, 192
 	ori	$a4, $a2, 1
-	vld	$vr0, $sp, 208
-	vpickve2gr.b	$a5, $vr1, 0
+	vpickve2gr.b	$a5, $vr0, 0
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a2, $a1, $a5
-	vpickve2gr.b	$a5, $vr1, 1
+	vpickve2gr.b	$a5, $vr0, 1
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 2
-	vpickve2gr.b	$a5, $vr1, 2
+	vpickve2gr.b	$a5, $vr0, 2
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 3
-	vpickve2gr.b	$a5, $vr1, 3
+	vpickve2gr.b	$a5, $vr0, 3
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 4
-	vpickve2gr.b	$a5, $vr1, 4
+	vpickve2gr.b	$a5, $vr0, 4
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 5
-	vpickve2gr.b	$a5, $vr1, 5
+	vpickve2gr.b	$a5, $vr0, 5
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 6
-	vpickve2gr.b	$a5, $vr1, 6
+	vpickve2gr.b	$a5, $vr0, 6
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 7
-	vpickve2gr.b	$a5, $vr1, 7
+	vpickve2gr.b	$a5, $vr0, 7
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 8
-	vpickve2gr.b	$a5, $vr1, 8
+	vpickve2gr.b	$a5, $vr0, 8
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 9
-	vpickve2gr.b	$a5, $vr1, 9
+	vpickve2gr.b	$a5, $vr0, 9
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 10
-	vpickve2gr.b	$a5, $vr1, 10
+	vpickve2gr.b	$a5, $vr0, 10
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 11
-	vpickve2gr.b	$a5, $vr1, 11
+	vpickve2gr.b	$a5, $vr0, 11
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 12
-	vpickve2gr.b	$a5, $vr1, 12
+	vpickve2gr.b	$a5, $vr0, 12
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 13
-	vpickve2gr.b	$a5, $vr1, 13
+	vpickve2gr.b	$a5, $vr0, 13
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 14
-	vpickve2gr.b	$a5, $vr1, 14
+	vpickve2gr.b	$a5, $vr0, 14
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
 	stx.b	$a4, $a1, $a5
-	vpickve2gr.b	$a4, $vr1, 15
-	ori	$a5, $a2, 15
-	andi	$a4, $a4, 255
-	bstrpick.d	$a4, $a4, 15, 0
-	stx.b	$a5, $a1, $a4
+	ori	$a4, $a2, 15
+	vpickve2gr.b	$a5, $vr0, 15
+	andi	$a5, $a5, 255
+	bstrpick.d	$a5, $a5, 15, 0
+	stx.b	$a4, $a1, $a5
 	ori	$a4, $a2, 16
+	xvpermi.q	$xr0, $xr0, 1
 	vpickve2gr.b	$a5, $vr0, 0
 	andi	$a5, $a5, 255
 	bstrpick.d	$a5, $a5, 15, 0
@@ -220,6 +213,11 @@ AesGenTables:                           # @AesGenTables
 	stx.b	$a4, $a1, $a5
 	bne	$a2, $a3, .LBB0_1
 # %bb.2:                                # %vector.body82.preheader
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
+	bstrins.d	$sp, $zero, 4, 0
 	move	$a2, $zero
 	pcalau12i	$a3, %pc_hi20(D)
 	addi.d	$a3, $a3, %pc_lo12(D)
@@ -242,7 +240,6 @@ AesGenTables:                           # @AesGenTables
                                         # =>This Inner Loop Header: Depth=1
 	ldx.d	$a6, $a0, $a2
 	vinsgr2vr.d	$vr7, $a6, 0
-	vst	$vr7, $sp, 96
 	st.b	$zero, $sp, 31
 	st.h	$zero, $sp, 29
 	st.b	$zero, $sp, 27
@@ -259,20 +256,17 @@ AesGenTables:                           # @AesGenTables
 	st.h	$zero, $sp, 5
 	st.b	$zero, $sp, 3
 	st.h	$zero, $sp, 1
-	xvld	$xr8, $sp, 96
-	xvstelm.b	$xr8, $sp, 28, 7
-	xvstelm.b	$xr8, $sp, 24, 6
-	xvstelm.b	$xr8, $sp, 20, 5
-	xvstelm.b	$xr8, $sp, 16, 4
-	xvstelm.b	$xr8, $sp, 12, 3
-	xvstelm.b	$xr8, $sp, 8, 2
-	xvstelm.b	$xr8, $sp, 4, 1
-	xvstelm.b	$xr8, $sp, 0, 0
+	xvstelm.b	$xr7, $sp, 28, 7
+	xvstelm.b	$xr7, $sp, 24, 6
+	xvstelm.b	$xr7, $sp, 20, 5
+	xvstelm.b	$xr7, $sp, 16, 4
+	xvstelm.b	$xr7, $sp, 12, 3
+	xvstelm.b	$xr7, $sp, 8, 2
+	xvstelm.b	$xr7, $sp, 4, 1
+	xvstelm.b	$xr7, $sp, 0, 0
 	xvld	$xr8, $sp, 0
-	vslt.b	$vr7, $vr0, $vr7
-	vst	$vr7, $sp, 160
-	xvld	$xr7, $sp, 160
 	xvslli.w	$xr9, $xr8, 1
+	vslt.b	$vr7, $vr0, $vr7
 	xvpermi.d	$xr7, $xr7, 68
 	xvshuf.b	$xr7, $xr0, $xr7, $xr1
 	xvslli.w	$xr7, $xr7, 24
@@ -308,7 +302,6 @@ AesGenTables:                           # @AesGenTables
 	xvor.v	$xr7, $xr7, $xr10
 	xvst	$xr7, $a4, 1024
 	vinsgr2vr.d	$vr7, $a6, 0
-	vst	$vr7, $sp, 64
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.b	$zero, $sp, 59
@@ -325,20 +318,17 @@ AesGenTables:                           # @AesGenTables
 	st.h	$zero, $sp, 37
 	st.b	$zero, $sp, 35
 	st.h	$zero, $sp, 33
-	xvld	$xr8, $sp, 64
-	xvstelm.b	$xr8, $sp, 60, 7
-	xvstelm.b	$xr8, $sp, 56, 6
-	xvstelm.b	$xr8, $sp, 52, 5
-	xvstelm.b	$xr8, $sp, 48, 4
-	xvstelm.b	$xr8, $sp, 44, 3
-	xvstelm.b	$xr8, $sp, 40, 2
-	xvstelm.b	$xr8, $sp, 36, 1
-	xvstelm.b	$xr8, $sp, 32, 0
+	xvstelm.b	$xr7, $sp, 60, 7
+	xvstelm.b	$xr7, $sp, 56, 6
+	xvstelm.b	$xr7, $sp, 52, 5
+	xvstelm.b	$xr7, $sp, 48, 4
+	xvstelm.b	$xr7, $sp, 44, 3
+	xvstelm.b	$xr7, $sp, 40, 2
+	xvstelm.b	$xr7, $sp, 36, 1
+	xvstelm.b	$xr7, $sp, 32, 0
 	xvld	$xr8, $sp, 32
-	vslt.b	$vr7, $vr0, $vr7
-	vst	$vr7, $sp, 128
-	xvld	$xr7, $sp, 128
 	xvslli.w	$xr9, $xr8, 1
+	vslt.b	$vr7, $vr0, $vr7
 	xvpermi.d	$xr7, $xr7, 68
 	xvshuf.b	$xr7, $xr0, $xr7, $xr1
 	xvslli.w	$xr7, $xr7, 24
@@ -408,10 +398,10 @@ AesGenTables:                           # @AesGenTables
 	pcalau12i	$a1, %pc_hi20(AesCtr_Code)
 	addi.d	$a1, $a1, %pc_lo12(AesCtr_Code)
 	st.d	$a1, $a0, %pc_lo12(g_AesCtr_Code)
-	addi.d	$sp, $fp, -256
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	addi.d	$sp, $fp, -96
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end0:
 	.size	AesGenTables, .Lfunc_end0-AesGenTables
@@ -911,91 +901,86 @@ AesCtr_Code:                            # @AesCtr_Code
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(Aes_Encode)
 	jirl	$ra, $ra, 0
-	vld	$vr0, $sp, 80
-	vreplvei.w	$vr1, $vr0, 0
-	vreplvei.w	$vr2, $vr0, 1
-	vreplvei.w	$vr3, $vr0, 2
-	vreplvei.w	$vr4, $vr0, 3
-	xvpermi.q	$xr0, $xr0, 2
-	xvpermi.d	$xr6, $xr0, 68
-	xvld	$xr0, $sp, 48                   # 32-byte Folded Reload
-	xvshuf.w	$xr0, $xr0, $xr6
-	xvld	$xr5, $sp, 16                   # 32-byte Folded Reload
-	xvshuf.w	$xr5, $xr0, $xr6
-	vld	$vr6, $s1, 0
+	vld	$vr0, $s1, 0
 	addi.d	$a0, $s1, 16
+	vld	$vr1, $sp, 80
 	ld.wu	$a1, $sp, 80
 	ld.w	$a2, $sp, 92
-	ld.w	$a3, $sp, 84
-	ld.wu	$a4, $sp, 88
+	ld.wu	$a3, $sp, 88
+	ld.w	$a4, $sp, 84
 	srli.d	$a1, $a1, 8
+	vreplvei.w	$vr2, $vr1, 0
 	vld	$vr7, $sp, 0                    # 16-byte Folded Reload
-	vsrl.w	$vr1, $vr1, $vr7
-	srli.d	$a3, $a3, 8
 	vsrl.w	$vr2, $vr2, $vr7
 	srli.d	$a4, $a4, 8
+	vreplvei.w	$vr3, $vr1, 1
 	vsrl.w	$vr3, $vr3, $vr7
-	srli.d	$a2, $a2, 8
+	srli.d	$a3, $a3, 8
+	xvpermi.d	$xr4, $xr1, 68
+	xvld	$xr5, $sp, 48                   # 32-byte Folded Reload
+	xvshuf.w	$xr5, $xr0, $xr4
+	xvld	$xr6, $sp, 16                   # 32-byte Folded Reload
+	xvshuf.w	$xr6, $xr0, $xr4
+	vreplvei.w	$vr4, $vr1, 2
 	vsrl.w	$vr4, $vr4, $vr7
-	xvinsgr2vr.w	$xr5, $a1, 1
-	xvinsgr2vr.w	$xr5, $a3, 5
-	xvinsgr2vr.w	$xr0, $a4, 1
-	xvinsgr2vr.w	$xr0, $a2, 5
-	xvpermi.q	$xr1, $xr0, 2
-	xvpackev.d	$xr1, $xr1, $xr5
-	xvpermi.q	$xr2, $xr0, 2
-	xvpickve2gr.d	$a1, $xr1, 0
-	xvinsgr2vr.d	$xr5, $a1, 0
-	xvpickve2gr.d	$a1, $xr1, 1
-	xvinsgr2vr.d	$xr5, $a1, 1
-	xvpickve2gr.d	$a1, $xr1, 2
-	xvinsgr2vr.d	$xr5, $a1, 2
+	srli.d	$a2, $a2, 8
+	vreplvei.w	$vr1, $vr1, 3
+	vsrl.w	$vr1, $vr1, $vr7
+	xvinsgr2vr.w	$xr6, $a1, 1
+	xvinsgr2vr.w	$xr6, $a4, 5
+	xvinsgr2vr.w	$xr5, $a3, 1
+	xvinsgr2vr.w	$xr5, $a2, 5
+	xvpackev.d	$xr2, $xr2, $xr6
 	xvpickve2gr.d	$a1, $xr2, 0
-	xvinsgr2vr.d	$xr5, $a1, 3
-	xvpermi.q	$xr3, $xr0, 2
-	xvpackev.d	$xr0, $xr3, $xr0
-	xvpermi.q	$xr4, $xr0, 2
-	xvpickve2gr.d	$a1, $xr0, 0
-	xvinsgr2vr.d	$xr1, $a1, 0
-	xvpickve2gr.d	$a1, $xr0, 1
-	xvinsgr2vr.d	$xr1, $a1, 1
-	xvpickve2gr.d	$a1, $xr0, 2
-	xvinsgr2vr.d	$xr1, $a1, 2
-	xvpickve2gr.d	$a1, $xr4, 0
-	xvinsgr2vr.d	$xr1, $a1, 3
-	xvpickve2gr.w	$a1, $xr5, 0
-	vinsgr2vr.b	$vr0, $a1, 0
-	xvpickve2gr.w	$a1, $xr5, 1
-	vinsgr2vr.b	$vr0, $a1, 1
-	xvpickve2gr.w	$a1, $xr5, 2
-	vinsgr2vr.b	$vr0, $a1, 2
-	xvpickve2gr.w	$a1, $xr5, 3
-	vinsgr2vr.b	$vr0, $a1, 3
-	xvpickve2gr.w	$a1, $xr5, 4
-	vinsgr2vr.b	$vr0, $a1, 4
-	xvpickve2gr.w	$a1, $xr5, 5
-	vinsgr2vr.b	$vr0, $a1, 5
-	xvpickve2gr.w	$a1, $xr5, 6
-	vinsgr2vr.b	$vr0, $a1, 6
-	xvpickve2gr.w	$a1, $xr5, 7
-	vinsgr2vr.b	$vr0, $a1, 7
-	xvpickve2gr.w	$a1, $xr1, 0
-	vinsgr2vr.b	$vr0, $a1, 8
-	xvpickve2gr.w	$a1, $xr1, 1
-	vinsgr2vr.b	$vr0, $a1, 9
-	xvpickve2gr.w	$a1, $xr1, 2
-	vinsgr2vr.b	$vr0, $a1, 10
-	xvpickve2gr.w	$a1, $xr1, 3
-	vinsgr2vr.b	$vr0, $a1, 11
-	xvpickve2gr.w	$a1, $xr1, 4
-	vinsgr2vr.b	$vr0, $a1, 12
-	xvpickve2gr.w	$a1, $xr1, 5
-	vinsgr2vr.b	$vr0, $a1, 13
-	xvpickve2gr.w	$a1, $xr1, 6
-	vinsgr2vr.b	$vr0, $a1, 14
-	xvpickve2gr.w	$a1, $xr1, 7
-	vinsgr2vr.b	$vr0, $a1, 15
-	vxor.v	$vr0, $vr6, $vr0
+	xvinsgr2vr.d	$xr6, $a1, 0
+	xvpickve2gr.d	$a1, $xr2, 1
+	xvinsgr2vr.d	$xr6, $a1, 1
+	xvpickve2gr.d	$a1, $xr2, 2
+	xvinsgr2vr.d	$xr6, $a1, 2
+	xvpickve2gr.d	$a1, $xr3, 0
+	xvinsgr2vr.d	$xr6, $a1, 3
+	xvpackev.d	$xr2, $xr4, $xr5
+	xvpickve2gr.d	$a1, $xr2, 0
+	xvinsgr2vr.d	$xr3, $a1, 0
+	xvpickve2gr.d	$a1, $xr2, 1
+	xvinsgr2vr.d	$xr3, $a1, 1
+	xvpickve2gr.d	$a1, $xr2, 2
+	xvinsgr2vr.d	$xr3, $a1, 2
+	xvpickve2gr.d	$a1, $xr1, 0
+	xvinsgr2vr.d	$xr3, $a1, 3
+	xvpickve2gr.w	$a1, $xr6, 0
+	vinsgr2vr.b	$vr1, $a1, 0
+	xvpickve2gr.w	$a1, $xr6, 1
+	vinsgr2vr.b	$vr1, $a1, 1
+	xvpickve2gr.w	$a1, $xr6, 2
+	vinsgr2vr.b	$vr1, $a1, 2
+	xvpickve2gr.w	$a1, $xr6, 3
+	vinsgr2vr.b	$vr1, $a1, 3
+	xvpickve2gr.w	$a1, $xr6, 4
+	vinsgr2vr.b	$vr1, $a1, 4
+	xvpickve2gr.w	$a1, $xr6, 5
+	vinsgr2vr.b	$vr1, $a1, 5
+	xvpickve2gr.w	$a1, $xr6, 6
+	vinsgr2vr.b	$vr1, $a1, 6
+	xvpickve2gr.w	$a1, $xr6, 7
+	vinsgr2vr.b	$vr1, $a1, 7
+	xvpickve2gr.w	$a1, $xr3, 0
+	vinsgr2vr.b	$vr1, $a1, 8
+	xvpickve2gr.w	$a1, $xr3, 1
+	vinsgr2vr.b	$vr1, $a1, 9
+	xvpickve2gr.w	$a1, $xr3, 2
+	vinsgr2vr.b	$vr1, $a1, 10
+	xvpickve2gr.w	$a1, $xr3, 3
+	vinsgr2vr.b	$vr1, $a1, 11
+	xvpickve2gr.w	$a1, $xr3, 4
+	vinsgr2vr.b	$vr1, $a1, 12
+	xvpickve2gr.w	$a1, $xr3, 5
+	vinsgr2vr.b	$vr1, $a1, 13
+	xvpickve2gr.w	$a1, $xr3, 6
+	vinsgr2vr.b	$vr1, $a1, 14
+	xvpickve2gr.w	$a1, $xr3, 7
+	vinsgr2vr.b	$vr1, $a1, 15
+	vxor.v	$vr0, $vr0, $vr1
 	addi.d	$fp, $fp, -1
 	vst	$vr0, $s1, 0
 	move	$s1, $a0

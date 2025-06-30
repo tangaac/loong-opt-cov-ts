@@ -130,11 +130,6 @@ resetDisparity:                         # @resetDisparity
 	.type	bigTableSetup,@function
 bigTableSetup:                          # @bigTableSetup
 # %bb.0:                                # %vector.ph
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	move	$a0, $zero
 	pcalau12i	$a1, %pc_hi20(.LCPI4_0)
 	xvld	$xr0, $a1, %pc_lo12(.LCPI4_0)
@@ -155,36 +150,34 @@ bigTableSetup:                          # @bigTableSetup
 	.p2align	4, , 16
 .LBB4_1:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	xvsrli.w	$xr6, $xr0, 8
-	xvand.v	$xr7, $xr6, $xr1
-	xvpickve2gr.w	$a7, $xr6, 0
+	xvsrli.w	$xr6, $xr0, 9
+	xvsrli.w	$xr7, $xr0, 8
+	xvand.v	$xr8, $xr7, $xr1
+	xvpickve2gr.w	$a7, $xr7, 0
 	move	$t0, $a0
 	bstrins.d	$t0, $a7, 63, 5
-	xvand.v	$xr6, $xr0, $xr2
-	xvslli.w	$xr7, $xr7, 3
-	xvor.v	$xr6, $xr7, $xr6
+	xvand.v	$xr7, $xr0, $xr2
+	xvslli.w	$xr8, $xr8, 3
+	xvor.v	$xr7, $xr8, $xr7
 	andi	$a7, $t0, 63
 	slli.d	$a7, $a7, 2
 	ldx.wu	$a7, $a2, $a7
-	xvst	$xr6, $sp, 0
-	vld	$vr7, $sp, 16
-	xvsrli.w	$xr6, $xr0, 9
-	vpickve2gr.w	$t0, $vr7, 3
+	xvpermi.q	$xr8, $xr7, 1
+	vpickve2gr.w	$t0, $vr8, 3
 	andi	$t0, $t0, 15
-	vpickve2gr.w	$t1, $vr7, 2
+	vpickve2gr.w	$t1, $vr8, 2
 	andi	$t1, $t1, 15
-	vpickve2gr.w	$t2, $vr7, 1
-	vld	$vr8, $sp, 0
+	vpickve2gr.w	$t2, $vr8, 1
 	andi	$t2, $t2, 15
-	vpickve2gr.w	$t3, $vr7, 0
+	vpickve2gr.w	$t3, $vr8, 0
 	andi	$t3, $t3, 15
-	vpickve2gr.w	$t4, $vr8, 3
+	vpickve2gr.w	$t4, $vr7, 3
 	andi	$t4, $t4, 15
-	vpickve2gr.w	$t5, $vr8, 2
+	vpickve2gr.w	$t5, $vr7, 2
 	andi	$t5, $t5, 15
-	vpickve2gr.w	$t6, $vr8, 1
+	vpickve2gr.w	$t6, $vr7, 1
 	andi	$t6, $t6, 15
-	vpickve2gr.w	$t7, $vr8, 0
+	vpickve2gr.w	$t7, $vr7, 0
 	andi	$t7, $t7, 15
 	slli.d	$t7, $t7, 2
 	slli.d	$t6, $t6, 2
@@ -256,10 +249,6 @@ bigTableSetup:                          # @bigTableSetup
 	xvstelm.w	$xr6, $a0, 0, 7
 	pcalau12i	$a0, %pc_hi20(disparity0)
 	st.w	$zero, $a0, %pc_lo12(disparity0)
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end4:
 	.size	bigTableSetup, .Lfunc_end4-bigTableSetup

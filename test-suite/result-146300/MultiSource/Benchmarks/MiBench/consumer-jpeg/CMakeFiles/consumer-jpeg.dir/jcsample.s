@@ -1024,19 +1024,19 @@ h2v2_downsample:                        # @h2v2_downsample
 	.type	int_downsample,@function
 int_downsample:                         # @int_downsample
 # %bb.0:
-	addi.d	$sp, $sp, -256
-	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 256
+	addi.d	$sp, $sp, -192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 192
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a1
 	ld.w	$a1, $a1, 28
@@ -1090,7 +1090,7 @@ int_downsample:                         # @int_downsample
 	add.w	$a0, $a5, $a0
 	srai.d	$a0, $a0, 1
 	ori	$a4, $zero, 1
-	addi.w	$s3, $a5, 0
+	addi.w	$s5, $a5, 0
 	blt	$a3, $a4, .LBB8_22
 # %bb.8:                                # %.lr.ph.split.us.split.us
 	blt	$s4, $a4, .LBB8_24
@@ -1125,7 +1125,7 @@ int_downsample:                         # @int_downsample
 .LBB8_12:                               # %._crit_edge54.split.us.us.us.us.us.us
                                         #   in Loop: Header=BB8_13 Depth=2
 	add.d	$t4, $t7, $a0
-	div.d	$t4, $t4, $s3
+	div.d	$t4, $t4, $s5
 	st.b	$t4, $t0, 0
 	addi.d	$t0, $t0, 1
 	addi.w	$t2, $t2, 1
@@ -1181,9 +1181,9 @@ int_downsample:                         # @int_downsample
                                         #       Parent Loop BB8_15 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.w	$s2, $t7, -4
+	ld.w	$s3, $t7, 0
 	vinsgr2vr.w	$vr3, $s2, 0
-	ld.w	$s2, $t7, 0
-	vst	$vr3, $sp, 128
+	vinsgr2vr.w	$vr4, $s3, 0
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.w	$zero, $sp, 57
@@ -1196,14 +1196,11 @@ int_downsample:                         # @int_downsample
 	st.b	$zero, $sp, 39
 	st.h	$zero, $sp, 37
 	st.w	$zero, $sp, 33
-	xvld	$xr3, $sp, 128
-	vinsgr2vr.w	$vr4, $s2, 0
 	xvstelm.b	$xr3, $sp, 56, 3
 	xvstelm.b	$xr3, $sp, 48, 2
 	xvstelm.b	$xr3, $sp, 40, 1
 	xvstelm.b	$xr3, $sp, 32, 0
 	xvld	$xr3, $sp, 32
-	vst	$vr4, $sp, 96
 	st.b	$zero, $sp, 95
 	st.h	$zero, $sp, 93
 	st.w	$zero, $sp, 89
@@ -1216,7 +1213,6 @@ int_downsample:                         # @int_downsample
 	st.b	$zero, $sp, 71
 	st.h	$zero, $sp, 69
 	st.w	$zero, $sp, 65
-	xvld	$xr4, $sp, 96
 	xvstelm.b	$xr4, $sp, 88, 3
 	xvstelm.b	$xr4, $sp, 80, 2
 	xvstelm.b	$xr4, $sp, 72, 1
@@ -1258,7 +1254,7 @@ int_downsample:                         # @int_downsample
 	b	.LBB8_14
 .LBB8_22:                               # %.lr.ph.split.us.split
 	move	$s4, $zero
-	div.w	$s2, $a0, $s3
+	div.w	$s2, $a0, $s5
 	bstrpick.d	$s3, $a6, 31, 0
 	.p2align	4, , 16
 .LBB8_23:                               # %.preheader.lr.ph.us
@@ -1275,7 +1271,7 @@ int_downsample:                         # @int_downsample
 	b	.LBB8_26
 .LBB8_24:                               # %.lr.ph.split.us.split.us.split
 	move	$s4, $zero
-	div.w	$s2, $a0, $s3
+	div.w	$s2, $a0, $s5
 	bstrpick.d	$s3, $a6, 31, 0
 	.p2align	4, , 16
 .LBB8_25:                               # %.preheader.lr.ph.us.us
@@ -1290,19 +1286,19 @@ int_downsample:                         # @int_downsample
 	addi.d	$s1, $s1, 8
 	blt	$s4, $a0, .LBB8_25
 .LBB8_26:                               # %._crit_edge66
-	addi.d	$sp, $fp, -256
-	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 256
+	addi.d	$sp, $fp, -192
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end8:
 	.size	int_downsample, .Lfunc_end8-int_downsample

@@ -44,19 +44,19 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -1184
-	.cfi_def_cfa_offset 1184
-	st.d	$ra, $sp, 1176                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1168                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1160                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1152                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1144                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1136                  # 8-byte Folded Spill
-	st.d	$s4, $sp, 1128                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1120                  # 8-byte Folded Spill
-	st.d	$s6, $sp, 1112                  # 8-byte Folded Spill
-	st.d	$s7, $sp, 1104                  # 8-byte Folded Spill
-	st.d	$s8, $sp, 1096                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1056
+	.cfi_def_cfa_offset 1056
+	st.d	$ra, $sp, 1048                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1040                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1032                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1024                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1016                  # 8-byte Folded Spill
+	st.d	$s3, $sp, 1008                  # 8-byte Folded Spill
+	st.d	$s4, $sp, 1000                  # 8-byte Folded Spill
+	st.d	$s5, $sp, 992                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 984                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 976                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 968                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -68,21 +68,21 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	addi.d	$fp, $sp, 1184
+	addi.d	$fp, $sp, 1056
 	.cfi_def_cfa 22, 0
 	bstrins.d	$sp, $zero, 4, 0
 	st.d	$a5, $sp, 192                   # 8-byte Folded Spill
 	move	$s3, $a2
 	move	$s4, $a1
 	move	$s2, $a0
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZN9CInBufferC1Ev)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $sp, 976
-	st.w	$zero, $sp, 984
-	st.d	$zero, $sp, 1000
-	st.d	$zero, $sp, 1016
+	st.d	$zero, $sp, 848
+	st.w	$zero, $sp, 856
+	st.d	$zero, $sp, 872
+	st.d	$zero, $sp, 888
 .Ltmp0:
 	lu12i.w	$a1, 256
 	move	$a0, $s5
@@ -108,11 +108,11 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .Ltmp5:
 # %bb.4:
 	ori	$a0, $zero, 32
-	st.d	$a0, $sp, 1032
-	st.w	$zero, $sp, 1088
+	st.d	$a0, $sp, 904
+	st.w	$zero, $sp, 960
 .Ltmp6:
 	lu12i.w	$a1, 256
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer6CreateEj)
 	jirl	$ra, $ra, 0
 .Ltmp7:
@@ -120,14 +120,14 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	beqz	$a0, .LBB0_263
 # %bb.6:
 .Ltmp8:
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer9SetStreamEP20ISequentialOutStream)
 	jirl	$ra, $ra, 0
 .Ltmp9:
 # %bb.7:
 .Ltmp10:
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer4InitEv)
 	jirl	$ra, $ra, 0
 .Ltmp11:
@@ -207,7 +207,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .LBB0_9:                                # %.critedge159.thread285
                                         #   in Loop: Header=BB0_10 Depth=1
 	st.d	$s5, $sp, 184                   # 8-byte Folded Spill
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 .LBB0_10:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_23 Depth 2
                                         #     Child Loop BB0_36 Depth 2
@@ -217,20 +217,20 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
                                         #     Child Loop BB0_55 Depth 2
                                         #     Child Loop BB0_59 Depth 2
                                         #     Child Loop BB0_158 Depth 2
-	ld.w	$a0, $sp, 1032
+	ld.w	$a0, $sp, 904
 	ori	$a1, $zero, 8
 	bgeu	$a0, $a1, .LBB0_23
 # %bb.11:                               # %._ZN5NBitl12CBaseDecoderI9CInBufferE9NormalizeEv.exit_crit_edge.i
                                         #   in Loop: Header=BB0_10 Depth=1
-	ld.w	$a3, $sp, 1036
+	ld.w	$a3, $sp, 908
 .LBB0_12:                               # %.loopexit201
                                         #   in Loop: Header=BB0_10 Depth=1
-	ld.w	$a4, $sp, 1088
+	ld.w	$a4, $sp, 960
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	add.w	$a2, $a0, $a1
-	st.w	$a2, $sp, 1032
+	st.w	$a2, $sp, 904
 	srl.w	$a1, $a3, $a1
-	st.w	$a1, $sp, 1036
+	st.w	$a1, $sp, 908
 	beqz	$a4, .LBB0_14
 # %bb.13:                               # %.loopexit201
                                         #   in Loop: Header=BB0_10 Depth=1
@@ -250,7 +250,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ori	$a3, $zero, 256
 	bne	$s5, $a3, .LBB0_34
 # %bb.16:                               #   in Loop: Header=BB0_10 Depth=1
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 	ori	$a0, $zero, 8
 	bgeu	$a2, $a0, .LBB0_30
 .LBB0_17:                               # %.loopexit
@@ -259,10 +259,10 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	and	$a0, $a1, $a0
 	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
 	add.d	$a2, $a2, $a3
-	st.w	$a2, $sp, 1032
+	st.w	$a2, $sp, 904
 	srl.w	$a1, $a1, $a3
 	addi.w	$a0, $a0, 0
-	st.w	$a1, $sp, 1036
+	st.w	$a1, $sp, 908
 	ori	$a1, $zero, 2
 	beq	$a0, $a1, .LBB0_51
 # %bb.18:                               # %.loopexit
@@ -278,27 +278,27 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	.p2align	4, , 16
 .LBB0_20:                               # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB0_23 Depth=2
-	ld.d	$a0, $sp, 1040
+	ld.d	$a0, $sp, 912
 .LBB0_21:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i
                                         #   in Loop: Header=BB0_23 Depth=2
 	addi.d	$a1, $a0, 1
-	st.d	$a1, $sp, 1040
+	st.d	$a1, $sp, 912
 	ld.bu	$a0, $a0, 0
 .LBB0_22:                               #   in Loop: Header=BB0_23 Depth=2
-	ld.w	$a1, $sp, 1032
-	ld.w	$a2, $sp, 1036
+	ld.w	$a1, $sp, 904
+	ld.w	$a2, $sp, 908
 	sub.d	$a3, $s6, $a1
 	sll.w	$a0, $a0, $a3
 	or	$a3, $a0, $a2
-	st.w	$a3, $sp, 1036
+	st.w	$a3, $sp, 908
 	addi.w	$a0, $a1, -8
-	st.w	$a0, $sp, 1032
+	st.w	$a0, $sp, 904
 	bgeu	$s4, $a0, .LBB0_12
 .LBB0_23:                               # %.lr.ph.i.i
                                         #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $sp, 1040
-	ld.d	$a1, $sp, 1048
+	ld.d	$a0, $sp, 912
+	ld.d	$a1, $sp, 920
 	bltu	$a0, $a1, .LBB0_21
 # %bb.24:                               #   in Loop: Header=BB0_23 Depth=2
 .Ltmp13:
@@ -311,35 +311,35 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	bnez	$a0, .LBB0_20
 # %bb.26:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i
                                         #   in Loop: Header=BB0_23 Depth=2
-	ld.w	$a0, $sp, 1088
+	ld.w	$a0, $sp, 960
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $sp, 1088
+	st.w	$a0, $sp, 960
 	ori	$a0, $zero, 255
 	b	.LBB0_22
 	.p2align	4, , 16
 .LBB0_27:                               # %._crit_edge.i.i.i173
                                         #   in Loop: Header=BB0_30 Depth=2
-	ld.d	$a0, $sp, 1040
+	ld.d	$a0, $sp, 912
 .LBB0_28:                               # %_ZN9CInBuffer8ReadByteERh.exit.thread.i.i175
                                         #   in Loop: Header=BB0_30 Depth=2
 	addi.d	$a1, $a0, 1
-	st.d	$a1, $sp, 1040
+	st.d	$a1, $sp, 912
 	ld.bu	$a0, $a0, 0
 .LBB0_29:                               #   in Loop: Header=BB0_30 Depth=2
-	ld.w	$a2, $sp, 1032
-	ld.w	$a1, $sp, 1036
+	ld.w	$a2, $sp, 904
+	ld.w	$a1, $sp, 908
 	sub.d	$a3, $s6, $a2
 	sll.w	$a0, $a0, $a3
 	or	$a1, $a0, $a1
-	st.w	$a1, $sp, 1036
+	st.w	$a1, $sp, 908
 	addi.w	$a2, $a2, -8
-	st.w	$a2, $sp, 1032
+	st.w	$a2, $sp, 904
 	bgeu	$s4, $a2, .LBB0_17
 .LBB0_30:                               # %.lr.ph.i.i169
                                         #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $sp, 1040
-	ld.d	$a1, $sp, 1048
+	ld.d	$a0, $sp, 912
+	ld.d	$a1, $sp, 920
 	bltu	$a0, $a1, .LBB0_28
 # %bb.31:                               #   in Loop: Header=BB0_30 Depth=2
 .Ltmp25:
@@ -352,9 +352,9 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	bnez	$a0, .LBB0_27
 # %bb.33:                               # %_ZN9CInBuffer8ReadByteERh.exit.i.i171
                                         #   in Loop: Header=BB0_30 Depth=2
-	ld.w	$a0, $sp, 1088
+	ld.w	$a0, $sp, 960
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $sp, 1088
+	st.w	$a0, $sp, 960
 	ori	$a0, $zero, 255
 	b	.LBB0_29
 	.p2align	4, , 16
@@ -427,18 +427,18 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .LBB0_43:                               # %.lr.ph230
                                         #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.wu	$a0, $sp, 984
+	ld.wu	$a0, $sp, 856
 	ld.b	$a1, $s3, 0
-	ld.d	$a2, $sp, 976
+	ld.d	$a2, $sp, 848
 	addi.d	$a3, $a0, 1
-	st.w	$a3, $sp, 984
+	st.w	$a3, $sp, 856
 	stx.b	$a1, $a2, $a0
-	ld.w	$a0, $sp, 984
-	ld.w	$a1, $sp, 988
+	ld.w	$a0, $sp, 856
+	ld.w	$a1, $sp, 860
 	bne	$a0, $a1, .LBB0_42
 # %bb.44:                               #   in Loop: Header=BB0_43 Depth=2
 .Ltmp16:
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer14FlushWithCheckEv)
 	jirl	$ra, $ra, 0
 .Ltmp17:
@@ -614,98 +614,98 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	bnez	$a2, .LBB0_106
 .LBB0_75:                               # %pred.store.continue342
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 928
-	ld.bu	$a2, $sp, 944
+	xvst	$xr0, $sp, 800
+	ld.bu	$a2, $sp, 816
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_107
 .LBB0_76:                               # %pred.store.continue344
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 896
-	ld.bu	$a2, $sp, 913
+	xvst	$xr0, $sp, 768
+	ld.bu	$a2, $sp, 785
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_108
 .LBB0_77:                               # %pred.store.continue346
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 864
-	ld.bu	$a2, $sp, 882
+	xvst	$xr0, $sp, 736
+	ld.bu	$a2, $sp, 754
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_109
 .LBB0_78:                               # %pred.store.continue348
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 832
-	ld.bu	$a2, $sp, 851
+	xvst	$xr0, $sp, 704
+	ld.bu	$a2, $sp, 723
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_110
 .LBB0_79:                               # %pred.store.continue350
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 800
-	ld.bu	$a2, $sp, 820
+	xvst	$xr0, $sp, 672
+	ld.bu	$a2, $sp, 692
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_111
 .LBB0_80:                               # %pred.store.continue352
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 768
-	ld.bu	$a2, $sp, 789
+	xvst	$xr0, $sp, 640
+	ld.bu	$a2, $sp, 661
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_112
 .LBB0_81:                               # %pred.store.continue354
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 736
-	ld.bu	$a2, $sp, 758
+	xvst	$xr0, $sp, 608
+	ld.bu	$a2, $sp, 630
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_113
 .LBB0_82:                               # %pred.store.continue356
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 704
-	ld.bu	$a2, $sp, 727
+	xvst	$xr0, $sp, 576
+	ld.bu	$a2, $sp, 599
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_114
 .LBB0_83:                               # %pred.store.continue358
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 672
-	ld.bu	$a2, $sp, 696
+	xvst	$xr0, $sp, 544
+	ld.bu	$a2, $sp, 568
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_115
 .LBB0_84:                               # %pred.store.continue360
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 640
-	ld.bu	$a2, $sp, 665
+	xvst	$xr0, $sp, 512
+	ld.bu	$a2, $sp, 537
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_116
 .LBB0_85:                               # %pred.store.continue362
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 608
-	ld.bu	$a2, $sp, 634
+	xvst	$xr0, $sp, 480
+	ld.bu	$a2, $sp, 506
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_117
 .LBB0_86:                               # %pred.store.continue364
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 576
-	ld.bu	$a2, $sp, 603
+	xvst	$xr0, $sp, 448
+	ld.bu	$a2, $sp, 475
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_118
 .LBB0_87:                               # %pred.store.continue366
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 544
-	ld.bu	$a2, $sp, 572
+	xvst	$xr0, $sp, 416
+	ld.bu	$a2, $sp, 444
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_119
 .LBB0_88:                               # %pred.store.continue368
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 512
-	ld.bu	$a2, $sp, 541
+	xvst	$xr0, $sp, 384
+	ld.bu	$a2, $sp, 413
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_120
 .LBB0_89:                               # %pred.store.continue370
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 480
-	ld.bu	$a2, $sp, 510
+	xvst	$xr0, $sp, 352
+	ld.bu	$a2, $sp, 382
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB0_121
 .LBB0_90:                               # %pred.store.continue372
                                         #   in Loop: Header=BB0_59 Depth=2
-	xvst	$xr0, $sp, 448
-	ld.bu	$a2, $sp, 479
+	xvst	$xr0, $sp, 320
+	ld.bu	$a2, $sp, 351
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_58
 	b	.LBB0_122
@@ -803,113 +803,113 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .LBB0_106:                              # %pred.store.if341
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 15
-	xvst	$xr0, $sp, 928
-	ld.bu	$a2, $sp, 944
+	xvst	$xr0, $sp, 800
+	ld.bu	$a2, $sp, 816
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_76
 .LBB0_107:                              # %pred.store.if343
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 16
-	xvst	$xr0, $sp, 896
-	ld.bu	$a2, $sp, 913
+	xvst	$xr0, $sp, 768
+	ld.bu	$a2, $sp, 785
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_77
 .LBB0_108:                              # %pred.store.if345
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 17
-	xvst	$xr0, $sp, 864
-	ld.bu	$a2, $sp, 882
+	xvst	$xr0, $sp, 736
+	ld.bu	$a2, $sp, 754
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_78
 .LBB0_109:                              # %pred.store.if347
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 18
-	xvst	$xr0, $sp, 832
-	ld.bu	$a2, $sp, 851
+	xvst	$xr0, $sp, 704
+	ld.bu	$a2, $sp, 723
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_79
 .LBB0_110:                              # %pred.store.if349
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 19
-	xvst	$xr0, $sp, 800
-	ld.bu	$a2, $sp, 820
+	xvst	$xr0, $sp, 672
+	ld.bu	$a2, $sp, 692
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_80
 .LBB0_111:                              # %pred.store.if351
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 20
-	xvst	$xr0, $sp, 768
-	ld.bu	$a2, $sp, 789
+	xvst	$xr0, $sp, 640
+	ld.bu	$a2, $sp, 661
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_81
 .LBB0_112:                              # %pred.store.if353
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 21
-	xvst	$xr0, $sp, 736
-	ld.bu	$a2, $sp, 758
+	xvst	$xr0, $sp, 608
+	ld.bu	$a2, $sp, 630
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_82
 .LBB0_113:                              # %pred.store.if355
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 22
-	xvst	$xr0, $sp, 704
-	ld.bu	$a2, $sp, 727
+	xvst	$xr0, $sp, 576
+	ld.bu	$a2, $sp, 599
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_83
 .LBB0_114:                              # %pred.store.if357
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 23
-	xvst	$xr0, $sp, 672
-	ld.bu	$a2, $sp, 696
+	xvst	$xr0, $sp, 544
+	ld.bu	$a2, $sp, 568
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_84
 .LBB0_115:                              # %pred.store.if359
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 24
-	xvst	$xr0, $sp, 640
-	ld.bu	$a2, $sp, 665
+	xvst	$xr0, $sp, 512
+	ld.bu	$a2, $sp, 537
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_85
 .LBB0_116:                              # %pred.store.if361
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 25
-	xvst	$xr0, $sp, 608
-	ld.bu	$a2, $sp, 634
+	xvst	$xr0, $sp, 480
+	ld.bu	$a2, $sp, 506
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_86
 .LBB0_117:                              # %pred.store.if363
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 26
-	xvst	$xr0, $sp, 576
-	ld.bu	$a2, $sp, 603
+	xvst	$xr0, $sp, 448
+	ld.bu	$a2, $sp, 475
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_87
 .LBB0_118:                              # %pred.store.if365
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 27
-	xvst	$xr0, $sp, 544
-	ld.bu	$a2, $sp, 572
+	xvst	$xr0, $sp, 416
+	ld.bu	$a2, $sp, 444
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_88
 .LBB0_119:                              # %pred.store.if367
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 28
-	xvst	$xr0, $sp, 512
-	ld.bu	$a2, $sp, 541
+	xvst	$xr0, $sp, 384
+	ld.bu	$a2, $sp, 413
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_89
 .LBB0_120:                              # %pred.store.if369
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 29
-	xvst	$xr0, $sp, 480
-	ld.bu	$a2, $sp, 510
+	xvst	$xr0, $sp, 352
+	ld.bu	$a2, $sp, 382
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_90
 .LBB0_121:                              # %pred.store.if371
                                         #   in Loop: Header=BB0_59 Depth=2
 	st.b	$s8, $a1, 30
-	xvst	$xr0, $sp, 448
-	ld.bu	$a2, $sp, 479
+	xvst	$xr0, $sp, 320
+	ld.bu	$a2, $sp, 351
 	andi	$a2, $a2, 1
 	beqz	$a2, .LBB0_58
 .LBB0_122:                              # %pred.store.if373
@@ -922,26 +922,24 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ld.d	$a0, $a3, 0
 	vinsgr2vr.d	$vr0, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 7
-	st.h	$a0, $sp, 398
+	st.h	$a0, $sp, 302
 	vpickve2gr.b	$a0, $vr0, 6
-	st.h	$a0, $sp, 396
+	st.h	$a0, $sp, 300
 	vpickve2gr.b	$a0, $vr0, 5
-	st.h	$a0, $sp, 394
+	st.h	$a0, $sp, 298
 	vpickve2gr.b	$a0, $vr0, 4
-	st.h	$a0, $sp, 392
+	st.h	$a0, $sp, 296
 	vpickve2gr.b	$a0, $vr0, 3
-	st.h	$a0, $sp, 390
+	st.h	$a0, $sp, 294
 	vpickve2gr.b	$a0, $vr0, 2
-	st.h	$a0, $sp, 388
+	st.h	$a0, $sp, 292
 	vpickve2gr.b	$a0, $vr0, 1
-	st.h	$a0, $sp, 386
+	st.h	$a0, $sp, 290
 	vpickve2gr.b	$a0, $vr0, 0
-	st.h	$a0, $sp, 384
-	xvld	$xr0, $sp, 384
+	st.h	$a0, $sp, 288
+	xvld	$xr0, $sp, 288
 	xvld	$xr1, $sp, 128                  # 32-byte Folded Reload
 	xvand.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 416
-	vld	$vr0, $sp, 416
 	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a0, $vr0, 0
@@ -990,26 +988,24 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ld.d	$a0, $a3, 8
 	vinsgr2vr.d	$vr0, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 7
-	st.h	$a0, $sp, 334
+	st.h	$a0, $sp, 270
 	vpickve2gr.b	$a0, $vr0, 6
-	st.h	$a0, $sp, 332
+	st.h	$a0, $sp, 268
 	vpickve2gr.b	$a0, $vr0, 5
-	st.h	$a0, $sp, 330
+	st.h	$a0, $sp, 266
 	vpickve2gr.b	$a0, $vr0, 4
-	st.h	$a0, $sp, 328
+	st.h	$a0, $sp, 264
 	vpickve2gr.b	$a0, $vr0, 3
-	st.h	$a0, $sp, 326
+	st.h	$a0, $sp, 262
 	vpickve2gr.b	$a0, $vr0, 2
-	st.h	$a0, $sp, 324
+	st.h	$a0, $sp, 260
 	vpickve2gr.b	$a0, $vr0, 1
-	st.h	$a0, $sp, 322
+	st.h	$a0, $sp, 258
 	vpickve2gr.b	$a0, $vr0, 0
-	st.h	$a0, $sp, 320
-	xvld	$xr0, $sp, 320
+	st.h	$a0, $sp, 256
+	xvld	$xr0, $sp, 256
 	xvld	$xr1, $sp, 128                  # 32-byte Folded Reload
 	xvand.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 352
-	vld	$vr0, $sp, 352
 	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a0, $vr0, 0
@@ -1058,26 +1054,24 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ld.d	$a0, $a3, 16
 	vinsgr2vr.d	$vr0, $a0, 0
 	vpickve2gr.b	$a0, $vr0, 7
-	st.h	$a0, $sp, 270
+	st.h	$a0, $sp, 238
 	vpickve2gr.b	$a0, $vr0, 6
-	st.h	$a0, $sp, 268
+	st.h	$a0, $sp, 236
 	vpickve2gr.b	$a0, $vr0, 5
-	st.h	$a0, $sp, 266
+	st.h	$a0, $sp, 234
 	vpickve2gr.b	$a0, $vr0, 4
-	st.h	$a0, $sp, 264
+	st.h	$a0, $sp, 232
 	vpickve2gr.b	$a0, $vr0, 3
-	st.h	$a0, $sp, 262
+	st.h	$a0, $sp, 230
 	vpickve2gr.b	$a0, $vr0, 2
-	st.h	$a0, $sp, 260
+	st.h	$a0, $sp, 228
 	vpickve2gr.b	$a0, $vr0, 1
-	st.h	$a0, $sp, 258
+	st.h	$a0, $sp, 226
 	vpickve2gr.b	$a0, $vr0, 0
-	st.h	$a0, $sp, 256
-	xvld	$xr0, $sp, 256
+	st.h	$a0, $sp, 224
+	xvld	$xr0, $sp, 224
 	xvld	$xr1, $sp, 128                  # 32-byte Folded Reload
 	xvand.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 288
-	vld	$vr0, $sp, 288
 	vld	$vr1, $sp, 112                  # 16-byte Folded Reload
 	vxor.v	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a0, $vr0, 0
@@ -1178,10 +1172,8 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	xvld	$xr1, $a1, %pc_lo12(.LCPI0_0)
 	xvsrai.b	$xr0, $xr0, 7
 	xvand.v	$xr0, $xr0, $xr1
-	xvst	$xr0, $sp, 224
-	vld	$vr0, $sp, 240
-	vld	$vr1, $sp, 224
-	vmax.bu	$vr0, $vr1, $vr0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.bu	$vr0, $vr0, $vr1
 	vpickve2gr.b	$a1, $vr0, 0
 	andi	$a1, $a1, 48
 	vpickve2gr.b	$a2, $vr0, 1
@@ -1291,13 +1283,13 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .LBB0_163:                              # %.critedge161
                                         #   in Loop: Header=BB0_10 Depth=1
 .Ltmp19:
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZNK10COutBuffer16GetProcessedSizeEv)
 	jirl	$ra, $ra, 0
 .Ltmp20:
 # %bb.164:                              #   in Loop: Header=BB0_10 Depth=1
 	move	$s7, $a0
-	st.d	$a0, $sp, 968
+	st.d	$a0, $sp, 840
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	beqz	$a0, .LBB0_9
 # %bb.165:                              #   in Loop: Header=BB0_10 Depth=1
@@ -1306,11 +1298,11 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	lu12i.w	$a1, 64
 	bgeu	$a1, $a0, .LBB0_9
 # %bb.166:                              #   in Loop: Header=BB0_10 Depth=1
-	ld.d	$a0, $sp, 1072
-	ld.d	$a1, $sp, 1040
-	ld.d	$a2, $sp, 1056
-	ld.w	$a3, $sp, 1032
-	ld.wu	$a4, $sp, 1088
+	ld.d	$a0, $sp, 944
+	ld.d	$a1, $sp, 912
+	ld.d	$a2, $sp, 928
+	ld.w	$a3, $sp, 904
+	ld.wu	$a4, $sp, 960
 	add.d	$a5, $a0, $a1
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a1, $a0, 0
@@ -1320,10 +1312,10 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ld.d	$a4, $a1, 40
 	add.d	$a1, $a2, $a3
 	sub.d	$a1, $a5, $a1
-	st.d	$a1, $sp, 960
+	st.d	$a1, $sp, 832
 .Ltmp22:
-	addi.d	$a1, $sp, 960
-	addi.d	$a2, $sp, 968
+	addi.d	$a1, $sp, 832
+	addi.d	$a2, $sp, 840
 	jirl	$ra, $a4, 0
 .Ltmp23:
 # %bb.167:                              # %.critedge159
@@ -1337,7 +1329,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	st.d	$s5, $sp, 184                   # 8-byte Folded Spill
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	move	$s7, $a1
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 	beqz	$a0, .LBB0_10
 	b	.LBB0_263
 .LBB0_168:                              # %pred.store.if380
@@ -1746,7 +1738,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ori	$a0, $a0, 4094
 .LBB0_256:                              # %.critedge
                                         #   in Loop: Header=BB0_10 Depth=1
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -1765,7 +1757,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 29
 	lu12i.w	$s0, 2
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 	ld.d	$s3, $sp, 200                   # 8-byte Folded Reload
 	bne	$a0, $s8, .LBB0_10
 # %bb.259:                              #   in Loop: Header=BB0_10 Depth=1
@@ -1775,7 +1767,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	b	.LBB0_257
 .LBB0_260:                              # %.critedge159.thread187
 .Ltmp28:
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer5FlushEv)
 	jirl	$ra, $ra, 0
 .Ltmp29:
@@ -1783,15 +1775,15 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	move	$s7, $a0
 	b	.LBB0_263
 .LBB0_262:
-	addi.d	$s5, $sp, 1040
+	addi.d	$s5, $sp, 912
 .LBB0_263:                              # %.critedge159.thread
 .Ltmp31:
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZN10COutBuffer4FreeEv)
 	jirl	$ra, $ra, 0
 .Ltmp32:
 # %bb.264:
-	ld.d	$a0, $sp, 1000
+	ld.d	$a0, $sp, 872
 	beqz	$a0, .LBB0_266
 # %bb.265:
 	ld.d	$a1, $a0, 0
@@ -1806,7 +1798,7 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 	jirl	$ra, $ra, 0
 .Ltmp38:
 # %bb.267:
-	ld.d	$a0, $sp, 1064
+	ld.d	$a0, $sp, 936
 	beqz	$a0, .LBB0_269
 # %bb.268:
 	ld.d	$a1, $a0, 0
@@ -1816,19 +1808,19 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .Ltmp41:
 .LBB0_269:                              # %_ZN5NBitl12CBaseDecoderI9CInBufferED2Ev.exit
 	addi.w	$a0, $s7, 0
-	addi.d	$sp, $fp, -1184
-	ld.d	$s8, $sp, 1096                  # 8-byte Folded Reload
-	ld.d	$s7, $sp, 1104                  # 8-byte Folded Reload
-	ld.d	$s6, $sp, 1112                  # 8-byte Folded Reload
-	ld.d	$s5, $sp, 1120                  # 8-byte Folded Reload
-	ld.d	$s4, $sp, 1128                  # 8-byte Folded Reload
-	ld.d	$s3, $sp, 1136                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1144                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1152                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1160                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1168                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1176                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1184
+	addi.d	$sp, $fp, -1056
+	ld.d	$s8, $sp, 968                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 976                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 984                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 992                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 1000                  # 8-byte Folded Reload
+	ld.d	$s3, $sp, 1008                  # 8-byte Folded Reload
+	ld.d	$s2, $sp, 1016                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1024                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1032                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1040                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1048                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1056
 	ret
 .LBB0_270:
 .Ltmp30:
@@ -1868,10 +1860,10 @@ _ZN9NCompress7NShrink8CDecoder8CodeRealEP19ISequentialInStreamP20ISequentialOutS
 .Ltmp15:
 .LBB0_281:
 	move	$s0, $a0
-	addi.d	$a0, $sp, 976
+	addi.d	$a0, $sp, 848
 	pcaddu18i	$ra, %call36(_ZN10COutBufferD2Ev)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 1032
+	addi.d	$a0, $sp, 904
 	pcaddu18i	$ra, %call36(_ZN5NBitl12CBaseDecoderI9CInBufferED2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0

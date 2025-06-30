@@ -44,11 +44,6 @@ matches_any_team:                       # @matches_any_team
 	.word	0                               # 0x0
 .LCPI1_1:
 	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	3                               # 0x3
-.LCPI1_2:
-	.dword	0                               # 0x0
 	.dword	3                               # 0x3
 	.dword	2                               # 0x2
 	.dword	3                               # 0x3
@@ -72,103 +67,93 @@ common:                                 # @common
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a3, $zero, 1
-	pcalau12i	$a1, %pc_hi20(.LCPI1_1)
 	addi.d	$a2, $fp, 1
 	pcalau12i	$a0, %pc_hi20(common_teams)
 	addi.d	$a0, $a0, %pc_lo12(common_teams)
 	blt	$fp, $a3, .LBB1_4
 # %bb.1:                                # %.preheader94.preheader
 	vrepli.b	$vr2, 0
-	bstrpick.d	$t2, $a2, 31, 0
+	bstrpick.d	$t1, $a2, 31, 0
 	xvld	$xr1, $sp, 16
-	ld.w	$a7, $sp, 48
-	ld.w	$a6, $sp, 52
-	ld.w	$a5, $sp, 56
-	ld.w	$a4, $sp, 60
+	ld.w	$a6, $sp, 48
+	ld.w	$a5, $sp, 52
+	ld.w	$a4, $sp, 56
+	ld.w	$a1, $sp, 60
 	vld	$vr0, $sp, 80
 	xvld	$xr3, $sp, 96
-	pcalau12i	$t0, %got_pc_hi20(team_plays)
-	ld.d	$t0, $t0, %got_pc_lo12(team_plays)
-	addi.d	$t1, $a0, 4
-	addi.d	$t2, $t2, -1
-	ori	$t3, $zero, 116
+	pcalau12i	$a7, %got_pc_hi20(team_plays)
+	ld.d	$a7, $a7, %got_pc_lo12(team_plays)
+	addi.d	$t0, $a0, 4
+	addi.d	$t1, $t1, -1
+	ori	$t2, $zero, 116
 	.p2align	4, , 16
 .LBB1_2:                                # %.preheader94
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t4, $t1, 0
-	mul.d	$t4, $t4, $t3
-	add.d	$t4, $t0, $t4
-	xvld	$xr4, $t4, 4
-	ld.w	$t5, $t4, 36
-	vld	$vr5, $t4, 52
+	ld.w	$t3, $t0, 0
+	mul.d	$t3, $t3, $t2
+	add.d	$t3, $a7, $t3
+	xvld	$xr4, $t3, 4
+	ld.w	$t4, $t3, 36
+	vld	$vr5, $t3, 52
 	xvadd.w	$xr1, $xr1, $xr4
-	add.d	$a7, $a7, $t5
+	add.d	$a6, $a6, $t4
 	vadd.w	$vr2, $vr2, $vr5
-	vld	$vr4, $t4, 68
-	ld.w	$t5, $t4, 40
-	ld.w	$t6, $t4, 44
-	ld.w	$t7, $t4, 48
+	vld	$vr4, $t3, 68
+	ld.w	$t4, $t3, 40
+	ld.w	$t5, $t3, 44
+	ld.w	$t6, $t3, 48
 	vadd.w	$vr0, $vr0, $vr4
-	xvld	$xr4, $t4, 84
-	add.d	$a6, $a6, $t5
-	add.d	$a5, $a5, $t6
-	add.d	$a4, $a4, $t7
+	xvld	$xr4, $t3, 84
+	add.d	$a5, $a5, $t4
+	add.d	$a4, $a4, $t5
+	add.d	$a1, $a1, $t6
 	xvadd.w	$xr3, $xr3, $xr4
-	addi.d	$t2, $t2, -1
-	addi.d	$t1, $t1, 4
-	bnez	$t2, .LBB1_2
+	addi.d	$t1, $t1, -1
+	addi.d	$t0, $t0, 4
+	bnez	$t1, .LBB1_2
 # %bb.3:                                # %.preheader93.loopexit
+	pcalau12i	$a7, %pc_hi20(.LCPI1_0)
+	xvld	$xr5, $a7, %pc_lo12(.LCPI1_0)
+	xvinsgr2vr.w	$xr4, $a4, 0
+	xvpermi.d	$xr4, $xr4, 68
+	xvinsgr2vr.w	$xr6, $a1, 0
+	xvpermi.d	$xr6, $xr6, 68
+	xvshuf.w	$xr5, $xr6, $xr4
 	xvst	$xr1, $sp, 16
-	st.w	$a7, $sp, 48
-	st.w	$a6, $sp, 52
-	st.w	$a5, $sp, 56
-	st.w	$a4, $sp, 60
+	st.w	$a6, $sp, 48
+	st.w	$a5, $sp, 52
+	st.w	$a4, $sp, 56
+	st.w	$a1, $sp, 60
 	vstelm.w	$vr2, $sp, 64, 0
 	vstelm.w	$vr2, $sp, 68, 1
 	vstelm.w	$vr2, $sp, 72, 2
 	vst	$vr0, $sp, 80
+	ld.d	$a1, $sp, 48
+	pcalau12i	$a4, %pc_hi20(.LCPI1_1)
+	xvld	$xr4, $a4, %pc_lo12(.LCPI1_1)
 	xvst	$xr3, $sp, 96
-	ld.d	$a6, $sp, 48
-	xvinsgr2vr.w	$xr3, $a5, 0
-	pcalau12i	$a5, %pc_hi20(.LCPI1_0)
-	xvld	$xr4, $a5, %pc_lo12(.LCPI1_0)
-	xvpermi.d	$xr3, $xr3, 68
-	xvinsgr2vr.w	$xr5, $a4, 0
-	xvpermi.d	$xr5, $xr5, 68
-	xvshuf.w	$xr4, $xr5, $xr3
-	xvpermi.q	$xr2, $xr0, 2
-	xvpermi.d	$xr4, $xr4, 68
-	xvld	$xr5, $a1, %pc_lo12(.LCPI1_1)
-	pcalau12i	$a4, %pc_hi20(.LCPI1_2)
-	xvld	$xr3, $a4, %pc_lo12(.LCPI1_2)
-	xvpermi.d	$xr2, $xr2, 68
-	xvshuf.d	$xr5, $xr2, $xr4
-	xvinsgr2vr.d	$xr2, $a6, 0
-	xvshuf.d	$xr3, $xr5, $xr2
-	xvpermi.q	$xr0, $xr0, 2
+	xvpermi.q	$xr5, $xr2, 2
+	xvinsgr2vr.d	$xr2, $a1, 0
+	xvshuf.d	$xr4, $xr5, $xr2
 	b	.LBB1_5
 .LBB1_4:
 	xvrepli.b	$xr0, 0
 	xvori.b	$xr1, $xr0, 0
-	xvori.b	$xr3, $xr0, 0
+	xvori.b	$xr4, $xr0, 0
 .LBB1_5:                                # %.preheader93
 	xvreplgr2vr.w	$xr2, $fp
 	xvsle.w	$xr1, $xr2, $xr1
-	xvrepli.w	$xr4, 1
-	xvand.v	$xr1, $xr1, $xr4
+	xvrepli.w	$xr3, 1
+	xvand.v	$xr1, $xr1, $xr3
 	xvst	$xr1, $sp, 16
-	xvsle.w	$xr1, $xr2, $xr3
-	vld	$vr3, $sp, 96
-	xvand.v	$xr1, $xr1, $xr4
-	xvst	$xr1, $sp, 48
-	xvld	$xr1, $a1, %pc_lo12(.LCPI1_1)
-	xvpermi.q	$xr3, $xr0, 2
-	xvpermi.d	$xr3, $xr3, 68
-	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.d	$xr1, $xr3, $xr0
-	xvsle.w	$xr0, $xr2, $xr1
+	vld	$vr1, $sp, 96
+	xvsle.w	$xr4, $xr2, $xr4
+	xvand.v	$xr4, $xr4, $xr3
+	xvst	$xr4, $sp, 48
+	xvpermi.q	$xr0, $xr1, 2
+	xvsle.w	$xr0, $xr2, $xr0
 	vld	$vr1, $sp, 112
-	xvand.v	$xr0, $xr0, $xr4
+	xvand.v	$xr0, $xr0, $xr3
 	xvst	$xr0, $sp, 80
 	vreplgr2vr.w	$vr0, $fp
 	vsle.w	$vr0, $vr0, $vr1

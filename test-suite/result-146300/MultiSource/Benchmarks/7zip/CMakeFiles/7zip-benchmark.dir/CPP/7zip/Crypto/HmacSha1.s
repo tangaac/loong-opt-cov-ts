@@ -190,13 +190,6 @@ _ZN7NCrypto5NSha15CHmac5FinalEPhm:      # @_ZN7NCrypto5NSha15CHmac5FinalEPhm
 	.byte	29                              # 0x1d
 	.byte	30                              # 0x1e
 	.byte	31                              # 0x1f
-	.section	.rodata.cst32,"aM",@progbits,32
-	.p2align	5, 0x0
-.LCPI2_3:
-	.dword	0                               # 0x0
-	.dword	1                               # 0x1
-	.dword	2                               # 0x2
-	.dword	0                               # 0x0
 	.text
 	.globl	_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	.p2align	5
@@ -292,23 +285,20 @@ _ZN7NCrypto5NSha17CHmac326SetKeyEPKhm:  # @_ZN7NCrypto5NSha17CHmac326SetKeyEPKhm
 	vrepli.b	$vr0, 0
 .LBB2_7:                                # %.loopexit
 	ld.w	$a1, $sp, 148
+	ld.d	$a2, $sp, 152
 	xvinsgr2vr.w	$xr1, $a0, 0
 	xvpermi.d	$xr1, $xr1, 68
 	xvinsgr2vr.w	$xr2, $a1, 0
 	xvpermi.d	$xr2, $xr2, 68
-	pcalau12i	$a0, %pc_hi20(.LCPI2_3)
-	xvld	$xr3, $a0, %pc_lo12(.LCPI2_3)
 	xvpackev.w	$xr1, $xr2, $xr1
-	ld.d	$a0, $sp, 152
-	xvpermi.q	$xr0, $xr0, 2
-	xvshuf.d	$xr3, $xr1, $xr0
-	xvpickve2gr.d	$a1, $xr3, 0
-	xvinsgr2vr.d	$xr0, $a1, 0
-	xvpickve2gr.d	$a1, $xr3, 1
-	xvinsgr2vr.d	$xr0, $a1, 1
-	xvpickve2gr.d	$a1, $xr3, 2
-	xvinsgr2vr.d	$xr0, $a1, 2
-	xvinsgr2vr.d	$xr0, $a0, 3
+	xvpermi.q	$xr1, $xr0, 48
+	xvpickve2gr.d	$a0, $xr1, 0
+	xvinsgr2vr.d	$xr0, $a0, 0
+	xvpickve2gr.d	$a0, $xr1, 1
+	xvinsgr2vr.d	$xr0, $a0, 1
+	xvpickve2gr.d	$a0, $xr1, 2
+	xvinsgr2vr.d	$xr0, $a0, 2
+	xvinsgr2vr.d	$xr0, $a2, 3
 	xvld	$xr1, $sp, 160
 	xvrepli.b	$xr2, 54
 	xvxor.v	$xr0, $xr0, $xr2

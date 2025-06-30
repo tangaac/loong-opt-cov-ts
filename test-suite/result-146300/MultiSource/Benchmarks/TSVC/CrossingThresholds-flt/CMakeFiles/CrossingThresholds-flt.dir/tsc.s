@@ -11612,7 +11612,6 @@ s293:                                   # @s293
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_3 Depth 2
 	vld	$vr0, $fp, 0
-	xvpermi.q	$xr0, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 68
 	xvrepl128vei.w	$xr0, $xr0, 0
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload

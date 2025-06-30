@@ -680,7 +680,6 @@ _ZNK12btBox2dShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVecto
 	xvinsgr2vr.w	$xr1, $t0, 6
 	movfr2gr.s	$t0, $ft0
 	xvinsgr2vr.w	$xr1, $t0, 7
-	xvpermi.q	$xr2, $xr0, 2
 	xvpermi.d	$xr2, $xr2, 68
 	xvrepl128vei.w	$xr2, $xr2, 0
 	xvbitrevi.w	$xr3, $xr2, 31
@@ -711,7 +710,6 @@ _ZNK12btBox2dShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVecto
 	xvinsgr2vr.w	$xr2, $t0, 6
 	movfr2gr.s	$t0, $ft1
 	xvinsgr2vr.w	$xr2, $t0, 7
-	xvpermi.q	$xr3, $xr0, 2
 	xvpermi.d	$xr3, $xr3, 68
 	xvrepl128vei.w	$xr3, $xr3, 0
 	xvbitrevi.w	$xr4, $xr3, 31
@@ -742,7 +740,6 @@ _ZNK12btBox2dShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVecto
 	xvinsgr2vr.w	$xr3, $t0, 6
 	movfr2gr.s	$t0, $ft2
 	xvinsgr2vr.w	$xr3, $t0, 7
-	xvpermi.q	$xr4, $xr0, 2
 	xvpermi.d	$xr4, $xr4, 68
 	xvrepl128vei.w	$xr4, $xr4, 0
 	xvbitrevi.w	$xr5, $xr4, 31

@@ -144,13 +144,8 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 	add.w	$a6, $a1, $a2
 	ori	$a1, $zero, 1
 	st.w	$a6, $a0, %pc_lo12(WalkAround)
-	blt	$a2, $a1, .LBB2_9
+	blt	$a2, $a1, .LBB2_8
 # %bb.1:                                # %.lr.ph
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a0, %pc_hi20(RefreshPattern)
 	ld.d	$a0, $a0, %pc_lo12(RefreshPattern)
 	pcalau12i	$a1, %pc_hi20(NumberOfMBs)
@@ -178,17 +173,15 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 .LBB2_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvmod.w	$xr2, $xr1, $xr0
-	xvst	$xr2, $sp, 0
-	vld	$vr2, $sp, 16
-	vpickve2gr.w	$t0, $vr2, 3
-	vld	$vr3, $sp, 0
-	vpickve2gr.w	$t1, $vr2, 2
-	vpickve2gr.w	$t2, $vr2, 1
-	vpickve2gr.w	$t3, $vr2, 0
-	vpickve2gr.w	$t4, $vr3, 3
-	vpickve2gr.w	$t5, $vr3, 2
-	vpickve2gr.w	$t6, $vr3, 1
-	vpickve2gr.w	$t7, $vr3, 0
+	xvpermi.q	$xr3, $xr2, 1
+	vpickve2gr.w	$t0, $vr3, 3
+	vpickve2gr.w	$t1, $vr3, 2
+	vpickve2gr.w	$t2, $vr3, 1
+	vpickve2gr.w	$t3, $vr3, 0
+	vpickve2gr.w	$t4, $vr2, 3
+	vpickve2gr.w	$t5, $vr2, 2
+	vpickve2gr.w	$t6, $vr2, 1
+	vpickve2gr.w	$t7, $vr2, 0
 	slli.d	$t7, $t7, 2
 	slli.d	$t6, $t6, 2
 	slli.d	$t5, $t5, 2
@@ -234,12 +227,7 @@ RandomIntraNewPicture:                  # @RandomIntraNewPicture
 	addi.d	$a2, $a2, -1
 	addi.d	$a4, $a4, 4
 	bnez	$a2, .LBB2_7
-.LBB2_8:
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
-.LBB2_9:                                # %._crit_edge
+.LBB2_8:                                # %._crit_edge
 	ret
 .Lfunc_end2:
 	.size	RandomIntraNewPicture, .Lfunc_end2-RandomIntraNewPicture

@@ -12,10 +12,10 @@
 	.type	internet_checksum,@function
 internet_checksum:                      # @internet_checksum
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
 	bstrins.d	$sp, $zero, 4, 0
 	ori	$a2, $zero, 2
 	blt	$a1, $a2, .LBB0_3
@@ -48,9 +48,9 @@ internet_checksum:                      # @internet_checksum
 .LBB0_5:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a0, -8
+	ld.d	$a7, $a0, 0
 	vinsgr2vr.d	$vr3, $a6, 0
-	ld.d	$a6, $a0, 0
-	vst	$vr3, $sp, 96
+	vinsgr2vr.d	$vr4, $a7, 0
 	st.h	$zero, $sp, 30
 	st.w	$zero, $sp, 26
 	st.h	$zero, $sp, 22
@@ -59,14 +59,11 @@ internet_checksum:                      # @internet_checksum
 	st.w	$zero, $sp, 10
 	st.h	$zero, $sp, 6
 	st.w	$zero, $sp, 2
-	xvld	$xr3, $sp, 96
-	vinsgr2vr.d	$vr4, $a6, 0
 	xvstelm.h	$xr3, $sp, 24, 3
 	xvstelm.h	$xr3, $sp, 16, 2
 	xvstelm.h	$xr3, $sp, 8, 1
 	xvstelm.h	$xr3, $sp, 0, 0
 	xvld	$xr3, $sp, 0
-	vst	$vr4, $sp, 64
 	st.h	$zero, $sp, 62
 	st.w	$zero, $sp, 58
 	st.h	$zero, $sp, 54
@@ -75,7 +72,6 @@ internet_checksum:                      # @internet_checksum
 	st.w	$zero, $sp, 42
 	st.h	$zero, $sp, 38
 	st.w	$zero, $sp, 34
-	xvld	$xr4, $sp, 64
 	xvstelm.h	$xr4, $sp, 56, 3
 	xvstelm.h	$xr4, $sp, 48, 2
 	xvstelm.h	$xr4, $sp, 40, 1
@@ -137,10 +133,10 @@ internet_checksum:                      # @internet_checksum
 	bstrpick.d	$a1, $a1, 15, 8
 	slli.d	$a1, $a1, 8
 	or	$a0, $a1, $a0
-	addi.d	$sp, $fp, -160
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -96
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end0:
 	.size	internet_checksum, .Lfunc_end0-internet_checksum

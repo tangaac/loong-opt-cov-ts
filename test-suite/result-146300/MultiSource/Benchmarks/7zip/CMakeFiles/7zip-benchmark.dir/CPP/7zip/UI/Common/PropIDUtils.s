@@ -42,33 +42,32 @@ _Z18ConvertUInt32ToHexjPw:              # @_Z18ConvertUInt32ToHexjPw
 	bstrpick.d	$a2, $a0, 31, 4
 	vinsgr2vr.w	$vr0, $a0, 0
 	vreplvei.w	$vr0, $vr0, 0
-	ori	$a3, $zero, 12
-	lu32i.d	$a3, 8
-	vreplgr2vr.d	$vr1, $a3
 	ori	$a3, $zero, 20
 	lu32i.d	$a3, 16
-	vreplgr2vr.d	$vr2, $a3
-	vsrl.w	$vr2, $vr0, $vr2
-	bstrpick.d	$a3, $a0, 31, 24
+	vreplgr2vr.d	$vr1, $a3
+	ori	$a3, $zero, 12
+	lu32i.d	$a3, 8
+	vsrl.w	$vr1, $vr0, $vr1
+	st.w	$a2, $sp, 24
+	bstrpick.d	$a2, $a0, 31, 24
 	st.w	$a0, $sp, 28
 	st.w	$a0, $sp, 0
-	st.w	$a2, $sp, 24
-	st.w	$a3, $sp, 4
-	vstelm.w	$vr2, $sp, 12, 1
-	vstelm.w	$vr2, $sp, 8, 0
-	xvld	$xr2, $sp, 0
-	vsrl.w	$vr0, $vr0, $vr1
-	xvinsgr2vr.w	$xr1, $a0, 0
-	xvpermi.q	$xr0, $xr0, 2
-	xvpickve2gr.d	$a0, $xr2, 0
+	st.w	$a2, $sp, 4
+	vstelm.w	$vr1, $sp, 12, 1
+	vstelm.w	$vr1, $sp, 8, 0
+	xvld	$xr1, $sp, 0
+	vreplgr2vr.d	$vr2, $a3
+	vsrl.w	$vr0, $vr0, $vr2
+	xvinsgr2vr.w	$xr2, $a0, 0
+	xvpickve2gr.d	$a0, $xr1, 0
 	xvinsgr2vr.d	$xr3, $a0, 0
-	xvpickve2gr.d	$a0, $xr2, 1
+	xvpickve2gr.d	$a0, $xr1, 1
 	xvinsgr2vr.d	$xr3, $a0, 1
 	xvpickve2gr.d	$a0, $xr0, 0
 	xvinsgr2vr.d	$xr3, $a0, 2
-	xvpickve2gr.d	$a0, $xr2, 3
+	xvpickve2gr.d	$a0, $xr1, 3
 	xvinsgr2vr.d	$xr3, $a0, 3
-	xvsrli.w	$xr0, $xr1, 28
+	xvsrli.w	$xr0, $xr2, 28
 	xvrepli.w	$xr1, 15
 	pcalau12i	$a0, %pc_hi20(.LCPI0_0)
 	xvld	$xr2, $a0, %pc_lo12(.LCPI0_0)
@@ -442,32 +441,31 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	srli.d	$a3, $a1, 24
 	vinsgr2vr.w	$vr0, $a1, 0
 	vreplvei.w	$vr0, $vr0, 0
-	ori	$a4, $zero, 12
-	lu32i.d	$a4, 8
-	vreplgr2vr.d	$vr1, $a4
 	ori	$a4, $zero, 20
 	lu32i.d	$a4, 16
-	vreplgr2vr.d	$vr2, $a4
-	vsrl.w	$vr2, $vr0, $vr2
+	vreplgr2vr.d	$vr1, $a4
+	ori	$a4, $zero, 12
+	lu32i.d	$a4, 8
+	vsrl.w	$vr1, $vr0, $vr1
 	st.w	$a1, $sp, 60
 	st.w	$a1, $sp, 32
 	st.w	$a2, $sp, 56
 	st.w	$a3, $sp, 36
-	vstelm.w	$vr2, $sp, 44, 1
-	vstelm.w	$vr2, $sp, 40, 0
-	xvld	$xr2, $sp, 32
-	vsrl.w	$vr0, $vr0, $vr1
-	xvinsgr2vr.w	$xr1, $a1, 0
-	xvpermi.q	$xr0, $xr0, 2
-	xvpickve2gr.d	$a1, $xr2, 0
+	vstelm.w	$vr1, $sp, 44, 1
+	vstelm.w	$vr1, $sp, 40, 0
+	xvld	$xr1, $sp, 32
+	vreplgr2vr.d	$vr2, $a4
+	vsrl.w	$vr0, $vr0, $vr2
+	xvinsgr2vr.w	$xr2, $a1, 0
+	xvpickve2gr.d	$a1, $xr1, 0
 	xvinsgr2vr.d	$xr3, $a1, 0
-	xvpickve2gr.d	$a1, $xr2, 1
+	xvpickve2gr.d	$a1, $xr1, 1
 	xvinsgr2vr.d	$xr3, $a1, 1
 	xvpickve2gr.d	$a1, $xr0, 0
 	xvinsgr2vr.d	$xr3, $a1, 2
-	xvpickve2gr.d	$a1, $xr2, 3
+	xvpickve2gr.d	$a1, $xr1, 3
 	xvinsgr2vr.d	$xr3, $a1, 3
-	xvsrli.w	$xr0, $xr1, 28
+	xvsrli.w	$xr0, $xr2, 28
 	xvrepli.w	$xr1, 15
 	pcalau12i	$a1, %pc_hi20(.LCPI1_5)
 	xvld	$xr2, $a1, %pc_lo12(.LCPI1_5)

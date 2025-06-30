@@ -4506,258 +4506,253 @@ GCC_except_table7:
 _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	.cfi_def_cfa_offset 384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
-	addi.d	$fp, $sp, 384
-	.cfi_def_cfa 22, 0
-	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a2, %pc_hi20(_ZL11s_loop_data)
-	ld.d	$s2, $a2, %pc_lo12(_ZL11s_loop_data)
-	move	$s1, $a1
-	move	$s0, $a0
+	ld.d	$s1, $a2, %pc_lo12(_ZL11s_loop_data)
+	move	$s0, $a1
+	move	$fp, $a0
 	pcaddu18i	$ra, %call36(_Z10flushCachev)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 32
-	st.b	$a0, $s1, 0
-	bltu	$a1, $s0, .LBB8_97
+	st.b	$a0, $s0, 0
+	bltu	$a1, $fp, .LBB8_97
 # %bb.1:
-	slli.d	$a0, $s0, 2
+	slli.d	$a0, $fp, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI8_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI8_0)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB8_2:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_105
 # %bb.3:                                # %.lr.ph.preheader.i182
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_100
 # %bb.4:
 	move	$a2, $zero
 	b	.LBB8_103
 .LBB8_5:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_150
 # %bb.6:                                # %.lr.ph.preheader.i230
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_145
 # %bb.7:
 	move	$a2, $zero
 	b	.LBB8_148
 .LBB8_8:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_277
 # %bb.9:                                # %.lr.ph.preheader.i1116
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_272
 # %bb.10:
 	move	$a2, $zero
 	b	.LBB8_275
 .LBB8_11:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_306
 # %bb.12:                               # %.lr.ph.preheader.i690
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_301
 # %bb.13:
 	move	$a2, $zero
 	b	.LBB8_304
 .LBB8_14:
-	ld.w	$a3, $s2, 864
+	ld.w	$a3, $s1, 864
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_319
 # %bb.15:                               # %.lr.ph.preheader.i658
-	ld.bu	$a2, $s2, 848
+	ld.bu	$a2, $s1, 848
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 856
+	ld.d	$a4, $s1, 856
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_314
 # %bb.16:
 	move	$a2, $zero
 	b	.LBB8_317
 .LBB8_17:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_332
 # %bb.18:                               # %.lr.ph.preheader.i577
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_327
 # %bb.19:
 	move	$a2, $zero
 	b	.LBB8_330
 .LBB8_20:
-	ld.w	$a1, $s2, 912
-	ori	$s0, $zero, 1
-	blt	$a1, $s0, .LBB8_22
+	ld.w	$a1, $s1, 912
+	ori	$fp, $zero, 1
+	blt	$a1, $fp, .LBB8_22
 # %bb.21:                               # %.lr.ph.preheader.i616
-	ld.d	$a0, $s2, 904
+	ld.d	$a0, $s1, 904
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB8_22:                               # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit
-	ld.w	$a1, $s2, 1608
-	blt	$a1, $s0, .LBB8_1187
+	ld.w	$a1, $s1, 1608
+	blt	$a1, $fp, .LBB8_1187
 # %bb.23:                               # %.lr.ph.preheader.i618
-	ld.bu	$a0, $s2, 1592
+	ld.bu	$a0, $s1, 1592
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI8_0)
 	addi.d	$a2, $a2, %pc_lo12(.LCPI8_0)
 	fldx.d	$fa0, $a2, $a0
-	ld.d	$a2, $s2, 1600
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_364
 # %bb.24:
 	move	$a0, $zero
 	b	.LBB8_367
 .LBB8_25:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_374
 # %bb.26:                               # %.lr.ph.preheader.i
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_369
 # %bb.27:
 	move	$a2, $zero
 	b	.LBB8_372
 .LBB8_28:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_395
 # %bb.29:                               # %.lr.ph.preheader.i497
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_390
 # %bb.30:
 	move	$a2, $zero
 	b	.LBB8_393
 .LBB8_31:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_432
 # %bb.32:                               # %.lr.ph.preheader.i942
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_427
 # %bb.33:
 	move	$a2, $zero
 	b	.LBB8_430
 .LBB8_34:
-	ld.w	$a2, $s2, 1152
+	ld.w	$a2, $s1, 1152
 	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
 	ori	$a0, $zero, 1
-	addi.d	$s0, $a1, %pc_lo12(.LCPI8_0)
+	addi.d	$fp, $a1, %pc_lo12(.LCPI8_0)
 	blt	$a2, $a0, .LBB8_515
 # %bb.35:                               # %.lr.ph.preheader.i890
-	ld.bu	$a1, $s2, 1136
+	ld.bu	$a1, $s1, 1136
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $s0, $a1
-	ld.d	$a3, $s2, 1144
+	fldx.d	$fa0, $fp, $a1
+	ld.d	$a3, $s1, 1144
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_510
 # %bb.36:
 	move	$a1, $zero
 	b	.LBB8_513
 .LBB8_37:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_564
 # %bb.38:                               # %.lr.ph.preheader.i674
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_559
 # %bb.39:
@@ -4765,344 +4760,344 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	b	.LBB8_562
 .LBB8_40:
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
-	ld.w	$a4, $s2, 1032
+	ld.w	$a4, $s1, 1032
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI8_4)
 	ori	$a2, $zero, 1
 	addi.d	$a1, $a1, %pc_lo12(.LCPI8_4)
 	blt	$a4, $a2, .LBB8_577
 # %bb.41:                               # %.lr.ph.preheader.i430
-	ld.bu	$a3, $s2, 1016
+	ld.bu	$a3, $s1, 1016
 	andi	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 3
 	fldx.d	$fa0, $a0, $a3
 	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s2, 1024
+	ld.d	$a5, $s1, 1024
 	ori	$a3, $zero, 4
 	bgeu	$a4, $a3, .LBB8_572
 # %bb.42:
 	move	$a3, $zero
 	b	.LBB8_575
 .LBB8_43:
-	ld.w	$a3, $s2, 1248
+	ld.w	$a3, $s1, 1248
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_614
 # %bb.44:                               # %.lr.ph.preheader.i1292
-	ld.bu	$a2, $s2, 1232
+	ld.bu	$a2, $s1, 1232
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1240
+	ld.d	$a4, $s1, 1240
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_609
 # %bb.45:
 	move	$a2, $zero
 	b	.LBB8_612
 .LBB8_46:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_659
 # %bb.47:                               # %.lr.ph.preheader.i706
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_654
 # %bb.48:
 	move	$a2, $zero
 	b	.LBB8_657
 .LBB8_49:
-	ld.w	$a3, $s2, 1152
+	ld.w	$a3, $s1, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_680
 # %bb.50:                               # %.lr.ph.preheader.i826
-	ld.bu	$a2, $s2, 1136
+	ld.bu	$a2, $s1, 1136
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1144
+	ld.d	$a4, $s1, 1144
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_675
 # %bb.51:
 	move	$a2, $zero
 	b	.LBB8_678
 .LBB8_52:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_693
 # %bb.53:                               # %.lr.ph.preheader.i358
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_688
 # %bb.54:
 	move	$a2, $zero
 	b	.LBB8_691
 .LBB8_55:
-	ld.w	$a3, $s2, 1152
+	ld.w	$a3, $s1, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_722
 # %bb.56:                               # %.lr.ph.preheader.i842
-	ld.bu	$a2, $s2, 1136
+	ld.bu	$a2, $s1, 1136
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1144
+	ld.d	$a4, $s1, 1144
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_717
 # %bb.57:
 	move	$a2, $zero
 	b	.LBB8_720
 .LBB8_58:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_735
 # %bb.59:                               # %.lr.ph.preheader.i626
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_730
 # %bb.60:
 	move	$a2, $zero
 	b	.LBB8_733
 .LBB8_61:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_764
 # %bb.62:                               # %.lr.ph.preheader.i390
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_759
 # %bb.63:
 	move	$a2, $zero
 	b	.LBB8_762
 .LBB8_64:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_801
 # %bb.65:                               # %.lr.ph.preheader.i730
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_796
 # %bb.66:
 	move	$a2, $zero
 	b	.LBB8_799
 .LBB8_67:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_838
 # %bb.68:                               # %.lr.ph.preheader.i537
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_833
 # %bb.69:
 	move	$a2, $zero
 	b	.LBB8_836
 .LBB8_70:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_875
 # %bb.71:                               # %.lr.ph.preheader.i481
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_870
 # %bb.72:
 	move	$a2, $zero
 	b	.LBB8_873
 .LBB8_73:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_888
 # %bb.74:                               # %.lr.ph.preheader.i1252
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_883
 # %bb.75:
 	move	$a2, $zero
 	b	.LBB8_886
 .LBB8_76:
-	ld.w	$a1, $s2, 480
+	ld.w	$a1, $s1, 480
 	ori	$a0, $zero, 1
 	blt	$a1, $a0, .LBB8_1187
 # %bb.77:                               # %.lr.ph.preheader.i1340
-	ld.bu	$a0, $s2, 464
+	ld.bu	$a0, $s1, 464
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI8_0)
 	addi.d	$a2, $a2, %pc_lo12(.LCPI8_0)
 	fldx.d	$fa0, $a2, $a0
-	ld.d	$a2, $s2, 472
+	ld.d	$a2, $s1, 472
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_920
 # %bb.78:
 	move	$a0, $zero
 	b	.LBB8_923
 .LBB8_79:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_930
 # %bb.80:                               # %.lr.ph.preheader.i858
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_925
 # %bb.81:
 	move	$a2, $zero
 	b	.LBB8_928
 .LBB8_82:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_943
 # %bb.83:                               # %.lr.ph.preheader.i770
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_938
 # %bb.84:
 	move	$a2, $zero
 	b	.LBB8_941
 .LBB8_85:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_996
 # %bb.86:                               # %.lr.ph.preheader.i874
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_991
 # %bb.87:
 	move	$a2, $zero
 	b	.LBB8_994
 .LBB8_88:
-	ld.w	$a3, $s2, 480
+	ld.w	$a3, $s1, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_1009
 # %bb.89:                               # %.lr.ph.preheader.i1148
-	ld.bu	$a2, $s2, 464
+	ld.bu	$a2, $s1, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 472
+	ld.d	$a4, $s1, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1004
 # %bb.90:
 	move	$a2, $zero
 	b	.LBB8_1007
 .LBB8_91:
-	ld.w	$a3, $s2, 1152
+	ld.w	$a3, $s1, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_1086
 # %bb.92:                               # %.lr.ph.preheader.i1228
-	ld.bu	$a2, $s2, 1136
+	ld.bu	$a2, $s1, 1136
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1144
+	ld.d	$a4, $s1, 1144
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1081
 # %bb.93:
 	move	$a2, $zero
 	b	.LBB8_1084
 .LBB8_94:
-	ld.w	$a3, $s2, 1248
+	ld.w	$a3, $s1, 1248
 	pcalau12i	$a0, %pc_hi20(.LCPI8_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI8_0)
 	blt	$a3, $a1, .LBB8_1107
 # %bb.95:                               # %.lr.ph.preheader.i1028
-	ld.bu	$a2, $s2, 1232
+	ld.bu	$a2, $s1, 1232
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1240
+	ld.d	$a4, $s1, 1240
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1102
 # %bb.96:
@@ -5110,27 +5105,27 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	b	.LBB8_1105
 .LBB8_97:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
-	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cout)
+	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cout)
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.36)
 	ori	$a2, $zero, 20
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $s0, 31, 0
-	move	$a0, $s1
+	bstrpick.d	$a1, $fp, 31, 0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, -24
 	add.d	$a1, $a0, $a1
-	ld.d	$s0, $a1, 240
-	beqz	$s0, .LBB8_1188
+	ld.d	$fp, $a1, 240
+	beqz	$fp, .LBB8_1188
 # %bb.98:                               # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i
-	ld.bu	$a1, $s0, 56
+	ld.bu	$a1, $fp, 56
 	beqz	$a1, .LBB8_270
 # %bb.99:
-	ld.bu	$a1, $s0, 67
+	ld.bu	$a1, $fp, 67
 	b	.LBB8_271
 .LBB8_100:                              # %vector.ph3515
 	bstrpick.d	$a2, $a3, 30, 2
@@ -5189,15 +5184,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_104
 .LBB8_105:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit188
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_113
 # %bb.106:                              # %.lr.ph.preheader.i190
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_108
 # %bb.107:
@@ -5260,16 +5255,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_112
 .LBB8_113:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit196
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_121
 # %bb.114:                              # %.lr.ph.preheader.i198
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_116
 # %bb.115:
@@ -5332,15 +5327,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_120
 .LBB8_121:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit204
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_129
 # %bb.122:                              # %.lr.ph.preheader.i206
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_124
 # %bb.123:
@@ -5403,16 +5398,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_128
 .LBB8_129:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit212
-	ld.w	$a3, $s2, 576
+	ld.w	$a3, $s1, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_137
 # %bb.130:                              # %.lr.ph.preheader.i214
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 568
+	ld.d	$a4, $s1, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_132
 # %bb.131:
@@ -5475,15 +5470,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_136
 .LBB8_137:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit220
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_1187
 # %bb.138:                              # %.lr.ph.preheader.i222
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_140
 # %bb.139:
@@ -5603,15 +5598,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_149
 .LBB8_150:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit236
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_158
 # %bb.151:                              # %.lr.ph.preheader.i238
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_153
 # %bb.152:
@@ -5674,16 +5669,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_157
 .LBB8_158:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit244
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_166
 # %bb.159:                              # %.lr.ph.preheader.i246
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_161
 # %bb.160:
@@ -5746,15 +5741,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_165
 .LBB8_166:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit252
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_174
 # %bb.167:                              # %.lr.ph.preheader.i254
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_169
 # %bb.168:
@@ -5817,16 +5812,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_173
 .LBB8_174:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit260
-	ld.w	$a3, $s2, 576
+	ld.w	$a3, $s1, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_182
 # %bb.175:                              # %.lr.ph.preheader.i262
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 568
+	ld.d	$a4, $s1, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_177
 # %bb.176:
@@ -5889,15 +5884,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_181
 .LBB8_182:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit268
-	ld.w	$a2, $s2, 600
+	ld.w	$a2, $s1, 600
 	blt	$a2, $a1, .LBB8_190
 # %bb.183:                              # %.lr.ph.preheader.i270
-	ld.bu	$a1, $s2, 584
+	ld.bu	$a1, $s1, 584
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 592
+	ld.d	$a3, $s1, 592
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_185
 # %bb.184:
@@ -5960,16 +5955,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_189
 .LBB8_190:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit276
-	ld.w	$a3, $s2, 624
+	ld.w	$a3, $s1, 624
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_198
 # %bb.191:                              # %.lr.ph.preheader.i278
-	ld.bu	$a2, $s2, 608
+	ld.bu	$a2, $s1, 608
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 616
+	ld.d	$a4, $s1, 616
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_193
 # %bb.192:
@@ -6032,15 +6027,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_197
 .LBB8_198:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit284
-	ld.w	$a2, $s2, 648
+	ld.w	$a2, $s1, 648
 	blt	$a2, $a1, .LBB8_206
 # %bb.199:                              # %.lr.ph.preheader.i286
-	ld.bu	$a1, $s2, 632
+	ld.bu	$a1, $s1, 632
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 640
+	ld.d	$a3, $s1, 640
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_201
 # %bb.200:
@@ -6103,16 +6098,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_205
 .LBB8_206:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit292
-	ld.w	$a3, $s2, 672
+	ld.w	$a3, $s1, 672
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_214
 # %bb.207:                              # %.lr.ph.preheader.i294
-	ld.bu	$a2, $s2, 656
+	ld.bu	$a2, $s1, 656
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 664
+	ld.d	$a4, $s1, 664
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_209
 # %bb.208:
@@ -6175,15 +6170,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_213
 .LBB8_214:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit300
-	ld.w	$a2, $s2, 696
+	ld.w	$a2, $s1, 696
 	blt	$a2, $a1, .LBB8_222
 # %bb.215:                              # %.lr.ph.preheader.i302
-	ld.bu	$a1, $s2, 680
+	ld.bu	$a1, $s1, 680
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 688
+	ld.d	$a3, $s1, 688
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_217
 # %bb.216:
@@ -6246,16 +6241,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_221
 .LBB8_222:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit308
-	ld.w	$a3, $s2, 720
+	ld.w	$a3, $s1, 720
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_230
 # %bb.223:                              # %.lr.ph.preheader.i310
-	ld.bu	$a2, $s2, 704
+	ld.bu	$a2, $s1, 704
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 712
+	ld.d	$a4, $s1, 712
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_225
 # %bb.224:
@@ -6318,15 +6313,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_229
 .LBB8_230:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit316
-	ld.w	$a2, $s2, 744
+	ld.w	$a2, $s1, 744
 	blt	$a2, $a1, .LBB8_238
 # %bb.231:                              # %.lr.ph.preheader.i318
-	ld.bu	$a1, $s2, 728
+	ld.bu	$a1, $s1, 728
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 736
+	ld.d	$a3, $s1, 736
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_233
 # %bb.232:
@@ -6389,16 +6384,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_237
 .LBB8_238:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit324
-	ld.w	$a3, $s2, 768
+	ld.w	$a3, $s1, 768
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_246
 # %bb.239:                              # %.lr.ph.preheader.i326
-	ld.bu	$a2, $s2, 752
+	ld.bu	$a2, $s1, 752
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 760
+	ld.d	$a4, $s1, 760
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_241
 # %bb.240:
@@ -6461,15 +6456,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_245
 .LBB8_246:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit332
-	ld.w	$a2, $s2, 792
+	ld.w	$a2, $s1, 792
 	blt	$a2, $a1, .LBB8_254
 # %bb.247:                              # %.lr.ph.preheader.i334
-	ld.bu	$a1, $s2, 776
+	ld.bu	$a1, $s1, 776
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 784
+	ld.d	$a3, $s1, 784
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_249
 # %bb.248:
@@ -6532,16 +6527,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_253
 .LBB8_254:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit340
-	ld.w	$a3, $s2, 816
+	ld.w	$a3, $s1, 816
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_262
 # %bb.255:                              # %.lr.ph.preheader.i342
-	ld.bu	$a2, $s2, 800
+	ld.bu	$a2, $s1, 800
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 808
+	ld.d	$a4, $s1, 808
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_257
 # %bb.256:
@@ -6604,15 +6599,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_261
 .LBB8_262:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit348
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_1187
 # %bb.263:                              # %.lr.ph.preheader.i350
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_265
 # %bb.264:
@@ -6676,28 +6671,26 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	bnez	$a2, .LBB8_269
 	b	.LBB8_1187
 .LBB8_270:
-	move	$s1, $a0
-	move	$a0, $s0
+	move	$s0, $a0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 48
 	ori	$a1, $zero, 10
-	move	$a0, $s0
+	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$a1, $a0
-	move	$a0, $s1
+	move	$a0, $s0
 .LBB8_271:                              # %_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_.exit
 	ext.w.b	$a1, $a1
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
-	addi.d	$sp, $fp, -384
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(_ZNSo5flushEv)
 	jr	$t8
 .LBB8_272:                              # %vector.ph1825
@@ -6757,15 +6750,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_276
 .LBB8_277:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1122
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_285
 # %bb.278:                              # %.lr.ph.preheader.i1124
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_280
 # %bb.279:
@@ -6828,16 +6821,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_284
 .LBB8_285:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1130
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_293
 # %bb.286:                              # %.lr.ph.preheader.i1132
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_288
 # %bb.287:
@@ -6900,15 +6893,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_292
 .LBB8_293:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1138
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_1187
 # %bb.294:                              # %.lr.ph.preheader.i1140
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_296
 # %bb.295:
@@ -7028,15 +7021,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_305
 .LBB8_306:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit696
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_1187
 # %bb.307:                              # %.lr.ph.preheader.i698
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 496
+	ld.d	$a1, $s1, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_309
 # %bb.308:
@@ -7156,15 +7149,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_318
 .LBB8_319:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit664
-	ld.w	$a2, $s2, 888
+	ld.w	$a2, $s1, 888
 	blt	$a2, $a1, .LBB8_1187
 # %bb.320:                              # %.lr.ph.preheader.i666
-	ld.bu	$a1, $s2, 872
+	ld.bu	$a1, $s1, 872
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 880
+	ld.d	$a1, $s1, 880
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_322
 # %bb.321:
@@ -7284,15 +7277,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_331
 .LBB8_332:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit583
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_340
 # %bb.333:                              # %.lr.ph.preheader.i585
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_335
 # %bb.334:
@@ -7355,16 +7348,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_339
 .LBB8_340:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit591
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_348
 # %bb.341:                              # %.lr.ph.preheader.i593
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_343
 # %bb.342:
@@ -7427,15 +7420,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_347
 .LBB8_348:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit599
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_356
 # %bb.349:                              # %.lr.ph.preheader.i601
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_351
 # %bb.350:
@@ -7498,16 +7491,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_355
 .LBB8_356:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit607
-	ld.w	$a1, $s2, 576
+	ld.w	$a1, $s1, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.357:                              # %.lr.ph.preheader.i609
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 568
+	ld.d	$a2, $s1, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_359
 # %bb.358:
@@ -7684,15 +7677,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_373
 .LBB8_374:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_382
 # %bb.375:                              # %.lr.ph.preheader.i166
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_377
 # %bb.376:
@@ -7755,16 +7748,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_381
 .LBB8_382:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit172
-	ld.w	$a1, $s2, 528
+	ld.w	$a1, $s1, 528
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.383:                              # %.lr.ph.preheader.i174
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 520
+	ld.d	$a2, $s1, 520
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_385
 # %bb.384:
@@ -7884,15 +7877,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_394
 .LBB8_395:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit503
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_403
 # %bb.396:                              # %.lr.ph.preheader.i505
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_398
 # %bb.397:
@@ -7955,16 +7948,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_402
 .LBB8_403:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit511
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_411
 # %bb.404:                              # %.lr.ph.preheader.i513
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_406
 # %bb.405:
@@ -8027,15 +8020,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_410
 .LBB8_411:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit519
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_419
 # %bb.412:                              # %.lr.ph.preheader.i521
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_414
 # %bb.413:
@@ -8098,16 +8091,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_418
 .LBB8_419:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit527
-	ld.w	$a1, $s2, 576
+	ld.w	$a1, $s1, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.420:                              # %.lr.ph.preheader.i529
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 568
+	ld.d	$a2, $s1, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_422
 # %bb.421:
@@ -8227,15 +8220,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_431
 .LBB8_432:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit948
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_440
 # %bb.433:                              # %.lr.ph.preheader.i950
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_435
 # %bb.434:
@@ -8298,16 +8291,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_439
 .LBB8_440:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit956
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_448
 # %bb.441:                              # %.lr.ph.preheader.i958
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_443
 # %bb.442:
@@ -8370,15 +8363,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_447
 .LBB8_448:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit964
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_456
 # %bb.449:                              # %.lr.ph.preheader.i966
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_451
 # %bb.450:
@@ -8441,16 +8434,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_455
 .LBB8_456:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit972
-	ld.w	$a3, $s2, 576
+	ld.w	$a3, $s1, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_464
 # %bb.457:                              # %.lr.ph.preheader.i974
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 568
+	ld.d	$a4, $s1, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_459
 # %bb.458:
@@ -8513,15 +8506,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_463
 .LBB8_464:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit980
-	ld.w	$a2, $s2, 600
+	ld.w	$a2, $s1, 600
 	blt	$a2, $a1, .LBB8_472
 # %bb.465:                              # %.lr.ph.preheader.i982
-	ld.bu	$a1, $s2, 584
+	ld.bu	$a1, $s1, 584
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 592
+	ld.d	$a3, $s1, 592
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_467
 # %bb.466:
@@ -8584,16 +8577,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_471
 .LBB8_472:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit988
-	ld.w	$a3, $s2, 624
+	ld.w	$a3, $s1, 624
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_480
 # %bb.473:                              # %.lr.ph.preheader.i990
-	ld.bu	$a2, $s2, 608
+	ld.bu	$a2, $s1, 608
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 616
+	ld.d	$a4, $s1, 616
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_475
 # %bb.474:
@@ -8656,15 +8649,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_479
 .LBB8_480:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit996
-	ld.w	$a2, $s2, 648
+	ld.w	$a2, $s1, 648
 	blt	$a2, $a1, .LBB8_488
 # %bb.481:                              # %.lr.ph.preheader.i998
-	ld.bu	$a1, $s2, 632
+	ld.bu	$a1, $s1, 632
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 640
+	ld.d	$a3, $s1, 640
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_483
 # %bb.482:
@@ -8727,16 +8720,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_487
 .LBB8_488:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1004
-	ld.w	$a3, $s2, 672
+	ld.w	$a3, $s1, 672
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_496
 # %bb.489:                              # %.lr.ph.preheader.i1006
-	ld.bu	$a2, $s2, 656
+	ld.bu	$a2, $s1, 656
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 664
+	ld.d	$a4, $s1, 664
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_491
 # %bb.490:
@@ -8799,15 +8792,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_495
 .LBB8_496:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1012
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_504
 # %bb.497:                              # %.lr.ph.preheader.i1014
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_499
 # %bb.498:
@@ -8870,39 +8863,37 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB8_503
 .LBB8_504:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1020
-	ld.w	$a1, $s2, 960
-	ori	$s0, $zero, 1
-	blt	$a1, $s0, .LBB8_506
+	ld.w	$a1, $s1, 960
+	ori	$fp, $zero, 1
+	blt	$a1, $fp, .LBB8_506
 # %bb.505:                              # %.lr.ph.preheader.i1021
-	ld.d	$a0, $s2, 952
+	ld.d	$a0, $s1, 952
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB8_506:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1022
-	ld.w	$a1, $s2, 984
-	blt	$a1, $s0, .LBB8_508
+	ld.w	$a1, $s1, 984
+	blt	$a1, $fp, .LBB8_508
 # %bb.507:                              # %.lr.ph.preheader.i1023
-	ld.d	$a0, $s2, 976
+	ld.d	$a0, $s1, 976
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB8_508:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1024
-	ld.w	$a1, $s2, 1008
+	ld.w	$a1, $s1, 1008
 	ori	$a0, $zero, 1
 	blt	$a1, $a0, .LBB8_1187
 # %bb.509:                              # %.lr.ph.preheader.i1025
-	ld.d	$a0, $s2, 1000
+	ld.d	$a0, $s1, 1000
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
-	addi.d	$sp, $fp, -384
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB8_510:                              # %vector.ph2200
@@ -8962,15 +8953,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_514
 .LBB8_515:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit896
-	ld.w	$a1, $s2, 1176
+	ld.w	$a1, $s1, 1176
 	blt	$a1, $a0, .LBB8_523
 # %bb.516:                              # %.lr.ph.preheader.i898
-	ld.bu	$a0, $s2, 1160
+	ld.bu	$a0, $s1, 1160
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa0, $s0, $a0
-	ld.d	$a2, $s2, 1168
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s1, 1168
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_518
 # %bb.517:
@@ -9033,16 +9024,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB8_522
 .LBB8_523:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit904
-	ld.w	$a2, $s2, 1200
+	ld.w	$a2, $s1, 1200
 	ori	$a0, $zero, 1
 	blt	$a2, $a0, .LBB8_531
 # %bb.524:                              # %.lr.ph.preheader.i906
-	ld.bu	$a1, $s2, 1184
+	ld.bu	$a1, $s1, 1184
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $s0, $a1
-	ld.d	$a3, $s2, 1192
+	fldx.d	$fa0, $fp, $a1
+	ld.d	$a3, $s1, 1192
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_526
 # %bb.525:
@@ -9105,15 +9096,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_530
 .LBB8_531:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit912
-	ld.w	$a1, $s2, 480
+	ld.w	$a1, $s1, 480
 	blt	$a1, $a0, .LBB8_539
 # %bb.532:                              # %.lr.ph.preheader.i914
-	ld.bu	$a0, $s2, 464
+	ld.bu	$a0, $s1, 464
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa0, $s0, $a0
-	ld.d	$a2, $s2, 472
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s1, 472
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_534
 # %bb.533:
@@ -9176,16 +9167,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB8_538
 .LBB8_539:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit920
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	ori	$a0, $zero, 1
 	blt	$a2, $a0, .LBB8_547
 # %bb.540:                              # %.lr.ph.preheader.i922
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $s0, $a1
-	ld.d	$a3, $s2, 496
+	fldx.d	$fa0, $fp, $a1
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_542
 # %bb.541:
@@ -9248,34 +9239,34 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_546
 .LBB8_547:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit928
-	ld.w	$a1, $s2, 912
+	ld.w	$a1, $s1, 912
 	blt	$a1, $a0, .LBB8_549
 # %bb.548:                              # %.lr.ph.preheader.i929
-	ld.d	$a0, $s2, 904
+	ld.d	$a0, $s1, 904
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB8_549:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit930
-	ld.w	$a1, $s2, 936
-	ori	$s1, $zero, 1
-	blt	$a1, $s1, .LBB8_551
+	ld.w	$a1, $s1, 936
+	ori	$s0, $zero, 1
+	blt	$a1, $s0, .LBB8_551
 # %bb.550:                              # %.lr.ph.preheader.i931
-	ld.d	$a0, $s2, 928
+	ld.d	$a0, $s1, 928
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB8_551:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit932
-	ld.w	$a1, $s2, 1512
-	blt	$a1, $s1, .LBB8_1187
+	ld.w	$a1, $s1, 1512
+	blt	$a1, $s0, .LBB8_1187
 # %bb.552:                              # %.lr.ph.preheader.i934
-	ld.bu	$a0, $s2, 1496
+	ld.bu	$a0, $s1, 1496
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa0, $s0, $a0
-	ld.d	$a2, $s2, 1504
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s1, 1504
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_554
 # %bb.553:
@@ -9395,15 +9386,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_563
 .LBB8_564:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit680
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_1187
 # %bb.565:                              # %.lr.ph.preheader.i682
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 496
+	ld.d	$a1, $s1, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_567
 # %bb.566:
@@ -9512,11 +9503,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a6, 0
-	xvst	$xr10, $sp, 288
-	xvst	$xr8, $sp, 256
-	vld	$vr8, $sp, 288
-	vld	$vr9, $sp, 256
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a6, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a7, $a7, -4
@@ -9551,16 +9538,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a3, $a3, 1
 	bnez	$a4, .LBB8_576
 .LBB8_577:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit
-	ld.w	$a3, $s2, 1056
+	ld.w	$a3, $s1, 1056
 	blt	$a3, $a2, .LBB8_585
 # %bb.578:                              # %.lr.ph.preheader.i439
-	ld.bu	$a2, $s2, 1040
+	ld.bu	$a2, $s1, 1040
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
 	fldx.d	$fa1, $a1, $a2
-	ld.d	$a4, $s2, 1048
+	ld.d	$a4, $s1, 1048
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_580
 # %bb.579:
@@ -9612,11 +9599,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a5, 0
-	xvst	$xr10, $sp, 224
-	xvst	$xr8, $sp, 192
-	vld	$vr8, $sp, 224
-	vld	$vr9, $sp, 192
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a5, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a6, $a6, -4
@@ -9651,17 +9634,17 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_584
 .LBB8_585:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit446
-	ld.w	$a4, $s2, 1080
+	ld.w	$a4, $s1, 1080
 	ori	$a2, $zero, 1
 	blt	$a4, $a2, .LBB8_593
 # %bb.586:                              # %.lr.ph.preheader.i450
-	ld.bu	$a3, $s2, 1064
+	ld.bu	$a3, $s1, 1064
 	andi	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 3
 	fldx.d	$fa0, $a0, $a3
 	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s2, 1072
+	ld.d	$a5, $s1, 1072
 	ori	$a3, $zero, 4
 	bgeu	$a4, $a3, .LBB8_588
 # %bb.587:
@@ -9713,11 +9696,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a6, 0
-	xvst	$xr10, $sp, 160
-	xvst	$xr8, $sp, 128
-	vld	$vr8, $sp, 160
-	vld	$vr9, $sp, 128
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a6, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a7, $a7, -4
@@ -9752,16 +9731,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a3, $a3, 1
 	bnez	$a4, .LBB8_592
 .LBB8_593:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit457
-	ld.w	$a3, $s2, 1104
+	ld.w	$a3, $s1, 1104
 	blt	$a3, $a2, .LBB8_601
 # %bb.594:                              # %.lr.ph.preheader.i461
-	ld.bu	$a2, $s2, 1088
+	ld.bu	$a2, $s1, 1088
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
 	fldx.d	$fa1, $a1, $a2
-	ld.d	$a4, $s2, 1096
+	ld.d	$a4, $s1, 1096
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_596
 # %bb.595:
@@ -9813,11 +9792,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a5, 0
-	xvst	$xr10, $sp, 96
-	xvst	$xr8, $sp, 64
-	vld	$vr8, $sp, 96
-	vld	$vr9, $sp, 64
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a5, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a6, $a6, -4
@@ -9852,17 +9827,17 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_600
 .LBB8_601:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit468
-	ld.w	$a2, $s2, 1128
+	ld.w	$a2, $s1, 1128
 	ori	$a3, $zero, 1
 	blt	$a2, $a3, .LBB8_1187
 # %bb.602:                              # %.lr.ph.preheader.i472
-	ld.bu	$a3, $s2, 1112
+	ld.bu	$a3, $s1, 1112
 	andi	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 3
 	fldx.d	$fa0, $a0, $a3
 	fldx.d	$fa1, $a1, $a3
-	ld.d	$a1, $s2, 1120
+	ld.d	$a1, $s1, 1120
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_604
 # %bb.603:
@@ -9914,11 +9889,7 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a3, 0
-	xvst	$xr10, $sp, 32
-	xvst	$xr8, $sp, 0
-	vld	$vr8, $sp, 32
-	vld	$vr9, $sp, 0
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a3, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a4, $a4, -4
@@ -10010,15 +9981,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_613
 .LBB8_614:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1298
-	ld.w	$a2, $s2, 1272
+	ld.w	$a2, $s1, 1272
 	blt	$a2, $a1, .LBB8_622
 # %bb.615:                              # %.lr.ph.preheader.i1300
-	ld.bu	$a1, $s2, 1256
+	ld.bu	$a1, $s1, 1256
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1264
+	ld.d	$a3, $s1, 1264
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_617
 # %bb.616:
@@ -10081,16 +10052,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_621
 .LBB8_622:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1306
-	ld.w	$a3, $s2, 1296
+	ld.w	$a3, $s1, 1296
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_630
 # %bb.623:                              # %.lr.ph.preheader.i1308
-	ld.bu	$a2, $s2, 1280
+	ld.bu	$a2, $s1, 1280
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1288
+	ld.d	$a4, $s1, 1288
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_625
 # %bb.624:
@@ -10153,15 +10124,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_629
 .LBB8_630:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1314
-	ld.w	$a2, $s2, 1320
+	ld.w	$a2, $s1, 1320
 	blt	$a2, $a1, .LBB8_638
 # %bb.631:                              # %.lr.ph.preheader.i1316
-	ld.bu	$a1, $s2, 1304
+	ld.bu	$a1, $s1, 1304
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1312
+	ld.d	$a3, $s1, 1312
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_633
 # %bb.632:
@@ -10224,16 +10195,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_637
 .LBB8_638:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1322
-	ld.w	$a3, $s2, 1344
+	ld.w	$a3, $s1, 1344
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_646
 # %bb.639:                              # %.lr.ph.preheader.i1324
-	ld.bu	$a2, $s2, 1328
+	ld.bu	$a2, $s1, 1328
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1336
+	ld.d	$a4, $s1, 1336
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_641
 # %bb.640:
@@ -10296,15 +10267,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_645
 .LBB8_646:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1330
-	ld.w	$a2, $s2, 1368
+	ld.w	$a2, $s1, 1368
 	blt	$a2, $a1, .LBB8_1187
 # %bb.647:                              # %.lr.ph.preheader.i1332
-	ld.bu	$a1, $s2, 1352
+	ld.bu	$a1, $s1, 1352
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1360
+	ld.d	$a1, $s1, 1360
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_649
 # %bb.648:
@@ -10424,15 +10395,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_658
 .LBB8_659:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit712
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_667
 # %bb.660:                              # %.lr.ph.preheader.i714
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_662
 # %bb.661:
@@ -10495,16 +10466,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_666
 .LBB8_667:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit720
-	ld.w	$a1, $s2, 528
+	ld.w	$a1, $s1, 528
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.668:                              # %.lr.ph.preheader.i722
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 520
+	ld.d	$a2, $s1, 520
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_670
 # %bb.669:
@@ -10624,15 +10595,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_679
 .LBB8_680:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit832
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_1187
 # %bb.681:                              # %.lr.ph.preheader.i834
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_683
 # %bb.682:
@@ -10752,15 +10723,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_692
 .LBB8_693:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit364
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_701
 # %bb.694:                              # %.lr.ph.preheader.i366
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_696
 # %bb.695:
@@ -10823,16 +10794,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_700
 .LBB8_701:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit372
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_709
 # %bb.702:                              # %.lr.ph.preheader.i374
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_704
 # %bb.703:
@@ -10895,15 +10866,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_708
 .LBB8_709:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit380
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_1187
 # %bb.710:                              # %.lr.ph.preheader.i382
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 544
+	ld.d	$a1, $s1, 544
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_712
 # %bb.711:
@@ -11023,15 +10994,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_721
 .LBB8_722:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit848
-	ld.w	$a2, $s2, 1176
+	ld.w	$a2, $s1, 1176
 	blt	$a2, $a1, .LBB8_1187
 # %bb.723:                              # %.lr.ph.preheader.i850
-	ld.bu	$a1, $s2, 1160
+	ld.bu	$a1, $s1, 1160
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1168
+	ld.d	$a1, $s1, 1168
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_725
 # %bb.724:
@@ -11151,15 +11122,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_734
 .LBB8_735:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit632
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_743
 # %bb.736:                              # %.lr.ph.preheader.i634
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_738
 # %bb.737:
@@ -11222,16 +11193,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_742
 .LBB8_743:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit640
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_751
 # %bb.744:                              # %.lr.ph.preheader.i642
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_746
 # %bb.745:
@@ -11294,15 +11265,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_750
 .LBB8_751:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit648
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_1187
 # %bb.752:                              # %.lr.ph.preheader.i650
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_754
 # %bb.753:
@@ -11422,15 +11393,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_763
 .LBB8_764:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit396
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_772
 # %bb.765:                              # %.lr.ph.preheader.i398
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_767
 # %bb.766:
@@ -11493,16 +11464,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_771
 .LBB8_772:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit404
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_780
 # %bb.773:                              # %.lr.ph.preheader.i406
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_775
 # %bb.774:
@@ -11565,15 +11536,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_779
 .LBB8_780:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit412
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_788
 # %bb.781:                              # %.lr.ph.preheader.i414
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_783
 # %bb.782:
@@ -11636,16 +11607,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_787
 .LBB8_788:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit420
-	ld.w	$a1, $s2, 576
+	ld.w	$a1, $s1, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.789:                              # %.lr.ph.preheader.i422
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 568
+	ld.d	$a2, $s1, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_791
 # %bb.790:
@@ -11765,15 +11736,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_800
 .LBB8_801:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit736
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_809
 # %bb.802:                              # %.lr.ph.preheader.i738
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_804
 # %bb.803:
@@ -11836,16 +11807,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_808
 .LBB8_809:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit744
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_817
 # %bb.810:                              # %.lr.ph.preheader.i746
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_812
 # %bb.811:
@@ -11908,15 +11879,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_816
 .LBB8_817:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit752
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_825
 # %bb.818:                              # %.lr.ph.preheader.i754
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_820
 # %bb.819:
@@ -11979,16 +11950,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_824
 .LBB8_825:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit760
-	ld.w	$a1, $s2, 1608
+	ld.w	$a1, $s1, 1608
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.826:                              # %.lr.ph.preheader.i762
-	ld.bu	$a2, $s2, 1592
+	ld.bu	$a2, $s1, 1592
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 1600
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_828
 # %bb.827:
@@ -12108,15 +12079,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_837
 .LBB8_838:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit543
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_846
 # %bb.839:                              # %.lr.ph.preheader.i545
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_841
 # %bb.840:
@@ -12179,16 +12150,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_845
 .LBB8_846:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit551
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_854
 # %bb.847:                              # %.lr.ph.preheader.i553
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_849
 # %bb.848:
@@ -12251,15 +12222,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_853
 .LBB8_854:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit559
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_862
 # %bb.855:                              # %.lr.ph.preheader.i561
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_857
 # %bb.856:
@@ -12322,16 +12293,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_861
 .LBB8_862:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit567
-	ld.w	$a1, $s2, 576
+	ld.w	$a1, $s1, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.863:                              # %.lr.ph.preheader.i569
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 568
+	ld.d	$a2, $s1, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_865
 # %bb.864:
@@ -12451,15 +12422,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_874
 .LBB8_875:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit487
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_1187
 # %bb.876:                              # %.lr.ph.preheader.i489
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 496
+	ld.d	$a1, $s1, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_878
 # %bb.877:
@@ -12579,15 +12550,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_887
 .LBB8_888:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1258
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_896
 # %bb.889:                              # %.lr.ph.preheader.i1260
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_891
 # %bb.890:
@@ -12650,16 +12621,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_895
 .LBB8_896:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1266
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_904
 # %bb.897:                              # %.lr.ph.preheader.i1268
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_899
 # %bb.898:
@@ -12722,15 +12693,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_903
 .LBB8_904:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1274
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_912
 # %bb.905:                              # %.lr.ph.preheader.i1276
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_907
 # %bb.906:
@@ -12793,16 +12764,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_911
 .LBB8_912:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1282
-	ld.w	$a1, $s2, 576
+	ld.w	$a1, $s1, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.913:                              # %.lr.ph.preheader.i1284
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 568
+	ld.d	$a2, $s1, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_915
 # %bb.914:
@@ -12979,15 +12950,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_929
 .LBB8_930:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit864
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_1187
 # %bb.931:                              # %.lr.ph.preheader.i866
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 496
+	ld.d	$a1, $s1, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_933
 # %bb.932:
@@ -13107,15 +13078,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_942
 .LBB8_943:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit776
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_951
 # %bb.944:                              # %.lr.ph.preheader.i778
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_946
 # %bb.945:
@@ -13178,16 +13149,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_950
 .LBB8_951:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit784
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_959
 # %bb.952:                              # %.lr.ph.preheader.i786
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_954
 # %bb.953:
@@ -13250,15 +13221,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_958
 .LBB8_959:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit792
-	ld.w	$a2, $s2, 1536
+	ld.w	$a2, $s1, 1536
 	blt	$a2, $a1, .LBB8_967
 # %bb.960:                              # %.lr.ph.preheader.i794
-	ld.bu	$a1, $s2, 1520
+	ld.bu	$a1, $s1, 1520
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1528
+	ld.d	$a3, $s1, 1528
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_962
 # %bb.961:
@@ -13321,16 +13292,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_966
 .LBB8_967:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit800
-	ld.w	$a3, $s2, 1560
+	ld.w	$a3, $s1, 1560
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_975
 # %bb.968:                              # %.lr.ph.preheader.i802
-	ld.bu	$a2, $s2, 1544
+	ld.bu	$a2, $s1, 1544
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1552
+	ld.d	$a4, $s1, 1552
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_970
 # %bb.969:
@@ -13393,15 +13364,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_974
 .LBB8_975:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit808
-	ld.w	$a2, $s2, 1584
+	ld.w	$a2, $s1, 1584
 	blt	$a2, $a1, .LBB8_983
 # %bb.976:                              # %.lr.ph.preheader.i810
-	ld.bu	$a1, $s2, 1568
+	ld.bu	$a1, $s1, 1568
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1576
+	ld.d	$a3, $s1, 1576
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_978
 # %bb.977:
@@ -13464,16 +13435,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_982
 .LBB8_983:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit816
-	ld.w	$a1, $s2, 1608
+	ld.w	$a1, $s1, 1608
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.984:                              # %.lr.ph.preheader.i818
-	ld.bu	$a2, $s2, 1592
+	ld.bu	$a2, $s1, 1592
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 1600
+	ld.d	$a2, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_986
 # %bb.985:
@@ -13593,15 +13564,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_995
 .LBB8_996:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit880
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_1187
 # %bb.997:                              # %.lr.ph.preheader.i882
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 496
+	ld.d	$a1, $s1, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_999
 # %bb.998:
@@ -13721,15 +13692,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1008
 .LBB8_1009:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1154
-	ld.w	$a2, $s2, 504
+	ld.w	$a2, $s1, 504
 	blt	$a2, $a1, .LBB8_1017
 # %bb.1010:                             # %.lr.ph.preheader.i1156
-	ld.bu	$a1, $s2, 488
+	ld.bu	$a1, $s1, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 496
+	ld.d	$a3, $s1, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1012
 # %bb.1011:
@@ -13792,16 +13763,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1016
 .LBB8_1017:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1162
-	ld.w	$a3, $s2, 528
+	ld.w	$a3, $s1, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1025
 # %bb.1018:                             # %.lr.ph.preheader.i1164
-	ld.bu	$a2, $s2, 512
+	ld.bu	$a2, $s1, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 520
+	ld.d	$a4, $s1, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1020
 # %bb.1019:
@@ -13864,15 +13835,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1024
 .LBB8_1025:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1170
-	ld.w	$a2, $s2, 552
+	ld.w	$a2, $s1, 552
 	blt	$a2, $a1, .LBB8_1033
 # %bb.1026:                             # %.lr.ph.preheader.i1172
-	ld.bu	$a1, $s2, 536
+	ld.bu	$a1, $s1, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 544
+	ld.d	$a3, $s1, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1028
 # %bb.1027:
@@ -13935,16 +13906,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1032
 .LBB8_1033:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1178
-	ld.w	$a3, $s2, 576
+	ld.w	$a3, $s1, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1041
 # %bb.1034:                             # %.lr.ph.preheader.i1180
-	ld.bu	$a2, $s2, 560
+	ld.bu	$a2, $s1, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 568
+	ld.d	$a4, $s1, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1036
 # %bb.1035:
@@ -14007,15 +13978,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1040
 .LBB8_1041:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1186
-	ld.w	$a2, $s2, 600
+	ld.w	$a2, $s1, 600
 	blt	$a2, $a1, .LBB8_1049
 # %bb.1042:                             # %.lr.ph.preheader.i1188
-	ld.bu	$a1, $s2, 584
+	ld.bu	$a1, $s1, 584
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 592
+	ld.d	$a3, $s1, 592
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1044
 # %bb.1043:
@@ -14078,16 +14049,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1048
 .LBB8_1049:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1194
-	ld.w	$a3, $s2, 624
+	ld.w	$a3, $s1, 624
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1057
 # %bb.1050:                             # %.lr.ph.preheader.i1196
-	ld.bu	$a2, $s2, 608
+	ld.bu	$a2, $s1, 608
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 616
+	ld.d	$a4, $s1, 616
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1052
 # %bb.1051:
@@ -14150,15 +14121,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1056
 .LBB8_1057:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1202
-	ld.w	$a2, $s2, 648
+	ld.w	$a2, $s1, 648
 	blt	$a2, $a1, .LBB8_1065
 # %bb.1058:                             # %.lr.ph.preheader.i1204
-	ld.bu	$a1, $s2, 632
+	ld.bu	$a1, $s1, 632
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 640
+	ld.d	$a3, $s1, 640
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1060
 # %bb.1059:
@@ -14221,16 +14192,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1064
 .LBB8_1065:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1210
-	ld.w	$a3, $s2, 672
+	ld.w	$a3, $s1, 672
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1073
 # %bb.1066:                             # %.lr.ph.preheader.i1212
-	ld.bu	$a2, $s2, 656
+	ld.bu	$a2, $s1, 656
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 664
+	ld.d	$a4, $s1, 664
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1068
 # %bb.1067:
@@ -14293,15 +14264,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1072
 .LBB8_1073:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1218
-	ld.w	$a2, $s2, 1608
+	ld.w	$a2, $s1, 1608
 	blt	$a2, $a1, .LBB8_1187
 # %bb.1074:                             # %.lr.ph.preheader.i1220
-	ld.bu	$a1, $s2, 1592
+	ld.bu	$a1, $s1, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s2, 1600
+	ld.d	$a1, $s1, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB8_1076
 # %bb.1075:
@@ -14421,15 +14392,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1085
 .LBB8_1086:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1234
-	ld.w	$a2, $s2, 1176
+	ld.w	$a2, $s1, 1176
 	blt	$a2, $a1, .LBB8_1094
 # %bb.1087:                             # %.lr.ph.preheader.i1236
-	ld.bu	$a1, $s2, 1160
+	ld.bu	$a1, $s1, 1160
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1168
+	ld.d	$a3, $s1, 1168
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1089
 # %bb.1088:
@@ -14492,16 +14463,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1093
 .LBB8_1094:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1242
-	ld.w	$a1, $s2, 1512
+	ld.w	$a1, $s1, 1512
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.1095:                             # %.lr.ph.preheader.i1244
-	ld.bu	$a2, $s2, 1496
+	ld.bu	$a2, $s1, 1496
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 1504
+	ld.d	$a2, $s1, 1504
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_1097
 # %bb.1096:
@@ -14621,15 +14592,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1106
 .LBB8_1107:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1034
-	ld.w	$a2, $s2, 1272
+	ld.w	$a2, $s1, 1272
 	blt	$a2, $a1, .LBB8_1115
 # %bb.1108:                             # %.lr.ph.preheader.i1036
-	ld.bu	$a1, $s2, 1256
+	ld.bu	$a1, $s1, 1256
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1264
+	ld.d	$a3, $s1, 1264
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1110
 # %bb.1109:
@@ -14692,16 +14663,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1114
 .LBB8_1115:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1042
-	ld.w	$a3, $s2, 1296
+	ld.w	$a3, $s1, 1296
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1123
 # %bb.1116:                             # %.lr.ph.preheader.i1044
-	ld.bu	$a2, $s2, 1280
+	ld.bu	$a2, $s1, 1280
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1288
+	ld.d	$a4, $s1, 1288
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1118
 # %bb.1117:
@@ -14764,15 +14735,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1122
 .LBB8_1123:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1050
-	ld.w	$a2, $s2, 1320
+	ld.w	$a2, $s1, 1320
 	blt	$a2, $a1, .LBB8_1131
 # %bb.1124:                             # %.lr.ph.preheader.i1052
-	ld.bu	$a1, $s2, 1304
+	ld.bu	$a1, $s1, 1304
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1312
+	ld.d	$a3, $s1, 1312
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1126
 # %bb.1125:
@@ -14835,16 +14806,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1130
 .LBB8_1131:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1058
-	ld.w	$a3, $s2, 1344
+	ld.w	$a3, $s1, 1344
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1139
 # %bb.1132:                             # %.lr.ph.preheader.i1060
-	ld.bu	$a2, $s2, 1328
+	ld.bu	$a2, $s1, 1328
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1336
+	ld.d	$a4, $s1, 1336
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1134
 # %bb.1133:
@@ -14907,15 +14878,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1138
 .LBB8_1139:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1066
-	ld.w	$a2, $s2, 1368
+	ld.w	$a2, $s1, 1368
 	blt	$a2, $a1, .LBB8_1147
 # %bb.1140:                             # %.lr.ph.preheader.i1068
-	ld.bu	$a1, $s2, 1352
+	ld.bu	$a1, $s1, 1352
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1360
+	ld.d	$a3, $s1, 1360
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1142
 # %bb.1141:
@@ -14978,16 +14949,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1146
 .LBB8_1147:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1074
-	ld.w	$a3, $s2, 1392
+	ld.w	$a3, $s1, 1392
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1155
 # %bb.1148:                             # %.lr.ph.preheader.i1076
-	ld.bu	$a2, $s2, 1376
+	ld.bu	$a2, $s1, 1376
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1384
+	ld.d	$a4, $s1, 1384
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1150
 # %bb.1149:
@@ -15050,15 +15021,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1154
 .LBB8_1155:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1082
-	ld.w	$a2, $s2, 1416
+	ld.w	$a2, $s1, 1416
 	blt	$a2, $a1, .LBB8_1163
 # %bb.1156:                             # %.lr.ph.preheader.i1084
-	ld.bu	$a1, $s2, 1400
+	ld.bu	$a1, $s1, 1400
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1408
+	ld.d	$a3, $s1, 1408
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1158
 # %bb.1157:
@@ -15121,16 +15092,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1162
 .LBB8_1163:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1090
-	ld.w	$a3, $s2, 1440
+	ld.w	$a3, $s1, 1440
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB8_1171
 # %bb.1164:                             # %.lr.ph.preheader.i1092
-	ld.bu	$a2, $s2, 1424
+	ld.bu	$a2, $s1, 1424
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s2, 1432
+	ld.d	$a4, $s1, 1432
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB8_1166
 # %bb.1165:
@@ -15193,15 +15164,15 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB8_1170
 .LBB8_1171:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1098
-	ld.w	$a2, $s2, 1464
+	ld.w	$a2, $s1, 1464
 	blt	$a2, $a1, .LBB8_1179
 # %bb.1172:                             # %.lr.ph.preheader.i1100
-	ld.bu	$a1, $s2, 1448
+	ld.bu	$a1, $s1, 1448
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s2, 1456
+	ld.d	$a3, $s1, 1456
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB8_1174
 # %bb.1173:
@@ -15264,16 +15235,16 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB8_1178
 .LBB8_1179:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1106
-	ld.w	$a1, $s2, 1488
+	ld.w	$a1, $s1, 1488
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB8_1187
 # %bb.1180:                             # %.lr.ph.preheader.i1108
-	ld.bu	$a2, $s2, 1472
+	ld.bu	$a2, $s1, 1472
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s2, 1480
+	ld.d	$a2, $s1, 1480
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB8_1182
 # %bb.1181:
@@ -15336,13 +15307,11 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB8_1186
 .LBB8_1187:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit180
-	addi.d	$sp, $fp, -384
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB8_1188:
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
@@ -15420,255 +15389,250 @@ _Z8loopInitjR8LoopStat:                 # @_Z8loopInitjR8LoopStat
 _Z8loopInitj:                           # @_Z8loopInitj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	.cfi_def_cfa_offset 384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
-	addi.d	$fp, $sp, 384
-	.cfi_def_cfa 22, 0
-	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a1, %pc_hi20(_ZL11s_loop_data)
-	ld.d	$s1, $a1, %pc_lo12(_ZL11s_loop_data)
-	move	$s0, $a0
+	ld.d	$s0, $a1, %pc_lo12(_ZL11s_loop_data)
+	move	$fp, $a0
 	pcaddu18i	$ra, %call36(_Z10flushCachev)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 32
-	bltu	$a0, $s0, .LBB9_97
+	bltu	$a0, $fp, .LBB9_97
 # %bb.1:
-	slli.d	$a0, $s0, 2
+	slli.d	$a0, $fp, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI9_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI9_0)
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	jr	$a0
 .LBB9_2:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_105
 # %bb.3:                                # %.lr.ph.preheader.i181
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_100
 # %bb.4:
 	move	$a2, $zero
 	b	.LBB9_103
 .LBB9_5:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_150
 # %bb.6:                                # %.lr.ph.preheader.i229
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_145
 # %bb.7:
 	move	$a2, $zero
 	b	.LBB9_148
 .LBB9_8:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_277
 # %bb.9:                                # %.lr.ph.preheader.i1115
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_272
 # %bb.10:
 	move	$a2, $zero
 	b	.LBB9_275
 .LBB9_11:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_306
 # %bb.12:                               # %.lr.ph.preheader.i689
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_301
 # %bb.13:
 	move	$a2, $zero
 	b	.LBB9_304
 .LBB9_14:
-	ld.w	$a3, $s1, 864
+	ld.w	$a3, $s0, 864
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_319
 # %bb.15:                               # %.lr.ph.preheader.i657
-	ld.bu	$a2, $s1, 848
+	ld.bu	$a2, $s0, 848
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 856
+	ld.d	$a4, $s0, 856
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_314
 # %bb.16:
 	move	$a2, $zero
 	b	.LBB9_317
 .LBB9_17:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_332
 # %bb.18:                               # %.lr.ph.preheader.i576
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_327
 # %bb.19:
 	move	$a2, $zero
 	b	.LBB9_330
 .LBB9_20:
-	ld.w	$a1, $s1, 912
-	ori	$s0, $zero, 1
-	blt	$a1, $s0, .LBB9_22
+	ld.w	$a1, $s0, 912
+	ori	$fp, $zero, 1
+	blt	$a1, $fp, .LBB9_22
 # %bb.21:                               # %.lr.ph.preheader.i615
-	ld.d	$a0, $s1, 904
+	ld.d	$a0, $s0, 904
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB9_22:                               # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit
-	ld.w	$a1, $s1, 1608
-	blt	$a1, $s0, .LBB9_1187
+	ld.w	$a1, $s0, 1608
+	blt	$a1, $fp, .LBB9_1187
 # %bb.23:                               # %.lr.ph.preheader.i617
-	ld.bu	$a0, $s1, 1592
+	ld.bu	$a0, $s0, 1592
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI9_0)
 	addi.d	$a2, $a2, %pc_lo12(.LCPI9_0)
 	fldx.d	$fa0, $a2, $a0
-	ld.d	$a2, $s1, 1600
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_364
 # %bb.24:
 	move	$a0, $zero
 	b	.LBB9_367
 .LBB9_25:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_374
 # %bb.26:                               # %.lr.ph.preheader.i
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_369
 # %bb.27:
 	move	$a2, $zero
 	b	.LBB9_372
 .LBB9_28:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_395
 # %bb.29:                               # %.lr.ph.preheader.i496
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_390
 # %bb.30:
 	move	$a2, $zero
 	b	.LBB9_393
 .LBB9_31:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_432
 # %bb.32:                               # %.lr.ph.preheader.i941
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_427
 # %bb.33:
 	move	$a2, $zero
 	b	.LBB9_430
 .LBB9_34:
-	ld.w	$a2, $s1, 1152
+	ld.w	$a2, $s0, 1152
 	pcalau12i	$a1, %pc_hi20(.LCPI9_0)
 	ori	$a0, $zero, 1
-	addi.d	$s0, $a1, %pc_lo12(.LCPI9_0)
+	addi.d	$fp, $a1, %pc_lo12(.LCPI9_0)
 	blt	$a2, $a0, .LBB9_515
 # %bb.35:                               # %.lr.ph.preheader.i889
-	ld.bu	$a1, $s1, 1136
+	ld.bu	$a1, $s0, 1136
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $s0, $a1
-	ld.d	$a3, $s1, 1144
+	fldx.d	$fa0, $fp, $a1
+	ld.d	$a3, $s0, 1144
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_510
 # %bb.36:
 	move	$a1, $zero
 	b	.LBB9_513
 .LBB9_37:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_564
 # %bb.38:                               # %.lr.ph.preheader.i673
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_559
 # %bb.39:
@@ -15676,344 +15640,344 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	b	.LBB9_562
 .LBB9_40:
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
-	ld.w	$a4, $s1, 1032
+	ld.w	$a4, $s0, 1032
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	pcalau12i	$a1, %pc_hi20(.LCPI9_4)
 	ori	$a2, $zero, 1
 	addi.d	$a1, $a1, %pc_lo12(.LCPI9_4)
 	blt	$a4, $a2, .LBB9_577
 # %bb.41:                               # %.lr.ph.preheader.i429
-	ld.bu	$a3, $s1, 1016
+	ld.bu	$a3, $s0, 1016
 	andi	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 3
 	fldx.d	$fa0, $a0, $a3
 	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s1, 1024
+	ld.d	$a5, $s0, 1024
 	ori	$a3, $zero, 4
 	bgeu	$a4, $a3, .LBB9_572
 # %bb.42:
 	move	$a3, $zero
 	b	.LBB9_575
 .LBB9_43:
-	ld.w	$a3, $s1, 1248
+	ld.w	$a3, $s0, 1248
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_614
 # %bb.44:                               # %.lr.ph.preheader.i1291
-	ld.bu	$a2, $s1, 1232
+	ld.bu	$a2, $s0, 1232
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1240
+	ld.d	$a4, $s0, 1240
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_609
 # %bb.45:
 	move	$a2, $zero
 	b	.LBB9_612
 .LBB9_46:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_659
 # %bb.47:                               # %.lr.ph.preheader.i705
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_654
 # %bb.48:
 	move	$a2, $zero
 	b	.LBB9_657
 .LBB9_49:
-	ld.w	$a3, $s1, 1152
+	ld.w	$a3, $s0, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_680
 # %bb.50:                               # %.lr.ph.preheader.i825
-	ld.bu	$a2, $s1, 1136
+	ld.bu	$a2, $s0, 1136
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1144
+	ld.d	$a4, $s0, 1144
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_675
 # %bb.51:
 	move	$a2, $zero
 	b	.LBB9_678
 .LBB9_52:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_693
 # %bb.53:                               # %.lr.ph.preheader.i357
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_688
 # %bb.54:
 	move	$a2, $zero
 	b	.LBB9_691
 .LBB9_55:
-	ld.w	$a3, $s1, 1152
+	ld.w	$a3, $s0, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_722
 # %bb.56:                               # %.lr.ph.preheader.i841
-	ld.bu	$a2, $s1, 1136
+	ld.bu	$a2, $s0, 1136
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1144
+	ld.d	$a4, $s0, 1144
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_717
 # %bb.57:
 	move	$a2, $zero
 	b	.LBB9_720
 .LBB9_58:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_735
 # %bb.59:                               # %.lr.ph.preheader.i625
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_730
 # %bb.60:
 	move	$a2, $zero
 	b	.LBB9_733
 .LBB9_61:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_764
 # %bb.62:                               # %.lr.ph.preheader.i389
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_759
 # %bb.63:
 	move	$a2, $zero
 	b	.LBB9_762
 .LBB9_64:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_801
 # %bb.65:                               # %.lr.ph.preheader.i729
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_796
 # %bb.66:
 	move	$a2, $zero
 	b	.LBB9_799
 .LBB9_67:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_838
 # %bb.68:                               # %.lr.ph.preheader.i536
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_833
 # %bb.69:
 	move	$a2, $zero
 	b	.LBB9_836
 .LBB9_70:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_875
 # %bb.71:                               # %.lr.ph.preheader.i480
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_870
 # %bb.72:
 	move	$a2, $zero
 	b	.LBB9_873
 .LBB9_73:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_888
 # %bb.74:                               # %.lr.ph.preheader.i1251
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_883
 # %bb.75:
 	move	$a2, $zero
 	b	.LBB9_886
 .LBB9_76:
-	ld.w	$a1, $s1, 480
+	ld.w	$a1, $s0, 480
 	ori	$a0, $zero, 1
 	blt	$a1, $a0, .LBB9_1187
 # %bb.77:                               # %.lr.ph.preheader.i1339
-	ld.bu	$a0, $s1, 464
+	ld.bu	$a0, $s0, 464
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
 	pcalau12i	$a2, %pc_hi20(.LCPI9_0)
 	addi.d	$a2, $a2, %pc_lo12(.LCPI9_0)
 	fldx.d	$fa0, $a2, $a0
-	ld.d	$a2, $s1, 472
+	ld.d	$a2, $s0, 472
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_920
 # %bb.78:
 	move	$a0, $zero
 	b	.LBB9_923
 .LBB9_79:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_930
 # %bb.80:                               # %.lr.ph.preheader.i857
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_925
 # %bb.81:
 	move	$a2, $zero
 	b	.LBB9_928
 .LBB9_82:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_943
 # %bb.83:                               # %.lr.ph.preheader.i769
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_938
 # %bb.84:
 	move	$a2, $zero
 	b	.LBB9_941
 .LBB9_85:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_996
 # %bb.86:                               # %.lr.ph.preheader.i873
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_991
 # %bb.87:
 	move	$a2, $zero
 	b	.LBB9_994
 .LBB9_88:
-	ld.w	$a3, $s1, 480
+	ld.w	$a3, $s0, 480
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_1009
 # %bb.89:                               # %.lr.ph.preheader.i1147
-	ld.bu	$a2, $s1, 464
+	ld.bu	$a2, $s0, 464
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 472
+	ld.d	$a4, $s0, 472
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1004
 # %bb.90:
 	move	$a2, $zero
 	b	.LBB9_1007
 .LBB9_91:
-	ld.w	$a3, $s1, 1152
+	ld.w	$a3, $s0, 1152
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_1086
 # %bb.92:                               # %.lr.ph.preheader.i1227
-	ld.bu	$a2, $s1, 1136
+	ld.bu	$a2, $s0, 1136
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1144
+	ld.d	$a4, $s0, 1144
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1081
 # %bb.93:
 	move	$a2, $zero
 	b	.LBB9_1084
 .LBB9_94:
-	ld.w	$a3, $s1, 1248
+	ld.w	$a3, $s0, 1248
 	pcalau12i	$a0, %pc_hi20(.LCPI9_0)
 	ori	$a1, $zero, 1
 	addi.d	$a0, $a0, %pc_lo12(.LCPI9_0)
 	blt	$a3, $a1, .LBB9_1107
 # %bb.95:                               # %.lr.ph.preheader.i1027
-	ld.bu	$a2, $s1, 1232
+	ld.bu	$a2, $s0, 1232
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1240
+	ld.d	$a4, $s0, 1240
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1102
 # %bb.96:
@@ -16021,27 +15985,27 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	b	.LBB9_1105
 .LBB9_97:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
-	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cout)
+	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cout)
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.36)
 	ori	$a2, $zero, 20
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $s0, 31, 0
-	move	$a0, $s1
+	bstrpick.d	$a1, $fp, 31, 0
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNSo9_M_insertImEERSoT_)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, -24
 	add.d	$a1, $a0, $a1
-	ld.d	$s0, $a1, 240
-	beqz	$s0, .LBB9_1188
+	ld.d	$fp, $a1, 240
+	beqz	$fp, .LBB9_1188
 # %bb.98:                               # %_ZSt13__check_facetISt5ctypeIcEERKT_PS3_.exit.i.i
-	ld.bu	$a1, $s0, 56
+	ld.bu	$a1, $fp, 56
 	beqz	$a1, .LBB9_270
 # %bb.99:
-	ld.bu	$a1, $s0, 67
+	ld.bu	$a1, $fp, 67
 	b	.LBB9_271
 .LBB9_100:                              # %vector.ph3514
 	bstrpick.d	$a2, $a3, 30, 2
@@ -16100,15 +16064,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_104
 .LBB9_105:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit187
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_113
 # %bb.106:                              # %.lr.ph.preheader.i189
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_108
 # %bb.107:
@@ -16171,16 +16135,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_112
 .LBB9_113:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit195
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_121
 # %bb.114:                              # %.lr.ph.preheader.i197
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_116
 # %bb.115:
@@ -16243,15 +16207,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_120
 .LBB9_121:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit203
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_129
 # %bb.122:                              # %.lr.ph.preheader.i205
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_124
 # %bb.123:
@@ -16314,16 +16278,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_128
 .LBB9_129:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit211
-	ld.w	$a3, $s1, 576
+	ld.w	$a3, $s0, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_137
 # %bb.130:                              # %.lr.ph.preheader.i213
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
+	ld.d	$a4, $s0, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_132
 # %bb.131:
@@ -16386,15 +16350,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_136
 .LBB9_137:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit219
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_1187
 # %bb.138:                              # %.lr.ph.preheader.i221
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_140
 # %bb.139:
@@ -16514,15 +16478,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_149
 .LBB9_150:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit235
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_158
 # %bb.151:                              # %.lr.ph.preheader.i237
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_153
 # %bb.152:
@@ -16585,16 +16549,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_157
 .LBB9_158:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit243
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_166
 # %bb.159:                              # %.lr.ph.preheader.i245
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_161
 # %bb.160:
@@ -16657,15 +16621,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_165
 .LBB9_166:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit251
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_174
 # %bb.167:                              # %.lr.ph.preheader.i253
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_169
 # %bb.168:
@@ -16728,16 +16692,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_173
 .LBB9_174:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit259
-	ld.w	$a3, $s1, 576
+	ld.w	$a3, $s0, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_182
 # %bb.175:                              # %.lr.ph.preheader.i261
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
+	ld.d	$a4, $s0, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_177
 # %bb.176:
@@ -16800,15 +16764,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_181
 .LBB9_182:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit267
-	ld.w	$a2, $s1, 600
+	ld.w	$a2, $s0, 600
 	blt	$a2, $a1, .LBB9_190
 # %bb.183:                              # %.lr.ph.preheader.i269
-	ld.bu	$a1, $s1, 584
+	ld.bu	$a1, $s0, 584
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 592
+	ld.d	$a3, $s0, 592
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_185
 # %bb.184:
@@ -16871,16 +16835,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_189
 .LBB9_190:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit275
-	ld.w	$a3, $s1, 624
+	ld.w	$a3, $s0, 624
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_198
 # %bb.191:                              # %.lr.ph.preheader.i277
-	ld.bu	$a2, $s1, 608
+	ld.bu	$a2, $s0, 608
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 616
+	ld.d	$a4, $s0, 616
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_193
 # %bb.192:
@@ -16943,15 +16907,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_197
 .LBB9_198:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit283
-	ld.w	$a2, $s1, 648
+	ld.w	$a2, $s0, 648
 	blt	$a2, $a1, .LBB9_206
 # %bb.199:                              # %.lr.ph.preheader.i285
-	ld.bu	$a1, $s1, 632
+	ld.bu	$a1, $s0, 632
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 640
+	ld.d	$a3, $s0, 640
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_201
 # %bb.200:
@@ -17014,16 +16978,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_205
 .LBB9_206:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit291
-	ld.w	$a3, $s1, 672
+	ld.w	$a3, $s0, 672
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_214
 # %bb.207:                              # %.lr.ph.preheader.i293
-	ld.bu	$a2, $s1, 656
+	ld.bu	$a2, $s0, 656
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 664
+	ld.d	$a4, $s0, 664
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_209
 # %bb.208:
@@ -17086,15 +17050,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_213
 .LBB9_214:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit299
-	ld.w	$a2, $s1, 696
+	ld.w	$a2, $s0, 696
 	blt	$a2, $a1, .LBB9_222
 # %bb.215:                              # %.lr.ph.preheader.i301
-	ld.bu	$a1, $s1, 680
+	ld.bu	$a1, $s0, 680
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 688
+	ld.d	$a3, $s0, 688
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_217
 # %bb.216:
@@ -17157,16 +17121,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_221
 .LBB9_222:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit307
-	ld.w	$a3, $s1, 720
+	ld.w	$a3, $s0, 720
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_230
 # %bb.223:                              # %.lr.ph.preheader.i309
-	ld.bu	$a2, $s1, 704
+	ld.bu	$a2, $s0, 704
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 712
+	ld.d	$a4, $s0, 712
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_225
 # %bb.224:
@@ -17229,15 +17193,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_229
 .LBB9_230:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit315
-	ld.w	$a2, $s1, 744
+	ld.w	$a2, $s0, 744
 	blt	$a2, $a1, .LBB9_238
 # %bb.231:                              # %.lr.ph.preheader.i317
-	ld.bu	$a1, $s1, 728
+	ld.bu	$a1, $s0, 728
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 736
+	ld.d	$a3, $s0, 736
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_233
 # %bb.232:
@@ -17300,16 +17264,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_237
 .LBB9_238:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit323
-	ld.w	$a3, $s1, 768
+	ld.w	$a3, $s0, 768
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_246
 # %bb.239:                              # %.lr.ph.preheader.i325
-	ld.bu	$a2, $s1, 752
+	ld.bu	$a2, $s0, 752
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 760
+	ld.d	$a4, $s0, 760
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_241
 # %bb.240:
@@ -17372,15 +17336,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_245
 .LBB9_246:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit331
-	ld.w	$a2, $s1, 792
+	ld.w	$a2, $s0, 792
 	blt	$a2, $a1, .LBB9_254
 # %bb.247:                              # %.lr.ph.preheader.i333
-	ld.bu	$a1, $s1, 776
+	ld.bu	$a1, $s0, 776
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 784
+	ld.d	$a3, $s0, 784
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_249
 # %bb.248:
@@ -17443,16 +17407,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_253
 .LBB9_254:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit339
-	ld.w	$a3, $s1, 816
+	ld.w	$a3, $s0, 816
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_262
 # %bb.255:                              # %.lr.ph.preheader.i341
-	ld.bu	$a2, $s1, 800
+	ld.bu	$a2, $s0, 800
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 808
+	ld.d	$a4, $s0, 808
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_257
 # %bb.256:
@@ -17515,15 +17479,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_261
 .LBB9_262:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit347
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_1187
 # %bb.263:                              # %.lr.ph.preheader.i349
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_265
 # %bb.264:
@@ -17587,28 +17551,26 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	bnez	$a2, .LBB9_269
 	b	.LBB9_1187
 .LBB9_270:
-	move	$s1, $a0
-	move	$a0, $s0
+	move	$s0, $a0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZNKSt5ctypeIcE13_M_widen_initEv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 0
+	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 48
 	ori	$a1, $zero, 10
-	move	$a0, $s0
+	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	move	$a1, $a0
-	move	$a0, $s1
+	move	$a0, $s0
 .LBB9_271:                              # %_ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_.exit
 	ext.w.b	$a1, $a1
 	pcaddu18i	$ra, %call36(_ZNSo3putEc)
 	jirl	$ra, $ra, 0
-	addi.d	$sp, $fp, -384
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(_ZNSo5flushEv)
 	jr	$t8
 .LBB9_272:                              # %vector.ph1824
@@ -17668,15 +17630,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_276
 .LBB9_277:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1121
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_285
 # %bb.278:                              # %.lr.ph.preheader.i1123
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_280
 # %bb.279:
@@ -17739,16 +17701,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_284
 .LBB9_285:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1129
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_293
 # %bb.286:                              # %.lr.ph.preheader.i1131
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_288
 # %bb.287:
@@ -17811,15 +17773,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_292
 .LBB9_293:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1137
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_1187
 # %bb.294:                              # %.lr.ph.preheader.i1139
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_296
 # %bb.295:
@@ -17939,15 +17901,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_305
 .LBB9_306:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit695
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_1187
 # %bb.307:                              # %.lr.ph.preheader.i697
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.d	$a1, $s0, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_309
 # %bb.308:
@@ -18067,15 +18029,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_318
 .LBB9_319:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit663
-	ld.w	$a2, $s1, 888
+	ld.w	$a2, $s0, 888
 	blt	$a2, $a1, .LBB9_1187
 # %bb.320:                              # %.lr.ph.preheader.i665
-	ld.bu	$a1, $s1, 872
+	ld.bu	$a1, $s0, 872
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 880
+	ld.d	$a1, $s0, 880
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_322
 # %bb.321:
@@ -18195,15 +18157,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_331
 .LBB9_332:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit582
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_340
 # %bb.333:                              # %.lr.ph.preheader.i584
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_335
 # %bb.334:
@@ -18266,16 +18228,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_339
 .LBB9_340:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit590
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_348
 # %bb.341:                              # %.lr.ph.preheader.i592
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_343
 # %bb.342:
@@ -18338,15 +18300,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_347
 .LBB9_348:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit598
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_356
 # %bb.349:                              # %.lr.ph.preheader.i600
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_351
 # %bb.350:
@@ -18409,16 +18371,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_355
 .LBB9_356:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit606
-	ld.w	$a1, $s1, 576
+	ld.w	$a1, $s0, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.357:                              # %.lr.ph.preheader.i608
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 568
+	ld.d	$a2, $s0, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_359
 # %bb.358:
@@ -18595,15 +18557,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_373
 .LBB9_374:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_382
 # %bb.375:                              # %.lr.ph.preheader.i165
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_377
 # %bb.376:
@@ -18666,16 +18628,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_381
 .LBB9_382:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit171
-	ld.w	$a1, $s1, 528
+	ld.w	$a1, $s0, 528
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.383:                              # %.lr.ph.preheader.i173
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 520
+	ld.d	$a2, $s0, 520
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_385
 # %bb.384:
@@ -18795,15 +18757,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_394
 .LBB9_395:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit502
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_403
 # %bb.396:                              # %.lr.ph.preheader.i504
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_398
 # %bb.397:
@@ -18866,16 +18828,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_402
 .LBB9_403:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit510
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_411
 # %bb.404:                              # %.lr.ph.preheader.i512
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_406
 # %bb.405:
@@ -18938,15 +18900,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_410
 .LBB9_411:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit518
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_419
 # %bb.412:                              # %.lr.ph.preheader.i520
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_414
 # %bb.413:
@@ -19009,16 +18971,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_418
 .LBB9_419:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit526
-	ld.w	$a1, $s1, 576
+	ld.w	$a1, $s0, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.420:                              # %.lr.ph.preheader.i528
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 568
+	ld.d	$a2, $s0, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_422
 # %bb.421:
@@ -19138,15 +19100,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_431
 .LBB9_432:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit947
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_440
 # %bb.433:                              # %.lr.ph.preheader.i949
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_435
 # %bb.434:
@@ -19209,16 +19171,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_439
 .LBB9_440:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit955
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_448
 # %bb.441:                              # %.lr.ph.preheader.i957
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_443
 # %bb.442:
@@ -19281,15 +19243,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_447
 .LBB9_448:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit963
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_456
 # %bb.449:                              # %.lr.ph.preheader.i965
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_451
 # %bb.450:
@@ -19352,16 +19314,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_455
 .LBB9_456:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit971
-	ld.w	$a3, $s1, 576
+	ld.w	$a3, $s0, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_464
 # %bb.457:                              # %.lr.ph.preheader.i973
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
+	ld.d	$a4, $s0, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_459
 # %bb.458:
@@ -19424,15 +19386,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_463
 .LBB9_464:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit979
-	ld.w	$a2, $s1, 600
+	ld.w	$a2, $s0, 600
 	blt	$a2, $a1, .LBB9_472
 # %bb.465:                              # %.lr.ph.preheader.i981
-	ld.bu	$a1, $s1, 584
+	ld.bu	$a1, $s0, 584
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 592
+	ld.d	$a3, $s0, 592
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_467
 # %bb.466:
@@ -19495,16 +19457,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_471
 .LBB9_472:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit987
-	ld.w	$a3, $s1, 624
+	ld.w	$a3, $s0, 624
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_480
 # %bb.473:                              # %.lr.ph.preheader.i989
-	ld.bu	$a2, $s1, 608
+	ld.bu	$a2, $s0, 608
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 616
+	ld.d	$a4, $s0, 616
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_475
 # %bb.474:
@@ -19567,15 +19529,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_479
 .LBB9_480:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit995
-	ld.w	$a2, $s1, 648
+	ld.w	$a2, $s0, 648
 	blt	$a2, $a1, .LBB9_488
 # %bb.481:                              # %.lr.ph.preheader.i997
-	ld.bu	$a1, $s1, 632
+	ld.bu	$a1, $s0, 632
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 640
+	ld.d	$a3, $s0, 640
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_483
 # %bb.482:
@@ -19638,16 +19600,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_487
 .LBB9_488:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1003
-	ld.w	$a3, $s1, 672
+	ld.w	$a3, $s0, 672
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_496
 # %bb.489:                              # %.lr.ph.preheader.i1005
-	ld.bu	$a2, $s1, 656
+	ld.bu	$a2, $s0, 656
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 664
+	ld.d	$a4, $s0, 664
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_491
 # %bb.490:
@@ -19710,15 +19672,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_495
 .LBB9_496:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1011
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_504
 # %bb.497:                              # %.lr.ph.preheader.i1013
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_499
 # %bb.498:
@@ -19781,39 +19743,37 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a2, .LBB9_503
 .LBB9_504:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1019
-	ld.w	$a1, $s1, 960
-	ori	$s0, $zero, 1
-	blt	$a1, $s0, .LBB9_506
+	ld.w	$a1, $s0, 960
+	ori	$fp, $zero, 1
+	blt	$a1, $fp, .LBB9_506
 # %bb.505:                              # %.lr.ph.preheader.i1020
-	ld.d	$a0, $s1, 952
+	ld.d	$a0, $s0, 952
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB9_506:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1021
-	ld.w	$a1, $s1, 984
-	blt	$a1, $s0, .LBB9_508
+	ld.w	$a1, $s0, 984
+	blt	$a1, $fp, .LBB9_508
 # %bb.507:                              # %.lr.ph.preheader.i1022
-	ld.d	$a0, $s1, 976
+	ld.d	$a0, $s0, 976
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB9_508:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit1023
-	ld.w	$a1, $s1, 1008
+	ld.w	$a1, $s0, 1008
 	ori	$a0, $zero, 1
 	blt	$a1, $a0, .LBB9_1187
 # %bb.509:                              # %.lr.ph.preheader.i1024
-	ld.d	$a0, $s1, 1000
+	ld.d	$a0, $s0, 1000
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
-	addi.d	$sp, $fp, -384
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB9_510:                              # %vector.ph2199
@@ -19873,15 +19833,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_514
 .LBB9_515:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit895
-	ld.w	$a1, $s1, 1176
+	ld.w	$a1, $s0, 1176
 	blt	$a1, $a0, .LBB9_523
 # %bb.516:                              # %.lr.ph.preheader.i897
-	ld.bu	$a0, $s1, 1160
+	ld.bu	$a0, $s0, 1160
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa0, $s0, $a0
-	ld.d	$a2, $s1, 1168
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s0, 1168
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_518
 # %bb.517:
@@ -19944,16 +19904,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_522
 .LBB9_523:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit903
-	ld.w	$a2, $s1, 1200
+	ld.w	$a2, $s0, 1200
 	ori	$a0, $zero, 1
 	blt	$a2, $a0, .LBB9_531
 # %bb.524:                              # %.lr.ph.preheader.i905
-	ld.bu	$a1, $s1, 1184
+	ld.bu	$a1, $s0, 1184
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $s0, $a1
-	ld.d	$a3, $s1, 1192
+	fldx.d	$fa0, $fp, $a1
+	ld.d	$a3, $s0, 1192
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_526
 # %bb.525:
@@ -20016,15 +19976,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_530
 .LBB9_531:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit911
-	ld.w	$a1, $s1, 480
+	ld.w	$a1, $s0, 480
 	blt	$a1, $a0, .LBB9_539
 # %bb.532:                              # %.lr.ph.preheader.i913
-	ld.bu	$a0, $s1, 464
+	ld.bu	$a0, $s0, 464
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa0, $s0, $a0
-	ld.d	$a2, $s1, 472
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s0, 472
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_534
 # %bb.533:
@@ -20087,16 +20047,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_538
 .LBB9_539:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit919
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	ori	$a0, $zero, 1
 	blt	$a2, $a0, .LBB9_547
 # %bb.540:                              # %.lr.ph.preheader.i921
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
-	fldx.d	$fa0, $s0, $a1
-	ld.d	$a3, $s1, 496
+	fldx.d	$fa0, $fp, $a1
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_542
 # %bb.541:
@@ -20159,34 +20119,34 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_546
 .LBB9_547:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit927
-	ld.w	$a1, $s1, 912
+	ld.w	$a1, $s0, 912
 	blt	$a1, $a0, .LBB9_549
 # %bb.548:                              # %.lr.ph.preheader.i928
-	ld.d	$a0, $s1, 904
+	ld.d	$a0, $s0, 904
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB9_549:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit929
-	ld.w	$a1, $s1, 936
-	ori	$s2, $zero, 1
-	blt	$a1, $s2, .LBB9_551
+	ld.w	$a1, $s0, 936
+	ori	$s1, $zero, 1
+	blt	$a1, $s1, .LBB9_551
 # %bb.550:                              # %.lr.ph.preheader.i930
-	ld.d	$a0, $s1, 928
+	ld.d	$a0, $s0, 928
 	slli.d	$a2, $a1, 2
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB9_551:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9IndxArrayE.exit931
-	ld.w	$a1, $s1, 1512
-	blt	$a1, $s2, .LBB9_1187
+	ld.w	$a1, $s0, 1512
+	blt	$a1, $s1, .LBB9_1187
 # %bb.552:                              # %.lr.ph.preheader.i933
-	ld.bu	$a0, $s1, 1496
+	ld.bu	$a0, $s0, 1496
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	fldx.d	$fa0, $s0, $a0
-	ld.d	$a2, $s1, 1504
+	fldx.d	$fa0, $fp, $a0
+	ld.d	$a2, $s0, 1504
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_554
 # %bb.553:
@@ -20306,15 +20266,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_563
 .LBB9_564:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit679
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_1187
 # %bb.565:                              # %.lr.ph.preheader.i681
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.d	$a1, $s0, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_567
 # %bb.566:
@@ -20423,11 +20383,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a6, 0
-	xvst	$xr10, $sp, 288
-	xvst	$xr8, $sp, 256
-	vld	$vr8, $sp, 288
-	vld	$vr9, $sp, 256
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a6, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a7, $a7, -4
@@ -20462,16 +20418,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a3, $a3, 1
 	bnez	$a4, .LBB9_576
 .LBB9_577:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit
-	ld.w	$a3, $s1, 1056
+	ld.w	$a3, $s0, 1056
 	blt	$a3, $a2, .LBB9_585
 # %bb.578:                              # %.lr.ph.preheader.i438
-	ld.bu	$a2, $s1, 1040
+	ld.bu	$a2, $s0, 1040
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
 	fldx.d	$fa1, $a1, $a2
-	ld.d	$a4, $s1, 1048
+	ld.d	$a4, $s0, 1048
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_580
 # %bb.579:
@@ -20523,11 +20479,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a5, 0
-	xvst	$xr10, $sp, 224
-	xvst	$xr8, $sp, 192
-	vld	$vr8, $sp, 224
-	vld	$vr9, $sp, 192
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a5, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a6, $a6, -4
@@ -20562,17 +20514,17 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_584
 .LBB9_585:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit445
-	ld.w	$a4, $s1, 1080
+	ld.w	$a4, $s0, 1080
 	ori	$a2, $zero, 1
 	blt	$a4, $a2, .LBB9_593
 # %bb.586:                              # %.lr.ph.preheader.i449
-	ld.bu	$a3, $s1, 1064
+	ld.bu	$a3, $s0, 1064
 	andi	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 3
 	fldx.d	$fa0, $a0, $a3
 	fldx.d	$fa1, $a1, $a3
-	ld.d	$a5, $s1, 1072
+	ld.d	$a5, $s0, 1072
 	ori	$a3, $zero, 4
 	bgeu	$a4, $a3, .LBB9_588
 # %bb.587:
@@ -20624,11 +20576,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a6, 0
-	xvst	$xr10, $sp, 160
-	xvst	$xr8, $sp, 128
-	vld	$vr8, $sp, 160
-	vld	$vr9, $sp, 128
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a6, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a7, $a7, -4
@@ -20663,16 +20611,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a3, $a3, 1
 	bnez	$a4, .LBB9_592
 .LBB9_593:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit456
-	ld.w	$a3, $s1, 1104
+	ld.w	$a3, $s0, 1104
 	blt	$a3, $a2, .LBB9_601
 # %bb.594:                              # %.lr.ph.preheader.i460
-	ld.bu	$a2, $s1, 1088
+	ld.bu	$a2, $s0, 1088
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
 	fldx.d	$fa1, $a1, $a2
-	ld.d	$a4, $s1, 1096
+	ld.d	$a4, $s0, 1096
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_596
 # %bb.595:
@@ -20724,11 +20672,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a5, 0
-	xvst	$xr10, $sp, 96
-	xvst	$xr8, $sp, 64
-	vld	$vr8, $sp, 96
-	vld	$vr9, $sp, 64
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a5, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a6, $a6, -4
@@ -20763,17 +20707,17 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_600
 .LBB9_601:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData12ComplexArrayE.exit467
-	ld.w	$a2, $s1, 1128
+	ld.w	$a2, $s0, 1128
 	ori	$a3, $zero, 1
 	blt	$a2, $a3, .LBB9_1187
 # %bb.602:                              # %.lr.ph.preheader.i471
-	ld.bu	$a3, $s1, 1112
+	ld.bu	$a3, $s0, 1112
 	andi	$a3, $a3, 1
 	sltui	$a3, $a3, 1
 	slli.d	$a3, $a3, 3
 	fldx.d	$fa0, $a0, $a3
 	fldx.d	$fa1, $a1, $a3
-	ld.d	$a1, $s1, 1120
+	ld.d	$a1, $s0, 1120
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_604
 # %bb.603:
@@ -20825,11 +20769,7 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	xvori.b	$xr12, $xr6, 0
 	xvshuf.d	$xr12, $xr11, $xr9
 	xvst	$xr12, $a3, 0
-	xvst	$xr10, $sp, 32
-	xvst	$xr8, $sp, 0
-	vld	$vr8, $sp, 32
-	vld	$vr9, $sp, 0
-	vpackev.d	$vr8, $vr9, $vr8
+	vpackev.d	$vr8, $vr8, $vr10
 	vst	$vr8, $a3, -32
 	vaddi.wu	$vr4, $vr4, 4
 	addi.d	$a4, $a4, -4
@@ -20921,15 +20861,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_613
 .LBB9_614:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1297
-	ld.w	$a2, $s1, 1272
+	ld.w	$a2, $s0, 1272
 	blt	$a2, $a1, .LBB9_622
 # %bb.615:                              # %.lr.ph.preheader.i1299
-	ld.bu	$a1, $s1, 1256
+	ld.bu	$a1, $s0, 1256
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1264
+	ld.d	$a3, $s0, 1264
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_617
 # %bb.616:
@@ -20992,16 +20932,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_621
 .LBB9_622:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1305
-	ld.w	$a3, $s1, 1296
+	ld.w	$a3, $s0, 1296
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_630
 # %bb.623:                              # %.lr.ph.preheader.i1307
-	ld.bu	$a2, $s1, 1280
+	ld.bu	$a2, $s0, 1280
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1288
+	ld.d	$a4, $s0, 1288
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_625
 # %bb.624:
@@ -21064,15 +21004,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_629
 .LBB9_630:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1313
-	ld.w	$a2, $s1, 1320
+	ld.w	$a2, $s0, 1320
 	blt	$a2, $a1, .LBB9_638
 # %bb.631:                              # %.lr.ph.preheader.i1315
-	ld.bu	$a1, $s1, 1304
+	ld.bu	$a1, $s0, 1304
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1312
+	ld.d	$a3, $s0, 1312
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_633
 # %bb.632:
@@ -21135,16 +21075,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_637
 .LBB9_638:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1321
-	ld.w	$a3, $s1, 1344
+	ld.w	$a3, $s0, 1344
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_646
 # %bb.639:                              # %.lr.ph.preheader.i1323
-	ld.bu	$a2, $s1, 1328
+	ld.bu	$a2, $s0, 1328
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1336
+	ld.d	$a4, $s0, 1336
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_641
 # %bb.640:
@@ -21207,15 +21147,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_645
 .LBB9_646:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1329
-	ld.w	$a2, $s1, 1368
+	ld.w	$a2, $s0, 1368
 	blt	$a2, $a1, .LBB9_1187
 # %bb.647:                              # %.lr.ph.preheader.i1331
-	ld.bu	$a1, $s1, 1352
+	ld.bu	$a1, $s0, 1352
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1360
+	ld.d	$a1, $s0, 1360
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_649
 # %bb.648:
@@ -21335,15 +21275,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_658
 .LBB9_659:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit711
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_667
 # %bb.660:                              # %.lr.ph.preheader.i713
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_662
 # %bb.661:
@@ -21406,16 +21346,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_666
 .LBB9_667:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit719
-	ld.w	$a1, $s1, 528
+	ld.w	$a1, $s0, 528
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.668:                              # %.lr.ph.preheader.i721
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 520
+	ld.d	$a2, $s0, 520
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_670
 # %bb.669:
@@ -21535,15 +21475,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_679
 .LBB9_680:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit831
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_1187
 # %bb.681:                              # %.lr.ph.preheader.i833
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_683
 # %bb.682:
@@ -21663,15 +21603,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_692
 .LBB9_693:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit363
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_701
 # %bb.694:                              # %.lr.ph.preheader.i365
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_696
 # %bb.695:
@@ -21734,16 +21674,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_700
 .LBB9_701:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit371
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_709
 # %bb.702:                              # %.lr.ph.preheader.i373
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_704
 # %bb.703:
@@ -21806,15 +21746,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_708
 .LBB9_709:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit379
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_1187
 # %bb.710:                              # %.lr.ph.preheader.i381
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 544
+	ld.d	$a1, $s0, 544
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_712
 # %bb.711:
@@ -21934,15 +21874,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_721
 .LBB9_722:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit847
-	ld.w	$a2, $s1, 1176
+	ld.w	$a2, $s0, 1176
 	blt	$a2, $a1, .LBB9_1187
 # %bb.723:                              # %.lr.ph.preheader.i849
-	ld.bu	$a1, $s1, 1160
+	ld.bu	$a1, $s0, 1160
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1168
+	ld.d	$a1, $s0, 1168
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_725
 # %bb.724:
@@ -22062,15 +22002,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_734
 .LBB9_735:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit631
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_743
 # %bb.736:                              # %.lr.ph.preheader.i633
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_738
 # %bb.737:
@@ -22133,16 +22073,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_742
 .LBB9_743:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit639
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_751
 # %bb.744:                              # %.lr.ph.preheader.i641
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_746
 # %bb.745:
@@ -22205,15 +22145,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_750
 .LBB9_751:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit647
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_1187
 # %bb.752:                              # %.lr.ph.preheader.i649
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_754
 # %bb.753:
@@ -22333,15 +22273,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_763
 .LBB9_764:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit395
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_772
 # %bb.765:                              # %.lr.ph.preheader.i397
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_767
 # %bb.766:
@@ -22404,16 +22344,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_771
 .LBB9_772:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit403
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_780
 # %bb.773:                              # %.lr.ph.preheader.i405
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_775
 # %bb.774:
@@ -22476,15 +22416,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_779
 .LBB9_780:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit411
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_788
 # %bb.781:                              # %.lr.ph.preheader.i413
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_783
 # %bb.782:
@@ -22547,16 +22487,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_787
 .LBB9_788:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit419
-	ld.w	$a1, $s1, 576
+	ld.w	$a1, $s0, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.789:                              # %.lr.ph.preheader.i421
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 568
+	ld.d	$a2, $s0, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_791
 # %bb.790:
@@ -22676,15 +22616,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_800
 .LBB9_801:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit735
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_809
 # %bb.802:                              # %.lr.ph.preheader.i737
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_804
 # %bb.803:
@@ -22747,16 +22687,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_808
 .LBB9_809:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit743
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_817
 # %bb.810:                              # %.lr.ph.preheader.i745
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_812
 # %bb.811:
@@ -22819,15 +22759,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_816
 .LBB9_817:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit751
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_825
 # %bb.818:                              # %.lr.ph.preheader.i753
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_820
 # %bb.819:
@@ -22890,16 +22830,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_824
 .LBB9_825:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit759
-	ld.w	$a1, $s1, 1608
+	ld.w	$a1, $s0, 1608
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.826:                              # %.lr.ph.preheader.i761
-	ld.bu	$a2, $s1, 1592
+	ld.bu	$a2, $s0, 1592
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 1600
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_828
 # %bb.827:
@@ -23019,15 +22959,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_837
 .LBB9_838:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit542
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_846
 # %bb.839:                              # %.lr.ph.preheader.i544
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_841
 # %bb.840:
@@ -23090,16 +23030,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_845
 .LBB9_846:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit550
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_854
 # %bb.847:                              # %.lr.ph.preheader.i552
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_849
 # %bb.848:
@@ -23162,15 +23102,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_853
 .LBB9_854:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit558
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_862
 # %bb.855:                              # %.lr.ph.preheader.i560
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_857
 # %bb.856:
@@ -23233,16 +23173,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_861
 .LBB9_862:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit566
-	ld.w	$a1, $s1, 576
+	ld.w	$a1, $s0, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.863:                              # %.lr.ph.preheader.i568
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 568
+	ld.d	$a2, $s0, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_865
 # %bb.864:
@@ -23362,15 +23302,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_874
 .LBB9_875:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit486
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_1187
 # %bb.876:                              # %.lr.ph.preheader.i488
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.d	$a1, $s0, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_878
 # %bb.877:
@@ -23490,15 +23430,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_887
 .LBB9_888:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1257
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_896
 # %bb.889:                              # %.lr.ph.preheader.i1259
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_891
 # %bb.890:
@@ -23561,16 +23501,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_895
 .LBB9_896:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1265
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_904
 # %bb.897:                              # %.lr.ph.preheader.i1267
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_899
 # %bb.898:
@@ -23633,15 +23573,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_903
 .LBB9_904:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1273
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_912
 # %bb.905:                              # %.lr.ph.preheader.i1275
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_907
 # %bb.906:
@@ -23704,16 +23644,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_911
 .LBB9_912:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1281
-	ld.w	$a1, $s1, 576
+	ld.w	$a1, $s0, 576
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.913:                              # %.lr.ph.preheader.i1283
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 568
+	ld.d	$a2, $s0, 568
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_915
 # %bb.914:
@@ -23890,15 +23830,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_929
 .LBB9_930:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit863
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_1187
 # %bb.931:                              # %.lr.ph.preheader.i865
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.d	$a1, $s0, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_933
 # %bb.932:
@@ -24018,15 +23958,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_942
 .LBB9_943:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit775
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_951
 # %bb.944:                              # %.lr.ph.preheader.i777
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_946
 # %bb.945:
@@ -24089,16 +24029,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_950
 .LBB9_951:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit783
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_959
 # %bb.952:                              # %.lr.ph.preheader.i785
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_954
 # %bb.953:
@@ -24161,15 +24101,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_958
 .LBB9_959:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit791
-	ld.w	$a2, $s1, 1536
+	ld.w	$a2, $s0, 1536
 	blt	$a2, $a1, .LBB9_967
 # %bb.960:                              # %.lr.ph.preheader.i793
-	ld.bu	$a1, $s1, 1520
+	ld.bu	$a1, $s0, 1520
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1528
+	ld.d	$a3, $s0, 1528
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_962
 # %bb.961:
@@ -24232,16 +24172,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_966
 .LBB9_967:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit799
-	ld.w	$a3, $s1, 1560
+	ld.w	$a3, $s0, 1560
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_975
 # %bb.968:                              # %.lr.ph.preheader.i801
-	ld.bu	$a2, $s1, 1544
+	ld.bu	$a2, $s0, 1544
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1552
+	ld.d	$a4, $s0, 1552
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_970
 # %bb.969:
@@ -24304,15 +24244,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_974
 .LBB9_975:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit807
-	ld.w	$a2, $s1, 1584
+	ld.w	$a2, $s0, 1584
 	blt	$a2, $a1, .LBB9_983
 # %bb.976:                              # %.lr.ph.preheader.i809
-	ld.bu	$a1, $s1, 1568
+	ld.bu	$a1, $s0, 1568
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1576
+	ld.d	$a3, $s0, 1576
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_978
 # %bb.977:
@@ -24375,16 +24315,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_982
 .LBB9_983:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit815
-	ld.w	$a1, $s1, 1608
+	ld.w	$a1, $s0, 1608
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.984:                              # %.lr.ph.preheader.i817
-	ld.bu	$a2, $s1, 1592
+	ld.bu	$a2, $s0, 1592
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 1600
+	ld.d	$a2, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_986
 # %bb.985:
@@ -24504,15 +24444,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_995
 .LBB9_996:                              # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit879
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_1187
 # %bb.997:                              # %.lr.ph.preheader.i881
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 496
+	ld.d	$a1, $s0, 496
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_999
 # %bb.998:
@@ -24632,15 +24572,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1008
 .LBB9_1009:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1153
-	ld.w	$a2, $s1, 504
+	ld.w	$a2, $s0, 504
 	blt	$a2, $a1, .LBB9_1017
 # %bb.1010:                             # %.lr.ph.preheader.i1155
-	ld.bu	$a1, $s1, 488
+	ld.bu	$a1, $s0, 488
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 496
+	ld.d	$a3, $s0, 496
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1012
 # %bb.1011:
@@ -24703,16 +24643,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1016
 .LBB9_1017:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1161
-	ld.w	$a3, $s1, 528
+	ld.w	$a3, $s0, 528
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1025
 # %bb.1018:                             # %.lr.ph.preheader.i1163
-	ld.bu	$a2, $s1, 512
+	ld.bu	$a2, $s0, 512
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 520
+	ld.d	$a4, $s0, 520
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1020
 # %bb.1019:
@@ -24775,15 +24715,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1024
 .LBB9_1025:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1169
-	ld.w	$a2, $s1, 552
+	ld.w	$a2, $s0, 552
 	blt	$a2, $a1, .LBB9_1033
 # %bb.1026:                             # %.lr.ph.preheader.i1171
-	ld.bu	$a1, $s1, 536
+	ld.bu	$a1, $s0, 536
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 544
+	ld.d	$a3, $s0, 544
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1028
 # %bb.1027:
@@ -24846,16 +24786,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1032
 .LBB9_1033:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1177
-	ld.w	$a3, $s1, 576
+	ld.w	$a3, $s0, 576
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1041
 # %bb.1034:                             # %.lr.ph.preheader.i1179
-	ld.bu	$a2, $s1, 560
+	ld.bu	$a2, $s0, 560
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 568
+	ld.d	$a4, $s0, 568
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1036
 # %bb.1035:
@@ -24918,15 +24858,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1040
 .LBB9_1041:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1185
-	ld.w	$a2, $s1, 600
+	ld.w	$a2, $s0, 600
 	blt	$a2, $a1, .LBB9_1049
 # %bb.1042:                             # %.lr.ph.preheader.i1187
-	ld.bu	$a1, $s1, 584
+	ld.bu	$a1, $s0, 584
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 592
+	ld.d	$a3, $s0, 592
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1044
 # %bb.1043:
@@ -24989,16 +24929,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1048
 .LBB9_1049:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1193
-	ld.w	$a3, $s1, 624
+	ld.w	$a3, $s0, 624
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1057
 # %bb.1050:                             # %.lr.ph.preheader.i1195
-	ld.bu	$a2, $s1, 608
+	ld.bu	$a2, $s0, 608
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 616
+	ld.d	$a4, $s0, 616
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1052
 # %bb.1051:
@@ -25061,15 +25001,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1056
 .LBB9_1057:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1201
-	ld.w	$a2, $s1, 648
+	ld.w	$a2, $s0, 648
 	blt	$a2, $a1, .LBB9_1065
 # %bb.1058:                             # %.lr.ph.preheader.i1203
-	ld.bu	$a1, $s1, 632
+	ld.bu	$a1, $s0, 632
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 640
+	ld.d	$a3, $s0, 640
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1060
 # %bb.1059:
@@ -25132,16 +25072,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1064
 .LBB9_1065:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1209
-	ld.w	$a3, $s1, 672
+	ld.w	$a3, $s0, 672
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1073
 # %bb.1066:                             # %.lr.ph.preheader.i1211
-	ld.bu	$a2, $s1, 656
+	ld.bu	$a2, $s0, 656
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 664
+	ld.d	$a4, $s0, 664
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1068
 # %bb.1067:
@@ -25204,15 +25144,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1072
 .LBB9_1073:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1217
-	ld.w	$a2, $s1, 1608
+	ld.w	$a2, $s0, 1608
 	blt	$a2, $a1, .LBB9_1187
 # %bb.1074:                             # %.lr.ph.preheader.i1219
-	ld.bu	$a1, $s1, 1592
+	ld.bu	$a1, $s0, 1592
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a1, $s1, 1600
+	ld.d	$a1, $s0, 1600
 	ori	$a0, $zero, 4
 	bgeu	$a2, $a0, .LBB9_1076
 # %bb.1075:
@@ -25332,15 +25272,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1085
 .LBB9_1086:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1233
-	ld.w	$a2, $s1, 1176
+	ld.w	$a2, $s0, 1176
 	blt	$a2, $a1, .LBB9_1094
 # %bb.1087:                             # %.lr.ph.preheader.i1235
-	ld.bu	$a1, $s1, 1160
+	ld.bu	$a1, $s0, 1160
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1168
+	ld.d	$a3, $s0, 1168
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1089
 # %bb.1088:
@@ -25403,16 +25343,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1093
 .LBB9_1094:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1241
-	ld.w	$a1, $s1, 1512
+	ld.w	$a1, $s0, 1512
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.1095:                             # %.lr.ph.preheader.i1243
-	ld.bu	$a2, $s1, 1496
+	ld.bu	$a2, $s0, 1496
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 1504
+	ld.d	$a2, $s0, 1504
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_1097
 # %bb.1096:
@@ -25532,15 +25472,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1106
 .LBB9_1107:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1033
-	ld.w	$a2, $s1, 1272
+	ld.w	$a2, $s0, 1272
 	blt	$a2, $a1, .LBB9_1115
 # %bb.1108:                             # %.lr.ph.preheader.i1035
-	ld.bu	$a1, $s1, 1256
+	ld.bu	$a1, $s0, 1256
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1264
+	ld.d	$a3, $s0, 1264
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1110
 # %bb.1109:
@@ -25603,16 +25543,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1114
 .LBB9_1115:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1041
-	ld.w	$a3, $s1, 1296
+	ld.w	$a3, $s0, 1296
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1123
 # %bb.1116:                             # %.lr.ph.preheader.i1043
-	ld.bu	$a2, $s1, 1280
+	ld.bu	$a2, $s0, 1280
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1288
+	ld.d	$a4, $s0, 1288
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1118
 # %bb.1117:
@@ -25675,15 +25615,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1122
 .LBB9_1123:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1049
-	ld.w	$a2, $s1, 1320
+	ld.w	$a2, $s0, 1320
 	blt	$a2, $a1, .LBB9_1131
 # %bb.1124:                             # %.lr.ph.preheader.i1051
-	ld.bu	$a1, $s1, 1304
+	ld.bu	$a1, $s0, 1304
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1312
+	ld.d	$a3, $s0, 1312
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1126
 # %bb.1125:
@@ -25746,16 +25686,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1130
 .LBB9_1131:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1057
-	ld.w	$a3, $s1, 1344
+	ld.w	$a3, $s0, 1344
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1139
 # %bb.1132:                             # %.lr.ph.preheader.i1059
-	ld.bu	$a2, $s1, 1328
+	ld.bu	$a2, $s0, 1328
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1336
+	ld.d	$a4, $s0, 1336
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1134
 # %bb.1133:
@@ -25818,15 +25758,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1138
 .LBB9_1139:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1065
-	ld.w	$a2, $s1, 1368
+	ld.w	$a2, $s0, 1368
 	blt	$a2, $a1, .LBB9_1147
 # %bb.1140:                             # %.lr.ph.preheader.i1067
-	ld.bu	$a1, $s1, 1352
+	ld.bu	$a1, $s0, 1352
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1360
+	ld.d	$a3, $s0, 1360
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1142
 # %bb.1141:
@@ -25889,16 +25829,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1146
 .LBB9_1147:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1073
-	ld.w	$a3, $s1, 1392
+	ld.w	$a3, $s0, 1392
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1155
 # %bb.1148:                             # %.lr.ph.preheader.i1075
-	ld.bu	$a2, $s1, 1376
+	ld.bu	$a2, $s0, 1376
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1384
+	ld.d	$a4, $s0, 1384
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1150
 # %bb.1149:
@@ -25961,15 +25901,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1154
 .LBB9_1155:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1081
-	ld.w	$a2, $s1, 1416
+	ld.w	$a2, $s0, 1416
 	blt	$a2, $a1, .LBB9_1163
 # %bb.1156:                             # %.lr.ph.preheader.i1083
-	ld.bu	$a1, $s1, 1400
+	ld.bu	$a1, $s0, 1400
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1408
+	ld.d	$a3, $s0, 1408
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1158
 # %bb.1157:
@@ -26032,16 +25972,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1162
 .LBB9_1163:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1089
-	ld.w	$a3, $s1, 1440
+	ld.w	$a3, $s0, 1440
 	ori	$a1, $zero, 1
 	blt	$a3, $a1, .LBB9_1171
 # %bb.1164:                             # %.lr.ph.preheader.i1091
-	ld.bu	$a2, $s1, 1424
+	ld.bu	$a2, $s0, 1424
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a4, $s1, 1432
+	ld.d	$a4, $s0, 1432
 	ori	$a2, $zero, 4
 	bgeu	$a3, $a2, .LBB9_1166
 # %bb.1165:
@@ -26104,15 +26044,15 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a2, $a2, 1
 	bnez	$a3, .LBB9_1170
 .LBB9_1171:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1097
-	ld.w	$a2, $s1, 1464
+	ld.w	$a2, $s0, 1464
 	blt	$a2, $a1, .LBB9_1179
 # %bb.1172:                             # %.lr.ph.preheader.i1099
-	ld.bu	$a1, $s1, 1448
+	ld.bu	$a1, $s0, 1448
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $a0, $a1
-	ld.d	$a3, $s1, 1456
+	ld.d	$a3, $s0, 1456
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB9_1174
 # %bb.1173:
@@ -26175,16 +26115,16 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a1, $a1, 1
 	bnez	$a2, .LBB9_1178
 .LBB9_1179:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit1105
-	ld.w	$a1, $s1, 1488
+	ld.w	$a1, $s0, 1488
 	ori	$a2, $zero, 1
 	blt	$a1, $a2, .LBB9_1187
 # %bb.1180:                             # %.lr.ph.preheader.i1107
-	ld.bu	$a2, $s1, 1472
+	ld.bu	$a2, $s0, 1472
 	andi	$a2, $a2, 1
 	sltui	$a2, $a2, 1
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a0, $a2
-	ld.d	$a2, $s1, 1480
+	ld.d	$a2, $s0, 1480
 	ori	$a0, $zero, 4
 	bgeu	$a1, $a0, .LBB9_1182
 # %bb.1181:
@@ -26247,13 +26187,11 @@ _Z8loopInitj:                           # @_Z8loopInitj
 	addi.w	$a0, $a0, 1
 	bnez	$a1, .LBB9_1186
 .LBB9_1187:                             # %_ZN12_GLOBAL__N_18initDataERN8LoopData9RealArrayE.exit179
-	addi.d	$sp, $fp, -384
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB9_1188:
 	pcaddu18i	$ra, %call36(_ZSt16__throw_bad_castv)
@@ -27877,19 +27815,19 @@ _Z12loopFinalizejR8LoopStat10LoopLength: # @_Z12loopFinalizejR8LoopStat10LoopLen
 _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -640
-	.cfi_def_cfa_offset 640
-	st.d	$ra, $sp, 632                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 624                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 616                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 608                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 600                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 592                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 584                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 576                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 568                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 560                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 552                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -288
+	.cfi_def_cfa_offset 288
+	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -27901,83 +27839,81 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	addi.d	$fp, $sp, 640
-	.cfi_def_cfa 22, 0
-	bstrins.d	$sp, $zero, 4, 0
-	pcalau12i	$s8, %pc_hi20(_ZL11s_loop_data)
-	ld.d	$s3, $s8, %pc_lo12(_ZL11s_loop_data)
-	ld.w	$a0, $s3, 0
-	move	$s0, $zero
+	pcalau12i	$s6, %pc_hi20(_ZL11s_loop_data)
+	ld.d	$s2, $s6, %pc_lo12(_ZL11s_loop_data)
+	ld.w	$a0, $s2, 0
+	move	$fp, $zero
 	addi.d	$a0, $a0, 20
 	addi.w	$a1, $a0, 0
 	bstrpick.d	$a1, $a1, 62, 58
 	add.d	$a0, $a0, $a1
 	bstrpick.d	$a0, $a0, 31, 5
 	slli.d	$a0, $a0, 5
-	addi.w	$s5, $a0, 32
-	slli.d	$a0, $s5, 3
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
-	bstrpick.d	$a0, $s5, 31, 5
-	slli.d	$s7, $a0, 5
-	ori	$s1, $zero, 1
+	addi.w	$s8, $a0, 32
+	slli.d	$s4, $s8, 3
+	bstrpick.d	$a0, $s8, 31, 5
+	slli.d	$s5, $a0, 5
+	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.LCPI11_0)
-	addi.d	$s6, $a0, %pc_lo12(.LCPI11_0)
+	addi.d	$a0, $a0, %pc_lo12(.LCPI11_0)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI11_1)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	vld	$vr0, $a0, %pc_lo12(.LCPI11_1)
-	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 80                   # 16-byte Folded Spill
 	lu12i.w	$a0, -419431
 	ori	$a0, $a0, 2458
 	lu32i.d	$a0, 104857
 	lu52i.d	$a0, $a0, 1023
 	xvreplgr2vr.d	$xr0, $a0
-	xvst	$xr0, $sp, 192                  # 32-byte Folded Spill
+	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
 	lu12i.w	$a0, -307024
 	ori	$a0, $a0, 3880
 	lu32i.d	$a0, 129446
 	lu52i.d	$a0, $a0, 1023
 	xvreplgr2vr.d	$xr0, $a0
-	xvst	$xr0, $sp, 160                  # 32-byte Folded Spill
-	ori	$s2, $zero, 16
+	xvst	$xr0, $sp, 128                  # 32-byte Folded Spill
+	ori	$s1, $zero, 16
 	b	.LBB11_2
 	.p2align	4, , 16
 .LBB11_1:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit
                                         #   in Loop: Header=BB11_2 Depth=1
-	ld.d	$s3, $s8, %pc_lo12(_ZL11s_loop_data)
-	alsl.d	$a1, $s0, $s3, 3
+	ld.d	$s2, $s6, %pc_lo12(_ZL11s_loop_data)
+	alsl.d	$a1, $fp, $s2, 3
 	st.d	$a0, $a1, 8
-	move	$s0, $s4
-	beq	$s4, $s2, .LBB11_5
+	move	$fp, $s3
+	beq	$s3, $s1, .LBB11_5
 .LBB11_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_4 Depth 2
-	slli.d	$a0, $s0, 4
-	alsl.d	$a0, $s0, $a0, 3
-	add.d	$s3, $s3, $a0
-	addi.d	$s4, $s0, 1
-	st.w	$s4, $s3, 464
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	slli.d	$a0, $fp, 4
+	alsl.d	$a0, $fp, $a0, 3
+	add.d	$s2, $s2, $a0
+	addi.d	$s3, $fp, 1
+	st.w	$s3, $s2, 464
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 544
-	st.d	$a0, $s3, 472
-	st.w	$s5, $s3, 480
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s5, $s1, .LBB11_1
+	ld.d	$a0, $sp, 192
+	st.d	$a0, $s2, 472
+	st.w	$s8, $s2, 480
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	blt	$s8, $s0, .LBB11_1
 # %bb.3:                                # %vector.ph
                                         #   in Loop: Header=BB11_2 Depth=1
-	addi.d	$a1, $s3, 464
+	addi.d	$a1, $s2, 464
 	ld.bu	$a1, $a1, 0
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	alsl.d	$a1, $a1, $s6, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a1, $a1, $a2, 3
 	xvldrepl.d	$xr0, $a1, 0
 	move	$a1, $a0
-	move	$a2, $s7
-	vld	$vr1, $sp, 96                   # 16-byte Folded Reload
+	move	$a2, $s5
+	vld	$vr1, $sp, 80                   # 16-byte Folded Reload
                                         # kill: def $vr1 killed $vr1 def $xr1
 	.p2align	4, , 16
 .LBB11_4:                               # %vector.body
@@ -27996,38 +27932,37 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	bnez	$a2, .LBB11_4
 	b	.LBB11_1
 .LBB11_5:                               # %.preheader186
-	slli.d	$s4, $s5, 2
-	addi.w	$s0, $s4, 0
-	slli.d	$s2, $s0, 3
-	bstrpick.d	$a0, $s4, 31, 2
+	slli.d	$s7, $s8, 2
+	addi.w	$fp, $s7, 0
+	slli.d	$s1, $fp, 3
+	bstrpick.d	$a0, $s7, 31, 2
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	slli.d	$s1, $a0, 2
-	ori	$a0, $zero, 1
-	st.w	$a0, $s3, 848
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	slli.d	$s0, $a0, 2
+	ori	$s3, $zero, 1
+	st.w	$s3, $s2, 848
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 544
-	st.d	$a0, $s3, 856
-	st.d	$s4, $sp, 48                    # 8-byte Folded Spill
-	st.w	$s4, $s3, 864
-	ori	$s4, $zero, 1
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s0, $s4, .LBB11_8
+	ld.d	$a0, $sp, 192
+	st.d	$a0, $s2, 856
+	st.w	$s7, $s2, 864
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	blt	$fp, $s3, .LBB11_8
 # %bb.6:                                # %vector.ph250
-	ld.bu	$a1, $s3, 848
+	ld.bu	$a1, $s2, 848
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	alsl.d	$a1, $a1, $s6, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a1, $a1, $a2, 3
 	xvldrepl.d	$xr0, $a1, 0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a1, %pc_lo12(.LCPI11_1)
 	move	$a1, $a0
-	move	$a2, $s1
+	move	$a2, $s0
 	.p2align	4, , 16
 .LBB11_7:                               # %vector.body255
                                         # =>This Inner Loop Header: Depth=1
@@ -28043,27 +27978,28 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a1, $a1, 32
 	bnez	$a2, .LBB11_7
 .LBB11_8:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit140
-	ld.d	$s3, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$a0, $s3, 136
+	ld.d	$s2, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$a0, $s2, 136
 	ori	$a0, $zero, 2
-	st.w	$a0, $s3, 872
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s2, 872
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	ld.d	$a0, $sp, 544
-	st.d	$a0, $s3, 880
-	st.w	$s0, $s3, 888
-	blt	$s0, $s4, .LBB11_11
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	ld.d	$a0, $sp, 192
+	st.d	$a0, $s2, 880
+	st.w	$fp, $s2, 888
+	blt	$fp, $s3, .LBB11_11
 # %bb.9:                                # %vector.ph265
-	ld.bu	$a1, $s3, 872
+	ld.bu	$a1, $s2, 872
 	andi	$a1, $a1, 1
 	sltui	$a1, $a1, 1
-	alsl.d	$a1, $a1, $s6, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a1, $a1, $a2, 3
 	xvldrepl.d	$xr0, $a1, 0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a1, %pc_lo12(.LCPI11_1)
@@ -28079,163 +28015,164 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvfdiv.d	$xr2, $xr3, $xr2
 	xvst	$xr2, $a1, 0
 	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$s1, $s1, -4
+	addi.d	$s0, $s0, -4
 	addi.d	$a1, $a1, 32
-	bnez	$s1, .LBB11_10
+	bnez	$s0, .LBB11_10
 .LBB11_11:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit140.1
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$a0, $s1, 144
-	slli.d	$s2, $s7, 2
-	st.w	$zero, $s1, 896
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$a0, $s0, 144
+	slli.d	$s1, $s5, 2
+	st.w	$zero, $s0, 896
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	ld.d	$s4, $sp, 48                    # 8-byte Folded Reload
-	move	$a2, $s4
+	move	$a2, $s7
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 544
-	st.d	$s3, $s1, 904
-	ori	$s0, $zero, 1
-	st.w	$s5, $s1, 912
-	blt	$s5, $s0, .LBB11_13
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s0, 904
+	ori	$fp, $zero, 1
+	st.w	$s8, $s0, 912
+	blt	$s8, $fp, .LBB11_13
 # %bb.12:                               # %.lr.ph.preheader.i.i141
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_13:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s3, $s1, 152
-	st.w	$s0, $s1, 920
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $s0, 152
+	st.w	$fp, $s0, 920
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s4
+	move	$a2, $s7
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 544
-	st.d	$s3, $s1, 928
-	st.w	$s5, $s1, 936
-	blt	$s5, $s0, .LBB11_15
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s0, 928
+	st.w	$s8, $s0, 936
+	blt	$s8, $fp, .LBB11_15
 # %bb.14:                               # %.lr.ph.preheader.i.i141.1
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_15:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.1
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s3, $s1, 160
+	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $s0, 160
 	ori	$a0, $zero, 2
-	st.w	$a0, $s1, 944
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s0, 944
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s4
+	move	$a2, $s7
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 544
-	st.d	$s3, $s1, 952
-	ori	$s0, $zero, 1
-	st.w	$s5, $s1, 960
-	blt	$s5, $s0, .LBB11_17
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s0, 952
+	ori	$fp, $zero, 1
+	st.w	$s8, $s0, 960
+	blt	$s8, $fp, .LBB11_17
 # %bb.16:                               # %.lr.ph.preheader.i.i141.2
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_17:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.2
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s3, $s1, 168
+	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $s0, 168
 	ori	$a0, $zero, 3
-	st.w	$a0, $s1, 968
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s0, 968
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s4
+	move	$a2, $s7
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 544
-	st.d	$s3, $s1, 976
-	st.w	$s5, $s1, 984
-	blt	$s5, $s0, .LBB11_19
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s0, 976
+	st.w	$s8, $s0, 984
+	blt	$s8, $fp, .LBB11_19
 # %bb.18:                               # %.lr.ph.preheader.i.i141.3
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_19:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.3
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s3, $s1, 176
+	ld.d	$s0, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $s0, 176
 	ori	$a0, $zero, 4
-	st.w	$a0, $s1, 992
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s0, 992
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s4
+	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	move	$a2, $s7
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 544
-	st.d	$s3, $s1, 1000
-	ori	$s0, $zero, 1
-	st.w	$s5, $s1, 1008
-	blt	$s5, $s0, .LBB11_21
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s0, 1000
+	ori	$fp, $zero, 1
+	st.w	$s8, $s0, 1008
+	blt	$s8, $fp, .LBB11_21
 # %bb.20:                               # %.lr.ph.preheader.i.i141.4
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_21:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9IndxArrayEi.exit.4
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$s3, $s1, 184
-	slti	$a0, $s5, 0
-	slli.d	$s2, $s5, 4
-	masknez	$a1, $s2, $a0
+	ld.d	$s7, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$s2, $s7, 184
+	slti	$a0, $s8, 0
+	slli.d	$s1, $s8, 4
+	masknez	$a1, $s1, $a0
 	addi.w	$a2, $zero, -1
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
-	st.w	$s0, $s1, 1016
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.w	$fp, $s7, 1016
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	beqz	$s5, .LBB11_23
+	move	$s3, $a0
+	beqz	$s8, .LBB11_23
 # %bb.22:                               # %.loopexit.loopexit.i
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_23:                              # %.loopexit.i
-	st.d	$s4, $s1, 1024
-	st.w	$s5, $s1, 1032
+	st.d	$s3, $s7, 1024
+	st.w	$s8, $s7, 1032
 	ori	$a0, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.LCPI11_2)
 	addi.d	$a1, $a1, %pc_lo12(.LCPI11_2)
-	pcalau12i	$s0, %pc_hi20(.LCPI11_3)
-	addi.d	$s3, $s1, 1040
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	blt	$s5, $a0, .LBB11_27
+	pcalau12i	$fp, %pc_hi20(.LCPI11_3)
+	addi.d	$s0, $s7, 1040
+	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
+	blt	$s8, $a0, .LBB11_27
 # %bb.24:                               # %vector.ph280
-	ld.bu	$a0, $s1, 1016
+	ld.bu	$a0, $s7, 1016
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
 	alsl.d	$a1, $a0, $a1, 3
-	alsl.d	$a0, $a0, $s6, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a2, 3
 	xvldrepl.d	$xr0, $a0, 0
 	xvldrepl.d	$xr1, $a1, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI11_1)
-	xvld	$xr3, $s0, %pc_lo12(.LCPI11_3)
-	addi.d	$a0, $s4, 32
-	move	$a1, $s7
-	xvld	$xr9, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 160                 # 32-byte Folded Reload
+	xvld	$xr3, $fp, %pc_lo12(.LCPI11_3)
+	addi.d	$a0, $s3, 32
+	move	$a1, $s5
+	xvld	$xr9, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_25:                              # %vector.body287
                                         # =>This Inner Loop Header: Depth=1
@@ -28261,63 +28198,59 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvori.b	$xr8, $xr3, 0
 	xvshuf.d	$xr8, $xr7, $xr5
 	xvst	$xr8, $a0, 0
-	xvst	$xr6, $sp, 512
-	xvst	$xr4, $sp, 480
-	vld	$vr4, $sp, 512
-	vld	$vr5, $sp, 480
-	vpackev.d	$vr4, $vr5, $vr4
+	vpackev.d	$vr4, $vr4, $vr6
 	vst	$vr4, $a0, -32
 	vaddi.wu	$vr2, $vr2, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_25
 # %bb.26:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.thread
-	st.d	$s4, $s1, 192
+	st.d	$s3, $s7, 192
 	ori	$a0, $zero, 2
-	st.w	$a0, $s1, 1040
-	move	$a0, $s2
+	st.w	$a0, $s7, 1040
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	b	.LBB11_28
 .LBB11_27:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit
-	st.d	$s4, $s1, 192
+	st.d	$s3, $s7, 192
 	ori	$a0, $zero, 2
-	st.w	$a0, $s1, 1040
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a0, $s7, 1040
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	beqz	$s5, .LBB11_29
+	move	$s3, $a0
+	beqz	$s8, .LBB11_29
 .LBB11_28:                              # %.loopexit.loopexit.i.1
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_29:                              # %.loopexit.i.1
-	st.d	$s4, $s1, 1048
-	st.w	$s5, $s1, 1056
+	st.d	$s3, $s7, 1048
+	st.w	$s8, $s7, 1056
 	ori	$a0, $zero, 1
-	addi.d	$a1, $s1, 1064
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	xvld	$xr9, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 160                 # 32-byte Folded Reload
-	blt	$s5, $a0, .LBB11_33
+	addi.d	$s2, $s7, 1064
+	xvld	$xr9, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	blt	$s8, $a0, .LBB11_33
 # %bb.30:                               # %vector.ph297
-	ld.bu	$a0, $s3, 0
+	ld.bu	$a0, $s0, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	alsl.d	$a0, $a0, $s6, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a2, 3
 	xvldrepl.d	$xr0, $a0, 0
 	xvldrepl.d	$xr1, $a1, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI11_1)
-	xvld	$xr3, $s0, %pc_lo12(.LCPI11_3)
-	addi.d	$a0, $s4, 32
-	move	$a1, $s7
+	xvld	$xr3, $fp, %pc_lo12(.LCPI11_3)
+	addi.d	$a0, $s3, 32
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_31:                              # %vector.body304
                                         # =>This Inner Loop Header: Depth=1
@@ -28343,63 +28276,60 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvori.b	$xr8, $xr3, 0
 	xvshuf.d	$xr8, $xr7, $xr5
 	xvst	$xr8, $a0, 0
-	xvst	$xr6, $sp, 448
-	xvst	$xr4, $sp, 416
-	vld	$vr4, $sp, 448
-	vld	$vr5, $sp, 416
-	vpackev.d	$vr4, $vr5, $vr4
+	vpackev.d	$vr4, $vr4, $vr6
 	vst	$vr4, $a0, -32
 	vaddi.wu	$vr2, $vr2, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_31
 # %bb.32:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.1.thread
-	st.d	$s4, $s1, 200
+	st.d	$s3, $s7, 200
 	ori	$a0, $zero, 3
-	st.w	$a0, $s1, 1064
-	move	$a0, $s2
+	st.w	$a0, $s7, 1064
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	b	.LBB11_34
 .LBB11_33:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.1
-	st.d	$s4, $s1, 200
+	st.d	$s3, $s7, 200
 	ori	$a0, $zero, 3
-	st.w	$a0, $s1, 1064
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a0, $s7, 1064
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	beqz	$s5, .LBB11_35
+	move	$s3, $a0
+	beqz	$s8, .LBB11_35
 .LBB11_34:                              # %.loopexit.loopexit.i.2
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_35:                              # %.loopexit.i.2
-	st.d	$s4, $s1, 1072
-	st.w	$s5, $s1, 1080
+	st.d	$s3, $s7, 1072
+	st.w	$s8, $s7, 1080
 	ori	$a0, $zero, 1
-	addi.d	$s3, $s1, 1088
-	xvld	$xr9, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 160                 # 32-byte Folded Reload
-	blt	$s5, $a0, .LBB11_39
+	addi.d	$a1, $s7, 1088
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	xvld	$xr9, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	blt	$s8, $a0, .LBB11_39
 # %bb.36:                               # %vector.ph314
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.bu	$a0, $a0, 0
+	ld.bu	$a0, $s2, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	alsl.d	$a0, $a0, $s6, 3
+	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
+	alsl.d	$a1, $a0, $s2, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a2, 3
 	xvldrepl.d	$xr0, $a0, 0
 	xvldrepl.d	$xr1, $a1, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI11_1)
-	xvld	$xr3, $s0, %pc_lo12(.LCPI11_3)
-	addi.d	$a0, $s4, 32
-	move	$a1, $s7
+	xvld	$xr3, $fp, %pc_lo12(.LCPI11_3)
+	addi.d	$a0, $s3, 32
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_37:                              # %vector.body321
                                         # =>This Inner Loop Header: Depth=1
@@ -28425,63 +28355,60 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvori.b	$xr8, $xr3, 0
 	xvshuf.d	$xr8, $xr7, $xr5
 	xvst	$xr8, $a0, 0
-	xvst	$xr6, $sp, 384
-	xvst	$xr4, $sp, 352
-	vld	$vr4, $sp, 384
-	vld	$vr5, $sp, 352
-	vpackev.d	$vr4, $vr5, $vr4
+	vpackev.d	$vr4, $vr4, $vr6
 	vst	$vr4, $a0, -32
 	vaddi.wu	$vr2, $vr2, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_37
 # %bb.38:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.2.thread
-	st.d	$s4, $s1, 208
+	st.d	$s3, $s7, 208
 	ori	$a0, $zero, 4
-	st.w	$a0, $s1, 1088
-	move	$a0, $s2
+	st.w	$a0, $s7, 1088
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
+	move	$s3, $a0
 	b	.LBB11_40
 .LBB11_39:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.2
-	st.d	$s4, $s1, 208
+	st.d	$s3, $s7, 208
 	ori	$a0, $zero, 4
-	st.w	$a0, $s1, 1088
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a0, $s7, 1088
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	beqz	$s5, .LBB11_41
+	move	$s3, $a0
+	ld.d	$s2, $sp, 80                    # 8-byte Folded Reload
+	beqz	$s8, .LBB11_41
 .LBB11_40:                              # %.loopexit.loopexit.i.3
-	move	$a0, $s4
+	move	$a0, $s3
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_41:                              # %.loopexit.i.3
-	st.d	$s4, $s1, 1096
-	st.w	$s5, $s1, 1104
+	st.d	$s3, $s7, 1096
+	st.w	$s8, $s7, 1104
 	ori	$a0, $zero, 1
-	addi.d	$a1, $s1, 1112
-	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	xvld	$xr9, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 160                 # 32-byte Folded Reload
-	blt	$s5, $a0, .LBB11_45
+	addi.d	$s0, $s7, 1112
+	xvld	$xr9, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	blt	$s8, $a0, .LBB11_45
 # %bb.42:                               # %vector.ph331
-	ld.bu	$a0, $s3, 0
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.bu	$a0, $a0, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	alsl.d	$a1, $a0, $a1, 3
-	alsl.d	$a0, $a0, $s6, 3
+	alsl.d	$a1, $a0, $s2, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a2, 3
 	xvldrepl.d	$xr0, $a0, 0
 	xvldrepl.d	$xr1, $a1, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI11_1)
-	xvld	$xr3, $s0, %pc_lo12(.LCPI11_3)
-	addi.d	$a0, $s4, 32
-	move	$a1, $s7
+	xvld	$xr3, $fp, %pc_lo12(.LCPI11_3)
+	addi.d	$a0, $s3, 32
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_43:                              # %vector.body338
                                         # =>This Inner Loop Header: Depth=1
@@ -28507,62 +28434,59 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvori.b	$xr8, $xr3, 0
 	xvshuf.d	$xr8, $xr7, $xr5
 	xvst	$xr8, $a0, 0
-	xvst	$xr6, $sp, 320
-	xvst	$xr4, $sp, 288
-	vld	$vr4, $sp, 320
-	vld	$vr5, $sp, 288
-	vpackev.d	$vr4, $vr5, $vr4
+	vpackev.d	$vr4, $vr4, $vr6
 	vst	$vr4, $a0, -32
 	vaddi.wu	$vr2, $vr2, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_43
 # %bb.44:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.3.thread
-	st.d	$s4, $s1, 216
+	st.d	$s3, $s7, 216
 	ori	$a0, $zero, 5
-	st.w	$a0, $s1, 1112
-	move	$a0, $s2
+	st.w	$a0, $s7, 1112
+	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s2, $a0
 	b	.LBB11_46
 .LBB11_45:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.3
-	st.d	$s4, $s1, 216
+	st.d	$s3, $s7, 216
 	ori	$a0, $zero, 5
-	st.w	$a0, $s1, 1112
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a0, $s7, 1112
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
-	beqz	$s5, .LBB11_47
+	move	$s2, $a0
+	beqz	$s8, .LBB11_47
 .LBB11_46:                              # %.loopexit.loopexit.i.4
-	move	$a0, $s3
+	move	$a0, $s2
 	move	$a1, $zero
-	move	$a2, $s2
+	move	$a2, $s1
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB11_47:                              # %.loopexit.i.4
-	st.d	$s3, $s1, 1120
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $s7, 1120
 	ori	$a3, $zero, 1
-	st.w	$s5, $s1, 1128
-	xvld	$xr9, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr10, $sp, 160                 # 32-byte Folded Reload
-	blt	$s5, $a3, .LBB11_50
+	st.w	$s8, $s7, 1128
+	xvld	$xr9, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr10, $sp, 128                 # 32-byte Folded Reload
+	blt	$s8, $a3, .LBB11_50
 # %bb.48:                               # %vector.ph348
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.bu	$a0, $a0, 0
+	ld.bu	$a0, $s0, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
-	alsl.d	$a0, $a0, $s6, 3
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a2, 3
 	xvldrepl.d	$xr0, $a0, 0
 	xvldrepl.d	$xr1, $a1, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr2, $a0, %pc_lo12(.LCPI11_1)
-	xvld	$xr3, $s0, %pc_lo12(.LCPI11_3)
-	addi.d	$a0, $s3, 32
-	move	$a1, $s7
+	xvld	$xr3, $fp, %pc_lo12(.LCPI11_3)
+	addi.d	$a0, $s2, 32
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_49:                              # %vector.body355
                                         # =>This Inner Loop Header: Depth=1
@@ -28588,53 +28512,47 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvori.b	$xr8, $xr3, 0
 	xvshuf.d	$xr8, $xr7, $xr5
 	xvst	$xr8, $a0, 0
-	xvst	$xr6, $sp, 256
-	xvst	$xr4, $sp, 224
-	vld	$vr4, $sp, 256
-	vld	$vr5, $sp, 224
-	vpackev.d	$vr4, $vr5, $vr4
+	vpackev.d	$vr4, $vr4, $vr6
 	vst	$vr4, $a0, -32
 	vaddi.wu	$vr2, $vr2, 4
 	addi.d	$a1, $a1, -4
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_49
 .LBB11_50:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData12ComplexArrayEi.exit.4
-	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $s1, 224
-	alsl.d	$a0, $s5, $s5, 1
-	alsl.d	$s6, $a0, $s5, 3
-	alsl.w	$a0, $s5, $s5, 1
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	alsl.w	$s2, $a0, $s5, 3
-	slli.d	$s3, $s2, 3
-	bstrpick.d	$s4, $s6, 31, 0
-	slli.d	$a0, $s7, 3
+	st.d	$s2, $s7, 224
+	alsl.d	$a0, $s8, $s8, 1
+	alsl.d	$s4, $a0, $s8, 3
+	alsl.w	$a0, $s8, $s8, 1
+	alsl.w	$s3, $a0, $s8, 3
+	slli.d	$s2, $s3, 3
+	bstrpick.d	$s0, $s4, 31, 0
+	slli.d	$a0, $s5, 3
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	st.w	$a3, $s1, 1136
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a3, $s7, 1136
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s3
-	ori	$s0, $zero, 1
+	move	$a2, $s2
+	ori	$fp, $zero, 1
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	ld.d	$s5, $sp, 544
-	st.d	$s5, $s1, 1144
-	st.w	$s6, $s1, 1152
-	blt	$s2, $s0, .LBB11_53
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	ld.d	$s1, $sp, 192
+	st.d	$s1, $s7, 1144
+	st.w	$s4, $s7, 1152
+	blt	$s3, $fp, .LBB11_53
 # %bb.51:                               # %vector.ph365
-	ld.bu	$a0, $s1, 1136
+	ld.bu	$a0, $s7, 1136
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
-	move	$a0, $s5
-	move	$a1, $s4
+	move	$a0, $s1
+	move	$a1, $s0
 	.p2align	4, , 16
 .LBB11_52:                              # %vector.body370
                                         # =>This Inner Loop Header: Depth=1
@@ -28653,21 +28571,20 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$a0, $s0, 232
+	ld.d	$fp, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$a0, $fp, 232
 	pcalau12i	$a1, %pc_hi20(.LCPI11_4)
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	xvrepli.d	$xr5, 200
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	beqz	$s6, .LBB11_56
+	beqz	$s8, .LBB11_56
 # %bb.54:                               # %vector.body383.preheader
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	xvld	$xr0, $a1, %pc_lo12(.LCPI11_4)
 	addi.d	$a0, $a0, 32
 	ori	$a1, $zero, 800
 	xvreplgr2vr.d	$xr1, $a1
-	xvreplgr2vr.d	$xr2, $s5
-	move	$a1, $s7
+	xvreplgr2vr.d	$xr2, $s1
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_55:                              # %vector.body383
                                         # =>This Inner Loop Header: Depth=1
@@ -28681,33 +28598,34 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_55
 .LBB11_56:                              # %.loopexit182
-	xvst	$xr5, $sp, 96                   # 32-byte Folded Spill
+	xvst	$xr5, $sp, 80                   # 32-byte Folded Spill
 	ori	$a0, $zero, 2
-	st.w	$a0, $s0, 1160
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $fp, 1160
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 544
-	st.d	$s1, $s0, 1168
+	ld.d	$s1, $sp, 192
+	st.d	$s1, $fp, 1168
 	ori	$a0, $zero, 1
-	st.w	$s2, $s0, 1176
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s2, $a0, .LBB11_59
+	st.w	$s3, $fp, 1176
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
+	blt	$s3, $a0, .LBB11_59
 # %bb.57:                               # %vector.ph393
-	ld.bu	$a0, $s0, 1160
+	ld.bu	$a0, $fp, 1160
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
 	move	$a0, $s1
-	move	$a1, $s4
+	move	$a1, $s0
 	.p2align	4, , 16
 .LBB11_58:                              # %vector.body398
                                         # =>This Inner Loop Header: Depth=1
@@ -28726,10 +28644,10 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$a0, $s5, 240
-	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
-	beqz	$s6, .LBB11_62
+	ld.d	$s4, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$a0, $s4, 240
+	xvld	$xr5, $sp, 80                   # 32-byte Folded Reload
+	beqz	$s8, .LBB11_62
 # %bb.60:                               # %vector.body411.preheader
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	xvld	$xr0, $a1, %pc_lo12(.LCPI11_4)
@@ -28737,7 +28655,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ori	$a1, $zero, 800
 	xvreplgr2vr.d	$xr1, $a1
 	xvreplgr2vr.d	$xr2, $s1
-	move	$a1, $s7
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_61:                              # %vector.body411
                                         # =>This Inner Loop Header: Depth=1
@@ -28752,31 +28670,31 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	bnez	$a1, .LBB11_61
 .LBB11_62:                              # %.loopexit182.1
 	ori	$a0, $zero, 3
-	st.w	$a0, $s5, 1184
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s4, 1184
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 544
-	st.d	$s0, $s5, 1192
+	ld.d	$fp, $sp, 192
+	st.d	$fp, $s4, 1192
 	ori	$a0, $zero, 1
-	st.w	$s2, $s5, 1200
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s2, $a0, .LBB11_65
+	st.w	$s3, $s4, 1200
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	blt	$s3, $a0, .LBB11_65
 # %bb.63:                               # %vector.ph422
-	ld.bu	$a0, $s5, 1184
+	ld.bu	$a0, $s4, 1184
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
-	move	$a0, $s0
-	move	$a1, $s4
+	move	$a0, $fp
+	move	$a1, $s0
 	.p2align	4, , 16
 .LBB11_64:                              # %vector.body427
                                         # =>This Inner Loop Header: Depth=1
@@ -28795,18 +28713,18 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $s8, %pc_lo12(_ZL11s_loop_data)
+	ld.d	$s1, $s6, %pc_lo12(_ZL11s_loop_data)
 	st.d	$a0, $s1, 248
-	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
-	beqz	$s6, .LBB11_68
+	xvld	$xr5, $sp, 80                   # 32-byte Folded Reload
+	beqz	$s8, .LBB11_68
 # %bb.66:                               # %vector.body440.preheader
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	xvld	$xr0, $a1, %pc_lo12(.LCPI11_4)
 	addi.d	$a0, $a0, 32
 	ori	$a1, $zero, 800
 	xvreplgr2vr.d	$xr1, $a1
-	xvreplgr2vr.d	$xr2, $s0
-	move	$a1, $s7
+	xvreplgr2vr.d	$xr2, $fp
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_67:                              # %vector.body440
                                         # =>This Inner Loop Header: Depth=1
@@ -28822,29 +28740,29 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 .LBB11_68:                              # %.loopexit182.2
 	ori	$a0, $zero, 4
 	st.w	$a0, $s1, 1208
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s3
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 544
-	st.d	$s0, $s1, 1216
+	ld.d	$fp, $sp, 192
+	st.d	$fp, $s1, 1216
 	ori	$a0, $zero, 1
-	st.w	$s2, $s1, 1224
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s2, $a0, .LBB11_71
+	st.w	$s3, $s1, 1224
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	blt	$s3, $a0, .LBB11_71
 # %bb.69:                               # %vector.ph451
 	ld.bu	$a0, $s1, 1208
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
-	move	$a0, $s0
+	move	$a0, $fp
 	.p2align	4, , 16
 .LBB11_70:                              # %vector.body456
                                         # =>This Inner Loop Header: Depth=1
@@ -28856,26 +28774,26 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvfdiv.d	$xr2, $xr3, $xr2
 	xvst	$xr2, $a0, 0
 	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$s4, $s4, -4
+	addi.d	$s0, $s0, -4
 	addi.d	$a0, $a0, 32
-	bnez	$s4, .LBB11_70
+	bnez	$s0, .LBB11_70
 .LBB11_71:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit156.3
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
-	ld.d	$s2, $s8, %pc_lo12(_ZL11s_loop_data)
-	st.d	$a0, $s2, 256
-	xvld	$xr5, $sp, 96                   # 32-byte Folded Reload
-	beqz	$s6, .LBB11_74
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
+	ld.d	$s3, $s6, %pc_lo12(_ZL11s_loop_data)
+	st.d	$a0, $s3, 256
+	xvld	$xr5, $sp, 80                   # 32-byte Folded Reload
+	beqz	$s8, .LBB11_74
 # %bb.72:                               # %vector.body469.preheader
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	xvld	$xr0, $a1, %pc_lo12(.LCPI11_4)
 	addi.d	$a0, $a0, 32
 	ori	$a1, $zero, 800
 	xvreplgr2vr.d	$xr1, $a1
-	xvreplgr2vr.d	$xr2, $s0
-	move	$a1, $s7
+	xvreplgr2vr.d	$xr2, $fp
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_73:                              # %vector.body469
                                         # =>This Inner Loop Header: Depth=1
@@ -28889,30 +28807,29 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.d	$a0, $a0, 64
 	bnez	$a1, .LBB11_73
 .LBB11_74:                              # %.loopexit182.3
-	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
 	move	$s4, $zero
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	sub.w	$s1, $a0, $s6
-	slli.d	$a0, $s1, 3
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	bstrpick.d	$a0, $s1, 31, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	sub.w	$s0, $a0, $s8
+	slli.d	$a0, $s0, 3
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
+	bstrpick.d	$a0, $s0, 31, 0
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	slli.d	$a0, $s6, 1
+	slli.d	$a0, $s8, 1
 	bstrpick.d	$a0, $a0, 31, 1
-	slli.d	$a0, $a0, 1
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	alsl.wu	$s8, $s6, $s6, 1
-	move	$a0, $s6
+	slli.d	$s1, $a0, 1
+	alsl.wu	$fp, $s8, $s8, 1
+	move	$a0, $s8
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	slli.d	$s6, $a1, 2
-	alsl.wu	$s7, $a0, $a0, 2
-	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	alsl.d	$a0, $a0, $a1, 1
+	slli.d	$s8, $a1, 2
+	alsl.wu	$s5, $a0, $a0, 2
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	alsl.d	$a0, $a0, $s7, 1
 	bstrpick.d	$a0, $a0, 31, 1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr0, $a1, %pc_lo12(.LCPI11_1)
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
-	slli.d	$s5, $a0, 1
+	slli.d	$s6, $a0, 1
 	b	.LBB11_76
 	.p2align	4, , 16
 .LBB11_75:                              # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit164
@@ -28920,58 +28837,57 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ori	$a0, $zero, 56
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s2, $a1, %pc_lo12(_ZL11s_loop_data)
-	alsl.d	$a1, $s4, $s2, 3
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s3, $a1, %pc_lo12(_ZL11s_loop_data)
+	alsl.d	$a1, $s4, $s3, 3
 	st.d	$a0, $a1, 264
-	st.d	$s0, $a0, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	alsl.d	$a1, $a1, $s0, 3
-	st.d	$a1, $a0, 8
+	st.d	$s2, $a0, 0
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
-	alsl.d	$a1, $a1, $s0, 3
+	alsl.d	$a1, $a1, $s2, 3
+	st.d	$a1, $a0, 8
+	alsl.d	$a1, $s1, $s2, 3
 	st.d	$a1, $a0, 16
-	alsl.d	$a1, $s8, $s0, 3
+	alsl.d	$a1, $fp, $s2, 3
 	st.d	$a1, $a0, 24
-	alsl.d	$a1, $s6, $s0, 3
+	alsl.d	$a1, $s8, $s2, 3
 	st.d	$a1, $a0, 32
-	alsl.d	$a1, $s7, $s0, 3
+	alsl.d	$a1, $s5, $s2, 3
 	st.d	$a1, $a0, 40
-	alsl.d	$a1, $s5, $s0, 3
+	alsl.d	$a1, $s6, $s2, 3
 	st.d	$a1, $a0, 48
-	move	$s4, $s3
+	move	$s4, $s7
 	ori	$a0, $zero, 11
-	beq	$s3, $a0, .LBB11_79
+	beq	$s7, $a0, .LBB11_79
 .LBB11_76:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_78 Depth 2
 	slli.d	$a0, $s4, 4
 	alsl.d	$a0, $s4, $a0, 3
-	add.d	$s2, $s2, $a0
-	addi.d	$s3, $s4, 1
-	st.w	$s3, $s2, 1232
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	add.d	$s3, $s3, $a0
+	addi.d	$s7, $s4, 1
+	st.w	$s7, $s3, 1232
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 544
-	st.d	$s0, $s2, 1240
-	st.w	$s1, $s2, 1248
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s3, 1240
+	st.w	$s0, $s3, 1248
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
 	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB11_75
+	blt	$s0, $a0, .LBB11_75
 # %bb.77:                               # %vector.ph480
                                         #   in Loop: Header=BB11_76 Depth=1
-	addi.d	$a0, $s2, 1232
+	addi.d	$a0, $s3, 1232
 	ld.bu	$a0, $a0, 0
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
-	move	$a0, $s0
+	move	$a0, $s2
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	vld	$vr1, $sp, 48                   # 16-byte Folded Reload
                                         # kill: def $vr1 killed $vr1 def $xr1
@@ -28993,29 +28909,29 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	b	.LBB11_75
 .LBB11_79:                              # %vector.ph494
 	ori	$a0, $zero, 1
-	st.w	$a0, $s2, 1496
-	st.d	$zero, $sp, 544
-	lu12i.w	$s1, 8
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s3, 1496
+	st.d	$zero, $sp, 192
+	lu12i.w	$s0, 8
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s1
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s0, $sp, 544
-	ld.bu	$a0, $s2, 1496
-	st.d	$s0, $s2, 1504
+	ld.d	$fp, $sp, 192
+	ld.bu	$a0, $s3, 1496
+	st.d	$fp, $s3, 1504
 	lu12i.w	$a1, 1
-	st.w	$a1, $s2, 1512
+	st.w	$a1, $s3, 1512
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
-	alsl.d	$a0, $a0, $s6, 3
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
 	move	$a0, $zero
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
 	.p2align	4, , 16
 .LBB11_80:                              # %vector.body497
                                         # =>This Inner Loop Header: Depth=1
@@ -29025,20 +28941,20 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvfmul.d	$xr3, $xr0, $xr3
 	xvfadd.d	$xr2, $xr2, $xr5
 	xvfdiv.d	$xr2, $xr3, $xr2
-	xvstx	$xr2, $s0, $a0
+	xvstx	$xr2, $fp, $a0
 	addi.d	$a0, $a0, 32
 	vaddi.wu	$vr1, $vr1, 4
-	bne	$a0, $s1, .LBB11_80
+	bne	$a0, $s0, .LBB11_80
 # %bb.81:                               # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit171
 	ori	$a0, $zero, 512
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $a1, %pc_lo12(_ZL11s_loop_data)
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s2, $a1, %pc_lo12(_ZL11s_loop_data)
 	pcalau12i	$a1, %pc_hi20(.LCPI11_5)
 	xvld	$xr1, $a1, %pc_lo12(.LCPI11_5)
-	st.d	$a0, $s3, 352
-	xvreplgr2vr.d	$xr0, $s0
+	st.d	$a0, $s2, 352
+	xvreplgr2vr.d	$xr0, $fp
 	xvadd.d	$xr1, $xr0, $xr1
 	pcalau12i	$a1, %pc_hi20(.LCPI11_6)
 	xvld	$xr2, $a1, %pc_lo12(.LCPI11_6)
@@ -29101,36 +29017,38 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvadd.d	$xr0, $xr0, $xr3
 	xvst	$xr1, $a0, 448
 	xvst	$xr0, $a0, 480
-	ld.d	$s7, $sp, 144                   # 8-byte Folded Reload
-	addi.w	$s2, $s7, 0
-	slli.d	$s1, $s2, 3
-	bstrpick.d	$a0, $s7, 31, 3
-	slli.d	$s4, $a0, 3
-	ori	$s0, $zero, 1
-	st.w	$s0, $s3, 1520
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	addi.w	$s3, $s1, 0
+	slli.d	$s0, $s3, 3
+	bstrpick.d	$a0, $s1, 31, 3
+	slli.d	$s7, $a0, 3
+	ori	$fp, $zero, 1
+	st.w	$fp, $s2, 1520
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s1
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	ld.d	$s5, $sp, 544
-	st.d	$s5, $s3, 1528
-	st.w	$s7, $s3, 1536
-	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
-	blt	$s2, $s0, .LBB11_84
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	ld.d	$s4, $sp, 192
+	st.d	$s4, $s2, 1528
+	st.w	$s1, $s2, 1536
+	ld.d	$s5, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	blt	$s3, $fp, .LBB11_84
 # %bb.82:                               # %vector.ph516
-	ld.bu	$a0, $s3, 1520
+	ld.bu	$a0, $s2, 1520
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	alsl.d	$a0, $a0, $s6, 3
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
-	move	$a0, $s5
-	move	$a1, $s4
+	move	$a0, $s4
+	move	$a1, $s7
 	.p2align	4, , 16
 .LBB11_83:                              # %vector.body521
                                         # =>This Inner Loop Header: Depth=1
@@ -29149,26 +29067,25 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s6, $a1, %pc_lo12(_ZL11s_loop_data)
-	move	$s3, $a0
-	st.d	$a0, $s6, 360
-	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
-	move	$a0, $s8
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $a1, %pc_lo12(_ZL11s_loop_data)
+	move	$s2, $a0
+	st.d	$a0, $s1, 360
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
-	st.d	$a0, $s3, 0
-	move	$a0, $s8
+	move	$fp, $a0
+	st.d	$a0, $s2, 0
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, 8
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	beqz	$a1, .LBB11_89
+	st.d	$a0, $s2, 8
+	beqz	$s8, .LBB11_89
 # %bb.85:                               # %vector.ph531
-	xvreplgr2vr.d	$xr0, $s5
-	addi.d	$a1, $s0, 32
-	move	$a2, $s7
+	xvreplgr2vr.d	$xr0, $s4
+	addi.d	$a1, $fp, 32
+	move	$a2, $s5
 	.p2align	4, , 16
 .LBB11_86:                              # %vector.body536
                                         # =>This Inner Loop Header: Depth=1
@@ -29184,7 +29101,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.w	$a1, $zero, -4
 	lu32i.d	$a1, 0
 	xvreplgr2vr.d	$xr2, $a1
-	move	$a1, $s7
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_88:                              # %vector.body547
                                         # =>This Inner Loop Header: Depth=1
@@ -29204,31 +29121,31 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	bnez	$a1, .LBB11_88
 .LBB11_89:                              # %.critedge.loopexit
 	ori	$a0, $zero, 2
-	st.w	$a0, $s6, 1544
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s1, 1544
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s1
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $sp, 544
-	st.d	$s5, $s6, 1552
+	ld.d	$s4, $sp, 192
+	st.d	$s4, $s1, 1552
 	ori	$a0, $zero, 1
-	st.w	$s2, $s6, 1560
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s2, $a0, .LBB11_92
+	st.w	$s3, $s1, 1560
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	blt	$s3, $a0, .LBB11_92
 # %bb.90:                               # %vector.ph558
-	ld.bu	$a0, $s6, 1544
+	ld.bu	$a0, $s1, 1544
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
-	move	$a0, $s5
-	move	$a1, $s4
+	move	$a0, $s4
+	move	$a1, $s7
 	.p2align	4, , 16
 .LBB11_91:                              # %vector.body563
                                         # =>This Inner Loop Header: Depth=1
@@ -29247,26 +29164,25 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s6, $a1, %pc_lo12(_ZL11s_loop_data)
-	move	$s3, $a0
-	st.d	$a0, $s6, 368
-	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
-	move	$a0, $s8
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $a1, %pc_lo12(_ZL11s_loop_data)
+	move	$s2, $a0
+	st.d	$a0, $s1, 368
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
-	st.d	$a0, $s3, 0
-	move	$a0, $s8
+	move	$fp, $a0
+	st.d	$a0, $s2, 0
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s3, 8
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	beqz	$a1, .LBB11_97
+	st.d	$a0, $s2, 8
+	beqz	$s8, .LBB11_97
 # %bb.93:                               # %vector.ph573
-	xvreplgr2vr.d	$xr0, $s5
-	addi.d	$a1, $s0, 32
-	move	$a2, $s7
+	xvreplgr2vr.d	$xr0, $s4
+	addi.d	$a1, $fp, 32
+	move	$a2, $s5
 	.p2align	4, , 16
 .LBB11_94:                              # %vector.body578
                                         # =>This Inner Loop Header: Depth=1
@@ -29282,7 +29198,7 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	addi.w	$a1, $zero, -4
 	lu32i.d	$a1, 0
 	xvreplgr2vr.d	$xr2, $a1
-	move	$a1, $s7
+	move	$a1, $s5
 	.p2align	4, , 16
 .LBB11_96:                              # %vector.body589
                                         # =>This Inner Loop Header: Depth=1
@@ -29302,30 +29218,30 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	bnez	$a1, .LBB11_96
 .LBB11_97:                              # %.critedge.loopexit.1
 	ori	$a0, $zero, 3
-	st.w	$a0, $s6, 1568
-	st.d	$zero, $sp, 544
-	addi.d	$a0, $sp, 544
+	st.w	$a0, $s1, 1568
+	st.d	$zero, $sp, 192
+	addi.d	$a0, $sp, 192
 	ori	$a1, $zero, 32
-	move	$a2, $s1
+	move	$a2, $s0
 	pcaddu18i	$ra, %call36(posix_memalign)
 	jirl	$ra, $ra, 0
-	ld.d	$s3, $sp, 544
-	st.d	$s3, $s6, 1576
+	ld.d	$s2, $sp, 192
+	st.d	$s2, $s1, 1576
 	ori	$a0, $zero, 1
-	st.w	$s2, $s6, 1584
-	xvld	$xr4, $sp, 192                  # 32-byte Folded Reload
-	xvld	$xr5, $sp, 160                  # 32-byte Folded Reload
-	blt	$s2, $a0, .LBB11_100
+	st.w	$s3, $s1, 1584
+	xvld	$xr4, $sp, 160                  # 32-byte Folded Reload
+	xvld	$xr5, $sp, 128                  # 32-byte Folded Reload
+	blt	$s3, $a0, .LBB11_100
 # %bb.98:                               # %vector.ph600
-	ld.bu	$a0, $s6, 1568
+	ld.bu	$a0, $s1, 1568
 	andi	$a0, $a0, 1
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	alsl.d	$a0, $a0, $a1, 3
 	xvldrepl.d	$xr0, $a0, 0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	vld	$vr1, $a0, %pc_lo12(.LCPI11_1)
-	move	$a0, $s3
+	move	$a0, $s2
 	.p2align	4, , 16
 .LBB11_99:                              # %vector.body605
                                         # =>This Inner Loop Header: Depth=1
@@ -29337,33 +29253,32 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvfdiv.d	$xr2, $xr3, $xr2
 	xvst	$xr2, $a0, 0
 	vaddi.wu	$vr1, $vr1, 4
-	addi.d	$s4, $s4, -4
+	addi.d	$s7, $s7, -4
 	addi.d	$a0, $a0, 32
-	bnez	$s4, .LBB11_99
+	bnez	$s7, .LBB11_99
 .LBB11_100:                             # %_ZN12_GLOBAL__N_116allocAndInitDataERN8LoopData9RealArrayEi.exit179.2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s2, $a1, %pc_lo12(_ZL11s_loop_data)
-	move	$s1, $a0
-	st.d	$a0, $s2, 376
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
-	move	$a0, $s4
-	pcaddu18i	$ra, %call36(_Znam)
-	jirl	$ra, $ra, 0
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s1, $a1, %pc_lo12(_ZL11s_loop_data)
 	move	$s0, $a0
-	st.d	$a0, $s1, 0
-	move	$a0, $s4
+	st.d	$a0, $s1, 376
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 8
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	beqz	$a1, .LBB11_105
+	move	$fp, $a0
+	st.d	$a0, $s0, 0
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(_Znam)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $s0, 8
+	beqz	$s8, .LBB11_105
 # %bb.101:                              # %vector.ph615
-	xvreplgr2vr.d	$xr0, $s3
-	addi.d	$a1, $s0, 32
-	move	$a2, $s7
+	xvreplgr2vr.d	$xr0, $s2
+	addi.d	$a1, $fp, 32
+	move	$a2, $s5
 	.p2align	4, , 16
 .LBB11_102:                             # %vector.body620
                                         # =>This Inner Loop Header: Depth=1
@@ -29393,38 +29308,37 @@ _Z16allocateLoopDatav:                  # @_Z16allocateLoopDatav
 	xvst	$xr3, $a0, -32
 	xvst	$xr4, $a0, 0
 	xvaddi.du	$xr1, $xr1, 8
-	addi.d	$s7, $s7, -8
+	addi.d	$s5, $s5, -8
 	addi.d	$a0, $a0, 64
-	bnez	$s7, .LBB11_104
+	bnez	$s5, .LBB11_104
 .LBB11_105:                             # %.critedge.loopexit.2
 	pcalau12i	$a0, %pc_hi20(.LCPI11_21)
 	xvld	$xr0, $a0, %pc_lo12(.LCPI11_21)
 	pcalau12i	$a0, %pc_hi20(.LCPI11_22)
 	xvld	$xr1, $a0, %pc_lo12(.LCPI11_22)
-	xvst	$xr0, $s2, 384
+	xvst	$xr0, $s1, 384
 	ori	$a0, $zero, 21
-	st.w	$a0, $s2, 1592
-	xvst	$xr1, $s2, 416
+	st.w	$a0, $s1, 1592
+	xvst	$xr1, $s1, 416
 	pcalau12i	$a0, %pc_hi20(.LCPI11_23)
 	vld	$vr0, $a0, %pc_lo12(.LCPI11_23)
-	addi.d	$a0, $s2, 384
-	st.d	$a0, $s2, 1600
+	addi.d	$a0, $s1, 384
+	st.d	$a0, $s1, 1600
 	ori	$a0, $zero, 10
-	st.w	$a0, $s2, 1608
-	vst	$vr0, $s2, 448
-	addi.d	$sp, $fp, -640
-	ld.d	$s8, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 568                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 576                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 584                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 592                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 600                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 608                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 616                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 624                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 632                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 640
+	st.w	$a0, $s1, 1608
+	vst	$vr0, $s1, 448
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 288
 	ret
 .Lfunc_end11:
 	.size	_Z16allocateLoopDatav, .Lfunc_end11-_Z16allocateLoopDatav

@@ -488,11 +488,6 @@ _Z17GetRatingPerUsageRK10CBenchInfoy:   # @_Z17GetRatingPerUsageRK10CBenchInfoy
 	.type	_Z17GetCompressRatingjyyy,@function
 _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
 	addi.d	$a4, $a0, -256
 	sltu	$a5, $a0, $a4
 	masknez	$a4, $a4, $a5
@@ -4057,10 +4052,8 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	xvslli.b	$xr1, $xr2, 7
 	xvsrai.b	$xr1, $xr1, 7
 	xvand.v	$xr0, $xr1, $xr0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 16
-	vld	$vr1, $sp, 0
-	vmax.bu	$vr0, $vr1, $vr0
+	xvpermi.q	$xr1, $xr0, 1
+	vmax.bu	$vr0, $vr0, $vr1
 	vpickve2gr.b	$a4, $vr0, 0
 	andi	$a4, $a4, 48
 	vpickve2gr.b	$a5, $vr0, 1
@@ -4186,10 +4179,6 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	or	$a1, $a1, $a3
 	mul.d	$a0, $a0, $a2
 	div.du	$a0, $a0, $a1
-	addi.d	$sp, $fp, -64
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
 	ret
 .LBB7_109:
 	ori	$a0, $zero, 3584

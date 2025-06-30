@@ -3139,18 +3139,17 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception11
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -3160,25 +3159,21 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	addi.d	$fp, $sp, 128
-	.cfi_def_cfa 22, 0
-	bstrins.d	$sp, $zero, 4, 0
 	ld.d	$a3, $a0, 64
-	move	$s2, $a1
+	move	$s1, $a1
 	beqz	$a3, .LBB12_27
 # %bb.1:                                # %.lr.ph.i.i.i.preheader
-	move	$s0, $a0
-	addi.d	$s3, $a0, 48
-	addi.d	$s1, $a0, 56
+	move	$fp, $a0
+	addi.d	$s2, $a0, 48
+	addi.d	$s0, $a0, 56
 	ori	$a4, $zero, 16
 	ori	$a5, $zero, 24
-	move	$a0, $s1
+	move	$a0, $s0
 	.p2align	4, , 16
 .LBB12_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a3, 32
-	sltu	$a6, $a6, $s2
+	sltu	$a6, $a6, $s1
 	masknez	$a7, $a3, $a6
 	masknez	$t0, $a4, $a6
 	maskeqz	$t1, $a5, $a6
@@ -3188,35 +3183,35 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	or	$a0, $a0, $a7
 	bnez	$a3, .LBB12_2
 # %bb.3:                                # %_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS5_EPSt18_Rb_tree_node_baseRS2_.exit.i.i
-	beq	$a0, $s1, .LBB12_27
+	beq	$a0, $s0, .LBB12_27
 # %bb.4:                                # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEE4findERS6_.exit
 	ld.d	$a3, $a0, 32
-	bltu	$s2, $a3, .LBB12_27
+	bltu	$s1, $a3, .LBB12_27
 # %bb.5:
-	ld.d	$s7, $a0, 40
-	move	$a1, $s1
-	move	$s5, $a2
+	ld.d	$s6, $a0, 40
+	move	$a1, $s0
+	move	$s4, $a2
 	pcaddu18i	$ra, %call36(_ZSt28_Rb_tree_rebalance_for_erasePSt18_Rb_tree_node_baseRS_)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 48
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 88
-	ld.d	$a1, $s7, 16
+	ld.d	$a0, $fp, 88
+	ld.d	$a1, $s6, 16
 	addi.d	$a0, $a0, -1
-	st.d	$a0, $s0, 88
-	ld.d	$s4, $a1, 0
-	ld.d	$a0, $s7, 32
-	mul.d	$a0, $a0, $s4
+	st.d	$a0, $fp, 88
+	ld.d	$s3, $a1, 0
+	ld.d	$a0, $s6, 32
+	mul.d	$a0, $a0, $s3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$a1, $s2
-	move	$s2, $a0
-	beqz	$s4, .LBB12_10
+	move	$a1, $s1
+	move	$s1, $a0
+	beqz	$s3, .LBB12_10
 # %bb.6:                                # %.lr.ph.preheader
-	move	$a2, $s5
+	move	$a2, $s4
 	ori	$a0, $zero, 8
-	bgeu	$s4, $a0, .LBB12_21
+	bgeu	$s3, $a0, .LBB12_21
 # %bb.7:
 	move	$a0, $zero
 .LBB12_8:                               # %.lr.ph.preheader32
@@ -3228,27 +3223,27 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	ldx.w	$a4, $a2, $a0
 	slli.d	$a4, $a4, 2
 	fldx.s	$fa0, $a1, $a4
-	fstx.s	$fa0, $s2, $a0
+	fstx.s	$fa0, $s1, $a0
 	bstrpick.d	$a0, $a3, 31, 0
 	addi.w	$a3, $a3, 1
-	bltu	$a0, $s4, .LBB12_9
+	bltu	$a0, $s3, .LBB12_9
 .LBB12_10:                              # %._crit_edge
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 64
-	st.d	$s2, $s7, 0
-	move	$s6, $s1
+	ld.d	$a0, $fp, 64
+	st.d	$s1, $s6, 0
+	move	$s5, $s0
 	beqz	$a0, .LBB12_15
 # %bb.11:                               # %.lr.ph.i.i.i.i.preheader
 	ori	$a2, $zero, 16
 	ori	$a3, $zero, 24
-	move	$a1, $s1
+	move	$a1, $s0
 	.p2align	4, , 16
 .LBB12_12:                              # %.lr.ph.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a0, 32
-	sltu	$a4, $a4, $s2
+	sltu	$a4, $a4, $s1
 	masknez	$a5, $a0, $a4
 	masknez	$a6, $a2, $a4
 	maskeqz	$a7, $a3, $a4
@@ -3258,24 +3253,24 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	or	$a1, $a1, $a5
 	bnez	$a0, .LBB12_12
 # %bb.13:                               # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEE11lower_boundERS6_.exit.i
-	move	$s6, $s1
-	beq	$a1, $s1, .LBB12_15
+	move	$s5, $s0
+	beq	$a1, $s0, .LBB12_15
 # %bb.14:
 	ld.d	$a0, $a1, 32
-	move	$s6, $a1
-	bgeu	$s2, $a0, .LBB12_27
+	move	$s5, $a1
+	bgeu	$s1, $a0, .LBB12_27
 .LBB12_15:                              # %.critedge.i
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	addi.d	$s5, $a0, 32
-	st.d	$s2, $a0, 32
-	st.d	$s7, $a0, 40
+	move	$s3, $a0
+	addi.d	$s4, $a0, 32
+	st.d	$s1, $a0, 32
+	st.d	$s6, $a0, 40
 .Ltmp54:
-	move	$a0, $s3
-	move	$a1, $s6
-	move	$a2, $s5
+	move	$a0, $s2
+	move	$a1, $s5
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS5_ERS2_)
 	jirl	$ra, $ra, 0
 .Ltmp55:
@@ -3287,22 +3282,22 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	ori	$a0, $zero, 1
 	bnez	$a3, .LBB12_20
 # %bb.18:
-	beq	$s1, $a2, .LBB12_20
+	beq	$s0, $a2, .LBB12_20
 # %bb.19:
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a1, $a2, 32
 	sltu	$a0, $a0, $a1
 .LBB12_20:                              # %.thread.i
-	move	$a1, $s4
-	move	$a3, $s1
+	move	$a1, $s3
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 88
+	ld.d	$a0, $fp, 88
 	addi.d	$a0, $a0, 1
-	st.d	$a0, $s0, 88
+	st.d	$a0, $fp, 88
 	b	.LBB12_27
 .LBB12_21:                              # %vector.scevcheck
-	addi.d	$a3, $s4, -1
+	addi.d	$a3, $s3, -1
 	bstrpick.d	$a4, $a3, 31, 0
 	addi.w	$a5, $zero, -1
 	lu32i.d	$a5, 0
@@ -3312,26 +3307,24 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	srli.d	$a3, $a3, 32
 	bnez	$a3, .LBB12_8
 # %bb.23:                               # %vector.ph
-	bstrpick.d	$a0, $s4, 32, 3
+	bstrpick.d	$a0, $s3, 32, 3
 	slli.d	$a0, $a0, 3
 	move	$a3, $a2
-	move	$a4, $s2
+	move	$a4, $s1
 	move	$a5, $a0
 	.p2align	4, , 16
 .LBB12_24:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a3, 0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 16
-	vpickve2gr.w	$a6, $vr0, 3
-	vld	$vr1, $sp, 0
-	vpickve2gr.w	$a7, $vr0, 2
-	vpickve2gr.w	$t0, $vr0, 1
-	vpickve2gr.w	$t1, $vr0, 0
-	vpickve2gr.w	$t2, $vr1, 3
-	vpickve2gr.w	$t3, $vr1, 2
-	vpickve2gr.w	$t4, $vr1, 1
-	vpickve2gr.w	$t5, $vr1, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vpickve2gr.w	$a6, $vr1, 3
+	vpickve2gr.w	$a7, $vr1, 2
+	vpickve2gr.w	$t0, $vr1, 1
+	vpickve2gr.w	$t1, $vr1, 0
+	vpickve2gr.w	$t2, $vr0, 3
+	vpickve2gr.w	$t3, $vr0, 2
+	vpickve2gr.w	$t4, $vr0, 1
+	vpickve2gr.w	$t5, $vr0, 0
 	slli.d	$t5, $t5, 2
 	slli.d	$t4, $t4, 2
 	slli.d	$t3, $t3, 2
@@ -3370,36 +3363,34 @@ _ZN10MallocPlus14memory_reorderEPfPi:   # @_ZN10MallocPlus14memory_reorderEPfPi
 	addi.d	$a3, $a3, 32
 	bnez	$a5, .LBB12_24
 # %bb.25:                               # %middle.block
-	bne	$s4, $a0, .LBB12_8
+	bne	$s3, $a0, .LBB12_8
 	b	.LBB12_10
 .LBB12_26:
 	ori	$a1, $zero, 48
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB12_27:                              # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEE6insertIS5_IS0_S2_EEENSt9enable_ifIXsr16is_constructibleIS7_T_EE5valueES5_ISt17_Rb_tree_iteratorIS7_EbEE4typeEOSD_.exit
-	move	$a0, $s2
-	addi.d	$sp, $fp, -128
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	move	$a0, $s1
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB12_28:                              # %_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE10_Auto_nodeD2Ev.exit.i
 .Ltmp56:
-	move	$s0, $a0
+	move	$fp, $a0
 	ori	$a1, $zero, 48
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end12:
@@ -3439,18 +3430,17 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception12
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -3460,25 +3450,21 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
-	addi.d	$fp, $sp, 128
-	.cfi_def_cfa 22, 0
-	bstrins.d	$sp, $zero, 4, 0
 	ld.d	$a3, $a0, 64
-	move	$s2, $a1
+	move	$s1, $a1
 	beqz	$a3, .LBB13_27
 # %bb.1:                                # %.lr.ph.i.i.i.preheader
-	move	$s0, $a0
-	addi.d	$s3, $a0, 48
-	addi.d	$s1, $a0, 56
+	move	$fp, $a0
+	addi.d	$s2, $a0, 48
+	addi.d	$s0, $a0, 56
 	ori	$a4, $zero, 16
 	ori	$a5, $zero, 24
-	move	$a0, $s1
+	move	$a0, $s0
 	.p2align	4, , 16
 .LBB13_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a6, $a3, 32
-	sltu	$a6, $a6, $s2
+	sltu	$a6, $a6, $s1
 	masknez	$a7, $a3, $a6
 	masknez	$t0, $a4, $a6
 	maskeqz	$t1, $a5, $a6
@@ -3488,35 +3474,35 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	or	$a0, $a0, $a7
 	bnez	$a3, .LBB13_2
 # %bb.3:                                # %_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE14_M_lower_boundEPSt13_Rb_tree_nodeIS5_EPSt18_Rb_tree_node_baseRS2_.exit.i.i
-	beq	$a0, $s1, .LBB13_27
+	beq	$a0, $s0, .LBB13_27
 # %bb.4:                                # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEE4findERS6_.exit
 	ld.d	$a3, $a0, 32
-	bltu	$s2, $a3, .LBB13_27
+	bltu	$s1, $a3, .LBB13_27
 # %bb.5:
-	ld.d	$s7, $a0, 40
-	move	$a1, $s1
-	move	$s5, $a2
+	ld.d	$s6, $a0, 40
+	move	$a1, $s0
+	move	$s4, $a2
 	pcaddu18i	$ra, %call36(_ZSt28_Rb_tree_rebalance_for_erasePSt18_Rb_tree_node_baseRS_)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 48
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 88
-	ld.d	$a1, $s7, 16
+	ld.d	$a0, $fp, 88
+	ld.d	$a1, $s6, 16
 	addi.d	$a0, $a0, -1
-	st.d	$a0, $s0, 88
-	ld.d	$s4, $a1, 0
-	ld.d	$a0, $s7, 32
-	mul.d	$a0, $a0, $s4
+	st.d	$a0, $fp, 88
+	ld.d	$s3, $a1, 0
+	ld.d	$a0, $s6, 32
+	mul.d	$a0, $a0, $s3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$a1, $s2
-	move	$s2, $a0
-	beqz	$s4, .LBB13_10
+	move	$a1, $s1
+	move	$s1, $a0
+	beqz	$s3, .LBB13_10
 # %bb.6:                                # %.lr.ph.preheader
-	move	$a2, $s5
+	move	$a2, $s4
 	ori	$a0, $zero, 8
-	bgeu	$s4, $a0, .LBB13_21
+	bgeu	$s3, $a0, .LBB13_21
 # %bb.7:
 	move	$a0, $zero
 .LBB13_8:                               # %.lr.ph.preheader32
@@ -3528,27 +3514,27 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	ldx.w	$a4, $a2, $a0
 	slli.d	$a4, $a4, 2
 	ldx.w	$a4, $a1, $a4
-	stx.w	$a4, $s2, $a0
+	stx.w	$a4, $s1, $a0
 	bstrpick.d	$a0, $a3, 31, 0
 	addi.w	$a3, $a3, 1
-	bltu	$a0, $s4, .LBB13_9
+	bltu	$a0, $s3, .LBB13_9
 .LBB13_10:                              # %._crit_edge
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 64
-	st.d	$s2, $s7, 0
-	move	$s6, $s1
+	ld.d	$a0, $fp, 64
+	st.d	$s1, $s6, 0
+	move	$s5, $s0
 	beqz	$a0, .LBB13_15
 # %bb.11:                               # %.lr.ph.i.i.i.i.preheader
 	ori	$a2, $zero, 16
 	ori	$a3, $zero, 24
-	move	$a1, $s1
+	move	$a1, $s0
 	.p2align	4, , 16
 .LBB13_12:                              # %.lr.ph.i.i.i.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a4, $a0, 32
-	sltu	$a4, $a4, $s2
+	sltu	$a4, $a4, $s1
 	masknez	$a5, $a0, $a4
 	masknez	$a6, $a2, $a4
 	maskeqz	$a7, $a3, $a4
@@ -3558,24 +3544,24 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	or	$a1, $a1, $a5
 	bnez	$a0, .LBB13_12
 # %bb.13:                               # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEE11lower_boundERS6_.exit.i
-	move	$s6, $s1
-	beq	$a1, $s1, .LBB13_15
+	move	$s5, $s0
+	beq	$a1, $s0, .LBB13_15
 # %bb.14:
 	ld.d	$a0, $a1, 32
-	move	$s6, $a1
-	bgeu	$s2, $a0, .LBB13_27
+	move	$s5, $a1
+	bgeu	$s1, $a0, .LBB13_27
 .LBB13_15:                              # %.critedge.i
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	move	$s4, $a0
-	addi.d	$s5, $a0, 32
-	st.d	$s2, $a0, 32
-	st.d	$s7, $a0, 40
+	move	$s3, $a0
+	addi.d	$s4, $a0, 32
+	st.d	$s1, $a0, 32
+	st.d	$s6, $a0, 40
 .Ltmp57:
-	move	$a0, $s3
-	move	$a1, $s6
-	move	$a2, $s5
+	move	$a0, $s2
+	move	$a1, $s5
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS5_ERS2_)
 	jirl	$ra, $ra, 0
 .Ltmp58:
@@ -3587,22 +3573,22 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	ori	$a0, $zero, 1
 	bnez	$a3, .LBB13_20
 # %bb.18:
-	beq	$s1, $a2, .LBB13_20
+	beq	$s0, $a2, .LBB13_20
 # %bb.19:
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a1, $a2, 32
 	sltu	$a0, $a0, $a1
 .LBB13_20:                              # %.thread.i
-	move	$a1, $s4
-	move	$a3, $s1
+	move	$a1, $s3
+	move	$a3, $s0
 	pcaddu18i	$ra, %call36(_ZSt29_Rb_tree_insert_and_rebalancebPSt18_Rb_tree_node_baseS0_RS_)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s0, 88
+	ld.d	$a0, $fp, 88
 	addi.d	$a0, $a0, 1
-	st.d	$a0, $s0, 88
+	st.d	$a0, $fp, 88
 	b	.LBB13_27
 .LBB13_21:                              # %vector.scevcheck
-	addi.d	$a3, $s4, -1
+	addi.d	$a3, $s3, -1
 	bstrpick.d	$a4, $a3, 31, 0
 	addi.w	$a5, $zero, -1
 	lu32i.d	$a5, 0
@@ -3612,26 +3598,24 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	srli.d	$a3, $a3, 32
 	bnez	$a3, .LBB13_8
 # %bb.23:                               # %vector.ph
-	bstrpick.d	$a0, $s4, 32, 3
+	bstrpick.d	$a0, $s3, 32, 3
 	slli.d	$a0, $a0, 3
 	move	$a3, $a2
-	move	$a4, $s2
+	move	$a4, $s1
 	move	$a5, $a0
 	.p2align	4, , 16
 .LBB13_24:                              # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr0, $a3, 0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 16
-	vpickve2gr.w	$a6, $vr0, 3
-	vld	$vr1, $sp, 0
-	vpickve2gr.w	$a7, $vr0, 2
-	vpickve2gr.w	$t0, $vr0, 1
-	vpickve2gr.w	$t1, $vr0, 0
-	vpickve2gr.w	$t2, $vr1, 3
-	vpickve2gr.w	$t3, $vr1, 2
-	vpickve2gr.w	$t4, $vr1, 1
-	vpickve2gr.w	$t5, $vr1, 0
+	xvpermi.q	$xr1, $xr0, 1
+	vpickve2gr.w	$a6, $vr1, 3
+	vpickve2gr.w	$a7, $vr1, 2
+	vpickve2gr.w	$t0, $vr1, 1
+	vpickve2gr.w	$t1, $vr1, 0
+	vpickve2gr.w	$t2, $vr0, 3
+	vpickve2gr.w	$t3, $vr0, 2
+	vpickve2gr.w	$t4, $vr0, 1
+	vpickve2gr.w	$t5, $vr0, 0
 	slli.d	$t5, $t5, 2
 	slli.d	$t4, $t4, 2
 	slli.d	$t3, $t3, 2
@@ -3662,36 +3646,34 @@ _ZN10MallocPlus14memory_reorderEPiS0_:  # @_ZN10MallocPlus14memory_reorderEPiS0_
 	addi.d	$a3, $a3, 32
 	bnez	$a5, .LBB13_24
 # %bb.25:                               # %middle.block
-	bne	$s4, $a0, .LBB13_8
+	bne	$s3, $a0, .LBB13_8
 	b	.LBB13_10
 .LBB13_26:
 	ori	$a1, $zero, 48
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
 .LBB13_27:                              # %_ZNSt3mapIPvP24malloc_plus_memory_entrySt4lessIS0_ESaISt4pairIKS0_S2_EEE6insertIS5_IS0_S2_EEENSt9enable_ifIXsr16is_constructibleIS7_T_EE5valueES5_ISt17_Rb_tree_iteratorIS7_EbEE4typeEOSD_.exit
-	move	$a0, $s2
-	addi.d	$sp, $fp, -128
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	move	$a0, $s1
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB13_28:                              # %_ZNSt8_Rb_treeIPvSt4pairIKS0_P24malloc_plus_memory_entryESt10_Select1stIS5_ESt4lessIS0_ESaIS5_EE10_Auto_nodeD2Ev.exit.i
 .Ltmp59:
-	move	$s0, $a0
+	move	$fp, $a0
 	ori	$a1, $zero, 48
-	move	$a0, $s4
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
 .Lfunc_end13:

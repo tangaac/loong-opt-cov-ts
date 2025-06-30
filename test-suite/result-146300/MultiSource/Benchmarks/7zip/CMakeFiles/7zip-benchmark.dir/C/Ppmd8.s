@@ -2363,18 +2363,18 @@ CreateSuccessors:                       # @CreateSuccessors
 	.type	RestoreModel,@function
 RestoreModel:                           # @RestoreModel
 # %bb.0:
-	addi.d	$sp, $sp, -800
-	st.d	$ra, $sp, 792                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 784                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 776                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 768                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 760                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 752                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 744                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 736                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 728                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 720                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 800
+	addi.d	$sp, $sp, -608
+	st.d	$ra, $sp, 600                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 592                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 584                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 576                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 568                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 560                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 552                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 544                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 536                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 528                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 608
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a0
 	ld.d	$s2, $a0, 56
@@ -2496,15 +2496,15 @@ RestoreModel:                           # @RestoreModel
 	ori	$s5, $zero, 16
 	ori	$s6, $zero, 6
 	vrepli.b	$vr5, 0
-	vrepli.b	$vr12, 63
+	vrepli.b	$vr10, 63
 	vrepli.w	$vr6, 1
 	xvrepli.b	$xr0, 0
 	xvst	$xr0, $sp, 0                    # 32-byte Folded Spill
-	xvrepli.w	$xr13, 1
+	xvrepli.w	$xr11, 1
 	vst	$vr5, $sp, 48                   # 16-byte Folded Spill
-	vst	$vr12, $sp, 112                 # 16-byte Folded Spill
+	vst	$vr10, $sp, 112                 # 16-byte Folded Spill
 	vst	$vr6, $sp, 32                   # 16-byte Folded Spill
-	xvst	$xr13, $sp, 64                  # 32-byte Folded Spill
+	xvst	$xr11, $sp, 64                  # 32-byte Folded Spill
 	b	.LBB14_14
 	.p2align	4, , 16
 .LBB14_12:                              #   in Loop: Header=BB14_14 Depth=1
@@ -2563,8 +2563,8 @@ RestoreModel:                           # @RestoreModel
 	b	.LBB14_28
 .LBB14_18:                              # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB14_14 Depth=1
-	vld	$vr12, $sp, 112                 # 16-byte Folded Reload
-	xvld	$xr13, $sp, 64                  # 32-byte Folded Reload
+	vld	$vr10, $sp, 112                 # 16-byte Folded Reload
+	xvld	$xr11, $sp, 64                  # 32-byte Folded Reload
 	bgeu	$s7, $s5, .LBB14_20
 # %bb.19:                               #   in Loop: Header=BB14_14 Depth=1
 	move	$a1, $zero
@@ -2606,15 +2606,15 @@ RestoreModel:                           # @RestoreModel
 	ld.b	$t1, $a2, -5
 	ld.b	$t2, $a2, -11
 	ld.b	$t3, $a2, -17
-	st.b	$t0, $sp, 311
-	st.b	$t1, $sp, 310
-	st.b	$t2, $sp, 309
-	st.b	$t3, $sp, 308
-	st.b	$a7, $sp, 307
-	st.b	$a6, $sp, 306
-	st.b	$a5, $sp, 305
-	st.b	$a4, $sp, 304
-	vld	$vr7, $sp, 304
+	st.b	$t0, $sp, 327
+	st.b	$t1, $sp, 326
+	st.b	$t2, $sp, 325
+	st.b	$t3, $sp, 324
+	st.b	$a7, $sp, 323
+	st.b	$a6, $sp, 322
+	st.b	$a5, $sp, 321
+	st.b	$a4, $sp, 320
+	vld	$vr7, $sp, 320
 	ld.b	$a4, $a2, 7
 	ld.b	$a5, $a2, 13
 	ld.b	$a6, $a2, 19
@@ -2623,16 +2623,15 @@ RestoreModel:                           # @RestoreModel
 	ld.b	$t1, $a2, 43
 	ld.b	$t2, $a2, 37
 	ld.b	$t3, $a2, 31
-	st.b	$t0, $sp, 295
-	st.b	$t1, $sp, 294
-	st.b	$t2, $sp, 293
-	st.b	$t3, $sp, 292
-	st.b	$a7, $sp, 291
-	st.b	$a6, $sp, 290
-	st.b	$a5, $sp, 289
-	st.b	$a4, $sp, 288
-	vld	$vr6, $sp, 288
-	vst	$vr7, $sp, 352
+	st.b	$t0, $sp, 311
+	st.b	$t1, $sp, 310
+	st.b	$t2, $sp, 309
+	st.b	$t3, $sp, 308
+	st.b	$a7, $sp, 307
+	st.b	$a6, $sp, 306
+	st.b	$a5, $sp, 305
+	st.b	$a4, $sp, 304
+	vld	$vr6, $sp, 304
 	st.b	$zero, $sp, 255
 	st.h	$zero, $sp, 253
 	st.b	$zero, $sp, 251
@@ -2649,25 +2648,23 @@ RestoreModel:                           # @RestoreModel
 	st.h	$zero, $sp, 229
 	st.b	$zero, $sp, 227
 	st.h	$zero, $sp, 225
-	xvld	$xr8, $sp, 352
 	addi.d	$a4, $sp, 252
-	xvstelm.b	$xr8, $a4, 0, 7
+	xvstelm.b	$xr7, $a4, 0, 7
 	addi.d	$a4, $sp, 248
-	xvstelm.b	$xr8, $a4, 0, 6
+	xvstelm.b	$xr7, $a4, 0, 6
 	addi.d	$a4, $sp, 244
-	xvstelm.b	$xr8, $a4, 0, 5
+	xvstelm.b	$xr7, $a4, 0, 5
 	addi.d	$a4, $sp, 240
-	xvstelm.b	$xr8, $a4, 0, 4
+	xvstelm.b	$xr7, $a4, 0, 4
 	addi.d	$a4, $sp, 236
-	xvstelm.b	$xr8, $a4, 0, 3
+	xvstelm.b	$xr7, $a4, 0, 3
 	addi.d	$a4, $sp, 232
-	xvstelm.b	$xr8, $a4, 0, 2
+	xvstelm.b	$xr7, $a4, 0, 2
 	addi.d	$a4, $sp, 228
-	xvstelm.b	$xr8, $a4, 0, 1
+	xvstelm.b	$xr7, $a4, 0, 1
 	addi.d	$a4, $sp, 224
-	xvstelm.b	$xr8, $a4, 0, 0
+	xvstelm.b	$xr7, $a4, 0, 0
 	xvld	$xr8, $sp, 224
-	vst	$vr6, $sp, 320
 	st.b	$zero, $sp, 287
 	st.h	$zero, $sp, 285
 	st.b	$zero, $sp, 283
@@ -2684,27 +2681,25 @@ RestoreModel:                           # @RestoreModel
 	st.h	$zero, $sp, 261
 	st.b	$zero, $sp, 259
 	st.h	$zero, $sp, 257
-	xvld	$xr9, $sp, 320
 	addi.d	$a4, $sp, 284
-	xvstelm.b	$xr9, $a4, 0, 7
+	xvstelm.b	$xr6, $a4, 0, 7
 	addi.d	$a4, $sp, 280
-	xvstelm.b	$xr9, $a4, 0, 6
+	xvstelm.b	$xr6, $a4, 0, 6
 	addi.d	$a4, $sp, 276
-	xvstelm.b	$xr9, $a4, 0, 5
+	xvstelm.b	$xr6, $a4, 0, 5
 	addi.d	$a4, $sp, 272
-	xvstelm.b	$xr9, $a4, 0, 4
+	xvstelm.b	$xr6, $a4, 0, 4
 	addi.d	$a4, $sp, 268
-	xvstelm.b	$xr9, $a4, 0, 3
+	xvstelm.b	$xr6, $a4, 0, 3
 	addi.d	$a4, $sp, 264
-	xvstelm.b	$xr9, $a4, 0, 2
+	xvstelm.b	$xr6, $a4, 0, 2
 	addi.d	$a4, $sp, 260
-	xvstelm.b	$xr9, $a4, 0, 1
+	xvstelm.b	$xr6, $a4, 0, 1
 	addi.d	$a4, $sp, 256
-	xvstelm.b	$xr9, $a4, 0, 0
+	xvstelm.b	$xr6, $a4, 0, 0
 	xvld	$xr9, $sp, 256
-	vsrli.b	$vr10, $vr7, 1
-	vsub.b	$vr7, $vr7, $vr10
-	vst	$vr7, $sp, 416
+	xvsub.w	$xr3, $xr3, $xr8
+	xvsub.w	$xr5, $xr5, $xr9
 	st.b	$zero, $sp, 191
 	st.h	$zero, $sp, 189
 	st.b	$zero, $sp, 187
@@ -2721,27 +2716,25 @@ RestoreModel:                           # @RestoreModel
 	st.h	$zero, $sp, 165
 	st.b	$zero, $sp, 163
 	st.h	$zero, $sp, 161
-	xvld	$xr10, $sp, 416
+	vsrli.b	$vr8, $vr7, 1
+	vsub.b	$vr7, $vr7, $vr8
 	addi.d	$a4, $sp, 188
-	xvstelm.b	$xr10, $a4, 0, 7
+	xvstelm.b	$xr7, $a4, 0, 7
 	addi.d	$a4, $sp, 184
-	xvstelm.b	$xr10, $a4, 0, 6
+	xvstelm.b	$xr7, $a4, 0, 6
 	addi.d	$a4, $sp, 180
-	xvstelm.b	$xr10, $a4, 0, 5
+	xvstelm.b	$xr7, $a4, 0, 5
 	addi.d	$a4, $sp, 176
-	xvstelm.b	$xr10, $a4, 0, 4
+	xvstelm.b	$xr7, $a4, 0, 4
 	addi.d	$a4, $sp, 172
-	xvstelm.b	$xr10, $a4, 0, 3
+	xvstelm.b	$xr7, $a4, 0, 3
 	addi.d	$a4, $sp, 168
-	xvstelm.b	$xr10, $a4, 0, 2
+	xvstelm.b	$xr7, $a4, 0, 2
 	addi.d	$a4, $sp, 164
-	xvstelm.b	$xr10, $a4, 0, 1
+	xvstelm.b	$xr7, $a4, 0, 1
 	addi.d	$a4, $sp, 160
-	xvstelm.b	$xr10, $a4, 0, 0
-	xvld	$xr10, $sp, 160
-	vsrli.b	$vr11, $vr6, 1
-	vsub.b	$vr6, $vr6, $vr11
-	vst	$vr6, $sp, 384
+	xvstelm.b	$xr7, $a4, 0, 0
+	xvld	$xr8, $sp, 160
 	st.b	$zero, $sp, 223
 	st.h	$zero, $sp, 221
 	st.b	$zero, $sp, 219
@@ -2758,26 +2751,25 @@ RestoreModel:                           # @RestoreModel
 	st.h	$zero, $sp, 197
 	st.b	$zero, $sp, 195
 	st.h	$zero, $sp, 193
-	xvld	$xr11, $sp, 384
-	xvsub.w	$xr3, $xr3, $xr8
-	xvsub.w	$xr5, $xr5, $xr9
+	vsrli.b	$vr9, $vr6, 1
+	vsub.b	$vr6, $vr6, $vr9
 	addi.d	$a4, $sp, 220
-	xvstelm.b	$xr11, $a4, 0, 7
+	xvstelm.b	$xr6, $a4, 0, 7
 	addi.d	$a4, $sp, 216
-	xvstelm.b	$xr11, $a4, 0, 6
+	xvstelm.b	$xr6, $a4, 0, 6
 	addi.d	$a4, $sp, 212
-	xvstelm.b	$xr11, $a4, 0, 5
+	xvstelm.b	$xr6, $a4, 0, 5
 	addi.d	$a4, $sp, 208
-	xvstelm.b	$xr11, $a4, 0, 4
+	xvstelm.b	$xr6, $a4, 0, 4
 	addi.d	$a4, $sp, 204
-	xvstelm.b	$xr11, $a4, 0, 3
+	xvstelm.b	$xr6, $a4, 0, 3
 	addi.d	$a4, $sp, 200
-	xvstelm.b	$xr11, $a4, 0, 2
+	xvstelm.b	$xr6, $a4, 0, 2
 	addi.d	$a4, $sp, 196
-	xvstelm.b	$xr11, $a4, 0, 1
+	xvstelm.b	$xr6, $a4, 0, 1
 	addi.d	$a4, $sp, 192
-	xvstelm.b	$xr11, $a4, 0, 0
-	xvld	$xr8, $sp, 192
+	xvstelm.b	$xr6, $a4, 0, 0
+	xvld	$xr9, $sp, 192
 	vstelm.b	$vr7, $a2, -41, 0
 	vstelm.b	$vr7, $a2, -35, 1
 	vstelm.b	$vr7, $a2, -29, 2
@@ -2794,7 +2786,8 @@ RestoreModel:                           # @RestoreModel
 	vstelm.b	$vr6, $a2, 37, 5
 	vstelm.b	$vr6, $a2, 43, 6
 	vstelm.b	$vr6, $a2, 49, 7
-	xvadd.w	$xr1, $xr10, $xr1
+	xvadd.w	$xr1, $xr8, $xr1
+	xvadd.w	$xr4, $xr9, $xr4
 	ld.b	$a4, $a2, -42
 	ld.b	$a5, $a2, -36
 	ld.b	$a6, $a2, -30
@@ -2803,15 +2796,15 @@ RestoreModel:                           # @RestoreModel
 	ld.b	$t1, $a2, -6
 	ld.b	$t2, $a2, -12
 	ld.b	$t3, $a2, -18
-	st.b	$t0, $sp, 471
-	st.b	$t1, $sp, 470
-	st.b	$t2, $sp, 469
-	st.b	$t3, $sp, 468
-	st.b	$a7, $sp, 467
-	st.b	$a6, $sp, 466
-	st.b	$a5, $sp, 465
-	st.b	$a4, $sp, 464
-	vld	$vr6, $sp, 464
+	st.b	$t0, $sp, 359
+	st.b	$t1, $sp, 358
+	st.b	$t2, $sp, 357
+	st.b	$t3, $sp, 356
+	st.b	$a7, $sp, 355
+	st.b	$a6, $sp, 354
+	st.b	$a5, $sp, 353
+	st.b	$a4, $sp, 352
+	vld	$vr6, $sp, 352
 	ld.b	$a4, $a2, 6
 	ld.b	$a5, $a2, 12
 	ld.b	$a6, $a2, 18
@@ -2820,31 +2813,26 @@ RestoreModel:                           # @RestoreModel
 	ld.b	$t1, $a2, 42
 	ld.b	$t2, $a2, 36
 	ld.b	$t3, $a2, 30
-	st.b	$t0, $sp, 455
-	st.b	$t1, $sp, 454
-	st.b	$t2, $sp, 453
-	st.b	$t3, $sp, 452
-	st.b	$a7, $sp, 451
-	st.b	$a6, $sp, 450
-	st.b	$a5, $sp, 449
-	st.b	$a4, $sp, 448
-	vld	$vr7, $sp, 448
-	vslt.bu	$vr6, $vr12, $vr6
-	vst	$vr6, $sp, 512
-	xvld	$xr6, $sp, 512
-	xvadd.w	$xr4, $xr8, $xr4
+	st.b	$t0, $sp, 343
+	st.b	$t1, $sp, 342
+	st.b	$t2, $sp, 341
+	st.b	$t3, $sp, 340
+	st.b	$a7, $sp, 339
+	st.b	$a6, $sp, 338
+	st.b	$a5, $sp, 337
+	st.b	$a4, $sp, 336
 	pcalau12i	$a4, %pc_hi20(.LCPI14_1)
-	xvld	$xr8, $a4, %pc_lo12(.LCPI14_1)
+	xvld	$xr7, $a4, %pc_lo12(.LCPI14_1)
+	vld	$vr8, $sp, 336
+	vslt.bu	$vr6, $vr10, $vr6
 	xvpermi.d	$xr6, $xr6, 68
-	vslt.bu	$vr7, $vr12, $vr7
-	vst	$vr7, $sp, 480
-	xvld	$xr7, $sp, 480
-	xvshuf.b	$xr6, $xr0, $xr6, $xr8
-	xvand.v	$xr6, $xr6, $xr13
+	xvshuf.b	$xr6, $xr0, $xr6, $xr7
+	xvand.v	$xr6, $xr6, $xr11
 	xvslli.w	$xr6, $xr6, 3
-	xvpermi.d	$xr7, $xr7, 68
-	xvshuf.b	$xr7, $xr0, $xr7, $xr8
-	xvand.v	$xr7, $xr7, $xr13
+	vslt.bu	$vr8, $vr10, $vr8
+	xvpermi.d	$xr8, $xr8, 68
+	xvshuf.b	$xr7, $xr0, $xr8, $xr7
+	xvand.v	$xr7, $xr7, $xr11
 	xvslli.w	$xr7, $xr7, 3
 	xvor.v	$xr0, $xr6, $xr0
 	xvor.v	$xr2, $xr7, $xr2
@@ -2948,7 +2936,7 @@ RestoreModel:                           # @RestoreModel
 	vilvl.b	$vr3, $vr5, $vr3
 	vilvl.h	$vr3, $vr5, $vr3
 	vadd.w	$vr1, $vr3, $vr1
-	vslt.bu	$vr3, $vr12, $vr4
+	vslt.bu	$vr3, $vr10, $vr4
 	vilvl.b	$vr3, $vr3, $vr3
 	vilvl.h	$vr3, $vr3, $vr3
 	vand.v	$vr3, $vr3, $vr6
@@ -3023,18 +3011,18 @@ RestoreModel:                           # @RestoreModel
 	bgeu	$a0, $a1, .LBB14_34
 .LBB14_33:
 	move	$a0, $s0
-	addi.d	$sp, $fp, -800
-	ld.d	$s7, $sp, 720                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 728                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 736                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 744                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 752                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 760                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 768                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 776                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 784                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 792                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 800
+	addi.d	$sp, $fp, -608
+	ld.d	$s7, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 552                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 560                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 576                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 584                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 600                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 608
 	pcaddu18i	$t8, %call36(RestartModel)
 	jr	$t8
 .LBB14_34:                              # %.preheader66
@@ -3053,7 +3041,7 @@ RestoreModel:                           # @RestoreModel
 	addi.d	$s1, $s0, 166
 	addi.d	$s2, $s0, 296
 	addi.d	$s3, $s0, 448
-	addi.d	$s4, $sp, 568
+	addi.d	$s4, $sp, 376
 	addi.w	$s5, $zero, -1
 	ori	$s6, $zero, 38
 	b	.LBB14_39
@@ -3077,7 +3065,7 @@ RestoreModel:                           # @RestoreModel
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(CutOff)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 568
+	addi.d	$a0, $sp, 376
 	ori	$a2, $zero, 152
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -3169,18 +3157,18 @@ RestoreModel:                           # @RestoreModel
 	ld.w	$a0, $s0, 36
 	st.w	$zero, $s0, 52
 	st.w	$a0, $s0, 24
-	addi.d	$sp, $fp, -800
-	ld.d	$s7, $sp, 720                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 728                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 736                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 744                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 752                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 760                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 768                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 776                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 784                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 792                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 800
+	addi.d	$sp, $fp, -608
+	ld.d	$s7, $sp, 528                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 536                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 544                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 552                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 560                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 568                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 576                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 584                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 592                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 600                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 608
 	ret
 .Lfunc_end14:
 	.size	RestoreModel, .Lfunc_end14-RestoreModel
@@ -3707,19 +3695,19 @@ GetUsedMemory:                          # @GetUsedMemory
 	.type	CutOff,@function
 CutOff:                                 # @CutOff
 # %bb.0:
-	addi.d	$sp, $sp, -384
-	st.d	$ra, $sp, 376                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 368                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 360                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 352                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 344                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 312                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 304                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 296                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 384
+	addi.d	$sp, $sp, -256
+	st.d	$ra, $sp, 248                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 200                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 192                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 184                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 168                   # 8-byte Folded Spill
+	addi.d	$fp, $sp, 256
 	bstrins.d	$sp, $zero, 4, 0
 	move	$s0, $a1
 	move	$s1, $a0
@@ -4106,7 +4094,6 @@ CutOff:                                 # @CutOff
 	st.b	$t0, $sp, 97
 	st.b	$a7, $sp, 96
 	vld	$vr12, $sp, 96
-	vst	$vr11, $sp, 160
 	st.b	$zero, $sp, 63
 	st.h	$zero, $sp, 61
 	st.b	$zero, $sp, 59
@@ -4123,7 +4110,6 @@ CutOff:                                 # @CutOff
 	st.h	$zero, $sp, 37
 	st.b	$zero, $sp, 35
 	st.h	$zero, $sp, 33
-	xvld	$xr11, $sp, 160
 	xvstelm.b	$xr11, $sp, 60, 7
 	xvstelm.b	$xr11, $sp, 56, 6
 	xvstelm.b	$xr11, $sp, 52, 5
@@ -4133,7 +4119,6 @@ CutOff:                                 # @CutOff
 	xvstelm.b	$xr11, $sp, 36, 1
 	xvstelm.b	$xr11, $sp, 32, 0
 	xvld	$xr11, $sp, 32
-	vst	$vr12, $sp, 128
 	st.b	$zero, $sp, 95
 	st.h	$zero, $sp, 93
 	st.b	$zero, $sp, 91
@@ -4150,7 +4135,6 @@ CutOff:                                 # @CutOff
 	st.h	$zero, $sp, 69
 	st.b	$zero, $sp, 67
 	st.h	$zero, $sp, 65
-	xvld	$xr12, $sp, 128
 	xvstelm.b	$xr12, $sp, 92, 7
 	xvstelm.b	$xr12, $sp, 88, 6
 	xvstelm.b	$xr12, $sp, 84, 5
@@ -4164,24 +4148,24 @@ CutOff:                                 # @CutOff
 	xvsub.w	$xr7, $xr7, $xr12
 	xvadd.w	$xr11, $xr5, $xr11
 	xvadd.w	$xr12, $xr5, $xr12
-	xvsrl.w	$xr13, $xr11, $xr5
-	xvsrl.w	$xr11, $xr12, $xr5
-	xvpickve2gr.w	$a7, $xr13, 7
-	xvpickve2gr.w	$t0, $xr13, 6
-	xvpickve2gr.w	$t1, $xr13, 5
-	xvpickve2gr.w	$t2, $xr13, 4
-	xvpickve2gr.w	$t3, $xr13, 3
-	xvpickve2gr.w	$t4, $xr13, 2
-	xvpickve2gr.w	$t5, $xr13, 1
-	xvpickve2gr.w	$t6, $xr13, 0
-	xvpickve2gr.w	$t7, $xr11, 7
-	xvpickve2gr.w	$t8, $xr11, 6
-	xvpickve2gr.w	$s1, $xr11, 5
-	xvpickve2gr.w	$s3, $xr11, 4
-	xvpickve2gr.w	$s5, $xr11, 3
-	xvpickve2gr.w	$s6, $xr11, 2
-	xvpickve2gr.w	$s7, $xr11, 1
-	xvpickve2gr.w	$s8, $xr11, 0
+	xvsrl.w	$xr11, $xr11, $xr5
+	xvsrl.w	$xr12, $xr12, $xr5
+	xvpickve2gr.w	$a7, $xr11, 7
+	xvpickve2gr.w	$t0, $xr11, 6
+	xvpickve2gr.w	$t1, $xr11, 5
+	xvpickve2gr.w	$t2, $xr11, 4
+	xvpickve2gr.w	$t3, $xr11, 3
+	xvpickve2gr.w	$t4, $xr11, 2
+	xvpickve2gr.w	$t5, $xr11, 1
+	xvpickve2gr.w	$t6, $xr11, 0
+	xvpickve2gr.w	$t7, $xr12, 7
+	xvpickve2gr.w	$t8, $xr12, 6
+	xvpickve2gr.w	$s1, $xr12, 5
+	xvpickve2gr.w	$s3, $xr12, 4
+	xvpickve2gr.w	$s5, $xr12, 3
+	xvpickve2gr.w	$s6, $xr12, 2
+	xvpickve2gr.w	$s7, $xr12, 1
+	xvpickve2gr.w	$s8, $xr12, 0
 	st.b	$t6, $a5, -41
 	st.b	$t5, $a5, -35
 	st.b	$t4, $a5, -29
@@ -4198,7 +4182,10 @@ CutOff:                                 # @CutOff
 	st.b	$s1, $a5, 37
 	st.b	$t8, $a5, 43
 	st.b	$t7, $a5, 49
-	xvand.v	$xr12, $xr13, $xr9
+	xvand.v	$xr11, $xr11, $xr9
+	xvand.v	$xr12, $xr12, $xr9
+	xvadd.w	$xr2, $xr11, $xr2
+	xvadd.w	$xr6, $xr12, $xr6
 	ld.b	$a7, $a5, -42
 	ld.b	$t0, $a5, -36
 	ld.b	$t1, $a5, -30
@@ -4207,15 +4194,15 @@ CutOff:                                 # @CutOff
 	ld.b	$t4, $a5, -6
 	ld.b	$t5, $a5, -12
 	ld.b	$t6, $a5, -18
-	st.b	$t3, $sp, 215
-	st.b	$t4, $sp, 214
-	st.b	$t5, $sp, 213
-	st.b	$t6, $sp, 212
-	st.b	$t2, $sp, 211
-	st.b	$t1, $sp, 210
-	st.b	$t0, $sp, 209
-	st.b	$a7, $sp, 208
-	vld	$vr13, $sp, 208
+	st.b	$t3, $sp, 151
+	st.b	$t4, $sp, 150
+	st.b	$t5, $sp, 149
+	st.b	$t6, $sp, 148
+	st.b	$t2, $sp, 147
+	st.b	$t1, $sp, 146
+	st.b	$t0, $sp, 145
+	st.b	$a7, $sp, 144
+	vld	$vr11, $sp, 144
 	ld.b	$a7, $a5, 6
 	ld.b	$t0, $a5, 12
 	ld.b	$t1, $a5, 18
@@ -4224,28 +4211,21 @@ CutOff:                                 # @CutOff
 	ld.b	$t4, $a5, 42
 	ld.b	$t5, $a5, 36
 	ld.b	$t6, $a5, 30
-	st.b	$t3, $sp, 199
-	st.b	$t4, $sp, 198
-	st.b	$t5, $sp, 197
-	st.b	$t6, $sp, 196
-	st.b	$t2, $sp, 195
-	st.b	$t1, $sp, 194
-	st.b	$t0, $sp, 193
-	st.b	$a7, $sp, 192
-	vld	$vr14, $sp, 192
-	vslt.bu	$vr13, $vr0, $vr13
-	vst	$vr13, $sp, 256
-	xvld	$xr13, $sp, 256
-	xvadd.w	$xr2, $xr12, $xr2
-	xvand.v	$xr11, $xr11, $xr9
-	xvadd.w	$xr6, $xr11, $xr6
-	xvpermi.d	$xr11, $xr13, 68
-	vslt.bu	$vr12, $vr0, $vr14
-	vst	$vr12, $sp, 224
-	xvld	$xr12, $sp, 224
+	st.b	$t3, $sp, 135
+	st.b	$t4, $sp, 134
+	st.b	$t5, $sp, 133
+	st.b	$t6, $sp, 132
+	st.b	$t2, $sp, 131
+	st.b	$t1, $sp, 130
+	st.b	$t0, $sp, 129
+	st.b	$a7, $sp, 128
+	vld	$vr12, $sp, 128
+	vslt.bu	$vr11, $vr0, $vr11
+	xvpermi.d	$xr11, $xr11, 68
 	xvshuf.b	$xr11, $xr0, $xr11, $xr8
 	xvand.v	$xr11, $xr11, $xr10
 	xvslli.w	$xr11, $xr11, 3
+	vslt.bu	$vr12, $vr0, $vr12
 	xvpermi.d	$xr12, $xr12, 68
 	xvshuf.b	$xr12, $xr0, $xr12, $xr8
 	xvand.v	$xr12, $xr12, $xr10
@@ -4417,19 +4397,19 @@ CutOff:                                 # @CutOff
 .LBB17_49:                              # %._crit_edge._crit_edge
 	sub.w	$a0, $s0, $a3
 .LBB17_50:                              # %SpecialFreeUnit.exit
-	addi.d	$sp, $fp, -384
-	ld.d	$s8, $sp, 296                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 304                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 344                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 360                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 368                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 376                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 384
+	addi.d	$sp, $fp, -256
+	ld.d	$s8, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 248                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 256
 	ret
 .Lfunc_end17:
 	.size	CutOff, .Lfunc_end17-CutOff

@@ -5,38 +5,31 @@
 	.type	gs_initmatrix,@function
 gs_initmatrix:                          # @gs_initmatrix
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s0, $a0
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a0
 	ld.d	$a0, $a0, 448
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a0, 8
 	ld.d	$a2, $a1, 8
-	addi.d	$a1, $s0, 24
+	addi.d	$a1, $fp, 24
 	jirl	$ra, $a2, 0
-	fld.s	$fa0, $s0, 88
-	fld.s	$fa1, $s0, 104
+	fld.s	$fa0, $fp, 88
+	fld.s	$fa1, $fp, 104
 	vpackev.w	$vr0, $vr1, $vr0
 	lu12i.w	$a0, 284672
 	vreplgr2vr.w	$vr1, $a0
 	vfmul.s	$vr0, $vr0, $vr1
 	vftintrz.w.s	$vr0, $vr0
 	vext2xv.d.w	$xr0, $xr0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 0
-	vst	$vr0, $s0, 120
-	st.w	$zero, $s0, 232
-	st.w	$zero, $s0, 432
+	vst	$vr0, $fp, 120
+	st.w	$zero, $fp, 232
+	st.w	$zero, $fp, 432
 	move	$a0, $zero
-	addi.d	$sp, $fp, -64
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end0:
 	.size	gs_initmatrix, .Lfunc_end0-gs_initmatrix
@@ -85,36 +78,29 @@ gs_currentmatrix:                       # @gs_currentmatrix
 	.type	gs_setmatrix,@function
 gs_setmatrix:                           # @gs_setmatrix
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s0, $a0
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a0
 	addi.d	$a0, $a0, 24
 	ori	$a2, $zero, 96
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $s0, 88
-	fld.s	$fa1, $s0, 104
+	fld.s	$fa0, $fp, 88
+	fld.s	$fa1, $fp, 104
 	vpackev.w	$vr0, $vr1, $vr0
 	lu12i.w	$a0, 284672
 	vreplgr2vr.w	$vr1, $a0
 	vfmul.s	$vr0, $vr0, $vr1
 	vftintrz.w.s	$vr0, $vr0
 	vext2xv.d.w	$xr0, $xr0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 0
-	vst	$vr0, $s0, 120
-	st.w	$zero, $s0, 232
-	st.w	$zero, $s0, 432
+	vst	$vr0, $fp, 120
+	st.w	$zero, $fp, 232
+	st.w	$zero, $fp, 432
 	move	$a0, $zero
-	addi.d	$sp, $fp, -64
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end3:
 	.size	gs_setmatrix, .Lfunc_end3-gs_setmatrix
@@ -124,43 +110,36 @@ gs_setmatrix:                           # @gs_setmatrix
 	.type	gs_translate,@function
 gs_translate:                           # @gs_translate
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s0, $a0
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	move	$fp, $a0
 	addi.d	$a0, $a0, 24
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(gs_distance_transform)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB4_2
 # %bb.1:
-	fld.s	$fa0, $s0, 88
-	ld.d	$a0, $sp, 32
-	fld.s	$fa1, $s0, 104
-	vinsgr2vr.d	$vr2, $a0, 0
+	fld.s	$fa0, $fp, 88
+	ld.d	$a1, $sp, 8
+	fld.s	$fa1, $fp, 104
+	move	$a0, $zero
+	vinsgr2vr.d	$vr2, $a1, 0
 	vpackev.w	$vr0, $vr1, $vr0
+	lu12i.w	$a1, 284672
+	vreplgr2vr.w	$vr1, $a1
 	vfadd.s	$vr0, $vr2, $vr0
-	vstelm.w	$vr0, $s0, 88, 0
-	vstelm.w	$vr0, $s0, 104, 1
-	lu12i.w	$a0, 284672
-	vreplgr2vr.w	$vr1, $a0
+	vstelm.w	$vr0, $fp, 88, 0
+	vstelm.w	$vr0, $fp, 104, 1
 	vfmul.s	$vr0, $vr0, $vr1
 	vftintrz.w.s	$vr0, $vr0
 	vext2xv.d.w	$xr0, $xr0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 0
-	move	$a0, $zero
-	vst	$vr0, $s0, 120
-	st.w	$zero, $s0, 232
+	vst	$vr0, $fp, 120
+	st.w	$zero, $fp, 232
 .LBB4_2:
-	addi.d	$sp, $fp, -64
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end4:
 	.size	gs_translate, .Lfunc_end4-gs_translate
@@ -224,36 +203,29 @@ gs_rotate:                              # @gs_rotate
 	.type	gs_concat,@function
 gs_concat:                              # @gs_concat
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 64
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s0, $a0
+	addi.d	$sp, $sp, -16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a0
 	addi.d	$a2, $a0, 24
 	move	$a0, $a1
 	move	$a1, $a2
 	pcaddu18i	$ra, %call36(gs_matrix_multiply)
 	jirl	$ra, $ra, 0
-	fld.s	$fa0, $s0, 88
-	fld.s	$fa1, $s0, 104
+	fld.s	$fa0, $fp, 88
+	fld.s	$fa1, $fp, 104
 	vpackev.w	$vr0, $vr1, $vr0
 	lu12i.w	$a1, 284672
 	vreplgr2vr.w	$vr1, $a1
 	vfmul.s	$vr0, $vr0, $vr1
 	vftintrz.w.s	$vr0, $vr0
 	vext2xv.d.w	$xr0, $xr0
-	xvst	$xr0, $sp, 0
-	vld	$vr0, $sp, 0
-	vst	$vr0, $s0, 120
-	st.w	$zero, $s0, 232
-	st.w	$zero, $s0, 432
-	addi.d	$sp, $fp, -64
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	vst	$vr0, $fp, 120
+	st.w	$zero, $fp, 232
+	st.w	$zero, $fp, 432
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	ret
 .Lfunc_end7:
 	.size	gs_concat, .Lfunc_end7-gs_concat

@@ -611,29 +611,13 @@ h2v1_upsample:                          # @h2v1_upsample
 # %bb.0:
 	ld.w	$a7, $a0, 392
 	ori	$a1, $zero, 1
-	blt	$a7, $a1, .LBB6_21
+	blt	$a7, $a1, .LBB6_20
 # %bb.1:                                # %.lr.ph22
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
-	bstrins.d	$sp, $zero, 4, 0
 	move	$a1, $zero
-	ld.d	$a5, $a3, 0
-	ori	$a6, $zero, 30
-	addi.w	$t8, $zero, -2
-	ori	$s0, $zero, 62
-	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$t8, $sp, 16                    # 8-byte Folded Spill
+	ld.d	$a3, $a3, 0
+	ori	$a4, $zero, 30
+	addi.w	$a5, $zero, -2
+	ori	$a6, $zero, 62
 	b	.LBB6_4
 	.p2align	4, , 16
 .LBB6_2:                                # %._crit_edge.loopexit
@@ -652,7 +636,7 @@ h2v1_upsample:                          # @h2v1_upsample
 # %bb.5:                                # %iter.check
                                         #   in Loop: Header=BB6_4 Depth=1
 	slli.d	$t2, $a1, 3
-	ldx.d	$t1, $a5, $t2
+	ldx.d	$t1, $a3, $t2
 	add.d	$a7, $t1, $t0
 	ldx.d	$t2, $a2, $t2
 	addi.d	$t0, $t1, 2
@@ -662,7 +646,7 @@ h2v1_upsample:                          # @h2v1_upsample
 	or	$t4, $t4, $t3
 	nor	$t3, $t1, $zero
 	add.d	$t3, $t4, $t3
-	bltu	$t3, $a6, .LBB6_8
+	bltu	$t3, $a4, .LBB6_8
 # %bb.6:                                # %vector.memcheck
                                         #   in Loop: Header=BB6_4 Depth=1
 	srli.d	$t5, $t3, 1
@@ -672,7 +656,7 @@ h2v1_upsample:                          # @h2v1_upsample
 # %bb.7:                                # %vector.memcheck
                                         #   in Loop: Header=BB6_4 Depth=1
 	sub.d	$t4, $t1, $t4
-	andn	$t4, $t8, $t4
+	andn	$t4, $a5, $t4
 	add.d	$t0, $t0, $t4
 	bgeu	$t2, $t0, .LBB6_10
 .LBB6_8:                                #   in Loop: Header=BB6_4 Depth=1
@@ -682,18 +666,18 @@ h2v1_upsample:                          # @h2v1_upsample
 .LBB6_9:                                # %.lr.ph
                                         #   Parent Loop BB6_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.b	$a3, $t4, 0
+	ld.b	$t0, $t4, 0
 	addi.d	$t4, $t4, 1
-	st.b	$a3, $t5, 0
-	addi.d	$a4, $t5, 2
-	st.b	$a3, $t5, 1
-	move	$t5, $a4
-	bltu	$a4, $a7, .LBB6_9
+	st.b	$t0, $t5, 0
+	addi.d	$t1, $t5, 2
+	st.b	$t0, $t5, 1
+	move	$t5, $t1
+	bltu	$t1, $a7, .LBB6_9
 	b	.LBB6_2
 .LBB6_10:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB6_4 Depth=1
 	addi.d	$t0, $t5, 1
-	bgeu	$t3, $s0, .LBB6_15
+	bgeu	$t3, $a6, .LBB6_15
 # %bb.11:                               #   in Loop: Header=BB6_4 Depth=1
 	move	$t3, $zero
 .LBB6_12:                               # %vec.epilog.ph
@@ -704,15 +688,15 @@ h2v1_upsample:                          # @h2v1_upsample
 	alsl.d	$t5, $t6, $t1, 1
 	add.d	$t2, $t2, $t3
 	sub.d	$t7, $t3, $t6
-	alsl.d	$a3, $t3, $t1, 1
-	addi.d	$t1, $a3, 15
+	alsl.d	$t1, $t3, $t1, 1
+	addi.d	$t1, $t1, 15
 	.p2align	4, , 16
 .LBB6_13:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB6_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $t2, 0
-	pcalau12i	$a3, %pc_hi20(.LCPI6_0)
-	xvld	$xr1, $a3, %pc_lo12(.LCPI6_0)
+	pcalau12i	$t3, %pc_hi20(.LCPI6_0)
+	xvld	$xr1, $t3, %pc_lo12(.LCPI6_0)
 	xvpermi.q	$xr0, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 68
 	xvshuf.b	$xr0, $xr0, $xr0, $xr1
@@ -753,39 +737,22 @@ h2v1_upsample:                          # @h2v1_upsample
 	xvstelm.b	$xr0, $t4, -5, 13
 	xvstelm.b	$xr0, $t4, -3, 14
 	xvstelm.b	$xr0, $t4, -1, 15
-	xvst	$xr0, $sp, 32
-	ld.b	$t7, $sp, 48
-	st.b	$t7, $t4, 1
-	ld.b	$t8, $sp, 49
-	st.b	$t8, $t4, 3
-	ld.b	$s0, $sp, 50
-	st.b	$s0, $t4, 5
-	ld.b	$s1, $sp, 51
-	st.b	$s1, $t4, 7
-	ld.b	$s2, $sp, 52
-	st.b	$s2, $t4, 9
-	ld.b	$s3, $sp, 53
-	st.b	$s3, $t4, 11
-	ld.b	$s4, $sp, 54
-	st.b	$s4, $t4, 13
-	ld.b	$s5, $sp, 55
-	st.b	$s5, $t4, 15
-	ld.b	$s6, $sp, 56
-	st.b	$s6, $t4, 17
-	ld.b	$s7, $sp, 57
-	st.b	$s7, $t4, 19
-	ld.b	$s8, $sp, 58
-	st.b	$s8, $t4, 21
-	ld.b	$ra, $sp, 59
-	st.b	$ra, $t4, 23
-	ld.b	$a6, $sp, 60
-	st.b	$a6, $t4, 25
-	ld.b	$a5, $sp, 61
-	st.b	$a5, $t4, 27
-	ld.b	$a4, $sp, 62
-	st.b	$a4, $t4, 29
-	ld.b	$a3, $sp, 63
-	st.b	$a3, $t4, 31
+	xvstelm.b	$xr0, $t4, 1, 16
+	xvstelm.b	$xr0, $t4, 3, 17
+	xvstelm.b	$xr0, $t4, 5, 18
+	xvstelm.b	$xr0, $t4, 7, 19
+	xvstelm.b	$xr0, $t4, 9, 20
+	xvstelm.b	$xr0, $t4, 11, 21
+	xvstelm.b	$xr0, $t4, 13, 22
+	xvstelm.b	$xr0, $t4, 15, 23
+	xvstelm.b	$xr0, $t4, 17, 24
+	xvstelm.b	$xr0, $t4, 19, 25
+	xvstelm.b	$xr0, $t4, 21, 26
+	xvstelm.b	$xr0, $t4, 23, 27
+	xvstelm.b	$xr0, $t4, 25, 28
+	xvstelm.b	$xr0, $t4, 27, 29
+	xvstelm.b	$xr0, $t4, 29, 30
+	xvstelm.b	$xr0, $t4, 31, 31
 	xvstelm.b	$xr0, $t4, -30, 0
 	xvstelm.b	$xr0, $t4, -28, 1
 	xvstelm.b	$xr0, $t4, -26, 2
@@ -802,56 +769,38 @@ h2v1_upsample:                          # @h2v1_upsample
 	xvstelm.b	$xr0, $t4, -4, 13
 	xvstelm.b	$xr0, $t4, -2, 14
 	xvstelm.b	$xr0, $t4, 0, 15
-	st.b	$t7, $t4, 2
-	st.b	$t8, $t4, 4
-	st.b	$s0, $t4, 6
-	st.b	$s1, $t4, 8
-	st.b	$s2, $t4, 10
-	st.b	$s3, $t4, 12
-	st.b	$s4, $t4, 14
-	st.b	$s5, $t4, 16
-	st.b	$s6, $t4, 18
-	st.b	$s7, $t4, 20
-	st.b	$s8, $t4, 22
-	st.b	$ra, $t4, 24
-	st.b	$a6, $t4, 26
-	st.b	$a5, $t4, 28
-	st.b	$a4, $t4, 30
-	st.b	$a3, $t4, 32
+	xvstelm.b	$xr0, $t4, 2, 16
+	xvstelm.b	$xr0, $t4, 4, 17
+	xvstelm.b	$xr0, $t4, 6, 18
+	xvstelm.b	$xr0, $t4, 8, 19
+	xvstelm.b	$xr0, $t4, 10, 20
+	xvstelm.b	$xr0, $t4, 12, 21
+	xvstelm.b	$xr0, $t4, 14, 22
+	xvstelm.b	$xr0, $t4, 16, 23
+	xvstelm.b	$xr0, $t4, 18, 24
+	xvstelm.b	$xr0, $t4, 20, 25
+	xvstelm.b	$xr0, $t4, 22, 26
+	xvstelm.b	$xr0, $t4, 24, 27
+	xvstelm.b	$xr0, $t4, 26, 28
+	xvstelm.b	$xr0, $t4, 28, 29
+	xvstelm.b	$xr0, $t4, 30, 30
+	xvstelm.b	$xr0, $t4, 32, 31
 	addi.d	$t6, $t6, 32
 	addi.d	$t5, $t5, -32
 	addi.d	$t4, $t4, 64
 	bnez	$t5, .LBB6_16
 # %bb.17:                               # %middle.block
                                         #   in Loop: Header=BB6_4 Depth=1
-	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
-	ori	$a6, $zero, 30
-	ld.d	$t8, $sp, 16                    # 8-byte Folded Reload
-	ori	$s0, $zero, 62
 	beq	$t0, $t3, .LBB6_2
 # %bb.18:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB6_4 Depth=1
-	andi	$a3, $t0, 16
-	bnez	$a3, .LBB6_12
+	andi	$t4, $t0, 16
+	bnez	$t4, .LBB6_12
 # %bb.19:                               #   in Loop: Header=BB6_4 Depth=1
 	add.d	$t4, $t2, $t3
 	alsl.d	$t5, $t3, $t1, 1
 	b	.LBB6_9
-.LBB6_20:
-	addi.d	$sp, $fp, -160
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
-.LBB6_21:                               # %._crit_edge23
+.LBB6_20:                               # %._crit_edge23
 	ret
 .Lfunc_end6:
 	.size	h2v1_upsample, .Lfunc_end6-h2v1_upsample
@@ -2658,67 +2607,62 @@ h2v2_fancy_upsample:                    # @h2v2_fancy_upsample
 	.type	h2v2_upsample,@function
 h2v2_upsample:                          # @h2v2_upsample
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s0, $a0
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a0
 	ld.w	$a0, $a0, 392
 	ori	$a1, $zero, 1
 	blt	$a0, $a1, .LBB8_21
 # %bb.1:                                # %.lr.ph30
-	move	$s1, $a2
+	move	$s0, $a2
+	move	$s3, $zero
+	move	$s1, $zero
 	move	$s4, $zero
-	move	$s2, $zero
-	move	$s5, $zero
-	ld.d	$s3, $a3, 0
-	ori	$s6, $zero, 30
-	addi.w	$s7, $zero, -2
-	ori	$s8, $zero, 62
-	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
+	ld.d	$s2, $a3, 0
+	ori	$s5, $zero, 30
+	addi.w	$s6, $zero, -2
+	ori	$s7, $zero, 62
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_2:                                #   in Loop: Header=BB8_4 Depth=1
 	move	$a5, $zero
 .LBB8_3:                                # %._crit_edge
                                         #   in Loop: Header=BB8_4 Depth=1
-	ori	$a3, $s5, 1
+	ori	$a3, $s4, 1
 	ori	$a4, $zero, 1
-	move	$a0, $s3
-	move	$a1, $s2
-	move	$a2, $s3
+	move	$a0, $s2
+	move	$a1, $s1
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(jcopy_sample_rows)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s0, 392
-	addi.d	$s4, $s4, 1
-	addi.d	$s2, $s2, 2
-	addi.w	$a1, $s2, 0
-	addi.w	$s5, $s5, 2
+	ld.w	$a0, $fp, 392
+	addi.d	$s3, $s3, 1
+	addi.d	$s1, $s1, 2
+	addi.w	$a1, $s1, 0
+	addi.w	$s4, $s4, 2
 	bge	$a1, $a0, .LBB8_21
 .LBB8_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_17 Depth 2
                                         #     Child Loop BB8_14 Depth 2
                                         #     Child Loop BB8_9 Depth 2
-	ld.wu	$a0, $s0, 128
+	ld.wu	$a0, $fp, 128
 	beqz	$a0, .LBB8_2
 # %bb.5:                                # %iter.check
                                         #   in Loop: Header=BB8_4 Depth=1
-	slli.d	$a1, $s2, 3
-	ldx.d	$a2, $s3, $a1
+	slli.d	$a1, $s1, 3
+	ldx.d	$a2, $s2, $a1
 	add.d	$a0, $a2, $a0
-	slli.d	$a1, $s4, 3
-	ldx.d	$a3, $s1, $a1
+	slli.d	$a1, $s3, 3
+	ldx.d	$a3, $s0, $a1
 	addi.d	$a1, $a2, 2
 	sltu	$a4, $a1, $a0
 	maskeqz	$a5, $a0, $a4
@@ -2726,7 +2670,7 @@ h2v2_upsample:                          # @h2v2_upsample
 	or	$a5, $a5, $a4
 	nor	$a4, $a2, $zero
 	add.d	$a4, $a5, $a4
-	bltu	$a4, $s6, .LBB8_8
+	bltu	$a4, $s5, .LBB8_8
 # %bb.6:                                # %vector.memcheck
                                         #   in Loop: Header=BB8_4 Depth=1
 	srli.d	$a6, $a4, 1
@@ -2736,7 +2680,7 @@ h2v2_upsample:                          # @h2v2_upsample
 # %bb.7:                                # %vector.memcheck
                                         #   in Loop: Header=BB8_4 Depth=1
 	sub.d	$a5, $a2, $a5
-	andn	$a5, $s7, $a5
+	andn	$a5, $s6, $a5
 	add.d	$a1, $a1, $a5
 	bgeu	$a3, $a1, .LBB8_11
 .LBB8_8:                                #   in Loop: Header=BB8_4 Depth=1
@@ -2755,31 +2699,31 @@ h2v2_upsample:                          # @h2v2_upsample
 	bltu	$a2, $a0, .LBB8_9
 .LBB8_10:                               # %._crit_edge.loopexit
                                         #   in Loop: Header=BB8_4 Depth=1
-	ld.w	$a5, $s0, 128
+	ld.w	$a5, $fp, 128
 	b	.LBB8_3
 .LBB8_11:                               # %vector.main.loop.iter.check
                                         #   in Loop: Header=BB8_4 Depth=1
-	addi.d	$t1, $a6, 1
-	bgeu	$a4, $s8, .LBB8_16
+	addi.d	$a1, $a6, 1
+	bgeu	$a4, $s7, .LBB8_16
 # %bb.12:                               #   in Loop: Header=BB8_4 Depth=1
 	move	$a4, $zero
 .LBB8_13:                               # %vec.epilog.ph
                                         #   in Loop: Header=BB8_4 Depth=1
-	move	$a7, $t1
+	move	$a7, $a1
 	bstrins.d	$a7, $zero, 3, 0
 	add.d	$a5, $a3, $a7
 	alsl.d	$a6, $a7, $a2, 1
 	add.d	$a3, $a3, $a4
 	sub.d	$t0, $a4, $a7
-	alsl.d	$a1, $a4, $a2, 1
-	addi.d	$a2, $a1, 15
+	alsl.d	$a2, $a4, $a2, 1
+	addi.d	$a2, $a2, 15
 	.p2align	4, , 16
 .LBB8_14:                               # %vec.epilog.vector.body
                                         #   Parent Loop BB8_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vld	$vr0, $a3, 0
-	pcalau12i	$a1, %pc_hi20(.LCPI8_0)
-	xvld	$xr1, $a1, %pc_lo12(.LCPI8_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI8_0)
+	xvld	$xr1, $a4, %pc_lo12(.LCPI8_0)
 	xvpermi.q	$xr0, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 68
 	xvshuf.b	$xr0, $xr0, $xr0, $xr1
@@ -2790,15 +2734,14 @@ h2v2_upsample:                          # @h2v2_upsample
 	bnez	$t0, .LBB8_14
 # %bb.15:                               # %vec.epilog.middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	bne	$t1, $a7, .LBB8_9
+	bne	$a1, $a7, .LBB8_9
 	b	.LBB8_10
 .LBB8_16:                               # %vector.ph
                                         #   in Loop: Header=BB8_4 Depth=1
-	st.d	$t1, $sp, 24                    # 8-byte Folded Spill
-	move	$a6, $t1
-	bstrins.d	$a6, $zero, 4, 0
+	move	$a4, $a1
+	bstrins.d	$a4, $zero, 4, 0
 	addi.d	$a5, $a2, 31
-	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
+	move	$a6, $a4
 	move	$a7, $a3
 	.p2align	4, , 16
 .LBB8_17:                               # %vector.body
@@ -2821,39 +2764,22 @@ h2v2_upsample:                          # @h2v2_upsample
 	xvstelm.b	$xr0, $a5, -5, 13
 	xvstelm.b	$xr0, $a5, -3, 14
 	xvstelm.b	$xr0, $a5, -1, 15
-	xvst	$xr0, $sp, 32
-	ld.b	$t0, $sp, 48
-	st.b	$t0, $a5, 1
-	ld.b	$t1, $sp, 49
-	st.b	$t1, $a5, 3
-	ld.b	$t2, $sp, 50
-	st.b	$t2, $a5, 5
-	ld.b	$t3, $sp, 51
-	st.b	$t3, $a5, 7
-	ld.b	$t4, $sp, 52
-	st.b	$t4, $a5, 9
-	ld.b	$t5, $sp, 53
-	st.b	$t5, $a5, 11
-	ld.b	$t6, $sp, 54
-	st.b	$t6, $a5, 13
-	ld.b	$t7, $sp, 55
-	st.b	$t7, $a5, 15
-	ld.b	$t8, $sp, 56
-	st.b	$t8, $a5, 17
-	ld.b	$ra, $sp, 57
-	st.b	$ra, $a5, 19
-	ld.b	$s8, $sp, 58
-	st.b	$s8, $a5, 21
-	ld.b	$s7, $sp, 59
-	st.b	$s7, $a5, 23
-	ld.b	$s6, $sp, 60
-	st.b	$s6, $a5, 25
-	ld.b	$s1, $sp, 61
-	st.b	$s1, $a5, 27
-	ld.b	$a1, $sp, 62
-	st.b	$a1, $a5, 29
-	ld.b	$a4, $sp, 63
-	st.b	$a4, $a5, 31
+	xvstelm.b	$xr0, $a5, 1, 16
+	xvstelm.b	$xr0, $a5, 3, 17
+	xvstelm.b	$xr0, $a5, 5, 18
+	xvstelm.b	$xr0, $a5, 7, 19
+	xvstelm.b	$xr0, $a5, 9, 20
+	xvstelm.b	$xr0, $a5, 11, 21
+	xvstelm.b	$xr0, $a5, 13, 22
+	xvstelm.b	$xr0, $a5, 15, 23
+	xvstelm.b	$xr0, $a5, 17, 24
+	xvstelm.b	$xr0, $a5, 19, 25
+	xvstelm.b	$xr0, $a5, 21, 26
+	xvstelm.b	$xr0, $a5, 23, 27
+	xvstelm.b	$xr0, $a5, 25, 28
+	xvstelm.b	$xr0, $a5, 27, 29
+	xvstelm.b	$xr0, $a5, 29, 30
+	xvstelm.b	$xr0, $a5, 31, 31
 	xvstelm.b	$xr0, $a5, -30, 0
 	xvstelm.b	$xr0, $a5, -28, 1
 	xvstelm.b	$xr0, $a5, -26, 2
@@ -2870,57 +2796,49 @@ h2v2_upsample:                          # @h2v2_upsample
 	xvstelm.b	$xr0, $a5, -4, 13
 	xvstelm.b	$xr0, $a5, -2, 14
 	xvstelm.b	$xr0, $a5, 0, 15
-	st.b	$t0, $a5, 2
-	st.b	$t1, $a5, 4
-	st.b	$t2, $a5, 6
-	st.b	$t3, $a5, 8
-	st.b	$t4, $a5, 10
-	st.b	$t5, $a5, 12
-	st.b	$t6, $a5, 14
-	st.b	$t7, $a5, 16
-	st.b	$t8, $a5, 18
-	st.b	$ra, $a5, 20
-	st.b	$s8, $a5, 22
-	st.b	$s7, $a5, 24
-	st.b	$s6, $a5, 26
-	st.b	$s1, $a5, 28
-	st.b	$a1, $a5, 30
-	st.b	$a4, $a5, 32
+	xvstelm.b	$xr0, $a5, 2, 16
+	xvstelm.b	$xr0, $a5, 4, 17
+	xvstelm.b	$xr0, $a5, 6, 18
+	xvstelm.b	$xr0, $a5, 8, 19
+	xvstelm.b	$xr0, $a5, 10, 20
+	xvstelm.b	$xr0, $a5, 12, 21
+	xvstelm.b	$xr0, $a5, 14, 22
+	xvstelm.b	$xr0, $a5, 16, 23
+	xvstelm.b	$xr0, $a5, 18, 24
+	xvstelm.b	$xr0, $a5, 20, 25
+	xvstelm.b	$xr0, $a5, 22, 26
+	xvstelm.b	$xr0, $a5, 24, 27
+	xvstelm.b	$xr0, $a5, 26, 28
+	xvstelm.b	$xr0, $a5, 28, 29
+	xvstelm.b	$xr0, $a5, 30, 30
+	xvstelm.b	$xr0, $a5, 32, 31
 	addi.d	$a7, $a7, 32
 	addi.d	$a6, $a6, -32
 	addi.d	$a5, $a5, 64
 	bnez	$a6, .LBB8_17
 # %bb.18:                               # %middle.block
                                         #   in Loop: Header=BB8_4 Depth=1
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ori	$s6, $zero, 30
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
-	ori	$s8, $zero, 62
-	ld.d	$t1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a4, $sp, 16                    # 8-byte Folded Reload
-	beq	$t1, $a4, .LBB8_10
+	beq	$a1, $a4, .LBB8_10
 # %bb.19:                               # %vec.epilog.iter.check
                                         #   in Loop: Header=BB8_4 Depth=1
-	andi	$a1, $t1, 16
-	bnez	$a1, .LBB8_13
+	andi	$a5, $a1, 16
+	bnez	$a5, .LBB8_13
 # %bb.20:                               #   in Loop: Header=BB8_4 Depth=1
 	add.d	$a5, $a3, $a4
 	alsl.d	$a6, $a4, $a2, 1
 	b	.LBB8_9
 .LBB8_21:                               # %._crit_edge31
-	addi.d	$sp, $fp, -160
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end8:
 	.size	h2v2_upsample, .Lfunc_end8-h2v2_upsample

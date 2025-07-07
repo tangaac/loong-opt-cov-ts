@@ -4367,16 +4367,16 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 # %bb.0:
 	beqz	$a0, .LBB27_3
 # %bb.1:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -128
+	.cfi_def_cfa_offset 128
+	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4385,7 +4385,7 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	addi.d	$fp, $sp, 192
+	addi.d	$fp, $sp, 128
 	.cfi_def_cfa 22, 0
 	bstrins.d	$sp, $zero, 4, 0
 	beqz	$a2, .LBB27_4
@@ -4413,60 +4413,36 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	ld.b	$t8, $a0, 53
 	ld.b	$a3, $a0, 52
 	vinsgr2vr.h	$vr0, $s4, 0
+	ld.w	$s4, $a0, 36
 	st.b	$s2, $a0, 8
 	vld	$vr1, $a0, 12
-	ld.d	$s4, $a0, 28
-	ld.w	$s2, $a0, 36
-	vinsgr2vr.b	$vr2, $s3, 0
+	ld.d	$s2, $a0, 28
+	vinsgr2vr.w	$vr2, $s4, 0
+	vinsgr2vr.b	$vr3, $s3, 0
 	pcalau12i	$s3, %pc_hi20(.LCPI27_0)
-	xvld	$xr3, $s3, %pc_lo12(.LCPI27_0)
+	xvld	$xr4, $s3, %pc_lo12(.LCPI27_0)
 	xvpermi.q	$xr0, $xr0, 2
-	xvpermi.d	$xr2, $xr2, 68
+	xvpermi.d	$xr3, $xr3, 68
 	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.b	$xr0, $xr0, $xr2, $xr3
+	xvshuf.b	$xr0, $xr0, $xr3, $xr4
 	pcalau12i	$s3, %pc_hi20(.LCPI27_1)
-	xvld	$xr2, $s3, %pc_lo12(.LCPI27_1)
+	xvld	$xr3, $s3, %pc_lo12(.LCPI27_1)
 	xvpermi.q	$xr1, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 68
 	xvpermi.d	$xr1, $xr1, 68
-	xvshuf.b	$xr0, $xr1, $xr0, $xr2
-	xvinsgr2vr.d	$xr1, $s4, 0
-	xvst	$xr0, $sp, 64
-	xvstelm.b	$xr1, $sp, 122, 4
-	xvstelm.b	$xr1, $sp, 121, 5
-	xvstelm.b	$xr1, $sp, 120, 6
-	xvstelm.b	$xr1, $sp, 119, 7
-	xvstelm.b	$xr1, $sp, 118, 0
-	xvstelm.b	$xr1, $sp, 117, 1
-	xvstelm.b	$xr1, $sp, 116, 2
-	xvstelm.b	$xr1, $sp, 115, 3
-	xvstelm.b	$xr0, $sp, 111, 15
-	xvstelm.b	$xr0, $sp, 110, 14
-	xvstelm.b	$xr0, $sp, 109, 13
-	xvstelm.b	$xr0, $sp, 108, 12
-	xvstelm.b	$xr0, $sp, 107, 11
-	xvstelm.b	$xr0, $sp, 106, 10
-	xvstelm.b	$xr0, $sp, 105, 9
-	xvstelm.b	$xr0, $sp, 104, 8
-	xvstelm.b	$xr0, $sp, 103, 7
-	xvstelm.b	$xr0, $sp, 102, 6
-	xvstelm.b	$xr0, $sp, 101, 5
-	xvstelm.b	$xr0, $sp, 100, 4
-	xvstelm.b	$xr0, $sp, 99, 3
-	xvstelm.b	$xr0, $sp, 98, 2
-	xvstelm.b	$xr0, $sp, 97, 1
-	xvstelm.b	$xr0, $sp, 96, 0
-	ld.b	$s3, $sp, 82
-	st.b	$s3, $sp, 114
-	ld.h	$s3, $sp, 80
-	st.h	$s3, $sp, 112
-	xvld	$xr0, $sp, 96
-	vinsgr2vr.w	$vr1, $s2, 0
-	xvst	$xr0, $sp, 0
-	vstelm.b	$vr1, $sp, 62, 0
-	vstelm.b	$vr1, $sp, 61, 1
-	vstelm.b	$vr1, $sp, 60, 2
-	vstelm.b	$vr1, $sp, 59, 3
+	xvshuf.b	$xr0, $xr1, $xr0, $xr3
+	xvinsgr2vr.d	$xr1, $s2, 0
+	xvstelm.b	$xr1, $sp, 58, 4
+	xvstelm.b	$xr1, $sp, 57, 5
+	xvstelm.b	$xr1, $sp, 56, 6
+	xvstelm.b	$xr1, $sp, 55, 7
+	xvstelm.b	$xr1, $sp, 54, 0
+	xvstelm.b	$xr1, $sp, 53, 1
+	xvstelm.b	$xr1, $sp, 52, 2
+	xvstelm.b	$xr1, $sp, 51, 3
+	xvstelm.b	$xr0, $sp, 50, 18
+	xvstelm.b	$xr0, $sp, 49, 17
+	xvstelm.b	$xr0, $sp, 48, 16
 	xvstelm.b	$xr0, $sp, 47, 15
 	xvstelm.b	$xr0, $sp, 46, 14
 	xvstelm.b	$xr0, $sp, 45, 13
@@ -4483,13 +4459,39 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	xvstelm.b	$xr0, $sp, 34, 2
 	xvstelm.b	$xr0, $sp, 33, 1
 	xvstelm.b	$xr0, $sp, 32, 0
-	ld.b	$s2, $sp, 26
-	st.b	$s2, $sp, 58
-	ld.h	$s2, $sp, 24
-	st.h	$s2, $sp, 56
-	ld.d	$s2, $sp, 16
-	st.d	$s2, $sp, 48
 	xvld	$xr0, $sp, 32
+	vstelm.b	$vr2, $sp, 30, 0
+	vstelm.b	$vr2, $sp, 29, 1
+	vstelm.b	$vr2, $sp, 28, 2
+	vstelm.b	$vr2, $sp, 27, 3
+	xvstelm.b	$xr0, $sp, 26, 26
+	xvstelm.b	$xr0, $sp, 25, 25
+	xvstelm.b	$xr0, $sp, 24, 24
+	xvstelm.b	$xr0, $sp, 23, 23
+	xvstelm.b	$xr0, $sp, 22, 22
+	xvstelm.b	$xr0, $sp, 21, 21
+	xvstelm.b	$xr0, $sp, 20, 20
+	xvstelm.b	$xr0, $sp, 19, 19
+	xvstelm.b	$xr0, $sp, 18, 18
+	xvstelm.b	$xr0, $sp, 17, 17
+	xvstelm.b	$xr0, $sp, 16, 16
+	xvstelm.b	$xr0, $sp, 15, 15
+	xvstelm.b	$xr0, $sp, 14, 14
+	xvstelm.b	$xr0, $sp, 13, 13
+	xvstelm.b	$xr0, $sp, 12, 12
+	xvstelm.b	$xr0, $sp, 11, 11
+	xvstelm.b	$xr0, $sp, 10, 10
+	xvstelm.b	$xr0, $sp, 9, 9
+	xvstelm.b	$xr0, $sp, 8, 8
+	xvstelm.b	$xr0, $sp, 7, 7
+	xvstelm.b	$xr0, $sp, 6, 6
+	xvstelm.b	$xr0, $sp, 5, 5
+	xvstelm.b	$xr0, $sp, 4, 4
+	xvstelm.b	$xr0, $sp, 3, 3
+	xvstelm.b	$xr0, $sp, 2, 2
+	xvstelm.b	$xr0, $sp, 1, 1
+	xvstelm.b	$xr0, $sp, 0, 0
+	xvld	$xr0, $sp, 0
 	xvori.b	$xr1, $xr0, 0
 	xvpermi.q	$xr1, $xr0, 1
 	vinsgr2vr.b	$vr1, $s0, 15
@@ -4760,16 +4762,16 @@ _ZN14btQuantizedBvh18deSerializeInPlaceEPvjb: # @_ZN14btQuantizedBvh18deSerializ
 	addi.d	$a2, $a2, 32
 	bnez	$a1, .LBB27_22
 .LBB27_23:
-	addi.d	$sp, $fp, -192
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	addi.d	$sp, $fp, -128
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 128
 	ret
 .Lfunc_end27:
 	.size	_ZN14btQuantizedBvh18deSerializeInPlaceEPvjb, .Lfunc_end27-_ZN14btQuantizedBvh18deSerializeInPlaceEPvjb

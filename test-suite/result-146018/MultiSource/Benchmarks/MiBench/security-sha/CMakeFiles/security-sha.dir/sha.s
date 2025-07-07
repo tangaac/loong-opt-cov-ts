@@ -159,73 +159,49 @@ sha_update:                             # @sha_update
 	.type	byte_reverse,@function
 byte_reverse:                           # @byte_reverse
 # %bb.0:
-	addi.d	$sp, $sp, -160
-	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 160
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
 	bstrins.d	$sp, $zero, 4, 0
-	ld.b	$a6, $a0, 2
-	ld.b	$a5, $a0, 3
+	ld.b	$a5, $a0, 2
+	ld.b	$a6, $a0, 3
 	ld.b	$a1, $a0, 32
 	ld.h	$a7, $a0, 0
 	ld.b	$a2, $a0, 33
 	ld.b	$a3, $a0, 34
 	ld.b	$a4, $a0, 35
 	vinsgr2vr.h	$vr0, $a7, 0
-	st.b	$a5, $a0, 0
+	ld.w	$a7, $a0, 28
+	st.b	$a6, $a0, 0
 	vld	$vr1, $a0, 4
-	ld.d	$a7, $a0, 20
-	ld.w	$a5, $a0, 28
-	vinsgr2vr.b	$vr2, $a6, 0
-	pcalau12i	$a6, %pc_hi20(.LCPI2_0)
-	xvld	$xr3, $a6, %pc_lo12(.LCPI2_0)
+	ld.d	$a6, $a0, 20
+	vinsgr2vr.w	$vr2, $a7, 0
+	vinsgr2vr.b	$vr3, $a5, 0
+	pcalau12i	$a5, %pc_hi20(.LCPI2_0)
+	xvld	$xr4, $a5, %pc_lo12(.LCPI2_0)
 	xvpermi.q	$xr0, $xr0, 2
-	xvpermi.d	$xr2, $xr2, 68
+	xvpermi.d	$xr3, $xr3, 68
 	xvpermi.d	$xr0, $xr0, 68
-	xvshuf.b	$xr0, $xr0, $xr2, $xr3
-	pcalau12i	$a6, %pc_hi20(.LCPI2_1)
-	xvld	$xr2, $a6, %pc_lo12(.LCPI2_1)
+	xvshuf.b	$xr0, $xr0, $xr3, $xr4
+	pcalau12i	$a5, %pc_hi20(.LCPI2_1)
+	xvld	$xr3, $a5, %pc_lo12(.LCPI2_1)
 	xvpermi.q	$xr1, $xr0, 2
 	xvpermi.d	$xr0, $xr0, 68
 	xvpermi.d	$xr1, $xr1, 68
-	xvshuf.b	$xr0, $xr1, $xr0, $xr2
-	xvinsgr2vr.d	$xr1, $a7, 0
-	xvst	$xr0, $sp, 64
-	xvstelm.b	$xr1, $sp, 122, 4
-	xvstelm.b	$xr1, $sp, 121, 5
-	xvstelm.b	$xr1, $sp, 120, 6
-	xvstelm.b	$xr1, $sp, 119, 7
-	xvstelm.b	$xr1, $sp, 118, 0
-	xvstelm.b	$xr1, $sp, 117, 1
-	xvstelm.b	$xr1, $sp, 116, 2
-	xvstelm.b	$xr1, $sp, 115, 3
-	xvstelm.b	$xr0, $sp, 111, 15
-	xvstelm.b	$xr0, $sp, 110, 14
-	xvstelm.b	$xr0, $sp, 109, 13
-	xvstelm.b	$xr0, $sp, 108, 12
-	xvstelm.b	$xr0, $sp, 107, 11
-	xvstelm.b	$xr0, $sp, 106, 10
-	xvstelm.b	$xr0, $sp, 105, 9
-	xvstelm.b	$xr0, $sp, 104, 8
-	xvstelm.b	$xr0, $sp, 103, 7
-	xvstelm.b	$xr0, $sp, 102, 6
-	xvstelm.b	$xr0, $sp, 101, 5
-	xvstelm.b	$xr0, $sp, 100, 4
-	xvstelm.b	$xr0, $sp, 99, 3
-	xvstelm.b	$xr0, $sp, 98, 2
-	xvstelm.b	$xr0, $sp, 97, 1
-	xvstelm.b	$xr0, $sp, 96, 0
-	ld.b	$a6, $sp, 82
-	st.b	$a6, $sp, 114
-	ld.h	$a6, $sp, 80
-	st.h	$a6, $sp, 112
-	xvld	$xr0, $sp, 96
-	vinsgr2vr.w	$vr1, $a5, 0
-	xvst	$xr0, $sp, 0
-	vstelm.b	$vr1, $sp, 62, 0
-	vstelm.b	$vr1, $sp, 61, 1
-	vstelm.b	$vr1, $sp, 60, 2
-	vstelm.b	$vr1, $sp, 59, 3
+	xvshuf.b	$xr0, $xr1, $xr0, $xr3
+	xvinsgr2vr.d	$xr1, $a6, 0
+	xvstelm.b	$xr1, $sp, 58, 4
+	xvstelm.b	$xr1, $sp, 57, 5
+	xvstelm.b	$xr1, $sp, 56, 6
+	xvstelm.b	$xr1, $sp, 55, 7
+	xvstelm.b	$xr1, $sp, 54, 0
+	xvstelm.b	$xr1, $sp, 53, 1
+	xvstelm.b	$xr1, $sp, 52, 2
+	xvstelm.b	$xr1, $sp, 51, 3
+	xvstelm.b	$xr0, $sp, 50, 18
+	xvstelm.b	$xr0, $sp, 49, 17
+	xvstelm.b	$xr0, $sp, 48, 16
 	xvstelm.b	$xr0, $sp, 47, 15
 	xvstelm.b	$xr0, $sp, 46, 14
 	xvstelm.b	$xr0, $sp, 45, 13
@@ -242,13 +218,39 @@ byte_reverse:                           # @byte_reverse
 	xvstelm.b	$xr0, $sp, 34, 2
 	xvstelm.b	$xr0, $sp, 33, 1
 	xvstelm.b	$xr0, $sp, 32, 0
-	ld.b	$a5, $sp, 26
-	st.b	$a5, $sp, 58
-	ld.h	$a5, $sp, 24
-	st.h	$a5, $sp, 56
-	ld.d	$a5, $sp, 16
-	st.d	$a5, $sp, 48
 	xvld	$xr0, $sp, 32
+	vstelm.b	$vr2, $sp, 30, 0
+	vstelm.b	$vr2, $sp, 29, 1
+	vstelm.b	$vr2, $sp, 28, 2
+	vstelm.b	$vr2, $sp, 27, 3
+	xvstelm.b	$xr0, $sp, 26, 26
+	xvstelm.b	$xr0, $sp, 25, 25
+	xvstelm.b	$xr0, $sp, 24, 24
+	xvstelm.b	$xr0, $sp, 23, 23
+	xvstelm.b	$xr0, $sp, 22, 22
+	xvstelm.b	$xr0, $sp, 21, 21
+	xvstelm.b	$xr0, $sp, 20, 20
+	xvstelm.b	$xr0, $sp, 19, 19
+	xvstelm.b	$xr0, $sp, 18, 18
+	xvstelm.b	$xr0, $sp, 17, 17
+	xvstelm.b	$xr0, $sp, 16, 16
+	xvstelm.b	$xr0, $sp, 15, 15
+	xvstelm.b	$xr0, $sp, 14, 14
+	xvstelm.b	$xr0, $sp, 13, 13
+	xvstelm.b	$xr0, $sp, 12, 12
+	xvstelm.b	$xr0, $sp, 11, 11
+	xvstelm.b	$xr0, $sp, 10, 10
+	xvstelm.b	$xr0, $sp, 9, 9
+	xvstelm.b	$xr0, $sp, 8, 8
+	xvstelm.b	$xr0, $sp, 7, 7
+	xvstelm.b	$xr0, $sp, 6, 6
+	xvstelm.b	$xr0, $sp, 5, 5
+	xvstelm.b	$xr0, $sp, 4, 4
+	xvstelm.b	$xr0, $sp, 3, 3
+	xvstelm.b	$xr0, $sp, 2, 2
+	xvstelm.b	$xr0, $sp, 1, 1
+	xvstelm.b	$xr0, $sp, 0, 0
+	xvld	$xr0, $sp, 0
 	xvori.b	$xr1, $xr0, 0
 	xvpermi.q	$xr1, $xr0, 1
 	vinsgr2vr.b	$vr1, $a4, 15
@@ -313,10 +315,10 @@ byte_reverse:                           # @byte_reverse
 	st.b	$a2, $a0, 61
 	st.b	$a3, $a0, 62
 	st.b	$a4, $a0, 63
-	addi.d	$sp, $fp, -160
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 160
+	addi.d	$sp, $fp, -96
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end2:
 	.size	byte_reverse, .Lfunc_end2-byte_reverse
@@ -632,7 +634,7 @@ sha_stream:                             # @sha_stream
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	addi.d	$fp, $sp, 2032
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 2736
+	ori	$a2, $a2, 2672
 	sub.d	$sp, $sp, $a2
 	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a2, %pc_hi20(.LCPI5_0)
@@ -646,7 +648,7 @@ sha_stream:                             # @sha_stream
 	st.d	$a0, $s0, 16
 	st.w	$zero, $s0, 24
 	lu12i.w	$a2, 2
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 200
 	ori	$a1, $zero, 1
 	ori	$s1, $zero, 1
 	st.d	$a3, $sp, 112                   # 8-byte Folded Spill
@@ -658,11 +660,11 @@ sha_stream:                             # @sha_stream
 	blt	$a1, $s1, .LBB5_18
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a1, %pc_hi20(.LCPI5_1)
-	xvld	$xr4, $a1, %pc_lo12(.LCPI5_1)
+	xvld	$xr5, $a1, %pc_lo12(.LCPI5_1)
 	pcalau12i	$a1, %pc_hi20(.LCPI5_2)
-	xvld	$xr5, $a1, %pc_lo12(.LCPI5_2)
+	xvld	$xr6, $a1, %pc_lo12(.LCPI5_2)
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 264
+	ori	$a1, $a1, 200
 	add.d	$s5, $sp, $a1
 	ori	$t6, $zero, 256
 	lu12i.w	$a1, 370727
@@ -678,12 +680,12 @@ sha_stream:                             # @sha_stream
 	ori	$s6, $a1, 470
 	ori	$s8, $zero, 320
 	ori	$t8, $zero, 127
-	xvst	$xr4, $sp, 64                   # 32-byte Folded Spill
-	xvst	$xr5, $sp, 32                   # 32-byte Folded Spill
+	xvst	$xr5, $sp, 64                   # 32-byte Folded Spill
+	xvst	$xr6, $sp, 32                   # 32-byte Folded Spill
 	b	.LBB5_4
 	.p2align	4, , 16
 .LBB5_2:                                #   in Loop: Header=BB5_4 Depth=1
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 200
 	move	$a3, $a0
 	ld.d	$t5, $sp, 120                   # 8-byte Folded Reload
 .LBB5_3:                                # %sha_update.exit
@@ -692,15 +694,15 @@ sha_stream:                             # @sha_stream
 	move	$a0, $t5
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 264
+	addi.d	$a0, $sp, 200
 	ori	$a1, $zero, 1
 	lu12i.w	$a2, 2
 	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	xvld	$xr4, $sp, 64                   # 32-byte Folded Reload
-	xvld	$xr5, $sp, 32                   # 32-byte Folded Reload
+	xvld	$xr5, $sp, 64                   # 32-byte Folded Reload
+	xvld	$xr6, $sp, 32                   # 32-byte Folded Reload
 	ori	$t6, $zero, 256
 	ori	$t7, $zero, 80
 	ori	$t8, $zero, 127
@@ -731,7 +733,7 @@ sha_stream:                             # @sha_stream
                                         #   in Loop: Header=BB5_4 Depth=1
 	vld	$vr0, $s0, 0
 	ld.w	$a2, $s0, 16
-	addi.d	$a1, $sp, 264
+	addi.d	$a1, $sp, 200
 	ld.d	$t5, $sp, 120                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB5_6:                                #   Parent Loop BB5_4 Depth=1
@@ -753,84 +755,43 @@ sha_stream:                             # @sha_stream
 	ld.b	$a5, $s0, 62
 	ld.b	$a6, $s0, 63
 	vinsgr2vr.h	$vr1, $t1, 0
+	ld.w	$t1, $s0, 56
 	st.b	$t0, $s0, 28
 	vld	$vr2, $s0, 32
 	ld.d	$t0, $s0, 48
-	ld.w	$t1, $s0, 56
-	vinsgr2vr.b	$vr3, $a7, 0
+	vinsgr2vr.w	$vr3, $t1, 0
+	vinsgr2vr.b	$vr4, $a7, 0
 	xvpermi.q	$xr1, $xr0, 2
-	xvpermi.d	$xr3, $xr3, 68
+	xvpermi.d	$xr4, $xr4, 68
 	xvpermi.d	$xr1, $xr1, 68
-	xvshuf.b	$xr1, $xr1, $xr3, $xr4
+	xvshuf.b	$xr1, $xr1, $xr4, $xr5
 	xvpermi.q	$xr2, $xr0, 2
 	xvpermi.d	$xr1, $xr1, 68
 	xvpermi.d	$xr2, $xr2, 68
-	xvshuf.b	$xr1, $xr2, $xr1, $xr5
+	xvshuf.b	$xr1, $xr2, $xr1, $xr6
 	xvinsgr2vr.d	$xr2, $t0, 0
-	xvst	$xr1, $sp, 192
-	addi.d	$a7, $sp, 250
+	addi.d	$a7, $sp, 186
 	xvstelm.b	$xr2, $a7, 0, 4
-	addi.d	$a7, $sp, 249
+	addi.d	$a7, $sp, 185
 	xvstelm.b	$xr2, $a7, 0, 5
-	addi.d	$a7, $sp, 248
+	addi.d	$a7, $sp, 184
 	xvstelm.b	$xr2, $a7, 0, 6
-	addi.d	$a7, $sp, 247
+	addi.d	$a7, $sp, 183
 	xvstelm.b	$xr2, $a7, 0, 7
-	addi.d	$a7, $sp, 246
+	addi.d	$a7, $sp, 182
 	xvstelm.b	$xr2, $a7, 0, 0
-	addi.d	$a7, $sp, 245
+	addi.d	$a7, $sp, 181
 	xvstelm.b	$xr2, $a7, 0, 1
-	addi.d	$a7, $sp, 244
+	addi.d	$a7, $sp, 180
 	xvstelm.b	$xr2, $a7, 0, 2
-	addi.d	$a7, $sp, 243
+	addi.d	$a7, $sp, 179
 	xvstelm.b	$xr2, $a7, 0, 3
-	addi.d	$a7, $sp, 239
-	xvstelm.b	$xr1, $a7, 0, 15
-	addi.d	$a7, $sp, 238
-	xvstelm.b	$xr1, $a7, 0, 14
-	addi.d	$a7, $sp, 237
-	xvstelm.b	$xr1, $a7, 0, 13
-	addi.d	$a7, $sp, 236
-	xvstelm.b	$xr1, $a7, 0, 12
-	addi.d	$a7, $sp, 235
-	xvstelm.b	$xr1, $a7, 0, 11
-	addi.d	$a7, $sp, 234
-	xvstelm.b	$xr1, $a7, 0, 10
-	addi.d	$a7, $sp, 233
-	xvstelm.b	$xr1, $a7, 0, 9
-	addi.d	$a7, $sp, 232
-	xvstelm.b	$xr1, $a7, 0, 8
-	addi.d	$a7, $sp, 231
-	xvstelm.b	$xr1, $a7, 0, 7
-	addi.d	$a7, $sp, 230
-	xvstelm.b	$xr1, $a7, 0, 6
-	addi.d	$a7, $sp, 229
-	xvstelm.b	$xr1, $a7, 0, 5
-	addi.d	$a7, $sp, 228
-	xvstelm.b	$xr1, $a7, 0, 4
-	addi.d	$a7, $sp, 227
-	xvstelm.b	$xr1, $a7, 0, 3
-	addi.d	$a7, $sp, 226
-	xvstelm.b	$xr1, $a7, 0, 2
-	addi.d	$a7, $sp, 225
-	xvstelm.b	$xr1, $a7, 0, 1
-	addi.d	$a7, $sp, 224
-	xvstelm.b	$xr1, $a7, 0, 0
-	ld.b	$a7, $sp, 210
-	st.b	$a7, $sp, 242
-	ld.h	$a7, $sp, 208
-	st.h	$a7, $sp, 240
-	xvld	$xr1, $sp, 224
-	vinsgr2vr.w	$vr2, $t1, 0
-	xvst	$xr1, $sp, 128
-	addi.d	$a7, $sp, 190
-	vstelm.b	$vr2, $a7, 0, 0
-	addi.d	$a7, $sp, 189
-	vstelm.b	$vr2, $a7, 0, 1
-	addi.d	$a7, $sp, 188
-	vstelm.b	$vr2, $a7, 0, 2
-	addi.d	$a7, $sp, 187
-	vstelm.b	$vr2, $a7, 0, 3
+	addi.d	$a7, $sp, 178
+	xvstelm.b	$xr1, $a7, 0, 18
+	addi.d	$a7, $sp, 177
+	xvstelm.b	$xr1, $a7, 0, 17
+	addi.d	$a7, $sp, 176
+	xvstelm.b	$xr1, $a7, 0, 16
 	addi.d	$a7, $sp, 175
 	xvstelm.b	$xr1, $a7, 0, 15
 	addi.d	$a7, $sp, 174
@@ -863,13 +824,70 @@ sha_stream:                             # @sha_stream
 	xvstelm.b	$xr1, $a7, 0, 1
 	addi.d	$a7, $sp, 160
 	xvstelm.b	$xr1, $a7, 0, 0
-	ld.b	$a7, $sp, 154
-	st.b	$a7, $sp, 186
-	ld.h	$a7, $sp, 152
-	st.h	$a7, $sp, 184
-	ld.d	$a7, $sp, 144
-	st.d	$a7, $sp, 176
 	xvld	$xr1, $sp, 160
+	addi.d	$a7, $sp, 158
+	vstelm.b	$vr3, $a7, 0, 0
+	addi.d	$a7, $sp, 157
+	vstelm.b	$vr3, $a7, 0, 1
+	addi.d	$a7, $sp, 156
+	vstelm.b	$vr3, $a7, 0, 2
+	addi.d	$a7, $sp, 155
+	vstelm.b	$vr3, $a7, 0, 3
+	addi.d	$a7, $sp, 154
+	xvstelm.b	$xr1, $a7, 0, 26
+	addi.d	$a7, $sp, 153
+	xvstelm.b	$xr1, $a7, 0, 25
+	addi.d	$a7, $sp, 152
+	xvstelm.b	$xr1, $a7, 0, 24
+	addi.d	$a7, $sp, 151
+	xvstelm.b	$xr1, $a7, 0, 23
+	addi.d	$a7, $sp, 150
+	xvstelm.b	$xr1, $a7, 0, 22
+	addi.d	$a7, $sp, 149
+	xvstelm.b	$xr1, $a7, 0, 21
+	addi.d	$a7, $sp, 148
+	xvstelm.b	$xr1, $a7, 0, 20
+	addi.d	$a7, $sp, 147
+	xvstelm.b	$xr1, $a7, 0, 19
+	addi.d	$a7, $sp, 146
+	xvstelm.b	$xr1, $a7, 0, 18
+	addi.d	$a7, $sp, 145
+	xvstelm.b	$xr1, $a7, 0, 17
+	addi.d	$a7, $sp, 144
+	xvstelm.b	$xr1, $a7, 0, 16
+	addi.d	$a7, $sp, 143
+	xvstelm.b	$xr1, $a7, 0, 15
+	addi.d	$a7, $sp, 142
+	xvstelm.b	$xr1, $a7, 0, 14
+	addi.d	$a7, $sp, 141
+	xvstelm.b	$xr1, $a7, 0, 13
+	addi.d	$a7, $sp, 140
+	xvstelm.b	$xr1, $a7, 0, 12
+	addi.d	$a7, $sp, 139
+	xvstelm.b	$xr1, $a7, 0, 11
+	addi.d	$a7, $sp, 138
+	xvstelm.b	$xr1, $a7, 0, 10
+	addi.d	$a7, $sp, 137
+	xvstelm.b	$xr1, $a7, 0, 9
+	addi.d	$a7, $sp, 136
+	xvstelm.b	$xr1, $a7, 0, 8
+	addi.d	$a7, $sp, 135
+	xvstelm.b	$xr1, $a7, 0, 7
+	addi.d	$a7, $sp, 134
+	xvstelm.b	$xr1, $a7, 0, 6
+	addi.d	$a7, $sp, 133
+	xvstelm.b	$xr1, $a7, 0, 5
+	addi.d	$a7, $sp, 132
+	xvstelm.b	$xr1, $a7, 0, 4
+	addi.d	$a7, $sp, 131
+	xvstelm.b	$xr1, $a7, 0, 3
+	addi.d	$a7, $sp, 130
+	xvstelm.b	$xr1, $a7, 0, 2
+	addi.d	$a7, $sp, 129
+	xvstelm.b	$xr1, $a7, 0, 1
+	addi.d	$a7, $sp, 128
+	xvstelm.b	$xr1, $a7, 0, 0
+	xvld	$xr1, $sp, 128
 	xvori.b	$xr2, $xr1, 0
 	xvpermi.q	$xr2, $xr1, 1
 	vinsgr2vr.b	$vr2, $a6, 15
@@ -938,11 +956,11 @@ sha_stream:                             # @sha_stream
 	xvld	$xr2, $t5, 0
 	move	$a6, $zero
 	lu12i.w	$a3, 2
-	ori	$a3, $a3, 296
+	ori	$a3, $a3, 232
 	add.d	$a3, $sp, $a3
 	xvst	$xr1, $a3, 0
 	lu12i.w	$a3, 2
-	ori	$a3, $a3, 264
+	ori	$a3, $a3, 200
 	add.d	$a3, $sp, $a3
 	xvst	$xr2, $a3, 0
 	vpickve2gr.w	$a3, $vr0, 0
@@ -1129,10 +1147,10 @@ sha_stream:                             # @sha_stream
 	st.w	$s1, $s0, 88
 	move	$a0, $s0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 672
+	ori	$a1, $a1, 608
 	sub.d	$sp, $fp, $a1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 2736
+	ori	$a1, $a1, 2672
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload

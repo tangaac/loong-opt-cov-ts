@@ -15917,25 +15917,19 @@ s116:                                   # @s116
 .LBB16_3:                               #   Parent Loop BB16_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	xvld	$xr1, $a0, -24
-	xvpickve2gr.d	$a2, $xr1, 0
-	movgr2fr.d	$fa2, $a2
+	fld.d	$fa2, $a0, 0
 	movfr2gr.d	$a2, $fa0
 	xvinsgr2vr.d	$xr3, $a2, 0
-	movfr2gr.d	$a2, $fa2
+	xvpickve2gr.d	$a2, $xr1, 0
 	xvinsgr2vr.d	$xr3, $a2, 1
 	xvpickve2gr.d	$a2, $xr1, 1
-	movgr2fr.d	$fa0, $a2
-	xvpickve2gr.d	$a2, $xr1, 2
-	movgr2fr.d	$fa2, $a2
-	movfr2gr.d	$a2, $fa0
-	fld.d	$fa4, $a0, 0
 	xvinsgr2vr.d	$xr3, $a2, 2
-	movfr2gr.d	$a2, $fa2
+	xvpickve2gr.d	$a2, $xr1, 2
 	fld.d	$fa0, $a0, 8
 	xvinsgr2vr.d	$xr3, $a2, 3
 	xvfmul.d	$xr1, $xr1, $xr3
 	xvst	$xr1, $a0, -32
-	fmul.d	$fa1, $fa4, $fa0
+	fmul.d	$fa1, $fa2, $fa0
 	fst.d	$fa1, $a0, 0
 	addi.d	$a1, $a1, 5
 	addi.d	$a0, $a0, 40

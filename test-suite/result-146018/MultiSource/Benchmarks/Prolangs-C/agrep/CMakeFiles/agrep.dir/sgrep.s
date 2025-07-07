@@ -1303,20 +1303,17 @@ bm:                                     # @bm
 	.type	initmask,@function
 initmask:                               # @initmask
 # %bb.0:
-	addi.d	$sp, $sp, -576
-	st.d	$ra, $sp, 568                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 560                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 552                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 544                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 536                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 528                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 576
-	bstrins.d	$sp, $zero, 4, 0
-	move	$s2, $a2
-	move	$s0, $a1
-	move	$s1, $a0
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	move	$s1, $a2
+	move	$fp, $a1
+	move	$s0, $a0
 	nor	$a0, $a3, $zero
-	lu12i.w	$s3, -524288
+	lu12i.w	$s2, -524288
 	bltz	$a3, .LBB4_3
 # %bb.1:                                # %iter.check
 	ori	$a2, $zero, 3
@@ -1342,7 +1339,7 @@ initmask:                               # @initmask
 	move	$a2, $a1
 	bstrins.d	$a2, $zero, 3, 0
 	xvrepli.b	$xr1, 0
-	xvreplgr2vr.w	$xr2, $s3
+	xvreplgr2vr.w	$xr2, $s2
 	move	$a3, $a2
 	xvori.b	$xr3, $xr1, 0
 	.p2align	4, , 16
@@ -1373,20 +1370,20 @@ initmask:                               # @initmask
 	andi	$a5, $a1, 12
 	beqz	$a5, .LBB4_13
 .LBB4_10:                               # %vec.epilog.ph
+	move	$a5, $a2
+	move	$a2, $a1
+	bstrins.d	$a2, $zero, 1, 0
 	vinsgr2vr.w	$vr1, $a3, 0
 	pcalau12i	$a3, %pc_hi20(.LCPI4_1)
 	vld	$vr0, $a3, %pc_lo12(.LCPI4_1)
-	vinsgr2vr.w	$vr2, $zero, 0
 	pcalau12i	$a3, %pc_hi20(.LCPI4_2)
-	vld	$vr3, $a3, %pc_lo12(.LCPI4_2)
-	vshuf.w	$vr0, $vr2, $vr1
-	move	$a3, $a2
-	move	$a2, $a1
-	bstrins.d	$a2, $zero, 1, 0
-	vreplgr2vr.w	$vr1, $a3
-	vor.v	$vr1, $vr1, $vr3
-	sub.d	$a3, $a3, $a2
-	vreplgr2vr.w	$vr2, $s3
+	vld	$vr2, $a3, %pc_lo12(.LCPI4_2)
+	vinsgr2vr.w	$vr3, $zero, 0
+	vshuf.w	$vr0, $vr3, $vr1
+	vreplgr2vr.w	$vr1, $a5
+	vor.v	$vr1, $vr1, $vr2
+	sub.d	$a3, $a5, $a2
+	vreplgr2vr.w	$vr2, $s2
 	.p2align	4, , 16
 .LBB4_11:                               # %vec.epilog.vector.body
                                         # =>This Inner Loop Header: Depth=1
@@ -1405,45 +1402,43 @@ initmask:                               # @initmask
 	.p2align	4, , 16
 .LBB4_13:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	srl.w	$a5, $s3, $a2
+	srl.w	$a5, $s2, $a2
 	addi.w	$a2, $a2, 1
 	or	$a3, $a3, $a5
 	bne	$a1, $a2, .LBB4_13
 .LBB4_14:                               # %._crit_edge
-	add.d	$a0, $s2, $a0
+	add.d	$a0, $s1, $a0
 	srl.w	$a0, $a3, $a0
 	st.w	$a0, $a4, 0
-	blez	$s2, .LBB4_17
+	blez	$s1, .LBB4_17
 # %bb.15:                               # %iter.check86
 	ori	$a0, $zero, 7
-	bltu	$a0, $s2, .LBB4_18
+	bltu	$a0, $s1, .LBB4_18
 # %bb.16:
 	move	$a0, $zero
 	b	.LBB4_114
 .LBB4_17:                               # %.preheader47.thread
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
-	move	$a0, $s0
-	addi.d	$sp, $fp, -576
-	ld.d	$s3, $sp, 528                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 536                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 544                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 568                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 576
+	move	$a0, $fp
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB4_18:                               # %vector.main.loop.iter.check88
 	ori	$a0, $zero, 32
-	bgeu	$s2, $a0, .LBB4_20
+	bgeu	$s1, $a0, .LBB4_20
 # %bb.19:
 	move	$a0, $zero
 	b	.LBB4_88
 .LBB4_20:                               # %vector.ph89
-	bstrpick.d	$a0, $s2, 30, 5
+	bstrpick.d	$a0, $s1, 30, 5
 	slli.d	$a0, $a0, 5
-	addi.d	$a1, $s1, 15
+	addi.d	$a1, $s0, 15
 	xvrepli.b	$xr0, 94
 	xvrepli.b	$xr1, 36
 	ori	$a2, $zero, 10
@@ -1541,98 +1536,83 @@ initmask:                               # @initmask
 	bnez	$a4, .LBB4_69
 .LBB4_38:                               # %pred.store.continue123
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 480
-	ld.bu	$a4, $sp, 496
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.b	$a4, $vr2, 0
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_70
 .LBB4_39:                               # %pred.store.continue125
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 448
-	ld.bu	$a4, $sp, 465
+	vpickve2gr.b	$a4, $vr2, 1
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_71
 .LBB4_40:                               # %pred.store.continue127
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 416
-	ld.bu	$a4, $sp, 434
+	vpickve2gr.b	$a4, $vr2, 2
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_72
 .LBB4_41:                               # %pred.store.continue129
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 384
-	ld.bu	$a4, $sp, 403
+	vpickve2gr.b	$a4, $vr2, 3
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_73
 .LBB4_42:                               # %pred.store.continue131
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 352
-	ld.bu	$a4, $sp, 372
+	vpickve2gr.b	$a4, $vr2, 4
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_74
 .LBB4_43:                               # %pred.store.continue133
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 320
-	ld.bu	$a4, $sp, 341
+	vpickve2gr.b	$a4, $vr2, 5
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_75
 .LBB4_44:                               # %pred.store.continue135
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 288
-	ld.bu	$a4, $sp, 310
+	vpickve2gr.b	$a4, $vr2, 6
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_76
 .LBB4_45:                               # %pred.store.continue137
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 256
-	ld.bu	$a4, $sp, 279
+	vpickve2gr.b	$a4, $vr2, 7
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_77
 .LBB4_46:                               # %pred.store.continue139
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 224
-	ld.bu	$a4, $sp, 248
+	vpickve2gr.b	$a4, $vr2, 8
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_78
 .LBB4_47:                               # %pred.store.continue141
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 192
-	ld.bu	$a4, $sp, 217
+	vpickve2gr.b	$a4, $vr2, 9
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_79
 .LBB4_48:                               # %pred.store.continue143
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 160
-	ld.bu	$a4, $sp, 186
+	vpickve2gr.b	$a4, $vr2, 10
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_80
 .LBB4_49:                               # %pred.store.continue145
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 128
-	ld.bu	$a4, $sp, 155
+	vpickve2gr.b	$a4, $vr2, 11
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_81
 .LBB4_50:                               # %pred.store.continue147
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 96
-	ld.bu	$a4, $sp, 124
+	vpickve2gr.b	$a4, $vr2, 12
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_82
 .LBB4_51:                               # %pred.store.continue149
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 64
-	ld.bu	$a4, $sp, 93
+	vpickve2gr.b	$a4, $vr2, 13
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_83
 .LBB4_52:                               # %pred.store.continue151
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 32
-	ld.bu	$a4, $sp, 62
+	vpickve2gr.b	$a4, $vr2, 14
 	andi	$a4, $a4, 1
 	bnez	$a4, .LBB4_84
 .LBB4_53:                               # %pred.store.continue153
                                         #   in Loop: Header=BB4_22 Depth=1
-	xvst	$xr2, $sp, 0
-	ld.bu	$a4, $sp, 31
+	vpickve2gr.b	$a4, $vr2, 15
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_21
 	b	.LBB4_85
@@ -1730,113 +1710,98 @@ initmask:                               # @initmask
 .LBB4_69:                               # %pred.store.if122
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 0
-	xvst	$xr2, $sp, 480
-	ld.bu	$a4, $sp, 496
+	xvpermi.d	$xr2, $xr2, 14
+	vpickve2gr.b	$a4, $vr2, 0
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_39
 .LBB4_70:                               # %pred.store.if124
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 1
-	xvst	$xr2, $sp, 448
-	ld.bu	$a4, $sp, 465
+	vpickve2gr.b	$a4, $vr2, 1
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_40
 .LBB4_71:                               # %pred.store.if126
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 2
-	xvst	$xr2, $sp, 416
-	ld.bu	$a4, $sp, 434
+	vpickve2gr.b	$a4, $vr2, 2
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_41
 .LBB4_72:                               # %pred.store.if128
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 3
-	xvst	$xr2, $sp, 384
-	ld.bu	$a4, $sp, 403
+	vpickve2gr.b	$a4, $vr2, 3
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_42
 .LBB4_73:                               # %pred.store.if130
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 4
-	xvst	$xr2, $sp, 352
-	ld.bu	$a4, $sp, 372
+	vpickve2gr.b	$a4, $vr2, 4
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_43
 .LBB4_74:                               # %pred.store.if132
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 5
-	xvst	$xr2, $sp, 320
-	ld.bu	$a4, $sp, 341
+	vpickve2gr.b	$a4, $vr2, 5
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_44
 .LBB4_75:                               # %pred.store.if134
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 6
-	xvst	$xr2, $sp, 288
-	ld.bu	$a4, $sp, 310
+	vpickve2gr.b	$a4, $vr2, 6
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_45
 .LBB4_76:                               # %pred.store.if136
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 7
-	xvst	$xr2, $sp, 256
-	ld.bu	$a4, $sp, 279
+	vpickve2gr.b	$a4, $vr2, 7
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_46
 .LBB4_77:                               # %pred.store.if138
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 8
-	xvst	$xr2, $sp, 224
-	ld.bu	$a4, $sp, 248
+	vpickve2gr.b	$a4, $vr2, 8
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_47
 .LBB4_78:                               # %pred.store.if140
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 9
-	xvst	$xr2, $sp, 192
-	ld.bu	$a4, $sp, 217
+	vpickve2gr.b	$a4, $vr2, 9
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_48
 .LBB4_79:                               # %pred.store.if142
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 10
-	xvst	$xr2, $sp, 160
-	ld.bu	$a4, $sp, 186
+	vpickve2gr.b	$a4, $vr2, 10
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_49
 .LBB4_80:                               # %pred.store.if144
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 11
-	xvst	$xr2, $sp, 128
-	ld.bu	$a4, $sp, 155
+	vpickve2gr.b	$a4, $vr2, 11
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_50
 .LBB4_81:                               # %pred.store.if146
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 12
-	xvst	$xr2, $sp, 96
-	ld.bu	$a4, $sp, 124
+	vpickve2gr.b	$a4, $vr2, 12
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_51
 .LBB4_82:                               # %pred.store.if148
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 13
-	xvst	$xr2, $sp, 64
-	ld.bu	$a4, $sp, 93
+	vpickve2gr.b	$a4, $vr2, 13
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_52
 .LBB4_83:                               # %pred.store.if150
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 14
-	xvst	$xr2, $sp, 32
-	ld.bu	$a4, $sp, 62
+	vpickve2gr.b	$a4, $vr2, 14
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_53
 .LBB4_84:                               # %pred.store.if152
                                         #   in Loop: Header=BB4_22 Depth=1
 	st.b	$a2, $a1, 15
-	xvst	$xr2, $sp, 0
-	ld.bu	$a4, $sp, 31
+	vpickve2gr.b	$a4, $vr2, 15
 	andi	$a4, $a4, 1
 	beqz	$a4, .LBB4_21
 .LBB4_85:                               # %pred.store.if154
@@ -1844,16 +1809,16 @@ initmask:                               # @initmask
 	st.b	$a2, $a1, 16
 	b	.LBB4_21
 .LBB4_86:                               # %middle.block157
-	beq	$a0, $s2, .LBB4_107
+	beq	$a0, $s1, .LBB4_107
 # %bb.87:                               # %vec.epilog.iter.check161
-	andi	$a1, $s2, 24
+	andi	$a1, $s1, 24
 	beqz	$a1, .LBB4_114
 .LBB4_88:                               # %vec.epilog.ph160
 	move	$a2, $a0
-	bstrpick.d	$a0, $s2, 30, 3
+	bstrpick.d	$a0, $s1, 30, 3
 	slli.d	$a0, $a0, 3
 	sub.d	$a1, $a2, $a0
-	add.d	$a2, $a2, $s1
+	add.d	$a2, $a2, $s0
 	addi.d	$a2, $a2, 3
 	vrepli.b	$vr0, 94
 	vrepli.b	$vr1, 36
@@ -1962,15 +1927,15 @@ initmask:                               # @initmask
 	st.b	$a3, $a2, 4
 	b	.LBB4_89
 .LBB4_106:                              # %vec.epilog.middle.block186
-	bne	$a0, $s2, .LBB4_114
+	bne	$a0, $s1, .LBB4_114
 .LBB4_107:                              # %.preheader47
 	ori	$a1, $zero, 255
 	ori	$a2, $zero, 1024
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	bstrpick.d	$a1, $s2, 31, 0
+	bstrpick.d	$a1, $s1, 31, 0
 	b	.LBB4_109
 	.p2align	4, , 16
 .LBB4_108:                              # %._crit_edge57.us
@@ -1980,11 +1945,11 @@ initmask:                               # @initmask
 .LBB4_109:                              # %.lr.ph56.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_111 Depth 2
-	ldx.bu	$a2, $s1, $a0
+	ldx.bu	$a2, $s0, $a0
 	move	$a3, $zero
-	alsl.d	$a4, $a2, $s0, 2
+	alsl.d	$a4, $a2, $fp, 2
 	move	$a5, $a1
-	move	$a6, $s1
+	move	$a6, $s0
 	b	.LBB4_111
 	.p2align	4, , 16
 .LBB4_110:                              #   in Loop: Header=BB4_111 Depth=2
@@ -1998,23 +1963,21 @@ initmask:                               # @initmask
 	bne	$a2, $a7, .LBB4_110
 # %bb.112:                              #   in Loop: Header=BB4_111 Depth=2
 	ld.w	$a7, $a4, 0
-	srl.w	$t0, $s3, $a3
+	srl.w	$t0, $s2, $a3
 	andn	$a7, $a7, $t0
 	st.w	$a7, $a4, 0
 	b	.LBB4_110
 .LBB4_113:                              # %._crit_edge60
-	addi.d	$sp, $fp, -576
-	ld.d	$s3, $sp, 528                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 536                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 544                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 552                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 560                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 568                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 576
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB4_114:                              # %.lr.ph52.preheader
-	add.d	$a1, $s1, $a0
-	sub.d	$a0, $s2, $a0
+	add.d	$a1, $s0, $a0
+	sub.d	$a0, $s1, $a0
 	ori	$a2, $zero, 94
 	ori	$a3, $zero, 10
 	ori	$a4, $zero, 36

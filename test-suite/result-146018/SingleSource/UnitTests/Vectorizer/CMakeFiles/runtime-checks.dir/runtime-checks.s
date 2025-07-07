@@ -11432,11 +11432,7 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ori	$a3, $zero, 3
 	bltu	$a0, $a3, .LBB71_8
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -16
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	addi.d	$a3, $a0, -3
@@ -11473,10 +11469,7 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a2, $a2, -2
 	bltu	$a3, $a0, .LBB71_6
 .LBB71_7:
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	addi.d	$sp, $sp, 16
 .LBB71_8:                               # %"_ZSt10__invoke_rIvRZ4mainE3$_9JPhS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .LBB71_9:                               # %vector.main.loop.iter.check
@@ -11626,39 +11619,22 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	xvstelm.b	$xr0, $a7, 4, 13
 	xvstelm.b	$xr0, $a7, 2, 14
 	xvstelm.b	$xr0, $a7, 0, 15
-	xvst	$xr0, $sp, 32
-	ld.b	$t1, $sp, 48
-	st.b	$t1, $a7, -2
-	ld.b	$t1, $sp, 49
-	st.b	$t1, $a7, -4
-	ld.b	$t1, $sp, 50
-	st.b	$t1, $a7, -6
-	ld.b	$t1, $sp, 51
-	st.b	$t1, $a7, -8
-	ld.b	$t1, $sp, 52
-	st.b	$t1, $a7, -10
-	ld.b	$t1, $sp, 53
-	st.b	$t1, $a7, -12
-	ld.b	$t1, $sp, 54
-	st.b	$t1, $a7, -14
-	ld.b	$t1, $sp, 55
-	st.b	$t1, $a7, -16
-	ld.b	$t1, $sp, 56
-	st.b	$t1, $a7, -18
-	ld.b	$t1, $sp, 57
-	st.b	$t1, $a7, -20
-	ld.b	$t1, $sp, 58
-	st.b	$t1, $a7, -22
-	ld.b	$t1, $sp, 59
-	st.b	$t1, $a7, -24
-	ld.b	$t1, $sp, 60
-	st.b	$t1, $a7, -26
-	ld.b	$t1, $sp, 61
-	st.b	$t1, $a7, -28
-	ld.b	$t1, $sp, 62
-	st.b	$t1, $a7, -30
-	ld.b	$t1, $sp, 63
-	st.b	$t1, $a7, -32
+	xvstelm.b	$xr0, $a7, -2, 16
+	xvstelm.b	$xr0, $a7, -4, 17
+	xvstelm.b	$xr0, $a7, -6, 18
+	xvstelm.b	$xr0, $a7, -8, 19
+	xvstelm.b	$xr0, $a7, -10, 20
+	xvstelm.b	$xr0, $a7, -12, 21
+	xvstelm.b	$xr0, $a7, -14, 22
+	xvstelm.b	$xr0, $a7, -16, 23
+	xvstelm.b	$xr0, $a7, -18, 24
+	xvstelm.b	$xr0, $a7, -20, 25
+	xvstelm.b	$xr0, $a7, -22, 26
+	xvstelm.b	$xr0, $a7, -24, 27
+	xvstelm.b	$xr0, $a7, -26, 28
+	xvstelm.b	$xr0, $a7, -28, 29
+	xvstelm.b	$xr0, $a7, -30, 30
+	xvstelm.b	$xr0, $a7, -32, 31
 	addi.d	$t0, $t0, -32
 	addi.d	$a6, $a6, -64
 	addi.d	$a7, $a7, -64
@@ -11691,15 +11667,15 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	ld.b	$t6, $a4, -6
 	ld.b	$t7, $a4, -4
 	ld.b	$t8, $a4, -2
-	st.b	$t5, $sp, 23
-	st.b	$t6, $sp, 22
-	st.b	$t7, $sp, 21
-	st.b	$t8, $sp, 20
-	st.b	$t4, $sp, 19
-	st.b	$t3, $sp, 18
-	st.b	$t2, $sp, 17
-	st.b	$t1, $sp, 16
-	vld	$vr0, $sp, 16
+	st.b	$t5, $sp, 7
+	st.b	$t6, $sp, 6
+	st.b	$t7, $sp, 5
+	st.b	$t8, $sp, 4
+	st.b	$t4, $sp, 3
+	st.b	$t3, $sp, 2
+	st.b	$t2, $sp, 1
+	st.b	$t1, $sp, 0
+	vld	$vr0, $sp, 0
 	vaddi.bu	$vr0, $vr0, 10
 	vstelm.b	$vr0, $a5, 6, 0
 	vstelm.b	$vr0, $a5, 4, 1
@@ -12981,19 +12957,15 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a4, $a3, 0
 	beqz	$a4, .LBB95_18
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 128
-	bstrins.d	$sp, $zero, 4, 0
+	addi.d	$sp, $sp, -64
+	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s6, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ori	$a3, $zero, 31
@@ -13040,14 +13012,14 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.b	$t6, $t0, -6
 	ld.b	$t7, $t0, -4
 	ld.b	$t8, $t0, -2
-	ld.b	$s0, $t0, 0
-	ld.b	$s1, $t0, 2
-	ld.b	$s2, $t0, 4
-	ld.b	$s3, $t0, 6
-	ld.b	$s4, $t0, 8
-	ld.b	$s5, $t0, 10
-	ld.b	$s6, $t0, 12
-	ld.b	$s7, $t0, 14
+	ld.b	$fp, $t0, 0
+	ld.b	$s0, $t0, 2
+	ld.b	$s1, $t0, 4
+	ld.b	$s2, $t0, 6
+	ld.b	$s3, $t0, 8
+	ld.b	$s4, $t0, 10
+	ld.b	$s5, $t0, 12
+	ld.b	$s6, $t0, 14
 	vinsgr2vr.b	$vr0, $t1, 0
 	vinsgr2vr.b	$vr0, $t2, 1
 	vinsgr2vr.b	$vr0, $t3, 2
@@ -13056,14 +13028,14 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	vinsgr2vr.b	$vr0, $t6, 5
 	vinsgr2vr.b	$vr0, $t7, 6
 	vinsgr2vr.b	$vr0, $t8, 7
-	vinsgr2vr.b	$vr0, $s0, 8
-	vinsgr2vr.b	$vr0, $s1, 9
-	vinsgr2vr.b	$vr0, $s2, 10
-	vinsgr2vr.b	$vr0, $s3, 11
-	vinsgr2vr.b	$vr0, $s4, 12
-	vinsgr2vr.b	$vr0, $s5, 13
-	vinsgr2vr.b	$vr0, $s6, 14
-	vinsgr2vr.b	$vr0, $s7, 15
+	vinsgr2vr.b	$vr0, $fp, 8
+	vinsgr2vr.b	$vr0, $s0, 9
+	vinsgr2vr.b	$vr0, $s1, 10
+	vinsgr2vr.b	$vr0, $s2, 11
+	vinsgr2vr.b	$vr0, $s3, 12
+	vinsgr2vr.b	$vr0, $s4, 13
+	vinsgr2vr.b	$vr0, $s5, 14
+	vinsgr2vr.b	$vr0, $s6, 15
 	vaddi.bu	$vr0, $vr0, 10
 	vstelm.b	$vr0, $a4, -16, 0
 	vstelm.b	$vr0, $a4, -14, 1
@@ -13226,39 +13198,22 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	xvstelm.b	$xr0, $a5, -6, 13
 	xvstelm.b	$xr0, $a5, -4, 14
 	xvstelm.b	$xr0, $a5, -2, 15
-	xvst	$xr0, $sp, 0
-	ld.b	$t0, $sp, 16
-	st.b	$t0, $a5, 0
-	ld.b	$t0, $sp, 17
-	st.b	$t0, $a5, 2
-	ld.b	$t0, $sp, 18
-	st.b	$t0, $a5, 4
-	ld.b	$t0, $sp, 19
-	st.b	$t0, $a5, 6
-	ld.b	$t0, $sp, 20
-	st.b	$t0, $a5, 8
-	ld.b	$t0, $sp, 21
-	st.b	$t0, $a5, 10
-	ld.b	$t0, $sp, 22
-	st.b	$t0, $a5, 12
-	ld.b	$t0, $sp, 23
-	st.b	$t0, $a5, 14
-	ld.b	$t0, $sp, 24
-	st.b	$t0, $a5, 16
-	ld.b	$t0, $sp, 25
-	st.b	$t0, $a5, 18
-	ld.b	$t0, $sp, 26
-	st.b	$t0, $a5, 20
-	ld.b	$t0, $sp, 27
-	st.b	$t0, $a5, 22
-	ld.b	$t0, $sp, 28
-	st.b	$t0, $a5, 24
-	ld.b	$t0, $sp, 29
-	st.b	$t0, $a5, 26
-	ld.b	$t0, $sp, 30
-	st.b	$t0, $a5, 28
-	ld.b	$t0, $sp, 31
-	st.b	$t0, $a5, 30
+	xvstelm.b	$xr0, $a5, 0, 16
+	xvstelm.b	$xr0, $a5, 2, 17
+	xvstelm.b	$xr0, $a5, 4, 18
+	xvstelm.b	$xr0, $a5, 6, 19
+	xvstelm.b	$xr0, $a5, 8, 20
+	xvstelm.b	$xr0, $a5, 10, 21
+	xvstelm.b	$xr0, $a5, 12, 22
+	xvstelm.b	$xr0, $a5, 14, 23
+	xvstelm.b	$xr0, $a5, 16, 24
+	xvstelm.b	$xr0, $a5, 18, 25
+	xvstelm.b	$xr0, $a5, 20, 26
+	xvstelm.b	$xr0, $a5, 22, 27
+	xvstelm.b	$xr0, $a5, 24, 28
+	xvstelm.b	$xr0, $a5, 26, 29
+	xvstelm.b	$xr0, $a5, 28, 30
+	xvstelm.b	$xr0, $a5, 30, 31
 	addi.d	$a7, $a7, -32
 	addi.d	$a5, $a5, 64
 	addi.d	$a6, $a6, 64
@@ -13279,18 +13234,15 @@ _ZNSt17_Function_handlerIFvPhS0_jEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a5, $a5, 2
 	bltu	$a5, $a2, .LBB95_16
 .LBB95_17:
-	addi.d	$sp, $fp, -128
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s6, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 .LBB95_18:                              # %"_ZSt10__invoke_rIvRZ4mainE4$_13JPhS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .Lfunc_end95:

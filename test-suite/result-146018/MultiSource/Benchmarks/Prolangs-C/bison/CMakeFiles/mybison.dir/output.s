@@ -3117,13 +3117,13 @@ output_check:                           # @output_check
 	.type	action_row,@function
 action_row:                             # @action_row
 # %bb.0:
-	addi.d	$sp, $sp, -352
-	st.d	$ra, $sp, 344                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 336                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 328                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 320                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 312                   # 8-byte Folded Spill
-	addi.d	$fp, $sp, 352
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	addi.d	$fp, $sp, 96
 	bstrins.d	$sp, $zero, 4, 0
 	pcalau12i	$a1, %got_pc_hi20(ntokens)
 	ld.d	$a1, $a1, %got_pc_lo12(ntokens)
@@ -3598,54 +3598,47 @@ action_row:                             # @action_row
 	bnez	$a5, .LBB21_92
 .LBB21_77:                              # %pred.store.continue292
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 224
-	ld.hu	$a5, $sp, 240
+	xvpermi.d	$xr1, $xr1, 14
+	vpickve2gr.h	$a5, $vr1, 0
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_93
 .LBB21_78:                              # %pred.store.if293
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 0
-	xvst	$xr1, $sp, 192
-	ld.hu	$a5, $sp, 210
+	vpickve2gr.h	$a5, $vr1, 1
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_94
 .LBB21_79:                              # %pred.store.continue296
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 160
-	ld.hu	$a5, $sp, 180
+	vpickve2gr.h	$a5, $vr1, 2
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_95
 .LBB21_80:                              # %pred.store.if297
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 4
-	xvst	$xr1, $sp, 128
-	ld.hu	$a5, $sp, 150
+	vpickve2gr.h	$a5, $vr1, 3
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_96
 .LBB21_81:                              # %pred.store.continue300
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 96
-	ld.hu	$a5, $sp, 120
+	vpickve2gr.h	$a5, $vr1, 4
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_97
 .LBB21_82:                              # %pred.store.if301
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 8
-	xvst	$xr1, $sp, 64
-	ld.hu	$a5, $sp, 90
+	vpickve2gr.h	$a5, $vr1, 5
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_98
 .LBB21_83:                              # %pred.store.continue304
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 32
-	ld.hu	$a5, $sp, 60
+	vpickve2gr.h	$a5, $vr1, 6
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_99
 .LBB21_84:                              # %pred.store.if305
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 12
-	xvst	$xr1, $sp, 0
-	ld.hu	$a5, $sp, 30
+	vpickve2gr.h	$a5, $vr1, 7
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_68
 	b	.LBB21_100
@@ -3691,53 +3684,46 @@ action_row:                             # @action_row
 .LBB21_92:                              # %pred.store.if291
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, -2
-	xvst	$xr1, $sp, 224
-	ld.hu	$a5, $sp, 240
+	xvpermi.d	$xr1, $xr1, 14
+	vpickve2gr.h	$a5, $vr1, 0
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_78
 .LBB21_93:                              # %pred.store.continue294
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 192
-	ld.hu	$a5, $sp, 210
+	vpickve2gr.h	$a5, $vr1, 1
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_79
 .LBB21_94:                              # %pred.store.if295
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 2
-	xvst	$xr1, $sp, 160
-	ld.hu	$a5, $sp, 180
+	vpickve2gr.h	$a5, $vr1, 2
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_80
 .LBB21_95:                              # %pred.store.continue298
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 128
-	ld.hu	$a5, $sp, 150
+	vpickve2gr.h	$a5, $vr1, 3
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_81
 .LBB21_96:                              # %pred.store.if299
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 6
-	xvst	$xr1, $sp, 96
-	ld.hu	$a5, $sp, 120
+	vpickve2gr.h	$a5, $vr1, 4
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_82
 .LBB21_97:                              # %pred.store.continue302
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 64
-	ld.hu	$a5, $sp, 90
+	vpickve2gr.h	$a5, $vr1, 5
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_83
 .LBB21_98:                              # %pred.store.if303
                                         #   in Loop: Header=BB21_69 Depth=1
 	st.h	$zero, $a3, 10
-	xvst	$xr1, $sp, 32
-	ld.hu	$a5, $sp, 60
+	vpickve2gr.h	$a5, $vr1, 6
 	andi	$a5, $a5, 1
 	bnez	$a5, .LBB21_84
 .LBB21_99:                              # %pred.store.continue306
                                         #   in Loop: Header=BB21_69 Depth=1
-	xvst	$xr1, $sp, 0
-	ld.hu	$a5, $sp, 30
+	vpickve2gr.h	$a5, $vr1, 7
 	andi	$a5, $a5, 1
 	beqz	$a5, .LBB21_68
 .LBB21_100:                             # %pred.store.if307
@@ -3779,13 +3765,13 @@ action_row:                             # @action_row
 	move	$a0, $zero
 .LBB21_111:                             # %.loopexit
 	addi.w	$a0, $a0, 0
-	addi.d	$sp, $fp, -352
-	ld.d	$s2, $sp, 312                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 320                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 328                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 336                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 344                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 352
+	addi.d	$sp, $fp, -96
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB21_112:                             # %vector.main.loop.iter.check
 	ori	$a2, $zero, 16
@@ -3809,9 +3795,9 @@ action_row:                             # @action_row
 .LBB21_116:                             # %vector.body212
                                         # =>This Inner Loop Header: Depth=1
 	xvld	$xr1, $a3, -16
-	xvst	$xr1, $sp, 256
-	vld	$vr2, $sp, 256
-	vld	$vr1, $sp, 272
+	xvst	$xr1, $sp, 0
+	vld	$vr2, $sp, 0
+	vld	$vr1, $sp, 16
 	vpickve2gr.h	$a5, $vr2, 0
 	ext.w.h	$a5, $a5
 	xvinsgr2vr.w	$xr3, $a5, 0

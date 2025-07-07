@@ -14895,9 +14895,8 @@ dct_chroma_sp2:                         # @dct_chroma_sp2
 	vadd.w	$vr7, $vr6, $vr5
 	vpickve2gr.w	$t4, $vr7, 0
 	vstelm.w	$vr7, $a2, 0, 0
-	vpickve2gr.w	$a2, $vr7, 1
 	vstelm.w	$vr7, $t2, 0, 1
-	vpickve2gr.w	$t2, $vr7, 2
+	vpickve2gr.w	$a2, $vr7, 2
 	vstelm.w	$vr7, $t3, 0, 2
 	vsub.w	$vr5, $vr5, $vr6
 	vstx	$vr5, $t6, $a5
@@ -14905,14 +14904,14 @@ dct_chroma_sp2:                         # @dct_chroma_sp2
 	vstx	$vr5, $t8, $a5
 	vsub.w	$vr5, $vr9, $vr10
 	vstx	$vr5, $t7, $a5
-	add.d	$t3, $t2, $t4
-	sub.d	$t2, $t4, $t2
+	add.d	$t2, $a2, $t4
+	sub.d	$a2, $t4, $a2
 	vshuf4i.w	$vr5, $vr7, 7
 	vsrai.w	$vr5, $vr5, 1
-	vinsgr2vr.w	$vr5, $t2, 2
-	vinsgr2vr.w	$vr5, $t3, 3
+	vinsgr2vr.w	$vr5, $a2, 2
+	vinsgr2vr.w	$vr5, $t2, 3
 	vori.b	$vr6, $vr3, 0
-	vinsgr2vr.w	$vr6, $a2, 0
+	vextrins.w	$vr6, $vr7, 1
 	vori.b	$vr8, $vr0, 0
 	vshuf.w	$vr8, $vr7, $vr6
 	vadd.w	$vr6, $vr5, $vr8

@@ -8409,11 +8409,6 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	lu12i.w	$a4, 15
 	beqz	$a3, .LBB22_3
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ori	$a5, $zero, 8
@@ -8451,7 +8446,6 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	xvld	$xr4, $a6, 0
 	xvld	$xr5, $a5, 0
 	xvslt.h	$xr3, $xr3, $xr2
-	xvst	$xr3, $sp, 32
 	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr2, $t0, 0
 	vpickve2gr.h	$t0, $vr3, 1
@@ -8468,24 +8462,24 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	vinsgr2vr.b	$vr2, $t0, 6
 	vpickve2gr.h	$t0, $vr3, 7
 	vinsgr2vr.b	$vr2, $t0, 7
-	ld.h	$t0, $sp, 48
-	ld.h	$t1, $sp, 50
-	ld.h	$t2, $sp, 52
-	ld.h	$t3, $sp, 54
+	xvpermi.d	$xr3, $xr3, 14
+	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr2, $t0, 8
-	vinsgr2vr.b	$vr2, $t1, 9
-	vinsgr2vr.b	$vr2, $t2, 10
-	vinsgr2vr.b	$vr2, $t3, 11
-	ld.h	$t0, $sp, 56
-	ld.h	$t1, $sp, 58
-	ld.h	$t2, $sp, 60
-	ld.h	$t3, $sp, 62
+	vpickve2gr.h	$t0, $vr3, 1
+	vinsgr2vr.b	$vr2, $t0, 9
+	vpickve2gr.h	$t0, $vr3, 2
+	vinsgr2vr.b	$vr2, $t0, 10
+	vpickve2gr.h	$t0, $vr3, 3
+	vinsgr2vr.b	$vr2, $t0, 11
+	vpickve2gr.h	$t0, $vr3, 4
 	vinsgr2vr.b	$vr2, $t0, 12
-	vinsgr2vr.b	$vr2, $t1, 13
-	vinsgr2vr.b	$vr2, $t2, 14
-	vinsgr2vr.b	$vr2, $t3, 15
+	vpickve2gr.h	$t0, $vr3, 5
+	vinsgr2vr.b	$vr2, $t0, 13
+	vpickve2gr.h	$t0, $vr3, 6
+	vinsgr2vr.b	$vr2, $t0, 14
+	vpickve2gr.h	$t0, $vr3, 7
+	vinsgr2vr.b	$vr2, $t0, 15
 	xvslt.h	$xr3, $xr5, $xr4
-	xvst	$xr3, $sp, 0
 	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr4, $t0, 0
 	vpickve2gr.h	$t0, $vr3, 1
@@ -8502,22 +8496,23 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	vinsgr2vr.b	$vr4, $t0, 6
 	vpickve2gr.h	$t0, $vr3, 7
 	vinsgr2vr.b	$vr4, $t0, 7
-	ld.h	$t0, $sp, 16
-	ld.h	$t1, $sp, 18
-	ld.h	$t2, $sp, 20
-	ld.h	$t3, $sp, 22
+	xvpermi.d	$xr3, $xr3, 14
+	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr4, $t0, 8
-	vinsgr2vr.b	$vr4, $t1, 9
-	vinsgr2vr.b	$vr4, $t2, 10
-	vinsgr2vr.b	$vr4, $t3, 11
-	ld.h	$t0, $sp, 24
-	ld.h	$t1, $sp, 26
-	ld.h	$t2, $sp, 28
-	ld.h	$t3, $sp, 30
+	vpickve2gr.h	$t0, $vr3, 1
+	vinsgr2vr.b	$vr4, $t0, 9
+	vpickve2gr.h	$t0, $vr3, 2
+	vinsgr2vr.b	$vr4, $t0, 10
+	vpickve2gr.h	$t0, $vr3, 3
+	vinsgr2vr.b	$vr4, $t0, 11
+	vpickve2gr.h	$t0, $vr3, 4
 	vinsgr2vr.b	$vr4, $t0, 12
-	vinsgr2vr.b	$vr4, $t1, 13
-	vinsgr2vr.b	$vr4, $t2, 14
-	vinsgr2vr.b	$vr4, $t3, 15
+	vpickve2gr.h	$t0, $vr3, 5
+	vinsgr2vr.b	$vr4, $t0, 13
+	vpickve2gr.h	$t0, $vr3, 6
+	vinsgr2vr.b	$vr4, $t0, 14
+	vpickve2gr.h	$t0, $vr3, 7
+	vinsgr2vr.b	$vr4, $t0, 15
 	vor.v	$vr0, $vr0, $vr2
 	vor.v	$vr1, $vr1, $vr4
 	addi.d	$a7, $a7, -32
@@ -8584,11 +8579,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a1, $a1, 2
 	addi.d	$a0, $a0, 2
 	bnez	$a2, .LBB22_14
-.LBB22_15:
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+.LBB22_15:                              # %"_ZSt10__invoke_rIsRZ4mainE3$_3JPsS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a5
 	ret
 .Lfunc_end22:
@@ -9135,11 +9126,6 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	lu12i.w	$a4, 15
 	beqz	$a3, .LBB34_3
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	ld.d	$a0, $a1, 0
 	ld.d	$a1, $a2, 0
 	ori	$a5, $zero, 8
@@ -9177,7 +9163,6 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	xvld	$xr4, $a6, 0
 	xvld	$xr5, $a5, 0
 	xvsle.h	$xr3, $xr2, $xr3
-	xvst	$xr3, $sp, 32
 	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr2, $t0, 0
 	vpickve2gr.h	$t0, $vr3, 1
@@ -9194,24 +9179,24 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	vinsgr2vr.b	$vr2, $t0, 6
 	vpickve2gr.h	$t0, $vr3, 7
 	vinsgr2vr.b	$vr2, $t0, 7
-	ld.h	$t0, $sp, 48
-	ld.h	$t1, $sp, 50
-	ld.h	$t2, $sp, 52
-	ld.h	$t3, $sp, 54
+	xvpermi.d	$xr3, $xr3, 14
+	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr2, $t0, 8
-	vinsgr2vr.b	$vr2, $t1, 9
-	vinsgr2vr.b	$vr2, $t2, 10
-	vinsgr2vr.b	$vr2, $t3, 11
-	ld.h	$t0, $sp, 56
-	ld.h	$t1, $sp, 58
-	ld.h	$t2, $sp, 60
-	ld.h	$t3, $sp, 62
+	vpickve2gr.h	$t0, $vr3, 1
+	vinsgr2vr.b	$vr2, $t0, 9
+	vpickve2gr.h	$t0, $vr3, 2
+	vinsgr2vr.b	$vr2, $t0, 10
+	vpickve2gr.h	$t0, $vr3, 3
+	vinsgr2vr.b	$vr2, $t0, 11
+	vpickve2gr.h	$t0, $vr3, 4
 	vinsgr2vr.b	$vr2, $t0, 12
-	vinsgr2vr.b	$vr2, $t1, 13
-	vinsgr2vr.b	$vr2, $t2, 14
-	vinsgr2vr.b	$vr2, $t3, 15
+	vpickve2gr.h	$t0, $vr3, 5
+	vinsgr2vr.b	$vr2, $t0, 13
+	vpickve2gr.h	$t0, $vr3, 6
+	vinsgr2vr.b	$vr2, $t0, 14
+	vpickve2gr.h	$t0, $vr3, 7
+	vinsgr2vr.b	$vr2, $t0, 15
 	xvsle.h	$xr3, $xr4, $xr5
-	xvst	$xr3, $sp, 0
 	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr4, $t0, 0
 	vpickve2gr.h	$t0, $vr3, 1
@@ -9228,22 +9213,23 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	vinsgr2vr.b	$vr4, $t0, 6
 	vpickve2gr.h	$t0, $vr3, 7
 	vinsgr2vr.b	$vr4, $t0, 7
-	ld.h	$t0, $sp, 16
-	ld.h	$t1, $sp, 18
-	ld.h	$t2, $sp, 20
-	ld.h	$t3, $sp, 22
+	xvpermi.d	$xr3, $xr3, 14
+	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr4, $t0, 8
-	vinsgr2vr.b	$vr4, $t1, 9
-	vinsgr2vr.b	$vr4, $t2, 10
-	vinsgr2vr.b	$vr4, $t3, 11
-	ld.h	$t0, $sp, 24
-	ld.h	$t1, $sp, 26
-	ld.h	$t2, $sp, 28
-	ld.h	$t3, $sp, 30
+	vpickve2gr.h	$t0, $vr3, 1
+	vinsgr2vr.b	$vr4, $t0, 9
+	vpickve2gr.h	$t0, $vr3, 2
+	vinsgr2vr.b	$vr4, $t0, 10
+	vpickve2gr.h	$t0, $vr3, 3
+	vinsgr2vr.b	$vr4, $t0, 11
+	vpickve2gr.h	$t0, $vr3, 4
 	vinsgr2vr.b	$vr4, $t0, 12
-	vinsgr2vr.b	$vr4, $t1, 13
-	vinsgr2vr.b	$vr4, $t2, 14
-	vinsgr2vr.b	$vr4, $t3, 15
+	vpickve2gr.h	$t0, $vr3, 5
+	vinsgr2vr.b	$vr4, $t0, 13
+	vpickve2gr.h	$t0, $vr3, 6
+	vinsgr2vr.b	$vr4, $t0, 14
+	vpickve2gr.h	$t0, $vr3, 7
+	vinsgr2vr.b	$vr4, $t0, 15
 	vor.v	$vr0, $vr0, $vr2
 	vor.v	$vr1, $vr1, $vr4
 	addi.d	$a7, $a7, -32
@@ -9310,11 +9296,7 @@ _ZNSt17_Function_handlerIFsPsS0_jEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Oj
 	addi.d	$a1, $a1, 2
 	addi.d	$a0, $a0, 2
 	bnez	$a2, .LBB34_14
-.LBB34_15:
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+.LBB34_15:                              # %"_ZSt10__invoke_rIsRZ4mainE3$_7JPsS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a5
 	ret
 .Lfunc_end34:
@@ -10712,11 +10694,6 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	ld.w	$a0, $a3, 0
 	beqz	$a0, .LBB60_3
 # %bb.1:                                # %iter.check
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	addi.d	$fp, $sp, 96
-	bstrins.d	$sp, $zero, 4, 0
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
 	ori	$a4, $zero, 8
@@ -10753,7 +10730,6 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	xvld	$xr4, $a6, 0
 	xvld	$xr5, $a5, 0
 	xvslt.hu	$xr3, $xr3, $xr2
-	xvst	$xr3, $sp, 32
 	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr2, $t0, 0
 	vpickve2gr.h	$t0, $vr3, 1
@@ -10770,24 +10746,24 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	vinsgr2vr.b	$vr2, $t0, 6
 	vpickve2gr.h	$t0, $vr3, 7
 	vinsgr2vr.b	$vr2, $t0, 7
-	ld.h	$t0, $sp, 48
-	ld.h	$t1, $sp, 50
-	ld.h	$t2, $sp, 52
-	ld.h	$t3, $sp, 54
+	xvpermi.d	$xr3, $xr3, 14
+	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr2, $t0, 8
-	vinsgr2vr.b	$vr2, $t1, 9
-	vinsgr2vr.b	$vr2, $t2, 10
-	vinsgr2vr.b	$vr2, $t3, 11
-	ld.h	$t0, $sp, 56
-	ld.h	$t1, $sp, 58
-	ld.h	$t2, $sp, 60
-	ld.h	$t3, $sp, 62
+	vpickve2gr.h	$t0, $vr3, 1
+	vinsgr2vr.b	$vr2, $t0, 9
+	vpickve2gr.h	$t0, $vr3, 2
+	vinsgr2vr.b	$vr2, $t0, 10
+	vpickve2gr.h	$t0, $vr3, 3
+	vinsgr2vr.b	$vr2, $t0, 11
+	vpickve2gr.h	$t0, $vr3, 4
 	vinsgr2vr.b	$vr2, $t0, 12
-	vinsgr2vr.b	$vr2, $t1, 13
-	vinsgr2vr.b	$vr2, $t2, 14
-	vinsgr2vr.b	$vr2, $t3, 15
+	vpickve2gr.h	$t0, $vr3, 5
+	vinsgr2vr.b	$vr2, $t0, 13
+	vpickve2gr.h	$t0, $vr3, 6
+	vinsgr2vr.b	$vr2, $t0, 14
+	vpickve2gr.h	$t0, $vr3, 7
+	vinsgr2vr.b	$vr2, $t0, 15
 	xvslt.hu	$xr3, $xr5, $xr4
-	xvst	$xr3, $sp, 0
 	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr4, $t0, 0
 	vpickve2gr.h	$t0, $vr3, 1
@@ -10804,22 +10780,23 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	vinsgr2vr.b	$vr4, $t0, 6
 	vpickve2gr.h	$t0, $vr3, 7
 	vinsgr2vr.b	$vr4, $t0, 7
-	ld.h	$t0, $sp, 16
-	ld.h	$t1, $sp, 18
-	ld.h	$t2, $sp, 20
-	ld.h	$t3, $sp, 22
+	xvpermi.d	$xr3, $xr3, 14
+	vpickve2gr.h	$t0, $vr3, 0
 	vinsgr2vr.b	$vr4, $t0, 8
-	vinsgr2vr.b	$vr4, $t1, 9
-	vinsgr2vr.b	$vr4, $t2, 10
-	vinsgr2vr.b	$vr4, $t3, 11
-	ld.h	$t0, $sp, 24
-	ld.h	$t1, $sp, 26
-	ld.h	$t2, $sp, 28
-	ld.h	$t3, $sp, 30
+	vpickve2gr.h	$t0, $vr3, 1
+	vinsgr2vr.b	$vr4, $t0, 9
+	vpickve2gr.h	$t0, $vr3, 2
+	vinsgr2vr.b	$vr4, $t0, 10
+	vpickve2gr.h	$t0, $vr3, 3
+	vinsgr2vr.b	$vr4, $t0, 11
+	vpickve2gr.h	$t0, $vr3, 4
 	vinsgr2vr.b	$vr4, $t0, 12
-	vinsgr2vr.b	$vr4, $t1, 13
-	vinsgr2vr.b	$vr4, $t2, 14
-	vinsgr2vr.b	$vr4, $t3, 15
+	vpickve2gr.h	$t0, $vr3, 5
+	vinsgr2vr.b	$vr4, $t0, 13
+	vpickve2gr.h	$t0, $vr3, 6
+	vinsgr2vr.b	$vr4, $t0, 14
+	vpickve2gr.h	$t0, $vr3, 7
+	vinsgr2vr.b	$vr4, $t0, 15
 	vor.v	$vr0, $vr0, $vr2
 	vor.v	$vr1, $vr1, $vr4
 	addi.d	$a7, $a7, -32
@@ -10889,11 +10866,7 @@ _ZNSt17_Function_handlerIFtPtS0_jEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a2, $a2, 2
 	addi.d	$a1, $a1, 2
 	bnez	$a3, .LBB60_14
-.LBB60_15:
-	addi.d	$sp, $fp, -96
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+.LBB60_15:                              # %"_ZSt10__invoke_rItRZ4mainE4$_15JPtS2_jEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	bstrpick.d	$a0, $a5, 15, 0
 	ret
 .Lfunc_end60:

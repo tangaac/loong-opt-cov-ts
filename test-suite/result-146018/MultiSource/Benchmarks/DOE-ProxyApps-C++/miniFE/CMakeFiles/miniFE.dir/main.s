@@ -20915,9 +20915,10 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	move	$a0, $zero
 	move	$a1, $zero
 	xvori.b	$xr10, $xr7, 0
+	xvpermi.q	$xr10, $xr0, 2
 	xvpickve2gr.d	$a2, $xr6, 1
 	movgr2fr.d	$ft3, $a2
-	xvpermi.q	$xr10, $xr0, 2
+	xvpermi.d	$xr10, $xr10, 68
 	movfr2gr.d	$a2, $ft3
 	xvpickve2gr.d	$a3, $xr6, 3
 	movgr2fr.d	$ft3, $a3
@@ -20936,46 +20937,29 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	vinsgr2vr.d	$vr12, $a2, 1
 	vst	$vr12, $sp, 128
 	xvld	$xr11, $sp, 160
-	xvpermi.d	$xr10, $xr10, 68
 	xvbsrl.v	$xr12, $xr10, 8
 	xvbsll.v	$xr10, $xr10, 8
+	xvor.v	$xr13, $xr10, $xr12
 	xvpickve2gr.d	$a2, $xr11, 0
-	movgr2fr.d	$ft5, $a2
-	xvor.v	$xr15, $xr10, $xr12
-	movfr2gr.d	$a2, $ft5
-	xvpickve2gr.d	$a3, $xr11, 1
-	movgr2fr.d	$ft4, $a3
 	xvinsgr2vr.d	$xr10, $a2, 0
-	movfr2gr.d	$a2, $ft4
-	xvpickve2gr.d	$a3, $xr11, 2
-	xvld	$xr14, $s2, 160
-	movgr2fr.d	$ft3, $a3
+	xvpickve2gr.d	$a2, $xr11, 1
 	xvinsgr2vr.d	$xr10, $a2, 1
-	movfr2gr.d	$a2, $ft3
+	xvld	$xr14, $s2, 160
+	xvpickve2gr.d	$a2, $xr11, 2
 	xvld	$xr11, $sp, 128
-	xvpickve2gr.d	$a3, $xr14, 1
-	movgr2fr.d	$ft4, $a3
 	xvinsgr2vr.d	$xr10, $a2, 2
-	movfr2gr.d	$a2, $ft4
-	xvpickve2gr.d	$a3, $xr11, 0
-	movgr2fr.d	$ft4, $a3
+	xvpickve2gr.d	$a2, $xr14, 1
 	xvinsgr2vr.d	$xr10, $a2, 3
-	movfr2gr.d	$a2, $ft4
-	xvpickve2gr.d	$a3, $xr11, 1
-	movgr2fr.d	$ft5, $a3
+	xvpickve2gr.d	$a2, $xr11, 0
 	xvinsgr2vr.d	$xr12, $a2, 0
-	movfr2gr.d	$a2, $ft5
-	xvpickve2gr.d	$a3, $xr11, 2
-	movgr2fr.d	$ft3, $a3
+	xvpickve2gr.d	$a2, $xr11, 1
 	xvinsgr2vr.d	$xr12, $a2, 1
-	movfr2gr.d	$a2, $ft3
-	xvpickve2gr.d	$a3, $xr5, 1
-	movgr2fr.d	$ft3, $a3
+	xvpickve2gr.d	$a2, $xr11, 2
 	xvinsgr2vr.d	$xr12, $a2, 2
-	movfr2gr.d	$a2, $ft3
+	xvpickve2gr.d	$a2, $xr5, 1
 	xvinsgr2vr.d	$xr12, $a2, 3
-	xvfmul.d	$xr16, $xr12, $xr15
-	xvfmul.d	$xr15, $xr10, $xr15
+	xvfmul.d	$xr15, $xr12, $xr13
+	xvfmul.d	$xr16, $xr10, $xr13
 	xvld	$xr17, $sp, 64                  # 32-byte Folded Reload
 	xvori.b	$xr13, $xr17, 0
 	xvshuf.d	$xr13, $xr4, $xr6
@@ -20988,30 +20972,23 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	xvpermi.q	$xr7, $xr7, 2
 	xvfmul.d	$xr17, $xr13, $xr7
 	xvfmul.d	$xr7, $xr11, $xr7
-	xvfadd.d	$xr15, $xr15, $xr7
-	xvpermi.d	$xr7, $xr9, 78
-	xvrepl128vei.d	$xr7, $xr7, 0
-	xvpermi.d	$xr7, $xr7, 68
+	xvfadd.d	$xr7, $xr16, $xr7
+	xvfadd.d	$xr15, $xr15, $xr17
+	xvpermi.d	$xr9, $xr9, 78
+	xvrepl128vei.d	$xr9, $xr9, 0
+	xvpermi.d	$xr9, $xr9, 68
 	xvpermi.d	$xr8, $xr8, 68
 	xvrepl128vei.d	$xr8, $xr8, 1
 	xvpermi.d	$xr8, $xr8, 68
-	xvpackev.d	$xr7, $xr8, $xr7
-	xvpickve2gr.d	$a2, $xr7, 0
-	movgr2fr.d	$ft0, $a2
-	xvfadd.d	$xr9, $xr16, $xr17
-	movfr2gr.d	$a2, $ft0
-	xvpickve2gr.d	$a3, $xr7, 1
-	movgr2fr.d	$ft0, $a3
-	xvinsgr2vr.d	$xr7, $a2, 0
-	movfr2gr.d	$a2, $ft0
-	xvpickve2gr.d	$a3, $xr5, 0
-	movgr2fr.d	$ft0, $a3
-	xvinsgr2vr.d	$xr7, $a2, 1
-	movfr2gr.d	$a2, $ft0
-	xvpickve2gr.d	$a3, $xr5, 3
-	movgr2fr.d	$fa5, $a3
-	xvinsgr2vr.d	$xr7, $a2, 2
-	movfr2gr.d	$a2, $fa5
+	xvpackev.d	$xr8, $xr8, $xr9
+	xvpickve2gr.d	$a2, $xr8, 0
+	xvinsgr2vr.d	$xr9, $a2, 0
+	xvpickve2gr.d	$a2, $xr8, 1
+	xvinsgr2vr.d	$xr9, $a2, 1
+	xvpickve2gr.d	$a2, $xr5, 0
+	xvinsgr2vr.d	$xr9, $a2, 2
+	xvpickve2gr.d	$a2, $xr5, 3
+	xvinsgr2vr.d	$xr9, $a2, 3
 	xvpermi.d	$xr5, $xr6, 78
 	xvrepl128vei.d	$xr5, $xr5, 0
 	xvpermi.d	$xr5, $xr5, 68
@@ -21019,71 +20996,62 @@ _ZN6miniFE4Hex820diffusionMatrix_symmIdEEvPKT_S4_PS2_: # @_ZN6miniFE4Hex820diffu
 	xvrepl128vei.d	$xr4, $xr4, 1
 	xvpermi.d	$xr4, $xr4, 68
 	xvpackev.d	$xr4, $xr4, $xr5
-	xvpickve2gr.d	$a3, $xr4, 0
-	movgr2fr.d	$fa5, $a3
-	xvinsgr2vr.d	$xr7, $a2, 3
-	movfr2gr.d	$a2, $fa5
-	xvpickve2gr.d	$a3, $xr4, 1
-	movgr2fr.d	$fa4, $a3
+	xvpickve2gr.d	$a2, $xr4, 0
 	xvinsgr2vr.d	$xr5, $a2, 0
-	movfr2gr.d	$a2, $fa4
-	xvpickve2gr.d	$a3, $xr14, 0
-	movgr2fr.d	$fa4, $a3
+	xvpickve2gr.d	$a2, $xr4, 1
 	xvinsgr2vr.d	$xr5, $a2, 1
-	movfr2gr.d	$a2, $fa4
-	xvpickve2gr.d	$a3, $xr14, 3
-	movgr2fr.d	$fa4, $a3
+	xvpickve2gr.d	$a2, $xr14, 0
 	xvinsgr2vr.d	$xr5, $a2, 2
-	movfr2gr.d	$a2, $fa4
+	xvpickve2gr.d	$a2, $xr14, 3
 	xvinsgr2vr.d	$xr5, $a2, 3
 	xvpermi.q	$xr3, $xr0, 2
 	xvpermi.d	$xr3, $xr3, 68
 	xvrepl128vei.d	$xr3, $xr3, 0
 	xvfmul.d	$xr4, $xr5, $xr3
-	xvfmul.d	$xr3, $xr7, $xr3
+	xvfmul.d	$xr3, $xr9, $xr3
 	vld	$vr6, $sp, 232
-	xvfadd.d	$xr3, $xr9, $xr3
-	xvfadd.d	$xr4, $xr15, $xr4
+	xvfadd.d	$xr3, $xr15, $xr3
+	xvfadd.d	$xr4, $xr7, $xr4
 	xvst	$xr4, $sp, 448
 	xvst	$xr3, $sp, 416
 	xvori.b	$xr3, $xr6, 0
 	xvpermi.q	$xr3, $xr0, 2
 	vld	$vr4, $sp, 256
 	xvpermi.d	$xr3, $xr3, 68
-	xvbsrl.v	$xr8, $xr3, 8
+	xvbsrl.v	$xr7, $xr3, 8
 	xvbsll.v	$xr3, $xr3, 8
-	xvor.v	$xr3, $xr3, $xr8
-	xvori.b	$xr8, $xr4, 0
-	xvpermi.q	$xr8, $xr0, 2
-	xvpermi.d	$xr8, $xr8, 68
-	xvbsrl.v	$xr9, $xr8, 8
-	xvbsll.v	$xr8, $xr8, 8
-	xvor.v	$xr8, $xr8, $xr9
-	xvfmul.d	$xr9, $xr12, $xr8
+	xvor.v	$xr3, $xr3, $xr7
+	xvori.b	$xr7, $xr4, 0
+	xvpermi.q	$xr7, $xr0, 2
+	xvpermi.d	$xr7, $xr7, 68
+	xvbsrl.v	$xr8, $xr7, 8
+	xvbsll.v	$xr7, $xr7, 8
+	xvor.v	$xr7, $xr7, $xr8
+	xvfmul.d	$xr8, $xr12, $xr7
 	xvpermi.q	$xr4, $xr4, 2
 	xvfmul.d	$xr14, $xr13, $xr4
-	xvfadd.d	$xr9, $xr9, $xr14
+	xvfadd.d	$xr8, $xr8, $xr14
 	xvreplve0.d	$xr2, $xr2
-	xvfmul.d	$xr14, $xr7, $xr2
-	xvfadd.d	$xr9, $xr9, $xr14
-	xvst	$xr9, $sp, 288
-	xvfmul.d	$xr9, $xr12, $xr3
+	xvfmul.d	$xr14, $xr9, $xr2
+	xvfadd.d	$xr8, $xr8, $xr14
+	xvst	$xr8, $sp, 288
+	xvfmul.d	$xr8, $xr12, $xr3
 	xvfmul.d	$xr3, $xr10, $xr3
 	xvpermi.q	$xr6, $xr6, 2
 	xvfmul.d	$xr12, $xr13, $xr6
 	xvfmul.d	$xr6, $xr11, $xr6
 	xvfadd.d	$xr3, $xr3, $xr6
-	xvfadd.d	$xr6, $xr9, $xr12
+	xvfadd.d	$xr6, $xr8, $xr12
 	xvpermi.q	$xr1, $xr0, 2
 	xvpermi.d	$xr1, $xr1, 68
 	xvrepl128vei.d	$xr1, $xr1, 0
-	xvfmul.d	$xr9, $xr5, $xr1
-	xvfmul.d	$xr1, $xr7, $xr1
+	xvfmul.d	$xr8, $xr5, $xr1
+	xvfmul.d	$xr1, $xr9, $xr1
 	xvfadd.d	$xr1, $xr6, $xr1
-	xvfadd.d	$xr3, $xr3, $xr9
+	xvfadd.d	$xr3, $xr3, $xr8
 	xvst	$xr3, $sp, 384
 	xvst	$xr1, $sp, 352
-	xvfmul.d	$xr1, $xr10, $xr8
+	xvfmul.d	$xr1, $xr10, $xr7
 	xvfmul.d	$xr3, $xr11, $xr4
 	xvfadd.d	$xr1, $xr1, $xr3
 	xvfmul.d	$xr2, $xr5, $xr2

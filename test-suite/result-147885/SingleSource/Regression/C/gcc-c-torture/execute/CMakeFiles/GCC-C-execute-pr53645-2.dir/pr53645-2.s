@@ -891,7 +891,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 16
 	vpickve2gr.h	$a0, $vr0, 0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB24_197
 # %bb.26:                               #   in Loop: Header=BB24_1 Depth=1
 	ld.hu	$a0, $fp, 6
@@ -2134,7 +2134,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 0
 	vpickve2gr.h	$a0, $vr0, 0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB24_197
 # %bb.124:                              #   in Loop: Header=BB24_99 Depth=1
 	ld.h	$a0, $fp, 6

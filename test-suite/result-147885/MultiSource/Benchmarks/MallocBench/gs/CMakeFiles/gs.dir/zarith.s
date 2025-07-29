@@ -57,8 +57,7 @@ zadd:                                   # @zadd
 	bltz	$a3, .LBB0_14
 # %bb.11:
 	xor	$a3, $a2, $a1
-	addi.w	$a4, $zero, -1
-	blt	$a4, $a3, .LBB0_14
+	bgez	$a3, .LBB0_14
 # %bb.12:
 	movgr2fr.d	$fa0, $a2
 	ffint.s.l	$fa0, $fa0
@@ -326,9 +325,8 @@ zsub:                                   # @zsub
 	xor	$a4, $a3, $a2
 	xor	$a5, $a1, $a2
 	and	$a4, $a4, $a5
-	addi.w	$a5, $zero, -1
 	st.d	$a3, $a0, -16
-	blt	$a5, $a4, .LBB3_12
+	bgez	$a4, .LBB3_12
 # %bb.10:
 	movgr2fr.d	$fa0, $a2
 	ffint.s.l	$fa0, $fa0
@@ -441,9 +439,8 @@ zidiv:                                  # @zidiv
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(zcvi)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $zero, -1
 	move	$a1, $a0
-	blt	$a2, $a0, .LBB4_16
+	bgez	$a0, .LBB4_16
 # %bb.15:
 	vld	$vr0, $sp, 0
 	vst	$vr0, $fp, 0

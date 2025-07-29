@@ -84,10 +84,9 @@ outbig:                                 # @outbig
 	ftintrz.w.d	$fa0, $fa0
 	movfr2gr.s	$a2, $fa0
 	add.w	$a0, $a1, $a0
-	ori	$a3, $zero, 1
 	addi.w	$a1, $a2, 1
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	blt	$a0, $a3, .LBB0_23
+	blez	$a0, .LBB0_23
 # %bb.4:                                # %.lr.ph154.preheader
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
@@ -340,8 +339,7 @@ outbig:                                 # @outbig
 # %bb.20:                               # %.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	ld.w	$a0, $s1, 132
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.21:                               # %.lr.ph151
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$s0, $zero

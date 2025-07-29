@@ -127,15 +127,15 @@ FreeMemory:                             # @FreeMemory
 	pcalau12i	$a2, %got_pc_hi20(mem_array_ents)
 	ld.d	$a2, $a2, %got_pc_lo12(mem_array_ents)
 	ld.w	$a7, $a2, 0
-	ori	$t0, $zero, 1
 	ori	$a6, $zero, 3
-	blt	$a7, $t0, .LBB2_7
+	blez	$a7, .LBB2_7
 # %bb.1:                                # %.lr.ph.preheader.i
 	pcalau12i	$a3, %got_pc_hi20(mem_array)
 	ld.d	$a4, $a3, %got_pc_lo12(mem_array)
 	addi.d	$a3, $a7, -1
 	addi.d	$a4, $a4, 168
 	bstrpick.d	$a5, $a3, 31, 0
+	ori	$t0, $zero, 1
 	move	$t1, $a7
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph.i
@@ -187,15 +187,15 @@ RemoveMemArray:                         # @RemoveMemArray
 	ld.d	$a3, $a2, %got_pc_lo12(mem_array_ents)
 	ld.w	$a7, $a3, 0
 	move	$a2, $a0
-	ori	$t0, $zero, 1
 	addi.w	$a0, $zero, -1
-	blt	$a7, $t0, .LBB3_4
+	blez	$a7, .LBB3_4
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a4, %got_pc_hi20(mem_array)
 	ld.d	$a5, $a4, %got_pc_lo12(mem_array)
 	addi.d	$a4, $a7, -1
 	addi.d	$a5, $a5, 168
 	bstrpick.d	$a6, $a4, 31, 0
+	ori	$t0, $zero, 1
 	move	$t1, $a7
 	.p2align	4, , 16
 .LBB3_2:                                # %.lr.ph

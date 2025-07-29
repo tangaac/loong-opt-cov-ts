@@ -240,8 +240,7 @@ ia_parse:                               # @ia_parse
 	ori	$a2, $zero, 35
 	beq	$a1, $a2, .LBB0_124
 # %bb.18:                               #   in Loop: Header=BB0_3 Depth=1
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_20
+	blez	$a0, .LBB0_20
 # %bb.19:                               #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1896
@@ -528,8 +527,7 @@ ia_parse:                               # @ia_parse
                                         #       Child Loop BB0_58 Depth 3
 	ld.d	$s6, $s1, 8
 	ld.w	$s8, $s6, 0
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB0_51
+	blez	$s8, .LBB0_51
 # %bb.47:                               #   in Loop: Header=BB0_46 Depth=2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -718,11 +716,10 @@ ia_parse:                               # @ia_parse
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(ia_Symbol)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	addi.w	$a0, $zero, -1
-	sub.w	$s1, $zero, $s2
-	blt	$a0, $s2, .LBB0_154
+	sub.w	$s1, $zero, $a0
+	bgez	$a0, .LBB0_154
 # %bb.79:                               #   in Loop: Header=BB0_3 Depth=1
+	move	$s2, $a0
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1856
 	add.d	$a0, $fp, $a0

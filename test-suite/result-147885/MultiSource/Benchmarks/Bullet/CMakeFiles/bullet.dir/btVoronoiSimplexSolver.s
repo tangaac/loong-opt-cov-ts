@@ -474,13 +474,13 @@ _ZN22btVoronoiSimplexSolver28updateClosestVectorAndPointsEv: # @_ZN22btVoronoiSi
 	ret
 .LBB4_15:
 	ld.bu	$a0, $s0, 348
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_17
+	beqz	$a0, .LBB4_17
 # %bb.16:
 	move	$a1, $zero
 	st.b	$zero, $s0, 308
 	b	.LBB4_24
 .LBB4_17:
+	ori	$a1, $zero, 1
 	st.b	$a1, $s0, 308
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $s0, 276
@@ -1029,7 +1029,7 @@ _ZN22btVoronoiSimplexSolver25closestPtPointTetrahedronERK9btVector3S2_S2_S2_S2_R
 	or	$a1, $a1, $s6
 	or	$a1, $a1, $s8
 	st.b	$zero, $sp, 32
-	bge	$a6, $a1, .LBB6_6
+	bltz	$a1, .LBB6_6
 # %bb.1:
 	beqz	$a1, .LBB6_7
 # %bb.2:
@@ -1279,8 +1279,7 @@ _ZN22btVoronoiSimplexSolver7closestER9btVector3: # @_ZN22btVoronoiSimplexSolver7
 _ZN22btVoronoiSimplexSolver9maxVertexEv: # @_ZN22btVoronoiSimplexSolver9maxVertexEv
 # %bb.0:
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_4
+	blez	$a1, .LBB8_4
 # %bb.1:                                # %.lr.ph
 	addi.d	$a0, $a0, 12
 	movgr2fr.w	$fa0, $zero
@@ -1311,8 +1310,7 @@ _ZN22btVoronoiSimplexSolver9maxVertexEv: # @_ZN22btVoronoiSimplexSolver9maxVerte
 _ZNK22btVoronoiSimplexSolver10getSimplexEP9btVector3S1_S1_: # @_ZNK22btVoronoiSimplexSolver10getSimplexEP9btVector3S1_S1_
 # %bb.0:
 	ld.w	$a4, $a0, 0
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB9_3
+	blez	$a4, .LBB9_3
 # %bb.1:                                # %.lr.ph
 	move	$a5, $zero
 	move	$a6, $zero

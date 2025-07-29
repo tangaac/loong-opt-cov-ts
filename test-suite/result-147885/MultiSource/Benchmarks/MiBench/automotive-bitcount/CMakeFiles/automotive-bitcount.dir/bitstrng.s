@@ -13,31 +13,29 @@ bitstring:                              # @bitstring
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$s1, $a3
 	move	$s0, $a2
 	srli.d	$a2, $a2, 2
 	andi	$a3, $s0, 3
-	sltui	$s4, $a3, 1
-	add.w	$s5, $a2, $s0
-	sub.d	$a2, $s1, $s5
-	add.w	$a2, $a2, $s4
-	ori	$s3, $zero, 1
+	sltui	$s3, $a3, 1
+	add.w	$s4, $a2, $s0
+	sub.d	$a2, $s1, $s4
+	add.w	$a2, $a2, $s3
 	move	$fp, $a1
-	blt	$a2, $s3, .LBB0_2
+	blez	$a2, .LBB0_2
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 32
 	move	$s2, $a0
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	add.d	$a0, $s1, $s4
-	sub.d	$a0, $s5, $a0
+	add.d	$a0, $s1, $s3
+	sub.d	$a0, $s4, $a0
 	nor	$a0, $a0, $zero
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a0, $s2, $a0
 	addi.d	$a0, $a0, 1
 .LBB0_2:                                # %.preheader
-	blt	$s0, $s3, .LBB0_8
+	blez	$s0, .LBB0_8
 # %bb.3:                                # %.lr.ph26.preheader
 	addi.d	$a2, $s0, -1
 	ori	$a1, $zero, 24
@@ -69,7 +67,6 @@ bitstring:                              # @bitstring
 	move	$a5, $a0
 .LBB0_9:                                # %._crit_edge
 	st.b	$zero, $a5, 0
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

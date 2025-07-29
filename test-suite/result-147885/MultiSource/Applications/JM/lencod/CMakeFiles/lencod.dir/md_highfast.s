@@ -1304,7 +1304,7 @@ encode_one_macroblock_highfast:         # @encode_one_macroblock_highfast
 # %bb.119:                              #   in Loop: Header=BB0_118 Depth=2
 	sltu	$a1, $zero, $s2
 	or	$a1, $t6, $a1
-	bne	$a1, $s0, .LBB0_117
+	beqz	$a1, .LBB0_117
 # %bb.120:                              #   in Loop: Header=BB0_118 Depth=2
 	addi.d	$a1, $s8, -2
 	sltui	$a1, $a1, 1
@@ -1651,11 +1651,11 @@ encode_one_macroblock_highfast:         # @encode_one_macroblock_highfast
 	bstrpick.d	$a0, $a0, 15, 0
 	addi.d	$a3, $a0, -10
 	sltui	$a3, $a3, 1
-	or	$a3, $a2, $a3
-	ori	$a2, $zero, 1
-	bne	$a3, $a2, .LBB0_176
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB0_176
 # %bb.175:
 	ori	$a3, $zero, 14
+	ori	$a2, $zero, 1
 	bne	$a0, $a3, .LBB0_180
 .LBB0_176:
 	bnez	$a1, .LBB0_178

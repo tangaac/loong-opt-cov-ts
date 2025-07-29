@@ -54,8 +54,7 @@ _ZL16CompressProgressPvyy:              # @_ZL16CompressProgressPvyy
 	.type	_Z15HRESULT_To_SResii,@function
 _Z15HRESULT_To_SResii:                  # @_Z15HRESULT_To_SResii
 # %bb.0:
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a0, .LBB2_5
+	bgez	$a0, .LBB2_5
 # %bb.1:
 	lu12i.w	$a2, -524284
 	ori	$a2, $a2, 4
@@ -132,9 +131,8 @@ _ZL6MyReadPvS_Pm:                       # @_ZL6MyReadPvS_Pm
 	jirl	$ra, $a5, 0
 	ld.wu	$a1, $sp, 4
 	st.w	$a0, $s0, 16
-	addi.w	$a2, $zero, -1
 	st.d	$a1, $fp, 0
-	blt	$a2, $a0, .LBB4_5
+	bgez	$a0, .LBB4_5
 # %bb.1:
 	lu12i.w	$a1, -524284
 	ori	$a1, $a1, 4

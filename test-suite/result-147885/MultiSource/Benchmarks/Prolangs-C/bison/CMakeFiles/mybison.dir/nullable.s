@@ -57,88 +57,87 @@ set_nullable:                           # @set_nullable
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(ritem)
 	ld.d	$a1, $a1, %got_pc_lo12(ritem)
-	ld.d	$a6, $a1, 0
-	ld.hu	$a5, $a6, 0
+	ld.d	$a5, $a1, 0
+	ld.hu	$a4, $a5, 0
 	move	$s2, $a0
-	beqz	$a5, .LBB0_20
+	beqz	$a4, .LBB0_20
 # %bb.1:
 	pcalau12i	$a0, %got_pc_hi20(rlhs)
 	ld.d	$a0, $a0, %got_pc_lo12(rlhs)
-	addi.w	$a2, $zero, -1
-	ori	$a3, $zero, 1
+	ori	$a2, $zero, 1
 	move	$a1, $fp
-	move	$a4, $s2
+	move	$a3, $s2
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
-	ld.d	$a5, $a0, 0
-	slli.d	$a7, $t0, 1
-	sub.d	$a5, $a5, $a7
-	ld.h	$a5, $a5, 0
-	ld.d	$a7, $s4, %pc_lo12(nullable)
-	ldx.bu	$t0, $a7, $a5
-	addi.d	$a6, $a6, 2
-	beqz	$t0, .LBB0_11
+	ld.d	$a4, $a0, 0
+	slli.d	$a6, $a7, 1
+	sub.d	$a4, $a4, $a6
+	ld.h	$a4, $a4, 0
+	ld.d	$a6, $s4, %pc_lo12(nullable)
+	ldx.bu	$a7, $a6, $a4
+	addi.d	$a5, $a5, 2
+	beqz	$a7, .LBB0_11
 .LBB0_3:                                # %.loopexit80
                                         #   in Loop: Header=BB0_4 Depth=1
-	ld.hu	$a5, $a6, 0
-	beqz	$a5, .LBB0_12
+	ld.hu	$a4, $a5, 0
+	beqz	$a4, .LBB0_12
 .LBB0_4:                                # %.lr.ph99
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_6 Depth 2
                                         #     Child Loop BB0_9 Depth 2
-	ext.w.h	$t0, $a5
-	bge	$a2, $t0, .LBB0_2
+	ext.w.h	$a7, $a4
+	bltz	$a7, .LBB0_2
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	ld.w	$t1, $s3, 0
-	addi.d	$a7, $a6, 2
-	move	$t2, $zero
-	move	$a6, $a7
+	ld.w	$t0, $s3, 0
+	addi.d	$a6, $a5, 2
+	move	$t1, $zero
+	move	$a5, $a6
 	.p2align	4, , 16
 .LBB0_6:                                #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slt	$t3, $t0, $t1
-	ld.h	$t0, $a6, 0
-	masknez	$t2, $t2, $t3
-	maskeqz	$t3, $a3, $t3
-	or	$t2, $t3, $t2
-	addi.d	$a6, $a6, 2
-	bgtz	$t0, .LBB0_6
+	slt	$t2, $a7, $t0
+	ld.h	$a7, $a5, 0
+	masknez	$t1, $t1, $t2
+	maskeqz	$t2, $a2, $t2
+	or	$t1, $t2, $t1
+	addi.d	$a5, $a5, 2
+	bgtz	$a7, .LBB0_6
 # %bb.7:                                # %._crit_edge
                                         #   in Loop: Header=BB0_4 Depth=1
-	andi	$t1, $t2, 255
-	bnez	$t1, .LBB0_3
+	andi	$t0, $t1, 255
+	bnez	$t0, .LBB0_3
 # %bb.8:                                # %.lr.ph91
                                         #   in Loop: Header=BB0_4 Depth=1
-	sub.d	$a6, $zero, $t0
-	slli.d	$t0, $t0, 1
-	sub.d	$t0, $s0, $t0
+	sub.d	$a5, $zero, $a7
+	slli.d	$a7, $a7, 1
+	sub.d	$a7, $s0, $a7
 	.p2align	4, , 16
 .LBB0_9:                                #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.h	$t1, $t0, 0
-	bstrpick.d	$a5, $a5, 15, 0
-	addi.d	$t1, $t1, 1
-	slli.d	$t2, $a5, 3
-	ldx.d	$t3, $s5, $t2
-	st.h	$t1, $t0, 0
-	st.h	$a6, $a4, 8
-	ld.h	$a5, $a7, 0
-	st.d	$t3, $a4, 0
-	stx.d	$a4, $s5, $t2
-	addi.d	$a4, $a4, 16
-	addi.d	$a7, $a7, 2
-	bgtz	$a5, .LBB0_9
+	ld.h	$t0, $a7, 0
+	bstrpick.d	$a4, $a4, 15, 0
+	addi.d	$t0, $t0, 1
+	slli.d	$t1, $a4, 3
+	ldx.d	$t2, $s5, $t1
+	st.h	$t0, $a7, 0
+	st.h	$a5, $a3, 8
+	ld.h	$a4, $a6, 0
+	st.d	$t2, $a3, 0
+	stx.d	$a3, $s5, $t1
+	addi.d	$a3, $a3, 16
+	addi.d	$a6, $a6, 2
+	bgtz	$a4, .LBB0_9
 # %bb.10:                               #   in Loop: Header=BB0_4 Depth=1
-	move	$a6, $a7
+	move	$a5, $a6
 	b	.LBB0_3
 .LBB0_11:                               #   in Loop: Header=BB0_4 Depth=1
-	bstrpick.d	$t0, $a5, 15, 0
-	stx.b	$a3, $a7, $a5
-	addi.d	$a5, $a1, 2
-	st.h	$t0, $a1, 0
-	move	$a1, $a5
+	bstrpick.d	$a7, $a4, 15, 0
+	stx.b	$a2, $a6, $a4
+	addi.d	$a4, $a1, 2
+	st.h	$a7, $a1, 0
+	move	$a1, $a4
 	b	.LBB0_3
 .LBB0_12:                               # %.preheader
 	bgeu	$fp, $a1, .LBB0_20
@@ -170,7 +169,7 @@ set_nullable:                           # @set_nullable
 	ldx.h	$a6, $s0, $a5
 	ld.d	$a4, $a4, 0
 	addi.d	$a6, $a6, -1
-	bstrpick.d	$a7, $a6, 15, 0
+	slli.d	$a7, $a6, 48
 	stx.h	$a6, $s0, $a5
 	bnez	$a7, .LBB0_16
 # %bb.18:                               #   in Loop: Header=BB0_17 Depth=2

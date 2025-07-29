@@ -11,13 +11,12 @@
 	.type	finalout,@function
 finalout:                               # @finalout
 # %bb.0:
-	addi.d	$sp, $sp, -1088
-	st.d	$ra, $sp, 1080                  # 8-byte Folded Spill
-	st.d	$fp, $sp, 1072                  # 8-byte Folded Spill
-	st.d	$s0, $sp, 1064                  # 8-byte Folded Spill
-	st.d	$s1, $sp, 1056                  # 8-byte Folded Spill
-	st.d	$s2, $sp, 1048                  # 8-byte Folded Spill
-	st.d	$s3, $sp, 1040                  # 8-byte Folded Spill
+	addi.d	$sp, $sp, -1072
+	st.d	$ra, $sp, 1064                  # 8-byte Folded Spill
+	st.d	$fp, $sp, 1056                  # 8-byte Folded Spill
+	st.d	$s0, $sp, 1048                  # 8-byte Folded Spill
+	st.d	$s1, $sp, 1040                  # 8-byte Folded Spill
+	st.d	$s2, $sp, 1032                  # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(Tsave)
 	ld.d	$a0, $a0, %got_pc_lo12(Tsave)
 	fld.d	$fa0, $a0, 0
@@ -66,12 +65,12 @@ finalout:                               # @finalout
 	ld.d	$a2, $a0, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
@@ -130,20 +129,20 @@ finalout:                               # @finalout
 	pcaddu18i	$ra, %call36(findcost)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(funccost)
-	ld.d	$s3, $a1, %got_pc_lo12(funccost)
-	st.w	$a0, $s3, 0
+	ld.d	$s2, $a1, %got_pc_lo12(funccost)
+	st.w	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(outgeo)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(outpin)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(checkpen)
 	jirl	$ra, $ra, 0
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB0_10
+	blez	$a0, .LBB0_10
 # %bb.5:
 	pcaddu18i	$ra, %call36(fixpenal)
 	jirl	$ra, $ra, 0
-	st.w	$s2, $s0, %pc_lo12(redoFlag)
+	ori	$a0, $zero, 1
+	st.w	$a0, $s0, %pc_lo12(redoFlag)
 	pcaddu18i	$ra, %call36(finalpin)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(prboard)
@@ -165,7 +164,7 @@ finalout:                               # @finalout
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(findcost)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s3, 0
+	st.w	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(outgeo)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(outpin)
@@ -173,8 +172,7 @@ finalout:                               # @finalout
 	pcaddu18i	$ra, %call36(checkpen)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $fp, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_9
+	blez	$a0, .LBB0_9
 # %bb.8:
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
@@ -183,13 +181,12 @@ finalout:                               # @finalout
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	ld.d	$s3, $sp, 1040                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1048                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1056                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1064                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1072                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1080                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1088
+	ld.d	$s2, $sp, 1032                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1040                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1048                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1064                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1072
 	pcaddu18i	$t8, %call36(fflush)
 	jr	$t8
 .LBB0_9:
@@ -206,7 +203,7 @@ finalout:                               # @finalout
 	pcalau12i	$a0, %got_pc_hi20(doCompaction)
 	ld.d	$a0, $a0, %got_pc_lo12(doCompaction)
 	ld.w	$a0, $a0, 0
-	bge	$a0, $s2, .LBB0_17
+	bgtz	$a0, .LBB0_17
 # %bb.11:
 	pcalau12i	$a0, %got_pc_hi20(doChannelGraph)
 	ld.d	$a0, $a0, %got_pc_lo12(doChannelGraph)
@@ -221,23 +218,21 @@ finalout:                               # @finalout
 	ld.w	$a0, $a0, 0
 	beqz	$a0, .LBB0_15
 # %bb.14:
-	ld.d	$s3, $sp, 1040                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1048                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1056                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1064                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1072                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1080                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1088
+	ld.d	$s2, $sp, 1032                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1040                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1048                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1064                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1072
 	pcaddu18i	$t8, %call36(rmain)
 	jr	$t8
 .LBB0_15:
-	ld.d	$s3, $sp, 1040                  # 8-byte Folded Reload
-	ld.d	$s2, $sp, 1048                  # 8-byte Folded Reload
-	ld.d	$s1, $sp, 1056                  # 8-byte Folded Reload
-	ld.d	$s0, $sp, 1064                  # 8-byte Folded Reload
-	ld.d	$fp, $sp, 1072                  # 8-byte Folded Reload
-	ld.d	$ra, $sp, 1080                  # 8-byte Folded Reload
-	addi.d	$sp, $sp, 1088
+	ld.d	$s2, $sp, 1032                  # 8-byte Folded Reload
+	ld.d	$s1, $sp, 1040                  # 8-byte Folded Reload
+	ld.d	$s0, $sp, 1048                  # 8-byte Folded Reload
+	ld.d	$fp, $sp, 1056                  # 8-byte Folded Reload
+	ld.d	$ra, $sp, 1064                  # 8-byte Folded Reload
+	addi.d	$sp, $sp, 1072
 	ret
 .LBB0_16:                               # %cdce.call
 	pcaddu18i	$ra, %call36(exp2)

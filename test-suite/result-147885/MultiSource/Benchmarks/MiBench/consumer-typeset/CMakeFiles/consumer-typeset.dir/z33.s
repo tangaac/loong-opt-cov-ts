@@ -578,7 +578,7 @@ dtab_insert:                            # @dtab_insert
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
-	move	$s8, $a1
+	move	$s0, $a1
 	ld.d	$s1, $a1, 0
 	ld.w	$s4, $s1, 0
 	ld.w	$a1, $s1, 4
@@ -606,9 +606,8 @@ dtab_insert:                            # @dtab_insert
 	jirl	$ra, $ra, 0
 .LBB2_3:
 	st.w	$s5, $s2, 0
-	ori	$s0, $zero, 1
 	st.w	$zero, $s2, 4
-	blt	$s4, $s0, .LBB2_5
+	blez	$s4, .LBB2_5
 # %bb.4:                                # %.lr.ph.i
 	addi.d	$a0, $s2, 8
 	move	$a1, $zero
@@ -618,9 +617,9 @@ dtab_insert:                            # @dtab_insert
 .LBB2_5:                                # %dtab_new.exit
 	ld.w	$a0, $s1, 0
 	st.d	$s2, $sp, 16
-	blt	$a0, $s0, .LBB2_17
+	blez	$a0, .LBB2_17
 # %bb.6:                                # %.lr.ph
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	move	$s5, $zero
 	addi.d	$s6, $s1, 8
 	ori	$s7, $zero, 17
@@ -684,13 +683,13 @@ dtab_insert:                            # @dtab_insert
 	b	.LBB2_7
 .LBB2_16:                               # %dtab_rehash.exit.loopexit
 	ld.d	$s2, $sp, 16
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 .LBB2_17:                               # %dtab_rehash.exit
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 4
-	st.d	$s2, $s8, 0
+	st.d	$s2, $s0, 0
 	move	$s1, $s2
 .LBB2_18:
 	addi.d	$a0, $a1, 1
@@ -750,10 +749,10 @@ dtab_insert:                            # @dtab_insert
 	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.d	$a0, $a0, 0
-	ld.d	$a1, $s8, 0
+	ld.d	$a1, $s0, 0
 	alsl.d	$a1, $s4, $a1, 3
 	st.d	$a0, $a1, 8
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s0, 0
 	alsl.d	$a0, $s4, $a0, 3
 	ld.d	$s5, $a0, 8
 .LBB2_26:
@@ -844,7 +843,7 @@ dtab_insert:                            # @dtab_insert
 	st.d	$a0, $a0, 0
 	st.d	$a0, $a2, 0
 	st.d	$a0, $a1, 0
-	ld.d	$a3, $s8, 0
+	ld.d	$a3, $s0, 0
 	alsl.d	$a3, $s4, $a3, 3
 	ld.d	$a4, $a3, 8
 	pcalau12i	$a3, %got_pc_hi20(zz_hold)
@@ -2377,9 +2376,10 @@ DbRetrieve:                             # @DbRetrieve
 	st.d	$s6, $sp, 1640                  # 8-byte Folded Spill
 	st.d	$s7, $sp, 1632                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1624                  # 8-byte Folded Spill
-	move	$s8, $a7
-	move	$s7, $a5
-	move	$s1, $a3
+	move	$s7, $a7
+	move	$s8, $a6
+	move	$s5, $a5
+	move	$s0, $a3
 	move	$s6, $a2
 	ld.d	$s3, $t0, 8
 	st.d	$t0, $sp, 80                    # 8-byte Folded Spill
@@ -2389,8 +2389,8 @@ DbRetrieve:                             # @DbRetrieve
 	beq	$s3, $t0, .LBB6_18
 # %bb.3:                                # %.preheader.preheader
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 72                    # 8-byte Folded Spill
-	move	$s0, $s7
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	move	$s0, $s5
 	move	$s7, $zero
 	ori	$s8, $zero, 17
 	ori	$s4, $zero, 140
@@ -2448,10 +2448,11 @@ DbRetrieve:                             # @DbRetrieve
 	ret
 .LBB6_14:                               # %._crit_edge.loopexit
 	addi.d	$s2, $s7, 1
-	move	$s7, $s0
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	move	$s5, $s0
+	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a0, $s6, 88
 	bnez	$a0, .LBB6_16
 .LBB6_15:
@@ -2480,7 +2481,7 @@ DbRetrieve:                             # @DbRetrieve
 	st.d	$a3, $a1, 0
 	b	.LBB6_20
 .LBB6_18:
-	move	$s3, $a1
+	move	$s1, $a1
 	ori	$s2, $zero, 1
 	ld.d	$a0, $s6, 88
 	bnez	$a0, .LBB6_16
@@ -2549,13 +2550,14 @@ DbRetrieve:                             # @DbRetrieve
 	move	$fp, $t0
 	b	.LBB6_27
 .LBB6_26:
-	move	$s7, $s0
+	move	$s5, $s0
 	move	$fp, $t0
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 .LBB6_27:                               # %.loopexit85
-	sltui	$a0, $s3, 1
+	sltui	$a0, $s1, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
 	masknez	$a1, $a1, $a0
@@ -2567,7 +2569,7 @@ DbRetrieve:                             # @DbRetrieve
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.49)
 	addi.d	$a0, $sp, 88
-	move	$a4, $s1
+	move	$a4, $s0
 	pcaddu18i	$ra, %call36(sprintf)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 43
@@ -2583,7 +2585,7 @@ DbRetrieve:                             # @DbRetrieve
 	move	$fp, $zero
 	b	.LBB6_59
 .LBB6_31:
-	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	ori	$a2, $zero, 2
 	move	$a0, $s4
 	move	$a1, $zero
@@ -2695,8 +2697,7 @@ DbRetrieve:                             # @DbRetrieve
 	addi.d	$a1, $sp, 600
 	pcaddu18i	$ra, %call36(strcollcmp)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB6_47
+	bgtz	$a0, .LBB6_47
 	b	.LBB6_33
 	.p2align	4, , 16
 .LBB6_43:                               #   in Loop: Header=BB6_34 Depth=1
@@ -2765,7 +2766,7 @@ DbRetrieve:                             # @DbRetrieve
 	ld.d	$a0, $a0, 48
 	pcaddu18i	$ra, %call36(ftell)
 	jirl	$ra, $ra, 0
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB6_63
 .LBB6_51:                               # %.lr.ph.i
 	pcalau12i	$a1, %got_pc_hi20(UseCollate)
@@ -2775,7 +2776,6 @@ DbRetrieve:                             # @DbRetrieve
 	move	$fp, $zero
 	beqz	$a1, .LBB6_53
 # %bb.52:                               # %.lr.ph.split.i.preheader
-	ori	$s3, $zero, 1
 	ori	$a2, $zero, 1
 	b	.LBB6_55
 	.p2align	4, , 16
@@ -2804,7 +2804,7 @@ DbRetrieve:                             # @DbRetrieve
 	b	.LBB6_59
 	.p2align	4, , 16
 .LBB6_54:                               #   in Loop: Header=BB6_55 Depth=1
-	addi.d	$s1, $s5, -1
+	addi.d	$s1, $s3, -1
 	addi.w	$a0, $fp, 0
 	addi.w	$a1, $s1, 0
 	blt	$a1, $a0, .LBB6_59
@@ -2813,8 +2813,8 @@ DbRetrieve:                             # @DbRetrieve
 	add.d	$a0, $fp, $s1
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
-	srai.d	$s5, $a0, 1
-	slli.d	$a0, $s5, 3
+	srai.d	$s3, $a0, 1
+	slli.d	$a0, $s3, 3
 	ldx.d	$a1, $s4, $a0
 	addi.d	$a0, $sp, 88
 	beqz	$a2, .LBB6_57
@@ -2822,7 +2822,7 @@ DbRetrieve:                             # @DbRetrieve
 	pcaddu18i	$ra, %call36(strcollcmp)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s2, 0
-	bge	$a0, $s3, .LBB6_58
+	bgtz	$a0, .LBB6_58
 	b	.LBB6_54
 	.p2align	4, , 16
 .LBB6_57:                               #   in Loop: Header=BB6_55 Depth=1
@@ -2831,7 +2831,7 @@ DbRetrieve:                             # @DbRetrieve
 	move	$a2, $zero
 	blez	$a0, .LBB6_54
 .LBB6_58:                               #   in Loop: Header=BB6_55 Depth=1
-	addi.d	$fp, $s5, 1
+	addi.d	$fp, $s3, 1
 	addi.w	$a0, $fp, 0
 	addi.w	$a1, $s1, 0
 	bge	$a1, $a0, .LBB6_55
@@ -2873,8 +2873,8 @@ DbRetrieve:                             # @DbRetrieve
 	addi.d	$a1, $a1, %pc_lo12(.L.str.50)
 	addi.d	$a5, $sp, 88
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
-	move	$a4, $s8
+	move	$a3, $s8
+	move	$a4, $s7
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $fp, 1
@@ -2897,7 +2897,7 @@ DbRetrieve:                             # @DbRetrieve
 	pcaddu18i	$ra, %call36(FileNum)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	st.h	$a0, $s7, 0
+	st.h	$a0, $s5, 0
 	ori	$a0, $zero, 1
 	bnez	$a1, .LBB6_61
 # %bb.66:
@@ -2912,7 +2912,7 @@ DbRetrieve:                             # @DbRetrieve
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	ori	$a0, $zero, 1
-	st.h	$a1, $s7, 0
+	st.h	$a1, $s5, 0
 	b	.LBB6_61
 .Lfunc_end6:
 	.size	DbRetrieve, .Lfunc_end6-DbRetrieve

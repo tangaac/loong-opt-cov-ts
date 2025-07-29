@@ -1171,8 +1171,7 @@ VerifyMultiCoverage:                    # @VerifyMultiCoverage
 	bnez	$a0, .LBB9_19
 # %bb.4:                                # %.preheader
 	ld.w	$a0, $fp, 44
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_15
+	blez	$a0, .LBB9_15
 # %bb.5:
 	move	$a1, $s1
 	.p2align	4, , 16

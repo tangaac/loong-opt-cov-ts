@@ -91,7 +91,7 @@ pidiv:                                  # @pidiv
 .LBB0_14:                               # %.thread
 	ld.h	$a1, $fp, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $fp, 0
 	bnez	$a2, .LBB0_16
 # %bb.15:

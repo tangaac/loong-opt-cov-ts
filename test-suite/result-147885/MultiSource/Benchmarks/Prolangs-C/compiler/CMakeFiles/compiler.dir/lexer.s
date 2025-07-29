@@ -161,8 +161,8 @@ Number:                                 # @Number
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $s0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB1_3
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB1_3
 # %bb.1:
 	pcalau12i	$a1, %got_pc_hi20(stdin)
 	ld.d	$s0, $a1, %got_pc_lo12(stdin)
@@ -213,8 +213,8 @@ Number:                                 # @Number
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB1_15
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB1_15
 # %bb.7:
 	ld.d	$a1, $s0, 0
 	pcaddu18i	$ra, %call36(ungetc)
@@ -226,9 +226,8 @@ Number:                                 # @Number
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 4
 	movgr2fr.w	$fa0, $a0
-	ori	$a1, $zero, 1
 	ffint.s.w	$fa0, $fa0
-	blt	$a0, $a1, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.8:                                # %.lr.ph50.preheader
 	vldi	$vr1, -1244
 	vldi	$vr2, -1168
@@ -283,8 +282,8 @@ Number:                                 # @Number
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB1_27
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB1_27
 .LBB1_19:
 	ld.d	$a1, $s0, 0
 	pcaddu18i	$ra, %call36(ungetc)
@@ -331,8 +330,7 @@ Number:                                 # @Number
 	ori	$a0, $zero, 256
 	b	.LBB1_28
 .LBB1_26:                               # %.preheader42
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB1_29
+	bltz	$a1, .LBB1_29
 .LBB1_27:                               # %.loopexit43
 	pcalau12i	$a1, %got_pc_hi20(stdin)
 	ld.d	$a1, $a1, %got_pc_lo12(stdin)
@@ -353,16 +351,14 @@ Number:                                 # @Number
 .LBB1_29:                               # %.lr.ph54.preheader
 	fld.s	$fa0, $s1, %pc_lo12(NextFtokenval)
 	vldi	$vr1, -1244
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, 1
 	.p2align	4, , 16
 .LBB1_30:                               # %.lr.ph54
                                         # =>This Inner Loop Header: Depth=1
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	and	$a3, $a1, $a2
+	slli.d	$a2, $a1, 31
 	fdiv.s	$fa0, $fa0, $fa1
-	beqz	$a3, .LBB1_30
+	bgez	$a2, .LBB1_30
 	b	.LBB1_24
 .Lfunc_end1:
 	.size	Number, .Lfunc_end1-Number

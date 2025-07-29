@@ -324,10 +324,10 @@ LoadFunction:                           # @LoadFunction
 	pcaddu18i	$ra, %call36(luaM_realloc_)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 16
-	ori	$a1, $zero, 1
 	st.w	$s1, $s0, 76
-	blt	$s1, $a1, .LBB1_22
+	blez	$s1, .LBB1_22
 # %bb.19:                               # %.lr.ph.preheader
+	ori	$a1, $zero, 1
 	bne	$s1, $a1, .LBB1_37
 # %bb.20:
 	move	$a1, $zero
@@ -440,10 +440,10 @@ LoadFunction:                           # @LoadFunction
 	pcaddu18i	$ra, %call36(luaM_realloc_)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 48
-	ori	$a1, $zero, 1
 	st.w	$s1, $s0, 92
-	blt	$s1, $a1, .LBB1_64
+	blez	$s1, .LBB1_64
 # %bb.34:                               # %.lr.ph.preheader.i
+	ori	$a1, $zero, 1
 	bne	$s1, $a1, .LBB1_57
 # %bb.35:
 	move	$a1, $zero
@@ -875,8 +875,7 @@ LoadInt:                                # @LoadInt
 	jirl	$ra, $ra, 0
 .LBB4_2:                                # %LoadBlock.exit
 	ld.w	$a0, $sp, 12
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB4_4
+	bltz	$a0, .LBB4_4
 # %bb.3:
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

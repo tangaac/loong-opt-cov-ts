@@ -636,8 +636,7 @@ scan_token:                             # @scan_token
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_123
+	blez	$a0, .LBB2_123
 # %bb.58:                               # %.thread319
                                         #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a0, $sp, 80
@@ -1526,8 +1525,7 @@ scan_string:                            # @scan_string
 	b	.LBB4_13
 	.p2align	4, , 16
 .LBB4_11:                               #   in Loop: Header=BB4_5 Depth=1
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB4_54
+	blez	$fp, .LBB4_54
 # %bb.12:                               #   in Loop: Header=BB4_5 Depth=1
 	addi.w	$fp, $fp, -1
 	bne	$s7, $s5, .LBB4_4
@@ -1726,8 +1724,7 @@ scan_string:                            # @scan_string
 	move	$a0, $s0
 	b	.LBB4_16
 .LBB4_45:                               #   in Loop: Header=BB4_17 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB4_54
+	blez	$s4, .LBB4_54
 # %bb.46:                               #   in Loop: Header=BB4_17 Depth=1
 	addi.w	$s4, $s4, -1
 	ori	$a0, $zero, 41
@@ -1956,8 +1953,8 @@ scan_number:                            # @scan_number
 	ld.d	$a1, $a0, 0
 	slli.d	$a0, $s3, 1
 	ldx.hu	$a0, $a1, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB5_17
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB5_17
 # %bb.14:
 	ori	$a0, $zero, 46
 	addi.w	$s2, $zero, -18
@@ -1972,8 +1969,8 @@ scan_number:                            # @scan_number
 	ld.bu	$a0, $a0, 1
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB5_49
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB5_49
 	b	.LBB5_129
 .LBB5_17:
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
@@ -2134,8 +2131,8 @@ scan_number:                            # @scan_number
 	ld.d	$a1, $s1, 0
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB5_129
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB5_129
 .LBB5_49:
 	move	$s5, $zero
 	b	.LBB5_66
@@ -2214,8 +2211,8 @@ scan_number:                            # @scan_number
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a2, $a1, $a2
 	move	$s3, $zero
-	andi	$a2, $a2, 2048
-	bnez	$a2, .LBB5_70
+	slli.d	$a2, $a2, 52
+	bltz	$a2, .LBB5_70
 .LBB5_67:                               # %._crit_edge
 	sub.d	$a1, $zero, $s5
 	masknez	$a2, $s5, $s4
@@ -2259,10 +2256,10 @@ scan_number:                            # @scan_number
 	alsl.d	$a2, $s5, $a2, 1
 	addi.w	$a4, $s2, -48
 	add.d	$s5, $a2, $a4
-	andi	$a2, $a3, 2048
+	slli.d	$a2, $a3, 52
 	addi.w	$s3, $s3, -1
 	move	$s2, $a0
-	beqz	$a2, .LBB5_67
+	bgez	$a2, .LBB5_67
 .LBB5_73:                               # =>This Inner Loop Header: Depth=1
 	bgeu	$s5, $s6, .LBB5_77
 # %bb.74:                               #   in Loop: Header=BB5_73 Depth=1
@@ -2310,8 +2307,8 @@ scan_number:                            # @scan_number
 	addi.w	$a0, $s2, 0
 	slli.d	$a0, $a0, 1
 	ldx.hu	$a0, $a1, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB5_90
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB5_90
 # %bb.85:
 	move	$a0, $s2
 .LBB5_86:                               # %._crit_edge265
@@ -2351,10 +2348,10 @@ scan_number:                            # @scan_number
 	movgr2fr.w	$fa0, $a2
 	ffint.d.w	$fa0, $fa0
 	fmadd.d	$fs0, $fs0, $fa1, $fa0
-	andi	$a2, $a3, 2048
+	slli.d	$a2, $a3, 52
 	addi.w	$s3, $s3, -1
 	move	$s2, $a0
-	beqz	$a2, .LBB5_86
+	bgez	$a2, .LBB5_86
 .LBB5_93:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a2, $s0, 8
@@ -2455,15 +2452,14 @@ scan_number:                            # @scan_number
 	move	$a0, $s0
 	jirl	$ra, $a2, 0
 .LBB5_114:                              # %.thread
-	addi.w	$a1, $a0, 0
-	addi.w	$a0, $zero, -1
-	beq	$a1, $a0, .LBB5_116
+	addi.w	$a0, $a0, 0
+	addi.w	$a1, $zero, -1
+	beq	$a0, $a1, .LBB5_116
 .LBB5_115:
 	addi.w	$s2, $zero, -18
 	b	.LBB5_129
 .LBB5_116:
-	ori	$a1, $zero, 1
-	blt	$s3, $a1, .LBB5_121
+	blez	$s3, .LBB5_121
 # %bb.117:                              # %.preheader
 	ori	$a0, $zero, 7
 	bltu	$s3, $a0, .LBB5_120
@@ -2486,7 +2482,7 @@ scan_number:                            # @scan_number
 	fmul.d	$fs0, $fs0, $fa0
 	b	.LBB5_126
 .LBB5_121:
-	blt	$a0, $s3, .LBB5_126
+	bgez	$s3, .LBB5_126
 # %bb.122:                              # %.preheader236
 	addi.w	$a0, $zero, -7
 	bltu	$a0, $s3, .LBB5_125

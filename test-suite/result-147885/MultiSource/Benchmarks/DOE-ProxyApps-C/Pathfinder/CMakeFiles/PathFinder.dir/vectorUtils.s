@@ -164,8 +164,8 @@ IntVector_createFromString:             # @IntVector_createFromString
 	ext.w.b	$a2, $a1
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a0, $a2
-	andi	$a2, $a2, 2048
-	bnez	$a2, .LBB3_5
+	slli.d	$a2, $a2, 52
+	bltz	$a2, .LBB3_5
 	.p2align	4, , 16
 .LBB3_3:                                # %.preheader.i
                                         # =>This Inner Loop Header: Depth=1
@@ -176,10 +176,10 @@ IntVector_createFromString:             # @IntVector_createFromString
 	slli.d	$a2, $a1, 1
 	ldx.hu	$a2, $a0, $a2
 	addi.d	$s3, $s2, 1
-	andi	$a2, $a2, 2048
+	slli.d	$a2, $a2, 52
 	andi	$a1, $a1, 255
 	move	$s2, $s3
-	beqz	$a2, .LBB3_3
+	bgez	$a2, .LBB3_3
 	b	.LBB3_6
 .LBB3_5:
 	move	$s3, $s2
@@ -209,10 +209,10 @@ IntVector_createFromString:             # @IntVector_createFromString
 	ext.w.b	$a3, $a2
 	slli.d	$a3, $a3, 1
 	ldx.hu	$a3, $a1, $a3
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	move	$s2, $a0
 	move	$a0, $s3
-	bnez	$a3, .LBB3_12
+	bltz	$a3, .LBB3_12
 	.p2align	4, , 16
 .LBB3_9:                                # %.preheader.i33
                                         #   Parent Loop BB3_8 Depth=1
@@ -224,10 +224,10 @@ IntVector_createFromString:             # @IntVector_createFromString
 	slli.d	$a3, $a2, 1
 	ldx.hu	$a3, $a1, $a3
 	addi.d	$s3, $a0, 1
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	andi	$a2, $a2, 255
 	move	$a0, $s3
-	beqz	$a3, .LBB3_9
+	bgez	$a3, .LBB3_9
 # %bb.11:                               # %findNextNumber.exit36
                                         #   in Loop: Header=BB3_8 Depth=1
 	ld.w	$s5, $fp, 0
@@ -689,8 +689,7 @@ NodePtrVec_copy:                        # @NodePtrVec_copy
 	st.w	$s2, $a0, 4
 	st.w	$zero, $a0, 0
 	st.d	$fp, $a0, 8
-	ori	$a1, $zero, 1
-	bge	$s1, $a1, .LBB10_9
+	bgtz	$s1, .LBB10_9
 	b	.LBB10_16
 .LBB10_5:
 	move	$a0, $zero
@@ -711,8 +710,7 @@ NodePtrVec_copy:                        # @NodePtrVec_copy
 	st.w	$s1, $a0, 4
 	st.w	$zero, $a0, 0
 	st.d	$fp, $a0, 8
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB10_16
+	blez	$s1, .LBB10_16
 .LBB10_9:                               # %.lr.ph
 	ld.d	$a1, $s0, 8
 	ori	$a3, $zero, 4
@@ -869,8 +867,7 @@ NodePtrVec_pop:                         # @NodePtrVec_pop
 	beqz	$a0, .LBB12_3
 # %bb.1:
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB12_3
+	blez	$a1, .LBB12_3
 # %bb.2:
 	ld.d	$a2, $a0, 8
 	addi.w	$a3, $a1, -1
@@ -893,8 +890,7 @@ NodePtrVec_find:                        # @NodePtrVec_find
 	beqz	$a0, .LBB13_6
 # %bb.1:                                # %.preheader
 	ld.w	$a3, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB13_6
+	blez	$a3, .LBB13_6
 # %bb.2:                                # %.lr.ph
 	ld.d	$a2, $a0, 8
 	addi.d	$a3, $a3, -1
@@ -935,16 +931,15 @@ NodePtrVec_findReverse:                 # @NodePtrVec_findReverse
 	addi.d	$a2, $a0, 1
 	alsl.d	$a0, $a0, $a3, 3
 	addi.d	$a3, $a0, -8
-	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB14_4:                               # =>This Inner Loop Header: Depth=1
 	addi.w	$a2, $a2, -1
 	slt	$a0, $zero, $a2
-	blt	$a2, $a4, .LBB14_6
+	blez	$a2, .LBB14_6
 # %bb.5:                                #   in Loop: Header=BB14_4 Depth=1
-	ld.d	$a5, $a3, 0
+	ld.d	$a4, $a3, 0
 	addi.d	$a3, $a3, -8
-	bne	$a5, $a1, .LBB14_4
+	bne	$a4, $a1, .LBB14_4
 .LBB14_6:                               # %.loopexit
 	ret
 .LBB14_7:
@@ -1125,8 +1120,7 @@ NodeVecVec_delete:                      # @NodeVecVec_delete
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB17_8
+	blez	$a0, .LBB17_8
 # %bb.2:                                # %.lr.ph
 	move	$s1, $zero
 	move	$s2, $zero

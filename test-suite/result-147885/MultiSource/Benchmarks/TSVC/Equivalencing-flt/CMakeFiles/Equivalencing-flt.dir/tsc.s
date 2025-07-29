@@ -11949,8 +11949,7 @@ s421:                                   # @s421
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_13
+	blez	$a0, .LBB6_13
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(yy)
@@ -12158,16 +12157,15 @@ s1421:                                  # @s1421
 	pcalau12i	$a0, %pc_hi20(global_data)
 	addi.d	$fp, $a0, %pc_lo12(global_data)
 	lu12i.w	$a0, 46
-	ori	$a0, $a0, 3600
 	pcalau12i	$a1, %pc_hi20(ntimes)
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a1, $a1, %pc_lo12(ntimes)
+	ori	$a0, $a0, 3600
 	add.d	$a2, $fp, $a0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a2, $a0, %pc_lo12(xx)
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB7_11
+	blez	$a1, .LBB7_11
 # %bb.3:                                # %.preheader16.preheader
 	move	$s7, $zero
 	lu12i.w	$a0, 3
@@ -12356,8 +12354,7 @@ s422:                                   # @s422
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_9
+	blez	$a0, .LBB8_9
 # %bb.1:                                # %.preheader16.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -12564,8 +12561,7 @@ s423:                                   # @s423
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_12
+	blez	$a0, .LBB9_12
 # %bb.3:                                # %.preheader17.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(array)
@@ -12767,8 +12763,7 @@ s424:                                   # @s424
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_10
+	blez	$a0, .LBB10_10
 # %bb.1:                                # %.preheader17.preheader
 	move	$s7, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)

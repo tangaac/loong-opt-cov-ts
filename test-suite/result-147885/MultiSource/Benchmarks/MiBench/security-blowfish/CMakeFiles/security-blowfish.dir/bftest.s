@@ -1631,7 +1631,6 @@ test:                                   # @test
 	ori	$a0, $a0, 220
 	add.d	$a5, $sp, $a0
 	ori	$a6, $zero, 1
-	ori	$s5, $zero, 1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(BF_cfb64_encrypt)
 	jirl	$ra, $ra, 0
@@ -1667,7 +1666,7 @@ test:                                   # @test
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.14)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	blt	$s2, $s5, .LBB2_26
+	blez	$s2, .LBB2_26
 # %bb.24:                               # %.lr.ph.preheader
 	bstrpick.d	$s5, $s0, 30, 0
 	lu12i.w	$a0, 2
@@ -1834,7 +1833,7 @@ test:                                   # @test
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ori	$fp, $zero, 1
-	blt	$s2, $fp, .LBB2_33
+	blez	$s2, .LBB2_33
 # %bb.31:                               # %.lr.ph127.preheader
 	bstrpick.d	$s3, $s0, 30, 0
 	lu12i.w	$a0, 2

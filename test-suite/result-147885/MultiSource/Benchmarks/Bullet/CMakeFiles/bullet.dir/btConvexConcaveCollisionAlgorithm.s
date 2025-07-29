@@ -405,8 +405,7 @@ _ZN33btConvexConcaveCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjec
 	move	$fp, $a0
 	move	$a0, $s1
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB4_14
+	blez	$a3, .LBB4_14
 .LBB4_5:                                # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -449,14 +448,12 @@ _ZN33btConvexConcaveCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjec
 	bnez	$a5, .LBB4_11
 .LBB4_12:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a1, 24
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB4_16
+	bnez	$a4, .LBB4_16
 	b	.LBB4_17
 .LBB4_13:
 	move	$fp, $zero
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	bge	$a3, $a4, .LBB4_5
+	bgtz	$a3, .LBB4_5
 .LBB4_14:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a2, .LBB4_17
 # %bb.15:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
@@ -2119,8 +2116,7 @@ _ZNK15btTriangleShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_Z
 _ZNK15btTriangleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK15btTriangleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB22_3
+	blez	$a3, .LBB22_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$a4, $a0, 64
 	addi.d	$a1, $a1, 8

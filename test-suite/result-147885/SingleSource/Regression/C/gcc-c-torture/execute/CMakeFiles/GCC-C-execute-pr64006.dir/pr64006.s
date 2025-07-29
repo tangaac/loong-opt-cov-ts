@@ -5,8 +5,7 @@
 	.type	test,@function
 test:                                   # @test
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_5
+	blez	$a1, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a3, %pc_hi20(v)
 	ld.w	$a4, $a3, %pc_lo12(v)
@@ -16,7 +15,7 @@ test:                                   # @test
 .LBB0_2:                                #   in Loop: Header=BB0_3 Depth=1
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 8
-	beqz	$a1, .LBB0_5
+	beqz	$a1, .LBB0_6
 .LBB0_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a5, $a0, 0
@@ -28,7 +27,9 @@ test:                                   # @test
 	addi.d	$a4, $a4, 1
 	st.w	$a4, $a3, %pc_lo12(v)
 	b	.LBB0_2
-.LBB0_5:                                # %._crit_edge
+.LBB0_5:
+	ori	$a2, $zero, 1
+.LBB0_6:                                # %._crit_edge
 	move	$a0, $a2
 	ret
 .Lfunc_end0:

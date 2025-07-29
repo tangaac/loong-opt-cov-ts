@@ -186,31 +186,29 @@ check_params:                           # @check_params
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a1
 	move	$s0, $a0
 	beqz	$a0, .LBB5_9
 # %bb.1:                                # %.preheader47.preheader
-	addi.w	$s3, $zero, -1
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.1)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s2, $a0, %pc_lo12(.L.str)
-	move	$s4, $s0
+	move	$s3, $s0
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                #   in Loop: Header=BB5_3 Depth=1
-	ld.d	$s4, $s4, 8
-	beqz	$s4, .LBB5_9
+	ld.d	$s3, $s3, 8
+	beqz	$s3, .LBB5_9
 .LBB5_3:                                # %.preheader47
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_7 Depth 2
-	ld.d	$s5, $s4, 8
-	bnez	$s5, .LBB5_7
+	ld.d	$s4, $s3, 8
+	bnez	$s4, .LBB5_7
 .LBB5_4:                                # %._crit_edge
                                         #   in Loop: Header=BB5_3 Depth=1
-	ld.w	$a0, $s4, 0
-	blt	$s3, $a0, .LBB5_2
+	ld.w	$a0, $s3, 0
+	bgez	$a0, .LBB5_2
 # %bb.5:                                #   in Loop: Header=BB5_3 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(warn)
@@ -218,13 +216,13 @@ check_params:                           # @check_params
 	b	.LBB5_2
 	.p2align	4, , 16
 .LBB5_6:                                #   in Loop: Header=BB5_7 Depth=2
-	ld.d	$s5, $s5, 8
-	beqz	$s5, .LBB5_4
+	ld.d	$s4, $s4, 8
+	beqz	$s4, .LBB5_4
 .LBB5_7:                                # %.lr.ph
                                         #   Parent Loop BB5_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $s5, 0
-	ld.w	$a1, $s4, 0
+	ld.w	$a0, $s4, 0
+	ld.w	$a1, $s3, 0
 	bne	$a0, $a1, .LBB5_6
 # %bb.8:                                #   in Loop: Header=BB5_7 Depth=2
 	move	$a0, $s2
@@ -294,7 +292,6 @@ check_params:                           # @check_params
 	jirl	$ra, $ra, 0
 	b	.LBB5_20
 .LBB5_23:                               # %.thread
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -801,8 +798,7 @@ insert_id_rec:                          # @insert_id_rec
 	ld.d	$a1, $s1, 0
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB13_8
+	bgez	$a0, .LBB13_8
 # %bb.2:
 	addi.d	$a0, $s1, 24
 	move	$a1, $s0

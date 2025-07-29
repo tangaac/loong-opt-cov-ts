@@ -170,9 +170,8 @@ _Z10FindMethodyR11CStringBaseIwE:       # @_Z10FindMethodyR11CStringBaseIwE
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s5, $a1, .LBB2_10
+	blez	$s5, .LBB2_10
 # %bb.9:                                # %._crit_edge.thread.i.i
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -280,9 +279,8 @@ _Z11CreateCoderyR9CMyComPtrI15ICompressFilterERS_I14ICompressCoderERS_I15ICompre
 	move	$s2, $a5
 	jirl	$ra, $a2, 0
 	ld.bu	$a1, $s4, 36
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	bne	$a1, $a2, .LBB3_14
+	beqz	$a1, .LBB3_14
 # %bb.9:
 	beqz	$s1, .LBB3_11
 # %bb.10:
@@ -304,6 +302,7 @@ _Z11CreateCoderyR9CMyComPtrI15ICompressFilterERS_I14ICompressCoderERS_I15ICompre
 	b	.LBB3_30
 .LBB3_14:
 	ld.w	$a0, $s4, 32
+	ori	$a2, $zero, 1
 	bne	$a0, $a2, .LBB3_31
 # %bb.15:
 	beqz	$s1, .LBB3_17

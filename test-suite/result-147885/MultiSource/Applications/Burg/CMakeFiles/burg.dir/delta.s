@@ -202,8 +202,7 @@ CHECKDIVERGE:                           # @CHECKDIVERGE
 	pcalau12i	$a4, %got_pc_hi20(prevent_divergence)
 	ld.d	$a4, $a4, %got_pc_lo12(prevent_divergence)
 	ld.w	$a4, $a4, 0
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB6_8
+	blez	$a4, .LBB6_8
 # %bb.1:
 	pcalau12i	$a5, %pc_hi20(lexical)
 	ld.w	$a6, $a5, %pc_lo12(lexical)

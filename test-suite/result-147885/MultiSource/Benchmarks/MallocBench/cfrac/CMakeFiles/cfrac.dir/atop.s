@@ -34,17 +34,16 @@ atop:                                   # @atop
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
 	addi.d	$s1, $s0, -1
-	lu12i.w	$a1, 2
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	ld.b	$a2, $s1, 1
-	slli.d	$a3, $a2, 1
-	ldx.hu	$a3, $a0, $a3
-	and	$a3, $a3, $a1
+	ld.b	$a1, $s1, 1
+	slli.d	$a2, $a1, 1
+	ldx.hu	$a2, $a0, $a2
+	slli.d	$a2, $a2, 50
 	addi.d	$s1, $s1, 1
-	bnez	$a3, .LBB0_2
+	bltz	$a2, .LBB0_2
 # %bb.3:
-	andi	$s2, $a2, 255
+	andi	$s2, $a1, 255
 	addi.d	$a1, $s2, -45
 	sltui	$a1, $a1, 1
 	addi.d	$a2, $s2, -43
@@ -53,8 +52,8 @@ atop:                                   # @atop
 	ldx.bu	$s0, $s1, $s3
 	slli.d	$a1, $s0, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB0_28
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB0_28
 # %bb.4:
 	pcalau12i	$a0, %got_pc_hi20(pzero)
 	ld.d	$a0, $a0, %got_pc_lo12(pzero)
@@ -77,9 +76,9 @@ atop:                                   # @atop
 	ld.bu	$a2, $s3, -4
 	slli.d	$a1, $a2, 1
 	ldx.hu	$a1, $a0, $a1
-	andi	$a1, $a1, 2048
+	slli.d	$a1, $a1, 52
 	addi.w	$s0, $s0, -48
-	beqz	$a1, .LBB0_14
+	bgez	$a1, .LBB0_14
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a1, $s3, -3
 	slli.d	$a3, $a1, 1
@@ -87,9 +86,9 @@ atop:                                   # @atop
 	slli.d	$a4, $s0, 3
 	alsl.d	$a4, $s0, $a4, 1
 	add.d	$a2, $a4, $a2
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$s0, $a2, -48
-	beqz	$a3, .LBB0_15
+	bgez	$a3, .LBB0_15
 # %bb.7:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a2, $s3, -2
 	slli.d	$a3, $a2, 1
@@ -97,9 +96,9 @@ atop:                                   # @atop
 	slli.d	$a4, $s0, 3
 	alsl.d	$a4, $s0, $a4, 1
 	add.d	$a1, $a4, $a1
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$s0, $a1, -48
-	beqz	$a3, .LBB0_16
+	bgez	$a3, .LBB0_16
 # %bb.8:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a1, $s3, -1
 	slli.d	$a3, $a1, 1
@@ -107,9 +106,9 @@ atop:                                   # @atop
 	slli.d	$a4, $s0, 3
 	alsl.d	$a4, $s0, $a4, 1
 	add.d	$a2, $a4, $a2
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$s0, $a2, -48
-	beqz	$a3, .LBB0_17
+	bgez	$a3, .LBB0_17
 # %bb.9:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a2, $s3, 0
 	slli.d	$a3, $a2, 1
@@ -117,9 +116,9 @@ atop:                                   # @atop
 	slli.d	$a4, $s0, 3
 	alsl.d	$a4, $s0, $a4, 1
 	add.d	$a1, $a4, $a1
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$s0, $a1, -48
-	beqz	$a3, .LBB0_18
+	bgez	$a3, .LBB0_18
 # %bb.10:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a1, $s3, 1
 	slli.d	$a3, $a1, 1
@@ -127,9 +126,9 @@ atop:                                   # @atop
 	slli.d	$a4, $s0, 3
 	alsl.d	$a4, $s0, $a4, 1
 	add.d	$a2, $a4, $a2
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$s0, $a2, -48
-	beqz	$a3, .LBB0_19
+	bgez	$a3, .LBB0_19
 # %bb.11:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a2, $s3, 2
 	slli.d	$a3, $a2, 1
@@ -137,9 +136,9 @@ atop:                                   # @atop
 	slli.d	$a4, $s0, 3
 	alsl.d	$a4, $s0, $a4, 1
 	add.d	$a1, $a4, $a1
-	andi	$a3, $a3, 2048
+	slli.d	$a3, $a3, 52
 	addi.w	$s0, $a1, -48
-	beqz	$a3, .LBB0_20
+	bgez	$a3, .LBB0_20
 # %bb.12:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.bu	$a3, $s3, 3
 	slli.d	$a1, $a3, 1
@@ -147,9 +146,9 @@ atop:                                   # @atop
 	slli.d	$a1, $s0, 3
 	alsl.d	$a1, $s0, $a1, 1
 	add.d	$a1, $a1, $a2
-	andi	$a0, $a0, 2048
+	slli.d	$a0, $a0, 52
 	addi.w	$s0, $a1, -48
-	beqz	$a0, .LBB0_21
+	bgez	$a0, .LBB0_21
 # %bb.13:                               #   in Loop: Header=BB0_5 Depth=1
 	slli.d	$a2, $s0, 3
 	ld.d	$a0, $sp, 8
@@ -175,9 +174,9 @@ atop:                                   # @atop
 	ld.d	$a0, $fp, 0
 	slli.d	$a1, $s0, 1
 	ldx.hu	$a1, $a0, $a1
-	andi	$a1, $a1, 2048
+	slli.d	$a1, $a1, 52
 	addi.d	$s3, $s3, 9
-	bnez	$a1, .LBB0_5
+	bltz	$a1, .LBB0_5
 	b	.LBB0_26
 .LBB0_14:
 	ori	$a0, $zero, 10
@@ -268,7 +267,7 @@ atop:                                   # @atop
 # %bb.29:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_31
 # %bb.30:

@@ -979,8 +979,7 @@ DumpWords:                              # @DumpWords
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s0, %pc_hi20(cpwLast)
 	ld.w	$a0, $s0, %pc_lo12(cpwLast)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_4
+	blez	$a0, .LBB9_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	pcalau12i	$a0, %pc_hi20(apwSol)
@@ -1646,8 +1645,8 @@ main:                                   # @main
 	ext.w.b	$a2, $a1
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB14_5
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB14_5
 # %bb.10:                               #   in Loop: Header=BB14_6 Depth=1
 	ori	$a0, $zero, 63
 	bne	$a1, $a0, .LBB14_15

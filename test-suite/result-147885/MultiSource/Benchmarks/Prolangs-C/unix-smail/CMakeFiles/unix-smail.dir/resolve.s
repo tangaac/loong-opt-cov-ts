@@ -44,8 +44,7 @@ resolve:                                # @resolve
 	addi.d	$a2, $sp, 1080
 	pcaddu18i	$ra, %call36(ssplit)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_20
+	blez	$a0, .LBB0_20
 # %bb.3:
 	addi.w	$a1, $a0, -1
 	b	.LBB0_5
@@ -321,32 +320,31 @@ route:                                  # @route
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_10
 # %bb.2:
-	ori	$s7, $zero, 1
-	blt	$s4, $s7, .LBB1_18
+	blez	$s4, .LBB1_18
 # %bb.3:
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	addi.w	$s3, $s4, -1
-	addi.d	$s8, $sp, 1048
+	addi.d	$s7, $sp, 1048
 	slli.d	$a0, $s3, 3
-	ldx.d	$a0, $a0, $s8
+	ldx.d	$a0, $a0, $s7
 	pcaddu18i	$ra, %call36(isuucp)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
 	beqz	$a0, .LBB1_5
 # %bb.4:
-	alsl.d	$a0, $s3, $s8, 3
+	alsl.d	$a0, $s3, $s7, 3
 	ld.d	$a0, $a0, 0
 	st.b	$zero, $a0, -1
 	move	$s4, $s3
 	beqz	$s3, .LBB1_20
 .LBB1_5:                                # %.lr.ph.preheader
 	move	$s6, $zero
-	sltui	$s7, $s5, 1
+	sltui	$s8, $s5, 1
 	bstrpick.d	$s3, $s4, 31, 0
 	.p2align	4, , 16
 .LBB1_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s7, 0
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $sp, 24
 	move	$a2, $s2
@@ -354,7 +352,7 @@ route:                                  # @route
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_19
 # %bb.7:                                #   in Loop: Header=BB1_6 Depth=1
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s7, 0
 	addi.d	$a1, $sp, 24
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(getpath)
@@ -363,7 +361,7 @@ route:                                  # @route
 # %bb.8:                                #   in Loop: Header=BB1_6 Depth=1
 	addi.w	$s6, $s6, 1
 	addi.d	$s3, $s3, -1
-	addi.d	$s8, $s8, 8
+	addi.d	$s7, $s7, 8
 	bnez	$s3, .LBB1_6
 # %bb.9:                                # %._crit_edge.thread
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
@@ -445,6 +443,7 @@ route:                                  # @route
 	ret
 .LBB1_18:
 	move	$s6, $zero
+	ori	$s8, $zero, 1
 	beq	$s6, $s4, .LBB1_21
 	b	.LBB1_12
 .LBB1_19:
@@ -453,12 +452,12 @@ route:                                  # @route
 	b	.LBB1_12
 .LBB1_20:
 	move	$s4, $zero
-	move	$s7, $zero
+	move	$s8, $zero
 	move	$s6, $zero
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	bne	$s6, $s4, .LBB1_12
 .LBB1_21:
-	bnez	$s7, .LBB1_23
+	bnez	$s8, .LBB1_23
 .LBB1_22:
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)

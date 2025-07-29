@@ -502,10 +502,9 @@ score_and_get_first:                    # @score_and_get_first
 	move	$s1, $a2
 	move	$fp, $a1
 	move	$s2, $a0
-	ori	$a0, $zero, 1
 	beq	$s4, $s3, .LBB3_7
 # %bb.1:                                # %.preheader55
-	blt	$fp, $a0, .LBB3_11
+	blez	$fp, .LBB3_11
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	srli.d	$a0, $a3, 32
@@ -549,7 +548,7 @@ score_and_get_first:                    # @score_and_get_first
 	bnez	$s0, .LBB3_4
 	b	.LBB3_10
 .LBB3_7:                                # %.preheader
-	blt	$fp, $a0, .LBB3_11
+	blez	$fp, .LBB3_11
 # %bb.8:                                # %.lr.ph65.preheader
 	move	$s0, $zero
 	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
@@ -602,16 +601,16 @@ score_and_get_first:                    # @score_and_get_first
 	blt	$fp, $a0, .LBB3_17
 # %bb.13:
 	slli.d	$a0, $s3, 3
-	alsl.d	$a0, $s3, $a0, 2
-	ldx.d	$a1, $s2, $a0
-	add.d	$a0, $s2, $a0
+	alsl.d	$a1, $s3, $a0, 2
+	add.d	$a0, $s2, $a1
+	ldx.d	$a1, $s2, $a1
 	ld.w	$a2, $a0, 8
 	st.d	$a1, $sp, 8
-	ori	$a1, $zero, 1
 	st.w	$a2, $sp, 16
-	blt	$s3, $a1, .LBB3_16
+	blez	$s3, .LBB3_16
 # %bb.14:                               # %.lr.ph68.preheader
-	addi.d	$a2, $s3, 1
+	addi.d	$a1, $s3, 1
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB3_15:                               # %.lr.ph68
                                         # =>This Inner Loop Header: Depth=1
@@ -619,10 +618,10 @@ score_and_get_first:                    # @score_and_get_first
 	ld.d	$a4, $a0, -12
 	st.w	$a3, $a0, 8
 	addi.d	$a3, $a0, -12
-	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, -1
 	st.d	$a4, $a0, 0
 	move	$a0, $a3
-	bltu	$a1, $a2, .LBB3_15
+	bltu	$a2, $a1, .LBB3_15
 .LBB3_16:                               # %._crit_edge
 	ld.w	$a0, $sp, 16
 	ld.d	$a1, $sp, 8

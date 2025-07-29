@@ -939,8 +939,7 @@ _Z23BM_error_before_runningRN9benchmark5StateE: # @_Z23BM_error_before_runningRN
 	bnez	$a0, .LBB4_8
 # %bb.7:
 	ld.d	$a0, $fp, 0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB4_4
+	bgtz	$a0, .LBB4_4
 .LBB4_8:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -1297,7 +1296,7 @@ _Z23BM_error_during_runningRN9benchmark5StateE: # @_Z23BM_error_during_runningRN
 	bnez	$a0, .LBB7_21
 # %bb.8:                                #   in Loop: Header=BB7_2 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s1, .LBB7_3
+	bgtz	$a0, .LBB7_3
 	b	.LBB7_21
 .LBB7_9:                                # %._crit_edge.i.i
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -1367,7 +1366,7 @@ _Z23BM_error_during_runningRN9benchmark5StateE: # @_Z23BM_error_during_runningRN
 	bnez	$a0, .LBB7_21
 # %bb.20:                               #   in Loop: Header=BB7_14 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s0, .LBB7_15
+	bgtz	$a0, .LBB7_15
 .LBB7_21:                               # %.loopexit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -1610,20 +1609,19 @@ _Z22BM_error_after_runningRN9benchmark5StateE: # @_Z22BM_error_after_runningRN9b
 	beqz	$s0, .LBB9_7
 # %bb.2:
 	movgr2fr.d	$fa0, $zero
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 0
+	addi.d	$a0, $sp, 0
 	.p2align	4, , 16
 .LBB9_3:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $fp, 24
+	ld.bu	$a1, $fp, 24
 	fmov.d	$fa1, $fa0
-	bne	$a2, $a0, .LBB9_5
+	beqz	$a1, .LBB9_5
 # %bb.4:                                #   in Loop: Header=BB9_3 Depth=1
-	ld.d	$a2, $fp, 16
-	ld.d	$a3, $fp, 0
-	ld.d	$a4, $fp, 8
-	sub.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a4
-	movgr2fr.d	$fa1, $a2
+	ld.d	$a1, $fp, 16
+	ld.d	$a2, $fp, 0
+	ld.d	$a3, $fp, 8
+	sub.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
+	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa1
 .LBB9_5:                                # %_ZNK9benchmark5State10iterationsEv.exit
@@ -1795,7 +1793,7 @@ _Z21BM_error_while_pausedRN9benchmark5StateE: # @_Z21BM_error_while_pausedRN9ben
 	bnez	$a0, .LBB10_21
 # %bb.8:                                #   in Loop: Header=BB10_2 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s1, .LBB10_3
+	bgtz	$a0, .LBB10_3
 	b	.LBB10_21
 .LBB10_9:                               # %._crit_edge.i.i
 	move	$a0, $fp
@@ -1868,7 +1866,7 @@ _Z21BM_error_while_pausedRN9benchmark5StateE: # @_Z21BM_error_while_pausedRN9ben
 	bnez	$a0, .LBB10_21
 # %bb.20:                               #   in Loop: Header=BB10_14 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s0, .LBB10_15
+	bgtz	$a0, .LBB10_15
 .LBB10_21:                              # %.loopexit
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)

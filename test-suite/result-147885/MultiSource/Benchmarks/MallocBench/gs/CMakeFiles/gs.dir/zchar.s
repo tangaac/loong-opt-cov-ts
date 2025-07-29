@@ -82,8 +82,7 @@ zshow:                                  # @zshow
 	ld.hu	$a3, $s0, 10
 	pcaddu18i	$ra, %call36(gs_show_n_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_11
+	bltz	$a0, .LBB0_11
 # %bb.9:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a1, $a0, %got_pc_lo12(osp)
@@ -466,8 +465,7 @@ zashow:                                 # @zashow
 	fcvt.d.s	$fa1, $fa1
 	pcaddu18i	$ra, %call36(gs_ashow_n_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB4_12
+	bltz	$a0, .LBB4_12
 # %bb.10:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -601,8 +599,7 @@ zwidthshow:                             # @zwidthshow
 	fcvt.d.s	$fa1, $fa1
 	pcaddu18i	$ra, %call36(gs_widthshow_n_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB5_14
+	bltz	$a0, .LBB5_14
 # %bb.12:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -754,8 +751,7 @@ zawidthshow:                            # @zawidthshow
 	fcvt.d.s	$fa3, $fa3
 	pcaddu18i	$ra, %call36(gs_awidthshow_n_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB6_15
+	bltz	$a0, .LBB6_15
 # %bb.13:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a0, $a0, %got_pc_lo12(osp)
@@ -890,8 +886,7 @@ zkshow:                                 # @zkshow
 	pcaddu18i	$ra, %call36(gs_kshow_n_init)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB7_13
+	bltz	$a0, .LBB7_13
 # %bb.11:
 	addi.d	$a0, $s1, -16
 	vld	$vr0, $a0, 0
@@ -1013,8 +1008,7 @@ zstringwidth:                           # @zstringwidth
 	ld.hu	$a3, $s0, 10
 	pcaddu18i	$ra, %call36(gs_stringwidth_n_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB8_11
+	bltz	$a0, .LBB8_11
 # %bb.9:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a1, $a0, %got_pc_lo12(osp)
@@ -1180,8 +1174,7 @@ zcharpath:                              # @zcharpath
 	ld.hu	$a4, $s0, 0
 	pcaddu18i	$ra, %call36(gs_charpath_n_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_10
+	bltz	$a0, .LBB10_10
 # %bb.8:
 	pcalau12i	$a0, %got_pc_hi20(osp)
 	ld.d	$a1, $a0, %got_pc_lo12(osp)
@@ -1265,8 +1258,7 @@ zsetcachedevice:                        # @zsetcachedevice
 	jirl	$ra, $ra, 0
 	beqz	$fp, .LBB11_10
 # %bb.5:
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_12
+	bltz	$a0, .LBB11_12
 # %bb.6:
 	addi.w	$s0, $zero, -6
 .LBB11_7:
@@ -1521,22 +1513,20 @@ ztype1addpath:                          # @ztype1addpath
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gs_type1_interpret)
 	jirl	$ra, $ra, 0
-	ori	$s7, $zero, 1
-	blt	$a0, $s7, .LBB13_24
+	blez	$a0, .LBB13_24
 # %bb.12:                               # %.lr.ph.lr.ph
 	addi.d	$s1, $s5, 48
-	addi.d	$s8, $sp, 88
-	addi.d	$s3, $sp, 96
+	addi.d	$s2, $sp, 88
+	addi.d	$s8, $sp, 96
 	pcalau12i	$a1, %pc_hi20(.LJTI13_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI13_0)
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	addi.w	$a1, $zero, -15
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	addi.w	$s3, $zero, -15
 	addi.w	$a1, $zero, -21
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	addi.w	$a1, $zero, -10
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	ori	$s2, $zero, 52
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	ori	$s7, $zero, 52
                                         # implicit-def: $r5
                                         # kill: killed $r5
 	.p2align	4, , 16
@@ -1546,7 +1536,7 @@ ztype1addpath:                          # @ztype1addpath
 # %bb.14:                               #   in Loop: Header=BB13_13 Depth=1
 	ld.hu	$a1, $s5, 42
 	bstrpick.d	$a0, $a0, 31, 1
-	bgeu	$a0, $a1, .LBB13_31
+	bgeu	$a0, $a1, .LBB13_33
 # %bb.15:                               #   in Loop: Header=BB13_13 Depth=1
 	ld.d	$a1, $s5, 32
 	addi.w	$a0, $a0, 0
@@ -1556,12 +1546,12 @@ ztype1addpath:                          # @ztype1addpath
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s7, .LBB13_32
+	blez	$a0, .LBB13_31
 # %bb.16:                               #   in Loop: Header=BB13_13 Depth=1
 	ld.d	$a0, $sp, 56
 	ld.hu	$a1, $a0, 8
 	andi	$a1, $a1, 252
-	bne	$a1, $s2, .LBB13_33
+	bne	$a1, $s7, .LBB13_32
 # %bb.17:                               #   in Loop: Header=BB13_13 Depth=1
 	ld.d	$a1, $a0, 0
 	move	$a0, $fp
@@ -1572,13 +1562,13 @@ ztype1addpath:                          # @ztype1addpath
 .LBB13_18:                              #   in Loop: Header=BB13_13 Depth=1
 	ld.d	$a1, $s4, 0
 	ld.d	$a1, $a1, 256
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a1, $sp, 160
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gs_type1_pop)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 1
 	addi.d	$a0, $a0, -1
 	ori	$a1, $zero, 3
@@ -1591,18 +1581,18 @@ ztype1addpath:                          # @ztype1addpath
 	jr	$a0
 .LBB13_20:                              #   in Loop: Header=BB13_13 Depth=1
 	addi.d	$a1, $sp, 128
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(gx_path_current_point)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 144
 	ld.d	$a2, $sp, 152
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(gx_path_add_point)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 128
 	ld.d	$a2, $sp, 136
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	st.b	$a0, $a3, 137
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(gx_path_add_line)
@@ -1612,23 +1602,23 @@ ztype1addpath:                          # @ztype1addpath
 	pcaddu18i	$ra, %call36(gs_type1_pop)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
-	move	$a1, $s8
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(gs_type1_pop)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $sp, 160
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gs_type1_pop)
 	jirl	$ra, $ra, 0
-	st.d	$s3, $sp, 72
+	st.d	$s8, $sp, 72
 	b	.LBB13_23
 .LBB13_21:                              #   in Loop: Header=BB13_13 Depth=1
 	addi.d	$a1, $sp, 144
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(gx_path_current_point)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 137
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB13_23
 .LBB13_22:                              #   in Loop: Header=BB13_13 Depth=1
 	addi.d	$a1, $sp, 160
@@ -1637,14 +1627,14 @@ ztype1addpath:                          # @ztype1addpath
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 3
 	st.d	$a0, $sp, 80
-	st.d	$s8, $sp, 72
+	st.d	$s2, $sp, 72
 .LBB13_23:                              # %.outer
                                         #   in Loop: Header=BB13_13 Depth=1
 	move	$a0, $fp
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gs_type1_interpret)
 	jirl	$ra, $ra, 0
-	bge	$a0, $s7, .LBB13_13
+	bgtz	$a0, .LBB13_13
 .LBB13_24:                              # %.outer._crit_edge
 	ld.w	$a2, $s6, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
@@ -1701,10 +1691,9 @@ ztype1addpath:                          # @ztype1addpath
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB13_28
 .LBB13_32:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	b	.LBB13_28
-.LBB13_33:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+.LBB13_33:                              # %.thread
+	move	$a0, $s3
 	b	.LBB13_28
 .LBB13_34:                              # %.thread69
 	ld.w	$a2, $s6, 0

@@ -13,10 +13,9 @@
 	.type	_Z19initCheckboardImageiiPA2052_f,@function
 _Z19initCheckboardImageiiPA2052_f:      # @_Z19initCheckboardImageiiPA2052_f
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.1:
-	blt	$a1, $a3, .LBB0_6
+	blez	$a1, .LBB0_6
 # %bb.2:                                # %.lr.ph.us.preheader
 	move	$a3, $zero
 	move	$a4, $zero
@@ -152,8 +151,7 @@ _Z10printImageiiPA2048_fi:              # @_Z10printImageiiPA2048_fi
 	jirl	$ra, $ra, 0
 .Ltmp3:
 # %bb.5:                                # %_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode.exit.preheader
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_20
+	blez	$s1, .LBB1_20
 # %bb.6:                                # %.preheader.lr.ph
 	blez	$s3, .LBB1_17
 # %bb.7:                                # %.preheader.us.preheader
@@ -583,50 +581,49 @@ _Z16BENCHMARK_HARRISRN9benchmark5StateE: # @_Z16BENCHMARK_HARRISRN9benchmark5Sta
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
 	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB2_14
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	blez	$a0, .LBB2_14
 # %bb.8:                                # %._crit_edge
-	blt	$s6, $a0, .LBB2_14
+	blez	$s6, .LBB2_14
 # %bb.9:                                # %.preheader.us.preheader
-	pcalau12i	$a1, %pc_hi20(sum)
-	ld.w	$a2, $a1, %pc_lo12(sum)
-	move	$a3, $zero
-	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
+	pcalau12i	$a0, %pc_hi20(sum)
+	ld.w	$a1, $a0, %pc_lo12(sum)
+	move	$a2, $zero
+	ld.d	$a3, $sp, 96                    # 8-byte Folded Reload
+	bstrpick.d	$a3, $a3, 30, 0
+	ld.d	$a4, $sp, 80                    # 8-byte Folded Reload
 	bstrpick.d	$a4, $a4, 30, 0
-	ld.d	$a5, $sp, 80                    # 8-byte Folded Reload
-	bstrpick.d	$a5, $a5, 30, 0
-	move	$a6, $s2
-	lu12i.w	$t2, 2
+	move	$a5, $s2
+	lu12i.w	$t1, 2
 	.p2align	4, , 16
 .LBB2_10:                               # %.preheader.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_11 Depth 2
+	move	$a6, $a4
 	move	$a7, $a5
-	move	$t0, $a6
 	.p2align	4, , 16
 .LBB2_11:                               #   Parent Loop BB2_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	fld.s	$fa0, $t0, 0
-	addi.d	$a2, $a2, 1
+	fld.s	$fa0, $a7, 0
+	addi.d	$a1, $a1, 1
 	ftintrz.w.s	$fa0, $fa0
-	movfr2gr.s	$t1, $fa0
-	and	$a2, $a2, $t1
-	addi.d	$a7, $a7, -1
-	addi.d	$t0, $t0, 4
-	bnez	$a7, .LBB2_11
+	movfr2gr.s	$t0, $fa0
+	and	$a1, $a1, $t0
+	addi.d	$a6, $a6, -1
+	addi.d	$a7, $a7, 4
+	bnez	$a6, .LBB2_11
 # %bb.12:                               # %._crit_edge85.us
                                         #   in Loop: Header=BB2_10 Depth=1
-	addi.d	$a3, $a3, 1
-	add.d	$a6, $a6, $t2
-	bne	$a3, $a4, .LBB2_10
+	addi.d	$a2, $a2, 1
+	add.d	$a5, $a5, $t1
+	bne	$a2, $a3, .LBB2_10
 # %bb.13:                               # %._crit_edge91.split.us
-	st.w	$a2, $a1, %pc_lo12(sum)
+	st.w	$a1, $a0, %pc_lo12(sum)
 .LBB2_14:                               # %._crit_edge91
-	ld.bu	$a1, $s4, 24
-	bne	$a1, $a0, .LBB2_20
+	ld.bu	$a0, $s4, 24
+	beqz	$a0, .LBB2_20
 # %bb.15:
 	ld.d	$a0, $s4, 16
 	ld.d	$a1, $s4, 0
@@ -1106,9 +1103,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	or	$a0, $a0, $a1
 .LBB4_10:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $s1
-	blt	$a1, $a0, .LBB4_12
+	bgez	$a0, .LBB4_12
 .LBB4_11:                               # %.critedge
 	st.d	$s8, $sp, 32
 	pcalau12i	$a0, %pc_hi20(_ZStL19piecewise_construct)
@@ -1376,8 +1372,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB6_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB6_12
+	bltz	$a0, .LBB6_12
 	b	.LBB6_18
 .LBB6_4:
 	ld.d	$a0, $s1, 40
@@ -1459,8 +1454,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB6_16:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB6_28
+	bgez	$a0, .LBB6_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -1490,8 +1484,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB6_20:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB6_23
+	bltz	$a0, .LBB6_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB6_29
@@ -1506,10 +1499,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB6_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -1519,7 +1512,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB6_27
 .LBB6_26:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -1533,7 +1526,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB6_27:                               # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB6_31
+	bltz	$a0, .LBB6_31
 .LBB6_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -1688,10 +1681,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	bnez	$a0, .LBB8_3
 	b	.LBB8_2
 .LBB8_6:                                # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB8_9
+	bgez	$a1, .LBB8_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB8_14

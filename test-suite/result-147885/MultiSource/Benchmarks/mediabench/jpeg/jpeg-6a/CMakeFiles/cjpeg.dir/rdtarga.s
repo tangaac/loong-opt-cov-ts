@@ -458,8 +458,7 @@ read_rle_pixel:                         # @read_rle_pixel
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 100
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_2
+	blez	$a0, .LBB3_2
 # %bb.1:
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 100
@@ -498,8 +497,7 @@ read_rle_pixel:                         # @read_rle_pixel
 	st.w	$a0, $fp, 96
 .LBB3_9:
 	ld.w	$a0, $fp, 92
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_12
+	blez	$a0, .LBB3_12
 # %bb.10:                               # %.lr.ph
 	move	$s1, $zero
 	addi.d	$s2, $fp, 88
@@ -535,8 +533,7 @@ read_non_rle_pixel:                     # @read_non_rle_pixel
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 92
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_3
+	blez	$a0, .LBB4_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$s0, $fp, 24
 	move	$s1, $zero

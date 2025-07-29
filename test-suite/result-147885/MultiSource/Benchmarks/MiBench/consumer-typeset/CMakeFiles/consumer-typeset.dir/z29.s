@@ -248,10 +248,9 @@ SwitchScope:                            # @SwitchScope
 	addi.w	$a1, $a1, 1
 	bne	$a0, $fp, .LBB7_3
 # %bb.4:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB7_16
+	blez	$a1, .LBB7_16
 # %bb.5:
-	pcalau12i	$s5, %pc_hi20(suppress_scope)
+	pcalau12i	$s4, %pc_hi20(suppress_scope)
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -265,23 +264,23 @@ SwitchScope:                            # @SwitchScope
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.2)
 	pcalau12i	$a0, %pc_hi20(scope)
-	addi.d	$s4, $a0, %pc_lo12(scope)
+	addi.d	$s5, $a0, %pc_lo12(scope)
 	pcalau12i	$a0, %pc_hi20(npars_only)
 	addi.d	$s6, $a0, %pc_lo12(npars_only)
 	pcalau12i	$a0, %pc_hi20(vis_only)
 	addi.d	$fp, $a0, %pc_lo12(vis_only)
 	pcalau12i	$a0, %pc_hi20(body_ok)
-	addi.d	$s8, $a0, %pc_lo12(body_ok)
+	addi.d	$s0, $a0, %pc_lo12(body_ok)
 	b	.LBB7_7
 	.p2align	4, , 16
 .LBB7_6:                                # %PushScope.exit10
                                         #   in Loop: Header=BB7_7 Depth=1
 	slli.d	$a1, $a0, 3
-	stx.d	$s0, $s4, $a1
+	stx.d	$s8, $s5, $a1
 	slli.d	$a1, $a0, 2
 	stx.w	$zero, $s6, $a1
 	stx.w	$zero, $fp, $a1
-	stx.w	$zero, $s8, $a1
+	stx.w	$zero, $s0, $a1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s7, %pc_lo12(scope_top)
 	addi.d	$s2, $s2, -1
@@ -290,8 +289,8 @@ SwitchScope:                            # @SwitchScope
 	bgeu	$a0, $s2, .LBB7_16
 .LBB7_7:                                # %.lr.ph16
                                         # =>This Inner Loop Header: Depth=1
-	ld.bu	$a0, $s5, %pc_lo12(suppress_scope)
-	ld.d	$s0, $s3, 0
+	ld.bu	$a0, $s4, %pc_lo12(suppress_scope)
+	ld.d	$s8, $s3, 0
 	beqz	$a0, .LBB7_9
 # %bb.8:                                #   in Loop: Header=BB7_7 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -308,7 +307,7 @@ SwitchScope:                            # @SwitchScope
 	ori	$a1, $zero, 300
 	blt	$a0, $a1, .LBB7_6
 # %bb.10:                               #   in Loop: Header=BB7_7 Depth=1
-	addi.d	$a4, $s0, 32
+	addi.d	$a4, $s8, 32
 	ori	$a0, $zero, 29
 	ori	$a1, $zero, 2
 	move	$a2, $s1

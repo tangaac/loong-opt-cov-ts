@@ -56,8 +56,7 @@ main:                                   # @main
 	sltu	$t0, $zero, $a5
 	and	$a7, $a7, $t0
 	slti	$t0, $a6, 1
-	xor	$a7, $a7, $t0
-	bnez	$a7, .LBB3_2
+	bne	$a7, $t0, .LBB3_2
 # %bb.1:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -69,8 +68,7 @@ main:                                   # @main
 	sltu	$t0, $zero, $a5
 	and	$a7, $a7, $t0
 	slti	$t0, $a6, 1
-	xor	$a7, $a7, $t0
-	bnez	$a7, .LBB3_4
+	bne	$a7, $t0, .LBB3_4
 # %bb.3:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -81,9 +79,9 @@ main:                                   # @main
 	sltu	$a7, $zero, $a4
 	sltu	$t0, $zero, $a5
 	and	$a7, $a7, $t0
-	slti	$t0, $a6, 1
-	xor	$t0, $a7, $t0
-	bnez	$t0, .LBB3_6
+	slti	$t1, $a6, 1
+	xor	$t0, $a7, $t1
+	bne	$a7, $t1, .LBB3_6
 # %bb.5:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -96,9 +94,8 @@ main:                                   # @main
 	sltu	$t2, $zero, $a5
 	and	$t1, $t1, $t2
 	slti	$t2, $a6, 1
-	xor	$t1, $t1, $t2
 	st.w	$t0, $a7, %pc_lo12(g)
-	bnez	$t1, .LBB3_8
+	bne	$t1, $t2, .LBB3_8
 # %bb.7:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -110,8 +107,7 @@ main:                                   # @main
 	sltu	$t1, $zero, $a5
 	and	$t0, $t0, $t1
 	slti	$t1, $a6, 1
-	xor	$t0, $t0, $t1
-	bnez	$t0, .LBB3_10
+	bne	$t0, $t1, .LBB3_10
 # %bb.9:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -123,8 +119,7 @@ main:                                   # @main
 	sltu	$t1, $zero, $a5
 	and	$t0, $t0, $t1
 	slti	$t1, $a6, 1
-	xor	$t0, $t0, $t1
-	bnez	$t0, .LBB3_12
+	bne	$t0, $t1, .LBB3_12
 # %bb.11:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -136,8 +131,7 @@ main:                                   # @main
 	sltu	$t1, $zero, $a5
 	and	$t0, $t0, $t1
 	slti	$t1, $a6, 1
-	xor	$t0, $t0, $t1
-	bnez	$t0, .LBB3_14
+	bne	$t0, $t1, .LBB3_14
 # %bb.13:
 	st.w	$zero, $a1, 0
 	ld.w	$a4, $a2, %pc_lo12(k)
@@ -150,9 +144,9 @@ main:                                   # @main
 	sltu	$a3, $zero, $a4
 	sltu	$a4, $zero, $a5
 	and	$a3, $a3, $a4
-	slti	$a4, $a6, 1
-	xor	$a4, $a3, $a4
-	bnez	$a4, .LBB3_16
+	slti	$a5, $a6, 1
+	xor	$a4, $a3, $a5
+	bne	$a3, $a5, .LBB3_16
 # %bb.15:
 	ori	$a5, $zero, 1
 	st.h	$a5, $a0, %pc_lo12(c)

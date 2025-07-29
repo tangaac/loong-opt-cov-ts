@@ -60,9 +60,8 @@ cube_setup:                             # @cube_setup
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $s4, 48
-	blt	$s6, $a1, .LBB0_9
+	blez	$s6, .LBB0_9
 # %bb.4:                                # %.lr.ph
 	ld.d	$a1, $s4, 32
 	move	$fp, $zero
@@ -149,12 +148,12 @@ cube_setup:                             # @cube_setup
 	pcaddu18i	$ra, %call36(set_clear)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 4
-	ori	$s0, $zero, 1
 	st.d	$a0, $s4, 64
-	blt	$a1, $s0, .LBB0_28
+	blez	$a1, .LBB0_28
 # %bb.15:                               # %.lr.ph62.preheader
-	move	$s2, $zero
-	ori	$s3, $zero, 33
+	move	$s0, $zero
+	ori	$s2, $zero, 33
+	ori	$s3, $zero, 1
 	ori	$s6, $s1, 4092
 	b	.LBB0_17
 	.p2align	4, , 16
@@ -163,8 +162,8 @@ cube_setup:                             # @cube_setup
 	ld.d	$a0, $s4, 112
 	stx.w	$a4, $a0, $a1
 	ld.w	$a0, $s4, 4
-	addi.d	$s2, $s2, 1
-	bge	$s2, $a0, .LBB0_28
+	addi.d	$s0, $s0, 1
+	bge	$s0, $a0, .LBB0_28
 .LBB0_17:                               # %.lr.ph62
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_21 Depth 2
@@ -172,7 +171,7 @@ cube_setup:                             # @cube_setup
                                         #     Child Loop BB0_24 Depth 2
 	ld.w	$fp, $s4, 0
 	ori	$a0, $zero, 8
-	blt	$fp, $s3, .LBB0_19
+	blt	$fp, $s2, .LBB0_19
 # %bb.18:                               #   in Loop: Header=BB0_17 Depth=1
 	addi.d	$a0, $fp, -1
 	srli.d	$a0, $a0, 3
@@ -185,17 +184,17 @@ cube_setup:                             # @cube_setup
 	pcaddu18i	$ra, %call36(set_clear)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s4, 72
-	slli.d	$a2, $s2, 3
+	slli.d	$a2, $s0, 3
 	stx.d	$a0, $a1, $a2
 	ld.d	$a3, $s4, 16
 	ld.d	$a2, $s4, 24
-	slli.d	$a1, $s2, 2
+	slli.d	$a1, $s0, 2
 	ldx.w	$a4, $a3, $a1
 	ldx.w	$a3, $a2, $a1
 	blt	$a3, $a4, .LBB0_22
 # %bb.20:                               # %.lr.ph58.preheader
                                         #   in Loop: Header=BB0_17 Depth=1
-	alsl.d	$a2, $s2, $a2, 2
+	alsl.d	$a2, $s0, $a2, 2
 	addi.d	$a3, $a0, 4
 	.p2align	4, , 16
 .LBB0_21:                               # %.lr.ph58
@@ -205,7 +204,7 @@ cube_setup:                             # @cube_setup
 	srai.d	$a4, $a4, 5
 	slli.d	$a4, $a4, 2
 	ldx.w	$a6, $a3, $a4
-	sll.w	$a7, $s0, $a5
+	sll.w	$a7, $s3, $a5
 	or	$a6, $a6, $a7
 	stx.w	$a6, $a3, $a4
 	ld.w	$a6, $a2, 0
@@ -214,7 +213,7 @@ cube_setup:                             # @cube_setup
 .LBB0_22:                               # %._crit_edge59
                                         #   in Loop: Header=BB0_17 Depth=1
 	ld.w	$a2, $s4, 8
-	bge	$s2, $a2, .LBB0_26
+	bge	$s0, $a2, .LBB0_26
 # %bb.23:                               #   in Loop: Header=BB0_17 Depth=1
 	ld.d	$a3, $s4, 56
 	ld.wu	$a2, $a3, 0
@@ -232,7 +231,7 @@ cube_setup:                             # @cube_setup
 	addi.d	$a2, $a2, -1
 	addi.d	$a0, $a0, -4
 	addi.d	$a3, $a3, -4
-	bltu	$s0, $a2, .LBB0_24
+	bltu	$s3, $a2, .LBB0_24
 # %bb.25:                               #   in Loop: Header=BB0_17 Depth=1
 	move	$a4, $zero
 	b	.LBB0_16
@@ -611,8 +610,7 @@ setdown_cube:                           # @setdown_cube
 .LBB1_18:
 	ld.w	$a2, $fp, 4
 	ld.d	$a0, $fp, 72
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB1_23
+	blez	$a2, .LBB1_23
 # %bb.19:                               # %.lr.ph.preheader
 	move	$s0, $zero
 	move	$s1, $zero

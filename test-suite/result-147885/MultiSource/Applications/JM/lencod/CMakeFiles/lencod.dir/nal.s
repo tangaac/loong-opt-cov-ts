@@ -80,8 +80,7 @@ RBSPtoEBSP:                             # @RBSPtoEBSP
 	b	.LBB1_2
 .LBB1_6:                                # %.preheader
 	sub.w	$a0, $s1, $s2
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.7:                                # %.lr.ph43.preheader
 	move	$a1, $zero
 	pcalau12i	$a2, %got_pc_hi20(stats)

@@ -108,9 +108,8 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	move	$s6, $zero
-	ori	$s7, $zero, 0
-	lu32i.d	$s7, 1
-	ori	$s8, $zero, 43
+	ori	$s7, $zero, 43
+	ori	$s8, $zero, 45
 	.p2align	4, , 16
 .LBB0_11:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_15 Depth 2
@@ -124,12 +123,12 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	ld.w	$s3, $s2, 8
 	move	$a0, $zero
 	bstrpick.d	$a1, $s3, 31, 0
-	addi.d	$fp, $a1, 1
-	and	$a1, $fp, $s7
+	addi.d	$s4, $a1, 1
+	slli.d	$a1, $s4, 31
 	st.w	$zero, $sp, 32
-	bnez	$a1, .LBB0_14
+	bltz	$a1, .LBB0_14
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=1
-	addi.w	$a0, $fp, 0
+	addi.w	$a0, $s4, 0
 	slti	$a1, $s3, -1
 	slli.d	$a0, $a0, 2
 	maskeqz	$a2, $s5, $a1
@@ -143,7 +142,7 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
                                         #   in Loop: Header=BB0_11 Depth=1
 	st.d	$a0, $sp, 80
 	st.w	$zero, $a0, 0
-	st.w	$fp, $sp, 92
+	st.w	$s4, $sp, 92
 .LBB0_14:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i
                                         #   in Loop: Header=BB0_11 Depth=1
 	ld.d	$a1, $s2, 0
@@ -193,10 +192,9 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 # %bb.22:                               #   in Loop: Header=BB0_11 Depth=1
 	alsl.d	$a0, $s3, $a0, 2
 	ld.w	$a0, $a0, -4
-	beq	$a0, $s8, .LBB0_27
+	beq	$a0, $s7, .LBB0_27
 # %bb.23:                               #   in Loop: Header=BB0_11 Depth=1
-	ori	$a1, $zero, 45
-	bne	$a0, $a1, .LBB0_29
+	bne	$a0, $s8, .LBB0_29
 # %bb.24:                               #   in Loop: Header=BB0_11 Depth=1
 	move	$a1, $zero
 	b	.LBB0_28
@@ -244,12 +242,12 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	st.w	$zero, $sp, 88
 	st.w	$zero, $s2, 0
 	ld.w	$a0, $sp, 72
-	ld.w	$s4, $sp, 92
-	addi.w	$fp, $a0, 1
-	beq	$fp, $s4, .LBB0_37
+	ld.w	$fp, $sp, 92
+	addi.w	$s4, $a0, 1
+	beq	$s4, $fp, .LBB0_37
 # %bb.32:                               #   in Loop: Header=BB0_11 Depth=1
 	slti	$a0, $a0, -1
-	slli.d	$a1, $fp, 2
+	slli.d	$a1, $s4, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s5, $a0
 	or	$a0, $a0, $a1
@@ -260,8 +258,7 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 # %bb.33:                               # %.noexc57
                                         #   in Loop: Header=BB0_11 Depth=1
 	move	$s3, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB0_35
+	blez	$fp, .LBB0_35
 # %bb.34:                               # %._crit_edge.thread.i.i
                                         #   in Loop: Header=BB0_11 Depth=1
 	move	$a0, $s2
@@ -275,7 +272,7 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	st.d	$s3, $sp, 80
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s3, $a0
-	st.w	$fp, $sp, 92
+	st.w	$s4, $sp, 92
 	move	$s2, $s3
 .LBB0_37:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i53
                                         #   in Loop: Header=BB0_11 Depth=1
@@ -307,17 +304,17 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	move	$s2, $a0
 	ld.w	$s3, $sp, 88
 	bstrpick.d	$a0, $s3, 31, 0
-	addi.d	$fp, $a0, 1
-	and	$a0, $fp, $s7
+	addi.d	$s4, $a0, 1
+	slli.d	$a0, $s4, 31
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s2, 0
-	beqz	$a0, .LBB0_44
+	bgez	$a0, .LBB0_44
 # %bb.43:                               #   in Loop: Header=BB0_11 Depth=1
 	move	$a0, $zero
 	b	.LBB0_46
 	.p2align	4, , 16
 .LBB0_44:                               #   in Loop: Header=BB0_11 Depth=1
-	addi.w	$a0, $fp, 0
+	addi.w	$a0, $s4, 0
 	slti	$a1, $s3, -1
 	slli.d	$a0, $a0, 2
 	maskeqz	$a2, $s5, $a1
@@ -331,7 +328,7 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
                                         #   in Loop: Header=BB0_11 Depth=1
 	st.d	$a0, $s2, 0
 	st.w	$zero, $a0, 0
-	st.w	$fp, $s2, 12
+	st.w	$s4, $s2, 12
 .LBB0_46:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
                                         #   in Loop: Header=BB0_11 Depth=1
 	ld.d	$a1, $sp, 80
@@ -430,15 +427,15 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	bnez	$s0, .LBB0_64
 # %bb.59:
 	ld.d	$a0, $s3, 0
-	slli.d	$fp, $a0, 4
+	slli.d	$s0, $a0, 4
 	beqz	$a0, .LBB0_63
 # %bb.60:                               # %.preheader77.preheader
-	addi.d	$s0, $s3, -8
-	move	$s1, $fp
+	addi.d	$fp, $s3, -8
+	move	$s1, $s0
 	.p2align	4, , 16
 .LBB0_61:                               # %.preheader77
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a0, $s0, $s1
+	add.d	$a0, $fp, $s1
 .Ltmp60:
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
@@ -448,7 +445,7 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	addi.d	$s1, $s1, -16
 	bnez	$s1, .LBB0_61
 .LBB0_63:                               # %.loopexit78
-	addi.d	$a1, $fp, 8
+	addi.d	$a1, $s0, 8
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPvm)
 	jirl	$ra, $ra, 0
@@ -576,15 +573,15 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	jirl	$ra, $ra, 0
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a0, $s2, 0
-	slli.d	$fp, $a0, 4
+	slli.d	$s0, $a0, 4
 	beqz	$a0, .LBB0_93
 # %bb.90:                               # %.preheader.preheader
-	addi.d	$s0, $s2, -8
-	move	$s1, $fp
+	addi.d	$fp, $s2, -8
+	move	$s1, $s0
 	.p2align	4, , 16
 .LBB0_91:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$a0, $s0, $s1
+	add.d	$a0, $fp, $s1
 .Ltmp48:
 	pcaddu18i	$ra, %call36(_ZN8NWindows4NCOM12CPropVariant5ClearEv)
 	jirl	$ra, $ra, 0
@@ -594,7 +591,7 @@ _Z13SetPropertiesP8IUnknownRK13CObjectVectorI9CPropertyE: # @_Z13SetPropertiesP8
 	addi.d	$s1, $s1, -16
 	bnez	$s1, .LBB0_91
 .LBB0_93:                               # %.loopexit
-	addi.d	$a1, $fp, 8
+	addi.d	$a1, $s0, 8
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPvm)
 	jirl	$ra, $ra, 0
@@ -983,8 +980,7 @@ _ZN13CObjectVectorI11CStringBaseIwEE6DeleteEii: # @_ZN13CObjectVectorI11CStringB
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_7
+	blez	$s1, .LBB4_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -1074,11 +1070,9 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s1, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s1, $a0
+	slli.d	$a0, $s1, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB5_13
+	bgez	$a0, .LBB5_13
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB5_14

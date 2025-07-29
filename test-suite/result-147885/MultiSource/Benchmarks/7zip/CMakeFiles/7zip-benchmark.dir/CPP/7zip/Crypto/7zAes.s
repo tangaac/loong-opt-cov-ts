@@ -305,8 +305,7 @@ _ZN7NCrypto7NSevenZ13CKeyInfoCache4FindERNS0_8CKeyInfoE: # @_ZN7NCrypto7NSevenZ1
 	.cfi_offset 30, -80
 	move	$fp, $a0
 	ld.w	$a0, $a0, 20
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_37
+	blez	$a0, .LBB2_37
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $fp, 24
 	ld.w	$a6, $a1, 4
@@ -547,7 +546,7 @@ _ZN7NCrypto7NSevenZ13CKeyInfoCache4FindERNS0_8CKeyInfoE: # @_ZN7NCrypto7NSevenZ1
 	masknez	$a2, $s2, $a2
 	or	$s4, $a0, $a2
 	st.d	$s0, $a1, 0
-	blt	$s4, $s2, .LBB2_38
+	blez	$s4, .LBB2_38
 # %bb.31:                               # %.lr.ph.i22
 	slli.d	$a0, $s5, 3
 	addi.d	$s5, $a0, 8
@@ -673,8 +672,7 @@ _ZN13CObjectVectorIN7NCrypto7NSevenZ8CKeyInfoEE6DeleteEii: # @_ZN13CObjectVector
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB3_7
+	blez	$s1, .LBB3_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3

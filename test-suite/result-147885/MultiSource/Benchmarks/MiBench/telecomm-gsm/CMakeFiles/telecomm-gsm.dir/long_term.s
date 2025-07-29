@@ -80,14 +80,15 @@ Gsm_Long_Term_Predictor:                # @Gsm_Long_Term_Predictor
 	vreplvei.h	$vr1, $vr0, 1
 	vmax.h	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a0, $vr0, 0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
 	move	$s3, $a5
 	move	$s1, $a4
 	move	$s0, $a3
 	move	$s2, $a2
-	beqz	$a0, .LBB0_2
+	beqz	$a1, .LBB0_2
 # %bb.1:
+	bstrpick.d	$a0, $a0, 15, 0
 	slli.d	$a0, $a0, 16
 	pcaddu18i	$ra, %call36(gsm_norm)
 	jirl	$ra, $ra, 0

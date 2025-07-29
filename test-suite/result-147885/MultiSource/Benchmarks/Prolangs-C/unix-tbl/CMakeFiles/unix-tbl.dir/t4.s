@@ -112,11 +112,10 @@ getspec:                                # @getspec
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 0
-	blt	$a0, $fp, .LBB0_7
+	blez	$a0, .LBB0_7
 # %bb.5:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -173,7 +172,7 @@ readspec:                               # @readspec
 	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$s6, $zero
-	move	$s2, $zero
+	move	$s7, $zero
 	pcalau12i	$a0, %got_pc_hi20(tab)
 	ld.d	$a0, $a0, %got_pc_lo12(tab)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
@@ -211,13 +210,13 @@ readspec:                               # @readspec
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	addi.d	$s3, $sp, 94
+	addi.d	$s2, $sp, 94
 	b	.LBB1_5
 .LBB1_1:                                #   in Loop: Header=BB1_5 Depth=1
 	addi.w	$a0, $a0, -32
 .LBB1_2:                                #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $zero
-	move	$s2, $fp
+	move	$s7, $fp
 	beqz	$s4, .LBB1_5
 # %bb.3:                                #   in Loop: Header=BB1_5 Depth=1
 	ld.w	$a1, $s1, 0
@@ -236,7 +235,7 @@ readspec:                               # @readspec
 .LBB1_4:                                # %.backedge
                                         #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 .LBB1_5:                                # %.backedge
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_68 Depth 2
@@ -244,7 +243,7 @@ readspec:                               # @readspec
                                         #     Child Loop BB1_29 Depth 2
                                         #     Child Loop BB1_51 Depth 2
                                         #     Child Loop BB1_8 Depth 2
-	move	$fp, $s2
+	move	$fp, $s7
 	move	$s4, $s6
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
@@ -256,23 +255,23 @@ readspec:                               # @readspec
 	ldx.w	$a1, $s0, $a1
 	add.d	$a2, $s0, $a1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	ori	$a1, $zero, 45
 	jr	$a2
 .LBB1_7:                                #   in Loop: Header=BB1_5 Depth=1
 	st.b	$a0, $sp, 94
-	ori	$s2, $zero, 1
+	ori	$s3, $zero, 1
 	.p2align	4, , 16
 .LBB1_8:                                #   Parent Loop BB1_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	stx.b	$a0, $s2, $s3
+	stx.b	$a0, $s3, $s2
 	ext.w.b	$a0, $a0
 	pcaddu18i	$ra, %call36(digit)
 	jirl	$ra, $ra, 0
-	addi.d	$s2, $s2, 1
+	addi.d	$s3, $s3, 1
 	bnez	$a0, .LBB1_8
 # %bb.9:                                #   in Loop: Header=BB1_5 Depth=1
 	move	$a0, $s5
@@ -280,8 +279,8 @@ readspec:                               # @readspec
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(sep)
 	ld.d	$a0, $a0, %got_pc_lo12(sep)
-	alsl.d	$s2, $s4, $a0, 2
-	ld.w	$s5, $s2, -4
+	alsl.d	$s3, $s4, $a0, 2
+	ld.w	$s5, $s3, -4
 	addi.d	$a0, $sp, 94
 	pcaddu18i	$ra, %call36(numb)
 	jirl	$ra, $ra, 0
@@ -289,7 +288,7 @@ readspec:                               # @readspec
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(max)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s2, -4
+	st.w	$a0, $s3, -4
 	b	.LBB1_4
 .LBB1_10:                               # %.thread272
                                         #   in Loop: Header=BB1_5 Depth=1
@@ -300,8 +299,8 @@ readspec:                               # @readspec
 	ld.w	$a1, $s1, 0
 	slli.d	$a2, $a1, 6
 	alsl.d	$a2, $a1, $a2, 4
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	add.d	$a2, $s2, $a2
+	ld.d	$s3, $sp, 72                    # 8-byte Folded Reload
+	add.d	$a2, $s3, $a2
 	slli.d	$a3, $s4, 2
 	stx.w	$a0, $a2, $a3
 	ori	$a2, $zero, 115
@@ -322,7 +321,7 @@ readspec:                               # @readspec
 	addi.w	$a0, $s4, -1
 	slli.d	$a2, $a1, 6
 	alsl.d	$a1, $a1, $a2, 4
-	add.d	$a1, $s2, $a1
+	add.d	$a1, $s3, $a1
 	slli.d	$fp, $a0, 2
 	ldx.w	$a0, $a1, $fp
 	ori	$a1, $zero, 110
@@ -343,7 +342,7 @@ readspec:                               # @readspec
 	ld.w	$a0, $s1, 0
 	slli.d	$a1, $a0, 6
 	alsl.d	$a0, $a0, $a1, 4
-	add.d	$a0, $s2, $a0
+	add.d	$a0, $s3, $a0
 	ori	$a1, $zero, 108
 	stx.w	$a1, $a0, $fp
 	b	.LBB1_23
@@ -358,7 +357,7 @@ readspec:                               # @readspec
 	ld.w	$a0, $s1, 0
 	slli.d	$a1, $a0, 6
 	alsl.d	$a0, $a0, $a1, 4
-	add.d	$a0, $s2, $a0
+	add.d	$a0, $s3, $a0
 	ori	$a1, $zero, 99
 	stx.w	$a1, $a0, $fp
 	b	.LBB1_23
@@ -378,7 +377,7 @@ readspec:                               # @readspec
 .LBB1_23:                               # %.critedge.thread
                                         #   in Loop: Header=BB1_5 Depth=1
 	addi.w	$s6, $s4, 1
-	ori	$s2, $zero, 1
+	ori	$s7, $zero, 1
 	ori	$a0, $zero, 19
 	blt	$s4, $a0, .LBB1_5
 # %bb.24:                               #   in Loop: Header=BB1_5 Depth=1
@@ -389,9 +388,8 @@ readspec:                               # @readspec
 	b	.LBB1_5
 .LBB1_25:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_5
+	move	$s7, $fp
+	blez	$s4, .LBB1_5
 # %bb.26:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.w	$a0, $s1, 0
 	addi.d	$a1, $s4, -1
@@ -401,7 +399,7 @@ readspec:                               # @readspec
 	slli.d	$a3, $a0, 6
 	alsl.d	$a0, $a0, $a3, 4
 	add.d	$a0, $a2, $a0
-	alsl.d	$s2, $a1, $a0, 2
+	alsl.d	$s6, $a1, $a0, 2
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
@@ -409,8 +407,8 @@ readspec:                               # @readspec
 	beqz	$a1, .LBB1_99
 # %bb.27:                               # %.lr.ph218
                                         #   in Loop: Header=BB1_5 Depth=1
-	move	$s6, $zero
-	move	$s8, $s2
+	move	$s7, $zero
+	move	$s8, $s6
 	b	.LBB1_29
 	.p2align	4, , 16
 .LBB1_28:                               #   in Loop: Header=BB1_29 Depth=2
@@ -422,7 +420,7 @@ readspec:                               # @readspec
 	beqz	$a1, .LBB1_103
 .LBB1_29:                               #   Parent Loop BB1_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$s7, $s2, $s6
+	add.d	$s3, $s6, $s7
 	ori	$a1, $zero, 10
 	beq	$a0, $a1, .LBB1_104
 # %bb.30:                               #   in Loop: Header=BB1_29 Depth=2
@@ -436,7 +434,7 @@ readspec:                               # @readspec
 	ori	$a1, $zero, 43
 	bne	$a0, $a1, .LBB1_34
 .LBB1_33:                               #   in Loop: Header=BB1_29 Depth=2
-	bgeu	$s2, $s7, .LBB1_35
+	bgeu	$s6, $s3, .LBB1_35
 	b	.LBB1_101
 	.p2align	4, , 16
 .LBB1_34:                               #   in Loop: Header=BB1_29 Depth=2
@@ -447,10 +445,10 @@ readspec:                               # @readspec
 	move	$a0, $s5
 	beqz	$a1, .LBB1_101
 .LBB1_35:                               #   in Loop: Header=BB1_29 Depth=2
-	addi.d	$s6, $s6, 1
-	st.b	$a0, $s7, 0
+	addi.d	$s7, $s7, 1
+	st.b	$a0, $s3, 0
 	ori	$a0, $zero, 5
-	blt	$s6, $a0, .LBB1_28
+	blt	$s7, $a0, .LBB1_28
 # %bb.36:                               #   in Loop: Header=BB1_29 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.16)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.16)
@@ -459,7 +457,7 @@ readspec:                               # @readspec
 	b	.LBB1_28
 .LBB1_37:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $zero
-	move	$s2, $fp
+	move	$s7, $fp
 	beqz	$s4, .LBB1_5
 # %bb.38:                               # %.peel.begin302
                                         #   in Loop: Header=BB1_5 Depth=1
@@ -485,21 +483,21 @@ readspec:                               # @readspec
 	beqz	$a0, .LBB1_117
 # %bb.41:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	beq	$a0, $a3, .LBB1_5
 # %bb.42:                               #   in Loop: Header=BB1_5 Depth=1
 	ori	$a1, $zero, 40
 	beq	$s5, $a1, .LBB1_45
 # %bb.43:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	ori	$a1, $zero, 32
 	beq	$a0, $a1, .LBB1_5
 # %bb.44:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	beq	$a0, $a1, .LBB1_5
 .LBB1_45:                               #   in Loop: Header=BB1_5 Depth=1
 	ori	$a1, $zero, 10
@@ -507,16 +505,15 @@ readspec:                               # @readspec
 .LBB1_46:                               # %.loopexit305
                                         #   in Loop: Header=BB1_5 Depth=1
 	ori	$a0, $zero, 10
-	move	$s2, $a3
+	move	$s3, $a3
 	pcaddu18i	$ra, %call36(un1getc)
 	jirl	$ra, $ra, 0
-	move	$a3, $s2
+	move	$a3, $s3
 	b	.LBB1_117
 .LBB1_47:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_5
+	move	$s7, $fp
+	blez	$s4, .LBB1_5
 # %bb.48:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.w	$a0, $s1, 0
 	addi.d	$a1, $s4, -1
@@ -526,7 +523,7 @@ readspec:                               # @readspec
 	slli.d	$a3, $a0, 6
 	alsl.d	$a0, $a0, $a3, 4
 	add.d	$a0, $a2, $a0
-	alsl.d	$s7, $a1, $a0, 2
+	alsl.d	$s3, $a1, $a0, 2
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
 	move	$s6, $a0
@@ -534,8 +531,8 @@ readspec:                               # @readspec
 	beqz	$a0, .LBB1_100
 # %bb.49:                               # %.lr.ph234
                                         #   in Loop: Header=BB1_5 Depth=1
-	move	$s2, $zero
-	move	$s8, $s7
+	move	$s7, $zero
+	move	$s8, $s3
 	b	.LBB1_51
 	.p2align	4, , 16
 .LBB1_50:                               #   in Loop: Header=BB1_51 Depth=2
@@ -547,7 +544,7 @@ readspec:                               # @readspec
 	beqz	$a0, .LBB1_105
 .LBB1_51:                               #   Parent Loop BB1_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.d	$s5, $s7, $s2
+	add.d	$s5, $s3, $s7
 	ori	$a0, $zero, 10
 	beq	$s6, $a0, .LBB1_106
 # %bb.52:                               #   in Loop: Header=BB1_51 Depth=2
@@ -561,7 +558,7 @@ readspec:                               # @readspec
 	ori	$a0, $zero, 43
 	bne	$s6, $a0, .LBB1_56
 .LBB1_55:                               #   in Loop: Header=BB1_51 Depth=2
-	bgeu	$s7, $s5, .LBB1_57
+	bgeu	$s3, $s5, .LBB1_57
 	b	.LBB1_102
 	.p2align	4, , 16
 .LBB1_56:                               #   in Loop: Header=BB1_51 Depth=2
@@ -570,10 +567,10 @@ readspec:                               # @readspec
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_102
 .LBB1_57:                               #   in Loop: Header=BB1_51 Depth=2
-	addi.d	$s2, $s2, 1
+	addi.d	$s7, $s7, 1
 	st.b	$s6, $s5, 0
 	ori	$a0, $zero, 5
-	blt	$s2, $a0, .LBB1_50
+	blt	$s7, $a0, .LBB1_50
 # %bb.58:                               #   in Loop: Header=BB1_51 Depth=2
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
@@ -582,9 +579,8 @@ readspec:                               # @readspec
 	b	.LBB1_50
 .LBB1_59:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_5
+	move	$s7, $fp
+	blez	$s4, .LBB1_5
 # %bb.60:                               #   in Loop: Header=BB1_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(evenup)
 	ld.d	$a0, $a0, %got_pc_lo12(evenup)
@@ -597,9 +593,8 @@ readspec:                               # @readspec
 	b	.LBB1_4
 .LBB1_61:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_5
+	move	$s7, $fp
+	blez	$s4, .LBB1_5
 # %bb.62:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.w	$a0, $s1, 0
 	pcalau12i	$a1, %got_pc_hi20(ctop)
@@ -612,9 +607,8 @@ readspec:                               # @readspec
 	b	.LBB1_65
 .LBB1_63:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_5
+	move	$s7, $fp
+	blez	$s4, .LBB1_5
 # %bb.64:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.w	$a0, $s1, 0
 	pcalau12i	$a1, %got_pc_hi20(ctop)
@@ -635,30 +629,30 @@ readspec:                               # @readspec
 	addi.w	$a1, $s4, -1
 	slli.d	$a2, $a1, 3
 	alsl.d	$a1, $a1, $a2, 1
-	add.d	$s2, $a0, $a1
+	add.d	$s5, $a0, $a1
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_86
 # %bb.67:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_5 Depth=1
 	move	$s8, $zero
-	addi.d	$s6, $s2, 1
-	ori	$s5, $zero, 1
-	ori	$s7, $zero, 40
+	addi.d	$s7, $s5, 1
+	ori	$s6, $zero, 1
+	ori	$s3, $zero, 40
 	.p2align	4, , 16
 .LBB1_68:                               # %.lr.ph
                                         #   Parent Loop BB1_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bne	$a0, $s7, .LBB1_92
+	bne	$a0, $s3, .LBB1_92
 # %bb.69:                               # %.outer.loopexit
                                         #   in Loop: Header=BB1_68 Depth=2
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
-	move	$s5, $zero
+	move	$s6, $zero
 	ori	$s8, $zero, 41
 	bnez	$a0, .LBB1_68
 # %bb.70:                               #   in Loop: Header=BB1_5 Depth=1
-	move	$s5, $zero
+	move	$s6, $zero
 	move	$a0, $zero
 	b	.LBB1_87
 .LBB1_71:                               #   in Loop: Header=BB1_5 Depth=1
@@ -672,7 +666,7 @@ readspec:                               # @readspec
 	addi.d	$a2, $a2, 1
 	stx.w	$a2, $a0, $a1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	bnez	$s4, .LBB1_5
 # %bb.72:                               #   in Loop: Header=BB1_5 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(left1flg)
@@ -680,16 +674,16 @@ readspec:                               # @readspec
 	move	$s6, $zero
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 0
-	move	$s2, $fp
+	move	$s7, $fp
 	b	.LBB1_5
 .LBB1_73:                               #   in Loop: Header=BB1_5 Depth=1
-	move	$s2, $zero
+	move	$s7, $zero
 	move	$s6, $s4
 	beqz	$fp, .LBB1_5
 .LBB1_74:                               #   in Loop: Header=BB1_5 Depth=1
-	move	$s2, $a0
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.w	$a0, $s5, 0
+	move	$s5, $a0
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.w	$a0, $s3, 0
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(max)
 	jirl	$ra, $ra, 0
@@ -700,18 +694,17 @@ readspec:                               # @readspec
 	add.d	$a2, $a3, $a2
 	slli.d	$a3, $a0, 2
 	ldx.w	$a2, $a2, $a3
-	st.w	$a0, $s5, 0
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB1_76
+	st.w	$a0, $s3, 0
+	blez	$a2, .LBB1_76
 # %bb.75:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a2, $a3, 0
 	addi.w	$a0, $a0, 1
-	st.w	$a0, $s5, 0
+	st.w	$a0, $s3, 0
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a3, 0
 .LBB1_76:                               #   in Loop: Header=BB1_5 Depth=1
-	move	$a2, $s2
+	move	$a2, $s5
 	beqz	$fp, .LBB1_78
 # %bb.77:                               #   in Loop: Header=BB1_5 Depth=1
 	addi.w	$a1, $a1, 1
@@ -724,8 +717,8 @@ readspec:                               # @readspec
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	move	$a2, $s2
-	ld.w	$a0, $s5, 0
+	move	$a2, $s5
+	ld.w	$a0, $s3, 0
 	ld.w	$a1, $s1, 0
 .LBB1_80:                               #   in Loop: Header=BB1_5 Depth=1
 	beqz	$a0, .LBB1_83
@@ -733,7 +726,7 @@ readspec:                               # @readspec
 	beqz	$a1, .LBB1_83
 # %bb.82:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $zero
-	move	$s2, $zero
+	move	$s7, $zero
 	ori	$a0, $zero, 46
 	bne	$a2, $a0, .LBB1_5
 	b	.LBB1_121
@@ -741,9 +734,9 @@ readspec:                               # @readspec
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	move	$a2, $s2
+	move	$a2, $s5
 	move	$s6, $zero
-	move	$s2, $zero
+	move	$s7, $zero
 	ori	$a0, $zero, 46
 	bne	$a2, $a0, .LBB1_5
 	b	.LBB1_121
@@ -751,7 +744,7 @@ readspec:                               # @readspec
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	beq	$a0, $a1, .LBB1_5
 # %bb.85:                               #   in Loop: Header=BB1_5 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -760,28 +753,28 @@ readspec:                               # @readspec
 	b	.LBB1_4
 .LBB1_86:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$a0, $zero
-	ori	$s5, $zero, 1
+	ori	$s6, $zero, 1
 .LBB1_87:                               # %.outer._crit_edge
                                         #   in Loop: Header=BB1_5 Depth=1
-	move	$s6, $s2
+	move	$s7, $s5
 .LBB1_88:                               # %.outer._crit_edge
                                         #   in Loop: Header=BB1_5 Depth=1
-	sub.d	$a1, $s6, $s2
-	st.b	$zero, $s6, 0
+	sub.d	$a1, $s7, $s5
+	st.b	$zero, $s7, 0
 	ori	$a2, $zero, 11
 	blt	$a1, $a2, .LBB1_90
 # %bb.89:                               #   in Loop: Header=BB1_5 Depth=1
 	pcalau12i	$a1, %pc_hi20(.L.str.17)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.17)
-	move	$s2, $a0
+	move	$s3, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	move	$a0, $s2
+	move	$a0, $s3
 .LBB1_90:                               #   in Loop: Header=BB1_5 Depth=1
-	andi	$a1, $s5, 1
+	andi	$a1, $s6, 1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	beqz	$a1, .LBB1_5
 # %bb.91:                               #   in Loop: Header=BB1_5 Depth=1
 	pcaddu18i	$ra, %call36(un1getc)
@@ -792,10 +785,10 @@ readspec:                               # @readspec
 # %bb.93:                               #   in Loop: Header=BB1_5 Depth=1
 	addi.w	$a1, $a0, -58
 	sltui	$a1, $a1, -10
-	and	$a1, $s5, $a1
+	and	$a1, $s6, $a1
 	bnez	$a1, .LBB1_87
 # %bb.94:                               #   in Loop: Header=BB1_5 Depth=1
-	st.b	$a0, $s2, 0
+	st.b	$a0, $s5, 0
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_120
@@ -808,26 +801,26 @@ readspec:                               # @readspec
                                         #   in Loop: Header=BB1_95 Depth=2
 	addi.w	$a1, $a0, -58
 	sltui	$a1, $a1, -10
-	and	$a1, $s5, $a1
+	and	$a1, $s6, $a1
 	bnez	$a1, .LBB1_88
 # %bb.97:                               #   in Loop: Header=BB1_95 Depth=2
-	addi.d	$s7, $s6, 1
-	st.b	$a0, $s6, 0
+	addi.d	$s3, $s7, 1
+	st.b	$a0, $s7, 0
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
-	move	$s6, $s7
+	move	$s7, $s3
 	bnez	$a0, .LBB1_95
 # %bb.98:                               #   in Loop: Header=BB1_5 Depth=1
 	move	$a0, $zero
-	move	$s6, $s7
+	move	$s7, $s3
 	b	.LBB1_88
 .LBB1_99:                               #   in Loop: Header=BB1_5 Depth=1
-	st.b	$zero, $s2, 0
+	st.b	$zero, $s6, 0
 	pcaddu18i	$ra, %call36(un1getc)
 	jirl	$ra, $ra, 0
 	b	.LBB1_4
 .LBB1_100:                              #   in Loop: Header=BB1_5 Depth=1
-	move	$s5, $s7
+	move	$s5, $s3
 	b	.LBB1_106
 .LBB1_101:                              #   in Loop: Header=BB1_5 Depth=1
 	st.b	$zero, $s8, 0
@@ -839,21 +832,21 @@ readspec:                               # @readspec
 	b	.LBB1_106
 .LBB1_103:                              # %.._crit_edge219.loopexitsplit_crit_edge
                                         #   in Loop: Header=BB1_5 Depth=1
-	add.d	$s7, $s2, $s6
+	add.d	$s3, $s6, $s7
 .LBB1_104:                              # %._crit_edge219
                                         #   in Loop: Header=BB1_5 Depth=1
-	st.b	$zero, $s7, 0
+	st.b	$zero, $s3, 0
 	pcaddu18i	$ra, %call36(un1getc)
 	jirl	$ra, $ra, 0
 	b	.LBB1_4
 .LBB1_105:                              # %.._crit_edge235.loopexitsplit_crit_edge
                                         #   in Loop: Header=BB1_5 Depth=1
-	add.d	$s5, $s7, $s2
+	add.d	$s5, $s3, $s7
 .LBB1_106:                              # %._crit_edge235
                                         #   in Loop: Header=BB1_5 Depth=1
 	st.b	$zero, $s5, 0
 	ori	$a2, $zero, 10
-	move	$a0, $s7
+	move	$a0, $s3
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
@@ -871,54 +864,54 @@ readspec:                               # @readspec
 	jirl	$ra, $ra, 0
 	b	.LBB1_4
 .LBB1_109:                              #   in Loop: Header=BB1_5 Depth=1
-	addi.d	$s7, $s8, -2
+	addi.d	$s3, $s8, -2
 	addi.w	$a1, $a0, -58
 	addi.w	$a2, $zero, -11
-	st.b	$a0, $s7, 0
+	st.b	$a0, $s3, 0
 	bltu	$a2, $a1, .LBB1_117
 # %bb.110:                              # %.peel.newph
                                         #   in Loop: Header=BB1_5 Depth=1
-	move	$s2, $a3
+	move	$s6, $a3
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
-	move	$a3, $s2
+	move	$a3, $s6
 	beqz	$a0, .LBB1_117
 # %bb.111:                              #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	beq	$a0, $a3, .LBB1_5
 # %bb.112:                              #   in Loop: Header=BB1_5 Depth=1
 	ori	$a1, $zero, 40
 	beq	$s5, $a1, .LBB1_115
 # %bb.113:                              #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	ori	$a1, $zero, 32
 	beq	$a0, $a1, .LBB1_5
 # %bb.114:                              #   in Loop: Header=BB1_5 Depth=1
 	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	beq	$a0, $a1, .LBB1_5
 .LBB1_115:                              #   in Loop: Header=BB1_5 Depth=1
 	ori	$a1, $zero, 10
 	beq	$a0, $a1, .LBB1_46
 # %bb.116:                              #   in Loop: Header=BB1_5 Depth=1
-	st.b	$a0, $s7, 1
+	st.b	$a0, $s3, 1
 .LBB1_117:                              # %.loopexit
                                         #   in Loop: Header=BB1_5 Depth=1
 	move	$s6, $s4
-	move	$s2, $fp
+	move	$s7, $fp
 	ori	$a0, $zero, 40
 	bne	$s5, $a0, .LBB1_5
 # %bb.118:                              #   in Loop: Header=BB1_5 Depth=1
-	move	$s5, $a3
+	move	$s3, $a3
 	pcaddu18i	$ra, %call36(get1char)
 	jirl	$ra, $ra, 0
 	move	$s6, $s4
-	move	$s2, $fp
-	beq	$a0, $s5, .LBB1_5
+	move	$s7, $fp
+	beq	$a0, $s3, .LBB1_5
 # %bb.119:                              #   in Loop: Header=BB1_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
@@ -954,8 +947,7 @@ readspec:                               # @readspec
 .LBB1_125:
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_140
+	blez	$a0, .LBB1_140
 # %bb.126:                              # %.lr.ph251.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a0, $a1, .LBB1_129
@@ -1076,9 +1068,8 @@ readspec:                               # @readspec
 	pcalau12i	$a2, %got_pc_hi20(sep)
 	ld.d	$a2, $a2, %got_pc_lo12(sep)
 	alsl.d	$a2, $a1, $a2, 2
-	addi.w	$a3, $zero, -1
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 3
+	ori	$a3, $zero, 1
+	ori	$a4, $zero, 3
 	b	.LBB1_146
 	.p2align	4, , 16
 .LBB1_145:                              # %.lr.ph251._crit_edge
@@ -1087,15 +1078,15 @@ readspec:                               # @readspec
 	beq	$a0, $a1, .LBB1_140
 .LBB1_146:                              # %.lr.ph251
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a2, 0
+	ld.w	$a5, $a2, 0
 	addi.d	$a1, $a1, 1
-	blt	$a3, $a6, .LBB1_145
+	bgez	$a5, .LBB1_145
 # %bb.147:                              #   in Loop: Header=BB1_146 Depth=1
-	sltu	$a6, $a1, $a0
-	masknez	$a7, $a4, $a6
-	maskeqz	$a6, $a5, $a6
-	or	$a6, $a6, $a7
-	st.w	$a6, $a2, 0
+	sltu	$a5, $a1, $a0
+	masknez	$a6, $a3, $a5
+	maskeqz	$a5, $a4, $a5
+	or	$a5, $a5, $a6
+	st.w	$a5, $a2, 0
 	b	.LBB1_145
 .LBB1_148:
 	st.w	$a0, $a1, %pc_lo12(oncol)

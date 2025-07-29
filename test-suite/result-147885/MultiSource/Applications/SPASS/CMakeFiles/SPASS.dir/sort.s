@@ -695,48 +695,46 @@ sort_TheoryCreate:                      # @sort_TheoryCreate
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPEMASK)
 	move	$s3, $zero
 	ld.w	$s4, $a0, 0
-	addi.d	$s5, $fp, 16
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$s6, $a0, %got_pc_lo12(symbol_SIGNATURE)
-	ori	$a2, $zero, 1
-	addi.w	$s8, $zero, -1
-	ori	$s0, $zero, 1
+	ld.d	$s5, $a0, %got_pc_lo12(symbol_SIGNATURE)
+	addi.d	$s6, $fp, 16
+	ori	$s7, $zero, 1
+	ori	$s8, $zero, 1
 	b	.LBB13_3
 	.p2align	4, , 16
 .LBB13_2:                               # %symbol_IsPredicate.exit.thread
                                         #   in Loop: Header=BB13_3 Depth=1
 	ld.w	$a0, $s1, 0
-	addi.d	$s0, $s0, 1
+	addi.d	$s8, $s8, 1
 	addi.d	$s3, $s3, 8
-	bge	$s0, $a0, .LBB13_8
+	bge	$s8, $a0, .LBB13_8
 .LBB13_3:                               # =>This Inner Loop Header: Depth=1
-	stx.d	$zero, $s5, $s3
-	ld.d	$a0, $s6, 0
+	stx.d	$zero, $s6, $s3
+	ld.d	$a0, $s5, 0
 	add.d	$a0, $a0, $s3
 	ld.d	$a0, $a0, 8
 	beqz	$a0, .LBB13_2
 # %bb.4:                                #   in Loop: Header=BB13_3 Depth=1
-	ld.w	$s7, $a0, 24
-	blt	$s8, $s7, .LBB13_2
+	ld.w	$s0, $a0, 24
+	bgez	$s0, .LBB13_2
 # %bb.5:                                # %symbol_IsPredicate.exit
                                         #   in Loop: Header=BB13_3 Depth=1
-	sub.w	$a1, $zero, $s7
+	sub.w	$a1, $zero, $s0
 	and	$a1, $s4, $a1
 	bne	$a1, $s2, .LBB13_2
 # %bb.6:                                #   in Loop: Header=BB13_3 Depth=1
 	ld.w	$a0, $a0, 16
-	bne	$a0, $a2, .LBB13_2
+	bne	$a0, $s7, .LBB13_2
 # %bb.7:                                #   in Loop: Header=BB13_3 Depth=1
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	st.d	$zero, $a0, 24
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 	st.w	$zero, $a0, 16
-	st.w	$s7, $a0, 32
-	stx.d	$a0, $s5, $s3
+	st.w	$s0, $a0, 32
+	stx.d	$a0, $s6, $s3
 	b	.LBB13_2
 .LBB13_8:                               # %._crit_edge
 	pcaddu18i	$ra, %call36(st_IndexCreate)
@@ -1448,16 +1446,15 @@ sort_TheoryInsertClause:                # @sort_TheoryInsertClause
 	st.d	$s6, $sp, 72                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 56                    # 8-byte Folded Spill
-	move	$s0, $a3
+	move	$fp, $a3
 	ld.d	$s4, $a3, 24
 	ld.d	$a3, $s4, 16
 	ld.d	$s2, $a3, 8
 	ld.w	$a3, $s2, 0
-	ori	$fp, $zero, 1
 	move	$s1, $a2
 	move	$s6, $a1
 	move	$s3, $a0
-	blt	$a3, $fp, .LBB16_19
+	blez	$a3, .LBB16_19
 # %bb.1:
 	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
@@ -1465,8 +1462,8 @@ sort_TheoryInsertClause:                # @sort_TheoryInsertClause
 	ori	$a0, $zero, 64
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$a1, $s0, 24
+	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
+	ld.d	$a1, $fp, 24
 	ld.d	$a2, $a1, 16
 	ld.d	$a2, $a2, 8
 	ld.w	$a1, $a1, 0
@@ -1483,7 +1480,7 @@ sort_TheoryInsertClause:                # @sort_TheoryInsertClause
 	addi.w	$s6, $a1, 1
 	st.w	$s6, $a0, 0
 	ld.w	$a1, $s1, 64
-	blt	$a1, $fp, .LBB16_10
+	blez	$a1, .LBB16_10
 # %bb.2:                                # %.lr.ph.i
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
@@ -1672,14 +1669,14 @@ sort_TheoryInsertClause:                # @sort_TheoryInsertClause
 	st.d	$s0, $a0, 8
 	st.d	$fp, $a0, 0
 	stptr.d	$a0, $s3, 32008
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s4, $s0, 24
+	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s4, $fp, 24
 	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 .LBB16_19:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s0, $a0, 8
+	st.d	$fp, $a0, 8
 	st.d	$zero, $a0, 0
 	st.d	$a0, $s4, 8
 	ori	$a0, $zero, 16
@@ -3582,8 +3579,7 @@ sort_ConditionCopy:                     # @sort_ConditionCopy
 	.type	sort_IsBaseSortSymbol,@function
 sort_IsBaseSortSymbol:                  # @sort_IsBaseSortSymbol
 # %bb.0:
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB26_3
+	bgez	$a0, .LBB26_3
 # %bb.1:                                # %symbol_IsPredicate.exit
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPEMASK)
@@ -5427,7 +5423,6 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	pcalau12i	$a0, %got_pc_hi20(stack_STACK)
 	ld.d	$a0, $a0, %got_pc_lo12(stack_STACK)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	ori	$s2, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(cont_LEFTCONTEXT)
 	ld.d	$a0, $a0, %got_pc_lo12(cont_LEFTCONTEXT)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -5441,24 +5436,25 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	ori	$s1, $zero, 1
 	lu12i.w	$a0, -470052
 	ori	$a0, $a0, 2825
 	lu32i.d	$a0, 0
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB33_4
 .LBB33_1:                               #   in Loop: Header=BB33_4 Depth=1
 	move	$s5, $zero
-	move	$s1, $s4
+	move	$s2, $s4
 .LBB33_2:                               # %sort_ComputeSortInternNoResidues.exit
                                         #   in Loop: Header=BB33_4 Depth=1
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	st.w	$s2, $a0, 0
+	st.w	$s1, $a0, 0
 	st.d	$zero, $a0, 8
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 16
@@ -5469,14 +5465,14 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	move	$s4, $a0
 	st.d	$s3, $a0, 8
 	st.d	$fp, $a0, 0
-	bstrpick.d	$a0, $s1, 31, 0
+	bstrpick.d	$a0, $s2, 31, 0
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a1
 	srli.d	$a0, $a0, 36
 	ori	$a1, $zero, 29
 	mul.d	$a0, $a0, $a1
-	move	$s5, $s1
-	sub.w	$s1, $s1, $a0
+	move	$s5, $s2
+	sub.w	$s2, $s2, $a0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -5485,8 +5481,8 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	ld.d	$s3, $a0, %got_pc_lo12(hash_TABLE)
 	st.d	$s5, $fp, 8
 	st.d	$s4, $fp, 0
-	slli.d	$s1, $s1, 3
-	ldx.d	$s5, $s3, $s1
+	slli.d	$s2, $s2, 3
+	ldx.d	$s5, $s3, $s2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
@@ -5494,7 +5490,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	move	$a0, $s4
 	st.d	$fp, $a1, 8
 	st.d	$s5, $a1, 0
-	stx.d	$a1, $s3, $s1
+	stx.d	$a1, $s3, $s2
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 .LBB33_3:                               #   in Loop: Header=BB33_4 Depth=1
 	ld.w	$a1, $fp, 0
@@ -5521,15 +5517,15 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	bstrpick.d	$a1, $a0, 31, 0
 	slli.d	$a1, $a1, 3
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
-	ldx.d	$s1, $a2, $a1
+	ldx.d	$s2, $a2, $a1
 	st.w	$a0, $fp, 0
-	move	$a0, $s1
+	move	$a0, $s2
 	pcaddu18i	$ra, %call36(hash_Get)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB33_3
 # %bb.5:                                #   in Loop: Header=BB33_4 Depth=1
-	ld.w	$fp, $s1, 0
-	blt	$fp, $s2, .LBB33_19
+	ld.w	$fp, $s2, 0
+	blez	$fp, .LBB33_19
 # %bb.6:                                #   in Loop: Header=BB33_4 Depth=1
 	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a0, $a3, 64
@@ -5539,7 +5535,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	bltz	$a0, .LBB33_21
 # %bb.7:                                # %.lr.ph.i31.preheader
                                         #   in Loop: Header=BB33_4 Depth=1
-	move	$s4, $s1
+	move	$s4, $s2
 	move	$a0, $zero
 	move	$s3, $zero
 	ld.d	$a4, $sp, 48                    # 8-byte Folded Reload
@@ -5555,17 +5551,17 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	ld.w	$a1, $a3, 68
 	add.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, -1
-	addi.d	$a0, $s1, 1
-	bge	$s1, $a1, .LBB33_1
+	addi.d	$a0, $s2, 1
+	bge	$s2, $a1, .LBB33_1
 .LBB33_10:                              # %.lr.ph.i31
                                         #   Parent Loop BB33_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB33_17 Depth 3
-	move	$s1, $a0
+	move	$s2, $a0
 	beq	$a0, $a4, .LBB33_9
 # %bb.11:                               #   in Loop: Header=BB33_10 Depth=2
 	ld.d	$a0, $a3, 56
-	slli.d	$a1, $s1, 3
+	slli.d	$a1, $s2, 3
 	ldx.d	$a0, $a0, $a1
 	ld.d	$a0, $a0, 24
 	pcalau12i	$a1, %got_pc_hi20(fol_NOT)
@@ -5587,7 +5583,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	slli.d	$a1, $a1, 3
 	ldx.d	$a2, $a2, $a1
 	ld.w	$a2, $a2, 16
-	bne	$a2, $s2, .LBB33_9
+	bne	$a2, $s1, .LBB33_9
 # %bb.14:                               #   in Loop: Header=BB33_10 Depth=2
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 8
@@ -5625,7 +5621,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	move	$a2, $s1
+	move	$a2, $s2
 	pcaddu18i	$ra, %call36(st_GetGen)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB33_21
@@ -5635,7 +5631,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	move	$s3, $zero
 	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
 	move	$a1, $a0
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	b	.LBB33_26
 .LBB33_21:                              #   in Loop: Header=BB33_4 Depth=1
@@ -5700,8 +5696,8 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	ld.w	$fp, $s5, 64
 	ld.d	$a3, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a1, $a3, 0
-	move	$a2, $s1
-	ld.w	$s1, $s5, 68
+	move	$a2, $s2
+	ld.w	$s2, $s5, 68
 	ld.w	$s3, $s5, 72
 	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a4, $s4, 0
@@ -5720,7 +5716,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s4, 0
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
-	blt	$a1, $s2, .LBB33_31
+	blez	$a1, .LBB33_31
 # %bb.29:                               # %.lr.ph.i.i.i.preheader
                                         #   in Loop: Header=BB33_26 Depth=2
 	addi.d	$a5, $a1, 1
@@ -5744,7 +5740,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	addi.d	$a1, $a5, -2
 	addi.w	$a5, $a5, -1
 	st.w	$a1, $s4, 0
-	bltu	$s2, $a5, .LBB33_30
+	bltu	$s1, $a5, .LBB33_30
 .LBB33_31:                              # %._crit_edge.i.i.i
                                         #   in Loop: Header=BB33_26 Depth=2
 	ld.d	$a2, $sp, 160                   # 8-byte Folded Reload
@@ -5764,17 +5760,17 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
                                         #   in Loop: Header=BB33_26 Depth=2
 	move	$a1, $a0
 	move	$s6, $zero
-	add.d	$a0, $s1, $fp
+	add.d	$a0, $s2, $fp
 	add.w	$a0, $a0, $s3
 	bstrpick.d	$s3, $a0, 31, 0
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	move	$s1, $a1
+	move	$s2, $a1
 	b	.LBB33_36
 	.p2align	4, , 16
 .LBB33_35:                              # %sort_DeleteOne.exit61.i.i
                                         #   in Loop: Header=BB33_36 Depth=3
-	ld.d	$s1, $s1, 0
-	beqz	$s1, .LBB33_73
+	ld.d	$s2, $s2, 0
+	beqz	$s2, .LBB33_73
 .LBB33_36:                              # %.lr.ph.i.i
                                         #   Parent Loop BB33_4 Depth=1
                                         #     Parent Loop BB33_26 Depth=2
@@ -5792,7 +5788,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	bltz	$a0, .LBB33_49
 # %bb.37:                               # %.lr.ph.i16.preheader
                                         #   in Loop: Header=BB33_36 Depth=3
-	ld.w	$fp, $s1, 8
+	ld.w	$fp, $s2, 8
 	move	$a0, $zero
 	move	$s7, $zero
 	b	.LBB33_40
@@ -5839,7 +5835,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	slli.d	$a1, $a1, 3
 	ldx.d	$a2, $a2, $a1
 	ld.w	$a2, $a2, 16
-	bne	$a2, $s2, .LBB33_39
+	bne	$a2, $s1, .LBB33_39
 # %bb.44:                               #   in Loop: Header=BB33_40 Depth=4
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 8
@@ -5875,7 +5871,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	move	$s7, $zero
 .LBB33_50:                              # %sort_VarSort.exit
                                         #   in Loop: Header=BB33_36 Depth=3
-	ld.d	$a0, $s1, 16
+	ld.d	$a0, $s2, 16
 	pcaddu18i	$ra, %call36(hash_Get)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
@@ -6017,7 +6013,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(subst_Free)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
@@ -6048,7 +6044,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	bnez	$a5, .LBB33_69
 .LBB33_70:                              # %sort_DeleteOne.exit.i.i
                                         #   in Loop: Header=BB33_26 Depth=2
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 	beqz	$s6, .LBB33_72
@@ -6085,7 +6081,7 @@ sort_ComputeSortNoResidues:             # @sort_ComputeSortNoResidues
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(subst_Free)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 88                    # 8-byte Folded Reload
 	beqz	$s6, .LBB33_78
 # %bb.74:                               #   in Loop: Header=BB33_26 Depth=2
@@ -6274,36 +6270,36 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 72
-	ori	$s2, $zero, 1
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	blt	$a0, $s2, .LBB34_21
+	blez	$a0, .LBB34_21
 # %bb.1:                                # %.lr.ph75
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPESTATBITS)
+	move	$s6, $zero
 	ld.w	$a2, $fp, 68
 	ld.w	$a3, $fp, 64
-	ld.w	$a4, $a1, 0
+	ld.w	$s8, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$a5, $a1, %got_pc_lo12(symbol_SIGNATURE)
+	ld.d	$a4, $a1, %got_pc_lo12(symbol_SIGNATURE)
 	pcalau12i	$a1, %got_pc_hi20(fol_NOT)
-	ld.d	$s1, $a1, %got_pc_lo12(fol_NOT)
-	move	$a6, $zero
-	add.w	$s7, $a2, $a3
-	add.w	$s8, $s7, $a0
+	ld.d	$s0, $a1, %got_pc_lo12(fol_NOT)
+	add.w	$s1, $a2, $a3
+	add.w	$s7, $s1, $a0
+	ori	$a3, $zero, 1
+	st.d	$s8, $sp, 0                     # 8-byte Folded Spill
 	st.d	$a4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB34_3
 	.p2align	4, , 16
 .LBB34_2:                               #   in Loop: Header=BB34_3 Depth=1
-	addi.d	$s7, $s7, 1
-	bge	$s7, $s8, .LBB34_22
+	addi.d	$s1, $s1, 1
+	bge	$s1, $s7, .LBB34_22
 .LBB34_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB34_9 Depth 2
                                         #     Child Loop BB34_18 Depth 2
                                         #     Child Loop BB34_19 Depth 2
 	ld.d	$a0, $fp, 56
-	slli.d	$a1, $s7, 3
+	slli.d	$a1, $s1, 3
 	ldx.d	$s4, $a0, $a1
 	ld.bu	$a0, $s4, 0
 	andi	$a0, $a0, 1
@@ -6311,15 +6307,14 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 # %bb.4:                                #   in Loop: Header=BB34_3 Depth=1
 	ld.d	$a0, $s4, 24
 	ld.w	$a1, $a0, 0
-	ld.d	$a2, $a5, 0
+	ld.d	$a2, $a4, 0
 	sub.d	$a1, $zero, $a1
-	sra.w	$a1, $a1, $a4
+	sra.w	$a1, $a1, $s8
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $a2, $a1
 	ld.w	$a1, $a1, 16
-	bne	$a1, $s2, .LBB34_2
+	bne	$a1, $a3, .LBB34_2
 # %bb.5:                                #   in Loop: Header=BB34_3 Depth=1
-	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
@@ -6330,10 +6325,11 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 	st.d	$s5, $a0, 8
 	st.d	$zero, $a0, 0
 	ld.w	$a0, $fp, 64
-	blt	$a0, $s2, .LBB34_14
+	blez	$a0, .LBB34_14
 # %bb.6:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB34_3 Depth=1
-	move	$s0, $zero
+	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
+	move	$s8, $zero
 	move	$s5, $zero
 	slli.d	$s2, $a0, 3
 	b	.LBB34_9
@@ -6350,23 +6346,23 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 	st.d	$s5, $a0, 0
 	move	$s5, $a0
 .LBB34_8:                               #   in Loop: Header=BB34_9 Depth=2
-	addi.d	$s0, $s0, 8
-	beq	$s2, $s0, .LBB34_12
+	addi.d	$s8, $s8, 8
+	beq	$s2, $s8, .LBB34_12
 .LBB34_9:                               # %.lr.ph
                                         #   Parent Loop BB34_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 56
-	ldx.d	$a1, $a0, $s0
+	ldx.d	$a1, $a0, $s8
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(clause_LitsHaveCommonVar)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB34_8
 # %bb.10:                               #   in Loop: Header=BB34_9 Depth=2
 	ld.d	$a0, $fp, 56
-	ldx.d	$a0, $a0, $s0
+	ldx.d	$a0, $a0, $s8
 	ld.d	$a0, $a0, 24
 	ld.w	$a1, $a0, 0
-	ld.w	$a2, $s1, 0
+	ld.w	$a2, $s0, 0
 	bne	$a1, $a2, .LBB34_7
 # %bb.11:                               #   in Loop: Header=BB34_9 Depth=2
 	ld.d	$a0, $a0, 16
@@ -6390,7 +6386,8 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 	move	$s5, $zero
 .LBB34_16:                              # %._crit_edge.thread
                                         #   in Loop: Header=BB34_3 Depth=1
-	ori	$s2, $zero, 1
+	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 .LBB34_17:                              # %._crit_edge.thread
                                         #   in Loop: Header=BB34_3 Depth=1
 	move	$a0, $s5
@@ -6411,13 +6408,13 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 	jirl	$ra, $ra, 0
 	st.d	$fp, $a0, 8
 	st.d	$zero, $a0, 0
-	ld.d	$s0, $s4, 40
+	ld.d	$s2, $s4, 40
 	st.d	$a0, $s4, 32
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $a0, 8
-	st.d	$s0, $a0, 0
+	st.d	$s1, $a0, 8
+	st.d	$s2, $a0, 0
 	st.d	$a0, $s4, 40
 	beqz	$s5, .LBB34_19
 	.p2align	4, , 16
@@ -6465,17 +6462,16 @@ sort_ApproxMaxDeclClauses:              # @sort_ApproxMaxDeclClauses
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	move	$a6, $a0
 	st.d	$s4, $a0, 8
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.d	$a1, $a0, 0
+	st.d	$s6, $a0, 0
+	move	$s6, $a0
 	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
+	ori	$a3, $zero, 1
 	b	.LBB34_2
 .LBB34_21:
-	move	$a6, $zero
+	move	$s6, $zero
 .LBB34_22:                              # %._crit_edge76
-	move	$a0, $a6
+	move	$a0, $s6
 	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
@@ -6784,7 +6780,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	move	$s6, $a0
+	move	$fp, $a0
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 3360
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -6792,7 +6788,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	pcalau12i	$a1, %got_pc_hi20(symbol_ACTINDEX)
 	ld.d	$s0, $a1, %got_pc_lo12(symbol_ACTINDEX)
 	ld.w	$a1, $s0, 0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$s1, $zero, 2
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
@@ -6802,89 +6798,87 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPEMASK)
 	move	$s2, $zero
 	ld.w	$s3, $a0, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	addi.d	$s4, $a0, 16
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$s5, $a0, %got_pc_lo12(symbol_SIGNATURE)
-	ori	$a2, $zero, 1
-	addi.w	$s7, $zero, -1
-	ori	$s8, $zero, 1
+	ld.d	$s4, $a0, %got_pc_lo12(symbol_SIGNATURE)
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$s5, $a0, 16
+	ori	$s6, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB37_3
 	.p2align	4, , 16
 .LBB37_2:                               # %symbol_IsPredicate.exit.thread.i
                                         #   in Loop: Header=BB37_3 Depth=1
 	ld.w	$a0, $s0, 0
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	addi.d	$s2, $s2, 8
-	bge	$s8, $a0, .LBB37_8
+	bge	$s7, $a0, .LBB37_8
 .LBB37_3:                               # =>This Inner Loop Header: Depth=1
-	stx.d	$zero, $s4, $s2
-	ld.d	$a0, $s5, 0
+	stx.d	$zero, $s5, $s2
+	ld.d	$a0, $s4, 0
 	add.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 8
 	beqz	$a0, .LBB37_2
 # %bb.4:                                #   in Loop: Header=BB37_3 Depth=1
-	ld.w	$fp, $a0, 24
-	blt	$s7, $fp, .LBB37_2
+	ld.w	$s8, $a0, 24
+	bgez	$s8, .LBB37_2
 # %bb.5:                                # %symbol_IsPredicate.exit.i
                                         #   in Loop: Header=BB37_3 Depth=1
-	sub.w	$a1, $zero, $fp
+	sub.w	$a1, $zero, $s8
 	and	$a1, $s3, $a1
 	bne	$a1, $s1, .LBB37_2
 # %bb.6:                                #   in Loop: Header=BB37_3 Depth=1
 	ld.w	$a0, $a0, 16
-	bne	$a0, $a2, .LBB37_2
+	bne	$a0, $s6, .LBB37_2
 # %bb.7:                                #   in Loop: Header=BB37_3 Depth=1
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	st.d	$zero, $a0, 24
 	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 	st.w	$zero, $a0, 16
-	st.w	$fp, $a0, 32
-	stx.d	$a0, $s4, $s2
+	st.w	$s8, $a0, 32
+	stx.d	$a0, $s5, $s2
 	b	.LBB37_2
 .LBB37_8:                               # %sort_TheoryCreate.exit
 	pcaddu18i	$ra, %call36(st_IndexCreate)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.d	$a0, $a1, 0
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 3336
 	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
 	vstx	$vr0, $a1, $a0
 	stptr.w	$zero, $a1, 32024
-	beqz	$s6, .LBB37_38
+	beqz	$fp, .LBB37_38
 # %bb.9:                                # %.lr.ph.i29
+	move	$s0, $fp
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
-	ld.w	$s0, $a0, 0
+	ld.w	$s5, $a0, 0
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_SIGNATURE)
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	move	$a0, $zero
-	ori	$s1, $zero, 1
+	move	$s1, $zero
+	ori	$s7, $zero, 1
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB37_12
 	.p2align	4, , 16
 .LBB37_10:                              #   in Loop: Header=BB37_12 Depth=1
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	move	$s3, $s1
 .LBB37_11:                              # %list_Nconc.exit.i
                                         #   in Loop: Header=BB37_12 Depth=1
-	ld.d	$s6, $s6, 0
-	move	$a0, $s3
-	beqz	$s6, .LBB37_39
+	ld.d	$s0, $s0, 0
+	move	$s1, $s3
+	beqz	$s0, .LBB37_39
 .LBB37_12:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB37_17 Depth 2
                                         #       Child Loop BB37_22 Depth 3
                                         #       Child Loop BB37_29 Depth 3
                                         #       Child Loop BB37_30 Depth 3
                                         #     Child Loop BB37_35 Depth 2
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$s4, $s6, 8
+	ld.d	$s4, $s0, 8
 	move	$a0, $s4
 	move	$a1, $s2
 	move	$a2, $fp
@@ -6900,10 +6894,11 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	beqz	$a0, .LBB37_10
 # %bb.14:                               #   in Loop: Header=BB37_12 Depth=1
 	ld.w	$a0, $s4, 72
-	blt	$a0, $s1, .LBB37_10
+	blez	$a0, .LBB37_10
 # %bb.15:                               # %.lr.ph80.i.i
                                         #   in Loop: Header=BB37_12 Depth=1
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a2, $s4, 68
 	ld.w	$a3, $s4, 64
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
@@ -6911,7 +6906,6 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	move	$s3, $zero
 	add.w	$s1, $a3, $a2
 	add.w	$a3, $s1, $a0
-	ori	$fp, $zero, 1
 	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB37_17
 	.p2align	4, , 16
@@ -6929,12 +6923,13 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	ld.d	$a0, $s6, 24
 	ld.w	$a2, $a0, 0
 	sub.d	$a2, $zero, $a2
-	sra.w	$a2, $a2, $s0
+	sra.w	$a2, $a2, $s5
 	slli.d	$a2, $a2, 3
 	ldx.d	$a2, $a1, $a2
 	ld.w	$a2, $a2, 16
-	bne	$a2, $fp, .LBB37_16
+	bne	$a2, $s7, .LBB37_16
 # %bb.18:                               #   in Loop: Header=BB37_17 Depth=2
+	move	$s0, $s5
 	pcaddu18i	$ra, %call36(term_Copy)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
@@ -6945,7 +6940,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	st.d	$s7, $a0, 8
 	st.d	$zero, $a0, 0
 	ld.w	$a0, $s4, 64
-	blt	$a0, $fp, .LBB37_27
+	blez	$a0, .LBB37_27
 # %bb.19:                               # %.lr.ph.preheader.i.i
                                         #   in Loop: Header=BB37_17 Depth=2
 	move	$s2, $zero
@@ -7088,18 +7083,18 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	ld.d	$a1, $a1, 0
 	st.d	$s6, $a0, 8
 	move	$s3, $a0
-	ori	$fp, $zero, 1
+	move	$s5, $s0
+	ori	$s7, $zero, 1
 	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB37_16
 	.p2align	4, , 16
 .LBB37_32:                              # %sort_ApproxHornClauses.exit.i
                                         #   in Loop: Header=BB37_12 Depth=1
-	ori	$s1, $zero, 1
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	beqz	$s3, .LBB37_37
 # %bb.33:                               #   in Loop: Header=BB37_12 Depth=1
 	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	beqz	$a2, .LBB37_11
 # %bb.34:                               # %.preheader.i.i.preheader
                                         #   in Loop: Header=BB37_12 Depth=1
@@ -7115,7 +7110,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	st.d	$a2, $a0, 0
 	b	.LBB37_11
 .LBB37_37:                              #   in Loop: Header=BB37_12 Depth=1
-	move	$s3, $a2
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB37_11
 .LBB37_38:
@@ -7128,7 +7123,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	beqz	$a0, .LBB37_64
 # %bb.40:                               # %.lr.ph.preheader
 	move	$fp, $s1
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB37_41:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -7149,8 +7144,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	pcalau12i	$a0, %got_pc_hi20(fol_NOT)
 	ld.d	$fp, $a0, %got_pc_lo12(fol_NOT)
 	move	$s2, $zero
-	ori	$s0, $zero, 1
-	move	$s3, $s1
+	move	$s0, $s1
 	b	.LBB37_45
 	.p2align	4, , 16
 .LBB37_43:                              #   in Loop: Header=BB37_45 Depth=1
@@ -7160,22 +7154,22 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	pcaddu18i	$ra, %call36(list_PointerDeleteDuplicates)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	beqz	$s3, .LBB37_50
+	beqz	$s0, .LBB37_50
 .LBB37_45:                              # %.lr.ph61.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB37_48 Depth 2
-	ld.d	$s4, $s3, 8
-	ld.w	$a0, $s4, 64
-	ld.w	$a1, $s4, 68
-	ld.w	$a2, $s4, 72
-	ld.d	$s3, $s3, 0
+	ld.d	$s3, $s0, 8
+	ld.w	$a0, $s3, 64
+	ld.w	$a1, $s3, 68
+	ld.w	$a2, $s3, 72
+	ld.d	$s0, $s0, 0
 	add.d	$a0, $a1, $a0
 	add.w	$a0, $a0, $a2
-	blt	$a0, $s0, .LBB37_43
+	blez	$a0, .LBB37_43
 # %bb.46:                               # %.lr.ph.i41
                                         #   in Loop: Header=BB37_45 Depth=1
-	move	$s5, $zero
-	slli.d	$s6, $a0, 3
+	move	$s4, $zero
+	slli.d	$s5, $a0, 3
 	b	.LBB37_48
 	.p2align	4, , 16
 .LBB37_47:                              # %clause_LiteralAtom.exit.i
@@ -7183,23 +7177,23 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s7, $a0, 8
-	addi.d	$s5, $s5, 8
+	st.d	$s6, $a0, 8
+	addi.d	$s4, $s4, 8
 	st.d	$s2, $a0, 0
 	move	$s2, $a0
-	beq	$s6, $s5, .LBB37_44
+	beq	$s5, $s4, .LBB37_44
 .LBB37_48:                              #   Parent Loop BB37_45 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s4, 56
-	ldx.d	$a0, $a0, $s5
+	ld.d	$a0, $s3, 56
+	ldx.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 24
-	ld.w	$s7, $a0, 0
+	ld.w	$s6, $a0, 0
 	ld.w	$a1, $fp, 0
-	bne	$s7, $a1, .LBB37_47
+	bne	$s6, $a1, .LBB37_47
 # %bb.49:                               #   in Loop: Header=BB37_48 Depth=2
 	ld.d	$a0, $a0, 16
 	ld.d	$a0, $a0, 8
-	ld.w	$s7, $a0, 0
+	ld.w	$s6, $a0, 0
 	b	.LBB37_47
 .LBB37_50:                              # %.preheader.i
 	beqz	$s2, .LBB37_64
@@ -7207,7 +7201,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	pcalau12i	$a0, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPESTATBITS)
 	ld.w	$fp, $a0, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$s0, $a0, 8
 	move	$s3, $s2
 	.p2align	4, , 16
@@ -7249,7 +7243,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
                                         #     Child Loop BB37_57 Depth 2
                                         #     Child Loop BB37_60 Depth 2
 	ld.d	$a2, $s7, 8
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(sort_TheoryIsSubsortOfNoResidues)
 	jirl	$ra, $ra, 0
@@ -7337,7 +7331,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	bne	$fp, $s3, .LBB37_65
 .LBB37_63:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(sort_TheoryDelete)
 	jirl	$ra, $ra, 0
 	move	$s0, $zero
@@ -7353,7 +7347,7 @@ sort_ApproxStaticSortTheory:            # @sort_ApproxStaticSortTheory
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
 	beq	$fp, $s3, .LBB37_63
 .LBB37_65:
-	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.w	$a0, $s2, 32
 	beqz	$a0, .LBB37_68
 .LBB37_66:
@@ -7455,8 +7449,8 @@ sort_AnalyzeSortStructure:              # @sort_AnalyzeSortStructure
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	lu12i.w	$a0, 7
-	ori	$a0, $a0, 3360
+	lu12i.w	$fp, 7
+	ori	$a0, $fp, 3360
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(symbol_ACTINDEX)
@@ -7472,33 +7466,32 @@ sort_AnalyzeSortStructure:              # @sort_AnalyzeSortStructure
 	ld.d	$a0, $a0, %got_pc_lo12(symbol_TYPEMASK)
 	move	$s2, $zero
 	ld.w	$s3, $a0, 0
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	addi.d	$s4, $a0, 16
 	pcalau12i	$a0, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$s5, $a0, %got_pc_lo12(symbol_SIGNATURE)
+	ld.d	$s4, $a0, %got_pc_lo12(symbol_SIGNATURE)
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$s5, $a0, 16
 	ori	$s6, $zero, 1
-	addi.w	$s7, $zero, -1
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB39_3
 	.p2align	4, , 16
 .LBB39_2:                               # %symbol_IsPredicate.exit.thread.i
                                         #   in Loop: Header=BB39_3 Depth=1
 	ld.w	$a0, $s0, 0
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	addi.d	$s2, $s2, 8
-	bge	$s8, $a0, .LBB39_8
+	bge	$s7, $a0, .LBB39_8
 .LBB39_3:                               # =>This Inner Loop Header: Depth=1
-	stx.d	$zero, $s4, $s2
-	ld.d	$a0, $s5, 0
+	stx.d	$zero, $s5, $s2
+	ld.d	$a0, $s4, 0
 	add.d	$a0, $a0, $s2
 	ld.d	$a0, $a0, 8
 	beqz	$a0, .LBB39_2
 # %bb.4:                                #   in Loop: Header=BB39_3 Depth=1
-	ld.w	$fp, $a0, 24
-	blt	$s7, $fp, .LBB39_2
+	ld.w	$s8, $a0, 24
+	bgez	$s8, .LBB39_2
 # %bb.5:                                # %symbol_IsPredicate.exit.i
                                         #   in Loop: Header=BB39_3 Depth=1
-	sub.w	$a1, $zero, $fp
+	sub.w	$a1, $zero, $s8
 	and	$a1, $s3, $a1
 	bne	$a1, $s1, .LBB39_2
 # %bb.6:                                #   in Loop: Header=BB39_3 Depth=1
@@ -7512,16 +7505,15 @@ sort_AnalyzeSortStructure:              # @sort_AnalyzeSortStructure
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
 	st.w	$zero, $a0, 16
-	st.w	$fp, $a0, 32
-	stx.d	$a0, $s4, $s2
+	st.w	$s8, $a0, 32
+	stx.d	$a0, $s5, $s2
 	b	.LBB39_2
 .LBB39_8:                               # %sort_TheoryCreate.exit
 	pcaddu18i	$ra, %call36(st_IndexCreate)
 	jirl	$ra, $ra, 0
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a0, $s8, 0
-	lu12i.w	$a0, 7
-	ori	$a0, $a0, 3336
+	ori	$a0, $fp, 3336
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
 	vstx	$vr0, $s8, $a0
 	stptr.w	$zero, $s8, 32024
@@ -7658,8 +7650,7 @@ sort_AnalyzeSortStructure:              # @sort_AnalyzeSortStructure
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$s3, $a0, 8
 	ld.w	$a1, $s3, 72
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB39_54
+	blez	$a1, .LBB39_54
 # %bb.19:                               # %.lr.ph187
                                         #   in Loop: Header=BB39_18 Depth=1
 	ld.w	$a2, $s3, 68

@@ -15,8 +15,7 @@ main:                                   # @main
 # %bb.1:
 	ext.w.h	$a0, $a0
 	add.d	$a0, $a0, $a1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_3
+	bgez	$a0, .LBB0_3
 # %bb.2:                                # %.thread
 	pcalau12i	$a0, %pc_hi20(a)
 	st.w	$zero, $a0, %pc_lo12(a)

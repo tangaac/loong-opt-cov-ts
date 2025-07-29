@@ -357,7 +357,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -365,7 +364,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s1, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s1, $zero
@@ -387,8 +385,8 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -402,11 +400,10 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s4, $s5, .LBB4_11
+	blez	$s4, .LBB4_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB4_12
+	blez	$s1, .LBB4_12
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -502,7 +499,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $a0, 8
 	stx.b	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -568,11 +564,10 @@ _ZN8NArchive4NCab10CInArchive16ReadOtherArchiveERNS0_13COtherArchiveE: # @_ZN8NA
 # %bb.4:                                # %.noexc
 	move	$s1, $a0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
-	blt	$s3, $a2, .LBB5_21
+	blez	$s3, .LBB5_21
 # %bb.5:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB5_13
+	blez	$a1, .LBB5_13
 # %bb.6:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -698,11 +693,10 @@ _ZN8NArchive4NCab10CInArchive16ReadOtherArchiveERNS0_13COtherArchiveE: # @_ZN8NA
 # %bb.31:                               # %.noexc24
 	move	$s0, $a0
 	ld.w	$a1, $fp, 24
-	ori	$a2, $zero, 1
-	blt	$s3, $a2, .LBB5_48
+	blez	$s3, .LBB5_48
 # %bb.32:                               # %.preheader.i.i12
 	ld.d	$a0, $s2, 0
-	blt	$a1, $a2, .LBB5_40
+	blez	$a1, .LBB5_40
 # %bb.33:                               # %iter.check43
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -901,12 +895,11 @@ _ZN11CStringBaseIcEaSERKS0_:            # @_ZN11CStringBaseIcEaSERKS0_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB6_20
+	blez	$s3, .LBB6_20
 # %bb.4:                                # %.preheader.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB6_12
+	blez	$a1, .LBB6_12
 # %bb.5:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1690,11 +1683,9 @@ _ZN13CObjectVectorIN8NArchive4NCab5CItemEE3AddERKS2_: # @_ZN13CObjectVectorIN8NA
 	move	$s0, $a0
 	vrepli.b	$vr0, 0
 	addi.d	$s3, $s2, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
+	slli.d	$a0, $s3, 31
 	vst	$vr0, $s0, 0
-	beqz	$a0, .LBB9_2
+	bgez	$a0, .LBB9_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB9_4
@@ -1913,56 +1904,53 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 12
-	ori	$a2, $zero, 1
-	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
-	blt	$a0, $a2, .LBB11_17
+	lu12i.w	$ra, 15
+	blez	$a0, .LBB11_16
 # %bb.1:                                # %.lr.ph112
-	move	$s7, $zero
-	move	$s6, $zero
-	ori	$s5, $zero, 1
-	lu12i.w	$a0, 15
-	ori	$s8, $a0, 4093
-	ori	$s0, $zero, 0
-	lu32i.d	$s0, 1
+	move	$s2, $zero
+	move	$s5, $zero
+	ori	$s6, $ra, 4093
+	ori	$s7, $zero, 0
+	lu32i.d	$s7, 1
 	b	.LBB11_3
 	.p2align	4, , 16
 .LBB11_2:                               # %._crit_edge
                                         #   in Loop: Header=BB11_3 Depth=1
 	ld.w	$a0, $fp, 12
-	addi.d	$s7, $s7, 1
-	add.d	$s6, $s4, $s6
-	bge	$s7, $a0, .LBB11_17
+	addi.d	$s2, $s2, 1
+	add.d	$s5, $s0, $s5
+	lu12i.w	$ra, 15
+	bge	$s2, $a0, .LBB11_16
 .LBB11_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_5 Depth 2
                                         #     Child Loop BB11_11 Depth 2
                                         #     Child Loop BB11_15 Depth 2
 	ld.d	$a0, $fp, 16
-	slli.d	$a1, $s7, 3
-	ldx.d	$s2, $a0, $a1
-	ld.w	$a0, $s2, 140
-	move	$s3, $s6
-	blt	$a0, $s5, .LBB11_9
+	slli.d	$a1, $s2, 3
+	ldx.d	$s8, $a0, $a1
+	ld.w	$a0, $s8, 140
+	move	$s0, $s5
+	blez	$a0, .LBB11_9
 # %bb.4:                                # %.lr.ph.i
                                         #   in Loop: Header=BB11_3 Depth=1
-	ld.d	$a1, $s2, 144
+	ld.d	$a1, $s8, 144
 	.p2align	4, , 16
 .LBB11_5:                               #   Parent Loop BB11_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $a1, 0
 	ld.hu	$a2, $a2, 28
-	and	$a2, $a2, $s8
-	beq	$a2, $s8, .LBB11_8
+	and	$a2, $a2, $s6
+	beq	$a2, $s6, .LBB11_8
 # %bb.6:                                #   in Loop: Header=BB11_5 Depth=2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB11_5
 # %bb.7:                                #   in Loop: Header=BB11_3 Depth=1
-	move	$s3, $s6
+	move	$s0, $s5
 	b	.LBB11_9
 	.p2align	4, , 16
 .LBB11_8:                               #   in Loop: Header=BB11_3 Depth=1
-	addi.d	$s3, $s6, -1
+	addi.d	$s0, $s5, -1
 .LBB11_9:                               # %_ZNK8NArchive4NCab9CDatabase17IsTherePrevFolderEv.exit.thread
                                         #   in Loop: Header=BB11_3 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
@@ -1971,23 +1959,23 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	ld.w	$a0, $fp, 76
 	ld.d	$a1, $fp, 80
 	slli.d	$a0, $a0, 2
-	stx.w	$s3, $a1, $a0
+	stx.w	$s0, $a1, $a0
 	ld.w	$a0, $fp, 76
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 76
-	ld.w	$a0, $s2, 140
-	ld.w	$s4, $s2, 108
-	blt	$a0, $s5, .LBB11_2
+	ld.w	$a0, $s8, 140
+	ld.w	$s0, $s8, 108
+	blez	$a0, .LBB11_2
 # %bb.10:                               # %.lr.ph.i.i36
                                         #   in Loop: Header=BB11_3 Depth=1
-	ld.d	$a1, $s2, 144
+	ld.d	$a1, $s8, 144
 	.p2align	4, , 16
 .LBB11_11:                              #   Parent Loop BB11_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a2, $a1, 0
 	ld.hu	$a2, $a2, 28
-	and	$a2, $a2, $s8
-	beq	$a2, $s8, .LBB11_13
+	and	$a2, $a2, $s6
+	beq	$a2, $s6, .LBB11_13
 # %bb.12:                               #   in Loop: Header=BB11_11 Depth=2
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, 8
@@ -1995,11 +1983,11 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	b	.LBB11_14
 	.p2align	4, , 16
 .LBB11_13:                              #   in Loop: Header=BB11_3 Depth=1
-	addi.d	$s4, $s4, -1
+	addi.d	$s0, $s0, -1
 .LBB11_14:                              # %_ZNK8NArchive4NCab9CDatabase21GetNumberOfNewFoldersEv.exit
                                         #   in Loop: Header=BB11_3 Depth=1
-	move	$s3, $zero
-	move	$s5, $s7
+	move	$s4, $zero
+	move	$s3, $s2
 	.p2align	4, , 16
 .LBB11_15:                              # %.lr.ph
                                         #   Parent Loop BB11_3 Depth=1
@@ -2010,251 +1998,246 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	ld.w	$a0, $fp, 44
 	ld.d	$a1, $fp, 48
 	slli.d	$a0, $a0, 3
-	stx.d	$s5, $a1, $a0
+	stx.d	$s3, $a1, $a0
 	ld.w	$a0, $fp, 44
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 44
-	ld.w	$a0, $s2, 140
-	addi.d	$s3, $s3, 1
-	add.d	$s5, $s5, $s0
-	blt	$s3, $a0, .LBB11_15
-# %bb.16:                               #   in Loop: Header=BB11_3 Depth=1
-	ori	$s5, $zero, 1
+	ld.w	$a0, $s8, 140
+	addi.d	$s4, $s4, 1
+	add.d	$s3, $s3, $s7
+	blt	$s4, $a0, .LBB11_15
 	b	.LBB11_2
-.LBB11_17:                              # %._crit_edge113
+.LBB11_16:                              # %._crit_edge113
 	ld.w	$a1, $fp, 44
 	ori	$a0, $zero, 2
-	bge	$a1, $a0, .LBB11_19
-# %bb.18:
-	lu12i.w	$s8, 15
-	b	.LBB11_73
-.LBB11_19:
+	ori	$s2, $zero, 1
+	blt	$a1, $a0, .LBB11_71
+# %bb.17:
 	ld.d	$a0, $fp, 48
 	addi.d	$a2, $a0, -8
 	srli.d	$a4, $a1, 1
-	lu12i.w	$s8, 15
-	ori	$a3, $s8, 4093
-	b	.LBB11_22
+	ori	$a3, $ra, 4093
+	b	.LBB11_20
 	.p2align	4, , 16
-.LBB11_20:                              # %.._crit_edge.loopexit_crit_edge.i.i
-                                        #   in Loop: Header=BB11_22 Depth=1
+.LBB11_18:                              # %.._crit_edge.loopexit_crit_edge.i.i
+                                        #   in Loop: Header=BB11_20 Depth=1
 	addi.w	$t2, $t1, 0
-.LBB11_21:                              # %_ZN13CRecordVectorIN8NArchive4NCab7CMvItemEE11SortRefDownEPS2_iiPFiPKS2_S6_PvES7_.exit.i
-                                        #   in Loop: Header=BB11_22 Depth=1
+.LBB11_19:                              # %_ZN13CRecordVectorIN8NArchive4NCab7CMvItemEE11SortRefDownEPS2_iiPFiPKS2_S6_PvES7_.exit.i
+                                        #   in Loop: Header=BB11_20 Depth=1
 	slli.d	$a6, $t2, 3
 	addi.d	$a4, $a4, -1
 	stx.d	$a5, $a2, $a6
-	beqz	$a4, .LBB11_67
-.LBB11_22:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB11_26 Depth 2
+	beqz	$a4, .LBB11_65
+.LBB11_20:                              # =>This Loop Header: Depth=1
+                                        #     Child Loop BB11_24 Depth 2
 	slli.d	$a5, $a4, 3
 	ldx.d	$a5, $a2, $a5
 	slli.w	$t3, $a4, 1
 	move	$t2, $a4
-	blt	$a1, $t3, .LBB11_21
-# %bb.23:                               # %.lr.ph.i.i.preheader
-                                        #   in Loop: Header=BB11_22 Depth=1
+	blt	$a1, $t3, .LBB11_19
+# %bb.21:                               # %.lr.ph.i.i.preheader
+                                        #   in Loop: Header=BB11_20 Depth=1
 	srli.d	$t0, $a5, 32
 	addi.w	$a6, $a5, 0
 	srai.d	$a7, $a5, 32
 	slli.d	$a7, $a7, 3
 	addi.w	$t0, $t0, 0
 	move	$t2, $a4
-	b	.LBB11_26
+	b	.LBB11_24
 	.p2align	4, , 16
-.LBB11_24:                              #   in Loop: Header=BB11_26 Depth=2
+.LBB11_22:                              #   in Loop: Header=BB11_24 Depth=2
 	slt	$t4, $t8, $s0
 	xori	$t4, $t4, 1
-	bnez	$t4, .LBB11_20
-.LBB11_25:                              # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit69.thread91
-                                        #   in Loop: Header=BB11_26 Depth=2
+	bnez	$t4, .LBB11_18
+.LBB11_23:                              # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit69.thread91
+                                        #   in Loop: Header=BB11_24 Depth=2
 	ld.d	$t4, $t3, 0
 	addi.w	$t1, $t1, 0
 	slli.d	$t1, $t1, 3
 	slli.w	$t3, $t2, 1
 	stx.d	$t4, $a2, $t1
-	blt	$a1, $t3, .LBB11_21
-.LBB11_26:                              # %.lr.ph.i.i
-                                        #   Parent Loop BB11_22 Depth=1
+	blt	$a1, $t3, .LBB11_19
+.LBB11_24:                              # %.lr.ph.i.i
+                                        #   Parent Loop BB11_20 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t4, $fp, 16
 	move	$t1, $t2
-	bge	$t3, $a1, .LBB11_30
-# %bb.27:                               #   in Loop: Header=BB11_26 Depth=2
+	bge	$t3, $a1, .LBB11_28
+# %bb.25:                               #   in Loop: Header=BB11_24 Depth=2
 	alsl.d	$t7, $t3, $a2, 3
 	ld.w	$t2, $t7, 8
 	slli.d	$t5, $t3, 3
 	ldx.w	$t5, $a2, $t5
 	slli.d	$t6, $t2, 3
-	ldx.d	$s4, $t4, $t6
+	ldx.d	$s6, $t4, $t6
 	slli.d	$t6, $t5, 3
-	ldx.d	$s2, $t4, $t6
+	ldx.d	$s0, $t4, $t6
 	ld.w	$t6, $t7, 12
-	ld.d	$t8, $s4, 144
+	ld.d	$t8, $s6, 144
 	ld.w	$t7, $t7, 4
-	ld.d	$s0, $s2, 144
-	slli.d	$s3, $t6, 3
-	ldx.d	$t8, $t8, $s3
-	slli.d	$s3, $t7, 3
-	ldx.d	$s0, $s0, $s3
-	ld.hu	$s3, $t8, 32
-	ld.hu	$s5, $s0, 32
-	andi	$s3, $s3, 16
+	ld.d	$s3, $s0, 144
+	slli.d	$s4, $t6, 3
+	ldx.d	$t8, $t8, $s4
+	slli.d	$s4, $t7, 3
+	ldx.d	$s3, $s3, $s4
+	ld.hu	$s4, $t8, 32
+	ld.hu	$s5, $s3, 32
+	andi	$s4, $s4, 16
 	andi	$s5, $s5, 16
-	beqz	$s3, .LBB11_31
-# %bb.28:                               #   in Loop: Header=BB11_26 Depth=2
-	bnez	$s5, .LBB11_31
-# %bb.29:                               #   in Loop: Header=BB11_26 Depth=2
-	move	$s3, $zero
-	b	.LBB11_48
-	.p2align	4, , 16
-.LBB11_30:                              #   in Loop: Header=BB11_26 Depth=2
-	move	$t2, $t3
-	b	.LBB11_49
-	.p2align	4, , 16
-.LBB11_31:                              #   in Loop: Header=BB11_26 Depth=2
-	bnez	$s3, .LBB11_33
-# %bb.32:                               #   in Loop: Header=BB11_26 Depth=2
-	ori	$s3, $zero, 1
-	bnez	$s5, .LBB11_48
-.LBB11_33:                              #   in Loop: Header=BB11_26 Depth=2
-	ld.hu	$s3, $t8, 28
-	and	$s5, $s3, $a3
-	bne	$s5, $a3, .LBB11_35
-# %bb.34:                               #   in Loop: Header=BB11_26 Depth=2
-	move	$s3, $zero
-	b	.LBB11_37
-.LBB11_35:                              #   in Loop: Header=BB11_26 Depth=2
-	ori	$s5, $s8, 4094
-	bltu	$s3, $s5, .LBB11_37
-# %bb.36:                               #   in Loop: Header=BB11_26 Depth=2
-	ld.w	$s3, $s4, 108
-	addi.d	$s3, $s3, -1
-.LBB11_37:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i75
-                                        #   in Loop: Header=BB11_26 Depth=2
-	ld.hu	$s4, $s0, 28
-	and	$s5, $s4, $a3
-	bne	$s5, $a3, .LBB11_39
-# %bb.38:                               #   in Loop: Header=BB11_26 Depth=2
+	beqz	$s4, .LBB11_29
+# %bb.26:                               #   in Loop: Header=BB11_24 Depth=2
+	bnez	$s5, .LBB11_29
+# %bb.27:                               #   in Loop: Header=BB11_24 Depth=2
 	move	$s4, $zero
-	b	.LBB11_41
-.LBB11_39:                              #   in Loop: Header=BB11_26 Depth=2
-	ori	$s5, $s8, 4094
-	bltu	$s4, $s5, .LBB11_41
-# %bb.40:                               #   in Loop: Header=BB11_26 Depth=2
-	ld.w	$s2, $s2, 108
-	addi.d	$s4, $s2, -1
-.LBB11_41:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i79
-                                        #   in Loop: Header=BB11_26 Depth=2
-	ld.d	$s2, $fp, 80
-	slli.d	$s5, $t2, 2
-	ldx.w	$s5, $s2, $s5
-	slli.d	$s6, $t5, 2
-	ldx.w	$s6, $s2, $s6
-	add.w	$s2, $s3, $s5
-	add.w	$s3, $s4, $s6
-	bne	$s2, $s3, .LBB11_45
-# %bb.42:                               #   in Loop: Header=BB11_26 Depth=2
-	ld.w	$s2, $t8, 16
-	ld.w	$s3, $s0, 16
-	bne	$s2, $s3, .LBB11_46
-# %bb.43:                               #   in Loop: Header=BB11_26 Depth=2
+	b	.LBB11_46
+	.p2align	4, , 16
+.LBB11_28:                              #   in Loop: Header=BB11_24 Depth=2
+	move	$t2, $t3
+	b	.LBB11_47
+	.p2align	4, , 16
+.LBB11_29:                              #   in Loop: Header=BB11_24 Depth=2
+	bnez	$s4, .LBB11_31
+# %bb.30:                               #   in Loop: Header=BB11_24 Depth=2
+	ori	$s4, $zero, 1
+	bnez	$s5, .LBB11_46
+.LBB11_31:                              #   in Loop: Header=BB11_24 Depth=2
+	ld.hu	$s5, $t8, 28
+	and	$s4, $s5, $a3
+	bne	$s4, $a3, .LBB11_33
+# %bb.32:                               #   in Loop: Header=BB11_24 Depth=2
+	move	$s5, $zero
+	b	.LBB11_35
+.LBB11_33:                              #   in Loop: Header=BB11_24 Depth=2
+	ori	$s4, $ra, 4094
+	bltu	$s5, $s4, .LBB11_35
+# %bb.34:                               #   in Loop: Header=BB11_24 Depth=2
+	ld.w	$s4, $s6, 108
+	addi.d	$s5, $s4, -1
+.LBB11_35:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i75
+                                        #   in Loop: Header=BB11_24 Depth=2
+	ld.hu	$s4, $s3, 28
+	and	$s6, $s4, $a3
+	bne	$s6, $a3, .LBB11_37
+# %bb.36:                               #   in Loop: Header=BB11_24 Depth=2
+	move	$s4, $zero
+	b	.LBB11_39
+.LBB11_37:                              #   in Loop: Header=BB11_24 Depth=2
+	ori	$s6, $ra, 4094
+	bltu	$s4, $s6, .LBB11_39
+# %bb.38:                               #   in Loop: Header=BB11_24 Depth=2
+	ld.w	$s0, $s0, 108
+	addi.d	$s4, $s0, -1
+.LBB11_39:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i79
+                                        #   in Loop: Header=BB11_24 Depth=2
+	ld.d	$s0, $fp, 80
+	slli.d	$s6, $t2, 2
+	ldx.w	$s6, $s0, $s6
+	slli.d	$s7, $t5, 2
+	ldx.w	$s7, $s0, $s7
+	add.w	$s0, $s5, $s6
+	add.w	$s4, $s4, $s7
+	bne	$s0, $s4, .LBB11_43
+# %bb.40:                               #   in Loop: Header=BB11_24 Depth=2
+	ld.w	$s0, $t8, 16
+	ld.w	$s4, $s3, 16
+	bne	$s0, $s4, .LBB11_44
+# %bb.41:                               #   in Loop: Header=BB11_24 Depth=2
 	ld.w	$t8, $t8, 20
-	ld.w	$s0, $s0, 20
-	bne	$t8, $s0, .LBB11_47
-# %bb.44:                               #   in Loop: Header=BB11_26 Depth=2
+	ld.w	$s0, $s3, 20
+	bne	$t8, $s0, .LBB11_45
+# %bb.42:                               #   in Loop: Header=BB11_24 Depth=2
 	xor	$t8, $t2, $t5
 	sltui	$t8, $t8, 1
 	slt	$t2, $t5, $t2
 	slt	$t5, $t7, $t6
 	masknez	$t2, $t2, $t8
 	maskeqz	$t5, $t5, $t8
-	or	$s3, $t5, $t2
-	b	.LBB11_48
-.LBB11_45:                              #   in Loop: Header=BB11_26 Depth=2
-	slt	$s3, $s3, $s2
-	b	.LBB11_48
-.LBB11_46:                              #   in Loop: Header=BB11_26 Depth=2
-	sltu	$s3, $s3, $s2
-	b	.LBB11_48
-.LBB11_47:                              #   in Loop: Header=BB11_26 Depth=2
-	sltu	$s3, $s0, $t8
+	or	$s4, $t5, $t2
+	b	.LBB11_46
+.LBB11_43:                              #   in Loop: Header=BB11_24 Depth=2
+	slt	$s4, $s4, $s0
+	b	.LBB11_46
+.LBB11_44:                              #   in Loop: Header=BB11_24 Depth=2
+	sltu	$s4, $s4, $s0
+	b	.LBB11_46
+.LBB11_45:                              #   in Loop: Header=BB11_24 Depth=2
+	sltu	$s4, $s0, $t8
 	.p2align	4, , 16
-.LBB11_48:                              # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit85
-                                        #   in Loop: Header=BB11_26 Depth=2
-	or	$t2, $t3, $s3
-.LBB11_49:                              #   in Loop: Header=BB11_26 Depth=2
+.LBB11_46:                              # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit85
+                                        #   in Loop: Header=BB11_24 Depth=2
+	or	$t2, $t3, $s4
+.LBB11_47:                              #   in Loop: Header=BB11_24 Depth=2
 	slli.d	$t3, $t2, 3
 	ldx.w	$t5, $a2, $t3
 	slli.d	$t3, $a6, 3
-	ldx.d	$s2, $t4, $t3
+	ldx.d	$s3, $t4, $t3
 	slli.d	$t3, $t5, 3
 	ldx.d	$t8, $t4, $t3
 	alsl.d	$t3, $t2, $a2, 3
-	ld.d	$t6, $s2, 144
+	ld.d	$t6, $s3, 144
 	ld.w	$t4, $t3, 4
 	ld.d	$t7, $t8, 144
 	ldx.d	$t6, $t6, $a7
 	slli.d	$s0, $t4, 3
 	ldx.d	$t7, $t7, $s0
 	ld.hu	$s0, $t6, 32
-	ld.hu	$s4, $t7, 32
-	andi	$s3, $s0, 16
-	andi	$s0, $s4, 16
-	beqz	$s3, .LBB11_51
-# %bb.50:                               #   in Loop: Header=BB11_26 Depth=2
-	beqz	$s0, .LBB11_25
-.LBB11_51:                              #   in Loop: Header=BB11_26 Depth=2
-	bnez	$s3, .LBB11_53
-# %bb.52:                               #   in Loop: Header=BB11_26 Depth=2
-	bnez	$s0, .LBB11_20
-.LBB11_53:                              #   in Loop: Header=BB11_26 Depth=2
+	ld.hu	$s5, $t7, 32
+	andi	$s4, $s0, 16
+	andi	$s0, $s5, 16
+	beqz	$s4, .LBB11_49
+# %bb.48:                               #   in Loop: Header=BB11_24 Depth=2
+	beqz	$s0, .LBB11_23
+.LBB11_49:                              #   in Loop: Header=BB11_24 Depth=2
+	bnez	$s4, .LBB11_51
+# %bb.50:                               #   in Loop: Header=BB11_24 Depth=2
+	bnez	$s0, .LBB11_18
+.LBB11_51:                              #   in Loop: Header=BB11_24 Depth=2
 	ld.hu	$s0, $t6, 28
-	and	$s4, $s0, $a3
-	ori	$s3, $s8, 4094
-	bne	$s4, $a3, .LBB11_55
-# %bb.54:                               #   in Loop: Header=BB11_26 Depth=2
+	and	$s5, $s0, $a3
+	ori	$s4, $ra, 4094
+	bne	$s5, $a3, .LBB11_53
+# %bb.52:                               #   in Loop: Header=BB11_24 Depth=2
 	move	$s0, $zero
-	b	.LBB11_57
+	b	.LBB11_55
 	.p2align	4, , 16
-.LBB11_55:                              #   in Loop: Header=BB11_26 Depth=2
-	bltu	$s0, $s3, .LBB11_57
-# %bb.56:                               #   in Loop: Header=BB11_26 Depth=2
-	ld.w	$s0, $s2, 108
+.LBB11_53:                              #   in Loop: Header=BB11_24 Depth=2
+	bltu	$s0, $s4, .LBB11_55
+# %bb.54:                               #   in Loop: Header=BB11_24 Depth=2
+	ld.w	$s0, $s3, 108
 	addi.d	$s0, $s0, -1
-.LBB11_57:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i59
-                                        #   in Loop: Header=BB11_26 Depth=2
-	ld.hu	$s2, $t7, 28
-	and	$s4, $s2, $a3
-	bne	$s4, $a3, .LBB11_59
-# %bb.58:                               #   in Loop: Header=BB11_26 Depth=2
-	move	$s2, $zero
-	b	.LBB11_61
+.LBB11_55:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i59
+                                        #   in Loop: Header=BB11_24 Depth=2
+	ld.hu	$s3, $t7, 28
+	and	$s5, $s3, $a3
+	bne	$s5, $a3, .LBB11_57
+# %bb.56:                               #   in Loop: Header=BB11_24 Depth=2
+	move	$s3, $zero
+	b	.LBB11_59
 	.p2align	4, , 16
-.LBB11_59:                              #   in Loop: Header=BB11_26 Depth=2
-	bltu	$s2, $s3, .LBB11_61
-# %bb.60:                               #   in Loop: Header=BB11_26 Depth=2
+.LBB11_57:                              #   in Loop: Header=BB11_24 Depth=2
+	bltu	$s3, $s4, .LBB11_59
+# %bb.58:                               #   in Loop: Header=BB11_24 Depth=2
 	ld.w	$t8, $t8, 108
-	addi.d	$s2, $t8, -1
-.LBB11_61:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i63
-                                        #   in Loop: Header=BB11_26 Depth=2
+	addi.d	$s3, $t8, -1
+.LBB11_59:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i63
+                                        #   in Loop: Header=BB11_24 Depth=2
 	ld.d	$t8, $fp, 80
-	slli.d	$s3, $a6, 2
-	ldx.w	$s3, $t8, $s3
-	slli.d	$s4, $t5, 2
+	slli.d	$s4, $a6, 2
 	ldx.w	$s4, $t8, $s4
-	add.w	$t8, $s0, $s3
-	add.w	$s0, $s2, $s4
-	bne	$t8, $s0, .LBB11_24
-# %bb.62:                               #   in Loop: Header=BB11_26 Depth=2
+	slli.d	$s5, $t5, 2
+	ldx.w	$s5, $t8, $s5
+	add.w	$t8, $s0, $s4
+	add.w	$s0, $s3, $s5
+	bne	$t8, $s0, .LBB11_22
+# %bb.60:                               #   in Loop: Header=BB11_24 Depth=2
 	ld.w	$t8, $t6, 16
 	ld.w	$s0, $t7, 16
-	bne	$t8, $s0, .LBB11_65
-# %bb.63:                               #   in Loop: Header=BB11_26 Depth=2
+	bne	$t8, $s0, .LBB11_63
+# %bb.61:                               #   in Loop: Header=BB11_24 Depth=2
 	ld.w	$t6, $t6, 20
 	ld.w	$t7, $t7, 20
-	bne	$t6, $t7, .LBB11_66
-# %bb.64:                               #   in Loop: Header=BB11_26 Depth=2
+	bne	$t6, $t7, .LBB11_64
+# %bb.62:                               #   in Loop: Header=BB11_24 Depth=2
 	xor	$t6, $t5, $a6
 	sltui	$t6, $t6, 1
 	slt	$t5, $a6, $t5
@@ -2264,126 +2247,124 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	masknez	$t5, $t5, $t6
 	maskeqz	$t4, $t4, $t6
 	or	$t4, $t4, $t5
-	beqz	$t4, .LBB11_25
-	b	.LBB11_20
-.LBB11_65:                              #   in Loop: Header=BB11_26 Depth=2
+	beqz	$t4, .LBB11_23
+	b	.LBB11_18
+.LBB11_63:                              #   in Loop: Header=BB11_24 Depth=2
 	sltu	$t4, $t8, $s0
 	xori	$t4, $t4, 1
-	beqz	$t4, .LBB11_25
-	b	.LBB11_20
-.LBB11_66:                              #   in Loop: Header=BB11_26 Depth=2
+	beqz	$t4, .LBB11_23
+	b	.LBB11_18
+.LBB11_64:                              #   in Loop: Header=BB11_24 Depth=2
 	sltu	$t4, $t6, $t7
 	xori	$t4, $t4, 1
-	beqz	$t4, .LBB11_25
-	b	.LBB11_20
-.LBB11_67:                              # %.preheader.i
+	beqz	$t4, .LBB11_23
+	b	.LBB11_18
+.LBB11_65:                              # %.preheader.i
 	ld.d	$a4, $a0, 0
 	slli.d	$a6, $a1, 3
 	ldx.d	$a5, $a2, $a6
 	stx.d	$a4, $a2, $a6
 	ori	$a4, $zero, 2
 	st.d	$a5, $a0, 0
-	bne	$a1, $a4, .LBB11_83
-.LBB11_68:                              # %_ZN13CRecordVectorIN8NArchive4NCab7CMvItemEE4SortEPFiPKS2_S5_PvES6_.exit
+	bne	$a1, $a4, .LBB11_81
+.LBB11_66:                              # %_ZN13CRecordVectorIN8NArchive4NCab7CMvItemEE4SortEPFiPKS2_S5_PvES6_.exit
 	st.d	$a5, $a0, 0
 	ld.w	$a0, $fp, 44
-	blt	$a0, $a4, .LBB11_73
-# %bb.69:                               # %.lr.ph116
+	blt	$a0, $a4, .LBB11_71
+# %bb.67:                               # %.lr.ph116
 	ori	$s0, $zero, 1
-	ori	$s2, $zero, 8
+	ori	$s5, $zero, 8
 	ori	$s3, $zero, 1
-	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	b	.LBB11_71
+	ori	$s2, $zero, 1
+	b	.LBB11_69
 	.p2align	4, , 16
-.LBB11_70:                              #   in Loop: Header=BB11_71 Depth=1
+.LBB11_68:                              #   in Loop: Header=BB11_69 Depth=1
 	ld.w	$a0, $fp, 44
 	addi.d	$s0, $s0, 1
 	addi.w	$s3, $s3, 1
-	addi.d	$s2, $s2, 8
-	bge	$s0, $a0, .LBB11_73
-.LBB11_71:                              # =>This Inner Loop Header: Depth=1
+	addi.d	$s5, $s5, 8
+	bge	$s0, $a0, .LBB11_71
+.LBB11_69:                              # =>This Inner Loop Header: Depth=1
 	addi.w	$a2, $s3, -1
 	move	$a0, $fp
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NCab13CMvDatabaseEx13AreItemsEqualEii)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB11_70
-# %bb.72:                               #   in Loop: Header=BB11_71 Depth=1
+	bnez	$a0, .LBB11_68
+# %bb.70:                               #   in Loop: Header=BB11_69 Depth=1
 	ld.d	$a0, $fp, 48
-	ldx.d	$a1, $a0, $s2
-	ld.d	$a3, $sp, 0                     # 8-byte Folded Reload
-	slli.d	$a2, $a3, 3
-	addi.w	$a3, $a3, 1
+	ldx.d	$a1, $a0, $s5
+	slli.d	$a2, $s2, 3
+	addi.w	$s2, $s2, 1
 	stx.d	$a1, $a0, $a2
-	st.d	$a3, $sp, 0                     # 8-byte Folded Spill
-	b	.LBB11_70
-.LBB11_73:                              # %._crit_edge117
+	b	.LBB11_68
+.LBB11_71:                              # %._crit_edge117
 	move	$a0, $s1
-	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector10DeleteFromEi)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 44
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_82
-# %bb.74:                               # %.lr.ph120
-	move	$s0, $zero
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	blez	$a0, .LBB11_80
+# %bb.72:                               # %.lr.ph120
 	move	$s1, $zero
 	move	$s2, $zero
-	ori	$s3, $s8, 4093
-	ori	$s4, $s8, 4094
-	b	.LBB11_76
+	move	$s3, $zero
+	lu12i.w	$a1, 15
+	ori	$s5, $a1, 4093
+	ori	$s4, $a1, 4094
+	b	.LBB11_74
 	.p2align	4, , 16
-.LBB11_75:                              #   in Loop: Header=BB11_76 Depth=1
+.LBB11_73:                              #   in Loop: Header=BB11_74 Depth=1
+	addi.d	$s3, $s3, 1
 	addi.d	$s2, $s2, 1
-	addi.d	$s1, $s1, 1
-	addi.d	$s0, $s0, 8
-	bge	$s2, $a0, .LBB11_82
-.LBB11_76:                              # =>This Inner Loop Header: Depth=1
+	addi.d	$s1, $s1, 8
+	bge	$s3, $a0, .LBB11_80
+.LBB11_74:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 48
-	ldx.w	$a1, $a2, $s0
+	ldx.w	$a1, $a2, $s1
 	ld.d	$a3, $fp, 16
 	slli.d	$a4, $a1, 3
 	ldx.d	$a3, $a3, $a4
-	add.d	$a2, $a2, $s0
+	add.d	$a2, $a2, $s1
 	ld.w	$a2, $a2, 4
 	ld.d	$a4, $a3, 144
 	slli.d	$a2, $a2, 3
 	ldx.d	$a2, $a4, $a2
 	ld.hu	$a2, $a2, 28
-	and	$a4, $a2, $s3
-	bne	$a4, $s3, .LBB11_78
-# %bb.77:                               #   in Loop: Header=BB11_76 Depth=1
+	and	$a4, $a2, $s5
+	bne	$a4, $s5, .LBB11_76
+# %bb.75:                               #   in Loop: Header=BB11_74 Depth=1
 	move	$a2, $zero
-	b	.LBB11_80
+	b	.LBB11_78
 	.p2align	4, , 16
-.LBB11_78:                              #   in Loop: Header=BB11_76 Depth=1
-	bltu	$a2, $s4, .LBB11_80
-# %bb.79:                               #   in Loop: Header=BB11_76 Depth=1
+.LBB11_76:                              #   in Loop: Header=BB11_74 Depth=1
+	bltu	$a2, $s4, .LBB11_78
+# %bb.77:                               #   in Loop: Header=BB11_74 Depth=1
 	ld.w	$a2, $a3, 108
 	addi.d	$a2, $a2, -1
-.LBB11_80:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit
-                                        #   in Loop: Header=BB11_76 Depth=1
+.LBB11_78:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit
+                                        #   in Loop: Header=BB11_74 Depth=1
 	ld.d	$a3, $fp, 80
 	slli.d	$a1, $a1, 2
 	ldx.w	$a1, $a3, $a1
 	ld.w	$a3, $fp, 108
 	add.w	$a1, $a2, $a1
-	blt	$a1, $a3, .LBB11_75
-# %bb.81:                               #   in Loop: Header=BB11_76 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	blt	$a1, $a3, .LBB11_73
+# %bb.79:                               #   in Loop: Header=BB11_74 Depth=1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 108
 	ld.d	$a1, $fp, 112
 	slli.d	$a0, $a0, 2
-	stx.w	$s1, $a1, $a0
+	stx.w	$s2, $a1, $a0
 	ld.w	$a1, $fp, 108
 	ld.w	$a0, $fp, 44
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $fp, 108
-	b	.LBB11_75
-.LBB11_82:                              # %._crit_edge121
+	b	.LBB11_73
+.LBB11_80:                              # %._crit_edge121
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -2397,15 +2378,15 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB11_83:                              # %.lr.ph.i21.preheader.i.preheader
+.LBB11_81:                              # %.lr.ph.i21.preheader.i.preheader
 	ori	$a6, $zero, 3
-	b	.LBB11_86
+	b	.LBB11_84
 	.p2align	4, , 16
-.LBB11_84:                              # %.._crit_edge.loopexit_crit_edge.i28.i
-                                        #   in Loop: Header=BB11_86 Depth=1
+.LBB11_82:                              # %.._crit_edge.loopexit_crit_edge.i28.i
+                                        #   in Loop: Header=BB11_84 Depth=1
 	move	$t4, $t3
-.LBB11_85:                              # %_ZN13CRecordVectorIN8NArchive4NCab7CMvItemEE11SortRefDownEPS2_iiPFiPKS2_S6_PvES7_.exit31.i
-                                        #   in Loop: Header=BB11_86 Depth=1
+.LBB11_83:                              # %_ZN13CRecordVectorIN8NArchive4NCab7CMvItemEE11SortRefDownEPS2_iiPFiPKS2_S6_PvES7_.exit31.i
+                                        #   in Loop: Header=BB11_84 Depth=1
 	slli.d	$t0, $t4, 3
 	stx.d	$a5, $a2, $t0
 	slli.d	$t0, $a1, 3
@@ -2413,10 +2394,10 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	ldx.d	$a5, $a2, $t0
 	stx.d	$t1, $a2, $t0
 	st.d	$a5, $a0, 0
-	bge	$a6, $a7, .LBB11_68
-.LBB11_86:                              # %.lr.ph.i21.preheader.i
+	bge	$a6, $a7, .LBB11_66
+.LBB11_84:                              # %.lr.ph.i21.preheader.i
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB11_89 Depth 2
+                                        #     Child Loop BB11_87 Depth 2
 	move	$a7, $a1
 	srli.d	$t2, $a5, 32
 	addi.d	$a1, $a1, -1
@@ -2426,202 +2407,199 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	ori	$t6, $zero, 2
 	slli.d	$t1, $t1, 3
 	addi.w	$t2, $t2, 0
-	b	.LBB11_89
+	b	.LBB11_87
 	.p2align	4, , 16
-.LBB11_87:                              #   in Loop: Header=BB11_89 Depth=2
-	slt	$t6, $s2, $s3
+.LBB11_85:                              #   in Loop: Header=BB11_87 Depth=2
+	slt	$t6, $s0, $s4
 	xori	$t6, $t6, 1
-	bnez	$t6, .LBB11_84
-.LBB11_88:                              # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit.thread94
-                                        #   in Loop: Header=BB11_89 Depth=2
+	bnez	$t6, .LBB11_82
+.LBB11_86:                              # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit.thread94
+                                        #   in Loop: Header=BB11_87 Depth=2
 	ld.d	$t5, $t5, 0
 	slli.d	$t3, $t3, 3
 	slli.w	$t6, $t4, 1
 	stx.d	$t5, $a2, $t3
-	bge	$t6, $a7, .LBB11_85
-.LBB11_89:                              # %.lr.ph.i21.i
-                                        #   Parent Loop BB11_86 Depth=1
+	bge	$t6, $a7, .LBB11_83
+.LBB11_87:                              # %.lr.ph.i21.i
+                                        #   Parent Loop BB11_84 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$t5, $fp, 16
 	move	$t3, $t4
-	bge	$t6, $a1, .LBB11_93
-# %bb.90:                               #   in Loop: Header=BB11_89 Depth=2
-	alsl.d	$s0, $t6, $a2, 3
-	ld.w	$t4, $s0, 8
+	bge	$t6, $a1, .LBB11_91
+# %bb.88:                               #   in Loop: Header=BB11_87 Depth=2
+	alsl.d	$s3, $t6, $a2, 3
+	ld.w	$t4, $s3, 8
 	slli.d	$t7, $t6, 3
 	ldx.w	$t7, $a2, $t7
 	slli.d	$t8, $t4, 3
-	ldx.d	$s6, $t5, $t8
+	ldx.d	$s8, $t5, $t8
 	slli.d	$t8, $t7, 3
-	ldx.d	$s4, $t5, $t8
-	ld.w	$t8, $s0, 12
-	ld.d	$s2, $s6, 144
-	ld.w	$s0, $s0, 4
-	ld.d	$s3, $s4, 144
+	ldx.d	$s0, $t5, $t8
+	ld.w	$t8, $s3, 12
+	ld.d	$s4, $s8, 144
+	ld.w	$s3, $s3, 4
+	ld.d	$s6, $s0, 144
 	slli.d	$s5, $t8, 3
-	ldx.d	$s2, $s2, $s5
-	slli.d	$s5, $s0, 3
-	ldx.d	$s3, $s3, $s5
-	ld.hu	$s5, $s2, 32
-	ld.hu	$s7, $s3, 32
-	andi	$s5, $s5, 16
+	ldx.d	$s5, $s4, $s5
+	slli.d	$s4, $s3, 3
+	ldx.d	$s6, $s6, $s4
+	ld.hu	$s4, $s5, 32
+	ld.hu	$s7, $s6, 32
+	andi	$s4, $s4, 16
 	andi	$s7, $s7, 16
-	beqz	$s5, .LBB11_94
-# %bb.91:                               #   in Loop: Header=BB11_89 Depth=2
-	bnez	$s7, .LBB11_94
-# %bb.92:                               #   in Loop: Header=BB11_89 Depth=2
-	move	$s5, $zero
-	b	.LBB11_111
+	beqz	$s4, .LBB11_92
+# %bb.89:                               #   in Loop: Header=BB11_87 Depth=2
+	bnez	$s7, .LBB11_92
+# %bb.90:                               #   in Loop: Header=BB11_87 Depth=2
+	move	$s4, $zero
+	b	.LBB11_108
 	.p2align	4, , 16
-.LBB11_93:                              #   in Loop: Header=BB11_89 Depth=2
+.LBB11_91:                              #   in Loop: Header=BB11_87 Depth=2
 	move	$t4, $t6
-	b	.LBB11_112
+	b	.LBB11_109
 	.p2align	4, , 16
-.LBB11_94:                              #   in Loop: Header=BB11_89 Depth=2
-	bnez	$s5, .LBB11_96
-# %bb.95:                               #   in Loop: Header=BB11_89 Depth=2
-	ori	$s5, $zero, 1
-	bnez	$s7, .LBB11_111
-.LBB11_96:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.hu	$s5, $s2, 28
-	and	$s7, $s5, $a3
-	bne	$s7, $a3, .LBB11_98
-# %bb.97:                               #   in Loop: Header=BB11_89 Depth=2
-	move	$s5, $zero
-	b	.LBB11_100
-.LBB11_98:                              #   in Loop: Header=BB11_89 Depth=2
-	ori	$s7, $s8, 4094
-	bltu	$s5, $s7, .LBB11_100
-# %bb.99:                               #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s5, $s6, 108
-	addi.d	$s5, $s5, -1
-.LBB11_100:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i43
-                                        #   in Loop: Header=BB11_89 Depth=2
-	ld.hu	$s6, $s3, 28
-	and	$s7, $s6, $a3
-	bne	$s7, $a3, .LBB11_102
-# %bb.101:                              #   in Loop: Header=BB11_89 Depth=2
-	move	$s6, $zero
-	b	.LBB11_104
-.LBB11_102:                             #   in Loop: Header=BB11_89 Depth=2
-	ori	$s7, $s8, 4094
-	bltu	$s6, $s7, .LBB11_104
-# %bb.103:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s4, $s4, 108
-	addi.d	$s6, $s4, -1
-.LBB11_104:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i47
-                                        #   in Loop: Header=BB11_89 Depth=2
-	ld.d	$s4, $fp, 80
-	slli.d	$s7, $t4, 2
-	ldx.w	$s7, $s4, $s7
-	slli.d	$s8, $t7, 2
-	ldx.w	$s8, $s4, $s8
-	add.w	$s4, $s5, $s7
-	add.w	$s5, $s6, $s8
-	bne	$s4, $s5, .LBB11_108
-# %bb.105:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s4, $s2, 16
-	ld.w	$s5, $s3, 16
-	lu12i.w	$s8, 15
-	bne	$s4, $s5, .LBB11_109
-# %bb.106:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s2, $s2, 20
-	ld.w	$s3, $s3, 20
-	bne	$s2, $s3, .LBB11_110
-# %bb.107:                              #   in Loop: Header=BB11_89 Depth=2
-	xor	$s2, $t4, $t7
-	sltui	$s2, $s2, 1
+.LBB11_92:                              #   in Loop: Header=BB11_87 Depth=2
+	bnez	$s4, .LBB11_94
+# %bb.93:                               #   in Loop: Header=BB11_87 Depth=2
+	ori	$s4, $zero, 1
+	bnez	$s7, .LBB11_108
+.LBB11_94:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.hu	$s7, $s5, 28
+	and	$s4, $s7, $a3
+	bne	$s4, $a3, .LBB11_96
+# %bb.95:                               #   in Loop: Header=BB11_87 Depth=2
+	move	$s7, $zero
+	b	.LBB11_98
+.LBB11_96:                              #   in Loop: Header=BB11_87 Depth=2
+	ori	$s4, $ra, 4094
+	bltu	$s7, $s4, .LBB11_98
+# %bb.97:                               #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s4, $s8, 108
+	addi.d	$s7, $s4, -1
+.LBB11_98:                              # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i43
+                                        #   in Loop: Header=BB11_87 Depth=2
+	ld.hu	$s4, $s6, 28
+	and	$s8, $s4, $a3
+	bne	$s8, $a3, .LBB11_100
+# %bb.99:                               #   in Loop: Header=BB11_87 Depth=2
+	move	$s4, $zero
+	b	.LBB11_102
+.LBB11_100:                             #   in Loop: Header=BB11_87 Depth=2
+	ori	$s8, $ra, 4094
+	bltu	$s4, $s8, .LBB11_102
+# %bb.101:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s0, $s0, 108
+	addi.d	$s4, $s0, -1
+.LBB11_102:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i47
+                                        #   in Loop: Header=BB11_87 Depth=2
+	ld.d	$s0, $fp, 80
+	slli.d	$s8, $t4, 2
+	ldx.w	$s8, $s0, $s8
+	slli.d	$ra, $t7, 2
+	ldx.w	$ra, $s0, $ra
+	add.w	$s0, $s7, $s8
+	add.w	$s4, $s4, $ra
+	bne	$s0, $s4, .LBB11_106
+# %bb.103:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s0, $s5, 16
+	ld.w	$s4, $s6, 16
+	lu12i.w	$ra, 15
+	bne	$s0, $s4, .LBB11_107
+# %bb.104:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s0, $s5, 20
+	ld.w	$s4, $s6, 20
+	bne	$s0, $s4, .LBB11_107
+# %bb.105:                              #   in Loop: Header=BB11_87 Depth=2
+	xor	$s0, $t4, $t7
+	sltui	$s0, $s0, 1
 	slt	$t4, $t7, $t4
-	slt	$t7, $s0, $t8
-	masknez	$t4, $t4, $s2
-	maskeqz	$t7, $t7, $s2
-	or	$s5, $t7, $t4
-	b	.LBB11_111
-.LBB11_108:                             #   in Loop: Header=BB11_89 Depth=2
-	slt	$s5, $s5, $s4
-	lu12i.w	$s8, 15
-	b	.LBB11_111
-.LBB11_109:                             #   in Loop: Header=BB11_89 Depth=2
-	sltu	$s5, $s5, $s4
-	b	.LBB11_111
-.LBB11_110:                             #   in Loop: Header=BB11_89 Depth=2
-	sltu	$s5, $s3, $s2
+	slt	$t7, $s3, $t8
+	masknez	$t4, $t4, $s0
+	maskeqz	$t7, $t7, $s0
+	or	$s4, $t7, $t4
+	b	.LBB11_108
+.LBB11_106:                             #   in Loop: Header=BB11_87 Depth=2
+	slt	$s4, $s4, $s0
+	lu12i.w	$ra, 15
+	b	.LBB11_108
+.LBB11_107:                             #   in Loop: Header=BB11_87 Depth=2
+	sltu	$s4, $s4, $s0
 	.p2align	4, , 16
-.LBB11_111:                             # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit53
-                                        #   in Loop: Header=BB11_89 Depth=2
-	or	$t4, $t6, $s5
-.LBB11_112:                             #   in Loop: Header=BB11_89 Depth=2
+.LBB11_108:                             # %_ZN8NArchive4NCabL14CompareMvItemsEPKNS0_7CMvItemES3_Pv.exit53
+                                        #   in Loop: Header=BB11_87 Depth=2
+	or	$t4, $t6, $s4
+.LBB11_109:                             #   in Loop: Header=BB11_87 Depth=2
 	slli.d	$t6, $t4, 3
 	ldx.w	$t6, $a2, $t6
 	slli.d	$t7, $t0, 3
-	ldx.d	$s4, $t5, $t7
+	ldx.d	$s6, $t5, $t7
 	slli.d	$t7, $t6, 3
-	ldx.d	$s2, $t5, $t7
+	ldx.d	$s0, $t5, $t7
 	alsl.d	$t5, $t4, $a2, 3
-	ld.d	$t8, $s4, 144
+	ld.d	$t8, $s6, 144
 	ld.w	$t7, $t5, 4
-	ld.d	$s0, $s2, 144
+	ld.d	$s3, $s0, 144
 	ldx.d	$t8, $t8, $t1
-	slli.d	$s3, $t7, 3
-	ldx.d	$s0, $s0, $s3
-	ld.hu	$s3, $t8, 32
-	ld.hu	$s6, $s0, 32
-	andi	$s5, $s3, 16
-	andi	$s3, $s6, 16
-	beqz	$s5, .LBB11_114
-# %bb.113:                              #   in Loop: Header=BB11_89 Depth=2
-	beqz	$s3, .LBB11_88
-.LBB11_114:                             #   in Loop: Header=BB11_89 Depth=2
-	bnez	$s5, .LBB11_116
-# %bb.115:                              #   in Loop: Header=BB11_89 Depth=2
-	bnez	$s3, .LBB11_84
-.LBB11_116:                             #   in Loop: Header=BB11_89 Depth=2
-	ld.hu	$s3, $t8, 28
-	and	$s6, $s3, $a3
-	ori	$s5, $s8, 4094
-	bne	$s6, $a3, .LBB11_118
-# %bb.117:                              #   in Loop: Header=BB11_89 Depth=2
-	move	$s3, $zero
-	b	.LBB11_120
+	slli.d	$s4, $t7, 3
+	ldx.d	$s3, $s3, $s4
+	ld.hu	$s4, $t8, 32
+	ld.hu	$s7, $s3, 32
+	andi	$s5, $s4, 16
+	andi	$s4, $s7, 16
+	beqz	$s5, .LBB11_111
+# %bb.110:                              #   in Loop: Header=BB11_87 Depth=2
+	beqz	$s4, .LBB11_86
+.LBB11_111:                             #   in Loop: Header=BB11_87 Depth=2
+	bnez	$s5, .LBB11_113
+# %bb.112:                              #   in Loop: Header=BB11_87 Depth=2
+	bnez	$s4, .LBB11_82
+.LBB11_113:                             #   in Loop: Header=BB11_87 Depth=2
+	ld.hu	$s5, $t8, 28
+	and	$s7, $s5, $a3
+	ori	$s4, $ra, 4094
+	bne	$s7, $a3, .LBB11_115
+# %bb.114:                              #   in Loop: Header=BB11_87 Depth=2
+	move	$s5, $zero
+	b	.LBB11_117
 	.p2align	4, , 16
-.LBB11_118:                             #   in Loop: Header=BB11_89 Depth=2
-	bltu	$s3, $s5, .LBB11_120
-# %bb.119:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s3, $s4, 108
-	addi.d	$s3, $s3, -1
-.LBB11_120:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i
-                                        #   in Loop: Header=BB11_89 Depth=2
-	ld.hu	$s4, $s0, 28
-	and	$s6, $s4, $a3
-	bne	$s6, $a3, .LBB11_122
-# %bb.121:                              #   in Loop: Header=BB11_89 Depth=2
-	move	$s4, $zero
-	b	.LBB11_124
+.LBB11_115:                             #   in Loop: Header=BB11_87 Depth=2
+	bltu	$s5, $s4, .LBB11_117
+# %bb.116:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s5, $s6, 108
+	addi.d	$s5, $s5, -1
+.LBB11_117:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit.i
+                                        #   in Loop: Header=BB11_87 Depth=2
+	ld.hu	$s6, $s3, 28
+	and	$s7, $s6, $a3
+	bne	$s7, $a3, .LBB11_119
+# %bb.118:                              #   in Loop: Header=BB11_87 Depth=2
+	move	$s6, $zero
+	b	.LBB11_121
 	.p2align	4, , 16
-.LBB11_122:                             #   in Loop: Header=BB11_89 Depth=2
-	bltu	$s4, $s5, .LBB11_124
-# %bb.123:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s2, $s2, 108
-	addi.d	$s4, $s2, -1
-.LBB11_124:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i
-                                        #   in Loop: Header=BB11_89 Depth=2
-	ld.d	$s2, $fp, 80
-	slli.d	$s5, $t0, 2
-	ldx.w	$s5, $s2, $s5
-	slli.d	$s6, $t6, 2
-	ldx.w	$s6, $s2, $s6
-	add.w	$s2, $s3, $s5
-	add.w	$s3, $s4, $s6
-	bne	$s2, $s3, .LBB11_87
-# %bb.125:                              #   in Loop: Header=BB11_89 Depth=2
-	ld.w	$s2, $t8, 16
-	ld.w	$s3, $s0, 16
-	bne	$s2, $s3, .LBB11_128
-# %bb.126:                              #   in Loop: Header=BB11_89 Depth=2
+.LBB11_119:                             #   in Loop: Header=BB11_87 Depth=2
+	bltu	$s6, $s4, .LBB11_121
+# %bb.120:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s0, $s0, 108
+	addi.d	$s6, $s0, -1
+.LBB11_121:                             # %_ZNK8NArchive4NCab13CMvDatabaseEx14GetFolderIndexEPKNS0_7CMvItemE.exit61.i
+                                        #   in Loop: Header=BB11_87 Depth=2
+	ld.d	$s0, $fp, 80
+	slli.d	$s4, $t0, 2
+	ldx.w	$s4, $s0, $s4
+	slli.d	$s7, $t6, 2
+	ldx.w	$s7, $s0, $s7
+	add.w	$s0, $s5, $s4
+	add.w	$s4, $s6, $s7
+	bne	$s0, $s4, .LBB11_85
+# %bb.122:                              #   in Loop: Header=BB11_87 Depth=2
+	ld.w	$s0, $t8, 16
+	ld.w	$s4, $s3, 16
+	bne	$s0, $s4, .LBB11_125
+# %bb.123:                              #   in Loop: Header=BB11_87 Depth=2
 	ld.w	$t8, $t8, 20
-	ld.w	$s0, $s0, 20
-	bne	$t8, $s0, .LBB11_129
-# %bb.127:                              #   in Loop: Header=BB11_89 Depth=2
+	ld.w	$s0, $s3, 20
+	bne	$t8, $s0, .LBB11_126
+# %bb.124:                              #   in Loop: Header=BB11_87 Depth=2
 	xor	$t8, $t6, $t0
 	sltui	$t8, $t8, 1
 	slt	$t6, $t0, $t6
@@ -2631,18 +2609,18 @@ _ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv: # @_ZN8NArchive4NCab13CMv
 	masknez	$t6, $t6, $t8
 	maskeqz	$t7, $t7, $t8
 	or	$t6, $t7, $t6
-	beqz	$t6, .LBB11_88
-	b	.LBB11_84
-.LBB11_128:                             #   in Loop: Header=BB11_89 Depth=2
-	sltu	$t6, $s2, $s3
+	beqz	$t6, .LBB11_86
+	b	.LBB11_82
+.LBB11_125:                             #   in Loop: Header=BB11_87 Depth=2
+	sltu	$t6, $s0, $s4
 	xori	$t6, $t6, 1
-	beqz	$t6, .LBB11_88
-	b	.LBB11_84
-.LBB11_129:                             #   in Loop: Header=BB11_89 Depth=2
+	beqz	$t6, .LBB11_86
+	b	.LBB11_82
+.LBB11_126:                             #   in Loop: Header=BB11_87 Depth=2
 	sltu	$t6, $t8, $s0
 	xori	$t6, $t6, 1
-	beqz	$t6, .LBB11_88
-	b	.LBB11_84
+	beqz	$t6, .LBB11_86
+	b	.LBB11_82
 .Lfunc_end11:
 	.size	_ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv, .Lfunc_end11-_ZN8NArchive4NCab13CMvDatabaseEx17FillSortAndShrinkEv
 	.cfi_endproc
@@ -2662,63 +2640,62 @@ _ZN8NArchive4NCab13CMvDatabaseEx5CheckEv: # @_ZN8NArchive4NCab13CMvDatabaseEx5Ch
 	ori	$a4, $zero, 1
 	lu12i.w	$a5, 15
 	ori	$a5, $a5, 4093
-	ori	$a6, $zero, 1
 	b	.LBB12_3
 	.p2align	4, , 16
 .LBB12_2:                               # %.critedge71
                                         #   in Loop: Header=BB12_3 Depth=1
-	addi.d	$a6, $a6, 1
-	beq	$a6, $a0, .LBB12_12
+	addi.d	$a4, $a4, 1
+	beq	$a4, $a0, .LBB12_12
 .LBB12_3:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB12_5 Depth 2
-	slli.d	$t0, $a6, 3
-	ldx.d	$a7, $a2, $t0
-	ld.w	$t1, $a7, 140
-	blt	$t1, $a4, .LBB12_2
+	slli.d	$a7, $a4, 3
+	ldx.d	$a6, $a2, $a7
+	ld.w	$t0, $a6, 140
+	blez	$t0, .LBB12_2
 # %bb.4:                                # %.lr.ph.i
                                         #   in Loop: Header=BB12_3 Depth=1
-	ld.d	$t2, $a7, 144
+	ld.d	$t1, $a6, 144
 	.p2align	4, , 16
 .LBB12_5:                               #   Parent Loop BB12_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$t3, $t2, 0
-	ld.hu	$t3, $t3, 28
-	and	$t3, $t3, $a5
-	beq	$t3, $a5, .LBB12_7
+	ld.d	$t2, $t1, 0
+	ld.hu	$t2, $t2, 28
+	and	$t2, $t2, $a5
+	beq	$t2, $a5, .LBB12_7
 # %bb.6:                                #   in Loop: Header=BB12_5 Depth=2
-	addi.d	$t1, $t1, -1
-	addi.d	$t2, $t2, 8
-	bnez	$t1, .LBB12_5
+	addi.d	$t0, $t0, -1
+	addi.d	$t1, $t1, 8
+	bnez	$t0, .LBB12_5
 	b	.LBB12_2
 	.p2align	4, , 16
 .LBB12_7:                               # %_ZNK8NArchive4NCab9CDatabase17IsTherePrevFolderEv.exit
                                         #   in Loop: Header=BB12_3 Depth=1
-	ldx.d	$t1, $a3, $t0
-	ld.w	$t0, $t1, 108
-	beqz	$t0, .LBB12_11
+	ldx.d	$t0, $a3, $a7
+	ld.w	$a7, $t0, 108
+	beqz	$a7, .LBB12_11
 # %bb.8:                                #   in Loop: Header=BB12_3 Depth=1
-	ld.w	$t2, $a7, 108
-	beqz	$t2, .LBB12_11
+	ld.w	$t1, $a6, 108
+	beqz	$t1, .LBB12_11
 # %bb.9:                                #   in Loop: Header=BB12_3 Depth=1
-	ld.d	$t1, $t1, 112
-	ld.d	$t2, $a7, 112
-	alsl.d	$a7, $t0, $t1, 3
-	ld.d	$a7, $a7, -8
-	ld.d	$t0, $t2, 0
+	ld.d	$t0, $t0, 112
+	ld.d	$t1, $a6, 112
+	alsl.d	$a6, $a7, $t0, 3
+	ld.d	$a6, $a6, -8
+	ld.d	$a7, $t1, 0
+	ld.bu	$t0, $a6, 6
 	ld.bu	$t1, $a7, 6
-	ld.bu	$t2, $t0, 6
-	bne	$t1, $t2, .LBB12_11
+	bne	$t0, $t1, .LBB12_11
 # %bb.10:                               #   in Loop: Header=BB12_3 Depth=1
+	ld.bu	$a6, $a6, 7
 	ld.bu	$a7, $a7, 7
-	ld.bu	$t0, $t0, 7
-	beq	$a7, $t0, .LBB12_2
+	beq	$a6, $a7, .LBB12_2
 .LBB12_11:
 	move	$a0, $zero
 	b	.LBB12_32
 .LBB12_12:                              # %.critedge.preheader
 	ld.w	$a2, $a1, 44
 	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB12_32
+	blez	$a2, .LBB12_32
 # %bb.13:                               # %.lr.ph94
 	move	$a3, $zero
 	move	$t2, $zero

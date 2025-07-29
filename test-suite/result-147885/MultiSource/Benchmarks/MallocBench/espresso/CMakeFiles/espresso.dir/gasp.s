@@ -24,9 +24,8 @@ expand_gasp:                            # @expand_gasp
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 12
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 8
-	blt	$a1, $a2, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -162,60 +161,58 @@ expand1_gasp:                           # @expand1_gasp
 	ld.w	$a2, $s2, 0
 	move	$s7, $a0
 	st.w	$a1, $s2, 16
-	mul.w	$a3, $a2, $a1
-	ori	$a2, $zero, 1
+	mul.w	$a2, $a2, $a1
 	lu12i.w	$a0, 2
-	blt	$a3, $a2, .LBB1_11
+	blez	$a2, .LBB1_11
 # %bb.9:                                # %.lr.ph.preheader
 	ld.d	$a1, $s2, 24
-	alsl.d	$a3, $a3, $a1, 2
+	alsl.d	$a2, $a2, $a1, 2
 	.p2align	4, , 16
 .LBB1_10:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a1, 0
-	or	$a4, $a4, $a0
-	st.w	$a4, $a1, 0
-	ld.w	$a4, $s2, 0
-	alsl.d	$a1, $a4, $a1, 2
-	bltu	$a1, $a3, .LBB1_10
+	ld.w	$a3, $a1, 0
+	or	$a3, $a3, $a0
+	st.w	$a3, $a1, 0
+	ld.w	$a3, $s2, 0
+	alsl.d	$a1, $a3, $a1, 2
+	bltu	$a1, $a2, .LBB1_10
 .LBB1_11:                               # %._crit_edge
-	ld.w	$a3, $s4, 12
+	ld.w	$a2, $s4, 12
 	ld.d	$a1, $s4, 24
-	st.w	$a3, $s4, 16
-	blt	$a3, $a2, .LBB1_18
+	st.w	$a2, $s4, 16
+	blez	$a2, .LBB1_18
 # %bb.12:                               # %.lr.ph116.preheader
 	move	$a2, $zero
-	lu12i.w	$a3, 8
-	move	$a4, $a1
+	move	$a3, $a1
 	b	.LBB1_15
 	.p2align	4, , 16
 .LBB1_13:                               #   in Loop: Header=BB1_15 Depth=1
-	ld.w	$a5, $s4, 16
-	addi.d	$a5, $a5, -1
-	st.w	$a5, $s4, 16
-	ld.w	$a5, $a4, 0
-	bstrins.d	$a5, $zero, 13, 13
+	ld.w	$a4, $s4, 16
+	addi.d	$a4, $a4, -1
+	st.w	$a4, $s4, 16
+	ld.w	$a4, $a3, 0
+	bstrins.d	$a4, $zero, 13, 13
 .LBB1_14:                               #   in Loop: Header=BB1_15 Depth=1
-	st.w	$a5, $a4, 0
-	ld.w	$a5, $s4, 0
-	ld.w	$a6, $s4, 12
+	st.w	$a4, $a3, 0
+	ld.w	$a4, $s4, 0
+	ld.w	$a5, $s4, 12
 	addi.w	$a2, $a2, 1
-	alsl.d	$a4, $a5, $a4, 2
-	bge	$a2, $a6, .LBB1_19
+	alsl.d	$a3, $a4, $a3, 2
+	bge	$a2, $a5, .LBB1_19
 .LBB1_15:                               # %.lr.ph116
                                         # =>This Inner Loop Header: Depth=1
 	beq	$s0, $a2, .LBB1_13
 # %bb.16:                               #   in Loop: Header=BB1_15 Depth=1
-	ld.wu	$a5, $a4, 0
-	and	$a6, $a5, $a3
-	bnez	$a6, .LBB1_13
+	ld.wu	$a4, $a3, 0
+	slli.d	$a5, $a4, 48
+	bltz	$a5, .LBB1_13
 # %bb.17:                               #   in Loop: Header=BB1_15 Depth=1
-	or	$a5, $a5, $a0
+	or	$a4, $a4, $a0
 	b	.LBB1_14
 .LBB1_18:                               # %._crit_edge.._crit_edge117_crit_edge
-	ld.w	$a5, $s4, 0
+	ld.w	$a4, $s4, 0
 .LBB1_19:                               # %._crit_edge117
-	mul.w	$a0, $a5, $s0
+	mul.w	$a0, $a4, $s0
 	alsl.d	$a1, $a0, $a1, 2
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(set_copy)
@@ -238,8 +235,7 @@ expand1_gasp:                           # @expand1_gasp
 	pcaddu18i	$ra, %call36(essen_raising)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s4, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_31
+	blez	$a0, .LBB1_31
 # %bb.20:                               # %.lr.ph122.preheader
 	move	$fp, $zero
 	ld.d	$s8, $s4, 24
@@ -468,9 +464,8 @@ last_gasp:                              # @last_gasp
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 12
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 8
-	blt	$a1, $a2, .LBB3_4
+	blez	$a1, .LBB3_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	move	$s5, $zero
 	.p2align	4, , 16
@@ -579,9 +574,8 @@ reduce_gasp:                            # @reduce_gasp
 	ld.w	$a1, $s0, 12
 	ld.w	$a2, $s0, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB4_12
+	blez	$a1, .LBB4_12
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s2, $s0, 24
 	alsl.d	$s7, $a1, $s2, 2

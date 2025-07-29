@@ -82,8 +82,7 @@ _Z15GetDefaultName2RK11CStringBaseIwES2_S2_: # @_Z15GetDefaultName2RK11CStringBa
 .LBB0_11:                               # %_ZNK11CStringBaseIwE11ReverseFindEw.exit.i
 	srli.d	$a0, $a1, 2
 	addi.w	$a3, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB0_18
+	blez	$a3, .LBB0_18
 # %bb.12:
 	addi.d	$a0, $sp, 0
 	move	$a1, $s1
@@ -95,11 +94,9 @@ _Z15GetDefaultName2RK11CStringBaseIwES2_S2_: # @_Z15GetDefaultName2RK11CStringBa
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a1, $s1, 31, 0
 	addi.d	$s2, $a1, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $s2, $a1
+	slli.d	$a1, $s2, 31
 	vst	$vr0, $fp, 0
-	bnez	$a1, .LBB0_15
+	bltz	$a1, .LBB0_15
 # %bb.13:
 	addi.w	$a0, $s2, 0
 	slti	$a1, $s1, -1
@@ -227,11 +224,9 @@ _Z15GetDefaultName2RK11CStringBaseIwES2_S2_: # @_Z15GetDefaultName2RK11CStringBa
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a1, $s1, 31, 0
 	addi.d	$s2, $a1, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $s2, $a1
+	slli.d	$a1, $s2, 31
 	vst	$vr0, $fp, 0
-	bnez	$a1, .LBB0_34
+	bltz	$a1, .LBB0_34
 # %bb.32:
 	addi.w	$a0, $s2, 0
 	slti	$a1, $s1, -1
@@ -519,8 +514,7 @@ _ZN11CStringBaseIwE9TrimRightEv:        # @_ZN11CStringBaseIwE9TrimRightEv
 	sub.d	$a3, $t1, $a1
 	srli.d	$a2, $a3, 2
 	sub.w	$a2, $a4, $a2
-	ori	$a5, $zero, 1
-	blt	$a2, $a5, .LBB1_15
+	blez	$a2, .LBB1_15
 # %bb.14:
 	slli.d	$a0, $a4, 2
 	ldx.w	$a0, $a1, $a0
@@ -627,11 +621,9 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s1, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s1, $a0
+	slli.d	$a0, $s1, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB2_13
+	bgez	$a0, .LBB2_13
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB2_14
@@ -850,12 +842,11 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$s4, $a2, .LBB3_11
+	blez	$s4, .LBB3_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a1, $s3, 0
-	blt	$s1, $a2, .LBB3_12
+	blez	$s1, .LBB3_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a0, $zero
@@ -1012,12 +1003,11 @@ _ZN11CStringBaseIwEpLEPKw:              # @_ZN11CStringBaseIwEpLEPKw
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s5, $a1, .LBB4_13
+	blez	$s5, .LBB4_13
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s3, $a1, .LBB4_11
+	blez	$s3, .LBB4_11
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -1115,7 +1105,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1123,7 +1112,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -1145,8 +1133,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -1165,11 +1153,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB5_11
+	blez	$s4, .LBB5_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB5_12
+	blez	$s0, .LBB5_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -1239,7 +1226,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

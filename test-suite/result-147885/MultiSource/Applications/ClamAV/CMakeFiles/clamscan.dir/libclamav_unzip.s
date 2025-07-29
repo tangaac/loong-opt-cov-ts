@@ -162,9 +162,8 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	pcaddu18i	$ra, %call36(fstat)
 	jirl	$ra, $ra, 0
 	ld.w	$s1, $fp, 0
-	addi.w	$a1, $zero, -1
-	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
-	beq	$a0, $a1, .LBB2_4
+	addi.w	$s0, $zero, -1
+	beq	$a0, $s0, .LBB2_4
 # %bb.1:
 	ld.d	$s2, $sp, 184
 	ori	$a0, $zero, 21
@@ -192,19 +191,20 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_60
 # %bb.7:                                # %.lr.ph102.i
-	move	$s8, $a0
-	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
+	move	$s7, $a0
+	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
 	move	$a6, $zero
 	bstrpick.d	$a0, $s2, 31, 0
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	sltui	$a0, $s2, 1024
 	addi.w	$a1, $zero, -1002
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	addi.w	$a1, $zero, -1024
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	masknez	$a0, $s4, $a0
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	lu12i.w	$a0, 24660
 	ori	$a0, $a0, 2896
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
@@ -212,19 +212,19 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	lu12i.w	$a0, 8212
 	ori	$a0, $a0, 2896
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	move	$fp, $s2
-	st.d	$s1, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB2_9
 	.p2align	4, , 16
 .LBB2_8:                                # %.loopexit81.i
                                         #   in Loop: Header=BB2_9 Depth=1
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
 	ori	$s4, $zero, 1024
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	blez	$a0, .LBB2_41
 .LBB2_9:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_14 Depth 2
@@ -233,42 +233,41 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	sltu	$s0, $a0, $fp
 	xor	$a0, $fp, $s2
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a0, $a0, $a1
 	add.d	$s5, $a0, $fp
 	maskeqz	$a1, $s5, $s0
 	move	$a0, $s1
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB2_35
+	bltz	$a0, .LBB2_35
 # %bb.10:                               #   in Loop: Header=BB2_9 Depth=1
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	maskeqz	$a0, $fp, $a0
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	or	$a0, $a0, $a1
 	masknez	$a0, $a0, $s0
 	maskeqz	$a1, $s4, $s0
 	or	$s5, $a1, $a0
 	move	$a0, $s1
-	move	$a1, $s8
+	move	$a1, $s7
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	blt	$a0, $s5, .LBB2_33
 # %bb.11:                               # %.lr.ph.i
                                         #   in Loop: Header=BB2_9 Depth=1
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$s4, $a0, -1
 	add.d	$fp, $s4, $s5
 	ori	$s2, $zero, 1
-	move	$s1, $s8
+	move	$s1, $s7
 	move	$a6, $s3
 	ori	$t0, $zero, 80
 	ori	$t1, $zero, 20
@@ -291,7 +290,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	add.d	$a0, $s1, $s5
 	addi.d	$a0, $a0, -1
 	addi.d	$fp, $fp, -1
-	bltu	$a0, $s8, .LBB2_8
+	bltu	$a0, $s7, .LBB2_8
 .LBB2_14:                               #   Parent Loop BB2_9 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	add.d	$a0, $s1, $s5
@@ -323,23 +322,22 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	bltu	$a2, $a1, .LBB2_12
 # %bb.18:                               # %.preheader.preheader.i
                                         #   in Loop: Header=BB2_14 Depth=2
-	st.d	$a7, $sp, 72                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 80                    # 8-byte Folded Spill
 	ld.hu	$a0, $a0, 7
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	add.w	$s6, $s3, $a6
 	bstrpick.d	$a1, $s6, 31, 0
 	addi.d	$a0, $a1, 46
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	bgeu	$a0, $a2, .LBB2_24
 # %bb.19:                               #   in Loop: Header=BB2_14 Depth=2
-	move	$s7, $a6
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	move	$s8, $a6
+	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB2_34
+	bltz	$a0, .LBB2_34
 # %bb.20:                               #   in Loop: Header=BB2_14 Depth=2
 	addi.d	$a1, $sp, 264
 	ori	$a2, $zero, 46
@@ -351,11 +349,11 @@ __zip_dir_parse:                        # @__zip_dir_parse
 # %bb.21:                               #   in Loop: Header=BB2_14 Depth=2
 	ld.w	$a0, $sp, 264
 	move	$a1, $s6
-	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
 	beq	$a0, $a2, .LBB2_29
 # %bb.22:                               #   in Loop: Header=BB2_14 Depth=2
-	ld.d	$s7, $sp, 104                   # 8-byte Folded Reload
-	add.w	$s6, $s3, $s7
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	add.w	$s6, $s3, $s8
 	bstrpick.d	$a1, $s6, 31, 0
 	addi.d	$a0, $a1, 46
 	ori	$t0, $zero, 80
@@ -363,14 +361,14 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	bltu	$a0, $a2, .LBB2_25
 .LBB2_23:                               #   in Loop: Header=BB2_14 Depth=2
-	move	$a6, $s7
+	move	$a6, $s8
 	b	.LBB2_13
 .LBB2_24:                               #   in Loop: Header=BB2_14 Depth=2
-	move	$s7, $a6
+	move	$s8, $a6
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	bgeu	$a0, $a2, .LBB2_23
 .LBB2_25:                               #   in Loop: Header=BB2_14 Depth=2
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
 	move	$a0, $s0
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
@@ -389,35 +387,35 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	ld.d	$a6, $sp, 104                   # 8-byte Folded Reload
 	ori	$t0, $zero, 80
 	ori	$t1, $zero, 20
-	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB2_13
 # %bb.28:                               # %._crit_edge
-	add.w	$a1, $s7, $s3
+	add.w	$a1, $s8, $s3
 .LBB2_29:                               # %split
 	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
-	addi.w	$a2, $s7, 0
+	addi.w	$a2, $s8, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.19)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.19)
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s8
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$s2, $fp, 0
 	addi.d	$a1, $sp, 264
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(fstat)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB2_39
 # %bb.30:
-	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	beqz	$a0, .LBB2_42
 # %bb.31:
 	ld.w	$a0, $sp, 312
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	addi.w	$a1, $s0, 0
 	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	bgeu	$a0, $a1, .LBB2_43
@@ -442,7 +440,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 .LBB2_36:                               # %__zip_find_disk_trailer.exit.thread
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s8
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB2_37:
@@ -472,7 +470,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	addi.d	$a0, $a0, %pc_lo12(.L.str.15)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	move	$a0, $s8
+	move	$a0, $s7
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -124
@@ -491,28 +489,28 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	move	$s3, $zero
 	pcalau12i	$a1, %pc_hi20(.L.str.25)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.25)
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.26)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.26)
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.28)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.28)
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.27)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.27)
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	lu12i.w	$a1, 15
 	ori	$a1, $a1, 4095
-	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.31)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.31)
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.32)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.32)
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	move	$s1, $a0
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
 .LBB2_45:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	add.d	$a0, $a0, $s3
@@ -521,8 +519,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB2_61
+	bltz	$a0, .LBB2_61
 # %bb.46:                               #   in Loop: Header=BB2_45 Depth=1
 	addi.d	$a1, $sp, 394
 	ori	$a2, $zero, 46
@@ -536,7 +533,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	addi.d	$s6, $a0, 46
 	bltu	$s0, $s6, .LBB2_64
 # %bb.48:                               #   in Loop: Header=BB2_45 Depth=1
-	st.d	$s4, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 88                    # 8-byte Folded Spill
 	ld.hu	$s4, $sp, 422
 	ori	$a0, $zero, 1024
 	bltu	$a0, $s4, .LBB2_65
@@ -552,7 +549,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	st.w	$a2, $s1, 0
 	ld.w	$a0, $sp, 436
 	ld.hu	$a3, $sp, 404
-	add.d	$a0, $a0, $s7
+	add.d	$a0, $a0, $s8
 	st.w	$a0, $s1, 12
 	st.h	$a3, $s1, 20
 	st.d	$a5, $sp, 120                   # 8-byte Folded Spill
@@ -569,8 +566,8 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	b	.LBB2_54
 .LBB2_52:                               #   in Loop: Header=BB2_45 Depth=1
 	ori	$fp, $zero, 8
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
 	bne	$a1, $a2, .LBB2_54
 .LBB2_53:                               #   in Loop: Header=BB2_45 Depth=1
 	move	$a0, $zero
@@ -587,11 +584,11 @@ __zip_dir_parse:                        # @__zip_dir_parse
 .LBB2_55:                               # %.thread.i
                                         #   in Loop: Header=BB2_45 Depth=1
 	alsl.d	$a0, $a0, $s1, 1
-	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.h	$a1, $a0, 22
 	add.d	$a0, $s6, $s4
 	st.h	$s0, $s1, 26
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
 	bltu	$s0, $a0, .LBB2_66
 # %bb.56:                               #   in Loop: Header=BB2_45 Depth=1
 	addi.d	$s5, $s1, 28
@@ -600,7 +597,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	bne	$a0, $s4, .LBB2_67
 # %bb.57:                               #   in Loop: Header=BB2_45 Depth=1
 	stx.b	$zero, $s5, $s4
@@ -624,30 +621,30 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	addi.d	$a0, $a0, 33
 	addi.d	$s4, $s1, 16
 	st.h	$a0, $s1, 16
-	addi.d	$s8, $s8, -1
-	bstrpick.d	$a1, $s8, 15, 0
+	addi.d	$s7, $s7, -1
+	slli.d	$a1, $s7, 48
 	add.d	$s1, $s1, $a0
 	bnez	$a1, .LBB2_45
 # %bb.59:
 	move	$a0, $zero
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB2_71
 .LBB2_60:
 	addi.w	$a0, $zero, -114
 	b	.LBB2_38
 .LBB2_61:
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.23)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.23)
 	b	.LBB2_40
 .LBB2_62:
-	bstrpick.d	$a0, $s8, 15, 0
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	bstrpick.d	$a0, $s7, 15, 0
+	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB2_72
 # %bb.63:
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
@@ -657,29 +654,29 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	jirl	$ra, $ra, 0
 	b	.LBB2_37
 .LBB2_64:
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB2_70
 .LBB2_65:
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	b	.LBB2_69
 .LBB2_66:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB2_69
 .LBB2_67:
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB2_69
 .LBB2_68:
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
 .LBB2_69:                               # %.loopexit.sink.split.i
-	ld.d	$s4, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 88                    # 8-byte Folded Reload
 .LBB2_70:                               # %.loopexit.sink.split.i
-	bstrpick.d	$a1, $s8, 15, 0
+	bstrpick.d	$a1, $s7, 15, 0
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -124
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	beqz	$s4, .LBB2_73
 .LBB2_71:                               # %.loopexit.thread.i
 	st.h	$zero, $s4, 0
@@ -687,7 +684,7 @@ __zip_dir_parse:                        # @__zip_dir_parse
 	b	.LBB2_38
 .LBB2_72:
 	move	$a0, $zero
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	bnez	$s4, .LBB2_71
 .LBB2_73:
 	move	$fp, $a0
@@ -806,18 +803,17 @@ zip_file_open:                          # @zip_file_open
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB5_11
+	bltz	$a0, .LBB5_11
 # %bb.1:
 	ld.d	$s0, $fp, 24
 	beqz	$s0, .LBB5_12
 # %bb.2:                                # %.preheader
 	move	$s2, $a2
 	move	$s1, $a1
-	beq	$a2, $s3, .LBB5_8
+	addi.w	$a0, $zero, -1
+	beq	$a2, $a0, .LBB5_8
 	.p2align	4, , 16
 # %bb.3:                                # %.preheader.split
 	addi.d	$a0, $s0, 28
@@ -894,7 +890,6 @@ zip_file_open:                          # @zip_file_open
 	lu32i.d	$a1, 0
 	st.w	$a1, $fp, 4
 .LBB5_17:
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -943,7 +938,7 @@ zip_file_open:                          # @zip_file_open
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB5_31
+	bltz	$a0, .LBB5_31
 # %bb.26:
 	ld.d	$s2, $s1, 56
 	ld.w	$a0, $fp, 0
@@ -966,7 +961,7 @@ zip_file_open:                          # @zip_file_open
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(lseek)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB5_31
+	bltz	$a0, .LBB5_31
 # %bb.29:
 	ld.wu	$a1, $s0, 0
 	ld.wu	$a2, $s0, 4
@@ -1184,7 +1179,6 @@ zip_file_read:                          # @zip_file_read
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	beqz	$a0, .LBB7_12
 # %bb.1:
 	move	$fp, $a0
@@ -1207,7 +1201,6 @@ zip_file_read:                          # @zip_file_read
 	st.w	$s0, $fp, 96
 	st.d	$a1, $fp, 88
 	lu12i.w	$s4, 8
-	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB7_5:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a2, $fp, 32
@@ -1227,7 +1220,7 @@ zip_file_read:                          # @zip_file_read
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	blt	$a0, $s5, .LBB7_29
+	blez	$a0, .LBB7_29
 # %bb.8:                                # %.thread
                                         #   in Loop: Header=BB7_5 Depth=1
 	ld.d	$a0, $fp, 32
@@ -1263,7 +1256,6 @@ zip_file_read:                          # @zip_file_read
 .LBB7_13:
 	addi.w	$a0, $zero, -1
 .LBB7_14:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1283,8 +1275,7 @@ zip_file_read:                          # @zip_file_read
 	addi.w	$a2, $s0, 0
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_27
+	blez	$a0, .LBB7_27
 # %bb.18:
 	ld.d	$a1, $fp, 24
 	sub.d	$a1, $a1, $a0
@@ -1324,8 +1315,7 @@ zip_file_read:                          # @zip_file_read
 	addi.w	$a0, $zero, -125
 	b	.LBB7_21
 .LBB7_27:
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB7_14
+	bgez	$a0, .LBB7_14
 # %bb.28:
 	pcalau12i	$a1, %pc_hi20(.L.str.9)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.9)

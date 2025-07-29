@@ -234,8 +234,7 @@ RandomVector:                           # @RandomVector
 	slli.d	$a0, $a0, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB4_5
+	blez	$s0, .LBB4_5
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a1, %pc_hi20(dm1)
 	fld.d	$fa0, $a1, %pc_lo12(dm1)
@@ -325,8 +324,7 @@ RandomMatrix:                           # @RandomMatrix
 	beqz	$a0, .LBB5_14
 # %bb.1:                                # %.preheader22
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB5_15
+	blez	$s1, .LBB5_15
 # %bb.2:                                # %.lr.ph25
 	slli.d	$s0, $s3, 3
 	blez	$s3, .LBB5_10

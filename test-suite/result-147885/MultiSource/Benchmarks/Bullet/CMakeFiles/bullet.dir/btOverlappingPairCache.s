@@ -9,39 +9,37 @@ _ZN28btHashedOverlappingPairCacheC2Ev:  # @_ZN28btHashedOverlappingPairCacheC2Ev
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$s1, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV28btHashedOverlappingPairCache+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV28btHashedOverlappingPairCache+16)
 	st.d	$a0, $s1, 0
 	addi.d	$fp, $s1, 8
-	ori	$s4, $zero, 1
-	st.b	$s4, $s1, 32
+	ori	$a0, $zero, 1
+	st.b	$a0, $s1, 32
 	st.d	$zero, $s1, 24
 	st.d	$zero, $s1, 12
 	st.d	$zero, $s1, 40
 	st.b	$zero, $s1, 48
 	addi.d	$s0, $s1, 56
-	st.b	$s4, $s1, 80
+	st.b	$a0, $s1, 80
 	st.d	$zero, $s1, 72
 	st.d	$zero, $s1, 60
 	addi.d	$s2, $s1, 88
-	st.b	$s4, $s1, 112
+	st.b	$a0, $s1, 112
 	st.d	$zero, $s1, 104
 	st.d	$zero, $s1, 92
 	st.d	$zero, $s1, 120
@@ -54,7 +52,7 @@ _ZN28btHashedOverlappingPairCacheC2Ev:  # @_ZN28btHashedOverlappingPairCacheC2Ev
 # %bb.1:                                # %.noexc
 	move	$s3, $a0
 	ld.w	$a1, $s1, 12
-	blt	$a1, $s4, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.2:                                # %.lr.ph.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -95,14 +93,13 @@ _ZN28btHashedOverlappingPairCacheC2Ev:  # @_ZN28btHashedOverlappingPairCacheC2Ev
 	jirl	$ra, $ra, 0
 .Ltmp5:
 # %bb.8:
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB0_9:
 .Ltmp6:
@@ -208,8 +205,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	ld.w	$a1, $fp, 60
 	move	$s0, $a0
 	ld.d	$a0, $fp, 72
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_14
+	blez	$a1, .LBB1_14
 .LBB1_4:                                # %.lr.ph.i.i.i
 	ori	$a3, $zero, 8
 	move	$a2, $zero
@@ -252,8 +248,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	bnez	$a1, .LBB1_10
 .LBB1_11:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i
 	ld.bu	$a1, $fp, 80
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB1_16
+	bnez	$a1, .LBB1_16
 	b	.LBB1_17
 .LBB1_12:                               # %..lr.ph.i_crit_edge
 	ld.d	$s0, $fp, 72
@@ -262,8 +257,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	move	$s0, $zero
 	move	$a1, $s2
 	ld.d	$a0, $fp, 72
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB1_4
+	bgtz	$a1, .LBB1_4
 .LBB1_14:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
 	beqz	$a0, .LBB1_17
 # %bb.15:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i
@@ -302,8 +296,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	ld.w	$a1, $fp, 92
 	move	$s1, $a0
 	ld.d	$a0, $fp, 104
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_32
+	blez	$a1, .LBB1_32
 .LBB1_22:                               # %.lr.ph.i.i.i38
 	ori	$a3, $zero, 8
 	move	$a2, $zero
@@ -346,8 +339,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	bnez	$a1, .LBB1_28
 .LBB1_29:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.thread.i.i43
 	ld.bu	$a1, $fp, 112
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB1_34
+	bnez	$a1, .LBB1_34
 	b	.LBB1_35
 .LBB1_30:                               # %..lr.ph.i24_crit_edge
 	ld.d	$s1, $fp, 104
@@ -356,8 +348,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	move	$s1, $zero
 	move	$a1, $s4
 	ld.d	$a0, $fp, 104
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB1_22
+	bgtz	$a1, .LBB1_22
 .LBB1_32:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i34
 	beqz	$a0, .LBB1_35
 # %bb.33:                               # %_ZNK20btAlignedObjectArrayIiE4copyEiiPi.exit.i.i34
@@ -380,9 +371,8 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB1_37:                               # %_ZN20btAlignedObjectArrayIiE6resizeEiRKi.exit47
-	ori	$s1, $zero, 1
 	st.w	$s3, $fp, 92
-	blt	$s3, $s1, .LBB1_39
+	blez	$s3, .LBB1_39
 # %bb.38:                               # %.lr.ph52
 	ld.d	$a0, $fp, 72
 	ori	$a1, $zero, 255
@@ -395,7 +385,7 @@ _ZN28btHashedOverlappingPairCache10growTablesEv: # @_ZN28btHashedOverlappingPair
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB1_39:                               # %.preheader
-	blt	$s2, $s1, .LBB1_42
+	blez	$s2, .LBB1_42
 # %bb.40:                               # %.lr.ph54
 	ld.d	$a3, $fp, 24
 	ld.d	$a0, $fp, 72
@@ -1016,14 +1006,12 @@ _ZN28btHashedOverlappingPairCache15internalAddPairEP17btBroadphaseProxyS1_: # @_
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 12
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB11_10
+	bgtz	$a1, .LBB11_10
 	b	.LBB11_12
 .LBB11_9:
 	move	$s2, $zero
 	move	$a1, $s5
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB11_12
+	blez	$a1, .LBB11_12
 .LBB11_10:                              # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -1392,8 +1380,7 @@ _ZN28btHashedOverlappingPairCache26processAllOverlappingPairsEP17btOverlapCallba
 	.cfi_offset 27, -56
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB13_5
+	blez	$a0, .LBB13_5
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a2
 	move	$s1, $a1
@@ -1481,7 +1468,7 @@ _ZN28btHashedOverlappingPairCache20sortOverlappingPairsEP12btDispatcher: # @_ZN2
 	st.b	$s4, $sp, 32
 	st.d	$zero, $sp, 24
 	st.d	$zero, $sp, 12
-	blt	$a0, $s4, .LBB14_20
+	blez	$a0, .LBB14_20
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	move	$s1, $zero
@@ -1532,7 +1519,7 @@ _ZN28btHashedOverlappingPairCache20sortOverlappingPairsEP12btDispatcher: # @_ZN2
 .Ltmp29:
 # %bb.8:                                #   in Loop: Header=BB14_4 Depth=1
 	move	$s2, $a0
-	blt	$s8, $s4, .LBB14_12
+	blez	$s8, .LBB14_12
 .LBB14_9:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB14_4 Depth=1
 	addi.d	$a0, $s1, 24
@@ -1553,7 +1540,7 @@ _ZN28btHashedOverlappingPairCache20sortOverlappingPairsEP12btDispatcher: # @_ZN2
 	b	.LBB14_13
 .LBB14_11:                              #   in Loop: Header=BB14_4 Depth=1
 	move	$s2, $zero
-	bge	$s8, $s4, .LBB14_9
+	bgtz	$s8, .LBB14_9
 .LBB14_12:                              # %_ZNK20btAlignedObjectArrayI16btBroadphasePairE4copyEiiPS0_.exit.i.i
                                         #   in Loop: Header=BB14_4 Depth=1
 	beqz	$s1, .LBB14_14
@@ -1594,12 +1581,12 @@ _ZN28btHashedOverlappingPairCache20sortOverlappingPairsEP12btDispatcher: # @_ZN2
 	bltu	$s2, $s3, .LBB14_17
 .LBB14_19:                              # %.preheader
 	ld.w	$a0, $fp, 92
-	bge	$a0, $s4, .LBB14_21
+	bgtz	$a0, .LBB14_21
 	b	.LBB14_23
 .LBB14_20:
 	move	$s3, $zero
 	ld.w	$a0, $fp, 92
-	blt	$a0, $s4, .LBB14_23
+	blez	$a0, .LBB14_23
 .LBB14_21:                              # %.lr.ph35
 	ld.d	$a0, $fp, 104
 	move	$a1, $zero
@@ -1627,8 +1614,7 @@ _ZN28btHashedOverlappingPairCache20sortOverlappingPairsEP12btDispatcher: # @_ZN2
 # %bb.25:                               # %._ZN20btAlignedObjectArrayI16btBroadphasePairE9quickSortI29btBroadphasePairSortPredicateEEvT_.exit_crit_edge
 	ld.w	$s3, $sp, 12
 .LBB14_26:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE9quickSortI29btBroadphasePairSortPredicateEEvT_.exit
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB14_30
+	blez	$s3, .LBB14_30
 # %bb.27:                               # %.lr.ph37.preheader
 	move	$s0, $zero
 	move	$s1, $zero
@@ -1792,8 +1778,7 @@ _ZN28btSortedOverlappingPairCache21removeOverlappingPairEP17btBroadphaseProxyS1_
 	bnez	$a0, .LBB15_10
 # %bb.1:
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_10
+	blez	$a0, .LBB15_10
 # %bb.2:                                # %.lr.ph.i
 	ld.w	$a1, $s2, 24
 	ld.w	$a3, $s1, 24
@@ -1947,8 +1932,7 @@ _ZN28btSortedOverlappingPairCache18addOverlappingPairEP17btBroadphaseProxyS1_: #
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 12
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB16_11
+	bgtz	$a1, .LBB16_11
 	b	.LBB16_13
 .LBB16_8:
 	move	$a0, $zero
@@ -1959,8 +1943,7 @@ _ZN28btSortedOverlappingPairCache18addOverlappingPairEP17btBroadphaseProxyS1_: #
 .LBB16_10:
 	move	$s2, $zero
 	move	$a1, $s3
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB16_13
+	blez	$a1, .LBB16_13
 .LBB16_11:                              # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -2090,8 +2073,7 @@ _ZN28btSortedOverlappingPairCache8findPairEP17btBroadphaseProxyS1_: # @_ZN28btSo
 	beqz	$a0, .LBB17_10
 .LBB17_4:
 	ld.w	$a1, $fp, 12
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB17_10
+	blez	$a1, .LBB17_10
 # %bb.5:                                # %.lr.ph.i
 	ld.w	$a0, $s1, 24
 	ld.w	$a3, $s0, 24
@@ -2159,8 +2141,7 @@ _ZN28btSortedOverlappingPairCache26processAllOverlappingPairsEP17btOverlapCallba
 	.cfi_offset 28, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB18_5
+	blez	$a0, .LBB18_5
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a2
 	move	$s1, $a1
@@ -2240,25 +2221,23 @@ _ZN28btSortedOverlappingPairCacheC2Ev:  # @_ZN28btSortedOverlappingPairCacheC2Ev
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception4
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a0
 	pcalau12i	$a0, %pc_hi20(_ZTV28btSortedOverlappingPairCache+16)
 	addi.d	$a0, $a0, %pc_lo12(_ZTV28btSortedOverlappingPairCache+16)
 	st.d	$a0, $fp, 0
 	addi.d	$s0, $fp, 8
-	ori	$s2, $zero, 1
-	st.b	$s2, $fp, 32
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 32
 	st.d	$zero, $fp, 24
 	st.d	$zero, $fp, 12
 	ori	$a0, $zero, 256
@@ -2274,7 +2253,7 @@ _ZN28btSortedOverlappingPairCacheC2Ev:  # @_ZN28btSortedOverlappingPairCacheC2Ev
 # %bb.1:                                # %.noexc
 	move	$s1, $a0
 	ld.w	$a1, $fp, 12
-	blt	$a1, $s2, .LBB19_4
+	blez	$a1, .LBB19_4
 # %bb.2:                                # %.lr.ph.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5
@@ -2309,12 +2288,11 @@ _ZN28btSortedOverlappingPairCacheC2Ev:  # @_ZN28btSortedOverlappingPairCacheC2Ev
 	st.d	$s1, $fp, 24
 	ori	$a0, $zero, 2
 	st.w	$a0, $fp, 16
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB19_8:
 .Ltmp49:

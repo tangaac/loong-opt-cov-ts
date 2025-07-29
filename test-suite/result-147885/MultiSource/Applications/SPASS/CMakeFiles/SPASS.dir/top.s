@@ -4800,14 +4800,14 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	ld.d	$a0, $a0, 8
 	b	.LBB6_6
 .LBB6_9:                                # %.preheader110
-	add.w	$a0, $a2, $a1
-	bge	$s4, $a0, .LBB6_14
+	add.w	$a4, $a2, $a1
+	bge	$s4, $a4, .LBB6_14
 # %bb.10:
 	move	$s2, $zero
 	move	$s6, $zero
-	add.d	$a4, $a0, $a3
-	addi.w	$a4, $a4, -1
-	bgez	$a4, .LBB6_31
+	add.d	$a0, $a4, $a3
+	addi.w	$a0, $a0, -1
+	bgez	$a0, .LBB6_31
 	b	.LBB6_36
 .LBB6_11:
 	ld.w	$a2, $s1, 72
@@ -4837,7 +4837,7 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 .LBB6_14:                               # %.lr.ph130.preheader
 	move	$s6, $zero
 	move	$s2, $zero
-	move	$a3, $s4
+	move	$a0, $s4
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB6_17
 	.p2align	4, , 16
@@ -4853,16 +4853,16 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
                                         #   in Loop: Header=BB6_17 Depth=1
 	ld.w	$a1, $s1, 64
 	ld.w	$a2, $s1, 68
-	addi.d	$a3, $s5, -1
-	add.w	$a0, $a2, $a1
+	addi.d	$a0, $s5, -1
+	add.w	$a4, $a2, $a1
 	addi.w	$s4, $s4, -1
-	bge	$a0, $s5, .LBB6_30
+	bge	$a4, $s5, .LBB6_30
 .LBB6_17:                               # %.lr.ph130
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_20 Depth 2
                                         #     Child Loop BB6_24 Depth 2
-	move	$s5, $a3
-	slli.d	$a0, $a3, 3
+	move	$s5, $a0
+	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $s3, $a0
 	beqz	$a0, .LBB6_15
 # %bb.18:                               #   in Loop: Header=BB6_17 Depth=1
@@ -4940,21 +4940,21 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	b	.LBB6_16
 .LBB6_30:                               # %.preheader.loopexit
 	ld.w	$a3, $s1, 72
-	add.d	$a4, $a0, $a3
-	addi.w	$a4, $a4, -1
-	bltz	$a4, .LBB6_36
+	add.d	$a0, $a4, $a3
+	addi.w	$a0, $a0, -1
+	bltz	$a0, .LBB6_36
 .LBB6_31:                               # %.lr.ph138.preheader
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
-	ld.d	$a4, $a0, %got_pc_lo12(memory_ARRAY)
-	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$a5, $a0, %got_pc_lo12(memory_FREEDBYTES)
+	ld.d	$a0, $a0, %got_pc_lo12(memory_ARRAY)
+	pcalau12i	$a4, %got_pc_hi20(memory_FREEDBYTES)
+	ld.d	$a5, $a4, %got_pc_lo12(memory_FREEDBYTES)
 	move	$a7, $zero
 	b	.LBB6_33
 	.p2align	4, , 16
 .LBB6_32:                               # %list_Delete.exit
                                         #   in Loop: Header=BB6_33 Depth=1
-	add.d	$a0, $a2, $a1
-	add.d	$a7, $a0, $a3
+	add.d	$a4, $a2, $a1
+	add.d	$a7, $a4, $a3
 	addi.w	$t0, $a7, -1
 	addi.d	$a7, $a6, 1
 	bge	$a6, $t0, .LBB6_36
@@ -4962,24 +4962,24 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB6_34 Depth 2
 	move	$a6, $a7
-	slli.d	$a0, $a7, 3
-	ldx.d	$a0, $s3, $a0
-	beqz	$a0, .LBB6_32
+	slli.d	$a4, $a7, 3
+	ldx.d	$a4, $s3, $a4
+	beqz	$a4, .LBB6_32
 	.p2align	4, , 16
 .LBB6_34:                               # %.lr.ph.i93
                                         #   Parent Loop BB6_33 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $a4, 128
+	ld.d	$a1, $a0, 128
 	ld.w	$a2, $a1, 32
 	ld.d	$a3, $a5, 0
-	ld.d	$a7, $a0, 0
+	ld.d	$a7, $a4, 0
 	add.d	$a2, $a3, $a2
 	st.d	$a2, $a5, 0
 	ld.d	$a1, $a1, 0
-	st.d	$a1, $a0, 0
-	ld.d	$a1, $a4, 128
-	st.d	$a0, $a1, 0
-	move	$a0, $a7
+	st.d	$a1, $a4, 0
+	ld.d	$a1, $a0, 128
+	st.d	$a4, $a1, 0
+	move	$a4, $a7
 	bnez	$a7, .LBB6_34
 # %bb.35:                               # %list_Delete.exit.loopexit
                                         #   in Loop: Header=BB6_33 Depth=1
@@ -4988,7 +4988,7 @@ top_GetLiteralsForSplitting:            # @top_GetLiteralsForSplitting
 	ld.w	$a3, $s1, 72
 	b	.LBB6_32
 .LBB6_36:                               # %._crit_edge139
-	add.d	$a0, $a0, $a3
+	add.d	$a0, $a4, $a3
 	slli.w	$a0, $a0, 3
 	ori	$a1, $zero, 1024
 	bgeu	$a0, $a1, .LBB6_38

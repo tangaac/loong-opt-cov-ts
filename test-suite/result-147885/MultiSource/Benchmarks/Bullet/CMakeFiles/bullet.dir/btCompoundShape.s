@@ -597,13 +597,11 @@ _ZN15btCompoundShape13addChildShapeERK11btTransformP16btCollisionShape: # @_ZN15
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 28
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB5_20
+	bgtz	$a1, .LBB5_20
 	b	.LBB5_22
 .LBB5_19:
 	move	$s2, $zero
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB5_22
+	blez	$a1, .LBB5_22
 .LBB5_20:                               # %.lr.ph.i.i.i
 	move	$a0, $zero
 	ori	$a2, $zero, 88
@@ -867,26 +865,26 @@ _ZN15btCompoundShape16removeChildShapeEP16btCollisionShape: # @_ZN15btCompoundSh
 	ld.w	$a0, $a0, 96
 	ld.w	$a2, $fp, 28
 	addi.d	$a0, $a0, 1
-	ori	$s1, $zero, 1
 	st.w	$a0, $fp, 96
-	blt	$a2, $s1, .LBB8_7
+	blez	$a2, .LBB8_7
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
-	addi.d	$s2, $sp, 16
-	addi.d	$s3, $sp, 32
-	addi.d	$s4, $sp, 48
-	addi.d	$s5, $sp, 64
-	addi.d	$s6, $a2, 1
-	ori	$s7, $zero, 88
-	mul.d	$s8, $a2, $s7
+	addi.d	$s1, $sp, 16
+	addi.d	$s2, $sp, 32
+	addi.d	$s3, $sp, 48
+	addi.d	$s4, $sp, 64
+	addi.d	$s5, $a2, 1
+	ori	$s6, $zero, 88
+	mul.d	$s7, $a2, $s6
+	ori	$s8, $zero, 1
 	b	.LBB8_4
 	.p2align	4, , 16
 .LBB8_2:                                # %_ZN15btCompoundShape23removeChildShapeByIndexEi.exit
                                         #   in Loop: Header=BB8_4 Depth=1
 	addi.w	$a0, $a2, -1
-	mul.d	$a0, $a0, $s7
+	mul.d	$a0, $a0, $s6
 	vldx	$vr0, $a1, $a0
-	add.d	$a2, $a1, $s8
+	add.d	$a2, $a1, $s7
 	vld	$vr1, $a2, -88
 	add.d	$a1, $a1, $a0
 	vst	$vr0, $a2, -88
@@ -901,26 +899,26 @@ _ZN15btCompoundShape16removeChildShapeEP16btCollisionShape: # @_ZN15btCompoundSh
 	vld	$vr1, $a2, -40
 	vst	$vr0, $a2, -40
 	vld	$vr0, $a1, 64
-	vst	$vr2, $s2, 0
-	vst	$vr3, $s3, 0
+	vst	$vr2, $s1, 0
+	vst	$vr3, $s2, 0
 	vld	$vr2, $a2, -24
 	vst	$vr0, $a2, -24
 	ld.d	$a1, $a1, 80
-	vst	$vr1, $s4, 0
-	vst	$vr2, $s5, 0
+	vst	$vr1, $s3, 0
+	vst	$vr2, $s4, 0
 	ld.d	$a3, $a2, -8
 	st.d	$a1, $a2, -8
 	ld.d	$a1, $fp, 40
 	vld	$vr0, $sp, 0
-	vld	$vr1, $s2, 0
-	st.d	$a3, $s5, 16
+	vld	$vr1, $s1, 0
+	st.d	$a3, $s4, 16
 	add.d	$a2, $a1, $a0
 	vstx	$vr0, $a1, $a0
 	vst	$vr1, $a2, 16
-	vld	$vr0, $s3, 0
-	vld	$vr1, $s4, 0
-	ld.d	$a0, $s5, 16
-	vld	$vr2, $s5, 0
+	vld	$vr0, $s2, 0
+	vld	$vr1, $s3, 0
+	ld.d	$a0, $s4, 16
+	vld	$vr2, $s4, 0
 	vst	$vr0, $a2, 32
 	vst	$vr1, $a2, 48
 	st.d	$a0, $a2, 80
@@ -929,12 +927,12 @@ _ZN15btCompoundShape16removeChildShapeEP16btCollisionShape: # @_ZN15btCompoundSh
 	addi.d	$a2, $a0, -1
 	st.w	$a2, $fp, 28
 .LBB8_3:                                #   in Loop: Header=BB8_4 Depth=1
-	addi.d	$s6, $s6, -1
-	addi.d	$s8, $s8, -88
-	bgeu	$s1, $s6, .LBB8_7
+	addi.d	$s5, $s5, -1
+	addi.d	$s7, $s7, -88
+	bgeu	$s8, $s5, .LBB8_7
 .LBB8_4:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 40
-	add.d	$a3, $a1, $s8
+	add.d	$a3, $a1, $s7
 	ld.d	$a0, $a3, -24
 	bne	$a0, $s0, .LBB8_3
 # %bb.5:                                #   in Loop: Header=BB8_4 Depth=1
@@ -1007,9 +1005,8 @@ _ZN15btCompoundShape20recalculateLocalAabbEv: # @_ZN15btCompoundShape20recalcula
 	vld	$vr1, $a0, %pc_lo12(.LCPI9_1)
 	ld.w	$a0, $fp, 28
 	vst	$vr0, $fp, 56
-	ori	$a1, $zero, 1
 	vst	$vr1, $fp, 72
-	blt	$a0, $a1, .LBB9_15
+	blez	$a0, .LBB9_15
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -1385,11 +1382,10 @@ _ZNK15btCompoundShape31calculatePrincipalAxisTransformEPfR11btTransformR9btVecto
 	.cfi_offset 63, -120
 	move	$s1, $a0
 	ld.w	$a0, $a0, 28
-	ori	$a4, $zero, 1
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s2, $a1
-	blt	$a0, $a4, .LBB12_3
+	blez	$a0, .LBB12_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $s1, 40
 	movgr2fr.w	$fa0, $zero
@@ -1435,7 +1431,7 @@ _ZNK15btCompoundShape31calculatePrincipalAxisTransformEPfR11btTransformR9btVecto
 	vst	$vr0, $sp, 72
 	vst	$vr0, $sp, 56
 	vst	$vr0, $sp, 40
-	blt	$a0, $a4, .LBB12_7
+	blez	$a0, .LBB12_7
 # %bb.5:                                # %.lr.ph220
 	move	$s3, $zero
 	ori	$a1, $zero, 88
@@ -1624,23 +1620,23 @@ _ZNK15btCompoundShape31calculatePrincipalAxisTransformEPfR11btTransformR9btVecto
 _ZN11btMatrix3x311diagonalizeERS_fi:    # @_ZN11btMatrix3x311diagonalizeERS_fi
 	.cfi_startproc
 # %bb.0:
-	lu12i.w	$a4, 260096
-	st.w	$a4, $a1, 0
+	lu12i.w	$a3, 260096
+	st.w	$a3, $a1, 0
 	vrepli.b	$vr1, 0
 	vst	$vr1, $a1, 4
-	st.w	$a4, $a1, 20
+	st.w	$a3, $a1, 20
 	vst	$vr1, $a1, 24
-	ori	$a3, $zero, 1
-	st.d	$a4, $a1, 40
-	blt	$a2, $a3, .LBB13_11
+	st.d	$a3, $a1, 40
+	blez	$a2, .LBB13_11
 # %bb.1:                                # %.lr.ph
-	addi.d	$a4, $a1, 16
-	addi.d	$a5, $a1, 32
-	ori	$a6, $zero, 2
-	pcalau12i	$a7, %pc_hi20(.LCPI13_1)
-	fld.s	$fa1, $a7, %pc_lo12(.LCPI13_1)
+	addi.d	$a3, $a1, 16
+	addi.d	$a4, $a1, 32
+	ori	$a5, $zero, 2
+	pcalau12i	$a6, %pc_hi20(.LCPI13_1)
+	fld.s	$fa1, $a6, %pc_lo12(.LCPI13_1)
 	vldi	$vr2, -1168
 	movgr2fr.w	$fa3, $zero
+	ori	$a6, $zero, 1
 	vldi	$vr4, -1184
 	vldi	$vr5, -1280
 	vldi	$vr6, -1056
@@ -1688,28 +1684,28 @@ _ZN11btMatrix3x311diagonalizeERS_fi:    # @_ZN11btMatrix3x311diagonalizeERS_fi
 	fmadd.s	$ft3, $fa7, $ft2, $ft3
 	fstx.s	$ft3, $a1, $t2
 	fmul.s	$ft2, $ft0, $ft2
-	fldx.s	$ft3, $a4, $t1
+	fldx.s	$ft3, $a3, $t1
 	fmadd.s	$ft1, $fa7, $ft1, $ft2
-	fldx.s	$ft2, $a4, $t2
+	fldx.s	$ft2, $a3, $t2
 	fstx.s	$ft1, $a1, $t1
 	fneg.s	$ft1, $ft3
 	fmul.s	$ft1, $ft0, $ft1
 	fmadd.s	$ft1, $fa7, $ft2, $ft1
-	fstx.s	$ft1, $a4, $t2
+	fstx.s	$ft1, $a3, $t2
 	fmul.s	$ft1, $ft0, $ft2
-	fldx.s	$ft2, $a5, $t1
+	fldx.s	$ft2, $a4, $t1
 	fmadd.s	$ft1, $fa7, $ft3, $ft1
-	fldx.s	$ft3, $a5, $t2
-	fstx.s	$ft1, $a4, $t1
+	fldx.s	$ft3, $a4, $t2
+	fstx.s	$ft1, $a3, $t1
 	fneg.s	$ft1, $ft2
 	fmul.s	$ft1, $ft0, $ft1
 	fmadd.s	$ft1, $fa7, $ft3, $ft1
-	fstx.s	$ft1, $a5, $t2
+	fstx.s	$ft1, $a4, $t2
 	fmul.s	$ft0, $ft0, $ft3
 	fmadd.s	$fa7, $fa7, $ft2, $ft0
-	fstx.s	$fa7, $a5, $t1
+	fstx.s	$fa7, $a4, $t1
 	addi.w	$a2, $t3, -1
-	bge	$a3, $t3, .LBB13_11
+	bge	$a6, $t3, .LBB13_11
 .LBB13_4:                               # =>This Inner Loop Header: Depth=1
 	fld.s	$fa7, $a0, 4
 	fld.s	$ft0, $a0, 8
@@ -1731,7 +1727,7 @@ _ZN11btMatrix3x311diagonalizeERS_fi:    # @_ZN11btMatrix3x311diagonalizeERS_fi
 .LBB13_6:                               #   in Loop: Header=BB13_4 Depth=1
 	move	$t5, $zero
 	movcf2gr	$t1, $fcc0
-	sub.d	$t0, $a6, $t1
+	sub.d	$t0, $a5, $t1
 	addi.d	$t4, $t1, 1
 .LBB13_7:                               #   in Loop: Header=BB13_4 Depth=1
 	fld.s	$ft0, $a0, 0

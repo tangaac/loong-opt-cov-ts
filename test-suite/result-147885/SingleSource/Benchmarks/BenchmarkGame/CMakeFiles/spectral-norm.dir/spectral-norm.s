@@ -25,8 +25,7 @@ eval_A:                                 # @eval_A
 	.type	eval_A_times_u,@function
 eval_A_times_u:                         # @eval_A_times_u
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB1_5
+	blez	$a0, .LBB1_5
 # %bb.1:                                # %.lr.ph.us.preheader
 	move	$a3, $zero
 	movgr2fr.d	$fa0, $zero
@@ -72,8 +71,7 @@ eval_A_times_u:                         # @eval_A_times_u
 	.type	eval_At_times_u,@function
 eval_At_times_u:                        # @eval_At_times_u
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB2_5
+	blez	$a0, .LBB2_5
 # %bb.1:                                # %.lr.ph.us.preheader
 	move	$a3, $zero
 	move	$a4, $zero
@@ -137,8 +135,7 @@ eval_AtA_times_u:                       # @eval_AtA_times_u
 	slli.d	$a4, $a4, 4
 	sub.d	$a4, $sp, $a4
 	move	$sp, $a4
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB3_9
+	blez	$a0, .LBB3_9
 # %bb.1:                                # %.lr.ph.us.i.preheader
 	move	$a0, $zero
 	movgr2fr.d	$fa0, $zero
@@ -257,8 +254,7 @@ main:                                   # @main
 	move	$sp, $s0
 	sub.d	$s1, $sp, $a0
 	move	$sp, $s1
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB4_11
+	blez	$s2, .LBB4_11
 # %bb.2:                                # %.lr.ph.preheader
 	ori	$a0, $zero, 4
 	bgeu	$s3, $a0, .LBB4_5

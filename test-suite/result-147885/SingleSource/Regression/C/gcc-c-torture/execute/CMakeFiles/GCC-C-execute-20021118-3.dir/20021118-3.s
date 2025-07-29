@@ -9,8 +9,7 @@ foo:                                    # @foo
 	beq	$a0, $a1, .LBB0_3
 # %bb.1:
 	addi.w	$a0, $a0, 99
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_3
+	bltz	$a0, .LBB0_3
 # %bb.2:
 	move	$a0, $zero
 	ret

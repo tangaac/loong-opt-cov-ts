@@ -84,8 +84,7 @@ isamax:                                 # @isamax
 	.type	saxpy,@function
 saxpy:                                  # @saxpy
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB1_15
+	blez	$a0, .LBB1_15
 # %bb.1:
 	fcvt.s.d	$fa0, $fa0
 	movgr2fr.w	$fa1, $zero
@@ -128,7 +127,7 @@ saxpy:                                  # @saxpy
 	bnez	$a0, .LBB1_9
 	b	.LBB1_15
 .LBB1_10:
-	blt	$a2, $a5, .LBB1_13
+	blez	$a2, .LBB1_13
 # %bb.11:                               # %.lr.ph61
 	move	$a4, $zero
 	slli.d	$a2, $a2, 2
@@ -209,8 +208,7 @@ saxpy:                                  # @saxpy
 	.type	saxpyx,@function
 saxpyx:                                 # @saxpyx
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB2_15
+	blez	$a0, .LBB2_15
 # %bb.1:
 	fcvt.s.d	$fa0, $fa0
 	movgr2fr.w	$fa1, $zero
@@ -253,7 +251,7 @@ saxpyx:                                 # @saxpyx
 	bnez	$a0, .LBB2_9
 	b	.LBB2_15
 .LBB2_10:
-	blt	$a2, $a5, .LBB2_13
+	blez	$a2, .LBB2_13
 # %bb.11:                               # %.lr.ph64
 	move	$a4, $zero
 	slli.d	$a2, $a2, 2
@@ -334,8 +332,7 @@ saxpyx:                                 # @saxpyx
 	.type	scopy,@function
 scopy:                                  # @scopy
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB3_16
+	blez	$a0, .LBB3_16
 # %bb.1:
 	bne	$a2, $a4, .LBB3_11
 # %bb.2:
@@ -373,7 +370,7 @@ scopy:                                  # @scopy
 	bne	$a5, $a0, .LBB3_14
 	b	.LBB3_16
 .LBB3_8:
-	blt	$a2, $a5, .LBB3_11
+	blez	$a2, .LBB3_11
 # %bb.9:                                # %.lr.ph55
 	move	$a4, $zero
 	slli.d	$a2, $a2, 2
@@ -438,8 +435,7 @@ scopy:                                  # @scopy
 	.type	sdot,@function
 sdot:                                   # @sdot
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB4_5
+	blez	$a0, .LBB4_5
 # %bb.1:
 	bne	$a2, $a4, .LBB4_9
 # %bb.2:
@@ -462,7 +458,7 @@ sdot:                                   # @sdot
 	movgr2fr.d	$fa0, $zero
 	ret
 .LBB4_6:
-	blt	$a2, $a5, .LBB4_9
+	blez	$a2, .LBB4_9
 # %bb.7:                                # %.lr.ph69
 	move	$a4, $zero
 	slli.d	$a2, $a2, 2
@@ -526,11 +522,10 @@ snrm2:                                  # @snrm2
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 0                    # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	movgr2fr.d	$fa0, $zero
-	blt	$a0, $a3, .LBB5_5
+	blez	$a0, .LBB5_5
 # %bb.1:
-	blt	$a2, $a3, .LBB5_5
+	blez	$a2, .LBB5_5
 # %bb.2:
 	move	$a3, $zero
 	pcalau12i	$a4, %pc_hi20(.LCPI5_0)
@@ -862,20 +857,22 @@ min0:                                   # @min0
 	.type	sscal,@function
 sscal:                                  # @sscal
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB8_12
+	blez	$a0, .LBB8_4
 # %bb.1:
 	ori	$a3, $zero, 1
 	fcvt.s.d	$fa0, $fa0
-	bne	$a2, $a3, .LBB8_4
+	bne	$a2, $a3, .LBB8_5
 # %bb.2:                                # %.lr.ph29.preheader
 	ori	$a2, $zero, 8
-	bgeu	$a0, $a2, .LBB8_6
+	bgeu	$a0, $a2, .LBB8_8
 # %bb.3:
 	move	$a3, $zero
 	move	$a2, $a1
-	b	.LBB8_9
-.LBB8_4:                                # %.lr.ph
+	b	.LBB8_12
+.LBB8_4:
+	ori	$a0, $zero, 1
+	ret
+.LBB8_5:                                # %.lr.ph
 	sub.d	$a3, $a3, $a0
 	mul.d	$a3, $a2, $a3
 	srli.d	$a4, $a2, 31
@@ -884,15 +881,17 @@ sscal:                                  # @sscal
 	alsl.d	$a1, $a3, $a1, 2
 	slli.d	$a2, $a2, 2
 	.p2align	4, , 16
-.LBB8_5:                                # =>This Inner Loop Header: Depth=1
+.LBB8_6:                                # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a1, 0
 	fmul.s	$fa1, $fa1, $fa0
 	fst.s	$fa1, $a1, 0
 	addi.w	$a0, $a0, -1
 	add.d	$a1, $a1, $a2
-	bnez	$a0, .LBB8_5
-	b	.LBB8_11
-.LBB8_6:                                # %vector.ph
+	bnez	$a0, .LBB8_6
+# %bb.7:
+	move	$a0, $zero
+	ret
+.LBB8_8:                                # %vector.ph
 	bstrpick.d	$a2, $a0, 30, 3
 	slli.d	$a3, $a2, 3
 	slli.d	$a2, $a2, 5
@@ -901,7 +900,7 @@ sscal:                                  # @sscal
 	addi.d	$a1, $a1, 16
 	move	$a4, $a3
 	.p2align	4, , 16
-.LBB8_7:                                # %vector.body
+.LBB8_9:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	vld	$vr2, $a1, -16
 	vld	$vr3, $a1, 0
@@ -911,24 +910,25 @@ sscal:                                  # @sscal
 	vst	$vr3, $a1, 0
 	addi.d	$a4, $a4, -8
 	addi.d	$a1, $a1, 32
-	bnez	$a4, .LBB8_7
-# %bb.8:                                # %middle.block
-	beq	$a3, $a0, .LBB8_11
-.LBB8_9:                                # %.lr.ph29.preheader36
+	bnez	$a4, .LBB8_9
+# %bb.10:                               # %middle.block
+	bne	$a3, $a0, .LBB8_12
+# %bb.11:
+	move	$a0, $zero
+	ret
+.LBB8_12:                               # %.lr.ph29.preheader36
 	sub.d	$a0, $a0, $a3
 	.p2align	4, , 16
-.LBB8_10:                               # %.lr.ph29
+.LBB8_13:                               # %.lr.ph29
                                         # =>This Inner Loop Header: Depth=1
 	fld.s	$fa1, $a2, 0
 	fmul.s	$fa1, $fa1, $fa0
 	fst.s	$fa1, $a2, 0
 	addi.w	$a0, $a0, -1
 	addi.d	$a2, $a2, 4
-	bnez	$a0, .LBB8_10
-.LBB8_11:
-	move	$a3, $zero
-.LBB8_12:                               # %.loopexit
-	move	$a0, $a3
+	bnez	$a0, .LBB8_13
+# %bb.14:
+	move	$a0, $zero
 	ret
 .Lfunc_end8:
 	.size	sscal, .Lfunc_end8-sscal
@@ -938,9 +938,9 @@ sscal:                                  # @sscal
 	.type	vexopy,@function
 vexopy:                                 # @vexopy
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB9_12
+	blez	$a0, .LBB9_12
 # %bb.1:
+	ori	$a5, $zero, 1
 	bne	$a4, $a5, .LBB9_7
 # %bb.2:                                # %.lr.ph36.preheader
 	ori	$a4, $zero, 8
@@ -1075,8 +1075,7 @@ vexopy:                                 # @vexopy
 	.type	vfill,@function
 vfill:                                  # @vfill
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB10_8
+	blez	$a0, .LBB10_8
 # %bb.1:                                # %.preheader.preheader
 	ori	$a2, $zero, 8
 	fcvt.s.d	$fa0, $fa0

@@ -113,8 +113,7 @@ sm_maximal_independent_set:             # @sm_maximal_independent_set
 	b	.LBB0_11
 .LBB0_14:                               # %build_intersection_matrix.exit
 	ld.w	$a0, $s0, 48
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_28
+	blez	$a0, .LBB0_28
 # %bb.15:                               # %.lr.ph70
 	bnez	$s1, .LBB0_17
 	b	.LBB0_24

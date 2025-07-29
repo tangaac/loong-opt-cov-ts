@@ -5,20 +5,20 @@
 	.type	t,@function
 t:                                      # @t
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.1:
-	pcalau12i	$a2, %pc_hi20(a)
-	addi.d	$a2, $a2, %pc_lo12(a)
-	st.w	$zero, $a2, 0
-	beq	$a0, $a1, .LBB0_5
+	pcalau12i	$a1, %pc_hi20(a)
+	addi.d	$a1, $a1, %pc_lo12(a)
+	ori	$a2, $zero, 1
+	st.w	$zero, $a1, 0
+	beq	$a0, $a2, .LBB0_5
 # %bb.2:                                # %.lr.ph.peel.next.preheader
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	addi.d	$fp, $a2, 4
+	addi.d	$fp, $a1, 4
 	addi.d	$s0, $a0, -1
 	pcalau12i	$s1, %pc_hi20(terminate_me)
 	.p2align	4, , 16

@@ -487,7 +487,6 @@ put_gray_rows:                          # @put_gray_rows
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a0
 	ld.d	$a0, $a0, 8
 	move	$fp, $a1
@@ -496,7 +495,6 @@ put_gray_rows:                          # @put_gray_rows
 	ld.w	$a2, $fp, 76
 	ori	$a3, $zero, 1
 	ori	$a4, $zero, 1
-	ori	$s1, $zero, 1
 	move	$a0, $s0
 	jirl	$ra, $a5, 0
 	ld.w	$a1, $fp, 76
@@ -558,10 +556,9 @@ put_gray_rows:                          # @put_gray_rows
 	bnez	$a1, .LBB3_9
 .LBB3_10:                               # %._crit_edge
 	ld.w	$a2, $fp, 72
-	blt	$a2, $s1, .LBB3_12
+	blez	$a2, .LBB3_12
 # %bb.11:                               # %.lr.ph26.preheader
 	move	$a1, $zero
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -569,7 +566,6 @@ put_gray_rows:                          # @put_gray_rows
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB3_12:                               # %._crit_edge27
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -586,7 +582,6 @@ put_pixel_rows:                         # @put_pixel_rows
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a0
 	ld.d	$a0, $a0, 8
 	move	$fp, $a1
@@ -595,7 +590,6 @@ put_pixel_rows:                         # @put_pixel_rows
 	ld.w	$a2, $fp, 76
 	ori	$a3, $zero, 1
 	ori	$a4, $zero, 1
-	ori	$s1, $zero, 1
 	move	$a0, $s0
 	jirl	$ra, $a5, 0
 	ld.w	$a2, $fp, 76
@@ -622,10 +616,9 @@ put_pixel_rows:                         # @put_pixel_rows
 	bnez	$a1, .LBB4_2
 .LBB4_3:                                # %._crit_edge
 	ld.w	$a2, $fp, 72
-	blt	$a2, $s1, .LBB4_5
+	blez	$a2, .LBB4_5
 # %bb.4:                                # %.lr.ph31.preheader
 	move	$a1, $zero
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -633,7 +626,6 @@ put_pixel_rows:                         # @put_pixel_rows
 	pcaddu18i	$t8, %call36(memset)
 	jr	$t8
 .LBB4_5:                                # %._crit_edge32
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -667,8 +659,7 @@ write_colormap:                         # @write_colormap
 	ori	$a1, $zero, 3
 	bne	$a0, $a1, .LBB5_9
 # %bb.2:                                # %.preheader1
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB5_16
+	blez	$s4, .LBB5_16
 # %bb.3:                                # %.lr.ph7
 	move	$s5, $zero
 	ori	$a0, $zero, 4
@@ -765,8 +756,7 @@ write_colormap:                         # @write_colormap
 	bne	$s3, $s4, .LBB5_8
 	b	.LBB5_13
 .LBB5_9:                                # %.preheader3
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB5_19
+	blez	$s4, .LBB5_19
 # %bb.10:                               # %.lr.ph
 	move	$s5, $zero
 	ori	$a0, $zero, 4

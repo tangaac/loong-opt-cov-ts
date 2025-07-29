@@ -364,10 +364,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -375,8 +375,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB2_32
+	bgez	$a1, .LBB2_32
 # %bb.31:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a1, $a4, 10
 	addi.d	$a2, $a3, 3
@@ -398,10 +397,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -409,8 +408,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_105
+	bltz	$a1, .LBB2_105
 # %bb.34:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(load_var)
@@ -437,21 +435,20 @@ execute:                                # @execute
 	b	.LBB2_120
 .LBB2_37:                               #   in Loop: Header=BB2_5 Depth=1
 	srai.d	$a6, $a2, 10
+	addi.w	$a5, $a3, 2
+	st.w	$a5, $s4, 4
 	bstrpick.d	$a4, $a2, 62, 53
-	add.d	$a4, $a2, $a4
-	bstrpick.d	$a4, $a4, 31, 10
-	slli.d	$a7, $a4, 10
+	add.d	$a7, $a2, $a4
 	ori	$a4, $zero, 168
 	mul.d	$a0, $a0, $a4
-	add.d	$a5, $a1, $a0
-	alsl.d	$a0, $a6, $a5, 3
-	ld.d	$a6, $a0, 8
+	add.d	$a0, $a1, $a0
+	alsl.d	$a6, $a6, $a0, 3
+	ld.d	$a6, $a6, 8
+	bstrpick.d	$a7, $a7, 31, 10
+	slli.d	$a7, $a7, 10
 	sub.w	$a2, $a2, $a7
-	addi.w	$a0, $a3, 2
-	st.w	$a0, $s4, 4
 	ldx.b	$a2, $a6, $a2
-	addi.w	$a6, $zero, -1
-	bge	$a6, $a2, .LBB2_106
+	bltz	$a2, .LBB2_106
 # %bb.38:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$s0, $a2, 255
 	mul.d	$a0, $s0, $a4
@@ -561,10 +558,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -572,8 +569,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_109
+	bltz	$a1, .LBB2_109
 # %bb.51:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(store_var)
@@ -583,10 +579,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -594,8 +590,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_110
+	bltz	$a1, .LBB2_110
 # %bb.53:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(store_array)
@@ -659,10 +654,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -670,8 +665,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_111
+	bltz	$a1, .LBB2_111
 # %bb.61:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(incr_array)
@@ -732,10 +726,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -743,8 +737,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_112
+	bltz	$a1, .LBB2_112
 # %bb.70:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(load_array)
@@ -823,10 +816,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -834,8 +827,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_113
+	bltz	$a1, .LBB2_113
 # %bb.79:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(incr_var)
@@ -919,10 +911,10 @@ execute:                                # @execute
 	srai.d	$a5, $a2, 10
 	addi.w	$a4, $a3, 2
 	st.w	$a4, $s4, 4
-	ori	$a6, $zero, 168
-	mul.d	$a0, $a0, $a6
 	bstrpick.d	$a6, $a2, 62, 53
 	add.d	$a6, $a2, $a6
+	ori	$a7, $zero, 168
+	mul.d	$a0, $a0, $a7
 	add.d	$a0, $a1, $a0
 	alsl.d	$a1, $a5, $a0, 3
 	ld.d	$a1, $a1, 8
@@ -930,8 +922,7 @@ execute:                                # @execute
 	slli.d	$a5, $a5, 10
 	sub.w	$a2, $a2, $a5
 	ldx.b	$a1, $a1, $a2
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_115
+	bltz	$a1, .LBB2_115
 # %bb.90:                               #   in Loop: Header=BB2_5 Depth=1
 	andi	$a0, $a1, 255
 	pcaddu18i	$ra, %call36(decr_var)
@@ -1074,17 +1065,17 @@ execute:                                # @execute
 	jirl	$ra, $ra, 0
 	b	.LBB2_122
 .LBB2_106:                              #   in Loop: Header=BB2_5 Depth=1
-	srai.d	$a2, $a0, 10
+	srai.d	$a2, $a5, 10
 	addi.d	$a3, $a3, 3
 	st.w	$a3, $s4, 4
-	bstrpick.d	$a3, $a0, 62, 53
-	add.d	$a3, $a0, $a3
-	alsl.d	$a2, $a2, $a5, 3
-	ld.d	$a2, $a2, 8
-	bstrpick.d	$a3, $a3, 31, 10
-	slli.d	$a3, $a3, 10
-	sub.w	$a0, $a0, $a3
-	ldx.bu	$s0, $a2, $a0
+	bstrpick.d	$a3, $a5, 62, 53
+	add.d	$a3, $a5, $a3
+	alsl.d	$a0, $a2, $a0, 3
+	ld.d	$a0, $a0, 8
+	bstrpick.d	$a2, $a3, 31, 10
+	slli.d	$a2, $a2, 10
+	sub.w	$a2, $a5, $a2
+	ldx.bu	$s0, $a0, $a2
 	mul.d	$a0, $s0, $a4
 	ldx.bu	$a0, $a1, $a0
 	bnez	$a0, .LBB2_39
@@ -2049,8 +2040,8 @@ input_char:                             # @input_char
 	ext.w.b	$a0, $fp
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB7_6
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB7_6
 # %bb.4:
 	addi.d	$a2, $a0, -65
 	ori	$a1, $zero, 5

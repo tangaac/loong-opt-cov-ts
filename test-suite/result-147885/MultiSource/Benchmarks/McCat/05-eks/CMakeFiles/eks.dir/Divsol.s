@@ -655,8 +655,7 @@ DivideAndSolve:                         # @DivideAndSolve
 	move	$a4, $s2
 	pcaddu18i	$ra, %call36(House)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB3_10
+	blez	$s8, .LBB3_10
 # %bb.9:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_7 Depth=2
 	move	$a0, $s0

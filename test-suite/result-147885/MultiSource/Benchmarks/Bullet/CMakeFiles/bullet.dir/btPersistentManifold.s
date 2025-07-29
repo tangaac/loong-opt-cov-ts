@@ -267,8 +267,7 @@ _ZN20btPersistentManifold16sortCachedPointsERK15btManifoldPoint: # @_ZN20btPersi
 _ZNK20btPersistentManifold13getCacheEntryERK15btManifoldPoint: # @_ZNK20btPersistentManifold13getCacheEntryERK15btManifoldPoint
 # %bb.0:
 	ld.w	$a2, $a0, 728
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB3_4
+	blez	$a2, .LBB3_4
 # %bb.1:                                # %.lr.ph
 	move	$a3, $zero
 	fld.s	$fa3, $a0, 732
@@ -394,6 +393,9 @@ _ZN20btPersistentManifold16addManifoldPointERK15btManifoldPoint: # @_ZN20btPersi
 _ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_: # @_ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_
 	.cfi_startproc
 # %bb.0:
+	ld.w	$a3, $a0, 728
+	blez	$a3, .LBB6_16
+# %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -96
 	.cfi_def_cfa_offset 96
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
@@ -419,24 +421,21 @@ _ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_: # @_ZN20btPe
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	move	$fp, $a0
-	ld.w	$a4, $a0, 728
-	ori	$a0, $zero, 1
-	blt	$a4, $a0, .LBB6_15
-# %bb.1:                                # %.lr.ph
-	bstrpick.d	$s2, $a4, 31, 0
-	addi.d	$a3, $a4, 1
-	ori	$a5, $zero, 176
-	mul.d	$a4, $a4, $a5
-	add.d	$a4, $a4, $fp
-	addi.d	$a4, $a4, -168
+	bstrpick.d	$s2, $a3, 31, 0
+	addi.d	$a0, $a3, 1
+	ori	$a4, $zero, 176
+	mul.d	$a3, $a3, $a4
+	add.d	$a3, $a3, $fp
+	addi.d	$a3, $a3, -168
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB6_2:                                # =>This Inner Loop Header: Depth=1
 	fld.s	$fa0, $a1, 0
-	fld.s	$fa2, $a4, 0
+	fld.s	$fa2, $a3, 0
 	fld.s	$fa1, $a1, 4
-	fld.s	$fa3, $a4, 4
+	fld.s	$fa3, $a3, 4
 	fld.s	$fa4, $a1, 8
-	fld.s	$fa5, $a4, 8
+	fld.s	$fa5, $a3, 8
 	fld.s	$fa6, $a1, 48
 	fmul.s	$fa1, $fa1, $fa3
 	fmadd.s	$fa0, $fa0, $fa2, $fa1
@@ -463,15 +462,15 @@ _ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_: # @_ZN20btPe
 	bstrins.d	$a5, $a6, 63, 32
 	movfr2gr.s	$a6, $fa2
 	bstrpick.d	$a6, $a6, 31, 0
-	st.d	$a5, $a4, 48
-	st.d	$a6, $a4, 56
+	st.d	$a5, $a3, 48
+	st.d	$a6, $a3, 56
 	fld.s	$fa3, $a2, 4
-	fld.s	$fa4, $a4, 20
+	fld.s	$fa4, $a3, 20
 	fld.s	$fa5, $a2, 0
-	fld.s	$fa6, $a4, 16
+	fld.s	$fa6, $a3, 16
 	fmul.s	$fa3, $fa3, $fa4
 	fld.s	$fa7, $a2, 8
-	fld.s	$ft0, $a4, 24
+	fld.s	$ft0, $a3, 24
 	fmadd.s	$fa3, $fa5, $fa6, $fa3
 	fld.s	$fa5, $a2, 48
 	fld.s	$ft1, $a2, 20
@@ -497,24 +496,24 @@ _ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_: # @_ZN20btPe
 	bstrins.d	$a5, $a6, 63, 32
 	movfr2gr.s	$a6, $fa4
 	bstrpick.d	$a6, $a6, 31, 0
-	st.d	$a5, $a4, 32
-	st.d	$a6, $a4, 40
+	st.d	$a5, $a3, 32
+	st.d	$a6, $a3, 40
 	fsub.s	$fa0, $fa0, $fa3
 	fsub.s	$fa1, $fa1, $fa5
-	fld.s	$fa3, $a4, 68
+	fld.s	$fa3, $a3, 68
 	fsub.s	$fa2, $fa2, $fa4
-	fld.s	$fa4, $a4, 64
-	fld.s	$fa5, $a4, 72
+	fld.s	$fa4, $a3, 64
+	fld.s	$fa5, $a3, 72
 	fmul.s	$fa1, $fa1, $fa3
-	ld.w	$a5, $a4, 136
+	ld.w	$a5, $a3, 136
 	fmadd.s	$fa0, $fa0, $fa4, $fa1
 	fmadd.s	$fa0, $fa2, $fa5, $fa0
-	fst.s	$fa0, $a4, 80
+	fst.s	$fa0, $a3, 80
 	addi.d	$a5, $a5, 1
-	st.w	$a5, $a4, 136
-	addi.d	$a3, $a3, -1
-	addi.d	$a4, $a4, -176
-	bltu	$a0, $a3, .LBB6_2
+	st.w	$a5, $a3, 136
+	addi.d	$a0, $a0, -1
+	addi.d	$a3, $a3, -176
+	bltu	$a4, $a0, .LBB6_2
 # %bb.3:                                # %.lr.ph111
 	addi.d	$s3, $fp, 8
 	ori	$s4, $zero, 176
@@ -605,7 +604,7 @@ _ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_: # @_ZN20btPe
 	move	$a0, $s0
 	jirl	$ra, $a3, 0
 	b	.LBB6_5
-.LBB6_15:                               # %._crit_edge
+.LBB6_15:
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -618,6 +617,7 @@ _ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_: # @_ZN20btPe
 	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 96
+.LBB6_16:                               # %._crit_edge
 	ret
 .Lfunc_end6:
 	.size	_ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_, .Lfunc_end6-_ZN20btPersistentManifold20refreshContactPointsERK11btTransformS2_

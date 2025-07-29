@@ -589,13 +589,11 @@ _ZN16btRaycastVehicle8addWheelERK9btVector3S2_S2_ffRKNS_15btVehicleTuningEb: # @
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 196
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB8_5
+	bgtz	$a1, .LBB8_5
 	b	.LBB8_7
 .LBB8_4:
 	move	$s0, $zero
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB8_7
+	blez	$a1, .LBB8_7
 .LBB8_5:                                # %.lr.ph.i.i.i
 	move	$s6, $zero
 	alsl.d	$a0, $a1, $a1, 3
@@ -1223,8 +1221,7 @@ _ZN16btRaycastVehicle15resetSuspensionEv: # @_ZN16btRaycastVehicle15resetSuspens
 	.cfi_offset 28, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 196
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB12_3
+	blez	$a0, .LBB12_3
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	move	$s2, $zero
@@ -1571,19 +1568,18 @@ _ZN16btRaycastVehicle7rayCastER11btWheelInfo: # @_ZN16btRaycastVehicle7rayCastER
 _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleEf
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 40                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 32                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1591,15 +1587,13 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
-	.cfi_offset 56, -72
-	.cfi_offset 57, -80
-	.cfi_offset 58, -88
+	.cfi_offset 56, -64
+	.cfi_offset 57, -72
+	.cfi_offset 58, -80
 	move	$fp, $a0
 	ld.w	$a0, $a0, 196
-	ori	$a1, $zero, 1
 	fmov.s	$fs0, $fa0
-	blt	$a0, $a1, .LBB15_4
+	blez	$a0, .LBB15_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
@@ -1665,29 +1659,28 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	addi.d	$s0, $s0, 288
 	blt	$s1, $a0, .LBB15_9
 # %bb.10:                               # %._crit_edge110
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB15_18
+	blez	$a0, .LBB15_18
 # %bb.11:                               # %.lr.ph.i
 	ld.d	$a1, $fp, 168
 	fld.s	$fa0, $a1, 360
+	move	$s1, $zero
 	move	$s2, $zero
-	move	$s3, $zero
 	frecip.s	$fs2, $fa0
-	ori	$s4, $zero, 228
-	ori	$s5, $zero, 224
+	ori	$s3, $zero, 228
+	ori	$s4, $zero, 224
 	b	.LBB15_13
 	.p2align	4, , 16
 .LBB15_12:                              #   in Loop: Header=BB15_13 Depth=1
 	fst.s	$fa0, $s0, 280
-	addi.d	$s3, $s3, 1
-	addi.d	$s2, $s2, 288
-	bge	$s3, $a0, .LBB15_15
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 288
+	bge	$s2, $a0, .LBB15_15
 .LBB15_13:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 208
-	add.d	$s0, $a1, $s2
+	add.d	$s0, $a1, $s1
 	ld.bu	$a1, $s0, 84
 	fmov.s	$fa0, $fs1
-	bne	$a1, $s1, .LBB15_12
+	beqz	$a1, .LBB15_12
 # %bb.14:                               #   in Loop: Header=BB15_13 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK11btWheelInfo23getSuspensionRestLengthEv)
@@ -1698,8 +1691,8 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fcmp.clt.s	$fcc0, $fa1, $fs1
 	fld.s	$fa4, $s0, 272
 	movcf2gr	$a0, $fcc0
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $s5, $a0
+	masknez	$a1, $s3, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	fldx.s	$fa5, $s0, $a0
 	fsub.s	$fa0, $fa0, $fa2
@@ -1713,8 +1706,7 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fsel	$fa0, $fa0, $fs1, $fcc0
 	b	.LBB15_12
 .LBB15_15:                              # %_ZN16btRaycastVehicle16updateSuspensionEf.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_18
+	blez	$a0, .LBB15_18
 # %bb.16:                               # %.lr.ph112
 	pcalau12i	$a0, %pc_hi20(.LCPI15_1)
 	fld.s	$fs1, $a0, %pc_lo12(.LCPI15_1)
@@ -1740,10 +1732,10 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	movfr2gr.s	$a2, $fa2
 	bstrins.d	$a0, $a2, 63, 32
 	movfr2gr.s	$a2, $fa0
-	st.d	$a0, $sp, 24
+	st.d	$a0, $sp, 16
 	ld.d	$a0, $fp, 168
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a2, $sp, 32
+	st.d	$a2, $sp, 24
 	fld.s	$fa0, $a1, 16
 	fld.s	$fa1, $a0, 56
 	fld.s	$fa2, $a1, 20
@@ -1758,10 +1750,10 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	bstrins.d	$a1, $a2, 63, 32
 	movfr2gr.s	$a2, $fa2
 	bstrpick.d	$a2, $a2, 31, 0
-	st.d	$a1, $sp, 8
-	st.d	$a2, $sp, 16
-	addi.d	$a1, $sp, 24
-	addi.d	$a2, $sp, 8
+	st.d	$a1, $sp, 0
+	st.d	$a2, $sp, 8
+	addi.d	$a1, $sp, 16
+	addi.d	$a2, $sp, 0
 	pcaddu18i	$ra, %call36(_ZN11btRigidBody12applyImpulseERK9btVector3S2_)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 196
@@ -1775,39 +1767,38 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fmov.s	$fa0, $fs0
 	jirl	$ra, $a1, 0
 	ld.w	$a0, $fp, 196
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_24
+	blez	$a0, .LBB15_24
 # %bb.19:                               # %.lr.ph116
-	ld.d	$a2, $fp, 168
-	ld.w	$a3, $fp, 184
-	ld.d	$a6, $fp, 208
-	alsl.d	$a5, $a3, $a2, 2
-	addi.d	$a3, $a5, 8
-	pcalau12i	$a4, %pc_hi20(.LCPI15_2)
-	fld.s	$fa0, $a4, %pc_lo12(.LCPI15_2)
-	addi.d	$a4, $a5, 24
-	addi.d	$a5, $a5, 40
-	addi.d	$a6, $a6, 244
+	ld.d	$a1, $fp, 168
+	ld.w	$a2, $fp, 184
+	ld.d	$a5, $fp, 208
+	alsl.d	$a4, $a2, $a1, 2
+	addi.d	$a2, $a4, 8
+	pcalau12i	$a3, %pc_hi20(.LCPI15_2)
+	fld.s	$fa0, $a3, %pc_lo12(.LCPI15_2)
+	addi.d	$a3, $a4, 24
+	addi.d	$a4, $a4, 40
+	addi.d	$a5, $a5, 244
 	b	.LBB15_22
 	.p2align	4, , 16
 .LBB15_20:                              #   in Loop: Header=BB15_22 Depth=1
-	fld.s	$fa1, $a6, -200
-	fld.s	$fa2, $a2, 64
-	fld.s	$fa3, $a6, -204
-	fld.s	$fa4, $a2, 60
-	fld.s	$fa5, $a2, 348
-	fld.s	$fa6, $a2, 352
+	fld.s	$fa1, $a5, -200
+	fld.s	$fa2, $a1, 64
+	fld.s	$fa3, $a5, -204
+	fld.s	$fa4, $a1, 60
+	fld.s	$fa5, $a1, 348
+	fld.s	$fa6, $a1, 352
 	fsub.s	$fa1, $fa1, $fa2
 	fsub.s	$fa2, $fa3, $fa4
 	fneg.s	$fa3, $fa2
 	fmul.s	$fa3, $fa6, $fa3
-	fld.s	$fa4, $a2, 328
+	fld.s	$fa4, $a1, 328
 	fmadd.s	$fa3, $fa5, $fa1, $fa3
-	fld.s	$fa7, $a6, -208
-	fld.s	$ft0, $a2, 56
+	fld.s	$fa7, $a5, -208
+	fld.s	$ft0, $a1, 56
 	fadd.s	$fa3, $fa4, $fa3
-	fld.s	$fa4, $a2, 344
-	fld.s	$ft1, $a2, 332
+	fld.s	$fa4, $a1, 344
+	fld.s	$ft1, $a1, 332
 	fsub.s	$fa7, $fa7, $ft0
 	fneg.s	$fa1, $fa1
 	fmul.s	$fa1, $fa4, $fa1
@@ -1816,13 +1807,13 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fneg.s	$fa6, $fa7
 	fmul.s	$fa5, $fa5, $fa6
 	fmadd.s	$fa2, $fa4, $fa2, $fa5
-	fld.s	$fa4, $a2, 336
-	fld.s	$fa5, $a3, 0
-	fld.s	$fa6, $a4, 0
-	fld.s	$fa7, $a5, 0
-	fld.s	$ft0, $a6, -240
-	fld.s	$ft1, $a6, -244
-	fld.s	$ft2, $a6, -236
+	fld.s	$fa4, $a1, 336
+	fld.s	$fa5, $a2, 0
+	fld.s	$fa6, $a3, 0
+	fld.s	$fa7, $a4, 0
+	fld.s	$ft0, $a5, -240
+	fld.s	$ft1, $a5, -244
+	fld.s	$ft2, $a5, -236
 	fadd.s	$fa2, $fa4, $fa2
 	fmul.s	$fa4, $fa6, $ft0
 	fmadd.s	$fa4, $fa5, $ft1, $fa4
@@ -1835,40 +1826,39 @@ _ZN16btRaycastVehicle13updateVehicleEf: # @_ZN16btRaycastVehicle13updateVehicleE
 	fsub.s	$fa4, $fa7, $fa4
 	fmul.s	$fa1, $fa1, $fa6
 	fmadd.s	$fa1, $fa5, $fa3, $fa1
-	fld.s	$fa3, $a6, -28
-	fld.s	$fa5, $a6, -4
+	fld.s	$fa3, $a5, -28
+	fld.s	$fa5, $a5, -4
 	fmadd.s	$fa1, $fa4, $fa2, $fa1
 	fmul.s	$fa1, $fs0, $fa1
 	fdiv.s	$fa1, $fa1, $fa3
 	fadd.s	$fa2, $fa5, $fa1
 .LBB15_21:                              #   in Loop: Header=BB15_22 Depth=1
-	fst.s	$fa2, $a6, -4
+	fst.s	$fa2, $a5, -4
 	fmul.s	$fa1, $fa1, $fa0
-	fst.s	$fa1, $a6, 0
+	fst.s	$fa1, $a5, 0
 	addi.d	$a0, $a0, -1
-	addi.d	$a6, $a6, 288
+	addi.d	$a5, $a5, 288
 	beqz	$a0, .LBB15_24
 .LBB15_22:                              # =>This Inner Loop Header: Depth=1
-	ld.bu	$a7, $a6, -160
-	beq	$a7, $a1, .LBB15_20
+	ld.bu	$a6, $a5, -160
+	bnez	$a6, .LBB15_20
 # %bb.23:                               #   in Loop: Header=BB15_22 Depth=1
-	fld.s	$fa1, $a6, 0
-	fld.s	$fa2, $a6, -4
+	fld.s	$fa1, $a5, 0
+	fld.s	$fa2, $a5, -4
 	fadd.s	$fa2, $fa1, $fa2
 	b	.LBB15_21
 .LBB15_24:                              # %._crit_edge117
-	fld.d	$fs2, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 56                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	fld.d	$fs2, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 48                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end15:
 	.size	_ZN16btRaycastVehicle13updateVehicleEf, .Lfunc_end15-_ZN16btRaycastVehicle13updateVehicleEf
@@ -1889,9 +1879,8 @@ _ZN16btRaycastVehicle16updateSuspensionEf: # @_ZN16btRaycastVehicle16updateSuspe
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 8                    # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 0                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 8                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1899,35 +1888,33 @@ _ZN16btRaycastVehicle16updateSuspensionEf: # @_ZN16btRaycastVehicle16updateSuspe
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
-	.cfi_offset 56, -72
-	.cfi_offset 57, -80
+	.cfi_offset 56, -64
+	.cfi_offset 57, -72
 	move	$fp, $a0
 	ld.w	$a0, $a0, 196
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB16_5
+	blez	$a0, .LBB16_5
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $fp, 168
 	fld.s	$fa0, $a1, 360
+	move	$s1, $zero
 	move	$s2, $zero
-	move	$s3, $zero
 	frecip.s	$fs0, $fa0
 	movgr2fr.w	$fs1, $zero
-	ori	$s4, $zero, 228
-	ori	$s5, $zero, 224
+	ori	$s3, $zero, 228
+	ori	$s4, $zero, 224
 	b	.LBB16_3
 	.p2align	4, , 16
 .LBB16_2:                               #   in Loop: Header=BB16_3 Depth=1
 	fst.s	$fa0, $s0, 280
-	addi.d	$s3, $s3, 1
-	addi.d	$s2, $s2, 288
-	bge	$s3, $a0, .LBB16_5
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 288
+	bge	$s2, $a0, .LBB16_5
 .LBB16_3:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 208
-	add.d	$s0, $a1, $s2
+	add.d	$s0, $a1, $s1
 	ld.bu	$a1, $s0, 84
 	fmov.s	$fa0, $fs1
-	bne	$a1, $s1, .LBB16_2
+	beqz	$a1, .LBB16_2
 # %bb.4:                                #   in Loop: Header=BB16_3 Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZNK11btWheelInfo23getSuspensionRestLengthEv)
@@ -1938,8 +1925,8 @@ _ZN16btRaycastVehicle16updateSuspensionEf: # @_ZN16btRaycastVehicle16updateSuspe
 	fcmp.clt.s	$fcc0, $fa1, $fs1
 	fld.s	$fa4, $s0, 272
 	movcf2gr	$a0, $fcc0
-	masknez	$a1, $s4, $a0
-	maskeqz	$a0, $s5, $a0
+	masknez	$a1, $s3, $a0
+	maskeqz	$a0, $s4, $a0
 	or	$a0, $a0, $a1
 	fldx.s	$fa5, $s0, $a0
 	fsub.s	$fa0, $fa0, $fa2
@@ -1953,9 +1940,8 @@ _ZN16btRaycastVehicle16updateSuspensionEf: # @_ZN16btRaycastVehicle16updateSuspe
 	fsel	$fa0, $fa0, $fs1, $fcc0
 	b	.LBB16_2
 .LBB16_5:                               # %._crit_edge
-	fld.d	$fs1, $sp, 0                    # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 8                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 16                   # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
@@ -2269,9 +2255,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 12
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB25_6
+	blez	$a1, .LBB25_6
 # %bb.4:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -2310,9 +2295,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 44
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB25_15
+	blez	$a1, .LBB25_15
 # %bb.13:                               # %.lr.ph.i.i.i161
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -2348,9 +2332,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	blt	$s3, $s2, .LBB25_38
 .LBB25_21:                              # %_ZN20btAlignedObjectArrayIfE6resizeEiRKf.exit204
 	ld.w	$a0, $fp, 196
-	ori	$a1, $zero, 1
 	st.w	$s2, $fp, 108
-	bge	$a0, $a1, .LBB25_54
+	bgtz	$a0, .LBB25_54
 	b	.LBB25_88
 .LBB25_22:
 	ld.w	$a0, $fp, 80
@@ -2363,9 +2346,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $fp, 76
 	ld.d	$a1, $fp, 88
-	ori	$a3, $zero, 1
 	move	$s1, $a0
-	blt	$a2, $a3, .LBB25_33
+	blez	$a2, .LBB25_33
 # %bb.24:                               # %.lr.ph.i.i.i176
 	ori	$a3, $zero, 8
 	move	$a0, $zero
@@ -2408,8 +2390,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	bnez	$a2, .LBB25_30
 .LBB25_31:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
 	ld.bu	$a0, $fp, 96
-	ori	$a2, $zero, 1
-	beq	$a0, $a2, .LBB25_35
+	bnez	$a0, .LBB25_35
 	b	.LBB25_36
 .LBB25_32:                              # %..lr.ph.i167_crit_edge
 	ld.d	$s1, $fp, 88
@@ -2451,9 +2432,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $fp, 108
 	ld.d	$a1, $fp, 120
-	ori	$a3, $zero, 1
 	move	$s1, $a0
-	blt	$a2, $a3, .LBB25_49
+	blez	$a2, .LBB25_49
 # %bb.40:                               # %.lr.ph.i.i.i195
 	ori	$a3, $zero, 8
 	move	$a0, $zero
@@ -2496,8 +2476,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	bnez	$a2, .LBB25_46
 .LBB25_47:                              # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i200
 	ld.bu	$a0, $fp, 128
-	ori	$a2, $zero, 1
-	beq	$a0, $a2, .LBB25_51
+	bnez	$a0, .LBB25_51
 	b	.LBB25_52
 .LBB25_48:                              # %..lr.ph.i181_crit_edge
 	ld.d	$s1, $fp, 120
@@ -2526,9 +2505,8 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 196
-	ori	$a1, $zero, 1
 	st.w	$s2, $fp, 108
-	blt	$a0, $a1, .LBB25_88
+	blez	$a0, .LBB25_88
 .LBB25_54:                              # %.lr.ph
 	ld.d	$a1, $fp, 120
 	ld.d	$a2, $fp, 88
@@ -2695,8 +2673,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	ld.w	$a0, $fp, 196
 	b	.LBB25_62
 .LBB25_65:                              # %.preheader254
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB25_88
+	blez	$a0, .LBB25_88
 # %bb.66:                               # %.lr.ph261
 	ld.d	$a0, $fp, 208
 	move	$s0, $zero
@@ -2879,8 +2856,7 @@ _ZN16btRaycastVehicle14updateFrictionEf: # @_ZN16btRaycastVehicle14updateFrictio
 	fst.s	$fa1, $a0, 0
 	b	.LBB25_77
 .LBB25_81:                              # %.loopexit253
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB25_88
+	blez	$a1, .LBB25_88
 # %bb.82:                               # %.lr.ph267
 	move	$s1, $zero
 	move	$s2, $zero
@@ -3179,8 +3155,7 @@ _ZN16btRaycastVehicle9debugDrawEP12btIDebugDraw: # @_ZN16btRaycastVehicle9debugD
 	.cfi_offset 57, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 196
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB27_3
+	blez	$a0, .LBB27_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	move	$s1, $zero

@@ -194,8 +194,7 @@ _ZNK13btConvexShape44localGetSupportVertexWithoutMarginNonVirtualERK9btVector3: 
 	fld.s	$fa0, $a0, 24
 	fld.s	$fa1, $a0, 28
 	fld.s	$fa2, $a0, 32
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB3_16
+	blez	$a3, .LBB3_16
 # %bb.11:                               # %.lr.ph.preheader.i214
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a1, 4
@@ -234,8 +233,7 @@ _ZNK13btConvexShape44localGetSupportVertexWithoutMarginNonVirtualERK9btVector3: 
 	fld.s	$fa0, $a0, 24
 	fld.s	$fa1, $a0, 28
 	fld.s	$fa2, $a0, 32
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB3_16
+	blez	$a3, .LBB3_16
 # %bb.14:                               # %.lr.ph.preheader.i
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a1, 4

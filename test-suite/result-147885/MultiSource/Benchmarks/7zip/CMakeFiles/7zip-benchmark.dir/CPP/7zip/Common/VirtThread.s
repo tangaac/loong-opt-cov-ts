@@ -74,18 +74,16 @@ _ZN11CVirtThread6CreateEv:              # @_ZN11CVirtThread6CreateEv
 _ZL11CoderThreadPv:                     # @_ZL11CoderThreadPv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a0
 	addi.d	$s0, $a0, 8
 	move	$a0, $s0
@@ -95,7 +93,6 @@ _ZL11CoderThreadPv:                     # @_ZL11CoderThreadPv
 	bnez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$s1, $fp, 112
-	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
@@ -109,15 +106,14 @@ _ZL11CoderThreadPv:                     # @_ZL11CoderThreadPv
 	pcaddu18i	$ra, %call36(Event_Wait)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 232
-	bne	$a0, $s2, .LBB1_2
+	beqz	$a0, .LBB1_2
 .LBB1_3:                                # %._crit_edge
 	move	$a0, $zero
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end1:
 	.size	_ZL11CoderThreadPv, .Lfunc_end1-_ZL11CoderThreadPv

@@ -169,7 +169,6 @@ gen_norm_pts:                           # @gen_norm_pts
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
 	ori	$a1, $zero, 51
 	ori	$a2, $zero, 1
-	ori	$s1, $zero, 1
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -194,7 +193,7 @@ gen_norm_pts:                           # @gen_norm_pts
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	blt	$fp, $s1, .LBB1_3
+	blez	$fp, .LBB1_3
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.11)

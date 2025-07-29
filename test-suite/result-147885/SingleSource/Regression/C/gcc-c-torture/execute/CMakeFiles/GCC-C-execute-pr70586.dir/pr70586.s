@@ -27,16 +27,16 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(c)
 	ld.h	$a1, $a0, %pc_lo12(c)
 	pcalau12i	$a4, %pc_hi20(f)
-	ld.w	$a5, $a4, %pc_lo12(f)
+	ld.w	$a6, $a4, %pc_lo12(f)
 	bstrpick.d	$a2, $a1, 15, 0
-	bstrpick.d	$a2, $a2, 15, 0
+	slli.d	$a5, $a2, 48
 	move	$a3, $a1
-	beqz	$a5, .LBB1_5
+	beqz	$a6, .LBB1_5
 # %bb.1:
-	beqz	$a2, .LBB1_4
+	beqz	$a5, .LBB1_4
 # %bb.2:
 	ori	$a3, $zero, 1
-	bne	$a5, $a3, .LBB1_4
+	bne	$a6, $a3, .LBB1_4
 # %bb.3:                                # %foo.exit.thread.i
 	pcalau12i	$a3, %pc_hi20(d)
 	ld.hu	$a3, $a3, %pc_lo12(d)
@@ -50,19 +50,20 @@ main:                                   # @main
 	move	$a3, $a1
 	b	.LBB1_6
 .LBB1_4:
-	mod.w	$a3, $a1, $a5
+	mod.w	$a3, $a1, $a6
 .LBB1_5:                                # %foo.exit.i
-	pcalau12i	$a5, %pc_hi20(d)
-	ld.hu	$a5, $a5, %pc_lo12(d)
-	srli.d	$a6, $a5, 15
-	add.d	$a6, $a5, $a6
-	bstrpick.d	$a6, $a6, 15, 1
-	slli.d	$a6, $a6, 1
-	sub.d	$a5, $a5, $a6
-	ext.w.h	$a5, $a5
-	st.w	$a5, $a4, %pc_lo12(f)
-	beqz	$a2, .LBB1_9
+	pcalau12i	$a6, %pc_hi20(d)
+	ld.hu	$a6, $a6, %pc_lo12(d)
+	srli.d	$a7, $a6, 15
+	add.d	$a7, $a6, $a7
+	bstrpick.d	$a7, $a7, 15, 1
+	slli.d	$a7, $a7, 1
+	sub.d	$a6, $a6, $a7
+	ext.w.h	$a6, $a6
+	st.w	$a6, $a4, %pc_lo12(f)
+	beqz	$a5, .LBB1_9
 .LBB1_6:
+	bstrpick.d	$a2, $a2, 15, 0
 	ori	$a4, $zero, 1
 	bne	$a2, $a4, .LBB1_8
 # %bb.7:

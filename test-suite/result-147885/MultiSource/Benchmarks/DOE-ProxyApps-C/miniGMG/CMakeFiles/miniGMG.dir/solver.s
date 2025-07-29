@@ -35,7 +35,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	fst.d	$fs5, $sp, 1896                 # 8-byte Folded Spill
 	fst.d	$fs6, $sp, 1888                 # 8-byte Folded Spill
 	lu12i.w	$a4, 2
-	ori	$a4, $a4, 896
+	ori	$a4, $a4, 880
 	sub.d	$sp, $sp, $a4
 	fmov.d	$fs4, $fa2
 	fmov.d	$fs0, $fa1
@@ -70,7 +70,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	movgr2fr.d	$fs2, $zero
 	fcmp.ceq.d	$fcc0, $fa0, $fs2
 	movcf2gr	$a0, $fcc0
-	st.d	$a0, $sp, 152
+	st.d	$a0, $sp, 136
 	ori	$a2, $zero, 13
 	ori	$a3, $zero, 12
 	move	$a0, $s0
@@ -80,7 +80,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	fmov.d	$fs3, $fa0
 	fcmp.ceq.d	$fcc0, $fa0, $fs2
 	movcf2gr	$a0, $fcc0
-	ld.d	$a1, $sp, 152
+	ld.d	$a1, $sp, 136
 	movgr2cf	$fcc0, $a1
 	movcf2gr	$a1, $fcc0
 	fsqrt.d	$fa0, $fa0
@@ -99,7 +99,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	pcaddu18i	$ra, %call36(mul_grids)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 896
+	ori	$a0, $a0, 880
 	add.d	$sp, $sp, $a0
 	fld.d	$fs6, $sp, 1888                 # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 1896                 # 8-byte Folded Reload
@@ -130,37 +130,35 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	move	$a3, $zero
 	fmul.d	$fs4, $fs4, $fa0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1712
+	ori	$a0, $a0, 1696
 	add.d	$s7, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1576
+	ori	$a0, $a0, 1560
 	add.d	$s6, $sp, $a0
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
+	lu52i.d	$s3, $zero, 1023
 	ori	$a0, $zero, 1
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 120                   # 8-byte Folded Spill
 	b	.LBB0_6
 	.p2align	4, , 16
 .LBB0_5:                                # %.loopexit
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$a3, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	add.w	$a3, $a3, $a0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	slti	$a0, $a2, 4
 	ori	$a1, $zero, 4
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $a2, $a0
 	slti	$a2, $a3, 200
-	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 136                   # 8-byte Folded Reload
 	and	$a2, $a2, $a4
 	and	$a2, $a2, $s5
 	or	$a0, $a0, $a1
 	move	$s0, $s4
-	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	lu52i.d	$s3, $zero, 1023
 	beqz	$a2, .LBB0_2
 .LBB0_6:                                # %.preheader565.preheader
                                         # =>This Loop Header: Depth=1
@@ -223,69 +221,69 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #     Child Loop BB0_181 Depth 2
                                         #     Child Loop BB0_184 Depth 2
                                         #     Child Loop BB0_186 Depth 2
-	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	slli.d	$s5, $a0, 2
 	addi.w	$fp, $s5, 1
 	slli.d	$s2, $fp, 3
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1712
+	ori	$a0, $a0, 1696
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1576
+	ori	$a0, $a0, 1560
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1440
+	ori	$a0, $a0, 1424
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1304
+	ori	$a0, $a0, 1288
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1168
+	ori	$a0, $a0, 1152
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1032
+	ori	$a0, $a0, 1016
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2648
+	ori	$a0, $a0, 2632
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
+	ori	$a0, $a0, 2496
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2376
+	ori	$a0, $a0, 2360
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s2
@@ -293,13 +291,13 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s5, 31, 2
 	slli.d	$a1, $a0, 2
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 112                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 5
 	addi.d	$s2, $a0, 8
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 64
+	ori	$a0, $a0, 48
 	add.d	$s4, $sp, $a0
-	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_7:                                # %.preheader565
                                         #   Parent Loop BB0_6 Depth=1
@@ -315,15 +313,15 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.8:                                # %.preheader564.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	addi.w	$a0, $s5, 0
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	slli.d	$a0, $a0, 3
 	addi.d	$s4, $a0, 8
-	st.d	$s5, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
 	ori	$a0, $s5, 1
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	addi.w	$fp, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1848
+	ori	$a0, $a0, 1832
 	add.d	$s5, $sp, $a0
 	.p2align	4, , 16
 .LBB0_9:                                # %.preheader564
@@ -339,27 +337,26 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	bnez	$fp, .LBB0_9
 # %bb.10:                               # %.lr.ph590.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$t4, $sp, 120                   # 8-byte Folded Reload
-	slli.d	$a0, $t4, 1
+	ld.d	$t3, $sp, 104                   # 8-byte Folded Reload
+	slli.d	$a0, $t3, 1
 	bstrpick.d	$a1, $a0, 31, 1
 	slli.d	$s8, $a1, 1
 	move	$a1, $zero
 	lu12i.w	$a2, 2
-	beqz	$t4, .LBB0_13
+	beqz	$t3, .LBB0_13
 # %bb.11:                               # %vector.body1120.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
-	ori	$a2, $a2, 344
+	ori	$a2, $a2, 328
 	add.d	$a2, $sp, $a2
-	lu52i.d	$t2, $zero, 1023
-	ori	$t3, $zero, 136
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 80                    # 8-byte Folded Reload
+	ori	$t2, $zero, 136
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_12:                               # %vector.body1120
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.d	$t2, $a2, -144
-	st.d	$t2, $a2, 0
+	st.d	$s3, $a2, -144
+	st.d	$s3, $a2, 0
 	addi.d	$a1, $a1, 2
 	addi.d	$a2, $a2, 288
 	bne	$s8, $a1, .LBB0_12
@@ -367,28 +364,27 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	.p2align	4, , 16
 .LBB0_13:                               # %.lr.ph590.preheader1161
                                         #   in Loop: Header=BB0_6 Depth=1
-	ori	$a2, $a2, 200
+	ori	$a2, $a2, 184
 	add.d	$a2, $sp, $a2
-	lu52i.d	$t2, $zero, 1023
-	ori	$t3, $zero, 136
-	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$t6, $sp, 80                    # 8-byte Folded Reload
+	ori	$t2, $zero, 136
+	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$t5, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_14:                               # %.lr.ph590
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$a1, $a1, 1
-	st.d	$t2, $a2, 0
+	st.d	$s3, $a2, 0
 	addi.d	$a2, $a2, 144
 	bne	$s8, $a1, .LBB0_14
 .LBB0_15:                               # %._crit_edge591
                                         #   in Loop: Header=BB0_6 Depth=1
 	ori	$a1, $a0, 1
-	addi.w	$t7, $a1, 0
+	addi.w	$t6, $a1, 0
 	addi.w	$a2, $a0, -1
-	ld.d	$t5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
-	bgeu	$t7, $a3, .LBB0_21
+	ld.d	$t4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	bgeu	$t6, $a3, .LBB0_21
 # %bb.16:                               # %.lr.ph594.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	addi.w	$a1, $a1, 0
@@ -402,15 +398,15 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	slli.d	$a4, $s8, 7
 	alsl.d	$a4, $s8, $a4, 4
 	lu12i.w	$a5, 2
-	ori	$a5, $a5, 488
+	ori	$a5, $a5, 472
 	add.d	$a5, $sp, $a5
 	add.d	$a4, $a5, $a4
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.body1108
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.d	$t2, $a4, -144
-	st.d	$t2, $a4, 0
+	st.d	$s3, $a4, -144
+	st.d	$s3, $a4, 0
 	addi.d	$a3, $a3, -2
 	addi.d	$a4, $a4, 288
 	bnez	$a3, .LBB0_18
@@ -419,20 +415,20 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	slli.d	$a3, $a1, 7
 	alsl.d	$a3, $a1, $a3, 4
 	lu12i.w	$a4, 2
-	ori	$a4, $a4, 200
+	ori	$a4, $a4, 184
 	add.d	$a4, $sp, $a4
 	add.d	$a3, $a4, $a3
-	sub.w	$a1, $a1, $t6
+	sub.w	$a1, $a1, $t5
 	.p2align	4, , 16
 .LBB0_20:                               # %.lr.ph594
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.d	$t2, $a3, 0
+	st.d	$s3, $a3, 0
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	and	$a4, $a1, $s3
+	slli.d	$a4, $a1, 31
 	addi.d	$a3, $a3, 144
-	beqz	$a4, .LBB0_20
+	bgez	$a4, .LBB0_20
 .LBB0_21:                               # %.lr.ph596.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	bstrpick.d	$a1, $a2, 31, 0
@@ -449,7 +445,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	bstrpick.d	$a2, $a1, 30, 2
 	slli.d	$a2, $a2, 2
 	lu12i.w	$a3, 1
-	ori	$a3, $a3, 1848
+	ori	$a3, $a3, 1832
 	add.d	$a3, $sp, $a3
 	move	$a4, $a2
 	.p2align	4, , 16
@@ -459,20 +455,20 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	vaddi.du	$vr1, $vr0, 2
 	vaddi.du	$vr0, $vr0, 4
 	vpickve2gr.d	$a5, $vr1, 0
-	mul.d	$a5, $a5, $t3
+	mul.d	$a5, $a5, $t2
 	vpickve2gr.d	$a6, $vr1, 1
-	mul.d	$a6, $a6, $t3
+	mul.d	$a6, $a6, $t2
 	add.d	$a6, $a3, $a6
 	vpickve2gr.d	$a7, $vr0, 0
-	mul.d	$a7, $a7, $t3
+	mul.d	$a7, $a7, $t2
 	add.d	$a7, $a3, $a7
 	vpickve2gr.d	$t0, $vr0, 1
-	mul.d	$t0, $t0, $t3
+	mul.d	$t0, $t0, $t2
 	add.d	$t0, $a3, $t0
-	stx.d	$t2, $a3, $a5
-	st.d	$t2, $a6, 8
-	st.d	$t2, $a7, 16
-	st.d	$t2, $t0, 24
+	stx.d	$s3, $a3, $a5
+	st.d	$s3, $a6, 8
+	st.d	$s3, $a7, 16
+	st.d	$s3, $t0, 24
 	addi.d	$a4, $a4, -4
 	addi.d	$a3, $a3, 32
 	bnez	$a4, .LBB0_24
@@ -481,25 +477,25 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	slli.d	$a3, $a2, 7
 	alsl.d	$a3, $a2, $a3, 4
 	lu12i.w	$a4, 1
-	ori	$a4, $a4, 2120
+	ori	$a4, $a4, 2104
 	add.d	$a4, $sp, $a4
 	add.d	$a3, $a4, $a3
 	.p2align	4, , 16
 .LBB0_26:                               # %.lr.ph596
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.d	$t2, $a3, 0
+	st.d	$s3, $a3, 0
 	addi.d	$a2, $a2, 1
 	addi.d	$a3, $a3, 144
 	bne	$a1, $a2, .LBB0_26
 # %bb.27:                               # %.preheader569
                                         #   in Loop: Header=BB0_6 Depth=1
-	addi.w	$a1, $t6, -1
-	bge	$t7, $a1, .LBB0_34
+	addi.w	$a1, $t5, -1
+	bge	$t6, $a1, .LBB0_34
 # %bb.28:                               # %.lr.ph598.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	addi.w	$a2, $a0, -4
-	move	$a1, $t7
+	move	$a1, $t6
 	beqz	$a2, .LBB0_32
 # %bb.29:                               # %vector.ph1075
                                         #   in Loop: Header=BB0_6 Depth=1
@@ -509,11 +505,11 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
 	slli.d	$a3, $a1, 2
-	alsl.d	$a1, $a1, $t7, 2
-	vreplgr2vr.d	$vr1, $t7
+	alsl.d	$a1, $a1, $t6, 2
+	vreplgr2vr.d	$vr1, $t6
 	vadd.d	$vr0, $vr1, $vr0
 	lu12i.w	$a4, 1
-	ori	$a4, $a4, 1848
+	ori	$a4, $a4, 1832
 	add.d	$a4, $sp, $a4
 	alsl.d	$a4, $s8, $a4, 3
 	move	$a5, $a3
@@ -524,21 +520,21 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	vaddi.du	$vr1, $vr0, 2
 	vaddi.du	$vr0, $vr0, 4
 	vpickve2gr.d	$a6, $vr1, 0
-	mul.d	$a6, $a6, $t3
+	mul.d	$a6, $a6, $t2
 	add.d	$a6, $a4, $a6
 	vpickve2gr.d	$a7, $vr1, 1
-	mul.d	$a7, $a7, $t3
+	mul.d	$a7, $a7, $t2
 	add.d	$a7, $a4, $a7
 	vpickve2gr.d	$t0, $vr0, 0
-	mul.d	$t0, $t0, $t3
+	mul.d	$t0, $t0, $t2
 	add.d	$t0, $a4, $t0
 	vpickve2gr.d	$t1, $vr0, 1
-	mul.d	$t1, $t1, $t3
+	mul.d	$t1, $t1, $t2
 	add.d	$t1, $a4, $t1
-	st.d	$t2, $a6, 8
-	st.d	$t2, $a7, 16
-	st.d	$t2, $t0, 24
-	st.d	$t2, $t1, 32
+	st.d	$s3, $a6, 8
+	st.d	$s3, $a7, 16
+	st.d	$s3, $t0, 24
+	st.d	$s3, $t1, 32
 	addi.d	$a5, $a5, -4
 	addi.d	$a4, $a4, 32
 	bnez	$a5, .LBB0_30
@@ -550,28 +546,28 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	slli.d	$a2, $a1, 7
 	alsl.d	$a2, $a1, $a2, 4
 	lu12i.w	$a3, 1
-	ori	$a3, $a3, 2120
+	ori	$a3, $a3, 2104
 	add.d	$a3, $sp, $a3
 	add.d	$a2, $a3, $a2
-	sub.d	$a1, $a1, $t6
+	sub.d	$a1, $a1, $t5
 	addi.w	$a1, $a1, 1
 	.p2align	4, , 16
 .LBB0_33:                               # %.lr.ph598
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	st.d	$t2, $a2, 0
+	st.d	$s3, $a2, 0
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	and	$a3, $a1, $s3
+	slli.d	$a3, $a1, 31
 	addi.d	$a2, $a2, 144
-	beqz	$a3, .LBB0_33
+	bgez	$a3, .LBB0_33
 .LBB0_34:                               # %.lr.ph601.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	ori	$a1, $zero, 1
-	bltu	$a1, $t4, .LBB0_36
+	bltu	$a1, $t3, .LBB0_36
 # %bb.35:                               #   in Loop: Header=BB0_6 Depth=1
 	move	$a1, $zero
-	addi.d	$a4, $sp, 160
+	addi.d	$a4, $sp, 144
 	b	.LBB0_38
 	.p2align	4, , 16
 .LBB0_36:                               # %vector.ph1064
@@ -580,9 +576,9 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	vld	$vr0, $a1, %pc_lo12(.LCPI0_1)
 	bstrpick.d	$a1, $fp, 30, 3
 	slli.d	$a1, $a1, 3
-	addi.d	$a2, $sp, 176
+	addi.d	$a2, $sp, 160
 	move	$a3, $a1
-	addi.d	$a4, $sp, 160
+	addi.d	$a4, $sp, 144
 	.p2align	4, , 16
 .LBB0_37:                               # %vector.body1067
                                         #   Parent Loop BB0_6 Depth=1
@@ -597,11 +593,11 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	bnez	$a3, .LBB0_37
 .LBB0_38:                               # %.lr.ph601.preheader1133
                                         #   in Loop: Header=BB0_6 Depth=1
-	st.d	$t7, $sp, 56                    # 8-byte Folded Spill
+	st.d	$t6, $sp, 40                    # 8-byte Folded Spill
 	addi.d	$a2, $a1, 15
 	slli.d	$a3, $a1, 2
-	nor	$a5, $t5, $zero
-	st.d	$a5, $sp, 144                   # 8-byte Folded Spill
+	nor	$a5, $t4, $zero
+	st.d	$a5, $sp, 128                   # 8-byte Folded Spill
 	add.d	$a1, $a5, $a1
 	.p2align	4, , 16
 .LBB0_39:                               # %.lr.ph601
@@ -615,14 +611,14 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.40:                               # %.lr.ph606.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	slli.d	$a1, $fp, 2
-	ld.w	$a2, $sp, 160
+	ld.w	$a2, $sp, 144
 	ori	$a3, $zero, 12
 	stx.w	$a3, $a1, $a4
 	addi.w	$a0, $a0, 0
-	addi.d	$s5, $sp, 164
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
-	alsl.d	$a0, $a0, $s5, 2
+	addi.d	$s5, $sp, 148
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	alsl.d	$a0, $a0, $s5, 2
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	vldi	$vr0, -912
 	ori	$a3, $zero, 14
 	move	$a0, $s0
@@ -655,7 +651,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	bnez	$s3, .LBB0_41
 # %bb.42:                               # %.lr.ph610.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a2, $a0, 0
 	vldi	$vr0, -912
 	ori	$a3, $zero, 13
@@ -663,7 +659,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(scale_grid)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 168
+	addi.d	$a0, $sp, 152
 	alsl.d	$s5, $s8, $a0, 2
 	addi.d	$s3, $s8, -1
 	.p2align	4, , 16
@@ -694,12 +690,12 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	ld.w	$a0, $s0, 1316
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 1316
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ori	$a0, $a0, 2
 	addi.w	$a6, $a0, 0
-	addi.d	$a2, $sp, 232
-	addi.d	$a3, $sp, 160
-	addi.d	$a4, $sp, 160
+	addi.d	$a2, $sp, 216
+	addi.d	$a3, $sp, 144
+	addi.d	$a4, $sp, 144
 	ori	$a7, $zero, 1
 	move	$a0, $s0
 	move	$a1, $s1
@@ -707,14 +703,14 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	pcaddu18i	$ra, %call36(matmul_grids)
 	jirl	$ra, $ra, 0
 	move	$s5, $zero
-	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	addi.d	$s8, $a0, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	addi.w	$s0, $a1, 0
 	addi.d	$s1, $a0, 2
-	ori	$a0, $zero, 2680
+	ori	$a0, $zero, 2664
 	add.d	$fp, $sp, $a0
-	ori	$a0, $zero, 2816
+	ori	$a0, $zero, 2800
 	add.d	$s3, $sp, $a0
 	.p2align	4, , 16
 .LBB0_45:                               # %.preheader563
@@ -722,13 +718,13 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         # =>  This Inner Loop Header: Depth=2
 	slli.d	$a0, $s5, 32
 	srai.d	$a0, $a0, 29
-	addi.d	$a1, $sp, 232
+	addi.d	$a1, $sp, 216
 	add.d	$a1, $a1, $a0
 	move	$a0, $s3
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 232
+	addi.d	$a1, $sp, 216
 	add.w	$a0, $s8, $s5
 	slli.d	$a0, $a0, 3
 	fldx.d	$fa0, $a0, $a1
@@ -741,7 +737,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.46:                               # %.lr.ph685
                                         #   in Loop: Header=BB0_6 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1712
+	ori	$a0, $a0, 1696
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s4
@@ -749,70 +745,70 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	jirl	$ra, $ra, 0
 	lu52i.d	$fp, $zero, 1023
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1712
+	ori	$a0, $a0, 1696
 	add.d	$a0, $sp, $a0
 	st.d	$fp, $a0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1576
+	ori	$a0, $a0, 1560
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 3
 	stx.d	$fp, $a0, $s6
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1440
+	ori	$a0, $a0, 1424
 	add.d	$a0, $sp, $a0
 	move	$a1, $zero
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	move	$s0, $zero
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	addi.w	$s4, $a0, 0
-	ld.d	$ra, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 112                   # 8-byte Folded Reload
 	addi.d	$s3, $ra, 1
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2664
-	add.d	$fp, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1184
-	add.d	$s1, $sp, $a0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2392
-	add.d	$a5, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1320
-	add.d	$a6, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1728
-	add.d	$t0, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1440
-	add.d	$t1, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1304
-	add.d	$t2, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1168
-	add.d	$t3, $sp, $a0
-	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1032
-	add.d	$t4, $sp, $a0
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 2648
-	add.d	$t5, $sp, $a0
-	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
-	add.d	$t6, $sp, $a0
+	add.d	$fp, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1168
+	add.d	$s1, $sp, $a0
 	lu12i.w	$a0, 2
 	ori	$a0, $a0, 2376
+	add.d	$a5, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1304
+	add.d	$a6, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1712
+	add.d	$t0, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1424
+	add.d	$t1, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1288
+	add.d	$t2, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1152
+	add.d	$t3, $sp, $a0
+	lu12i.w	$a0, 1
+	ori	$a0, $a0, 1016
+	add.d	$t4, $sp, $a0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 2632
+	add.d	$t5, $sp, $a0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 2496
+	add.d	$t6, $sp, $a0
+	lu12i.w	$a0, 2
+	ori	$a0, $a0, 2360
 	add.d	$t7, $sp, $a0
-	ld.d	$t8, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 104                   # 8-byte Folded Reload
 .LBB0_47:                               # %.preheader560.preheader
                                         #   Parent Loop BB0_6 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -861,7 +857,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a3, 1312
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 64
+	ori	$a1, $a1, 48
 	add.d	$a1, $sp, $a1
 	.p2align	4, , 16
 .LBB0_48:                               # %.preheader560
@@ -895,10 +891,10 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #   in Loop: Header=BB0_47 Depth=2
 	move	$a0, $zero
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 64
+	ori	$a1, $a1, 48
 	add.d	$a1, $sp, $a1
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1592
+	ori	$a2, $a2, 1576
 	add.d	$a7, $sp, $a2
 	.p2align	4, , 16
 .LBB0_52:                               # %.preheader559
@@ -932,7 +928,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #   in Loop: Header=BB0_47 Depth=2
 	move	$a0, $zero
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1848
+	ori	$a1, $a1, 1832
 	add.d	$a1, $sp, $a1
 	.p2align	4, , 16
 .LBB0_56:                               # %.preheader558
@@ -965,9 +961,9 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.59:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1304
+	ori	$a0, $a0, 1288
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2680
+	ori	$a1, $zero, 2664
 	add.d	$a1, $sp, $a1
 	move	$a2, $s3
 	fmov.d	$fa0, $fs2
@@ -1004,11 +1000,11 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	vreplvei.d	$vr0, $vr6, 0
 	move	$a0, $s1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1048
+	ori	$a1, $a1, 1032
 	add.d	$a1, $sp, $a1
 	move	$a2, $fp
 	move	$a3, $ra
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_65:                               # %vector.body1052
                                         #   Parent Loop BB0_6 Depth=1
@@ -1030,12 +1026,12 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a3, .LBB0_65
 # %bb.66:                               #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_68
 	.p2align	4, , 16
 .LBB0_67:                               #   in Loop: Header=BB0_47 Depth=2
 	move	$a3, $zero
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
 .LBB0_68:                               # %.lr.ph.i416.preheader1132
                                         #   in Loop: Header=BB0_47 Depth=2
 	add.d	$a0, $s5, $a3
@@ -1060,7 +1056,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.70:                               # %.preheader557.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	move	$a0, $zero
-	ori	$a1, $zero, 2816
+	ori	$a1, $zero, 2800
 	add.d	$a1, $sp, $a1
 	.p2align	4, , 16
 .LBB0_71:                               # %.preheader557
@@ -1069,7 +1065,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_72 Depth 4
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2648
+	ori	$a2, $a2, 2632
 	add.d	$a2, $sp, $a2
 	move	$a3, $s3
 	move	$a4, $a1
@@ -1127,7 +1123,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a3, .LBB0_76
 # %bb.77:                               #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_79
 	.p2align	4, , 16
 .LBB0_78:                               #   in Loop: Header=BB0_47 Depth=2
@@ -1156,10 +1152,10 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.81:                               # %.lr.ph.i430.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
+	ori	$a0, $a0, 2496
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 2376
+	ori	$a1, $a1, 2360
 	add.d	$a1, $sp, $a1
 	move	$a2, $s3
 	fmov.d	$fs5, $fs2
@@ -1178,10 +1174,10 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.83:                               # %.lr.ph.i439.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
+	ori	$a0, $a0, 2496
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 2648
+	ori	$a1, $a1, 2632
 	add.d	$a1, $sp, $a1
 	move	$a2, $s3
 	fmov.d	$fs6, $fs2
@@ -1204,7 +1200,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #   in Loop: Header=BB0_47 Depth=2
 	vreplvei.d	$vr0, $vr6, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1456
+	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	move	$a1, $t0
 	move	$a2, $ra
@@ -1228,7 +1224,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_87
 # %bb.88:                               #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_90
 	.p2align	4, , 16
 .LBB0_89:                               #   in Loop: Header=BB0_47 Depth=2
@@ -1283,7 +1279,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a3, .LBB0_94
 # %bb.95:                               #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_97
 	.p2align	4, , 16
 .LBB0_96:                               #   in Loop: Header=BB0_47 Depth=2
@@ -1312,7 +1308,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.99:                               # %.preheader556.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	move	$a0, $zero
-	ori	$a1, $zero, 2816
+	ori	$a1, $zero, 2800
 	add.d	$a1, $sp, $a1
 	.p2align	4, , 16
 .LBB0_100:                              # %.preheader556
@@ -1321,7 +1317,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_101 Depth 4
 	lu12i.w	$a2, 2
-	ori	$a2, $a2, 2648
+	ori	$a2, $a2, 2632
 	add.d	$a2, $sp, $a2
 	move	$a3, $s3
 	move	$a4, $a1
@@ -1351,10 +1347,10 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.103:                              # %.lr.ph.i462.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
+	ori	$a0, $a0, 2496
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 2
-	ori	$a1, $a1, 2648
+	ori	$a1, $a1, 2632
 	add.d	$a1, $sp, $a1
 	move	$a2, $s3
 	fmov.d	$fa0, $fs2
@@ -1402,11 +1398,11 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #   in Loop: Header=BB0_47 Depth=2
 	vreplvei.d	$vr0, $vr7, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1456
+	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	move	$a1, $a7
 	move	$a2, $ra
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_112:                              # %vector.body984
                                         #   Parent Loop BB0_6 Depth=1
@@ -1427,12 +1423,12 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_112
 # %bb.113:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_115
 	.p2align	4, , 16
 .LBB0_114:                              #   in Loop: Header=BB0_47 Depth=2
 	move	$a2, $zero
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
 .LBB0_115:                              # %.lr.ph.i470.preheader1129
                                         #   in Loop: Header=BB0_47 Depth=2
 	add.d	$a0, $a3, $a2
@@ -1461,7 +1457,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         #   in Loop: Header=BB0_47 Depth=2
 	vreplvei.d	$vr1, $vr0, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1456
+	ori	$a0, $a0, 1440
 	add.d	$a0, $sp, $a0
 	move	$a1, $a6
 	move	$a2, $ra
@@ -1485,7 +1481,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_119
 # %bb.120:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_122
 	.p2align	4, , 16
 .LBB0_121:                              #   in Loop: Header=BB0_47 Depth=2
@@ -1538,7 +1534,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_126
 # %bb.127:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_129
 	.p2align	4, , 16
 .LBB0_128:                              #   in Loop: Header=BB0_47 Depth=2
@@ -1591,7 +1587,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_133
 # %bb.134:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_136
 	.p2align	4, , 16
 .LBB0_135:                              #   in Loop: Header=BB0_47 Depth=2
@@ -1624,7 +1620,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	vreplvei.d	$vr1, $vr0, 0
 	move	$a0, $a7
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1048
+	ori	$a1, $a1, 1032
 	add.d	$a1, $sp, $a1
 	move	$a2, $ra
 	.p2align	4, , 16
@@ -1647,7 +1643,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_140
 # %bb.141:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_143
 	.p2align	4, , 16
 .LBB0_142:                              #   in Loop: Header=BB0_47 Depth=2
@@ -1674,7 +1670,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.145:                              # %.preheader.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	move	$a0, $zero
-	ori	$a1, $zero, 2816
+	ori	$a1, $zero, 2800
 	add.d	$a1, $sp, $a1
 	.p2align	4, , 16
 .LBB0_146:                              # %.preheader
@@ -1683,7 +1679,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_147 Depth 4
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 1576
+	ori	$a2, $a2, 1560
 	add.d	$a2, $sp, $a2
 	move	$a3, $s3
 	move	$a4, $a1
@@ -1713,10 +1709,10 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.149:                              # %.lr.ph.i506.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2648
+	ori	$a0, $a0, 2632
 	add.d	$a0, $sp, $a0
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1576
+	ori	$a1, $a1, 1560
 	add.d	$a1, $sp, $a1
 	move	$a2, $s3
 	fmov.d	$fa0, $fs2
@@ -1747,9 +1743,9 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 .LBB0_154:                              # %.lr.ph.i515.preheader
                                         #   in Loop: Header=BB0_47 Depth=2
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1576
+	ori	$a0, $a0, 1560
 	add.d	$a0, $sp, $a0
-	ori	$a1, $zero, 2680
+	ori	$a1, $zero, 2664
 	add.d	$a1, $sp, $a1
 	move	$a2, $s3
 	fmov.d	$fa0, $fs2
@@ -1774,7 +1770,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	andi	$a0, $a0, 1
 	ori	$s5, $zero, 1
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 1592
+	ori	$a1, $a1, 1576
 	add.d	$a1, $sp, $a1
 	bnez	$a0, .LBB0_177
 # %bb.157:                              # %__dot.exit520
@@ -1800,7 +1796,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	move	$a0, $a1
 	move	$a1, $t0
 	move	$a2, $ra
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_161:                              # %vector.body899
                                         #   Parent Loop BB0_6 Depth=1
@@ -1821,14 +1817,14 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_161
 # %bb.162:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB0_164
 	.p2align	4, , 16
 .LBB0_163:                              #   in Loop: Header=BB0_47 Depth=2
 	move	$a2, $zero
-	ld.d	$a3, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 128                   # 8-byte Folded Reload
 .LBB0_164:                              # %.lr.ph.i523.preheader1126
                                         #   in Loop: Header=BB0_47 Depth=2
 	add.d	$a0, $a4, $a2
@@ -1878,7 +1874,7 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	addi.d	$a0, $a0, 32
 	bnez	$a2, .LBB0_168
 # %bb.169:                              #   in Loop: Header=BB0_47 Depth=2
-	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_171
 	.p2align	4, , 16
 .LBB0_170:                              #   in Loop: Header=BB0_47 Depth=2
@@ -1910,44 +1906,44 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	b	.LBB0_178
 .LBB0_174:                              # %call.sqrt1560
                                         #   in Loop: Header=BB0_47 Depth=2
-	vst	$vr6, $sp, 96                   # 16-byte Folded Spill
+	vst	$vr6, $sp, 80                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	vld	$vr6, $sp, 96                   # 16-byte Folded Reload
-	ld.d	$ra, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 120                   # 8-byte Folded Reload
+	vld	$vr6, $sp, 80                   # 16-byte Folded Reload
+	ld.d	$ra, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 104                   # 8-byte Folded Reload
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2376
+	ori	$a0, $a0, 2360
 	add.d	$t7, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
+	ori	$a0, $a0, 2496
 	add.d	$t6, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2648
+	ori	$a0, $a0, 2632
 	add.d	$t5, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1032
+	ori	$a0, $a0, 1016
 	add.d	$t4, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1168
+	ori	$a0, $a0, 1152
 	add.d	$t3, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1304
+	ori	$a0, $a0, 1288
 	add.d	$t2, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1440
+	ori	$a0, $a0, 1424
 	add.d	$t1, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1728
+	ori	$a0, $a0, 1712
 	add.d	$t0, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1592
+	ori	$a0, $a0, 1576
 	add.d	$a7, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1320
+	ori	$a0, $a0, 1304
 	add.d	$a6, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2392
+	ori	$a0, $a0, 2376
 	add.d	$a5, $sp, $a0
 	fmov.d	$fa1, $fa0
 	fcmp.clt.d	$fcc0, $fa1, $fs4
@@ -1955,43 +1951,43 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	b	.LBB0_176
 .LBB0_175:                              # %call.sqrt1562
                                         #   in Loop: Header=BB0_47 Depth=2
-	vst	$vr6, $sp, 96                   # 16-byte Folded Spill
-	vst	$vr7, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr6, $sp, 80                   # 16-byte Folded Spill
+	vst	$vr7, $sp, 64                   # 16-byte Folded Spill
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
-	vld	$vr7, $sp, 80                   # 16-byte Folded Reload
-	vld	$vr6, $sp, 96                   # 16-byte Folded Reload
-	ld.d	$ra, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$t8, $sp, 120                   # 8-byte Folded Reload
+	vld	$vr7, $sp, 64                   # 16-byte Folded Reload
+	vld	$vr6, $sp, 80                   # 16-byte Folded Reload
+	ld.d	$ra, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$t8, $sp, 104                   # 8-byte Folded Reload
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2376
+	ori	$a0, $a0, 2360
 	add.d	$t7, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2512
+	ori	$a0, $a0, 2496
 	add.d	$t6, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2648
+	ori	$a0, $a0, 2632
 	add.d	$t5, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1032
+	ori	$a0, $a0, 1016
 	add.d	$t4, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1168
+	ori	$a0, $a0, 1152
 	add.d	$t3, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1304
+	ori	$a0, $a0, 1288
 	add.d	$t2, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1440
+	ori	$a0, $a0, 1424
 	add.d	$t1, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1728
+	ori	$a0, $a0, 1712
 	add.d	$t0, $sp, $a0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1320
+	ori	$a0, $a0, 1304
 	add.d	$a6, $sp, $a0
 	lu12i.w	$a0, 2
-	ori	$a0, $a0, 2392
+	ori	$a0, $a0, 2376
 	add.d	$a5, $sp, $a0
 	fmov.d	$fa1, $fa0
 	fcmp.clt.d	$fcc0, $fa1, $fs4
@@ -1999,37 +1995,37 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	.p2align	4, , 16
 .LBB0_176:                              #   in Loop: Header=BB0_6 Depth=1
 	move	$s5, $zero
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB0_179
 	.p2align	4, , 16
 .LBB0_177:                              #   in Loop: Header=BB0_6 Depth=1
-	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 152                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB0_180
 .LBB0_178:                              #   in Loop: Header=BB0_6 Depth=1
-	st.d	$zero, $sp, 144                 # 8-byte Folded Spill
-	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 128                 # 8-byte Folded Spill
+	st.d	$zero, $sp, 80                  # 8-byte Folded Spill
 	ori	$s5, $zero, 1
 	fmov.d	$fs3, $fa0
 .LBB0_179:                              # %.lr.ph725.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 .LBB0_180:                              # %.lr.ph725.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$fp, $zero
 	ori	$s0, $zero, 4
 	bstrins.d	$s0, $t8, 35, 4
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1440
+	ori	$a0, $a0, 1424
 	add.d	$s1, $sp, $a0
-	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	addi.d	$s3, $sp, 160
+	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	addi.d	$s3, $sp, 144
 	.p2align	4, , 16
 .LBB0_181:                              # %.lr.ph725
                                         #   Parent Loop BB0_6 Depth=1
@@ -2048,19 +2044,19 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	bne	$s0, $fp, .LBB0_181
 # %bb.182:                              # %._crit_edge726
                                         #   in Loop: Header=BB0_6 Depth=1
-	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
 	or	$a0, $a1, $a0
 	move	$s1, $s2
-	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
 	bnez	$a0, .LBB0_5
 # %bb.183:                              # %.lr.ph730.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1712
+	ori	$a0, $a0, 1696
 	add.d	$a0, $sp, $a0
 	fld.d	$fa1, $a0, 0
-	ld.w	$a4, $sp, 160
+	ld.w	$a4, $sp, 144
 	ori	$a2, $zero, 14
 	ori	$a3, $zero, 14
 	move	$a0, $s4
@@ -2071,9 +2067,9 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	ori	$fp, $zero, 4
 	move	$s3, $s1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1720
+	ori	$a0, $a0, 1704
 	add.d	$s1, $sp, $a0
-	addi.d	$s2, $sp, 160
+	addi.d	$s2, $sp, 144
 	.p2align	4, , 16
 .LBB0_184:                              # %.lr.ph730
                                         #   Parent Loop BB0_6 Depth=1
@@ -2094,10 +2090,10 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 # %bb.185:                              # %.lr.ph735.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1576
+	ori	$a0, $a0, 1560
 	add.d	$a0, $sp, $a0
 	fld.d	$fa1, $a0, 0
-	ld.w	$a4, $sp, 160
+	ld.w	$a4, $sp, 144
 	ori	$a2, $zero, 13
 	ori	$a3, $zero, 13
 	move	$a0, $s4
@@ -2106,11 +2102,11 @@ TelescopingCABiCGStab:                  # @TelescopingCABiCGStab
 	pcaddu18i	$ra, %call36(add_grids)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 1
-	ori	$a0, $a0, 1584
+	ori	$a0, $a0, 1568
 	add.d	$fp, $sp, $a0
-	addi.d	$s0, $sp, 164
+	addi.d	$s0, $sp, 148
 	move	$s1, $s3
-	ld.d	$s2, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 112                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_186:                              # %.lr.ph735
                                         #   Parent Loop BB0_6 Depth=1

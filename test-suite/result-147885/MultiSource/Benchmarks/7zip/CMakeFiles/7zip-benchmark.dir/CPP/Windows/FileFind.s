@@ -95,12 +95,11 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s2, $a0
-	blt	$s4, $a2, .LBB0_55
+	blez	$s4, .LBB0_55
 # %bb.13:                               # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB0_28
+	blez	$a1, .LBB0_28
 # %bb.14:                               # %iter.check343
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -191,11 +190,10 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 # %bb.30:                               # %.noexc
 	move	$s3, $a0
 	ld.w	$a1, $s0, 8
-	ori	$a2, $zero, 1
-	blt	$s5, $a2, .LBB0_111
+	blez	$s5, .LBB0_111
 # %bb.31:                               # %.preheader.i.i83
 	ld.d	$a0, $s0, 0
-	blt	$a1, $a2, .LBB0_102
+	blez	$a1, .LBB0_102
 # %bb.32:                               # %iter.check244
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -233,12 +231,11 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB0_153
+	blez	$s3, .LBB0_153
 # %bb.40:                               # %.preheader.i.i146
 	ld.d	$a0, $s0, 0
-	blt	$a1, $a2, .LBB0_103
+	blez	$a1, .LBB0_103
 # %bb.41:                               # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -348,12 +345,11 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$s3, $a2, .LBB0_89
+	blez	$s3, .LBB0_89
 # %bb.63:                               # %.preheader.i.i66
 	ld.d	$a0, $s0, 0
-	blt	$a1, $a2, .LBB0_80
+	blez	$a1, .LBB0_80
 # %bb.64:                               # %iter.check376
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -392,12 +388,11 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 8
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$s2, $a2, .LBB0_100
+	blez	$s2, .LBB0_100
 # %bb.72:                               # %.preheader.i.i49
 	ld.d	$a0, $s0, 0
-	blt	$a1, $a2, .LBB0_81
+	blez	$a1, .LBB0_81
 # %bb.73:                               # %iter.check409
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -610,21 +605,21 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_117:                              # %_ZN11CStringBaseIcED2Ev.exit
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_121
+	blez	$s2, .LBB0_121
 # %bb.118:                              # %.lr.ph188
-	ld.d	$a1, $s1, 0
-	addi.d	$a1, $a1, -1
-	ori	$a2, $zero, 47
+	ld.d	$a0, $s1, 0
+	addi.d	$a0, $a0, -1
+	ori	$a1, $zero, 47
+	ori	$a2, $zero, 1
 	move	$a3, $s2
 	.p2align	4, , 16
 .LBB0_119:                              # =>This Inner Loop Header: Depth=1
 	move	$s2, $a3
-	ldx.bu	$a3, $a1, $a3
-	bne	$a3, $a2, .LBB0_122
+	ldx.bu	$a3, $a0, $a3
+	bne	$a3, $a1, .LBB0_122
 # %bb.120:                              #   in Loop: Header=BB0_119 Depth=1
 	addi.w	$a3, $s2, -1
-	blt	$a0, $s2, .LBB0_119
+	blt	$a2, $s2, .LBB0_119
 	b	.LBB0_125
 .LBB0_121:                              # %.critedge
 	beqz	$s2, .LBB0_125
@@ -661,12 +656,11 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$s2, $a2, .LBB0_179
+	blez	$s2, .LBB0_179
 # %bb.127:                              # %.preheader.i.i104
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB0_165
+	blez	$a1, .LBB0_165
 # %bb.128:                              # %iter.check310
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -707,11 +701,10 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 # %bb.136:                              # %.noexc135
 	move	$s0, $a0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
-	blt	$s2, $a2, .LBB0_188
+	blez	$s2, .LBB0_188
 # %bb.137:                              # %.preheader.i.i123
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB0_145
+	blez	$a1, .LBB0_145
 # %bb.138:                              # %iter.check277
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -791,14 +784,14 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 .LBB0_154:                              # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i141
 	ori	$a0, $zero, 47
 	st.h	$a0, $s1, 0
-	ori	$s2, $zero, 1
-	st.w	$s2, $s0, 8
+	ori	$a0, $zero, 1
+	st.w	$a0, $s0, 8
 	ld.d	$a0, $fp, 0
 	st.w	$zero, $fp, 8
 	st.b	$zero, $a0, 0
-	ld.w	$s3, $fp, 12
+	ld.w	$s2, $fp, 12
 	ori	$a0, $zero, 2
-	bne	$s3, $a0, .LBB0_156
+	bne	$s2, $a0, .LBB0_156
 .LBB0_155:                              # %._ZN11CStringBaseIcE11SetCapacityEi.exit_crit_edge.i114
 	ld.d	$s0, $fp, 0
 	b	.LBB0_180
@@ -809,11 +802,10 @@ _Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_: # @_Z21my_windows_split_path
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
 	move	$s0, $a0
-	blt	$s3, $s2, .LBB0_179
+	blez	$s2, .LBB0_179
 # %bb.157:                              # %.preheader.i.i166
 	ld.d	$a0, $fp, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_165
+	blez	$a1, .LBB0_165
 # %bb.158:                              # %iter.check211
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1355,11 +1347,10 @@ _ZN8NWindows5NFile5NFind9CFindFile9FindFirstEPKcRNS1_9CFileInfoE: # @_ZN8NWindow
 # %bb.25:                               # %.noexc
 	move	$s3, $a0
 	ld.w	$a1, $fp, 32
-	ori	$a2, $zero, 1
-	blt	$s5, $a2, .LBB5_42
+	blez	$s5, .LBB5_42
 # %bb.26:                               # %.preheader.i.i
 	ld.d	$a0, $s1, 0
-	blt	$a1, $a2, .LBB5_34
+	blez	$a1, .LBB5_34
 # %bb.27:                               # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1656,24 +1647,24 @@ _ZN8NWindows5NFile5NFindL16originalFilenameERK11CStringBaseIwERS2_IcE: # @_ZN8NW
 	ld.d	$a1, $a1, 0
 	st.w	$zero, $fp, 8
 	st.b	$zero, $a1, 0
-	ld.w	$s2, $fp, 12
-	ori	$s3, $zero, 1
+	ld.w	$s3, $fp, 12
+	ori	$a1, $zero, 1
 	move	$s0, $a0
-	bne	$s2, $s3, .LBB7_2
+	bne	$s3, $a1, .LBB7_2
 # %bb.1:                                # %._ZN11CStringBaseIcE11SetCapacityEi.exit_crit_edge.i
 	ld.d	$s1, $fp, 0
 	b	.LBB7_20
 .LBB7_2:
 	ori	$a0, $zero, 1
+	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
 	move	$s1, $a0
-	blt	$s2, $s3, .LBB7_19
+	blez	$s3, .LBB7_19
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_11
+	blez	$a1, .LBB7_11
 # %bb.4:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1751,8 +1742,7 @@ _ZN8NWindows5NFile5NFindL16originalFilenameERK11CStringBaseIwERS2_IcE: # @_ZN8NW
 .LBB7_19:
 	st.d	$s1, $fp, 0
 	stx.b	$zero, $s1, $a1
-	ori	$a0, $zero, 1
-	st.w	$a0, $fp, 12
+	st.w	$s2, $fp, 12
 .LBB7_20:                               # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i
 	st.b	$zero, $s1, 0
 	ld.d	$a0, $s0, 0
@@ -1963,12 +1953,11 @@ _ZN8NWindows5NFile5NFindL16fillin_CFileInfoERNS1_9CFileInfoEPKcS5_: # @_ZN8NWind
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 48
-	ori	$a2, $zero, 1
 	move	$s2, $a0
-	blt	$s4, $a2, .LBB9_23
+	blez	$s4, .LBB9_23
 # %bb.7:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 40
-	blt	$a1, $a2, .LBB9_15
+	blez	$a1, .LBB9_15
 # %bb.8:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -2369,8 +2358,7 @@ _ZN8NWindows5NFile5NFind9CFindFile9FindFirstEPKwRNS1_10CFileInfoWE: # @_ZN8NWind
 .Ltmp47:
 # %bb.18:                               # %.noexc28
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB10_20
+	blez	$s5, .LBB10_20
 # %bb.19:                               # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2709,8 +2697,7 @@ _ZN8NWindows5NFile5NFind9CFindFile8FindNextERNS1_10CFileInfoWE: # @_ZN8NWindows5
 .Ltmp59:
 # %bb.14:                               # %.noexc17
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB12_16
+	blez	$s3, .LBB12_16
 # %bb.15:                               # %._crit_edge.thread.i.i
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -3285,11 +3272,10 @@ _ZN8NWindows5NFile5NFind8FindFileEPKcRNS1_9CFileInfoE: # @_ZN8NWindows5NFile5NFi
 # %bb.15:                               # %.noexc17
 	move	$s1, $a0
 	ld.w	$a1, $fp, 48
-	ori	$a2, $zero, 1
-	blt	$s5, $a2, .LBB16_32
+	blez	$s5, .LBB16_32
 # %bb.16:                               # %.preheader.i.i
 	ld.d	$a0, $s4, 0
-	blt	$a1, $a2, .LBB16_24
+	blez	$a1, .LBB16_24
 # %bb.17:                               # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -3698,11 +3684,9 @@ _ZN8NWindows5NFile5NFind8FindFileEPKwRNS1_10CFileInfoWE: # @_ZN8NWindows5NFile5N
 	move	$s2, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s4, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s4, $a0
+	slli.d	$a0, $s4, 31
 	move	$s1, $zero
-	bnez	$a0, .LBB18_14
+	bltz	$a0, .LBB18_14
 # %bb.12:
 	addi.w	$a0, $s2, 0
 	addi.w	$a1, $s4, 0
@@ -3884,8 +3868,7 @@ _ZN8NWindows5NFile5NFind8FindFileEPKwRNS1_10CFileInfoWE: # @_ZN8NWindows5NFile5N
 .Ltmp121:
 # %bb.41:                               # %.noexc72
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB18_43
+	blez	$s5, .LBB18_43
 # %bb.42:                               # %._crit_edge.thread.i.i
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4229,9 +4212,8 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s4, $a1, .LBB19_13
+	blez	$s4, .LBB19_13
 # %bb.12:                               # %._crit_edge.thread.i.i
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4285,9 +4267,8 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s4, $a1, .LBB19_33
+	blez	$s4, .LBB19_33
 # %bb.22:                               # %._crit_edge.thread.i.i54
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4298,9 +4279,8 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s2, $a1, .LBB19_38
+	blez	$s2, .LBB19_38
 # %bb.24:                               # %._crit_edge.thread.i.i47
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4419,8 +4399,7 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 .Ltmp127:
 # %bb.45:                               # %.noexc
 	move	$s2, $a0
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB19_49
+	blez	$s7, .LBB19_49
 # %bb.46:                               # %._crit_edge.thread.i.i61
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4431,9 +4410,8 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$s4, $a1, .LBB19_72
+	blez	$s4, .LBB19_72
 # %bb.48:                               # %._crit_edge.thread.i.i91
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4465,21 +4443,21 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB19_56:                              # %_ZN11CStringBaseIwED2Ev.exit
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB19_60
+	blez	$s5, .LBB19_60
 # %bb.57:                               # %.lr.ph113
-	ld.d	$a1, $s1, 0
-	addi.d	$a1, $a1, -4
-	ori	$a2, $zero, 47
+	ld.d	$a0, $s1, 0
+	addi.d	$a0, $a0, -4
+	ori	$a1, $zero, 47
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB19_58:                              # =>This Inner Loop Header: Depth=1
 	addi.w	$a3, $s4, 0
 	slli.d	$a4, $a3, 2
-	ldx.w	$a4, $a1, $a4
-	bne	$a4, $a2, .LBB19_61
+	ldx.w	$a4, $a0, $a4
+	bne	$a4, $a1, .LBB19_61
 # %bb.59:                               #   in Loop: Header=BB19_58 Depth=1
 	addi.d	$s4, $s4, -1
-	blt	$a0, $a3, .LBB19_58
+	blt	$a2, $a3, .LBB19_58
 	b	.LBB19_64
 .LBB19_60:                              # %.critedge
 	beqz	$s5, .LBB19_64
@@ -4517,9 +4495,8 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	ori	$a0, $zero, 8
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s2, $a1, .LBB19_81
+	blez	$s2, .LBB19_81
 # %bb.67:                               # %._crit_edge.thread.i.i71
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4542,8 +4519,7 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 .Ltmp130:
 # %bb.70:                               # %.noexc81
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB19_84
+	blez	$s3, .LBB19_84
 # %bb.71:                               # %._crit_edge.thread.i.i79
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -4576,7 +4552,7 @@ _ZL21my_windows_split_pathRK11CStringBaseIwERS0_S3_: # @_ZL21my_windows_split_pa
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s5, $s4, .LBB19_78
+	blez	$s5, .LBB19_78
 # %bb.77:                               # %._crit_edge.thread.i.i100
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -5115,11 +5091,9 @@ _ZN8NWindows5NFile5NFind13DoesFileExistEPKw: # @_ZN8NWindows5NFile5NFind13DoesFi
 	move	$s1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s3, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
+	slli.d	$a0, $s3, 31
 	move	$s0, $zero
-	bnez	$a0, .LBB23_16
+	bltz	$a0, .LBB23_16
 # %bb.14:
 	addi.w	$a0, $s1, 0
 	addi.w	$a1, $s3, 0
@@ -5495,11 +5469,9 @@ _ZN8NWindows5NFile5NFind12DoesDirExistEPKw: # @_ZN8NWindows5NFile5NFind12DoesDir
 	move	$s1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s3, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
+	slli.d	$a0, $s3, 31
 	move	$s0, $zero
-	bnez	$a0, .LBB24_17
+	bltz	$a0, .LBB24_17
 # %bb.15:
 	addi.w	$a0, $s1, 0
 	addi.w	$a1, $s3, 0
@@ -5870,11 +5842,9 @@ _ZN8NWindows5NFile5NFind18DoesFileOrDirExistEPKw: # @_ZN8NWindows5NFile5NFind18D
 	move	$s1, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s3, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
+	slli.d	$a0, $s3, 31
 	move	$s0, $zero
-	bnez	$a0, .LBB25_16
+	bltz	$a0, .LBB25_16
 # %bb.14:
 	addi.w	$a0, $s1, 0
 	addi.w	$a1, $s3, 0
@@ -6552,7 +6522,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -6560,7 +6529,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s1, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s1, $zero
@@ -6582,8 +6550,8 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -6597,11 +6565,10 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s4, $s5, .LBB32_11
+	blez	$s4, .LBB32_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB32_12
+	blez	$s1, .LBB32_12
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -6697,7 +6664,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $a0, 8
 	stx.b	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -6775,12 +6741,11 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s5, $a1, .LBB33_19
+	blez	$s5, .LBB33_19
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s4, $a1, .LBB33_11
+	blez	$s4, .LBB33_11
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -6914,10 +6879,8 @@ _ZN11CStringBaseIcEC2ERKS0_:            # @_ZN11CStringBaseIcEC2ERKS0_
 	vst	$vr0, $a0, 0
 	ld.wu	$s1, $a1, 8
 	addi.d	$s2, $s1, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
-	beqz	$a0, .LBB34_2
+	slli.d	$a0, $s2, 31
+	bgez	$a0, .LBB34_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB34_3
@@ -6996,11 +6959,9 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s1, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s1, $a0
+	slli.d	$a0, $s1, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB35_13
+	bgez	$a0, .LBB35_13
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB35_14
@@ -7201,11 +7162,9 @@ _ZNK11CStringBaseIcE3MidEii:            # @_ZNK11CStringBaseIcE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s0, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB36_14
+	bgez	$a0, .LBB36_14
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB36_15

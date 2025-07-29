@@ -865,8 +865,7 @@ AttachGalley:                           # @AttachGalley
 # %bb.29:                               #   in Loop: Header=BB2_7 Depth=1
 	bltz	$a1, .LBB2_266
 # %bb.30:                               #   in Loop: Header=BB2_7 Depth=1
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB2_266
+	bltz	$a0, .LBB2_266
 .LBB2_31:                               #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a1, $s8, 0
@@ -1943,14 +1942,12 @@ AttachGalley:                           # @AttachGalley
 .LBB2_159:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.hu	$a0, $a0, 42
-	lu12i.w	$a1, 1
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB2_162
+	slli.d	$a0, $a0, 51
+	bgez	$a0, .LBB2_162
 # %bb.160:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $fp, 56
 	add.w	$a0, $a1, $a3
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_162
+	blez	$a0, .LBB2_162
 # %bb.161:                              #   in Loop: Header=BB2_7 Depth=1
 	addi.d	$s0, $fp, 48
 	addi.d	$a2, $sp, 320
@@ -1964,8 +1961,7 @@ AttachGalley:                           # @AttachGalley
 .LBB2_162:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a0, $fp, 56
 	add.w	$a0, $a0, $a3
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_266
+	blez	$a0, .LBB2_266
 # %bb.163:                              #   in Loop: Header=BB2_7 Depth=1
 	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
 	fld.s	$fs0, $a1, %pc_lo12(.LCPI2_0)
@@ -2482,13 +2478,11 @@ AttachGalley:                           # @AttachGalley
 .LBB2_220:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
 	ld.hu	$a0, $a0, 42
-	lu12i.w	$a1, 1
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB2_266
+	slli.d	$a0, $a0, 51
+	bgez	$a0, .LBB2_266
 # %bb.221:                              #   in Loop: Header=BB2_7 Depth=1
 	add.w	$s0, $s5, $fp
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB2_266
+	blez	$s0, .LBB2_266
 # %bb.222:                              #   in Loop: Header=BB2_7 Depth=1
 	addi.d	$a2, $sp, 320
 	move	$a0, $fp
@@ -2627,8 +2621,7 @@ AttachGalley:                           # @AttachGalley
 	bltz	$a0, .LBB2_236
 # %bb.235:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $s0, 56
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB2_237
+	bgez	$a1, .LBB2_237
 .LBB2_236:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
@@ -2648,14 +2641,12 @@ AttachGalley:                           # @AttachGalley
 .LBB2_238:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ld.hu	$a1, $a1, 42
-	lu12i.w	$a2, 1
-	and	$a1, $a1, $a2
-	beqz	$a1, .LBB2_242
+	slli.d	$a1, $a1, 51
+	bgez	$a1, .LBB2_242
 # %bb.239:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $s0, 56
 	add.w	$a2, $a1, $a0
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_242
+	blez	$a2, .LBB2_242
 # %bb.240:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
 	ld.d	$a2, $a2, 128
@@ -2675,8 +2666,7 @@ AttachGalley:                           # @AttachGalley
 	ld.w	$a0, $s5, 0
 	ld.w	$a1, $s0, 56
 	add.w	$a0, $a1, $a0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_266
+	blez	$a0, .LBB2_266
 # %bb.243:                              #   in Loop: Header=BB2_7 Depth=1
 	pcalau12i	$a1, %pc_hi20(.LCPI2_0)
 	fld.s	$fs0, $a1, %pc_lo12(.LCPI2_0)
@@ -2845,8 +2835,7 @@ AttachGalley:                           # @AttachGalley
 	bltz	$a0, .LBB2_259
 # %bb.258:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $s0, 56
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a1, .LBB2_260
+	bgez	$a1, .LBB2_260
 .LBB2_259:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
@@ -2874,14 +2863,12 @@ AttachGalley:                           # @AttachGalley
 .LBB2_263:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
 	ld.hu	$a1, $a1, 42
-	lu12i.w	$a2, 1
-	and	$a1, $a1, $a2
-	beqz	$a1, .LBB2_266
+	slli.d	$a1, $a1, 51
+	bgez	$a1, .LBB2_266
 # %bb.264:                              #   in Loop: Header=BB2_7 Depth=1
 	ld.w	$a1, $s0, 56
 	add.w	$a2, $a1, $a0
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_266
+	blez	$a2, .LBB2_266
 # %bb.265:                              #   in Loop: Header=BB2_7 Depth=1
 	addi.d	$a2, $sp, 320
 	pcaddu18i	$ra, %call36(ScaleToConstraint)

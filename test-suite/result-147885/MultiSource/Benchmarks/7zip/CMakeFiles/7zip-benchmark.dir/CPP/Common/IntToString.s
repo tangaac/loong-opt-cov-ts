@@ -409,8 +409,7 @@ _Z21ConvertUInt32ToStringjPw:           # @_Z21ConvertUInt32ToStringjPw
 	.type	_Z20ConvertInt64ToStringxPc,@function
 _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
 # %bb.0:
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a0, .LBB4_2
+	bgez	$a0, .LBB4_2
 # %bb.1:
 	ori	$a2, $zero, 45
 	st.b	$a2, $a1, 0
@@ -498,8 +497,7 @@ _Z20ConvertInt64ToStringxPc:            # @_Z20ConvertInt64ToStringxPc
 	.type	_Z20ConvertInt64ToStringxPw,@function
 _Z20ConvertInt64ToStringxPw:            # @_Z20ConvertInt64ToStringxPw
 # %bb.0:
-	addi.w	$a2, $zero, -1
-	blt	$a2, $a0, .LBB5_2
+	bgez	$a0, .LBB5_2
 # %bb.1:
 	ori	$a2, $zero, 45
 	st.w	$a2, $a1, 0

@@ -253,8 +253,7 @@ Error:                                  # @Error
 .LBB1_24:                               # %.preheader
 	pcalau12i	$s0, %pc_hi20(block_top)
 	ld.w	$a0, $s0, %pc_lo12(block_top)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_26
+	blez	$a0, .LBB1_26
 	.p2align	4, , 16
 .LBB1_25:                               # %.lr.ph33
                                         # =>This Inner Loop Header: Depth=1
@@ -281,8 +280,8 @@ Error:                                  # @Error
 	b	.LBB1_42
 .LBB1_29:                               # %.preheader32
 	pcalau12i	$s0, %pc_hi20(block_top)
-	ld.w	$a1, $s0, %pc_lo12(block_top)
-	blt	$a1, $a0, .LBB1_31
+	ld.w	$a0, $s0, %pc_lo12(block_top)
+	blez	$a0, .LBB1_31
 	.p2align	4, , 16
 .LBB1_30:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

@@ -587,11 +587,12 @@ vba56_dir_read:                         # @vba56_dir_read
 	revb.2h	$a1, $a0
 	masknez	$a1, $a1, $s0
 	maskeqz	$a0, $a0, $s0
-	or	$a1, $a0, $a1
-	bstrpick.d	$a0, $a1, 15, 0
-	st.h	$a1, $sp, 368
-	beqz	$a0, .LBB0_108
+	or	$a0, $a0, $a1
+	slli.d	$a1, $a0, 48
+	st.h	$a0, $sp, 368
+	beqz	$a1, .LBB0_108
 # %bb.84:                               #   in Loop: Header=BB0_82 Depth=1
+	bstrpick.d	$a0, $a0, 15, 0
 	pcaddu18i	$ra, %call36(cli_malloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_109
@@ -922,7 +923,7 @@ get_unicode_name:                       # @get_unicode_name
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	addi.w	$fp, $fp, -1
-	move	$a3, $s1
+	move	$a2, $s1
 	beqz	$fp, .LBB1_13
 .LBB1_6:                                # %.lr.ph
 	move	$s1, $a0
@@ -930,60 +931,59 @@ get_unicode_name:                       # @get_unicode_name
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	move	$a0, $s1
-	move	$a2, $zero
-	lu12i.w	$a4, 4
-	ori	$a5, $zero, 9
-	ori	$a6, $zero, 95
-	move	$a3, $s1
+	move	$a3, $zero
+	ori	$a4, $zero, 9
+	ori	$a5, $zero, 95
+	move	$a2, $s1
 	b	.LBB1_8
 	.p2align	4, , 16
 .LBB1_7:                                #   in Loop: Header=BB1_8 Depth=1
-	st.b	$t0, $a3, 0
-	add.d	$a2, $a2, $s2
-	addi.d	$a3, $a3, 1
-	bgeu	$a2, $fp, .LBB1_13
+	st.b	$a7, $a2, 0
+	add.d	$a3, $a3, $s2
+	addi.d	$a2, $a2, 1
+	bgeu	$a3, $fp, .LBB1_13
 .LBB1_8:                                # =>This Inner Loop Header: Depth=1
-	ldx.b	$a7, $s0, $a2
-	ld.d	$t0, $a1, 0
-	slli.d	$t1, $a7, 1
-	ldx.hu	$t0, $t0, $t1
-	and	$t1, $t0, $a4
-	andi	$t0, $a7, 255
-	bnez	$t1, .LBB1_7
+	ldx.b	$a6, $s0, $a3
+	ld.d	$a7, $a1, 0
+	slli.d	$t0, $a6, 1
+	ldx.hu	$a7, $a7, $t0
+	slli.d	$t0, $a7, 49
+	andi	$a7, $a6, 255
+	bltz	$t0, .LBB1_7
 # %bb.9:                                #   in Loop: Header=BB1_8 Depth=1
-	bltu	$a5, $t0, .LBB1_11
+	bltu	$a4, $a7, .LBB1_11
 # %bb.10:                               #   in Loop: Header=BB1_8 Depth=1
-	st.b	$a6, $a3, 0
-	ldx.b	$a7, $s0, $a2
-	addi.d	$a7, $a7, 48
-	addi.d	$t0, $a3, 2
+	st.b	$a5, $a2, 0
+	ldx.b	$a6, $s0, $a3
+	addi.d	$a6, $a6, 48
+	addi.d	$a7, $a2, 2
 	b	.LBB1_12
 	.p2align	4, , 16
 .LBB1_11:                               #   in Loop: Header=BB1_8 Depth=1
-	add.d	$a7, $s0, $a2
-	ld.bu	$t1, $a7, 1
-	ext.w.b	$t2, $t1
-	st.b	$a6, $a3, 0
-	andi	$a7, $t1, 15
-	addi.d	$a7, $a7, 97
-	srli.d	$t1, $t1, 4
-	addi.d	$t1, $t1, 97
-	st.b	$t1, $a3, 2
-	srli.d	$t1, $t2, 7
-	or	$t0, $t1, $t0
-	andi	$t0, $t0, 15
-	addi.d	$t1, $t0, 97
-	addi.d	$t0, $a3, 4
-	st.b	$t1, $a3, 3
+	add.d	$a6, $s0, $a3
+	ld.bu	$t0, $a6, 1
+	ext.w.b	$t1, $t0
+	st.b	$a5, $a2, 0
+	andi	$a6, $t0, 15
+	addi.d	$a6, $a6, 97
+	srli.d	$t0, $t0, 4
+	addi.d	$t0, $t0, 97
+	st.b	$t0, $a2, 2
+	srli.d	$t0, $t1, 7
+	or	$a7, $t0, $a7
+	andi	$a7, $a7, 15
+	addi.d	$t0, $a7, 97
+	addi.d	$a7, $a2, 4
+	st.b	$t0, $a2, 3
 .LBB1_12:                               #   in Loop: Header=BB1_8 Depth=1
-	st.b	$a7, $a3, 1
-	st.b	$a6, $t0, 0
-	move	$a3, $t0
-	add.d	$a2, $a2, $s2
-	addi.d	$a3, $a3, 1
-	bltu	$a2, $fp, .LBB1_8
+	st.b	$a6, $a2, 1
+	st.b	$a5, $a7, 0
+	move	$a2, $a7
+	add.d	$a3, $a3, $s2
+	addi.d	$a2, $a2, 1
+	bltu	$a3, $fp, .LBB1_8
 .LBB1_13:                               # %._crit_edge
-	st.b	$zero, $a3, 0
+	st.b	$zero, $a2, 0
 	b	.LBB1_15
 .LBB1_14:
 	move	$a0, $zero
@@ -1044,13 +1044,13 @@ vba_decompress:                         # @vba_decompress
 	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	move	$s0, $zero
-	addi.d	$s5, $sp, 36
-	ori	$s6, $zero, 2
-	ori	$s7, $zero, 128
-	addi.w	$s4, $zero, -1
+	addi.d	$s4, $sp, 36
+	ori	$s5, $zero, 2
+	ori	$s6, $zero, 128
+	addi.d	$s8, $zero, -1
 	ori	$s2, $zero, 29
 	ori	$s3, $zero, 4095
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB2_6
 .LBB2_3:                                #   in Loop: Header=BB2_6 Depth=1
 	lu12i.w	$a0, 1
@@ -1060,14 +1060,14 @@ vba_decompress:                         # @vba_decompress
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s6, .LBB2_34
+	bne	$a0, $s5, .LBB2_34
 # %bb.4:                                #   in Loop: Header=BB2_6 Depth=1
 	addi.d	$a1, $sp, 36
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	lu12i.w	$a2, 1
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
-	move	$s8, $zero
+	move	$s7, $zero
 	.p2align	4, , 16
 .LBB2_5:                                # %.loopexit89
                                         #   in Loop: Header=BB2_6 Depth=1
@@ -1085,14 +1085,14 @@ vba_decompress:                         # @vba_decompress
                                         #     Child Loop BB2_10 Depth 2
                                         #       Child Loop BB2_32 Depth 3
                                         #       Child Loop BB2_26 Depth 3
-	sltu	$s8, $zero, $s8
+	sltu	$s7, $zero, $s7
 	ori	$fp, $zero, 1
 	b	.LBB2_10
 .LBB2_7:                                #   in Loop: Header=BB2_10 Depth=2
 	move	$a0, $zero
 .LBB2_8:                                # %._crit_edge106
                                         #   in Loop: Header=BB2_10 Depth=2
-	add.d	$a1, $s5, $a0
+	add.d	$a1, $s4, $a0
 	ori	$a2, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
@@ -1104,8 +1104,8 @@ vba_decompress:                         # @vba_decompress
                                         #   in Loop: Header=BB2_10 Depth=2
 	addi.w	$a0, $fp, 0
 	slli.d	$fp, $fp, 1
-	ori	$s8, $zero, 1
-	bgeu	$a0, $s7, .LBB2_5
+	ori	$s7, $zero, 1
+	bgeu	$a0, $s6, .LBB2_5
 .LBB2_10:                               #   Parent Loop BB2_6 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_32 Depth 3
@@ -1124,10 +1124,10 @@ vba_decompress:                         # @vba_decompress
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_readn)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s6, .LBB2_34
+	bne	$a0, $s5, .LBB2_34
 # %bb.12:                               #   in Loop: Header=BB2_10 Depth=2
 	andi	$a3, $s0, 4095
-	bltu	$s7, $a3, .LBB2_17
+	bltu	$s6, $a3, .LBB2_17
 # %bb.13:                               #   in Loop: Header=BB2_10 Depth=2
 	ori	$a0, $zero, 32
 	bltu	$a0, $a3, .LBB2_19
@@ -1141,7 +1141,7 @@ vba_decompress:                         # @vba_decompress
 # %bb.16:                               #   in Loop: Header=BB2_10 Depth=2
 	andi	$a0, $s0, 4095
 	sltu	$a1, $zero, $a0
-	orn	$a1, $a1, $s8
+	orn	$a1, $a1, $s7
 	andi	$a1, $a1, 1
 	bnez	$a1, .LBB2_8
 	b	.LBB2_3
@@ -1170,7 +1170,7 @@ vba_decompress:                         # @vba_decompress
 	ori	$a1, $a1, 36
 	add.d	$a1, $sp, $a1
 	ld.hu	$a2, $a1, 0
-	sll.w	$a1, $s4, $a0
+	sll.w	$a1, $s8, $a0
 	andn	$a1, $a2, $a1
 	srl.w	$a4, $a2, $a0
 	nor	$a0, $a4, $zero
@@ -1191,11 +1191,11 @@ vba_decompress:                         # @vba_decompress
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a2, $a0, $a3
 	andi	$a2, $a2, 4095
-	ldx.b	$a2, $a2, $s5
+	ldx.b	$a2, $a2, $s4
 	addi.w	$s0, $a3, 1
 	andi	$a3, $a3, 4095
 	addi.w	$a1, $a1, -1
-	stx.b	$a2, $a3, $s5
+	stx.b	$a2, $a3, $s4
 	move	$a3, $s0
 	bnez	$a1, .LBB2_26
 	b	.LBB2_9
@@ -1238,12 +1238,12 @@ vba_decompress:                         # @vba_decompress
                                         # =>    This Inner Loop Header: Depth=3
 	add.d	$a6, $a0, $s0
 	andi	$a6, $a6, 4095
-	add.d	$a7, $s5, $a6
-	vldx	$vr0, $a6, $s5
+	add.d	$a7, $s4, $a6
+	vldx	$vr0, $a6, $s4
 	vld	$vr1, $a7, 16
 	andi	$a6, $s0, 4095
-	add.d	$a7, $s5, $a6
-	vstx	$vr0, $a6, $s5
+	add.d	$a7, $s4, $a6
+	vstx	$vr0, $a6, $s4
 	vst	$vr1, $a7, 16
 	addi.w	$a5, $a5, -32
 	addi.d	$s0, $s0, 32
@@ -1273,7 +1273,7 @@ vba_decompress:                         # @vba_decompress
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(blobAddData)
 	jirl	$ra, $ra, 0
-	bge	$s4, $a0, .LBB2_44
+	bltz	$a0, .LBB2_44
 .LBB2_38:                               # %._crit_edge.thread
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(blobGetDataSize)

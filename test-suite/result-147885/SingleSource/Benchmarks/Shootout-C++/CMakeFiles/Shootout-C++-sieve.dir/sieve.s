@@ -93,7 +93,7 @@ _Z5sieveRNSt7__cxx114listIiSaIiEEERSt6vectorIiS1_E: # @_Z5sieveRNSt7__cxx114list
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	stx.w	$s7, $a0, $s1
-	blt	$s1, $s5, .LBB0_8
+	blez	$s1, .LBB0_8
 # %bb.7:                                #   in Loop: Header=BB0_3 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2

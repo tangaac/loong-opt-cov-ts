@@ -3506,10 +3506,10 @@ getptree:                               # @getptree
 	fst.d	$fs2, $sp, 8                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	addi.d	$s1, $s0, 1
-	blt	$a1, $a0, .LBB21_9
+	addi.d	$s1, $a0, 1
+	blez	$a1, .LBB21_9
 # %bb.1:                                # %.lr.ph
+	ori	$a0, $zero, 1
 	ori	$a2, $zero, 8
 	ori	$a3, $zero, 1
 	bltu	$a1, $a2, .LBB21_5
@@ -3607,9 +3607,8 @@ getptree:                               # @getptree
 	jirl	$ra, $ra, 0
 	st.w	$s0, $a0, 16
 	lu52i.d	$a1, $zero, 1023
-	ori	$a2, $zero, 1
 	st.d	$a1, $a0, 24
-	blt	$s3, $a2, .LBB21_51
+	blez	$s3, .LBB21_51
 # %bb.18:                               # %.lr.ph105
 	bltz	$s0, .LBB21_51
 # %bb.19:                               # %.lr.ph100.preheader
@@ -3690,7 +3689,7 @@ getptree:                               # @getptree
 	bge	$t3, $t4, .LBB21_33
 # %bb.28:                               # %.preheader.i.i
                                         #   in Loop: Header=BB21_26 Depth=2
-	blt	$t3, $a2, .LBB21_39
+	blez	$t3, .LBB21_39
 # %bb.29:                               # %.lr.ph40.i.i.preheader
                                         #   in Loop: Header=BB21_26 Depth=2
 	move	$t4, $t0
@@ -3742,7 +3741,7 @@ getptree:                               # @getptree
 .LBB21_36:                              # %._crit_edge.i.i
                                         #   in Loop: Header=BB21_26 Depth=2
 	vldi	$vr3, -912
-	blt	$t4, $a2, .LBB21_38
+	blez	$t4, .LBB21_38
 	.p2align	4, , 16
 .LBB21_37:                              # %.lr.ph.i28.i.i
                                         #   Parent Loop BB21_21 Depth=1
@@ -3815,7 +3814,7 @@ getptree:                               # @getptree
 	blt	$t2, $t3, .LBB21_46
 .LBB21_47:                              # %._crit_edge.i12.i
                                         #   in Loop: Header=BB21_26 Depth=2
-	blt	$t4, $a2, .LBB21_22
+	blez	$t4, .LBB21_22
 # %bb.48:                               # %.lr.ph.i28.i17.i.preheader
                                         #   in Loop: Header=BB21_26 Depth=2
 	sub.w	$t3, $zero, $t0
@@ -3909,8 +3908,7 @@ probability:                            # @probability
 	sub.w	$a4, $a0, $a1
 	bge	$a1, $a4, .LBB22_8
 # %bb.3:                                # %.preheader.i
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB22_14
+	blez	$a1, .LBB22_15
 # %bb.4:                                # %.lr.ph40.i.preheader
 	move	$a4, $a0
 	move	$a5, $a1
@@ -3936,7 +3934,7 @@ probability:                            # @probability
 	fmul.d	$fa1, $fa1, $fa2
 	addi.w	$a1, $a5, -1
 	bltu	$a4, $a5, .LBB22_7
-	b	.LBB22_13
+	b	.LBB22_14
 .LBB22_8:                               # %.preheader32.i
 	bge	$a1, $a0, .LBB22_11
 # %bb.9:                                # %.lr.ph.i.preheader
@@ -3951,10 +3949,11 @@ probability:                            # @probability
 	blt	$a1, $a5, .LBB22_10
 .LBB22_11:                              # %._crit_edge.i
 	vldi	$vr1, -912
+	blez	$a4, .LBB22_14
+# %bb.12:                               # %.lr.ph.i28.i.preheader
 	ori	$a1, $zero, 1
-	blt	$a4, $a1, .LBB22_13
 	.p2align	4, , 16
-.LBB22_12:                              # %.lr.ph.i28.i
+.LBB22_13:                              # %.lr.ph.i28.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a5, $a4
 	bstrpick.d	$a4, $a4, 31, 0
@@ -3962,33 +3961,32 @@ probability:                            # @probability
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2
 	addi.w	$a4, $a5, -1
-	bltu	$a1, $a5, .LBB22_12
-.LBB22_13:                              # %factorial.exit31.i
+	bltu	$a1, $a5, .LBB22_13
+.LBB22_14:                              # %factorial.exit31.i
 	fdiv.d	$fa0, $fa0, $fa1
-.LBB22_14:                              # %combination.exit
+.LBB22_15:                              # %combination.exit
 	sub.w	$a0, $a3, $a0
 	vldi	$vr1, -912
 	sub.w	$a1, $a0, $a2
-	bge	$a2, $a1, .LBB22_20
-# %bb.15:                               # %.preheader.i24
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB22_25
-# %bb.16:                               # %.lr.ph40.i29.preheader
+	bge	$a2, $a1, .LBB22_21
+# %bb.16:                               # %.preheader.i24
+	blez	$a2, .LBB22_27
+# %bb.17:                               # %.lr.ph40.i29.preheader
 	move	$a1, $a2
 	.p2align	4, , 16
-.LBB22_17:                              # %.lr.ph40.i29
+.LBB22_18:                              # %.lr.ph40.i29
                                         # =>This Inner Loop Header: Depth=1
 	movgr2fr.w	$fa2, $a0
 	ffint.d.w	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2
 	addi.w	$a1, $a1, -1
 	addi.w	$a0, $a0, -1
-	bnez	$a1, .LBB22_17
-# %bb.18:                               # %.lr.ph.i.i34.preheader
+	bnez	$a1, .LBB22_18
+# %bb.19:                               # %.lr.ph.i.i34.preheader
 	vldi	$vr2, -912
 	ori	$a0, $zero, 1
 	.p2align	4, , 16
-.LBB22_19:                              # %.lr.ph.i.i34
+.LBB22_20:                              # %.lr.ph.i.i34
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	bstrpick.d	$a2, $a2, 31, 0
@@ -3996,24 +3994,25 @@ probability:                            # @probability
 	ffint.d.l	$fa3, $fa3
 	fmul.d	$fa2, $fa2, $fa3
 	addi.w	$a2, $a1, -1
-	bltu	$a0, $a1, .LBB22_19
-	b	.LBB22_24
-.LBB22_20:                              # %.preheader32.i10
-	bge	$a2, $a0, .LBB22_22
+	bltu	$a0, $a1, .LBB22_20
+	b	.LBB22_26
+.LBB22_21:                              # %.preheader32.i10
+	bge	$a2, $a0, .LBB22_23
 	.p2align	4, , 16
-.LBB22_21:                              # %.lr.ph.i20
+.LBB22_22:                              # %.lr.ph.i20
                                         # =>This Inner Loop Header: Depth=1
 	movgr2fr.w	$fa2, $a0
 	ffint.d.w	$fa2, $fa2
 	addi.w	$a0, $a0, -1
 	fmul.d	$fa1, $fa1, $fa2
-	blt	$a2, $a0, .LBB22_21
-.LBB22_22:                              # %._crit_edge.i12
+	blt	$a2, $a0, .LBB22_22
+.LBB22_23:                              # %._crit_edge.i12
 	vldi	$vr2, -912
+	blez	$a1, .LBB22_26
+# %bb.24:                               # %.lr.ph.i28.i17.preheader
 	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB22_24
 	.p2align	4, , 16
-.LBB22_23:                              # %.lr.ph.i28.i17
+.LBB22_25:                              # %.lr.ph.i28.i17
                                         # =>This Inner Loop Header: Depth=1
 	move	$a2, $a1
 	bstrpick.d	$a1, $a1, 31, 0
@@ -4021,10 +4020,10 @@ probability:                            # @probability
 	ffint.d.l	$fa3, $fa3
 	fmul.d	$fa2, $fa2, $fa3
 	addi.w	$a1, $a2, -1
-	bltu	$a0, $a2, .LBB22_23
-.LBB22_24:                              # %factorial.exit31.i14
+	bltu	$a0, $a2, .LBB22_25
+.LBB22_26:                              # %factorial.exit31.i14
 	fdiv.d	$fa1, $fa1, $fa2
-.LBB22_25:                              # %combination.exit37
+.LBB22_27:                              # %combination.exit37
 	fmul.d	$fa0, $fa0, $fa1
 	ret
 .Lfunc_end22:
@@ -4039,8 +4038,7 @@ combination:                            # @combination
 	sub.w	$a2, $a0, $a1
 	bge	$a1, $a2, .LBB23_6
 # %bb.1:                                # %.preheader
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB23_11
+	blez	$a1, .LBB23_12
 # %bb.2:                                # %.lr.ph40.preheader
 	move	$a2, $a1
 	.p2align	4, , 16
@@ -4065,7 +4063,7 @@ combination:                            # @combination
 	fmul.d	$fa1, $fa1, $fa2
 	addi.w	$a1, $a2, -1
 	bltu	$a0, $a2, .LBB23_5
-	b	.LBB23_10
+	b	.LBB23_11
 .LBB23_6:                               # %.preheader32
 	bge	$a1, $a0, .LBB23_8
 	.p2align	4, , 16
@@ -4078,10 +4076,11 @@ combination:                            # @combination
 	blt	$a1, $a0, .LBB23_7
 .LBB23_8:                               # %._crit_edge
 	vldi	$vr1, -912
+	blez	$a2, .LBB23_11
+# %bb.9:                                # %.lr.ph.i28.preheader
 	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB23_10
 	.p2align	4, , 16
-.LBB23_9:                               # %.lr.ph.i28
+.LBB23_10:                              # %.lr.ph.i28
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a2
 	bstrpick.d	$a2, $a2, 31, 0
@@ -4089,10 +4088,10 @@ combination:                            # @combination
 	ffint.d.l	$fa2, $fa2
 	fmul.d	$fa1, $fa1, $fa2
 	addi.w	$a2, $a1, -1
-	bltu	$a0, $a1, .LBB23_9
-.LBB23_10:                              # %factorial.exit31
+	bltu	$a0, $a1, .LBB23_10
+.LBB23_11:                              # %factorial.exit31
 	fdiv.d	$fa0, $fa0, $fa1
-.LBB23_11:                              # %factorial.exit
+.LBB23_12:                              # %factorial.exit
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	ret
 .Lfunc_end23:
@@ -4104,10 +4103,11 @@ combination:                            # @combination
 factorial:                              # @factorial
 # %bb.0:
 	vldi	$vr0, -912
+	blez	$a0, .LBB24_3
+# %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB24_2
 	.p2align	4, , 16
-.LBB24_1:                               # %.lr.ph
+.LBB24_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a2, $a0
 	bstrpick.d	$a0, $a0, 31, 0
@@ -4115,8 +4115,8 @@ factorial:                              # @factorial
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa0, $fa0, $fa1
 	addi.w	$a0, $a2, -1
-	bltu	$a1, $a2, .LBB24_1
-.LBB24_2:                               # %._crit_edge
+	bltu	$a1, $a2, .LBB24_2
+.LBB24_3:                               # %._crit_edge
                                         # kill: def $f0_64 killed $f0_64 killed $vr0
 	ret
 .Lfunc_end24:

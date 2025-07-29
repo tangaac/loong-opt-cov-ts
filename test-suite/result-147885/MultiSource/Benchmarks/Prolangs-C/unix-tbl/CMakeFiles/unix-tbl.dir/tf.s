@@ -150,8 +150,7 @@ endoff:                                 # @endoff
 	pcalau12i	$a0, %got_pc_hi20(texct)
 	ld.d	$s0, $a0, %got_pc_lo12(texct)
 	ld.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_7
+	blez	$a0, .LBB2_7
 # %bb.5:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(texstr)
 	ld.d	$s2, $a0, %got_pc_lo12(texstr)

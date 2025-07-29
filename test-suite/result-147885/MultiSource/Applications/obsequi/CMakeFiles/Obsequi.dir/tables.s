@@ -5,13 +5,10 @@
 	.type	init_static_tables,@function
 init_static_tables:                     # @init_static_tables
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(countbits16)
 	addi.d	$a2, $a0, %pc_lo12(countbits16)
@@ -38,24 +35,21 @@ init_static_tables:                     # @init_static_tables
 	addi.d	$a1, $a1, %pc_lo12(lastbit16)
 	addi.d	$a2, $a1, 4
 	ori	$a3, $zero, 1
-	lu12i.w	$a4, 1
-	lu12i.w	$a5, 2
-	lu12i.w	$a6, 4
-	ori	$a7, $zero, 15
-	ori	$t0, $zero, 14
-	ori	$t1, $zero, 13
-	ori	$t2, $zero, 12
-	ori	$t3, $zero, 11
-	ori	$t4, $zero, 10
-	ori	$t5, $zero, 9
-	ori	$t6, $zero, 8
-	ori	$t7, $zero, 7
-	ori	$t8, $zero, 6
-	ori	$fp, $zero, 5
-	ori	$s0, $zero, 4
-	ori	$s1, $zero, 3
-	ori	$s2, $zero, 2
-	ori	$s3, $zero, 1
+	ori	$a4, $zero, 15
+	ori	$a5, $zero, 14
+	ori	$a6, $zero, 13
+	ori	$a7, $zero, 12
+	ori	$t0, $zero, 11
+	ori	$t1, $zero, 10
+	ori	$t2, $zero, 9
+	ori	$t3, $zero, 8
+	ori	$t4, $zero, 7
+	ori	$t5, $zero, 6
+	ori	$t6, $zero, 5
+	ori	$t7, $zero, 4
+	ori	$t8, $zero, 3
+	ori	$fp, $zero, 2
+	ori	$s0, $zero, 1
 	b	.LBB0_5
 	.p2align	4, , 16
 .LBB0_3:                                #   in Loop: Header=BB0_5 Depth=1
@@ -63,99 +57,99 @@ init_static_tables:                     # @init_static_tables
 .LBB0_4:                                #   in Loop: Header=BB0_5 Depth=1
 	addi.d	$a2, $a2, 4
 	addi.d	$a0, $a0, -1
-	addi.w	$s3, $s3, 1
+	addi.d	$s0, $s0, 1
 	beqz	$a0, .LBB0_35
 .LBB0_5:                                # %init_countbits.exit
                                         # =>This Inner Loop Header: Depth=1
-	andi	$s4, $s3, 1
-	bnez	$s4, .LBB0_3
+	andi	$s1, $s0, 1
+	bnez	$s1, .LBB0_3
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 2
-	bnez	$s4, .LBB0_21
+	andi	$s1, $s0, 2
+	bnez	$s1, .LBB0_21
 # %bb.7:                                #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 4
-	bnez	$s4, .LBB0_22
+	andi	$s1, $s0, 4
+	bnez	$s1, .LBB0_22
 # %bb.8:                                #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 8
-	bnez	$s4, .LBB0_23
+	andi	$s1, $s0, 8
+	bnez	$s1, .LBB0_23
 # %bb.9:                                #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 16
-	bnez	$s4, .LBB0_24
+	andi	$s1, $s0, 16
+	bnez	$s1, .LBB0_24
 # %bb.10:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 32
-	bnez	$s4, .LBB0_25
+	andi	$s1, $s0, 32
+	bnez	$s1, .LBB0_25
 # %bb.11:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 64
-	bnez	$s4, .LBB0_26
+	andi	$s1, $s0, 64
+	bnez	$s1, .LBB0_26
 # %bb.12:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 128
-	bnez	$s4, .LBB0_27
+	andi	$s1, $s0, 128
+	bnez	$s1, .LBB0_27
 # %bb.13:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 256
-	bnez	$s4, .LBB0_28
+	andi	$s1, $s0, 256
+	bnez	$s1, .LBB0_28
 # %bb.14:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 512
-	bnez	$s4, .LBB0_29
+	andi	$s1, $s0, 512
+	bnez	$s1, .LBB0_29
 # %bb.15:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 1024
-	bnez	$s4, .LBB0_30
+	andi	$s1, $s0, 1024
+	bnez	$s1, .LBB0_30
 # %bb.16:                               #   in Loop: Header=BB0_5 Depth=1
-	andi	$s4, $s3, 2048
-	bnez	$s4, .LBB0_31
+	slli.d	$s1, $s0, 52
+	bltz	$s1, .LBB0_31
 # %bb.17:                               #   in Loop: Header=BB0_5 Depth=1
-	and	$s4, $s3, $a4
-	bnez	$s4, .LBB0_32
+	slli.d	$s1, $s0, 51
+	bltz	$s1, .LBB0_32
 # %bb.18:                               #   in Loop: Header=BB0_5 Depth=1
-	and	$s4, $s3, $a5
-	bnez	$s4, .LBB0_33
+	slli.d	$s1, $s0, 50
+	bltz	$s1, .LBB0_33
 # %bb.19:                               #   in Loop: Header=BB0_5 Depth=1
-	and	$s4, $s3, $a6
-	bnez	$s4, .LBB0_34
+	slli.d	$s1, $s0, 49
+	bltz	$s1, .LBB0_34
 # %bb.20:                               #   in Loop: Header=BB0_5 Depth=1
-	st.w	$a7, $a2, 0
+	st.w	$a4, $a2, 0
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_21:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$a3, $a2, 0
 	b	.LBB0_4
 .LBB0_22:                               #   in Loop: Header=BB0_5 Depth=1
-	st.w	$s2, $a2, 0
-	b	.LBB0_4
-.LBB0_23:                               #   in Loop: Header=BB0_5 Depth=1
-	st.w	$s1, $a2, 0
-	b	.LBB0_4
-.LBB0_24:                               #   in Loop: Header=BB0_5 Depth=1
-	st.w	$s0, $a2, 0
-	b	.LBB0_4
-.LBB0_25:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$fp, $a2, 0
 	b	.LBB0_4
-.LBB0_26:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_23:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t8, $a2, 0
 	b	.LBB0_4
-.LBB0_27:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_24:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t7, $a2, 0
 	b	.LBB0_4
-.LBB0_28:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_25:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t6, $a2, 0
 	b	.LBB0_4
-.LBB0_29:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_26:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t5, $a2, 0
 	b	.LBB0_4
-.LBB0_30:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_27:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t4, $a2, 0
 	b	.LBB0_4
-.LBB0_31:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_28:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t3, $a2, 0
 	b	.LBB0_4
-.LBB0_32:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_29:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t2, $a2, 0
 	b	.LBB0_4
-.LBB0_33:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_30:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t1, $a2, 0
 	b	.LBB0_4
-.LBB0_34:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_31:                               #   in Loop: Header=BB0_5 Depth=1
 	st.w	$t0, $a2, 0
+	b	.LBB0_4
+.LBB0_32:                               #   in Loop: Header=BB0_5 Depth=1
+	st.w	$a7, $a2, 0
+	b	.LBB0_4
+.LBB0_33:                               #   in Loop: Header=BB0_5 Depth=1
+	st.w	$a6, $a2, 0
+	b	.LBB0_4
+.LBB0_34:                               #   in Loop: Header=BB0_5 Depth=1
+	st.w	$a5, $a2, 0
 	b	.LBB0_4
 .LBB0_35:                               # %init_lastbit.exit
 	move	$a0, $zero
@@ -204,13 +198,10 @@ init_static_tables:                     # @init_static_tables
 	bnez	$t0, .LBB0_39
 	b	.LBB0_36
 .LBB0_40:                               # %init_movetable.exit
-	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end0:
 	.size	init_static_tables, .Lfunc_end0-init_static_tables
@@ -433,8 +424,7 @@ init_less_static_tables:                # @init_less_static_tables
 	addi.d	$a5, $a5, 1536
 	bnez	$a4, .LBB1_1
 # %bb.2:                                # %.preheader63
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB1_15
+	blez	$a0, .LBB1_15
 # %bb.3:                                # %.preheader63
 	blez	$a1, .LBB1_15
 # %bb.4:                                # %.preheader62.us.preheader

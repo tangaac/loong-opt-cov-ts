@@ -188,13 +188,13 @@ DumpFunction:                           # @DumpFunction
 	st.w	$a0, $s0, 28
 	beqz	$a0, .LBB1_78
 .LBB1_17:                               # %DumpVector.exit.thread
-	ld.w	$s3, $fp, 76
+	ld.w	$s2, $fp, 76
 .LBB1_18:                               # %DumpInt.exit48
-	ori	$s1, $zero, 1
-	blt	$s3, $s1, .LBB1_36
+	blez	$s2, .LBB1_36
 # %bb.19:                               # %.lr.ph
-	move	$s2, $zero
-	slli.d	$s3, $s3, 4
+	move	$s1, $zero
+	slli.d	$s2, $s2, 4
+	ori	$s3, $zero, 1
 	ori	$s4, $zero, 4
 	ori	$s5, $zero, 3
 	b	.LBB1_23
@@ -210,11 +210,11 @@ DumpFunction:                           # @DumpFunction
 	st.w	$a0, $s0, 28
 .LBB1_22:                               # %DumpString.exit41
                                         #   in Loop: Header=BB1_23 Depth=1
-	addi.d	$s2, $s2, 16
-	beq	$s3, $s2, .LBB1_36
+	addi.d	$s1, $s1, 16
+	beq	$s2, $s1, .LBB1_36
 .LBB1_23:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $fp, 16
-	add.d	$s6, $a1, $s2
+	add.d	$s6, $a1, $s1
 	ld.w	$a1, $s6, 8
 	addi.w	$a2, $a0, 0
 	st.b	$a1, $sp, 0
@@ -227,7 +227,7 @@ DumpFunction:                           # @DumpFunction
 	beq	$a1, $s5, .LBB1_34
 # %bb.26:                               # %DumpChar.exit46
                                         #   in Loop: Header=BB1_23 Depth=1
-	bne	$a1, $s1, .LBB1_22
+	bne	$a1, $s3, .LBB1_22
 # %bb.27:                               #   in Loop: Header=BB1_23 Depth=1
 	ld.b	$a1, $s6, 0
 	addi.w	$a2, $a0, 0
@@ -303,8 +303,7 @@ DumpFunction:                           # @DumpFunction
 	jirl	$ra, $a4, 0
 	st.w	$a0, $s0, 28
 .LBB1_38:                               # %DumpInt.exit37
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB1_41
+	blez	$s1, .LBB1_41
 # %bb.39:                               # %.lr.ph54
 	move	$s2, $zero
 	slli.d	$s1, $s1, 3
@@ -359,8 +358,7 @@ DumpFunction:                           # @DumpFunction
 	jirl	$ra, $a4, 0
 	st.w	$a0, $s0, 28
 .LBB1_48:                               # %DumpInt.exit.i35
-	ori	$a1, $zero, 1
-	blt	$s2, $a1, .LBB1_61
+	blez	$s2, .LBB1_61
 # %bb.49:                               # %.lr.ph.i
 	move	$s1, $zero
 	slli.d	$s2, $s2, 4
@@ -460,8 +458,7 @@ DumpFunction:                           # @DumpFunction
 	jirl	$ra, $a4, 0
 	st.w	$a0, $s0, 28
 .LBB1_64:                               # %DumpInt.exit37.i
-	ori	$a1, $zero, 1
-	blt	$s2, $a1, .LBB1_74
+	blez	$s2, .LBB1_74
 # %bb.65:                               # %.lr.ph44.i
 	move	$s1, $zero
 	slli.d	$s2, $s2, 3
@@ -554,8 +551,8 @@ DumpFunction:                           # @DumpFunction
 	move	$a1, $s1
 	jirl	$ra, $a4, 0
 	st.w	$a0, $s0, 28
-	ld.w	$s3, $fp, 76
-	st.w	$s3, $sp, 0
+	ld.w	$s2, $fp, 76
+	st.w	$s2, $sp, 0
 	bnez	$a0, .LBB1_18
 # %bb.79:
 	ld.d	$a4, $s0, 8

@@ -24,8 +24,7 @@ psqrt:                                  # @psqrt
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_6
 # %bb.3:
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_10
+	bltz	$a0, .LBB0_10
 # %bb.4:
 	addi.d	$a0, $sp, 8
 	move	$a1, $fp
@@ -74,7 +73,7 @@ psqrt:                                  # @psqrt
 .LBB0_8:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB0_11
 # %bb.9:
@@ -100,7 +99,7 @@ psqrt:                                  # @psqrt
 # %bb.12:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB0_14
 # %bb.13:

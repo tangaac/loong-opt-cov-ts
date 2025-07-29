@@ -940,8 +940,8 @@ ImplementStateType:                     # @ImplementStateType
 	andi	$a1, $a0, 2
 	bnez	$a1, .LBB6_9
 .LBB6_4:
-	andi	$a1, $a0, 2048
-	beqz	$a1, .LBB6_6
+	slli.d	$a1, $a0, 52
+	bgez	$a1, .LBB6_6
 .LBB6_5:
 	ldptr.d	$a2, $fp, 8256
 	pcalau12i	$a0, %pc_hi20(.L.str.69)
@@ -998,8 +998,8 @@ ImplementStateType:                     # @ImplementStateType
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
 	ldx.hu	$a0, $fp, $s1
-	andi	$a1, $a0, 2048
-	bnez	$a1, .LBB6_5
+	slli.d	$a1, $a0, 52
+	bltz	$a1, .LBB6_5
 	b	.LBB6_6
 .LBB6_10:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload

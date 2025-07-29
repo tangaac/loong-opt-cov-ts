@@ -120,8 +120,7 @@ binary_search:                          # @binary_search
 	addi.w	$a0, $a1, -2
 	ret
 .LBB3_4:                                # %.preheader
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB3_10
+	blez	$a1, .LBB3_10
 # %bb.5:                                # %.lr.ph.preheader
 	move	$a1, $zero
 	vldi	$vr1, -928
@@ -291,7 +290,6 @@ binary_dump:                            # @binary_dump
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a3
 	move	$s3, $a2
 	move	$s2, $a1
@@ -302,11 +300,10 @@ binary_dump:                            # @binary_dump
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 1
 	move	$s1, $a0
-	blt	$s0, $s4, .LBB8_3
+	blez	$s0, .LBB8_3
 # %bb.1:
-	move	$s5, $s0
+	move	$s4, $s0
 	.p2align	4, , 16
 .LBB8_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -316,12 +313,12 @@ binary_dump:                            # @binary_dump
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, -1
 	addi.d	$s3, $s3, 8
-	bnez	$s5, .LBB8_2
+	bnez	$s4, .LBB8_2
 .LBB8_3:                                # %.preheader
 	mul.d	$s2, $s2, $s0
-	blt	$s2, $s4, .LBB8_5
+	blez	$s2, .LBB8_5
 	.p2align	4, , 16
 .LBB8_4:                                # %.lr.ph22
                                         # =>This Inner Loop Header: Depth=1
@@ -342,7 +339,6 @@ binary_dump:                            # @binary_dump
 	bnez	$s2, .LBB8_4
 .LBB8_5:                                # %._crit_edge
 	move	$a0, $s1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -369,7 +365,6 @@ binary_read:                            # @binary_read
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a3
 	move	$s3, $a2
 	move	$s2, $a1
@@ -380,11 +375,10 @@ binary_read:                            # @binary_read
 	addi.d	$a1, $a1, %pc_lo12(.L.str.2)
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 1
 	move	$s1, $a0
-	blt	$s0, $s4, .LBB9_3
+	blez	$s0, .LBB9_3
 # %bb.1:
-	move	$s5, $s0
+	move	$s4, $s0
 	.p2align	4, , 16
 .LBB9_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -394,12 +388,12 @@ binary_read:                            # @binary_read
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, -1
 	addi.d	$s3, $s3, 8
-	bnez	$s5, .LBB9_2
+	bnez	$s4, .LBB9_2
 .LBB9_3:                                # %.preheader
 	mul.d	$s2, $s2, $s0
-	blt	$s2, $s4, .LBB9_5
+	blez	$s2, .LBB9_5
 	.p2align	4, , 16
 .LBB9_4:                                # %.lr.ph22
                                         # =>This Inner Loop Header: Depth=1
@@ -420,7 +414,6 @@ binary_read:                            # @binary_read
 	bnez	$s2, .LBB9_4
 .LBB9_5:                                # %._crit_edge
 	move	$a0, $s1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

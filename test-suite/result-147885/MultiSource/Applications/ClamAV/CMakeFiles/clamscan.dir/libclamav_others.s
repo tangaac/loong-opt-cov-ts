@@ -516,10 +516,10 @@ cli_md5digest:                          # @cli_md5digest
 	jirl	$ra, $ra, 0
 	addi.d	$s2, $sp, 168
 	lu12i.w	$s3, 2
-	addi.w	$s4, $zero, -1
-	ori	$s5, $zero, 4
+	ori	$s4, $zero, 4
 	pcalau12i	$a0, %pc_hi20(.L.str.64)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.64)
+	addi.w	$s5, $zero, -1
 	b	.LBB7_4
 .LBB7_2:                                #   in Loop: Header=BB7_4 Depth=1
 	pcaddu18i	$ra, %call36(strerror)
@@ -528,7 +528,7 @@ cli_md5digest:                          # @cli_md5digest
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	move	$a2, $s4
+	move	$a2, $s5
 	.p2align	4, , 16
 .LBB7_3:                                # %cli_readn.exit.thread
                                         #   in Loop: Header=BB7_4 Depth=1
@@ -550,7 +550,7 @@ cli_md5digest:                          # @cli_md5digest
 	addi.w	$a1, $a0, 0
 	beqz	$a1, .LBB7_10
 # %bb.6:                                #   in Loop: Header=BB7_5 Depth=2
-	bge	$s4, $a1, .LBB7_8
+	bltz	$a1, .LBB7_8
 # %bb.7:                                #   in Loop: Header=BB7_5 Depth=2
 	sub.w	$s6, $s6, $a0
 	bstrpick.d	$a0, $a0, 30, 0
@@ -561,7 +561,7 @@ cli_md5digest:                          # @cli_md5digest
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	bne	$a0, $s5, .LBB7_2
+	bne	$a0, $s4, .LBB7_2
 .LBB7_9:                                #   in Loop: Header=BB7_5 Depth=2
 	move	$a2, $s3
 	bnez	$s6, .LBB7_5
@@ -663,43 +663,41 @@ cli_malloc:                             # @cli_malloc
 	.type	cli_readn,@function
 cli_readn:                              # @cli_readn
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a2
-	move	$s1, $a1
-	move	$s2, $a0
-	addi.w	$fp, $zero, -1
-	ori	$s4, $zero, 4
-	move	$s3, $a2
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a2
+	move	$s0, $a1
+	move	$s1, $a0
+	ori	$s3, $zero, 4
+	move	$s2, $a2
 	b	.LBB9_3
 	.p2align	4, , 16
 .LBB9_1:                                #   in Loop: Header=BB9_3 Depth=1
-	sub.w	$s3, $s3, $a0
+	sub.w	$s2, $s2, $a0
 	bstrpick.d	$a0, $a0, 30, 0
-	add.d	$s1, $s1, $a0
+	add.d	$s0, $s0, $a0
 .LBB9_2:                                #   in Loop: Header=BB9_3 Depth=1
-	beqz	$s3, .LBB9_8
+	beqz	$s2, .LBB9_8
 .LBB9_3:                                # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a2, $s3, 31, 0
-	move	$a0, $s2
-	move	$a1, $s1
+	bstrpick.d	$a2, $s2, 31, 0
+	move	$a0, $s1
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
 	beqz	$a1, .LBB9_7
 # %bb.4:                                #   in Loop: Header=BB9_3 Depth=1
-	blt	$fp, $a1, .LBB9_1
+	bgez	$a1, .LBB9_1
 # %bb.5:                                #   in Loop: Header=BB9_3 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s4, .LBB9_2
+	beq	$a0, $s3, .LBB9_2
 # %bb.6:
 	pcaddu18i	$ra, %call36(strerror)
 	jirl	$ra, $ra, 0
@@ -708,22 +706,19 @@ cli_readn:                              # @cli_readn
 	addi.d	$a0, $a0, %pc_lo12(.L.str.64)
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB9_9
+	addi.w	$fp, $zero, -1
+	b	.LBB9_8
 .LBB9_7:
-	sub.w	$fp, $s0, $s3
-	b	.LBB9_9
-.LBB9_8:
-	move	$fp, $s0
-.LBB9_9:                                # %.loopexit
+	sub.w	$fp, $fp, $s2
+.LBB9_8:                                # %.loopexit
 	move	$a0, $fp
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end9:
 	.size	cli_readn, .Lfunc_end9-cli_readn
@@ -752,7 +747,7 @@ cli_md5stream:                          # @cli_md5stream
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $a0, 31, 0
+	slli.d	$a1, $a0, 32
 	beqz	$a1, .LBB10_3
 # %bb.1:                                # %.lr.ph.preheader
 	lu12i.w	$s1, 2
@@ -770,7 +765,7 @@ cli_md5stream:                          # @cli_md5stream
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $a0, 31, 0
+	slli.d	$a1, $a0, 32
 	bnez	$a1, .LBB10_2
 .LBB10_3:                               # %._crit_edge
 	lu12i.w	$a0, 2
@@ -1675,7 +1670,7 @@ cli_rmdirs:                             # @cli_rmdirs
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	bge	$fp, $a0, .LBB20_27
+	bltz	$a0, .LBB20_27
 .LBB20_8:                               #   in Loop: Header=BB20_9 Depth=2
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
@@ -1857,41 +1852,39 @@ cli_rmdirs:                             # @cli_rmdirs
 	.type	cli_writen,@function
 cli_writen:                             # @cli_writen
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	move	$s0, $a2
-	move	$s1, $a1
-	move	$s2, $a0
-	addi.w	$fp, $zero, -1
-	ori	$s3, $zero, 4
-	move	$s4, $a2
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	move	$fp, $a2
+	move	$s0, $a1
+	move	$s1, $a0
+	ori	$s2, $zero, 4
+	move	$s3, $a2
 	b	.LBB21_3
 	.p2align	4, , 16
 .LBB21_1:                               #   in Loop: Header=BB21_3 Depth=1
-	sub.w	$s4, $s4, $a0
+	sub.w	$s3, $s3, $a0
 	bstrpick.d	$a0, $a0, 30, 0
-	add.d	$s1, $s1, $a0
+	add.d	$s0, $s0, $a0
 .LBB21_2:                               #   in Loop: Header=BB21_3 Depth=1
-	beqz	$s4, .LBB21_6
+	beqz	$s3, .LBB21_6
 .LBB21_3:                               # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a2, $s4, 31, 0
-	move	$a0, $s2
-	move	$a1, $s1
+	bstrpick.d	$a2, $s3, 31, 0
+	move	$a0, $s1
+	move	$a1, $s0
 	pcaddu18i	$ra, %call36(write)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$fp, $a1, .LBB21_1
+	bgez	$a1, .LBB21_1
 # %bb.4:                                #   in Loop: Header=BB21_3 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s3, .LBB21_2
+	beq	$a0, $s2, .LBB21_2
 # %bb.5:
 	pcaddu18i	$ra, %call36(strerror)
 	jirl	$ra, $ra, 0
@@ -1900,19 +1893,16 @@ cli_writen:                             # @cli_writen
 	addi.d	$a0, $a0, %pc_lo12(.L.str.65)
 	pcaddu18i	$ra, %call36(cli_errmsg)
 	jirl	$ra, $ra, 0
-	b	.LBB21_7
-.LBB21_6:
-	move	$fp, $s0
-.LBB21_7:                               # %.loopexit
+	addi.w	$fp, $zero, -1
+.LBB21_6:                               # %.loopexit
 	move	$a0, $fp
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end21:
 	.size	cli_writen, .Lfunc_end21-cli_writen
@@ -1932,13 +1922,12 @@ cli_filecopy:                           # @cli_filecopy
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	addi.w	$s5, $zero, -1
-	beq	$a0, $s5, .LBB22_11
+	addi.w	$s1, $zero, -1
+	beq	$a0, $s1, .LBB22_11
 # %bb.1:
 	move	$fp, $a0
 	ori	$a1, $zero, 577
@@ -1946,7 +1935,7 @@ cli_filecopy:                           # @cli_filecopy
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s5, .LBB22_10
+	beq	$a0, $s1, .LBB22_10
 # %bb.2:
 	move	$s0, $a0
 	lu12i.w	$s2, 2
@@ -1956,7 +1945,7 @@ cli_filecopy:                           # @cli_filecopy
 	beqz	$a0, .LBB22_29
 # %bb.3:                                # %.split11.preheader
 	move	$s1, $a0
-	ori	$s6, $zero, 4
+	ori	$s5, $zero, 4
 	move	$s4, $s2
 	move	$s3, $a0
 	b	.LBB22_6
@@ -1977,12 +1966,12 @@ cli_filecopy:                           # @cli_filecopy
 	addi.w	$a1, $a0, 0
 	beqz	$a1, .LBB22_12
 # %bb.7:                                #   in Loop: Header=BB22_6 Depth=1
-	blt	$s5, $a1, .LBB22_4
+	bgez	$a1, .LBB22_4
 # %bb.8:                                #   in Loop: Header=BB22_6 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s6, .LBB22_5
+	beq	$a0, $s5, .LBB22_5
 .LBB22_9:                               # %._crit_edge.sink.split
 	pcaddu18i	$ra, %call36(strerror)
 	jirl	$ra, $ra, 0
@@ -1998,7 +1987,6 @@ cli_filecopy:                           # @cli_filecopy
 	jirl	$ra, $ra, 0
 .LBB22_11:
 	addi.w	$a0, $zero, -1
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -2012,9 +2000,8 @@ cli_filecopy:                           # @cli_filecopy
 	ret
 .LBB22_12:                              # %cli_readn.exit
 	lu12i.w	$a0, 2
-	sub.w	$s7, $a0, $s4
-	ori	$a0, $zero, 1
-	bge	$s7, $a0, .LBB22_15
+	sub.w	$s6, $a0, $s4
+	bgtz	$s6, .LBB22_15
 .LBB22_13:                              # %._crit_edge
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(free)
@@ -2023,7 +2010,6 @@ cli_filecopy:                           # @cli_filecopy
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	move	$a0, $s0
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -2037,30 +2023,30 @@ cli_filecopy:                           # @cli_filecopy
 	pcaddu18i	$t8, %call36(close)
 	jr	$t8
 .LBB22_14:
-	move	$s7, $s2
+	move	$s6, $s2
 .LBB22_15:                              # %.split.preheader
-	ori	$s6, $zero, 4
+	ori	$s5, $zero, 4
 	pcalau12i	$a0, %pc_hi20(.L.str.65)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.65)
 	move	$s4, $s1
 	b	.LBB22_17
 .LBB22_16:                              #   in Loop: Header=BB22_17 Depth=1
-	sub.w	$s7, $s2, $s7
+	sub.w	$s6, $s2, $s6
 	move	$s4, $s1
-	blez	$s7, .LBB22_13
+	blez	$s6, .LBB22_13
 	.p2align	4, , 16
 .LBB22_17:                              # %.split
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB22_24 Depth 2
-	bstrpick.d	$a2, $s7, 31, 0
+	bstrpick.d	$a2, $s6, 31, 0
 	move	$a0, $s0
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(write)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	bge	$s5, $a1, .LBB22_19
+	bltz	$a1, .LBB22_19
 # %bb.18:                               #   in Loop: Header=BB22_17 Depth=1
-	sub.w	$s7, $s7, $a0
+	sub.w	$s6, $s6, $a0
 	bstrpick.d	$a0, $a0, 30, 0
 	add.d	$s4, $s4, $a0
 	b	.LBB22_20
@@ -2069,25 +2055,25 @@ cli_filecopy:                           # @cli_filecopy
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	bne	$a0, $s6, .LBB22_28
+	bne	$a0, $s5, .LBB22_28
 .LBB22_20:                              #   in Loop: Header=BB22_17 Depth=1
-	bnez	$s7, .LBB22_17
+	bnez	$s6, .LBB22_17
 .LBB22_21:                              # %cli_writen.exit.preheader
                                         #   in Loop: Header=BB22_17 Depth=1
-	move	$s7, $s2
+	move	$s6, $s2
 	move	$s4, $s1
 	b	.LBB22_24
 	.p2align	4, , 16
 .LBB22_22:                              #   in Loop: Header=BB22_24 Depth=2
-	sub.w	$s7, $s7, $a0
+	sub.w	$s6, $s6, $a0
 	bstrpick.d	$a0, $a0, 30, 0
 	add.d	$s4, $s4, $a0
 .LBB22_23:                              #   in Loop: Header=BB22_24 Depth=2
-	beqz	$s7, .LBB22_27
+	beqz	$s6, .LBB22_27
 .LBB22_24:                              # %cli_writen.exit
                                         #   Parent Loop BB22_17 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$a2, $s7, 31, 0
+	bstrpick.d	$a2, $s6, 31, 0
 	move	$a0, $fp
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(read)
@@ -2095,17 +2081,17 @@ cli_filecopy:                           # @cli_filecopy
 	addi.w	$a1, $a0, 0
 	beqz	$a1, .LBB22_16
 # %bb.25:                               #   in Loop: Header=BB22_24 Depth=2
-	blt	$s5, $a1, .LBB22_22
+	bgez	$a1, .LBB22_22
 # %bb.26:                               #   in Loop: Header=BB22_24 Depth=2
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s6, .LBB22_23
+	beq	$a0, $s5, .LBB22_23
 	b	.LBB22_9
 .LBB22_27:                              #   in Loop: Header=BB22_17 Depth=1
-	move	$s7, $s2
+	move	$s6, $s2
 	move	$s4, $s1
-	bgtz	$s7, .LBB22_17
+	bgtz	$s6, .LBB22_17
 	b	.LBB22_13
 .LBB22_28:                              #   in Loop: Header=BB22_17 Depth=1
 	pcaddu18i	$ra, %call36(strerror)

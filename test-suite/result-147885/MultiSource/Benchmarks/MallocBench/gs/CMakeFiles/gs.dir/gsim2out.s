@@ -49,8 +49,7 @@ gs_type1imagepath:                      # @gs_type1imagepath
 	addi.d	$a2, $sp, 136
 	pcaddu18i	$ra, %call36(gs_matrix_multiply)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_29
+	bltz	$a0, .LBB0_29
 # %bb.2:
 	addi.d	$a0, $sp, 136
 	addi.d	$a1, $sp, 136
@@ -64,7 +63,6 @@ gs_type1imagepath:                      # @gs_type1imagepath
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a2, $a0, %pc_lo12(.L.str)
 	ori	$a1, $zero, 1
-	ori	$s7, $zero, 1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(gs_malloc)
 	jirl	$ra, $ra, 0
@@ -76,7 +74,7 @@ gs_type1imagepath:                      # @gs_type1imagepath
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s5, 31, 0
-	blt	$s3, $s7, .LBB0_14
+	blez	$s3, .LBB0_14
 # %bb.5:                                # %.preheader.lr.ph.i
 	blez	$s0, .LBB0_24
 # %bb.6:                                # %.preheader.us.preheader.i
@@ -130,13 +128,12 @@ gs_type1imagepath:                      # @gs_type1imagepath
 	b	.LBB0_9
 .LBB0_14:                               # %fill_cells.exit
 	st.d	$fp, $sp, 248
-	add.d	$a1, $fp, $a0
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 232
-	blt	$s0, $a0, .LBB0_23
+	add.d	$a0, $fp, $a0
+	st.d	$a0, $sp, 232
+	blez	$s0, .LBB0_23
 # %bb.15:                               # %.preheader.lr.ph
 	move	$s4, $s0
-	blt	$s3, $a0, .LBB0_25
+	blez	$s3, .LBB0_25
 # %bb.16:                               # %.preheader.preheader
 	move	$s4, $zero
 	addi.d	$a0, $s3, 1
@@ -625,10 +622,9 @@ fill_cells:                             # @fill_cells
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB1_10
+	blez	$fp, .LBB1_10
 # %bb.1:                                # %.preheader.lr.ph
-	blt	$s0, $a0, .LBB1_10
+	blez	$s0, .LBB1_10
 # %bb.2:                                # %.preheader.us.preheader
 	move	$a0, $zero
 	nor	$a1, $s0, $zero

@@ -62,7 +62,7 @@ _ZN34ArgsProductFixture_Empty_Benchmark13BenchmarkCaseERN9benchmark5StateE: # @_
 	mul.d	$a5, $a5, $a7
 	mul.d	$a4, $a5, $a4
 	st.d	$zero, $sp, 8
-	blt	$a4, $a0, .LBB0_9
+	blez	$a4, .LBB0_9
 	.p2align	4, , 16
 .LBB0_8:                                # %.lr.ph
                                         #   Parent Loop BB0_3 Depth=1
@@ -2608,8 +2608,7 @@ _ZNSt8_Rb_treeISt6vectorIlSaIlEES2_St9_IdentityIS2_ESt4lessIS2_ESaIS2_EE17_M_con
 	ld.d	$a1, $s0, 0
 	ld.d	$a0, $s0, 8
 	sub.d	$s0, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB18_6
+	blez	$s0, .LBB18_6
 # %bb.5:
 	move	$a0, $s1
 	move	$a2, $s0

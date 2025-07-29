@@ -371,9 +371,8 @@ _ZN23CExtractCallbackConsole11SetPasswordERK11CStringBaseIwE: # @_ZN23CExtractCa
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s4, $a1, .LBB6_5
+	blez	$s4, .LBB6_5
 # %bb.4:                                # %._crit_edge.thread.i.i
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -484,8 +483,7 @@ _ZN23CExtractCallbackConsole21CryptoGetTextPasswordEPPw: # @_ZN23CExtractCallbac
 .Ltmp1:
 # %bb.6:                                # %.noexc
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB7_8
+	blez	$s4, .LBB7_8
 # %bb.7:                                # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)

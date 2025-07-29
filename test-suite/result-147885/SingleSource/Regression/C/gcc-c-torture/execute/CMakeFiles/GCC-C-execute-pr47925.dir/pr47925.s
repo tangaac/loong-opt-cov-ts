@@ -24,8 +24,7 @@ foo:                                    # @foo
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(bar)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB1_2
+	blez	$fp, .LBB1_2
 	.p2align	4, , 16
 .LBB1_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

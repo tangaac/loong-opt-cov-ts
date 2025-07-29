@@ -199,8 +199,7 @@ _tr_stored_block:                       # @_tr_stored_block
 	ori	$a4, $zero, 9
 	bge	$a3, $a4, .LBB2_5
 .LBB2_2:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB2_7
+	blez	$a3, .LBB2_7
 # %bb.3:
 	ld.d	$a3, $fp, 40
 	b	.LBB2_6
@@ -444,13 +443,12 @@ _tr_flush_block:                        # @_tr_flush_block
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
-	ld.w	$a4, $a0, 196
+	ld.w	$a0, $a0, 196
 	move	$s0, $a3
 	move	$s1, $a2
 	move	$s2, $a1
-	ori	$a0, $zero, 1
 	addi.d	$s3, $fp, 2047
-	blt	$a4, $a0, .LBB5_78
+	blez	$a0, .LBB5_78
 # %bb.1:
 	ld.d	$a0, $fp, 0
 	ld.w	$a1, $a0, 88
@@ -815,6 +813,7 @@ _tr_flush_block:                        # @_tr_flush_block
 	b	.LBB5_81
 .LBB5_78:
 	addi.d	$a1, $s1, 5
+	ori	$a0, $zero, 1
 	move	$a3, $a1
 	beqz	$s2, .LBB5_81
 .LBB5_79:
@@ -1122,8 +1121,7 @@ _tr_flush_block:                        # @_tr_flush_block
 	ld.b	$a0, $a0, 1
 	b	.LBB5_107
 .LBB5_105:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_108
+	blez	$a0, .LBB5_108
 # %bb.106:
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 1840
@@ -1197,44 +1195,43 @@ build_tree:                             # @build_tree
 	ori	$a3, $zero, 0
 	lu32i.d	$a3, 573
 	stptr.d	$a3, $a0, 5300
-	ori	$a7, $zero, 1
 	lu12i.w	$t1, 1
-	blt	$a6, $a7, .LBB6_81
+	blez	$a6, .LBB6_81
 # %bb.1:                                # %.lr.ph
-	move	$t0, $zero
-	addi.d	$t2, $a5, 961
+	move	$a7, $zero
+	addi.d	$t0, $a5, 961
 	ori	$a3, $t1, 1212
-	add.d	$t3, $a0, $a3
-	addi.d	$t4, $a2, 2
+	add.d	$t2, $a0, $a3
+	addi.d	$t3, $a2, 2
 	addi.w	$a3, $zero, -1
-	ori	$t5, $t1, 1204
-	move	$t6, $a6
+	ori	$t4, $t1, 1204
+	move	$t5, $a6
 	b	.LBB6_4
 	.p2align	4, , 16
 .LBB6_2:                                #   in Loop: Header=BB6_4 Depth=1
-	ldx.w	$a3, $a0, $t5
+	ldx.w	$a3, $a0, $t4
 	addi.w	$a3, $a3, 1
 	stptr.w	$a3, $a0, 5300
 	slli.d	$a3, $a3, 2
-	stx.w	$t0, $t2, $a3
-	st.b	$zero, $t3, 0
-	move	$a3, $t0
+	stx.w	$a7, $t0, $a3
+	st.b	$zero, $t2, 0
+	move	$a3, $a7
 .LBB6_3:                                #   in Loop: Header=BB6_4 Depth=1
-	addi.w	$t0, $t0, 1
-	addi.d	$t3, $t3, 1
-	addi.d	$t6, $t6, -1
-	addi.d	$t4, $t4, 4
-	beqz	$t6, .LBB6_6
+	addi.w	$a7, $a7, 1
+	addi.d	$t2, $t2, 1
+	addi.d	$t5, $t5, -1
+	addi.d	$t3, $t3, 4
+	beqz	$t5, .LBB6_6
 .LBB6_4:                                # =>This Inner Loop Header: Depth=1
-	ld.hu	$t7, $t4, -2
-	bnez	$t7, .LBB6_2
+	ld.hu	$t6, $t3, -2
+	bnez	$t6, .LBB6_2
 # %bb.5:                                #   in Loop: Header=BB6_4 Depth=1
-	st.h	$zero, $t4, 0
+	st.h	$zero, $t3, 0
 	b	.LBB6_3
 .LBB6_6:                                # %.preheader131
 	ldptr.w	$t2, $a0, 5300
-	ori	$t0, $zero, 1
-	bge	$t0, $t2, .LBB6_82
+	ori	$a7, $zero, 1
+	bge	$a7, $t2, .LBB6_82
 .LBB6_7:                                # %.lr.ph147
 	addi.d	$a4, $a5, 931
 	st.w	$a3, $a1, 8
@@ -1807,9 +1804,10 @@ build_tree:                             # @build_tree
 	move	$t2, $zero
 	addi.w	$a3, $zero, -1
 .LBB6_82:                               # %.lr.ph142
-	addi.d	$t0, $a5, 961
-	ori	$t3, $t1, 1212
-	add.d	$t3, $a0, $t3
+	addi.d	$a7, $a5, 961
+	ori	$t0, $t1, 1212
+	add.d	$t0, $a0, $t0
+	ori	$t3, $zero, 1
 	ori	$t4, $zero, 2
 	b	.LBB6_84
 	.p2align	4, , 16
@@ -1825,10 +1823,10 @@ build_tree:                             # @build_tree
 	addi.w	$t2, $t2, 1
 	stptr.w	$t2, $a0, 5300
 	slli.d	$t2, $t2, 2
-	stx.w	$t6, $t0, $t2
+	stx.w	$t6, $a7, $t2
 	slli.d	$t2, $t6, 2
-	stx.h	$a7, $a2, $t2
-	stx.b	$zero, $t3, $t6
+	stx.h	$t3, $a2, $t2
+	stx.b	$zero, $t0, $t6
 	ldptr.d	$t2, $a0, 5912
 	addi.d	$t2, $t2, -1
 	stptr.d	$t2, $a0, 5912

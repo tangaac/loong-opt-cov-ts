@@ -144,8 +144,7 @@ cont_Free:                              # @cont_Free
 	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s0, %pc_hi20(cont_NOOFCONTEXTS)
 	ld.w	$a0, $s0, %pc_lo12(cont_NOOFCONTEXTS)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_9
+	blez	$a0, .LBB2_9
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %got_pc_hi20(memory_ALIGN)
 	ld.d	$a0, $a0, %got_pc_lo12(memory_ALIGN)
@@ -266,78 +265,63 @@ cont_TermEqual:                         # @cont_TermEqual
 	ld.w	$a4, $a1, 0
 	move	$fp, $a2
 	move	$s0, $a0
-	ori	$a2, $zero, 1
 	pcalau12i	$a0, %pc_hi20(cont_INSTANCECONTEXT)
-	blt	$a4, $a2, .LBB3_7
+	blez	$a4, .LBB3_5
 # %bb.1:                                # %.lr.ph.i.preheader
-	ld.d	$a5, $a0, %pc_lo12(cont_INSTANCECONTEXT)
-	beq	$s0, $a5, .LBB3_7
-# %bb.2:                                # %.lr.ph.preheader
-	slli.d	$a6, $a4, 5
-	add.d	$a6, $s0, $a6
-	ld.d	$a7, $a6, 8
-	beqz	$a7, .LBB3_7
-# %bb.3:
-	ori	$a6, $zero, 1
+	ld.d	$a2, $a0, %pc_lo12(cont_INSTANCECONTEXT)
+	beq	$s0, $a2, .LBB3_5
 	.p2align	4, , 16
-.LBB3_4:                                # %.lr.ph89
+.LBB3_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a1, $a7
+	slli.d	$a5, $a4, 5
+	add.d	$a5, $s0, $a5
+	ld.d	$a5, $a5, 8
+	beqz	$a5, .LBB3_5
+# %bb.3:                                # %.lr.ph89
+                                        #   in Loop: Header=BB3_2 Depth=1
+	move	$a1, $a5
 	slli.d	$a4, $a4, 5
-	add.d	$a7, $s0, $a4
+	add.d	$a5, $s0, $a4
 	ld.w	$a4, $a1, 0
-	ld.d	$s0, $a7, 16
-	blt	$a4, $a6, .LBB3_7
-# %bb.5:                                # %.lr.ph89
-                                        #   in Loop: Header=BB3_4 Depth=1
-	beq	$s0, $a5, .LBB3_7
-# %bb.6:                                # %.lr.ph
-                                        #   in Loop: Header=BB3_4 Depth=1
-	slli.d	$a7, $a4, 5
-	add.d	$a7, $s0, $a7
-	ld.d	$a7, $a7, 8
-	bnez	$a7, .LBB3_4
-.LBB3_7:                                # %cont_Deref.exit
-	ld.w	$a5, $a3, 0
-	blt	$a5, $a2, .LBB3_14
-# %bb.8:                                # %.lr.ph.i31.preheader
+	ld.d	$s0, $a5, 16
+	blez	$a4, .LBB3_5
+# %bb.4:                                # %.lr.ph89
+                                        #   in Loop: Header=BB3_2 Depth=1
+	bne	$s0, $a2, .LBB3_2
+.LBB3_5:                                # %cont_Deref.exit
+	ld.w	$a2, $a3, 0
+	blez	$a2, .LBB3_10
+# %bb.6:                                # %.lr.ph.i31.preheader
 	ld.d	$a0, $a0, %pc_lo12(cont_INSTANCECONTEXT)
-	beq	$fp, $a0, .LBB3_14
-# %bb.9:                                # %.lr.ph63.preheader
-	slli.d	$a2, $a5, 5
-	add.d	$a2, $fp, $a2
-	ld.d	$a6, $a2, 8
-	beqz	$a6, .LBB3_14
-# %bb.10:
-	ori	$a2, $zero, 1
+	beq	$fp, $a0, .LBB3_10
 	.p2align	4, , 16
-.LBB3_11:                               # %.lr.ph97
+.LBB3_7:                                # %.lr.ph63
                                         # =>This Inner Loop Header: Depth=1
-	move	$a3, $a6
-	slli.d	$a5, $a5, 5
-	add.d	$a6, $fp, $a5
-	ld.w	$a5, $a3, 0
-	ld.d	$fp, $a6, 16
-	blt	$a5, $a2, .LBB3_14
-# %bb.12:                               # %.lr.ph97
-                                        #   in Loop: Header=BB3_11 Depth=1
-	beq	$fp, $a0, .LBB3_14
-# %bb.13:                               # %.lr.ph63
-                                        #   in Loop: Header=BB3_11 Depth=1
-	slli.d	$a6, $a5, 5
-	add.d	$a6, $fp, $a6
-	ld.d	$a6, $a6, 8
-	bnez	$a6, .LBB3_11
-.LBB3_14:                               # %cont_Deref.exit38
-	bne	$a4, $a5, .LBB3_21
-# %bb.15:
+	slli.d	$a5, $a2, 5
+	add.d	$a5, $fp, $a5
+	ld.d	$a5, $a5, 8
+	beqz	$a5, .LBB3_10
+# %bb.8:                                # %.lr.ph97
+                                        #   in Loop: Header=BB3_7 Depth=1
+	move	$a3, $a5
+	slli.d	$a2, $a2, 5
+	add.d	$a5, $fp, $a2
+	ld.w	$a2, $a3, 0
+	ld.d	$fp, $a5, 16
+	blez	$a2, .LBB3_10
+# %bb.9:                                # %.lr.ph97
+                                        #   in Loop: Header=BB3_7 Depth=1
+	bne	$fp, $a0, .LBB3_7
+.LBB3_10:                               # %cont_Deref.exit38
+	bne	$a4, $a2, .LBB3_17
+# %bb.11:
 	ld.d	$s1, $a1, 16
-	beqz	$s1, .LBB3_22
-# %bb.16:
+	beqz	$s1, .LBB3_18
+# %bb.12:
 	ld.d	$s2, $a3, 16
-	beqz	$s2, .LBB3_21
+	beqz	$s2, .LBB3_17
 	.p2align	4, , 16
-.LBB3_17:                               # %.lr.ph75
+.LBB3_13:                               # %.lr.ph75
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s1, 8
 	ld.d	$a3, $s2, 8
@@ -345,23 +329,23 @@ cont_TermEqual:                         # @cont_TermEqual
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(cont_TermEqual)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_21
-# %bb.18:                               #   in Loop: Header=BB3_17 Depth=1
+	beqz	$a0, .LBB3_17
+# %bb.14:                               #   in Loop: Header=BB3_13 Depth=1
 	ld.d	$s1, $s1, 0
 	ld.d	$s2, $s2, 0
-	beqz	$s1, .LBB3_20
-# %bb.19:                               #   in Loop: Header=BB3_17 Depth=1
-	bnez	$s2, .LBB3_17
-.LBB3_20:                               # %.critedge
+	beqz	$s1, .LBB3_16
+# %bb.15:                               #   in Loop: Header=BB3_13 Depth=1
+	bnez	$s2, .LBB3_13
+.LBB3_16:                               # %.critedge
 	or	$a0, $s1, $s2
 	sltui	$a0, $a0, 1
-	b	.LBB3_23
-.LBB3_21:
+	b	.LBB3_19
+.LBB3_17:
 	move	$a0, $zero
-	b	.LBB3_23
-.LBB3_22:
+	b	.LBB3_19
+.LBB3_18:
 	ori	$a0, $zero, 1
-.LBB3_23:                               # %.loopexit
+.LBB3_19:                               # %.loopexit
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -384,40 +368,39 @@ cont_TermEqualModuloBindings:           # @cont_TermEqualModuloBindings
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
-	ld.w	$a7, $a2, 0
+	ld.w	$a6, $a2, 0
 	move	$fp, $a0
-	bstrpick.d	$a0, $a7, 31, 0
-	ori	$a6, $zero, 1
+	bstrpick.d	$a0, $a6, 31, 0
 	pcalau12i	$a5, %pc_hi20(cont_INSTANCECONTEXT)
-	blt	$a7, $a6, .LBB4_13
+	blez	$a6, .LBB4_13
 # %bb.1:                                # %.lr.ph
-	ld.d	$a7, $a5, %pc_lo12(cont_INSTANCECONTEXT)
-	addi.w	$t0, $zero, -1001
+	ld.d	$a6, $a5, %pc_lo12(cont_INSTANCECONTEXT)
+	addi.w	$a7, $zero, -1001
 	.p2align	4, , 16
 .LBB4_2:                                # =>This Inner Loop Header: Depth=1
-	addi.d	$t1, $a0, -2048
-	addi.d	$t1, $t1, -953
+	addi.d	$t0, $a0, -2048
+	addi.d	$t0, $t0, -953
 	move	$s0, $fp
-	bltu	$t0, $t1, .LBB4_4
+	bltu	$a7, $t0, .LBB4_4
 # %bb.3:                                #   in Loop: Header=BB4_2 Depth=1
 	move	$s0, $a1
-	beq	$a1, $a7, .LBB4_15
+	beq	$a1, $a6, .LBB4_15
 .LBB4_4:                                #   in Loop: Header=BB4_2 Depth=1
 	slli.d	$a1, $a0, 5
 	add.d	$a1, $s0, $a1
-	ld.d	$t1, $a1, 8
-	beqz	$t1, .LBB4_6
+	ld.d	$t0, $a1, 8
+	beqz	$t0, .LBB4_6
 # %bb.5:                                #   in Loop: Header=BB4_2 Depth=1
 	ld.d	$a1, $a1, 16
-	ld.w	$t2, $t1, 0
-	bstrpick.d	$a0, $t2, 31, 0
-	move	$a2, $t1
+	ld.w	$t1, $t0, 0
+	bstrpick.d	$a0, $t1, 31, 0
+	move	$a2, $t0
 	move	$s0, $a1
-	bgtz	$t2, .LBB4_2
+	bgtz	$t1, .LBB4_2
 .LBB4_6:                                # %.thread
-	ld.w	$a7, $a4, 0
-	bstrpick.d	$a1, $a7, 31, 0
-	blt	$a7, $a6, .LBB4_14
+	ld.w	$a6, $a4, 0
+	bstrpick.d	$a1, $a6, 31, 0
+	blez	$a6, .LBB4_14
 .LBB4_7:                                # %.lr.ph116
 	ld.d	$a5, $a5, %pc_lo12(cont_INSTANCECONTEXT)
 	addi.w	$a6, $zero, -1001
@@ -447,26 +430,25 @@ cont_TermEqualModuloBindings:           # @cont_TermEqualModuloBindings
 	b	.LBB4_17
 .LBB4_13:
 	move	$s0, $a1
-	ld.w	$a7, $a4, 0
-	bstrpick.d	$a1, $a7, 31, 0
-	bge	$a7, $a6, .LBB4_7
+	ld.w	$a6, $a4, 0
+	bstrpick.d	$a1, $a6, 31, 0
+	bgtz	$a6, .LBB4_7
 .LBB4_14:
 	move	$s1, $a3
 	bne	$a0, $a1, .LBB4_26
 	b	.LBB4_17
 .LBB4_15:
 	move	$s0, $a1
-	ld.w	$a7, $a4, 0
-	bstrpick.d	$a1, $a7, 31, 0
-	bge	$a7, $a6, .LBB4_7
+	ld.w	$a6, $a4, 0
+	bstrpick.d	$a1, $a6, 31, 0
+	bgtz	$a6, .LBB4_7
 	b	.LBB4_14
 .LBB4_16:
 	move	$s1, $a3
 	bne	$a0, $a1, .LBB4_26
 .LBB4_17:
-	addi.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB4_20
+	addi.w	$a0, $a0, 0
+	blez	$a0, .LBB4_20
 # %bb.18:
 	xor	$a0, $s0, $s1
 .LBB4_19:                               # %.loopexit
@@ -474,7 +456,7 @@ cont_TermEqualModuloBindings:           # @cont_TermEqualModuloBindings
 	b	.LBB4_27
 .LBB4_20:
 	ld.d	$s2, $a2, 16
-	beqz	$s2, .LBB4_27
+	beqz	$s2, .LBB4_28
 # %bb.21:
 	ld.d	$s3, $a4, 16
 	beqz	$s3, .LBB4_26
@@ -509,6 +491,9 @@ cont_TermEqualModuloBindings:           # @cont_TermEqualModuloBindings
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
 	ret
+.LBB4_28:
+	ori	$a0, $zero, 1
+	b	.LBB4_27
 .Lfunc_end4:
 	.size	cont_TermEqualModuloBindings, .Lfunc_end4-cont_TermEqualModuloBindings
                                         # -- End function
@@ -525,9 +510,8 @@ cont_CopyAndApplyBindings:              # @cont_CopyAndApplyBindings
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$s0, $a1
 	ld.w	$a1, $a1, 0
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB5_3
+	blez	$a1, .LBB5_3
 	.p2align	4, , 16
 .LBB5_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -594,12 +578,11 @@ cont_CopyAndApplyBindingsCom:           # @cont_CopyAndApplyBindingsCom
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
-	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB6_1:                                # =>This Inner Loop Header: Depth=1
 	move	$s1, $a1
 	ld.w	$a0, $a1, 0
-	blt	$a0, $a2, .LBB6_3
+	blez	$a0, .LBB6_3
 # %bb.2:                                #   in Loop: Header=BB6_1 Depth=1
 	slli.d	$a1, $a0, 5
 	add.d	$a1, $fp, $a1
@@ -657,9 +640,8 @@ cont_ApplyBindingsModuloMatching:       # @cont_ApplyBindingsModuloMatching
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a1
 	ld.w	$a1, $a1, 0
-	ori	$a3, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a3, .LBB7_3
+	blez	$a1, .LBB7_3
 # %bb.1:
 	slli.d	$a0, $a1, 5
 	add.d	$a0, $s0, $a0
@@ -721,9 +703,8 @@ cont_ApplyBindingsModuloMatchingReverse: # @cont_ApplyBindingsModuloMatchingReve
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a1
 	ld.w	$a1, $a1, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB8_3
+	blez	$a1, .LBB8_3
 # %bb.1:
 	slli.d	$a0, $a1, 5
 	add.d	$a0, $s0, $a0
@@ -872,7 +853,6 @@ cont_BindingsAreRenamingModuloMatching: # @cont_BindingsAreRenamingModuloMatchin
 	beqz	$a6, .LBB10_11
 # %bb.1:                                # %.lr.ph.preheader
 	addi.w	$a7, $zero, -1001
-	ori	$t0, $zero, 1
 	pcalau12i	$a5, %pc_hi20(cont_CURRENTBINDING)
 	b	.LBB10_3
 	.p2align	4, , 16
@@ -881,53 +861,53 @@ cont_BindingsAreRenamingModuloMatching: # @cont_BindingsAreRenamingModuloMatchin
 	beqz	$a6, .LBB10_7
 .LBB10_3:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t1, $a6, 0
-	addi.d	$t1, $t1, -2048
-	addi.w	$t1, $t1, -953
-	bltu	$a7, $t1, .LBB10_2
+	ld.w	$t0, $a6, 0
+	addi.d	$t0, $t0, -2048
+	addi.w	$t0, $t0, -953
+	bltu	$a7, $t0, .LBB10_2
 # %bb.4:                                #   in Loop: Header=BB10_3 Depth=1
-	ld.d	$t1, $a6, 8
-	ld.w	$t1, $t1, 0
-	blt	$t1, $t0, .LBB10_14
+	ld.d	$t0, $a6, 8
+	ld.w	$t0, $t0, 0
+	blez	$t0, .LBB10_14
 # %bb.5:                                #   in Loop: Header=BB10_3 Depth=1
-	slli.d	$t2, $t1, 5
-	add.d	$t2, $a0, $t2
-	ld.w	$t3, $t2, 4
-	bnez	$t3, .LBB10_17
+	slli.d	$t1, $t0, 5
+	add.d	$t1, $a0, $t1
+	ld.w	$t2, $t1, 4
+	bnez	$t2, .LBB10_17
 # %bb.6:                                #   in Loop: Header=BB10_3 Depth=1
-	st.d	$t2, $a5, %pc_lo12(cont_CURRENTBINDING)
-	st.d	$zero, $t2, 8
-	ld.d	$t3, $a5, %pc_lo12(cont_CURRENTBINDING)
-	ld.d	$t4, $a4, %pc_lo12(cont_LASTBINDING)
-	addi.d	$t2, $t2, 4
-	ld.w	$t5, $a2, %pc_lo12(cont_BINDINGS)
-	st.d	$zero, $t3, 16
-	st.d	$t4, $t3, 24
-	st.d	$t3, $a4, %pc_lo12(cont_LASTBINDING)
-	addi.d	$t3, $t5, 1
-	st.w	$t3, $a2, %pc_lo12(cont_BINDINGS)
-	st.w	$t1, $t2, 0
+	st.d	$t1, $a5, %pc_lo12(cont_CURRENTBINDING)
+	st.d	$zero, $t1, 8
+	ld.d	$t2, $a5, %pc_lo12(cont_CURRENTBINDING)
+	ld.d	$t3, $a4, %pc_lo12(cont_LASTBINDING)
+	addi.d	$t1, $t1, 4
+	ld.w	$t4, $a2, %pc_lo12(cont_BINDINGS)
+	st.d	$zero, $t2, 16
+	st.d	$t3, $t2, 24
+	st.d	$t2, $a4, %pc_lo12(cont_LASTBINDING)
+	addi.d	$t2, $t4, 1
+	st.w	$t2, $a2, %pc_lo12(cont_BINDINGS)
+	st.w	$t0, $t1, 0
 	b	.LBB10_2
 .LBB10_7:                               # %._crit_edge
-	ld.w	$a6, $a2, %pc_lo12(cont_BINDINGS)
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB10_11
+	ld.w	$a0, $a2, %pc_lo12(cont_BINDINGS)
+	blez	$a0, .LBB10_11
 # %bb.8:                                # %.lr.ph.preheader.i31
-	ld.d	$a7, $a4, %pc_lo12(cont_LASTBINDING)
-	addi.d	$a6, $a6, 1
+	ld.d	$a6, $a4, %pc_lo12(cont_LASTBINDING)
+	addi.d	$a0, $a0, 1
+	ori	$a7, $zero, 1
 	.p2align	4, , 16
 .LBB10_9:                               # %.lr.ph.i33
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a7, $a5, %pc_lo12(cont_CURRENTBINDING)
-	ld.d	$t0, $a7, 24
+	st.d	$a6, $a5, %pc_lo12(cont_CURRENTBINDING)
+	ld.d	$t0, $a6, 24
 	st.d	$t0, $a4, %pc_lo12(cont_LASTBINDING)
-	st.d	$zero, $a7, 12
-	st.d	$zero, $a7, 20
-	st.w	$zero, $a7, 28
-	addi.w	$a6, $a6, -1
-	st.d	$zero, $a7, 4
-	move	$a7, $t0
-	bltu	$a0, $a6, .LBB10_9
+	st.d	$zero, $a6, 12
+	st.d	$zero, $a6, 20
+	st.w	$zero, $a6, 28
+	addi.w	$a0, $a0, -1
+	st.d	$zero, $a6, 4
+	move	$a6, $t0
+	bltu	$a7, $a0, .LBB10_9
 # %bb.10:                               # %._crit_edge.i36
 	st.w	$zero, $a2, %pc_lo12(cont_BINDINGS)
 .LBB10_11:                              # %._crit_edge.thread
@@ -943,46 +923,46 @@ cont_BindingsAreRenamingModuloMatching: # @cont_BindingsAreRenamingModuloMatchin
 .LBB10_13:                              # %.critedge
 	ret
 .LBB10_14:
-	ld.w	$a6, $a2, %pc_lo12(cont_BINDINGS)
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB10_21
+	ld.w	$a0, $a2, %pc_lo12(cont_BINDINGS)
+	blez	$a0, .LBB10_21
 # %bb.15:                               # %.lr.ph.preheader.i22
-	ld.d	$a7, $a4, %pc_lo12(cont_LASTBINDING)
-	addi.d	$a6, $a6, 1
+	ld.d	$a6, $a4, %pc_lo12(cont_LASTBINDING)
+	addi.d	$a0, $a0, 1
+	ori	$a7, $zero, 1
 	.p2align	4, , 16
 .LBB10_16:                              # %.lr.ph.i24
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a7, $a5, %pc_lo12(cont_CURRENTBINDING)
-	ld.d	$t0, $a7, 24
+	st.d	$a6, $a5, %pc_lo12(cont_CURRENTBINDING)
+	ld.d	$t0, $a6, 24
 	st.d	$t0, $a4, %pc_lo12(cont_LASTBINDING)
-	st.d	$zero, $a7, 12
-	st.d	$zero, $a7, 20
-	st.w	$zero, $a7, 28
-	addi.w	$a6, $a6, -1
-	st.d	$zero, $a7, 4
-	move	$a7, $t0
-	bltu	$a0, $a6, .LBB10_16
+	st.d	$zero, $a6, 12
+	st.d	$zero, $a6, 20
+	st.w	$zero, $a6, 28
+	addi.w	$a0, $a0, -1
+	st.d	$zero, $a6, 4
+	move	$a6, $t0
+	bltu	$a7, $a0, .LBB10_16
 	b	.LBB10_20
 .LBB10_17:
-	ld.w	$a6, $a2, %pc_lo12(cont_BINDINGS)
-	ori	$a0, $zero, 1
-	blt	$a6, $a0, .LBB10_21
+	ld.w	$a0, $a2, %pc_lo12(cont_BINDINGS)
+	blez	$a0, .LBB10_21
 # %bb.18:                               # %.lr.ph.preheader.i
-	ld.d	$a7, $a4, %pc_lo12(cont_LASTBINDING)
-	addi.d	$a6, $a6, 1
+	ld.d	$a6, $a4, %pc_lo12(cont_LASTBINDING)
+	addi.d	$a0, $a0, 1
+	ori	$a7, $zero, 1
 	.p2align	4, , 16
 .LBB10_19:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a7, $a5, %pc_lo12(cont_CURRENTBINDING)
-	ld.d	$t0, $a7, 24
+	st.d	$a6, $a5, %pc_lo12(cont_CURRENTBINDING)
+	ld.d	$t0, $a6, 24
 	st.d	$t0, $a4, %pc_lo12(cont_LASTBINDING)
-	st.d	$zero, $a7, 12
-	st.d	$zero, $a7, 20
-	st.w	$zero, $a7, 28
-	addi.w	$a6, $a6, -1
-	st.d	$zero, $a7, 4
-	move	$a7, $t0
-	bltu	$a0, $a6, .LBB10_19
+	st.d	$zero, $a6, 12
+	st.d	$zero, $a6, 20
+	st.w	$zero, $a6, 28
+	addi.w	$a0, $a0, -1
+	st.d	$zero, $a6, 4
+	move	$a6, $t0
+	bltu	$a7, $a0, .LBB10_19
 .LBB10_20:                              # %._crit_edge.i
 	st.w	$zero, $a2, %pc_lo12(cont_BINDINGS)
 .LBB10_21:
@@ -1004,49 +984,41 @@ cont_TermMaxVar:                        # @cont_TermMaxVar
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$s0, $a1, 0
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$s0, $a2, .LBB11_7
+	blez	$s0, .LBB11_5
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(cont_INSTANCECONTEXT)
 	ld.d	$a0, $a0, %pc_lo12(cont_INSTANCECONTEXT)
-	beq	$fp, $a0, .LBB11_7
-# %bb.2:                                # %.lr.ph.preheader
+	beq	$fp, $a0, .LBB11_5
+	.p2align	4, , 16
+.LBB11_2:                               # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
 	slli.d	$a2, $s0, 5
 	add.d	$a2, $fp, $a2
-	ld.d	$a3, $a2, 8
-	beqz	$a3, .LBB11_7
-# %bb.3:
-	ori	$a2, $zero, 1
-	.p2align	4, , 16
-.LBB11_4:                               # %.lr.ph44
-                                        # =>This Inner Loop Header: Depth=1
-	move	$a1, $a3
-	slli.d	$a3, $s0, 5
-	add.d	$a3, $fp, $a3
+	ld.d	$a2, $a2, 8
+	beqz	$a2, .LBB11_5
+# %bb.3:                                # %.lr.ph44
+                                        #   in Loop: Header=BB11_2 Depth=1
+	move	$a1, $a2
+	slli.d	$a2, $s0, 5
+	add.d	$a2, $fp, $a2
 	ld.w	$s0, $a1, 0
-	ld.d	$fp, $a3, 16
-	blt	$s0, $a2, .LBB11_7
-# %bb.5:                                # %.lr.ph44
-                                        #   in Loop: Header=BB11_4 Depth=1
-	beq	$fp, $a0, .LBB11_7
-# %bb.6:                                # %.lr.ph
-                                        #   in Loop: Header=BB11_4 Depth=1
-	slli.d	$a3, $s0, 5
-	add.d	$a3, $fp, $a3
-	ld.d	$a3, $a3, 8
-	bnez	$a3, .LBB11_4
-.LBB11_7:                               # %cont_Deref.exit
+	ld.d	$fp, $a2, 16
+	blez	$s0, .LBB11_5
+# %bb.4:                                # %.lr.ph44
+                                        #   in Loop: Header=BB11_2 Depth=1
+	bne	$fp, $a0, .LBB11_2
+.LBB11_5:                               # %cont_Deref.exit
 	addi.w	$a0, $s0, -2001
 	addi.w	$a2, $zero, -2001
-	bltu	$a2, $a0, .LBB11_12
-# %bb.8:
+	bltu	$a2, $a0, .LBB11_10
+# %bb.6:
 	ld.d	$s1, $a1, 16
-	beqz	$s1, .LBB11_11
-# %bb.9:                                # %.lr.ph36.preheader
+	beqz	$s1, .LBB11_9
+# %bb.7:                                # %.lr.ph36.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
-.LBB11_10:                              # %.lr.ph36
+.LBB11_8:                               # %.lr.ph36
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s1, 8
 	move	$a0, $fp
@@ -1057,11 +1029,11 @@ cont_TermMaxVar:                        # @cont_TermMaxVar
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s0, $a1
 	or	$s0, $a0, $a1
-	bnez	$s1, .LBB11_10
-	b	.LBB11_12
-.LBB11_11:
+	bnez	$s1, .LBB11_8
+	b	.LBB11_10
+.LBB11_9:
 	move	$s0, $zero
-.LBB11_12:                              # %.loopexit
+.LBB11_10:                              # %.loopexit
 	move	$a0, $s0
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -1083,55 +1055,50 @@ cont_TermSize:                          # @cont_TermSize
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$a2, $a1, 0
-	ori	$fp, $zero, 1
-	move	$s0, $a0
-	blt	$a2, $fp, .LBB12_7
+	move	$fp, $a0
+	blez	$a2, .LBB12_5
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(cont_INSTANCECONTEXT)
 	ld.d	$a0, $a0, %pc_lo12(cont_INSTANCECONTEXT)
-	beq	$s0, $a0, .LBB12_7
-# %bb.2:                                # %.lr.ph.preheader
-	slli.d	$a3, $a2, 5
-	add.d	$a3, $s0, $a3
-	ld.d	$a4, $a3, 8
-	beqz	$a4, .LBB12_7
-# %bb.3:
-	ori	$a3, $zero, 1
+	beq	$fp, $a0, .LBB12_5
 	.p2align	4, , 16
-.LBB12_4:                               # %.lr.ph27
+.LBB12_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a1, $a4
+	slli.d	$a3, $a2, 5
+	add.d	$a3, $fp, $a3
+	ld.d	$a3, $a3, 8
+	beqz	$a3, .LBB12_5
+# %bb.3:                                # %.lr.ph27
+                                        #   in Loop: Header=BB12_2 Depth=1
+	move	$a1, $a3
 	slli.d	$a2, $a2, 5
-	add.d	$a4, $s0, $a2
+	add.d	$a3, $fp, $a2
 	ld.w	$a2, $a1, 0
-	ld.d	$s0, $a4, 16
-	blt	$a2, $a3, .LBB12_7
-# %bb.5:                                # %.lr.ph27
-                                        #   in Loop: Header=BB12_4 Depth=1
-	beq	$s0, $a0, .LBB12_7
-# %bb.6:                                # %.lr.ph
-                                        #   in Loop: Header=BB12_4 Depth=1
-	slli.d	$a4, $a2, 5
-	add.d	$a4, $s0, $a4
-	ld.d	$a4, $a4, 8
-	bnez	$a4, .LBB12_4
-.LBB12_7:                               # %cont_Deref.exit
+	ld.d	$fp, $a3, 16
+	blez	$a2, .LBB12_5
+# %bb.4:                                # %.lr.ph27
+                                        #   in Loop: Header=BB12_2 Depth=1
+	bne	$fp, $a0, .LBB12_2
+.LBB12_5:                               # %cont_Deref.exit
 	ld.d	$s1, $a1, 16
-	beqz	$s1, .LBB12_10
-# %bb.8:                                # %.lr.ph23.preheader
-	ori	$fp, $zero, 1
+	beqz	$s1, .LBB12_8
+# %bb.6:                                # %.lr.ph23.preheader
+	ori	$s0, $zero, 1
 	.p2align	4, , 16
-.LBB12_9:                               # %.lr.ph23
+.LBB12_7:                               # %.lr.ph23
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s1, 8
-	move	$a0, $s0
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cont_TermSize)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s1, 0
-	add.w	$fp, $a0, $fp
-	bnez	$s1, .LBB12_9
-.LBB12_10:                              # %._crit_edge
-	move	$a0, $fp
+	add.w	$s0, $a0, $s0
+	bnez	$s1, .LBB12_7
+	b	.LBB12_9
+.LBB12_8:
+	ori	$s0, $zero, 1
+.LBB12_9:                               # %._crit_edge
+	move	$a0, $s0
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -1146,72 +1113,64 @@ cont_TermSize:                          # @cont_TermSize
 	.type	cont_TermContainsSymbol,@function
 cont_TermContainsSymbol:                # @cont_TermContainsSymbol
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$a3, $a1, 0
-	ori	$fp, $zero, 1
-	move	$s0, $a2
-	move	$s1, $a0
-	blt	$a3, $fp, .LBB13_7
+	move	$fp, $a2
+	move	$s0, $a0
+	blez	$a3, .LBB13_5
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(cont_INSTANCECONTEXT)
 	ld.d	$a0, $a0, %pc_lo12(cont_INSTANCECONTEXT)
-	beq	$s1, $a0, .LBB13_7
-# %bb.2:                                # %.lr.ph.preheader
-	slli.d	$a2, $a3, 5
-	add.d	$a2, $s1, $a2
-	ld.d	$a4, $a2, 8
-	beqz	$a4, .LBB13_7
-# %bb.3:
-	ori	$a2, $zero, 1
+	beq	$s0, $a0, .LBB13_5
 	.p2align	4, , 16
-.LBB13_4:                               # %.lr.ph29
+.LBB13_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	move	$a1, $a4
-	slli.d	$a3, $a3, 5
-	add.d	$a4, $s1, $a3
+	slli.d	$a2, $a3, 5
+	add.d	$a2, $s0, $a2
+	ld.d	$a2, $a2, 8
+	beqz	$a2, .LBB13_5
+# %bb.3:                                # %.lr.ph29
+                                        #   in Loop: Header=BB13_2 Depth=1
+	move	$a1, $a2
+	slli.d	$a2, $a3, 5
+	add.d	$a2, $s0, $a2
 	ld.w	$a3, $a1, 0
-	ld.d	$s1, $a4, 16
-	blt	$a3, $a2, .LBB13_7
-# %bb.5:                                # %.lr.ph29
-                                        #   in Loop: Header=BB13_4 Depth=1
-	beq	$s1, $a0, .LBB13_7
-# %bb.6:                                # %.lr.ph
-                                        #   in Loop: Header=BB13_4 Depth=1
-	slli.d	$a4, $a3, 5
-	add.d	$a4, $s1, $a4
-	ld.d	$a4, $a4, 8
-	bnez	$a4, .LBB13_4
-.LBB13_7:                               # %cont_Deref.exit
-	beq	$a3, $s0, .LBB13_12
-# %bb.8:
-	addi.d	$s2, $a1, 16
+	ld.d	$s0, $a2, 16
+	blez	$a3, .LBB13_5
+# %bb.4:                                # %.lr.ph29
+                                        #   in Loop: Header=BB13_2 Depth=1
+	bne	$s0, $a0, .LBB13_2
+.LBB13_5:                               # %cont_Deref.exit
+	ori	$a0, $zero, 1
+	beq	$a3, $fp, .LBB13_11
+# %bb.6:
+	addi.d	$s1, $a1, 16
 	.p2align	4, , 16
-.LBB13_9:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s2, $s2, 0
-	beqz	$s2, .LBB13_11
-# %bb.10:                               #   in Loop: Header=BB13_9 Depth=1
-	ld.d	$a1, $s2, 8
-	move	$a0, $s1
-	move	$a2, $s0
+.LBB13_7:                               # =>This Inner Loop Header: Depth=1
+	ld.d	$s1, $s1, 0
+	beqz	$s1, .LBB13_10
+# %bb.8:                                #   in Loop: Header=BB13_7 Depth=1
+	ld.d	$a1, $s1, 8
+	move	$a0, $s0
+	move	$a2, $fp
 	pcaddu18i	$ra, %call36(cont_TermContainsSymbol)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB13_9
-	b	.LBB13_12
-.LBB13_11:
-	move	$fp, $zero
-.LBB13_12:                              # %.loopexit
-	move	$a0, $fp
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	beqz	$a0, .LBB13_7
+# %bb.9:
+	ori	$a0, $zero, 1
+	b	.LBB13_11
+.LBB13_10:
+	move	$a0, $zero
+.LBB13_11:                              # %.loopexit
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end13:
 	.size	cont_TermContainsSymbol, .Lfunc_end13-cont_TermContainsSymbol
@@ -1228,45 +1187,37 @@ cont_TermPrintPrefix:                   # @cont_TermPrintPrefix
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	ld.w	$a1, $a1, 0
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB14_7
+	blez	$a1, .LBB14_5
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(cont_INSTANCECONTEXT)
 	ld.d	$a0, $a0, %pc_lo12(cont_INSTANCECONTEXT)
-	beq	$fp, $a0, .LBB14_7
-# %bb.2:                                # %.lr.ph.preheader
+	beq	$fp, $a0, .LBB14_5
+	.p2align	4, , 16
+.LBB14_2:                               # %.lr.ph
+                                        # =>This Inner Loop Header: Depth=1
 	slli.d	$a2, $a1, 5
 	add.d	$a2, $fp, $a2
-	ld.d	$a3, $a2, 8
-	beqz	$a3, .LBB14_7
-# %bb.3:
-	ori	$a2, $zero, 1
-	.p2align	4, , 16
-.LBB14_4:                               # %.lr.ph38
-                                        # =>This Inner Loop Header: Depth=1
-	move	$s0, $a3
+	ld.d	$a2, $a2, 8
+	beqz	$a2, .LBB14_5
+# %bb.3:                                # %.lr.ph38
+                                        #   in Loop: Header=BB14_2 Depth=1
+	move	$s0, $a2
 	slli.d	$a1, $a1, 5
-	add.d	$a3, $fp, $a1
+	add.d	$a2, $fp, $a1
 	ld.w	$a1, $s0, 0
-	ld.d	$fp, $a3, 16
-	blt	$a1, $a2, .LBB14_7
-# %bb.5:                                # %.lr.ph38
-                                        #   in Loop: Header=BB14_4 Depth=1
-	beq	$fp, $a0, .LBB14_7
-# %bb.6:                                # %.lr.ph
-                                        #   in Loop: Header=BB14_4 Depth=1
-	slli.d	$a3, $a1, 5
-	add.d	$a3, $fp, $a3
-	ld.d	$a3, $a3, 8
-	bnez	$a3, .LBB14_4
-.LBB14_7:                               # %cont_Deref.exit
+	ld.d	$fp, $a2, 16
+	blez	$a1, .LBB14_5
+# %bb.4:                                # %.lr.ph38
+                                        #   in Loop: Header=BB14_2 Depth=1
+	bne	$fp, $a0, .LBB14_2
+.LBB14_5:                               # %cont_Deref.exit
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(symbol_Print)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 16
-	beqz	$a0, .LBB14_12
-# %bb.8:
+	beqz	$a0, .LBB14_10
+# %bb.6:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$s1, $a0, %got_pc_lo12(stdout)
 	ld.d	$a1, $s1, 0
@@ -1274,24 +1225,24 @@ cont_TermPrintPrefix:                   # @cont_TermPrintPrefix
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $s0, 16
-	beqz	$s0, .LBB14_11
+	beqz	$s0, .LBB14_9
 	.p2align	4, , 16
-.LBB14_9:                               # %.lr.ph30
+.LBB14_7:                               # %.lr.ph30
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $s0, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(cont_TermPrintPrefix)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
-	beqz	$a0, .LBB14_11
-# %bb.10:                               #   in Loop: Header=BB14_9 Depth=1
+	beqz	$a0, .LBB14_9
+# %bb.8:                                #   in Loop: Header=BB14_7 Depth=1
 	ld.d	$a1, $s1, 0
 	ori	$a0, $zero, 44
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $s0, 0
-	bnez	$s0, .LBB14_9
-.LBB14_11:                              # %._crit_edge
+	bnez	$s0, .LBB14_7
+.LBB14_9:                               # %._crit_edge
 	ld.d	$a1, $s1, 0
 	ori	$a0, $zero, 41
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
@@ -1301,7 +1252,7 @@ cont_TermPrintPrefix:                   # @cont_TermPrintPrefix
 	addi.d	$sp, $sp, 32
 	pcaddu18i	$t8, %call36(putc)
 	jr	$t8
-.LBB14_12:
+.LBB14_10:
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload

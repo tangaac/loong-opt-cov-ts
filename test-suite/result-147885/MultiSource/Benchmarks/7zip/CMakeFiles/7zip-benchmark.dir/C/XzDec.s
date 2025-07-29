@@ -475,8 +475,7 @@ MixCoder_Free:                          # @MixCoder_Free
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a2, $a0, 16
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB7_7
+	blez	$a2, .LBB7_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $fp, 0
 	beqz	$a1, .LBB7_7
@@ -745,8 +744,7 @@ MixCoder_Code:                          # @MixCoder_Code
 	beqz	$a1, .LBB10_27
 .LBB10_2:
 	ld.w	$a1, $s5, 16
-	ori	$fp, $zero, 1
-	blt	$a1, $fp, .LBB10_26
+	blez	$a1, .LBB10_26
 # %bb.3:                                # %.split.preheader
 	st.d	$a7, $sp, 0                     # 8-byte Folded Spill
 	addi.d	$a0, $a1, -1
@@ -766,18 +764,18 @@ MixCoder_Code:                          # @MixCoder_Code
 .LBB10_4:                               # %._crit_edge
                                         #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ori	$fp, $zero, 1
 	beqz	$s8, .LBB10_25
 .LBB10_5:                               # %.split
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_17 Depth 2
-	blt	$a1, $fp, .LBB10_25
+	blez	$a1, .LBB10_25
 # %bb.6:                                #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$a0, $s1, 0
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	sub.d	$a0, $a2, $a0
 	st.d	$a0, $sp, 88
-	bne	$a1, $fp, .LBB10_8
+	ori	$a0, $zero, 1
+	bne	$a1, $a0, .LBB10_8
 # %bb.7:                                #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$a0, $s3, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
@@ -810,7 +808,8 @@ MixCoder_Code:                          # @MixCoder_Code
 	ld.d	$a4, $sp, 96
 	add.d	$a5, $a5, $a2
 	st.d	$a5, $s1, 0
-	bne	$a1, $fp, .LBB10_12
+	ori	$a5, $zero, 1
+	bne	$a1, $a5, .LBB10_12
 # %bb.11:                               #   in Loop: Header=BB10_5 Depth=1
 	ld.d	$a5, $s3, 0
 	add.d	$a5, $a5, $a4
@@ -933,7 +932,8 @@ MixCoder_Code:                          # @MixCoder_Code
 	beqz	$s0, .LBB10_28
 .LBB10_26:                              # %.split141.us.thread
 	move	$a0, $zero
-	st.w	$fp, $a7, 0
+	ori	$a1, $zero, 1
+	st.w	$a1, $a7, 0
 .LBB10_27:
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
@@ -1027,8 +1027,7 @@ XzBlock_Parse:                          # @XzBlock_Parse
 	bnez	$a3, .LBB12_20
 .LBB12_2:
 	ext.w.b	$a3, $a2
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a3, .LBB12_27
+	bltz	$a3, .LBB12_27
 .LBB12_3:
 	move	$s2, $zero
 	andi	$a2, $a2, 3
@@ -1279,8 +1278,7 @@ XzDec_Init:                             # @XzDec_Init
 	addi.w	$a0, $a5, 0
 	beqz	$a0, .LBB13_27
 .LBB13_5:                               # %.critedge
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB13_12
+	blez	$a2, .LBB13_12
 # %bb.6:                                # %.lr.ph.i
 	ld.d	$a1, $fp, 0
 	beqz	$a1, .LBB13_12
@@ -1568,8 +1566,7 @@ XzUnpacker_Free:                        # @XzUnpacker_Free
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a2, $a0, 104
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB15_7
+	blez	$a2, .LBB15_7
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a1, $fp, 88
 	beqz	$a1, .LBB15_7

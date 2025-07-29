@@ -24,14 +24,13 @@ main:                                   # @main
 	move	$s0, $a0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 32
-	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_12
 # %bb.2:                                # %.preheader
 	move	$fp, $a0
 	addi.w	$s2, $s0, 0
-	bge	$s2, $s1, .LBB0_6
+	bgtz	$s2, .LBB0_6
 .LBB0_3:                                # %._crit_edge
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)

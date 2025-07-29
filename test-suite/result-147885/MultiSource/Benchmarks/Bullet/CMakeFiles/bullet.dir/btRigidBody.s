@@ -1050,17 +1050,16 @@ _ZN11btRigidBody12applyDampingEf:       # @_ZN11btRigidBody12applyDampingEf
 	pcaddu18i	$ra, %call36(powf)
 	jirl	$ra, $ra, 0
 	fld.s	$fa1, $fp, 344
-	fld.s	$fa2, $fp, 348
 	fmul.s	$fa1, $fa0, $fa1
+	fld.s	$fa2, $fp, 348
 	fst.s	$fa1, $fp, 344
 	fld.s	$fa3, $fp, 352
-	fmul.s	$fa2, $fa0, $fa2
 	ld.bu	$a0, $fp, 484
+	fmul.s	$fa2, $fa0, $fa2
 	fst.s	$fa2, $fp, 348
 	fmul.s	$fa0, $fa0, $fa3
-	ori	$a1, $zero, 1
 	fst.s	$fa0, $fp, 352
-	bne	$a0, $a1, .LBB13_12
+	beqz	$a0, .LBB13_12
 # %bb.1:
 	fld.s	$fa3, $fp, 496
 	fmul.s	$fa4, $fa2, $fa2
@@ -1592,8 +1591,7 @@ _ZN11btRigidBody24checkCollideWithOverrideEP17btCollisionObject: # @_ZN11btRigid
 	beqz	$a1, .LBB20_7
 # %bb.2:                                # %.preheader
 	ld.w	$a3, $a2, 524
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB20_7
+	blez	$a3, .LBB20_7
 # %bb.3:                                # %.lr.ph
 	ld.d	$a2, $a2, 536
 	.p2align	4, , 16
@@ -1636,8 +1634,7 @@ _ZN11btRigidBody16addConstraintRefEP17btTypedConstraint: # @_ZN11btRigidBody16ad
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	ld.w	$a3, $a0, 524
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB21_5
+	blez	$a3, .LBB21_5
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a2, $a0, 536
 	move	$a5, $a3
@@ -1679,8 +1676,7 @@ _ZN11btRigidBody16addConstraintRefEP17btTypedConstraint: # @_ZN11btRigidBody16ad
 	move	$fp, $a0
 	move	$a0, $s2
 	ld.d	$a2, $a0, 536
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB21_18
+	blez	$a3, .LBB21_18
 .LBB21_9:                               # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -1724,14 +1720,12 @@ _ZN11btRigidBody16addConstraintRefEP17btTypedConstraint: # @_ZN11btRigidBody16ad
 	bnez	$a5, .LBB21_15
 .LBB21_16:                              # %_ZNK20btAlignedObjectArrayIP17btTypedConstraintE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a0, 544
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB21_20
+	bnez	$a4, .LBB21_20
 	b	.LBB21_21
 .LBB21_17:
 	move	$fp, $zero
 	ld.d	$a2, $a0, 536
-	ori	$a1, $zero, 1
-	bge	$a3, $a1, .LBB21_9
+	bgtz	$a3, .LBB21_9
 .LBB21_18:                              # %_ZNK20btAlignedObjectArrayIP17btTypedConstraintE4copyEiiPS1_.exit.i.i
 	move	$a1, $s1
 	beqz	$a2, .LBB21_21
@@ -1778,8 +1772,7 @@ _ZN11btRigidBody16addConstraintRefEP17btTypedConstraint: # @_ZN11btRigidBody16ad
 _ZN11btRigidBody19removeConstraintRefEP17btTypedConstraint: # @_ZN11btRigidBody19removeConstraintRefEP17btTypedConstraint
 # %bb.0:
 	ld.w	$a3, $a0, 524
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB22_5
+	blez	$a3, .LBB22_5
 # %bb.1:                                # %.lr.ph.i.i
 	ld.d	$a2, $a0, 536
 	move	$a5, $zero

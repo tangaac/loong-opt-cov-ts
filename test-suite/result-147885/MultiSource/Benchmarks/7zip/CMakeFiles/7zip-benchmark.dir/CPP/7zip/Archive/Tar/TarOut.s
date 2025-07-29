@@ -402,8 +402,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	bnez	$a3, .LBB2_53
 # %bb.54:
 	ld.bu	$a0, $s1, 105
-	ori	$s3, $zero, 1
-	bne	$a0, $s3, .LBB2_56
+	beqz	$a0, .LBB2_56
 # %bb.55:
 	ld.w	$a1, $s1, 40
 	addi.d	$a0, $sp, 329
@@ -412,7 +411,7 @@ _ZN8NArchive4NTar11COutArchive15WriteHeaderRealERKNS0_5CItemE: # @_ZN8NArchive4N
 	beqz	$a0, .LBB2_62
 .LBB2_56:
 	ld.bu	$a0, $s1, 106
-	bne	$a0, $s3, .LBB2_58
+	beqz	$a0, .LBB2_58
 # %bb.57:
 	ld.w	$a1, $s1, 44
 	addi.d	$a0, $sp, 337
@@ -626,11 +625,10 @@ _ZN8NArchive4NTar11COutArchive11WriteHeaderERKNS0_5CItemE: # @_ZN8NArchive4NTar1
 # %bb.5:                                # %.noexc
 	move	$s4, $a0
 	ld.w	$a1, $sp, 16
-	ori	$a2, $zero, 1
-	blt	$s6, $a2, .LBB4_22
+	blez	$s6, .LBB4_22
 # %bb.6:                                # %.preheader.i.i
 	ld.d	$a0, $sp, 8
-	blt	$a1, $a2, .LBB4_14
+	blez	$a1, .LBB4_14
 # %bb.7:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -800,11 +798,10 @@ _ZN8NArchive4NTar11COutArchive11WriteHeaderERKNS0_5CItemE: # @_ZN8NArchive4NTar1
 # %bb.36:                               # %.noexc57
 	move	$s0, $a0
 	ld.w	$a1, $sp, 16
-	ori	$a2, $zero, 1
-	blt	$s2, $a2, .LBB4_53
+	blez	$s2, .LBB4_53
 # %bb.37:                               # %.preheader.i.i46
 	ld.d	$a0, $sp, 8
-	blt	$a1, $a2, .LBB4_45
+	blez	$a1, .LBB4_45
 # %bb.38:                               # %iter.check76
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1083,11 +1080,9 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	vst	$vr1, $a0, 0
 	ld.wu	$s1, $a1, 8
 	addi.d	$s2, $s1, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vst	$vr1, $sp, 0                    # 16-byte Folded Spill
-	beqz	$a0, .LBB5_2
+	bgez	$a0, .LBB5_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB5_3
@@ -1118,10 +1113,8 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	vst	$vr1, $fp, 48
 	ld.wu	$s2, $s0, 56
 	addi.d	$s3, $s2, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
-	beqz	$a0, .LBB5_7
+	slli.d	$a0, $s3, 31
+	bgez	$a0, .LBB5_7
 # %bb.6:
 	move	$s1, $zero
 	b	.LBB5_9
@@ -1152,10 +1145,8 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	vst	$vr1, $fp, 64
 	ld.wu	$s4, $s0, 72
 	addi.d	$s5, $s4, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s5, $a0
-	beqz	$a0, .LBB5_13
+	slli.d	$a0, $s5, 31
+	bgez	$a0, .LBB5_13
 # %bb.12:
 	move	$s2, $zero
 	b	.LBB5_15
@@ -1185,10 +1176,8 @@ _ZN8NArchive4NTar5CItemC2ERKS1_:        # @_ZN8NArchive4NTar5CItemC2ERKS1_
 	vst	$vr1, $fp, 80
 	ld.wu	$s4, $s0, 88
 	addi.d	$s5, $s4, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s5, $a0
-	beqz	$a0, .LBB5_19
+	slli.d	$a0, $s5, 31
+	bgez	$a0, .LBB5_19
 # %bb.18:
 	move	$a0, $zero
 	b	.LBB5_21
@@ -1394,12 +1383,11 @@ _ZN8NArchive4NTar5CItemaSERKS1_:        # @_ZN8NArchive4NTar5CItemaSERKS1_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB7_21
+	blez	$s3, .LBB7_21
 # %bb.5:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB7_13
+	blez	$a1, .LBB7_13
 # %bb.6:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1510,12 +1498,11 @@ _ZN8NArchive4NTar5CItemaSERKS1_:        # @_ZN8NArchive4NTar5CItemaSERKS1_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 56
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB7_43
+	blez	$s3, .LBB7_43
 # %bb.27:                               # %.preheader.i.i13
 	ld.d	$a0, $fp, 48
-	blt	$a1, $a2, .LBB7_35
+	blez	$a1, .LBB7_35
 # %bb.28:                               # %iter.check78
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1622,12 +1609,11 @@ _ZN8NArchive4NTar5CItemaSERKS1_:        # @_ZN8NArchive4NTar5CItemaSERKS1_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 72
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB7_65
+	blez	$s3, .LBB7_65
 # %bb.49:                               # %.preheader.i.i32
 	ld.d	$a0, $fp, 64
-	blt	$a1, $a2, .LBB7_57
+	blez	$a1, .LBB7_57
 # %bb.50:                               # %iter.check111
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -1734,12 +1720,11 @@ _ZN8NArchive4NTar5CItemaSERKS1_:        # @_ZN8NArchive4NTar5CItemaSERKS1_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 88
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB7_87
+	blez	$s3, .LBB7_87
 # %bb.71:                               # %.preheader.i.i51
 	ld.d	$a0, $fp, 80
-	blt	$a1, $a2, .LBB7_79
+	blez	$a1, .LBB7_79
 # %bb.72:                               # %iter.check144
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -2108,7 +2093,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2116,7 +2100,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s1, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s1, $zero
@@ -2138,8 +2121,8 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -2153,11 +2136,10 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s4, $s5, .LBB11_11
+	blez	$s4, .LBB11_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB11_12
+	blez	$s1, .LBB11_12
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -2253,7 +2235,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $a0, 8
 	stx.b	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -2312,11 +2293,9 @@ _ZNK11CStringBaseIcE3MidEii:            # @_ZNK11CStringBaseIcE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s0, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB12_14
+	bgez	$a0, .LBB12_14
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB12_15

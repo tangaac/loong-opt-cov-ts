@@ -167,10 +167,9 @@ main:                                   # @main
 	st.d	$a0, $sp, 128
 	b	.LBB0_5
 .LBB0_17:                               # %.preheader
-	addi.w	$a1, $fp, 0
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB0_95
+	addi.w	$a0, $fp, 0
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	blez	$a0, .LBB0_95
 # %bb.18:                               # %.lr.ph244
 	move	$s4, $zero
 	pcalau12i	$a0, %pc_hi20(_ZN9__gnu_cxx21_Hashtable_prime_listImE16__stl_prime_listE)

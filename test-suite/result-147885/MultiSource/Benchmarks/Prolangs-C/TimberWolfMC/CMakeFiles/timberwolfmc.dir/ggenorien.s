@@ -26,9 +26,9 @@ ggenorien:                              # @ggenorien
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a1, $a2, 0
 	add.w	$a2, $a1, $a0
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB0_99
+	blez	$a2, .LBB0_99
 # %bb.1:                                # %.lr.ph328.preheader
+	ori	$a4, $zero, 1
 	pcalau12i	$a2, %got_pc_hi20(cellarray)
 	ld.d	$a5, $a2, %got_pc_lo12(cellarray)
 	ori	$a2, $zero, 1
@@ -644,34 +644,34 @@ ggenorien:                              # @ggenorien
 	pcalau12i	$a0, %got_pc_hi20(numnets)
 	ld.d	$a0, $a0, %got_pc_lo12(numnets)
 	ld.w	$a0, $a0, 0
-	ori	$fp, $zero, 1
-	blt	$a0, $fp, .LBB0_107
+	blez	$a0, .LBB0_107
 # %bb.100:                              # %.lr.ph339
 	pcalau12i	$a1, %got_pc_hi20(netarray)
 	ld.d	$a1, $a1, %got_pc_lo12(netarray)
 	pcalau12i	$a2, %got_pc_hi20(maxterm)
 	ld.d	$a2, $a2, %got_pc_lo12(maxterm)
-	ld.d	$s0, $a1, 0
-	ld.w	$s1, $a2, 0
+	ld.d	$fp, $a1, 0
+	ld.w	$s0, $a2, 0
 	pcalau12i	$a1, %got_pc_hi20(termarray)
-	ld.d	$s2, $a1, %got_pc_lo12(termarray)
+	ld.d	$s1, $a1, %got_pc_lo12(termarray)
 	addi.d	$a0, $a0, 1
-	bstrpick.d	$s3, $a0, 31, 0
+	bstrpick.d	$s2, $a0, 31, 0
+	ori	$s3, $zero, 1
 	b	.LBB0_102
 	.p2align	4, , 16
 .LBB0_101:                              # %._crit_edge335
                                         #   in Loop: Header=BB0_102 Depth=1
-	addi.d	$fp, $fp, 1
-	beq	$fp, $s3, .LBB0_107
+	addi.d	$s3, $s3, 1
+	beq	$s3, $s2, .LBB0_107
 .LBB0_102:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_105 Depth 2
-	slli.d	$a0, $fp, 3
-	ldx.d	$a0, $s0, $a0
+	slli.d	$a0, $s3, 3
+	ldx.d	$a0, $fp, $a0
 	ld.d	$s4, $a0, 0
 	beqz	$s4, .LBB0_101
 # %bb.103:                              # %.lr.ph334
                                         #   in Loop: Header=BB0_102 Depth=1
-	ld.d	$s5, $s2, 0
+	ld.d	$s5, $s1, 0
 	b	.LBB0_105
 	.p2align	4, , 16
 .LBB0_104:                              #   in Loop: Header=BB0_105 Depth=2
@@ -680,14 +680,14 @@ ggenorien:                              # @ggenorien
 .LBB0_105:                              #   Parent Loop BB0_102 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$s6, $s4, 24
-	bge	$s1, $s6, .LBB0_104
+	bge	$s0, $s6, .LBB0_104
 # %bb.106:                              #   in Loop: Header=BB0_105 Depth=2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	slli.d	$a1, $s6, 3
 	stx.d	$a0, $s5, $a1
-	st.w	$fp, $a0, 0
+	st.w	$s3, $a0, 0
 	st.d	$s4, $a0, 8
 	b	.LBB0_104
 .LBB0_107:                              # %.preheader302
@@ -695,88 +695,87 @@ ggenorien:                              # @ggenorien
 	ld.w	$a0, $a0, 0
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	add.w	$a3, $a1, $a0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB0_117
+	add.w	$a2, $a1, $a0
+	blez	$a2, .LBB0_117
 # %bb.108:                              # %.lr.ph350
-	pcalau12i	$a1, %got_pc_hi20(cellarray)
-	ld.d	$a1, $a1, %got_pc_lo12(cellarray)
-	pcalau12i	$a2, %got_pc_hi20(termarray)
-	ld.d	$a2, $a2, %got_pc_lo12(termarray)
+	pcalau12i	$a0, %got_pc_hi20(cellarray)
+	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
+	pcalau12i	$a1, %got_pc_hi20(termarray)
+	ld.d	$a1, $a1, %got_pc_lo12(termarray)
+	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
-	ld.d	$a2, $a2, 0
-	addi.d	$a3, $a3, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	ori	$a4, $zero, 1
+	addi.d	$a2, $a2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	ori	$a3, $zero, 1
 	b	.LBB0_110
 	.p2align	4, , 16
 .LBB0_109:                              # %.loopexit
                                         #   in Loop: Header=BB0_110 Depth=1
-	addi.d	$a4, $a4, 1
-	beq	$a4, $a3, .LBB0_117
+	addi.d	$a3, $a3, 1
+	beq	$a3, $a2, .LBB0_117
 .LBB0_110:                              # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_113 Depth 2
                                         #     Child Loop BB0_116 Depth 2
-	slli.d	$a5, $a4, 3
-	ldx.d	$a7, $a1, $a5
-	ld.w	$a5, $a7, 76
-	beqz	$a5, .LBB0_114
+	slli.d	$a4, $a3, 3
+	ldx.d	$a6, $a0, $a4
+	ld.w	$a4, $a6, 76
+	beqz	$a4, .LBB0_114
 # %bb.111:                              # %.preheader
                                         #   in Loop: Header=BB0_110 Depth=1
-	ld.w	$t0, $a7, 132
-	blt	$t0, $a0, .LBB0_109
+	ld.w	$a7, $a6, 132
+	blez	$a7, .LBB0_109
 # %bb.112:                              # %.lr.ph342
                                         #   in Loop: Header=BB0_110 Depth=1
-	ld.d	$t1, $a7, 144
-	ld.w	$a5, $a7, 12
-	ld.w	$a6, $a7, 16
-	addi.d	$a7, $t0, 1
-	bstrpick.d	$t0, $a7, 31, 0
-	addi.d	$a7, $t1, 84
-	addi.d	$t0, $t0, -1
+	ld.d	$t0, $a6, 144
+	ld.w	$a4, $a6, 12
+	ld.w	$a5, $a6, 16
+	addi.d	$a6, $a7, 1
+	bstrpick.d	$a7, $a6, 31, 0
+	addi.d	$a6, $t0, 84
+	addi.d	$a7, $a7, -1
 	.p2align	4, , 16
 .LBB0_113:                              #   Parent Loop BB0_110 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t1, $a7, -40
-	slli.d	$t1, $t1, 3
-	ldx.d	$t1, $a2, $t1
-	ld.w	$t2, $a7, -4
-	ld.d	$t1, $t1, 8
-	ld.w	$t3, $a7, 0
-	add.d	$t2, $a5, $t2
-	st.w	$t2, $t1, 8
-	add.d	$t2, $a6, $t3
-	st.w	$t2, $t1, 12
-	addi.d	$t0, $t0, -1
-	addi.d	$a7, $a7, 44
-	bnez	$t0, .LBB0_113
+	ld.w	$t0, $a6, -40
+	slli.d	$t0, $t0, 3
+	ldx.d	$t0, $a1, $t0
+	ld.w	$t1, $a6, -4
+	ld.d	$t0, $t0, 8
+	ld.w	$t2, $a6, 0
+	add.d	$t1, $a4, $t1
+	st.w	$t1, $t0, 8
+	add.d	$t1, $a5, $t2
+	st.w	$t1, $t0, 12
+	addi.d	$a7, $a7, -1
+	addi.d	$a6, $a6, 44
+	bnez	$a7, .LBB0_113
 	b	.LBB0_109
 	.p2align	4, , 16
 .LBB0_114:                              #   in Loop: Header=BB0_110 Depth=1
-	ld.w	$a5, $a7, 56
-	alsl.d	$a5, $a5, $a7, 3
-	ld.d	$a5, $a5, 152
-	ld.d	$a5, $a5, 88
-	beqz	$a5, .LBB0_109
+	ld.w	$a4, $a6, 56
+	alsl.d	$a4, $a4, $a6, 3
+	ld.d	$a4, $a4, 152
+	ld.d	$a4, $a4, 88
+	beqz	$a4, .LBB0_109
 # %bb.115:                              # %.lr.ph347
                                         #   in Loop: Header=BB0_110 Depth=1
-	ld.w	$a6, $a7, 12
-	ld.w	$a7, $a7, 16
+	ld.w	$a5, $a6, 12
+	ld.w	$a6, $a6, 16
 	.p2align	4, , 16
 .LBB0_116:                              #   Parent Loop BB0_110 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t0, $a5, 24
-	slli.d	$t0, $t0, 3
-	ldx.d	$t0, $a2, $t0
-	ld.w	$t1, $a5, 8
-	ld.d	$t0, $t0, 8
-	ld.w	$t2, $a5, 12
-	ld.d	$a5, $a5, 0
-	add.d	$t1, $a6, $t1
-	st.w	$t1, $t0, 8
-	add.d	$t1, $a7, $t2
-	st.w	$t1, $t0, 12
-	bnez	$a5, .LBB0_116
+	ld.w	$a7, $a4, 24
+	slli.d	$a7, $a7, 3
+	ldx.d	$a7, $a1, $a7
+	ld.w	$t0, $a4, 8
+	ld.d	$a7, $a7, 8
+	ld.w	$t1, $a4, 12
+	ld.d	$a4, $a4, 0
+	add.d	$t0, $a5, $t0
+	st.w	$t0, $a7, 8
+	add.d	$t0, $a6, $t1
+	st.w	$t0, $a7, 12
+	bnez	$a4, .LBB0_116
 	b	.LBB0_109
 .LBB0_117:                              # %._crit_edge351
 	pcalau12i	$a0, %got_pc_hi20(ecount)

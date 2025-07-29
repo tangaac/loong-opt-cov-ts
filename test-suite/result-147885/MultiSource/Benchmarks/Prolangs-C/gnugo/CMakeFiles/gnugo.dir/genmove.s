@@ -77,9 +77,7 @@ genmove:                                # @genmove
 	st.w	$a1, $s0, 0
 	b	.LBB0_10
 .LBB0_9:
-	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	bge	$a0, $s1, .LBB0_15
+	bltz	$s1, .LBB0_15
 .LBB0_10:                               # %.loopexit
 	pcalau12i	$a0, %got_pc_hi20(pass)
 	ld.d	$a0, $a0, %got_pc_lo12(pass)
@@ -125,30 +123,30 @@ genmove:                                # @genmove
 	addi.d	$sp, $sp, 112
 	ret
 .LBB0_15:                               # %.critedge3.preheader
-	ori	$s3, $zero, 399
+	ori	$s2, $zero, 399
 	pcalau12i	$a0, %got_pc_hi20(rd)
 	ld.d	$s1, $a0, %got_pc_lo12(rd)
 	lu12i.w	$a0, 441505
-	ori	$s4, $a0, 2803
-	addi.w	$s5, $zero, -15
+	ori	$s3, $a0, 2803
+	addi.w	$s4, $zero, -15
 	pcalau12i	$a0, %got_pc_hi20(lib)
-	ld.d	$s6, $a0, %got_pc_lo12(lib)
+	ld.d	$s5, $a0, %got_pc_lo12(lib)
 	pcalau12i	$a0, %got_pc_hi20(mymove)
-	ld.d	$s7, $a0, %got_pc_lo12(mymove)
-	addi.w	$s8, $zero, -16
-	ori	$s2, $zero, 6
+	ld.d	$s6, $a0, %got_pc_lo12(mymove)
+	addi.w	$s7, $zero, -16
+	ori	$s8, $zero, 6
 	b	.LBB0_17
 	.p2align	4, , 16
 .LBB0_16:                               # %.critedge3.backedge
                                         #   in Loop: Header=BB0_17 Depth=1
-	addi.w	$s3, $s3, -1
+	addi.w	$s2, $s2, -1
 .LBB0_17:                               # %.critedge3
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(random_nasko)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	mul.d	$a1, $a0, $s4
+	mul.d	$a1, $a0, $s3
 	srli.d	$a2, $a1, 63
 	srai.d	$a1, $a1, 35
 	add.d	$a1, $a1, $a2
@@ -157,17 +155,17 @@ genmove:                                # @genmove
 	sub.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, -17
 	st.w	$a0, $fp, 0
-	bltu	$a1, $s5, .LBB0_19
+	bltu	$a1, $s4, .LBB0_19
 # %bb.18:                               # %.critedge3
                                         #   in Loop: Header=BB0_17 Depth=1
 	addi.w	$a0, $a0, -6
-	bltu	$s2, $a0, .LBB0_21
+	bltu	$s8, $a0, .LBB0_21
 .LBB0_19:                               #   in Loop: Header=BB0_17 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(random_nasko)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	mul.d	$a1, $a0, $s4
+	mul.d	$a1, $a0, $s3
 	srli.d	$a2, $a1, 63
 	srai.d	$a1, $a1, 35
 	add.d	$a1, $a1, $a2
@@ -176,13 +174,13 @@ genmove:                                # @genmove
 	sub.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, -17
 	st.w	$a0, $fp, 0
-	bltu	$s8, $a1, .LBB0_21
+	bltu	$s7, $a1, .LBB0_21
 # %bb.20:                               #   in Loop: Header=BB0_17 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(random_nasko)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	mul.d	$a1, $a0, $s4
+	mul.d	$a1, $a0, $s3
 	srli.d	$a2, $a1, 63
 	srai.d	$a1, $a1, 35
 	add.d	$a1, $a1, $a2
@@ -195,7 +193,7 @@ genmove:                                # @genmove
 	pcaddu18i	$ra, %call36(random_nasko)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	mul.d	$a1, $a0, $s4
+	mul.d	$a1, $a0, $s3
 	srli.d	$a2, $a1, 63
 	srai.d	$a1, $a1, 35
 	add.d	$a1, $a1, $a2
@@ -204,16 +202,16 @@ genmove:                                # @genmove
 	sub.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, -17
 	st.w	$a0, $s0, 0
-	bltu	$a1, $s5, .LBB0_23
+	bltu	$a1, $s4, .LBB0_23
 # %bb.22:                               #   in Loop: Header=BB0_17 Depth=1
 	addi.w	$a0, $a0, -6
-	bltu	$s2, $a0, .LBB0_25
+	bltu	$s8, $a0, .LBB0_25
 .LBB0_23:                               #   in Loop: Header=BB0_17 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(random_nasko)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	mul.d	$a1, $a0, $s4
+	mul.d	$a1, $a0, $s3
 	srli.d	$a2, $a1, 63
 	srai.d	$a1, $a1, 35
 	add.d	$a1, $a1, $a2
@@ -222,13 +220,13 @@ genmove:                                # @genmove
 	sub.d	$a0, $a0, $a1
 	addi.w	$a1, $a0, -17
 	st.w	$a0, $s0, 0
-	bltu	$s8, $a1, .LBB0_25
+	bltu	$s7, $a1, .LBB0_25
 # %bb.24:                               #   in Loop: Header=BB0_17 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(random_nasko)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s1, 0
-	mul.d	$a1, $a0, $s4
+	mul.d	$a1, $a0, $s3
 	srli.d	$a2, $a1, 63
 	srai.d	$a1, $a1, 35
 	add.d	$a1, $a1, $a2
@@ -237,13 +235,13 @@ genmove:                                # @genmove
 	sub.d	$a0, $a0, $a1
 	st.w	$a0, $s0, 0
 .LBB0_25:                               #   in Loop: Header=BB0_17 Depth=1
-	st.w	$zero, $s6, 0
+	st.w	$zero, $s5, 0
 	ld.w	$a0, $fp, 0
 	ld.w	$a1, $s0, 0
-	ld.w	$a2, $s7, 0
+	ld.w	$a2, $s6, 0
 	pcaddu18i	$ra, %call36(countlib)
 	jirl	$ra, $ra, 0
-	beqz	$s3, .LBB0_29
+	beqz	$s2, .LBB0_29
 # %bb.26:                               #   in Loop: Header=BB0_17 Depth=1
 	ld.w	$a0, $fp, 0
 	pcalau12i	$a1, %got_pc_hi20(p)
@@ -255,7 +253,7 @@ genmove:                                # @genmove
 	ldx.bu	$a2, $a2, $a1
 	bnez	$a2, .LBB0_16
 # %bb.27:                               #   in Loop: Header=BB0_17 Depth=1
-	ld.w	$a2, $s6, 0
+	ld.w	$a2, $s5, 0
 	ori	$a3, $zero, 2
 	blt	$a2, $a3, .LBB0_16
 # %bb.28:                               #   in Loop: Header=BB0_17 Depth=1
@@ -273,7 +271,7 @@ genmove:                                # @genmove
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
+	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0
 	st.w	$a0, $fp, 0
 	b	.LBB0_14

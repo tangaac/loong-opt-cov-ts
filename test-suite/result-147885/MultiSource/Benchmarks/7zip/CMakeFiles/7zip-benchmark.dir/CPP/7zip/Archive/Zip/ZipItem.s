@@ -206,8 +206,7 @@ _ZNK8NArchive4NZip5CItem5IsDirEv:       # @_ZNK8NArchive4NZip5CItem5IsDirEv
 	bnez	$a0, .LBB5_6
 # %bb.1:
 	ld.bu	$a0, $fp, 177
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_5
+	beqz	$a0, .LBB5_5
 # %bb.2:
 	ld.bu	$a0, $fp, 81
 	ori	$a2, $zero, 14
@@ -271,8 +270,7 @@ _ZNK8NArchive4NZip5CItem16GetWinAttributesEv: # @_ZNK8NArchive4NZip5CItem16GetWi
 	bnez	$a1, .LBB6_5
 .LBB6_3:
 	ld.bu	$a0, $fp, 177
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB6_5
+	beqz	$a0, .LBB6_5
 # %bb.4:
 	ld.w	$s0, $fp, 84
 	b	.LBB6_6
@@ -292,8 +290,7 @@ _ZNK8NArchive4NZip5CItem16GetWinAttributesEv: # @_ZNK8NArchive4NZip5CItem16GetWi
 	b	.LBB6_13
 .LBB6_8:
 	ld.bu	$a0, $fp, 177
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB6_13
+	beqz	$a0, .LBB6_13
 # %bb.9:
 	ld.bu	$a0, $fp, 81
 	ori	$a1, $zero, 14

@@ -161,8 +161,7 @@ luaH_next:                              # @luaH_next
 	fld.d	$fa0, $fp, 0
 	ftintrz.w.d	$fa1, $fa0
 	movfr2gr.s	$a0, $fa1
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_27
+	blez	$a0, .LBB0_27
 # %bb.25:
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
@@ -1141,9 +1140,9 @@ newkey:                                 # @newkey
 	move	$s6, $a0
 	ori	$s4, $zero, 3
 	addi.d	$s0, $zero, -1
-	ori	$s3, $zero, 1
+	ori	$s2, $zero, 1
 	pcalau12i	$a0, %pc_hi20(dummynode_)
-	addi.d	$s2, $a0, %pc_lo12(dummynode_)
+	addi.d	$a5, $a0, %pc_lo12(dummynode_)
 	addi.d	$s7, $sp, 32
 	ori	$s8, $zero, 27
 	ori	$s5, $zero, 7
@@ -1178,7 +1177,7 @@ newkey:                                 # @newkey
 	slli.d	$a2, $a0, 5
 	alsl.d	$a0, $a0, $a2, 3
 	add.d	$a0, $a1, $a0
-	bne	$a0, $s2, .LBB10_9
+	bne	$a0, $a5, .LBB10_9
 	b	.LBB10_10
 	.p2align	4, , 16
 .LBB10_4:                               #   in Loop: Header=BB10_1 Depth=1
@@ -1186,7 +1185,7 @@ newkey:                                 # @newkey
 	ld.w	$a2, $s1, 0
 	ld.d	$a1, $fp, 32
 	sll.w	$a0, $s0, $a0
-	orn	$a0, $s3, $a0
+	orn	$a0, $s2, $a0
 	mod.wu	$a0, $a2, $a0
 .LBB10_5:                               # %mainposition.exit
                                         #   in Loop: Header=BB10_1 Depth=1
@@ -1194,7 +1193,7 @@ newkey:                                 # @newkey
 	slli.d	$a2, $a0, 5
 	alsl.d	$a0, $a0, $a2, 3
 	add.d	$a0, $a1, $a0
-	bne	$a0, $s2, .LBB10_9
+	bne	$a0, $a5, .LBB10_9
 	b	.LBB10_10
 	.p2align	4, , 16
 .LBB10_6:                               #   in Loop: Header=BB10_1 Depth=1
@@ -1204,7 +1203,7 @@ newkey:                                 # @newkey
 # %bb.7:                                #   in Loop: Header=BB10_1 Depth=1
 	ld.d	$a1, $fp, 32
 	move	$a0, $a1
-	bne	$a0, $s2, .LBB10_9
+	bne	$a0, $a5, .LBB10_9
 	b	.LBB10_10
 	.p2align	4, , 16
 .LBB10_8:                               #   in Loop: Header=BB10_1 Depth=1
@@ -1217,7 +1216,7 @@ newkey:                                 # @newkey
 	slli.d	$a2, $a0, 5
 	alsl.d	$a0, $a0, $a2, 3
 	add.d	$a0, $a1, $a0
-	beq	$a0, $s2, .LBB10_10
+	beq	$a0, $a5, .LBB10_10
 	.p2align	4, , 16
 .LBB10_9:                               # %mainposition.exit
                                         #   in Loop: Header=BB10_1 Depth=1
@@ -1239,6 +1238,7 @@ newkey:                                 # @newkey
 	.p2align	4, , 16
 .LBB10_13:                              # %rehash.exit
                                         #   in Loop: Header=BB10_1 Depth=1
+	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a0, $sp, 32
 	ori	$a2, $zero, 108
@@ -1360,7 +1360,6 @@ newkey:                                 # @newkey
 	.p2align	4, , 16
 .LBB10_27:                              # %numusearray.exit
                                         #   in Loop: Header=BB10_1 Depth=1
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
 	ld.bu	$a0, $fp, 11
 	move	$s2, $zero
 	move	$s3, $zero
@@ -1444,8 +1443,7 @@ newkey:                                 # @newkey
 	ori	$a0, $zero, 1
 	add.d	$a1, $s3, $s0
 	add.w	$a1, $a1, $a0
-	ori	$s3, $zero, 1
-	bge	$a1, $s3, .LBB10_41
+	bgtz	$a1, .LBB10_41
 	b	.LBB10_45
 	.p2align	4, , 16
 .LBB10_40:                              #   in Loop: Header=BB10_1 Depth=1
@@ -1453,8 +1451,7 @@ newkey:                                 # @newkey
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a1, $s3, $s0
 	add.w	$a1, $a1, $a0
-	ori	$s3, $zero, 1
-	blt	$a1, $s3, .LBB10_45
+	blez	$a1, .LBB10_45
 .LBB10_41:                              # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB10_1 Depth=1
 	move	$a6, $zero
@@ -1492,8 +1489,7 @@ newkey:                                 # @newkey
 	move	$a0, $zero
 	add.d	$a1, $s3, $s0
 	add.w	$a1, $a1, $a0
-	ori	$s3, $zero, 1
-	bge	$a1, $s3, .LBB10_41
+	bgtz	$a1, .LBB10_41
 .LBB10_45:                              #   in Loop: Header=BB10_1 Depth=1
 	move	$a2, $zero
 	move	$a0, $zero
@@ -1520,7 +1516,8 @@ newkey:                                 # @newkey
 	beqz	$a0, .LBB10_51
 # %bb.48:                               #   in Loop: Header=BB10_1 Depth=1
 	addi.d	$s0, $zero, -1
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ori	$s2, $zero, 1
+	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
 	bne	$a0, $s4, .LBB10_1
 # %bb.49:                               #   in Loop: Header=BB10_1 Depth=1
 	fld.d	$fa0, $s1, 0
@@ -1534,12 +1531,13 @@ newkey:                                 # @newkey
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
 	addi.d	$s0, $zero, -1
-	ld.d	$s2, $sp, 0                     # 8-byte Folded Reload
+	ori	$s2, $zero, 1
 .LBB10_52:                              # %.sink.split
                                         #   in Loop: Header=BB10_1 Depth=1
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(luaG_runerror)
 	jirl	$ra, $ra, 0
+	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
 	b	.LBB10_1
 .LBB10_53:                              # %.critedge.i.i
                                         #   in Loop: Header=BB10_1 Depth=1
@@ -1549,7 +1547,7 @@ newkey:                                 # @newkey
 	add.w	$a0, $a1, $a0
 	ld.d	$a1, $fp, 32
 	sll.w	$a2, $s0, $a2
-	orn	$a2, $s3, $a2
+	orn	$a2, $s2, $a2
 	mod.wu	$a0, $a0, $a2
 	b	.LBB10_5
 .LBB10_54:                              # %getfreepos.exit

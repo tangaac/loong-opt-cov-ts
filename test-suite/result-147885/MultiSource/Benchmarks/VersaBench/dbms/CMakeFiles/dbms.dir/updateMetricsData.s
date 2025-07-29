@@ -21,8 +21,7 @@ updateMetricsData:                      # @updateMetricsData
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s0, 24
 	sub.d	$a0, $a0, $a1
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_7
+	bltz	$a0, .LBB0_7
 # %bb.2:
 	ld.d	$a1, $s0, 64
 	bge	$a0, $a1, .LBB0_4

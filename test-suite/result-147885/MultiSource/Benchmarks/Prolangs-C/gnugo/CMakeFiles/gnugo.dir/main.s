@@ -12,17 +12,16 @@
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(showinst)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -146,7 +145,7 @@ main:                                   # @main
 	bne	$s5, $s6, .LBB0_2
 # %bb.3:
 	ori	$a0, $zero, 19
-	st.w	$a0, $sp, 24
+	st.w	$a0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.3)
 	pcalau12i	$a0, %pc_hi20(mk)
@@ -207,7 +206,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 9
-	st.w	$a0, $sp, 28
+	st.w	$a0, $sp, 20
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
@@ -237,16 +236,16 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 19
-	st.w	$a0, $sp, 28
-	st.w	$a0, $sp, 24
+	st.w	$a0, $sp, 20
+	st.w	$a0, $sp, 16
 	pcalau12i	$a0, %pc_hi20(mk)
 	st.w	$zero, $a0, %pc_lo12(mk)
 	pcalau12i	$a0, %pc_hi20(uk)
 	st.w	$zero, $a0, %pc_lo12(uk)
 .LBB0_5:
 	pcalau12i	$s2, %pc_hi20(play)
-	ori	$s1, $zero, 1
-	st.w	$s1, $s2, %pc_lo12(play)
+	ori	$a0, $zero, 1
+	st.w	$a0, $s2, %pc_lo12(play)
 	pcalau12i	$s5, %pc_hi20(pass)
 	st.w	$zero, $s5, %pc_lo12(pass)
 	pcalau12i	$a0, %pc_hi20(mik)
@@ -271,7 +270,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
-	addi.d	$a1, $sp, 28
+	addi.d	$a1, $sp, 20
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(stdin)
@@ -279,7 +278,7 @@ main:                                   # @main
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 28
+	ld.w	$a0, $sp, 20
 	pcaddu18i	$ra, %call36(sethand)
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(showboard)
@@ -290,27 +289,27 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	addi.d	$a1, $sp, 9
+	addi.d	$a1, $sp, 1
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 9
+	ld.bu	$a0, $sp, 1
 	ori	$a1, $zero, 98
 	bne	$a0, $a1, .LBB0_25
 # %bb.7:
-	ld.w	$a0, $sp, 28
+	ld.w	$a0, $sp, 20
 	ori	$a1, $zero, 1
 	st.w	$a1, $fp, 0
 	ori	$a1, $zero, 2
 	st.w	$a1, $s3, %pc_lo12(umove)
 	beqz	$a0, .LBB0_9
 .LBB0_8:                                # %.sink.split
-	addi.d	$a0, $sp, 28
-	addi.d	$a1, $sp, 24
+	addi.d	$a0, $sp, 20
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(genmove)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 28
+	ld.w	$a0, $sp, 20
 	ld.b	$a1, $fp, 0
-	ld.w	$a2, $sp, 24
+	ld.w	$a2, $sp, 16
 	alsl.d	$a3, $a0, $a0, 3
 	alsl.d	$a0, $a3, $a0, 1
 	add.d	$a0, $s4, $a0
@@ -319,37 +318,36 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(showboard)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, %pc_lo12(play)
-	blt	$a0, $s1, .LBB0_20
+	blez	$a0, .LBB0_20
 # %bb.10:                               # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.8)
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.9)
-	ori	$s6, $zero, 1
-	ori	$s7, $zero, 2
+	ori	$s6, $zero, 2
 	.p2align	4, , 16
 .LBB0_11:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	addi.d	$a1, $sp, 14
+	addi.d	$a1, $sp, 6
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 14
-	addi.d	$a1, $sp, 28
-	addi.d	$a2, $sp, 24
+	addi.d	$a0, $sp, 6
+	addi.d	$a1, $sp, 20
+	addi.d	$a2, $sp, 16
 	pcaddu18i	$ra, %call36(getmove)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, %pc_lo12(play)
-	blt	$a0, $s6, .LBB0_18
+	blez	$a0, .LBB0_18
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=1
-	ld.w	$a1, $sp, 28
+	ld.w	$a1, $sp, 20
 	bltz	$a1, .LBB0_14
 # %bb.13:                               #   in Loop: Header=BB0_11 Depth=1
 	ld.b	$a2, $s3, %pc_lo12(umove)
-	ld.w	$a3, $sp, 24
+	ld.w	$a3, $sp, 16
 	alsl.d	$a4, $a1, $a1, 3
 	ld.w	$a0, $fp, 0
 	alsl.d	$a1, $a4, $a1, 1
@@ -359,17 +357,17 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB0_14:                               #   in Loop: Header=BB0_11 Depth=1
 	ld.w	$a0, $s5, %pc_lo12(pass)
-	beq	$a0, $s7, .LBB0_17
+	beq	$a0, $s6, .LBB0_17
 # %bb.15:                               #   in Loop: Header=BB0_11 Depth=1
-	addi.d	$a0, $sp, 28
-	addi.d	$a1, $sp, 24
+	addi.d	$a0, $sp, 20
+	addi.d	$a1, $sp, 16
 	pcaddu18i	$ra, %call36(genmove)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 28
+	ld.w	$a1, $sp, 20
 	bltz	$a1, .LBB0_17
 # %bb.16:                               #   in Loop: Header=BB0_11 Depth=1
 	ld.b	$a2, $fp, 0
-	ld.w	$a3, $sp, 24
+	ld.w	$a3, $sp, 16
 	alsl.d	$a4, $a1, $a1, 3
 	ld.w	$a0, $s3, %pc_lo12(umove)
 	alsl.d	$a1, $a4, $a1, 1
@@ -382,7 +380,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB0_18:                               #   in Loop: Header=BB0_11 Depth=1
 	ld.w	$a0, $s5, %pc_lo12(pass)
-	beq	$a0, $s7, .LBB0_21
+	beq	$a0, $s6, .LBB0_21
 # %bb.19:                               #   in Loop: Header=BB0_11 Depth=1
 	ld.w	$a0, $s2, %pc_lo12(play)
 	bgtz	$a0, .LBB0_11
@@ -403,10 +401,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	addi.d	$a1, $sp, 9
+	addi.d	$a1, $sp, 1
 	pcaddu18i	$ra, %call36(__isoc99_scanf)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 9
+	ld.bu	$a0, $sp, 1
 	ori	$a1, $zero, 121
 	bne	$a0, $a1, .LBB0_24
 # %bb.23:
@@ -414,20 +412,19 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB0_24:
 	move	$a0, $zero
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB0_25:
-	ld.w	$a0, $sp, 28
+	ld.w	$a0, $sp, 20
 	ori	$a1, $zero, 2
 	st.w	$a1, $fp, 0
 	ori	$a1, $zero, 1

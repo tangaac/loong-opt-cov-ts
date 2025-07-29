@@ -66,9 +66,8 @@ _ZN29btSoftRigidCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK16
 	ld.w	$a3, $a0, 284
 	masknez	$a2, $a2, $a4
 	maskeqz	$a1, $a1, $a4
-	ori	$a4, $zero, 1
 	or	$a1, $a1, $a2
-	blt	$a3, $a4, .LBB3_6
+	blez	$a3, .LBB3_6
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a2, $a0, 296
 	move	$a4, $a3

@@ -1103,11 +1103,10 @@ uvlc_startcode_follows:                 # @uvlc_startcode_follows
 	.type	code_from_bitstream_2d,@function
 code_from_bitstream_2d:                 # @code_from_bitstream_2d
 # %bb.0:
-	ori	$t0, $zero, 1
 	addi.w	$a7, $zero, -1
-	blt	$a5, $t0, .LBB18_17
+	blez	$a5, .LBB18_17
 # %bb.1:                                # %.preheader.lr.ph
-	blt	$a4, $t0, .LBB18_17
+	blez	$a4, .LBB18_17
 # %bb.2:                                # %.preheader.us.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill

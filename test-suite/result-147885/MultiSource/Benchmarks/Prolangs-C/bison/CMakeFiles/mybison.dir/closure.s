@@ -121,7 +121,7 @@ set_fderives:                           # @set_fderives
 	slli.d	$t6, $t1, 3
 	ldx.d	$t7, $t2, $t6
 	ld.h	$t6, $t7, 0
-	blt	$t6, $a7, .LBB1_12
+	blez	$t6, .LBB1_12
 # %bb.9:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_7 Depth=2
 	bstrpick.d	$t6, $t6, 15, 0
@@ -203,10 +203,10 @@ set_firsts:                             # @set_firsts
 	pcalau12i	$a2, %got_pc_hi20(nsyms)
 	ld.d	$a2, $a2, %got_pc_lo12(nsyms)
 	ld.w	$a3, $a1, 0
-	ld.w	$t3, $a2, 0
+	ld.w	$t2, $a2, 0
 	pcalau12i	$a4, %pc_hi20(firsts)
 	st.d	$a0, $a4, %pc_lo12(firsts)
-	bge	$a3, $t3, .LBB2_9
+	bge	$a3, $t2, .LBB2_9
 # %bb.1:                                # %.lr.ph20
 	pcalau12i	$a4, %got_pc_hi20(derives)
 	ld.d	$a4, $a4, %got_pc_lo12(derives)
@@ -217,56 +217,55 @@ set_firsts:                             # @set_firsts
 	ld.d	$a4, $a4, 0
 	ld.d	$a5, $a5, 0
 	ld.d	$a6, $a6, 0
-	addi.w	$a7, $zero, -1
-	ori	$t0, $zero, 1
-	move	$t2, $a3
-	move	$t1, $a0
+	ori	$a7, $zero, 1
+	move	$t1, $a3
+	move	$t0, $a0
 	b	.LBB2_4
 	.p2align	4, , 16
 .LBB2_2:                                # %._crit_edge.loopexit
                                         #   in Loop: Header=BB2_4 Depth=1
-	ld.w	$t3, $a2, 0
+	ld.w	$t2, $a2, 0
 .LBB2_3:                                # %._crit_edge
                                         #   in Loop: Header=BB2_4 Depth=1
 	addi.d	$a3, $a3, 1
-	alsl.d	$t1, $s0, $t1, 2
-	bge	$a3, $t3, .LBB2_9
+	alsl.d	$t0, $s0, $t0, 2
+	bge	$a3, $t2, .LBB2_9
 .LBB2_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_7 Depth 2
-	slli.d	$t4, $a3, 3
-	ldx.d	$t5, $a4, $t4
-	ld.h	$t4, $t5, 0
-	bltz	$t4, .LBB2_3
+	slli.d	$t3, $a3, 3
+	ldx.d	$t4, $a4, $t3
+	ld.h	$t3, $t4, 0
+	bltz	$t3, .LBB2_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB2_4 Depth=1
-	bstrpick.d	$t4, $t4, 15, 0
-	addi.d	$t3, $t5, 2
+	bstrpick.d	$t3, $t3, 15, 0
+	addi.d	$t2, $t4, 2
 	b	.LBB2_7
 	.p2align	4, , 16
 .LBB2_6:                                #   in Loop: Header=BB2_7 Depth=2
-	ld.h	$t5, $t3, 0
-	bstrpick.d	$t4, $t5, 15, 0
-	addi.d	$t3, $t3, 2
-	bge	$a7, $t5, .LBB2_2
+	ld.h	$t4, $t2, 0
+	bstrpick.d	$t3, $t4, 15, 0
+	addi.d	$t2, $t2, 2
+	bltz	$t4, .LBB2_2
 .LBB2_7:                                # %.lr.ph
                                         #   Parent Loop BB2_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slli.d	$t4, $t4, 1
-	ldx.h	$t4, $a6, $t4
-	slli.d	$t4, $t4, 1
-	ldx.h	$t4, $a5, $t4
-	blt	$t4, $t2, .LBB2_6
+	slli.d	$t3, $t3, 1
+	ldx.h	$t3, $a6, $t3
+	slli.d	$t3, $t3, 1
+	ldx.h	$t3, $a5, $t3
+	blt	$t3, $t1, .LBB2_6
 # %bb.8:                                #   in Loop: Header=BB2_7 Depth=2
-	sub.w	$t2, $t4, $t2
-	bstrpick.d	$t4, $t2, 31, 5
-	slli.d	$t4, $t4, 2
-	bstrpick.d	$t4, $t4, 60, 2
-	slli.d	$t4, $t4, 2
-	ldx.w	$t5, $t1, $t4
-	sll.w	$t2, $t0, $t2
-	or	$t2, $t5, $t2
-	stx.w	$t2, $t1, $t4
-	ld.w	$t2, $a1, 0
+	sub.w	$t1, $t3, $t1
+	bstrpick.d	$t3, $t1, 31, 5
+	slli.d	$t3, $t3, 2
+	bstrpick.d	$t3, $t3, 60, 2
+	slli.d	$t3, $t3, 2
+	ldx.w	$t4, $t0, $t3
+	sll.w	$t1, $a7, $t1
+	or	$t1, $t4, $t1
+	stx.w	$t1, $t0, $t3
+	ld.w	$t1, $a1, 0
 	b	.LBB2_6
 .LBB2_9:                                # %._crit_edge21
 	ld.w	$a1, $fp, 0
@@ -322,8 +321,7 @@ closure:                                # @closure
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB3_25
+	blez	$s0, .LBB3_25
 # %bb.3:                                # %.lr.ph66.split.us.preheader
 	pcalau12i	$a0, %got_pc_hi20(ritem)
 	ld.d	$a0, $a0, %got_pc_lo12(ritem)
@@ -420,8 +418,7 @@ closure:                                # @closure
 	bltu	$s6, $s4, .LBB3_14
 	b	.LBB3_4
 .LBB3_15:
-	ori	$a1, $zero, 1
-	blt	$s5, $a1, .LBB3_18
+	blez	$s5, .LBB3_18
 # %bb.16:                               # %.lr.ph69.preheader
 	pcalau12i	$a1, %got_pc_hi20(start_symbol)
 	ld.d	$a1, $a1, %got_pc_lo12(start_symbol)

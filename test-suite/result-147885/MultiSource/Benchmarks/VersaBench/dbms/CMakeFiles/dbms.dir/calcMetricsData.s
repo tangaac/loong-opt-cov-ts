@@ -18,9 +18,8 @@ calcMetricsData:                        # @calcMetricsData
 	ld.d	$a2, $fp, 0
 	ld.d	$a1, $fp, 32
 	sub.d	$a0, $a0, $a2
-	ori	$a2, $zero, 1
 	st.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.1:
 	fld.d	$fa1, $fp, 40
 	movgr2fr.d	$fa0, $a1
@@ -42,9 +41,8 @@ calcMetricsData:                        # @calcMetricsData
 	lu52i.d	$a0, $a0, -898
 	st.d	$a0, $fp, 72
 	ld.d	$a0, $fp, 96
-	ori	$a1, $zero, 1
 	fst.d	$fa0, $fp, 80
-	bge	$a0, $a1, .LBB0_5
+	bgtz	$a0, .LBB0_5
 	b	.LBB0_6
 .LBB0_3:
 	fdiv.d	$fa1, $fa1, $fa0
@@ -53,9 +51,8 @@ calcMetricsData:                        # @calcMetricsData
 	bceqz	$fcc0, .LBB0_13
 # %bb.4:
 	ld.d	$a0, $fp, 96
-	ori	$a1, $zero, 1
 	fst.d	$fa0, $fp, 80
-	blt	$a0, $a1, .LBB0_6
+	blez	$a0, .LBB0_6
 .LBB0_5:
 	fld.d	$fa1, $fp, 104
 	movgr2fr.d	$fa0, $a0
@@ -77,9 +74,8 @@ calcMetricsData:                        # @calcMetricsData
 	lu52i.d	$a0, $a0, -898
 	st.d	$a0, $fp, 136
 	ld.d	$a0, $fp, 160
-	ori	$a1, $zero, 1
 	fst.d	$fa0, $fp, 144
-	bge	$a0, $a1, .LBB0_9
+	bgtz	$a0, .LBB0_9
 	b	.LBB0_10
 .LBB0_7:
 	fdiv.d	$fa1, $fa1, $fa0
@@ -88,9 +84,8 @@ calcMetricsData:                        # @calcMetricsData
 	bceqz	$fcc0, .LBB0_14
 # %bb.8:
 	ld.d	$a0, $fp, 160
-	ori	$a1, $zero, 1
 	fst.d	$fa0, $fp, 144
-	blt	$a0, $a1, .LBB0_10
+	blez	$a0, .LBB0_10
 .LBB0_9:
 	fld.d	$fa1, $fp, 168
 	movgr2fr.d	$fa0, $a0
@@ -128,18 +123,16 @@ calcMetricsData:                        # @calcMetricsData
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 96
-	ori	$a1, $zero, 1
 	fst.d	$fa0, $fp, 80
-	bge	$a0, $a1, .LBB0_5
+	bgtz	$a0, .LBB0_5
 	b	.LBB0_6
 .LBB0_14:                               # %call.sqrt61
 	fmov.d	$fa0, $fa1
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 160
-	ori	$a1, $zero, 1
 	fst.d	$fa0, $fp, 144
-	bge	$a0, $a1, .LBB0_9
+	bgtz	$a0, .LBB0_9
 	b	.LBB0_10
 .LBB0_15:                               # %call.sqrt63
 	fmov.d	$fa0, $fa1

@@ -237,42 +237,40 @@ Stats_calculate:                        # @Stats_calculate
 # %bb.3:                                # %.preheader
 	ld.wu	$a2, $s0, 0
 	addi.w	$a1, $a2, 0
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB5_14
+	blez	$a1, .LBB5_14
 # %bb.4:                                # %.lr.ph
-	ld.d	$a4, $s0, 8
+	ld.d	$a3, $s0, 8
+	move	$a4, $zero
 	move	$a5, $zero
-	move	$a6, $zero
                                         # implicit-def: $f0_64
 	b	.LBB5_6
 	.p2align	4, , 16
 .LBB5_5:                                #   in Loop: Header=BB5_6 Depth=1
-	addi.d	$a6, $a6, 1
-	addi.d	$a4, $a4, 4
-	addi.w	$a5, $a5, 1
-	bgeu	$a6, $a1, .LBB5_8
+	addi.d	$a5, $a5, 1
+	addi.d	$a3, $a3, 4
+	addi.w	$a4, $a4, 1
+	bgeu	$a5, $a1, .LBB5_8
 .LBB5_6:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a7, $a4, 0
-	blt	$a7, $a3, .LBB5_5
+	ld.w	$a6, $a3, 0
+	blez	$a6, .LBB5_5
 # %bb.7:                                #   in Loop: Header=BB5_6 Depth=1
-	bstrpick.d	$t0, $a7, 31, 0
-	slli.d	$a7, $a7, 2
-	ldx.w	$t1, $a0, $a7
-	movgr2fr.d	$fa1, $t0
+	bstrpick.d	$a7, $a6, 31, 0
+	slli.d	$a6, $a6, 2
+	ldx.w	$t0, $a0, $a6
+	movgr2fr.d	$fa1, $a7
 	ffint.d.l	$fa1, $fa1
 	fadd.d	$fa0, $fa0, $fa1
-	addi.d	$t0, $t1, 1
-	stx.w	$t0, $a0, $a7
+	addi.d	$a7, $t0, 1
+	stx.w	$a7, $a0, $a6
 	b	.LBB5_5
 .LBB5_8:                                # %._crit_edge
-	bstrpick.d	$a0, $a5, 31, 0
+	bstrpick.d	$a0, $a4, 31, 0
 	movgr2fr.d	$fa1, $a0
 	ffint.d.l	$fa1, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
 	ld.d	$a0, $s0, 8
+	fdiv.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $fp, 16
 	movgr2fr.d	$fa0, $zero
-	ori	$a3, $zero, 1
 	b	.LBB5_10
 	.p2align	4, , 16
 .LBB5_9:                                #   in Loop: Header=BB5_10 Depth=1
@@ -280,12 +278,12 @@ Stats_calculate:                        # @Stats_calculate
 	addi.d	$a0, $a0, 4
 	beqz	$a2, .LBB5_12
 .LBB5_10:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a0, 0
-	blt	$a4, $a3, .LBB5_9
+	ld.w	$a3, $a0, 0
+	blez	$a3, .LBB5_9
 # %bb.11:                               #   in Loop: Header=BB5_10 Depth=1
 	fld.d	$fa1, $fp, 16
-	bstrpick.d	$a4, $a4, 31, 0
-	movgr2fr.d	$fa2, $a4
+	bstrpick.d	$a3, $a3, 31, 0
+	movgr2fr.d	$fa2, $a3
 	ffint.d.l	$fa2, $fa2
 	fsub.d	$fa1, $fa2, $fa1
 	fmadd.d	$fa0, $fa1, $fa1, $fa0
@@ -874,30 +872,29 @@ testStats:                              # @testStats
 	beqz	$a0, .LBB6_106
 # %bb.97:                               # %.preheader.i
 	ld.w	$a1, $s0, 0
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB6_106
+	blez	$a1, .LBB6_106
 # %bb.98:                               # %.lr.ph.i
 	ld.d	$a2, $s0, 8
-	move	$a4, $a2
-	move	$a5, $a1
+	move	$a3, $a2
+	move	$a4, $a1
                                         # implicit-def: $f0_64
 	b	.LBB6_100
 .LBB6_99:                               #   in Loop: Header=BB6_100 Depth=1
-	addi.d	$a5, $a5, -1
-	addi.d	$a4, $a4, 4
-	beqz	$a5, .LBB6_102
+	addi.d	$a4, $a4, -1
+	addi.d	$a3, $a3, 4
+	beqz	$a4, .LBB6_102
 .LBB6_100:                              # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a4, 0
-	blt	$a6, $a3, .LBB6_99
+	ld.w	$a5, $a3, 0
+	blez	$a5, .LBB6_99
 # %bb.101:                              #   in Loop: Header=BB6_100 Depth=1
-	bstrpick.d	$a7, $a6, 31, 0
-	slli.d	$a6, $a6, 2
-	ldx.w	$t0, $a0, $a6
-	movgr2fr.d	$fa1, $a7
+	bstrpick.d	$a6, $a5, 31, 0
+	slli.d	$a5, $a5, 2
+	ldx.w	$a7, $a0, $a5
+	movgr2fr.d	$fa1, $a6
 	ffint.d.l	$fa1, $fa1
 	fadd.d	$fa0, $fa0, $fa1
-	addi.d	$a7, $t0, 1
-	stx.w	$a7, $a0, $a6
+	addi.d	$a6, $a7, 1
+	stx.w	$a6, $a0, $a5
 	b	.LBB6_99
 .LBB6_102:                              # %._crit_edge.i
 	bstrpick.d	$a0, $a1, 31, 0

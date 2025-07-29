@@ -202,16 +202,15 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	ld.d	$a1, $a1, 128
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	jirl	$ra, $a1, 0
-	ori	$s0, $zero, 1
 	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	blt	$a0, $s0, .LBB0_9
+	blez	$a0, .LBB0_9
 # %bb.6:                                # %.lr.ph
 	move	$s7, $a0
 	move	$s0, $zero
-	addi.d	$s8, $sp, 1120
-	addi.d	$s3, $s5, 672
+	addi.d	$fp, $sp, 1120
+	addi.d	$s8, $s5, 672
 	ori	$a0, $zero, 2112
-	add.d	$fp, $sp, $a0
+	add.d	$s3, $sp, $a0
 	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_7:                                # =>This Inner Loop Header: Depth=1
@@ -257,8 +256,8 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	ori	$a2, $zero, 3416
 	add.d	$a2, $sp, $a2
 	st.d	$a0, $a2, 0
-	st.d	$a0, $s3, 0
-	st.d	$a1, $s3, 8
+	st.d	$a0, $s8, 0
+	st.d	$a1, $s8, 8
 	fnmadd.s	$fa4, $fa4, $fa5, $ft0
 	fld.s	$ft0, $s2, 16
 	fld.s	$ft1, $s2, 0
@@ -289,8 +288,8 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	movfr2gr.s	$a1, $fa3
 	bstrpick.d	$a1, $a1, 31, 0
 	fld.s	$fa3, $s1, 16
-	st.d	$a0, $fp, -8
-	st.d	$a1, $fp, 0
+	st.d	$a0, $s3, -8
+	st.d	$a1, $s3, 0
 	fld.s	$fa4, $s1, 0
 	fmul.s	$fa3, $fa1, $fa3
 	fld.s	$fa5, $s1, 32
@@ -313,17 +312,16 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	bstrins.d	$a0, $a1, 63, 32
 	movfr2gr.s	$a1, $fa0
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a0, $s8, -8
-	st.d	$a1, $s8, 0
+	st.d	$a0, $fp, -8
+	st.d	$a1, $fp, 0
 	addi.w	$s0, $s0, 1
-	addi.d	$s8, $s8, 16
 	addi.d	$fp, $fp, 16
 	addi.d	$s3, $s3, 16
+	addi.d	$s8, $s8, 16
 	bne	$s7, $s0, .LBB0_7
 # %bb.8:                                # %.loopexit462.loopexit
 	addi.w	$s7, $s0, 42
 	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ori	$s0, $zero, 1
 	b	.LBB0_10
 .LBB0_9:
 	ori	$s7, $zero, 42
@@ -332,7 +330,7 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	ld.d	$a1, $a0, 128
 	move	$a0, $s4
 	jirl	$ra, $a1, 0
-	blt	$a0, $s0, .LBB0_14
+	blez	$a0, .LBB0_14
 # %bb.11:                               # %.lr.ph469
 	move	$s8, $a0
 	move	$s0, $zero
@@ -473,10 +471,9 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	move	$a3, $s7
 	jirl	$ra, $a4, 0
 	movgr2fr.w	$fa0, $zero
-	ori	$a0, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
 	fst.s	$fa0, $sp, 76                   # 4-byte Folded Spill
-	blt	$s7, $a0, .LBB0_20
+	blez	$s7, .LBB0_20
 # %bb.15:                               # %.lr.ph477
 	fld.s	$fa0, $s2, 0
 	fst.s	$fa0, $sp, 148                  # 4-byte Folded Spill
@@ -702,8 +699,7 @@ _ZN33btMinkowskiPenetrationDepthSolver12calcPenDepthER22btVoronoiSimplexSolverPK
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetector16getClosestPointsERKN36btDiscreteCollisionDetectorInterface17ClosestPointInputERNS0_6ResultEP12btIDebugDrawb)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $sp, 196
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_25
+	beqz	$a0, .LBB0_25
 # %bb.24:
 	fld.s	$fa0, $sp, 192
 	fld.s	$fa1, $sp, 176

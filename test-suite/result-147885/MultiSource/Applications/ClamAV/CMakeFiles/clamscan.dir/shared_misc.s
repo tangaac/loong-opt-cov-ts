@@ -279,9 +279,8 @@ filecopy:                               # @filecopy
 	st.d	$s2, $sp, 1992                  # 8-byte Folded Spill
 	st.d	$s3, $sp, 1984                  # 8-byte Folded Spill
 	st.d	$s4, $sp, 1976                  # 8-byte Folded Spill
-	st.d	$s5, $sp, 1968                  # 8-byte Folded Spill
 	lu12i.w	$a2, 1
-	ori	$a2, $a2, 2272
+	ori	$a2, $a2, 2256
 	sub.d	$sp, $sp, $a2
 	move	$fp, $a1
 	move	$s0, $a0
@@ -301,20 +300,19 @@ filecopy:                               # @filecopy
 # %bb.2:
 	move	$s2, $a0
 	lu12i.w	$s3, 2
-	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB2_3:                                # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a1, $sp, 144
+	addi.d	$a1, $sp, 136
 	move	$a0, $s1
 	move	$a2, $s3
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s5, .LBB2_10
+	blez	$a1, .LBB2_10
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
 	bstrpick.d	$s4, $a0, 30, 0
-	addi.d	$a1, $sp, 144
+	addi.d	$a1, $sp, 136
 	move	$a0, $s2
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(write)
@@ -335,9 +333,8 @@ filecopy:                               # @filecopy
 	addi.w	$a0, $zero, -1
 .LBB2_9:
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 2272
+	ori	$a1, $a1, 2256
 	add.d	$sp, $sp, $a1
-	ld.d	$s5, $sp, 1968                  # 8-byte Folded Reload
 	ld.d	$s4, $sp, 1976                  # 8-byte Folded Reload
 	ld.d	$s3, $sp, 1984                  # 8-byte Folded Reload
 	ld.d	$s2, $sp, 1992                  # 8-byte Folded Reload
@@ -355,11 +352,11 @@ filecopy:                               # @filecopy
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	addi.d	$a1, $sp, 16
+	addi.d	$a1, $sp, 8
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(stat)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $sp, 32
+	ld.w	$a1, $sp, 24
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(chmod)
 	jirl	$ra, $ra, 0
@@ -512,8 +509,8 @@ isnumb:                                 # @isnumb
 .LBB4_2:                                # =>This Inner Loop Header: Depth=1
 	slli.d	$a2, $s1, 1
 	ldx.hu	$a2, $a0, $a2
-	andi	$a2, $a2, 2048
-	beqz	$a2, .LBB4_4
+	slli.d	$a2, $a2, 52
+	bgez	$a2, .LBB4_4
 # %bb.3:                                #   in Loop: Header=BB4_2 Depth=1
 	ld.bu	$s1, $a1, 0
 	addi.d	$a1, $a1, 1

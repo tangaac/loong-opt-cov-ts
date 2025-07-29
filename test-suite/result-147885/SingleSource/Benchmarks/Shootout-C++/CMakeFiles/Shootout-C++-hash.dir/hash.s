@@ -62,9 +62,9 @@ main:                                   # @main
 .Ltmp1:
 # %bb.4:                                # %_ZN9__gnu_cxx8hash_mapIPKciNS_4hashIS2_EE5eqstrSaIiEEC2Ev.exit.preheader
 	addi.w	$s4, $fp, 0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB0_31
+	blez	$s4, .LBB0_31
 # %bb.5:                                # %.lr.ph
+	ori	$a0, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$s0, $a1, %pc_lo12(.L.str)
 	b	.LBB0_7

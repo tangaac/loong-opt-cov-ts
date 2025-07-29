@@ -1792,10 +1792,9 @@ CrossExpand:                            # @CrossExpand
 	pcaddu18i	$ra, %call36(ReadFromFile)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 616
-	ori	$a2, $zero, 1
 	move	$s4, $a0
 	ld.d	$s3, $sp, 56                    # 8-byte Folded Reload
-	blt	$a1, $a2, .LBB4_88
+	blez	$a1, .LBB4_88
 # %bb.86:                               # %.lr.ph.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
@@ -2054,20 +2053,18 @@ crtab_getnext:                          # @crtab_getnext
 .LBB5_9:
 	st.w	$s8, $s2, 0
 	st.w	$zero, $s2, 4
-	ori	$a1, $zero, 1
 	addi.d	$s3, $s2, 8
-	blt	$s5, $a1, .LBB5_11
+	blez	$s5, .LBB5_11
 # %bb.10:                               # %.lr.ph.i.i
 	move	$a0, $s3
 	move	$a1, $zero
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 .LBB5_11:                               # %crtab_new.exit.i
 	ld.w	$a0, $s1, 0
 	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB5_22
+	blez	$a0, .LBB5_22
 # %bb.12:                               # %.lr.ph24.i
 	move	$a1, $zero
 	move	$a2, $zero
@@ -2238,7 +2235,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a0, $a0, 88
 	beqz	$a0, .LBB6_63
 .LBB6_7:
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	ld.bu	$a0, $a0, 32
 	ori	$a1, $zero, 140
 	beq	$a0, $a1, .LBB6_9
@@ -2341,7 +2338,7 @@ CrossSequence:                          # @CrossSequence
 	ldx.w	$a0, $a1, $a0
 	add.d	$a0, $a1, $a0
 	addi.d	$s2, $s0, 32
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	jr	$a0
 .LBB6_19:
 	ld.bu	$a0, $s2, 0
@@ -2364,10 +2361,9 @@ CrossSequence:                          # @CrossSequence
 	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a0, $s0, 80
 	ld.hu	$a1, $a0, 41
-	lu12i.w	$a2, 4
-	and	$a1, $a1, $a2
+	slli.d	$a1, $a1, 49
 	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	beqz	$a1, .LBB6_64
+	bgez	$a1, .LBB6_64
 # %bb.22:                               # %.preheader375
 	ld.d	$s2, $a0, 8
 	beq	$s2, $a0, .LBB6_64
@@ -2376,7 +2372,6 @@ CrossSequence:                          # @CrossSequence
 	move	$s5, $zero
 	addi.d	$a1, $s0, 64
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
-	lu12i.w	$s4, 2
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 48                   # 16-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(no_fpos)
@@ -2387,7 +2382,6 @@ CrossSequence:                          # @CrossSequence
 	b	.LBB6_26
 	.p2align	4, , 16
 .LBB6_24:                               #   in Loop: Header=BB6_26 Depth=1
-	lu12i.w	$s4, 2
 	ld.bu	$a0, $a1, 32
 	addi.d	$a2, $a0, -11
 	sltui	$a2, $a2, 2
@@ -2430,8 +2424,8 @@ CrossSequence:                          # @CrossSequence
 	beqz	$a1, .LBB6_27
 # %bb.28:                               #   in Loop: Header=BB6_26 Depth=1
 	ld.hu	$a1, $fp, 41
-	and	$a1, $a1, $s4
-	beqz	$a1, .LBB6_25
+	slli.d	$a1, $a1, 50
+	bgez	$a1, .LBB6_25
 # %bb.29:                               #   in Loop: Header=BB6_26 Depth=1
 	ld.bu	$a0, $s7, 2
 	vld	$vr0, $sp, 48                   # 16-byte Folded Reload
@@ -2598,7 +2592,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.d	$a0, $a0, 0
-	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a0, $a4, 0
 	st.d	$a0, $s4, 0
 	st.d	$s6, $s8, 0
@@ -2680,7 +2674,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a0, $a0, 16
 	st.d	$a0, $a0, 8
 	st.d	$a0, $a0, 0
-	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a0, $a4, 0
 	st.d	$a0, $s4, 0
 	st.d	$s7, $s1, 0
@@ -2731,7 +2725,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a1, $s6, 8
 	ld.d	$a2, $a1, 24
 	move	$s5, $a0
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a1, $s6, 0
 	beq	$a2, $a1, .LBB6_58
 # %bb.57:                               #   in Loop: Header=BB6_26 Depth=1
@@ -2786,7 +2780,7 @@ CrossSequence:                          # @CrossSequence
 	pcaddu18i	$ra, %call36(CrossInit)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 88
-	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	ld.bu	$a0, $a0, 32
 	ori	$a1, $zero, 140
 	bne	$a0, $a1, .LBB6_8
@@ -2826,6 +2820,7 @@ CrossSequence:                          # @CrossSequence
 	ld.bu	$a0, $s2, 0
 	addi.d	$a0, $a0, -11
 	ori	$a1, $zero, 2
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	bgeu	$a0, $a1, .LBB6_76
 # %bb.70:
 	ld.bu	$a0, $s0, 64
@@ -2844,7 +2839,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a1, $a2, 0
 	b	.LBB6_186
 .LBB6_73:
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 60
 	addi.w	$a0, $a0, 1
 	st.w	$a0, $a1, 60
@@ -2884,8 +2879,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a1, $a2, 0
 	b	.LBB6_165
 .LBB6_76:
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 64
+	ld.d	$a0, $a2, 64
 	pcaddu18i	$ra, %call36(SymName)
 	jirl	$ra, $ra, 0
 	move	$a5, $a0
@@ -2910,7 +2904,7 @@ CrossSequence:                          # @CrossSequence
 	pcaddu18i	$t8, %call36(Error)
 	jr	$t8
 .LBB6_77:
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.bu	$a0, $a2, 33
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB6_179
@@ -2942,7 +2936,7 @@ CrossSequence:                          # @CrossSequence
 	jirl	$ra, $ra, 0
 	b	.LBB6_189
 .LBB6_80:
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.bu	$a0, $a2, 33
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB6_82
@@ -2950,7 +2944,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a0, $a2, 40
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 .LBB6_82:
 	st.d	$s0, $a2, 40
 	ld.d	$a0, $s0, 24
@@ -2974,7 +2968,7 @@ CrossSequence:                          # @CrossSequence
 	pcaddu18i	$ra, %call36(DatabaseFileNum)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a2, 40
 	st.h	$a1, $a2, 34
 	ori	$a1, $zero, 1
@@ -2995,11 +2989,11 @@ CrossSequence:                          # @CrossSequence
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 40
 .LBB6_86:
 	ld.d	$s5, $a0, 8
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	beq	$s5, $a0, .LBB6_116
 # %bb.87:                               # %.preheader384.preheader
 	ori	$s6, $zero, 10
@@ -3025,7 +3019,7 @@ CrossSequence:                          # @CrossSequence
 	addi.d	$s4, $a0, %pc_lo12(.LJTI6_1)
 	b	.LBB6_90
 .LBB6_88:                               #   in Loop: Header=BB6_90 Depth=1
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a1, $fp, 40
 	ld.d	$a1, $a1, 80
 	addi.d	$s3, $a0, 32
@@ -3127,7 +3121,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a5, $sp, 72                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $fp, 80
 	ld.hu	$a1, $a0, 41
 	andi	$a1, $a1, 1
@@ -3150,7 +3144,7 @@ CrossSequence:                          # @CrossSequence
 	bgeu	$a1, $a2, .LBB6_88
 # %bb.107:                              #   in Loop: Header=BB6_90 Depth=1
 	ld.bu	$a1, $a0, 64
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	beqz	$a1, .LBB6_89
 # %bb.108:                              #   in Loop: Header=BB6_90 Depth=1
 	ld.h	$a1, $a0, 34
@@ -3184,10 +3178,10 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a1, $a1, 16
 	st.d	$a1, $a1, 8
 	st.d	$a1, $a1, 0
-	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a1, $a6, 0
 	st.d	$a1, $s2, 0
-	ld.d	$a5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a5, $s8, 0
 	ld.d	$a2, $a5, 0
 	st.d	$a2, $s0, 0
@@ -3216,7 +3210,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a1, $a2, 24
 .LBB6_113:                              # %.loopexit383
                                         #   in Loop: Header=BB6_90 Depth=1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	b	.LBB6_89
 .LBB6_114:                              # %.thread
                                         #   in Loop: Header=BB6_90 Depth=1
@@ -3234,17 +3228,17 @@ CrossSequence:                          # @CrossSequence
 	beq	$a1, $a2, .LBB6_189
 # %bb.117:
 	ld.hu	$a1, $a2, 34
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 52
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a3, $a3, 56
 	pcaddu18i	$ra, %call36(AppendToFile)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 40
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s5, $a2, 8
 	st.d	$zero, $a2, 40
 	beq	$s5, $a2, .LBB6_163
@@ -3281,7 +3275,7 @@ CrossSequence:                          # @CrossSequence
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB6_120:                              #   in Loop: Header=BB6_122 Depth=1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 .LBB6_121:                              #   in Loop: Header=BB6_122 Depth=1
 	ld.d	$s5, $s5, 8
 	beq	$s5, $a2, .LBB6_163
@@ -3322,7 +3316,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a5, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.bu	$a0, $fp, 48
 	addi.d	$a0, $a0, -126
 	ori	$a1, $zero, 7
@@ -3354,7 +3348,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$s5, $s5, 0
 	ld.d	$a0, $s5, 8
 	ld.d	$a1, $a0, 24
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 0
 	beq	$a1, $a0, .LBB6_136
 # %bb.132:                              #   in Loop: Header=BB6_122 Depth=1
@@ -3377,7 +3371,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a2, $a1, 0
 	st.d	$a0, $a2, 8
 	st.d	$a1, $a1, 0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.d	$a1, $a1, 8
 .LBB6_134:                              #   in Loop: Header=BB6_122 Depth=1
@@ -3416,13 +3410,13 @@ CrossSequence:                          # @CrossSequence
 	bne	$a2, $a0, .LBB6_133
 	b	.LBB6_134
 .LBB6_137:
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a2, 72
 	beqz	$a0, .LBB6_139
 # %bb.138:
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 .LBB6_139:
 	st.d	$s7, $sp, 104                   # 8-byte Folded Spill
 	ld.bu	$a0, $s2, 0
@@ -3444,7 +3438,7 @@ CrossSequence:                          # @CrossSequence
 	ori	$a0, $zero, 11
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	move	$s0, $a0
 .LBB6_142:
 	ld.d	$s6, $a2, 8
@@ -3479,7 +3473,7 @@ CrossSequence:                          # @CrossSequence
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 .LBB6_145:                              #   in Loop: Header=BB6_147 Depth=1
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 .LBB6_146:                              #   in Loop: Header=BB6_147 Depth=1
 	ld.d	$s6, $s6, 8
 	beq	$s6, $a2, .LBB6_189
@@ -3509,7 +3503,7 @@ CrossSequence:                          # @CrossSequence
 	move	$a5, $s3
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 .LBB6_152:                              #   in Loop: Header=BB6_147 Depth=1
 	ld.bu	$a0, $fp, 48
 	addi.d	$a0, $a0, -126
@@ -3542,7 +3536,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$s6, $s6, 0
 	ld.d	$a0, $s6, 8
 	ld.d	$a1, $a0, 24
-	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	st.d	$a0, $a2, 0
 	beq	$a1, $a0, .LBB6_160
 # %bb.156:                              #   in Loop: Header=BB6_147 Depth=1
@@ -3565,7 +3559,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$a2, $a1, 0
 	st.d	$a0, $a2, 8
 	st.d	$a1, $a1, 0
-	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	st.d	$a1, $a1, 8
 .LBB6_158:                              #   in Loop: Header=BB6_147 Depth=1
@@ -3662,7 +3656,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a0, $a0, 0
 	st.d	$a0, $s6, 0
 	st.d	$a0, $a1, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a2, $s8, 0
 	beqz	$a2, .LBB6_167
 # %bb.166:
@@ -3716,7 +3710,7 @@ CrossSequence:                          # @CrossSequence
 	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
 	bne	$fp, $a0, .LBB6_74
 .LBB6_171:
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 72
 	beqz	$a0, .LBB6_173
 # %bb.172:
@@ -3755,7 +3749,7 @@ CrossSequence:                          # @CrossSequence
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a0, $a1, 72
 	ld.bu	$a1, $a0, 32
 	addi.d	$a1, $a1, -11
@@ -3777,7 +3771,7 @@ CrossSequence:                          # @CrossSequence
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 72
 .LBB6_176:
 	pcalau12i	$a1, %got_pc_hi20(NewCrossDb)
@@ -3811,17 +3805,17 @@ CrossSequence:                          # @CrossSequence
 .LBB6_179:
 	ld.d	$a0, $a2, 40
 	ld.hu	$a1, $a2, 34
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 52
-	ld.d	$a3, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a3, $a3, 56
 	pcaddu18i	$ra, %call36(AppendToFile)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 40
 	pcaddu18i	$ra, %call36(DisposeObject)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	st.d	$zero, $a2, 40
 	ori	$a0, $zero, 2
 	st.b	$a0, $a2, 33
@@ -3845,7 +3839,7 @@ CrossSequence:                          # @CrossSequence
 	ori	$a0, $zero, 11
 	pcaddu18i	$ra, %call36(MakeWord)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	move	$s0, $a0
 .LBB6_183:
 	pcalau12i	$a0, %got_pc_hi20(NewCrossDb)
@@ -3889,7 +3883,7 @@ CrossSequence:                          # @CrossSequence
 	pcaddu18i	$ra, %call36(GetMemory)
 	jirl	$ra, $ra, 0
 .LBB6_186:
-	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 112                   # 8-byte Folded Reload
 	st.b	$zero, $a0, 32
 	st.d	$a0, $a0, 24
 	st.d	$a0, $a0, 16
@@ -3899,7 +3893,7 @@ CrossSequence:                          # @CrossSequence
 	st.d	$a0, $a0, 0
 	st.d	$a0, $a6, 0
 	st.d	$a0, $a2, 0
-	ld.d	$a4, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a4, $sp, 120                   # 8-byte Folded Reload
 	st.d	$a4, $s8, 0
 	ld.d	$a3, $a4, 0
 	pcalau12i	$a1, %got_pc_hi20(zz_tmp)

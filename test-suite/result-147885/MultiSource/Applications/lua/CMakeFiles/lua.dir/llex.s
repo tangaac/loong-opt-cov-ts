@@ -558,18 +558,17 @@ llex:                                   # @llex
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 72
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	move	$s8, $a1
 	st.d	$zero, $a0, 8
 	ori	$s0, $zero, 92
 	ori	$s2, $zero, 126
-	lu12i.w	$s3, 2
 	pcalau12i	$a0, %pc_hi20(.LJTI7_0)
-	addi.d	$s4, $a0, %pc_lo12(.LJTI7_0)
-	addi.w	$s8, $zero, -1
-	ori	$s6, $zero, 14
-	ori	$s7, $zero, 1
+	addi.d	$s3, $a0, %pc_lo12(.LJTI7_0)
+	ori	$s4, $zero, 91
+	ori	$s5, $zero, 14
+	ori	$s6, $zero, 1
 	lu12i.w	$a0, 4
-	ori	$s5, $a0, 2049
+	ori	$s7, $a0, 2049
 .LBB7_1:                                # %thread-pre-split
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_2 Depth 2
@@ -581,8 +580,8 @@ llex:                                   # @llex
 	bltu	$s0, $a0, .LBB7_4
 # %bb.3:                                #   in Loop: Header=BB7_2 Depth=2
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $s4, $a0
-	add.d	$a0, $s4, $a0
+	ldx.w	$a0, $s3, $a0
+	add.d	$a0, $s3, $a0
 	jr	$a0
 	.p2align	4, , 16
 .LBB7_4:                                #   in Loop: Header=BB7_2 Depth=2
@@ -593,8 +592,8 @@ llex:                                   # @llex
 	ld.d	$a1, $a0, 0
 	slli.d	$a2, $s1, 1
 	ldx.hu	$a1, $a1, $a2
-	and	$a2, $a1, $s3
-	beqz	$a2, .LBB7_35
+	slli.d	$a2, $a1, 50
+	bgez	$a2, .LBB7_35
 # %bb.6:                                #   in Loop: Header=BB7_2 Depth=2
 	ld.d	$a0, $fp, 64
 	ld.d	$a1, $a0, 0
@@ -653,22 +652,20 @@ llex:                                   # @llex
 	st.d	$a2, $a0, 8
 	ld.bu	$a0, $a1, 0
 	st.w	$a0, $fp, 0
-	ori	$a1, $zero, 91
-	bne	$a0, $a1, .LBB7_21
+	bne	$a0, $s4, .LBB7_21
 	b	.LBB7_16
 .LBB7_15:                               #   in Loop: Header=BB7_1 Depth=1
 	pcaddu18i	$ra, %call36(luaZ_fill)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $fp, 0
-	ori	$a1, $zero, 91
-	bne	$a0, $a1, .LBB7_21
+	bne	$a0, $s4, .LBB7_21
 .LBB7_16:                               #   in Loop: Header=BB7_1 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(skip_sep)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 72
 	st.d	$zero, $a1, 8
-	bge	$s8, $a0, .LBB7_18
+	bltz	$a0, .LBB7_18
 # %bb.17:                               #   in Loop: Header=BB7_1 Depth=1
 	move	$a2, $a0
 	move	$a0, $fp
@@ -682,7 +679,7 @@ llex:                                   # @llex
                                         #   in Loop: Header=BB7_1 Depth=1
 	ld.w	$a0, $fp, 0
 	addi.d	$a0, $a0, 1
-	bgeu	$s6, $a0, .LBB7_23
+	bgeu	$s5, $a0, .LBB7_23
 	.p2align	4, , 16
 .LBB7_19:                               #   Parent Loop BB7_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -700,7 +697,7 @@ llex:                                   # @llex
 .LBB7_21:                               # %.thread
                                         #   in Loop: Header=BB7_1 Depth=1
 	addi.d	$a0, $a0, 1
-	bgeu	$s6, $a0, .LBB7_23
+	bgeu	$s5, $a0, .LBB7_23
 	b	.LBB7_19
 	.p2align	4, , 16
 .LBB7_22:                               #   in Loop: Header=BB7_19 Depth=2
@@ -708,11 +705,11 @@ llex:                                   # @llex
 	jirl	$ra, $ra, 0
 	st.w	$a0, $fp, 0
 	addi.d	$a0, $a0, 1
-	bltu	$s6, $a0, .LBB7_19
+	bltu	$s5, $a0, .LBB7_19
 .LBB7_23:                               # %.thread
                                         #   in Loop: Header=BB7_1 Depth=1
-	sll.d	$a0, $s7, $a0
-	and	$a0, $a0, $s5
+	sll.d	$a0, $s6, $a0
+	and	$a0, $a0, $s7
 	beqz	$a0, .LBB7_19
 	b	.LBB7_1
 .LBB7_24:
@@ -724,6 +721,7 @@ llex:                                   # @llex
 	ld.d	$a1, $a0, 0
 	addi.d	$a2, $a1, -1
 	st.d	$a2, $a0, 0
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	beqz	$a1, .LBB7_44
 # %bb.25:
 	ld.d	$a1, $a0, 8
@@ -741,7 +739,7 @@ llex:                                   # @llex
 	bltz	$a0, .LBB7_102
 # %bb.27:
 	move	$a0, $fp
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	move	$a1, $s8
 	pcaddu18i	$ra, %call36(read_long_string)
 	jirl	$ra, $ra, 0
 	ori	$s1, $zero, 286
@@ -802,8 +800,8 @@ llex:                                   # @llex
 	beq	$a0, $a1, .LBB7_117
 	b	.LBB7_146
 .LBB7_35:
-	andi	$a2, $a1, 2048
-	bnez	$a2, .LBB7_120
+	slli.d	$a2, $a1, 52
+	bltz	$a2, .LBB7_120
 # %bb.36:
 	ori	$s0, $zero, 95
 	beq	$s1, $s0, .LBB7_42
@@ -880,7 +878,8 @@ llex:                                   # @llex
 	ld.bu	$a0, $a1, 0
 	b	.LBB7_97
 .LBB7_47:
-	ori	$s0, $zero, 12
+	ori	$s8, $zero, 12
+	addi.w	$s0, $zero, -1
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.33)
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
@@ -889,7 +888,7 @@ llex:                                   # @llex
 	addi.d	$s4, $a0, %pc_lo12(.L.str.34)
 	pcalau12i	$a0, %pc_hi20(.L.str.30)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$s5, $zero, 13
 	b	.LBB7_51
 	.p2align	4, , 16
@@ -931,9 +930,9 @@ llex:                                   # @llex
 	ld.w	$a1, $fp, 0
 	beq	$a1, $s1, .LBB7_45
 .LBB7_51:                               # =>This Inner Loop Header: Depth=1
-	blt	$s0, $a1, .LBB7_54
+	blt	$s8, $a1, .LBB7_54
 # %bb.52:                               #   in Loop: Header=BB7_51 Depth=1
-	beq	$a1, $s8, .LBB7_64
+	beq	$a1, $s0, .LBB7_64
 # %bb.53:                               #   in Loop: Header=BB7_51 Depth=1
 	ori	$a0, $zero, 10
 	beq	$a1, $a0, .LBB7_48
@@ -1010,7 +1009,7 @@ llex:                                   # @llex
 	move	$a2, $a0
 	move	$a0, $a1
 	move	$a1, $s4
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB7_49
 .LBB7_65:                               #   in Loop: Header=BB7_51 Depth=1
 	pcaddu18i	$ra, %call36(luaZ_fill)
@@ -1027,7 +1026,7 @@ llex:                                   # @llex
 	ori	$a0, $zero, 96
 	blt	$a0, $s6, .LBB7_58
 .LBB7_67:                               #   in Loop: Header=BB7_51 Depth=1
-	beq	$s6, $s8, .LBB7_50
+	beq	$s6, $s0, .LBB7_50
 # %bb.68:                               #   in Loop: Header=BB7_51 Depth=1
 	ori	$a0, $zero, 10
 	beq	$s6, $a0, .LBB7_70
@@ -1071,8 +1070,8 @@ llex:                                   # @llex
 	ld.d	$a1, $a0, 0
 	slli.d	$a0, $s6, 1
 	ldx.hu	$a0, $a1, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB7_81
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB7_81
 # %bb.77:                               #   in Loop: Header=BB7_51 Depth=1
 	move	$a0, $fp
 	move	$a1, $s6
@@ -1122,9 +1121,9 @@ llex:                                   # @llex
 	st.w	$a4, $fp, 0
 	slli.d	$a0, $a4, 1
 	ldx.hu	$a0, $a1, $a0
-	andi	$a0, $a0, 2048
+	slli.d	$a0, $a0, 52
 	addi.w	$s6, $s6, -48
-	beqz	$a0, .LBB7_93
+	bgez	$a0, .LBB7_93
 # %bb.85:                               # %.preheader.1.i
                                         #   in Loop: Header=BB7_51 Depth=1
 	ld.d	$a0, $fp, 64
@@ -1152,9 +1151,9 @@ llex:                                   # @llex
 	slli.d	$a1, $s6, 3
 	alsl.d	$a1, $s6, $a1, 1
 	add.d	$a1, $a1, $a4
-	andi	$a0, $a0, 2048
+	slli.d	$a0, $a0, 52
 	addi.w	$s6, $a1, -48
-	beqz	$a0, .LBB7_93
+	bgez	$a0, .LBB7_93
 # %bb.89:                               # %.preheader.2.i
                                         #   in Loop: Header=BB7_51 Depth=1
 	ld.d	$a0, $fp, 64
@@ -1227,6 +1226,7 @@ llex:                                   # @llex
 	pcaddu18i	$ra, %call36(luaZ_fill)
 	jirl	$ra, $ra, 0
 .LBB7_97:
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a1, $fp, 72
 	st.w	$a0, $fp, 0
 	ld.d	$a0, $a1, 0
@@ -1251,8 +1251,7 @@ llex:                                   # @llex
 	st.w	$a1, $a0, 0
 	st.w	$a1, $a0, 8
 .LBB7_99:                               # %read_string.exit
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	st.d	$fp, $a0, 0
+	st.d	$fp, $s0, 0
 	ori	$s1, $zero, 286
 	b	.LBB7_146
 .LBB7_100:
@@ -1272,7 +1271,8 @@ llex:                                   # @llex
 	beq	$a0, $a1, .LBB7_132
 	b	.LBB7_146
 .LBB7_102:
-	beq	$a2, $s8, .LBB7_140
+	addi.w	$a0, $zero, -1
+	beq	$a2, $a0, .LBB7_140
 # %bb.103:
 	ld.d	$a0, $fp, 80
 	addi.d	$a1, $a0, 24
@@ -1414,12 +1414,12 @@ llex:                                   # @llex
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $s1, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
+	slli.d	$a0, $a0, 52
 	ori	$s1, $zero, 46
-	beqz	$a0, .LBB7_146
+	bgez	$a0, .LBB7_146
 .LBB7_120:
 	move	$a0, $fp
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	move	$a1, $s8
 	pcaddu18i	$ra, %call36(read_numeral)
 	jirl	$ra, $ra, 0
 	ori	$s1, $zero, 284
@@ -1535,8 +1535,7 @@ llex:                                   # @llex
 	ori	$s1, $zero, 283
 	b	.LBB7_146
 .LBB7_143:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	st.d	$fp, $a0, 0
+	st.d	$fp, $s8, 0
 	ori	$s1, $zero, 285
 	b	.LBB7_146
 .LBB7_144:

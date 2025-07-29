@@ -9,10 +9,9 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 	vldi	$vr2, -912
 	fcmp.cune.d	$fcc0, $fa0, $fa2
                                         # kill: def $f1_64 killed $f1_64 def $vr1
-	ori	$a4, $zero, 1
 	bcnez	$fcc0, .LBB0_6
 # %bb.1:                                # %.preheader
-	blt	$a0, $a4, .LBB0_22
+	blez	$a0, .LBB0_22
 # %bb.2:                                # %.lr.ph44.preheader
 	ori	$a4, $zero, 6
 	bgeu	$a0, $a4, .LBB0_12
@@ -41,7 +40,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 	fcmp.ceq.d	$fcc0, $fa1, $fa2
 	bceqz	$fcc0, .LBB0_17
 # %bb.7:                                # %.preheader36
-	blt	$a0, $a4, .LBB0_22
+	blez	$a0, .LBB0_22
 # %bb.8:                                # %.lr.ph42.preheader
 	ori	$a4, $zero, 6
 	bgeu	$a0, $a4, .LBB0_23
@@ -104,7 +103,7 @@ _Z6waxpbyidPKddS0_Pd:                   # @_Z6waxpbyidPKddS0_Pd
 	bne	$a4, $a0, .LBB0_4
 	b	.LBB0_22
 .LBB0_17:                               # %.preheader38
-	blt	$a0, $a4, .LBB0_22
+	blez	$a0, .LBB0_22
 # %bb.18:                               # %.lr.ph.preheader
 	ori	$a4, $zero, 4
 	bgeu	$a0, $a4, .LBB0_28

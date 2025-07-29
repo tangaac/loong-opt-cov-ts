@@ -30,11 +30,10 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	ld.d	$a1, $fp, 8
 	ld.d	$a2, $a1, 8
 	ld.w	$a1, $a2, 8
-	ori	$a3, $zero, 1
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	blt	$a1, $a3, .LBB0_21
+	blez	$a1, .LBB0_21
 # %bb.1:                                # %.lr.ph
-	move	$s6, $zero
+	move	$s5, $zero
 	vreplvei.d	$vr5, $vr4, 0
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
@@ -46,18 +45,18 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	ld.w	$a0, $a2, 8
-	addi.d	$s6, $s6, 1
-	bge	$s6, $a0, .LBB0_21
+	addi.d	$s5, $s5, 1
+	bge	$s5, $a0, .LBB0_21
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
                                         #       Child Loop BB0_11 Depth 3
                                         #         Child Loop BB0_19 Depth 4
                                         #         Child Loop BB0_16 Depth 4
 	ld.d	$a0, $a2, 0
-	alsl.d	$a1, $s6, $s6, 1
-	slli.d	$s5, $a1, 3
-	ldx.w	$a1, $a0, $s5
-	add.d	$a0, $a0, $s5
+	alsl.d	$a1, $s5, $s5, 1
+	slli.d	$s0, $a1, 3
+	ldx.w	$a1, $a0, $s0
+	add.d	$a0, $a0, $s0
 	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
 	st.w	$a1, $s1, 0
 	ld.w	$a1, $a0, 4
@@ -85,10 +84,10 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	ld.d	$a0, $a2, 40
 	ld.d	$s2, $a2, 24
 	ld.d	$a1, $a3, 40
-	slli.d	$a2, $s6, 2
+	slli.d	$a2, $s5, 2
 	ldx.w	$s3, $a0, $a2
-	ld.d	$s0, $a3, 24
-	ldx.w	$s7, $a1, $a2
+	ld.d	$s7, $a3, 24
+	ldx.w	$s6, $a1, $a2
 	addi.d	$a2, $sp, 108
 	move	$a0, $s1
 	move	$a1, $fp
@@ -107,29 +106,25 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	masknez	$a3, $a3, $a4
 	maskeqz	$a4, $a2, $a4
 	or	$a3, $a4, $a3
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB0_2
+	blez	$a3, .LBB0_2
 # %bb.4:                                # %.preheader243.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB0_2
+	blez	$a2, .LBB0_2
 # %bb.5:                                # %.preheader243.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.6:                                # %.preheader243.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.7:                                # %.preheader242.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$a3, $zero
-	add.d	$a5, $s8, $s5
-	add.d	$a6, $s4, $s5
-	alsl.d	$a4, $s7, $s0, 3
+	add.d	$a5, $s8, $s0
+	add.d	$a6, $s4, $s0
+	alsl.d	$a4, $s6, $s7, 3
 	ld.d	$t3, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a7, $t3, 0
-	ldx.w	$t0, $s8, $s5
+	ldx.w	$t0, $s8, $s0
 	ld.w	$t1, $t3, 4
 	ld.w	$t2, $a5, 4
 	ld.w	$t3, $t3, 8
@@ -155,8 +150,8 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	or	$a5, $a5, $t0
 	addi.d	$t0, $a5, 1
 	mul.d	$a5, $t4, $t0
-	add.w	$s7, $t6, $a5
-	ldx.w	$a5, $s4, $s5
+	add.w	$s6, $t6, $a5
+	ldx.w	$a5, $s4, $s0
 	ld.w	$t4, $a6, 4
 	ld.w	$t5, $a6, 8
 	ld.w	$t6, $a6, 16
@@ -214,12 +209,12 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	mul.d	$t8, $t7, $a6
 	slli.d	$s0, $a6, 5
 	addi.d	$s4, $t4, 16
-	slli.d	$s5, $a6, 3
+	slli.d	$s7, $a6, 3
 	b	.LBB0_9
 	.p2align	4, , 16
 .LBB0_8:                                # %._crit_edge251.split.us.us.us.us.us.us
                                         #   in Loop: Header=BB0_9 Depth=2
-	add.w	$s7, $t1, $s7
+	add.w	$s6, $t1, $s6
 	addi.w	$a3, $a3, 1
 	add.w	$a5, $t2, $a5
 	beq	$a3, $a2, .LBB0_2
@@ -234,7 +229,7 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	.p2align	4, , 16
 .LBB0_10:                               # %._crit_edge.us.us.us.us.us.us
                                         #   in Loop: Header=BB0_11 Depth=3
-	add.w	$s7, $a7, $ra
+	add.w	$s6, $a7, $ra
 	addi.w	$s8, $s8, 1
 	add.w	$a5, $t0, $a5
 	beq	$s8, $a1, .LBB0_8
@@ -248,19 +243,19 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 # %bb.12:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_11 Depth=3
 	alsl.d	$fp, $a5, $a4, 3
-	alsl.d	$s1, $s7, $t5, 3
+	alsl.d	$s1, $s6, $t5, 3
 	bgeu	$fp, $s1, .LBB0_18
 # %bb.13:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_11 Depth=3
 	alsl.d	$s1, $a5, $t3, 3
-	alsl.d	$s2, $s7, $t4, 3
+	alsl.d	$s2, $s6, $t4, 3
 	bgeu	$s2, $s1, .LBB0_18
 .LBB0_14:                               #   in Loop: Header=BB0_11 Depth=3
 	move	$fp, $zero
-	move	$ra, $s7
+	move	$ra, $s6
 .LBB0_15:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB0_11 Depth=3
-	move	$s7, $zero
+	move	$s6, $zero
 	move	$s2, $zero
 	alsl.d	$s1, $a5, $a4, 3
 	alsl.d	$s3, $ra, $t4, 3
@@ -275,22 +270,22 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
 	fldx.d	$fa1, $s1, $s2
 	fmadd.d	$fa0, $fa4, $fa0, $fa1
 	fstx.d	$fa0, $s1, $s2
-	add.d	$s2, $s2, $s5
+	add.d	$s2, $s2, $s7
 	addi.w	$fp, $fp, -1
-	sub.d	$s7, $s7, $a6
+	sub.d	$s6, $s6, $a6
 	bnez	$fp, .LBB0_16
 # %bb.17:                               # %._crit_edge.us.us.us.us.us.us.loopexit
                                         #   in Loop: Header=BB0_11 Depth=3
-	sub.d	$a5, $a5, $s7
-	sub.d	$ra, $ra, $s7
+	sub.d	$a5, $a5, $s6
+	sub.d	$ra, $ra, $s6
 	b	.LBB0_10
 	.p2align	4, , 16
 .LBB0_18:                               # %vector.ph
                                         #   in Loop: Header=BB0_11 Depth=3
 	move	$s2, $zero
 	add.d	$a5, $t8, $a5
-	add.d	$ra, $t8, $s7
-	alsl.d	$s7, $s7, $s4, 3
+	add.d	$ra, $t8, $s6
+	alsl.d	$s6, $s6, $s4, 3
 	move	$s1, $t7
 	.p2align	4, , 16
 .LBB0_19:                               # %vector.body
@@ -298,9 +293,9 @@ hypre_SMGAxpy:                          # @hypre_SMGAxpy
                                         #     Parent Loop BB0_9 Depth=2
                                         #       Parent Loop BB0_11 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	add.d	$s3, $s7, $s2
+	add.d	$s3, $s6, $s2
 	vld	$vr0, $s3, -16
-	vldx	$vr1, $s7, $s2
+	vldx	$vr1, $s6, $s2
 	add.d	$s3, $fp, $s2
 	vldx	$vr2, $fp, $s2
 	vld	$vr3, $s3, 16

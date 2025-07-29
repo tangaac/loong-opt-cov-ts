@@ -9,13 +9,13 @@ wirecosts:                              # @wirecosts
 	ld.d	$a2, $a2, %got_pc_lo12(numnets)
 	st.w	$zero, $a0, 0
 	st.w	$zero, $a1, 0
-	ld.w	$a4, $a2, 0
-	ori	$a3, $zero, 1
-	blt	$a4, $a3, .LBB0_19
+	ld.w	$a3, $a2, 0
+	blez	$a3, .LBB0_19
 # %bb.1:                                # %.lr.ph129
-	pcalau12i	$a4, %got_pc_hi20(netarray)
-	ld.d	$a4, $a4, %got_pc_lo12(netarray)
-	ld.d	$a4, $a4, 0
+	pcalau12i	$a3, %got_pc_hi20(netarray)
+	ld.d	$a3, $a3, %got_pc_lo12(netarray)
+	ld.d	$a3, $a3, 0
+	ori	$a4, $zero, 1
 	ori	$a6, $zero, 1
 	b	.LBB0_4
 	.p2align	4, , 16
@@ -41,7 +41,7 @@ wirecosts:                              # @wirecosts
                                         #     Child Loop BB0_17 Depth 2
 	move	$a5, $a6
 	slli.d	$a6, $a6, 3
-	ldx.d	$a6, $a4, $a6
+	ldx.d	$a6, $a3, $a6
 	move	$t0, $a6
 	.p2align	4, , 16
 .LBB0_5:                                #   Parent Loop BB0_4 Depth=1
@@ -50,7 +50,7 @@ wirecosts:                              # @wirecosts
 	beqz	$t0, .LBB0_12
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=2
 	ld.w	$a7, $t0, 40
-	beq	$a7, $a3, .LBB0_5
+	beq	$a7, $a4, .LBB0_5
 # %bb.7:                                # %.loopexit
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a7, $t0, 8
@@ -70,7 +70,7 @@ wirecosts:                              # @wirecosts
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t4, $t3, 40
-	beq	$t4, $a3, .LBB0_9
+	beq	$t4, $a4, .LBB0_9
 # %bb.11:                               #   in Loop: Header=BB0_10 Depth=2
 	ld.w	$t4, $t3, 8
 	ld.w	$t5, $t3, 12

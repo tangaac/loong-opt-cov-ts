@@ -5,9 +5,8 @@
 	.type	lisp_atan2,@function
 lisp_atan2:                             # @lisp_atan2
 # %bb.0:
-	ori	$a3, $zero, 1
 	move	$a2, $zero
-	blt	$a0, $a3, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:
 	bgtz	$a1, .LBB0_3
 # %bb.2:

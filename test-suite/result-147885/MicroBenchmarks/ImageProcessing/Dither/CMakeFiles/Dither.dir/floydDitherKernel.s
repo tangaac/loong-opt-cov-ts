@@ -5,12 +5,11 @@
 	.type	floydDitherKernel,@function
 floydDitherKernel:                      # @floydDitherKernel
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a0, $a6, .LBB0_17
+	blez	$a0, .LBB0_17
 # %bb.1:                                # %.preheader113.lr.ph
 	bstrpick.d	$a5, $a1, 31, 0
 	slli.d	$a4, $a5, 2
-	blt	$a1, $a6, .LBB0_11
+	blez	$a1, .LBB0_11
 # %bb.2:                                # %.preheader113.us.preheader
 	move	$a6, $zero
 	mul.d	$a7, $a5, $a0

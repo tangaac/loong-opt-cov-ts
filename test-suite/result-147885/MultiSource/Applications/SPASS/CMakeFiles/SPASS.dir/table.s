@@ -368,8 +368,7 @@ table_FreeTermarray:                    # @table_FreeTermarray
 # %bb.1:                                # %.preheader
 	move	$s0, $a1
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB3_4
+	blez	$a1, .LBB3_4
 # %bb.2:                                # %.lr.ph.preheader
 	addi.d	$s1, $fp, 16
 	move	$s2, $s0

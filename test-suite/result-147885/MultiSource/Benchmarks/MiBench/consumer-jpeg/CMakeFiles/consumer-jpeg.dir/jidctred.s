@@ -122,7 +122,7 @@ jpeg_idct_4x4:                          # @jpeg_idct_4x4
 	ld.h	$ra, $t6, -80
 	ldx.w	$t3, $t5, $t4
 	or	$s2, $s2, $s6
-	bstrpick.d	$a4, $s2, 15, 0
+	slli.d	$a4, $s2, 48
 	add.d	$s2, $s0, $t4
 	bnez	$a4, .LBB0_1
 # %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
@@ -451,9 +451,9 @@ jpeg_idct_2x2:                          # @jpeg_idct_2x2
 	or	$a1, $t2, $t0
 	or	$a1, $a1, $t3
 	or	$a1, $a1, $t4
-	bstrpick.d	$t7, $a1, 15, 0
 	ld.h	$t5, $a2, 0
 	ld.w	$t6, $t1, 0
+	slli.d	$t7, $a1, 48
 	lu12i.w	$a7, -2
 	lu12i.w	$a6, 1
 	lu12i.w	$a5, -3
@@ -508,7 +508,7 @@ jpeg_idct_2x2:                          # @jpeg_idct_2x2
 	ld.h	$t7, $a2, 2
 	ld.w	$t8, $t1, 4
 	or	$fp, $fp, $t6
-	bstrpick.d	$fp, $fp, 15, 0
+	slli.d	$fp, $fp, 48
 	beqz	$fp, .LBB1_5
 # %bb.4:
 	ld.w	$fp, $t1, 228
@@ -552,7 +552,7 @@ jpeg_idct_2x2:                          # @jpeg_idct_2x2
 	ld.h	$fp, $a2, 6
 	ld.w	$s0, $t1, 12
 	or	$s1, $s1, $t8
-	bstrpick.d	$s1, $s1, 15, 0
+	slli.d	$s1, $s1, 48
 	beqz	$s1, .LBB1_8
 # %bb.7:
 	ld.w	$s1, $t1, 236
@@ -596,7 +596,7 @@ jpeg_idct_2x2:                          # @jpeg_idct_2x2
 	ld.h	$s1, $a2, 10
 	ld.w	$s2, $t1, 20
 	or	$s3, $s3, $s0
-	bstrpick.d	$s3, $s3, 15, 0
+	slli.d	$s3, $s3, 48
 	beqz	$s3, .LBB1_11
 # %bb.10:
 	ld.w	$s3, $t1, 244
@@ -641,7 +641,7 @@ jpeg_idct_2x2:                          # @jpeg_idct_2x2
 	ld.h	$a2, $a2, 14
 	ld.w	$s3, $t1, 28
 	or	$s4, $s4, $s2
-	bstrpick.d	$s4, $s4, 15, 0
+	slli.d	$s4, $s4, 48
 	beqz	$s4, .LBB1_14
 # %bb.13:
 	ld.w	$s4, $t1, 252

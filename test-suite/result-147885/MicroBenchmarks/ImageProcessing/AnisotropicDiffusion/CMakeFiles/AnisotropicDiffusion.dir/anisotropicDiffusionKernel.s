@@ -20,9 +20,8 @@ anisotropicDiffusionKernel:             # @anisotropicDiffusionKernel
 	fst.d	$fs0, $sp, 96                   # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 88                   # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 80                   # 8-byte Folded Spill
-	ori	$a5, $zero, 1
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
-	blt	$a4, $a5, .LBB0_9
+	blez	$a4, .LBB0_9
 # %bb.1:                                # %.preheader110.lr.ph
 	ori	$a4, $zero, 5
 	blt	$a0, $a4, .LBB0_9

@@ -54,8 +54,7 @@ deflateInit2_:                          # @deflateInit2_
 	ld.d	$a7, $t0, 72
 	beqz	$a7, .LBB1_10
 .LBB1_6:
-	addi.w	$a7, $zero, -1
-	bge	$a7, $a3, .LBB1_11
+	bltz	$a3, .LBB1_11
 .LBB1_7:
 	ori	$a7, $zero, 16
 	bltu	$a3, $a7, .LBB1_12
@@ -77,8 +76,7 @@ deflateInit2_:                          # @deflateInit2_
 	pcalau12i	$a7, %got_pc_hi20(zcfree)
 	ld.d	$a7, $a7, %got_pc_lo12(zcfree)
 	st.d	$a7, $t0, 72
-	addi.w	$a7, $zero, -1
-	blt	$a7, $a3, .LBB1_7
+	bgez	$a3, .LBB1_7
 .LBB1_11:
 	move	$s6, $zero
 	sub.w	$a3, $zero, $a3
@@ -1105,22 +1103,21 @@ deflateResetKeep:                       # @deflateResetKeep
 	st.d	$zero, $a0, 16
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a0, 40
-	ori	$a1, $zero, 2
 	ld.d	$a3, $fp, 16
-	ld.w	$a2, $fp, 48
-	st.w	$a1, $a0, 88
+	ld.w	$a1, $fp, 48
+	ori	$a2, $zero, 2
+	st.w	$a2, $a0, 88
 	st.d	$zero, $fp, 40
-	addi.w	$a4, $zero, -1
 	st.d	$a3, $fp, 32
-	blt	$a4, $a2, .LBB7_9
+	bgez	$a1, .LBB7_9
 # %bb.8:
-	sub.w	$a2, $zero, $a2
-	st.w	$a2, $fp, 48
+	sub.w	$a1, $zero, $a1
+	st.w	$a1, $fp, 48
 .LBB7_9:
 	move	$s0, $a0
-	addi.d	$a0, $a2, -2
+	addi.d	$a0, $a1, -2
 	sltui	$a0, $a0, 1
-	sltui	$a3, $a2, 1
+	sltui	$a3, $a1, 1
 	ori	$a4, $zero, 42
 	masknez	$a4, $a4, $a3
 	ori	$a5, $zero, 113
@@ -1132,7 +1129,7 @@ deflateResetKeep:                       # @deflateResetKeep
 	or	$a0, $a0, $a3
 	st.w	$a0, $fp, 8
 	move	$a0, $zero
-	bne	$a2, $a1, .LBB7_11
+	bne	$a1, $a2, .LBB7_11
 # %bb.10:
 	move	$a1, $zero
 	move	$a2, $zero
@@ -2638,13 +2635,12 @@ deflate:                                # @deflate
 	move	$a0, $a2
 	ret
 .LBB12_146:
-	ld.w	$a3, $fp, 48
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB12_144
+	ld.w	$a2, $fp, 48
+	blez	$a2, .LBB12_149
 # %bb.147:
 	ld.d	$a1, $a0, 96
-	ori	$a2, $zero, 2
-	bne	$a3, $a2, .LBB12_149
+	ori	$a3, $zero, 2
+	bne	$a2, $a3, .LBB12_150
 # %bb.148:
 	ld.d	$a2, $fp, 40
 	ld.d	$a3, $fp, 16
@@ -2694,8 +2690,11 @@ deflate:                                # @deflate
 	stx.b	$a1, $a3, $a2
 	ld.d	$a1, $a0, 16
 	srli.d	$a1, $a1, 24
-	b	.LBB12_150
+	b	.LBB12_151
 .LBB12_149:
+	ori	$a2, $zero, 1
+	b	.LBB12_144
+.LBB12_150:
 	ld.d	$a2, $fp, 40
 	ld.d	$a3, $fp, 16
 	srli.d	$a4, $a1, 24
@@ -2715,7 +2714,7 @@ deflate:                                # @deflate
 	addi.d	$a5, $a2, 1
 	st.d	$a5, $fp, 40
 	stx.b	$a4, $a3, $a2
-.LBB12_150:
+.LBB12_151:
 	ld.d	$a2, $fp, 40
 	ld.d	$a3, $fp, 16
 	addi.d	$a4, $a2, 1
@@ -2724,12 +2723,11 @@ deflate:                                # @deflate
 	pcaddu18i	$ra, %call36(flush_pending)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 48
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB12_152
-# %bb.151:
+	blez	$a0, .LBB12_153
+# %bb.152:
 	sub.d	$a0, $zero, $a0
 	st.w	$a0, $fp, 48
-.LBB12_152:
+.LBB12_153:
 	ld.d	$a0, $fp, 40
 	sltui	$a2, $a0, 1
 	b	.LBB12_144

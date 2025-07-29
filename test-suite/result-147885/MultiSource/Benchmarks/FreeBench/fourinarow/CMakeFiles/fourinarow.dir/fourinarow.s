@@ -5606,7 +5606,7 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	move	$s2, $a1
-	bge	$a0, $a5, .LBB11_74
+	bge	$a0, $a5, .LBB11_81
 # %bb.1:                                # %.preheader59
 	move	$s1, $zero
 	move	$s4, $zero
@@ -5619,15 +5619,14 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	lu12i.w	$a0, -25
 	ori	$s3, $a0, 2400
 	lu12i.w	$a0, 24
-	ori	$s5, $a0, 1696
+	ori	$a0, $a0, 1696
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 4
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	lu12i.w	$a0, -524288
 	lu32i.d	$a0, 0
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB11_3
 	.p2align	4, , 16
 .LBB11_2:                               # %bit_place_piece.exit
@@ -5635,7 +5634,7 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	addi.d	$s4, $s4, 1
 	addi.d	$s1, $s1, 1
 	ori	$a0, $zero, 7
-	beq	$s4, $a0, .LBB11_75
+	beq	$s4, $a0, .LBB11_82
 .LBB11_3:                               # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1
 	sll.d	$a0, $a0, $s4
@@ -5671,80 +5670,84 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 .LBB11_9:                               #   in Loop: Header=BB11_3 Depth=1
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(DEPTH)
+	move	$s5, $a2
 	or	$s6, $a0, $a2
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB11_31
+	bge	$a0, $a1, .LBB11_33
 # %bb.10:                               # %.preheader
                                         #   in Loop: Header=BB11_3 Depth=1
 	or	$fp, $s6, $s2
 	andi	$a1, $fp, 1
 	ori	$a0, $zero, 1
-	beqz	$a1, .LBB11_16
+	beqz	$a1, .LBB11_17
 # %bb.11:                               #   in Loop: Header=BB11_3 Depth=1
 	andi	$a1, $fp, 128
 	ori	$a0, $zero, 128
-	beqz	$a1, .LBB11_16
+	beqz	$a1, .LBB11_17
 # %bb.12:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 49
 	lu12i.w	$a0, 4
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_16
+	bgez	$a1, .LBB11_17
 # %bb.13:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 42
 	lu12i.w	$a0, 512
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_16
+	bgez	$a1, .LBB11_17
 # %bb.14:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 35
 	lu12i.w	$a0, 65536
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_16
+	bgez	$a1, .LBB11_17
 # %bb.15:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a0, $fp, 28
+	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
+	bltz	$a0, .LBB11_18
+# %bb.16:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 8
-	and	$a1, $fp, $a0
-	move	$s7, $s5
-	bnez	$a1, .LBB11_17
 	.p2align	4, , 16
-.LBB11_16:                              #   in Loop: Header=BB11_3 Depth=1
+.LBB11_17:                              #   in Loop: Header=BB11_3 Depth=1
 	or	$a1, $a0, $s2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a2, $s6
 	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
-	move	$a4, $s5
+	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
+	move	$a4, $s7
 	pcaddu18i	$ra, %call36(minimax_comp_ab2)
 	jirl	$ra, $ra, 0
-	slt	$a1, $a0, $s5
+	slt	$a1, $a0, $s7
 	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s5, $a1
+	masknez	$a1, $s7, $a1
 	or	$s7, $a0, $a1
 	move	$a0, $s7
-	blt	$s7, $s3, .LBB11_32
-.LBB11_17:                              # %bit_place_piece.exit39
+	blt	$s7, $s3, .LBB11_34
+.LBB11_18:                              # %bit_place_piece.exit39
                                         #   in Loop: Header=BB11_3 Depth=1
 	andi	$a1, $fp, 2
 	ori	$a0, $zero, 2
-	beqz	$a1, .LBB11_23
-# %bb.18:                               #   in Loop: Header=BB11_3 Depth=1
+	beqz	$a1, .LBB11_25
+# %bb.19:                               #   in Loop: Header=BB11_3 Depth=1
 	andi	$a1, $fp, 256
 	ori	$a0, $zero, 256
-	beqz	$a1, .LBB11_23
-# %bb.19:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a0, 8
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_23
+	beqz	$a1, .LBB11_25
 # %bb.20:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a0, 1024
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_23
+	slli.d	$a1, $fp, 48
+	lu12i.w	$a0, 8
+	bgez	$a1, .LBB11_25
 # %bb.21:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a0, 131072
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_23
+	slli.d	$a1, $fp, 41
+	lu12i.w	$a0, 1024
+	bgez	$a1, .LBB11_25
 # %bb.22:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 34
+	lu12i.w	$a0, 131072
+	bgez	$a1, .LBB11_25
+# %bb.23:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a0, $fp, 27
+	bltz	$a0, .LBB11_36
+# %bb.24:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 16
-	and	$a1, $fp, $a0
-	bnez	$a1, .LBB11_34
 	.p2align	4, , 16
-.LBB11_23:                              #   in Loop: Header=BB11_3 Depth=1
+.LBB11_25:                              #   in Loop: Header=BB11_3 Depth=1
 	or	$a1, $a0, $s2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a2, $s6
@@ -5757,69 +5760,70 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s7, $a0
 	or	$a0, $a2, $a0
-	blt	$a0, $s3, .LBB11_32
-# %bb.24:                               #   in Loop: Header=BB11_3 Depth=1
+	blt	$a0, $s3, .LBB11_34
+# %bb.26:                               #   in Loop: Header=BB11_3 Depth=1
 	slt	$a1, $s7, $a1
 	xori	$a3, $a1, 1
 	move	$s7, $a0
 	andi	$a1, $fp, 4
 	ori	$a0, $zero, 4
-	beqz	$a1, .LBB11_35
-.LBB11_25:                              #   in Loop: Header=BB11_3 Depth=1
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	beqz	$a1, .LBB11_37
+.LBB11_27:                              #   in Loop: Header=BB11_3 Depth=1
 	andi	$a1, $fp, 512
 	ori	$a0, $zero, 512
-	beqz	$a1, .LBB11_35
-# %bb.26:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a0, 16
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_35
-# %bb.27:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a0, 2048
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_35
+	beqz	$a1, .LBB11_37
 # %bb.28:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a0, 262144
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_35
+	slli.d	$a1, $fp, 47
+	lu12i.w	$a0, 16
+	bgez	$a1, .LBB11_37
 # %bb.29:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 40
+	lu12i.w	$a0, 2048
+	bgez	$a1, .LBB11_37
+# %bb.30:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 33
+	lu12i.w	$a0, 262144
+	bgez	$a1, .LBB11_37
+# %bb.31:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a0, $fp, 26
+	bltz	$a0, .LBB11_45
+# %bb.32:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 32
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_35
-# %bb.30:                               #   in Loop: Header=BB11_3 Depth=1
-	move	$a0, $s7
 	b	.LBB11_37
 	.p2align	4, , 16
-.LBB11_31:                              #   in Loop: Header=BB11_3 Depth=1
+.LBB11_33:                              #   in Loop: Header=BB11_3 Depth=1
 	move	$a0, $s2
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(value)
 	jirl	$ra, $ra, 0
-.LBB11_32:                              # %minimax_player_ab2.exit
+.LBB11_34:                              # %minimax_player_ab2.exit
                                         #   in Loop: Header=BB11_3 Depth=1
 	slt	$a1, $s3, $a0
 	masknez	$a2, $s3, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$s3, $a0, $a2
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	blt	$a0, $s3, .LBB11_76
-# %bb.33:                               #   in Loop: Header=BB11_3 Depth=1
+	blt	$a0, $s3, .LBB11_83
+# %bb.35:                               #   in Loop: Header=BB11_3 Depth=1
 	masknez	$a0, $s0, $a1
 	maskeqz	$a1, $s1, $a1
 	or	$s0, $a1, $a0
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	move	$a2, $s5
 	addi.d	$s4, $s4, 1
 	addi.d	$s1, $s1, 1
 	ori	$a0, $zero, 7
 	bne	$s4, $a0, .LBB11_3
-	b	.LBB11_75
-.LBB11_34:                              #   in Loop: Header=BB11_3 Depth=1
+	b	.LBB11_82
+.LBB11_36:                              #   in Loop: Header=BB11_3 Depth=1
 	move	$a3, $zero
 	andi	$a1, $fp, 4
 	ori	$a0, $zero, 4
-	bnez	$a1, .LBB11_25
-.LBB11_35:                              #   in Loop: Header=BB11_3 Depth=1
-	move	$s5, $a3
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	bnez	$a1, .LBB11_27
+.LBB11_37:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$s0, $a3
 	or	$a1, $a0, $s2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a2, $s6
@@ -5832,41 +5836,46 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s7, $a0
 	or	$a0, $a2, $a0
-	blt	$a0, $s3, .LBB11_53
-# %bb.36:                               #   in Loop: Header=BB11_3 Depth=1
+	blt	$a0, $s3, .LBB11_57
+# %bb.38:                               #   in Loop: Header=BB11_3 Depth=1
 	slt	$a1, $s7, $a1
 	ori	$a2, $zero, 2
 	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $s5, $a1
+	maskeqz	$a1, $s0, $a1
 	or	$a3, $a1, $a2
-.LBB11_37:                              # %bit_place_piece.exit39.2
-                                        #   in Loop: Header=BB11_3 Depth=1
 	andi	$a2, $fp, 8
 	ori	$a1, $zero, 8
-	beqz	$a2, .LBB11_43
-# %bb.38:                               #   in Loop: Header=BB11_3 Depth=1
+	beqz	$a2, .LBB11_46
+.LBB11_39:                              #   in Loop: Header=BB11_3 Depth=1
 	andi	$a2, $fp, 1024
 	ori	$a1, $zero, 1024
-	beqz	$a2, .LBB11_43
-# %bb.39:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a1, 32
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_43
+	beqz	$a2, .LBB11_46
 # %bb.40:                               #   in Loop: Header=BB11_3 Depth=1
-	lu12i.w	$a1, 4096
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_43
+	slli.d	$a2, $fp, 46
+	lu12i.w	$a1, 32
+	bgez	$a2, .LBB11_46
 # %bb.41:                               #   in Loop: Header=BB11_3 Depth=1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_43
+	slli.d	$a2, $fp, 39
+	lu12i.w	$a1, 4096
+	bgez	$a2, .LBB11_46
 # %bb.42:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a2, $fp, 32
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	bgez	$a2, .LBB11_46
+# %bb.43:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 25
+	bltz	$a1, .LBB11_55
+# %bb.44:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 64
-	and	$a2, $fp, $a1
-	bnez	$a2, .LBB11_51
-.LBB11_43:                              #   in Loop: Header=BB11_3 Depth=1
-	move	$s5, $a3
+	b	.LBB11_46
+.LBB11_45:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$a0, $s7
+	andi	$a2, $fp, 8
+	ori	$a1, $zero, 8
+	bnez	$a2, .LBB11_39
+.LBB11_46:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$s0, $a3
 	or	$a1, $a1, $s2
 	move	$s7, $a0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -5880,48 +5889,49 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	maskeqz	$a3, $a0, $a2
 	masknez	$a2, $s7, $a2
 	or	$s7, $a3, $a2
-	blt	$s7, $s3, .LBB11_62
-# %bb.44:                               #   in Loop: Header=BB11_3 Depth=1
+	blt	$s7, $s3, .LBB11_68
+# %bb.47:                               #   in Loop: Header=BB11_3 Depth=1
 	slt	$a0, $a1, $a0
 	ori	$a1, $zero, 3
 	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $s5, $a0
+	maskeqz	$a0, $s0, $a0
 	or	$a3, $a0, $a1
 	andi	$a1, $fp, 16
 	ori	$a0, $zero, 16
-	beqz	$a1, .LBB11_52
-.LBB11_45:                              #   in Loop: Header=BB11_3 Depth=1
-	andi	$a1, $fp, 2048
+	beqz	$a1, .LBB11_56
+.LBB11_48:                              #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 52
 	ori	$a0, $zero, 2048
-	beqz	$a1, .LBB11_52
-# %bb.46:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_56
+# %bb.49:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 45
 	lu12i.w	$a0, 64
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_52
-# %bb.47:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_56
+# %bb.50:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 38
 	lu12i.w	$a0, 8192
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_52
-# %bb.48:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_56
+# %bb.51:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a0, $fp, 31
+	bltz	$a0, .LBB11_53
+# %bb.52:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_52
-# %bb.49:                               #   in Loop: Header=BB11_3 Depth=1
+	b	.LBB11_56
+.LBB11_53:                              #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a0, $fp, 24
+	bltz	$a0, .LBB11_66
+# %bb.54:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 128
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_52
-# %bb.50:                               #   in Loop: Header=BB11_3 Depth=1
-	move	$a0, $s7
-	b	.LBB11_55
-.LBB11_51:                              #   in Loop: Header=BB11_3 Depth=1
+	b	.LBB11_56
+.LBB11_55:                              #   in Loop: Header=BB11_3 Depth=1
 	move	$s7, $a0
 	andi	$a1, $fp, 16
 	ori	$a0, $zero, 16
-	bnez	$a1, .LBB11_45
-.LBB11_52:                              #   in Loop: Header=BB11_3 Depth=1
-	move	$s5, $a3
+	bnez	$a1, .LBB11_48
+.LBB11_56:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$s0, $a3
 	or	$a1, $a0, $s2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	move	$a2, $s6
@@ -5934,45 +5944,52 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s7, $a0
 	or	$a0, $a2, $a0
-	bge	$a0, $s3, .LBB11_54
-.LBB11_53:                              #   in Loop: Header=BB11_3 Depth=1
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	b	.LBB11_32
-.LBB11_54:                              #   in Loop: Header=BB11_3 Depth=1
+	bge	$a0, $s3, .LBB11_58
+.LBB11_57:                              #   in Loop: Header=BB11_3 Depth=1
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	b	.LBB11_34
+.LBB11_58:                              #   in Loop: Header=BB11_3 Depth=1
 	slt	$a1, $s7, $a1
 	ori	$a2, $zero, 4
 	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $s5, $a1
+	maskeqz	$a1, $s0, $a1
 	or	$a3, $a1, $a2
-.LBB11_55:                              # %bit_place_piece.exit39.4
-                                        #   in Loop: Header=BB11_3 Depth=1
 	andi	$a2, $fp, 32
 	ori	$a1, $zero, 32
-	beqz	$a2, .LBB11_61
-# %bb.56:                               #   in Loop: Header=BB11_3 Depth=1
+	beqz	$a2, .LBB11_67
+.LBB11_59:                              #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a2, $fp, 51
 	lu12i.w	$a1, 1
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_61
-# %bb.57:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a2, .LBB11_67
+# %bb.60:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a2, $fp, 44
 	lu12i.w	$a1, 128
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_61
-# %bb.58:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a2, .LBB11_67
+# %bb.61:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a2, $fp, 37
 	lu12i.w	$a1, 16384
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_61
-# %bb.59:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a2, .LBB11_67
+# %bb.62:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 30
+	bltz	$a1, .LBB11_64
+# %bb.63:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 2
-	and	$a2, $fp, $a1
-	beqz	$a2, .LBB11_61
-# %bb.60:                               #   in Loop: Header=BB11_3 Depth=1
+	b	.LBB11_67
+.LBB11_64:                              #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 23
+	bltz	$a1, .LBB11_76
+# %bb.65:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 256
-	and	$a2, $fp, $a1
-	bnez	$a2, .LBB11_70
-.LBB11_61:                              #   in Loop: Header=BB11_3 Depth=1
-	move	$s5, $a3
+	b	.LBB11_67
+.LBB11_66:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$a0, $s7
+	andi	$a2, $fp, 32
+	ori	$a1, $zero, 32
+	bnez	$a2, .LBB11_59
+.LBB11_67:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$s0, $a3
 	or	$a1, $a1, $s2
 	move	$s7, $a0
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -5986,51 +6003,51 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	maskeqz	$a3, $a0, $a2
 	masknez	$a2, $s7, $a2
 	or	$s7, $a3, $a2
-	bge	$s7, $s3, .LBB11_63
-.LBB11_62:                              #   in Loop: Header=BB11_3 Depth=1
+	bge	$s7, $s3, .LBB11_69
+.LBB11_68:                              #   in Loop: Header=BB11_3 Depth=1
 	move	$a0, $s7
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	b	.LBB11_32
-.LBB11_63:                              #   in Loop: Header=BB11_3 Depth=1
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	b	.LBB11_34
+.LBB11_69:                              #   in Loop: Header=BB11_3 Depth=1
 	slt	$a0, $a1, $a0
 	ori	$a1, $zero, 5
 	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $s5, $a0
+	maskeqz	$a0, $s0, $a0
 	or	$a3, $a0, $a1
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	andi	$a1, $fp, 64
 	ori	$a0, $zero, 64
-	beqz	$a1, .LBB11_71
-.LBB11_64:                              #   in Loop: Header=BB11_3 Depth=1
+	beqz	$a1, .LBB11_77
+.LBB11_70:                              #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 50
 	lu12i.w	$a0, 2
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_71
-# %bb.65:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_77
+# %bb.71:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 43
 	lu12i.w	$a0, 256
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_71
-# %bb.66:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_77
+# %bb.72:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 36
 	lu12i.w	$a0, 32768
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_71
-# %bb.67:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_77
+# %bb.73:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a1, $fp, 29
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_71
-# %bb.68:                               #   in Loop: Header=BB11_3 Depth=1
+	bgez	$a1, .LBB11_77
+# %bb.74:                               #   in Loop: Header=BB11_3 Depth=1
+	slli.d	$a0, $fp, 22
+	bltz	$a0, .LBB11_80
+# %bb.75:                               #   in Loop: Header=BB11_3 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 512
-	and	$a1, $fp, $a0
-	beqz	$a1, .LBB11_71
-# %bb.69:                               #   in Loop: Header=BB11_3 Depth=1
-	move	$a0, $s7
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	b	.LBB11_73
-.LBB11_70:                              #   in Loop: Header=BB11_3 Depth=1
+	b	.LBB11_77
+.LBB11_76:                              #   in Loop: Header=BB11_3 Depth=1
 	move	$s7, $a0
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	andi	$a1, $fp, 64
 	ori	$a0, $zero, 64
-	bnez	$a1, .LBB11_64
-.LBB11_71:                              #   in Loop: Header=BB11_3 Depth=1
+	bnez	$a1, .LBB11_70
+.LBB11_77:                              #   in Loop: Header=BB11_3 Depth=1
 	move	$fp, $a3
 	or	$a1, $a0, $s2
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -6044,20 +6061,22 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s7, $a0
 	or	$a0, $a2, $a0
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	blt	$a0, $s3, .LBB11_32
-# %bb.72:                               #   in Loop: Header=BB11_3 Depth=1
+	blt	$a0, $s3, .LBB11_34
+# %bb.78:                               #   in Loop: Header=BB11_3 Depth=1
 	slt	$a1, $s7, $a1
 	ori	$a2, $zero, 6
 	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$a3, $a1, $a2
-.LBB11_73:                              # %bit_place_piece.exit39.6
+.LBB11_79:                              # %bit_place_piece.exit39.6
                                         #   in Loop: Header=BB11_3 Depth=1
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a3, $a1, 0
-	b	.LBB11_32
-.LBB11_74:
+	b	.LBB11_34
+.LBB11_80:                              #   in Loop: Header=BB11_3 Depth=1
+	move	$a0, $s7
+	b	.LBB11_79
+.LBB11_81:
 	move	$a0, $s2
 	move	$a1, $a2
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
@@ -6074,10 +6093,10 @@ minimax_comp_ab2:                       # @minimax_comp_ab2
 	addi.d	$sp, $sp, 160
 	pcaddu18i	$t8, %call36(value)
 	jr	$t8
-.LBB11_75:
+.LBB11_82:
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	st.w	$s0, $a0, 0
-.LBB11_76:                              # %.loopexit
+.LBB11_83:                              # %.loopexit
 	move	$a0, $s3
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
@@ -6114,7 +6133,7 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	ld.w	$a5, $a5, %pc_lo12(DEPTH)
 	move	$s1, $a2
 	move	$s2, $a1
-	bge	$a0, $a5, .LBB12_15
+	bge	$a0, $a5, .LBB12_5
 # %bb.1:                                # %.preheader
 	move	$s0, $a4
 	move	$fp, $a3
@@ -6123,72 +6142,18 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	andi	$a2, $s5, 1
 	ori	$a1, $zero, 1
 	lu12i.w	$a0, 24
-	beqz	$a2, .LBB12_7
+	beqz	$a2, .LBB12_12
 # %bb.2:
 	andi	$a2, $s5, 128
 	ori	$a1, $zero, 128
-	beqz	$a2, .LBB12_7
+	beqz	$a2, .LBB12_12
 # %bb.3:
-	lu12i.w	$a1, 4
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_7
+	slli.d	$a1, $s5, 49
+	bltz	$a1, .LBB12_6
 # %bb.4:
-	lu12i.w	$a1, 512
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_7
-# %bb.5:
-	lu12i.w	$a1, 65536
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_7
-# %bb.6:
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 8
-	and	$a2, $s5, $a1
-	bnez	$a2, .LBB12_16
-.LBB12_7:
-	or	$a1, $a1, $s2
-	ori	$s4, $a0, 1696
-	move	$a0, $s3
-	move	$a2, $s1
-	move	$a3, $fp
-	move	$a4, $s4
-	pcaddu18i	$ra, %call36(minimax_comp_ab2)
-	jirl	$ra, $ra, 0
-	slt	$a1, $a0, $s4
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s4, $a1
-	or	$s4, $a0, $a1
-	move	$a0, $s4
-	blt	$s4, $s0, .LBB12_53
-# %bb.8:                                # %bit_place_piece.exit
-	andi	$a1, $s5, 2
-	ori	$a0, $zero, 2
-	beqz	$a1, .LBB12_17
-.LBB12_9:
-	andi	$a1, $s5, 256
-	ori	$a0, $zero, 256
-	beqz	$a1, .LBB12_17
-# %bb.10:
-	lu12i.w	$a0, 8
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_17
-# %bb.11:
-	lu12i.w	$a0, 1024
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_17
-# %bb.12:
-	lu12i.w	$a0, 131072
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_17
-# %bb.13:
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 16
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_17
-# %bb.14:
-	move	$s6, $zero
-	b	.LBB12_19
-.LBB12_15:
+	lu12i.w	$a1, 4
+	b	.LBB12_12
+.LBB12_5:
 	move	$a0, $s2
 	move	$a1, $s1
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
@@ -6203,12 +6168,78 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(value)
 	jr	$t8
-.LBB12_16:
+.LBB12_6:
+	slli.d	$a1, $s5, 42
+	bltz	$a1, .LBB12_8
+# %bb.7:
+	lu12i.w	$a1, 512
+	b	.LBB12_12
+.LBB12_8:
+	slli.d	$a1, $s5, 35
+	bltz	$a1, .LBB12_10
+# %bb.9:
+	lu12i.w	$a1, 65536
+	b	.LBB12_12
+.LBB12_10:
+	slli.d	$a1, $s5, 28
+	bltz	$a1, .LBB12_23
+# %bb.11:
+	ori	$a1, $zero, 0
+	lu32i.d	$a1, 8
+.LBB12_12:
+	or	$a1, $a1, $s2
+	ori	$s4, $a0, 1696
+	move	$a0, $s3
+	move	$a2, $s1
+	move	$a3, $fp
+	move	$a4, $s4
+	pcaddu18i	$ra, %call36(minimax_comp_ab2)
+	jirl	$ra, $ra, 0
+	slt	$a1, $a0, $s4
+	maskeqz	$a0, $a0, $a1
+	masknez	$a1, $s4, $a1
+	or	$s4, $a0, $a1
+	move	$a0, $s4
+	blt	$s4, $s0, .LBB12_75
+# %bb.13:                               # %bit_place_piece.exit
+	andi	$a1, $s5, 2
+	ori	$a0, $zero, 2
+	beqz	$a1, .LBB12_24
+.LBB12_14:
+	andi	$a1, $s5, 256
+	ori	$a0, $zero, 256
+	beqz	$a1, .LBB12_24
+# %bb.15:
+	slli.d	$a0, $s5, 48
+	bltz	$a0, .LBB12_17
+# %bb.16:
+	lu12i.w	$a0, 8
+	b	.LBB12_24
+.LBB12_17:
+	slli.d	$a0, $s5, 41
+	bltz	$a0, .LBB12_19
+# %bb.18:
+	lu12i.w	$a0, 1024
+	b	.LBB12_24
+.LBB12_19:
+	slli.d	$a0, $s5, 34
+	bltz	$a0, .LBB12_21
+# %bb.20:
+	lu12i.w	$a0, 131072
+	b	.LBB12_24
+.LBB12_21:
+	slli.d	$a0, $s5, 27
+	bltz	$a0, .LBB12_35
+# %bb.22:
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 16
+	b	.LBB12_24
+.LBB12_23:
 	ori	$s4, $a0, 1696
 	andi	$a1, $s5, 2
 	ori	$a0, $zero, 2
-	bnez	$a1, .LBB12_9
-.LBB12_17:
+	bnez	$a1, .LBB12_14
+.LBB12_24:
 	or	$a1, $a0, $s2
 	move	$a0, $s3
 	move	$a2, $s1
@@ -6221,37 +6252,49 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s4, $a0
 	or	$a0, $a2, $a0
-	blt	$a0, $s0, .LBB12_53
-# %bb.18:
+	blt	$a0, $s0, .LBB12_75
+# %bb.25:
 	slt	$a1, $s4, $a1
 	xori	$s6, $a1, 1
 	move	$s4, $a0
-.LBB12_19:                              # %bit_place_piece.exit.1
 	andi	$a1, $s5, 4
 	ori	$a0, $zero, 4
-	beqz	$a1, .LBB12_25
-# %bb.20:
+	beqz	$a1, .LBB12_36
+.LBB12_26:
 	andi	$a1, $s5, 512
 	ori	$a0, $zero, 512
-	beqz	$a1, .LBB12_25
-# %bb.21:
+	beqz	$a1, .LBB12_36
+# %bb.27:
+	slli.d	$a0, $s5, 47
+	bltz	$a0, .LBB12_29
+# %bb.28:
 	lu12i.w	$a0, 16
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_25
-# %bb.22:
+	b	.LBB12_36
+.LBB12_29:
+	slli.d	$a0, $s5, 40
+	bltz	$a0, .LBB12_31
+# %bb.30:
 	lu12i.w	$a0, 2048
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_25
-# %bb.23:
+	b	.LBB12_36
+.LBB12_31:
+	slli.d	$a0, $s5, 33
+	bltz	$a0, .LBB12_33
+# %bb.32:
 	lu12i.w	$a0, 262144
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_25
-# %bb.24:
+	b	.LBB12_36
+.LBB12_33:
+	slli.d	$a0, $s5, 26
+	bltz	$a0, .LBB12_47
+# %bb.34:
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 32
-	and	$a1, $s5, $a0
-	bnez	$a1, .LBB12_33
-.LBB12_25:
+	b	.LBB12_36
+.LBB12_35:
+	move	$s6, $zero
+	andi	$a1, $s5, 4
+	ori	$a0, $zero, 4
+	bnez	$a1, .LBB12_26
+.LBB12_36:
 	or	$a1, $a0, $s2
 	move	$a0, $s3
 	move	$a2, $s1
@@ -6264,8 +6307,8 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s4, $a0
 	or	$a0, $a2, $a0
-	blt	$a0, $s0, .LBB12_53
-# %bb.26:
+	blt	$a0, $s0, .LBB12_75
+# %bb.37:
 	slt	$a1, $s4, $a1
 	ori	$a2, $zero, 2
 	masknez	$a2, $a2, $a1
@@ -6273,38 +6316,43 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	or	$s6, $a1, $a2
 	andi	$a2, $s5, 8
 	ori	$a1, $zero, 8
-	beqz	$a2, .LBB12_34
-.LBB12_27:
+	beqz	$a2, .LBB12_48
+.LBB12_38:
 	andi	$a2, $s5, 1024
 	ori	$a1, $zero, 1024
-	beqz	$a2, .LBB12_34
-# %bb.28:
+	beqz	$a2, .LBB12_48
+# %bb.39:
+	slli.d	$a1, $s5, 46
+	bltz	$a1, .LBB12_41
+# %bb.40:
 	lu12i.w	$a1, 32
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_34
-# %bb.29:
+	b	.LBB12_48
+.LBB12_41:
+	slli.d	$a1, $s5, 39
+	bltz	$a1, .LBB12_43
+# %bb.42:
 	lu12i.w	$a1, 4096
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_34
-# %bb.30:
+	b	.LBB12_48
+.LBB12_43:
+	slli.d	$a1, $s5, 32
+	bltz	$a1, .LBB12_45
+# %bb.44:
 	lu12i.w	$a1, -524288
 	lu32i.d	$a1, 0
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_34
-# %bb.31:
+	b	.LBB12_48
+.LBB12_45:
+	slli.d	$a1, $s5, 25
+	bltz	$a1, .LBB12_59
+# %bb.46:
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, 64
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_34
-# %bb.32:
-	move	$s4, $a0
-	b	.LBB12_36
-.LBB12_33:
+	b	.LBB12_48
+.LBB12_47:
 	move	$a0, $s4
 	andi	$a2, $s5, 8
 	ori	$a1, $zero, 8
-	bnez	$a2, .LBB12_27
-.LBB12_34:
+	bnez	$a2, .LBB12_38
+.LBB12_48:
 	or	$a1, $a1, $s2
 	move	$s4, $a0
 	move	$a0, $s3
@@ -6318,41 +6366,51 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	maskeqz	$a3, $a0, $a2
 	masknez	$a2, $s4, $a2
 	or	$s4, $a3, $a2
-	blt	$s4, $s0, .LBB12_52
-# %bb.35:
+	blt	$s4, $s0, .LBB12_74
+# %bb.49:
 	slt	$a0, $a1, $a0
 	ori	$a1, $zero, 3
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$s6, $a0, $a1
-.LBB12_36:                              # %bit_place_piece.exit.3
 	andi	$a1, $s5, 16
 	ori	$a0, $zero, 16
-	beqz	$a1, .LBB12_42
-# %bb.37:
-	andi	$a1, $s5, 2048
+	beqz	$a1, .LBB12_60
+.LBB12_50:
+	slli.d	$a1, $s5, 52
 	ori	$a0, $zero, 2048
-	beqz	$a1, .LBB12_42
-# %bb.38:
+	bgez	$a1, .LBB12_60
+# %bb.51:
+	slli.d	$a0, $s5, 45
+	bltz	$a0, .LBB12_53
+# %bb.52:
 	lu12i.w	$a0, 64
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_42
-# %bb.39:
+	b	.LBB12_60
+.LBB12_53:
+	slli.d	$a0, $s5, 38
+	bltz	$a0, .LBB12_55
+# %bb.54:
 	lu12i.w	$a0, 8192
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_42
-# %bb.40:
+	b	.LBB12_60
+.LBB12_55:
+	slli.d	$a1, $s5, 31
 	ori	$a0, $zero, 0
+	bltz	$a1, .LBB12_57
+# %bb.56:
 	lu32i.d	$a0, 1
-	and	$a2, $s5, $a0
-	ori	$a1, $zero, 0
-	beqz	$a2, .LBB12_42
-# %bb.41:
-	lu32i.d	$a1, 128
-	and	$a2, $s5, $a1
-	move	$a0, $a1
-	bnez	$a2, .LBB12_50
-.LBB12_42:
+	b	.LBB12_60
+.LBB12_57:
+	slli.d	$a1, $s5, 24
+	bltz	$a1, .LBB12_72
+# %bb.58:
+	lu32i.d	$a0, 128
+	b	.LBB12_60
+.LBB12_59:
+	move	$s4, $a0
+	andi	$a1, $s5, 16
+	ori	$a0, $zero, 16
+	bnez	$a1, .LBB12_50
+.LBB12_60:
 	or	$a1, $a0, $s2
 	move	$a0, $s3
 	move	$a2, $s1
@@ -6365,8 +6423,8 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s4, $a0
 	or	$a0, $a2, $a0
-	blt	$a0, $s0, .LBB12_53
-# %bb.43:
+	blt	$a0, $s0, .LBB12_75
+# %bb.61:
 	slt	$a1, $s4, $a1
 	ori	$a2, $zero, 4
 	masknez	$a2, $a2, $a1
@@ -6374,39 +6432,44 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	or	$s6, $a1, $a2
 	andi	$a2, $s5, 32
 	ori	$a1, $zero, 32
-	beqz	$a2, .LBB12_51
-.LBB12_44:
+	beqz	$a2, .LBB12_73
+.LBB12_62:
+	slli.d	$a1, $s5, 51
+	bltz	$a1, .LBB12_64
+# %bb.63:
 	lu12i.w	$a1, 1
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_51
-# %bb.45:
+	b	.LBB12_73
+.LBB12_64:
+	slli.d	$a1, $s5, 44
+	bltz	$a1, .LBB12_66
+# %bb.65:
 	lu12i.w	$a1, 128
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_51
-# %bb.46:
+	b	.LBB12_73
+.LBB12_66:
+	slli.d	$a1, $s5, 37
+	bltz	$a1, .LBB12_68
+# %bb.67:
 	lu12i.w	$a1, 16384
-	and	$a2, $s5, $a1
-	beqz	$a2, .LBB12_51
-# %bb.47:
+	b	.LBB12_73
+.LBB12_68:
+	slli.d	$a2, $s5, 30
 	ori	$a1, $zero, 0
+	bltz	$a2, .LBB12_70
+# %bb.69:
 	lu32i.d	$a1, 2
-	and	$a3, $s5, $a1
-	ori	$a2, $zero, 0
-	beqz	$a3, .LBB12_51
-# %bb.48:
-	lu32i.d	$a2, 256
-	and	$a3, $s5, $a2
-	move	$a1, $a2
-	beqz	$a3, .LBB12_51
-# %bb.49:
-	move	$s4, $a0
-	b	.LBB12_55
-.LBB12_50:
+	b	.LBB12_73
+.LBB12_70:
+	slli.d	$a2, $s5, 23
+	bltz	$a2, .LBB12_87
+# %bb.71:
+	lu32i.d	$a1, 256
+	b	.LBB12_73
+.LBB12_72:
 	move	$a0, $s4
 	andi	$a2, $s5, 32
 	ori	$a1, $zero, 32
-	bnez	$a2, .LBB12_44
-.LBB12_51:
+	bnez	$a2, .LBB12_62
+.LBB12_73:
 	or	$a1, $a1, $s2
 	move	$s4, $a0
 	move	$a0, $s3
@@ -6420,10 +6483,10 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	maskeqz	$a3, $a0, $a2
 	masknez	$a2, $s4, $a2
 	or	$s4, $a3, $a2
-	bge	$s4, $s0, .LBB12_54
-.LBB12_52:
+	bge	$s4, $s0, .LBB12_76
+.LBB12_74:
 	move	$a0, $s4
-.LBB12_53:                              # %.loopexit
+.LBB12_75:                              # %.loopexit
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -6435,40 +6498,52 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 80
 	ret
-.LBB12_54:
+.LBB12_76:
 	slt	$a0, $a1, $a0
 	ori	$a1, $zero, 5
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$s6, $a0, $a1
-.LBB12_55:                              # %bit_place_piece.exit.5
 	andi	$a1, $s5, 64
 	ori	$a0, $zero, 64
-	beqz	$a1, .LBB12_61
-# %bb.56:
+	beqz	$a1, .LBB12_88
+.LBB12_77:
+	slli.d	$a0, $s5, 50
+	bltz	$a0, .LBB12_79
+# %bb.78:
 	lu12i.w	$a0, 2
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_61
-# %bb.57:
+	b	.LBB12_88
+.LBB12_79:
+	slli.d	$a0, $s5, 43
+	bltz	$a0, .LBB12_81
+# %bb.80:
 	lu12i.w	$a0, 256
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_61
-# %bb.58:
+	b	.LBB12_88
+.LBB12_81:
+	slli.d	$a0, $s5, 36
+	bltz	$a0, .LBB12_83
+# %bb.82:
 	lu12i.w	$a0, 32768
-	and	$a1, $s5, $a0
-	beqz	$a1, .LBB12_61
-# %bb.59:
+	b	.LBB12_88
+.LBB12_83:
+	slli.d	$a1, $s5, 29
 	ori	$a0, $zero, 0
+	bltz	$a1, .LBB12_85
+# %bb.84:
 	lu32i.d	$a0, 4
-	and	$a2, $s5, $a0
-	ori	$a1, $zero, 0
-	beqz	$a2, .LBB12_61
-# %bb.60:
-	lu32i.d	$a1, 512
-	and	$a2, $s5, $a1
-	move	$a0, $a1
-	bnez	$a2, .LBB12_64
-.LBB12_61:
+	b	.LBB12_88
+.LBB12_85:
+	slli.d	$a1, $s5, 22
+	bltz	$a1, .LBB12_91
+# %bb.86:
+	lu32i.d	$a0, 512
+	b	.LBB12_88
+.LBB12_87:
+	move	$s4, $a0
+	andi	$a1, $s5, 64
+	ori	$a0, $zero, 64
+	bnez	$a1, .LBB12_77
+.LBB12_88:
 	or	$a1, $a0, $s2
 	move	$a0, $s3
 	move	$a2, $s1
@@ -6481,19 +6556,19 @@ minimax_player_ab2:                     # @minimax_player_ab2
 	maskeqz	$a2, $a1, $a0
 	masknez	$a0, $s4, $a0
 	or	$a0, $a2, $a0
-	blt	$a0, $s0, .LBB12_53
-# %bb.62:
+	blt	$a0, $s0, .LBB12_75
+# %bb.89:
 	slt	$a1, $s4, $a1
 	ori	$a2, $zero, 6
 	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $s6, $a1
 	or	$s6, $a1, $a2
-.LBB12_63:                              # %bit_place_piece.exit.6
+.LBB12_90:                              # %bit_place_piece.exit.6
 	st.w	$s6, $fp, 0
-	b	.LBB12_53
-.LBB12_64:
+	b	.LBB12_75
+.LBB12_91:
 	move	$a0, $s4
-	b	.LBB12_63
+	b	.LBB12_90
 .Lfunc_end12:
 	.size	minimax_player_ab2, .Lfunc_end12-minimax_player_ab2
                                         # -- End function
@@ -6518,7 +6593,7 @@ minimax_comp:                           # @minimax_comp
 	ld.w	$a4, $fp, %pc_lo12(DEPTH)
 	move	$s6, $a2
 	move	$s1, $a1
-	bge	$a0, $a4, .LBB13_63
+	bge	$a0, $a4, .LBB13_72
 # %bb.1:                                # %.preheader53
 	move	$s0, $a3
 	move	$s7, $zero
@@ -6581,44 +6656,45 @@ minimax_comp:                           # @minimax_comp
 	addi.d	$s7, $s7, 1
 	ori	$a0, $zero, 7
 	bne	$s8, $a0, .LBB13_2
-	b	.LBB13_62
+	b	.LBB13_71
 	.p2align	4, , 16
 .LBB13_9:                               #   in Loop: Header=BB13_2 Depth=1
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	ld.w	$a1, $fp, %pc_lo12(DEPTH)
 	or	$s4, $a0, $s6
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	bge	$a0, $a1, .LBB13_30
+	bge	$a0, $a1, .LBB13_32
 # %bb.10:                               # %.preheader
                                         #   in Loop: Header=BB13_2 Depth=1
 	or	$s6, $s4, $s1
 	andi	$a1, $s6, 1
 	ori	$a0, $zero, 1
-	beqz	$a1, .LBB13_16
+	beqz	$a1, .LBB13_17
 # %bb.11:                               #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 128
 	ori	$a0, $zero, 128
-	beqz	$a1, .LBB13_16
+	beqz	$a1, .LBB13_17
 # %bb.12:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 49
 	lu12i.w	$a0, 4
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_16
+	bgez	$a1, .LBB13_17
 # %bb.13:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 42
 	lu12i.w	$a0, 512
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_16
+	bgez	$a1, .LBB13_17
 # %bb.14:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 35
 	lu12i.w	$a0, 65536
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_16
+	bgez	$a1, .LBB13_17
 # %bb.15:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 28
+	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
+	bltz	$a0, .LBB13_18
+# %bb.16:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 8
-	and	$a1, $s6, $a0
-	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-	bnez	$a1, .LBB13_17
 	.p2align	4, , 16
-.LBB13_16:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_17:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6630,34 +6706,35 @@ minimax_comp:                           # @minimax_comp
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s5, $a0, $a1
-.LBB13_17:                              # %bit_place_piece.exit33
+.LBB13_18:                              # %bit_place_piece.exit33
                                         #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 2
 	ori	$a0, $zero, 2
-	beqz	$a1, .LBB13_23
-# %bb.18:                               #   in Loop: Header=BB13_2 Depth=1
+	beqz	$a1, .LBB13_25
+# %bb.19:                               #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 256
 	ori	$a0, $zero, 256
-	beqz	$a1, .LBB13_23
-# %bb.19:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 8
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_23
+	beqz	$a1, .LBB13_25
 # %bb.20:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 1024
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_23
+	slli.d	$a1, $s6, 48
+	lu12i.w	$a0, 8
+	bgez	$a1, .LBB13_25
 # %bb.21:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 131072
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_23
+	slli.d	$a1, $s6, 41
+	lu12i.w	$a0, 1024
+	bgez	$a1, .LBB13_25
 # %bb.22:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 34
+	lu12i.w	$a0, 131072
+	bgez	$a1, .LBB13_25
+# %bb.23:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 27
+	bltz	$a0, .LBB13_33
+# %bb.24:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 16
-	and	$a1, $s6, $a0
-	bnez	$a1, .LBB13_31
 	.p2align	4, , 16
-.LBB13_23:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_25:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6672,51 +6749,45 @@ minimax_comp:                           # @minimax_comp
 	or	$s5, $a0, $a1
 	andi	$a1, $s6, 4
 	ori	$a0, $zero, 4
-	beqz	$a1, .LBB13_32
-.LBB13_24:                              #   in Loop: Header=BB13_2 Depth=1
+	beqz	$a1, .LBB13_34
+.LBB13_26:                              #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 512
 	ori	$a0, $zero, 512
-	beqz	$a1, .LBB13_32
-# %bb.25:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 16
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_32
-# %bb.26:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 2048
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_32
+	beqz	$a1, .LBB13_34
 # %bb.27:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 262144
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_32
+	slli.d	$a1, $s6, 47
+	lu12i.w	$a0, 16
+	bgez	$a1, .LBB13_34
 # %bb.28:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 40
+	lu12i.w	$a0, 2048
+	bgez	$a1, .LBB13_34
+# %bb.29:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 33
+	lu12i.w	$a0, 262144
+	bgez	$a1, .LBB13_34
+# %bb.30:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 26
+	bltz	$a0, .LBB13_35
+# %bb.31:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 32
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_32
+	b	.LBB13_34
 	.p2align	4, , 16
-# %bb.29:                               # %bit_place_piece.exit33.2
-                                        #   in Loop: Header=BB13_2 Depth=1
-	andi	$a1, $s6, 8
-	ori	$a0, $zero, 8
-	bnez	$a1, .LBB13_33
-	b	.LBB13_38
-	.p2align	4, , 16
-.LBB13_30:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_32:                              #   in Loop: Header=BB13_2 Depth=1
 	move	$a0, $s1
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(value)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	b	.LBB13_61
-.LBB13_31:                              #   in Loop: Header=BB13_2 Depth=1
+	b	.LBB13_70
+.LBB13_33:                              #   in Loop: Header=BB13_2 Depth=1
 	move	$fp, $zero
 	andi	$a1, $s6, 4
 	ori	$a0, $zero, 4
-	bnez	$a1, .LBB13_24
+	bnez	$a1, .LBB13_26
 	.p2align	4, , 16
-.LBB13_32:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_34:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6732,32 +6803,35 @@ minimax_comp:                           # @minimax_comp
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$fp, $a1, $a0
+.LBB13_35:                              # %bit_place_piece.exit33.2
+                                        #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 8
 	ori	$a0, $zero, 8
-	beqz	$a1, .LBB13_38
-.LBB13_33:                              #   in Loop: Header=BB13_2 Depth=1
+	beqz	$a1, .LBB13_42
+# %bb.36:                               #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 1024
 	ori	$a0, $zero, 1024
-	beqz	$a1, .LBB13_38
-# %bb.34:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 32
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_38
-# %bb.35:                               #   in Loop: Header=BB13_2 Depth=1
-	lu12i.w	$a0, 4096
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_38
-# %bb.36:                               #   in Loop: Header=BB13_2 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_38
+	beqz	$a1, .LBB13_42
 # %bb.37:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 46
+	lu12i.w	$a0, 32
+	bgez	$a1, .LBB13_42
+# %bb.38:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 39
+	lu12i.w	$a0, 4096
+	bgez	$a1, .LBB13_42
+# %bb.39:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 32
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	bgez	$a1, .LBB13_42
+# %bb.40:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 25
+	bltz	$a0, .LBB13_43
+# %bb.41:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 64
-	and	$a1, $s6, $a0
-	bnez	$a1, .LBB13_39
 	.p2align	4, , 16
-.LBB13_38:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_42:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6773,35 +6847,38 @@ minimax_comp:                           # @minimax_comp
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$fp, $a1, $a0
-.LBB13_39:                              # %bit_place_piece.exit33.3
+.LBB13_43:                              # %bit_place_piece.exit33.3
                                         #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 16
 	ori	$a0, $zero, 16
-	beqz	$a1, .LBB13_45
-# %bb.40:                               #   in Loop: Header=BB13_2 Depth=1
-	andi	$a1, $s6, 2048
+	beqz	$a1, .LBB13_51
+# %bb.44:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 52
 	ori	$a0, $zero, 2048
-	beqz	$a1, .LBB13_45
-# %bb.41:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_51
+# %bb.45:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 45
 	lu12i.w	$a0, 64
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_45
-# %bb.42:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_51
+# %bb.46:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 38
 	lu12i.w	$a0, 8192
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_45
-# %bb.43:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_51
+# %bb.47:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 31
+	bltz	$a0, .LBB13_49
+# %bb.48:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 1
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_45
-# %bb.44:                               #   in Loop: Header=BB13_2 Depth=1
+	b	.LBB13_51
+.LBB13_49:                              #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 24
+	bltz	$a0, .LBB13_52
+# %bb.50:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 128
-	and	$a1, $s6, $a0
-	bnez	$a1, .LBB13_46
 	.p2align	4, , 16
-.LBB13_45:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_51:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6817,35 +6894,38 @@ minimax_comp:                           # @minimax_comp
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$fp, $a1, $a0
-.LBB13_46:                              # %bit_place_piece.exit33.4
+.LBB13_52:                              # %bit_place_piece.exit33.4
                                         #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 32
 	ori	$a0, $zero, 32
-	beqz	$a1, .LBB13_52
-# %bb.47:                               #   in Loop: Header=BB13_2 Depth=1
+	beqz	$a1, .LBB13_60
+# %bb.53:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 51
 	lu12i.w	$a0, 1
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_52
-# %bb.48:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_60
+# %bb.54:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 44
 	lu12i.w	$a0, 128
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_52
-# %bb.49:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_60
+# %bb.55:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 37
 	lu12i.w	$a0, 16384
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_52
-# %bb.50:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_60
+# %bb.56:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 30
+	bltz	$a0, .LBB13_58
+# %bb.57:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 2
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_52
-# %bb.51:                               #   in Loop: Header=BB13_2 Depth=1
+	b	.LBB13_60
+.LBB13_58:                              #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 23
+	bltz	$a0, .LBB13_61
+# %bb.59:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 256
-	and	$a1, $s6, $a0
-	bnez	$a1, .LBB13_53
 	.p2align	4, , 16
-.LBB13_52:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_60:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6861,34 +6941,35 @@ minimax_comp:                           # @minimax_comp
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$fp, $a1, $a0
-.LBB13_53:                              # %bit_place_piece.exit33.5
+.LBB13_61:                              # %bit_place_piece.exit33.5
                                         #   in Loop: Header=BB13_2 Depth=1
 	andi	$a1, $s6, 64
 	ori	$a0, $zero, 64
-	beqz	$a1, .LBB13_59
-# %bb.54:                               #   in Loop: Header=BB13_2 Depth=1
+	beqz	$a1, .LBB13_68
+# %bb.62:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 50
 	lu12i.w	$a0, 2
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_59
-# %bb.55:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_68
+# %bb.63:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 43
 	lu12i.w	$a0, 256
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_59
-# %bb.56:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_68
+# %bb.64:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 36
 	lu12i.w	$a0, 32768
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_59
-# %bb.57:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_68
+# %bb.65:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a1, $s6, 29
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
-	and	$a1, $s6, $a0
-	beqz	$a1, .LBB13_59
-# %bb.58:                               #   in Loop: Header=BB13_2 Depth=1
+	bgez	$a1, .LBB13_68
+# %bb.66:                               #   in Loop: Header=BB13_2 Depth=1
+	slli.d	$a0, $s6, 22
+	bltz	$a0, .LBB13_69
+# %bb.67:                               #   in Loop: Header=BB13_2 Depth=1
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 512
-	and	$a1, $s6, $a0
-	bnez	$a1, .LBB13_60
 	.p2align	4, , 16
-.LBB13_59:                              #   in Loop: Header=BB13_2 Depth=1
+.LBB13_68:                              #   in Loop: Header=BB13_2 Depth=1
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s4
@@ -6904,14 +6985,14 @@ minimax_comp:                           # @minimax_comp
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
 	or	$fp, $a1, $a0
-.LBB13_60:                              # %bit_place_piece.exit33.6
+.LBB13_69:                              # %bit_place_piece.exit33.6
                                         #   in Loop: Header=BB13_2 Depth=1
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	st.w	$fp, $s0, 0
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-.LBB13_61:                              # %minimax_player.exit
+.LBB13_70:                              # %minimax_player.exit
                                         #   in Loop: Header=BB13_2 Depth=1
+	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	slt	$a0, $s3, $s5
 	masknez	$a1, $s3, $a0
 	maskeqz	$a2, $s5, $a0
@@ -6924,7 +7005,7 @@ minimax_comp:                           # @minimax_comp
 	addi.d	$s7, $s7, 1
 	ori	$a0, $zero, 7
 	bne	$s8, $a0, .LBB13_2
-.LBB13_62:
+.LBB13_71:
 	st.w	$a2, $s0, 0
 	move	$a0, $s3
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
@@ -6940,7 +7021,7 @@ minimax_comp:                           # @minimax_comp
 	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 160
 	ret
-.LBB13_63:
+.LBB13_72:
 	move	$a0, $s1
 	move	$a1, $s6
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
@@ -6978,7 +7059,7 @@ minimax_player:                         # @minimax_player
 	ld.w	$a4, $a4, %pc_lo12(DEPTH)
 	move	$s0, $a2
 	move	$s1, $a1
-	bge	$a0, $a4, .LBB14_14
+	bge	$a0, $a4, .LBB14_5
 # %bb.1:                                # %.preheader
 	move	$fp, $a3
 	or	$s4, $s0, $s1
@@ -6986,68 +7067,18 @@ minimax_player:                         # @minimax_player
 	andi	$a1, $s4, 1
 	ori	$a0, $zero, 1
 	lu12i.w	$s3, 24
-	beqz	$a1, .LBB14_7
+	beqz	$a1, .LBB14_12
 # %bb.2:
 	andi	$a1, $s4, 128
 	ori	$a0, $zero, 128
-	beqz	$a1, .LBB14_7
+	beqz	$a1, .LBB14_12
 # %bb.3:
-	lu12i.w	$a0, 4
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_7
+	slli.d	$a0, $s4, 49
+	bltz	$a0, .LBB14_6
 # %bb.4:
-	lu12i.w	$a0, 512
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_7
-# %bb.5:
-	lu12i.w	$a0, 65536
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_7
-# %bb.6:
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 8
-	and	$a1, $s4, $a0
-	bnez	$a1, .LBB14_15
-.LBB14_7:
-	or	$a1, $a0, $s1
-	move	$a0, $s2
-	move	$a2, $s0
-	move	$a3, $fp
-	pcaddu18i	$ra, %call36(minimax_comp)
-	jirl	$ra, $ra, 0
-	ori	$a1, $s3, 1696
-	slt	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$s3, $a0, $a1
-	andi	$a1, $s4, 2
-	ori	$a0, $zero, 2
-	beqz	$a1, .LBB14_16
-.LBB14_8:
-	andi	$a1, $s4, 256
-	ori	$a0, $zero, 256
-	beqz	$a1, .LBB14_16
-# %bb.9:
-	lu12i.w	$a0, 8
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_16
-# %bb.10:
-	lu12i.w	$a0, 1024
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_16
-# %bb.11:
-	lu12i.w	$a0, 131072
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_16
-# %bb.12:
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 16
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_16
-# %bb.13:
-	move	$s5, $zero
-	b	.LBB14_17
-.LBB14_14:
+	lu12i.w	$a0, 4
+	b	.LBB14_12
+.LBB14_5:
 	move	$a0, $s1
 	move	$a1, $s0
 	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
@@ -7061,12 +7092,74 @@ minimax_player:                         # @minimax_player
 	addi.d	$sp, $sp, 64
 	pcaddu18i	$t8, %call36(value)
 	jr	$t8
-.LBB14_15:
+.LBB14_6:
+	slli.d	$a0, $s4, 42
+	bltz	$a0, .LBB14_8
+# %bb.7:
+	lu12i.w	$a0, 512
+	b	.LBB14_12
+.LBB14_8:
+	slli.d	$a0, $s4, 35
+	bltz	$a0, .LBB14_10
+# %bb.9:
+	lu12i.w	$a0, 65536
+	b	.LBB14_12
+.LBB14_10:
+	slli.d	$a0, $s4, 28
+	bltz	$a0, .LBB14_22
+# %bb.11:
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 8
+.LBB14_12:
+	or	$a1, $a0, $s1
+	move	$a0, $s2
+	move	$a2, $s0
+	move	$a3, $fp
+	pcaddu18i	$ra, %call36(minimax_comp)
+	jirl	$ra, $ra, 0
+	ori	$a1, $s3, 1696
+	slt	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$s3, $a0, $a1
+	andi	$a1, $s4, 2
+	ori	$a0, $zero, 2
+	beqz	$a1, .LBB14_23
+.LBB14_13:
+	andi	$a1, $s4, 256
+	ori	$a0, $zero, 256
+	beqz	$a1, .LBB14_23
+# %bb.14:
+	slli.d	$a0, $s4, 48
+	bltz	$a0, .LBB14_16
+# %bb.15:
+	lu12i.w	$a0, 8
+	b	.LBB14_23
+.LBB14_16:
+	slli.d	$a0, $s4, 41
+	bltz	$a0, .LBB14_18
+# %bb.17:
+	lu12i.w	$a0, 1024
+	b	.LBB14_23
+.LBB14_18:
+	slli.d	$a0, $s4, 34
+	bltz	$a0, .LBB14_20
+# %bb.19:
+	lu12i.w	$a0, 131072
+	b	.LBB14_23
+.LBB14_20:
+	slli.d	$a0, $s4, 27
+	bltz	$a0, .LBB14_33
+# %bb.21:
+	ori	$a0, $zero, 0
+	lu32i.d	$a0, 16
+	b	.LBB14_23
+.LBB14_22:
 	ori	$s3, $s3, 1696
 	andi	$a1, $s4, 2
 	ori	$a0, $zero, 2
-	bnez	$a1, .LBB14_8
-.LBB14_16:
+	bnez	$a1, .LBB14_13
+.LBB14_23:
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s0
@@ -7079,32 +7172,44 @@ minimax_player:                         # @minimax_player
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $s3, $a1
 	or	$s3, $a0, $a1
-.LBB14_17:                              # %bit_place_piece.exit.1
 	andi	$a1, $s4, 4
 	ori	$a0, $zero, 4
-	beqz	$a1, .LBB14_23
-# %bb.18:
+	beqz	$a1, .LBB14_34
+.LBB14_24:
 	andi	$a1, $s4, 512
 	ori	$a0, $zero, 512
-	beqz	$a1, .LBB14_23
-# %bb.19:
+	beqz	$a1, .LBB14_34
+# %bb.25:
+	slli.d	$a0, $s4, 47
+	bltz	$a0, .LBB14_27
+# %bb.26:
 	lu12i.w	$a0, 16
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_23
-# %bb.20:
+	b	.LBB14_34
+.LBB14_27:
+	slli.d	$a0, $s4, 40
+	bltz	$a0, .LBB14_29
+# %bb.28:
 	lu12i.w	$a0, 2048
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_23
-# %bb.21:
+	b	.LBB14_34
+.LBB14_29:
+	slli.d	$a0, $s4, 33
+	bltz	$a0, .LBB14_31
+# %bb.30:
 	lu12i.w	$a0, 262144
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_23
-# %bb.22:
+	b	.LBB14_34
+.LBB14_31:
+	slli.d	$a0, $s4, 26
+	bltz	$a0, .LBB14_35
+# %bb.32:
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 32
-	and	$a1, $s4, $a0
+	b	.LBB14_34
+.LBB14_33:
+	move	$s5, $zero
+	andi	$a1, $s4, 4
+	ori	$a0, $zero, 4
 	bnez	$a1, .LBB14_24
-.LBB14_23:
+.LBB14_34:
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s0
@@ -7120,33 +7225,40 @@ minimax_player:                         # @minimax_player
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s5, $a1
 	or	$s5, $a1, $a0
-.LBB14_24:                              # %bit_place_piece.exit.2
+.LBB14_35:                              # %bit_place_piece.exit.2
 	andi	$a1, $s4, 8
 	ori	$a0, $zero, 8
-	beqz	$a1, .LBB14_30
-# %bb.25:
+	beqz	$a1, .LBB14_45
+# %bb.36:
 	andi	$a1, $s4, 1024
 	ori	$a0, $zero, 1024
-	beqz	$a1, .LBB14_30
-# %bb.26:
+	beqz	$a1, .LBB14_45
+# %bb.37:
+	slli.d	$a0, $s4, 46
+	bltz	$a0, .LBB14_39
+# %bb.38:
 	lu12i.w	$a0, 32
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_30
-# %bb.27:
+	b	.LBB14_45
+.LBB14_39:
+	slli.d	$a0, $s4, 39
+	bltz	$a0, .LBB14_41
+# %bb.40:
 	lu12i.w	$a0, 4096
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_30
-# %bb.28:
+	b	.LBB14_45
+.LBB14_41:
+	slli.d	$a0, $s4, 32
+	bltz	$a0, .LBB14_43
+# %bb.42:
 	lu12i.w	$a0, -524288
 	lu32i.d	$a0, 0
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_30
-# %bb.29:
+	b	.LBB14_45
+.LBB14_43:
+	slli.d	$a0, $s4, 25
+	bltz	$a0, .LBB14_46
+# %bb.44:
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, 64
-	and	$a1, $s4, $a0
-	bnez	$a1, .LBB14_31
-.LBB14_30:
+.LBB14_45:
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s0
@@ -7162,34 +7274,39 @@ minimax_player:                         # @minimax_player
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s5, $a1
 	or	$s5, $a1, $a0
-.LBB14_31:                              # %bit_place_piece.exit.3
+.LBB14_46:                              # %bit_place_piece.exit.3
 	andi	$a1, $s4, 16
 	ori	$a0, $zero, 16
-	beqz	$a1, .LBB14_37
-# %bb.32:
-	andi	$a1, $s4, 2048
+	beqz	$a1, .LBB14_56
+# %bb.47:
+	slli.d	$a1, $s4, 52
 	ori	$a0, $zero, 2048
-	beqz	$a1, .LBB14_37
-# %bb.33:
+	bgez	$a1, .LBB14_56
+# %bb.48:
+	slli.d	$a0, $s4, 45
+	bltz	$a0, .LBB14_50
+# %bb.49:
 	lu12i.w	$a0, 64
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_37
-# %bb.34:
+	b	.LBB14_56
+.LBB14_50:
+	slli.d	$a0, $s4, 38
+	bltz	$a0, .LBB14_52
+# %bb.51:
 	lu12i.w	$a0, 8192
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_37
-# %bb.35:
+	b	.LBB14_56
+.LBB14_52:
+	slli.d	$a1, $s4, 31
 	ori	$a0, $zero, 0
+	bltz	$a1, .LBB14_54
+# %bb.53:
 	lu32i.d	$a0, 1
-	and	$a2, $s4, $a0
-	ori	$a1, $zero, 0
-	beqz	$a2, .LBB14_37
-# %bb.36:
-	lu32i.d	$a1, 128
-	and	$a2, $s4, $a1
-	move	$a0, $a1
-	bnez	$a2, .LBB14_38
-.LBB14_37:
+	b	.LBB14_56
+.LBB14_54:
+	slli.d	$a1, $s4, 24
+	bltz	$a1, .LBB14_57
+# %bb.55:
+	lu32i.d	$a0, 128
+.LBB14_56:
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s0
@@ -7205,34 +7322,41 @@ minimax_player:                         # @minimax_player
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s5, $a1
 	or	$s5, $a1, $a0
-.LBB14_38:                              # %bit_place_piece.exit.4
+.LBB14_57:                              # %bit_place_piece.exit.4
 	andi	$a1, $s4, 32
 	ori	$a0, $zero, 32
-	beqz	$a1, .LBB14_44
-# %bb.39:
+	beqz	$a1, .LBB14_68
+# %bb.58:
+	slli.d	$a0, $s4, 51
+	bltz	$a0, .LBB14_60
+# %bb.59:
 	lu12i.w	$a0, 1
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_44
-# %bb.40:
+	b	.LBB14_68
+.LBB14_60:
+	slli.d	$a0, $s4, 44
+	bltz	$a0, .LBB14_62
+# %bb.61:
 	lu12i.w	$a0, 128
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_44
-# %bb.41:
+	b	.LBB14_68
+.LBB14_62:
+	slli.d	$a0, $s4, 37
+	bltz	$a0, .LBB14_64
+# %bb.63:
 	lu12i.w	$a0, 16384
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_44
-# %bb.42:
+	b	.LBB14_68
+.LBB14_64:
+	slli.d	$a1, $s4, 30
 	ori	$a0, $zero, 0
+	bltz	$a1, .LBB14_66
+# %bb.65:
 	lu32i.d	$a0, 2
-	and	$a2, $s4, $a0
-	ori	$a1, $zero, 0
-	beqz	$a2, .LBB14_44
-# %bb.43:
-	lu32i.d	$a1, 256
-	and	$a2, $s4, $a1
-	move	$a0, $a1
-	bnez	$a2, .LBB14_45
-.LBB14_44:
+	b	.LBB14_68
+.LBB14_66:
+	slli.d	$a1, $s4, 23
+	bltz	$a1, .LBB14_69
+# %bb.67:
+	lu32i.d	$a0, 256
+.LBB14_68:
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s0
@@ -7248,34 +7372,41 @@ minimax_player:                         # @minimax_player
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s5, $a1
 	or	$s5, $a1, $a0
-.LBB14_45:                              # %bit_place_piece.exit.5
+.LBB14_69:                              # %bit_place_piece.exit.5
 	andi	$a1, $s4, 64
 	ori	$a0, $zero, 64
-	beqz	$a1, .LBB14_51
-# %bb.46:
+	beqz	$a1, .LBB14_80
+# %bb.70:
+	slli.d	$a0, $s4, 50
+	bltz	$a0, .LBB14_72
+# %bb.71:
 	lu12i.w	$a0, 2
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_51
-# %bb.47:
+	b	.LBB14_80
+.LBB14_72:
+	slli.d	$a0, $s4, 43
+	bltz	$a0, .LBB14_74
+# %bb.73:
 	lu12i.w	$a0, 256
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_51
-# %bb.48:
+	b	.LBB14_80
+.LBB14_74:
+	slli.d	$a0, $s4, 36
+	bltz	$a0, .LBB14_76
+# %bb.75:
 	lu12i.w	$a0, 32768
-	and	$a1, $s4, $a0
-	beqz	$a1, .LBB14_51
-# %bb.49:
+	b	.LBB14_80
+.LBB14_76:
+	slli.d	$a1, $s4, 29
 	ori	$a0, $zero, 0
+	bltz	$a1, .LBB14_78
+# %bb.77:
 	lu32i.d	$a0, 4
-	and	$a2, $s4, $a0
-	ori	$a1, $zero, 0
-	beqz	$a2, .LBB14_51
-# %bb.50:
-	lu32i.d	$a1, 512
-	and	$a2, $s4, $a1
-	move	$a0, $a1
-	bnez	$a2, .LBB14_52
-.LBB14_51:
+	b	.LBB14_80
+.LBB14_78:
+	slli.d	$a1, $s4, 22
+	bltz	$a1, .LBB14_81
+# %bb.79:
+	lu32i.d	$a0, 512
+.LBB14_80:
 	or	$a1, $a0, $s1
 	move	$a0, $s2
 	move	$a2, $s0
@@ -7291,7 +7422,7 @@ minimax_player:                         # @minimax_player
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s5, $a1
 	or	$s5, $a1, $a0
-.LBB14_52:                              # %bit_place_piece.exit.6
+.LBB14_81:                              # %bit_place_piece.exit.6
 	st.w	$s5, $fp, 0
 	move	$a0, $s3
 	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload

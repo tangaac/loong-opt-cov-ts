@@ -317,51 +317,49 @@ ercReset:                               # @ercReset
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $fp, 4
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB4_27
+	ld.w	$a2, $fp, 4
+	blez	$a2, .LBB4_27
 # %bb.20:                               # %.lr.ph
-	ld.d	$a2, $fp, 32
-	addi.d	$a0, $s0, -1
-	bne	$a1, $a3, .LBB4_22
+	ld.d	$a3, $fp, 32
+	ori	$a0, $zero, 1
+	addi.d	$a1, $s0, -1
+	bne	$a2, $a0, .LBB4_22
 # %bb.21:
-	move	$a3, $zero
+	move	$a4, $zero
 	b	.LBB4_25
 .LBB4_22:                               # %vector.ph
-	bstrpick.d	$a3, $a1, 30, 1
-	slli.d	$a3, $a3, 1
-	addi.d	$a4, $a2, 12
-	ori	$a5, $zero, 1
-	move	$a6, $a3
+	bstrpick.d	$a4, $a2, 30, 1
+	slli.d	$a4, $a4, 1
+	addi.d	$a5, $a3, 12
+	move	$a6, $a4
 	.p2align	4, , 16
 .LBB4_23:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a5, $a4, -4
-	st.w	$a5, $a4, 8
-	st.w	$zero, $a4, -12
-	st.w	$a0, $a4, -8
-	st.w	$a0, $a4, 4
+	st.d	$a0, $a5, -4
+	st.w	$a0, $a5, 8
+	st.w	$zero, $a5, -12
+	st.w	$a1, $a5, -8
+	st.w	$a1, $a5, 4
 	addi.d	$a6, $a6, -2
-	addi.d	$a4, $a4, 24
+	addi.d	$a5, $a5, 24
 	bnez	$a6, .LBB4_23
 # %bb.24:                               # %middle.block
-	beq	$a3, $a1, .LBB4_27
+	beq	$a4, $a2, .LBB4_27
 .LBB4_25:                               # %scalar.ph.preheader
-	slli.d	$a4, $a3, 3
-	alsl.d	$a4, $a3, $a4, 2
-	add.d	$a2, $a4, $a2
-	addi.d	$a2, $a2, 8
-	sub.d	$a1, $a1, $a3
-	ori	$a3, $zero, 1
+	slli.d	$a5, $a4, 3
+	alsl.d	$a5, $a4, $a5, 2
+	add.d	$a3, $a5, $a3
+	addi.d	$a3, $a3, 8
+	sub.d	$a2, $a2, $a4
 	.p2align	4, , 16
 .LBB4_26:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$a3, $a2, 0
-	st.w	$zero, $a2, -8
-	st.w	$a0, $a2, -4
-	addi.d	$a1, $a1, -1
-	addi.d	$a2, $a2, 12
-	bnez	$a1, .LBB4_26
+	st.w	$a0, $a3, 0
+	st.w	$zero, $a3, -8
+	st.w	$a1, $a3, -4
+	addi.d	$a2, $a2, -1
+	addi.d	$a3, $a3, 12
+	bnez	$a2, .LBB4_26
 .LBB4_27:                               # %._crit_edge
 	st.w	$zero, $fp, 40
 	st.w	$zero, $fp, 60
@@ -610,9 +608,8 @@ ercMarkCurrMBConcealed:                 # @ercMarkCurrMBConcealed
 	ld.d	$a2, $a3, 16
 	slli.d	$a4, $a0, 2
 	ori	$a5, $zero, 2
-	addi.w	$a6, $zero, -1
 	stx.w	$a5, $a2, $a4
-	blt	$a6, $a1, .LBB9_5
+	bgez	$a1, .LBB9_5
 	b	.LBB9_9
 .LBB9_7:
 	ld.d	$a4, $a3, 8
@@ -633,9 +630,8 @@ ercMarkCurrMBConcealed:                 # @ercMarkCurrMBConcealed
 	mul.d	$a6, $a6, $t0
 	alsl.w	$a5, $a5, $a6, 1
 	slli.d	$a5, $a5, 2
-	addi.w	$a6, $zero, -1
 	stx.d	$t1, $a4, $a5
-	blt	$a6, $a1, .LBB9_5
+	bgez	$a1, .LBB9_5
 # %bb.8:                                # %.critedge
 	ld.d	$a1, $a3, 16
 	slli.d	$a4, $a0, 2

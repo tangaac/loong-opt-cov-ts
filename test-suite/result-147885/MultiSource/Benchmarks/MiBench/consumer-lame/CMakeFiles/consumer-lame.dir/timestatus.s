@@ -75,8 +75,7 @@ ts_process_time:                        # @ts_process_time
 	.type	ts_calc_times,@function
 ts_calc_times:                          # @ts_calc_times
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a2, $a5, .LBB2_4
+	blez	$a2, .LBB2_4
 # %bb.1:
 	fld.s	$fa0, $a0, 0
 	movgr2fr.d	$fa1, $a3
@@ -165,9 +164,8 @@ timestatus:                             # @timestatus
 	movgr2fr.d	$fa1, $a0
 	ffint.s.l	$fa1, $fa1
 	fdiv.s	$fa4, $fa1, $fa0
-	ori	$a0, $zero, 1
 	movgr2fr.d	$fa6, $fp
-	blt	$fp, $a0, .LBB3_7
+	blez	$fp, .LBB3_7
 # %bb.3:
 	movgr2fr.d	$fa0, $s0
 	ffint.s.l	$fa0, $fa0
@@ -184,8 +182,8 @@ timestatus:                             # @timestatus
 	fsub.s	$fa7, $fa1, $fa2
 	bcnez	$fcc0, .LBB3_9
 # %bb.4:
-	mul.d	$a1, $s0, $s1
-	movgr2fr.d	$fa5, $a1
+	mul.d	$a0, $s0, $s1
+	movgr2fr.d	$fa5, $a0
 	ffint.s.l	$fa5, $fa5
 	fdiv.s	$fa0, $fa5, $fa0
 	fcvt.d.s	$fa0, $fa0
@@ -216,6 +214,7 @@ timestatus:                             # @timestatus
 	vldi	$vr1, -928
 	vldi	$vr3, -928
 	vldi	$vr5, -928
+	ori	$a0, $zero, 1
 	blt	$a0, $s0, .LBB3_11
 .LBB3_8:                                # %ts_calc_times.exit23._crit_edge
 	addi.d	$a3, $s0, -1
@@ -231,6 +230,7 @@ timestatus:                             # @timestatus
 	fadd.d	$fa3, $fa1, $ft0
 	fcvt.d.s	$fa1, $fa7
 	fadd.d	$fa1, $fa1, $ft0
+	ori	$a0, $zero, 1
 	bge	$a0, $s0, .LBB3_8
 .LBB3_11:
 	pcalau12i	$a0, %pc_hi20(.LCPI3_1)

@@ -36,9 +36,9 @@ _ZN17btConvexHullShapeC2EPKfii:         # @_ZN17btConvexHullShapeC2EPKfii
 	st.b	$a0, $fp, 128
 	st.d	$zero, $fp, 120
 	st.d	$zero, $fp, 108
-	ori	$a1, $zero, 4
-	st.w	$a1, $fp, 8
-	blt	$s0, $a0, .LBB0_10
+	ori	$a0, $zero, 4
+	st.w	$a0, $fp, 8
+	blez	$s0, .LBB0_10
 # %bb.1:
 	slli.d	$a0, $s0, 4
 .Ltmp0:
@@ -49,8 +49,7 @@ _ZN17btConvexHullShapeC2EPKfii:         # @_ZN17btConvexHullShapeC2EPKfii
 # %bb.2:                                # %_ZN20btAlignedObjectArrayI9btVector3E8allocateEi.exit.i.i
 	move	$s3, $a0
 	ld.w	$a1, $fp, 108
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_5
+	blez	$a1, .LBB0_5
 # %bb.3:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -292,13 +291,11 @@ _ZN17btConvexHullShape8addPointERK9btVector3: # @_ZN17btConvexHullShape8addPoint
 	ld.w	$a2, $s1, 108
 	move	$fp, $a0
 	move	$a0, $s1
-	ori	$a3, $zero, 1
-	bge	$a2, $a3, .LBB4_5
+	bgtz	$a2, .LBB4_5
 	b	.LBB4_7
 .LBB4_4:
 	move	$fp, $zero
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB4_7
+	blez	$a2, .LBB4_7
 .LBB4_5:                                # %.lr.ph.i.i.i
 	move	$a3, $zero
 	slli.d	$a2, $a2, 4
@@ -377,8 +374,7 @@ _ZNK17btConvexHullShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @
 	vldi	$vr1, -1168
 	fmov.s	$fa2, $fa0
 	ld.w	$a1, $a0, 108
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB5_4
+	bgtz	$a1, .LBB5_4
 .LBB5_2:
 	move	$a1, $zero
 	move	$a0, $zero
@@ -389,8 +385,7 @@ _ZNK17btConvexHullShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @
 	fmul.s	$fa0, $fa2, $fa4
 	fmul.s	$fa2, $fa3, $fa4
 	ld.w	$a1, $a0, 108
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_2
+	blez	$a1, .LBB5_2
 .LBB5_4:                                # %.lr.ph
 	ld.d	$a2, $a0, 120
 	fld.s	$fa3, $a0, 24
@@ -440,9 +435,9 @@ _ZNK17btConvexHullShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @
 	.type	_ZNK17btConvexHullShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK17btConvexHullShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK17btConvexHullShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a3, $a5, .LBB6_15
+	blez	$a3, .LBB6_15
 # %bb.1:                                # %.lr.ph.preheader
+	ori	$a5, $zero, 1
 	lu12i.w	$a4, -141856
 	bne	$a3, $a5, .LBB6_3
 # %bb.2:
@@ -480,8 +475,7 @@ _ZNK17btConvexHullShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9bt
 	bnez	$a5, .LBB6_7
 .LBB6_8:                                # %.preheader
 	ld.w	$a4, $a0, 108
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB6_15
+	blez	$a4, .LBB6_15
 # %bb.9:                                # %.lr.ph34
 	move	$a4, $zero
 	bstrpick.d	$a3, $a3, 31, 0

@@ -158,7 +158,7 @@ jpeg_idct_islow:                        # @jpeg_idct_islow
 	or	$s3, $s3, $ra
 	or	$s3, $s3, $s7
 	or	$s3, $s3, $t6
-	bstrpick.d	$a4, $s3, 15, 0
+	slli.d	$a4, $s3, 48
 	add.d	$s3, $s0, $t7
 	bnez	$a4, .LBB0_1
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1

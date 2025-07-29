@@ -89,12 +89,11 @@ cli_filetype2:                          # @cli_filetype2
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
 	addi.w	$s4, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB1_14
+	blez	$s4, .LBB1_14
 # %bb.1:
-	bstrpick.d	$s2, $s3, 30, 0
+	move	$s3, $a0
+	bstrpick.d	$s2, $a0, 30, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.12)
 	lu12i.w	$a0, -1
@@ -312,7 +311,6 @@ cli_filetype2:                          # @cli_filetype2
 	lu12i.w	$s2, 9
 	ori	$a0, $s2, 775
 	ori	$a1, $zero, 1
-	ori	$s3, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_41
@@ -329,7 +327,7 @@ cli_filetype2:                          # @cli_filetype2
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s3, .LBB1_33
+	blez	$a1, .LBB1_33
 # %bb.30:
 	bstrpick.d	$a0, $a0, 30, 0
 	stx.b	$zero, $s1, $a0

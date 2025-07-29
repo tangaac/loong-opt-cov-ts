@@ -21,7 +21,6 @@ BreakObject:                            # @BreakObject
 	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	move	$s0, $a1
 	ld.w	$a1, $a1, 0
 	move	$fp, $a0
@@ -31,8 +30,7 @@ BreakObject:                            # @BreakObject
 	bltz	$a0, .LBB0_9
 # %bb.2:
 	ld.w	$a3, $s0, 8
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a3, .LBB0_9
+	bltz	$a3, .LBB0_9
 # %bb.3:
 	ld.w	$a2, $fp, 48
 	bge	$a1, $a2, .LBB0_13
@@ -186,7 +184,7 @@ BreakObject:                            # @BreakObject
 	b	.LBB0_69
 .LBB0_23:
 	ld.w	$a0, $fp, 40
-	bge	$s3, $a0, .LBB0_80
+	bltz	$a0, .LBB0_80
 # %bb.24:
 	pcalau12i	$a0, %got_pc_hi20(BackEnd)
 	ld.d	$a0, $a0, %got_pc_lo12(BackEnd)
@@ -270,7 +268,7 @@ BreakObject:                            # @BreakObject
 	b	.LBB0_78
 .LBB0_34:
 	ld.w	$a1, $fp, 64
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(InvScaleConstraint)
 	jirl	$ra, $ra, 0
@@ -280,7 +278,7 @@ BreakObject:                            # @BreakObject
 	ld.bu	$a1, $a0, 32
 	beqz	$a1, .LBB0_35
 # %bb.36:
-	addi.d	$a1, $sp, 0
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(BreakObject)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $a0, 48
@@ -368,15 +366,15 @@ BreakObject:                            # @BreakObject
 	or	$a1, $a1, $a4
 	ld.w	$a3, $s0, 8
 	sub.d	$a1, $a1, $a0
-	st.w	$a1, $sp, 0
-	st.w	$a2, $sp, 4
+	st.w	$a1, $sp, 8
+	st.w	$a2, $sp, 12
 	slt	$a1, $a3, $a2
 	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
-	st.w	$a0, $sp, 8
-	addi.d	$a1, $sp, 0
+	st.w	$a0, $sp, 16
+	addi.d	$a1, $sp, 8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(BreakObject)
 	jirl	$ra, $ra, 0
@@ -414,8 +412,7 @@ BreakObject:                            # @BreakObject
 	beqz	$a1, .LBB0_49
 	b	.LBB0_69
 .LBB0_50:
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_106
+	blez	$a2, .LBB0_106
 # %bb.51:
 	ld.w	$a0, $fp, 56
 	add.w	$a0, $a0, $a2
@@ -524,15 +521,14 @@ BreakObject:                            # @BreakObject
 	st.w	$a0, $fp, 56
 .LBB0_71:
 	ld.w	$a0, $fp, 48
-	bge	$s3, $a0, .LBB0_75
+	bltz	$a0, .LBB0_75
 # %bb.72:
 	ld.w	$a0, $fp, 56
-	bge	$s3, $a0, .LBB0_76
+	bltz	$a0, .LBB0_76
 .LBB0_73:
 	move	$s0, $fp
 .LBB0_74:
 	move	$a0, $s0
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
@@ -556,7 +552,7 @@ BreakObject:                            # @BreakObject
 	pcaddu18i	$ra, %call36(Error)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 56
-	blt	$s3, $a0, .LBB0_73
+	bgez	$a0, .LBB0_73
 .LBB0_76:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -599,15 +595,15 @@ BreakObject:                            # @BreakObject
 	b	.LBB0_85
 .LBB0_80:
 	pcalau12i	$a0, %got_pc_hi20(zz_lengths)
-	ld.d	$s4, $a0, %got_pc_lo12(zz_lengths)
-	ld.bu	$a0, $s4, 17
+	ld.d	$s3, $a0, %got_pc_lo12(zz_lengths)
+	ld.bu	$a0, $s3, 17
 	pcalau12i	$a1, %got_pc_hi20(zz_free)
 	ld.d	$s2, $a1, %got_pc_lo12(zz_free)
 	pcalau12i	$a1, %got_pc_hi20(zz_size)
-	ld.d	$s5, $a1, %got_pc_lo12(zz_size)
+	ld.d	$s4, $a1, %got_pc_lo12(zz_size)
 	slli.d	$a1, $a0, 3
 	ldx.d	$s1, $s2, $a1
-	st.w	$a0, $s5, 0
+	st.w	$a0, $s4, 0
 	beqz	$s1, .LBB0_91
 # %bb.81:
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
@@ -822,10 +818,10 @@ BreakObject:                            # @BreakObject
 	st.d	$s1, $a1, 0
 	st.d	$zero, $a2, 0
 .LBB0_95:
-	ld.bu	$a2, $s4, 0
+	ld.bu	$a2, $s3, 0
 	slli.d	$a0, $a2, 3
 	ldx.d	$a0, $s2, $a0
-	st.w	$a2, $s5, 0
+	st.w	$a2, $s4, 0
 	beqz	$a0, .LBB0_97
 # %bb.96:
 	pcalau12i	$a1, %got_pc_hi20(zz_hold)
@@ -916,7 +912,7 @@ BreakObject:                            # @BreakObject
 .LBB0_106:
 	ori	$a3, $zero, 1
 	ori	$a4, $zero, 1
-	addi.d	$a6, $sp, 0
+	addi.d	$a6, $sp, 8
 	move	$a0, $fp
 	move	$a1, $s0
 	move	$a2, $zero
@@ -1320,10 +1316,10 @@ BreakTable:                             # @BreakTable
 .LBB1_38:                               # %.loopexit349
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	add.w	$a1, $a0, $s4
-	ori	$s7, $zero, 1
-	blt	$a1, $s7, .LBB1_97
+	blez	$a1, .LBB1_97
 # %bb.39:                               # %.lr.ph
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
+	ori	$s7, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$s8, $a0, %got_pc_lo12(no_fpos)
 	pcalau12i	$a0, %pc_hi20(.L.str.12)

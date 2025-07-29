@@ -108,11 +108,11 @@ CHAR_TO_DIGIT:                          # @CHAR_TO_DIGIT
 	.type	NUM_TO_STR,@function
 NUM_TO_STR:                             # @NUM_TO_STR
 # %bb.0:
-	ori	$a4, $zero, 1
 	stx.b	$zero, $a3, $a2
-	blt	$a2, $a4, .LBB4_5
+	blez	$a2, .LBB4_5
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a3, $a3, -1
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB4_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -179,8 +179,7 @@ PRT_NUM:                                # @PRT_NUM
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 .LBB5_2:
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB5_4
+	blez	$s2, .LBB5_4
 	.p2align	4, , 16
 .LBB5_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -270,9 +269,8 @@ GET_NUM:                                # @GET_NUM
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.b	$a3, $s1, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s2, $a1, .LBB6_6
+	blez	$s2, .LBB6_6
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)

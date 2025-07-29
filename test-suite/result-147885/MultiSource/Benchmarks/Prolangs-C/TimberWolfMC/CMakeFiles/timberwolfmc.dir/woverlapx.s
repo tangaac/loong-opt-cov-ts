@@ -236,7 +236,7 @@ woverlapx:                              # @woverlapx
                                         #           Child Loop BB0_39 Depth 5
                                         #           Child Loop BB0_32 Depth 5
 	or	$a0, $a2, $a1
-	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a0, $a0, 32
 	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	beqz	$a0, .LBB0_10
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=2
@@ -253,8 +253,7 @@ woverlapx:                              # @woverlapx
 	slli.d	$a1, $a2, 3
 	ldx.d	$a2, $a0, $a1
 	ld.w	$a0, $a2, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_7
+	blez	$a0, .LBB0_7
 # %bb.11:                               # %.lr.ph367.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	ori	$a0, $zero, 1

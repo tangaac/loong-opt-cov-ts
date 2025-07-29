@@ -1077,8 +1077,7 @@ write_frame_header:                     # @write_frame_header
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a2, $a0, 68
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB3_4
+	blez	$a2, .LBB3_4
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $fp, 80
 	move	$s0, $zero
@@ -1100,32 +1099,30 @@ write_frame_header:                     # @write_frame_header
 	sltu	$a0, $zero, $s0
 	ld.w	$a3, $fp, 252
 	ori	$a1, $zero, 201
-	bnez	$a3, .LBB3_21
+	bnez	$a3, .LBB3_22
 	b	.LBB3_5
 .LBB3_4:
 	move	$a0, $zero
 	ld.w	$a3, $fp, 252
 	ori	$a1, $zero, 201
-	bnez	$a3, .LBB3_21
+	bnez	$a3, .LBB3_22
 .LBB3_5:
 	ld.w	$a1, $fp, 300
 	beqz	$a1, .LBB3_7
 # %bb.6:
 	ori	$a1, $zero, 194
-	b	.LBB3_21
+	b	.LBB3_22
 .LBB3_7:
 	ld.w	$a1, $fp, 64
 	ori	$a3, $zero, 8
 	bne	$a1, $a3, .LBB3_14
 # %bb.8:
-	ori	$a1, $zero, 1
-	ori	$a3, $zero, 1
-	blt	$a2, $a1, .LBB3_15
+	blez	$a2, .LBB3_15
 # %bb.9:                                # %.lr.ph50.preheader
-	ld.d	$a3, $fp, 80
-	addi.d	$a4, $a3, 24
-	ori	$a5, $zero, 1
-	ori	$a6, $zero, 2
+	ld.d	$a1, $fp, 80
+	addi.d	$a1, $a1, 24
+	ori	$a4, $zero, 1
+	ori	$a5, $zero, 2
 	ori	$a3, $zero, 1
 	b	.LBB3_12
 	.p2align	4, , 16
@@ -1133,24 +1130,26 @@ write_frame_header:                     # @write_frame_header
 	move	$a3, $zero
 .LBB3_11:                               #   in Loop: Header=BB3_12 Depth=1
 	addi.w	$a2, $a2, -1
-	addi.d	$a4, $a4, 96
-	beqz	$a2, .LBB3_15
+	addi.d	$a1, $a1, 96
+	beqz	$a2, .LBB3_16
 .LBB3_12:                               # %.lr.ph50
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a7, $a4, -4
-	blt	$a5, $a7, .LBB3_10
+	ld.w	$a6, $a1, -4
+	blt	$a4, $a6, .LBB3_10
 # %bb.13:                               #   in Loop: Header=BB3_12 Depth=1
-	ld.w	$a7, $a4, 0
-	bge	$a7, $a6, .LBB3_10
+	ld.w	$a6, $a1, 0
+	bge	$a6, $a5, .LBB3_10
 	b	.LBB3_11
 .LBB3_14:
 	move	$a3, $zero
-	b	.LBB3_18
-.LBB3_15:                               # %._crit_edge51
-	sltu	$a2, $zero, $a3
-	and	$a0, $a0, $a2
-	bne	$a0, $a1, .LBB3_18
-# %bb.16:
+	b	.LBB3_19
+.LBB3_15:
+	ori	$a3, $zero, 1
+.LBB3_16:                               # %._crit_edge51
+	sltu	$a1, $zero, $a3
+	and	$a0, $a0, $a1
+	beqz	$a0, .LBB3_19
+# %bb.17:
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
 	ori	$a1, $zero, 74
@@ -1160,22 +1159,22 @@ write_frame_header:                     # @write_frame_header
 	jirl	$ra, $a2, 0
 	ori	$a1, $zero, 201
 	ld.w	$a0, $fp, 252
-	bnez	$a0, .LBB3_21
-# %bb.17:                               # %.thread60
+	bnez	$a0, .LBB3_22
+# %bb.18:                               # %.thread60
 	ld.w	$a0, $fp, 300
 	ori	$a1, $zero, 194
-	bnez	$a0, .LBB3_21
-	b	.LBB3_20
-.LBB3_18:                               # %.thread56
+	bnez	$a0, .LBB3_22
+	b	.LBB3_21
+.LBB3_19:                               # %.thread56
 	ld.w	$a0, $fp, 300
 	ori	$a1, $zero, 194
-	bnez	$a0, .LBB3_21
-# %bb.19:
+	bnez	$a0, .LBB3_22
+# %bb.20:
 	ori	$a1, $zero, 192
-	bnez	$a3, .LBB3_21
-.LBB3_20:                               # %.thread64
+	bnez	$a3, .LBB3_22
+.LBB3_21:                               # %.thread64
 	ori	$a1, $zero, 193
-.LBB3_21:                               # %.thread
+.LBB3_22:                               # %.thread
 	move	$a0, $fp
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -1463,8 +1462,7 @@ write_scan_header:                      # @write_scan_header
 	jirl	$ra, $a1, 0
 .LBB4_35:                               # %emit_byte.exit.i
 	ld.w	$a0, $fp, 316
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_50
+	blez	$a0, .LBB4_50
 # %bb.36:                               # %.lr.ph.i
 	move	$s0, $zero
 	ori	$s1, $zero, 320
@@ -1628,8 +1626,7 @@ write_scan_header:                      # @write_scan_header
 	ret
 .LBB4_59:                               # %.preheader
 	ld.w	$a0, $fp, 316
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_1
+	blez	$a0, .LBB4_1
 # %bb.60:                               # %.lr.ph
 	move	$s0, $zero
 	ori	$s1, $zero, 320
@@ -2545,8 +2542,7 @@ emit_sof:                               # @emit_sof
 	jirl	$ra, $a1, 0
 .LBB8_33:                               # %emit_byte.exit41
 	ld.w	$a0, $fp, 68
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_45
+	blez	$a0, .LBB8_45
 # %bb.34:                               # %.lr.ph.preheader
 	ld.d	$s0, $fp, 80
 	move	$s1, $zero

@@ -14,16 +14,14 @@ btBulletMathProbe:                      # @btBulletMathProbe
 	.type	_ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS1_f,@function
 _ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS1_f: # @_ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS1_f
 # %bb.0:
-	move	$a2, $a0
-	ld.w	$a3, $a0, 4
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB1_4
+	ld.w	$a2, $a0, 4
+	blez	$a2, .LBB1_5
 # %bb.1:                                # %.lr.ph
-	ld.d	$a0, $a2, 16
+	ld.d	$a0, $a0, 16
 	fld.s	$fa1, $a1, 0
 	fld.s	$fa2, $a1, 4
 	fld.s	$fa3, $a1, 8
-	addi.d	$a2, $a3, -1
+	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a0, 8
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
@@ -46,6 +44,9 @@ _ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS
 	bnez	$a3, .LBB1_2
 .LBB1_4:                                # %.critedge
 	ret
+.LBB1_5:
+	ori	$a0, $zero, 1
+	ret
 .Lfunc_end1:
 	.size	_ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS1_f, .Lfunc_end1-_ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS1_f
                                         # -- End function
@@ -54,37 +55,38 @@ _ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS
 	.type	_ZN14btGeometryUtil22areVerticesBehindPlaneERK9btVector3RK20btAlignedObjectArrayIS0_Ef,@function
 _ZN14btGeometryUtil22areVerticesBehindPlaneERK9btVector3RK20btAlignedObjectArrayIS0_Ef: # @_ZN14btGeometryUtil22areVerticesBehindPlaneERK9btVector3RK20btAlignedObjectArrayIS0_Ef
 # %bb.0:
-	ld.w	$a3, $a1, 4
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB2_4
+	ld.w	$a2, $a1, 4
+	blez	$a2, .LBB2_5
 # %bb.1:                                # %.lr.ph
-	ld.d	$a2, $a1, 16
+	ld.d	$a1, $a1, 16
 	fld.s	$fa1, $a0, 0
 	fld.s	$fa2, $a0, 4
 	fld.s	$fa3, $a0, 8
 	fld.s	$fa4, $a0, 12
-	addi.d	$a1, $a3, -1
-	addi.d	$a0, $a2, 8
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 8
 	.p2align	4, , 16
 .LBB2_2:                                # =>This Inner Loop Header: Depth=1
-	fld.s	$fa5, $a0, -4
-	fld.s	$fa6, $a0, -8
-	fld.s	$fa7, $a0, 0
+	fld.s	$fa5, $a1, -4
+	fld.s	$fa6, $a1, -8
+	fld.s	$fa7, $a1, 0
 	fmul.s	$fa5, $fa2, $fa5
 	fmadd.s	$fa5, $fa1, $fa6, $fa5
 	fmadd.s	$fa5, $fa3, $fa7, $fa5
 	fadd.s	$fa5, $fa5, $fa4
 	fcmp.cule.s	$fcc0, $fa5, $fa0
 	fcmp.clt.s	$fcc1, $fa0, $fa5
-	movcf2gr	$a2, $fcc0
+	movcf2gr	$a0, $fcc0
 	bcnez	$fcc1, .LBB2_4
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
-	sltu	$a3, $zero, $a1
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 16
+	sltu	$a3, $zero, $a2
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 16
 	bnez	$a3, .LBB2_2
 .LBB2_4:                                # %.critedge
-	move	$a0, $a2
+	ret
+.LBB2_5:
+	ori	$a0, $zero, 1
 	ret
 .Lfunc_end2:
 	.size	_ZN14btGeometryUtil22areVerticesBehindPlaneERK9btVector3RK20btAlignedObjectArrayIS0_Ef, .Lfunc_end2-_ZN14btGeometryUtil22areVerticesBehindPlaneERK9btVector3RK20btAlignedObjectArrayIS0_Ef
@@ -99,37 +101,38 @@ _ZN14btGeometryUtil22areVerticesBehindPlaneERK9btVector3RK20btAlignedObjectArray
 	.type	_Z8notExistRK9btVector3RK20btAlignedObjectArrayIS_E,@function
 _Z8notExistRK9btVector3RK20btAlignedObjectArrayIS_E: # @_Z8notExistRK9btVector3RK20btAlignedObjectArrayIS_E
 # %bb.0:
-	ld.w	$a3, $a1, 4
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB3_4
+	ld.w	$a2, $a1, 4
+	blez	$a2, .LBB3_5
 # %bb.1:                                # %.lr.ph
-	ld.d	$a2, $a1, 16
+	ld.d	$a1, $a1, 16
 	fld.s	$fa0, $a0, 0
 	fld.s	$fa1, $a0, 4
 	fld.s	$fa2, $a0, 8
 	pcalau12i	$a0, %pc_hi20(.LCPI3_0)
 	fld.s	$fa3, $a0, %pc_lo12(.LCPI3_0)
-	addi.d	$a1, $a3, -1
-	addi.d	$a0, $a2, 8
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 8
 	.p2align	4, , 16
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
-	fld.s	$fa4, $a0, -4
-	fld.s	$fa5, $a0, -8
-	fld.s	$fa6, $a0, 0
+	fld.s	$fa4, $a1, -4
+	fld.s	$fa5, $a1, -8
+	fld.s	$fa6, $a1, 0
 	fmul.s	$fa4, $fa1, $fa4
 	fmadd.s	$fa4, $fa0, $fa5, $fa4
 	fmadd.s	$fa4, $fa2, $fa6, $fa4
 	fcmp.cule.s	$fcc0, $fa4, $fa3
 	fcmp.clt.s	$fcc1, $fa3, $fa4
-	movcf2gr	$a2, $fcc0
+	movcf2gr	$a0, $fcc0
 	bcnez	$fcc1, .LBB3_4
 # %bb.3:                                #   in Loop: Header=BB3_2 Depth=1
-	sltu	$a3, $zero, $a1
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, 16
+	sltu	$a3, $zero, $a2
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 16
 	bnez	$a3, .LBB3_2
 .LBB3_4:                                # %.critedge
-	move	$a0, $a2
+	ret
+.LBB3_5:
+	ori	$a0, $zero, 1
 	ret
 .Lfunc_end3:
 	.size	_Z8notExistRK9btVector3RK20btAlignedObjectArrayIS_E, .Lfunc_end3-_Z8notExistRK9btVector3RK20btAlignedObjectArrayIS_E
@@ -190,21 +193,20 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	.cfi_offset 62, -144
 	.cfi_offset 63, -152
 	ld.w	$s2, $a0, 4
-	ori	$a4, $zero, 1
-	blt	$s2, $a4, .LBB4_51
+	blez	$s2, .LBB4_51
 # %bb.1:                                # %.lr.ph111
 	move	$fp, $a0
 	move	$s0, $a1
+	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(.LCPI4_0)
 	fld.s	$ft1, $a0, %pc_lo12(.LCPI4_0)
-	move	$a0, $zero
-	ori	$a1, $zero, 2
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	ori	$a1, $zero, 1
-	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	ori	$a0, $zero, 2
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ori	$a4, $zero, 1
+	ori	$a0, $zero, 1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	fst.s	$ft1, $sp, 52                   # 4-byte Folded Spill
-	pcalau12i	$s6, %pc_hi20(.LCPI4_1)
-	pcalau12i	$s8, %pc_hi20(.LCPI4_2)
+	pcalau12i	$s8, %pc_hi20(.LCPI4_1)
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                # %.loopexit104
@@ -215,8 +217,8 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	beq	$a0, $s2, .LBB4_51
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	beq	$a1, $s2, .LBB4_51
 .LBB4_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_6 Depth 2
                                         #       Child Loop BB4_11 Depth 3
@@ -226,7 +228,8 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
                                         #         Child Loop BB4_35 Depth 4
                                         #         Child Loop BB4_39 Depth 4
                                         #         Child Loop BB4_47 Depth 4
-	addi.d	$a1, $a0, 1
+	move	$a0, $a1
+	addi.d	$a1, $a1, 1
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	bgeu	$a1, $s2, .LBB4_2
 # %bb.4:                                #   in Loop: Header=BB4_3 Depth=1
@@ -260,15 +263,15 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 # %bb.7:                                # %.lr.ph
                                         #   in Loop: Header=BB4_6 Depth=2
 	ld.d	$a1, $fp, 16
-	alsl.d	$s4, $a0, $a1, 4
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
+	alsl.d	$s3, $a0, $a1, 4
+	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB4_11
 .LBB4_8:                                # %_ZN20btAlignedObjectArrayI9btVector3E10deallocateEv.exit.i.i.1
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.w	$a1, $s0, 4
 	st.b	$a4, $s0, 24
 	st.d	$s1, $s0, 16
-	st.w	$s3, $s0, 8
+	st.w	$s5, $s0, 8
 	fld.s	$ft1, $sp, 52                   # 4-byte Folded Reload
 .LBB4_9:                                # %_ZN20btAlignedObjectArrayI9btVector3E9push_backERKS0_.exit.1
                                         #   in Loop: Header=BB4_11 Depth=3
@@ -285,8 +288,8 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	st.w	$a0, $s0, 4
 .LBB4_10:                               # %_Z8notExistRK9btVector3RK20btAlignedObjectArrayIS_E.exit.1
                                         #   in Loop: Header=BB4_11 Depth=3
-	addi.d	$s5, $s5, 1
-	addi.w	$a0, $s5, 0
+	addi.d	$s4, $s4, 1
+	addi.w	$a0, $s4, 0
 	bge	$a0, $s2, .LBB4_5
 .LBB4_11:                               #   Parent Loop BB4_3 Depth=1
                                         #     Parent Loop BB4_6 Depth=2
@@ -298,15 +301,15 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
                                         #         Child Loop BB4_39 Depth 4
                                         #         Child Loop BB4_47 Depth 4
 	ld.d	$a0, $fp, 16
-	fld.s	$fa2, $s4, 0
+	fld.s	$fa2, $s3, 0
 	fld.s	$fa0, $s7, 0
-	fld.s	$fa3, $s4, 4
+	fld.s	$fa3, $s3, 4
 	fld.s	$fa1, $s7, 4
-	alsl.d	$a1, $s5, $a0, 4
-	slli.d	$a2, $s5, 4
+	alsl.d	$a1, $s4, $a0, 4
+	slli.d	$a2, $s4, 4
 	fsub.s	$fa2, $fa2, $fa0
 	fsub.s	$fa3, $fa3, $fa1
-	fld.s	$fa4, $s4, 8
+	fld.s	$fa4, $s3, 8
 	fld.s	$fs2, $s7, 8
 	fldx.s	$fa5, $a0, $a2
 	fld.s	$fa6, $a1, 4
@@ -328,6 +331,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fmadd.s	$fa2, $fs1, $fs1, $fa2
 	fmadd.s	$fs4, $fs5, $fs5, $fa2
 	fcmp.cule.s	$fcc1, $fs4, $ft1
+	pcalau12i	$s5, %pc_hi20(.LCPI4_2)
 	bcnez	$fcc1, .LBB4_32
 # %bb.12:                               #   in Loop: Header=BB4_11 Depth=3
 	ld.w	$a1, $s0, 4
@@ -335,7 +339,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fmul.s	$fs6, $fs1, $fa2
 	fmul.s	$fs7, $fs3, $fa2
 	fmul.s	$fs0, $fs5, $fa2
-	blt	$a1, $a4, .LBB4_16
+	blez	$a1, .LBB4_16
 # %bb.13:                               # %.lr.ph.i
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.d	$a2, $s0, 16
@@ -349,7 +353,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fld.s	$fa2, $a2, -4
 	fld.s	$fa3, $a2, -8
 	fld.s	$fa4, $a2, 0
-	fld.s	$fa5, $s6, %pc_lo12(.LCPI4_1)
+	fld.s	$fa5, $s8, %pc_lo12(.LCPI4_1)
 	fmul.s	$fa2, $fs7, $fa2
 	fmadd.s	$fa2, $fs6, $fa3, $fa2
 	fmadd.s	$fa2, $fs0, $fa4, $fa2
@@ -364,7 +368,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	ld.w	$a2, $fp, 4
 	fmul.s	$fa1, $fs7, $fa1
 	fmadd.s	$fa5, $fs6, $fa0, $fa1
-	blt	$a2, $a4, .LBB4_20
+	blez	$a2, .LBB4_20
 # %bb.17:                               # %.lr.ph.i61
                                         #   in Loop: Header=BB4_11 Depth=3
 	fmadd.s	$fa0, $fs0, $fs2, $fa5
@@ -378,7 +382,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fld.s	$fa2, $a0, -8
 	fld.s	$fa3, $a0, 0
 	fmul.s	$fa1, $fs7, $fa1
-	fld.s	$fa4, $s8, %pc_lo12(.LCPI4_2)
+	fld.s	$fa4, $s5, %pc_lo12(.LCPI4_2)
 	fmadd.s	$fa1, $fs6, $fa2, $fa1
 	fmadd.s	$fa1, $fs0, $fa3, $fa1
 	fsub.s	$fa1, $fa1, $fa0
@@ -397,30 +401,30 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	slli.w	$a2, $a1, 1
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a4, $a0
-	or	$s3, $a0, $a2
-	bge	$a1, $s3, .LBB4_31
+	or	$s6, $a0, $a2
+	bge	$a1, $s6, .LBB4_31
 # %bb.22:                               #   in Loop: Header=BB4_11 Depth=3
 	movcf2gr	$a0, $fcc1
 	st.d	$a0, $sp, 40
 	fst.s	$fa5, $sp, 36                   # 4-byte Folded Spill
-	beqz	$s3, .LBB4_24
+	beqz	$s6, .LBB4_24
 # %bb.23:                               #   in Loop: Header=BB4_11 Depth=3
-	slli.d	$a0, $s3, 4
+	slli.d	$a0, $s6, 4
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	fld.s	$fa5, $sp, 36                   # 4-byte Folded Reload
 	ld.d	$a1, $sp, 40
 	movgr2cf	$fcc1, $a1
-	fld.s	$ft1, $sp, 52                   # 4-byte Folded Reload
 	ori	$a4, $zero, 1
+	fld.s	$ft1, $sp, 52                   # 4-byte Folded Reload
 	ld.w	$a1, $s0, 4
 	move	$s1, $a0
-	bge	$a1, $a4, .LBB4_25
+	bgtz	$a1, .LBB4_25
 	b	.LBB4_27
 .LBB4_24:                               #   in Loop: Header=BB4_11 Depth=3
 	move	$s1, $zero
-	blt	$a1, $a4, .LBB4_27
+	blez	$a1, .LBB4_27
 .LBB4_25:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB4_11 Depth=3
 	move	$a0, $zero
@@ -450,14 +454,14 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fld.s	$fa5, $sp, 36                   # 4-byte Folded Reload
 	ld.d	$a0, $sp, 40
 	movgr2cf	$fcc1, $a0
-	fld.s	$ft1, $sp, 52                   # 4-byte Folded Reload
 	ori	$a4, $zero, 1
+	fld.s	$ft1, $sp, 52                   # 4-byte Folded Reload
 .LBB4_30:                               # %_ZN20btAlignedObjectArrayI9btVector3E10deallocateEv.exit.i.i
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.w	$a1, $s0, 4
 	st.b	$a4, $s0, 24
 	st.d	$s1, $s0, 16
-	st.w	$s3, $s0, 8
+	st.w	$s6, $s0, 8
 .LBB4_31:                               # %_ZN20btAlignedObjectArrayI9btVector3E9push_backERKS0_.exit
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.d	$a0, $s0, 16
@@ -483,7 +487,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fmul.s	$fs1, $fa3, $fa1
 	fmul.s	$fs2, $fa3, $fa2
 	fmul.s	$fs3, $fa3, $fa0
-	blt	$a1, $a4, .LBB4_37
+	blez	$a1, .LBB4_37
 # %bb.34:                               # %.lr.ph.i.1
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.d	$a0, $s0, 16
@@ -497,7 +501,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fld.s	$fa0, $a0, -4
 	fld.s	$fa1, $a0, -8
 	fld.s	$fa2, $a0, 0
-	fld.s	$fa3, $s6, %pc_lo12(.LCPI4_1)
+	fld.s	$fa3, $s8, %pc_lo12(.LCPI4_1)
 	fmul.s	$fa0, $fs2, $fa0
 	fmadd.s	$fa0, $fs1, $fa1, $fa0
 	fmadd.s	$fa0, $fs3, $fa2, $fa0
@@ -515,7 +519,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fld.s	$fs0, $s7, 8
 	fmul.s	$fa1, $fs2, $fa1
 	fmadd.s	$fs4, $fs1, $fa0, $fa1
-	blt	$a0, $a4, .LBB4_41
+	blez	$a0, .LBB4_41
 # %bb.38:                               # %.lr.ph.i61.1
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.d	$a2, $fp, 16
@@ -530,7 +534,7 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	fld.s	$fa2, $a2, -8
 	fld.s	$fa3, $a2, 0
 	fmul.s	$fa1, $fs2, $fa1
-	fld.s	$fa4, $s8, %pc_lo12(.LCPI4_2)
+	fld.s	$fa4, $s5, %pc_lo12(.LCPI4_2)
 	fmadd.s	$fa1, $fs1, $fa2, $fa1
 	fmadd.s	$fa1, $fs3, $fa3, $fa1
 	fsub.s	$fa1, $fa1, $fa0
@@ -549,23 +553,23 @@ _ZN14btGeometryUtil29getPlaneEquationsFromVerticesER20btAlignedObjectArrayI9btVe
 	slli.w	$a2, $a1, 1
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a4, $a0
-	or	$s3, $a0, $a2
-	bge	$a1, $s3, .LBB4_9
+	or	$s5, $a0, $a2
+	bge	$a1, $s5, .LBB4_9
 # %bb.43:                               #   in Loop: Header=BB4_11 Depth=3
-	beqz	$s3, .LBB4_45
+	beqz	$s5, .LBB4_45
 # %bb.44:                               #   in Loop: Header=BB4_11 Depth=3
-	slli.d	$a0, $s3, 4
+	slli.d	$a0, $s5, 4
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ori	$a4, $zero, 1
 	ld.w	$a1, $s0, 4
 	move	$s1, $a0
-	bge	$a1, $a4, .LBB4_46
+	bgtz	$a1, .LBB4_46
 	b	.LBB4_48
 .LBB4_45:                               #   in Loop: Header=BB4_11 Depth=3
 	move	$s1, $zero
-	blt	$a1, $a4, .LBB4_48
+	blez	$a1, .LBB4_48
 .LBB4_46:                               # %.lr.ph.i.i.i.1
                                         #   in Loop: Header=BB4_11 Depth=3
 	move	$a0, $zero
@@ -670,18 +674,18 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	.cfi_offset 59, -120
 	.cfi_offset 60, -128
 	ld.w	$s2, $a0, 4
-	ori	$a3, $zero, 1
-	blt	$s2, $a3, .LBB5_29
+	blez	$s2, .LBB5_29
 # %bb.1:                                # %.lr.ph113
 	move	$fp, $a0
 	move	$s0, $a1
 	move	$a1, $zero
+	ori	$a0, $zero, 2
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.s	$fs0, $a0, %pc_lo12(.LCPI5_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI5_1)
 	fld.s	$fs1, $a0, %pc_lo12(.LCPI5_1)
-	ori	$a0, $zero, 2
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ori	$a3, $zero, 1
 	vldi	$vr14, -1040
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -710,12 +714,12 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	ld.d	$a1, $fp, 16
 	alsl.d	$s7, $a0, $a1, 4
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB5_6
 	.p2align	4, , 16
 .LBB5_5:                                # %.loopexit107
                                         #   in Loop: Header=BB5_6 Depth=2
-	addi.d	$s6, $s6, 1
+	addi.d	$s3, $s3, 1
 	beq	$s8, $s2, .LBB5_2
 .LBB5_6:                                #   Parent Loop BB5_3 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -729,15 +733,15 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 # %bb.7:                                # %.lr.ph
                                         #   in Loop: Header=BB5_6 Depth=2
 	ld.d	$a1, $fp, 16
-	alsl.d	$s4, $a0, $a1, 4
-	move	$s5, $s6
+	alsl.d	$s5, $a0, $a1, 4
+	move	$s4, $s3
 	b	.LBB5_11
 .LBB5_8:                                # %_ZN20btAlignedObjectArrayI9btVector3E10deallocateEv.exit.i.i
                                         #   in Loop: Header=BB5_11 Depth=3
 	ld.w	$a1, $s0, 4
 	st.b	$a3, $s0, 24
 	st.d	$s1, $s0, 16
-	st.w	$s3, $s0, 8
+	st.w	$s6, $s0, 8
 .LBB5_9:                                # %_ZN20btAlignedObjectArrayI9btVector3E9push_backERKS0_.exit
                                         #   in Loop: Header=BB5_11 Depth=3
 	ld.d	$a0, $s0, 16
@@ -753,8 +757,8 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	.p2align	4, , 16
 .LBB5_10:                               # %_ZN14btGeometryUtil19isPointInsidePlanesERK20btAlignedObjectArrayI9btVector3ERKS1_f.exit
                                         #   in Loop: Header=BB5_11 Depth=3
-	addi.d	$s5, $s5, 1
-	addi.w	$a0, $s5, 0
+	addi.d	$s4, $s4, 1
+	addi.w	$a0, $s4, 0
 	bge	$a0, $s2, .LBB5_5
 .LBB5_11:                               #   Parent Loop BB5_3 Depth=1
                                         #     Parent Loop BB5_6 Depth=2
@@ -762,15 +766,15 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
                                         #         Child Loop BB5_17 Depth 4
                                         #         Child Loop BB5_25 Depth 4
 	ld.d	$a0, $fp, 16
-	alsl.d	$a1, $s5, $a0, 4
-	slli.d	$a2, $s5, 4
+	alsl.d	$a1, $s4, $a0, 4
+	slli.d	$a2, $s4, 4
 	fld.s	$fa7, $a1, 4
-	fld.s	$fa6, $s4, 8
-	fld.s	$fa3, $s4, 4
+	fld.s	$fa6, $s5, 8
+	fld.s	$fa3, $s5, 4
 	fld.s	$fa4, $a1, 8
 	fneg.s	$fa0, $fa7
 	fmul.s	$fa0, $fa6, $fa0
-	fld.s	$ft0, $s4, 0
+	fld.s	$ft0, $s5, 0
 	fldx.s	$ft1, $a0, $a2
 	fmadd.s	$fa0, $fa3, $fa4, $fa0
 	fneg.s	$fa1, $fa4
@@ -826,7 +830,7 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	bcnez	$fcc0, .LBB5_10
 # %bb.15:                               #   in Loop: Header=BB5_11 Depth=3
 	fld.s	$ft2, $s7, 12
-	fld.s	$ft3, $s4, 12
+	fld.s	$ft3, $s5, 12
 	fmul.s	$fa0, $fa0, $ft2
 	fmul.s	$fa1, $fa1, $ft2
 	fmul.s	$fa2, $fa2, $ft2
@@ -848,7 +852,7 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	fmul.s	$fs2, $ft0, $fa0
 	fmul.s	$fs3, $ft0, $fa1
 	fmul.s	$fs4, $ft0, $fa2
-	blt	$a1, $a3, .LBB5_19
+	blez	$a1, .LBB5_19
 # %bb.16:                               # %.lr.ph.i
                                         #   in Loop: Header=BB5_11 Depth=3
 	addi.d	$a0, $a0, 8
@@ -883,12 +887,12 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	slli.w	$a2, $a1, 1
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a3, $a0
-	or	$s3, $a0, $a2
-	bge	$a1, $s3, .LBB5_9
+	or	$s6, $a0, $a2
+	bge	$a1, $s6, .LBB5_9
 # %bb.21:                               #   in Loop: Header=BB5_11 Depth=3
-	beqz	$s3, .LBB5_23
+	beqz	$s6, .LBB5_23
 # %bb.22:                               #   in Loop: Header=BB5_11 Depth=3
-	slli.d	$a0, $s3, 4
+	slli.d	$a0, $s6, 4
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
@@ -896,11 +900,11 @@ _ZN14btGeometryUtil29getVerticesFromPlaneEquationsERK20btAlignedObjectArrayI9btV
 	ori	$a3, $zero, 1
 	ld.w	$a1, $s0, 4
 	move	$s1, $a0
-	bge	$a1, $a3, .LBB5_24
+	bgtz	$a1, .LBB5_24
 	b	.LBB5_26
 .LBB5_23:                               #   in Loop: Header=BB5_11 Depth=3
 	move	$s1, $zero
-	blt	$a1, $a3, .LBB5_26
+	blez	$a1, .LBB5_26
 .LBB5_24:                               # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB5_11 Depth=3
 	move	$a0, $zero

@@ -5,74 +5,75 @@
 	.type	strncmpic,@function
 strncmpic:                              # @strncmpic
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	ori	$s2, $zero, 1
-	blt	$a2, $s2, .LBB0_5
+	blez	$a2, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s1, $a2
 	move	$fp, $a1
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	addi.d	$a1, $s1, 1
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a3, $fp, 0
-	ld.b	$a4, $s0, 0
-	andi	$a6, $a3, 255
-	andi	$a5, $a4, 255
-	ext.w.b	$a2, $a6
-	beqz	$a6, .LBB0_6
+	ld.b	$a4, $fp, 0
+	ld.b	$a5, $s0, 0
+	andi	$a7, $a4, 255
+	andi	$a6, $a5, 255
+	ext.w.b	$a3, $a7
+	beqz	$a7, .LBB0_7
 # %bb.3:                                #   in Loop: Header=BB0_2 Depth=1
-	ld.d	$a6, $a0, 0
-	slli.d	$a7, $a4, 1
-	ldx.hu	$a7, $a6, $a7
-	ext.w.b	$a5, $a5
-	slli.d	$t0, $a3, 1
-	ldx.hu	$a6, $a6, $t0
+	ld.d	$a7, $a0, 0
+	slli.d	$t0, $a5, 1
+	ldx.hu	$t0, $a7, $t0
+	ext.w.b	$a6, $a6
+	slli.d	$t1, $a4, 1
+	ldx.hu	$a7, $a7, $t1
+	srli.d	$t0, $t0, 3
+	andi	$t0, $t0, 32
+	add.d	$t0, $t0, $a6
 	srli.d	$a7, $a7, 3
 	andi	$a7, $a7, 32
-	add.d	$a7, $a7, $a5
-	srli.d	$a6, $a6, 3
-	andi	$a6, $a6, 32
-	add.d	$a6, $a6, $a2
-	bne	$a7, $a6, .LBB0_7
+	add.d	$a7, $a7, $a3
+	bne	$t0, $a7, .LBB0_8
 # %bb.4:                                #   in Loop: Header=BB0_2 Depth=1
 	addi.d	$fp, $fp, 1
 	addi.w	$a1, $a1, -1
 	addi.d	$s0, $s0, 1
-	blt	$s2, $a1, .LBB0_2
-.LBB0_5:
+	blt	$a2, $a1, .LBB0_2
+# %bb.5:
 	move	$a0, $zero
-	b	.LBB0_8
-.LBB0_6:                                # %.lr.ph..critedge_crit_edge
-	ext.w.b	$a5, $a5
-.LBB0_7:                                # %.critedge
+	b	.LBB0_9
+.LBB0_6:
+	move	$a0, $zero
+	ret
+.LBB0_7:                                # %.lr.ph..critedge_crit_edge
+	ext.w.b	$a6, $a6
+.LBB0_8:                                # %.critedge
 	ld.d	$a0, $a0, 0
-	slli.d	$a1, $a4, 1
+	slli.d	$a1, $a5, 1
 	ldx.hu	$a1, $a0, $a1
-	slli.d	$a3, $a3, 1
-	ldx.hu	$a0, $a0, $a3
+	slli.d	$a2, $a4, 1
+	ldx.hu	$a0, $a0, $a2
 	srli.d	$a1, $a1, 3
 	andi	$a1, $a1, 32
 	srli.d	$a0, $a0, 3
 	andi	$a0, $a0, 32
-	add.d	$a1, $a5, $a1
-	add.d	$a0, $a2, $a0
+	add.d	$a1, $a6, $a1
+	add.d	$a0, $a3, $a0
 	sub.d	$a0, $a1, $a0
-.LBB0_8:                                # %.critedge27
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+.LBB0_9:
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end0:
 	.size	strncmpic, .Lfunc_end0-strncmpic

@@ -25,9 +25,8 @@ bpnn_train_kernel:                      # @bpnn_train_kernel
 	fst.d	$fs1, $sp, 152                  # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 144                  # 8-byte Folded Spill
 	ld.d	$t0, $sp, 296
-	ori	$t1, $zero, 1
 	st.d	$t0, $sp, 112                   # 8-byte Folded Spill
-	blt	$t0, $t1, .LBB0_29
+	blez	$t0, .LBB0_29
 # %bb.1:                                # %.lr.ph178
 	move	$s2, $a4
 	move	$s3, $a3
@@ -97,9 +96,8 @@ bpnn_train_kernel:                      # @bpnn_train_kernel
                                         #       Child Loop BB0_27 Depth 3
 	st.d	$t1, $sp, 120                   # 8-byte Folded Spill
 	st.w	$t2, $s3, 0
-	ori	$a0, $zero, 1
 	move	$s5, $a1
-	blt	$a1, $a0, .LBB0_10
+	blez	$a1, .LBB0_10
 # %bb.5:                                # %.preheader130.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	ori	$s1, $zero, 1
@@ -152,9 +150,8 @@ bpnn_train_kernel:                      # @bpnn_train_kernel
                                         #   in Loop: Header=BB0_4 Depth=1
 	lu12i.w	$t2, 260096
 	st.w	$t2, $s2, 0
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB0_24
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	blez	$a0, .LBB0_24
 # %bb.11:                               # %.preheader129.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	ori	$s1, $zero, 1

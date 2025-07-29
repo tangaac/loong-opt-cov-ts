@@ -44,15 +44,14 @@ dumpPattern:                            # @dumpPattern
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
 	ld.w	$a0, $a0, 24
-	ori	$s0, $zero, 1
-	blt	$a0, $s0, .LBB1_9
+	blez	$a0, .LBB1_9
 # %bb.3:
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 8
 	ld.w	$a0, $a0, 24
-	blt	$a0, $s0, .LBB1_6
+	blez	$a0, .LBB1_6
 # %bb.4:                                # %.lr.ph
 	move	$s1, $zero
 	addi.d	$s2, $fp, 16

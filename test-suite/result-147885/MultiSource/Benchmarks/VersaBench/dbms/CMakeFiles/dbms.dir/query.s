@@ -35,26 +35,26 @@ query:                                  # @query
 	beqz	$a0, .LBB0_24
 .LBB0_3:
 	ld.d	$a0, $s3, 0
-	ld.d	$s3, $s3, 8
-	blt	$a0, $s2, .LBB0_9
+	ld.d	$s2, $s3, 8
+	blez	$a0, .LBB0_9
 # %bb.4:
-	beqz	$s3, .LBB0_30
+	beqz	$s2, .LBB0_30
 # %bb.5:                                # %.lr.ph.preheader
-	ori	$s2, $zero, 1
+	ori	$s3, $zero, 1
 	b	.LBB0_7
 	.p2align	4, , 16
 .LBB0_6:                                #   in Loop: Header=BB0_7 Depth=1
-	ld.d	$s3, $s3, 40
-	beqz	$s3, .LBB0_30
+	ld.d	$s2, $s2, 40
+	beqz	$s2, .LBB0_30
 .LBB0_7:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $s3, 8
+	addi.d	$a0, $s2, 8
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(consistentKey)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_6
+	bne	$a0, $s3, .LBB0_6
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	move	$a1, $s0
 	move	$a2, $s1
 	move	$a3, $zero
@@ -63,11 +63,11 @@ query:                                  # @query
 	jirl	$ra, $ra, 0
 	b	.LBB0_6
 .LBB0_9:
-	beqz	$s3, .LBB0_30
+	beqz	$s2, .LBB0_30
 # %bb.10:                               # %.lr.ph48
 	beqz	$s1, .LBB0_26
 # %bb.11:
-	ori	$s2, $zero, 1
+	ori	$s3, $zero, 1
 	ori	$s4, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.Lswitch.table.query)
 	addi.d	$s5, $a0, %pc_lo12(.Lswitch.table.query)
@@ -75,21 +75,21 @@ query:                                  # @query
 	.p2align	4, , 16
 .LBB0_12:                               # %._crit_edge.us.thread
                                         #   in Loop: Header=BB0_14 Depth=1
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	jirl	$ra, $fp, 0
 .LBB0_13:                               #   in Loop: Header=BB0_14 Depth=1
-	ld.d	$s3, $s3, 40
-	beqz	$s3, .LBB0_30
+	ld.d	$s2, $s2, 40
+	beqz	$s2, .LBB0_30
 .LBB0_14:                               # %.lr.ph48.split.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_19 Depth 2
-	addi.d	$a0, $s3, 8
+	addi.d	$a0, $s2, 8
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(consistentKey)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s2, .LBB0_13
+	bne	$a0, $s3, .LBB0_13
 # %bb.15:                               #   in Loop: Header=BB0_14 Depth=1
-	ld.d	$s6, $s3, 0
+	ld.d	$s6, $s2, 0
 	ld.w	$a0, $s6, 0
 	addi.w	$a0, $a0, -1
 	bltu	$s4, $a0, .LBB0_17
@@ -124,10 +124,10 @@ query:                                  # @query
 	ld.d	$s8, $s8, 16
 	beqz	$s8, .LBB0_22
 # %bb.21:                               #   in Loop: Header=BB0_19 Depth=2
-	beq	$a0, $s2, .LBB0_19
+	beq	$a0, $s3, .LBB0_19
 .LBB0_22:                               # %._crit_edge.us
                                         #   in Loop: Header=BB0_14 Depth=1
-	beq	$a0, $s2, .LBB0_12
+	beq	$a0, $s3, .LBB0_12
 	b	.LBB0_13
 .LBB0_23:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -152,18 +152,18 @@ query:                                  # @query
 	b	.LBB0_28
 	.p2align	4, , 16
 .LBB0_27:                               #   in Loop: Header=BB0_28 Depth=1
-	ld.d	$s3, $s3, 40
-	beqz	$s3, .LBB0_30
+	ld.d	$s2, $s2, 40
+	beqz	$s2, .LBB0_30
 .LBB0_28:                               # %.lr.ph48.split
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$a0, $s3, 8
+	addi.d	$a0, $s2, 8
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(consistentKey)
 	jirl	$ra, $ra, 0
 	bne	$a0, $s1, .LBB0_27
 # %bb.29:                               # %.fold.split
                                         #   in Loop: Header=BB0_28 Depth=1
-	ld.d	$a0, $s3, 0
+	ld.d	$a0, $s2, 0
 	jirl	$ra, $fp, 0
 	b	.LBB0_27
 .LBB0_30:

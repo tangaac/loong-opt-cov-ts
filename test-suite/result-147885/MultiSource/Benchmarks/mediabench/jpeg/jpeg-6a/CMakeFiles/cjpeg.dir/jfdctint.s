@@ -15,15 +15,14 @@ jpeg_fdct_islow:                        # @jpeg_fdct_islow
 	st.d	$s5, $sp, 88                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 80                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 64                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 56                   # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 48                   # 8-byte Folded Spill
-	fst.d	$fs2, $sp, 40                   # 8-byte Folded Spill
-	fst.d	$fs3, $sp, 32                   # 8-byte Folded Spill
-	fst.d	$fs4, $sp, 24                   # 8-byte Folded Spill
-	fst.d	$fs5, $sp, 16                   # 8-byte Folded Spill
-	fst.d	$fs6, $sp, 8                    # 8-byte Folded Spill
-	fst.d	$fs7, $sp, 0                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 56                   # 8-byte Folded Spill
+	fst.d	$fs2, $sp, 48                   # 8-byte Folded Spill
+	fst.d	$fs3, $sp, 40                   # 8-byte Folded Spill
+	fst.d	$fs4, $sp, 32                   # 8-byte Folded Spill
+	fst.d	$fs5, $sp, 24                   # 8-byte Folded Spill
+	fst.d	$fs6, $sp, 16                   # 8-byte Folded Spill
+	fst.d	$fs7, $sp, 8                    # 8-byte Folded Spill
 	addi.w	$t5, $zero, -8
 	lu12i.w	$a1, 1
 	ori	$t2, $a1, 337
@@ -48,87 +47,85 @@ jpeg_fdct_islow:                        # @jpeg_fdct_islow
 	ori	$a7, $a7, 315
 	lu12i.w	$t0, -1
 	ori	$t0, $t0, 900
-	ori	$t8, $zero, 0
-	lu32i.d	$t8, 1
-	move	$fp, $a0
+	move	$t8, $a0
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$s0, $fp, 0
-	ld.w	$s1, $fp, 28
-	ld.w	$s2, $fp, 4
-	ld.w	$s3, $fp, 24
-	add.w	$s4, $s1, $s0
-	sub.w	$s0, $s0, $s1
-	add.w	$s1, $s3, $s2
-	ld.w	$s5, $fp, 8
-	ld.w	$s6, $fp, 20
-	ld.w	$s7, $fp, 12
-	ld.w	$s8, $fp, 16
-	sub.w	$s2, $s2, $s3
-	add.w	$s3, $s6, $s5
-	sub.w	$s5, $s5, $s6
-	add.w	$s6, $s8, $s7
-	sub.w	$s7, $s7, $s8
-	add.d	$s8, $s6, $s4
-	sub.d	$s4, $s4, $s6
-	add.d	$s6, $s3, $s1
-	sub.d	$s1, $s1, $s3
-	add.d	$s3, $s8, $s6
-	slli.d	$s3, $s3, 2
-	st.w	$s3, $fp, 0
-	sub.d	$s3, $s8, $s6
-	slli.d	$s3, $s3, 2
-	st.w	$s3, $fp, 16
-	add.d	$s3, $s4, $s1
-	mul.d	$s3, $s3, $t2
-	mul.d	$s4, $s4, $t3
-	addi.d	$s3, $s3, 1024
-	add.d	$s4, $s3, $s4
-	srli.d	$s4, $s4, 11
-	st.w	$s4, $fp, 8
-	mul.d	$s1, $s1, $t6
-	add.d	$s1, $s3, $s1
-	srli.d	$s1, $s1, 11
-	st.w	$s1, $fp, 24
-	add.d	$s1, $s7, $s0
-	add.d	$s3, $s5, $s2
-	add.d	$s4, $s7, $s2
-	add.d	$s6, $s5, $s0
-	add.d	$s8, $s4, $s6
-	mul.d	$s8, $s8, $a3
-	mul.d	$s7, $s7, $t7
-	mul.d	$s5, $s5, $a1
-	mul.d	$s2, $s2, $a2
-	mul.d	$s0, $s0, $a4
-	mul.d	$s1, $s1, $a5
-	mul.d	$s3, $s3, $a6
-	mul.d	$s4, $s4, $a7
-	mul.d	$s6, $s6, $t0
-	add.d	$s4, $s8, $s4
-	add.d	$s6, $s8, $s6
-	addi.d	$s1, $s1, 1024
-	add.d	$s7, $s1, $s7
-	add.d	$s7, $s7, $s4
-	srli.d	$s7, $s7, 11
-	st.w	$s7, $fp, 28
-	addi.d	$s3, $s3, 1024
-	add.d	$s5, $s3, $s5
-	add.d	$s5, $s5, $s6
-	srli.d	$s5, $s5, 11
-	st.w	$s5, $fp, 20
-	add.d	$s2, $s3, $s2
-	add.d	$s2, $s2, $s4
-	srli.d	$s2, $s2, 11
-	st.w	$s2, $fp, 12
-	add.d	$s0, $s1, $s0
-	add.d	$s0, $s0, $s6
+	ld.w	$fp, $t8, 0
+	ld.w	$s0, $t8, 28
+	ld.w	$s1, $t8, 4
+	ld.w	$s2, $t8, 24
+	add.w	$s3, $s0, $fp
+	sub.w	$fp, $fp, $s0
+	add.w	$s0, $s2, $s1
+	ld.w	$s4, $t8, 8
+	ld.w	$s5, $t8, 20
+	ld.w	$s6, $t8, 12
+	ld.w	$s7, $t8, 16
+	sub.w	$s1, $s1, $s2
+	add.w	$s2, $s5, $s4
+	sub.w	$s4, $s4, $s5
+	add.w	$s5, $s7, $s6
+	sub.w	$s6, $s6, $s7
+	add.d	$s7, $s5, $s3
+	sub.d	$s3, $s3, $s5
+	add.d	$s5, $s2, $s0
+	sub.d	$s0, $s0, $s2
+	add.d	$s2, $s7, $s5
+	slli.d	$s2, $s2, 2
+	st.w	$s2, $t8, 0
+	sub.d	$s2, $s7, $s5
+	slli.d	$s2, $s2, 2
+	st.w	$s2, $t8, 16
+	add.d	$s2, $s3, $s0
+	mul.d	$s2, $s2, $t2
+	mul.d	$s3, $s3, $t3
+	addi.d	$s2, $s2, 1024
+	add.d	$s3, $s2, $s3
+	srli.d	$s3, $s3, 11
+	st.w	$s3, $t8, 8
+	mul.d	$s0, $s0, $t6
+	add.d	$s0, $s2, $s0
 	srli.d	$s0, $s0, 11
-	st.w	$s0, $fp, 4
+	st.w	$s0, $t8, 24
+	add.d	$s0, $s6, $fp
+	add.d	$s2, $s4, $s1
+	add.d	$s3, $s6, $s1
+	add.d	$s5, $s4, $fp
+	add.d	$s7, $s3, $s5
+	mul.d	$s7, $s7, $a3
+	mul.d	$s6, $s6, $t7
+	mul.d	$s4, $s4, $a1
+	mul.d	$s1, $s1, $a2
+	mul.d	$fp, $fp, $a4
+	mul.d	$s0, $s0, $a5
+	mul.d	$s2, $s2, $a6
+	mul.d	$s3, $s3, $a7
+	mul.d	$s5, $s5, $t0
+	add.d	$s3, $s7, $s3
+	add.d	$s5, $s7, $s5
+	addi.d	$s0, $s0, 1024
+	add.d	$s6, $s0, $s6
+	add.d	$s6, $s6, $s3
+	srli.d	$s6, $s6, 11
+	st.w	$s6, $t8, 28
+	addi.d	$s2, $s2, 1024
+	add.d	$s4, $s2, $s4
+	add.d	$s4, $s4, $s5
+	srli.d	$s4, $s4, 11
+	st.w	$s4, $t8, 20
+	add.d	$s1, $s2, $s1
+	add.d	$s1, $s1, $s3
+	srli.d	$s1, $s1, 11
+	st.w	$s1, $t8, 12
+	add.d	$fp, $s0, $fp
+	add.d	$fp, $fp, $s5
+	srli.d	$fp, $fp, 11
+	st.w	$fp, $t8, 4
 	bstrpick.d	$t5, $t5, 31, 0
 	addi.d	$t5, $t5, 1
-	and	$s0, $t5, $t8
-	addi.d	$fp, $fp, 32
-	beqz	$s0, .LBB0_1
+	slli.d	$fp, $t5, 31
+	addi.d	$t8, $t8, 32
+	bgez	$fp, .LBB0_1
 # %bb.2:                                # %vector.body
 	vld	$vr2, $a0, 0
 	vld	$vr3, $a0, 224
@@ -484,15 +481,14 @@ jpeg_fdct_islow:                        # @jpeg_fdct_islow
 	vsrli.d	$vr0, $vr0, 15
 	vpickev.w	$vr0, $vr0, $vr1
 	vst	$vr0, $a0, 48
-	fld.d	$fs7, $sp, 0                    # 8-byte Folded Reload
-	fld.d	$fs6, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs5, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs4, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs3, $sp, 32                   # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 40                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 48                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 56                   # 8-byte Folded Reload
-	ld.d	$s8, $sp, 64                    # 8-byte Folded Reload
+	fld.d	$fs7, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs6, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs5, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs4, $sp, 32                   # 8-byte Folded Reload
+	fld.d	$fs3, $sp, 40                   # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 48                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 56                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload

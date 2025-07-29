@@ -968,8 +968,8 @@ doubleBack:                             # @doubleBack
 	ld.d	$a3, $a2, %got_pc_lo12(Vptrs)
 	pcalau12i	$a2, %got_pc_hi20(Vroot)
 	ld.d	$a2, $a2, %got_pc_lo12(Vroot)
-	ld.w	$s2, $a0, 8
-	ld.w	$s8, $a0, 4
+	ld.w	$s8, $a0, 8
+	ld.w	$s2, $a0, 4
 	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$s0, $a3, 0
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
@@ -1001,7 +1001,7 @@ doubleBack:                             # @doubleBack
 	lu32i.d	$a1, 0
 	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB1_4
 .LBB1_2:                                # %.critedge
                                         #   in Loop: Header=BB1_4 Depth=1
@@ -1010,21 +1010,21 @@ doubleBack:                             # @doubleBack
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $s7, 0
 	add.w	$a1, $a2, $a1
-	ori	$s8, $zero, 40
-	mul.d	$a1, $a1, $s8
+	ori	$s2, $zero, 40
+	mul.d	$a1, $a1, $s2
 	add.d	$a1, $a0, $a1
 	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	st.w	$s1, $a1, 4
 	ld.w	$a1, $s7, 0
 	ld.w	$a2, $s0, 0
 	add.w	$a1, $a2, $a1
-	mul.d	$a1, $a1, $s8
+	mul.d	$a1, $a1, $s2
 	add.d	$a1, $a0, $a1
 	st.w	$s5, $a1, 8
 	ld.w	$a1, $s7, 0
 	ld.w	$a2, $s0, 0
 	add.w	$a1, $a2, $a1
-	mul.d	$a1, $a1, $s8
+	mul.d	$a1, $a1, $s2
 	add.d	$a1, $a0, $a1
 	st.w	$s6, $a1, 12
 	ld.w	$a1, $s7, 0
@@ -1032,24 +1032,24 @@ doubleBack:                             # @doubleBack
 	sub.d	$a3, $s5, $s1
 	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
 	add.w	$a1, $a2, $a1
-	mul.d	$a1, $a1, $s8
+	mul.d	$a1, $a1, $s2
 	add.d	$a1, $a0, $a1
 	st.w	$a3, $a1, 16
 	ld.w	$a1, $s7, 0
 	ld.w	$a2, $s0, 0
 	add.w	$a1, $a2, $a1
-	mul.d	$a1, $a1, $s8
+	mul.d	$a1, $a1, $s2
 	add.d	$a1, $a0, $a1
 	st.w	$zero, $a1, 24
 	ld.w	$a1, $s7, 0
 	ld.w	$a2, $s0, 0
 	add.w	$a1, $a2, $a1
-	mul.d	$a1, $a1, $s8
+	mul.d	$a1, $a1, $s2
 	stx.w	$zero, $a0, $a1
 	ld.w	$a1, $s7, 0
 	ld.w	$a2, $s0, 0
 	add.w	$a1, $a2, $a1
-	mul.d	$a1, $a1, $s8
+	mul.d	$a1, $a1, $s2
 	add.d	$a0, $a0, $a1
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 20
@@ -1077,44 +1077,44 @@ doubleBack:                             # @doubleBack
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s7, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
+	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a2, $a0
 	st.w	$s1, $a0, 4
 	ld.w	$a0, $s7, 0
 	ld.w	$a1, $s0, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
+	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a2, $a0
 	st.w	$s5, $a0, 8
 	ld.w	$a0, $s7, 0
 	ld.w	$a1, $s0, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
+	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a2, $a0
 	st.w	$s4, $a0, 12
 	ld.w	$a0, $s7, 0
 	ld.w	$a1, $s0, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
+	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a2, $a0
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 16
 	ld.w	$a0, $s7, 0
 	ld.w	$a1, $s0, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
+	mul.d	$a0, $a0, $s2
 	add.d	$a0, $a2, $a0
 	st.w	$zero, $a0, 24
 	ld.w	$a0, $s7, 0
 	ld.w	$a1, $s0, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
+	mul.d	$a0, $a0, $s2
 	stx.w	$zero, $a2, $a0
 	ld.w	$a0, $s7, 0
 	ld.w	$a1, $s0, 0
 	add.w	$a0, $a1, $a0
-	mul.d	$a0, $a0, $s8
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	mul.d	$a0, $a0, $s2
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	add.d	$a0, $a2, $a0
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	st.w	$a1, $a0, 20
@@ -1153,10 +1153,10 @@ doubleBack:                             # @doubleBack
 	bltz	$a2, .LBB1_3
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$s6, $a1, 8
-	bge	$s6, $s2, .LBB1_3
+	bge	$s6, $s8, .LBB1_3
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$s4, $a1, 4
-	bge	$s8, $s4, .LBB1_3
+	bge	$s2, $s4, .LBB1_3
 # %bb.7:                                #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$a2, $a1, 28
 	slli.d	$a3, $a2, 5

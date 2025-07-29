@@ -130,8 +130,7 @@ gx_path_new_subpath:                    # @gx_path_new_subpath
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB3_7
+	bltz	$a0, .LBB3_7
 # %bb.2:                                # %path_alloc_copy.exit
 	addi.d	$a1, $sp, 0
 	ori	$a2, $zero, 144
@@ -289,8 +288,7 @@ gx_path_add_line:                       # @gx_path_add_line
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB7_13
+	bltz	$a0, .LBB7_13
 # %bb.3:                                # %path_alloc_copy.exit
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 144
@@ -339,8 +337,7 @@ gx_path_add_line:                       # @gx_path_add_line
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB7_13
+	bltz	$a0, .LBB7_13
 # %bb.9:                                # %path_alloc_copy.exit.i
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 144
@@ -571,8 +568,7 @@ gx_path_close_subpath:                  # @gx_path_close_subpath
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_16
+	bltz	$a0, .LBB10_16
 # %bb.6:                                # %path_alloc_copy.exit
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 144
@@ -596,8 +592,7 @@ gx_path_close_subpath:                  # @gx_path_close_subpath
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB10_16
+	bltz	$a0, .LBB10_16
 # %bb.11:                               # %path_alloc_copy.exit41
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 144
@@ -691,8 +686,7 @@ gx_path_add_curve:                      # @gx_path_add_curve
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_13
+	bltz	$a0, .LBB11_13
 # %bb.3:                                # %path_alloc_copy.exit
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 144
@@ -748,8 +742,7 @@ gx_path_add_curve:                      # @gx_path_add_curve
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(gx_path_copy)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_13
+	bltz	$a0, .LBB11_13
 # %bb.9:                                # %path_alloc_copy.exit.i
 	addi.d	$a1, $sp, 8
 	ori	$a2, $zero, 144

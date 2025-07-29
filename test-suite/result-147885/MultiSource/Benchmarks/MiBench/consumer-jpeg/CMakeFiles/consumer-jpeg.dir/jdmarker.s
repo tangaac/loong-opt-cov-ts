@@ -443,7 +443,7 @@ read_markers:                           # @read_markers
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB4_2
-	b	.LBB4_233
+	b	.LBB4_232
 	.p2align	4, , 16
 .LBB4_7:                                #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $fp, 568
@@ -453,7 +453,7 @@ read_markers:                           # @read_markers
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(next_marker)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.9:                                # %thread-pre-split
                                         #   in Loop: Header=BB4_3 Depth=1
 	ld.w	$s0, $fp, 524
@@ -490,7 +490,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s1, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.16:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s1, 8
 	ld.d	$a1, $s1, 0
@@ -501,7 +501,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s1, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.18:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$s4, $s1, 0
 	ld.d	$s3, $s1, 8
@@ -546,7 +546,7 @@ read_markers:                           # @read_markers
 	pcaddu18i	$ra, %call36(get_sof)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_2
-	b	.LBB4_233
+	b	.LBB4_232
 .LBB4_24:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$s2, $fp, 32
 	ld.d	$a0, $s2, 8
@@ -601,7 +601,7 @@ read_markers:                           # @read_markers
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	bnez	$a0, .LBB4_2
-	b	.LBB4_233
+	b	.LBB4_232
 .LBB4_37:                               #   in Loop: Header=BB4_3 Depth=1
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
@@ -609,7 +609,7 @@ read_markers:                           # @read_markers
 	pcaddu18i	$ra, %call36(get_sof)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_2
-	b	.LBB4_233
+	b	.LBB4_232
 .LBB4_38:                               #   in Loop: Header=BB4_3 Depth=1
 	ori	$a1, $zero, 1
 	move	$a0, $fp
@@ -617,7 +617,7 @@ read_markers:                           # @read_markers
 	pcaddu18i	$ra, %call36(get_sof)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_2
-	b	.LBB4_233
+	b	.LBB4_232
 .LBB4_39:                               #   in Loop: Header=BB4_3 Depth=1
 	ori	$a2, $zero, 1
 	move	$a0, $fp
@@ -625,7 +625,7 @@ read_markers:                           # @read_markers
 	pcaddu18i	$ra, %call36(get_sof)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB4_2
-	b	.LBB4_233
+	b	.LBB4_232
 .LBB4_40:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 8
@@ -686,7 +686,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s2, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.47:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s2, 8
 	ld.d	$a2, $s2, 0
@@ -697,7 +697,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s2, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.49:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s2, 0
 	ld.d	$a1, $s2, 8
@@ -733,7 +733,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s2, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.55:                               #   in Loop: Header=BB4_53 Depth=2
 	ld.d	$s5, $s2, 0
 	ld.d	$s6, $s2, 8
@@ -805,7 +805,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s2, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.64:                               #   in Loop: Header=BB4_62 Depth=3
 	ld.d	$s5, $s2, 0
 	ld.d	$s6, $s2, 8
@@ -842,7 +842,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s2, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.70:                               #   in Loop: Header=BB4_67 Depth=3
 	ld.d	$s5, $s2, 0
 	ld.d	$s6, $s2, 8
@@ -853,7 +853,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s2, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.72:                               #   in Loop: Header=BB4_67 Depth=3
 	ld.d	$a0, $s2, 0
 	ld.d	$a1, $s2, 8
@@ -1000,7 +1000,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.77:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s0, 8
 	ld.d	$a1, $s0, 0
@@ -1011,7 +1011,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.79:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$s1, $s0, 0
 	ld.d	$s2, $s0, 8
@@ -1043,7 +1043,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.86:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s0, 8
 	ld.d	$s6, $sp, 208                   # 8-byte Folded Reload
@@ -1055,7 +1055,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.88:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1135,7 +1135,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.95:                               #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$s2, $s0, 0
 	ld.d	$s1, $s0, 8
@@ -1251,7 +1251,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.114:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1263,7 +1263,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.116:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1275,7 +1275,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.118:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1287,7 +1287,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.120:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1299,7 +1299,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.122:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1311,7 +1311,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.124:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1323,7 +1323,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.126:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1335,7 +1335,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.128:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1347,7 +1347,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.130:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1359,7 +1359,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.132:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1371,7 +1371,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.134:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1383,7 +1383,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.136:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1394,7 +1394,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.138:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1405,7 +1405,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.140:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1416,7 +1416,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.142:                              #   in Loop: Header=BB4_93 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1427,7 +1427,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.144:                              #   in Loop: Header=BB4_93 Depth=2
 	move	$t4, $s5
 	move	$s3, $s2
@@ -1549,7 +1549,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.153:                              #   in Loop: Header=BB4_151 Depth=3
 	ld.d	$a0, $s0, 0
 	ld.d	$s1, $s0, 8
@@ -1593,7 +1593,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.160:                              #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s0, 8
 	ld.d	$a1, $s0, 0
@@ -1604,7 +1604,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.162:                              #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a1, $s0, 0
 	ld.d	$a0, $s0, 8
@@ -1640,7 +1640,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.165:                              #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s0, 8
 	ld.d	$a2, $s0, 0
@@ -1651,7 +1651,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.167:                              #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1703,7 +1703,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.177:                              #   in Loop: Header=BB4_173 Depth=2
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
@@ -1714,7 +1714,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.179:                              #   in Loop: Header=BB4_173 Depth=2
 	ld.d	$s3, $s0, 0
 	ld.d	$s2, $s0, 8
@@ -1763,7 +1763,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.186:                              #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a1, $s0, 0
 	ld.d	$a0, $s0, 8
@@ -1774,7 +1774,7 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.188:                              #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a1, $s0, 0
 	ld.d	$a0, $s0, 8
@@ -1804,7 +1804,7 @@ read_markers:                           # @read_markers
 	ld.d	$a0, $fp, 568
 	ld.d	$s1, $s0, 0
 	ld.w	$a0, $a0, 164
-	ld.d	$s3, $s0, 8
+	ld.d	$s2, $s0, 8
 	bnez	$a0, .LBB4_192
 # %bb.191:
 	ld.d	$a0, $fp, 0
@@ -1814,18 +1814,18 @@ read_markers:                           # @read_markers
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB4_192:
-	bnez	$s3, .LBB4_195
+	bnez	$s2, .LBB4_195
 # %bb.193:
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.194:
 	ld.d	$s1, $s0, 0
-	ld.d	$s3, $s0, 8
+	ld.d	$s2, $s0, 8
 .LBB4_195:
-	ld.bu	$s2, $s1, 0
-	addi.d	$a1, $s3, -1
+	ld.bu	$s3, $s1, 0
+	addi.d	$a1, $s2, -1
 	beqz	$a1, .LBB4_198
 # %bb.196:
 	addi.d	$a0, $s1, 1
@@ -1840,19 +1840,19 @@ read_markers:                           # @read_markers
 	jirl	$ra, $a2, 0
 	st.w	$zero, $fp, 524
 	ori	$a0, $zero, 2
-	b	.LBB4_234
+	b	.LBB4_233
 .LBB4_198:
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.199:
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 .LBB4_200:
 	ld.bu	$s5, $a0, 0
-	addi.d	$s3, $a1, -1
-	beqz	$s3, .LBB4_202
+	addi.d	$s2, $a1, -1
+	beqz	$s2, .LBB4_202
 # %bb.201:
 	addi.d	$s4, $a0, 1
 	b	.LBB4_204
@@ -1860,10 +1860,10 @@ read_markers:                           # @read_markers
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.203:
 	ld.d	$s4, $s0, 0
-	ld.d	$s3, $s0, 8
+	ld.d	$s2, $s0, 8
 .LBB4_204:
 	ld.bu	$s1, $s4, 0
 	ld.d	$a0, $fp, 0
@@ -1871,7 +1871,7 @@ read_markers:                           # @read_markers
 	addi.w	$a2, $zero, -4
 	bltu	$a1, $a2, .LBB4_206
 # %bb.205:
-	slli.d	$a1, $s2, 8
+	slli.d	$a1, $s3, 8
 	or	$a1, $a1, $s5
 	slli.d	$a2, $s1, 1
 	addi.d	$a2, $a2, 6
@@ -1894,16 +1894,16 @@ read_markers:                           # @read_markers
 	jirl	$ra, $a2, 0
 	st.w	$s1, $fp, 416
 	addi.d	$a0, $s4, 1
-	addi.d	$a1, $s3, -1
-	beqz	$s1, .LBB4_221
+	addi.d	$a1, $s2, -1
+	beqz	$s1, .LBB4_220
 # %bb.208:                              # %.lr.ph179.i
-	move	$s3, $zero
-	addi.d	$s4, $fp, 424
+	move	$s2, $zero
+	addi.d	$s3, $fp, 424
 	b	.LBB4_211
 .LBB4_209:                              # %._crit_edge.i
                                         #   in Loop: Header=BB4_211 Depth=1
 	ld.d	$a0, $fp, 0
-	st.w	$s6, $a0, 44
+	st.w	$s8, $a0, 44
 	ld.d	$a1, $fp, 0
 	ld.d	$a1, $a1, 0
 	ori	$a2, $zero, 5
@@ -1912,17 +1912,17 @@ read_markers:                           # @read_markers
 	jirl	$ra, $a1, 0
 .LBB4_210:                              # %.loopexit.i
                                         #   in Loop: Header=BB4_211 Depth=1
-	srli.d	$a0, $s5, 4
+	srli.d	$a0, $s4, 4
 	ld.d	$a1, $fp, 0
-	st.w	$a0, $s2, 20
-	andi	$a0, $s5, 15
-	st.w	$a0, $s2, 24
-	st.w	$s6, $a1, 44
-	ld.w	$a0, $s2, 20
-	slli.d	$a2, $s3, 3
+	st.w	$a0, $s5, 20
+	andi	$a0, $s4, 15
+	st.w	$a0, $s5, 24
+	st.w	$s8, $a1, 44
+	ld.w	$a0, $s5, 20
+	slli.d	$a2, $s2, 3
 	st.w	$a0, $a1, 48
-	ld.w	$a0, $s2, 24
-	stx.d	$s2, $s4, $a2
+	ld.w	$a0, $s5, 24
+	stx.d	$s5, $s3, $a2
 	ld.d	$a2, $a1, 8
 	st.w	$a0, $a1, 52
 	ori	$a0, $zero, 103
@@ -1930,96 +1930,98 @@ read_markers:                           # @read_markers
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	addi.d	$s3, $s3, 1
-	addi.d	$a0, $s8, 1
-	addi.d	$a1, $s7, -1
-	beq	$s3, $s1, .LBB4_221
+	addi.d	$s2, $s2, 1
+	addi.d	$a0, $s7, 1
+	addi.d	$a1, $s6, -1
+	beq	$s2, $s1, .LBB4_220
 .LBB4_211:                              # =>This Loop Header: Depth=1
-                                        #     Child Loop BB4_219 Depth 2
+                                        #     Child Loop BB4_218 Depth 2
 	bnez	$a1, .LBB4_214
 # %bb.212:                              #   in Loop: Header=BB4_211 Depth=1
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.213:                              #   in Loop: Header=BB4_211 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
 .LBB4_214:                              #   in Loop: Header=BB4_211 Depth=1
-	ld.bu	$s6, $a0, 0
-	addi.d	$s7, $a1, -1
-	beqz	$s7, .LBB4_216
+	ld.bu	$s8, $a0, 0
+	addi.d	$s6, $a1, -1
+	beqz	$s6, .LBB4_216
 # %bb.215:                              #   in Loop: Header=BB4_211 Depth=1
-	addi.d	$s8, $a0, 1
-	b	.LBB4_218
+	addi.d	$s7, $a0, 1
+	ld.bu	$s4, $s7, 0
+	ld.w	$a0, $fp, 48
+	ld.d	$s5, $fp, 296
+	bgtz	$a0, .LBB4_218
+	b	.LBB4_209
 .LBB4_216:                              #   in Loop: Header=BB4_211 Depth=1
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
+	beqz	$a0, .LBB4_232
 # %bb.217:                              #   in Loop: Header=BB4_211 Depth=1
-	ld.d	$s8, $s0, 0
-	ld.d	$s7, $s0, 8
-.LBB4_218:                              #   in Loop: Header=BB4_211 Depth=1
-	ld.bu	$s5, $s8, 0
+	ld.d	$s7, $s0, 0
+	ld.d	$s6, $s0, 8
+	ld.bu	$s4, $s7, 0
 	ld.w	$a0, $fp, 48
-	ld.d	$s2, $fp, 296
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_209
+	ld.d	$s5, $fp, 296
+	blez	$a0, .LBB4_209
 	.p2align	4, , 16
-.LBB4_219:                              # %.lr.ph.i
+.LBB4_218:                              # %.lr.ph.i
                                         #   Parent Loop BB4_211 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a1, $s2, 0
-	beq	$a1, $s6, .LBB4_210
-# %bb.220:                              #   in Loop: Header=BB4_219 Depth=2
+	ld.w	$a1, $s5, 0
+	beq	$a1, $s8, .LBB4_210
+# %bb.219:                              #   in Loop: Header=BB4_218 Depth=2
 	addi.w	$a0, $a0, -1
-	addi.d	$s2, $s2, 96
-	bnez	$a0, .LBB4_219
+	addi.d	$s5, $s5, 96
+	bnez	$a0, .LBB4_218
 	b	.LBB4_209
-.LBB4_221:                              # %._crit_edge180.i
-	bnez	$a1, .LBB4_224
-# %bb.222:
+.LBB4_220:                              # %._crit_edge180.i
+	bnez	$a1, .LBB4_223
+# %bb.221:
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
-# %bb.223:
+	beqz	$a0, .LBB4_232
+# %bb.222:
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $s0, 8
-.LBB4_224:
+.LBB4_223:
 	ld.bu	$a3, $a0, 0
 	addi.d	$a2, $a1, -1
 	st.w	$a3, $fp, 508
-	beqz	$a2, .LBB4_226
-# %bb.225:
+	beqz	$a2, .LBB4_225
+# %bb.224:
 	addi.d	$a1, $a0, 1
-	b	.LBB4_228
-.LBB4_226:
+	b	.LBB4_227
+.LBB4_225:
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
-# %bb.227:
+	beqz	$a0, .LBB4_232
+# %bb.226:
 	ld.d	$a1, $s0, 0
 	ld.d	$a2, $s0, 8
-.LBB4_228:
+.LBB4_227:
 	ld.bu	$a3, $a1, 0
 	addi.d	$a0, $a2, -1
 	st.w	$a3, $fp, 512
-	beqz	$a0, .LBB4_230
-# %bb.229:
+	beqz	$a0, .LBB4_229
+# %bb.228:
 	addi.d	$a1, $a1, 1
-	b	.LBB4_232
-.LBB4_230:
+	b	.LBB4_231
+.LBB4_229:
 	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	beqz	$a0, .LBB4_233
-# %bb.231:
+	beqz	$a0, .LBB4_232
+# %bb.230:
 	ld.d	$a1, $s0, 0
 	ld.d	$a0, $s0, 8
-.LBB4_232:
+.LBB4_231:
 	ld.bu	$a2, $a1, 0
 	srli.d	$a3, $a2, 4
 	ld.d	$a4, $fp, 0
@@ -2051,10 +2053,10 @@ read_markers:                           # @read_markers
 	st.d	$s2, $s0, 0
 	st.d	$s1, $s0, 8
 	st.w	$zero, $fp, 524
-	b	.LBB4_234
-.LBB4_233:
+	b	.LBB4_233
+.LBB4_232:
 	move	$a0, $zero
-.LBB4_234:                              # %first_marker.exit.thread
+.LBB4_233:                              # %first_marker.exit.thread
 	ld.d	$s8, $sp, 504                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 512                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 520                   # 8-byte Folded Reload
@@ -2626,9 +2628,9 @@ get_app0:                               # @get_app0
 	jirl	$ra, $a2, 0
 .LBB7_25:
 	st.d	$s7, $s1, 0
-	ori	$a0, $zero, 1
 	st.d	$s8, $s1, 8
-	blt	$s0, $a0, .LBB7_64
+	ori	$a0, $zero, 1
+	blez	$s0, .LBB7_64
 # %bb.26:
 	ld.d	$a0, $fp, 32
 	ld.d	$a2, $a0, 32
@@ -2968,19 +2970,19 @@ get_app14:                              # @get_app14
 .LBB8_7:
 	ld.bu	$a2, $a0, 0
 	slli.d	$a3, $s0, 8
-	addi.d	$s7, $a1, -1
+	addi.d	$s8, $a1, -1
 	or	$s0, $a3, $a2
 	ori	$a1, $zero, 14
-	addi.d	$s8, $a0, 1
+	addi.d	$s7, $a0, 1
 	bltu	$s0, $a1, .LBB8_21
 # %bb.8:                                # %.preheader
-	beqz	$s7, .LBB8_24
+	beqz	$s8, .LBB8_24
 # %bb.9:
-	ld.bu	$s2, $s8, 0
-	addi.d	$a1, $s7, -1
+	ld.bu	$s2, $s7, 0
+	addi.d	$a1, $s8, -1
 	beqz	$a1, .LBB8_26
 .LBB8_10:
-	addi.d	$a0, $s8, 1
+	addi.d	$a0, $s7, 1
 	ld.bu	$s3, $a0, 0
 	addi.d	$a1, $a1, -1
 	beqz	$a1, .LBB8_28
@@ -3049,10 +3051,10 @@ get_app14:                              # @get_app14
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	st.d	$s8, $s1, 0
+	st.d	$s7, $s1, 0
+	st.d	$s8, $s1, 8
 	ori	$a0, $zero, 1
-	st.d	$s7, $s1, 8
-	blt	$s0, $a0, .LBB8_55
+	blez	$s0, .LBB8_55
 .LBB8_23:
 	ld.d	$a0, $fp, 32
 	ld.d	$a2, $a0, 32
@@ -3067,10 +3069,10 @@ get_app14:                              # @get_app14
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB8_54
 # %bb.25:
-	ld.d	$s8, $s1, 0
-	ld.d	$s7, $s1, 8
-	ld.bu	$s2, $s8, 0
-	addi.d	$a1, $s7, -1
+	ld.d	$s7, $s1, 0
+	ld.d	$s8, $s1, 8
+	ld.bu	$s2, $s7, 0
+	addi.d	$a1, $s8, -1
 	bnez	$a1, .LBB8_10
 .LBB8_26:
 	ld.d	$a1, $s1, 24
@@ -3212,8 +3214,8 @@ get_app14:                              # @get_app14
 	move	$s3, $s2
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 .LBB8_48:
-	addi.d	$s7, $a1, -1
-	addi.d	$s8, $a0, 1
+	addi.d	$s8, $a1, -1
+	addi.d	$s7, $a0, 1
 	ori	$a1, $zero, 65
 	addi.d	$s0, $s0, -14
 	bne	$s2, $a1, .LBB8_56
@@ -3254,10 +3256,10 @@ get_app14:                              # @get_app14
 	jirl	$ra, $a3, 0
 	st.w	$s3, $fp, 376
 	st.b	$s2, $fp, 380
-	st.d	$s8, $s1, 0
+	st.d	$s7, $s1, 0
+	st.d	$s8, $s1, 8
 	ori	$a0, $zero, 1
-	st.d	$s7, $s1, 8
-	bge	$s0, $a0, .LBB8_23
+	bgtz	$s0, .LBB8_23
 	b	.LBB8_55
 .LBB8_54:
 	move	$a0, $zero
@@ -3287,25 +3289,24 @@ get_app14:                              # @get_app14
 	.type	get_sof,@function
 get_sof:                                # @get_sof
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
-	ld.d	$s1, $a0, 32
-	ld.d	$a3, $s1, 8
-	ld.d	$a0, $s1, 0
+	ld.d	$s0, $a0, 32
+	ld.d	$a3, $s0, 8
+	ld.d	$a0, $s0, 0
 	st.w	$a1, $fp, 304
 	st.w	$a2, $fp, 308
 	beqz	$a3, .LBB9_5
 # %bb.1:
-	ld.bu	$s0, $a0, 0
+	ld.bu	$s1, $a0, 0
 	addi.d	$a1, $a3, -1
 	beqz	$a1, .LBB9_7
 .LBB9_2:
@@ -3323,47 +3324,47 @@ get_sof:                                # @get_sof
 	addi.d	$a0, $a0, 1
 	b	.LBB9_13
 .LBB9_5:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.6:
-	ld.d	$a0, $s1, 0
-	ld.d	$a3, $s1, 8
-	ld.bu	$s0, $a0, 0
+	ld.d	$a0, $s0, 0
+	ld.d	$a3, $s0, 8
+	ld.bu	$s1, $a0, 0
 	addi.d	$a1, $a3, -1
 	bnez	$a1, .LBB9_2
 .LBB9_7:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.8:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
 	ld.bu	$s2, $a0, 0
 	addi.d	$a1, $a1, -1
 	bnez	$a1, .LBB9_3
 .LBB9_9:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.10:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
 	ld.bu	$a2, $a0, 0
 	addi.d	$a1, $a1, -1
 	st.w	$a2, $fp, 288
 	bnez	$a1, .LBB9_4
 .LBB9_11:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.12:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
 .LBB9_13:
 	ld.bu	$a2, $a0, 0
 	addi.d	$a1, $a1, -1
@@ -3374,13 +3375,13 @@ get_sof:                                # @get_sof
 	addi.d	$a0, $a0, 1
 	b	.LBB9_17
 .LBB9_15:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.16:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
 	ld.w	$a2, $fp, 44
 .LBB9_17:
 	ld.bu	$a3, $a0, 0
@@ -3392,13 +3393,13 @@ get_sof:                                # @get_sof
 	addi.d	$a0, $a0, 1
 	b	.LBB9_21
 .LBB9_19:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.20:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
 .LBB9_21:
 	ld.bu	$a2, $a0, 0
 	addi.d	$a1, $a1, -1
@@ -3409,13 +3410,13 @@ get_sof:                                # @get_sof
 	addi.d	$a0, $a0, 1
 	b	.LBB9_25
 .LBB9_23:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.24:
-	ld.d	$a0, $s1, 0
-	ld.d	$a1, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a1, $s0, 8
 	ld.w	$a2, $fp, 40
 .LBB9_25:
 	ld.bu	$a3, $a0, 0
@@ -3427,13 +3428,13 @@ get_sof:                                # @get_sof
 	addi.d	$s4, $a0, 1
 	b	.LBB9_29
 .LBB9_27:
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.28:
-	ld.d	$s4, $s1, 0
-	ld.d	$s3, $s1, 8
+	ld.d	$s4, $s0, 0
+	ld.d	$s3, $s0, 8
 .LBB9_29:
 	ld.bu	$a0, $s4, 0
 	ld.d	$a1, $fp, 0
@@ -3449,8 +3450,8 @@ get_sof:                                # @get_sof
 	ori	$a0, $zero, 99
 	ld.d	$a2, $a1, 8
 	st.w	$a0, $a1, 40
-	slli.d	$a0, $s0, 8
-	or	$s0, $a0, $s2
+	slli.d	$a0, $s1, 8
+	or	$s1, $a0, $s2
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
@@ -3466,7 +3467,7 @@ get_sof:                                # @get_sof
 	jirl	$ra, $a1, 0
 .LBB9_31:
 	ld.w	$a0, $fp, 44
-	addi.d	$s0, $s0, -8
+	addi.d	$s1, $s1, -8
 	beqz	$a0, .LBB9_37
 # %bb.32:
 	ld.w	$a0, $fp, 40
@@ -3476,15 +3477,14 @@ get_sof:                                # @get_sof
 	blez	$a3, .LBB9_37
 # %bb.34:
 	alsl.w	$a0, $a3, $a3, 1
-	bne	$s0, $a0, .LBB9_38
+	bne	$s1, $a0, .LBB9_38
 .LBB9_35:
 	ld.d	$a0, $fp, 296
 	beqz	$a0, .LBB9_39
 .LBB9_36:
 	addi.d	$a1, $s4, 1
-	ori	$s0, $zero, 1
 	addi.d	$a2, $s3, -1
-	bge	$a3, $s0, .LBB9_40
+	bgtz	$a3, .LBB9_40
 	b	.LBB9_55
 .LBB9_37:
 	ld.d	$a0, $fp, 0
@@ -3495,7 +3495,7 @@ get_sof:                                # @get_sof
 	jirl	$ra, $a1, 0
 	ld.w	$a3, $fp, 48
 	alsl.w	$a0, $a3, $a3, 1
-	beq	$s0, $a0, .LBB9_35
+	beq	$s1, $a0, .LBB9_35
 .LBB9_38:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
@@ -3517,109 +3517,107 @@ get_sof:                                # @get_sof
 	ld.w	$a3, $fp, 48
 	st.d	$a0, $fp, 296
 	addi.d	$a1, $s4, 1
-	ori	$s0, $zero, 1
 	addi.d	$a2, $s3, -1
-	blt	$a3, $s0, .LBB9_55
+	blez	$a3, .LBB9_55
 .LBB9_40:                               # %.lr.ph
-	move	$s2, $zero
-	addi.d	$s3, $a0, 16
-	ori	$s4, $zero, 100
+	move	$s1, $zero
+	addi.d	$s2, $a0, 16
+	ori	$s3, $zero, 100
 	b	.LBB9_43
 	.p2align	4, , 16
 .LBB9_41:                               #   in Loop: Header=BB9_43 Depth=1
-	addi.d	$s6, $a0, 1
+	addi.d	$s5, $a0, 1
 .LBB9_42:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.bu	$a0, $s6, 0
+	ld.bu	$a0, $s5, 0
 	ld.d	$a1, $fp, 0
-	ld.w	$a2, $s3, -16
-	st.w	$a0, $s3, 0
+	ld.w	$a2, $s2, -16
+	st.w	$a0, $s2, 0
 	st.w	$a2, $a1, 44
-	ld.w	$a0, $s3, -8
+	ld.w	$a0, $s2, -8
 	st.w	$a0, $a1, 48
-	ld.w	$a0, $s3, -4
+	ld.w	$a0, $s2, -4
 	st.w	$a0, $a1, 52
-	ld.w	$a0, $s3, 0
+	ld.w	$a0, $s2, 0
 	ld.d	$a2, $a1, 8
 	st.w	$a0, $a1, 56
-	st.w	$s4, $a1, 40
+	st.w	$s3, $a1, 40
 	ori	$a1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 	ld.w	$a0, $fp, 48
-	addi.w	$s2, $s2, 1
-	addi.d	$a1, $s6, 1
-	addi.d	$a2, $s5, -1
-	addi.d	$s3, $s3, 96
-	bge	$s2, $a0, .LBB9_55
+	addi.w	$s1, $s1, 1
+	addi.d	$a1, $s5, 1
+	addi.d	$a2, $s4, -1
+	addi.d	$s2, $s2, 96
+	bge	$s1, $a0, .LBB9_55
 .LBB9_43:                               # =>This Inner Loop Header: Depth=1
-	st.w	$s2, $s3, -12
+	st.w	$s1, $s2, -12
 	beqz	$a2, .LBB9_46
 # %bb.44:                               #   in Loop: Header=BB9_43 Depth=1
 	ld.bu	$a0, $a1, 0
 	addi.d	$a2, $a2, -1
-	st.w	$a0, $s3, -16
+	st.w	$a0, $s2, -16
 	beqz	$a2, .LBB9_48
 .LBB9_45:                               #   in Loop: Header=BB9_43 Depth=1
 	addi.d	$a0, $a1, 1
 	b	.LBB9_50
 	.p2align	4, , 16
 .LBB9_46:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.47:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.d	$a1, $s1, 0
-	ld.d	$a2, $s1, 8
+	ld.d	$a1, $s0, 0
+	ld.d	$a2, $s0, 8
 	ld.bu	$a0, $a1, 0
 	addi.d	$a2, $a2, -1
-	st.w	$a0, $s3, -16
+	st.w	$a0, $s2, -16
 	bnez	$a2, .LBB9_45
 .LBB9_48:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.49:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.d	$a0, $s1, 0
-	ld.d	$a2, $s1, 8
+	ld.d	$a0, $s0, 0
+	ld.d	$a2, $s0, 8
 .LBB9_50:                               #   in Loop: Header=BB9_43 Depth=1
 	ld.bu	$a1, $a0, 0
-	addi.d	$s5, $a2, -1
+	addi.d	$s4, $a2, -1
 	srli.d	$a2, $a1, 4
-	st.w	$a2, $s3, -8
+	st.w	$a2, $s2, -8
 	andi	$a1, $a1, 15
-	st.w	$a1, $s3, -4
-	bnez	$s5, .LBB9_41
+	st.w	$a1, $s2, -4
+	bnez	$s4, .LBB9_41
 # %bb.51:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.d	$a1, $s1, 24
+	ld.d	$a1, $s0, 24
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB9_53
 # %bb.52:                               #   in Loop: Header=BB9_43 Depth=1
-	ld.d	$s6, $s1, 0
-	ld.d	$s5, $s1, 8
+	ld.d	$s5, $s0, 0
+	ld.d	$s4, $s0, 8
 	b	.LBB9_42
 .LBB9_53:
-	move	$s0, $zero
+	move	$a0, $zero
 .LBB9_54:                               # %.loopexit
-	move	$a0, $s0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .LBB9_55:                               # %._crit_edge
-	ld.d	$a0, $fp, 568
-	st.w	$s0, $a0, 164
-	st.d	$a1, $s1, 0
-	st.d	$a2, $s1, 8
+	ld.d	$a3, $fp, 568
+	ori	$a0, $zero, 1
+	st.w	$a0, $a3, 164
+	st.d	$a1, $s0, 0
+	st.d	$a2, $s0, 8
 	b	.LBB9_54
 .Lfunc_end9:
 	.size	get_sof, .Lfunc_end9-get_sof

@@ -639,7 +639,7 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 # %bb.3:                                # %.lr.ph
 	addi.d	$s1, $sp, 24
 	ori	$s8, $zero, 24
-	ori	$s7, $zero, 16
+	ori	$s6, $zero, 16
 	.p2align	4, , 16
 .LBB3_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_11 Depth 2
@@ -663,8 +663,7 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 	st.d	$s1, $sp, 40
 	st.d	$s1, $sp, 48
 	st.d	$zero, $sp, 56
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB3_16
+	blez	$s4, .LBB3_16
 # %bb.7:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
 	move	$s5, $zero
@@ -680,7 +679,7 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 .Ltmp29:
 # %bb.9:                                # %.noexc8.i
                                         #   in Loop: Header=BB3_11 Depth=2
-	st.d	$s6, $a1, 32
+	st.d	$s7, $a1, 32
 	move	$a0, $s3
 	move	$a2, $s2
 	move	$a3, $s1
@@ -709,14 +708,14 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 	move	$s2, $a1
 	beqz	$a1, .LBB3_10
 # %bb.13:                               #   in Loop: Header=BB3_11 Depth=2
-	ld.d	$s6, $sp, 112
+	ld.d	$s7, $sp, 112
 	ori	$s3, $zero, 1
 	bnez	$a0, .LBB3_8
 # %bb.14:                               #   in Loop: Header=BB3_11 Depth=2
 	beq	$s1, $s2, .LBB3_8
 # %bb.15:                               #   in Loop: Header=BB3_11 Depth=2
 	ld.d	$a0, $s2, 32
-	slt	$s3, $s6, $a0
+	slt	$s3, $s7, $a0
 	b	.LBB3_8
 	.p2align	4, , 16
 .LBB3_16:                               # %_ZN12_GLOBAL__N_118ConstructRandomSetEl.exit
@@ -828,7 +827,7 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 	ld.d	$a0, $a1, 32
 	slt	$a1, $s2, $a0
 	masknez	$a2, $s8, $a1
-	maskeqz	$a1, $s7, $a1
+	maskeqz	$a1, $s6, $a1
 	or	$a1, $a1, $a2
 	ldx.d	$a1, $s3, $a1
 	bnez	$a1, .LBB3_29
@@ -868,23 +867,23 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 	jirl	$ra, $ra, 0
 .Ltmp44:
 # %bb.39:                               # %_ZNK9benchmark5State13StateIteratorneERKS1_.exit
-	ld.bu	$a1, $fp, 24
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB3_57
+	ld.bu	$a0, $fp, 24
+	beqz	$a0, .LBB3_57
 # %bb.40:
-	ld.d	$a1, $fp, 16
-	ld.d	$a2, $fp, 0
-	ld.d	$a3, $fp, 8
-	sub.d	$a1, $a1, $a2
-	add.d	$s2, $a1, $a3
+	ld.d	$a0, $fp, 16
+	ld.d	$a1, $fp, 0
+	ld.d	$a2, $fp, 8
+	sub.d	$a0, $a0, $a1
+	add.d	$s2, $a0, $a2
 .LBB3_41:                               # %_ZNK9benchmark5State10iterationsEv.exit41
-	ld.d	$a2, $fp, 40
-	ld.d	$a1, $fp, 32
-	sub.d	$a2, $a2, $a1
-	srai.d	$a2, $a2, 3
-	bgeu	$a0, $a2, .LBB3_55
+	ld.d	$a1, $fp, 40
+	ld.d	$a0, $fp, 32
+	sub.d	$a1, $a1, $a0
+	srai.d	$a1, $a1, 3
+	ori	$a2, $zero, 1
+	bgeu	$a2, $a1, .LBB3_55
 # %bb.42:                               # %_ZNK9benchmark5State5rangeEm.exit37
-	ld.d	$s3, $a1, 8
+	ld.d	$s3, $a0, 8
 	addi.d	$s1, $sp, 32
 	st.d	$s1, $sp, 16
 	ori	$a0, $zero, 16
@@ -919,7 +918,6 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 	ffint.d.l	$fa0, $fa0
 	fst.d	$fa0, $a0, 0
 	ld.d	$a2, $sp, 16
-	ori	$s2, $zero, 1
 	ori	$a1, $zero, 1
 	lu32i.d	$a1, 1000
 	st.d	$a1, $a0, 8
@@ -932,7 +930,7 @@ _ZL12BM_SetInsertRN9benchmark5StateE:   # @_ZL12BM_SetInsertRN9benchmark5StateE
 	jirl	$ra, $ra, 0
 .LBB3_46:
 	ld.bu	$a0, $fp, 24
-	bne	$a0, $s2, .LBB3_58
+	beqz	$a0, .LBB3_58
 # %bb.47:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -1306,7 +1304,7 @@ _ZL13BM_SequentialISt6vectorIiSaIiEEiEvRN9benchmark5StateE: # @_ZL13BM_Sequentia
                                         #   in Loop: Header=BB4_7 Depth=2
 	move	$s2, $a0
 	stx.w	$s7, $a0, $s1
-	blt	$s1, $s5, .LBB4_12
+	blez	$s1, .LBB4_12
 # %bb.11:                               #   in Loop: Header=BB4_7 Depth=2
 	move	$a0, $s2
 	move	$a1, $s0
@@ -1350,8 +1348,7 @@ _ZL13BM_SequentialISt6vectorIiSaIiEEiEvRN9benchmark5StateE: # @_ZL13BM_Sequentia
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s8, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_33
+	beqz	$a0, .LBB4_33
 # %bb.20:
 	ld.d	$a0, $s8, 16
 	ld.d	$a1, $s8, 0
@@ -1691,8 +1688,7 @@ _ZL13BM_SequentialINSt7__cxx114listIiSaIiEEEiEvRN9benchmark5StateE: # @_ZL13BM_S
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 24
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_23
+	beqz	$a0, .LBB5_23
 # %bb.12:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 0
@@ -2213,7 +2209,6 @@ _ZL16BM_SetupTeardownRN9benchmark5StateE: # @_ZL16BM_SetupTeardownRN9benchmark5S
 	addi.w	$a0, $zero, -4
 	lu52i.d	$a0, $a0, 2047
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$s3, $zero, 1
 	addi.w	$a0, $zero, -1
 	lu52i.d	$fp, $a0, 511
 	.p2align	4, , 16
@@ -2260,8 +2255,9 @@ _ZL16BM_SetupTeardownRN9benchmark5StateE: # @_ZL16BM_SetupTeardownRN9benchmark5S
 # %bb.13:                               # %_ZNKSt6vectorIiSaIiEE12_M_check_lenEmPKc.exit.i.i
                                         #   in Loop: Header=BB7_5 Depth=1
 	srai.d	$a0, $s1, 2
-	sltu	$a1, $s3, $a0
-	masknez	$a2, $s3, $a1
+	ori	$a2, $zero, 1
+	sltu	$a1, $a2, $a0
+	masknez	$a2, $a2, $a1
 	maskeqz	$a1, $a0, $a1
 	or	$a1, $a1, $a2
 	add.d	$a0, $a1, $a0
@@ -2273,13 +2269,12 @@ _ZL16BM_SetupTeardownRN9benchmark5StateE: # @_ZL16BM_SetupTeardownRN9benchmark5S
 .Ltmp102:
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 .Ltmp103:
 # %bb.14:                               # %.noexc16
                                         #   in Loop: Header=BB7_5 Depth=1
 	move	$s3, $a0
 	stx.w	$s6, $a0, $s1
-	blt	$s1, $a1, .LBB7_16
+	blez	$s1, .LBB7_16
 # %bb.15:                               #   in Loop: Header=BB7_5 Depth=1
 	move	$a0, $s3
 	move	$a1, $s2
@@ -2303,7 +2298,6 @@ _ZL16BM_SetupTeardownRN9benchmark5StateE: # @_ZL16BM_SetupTeardownRN9benchmark5S
 	st.d	$a0, $s7, 8
 	alsl.d	$a0, $s8, $s3, 2
 	st.d	$a0, $s7, 16
-	ori	$s3, $zero, 1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(pthread_mutex_unlock)
 	jirl	$ra, $ra, 0
@@ -2453,44 +2447,43 @@ _ZL11BM_LongTestRN9benchmark5StateE:    # @_ZL11BM_LongTestRN9benchmark5StateE
 # %bb.1:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	beqz	$s0, .LBB8_10
 # %bb.2:                                # %.preheader.lr.ph
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	addi.d	$a0, $sp, 8
 	.p2align	4, , 16
 .LBB8_3:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_6 Depth 2
-	beq	$a2, $a3, .LBB8_11
+	beq	$a1, $a2, .LBB8_11
 # %bb.4:                                # %_ZNK9benchmark5State5rangeEm.exit.preheader
                                         #   in Loop: Header=BB8_3 Depth=1
-	ld.d	$a4, $a3, 0
-	blt	$a4, $a0, .LBB8_8
+	ld.d	$a3, $a2, 0
+	blez	$a3, .LBB8_8
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB8_3 Depth=1
+	move	$a3, $zero
 	move	$a4, $zero
-	move	$a5, $zero
 	.p2align	4, , 16
 .LBB8_6:                                # %.lr.ph
                                         #   Parent Loop BB8_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	fld.d	$fa0, $sp, 8
-	bstrpick.d	$a2, $a4, 31, 0
-	movgr2fr.d	$fa1, $a2
+	bstrpick.d	$a1, $a3, 31, 0
+	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fadd.d	$fa0, $fa0, $fa1
 	fst.d	$fa0, $sp, 8
 	#APP
 	#NO_APP
-	ld.d	$a2, $fp, 40
-	ld.d	$a3, $fp, 32
-	beq	$a2, $a3, .LBB8_11
+	ld.d	$a1, $fp, 40
+	ld.d	$a2, $fp, 32
+	beq	$a1, $a2, .LBB8_11
 # %bb.7:                                # %_ZNK9benchmark5State5rangeEm.exit
                                         #   in Loop: Header=BB8_6 Depth=2
-	ld.d	$a6, $a3, 0
-	addi.d	$a5, $a5, 1
-	addi.w	$a4, $a4, 1
-	blt	$a5, $a6, .LBB8_6
+	ld.d	$a5, $a2, 0
+	addi.d	$a4, $a4, 1
+	addi.w	$a3, $a3, 1
+	blt	$a4, $a5, .LBB8_6
 .LBB8_8:                                # %_ZN9benchmark5State13StateIteratorppEv.exit
                                         #   in Loop: Header=BB8_3 Depth=1
 	blez	$s0, .LBB8_12
@@ -2851,8 +2844,7 @@ _ZL15BM_ManualTimingRN9benchmark5StateE: # @_ZL15BM_ManualTimingRN9benchmark5Sta
 	fmul.d	$fa0, $fa1, $fa0
 	ftintrz.l.d	$fa0, $fa0
 	movfr2gr.d	$a0, $fa0
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB10_10
+	blez	$a0, .LBB10_10
 # %bb.4:                                # %.lr.ph.split.preheader
 	move	$s1, $zero
 	srli.d	$a1, $a0, 9
@@ -2929,7 +2921,7 @@ _ZL15BM_ManualTimingRN9benchmark5StateE: # @_ZL15BM_ManualTimingRN9benchmark5Sta
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State16SetIterationTimeEd)
 	jirl	$ra, $ra, 0
-	blt	$s3, $s4, .LBB10_17
+	blez	$s3, .LBB10_17
 # %bb.12:                               # %_ZN9benchmark5State13StateIteratorppEv.exit.us
                                         #   in Loop: Header=BB10_11 Depth=1
 	addi.d	$s3, $s3, -1
@@ -3062,17 +3054,14 @@ GCC_except_table10:
 _Z20BM_non_template_argsRN9benchmark5StateEid: # @_Z20BM_non_template_argsRN9benchmark5StateEid
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	.cfi_def_cfa_offset 32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	.cfi_def_cfa_offset 16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$s0, $zero, 1
 	b	.LBB11_2
 	.p2align	4, , 16
 .LBB11_1:                               # %_ZN9benchmark5State19KeepRunningInternalElb.exit
@@ -3092,13 +3081,12 @@ _Z20BM_non_template_argsRN9benchmark5StateEid: # @_Z20BM_non_template_argsRN9ben
 	bnez	$a0, .LBB11_6
 # %bb.5:                                #   in Loop: Header=BB11_2 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s0, .LBB11_1
+	bgtz	$a0, .LBB11_1
 .LBB11_6:
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	pcaddu18i	$t8, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jr	$t8
 .Lfunc_end11:
@@ -3110,14 +3098,12 @@ _Z20BM_non_template_argsRN9benchmark5StateEid: # @_Z20BM_non_template_argsRN9ben
 _ZL20BM_DenseThreadRangesRN9benchmark5StateE: # @_ZL20BM_DenseThreadRangesRN9benchmark5StateE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	.cfi_def_cfa_offset 32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	.cfi_def_cfa_offset 16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a1, $a0, 40
 	ld.d	$a0, $a0, 32
@@ -3177,7 +3163,6 @@ _ZL20BM_DenseThreadRangesRN9benchmark5StateE: # @_ZL20BM_DenseThreadRangesRN9ben
 	beqz	$a0, .LBB12_20
 .LBB12_11:                              # %.critedge
 	ld.d	$a0, $fp, 0
-	ori	$s0, $zero, 1
 	b	.LBB12_13
 	.p2align	4, , 16
 .LBB12_12:                              # %_ZN9benchmark5State19KeepRunningInternalElb.exit
@@ -3197,13 +3182,12 @@ _ZL20BM_DenseThreadRangesRN9benchmark5StateE: # @_ZL20BM_DenseThreadRangesRN9ben
 	bnez	$a0, .LBB12_17
 # %bb.16:                               #   in Loop: Header=BB12_13 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s0, .LBB12_12
+	bgtz	$a0, .LBB12_12
 .LBB12_17:
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	pcaddu18i	$t8, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jr	$t8
 .LBB12_18:
@@ -3902,9 +3886,8 @@ _ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEN9benchmark7Counte
 	or	$a0, $a0, $a1
 .LBB20_10:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
 	move	$s2, $s1
-	blt	$a1, $a0, .LBB20_12
+	bgez	$a0, .LBB20_12
 .LBB20_11:                              # %.critedge
 	st.d	$s8, $sp, 32
 	pcalau12i	$a0, %pc_hi20(_ZSt19piecewise_construct)
@@ -4177,8 +4160,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB22_11
 # %bb.3:                                # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit29.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB22_12
+	bltz	$a0, .LBB22_12
 	b	.LBB22_18
 .LBB22_4:
 	ld.d	$a0, $s1, 40
@@ -4260,8 +4242,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB22_16:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit38
 	addi.w	$a0, $a0, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB22_28
+	bgez	$a0, .LBB22_28
 # %bb.17:
 	ld.d	$a0, $s2, 24
 	sltui	$a0, $a0, 1
@@ -4291,8 +4272,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB22_20:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit47
 	addi.w	$a0, $a0, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $a0, .LBB22_23
+	bltz	$a0, .LBB22_23
 # %bb.21:
 	move	$a1, $zero
 	b	.LBB22_29
@@ -4307,10 +4287,10 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	pcaddu18i	$ra, %call36(_ZSt18_Rb_tree_incrementPSt18_Rb_tree_node_base)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	ld.d	$s4, $a0, 40
-	sltu	$a0, $s4, $s5
+	ld.d	$s3, $a0, 40
+	sltu	$a0, $s3, $s5
 	masknez	$a1, $s5, $a0
-	maskeqz	$a0, $s4, $a0
+	maskeqz	$a0, $s3, $a0
 	or	$a2, $a0, $a1
 	beqz	$a2, .LBB22_26
 # %bb.25:                               # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.i.i.i49
@@ -4320,7 +4300,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB22_27
 .LBB22_26:                              # %_ZNSt11char_traitsIcE7compareEPKcS2_m.exit.thread.i.i.i52
-	sub.d	$a0, $s5, $s4
+	sub.d	$a0, $s5, $s3
 	lu12i.w	$a1, -524288
 	slt	$a2, $a1, $a0
 	maskeqz	$a0, $a0, $a2
@@ -4334,7 +4314,7 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	or	$a0, $a0, $a1
 .LBB22_27:                              # %_ZNKSt4lessINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEclERKS5_S8_.exit56
 	addi.w	$a0, $a0, 0
-	bge	$s3, $a0, .LBB22_31
+	bltz	$a0, .LBB22_31
 .LBB22_28:
 	move	$a0, $s1
 	move	$a1, $s0
@@ -4494,10 +4474,9 @@ _ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_N
 	bnez	$a0, .LBB24_3
 	b	.LBB24_2
 .LBB24_6:                               # %._crit_edge
-	addi.w	$a0, $zero, -1
 	move	$s2, $fp
 	lu12i.w	$s3, 524287
-	blt	$a0, $a1, .LBB24_9
+	bgez	$a1, .LBB24_9
 # %bb.7:                                # %._crit_edge.thread
 	ld.d	$a0, $s1, 24
 	beq	$fp, $a0, .LBB24_14
@@ -4739,17 +4718,14 @@ GCC_except_table26:
 _ZN3$_28__invokeERN9benchmark5StateE:   # @"_ZN3$_28__invokeERN9benchmark5StateE"
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -32
-	.cfi_def_cfa_offset 32
-	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -16
+	.cfi_def_cfa_offset 16
+	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
+	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.d	$a0, $a0, 0
-	ori	$s0, $zero, 1
 	b	.LBB27_2
 	.p2align	4, , 16
 .LBB27_1:                               # %_ZN9benchmark5State19KeepRunningInternalElb.exit.i.i
@@ -4769,13 +4745,12 @@ _ZN3$_28__invokeERN9benchmark5StateE:   # @"_ZN3$_28__invokeERN9benchmark5StateE
 	bnez	$a0, .LBB27_6
 # %bb.5:                                #   in Loop: Header=BB27_2 Depth=1
 	ld.d	$a0, $fp, 0
-	bge	$a0, $s0, .LBB27_1
+	bgtz	$a0, .LBB27_1
 .LBB27_6:                               # %"_ZNK3$_2clERN9benchmark5StateE.exit"
 	move	$a0, $fp
-	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 32
+	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$ra, $sp, 8                     # 8-byte Folded Reload
+	addi.d	$sp, $sp, 16
 	pcaddu18i	$t8, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
 	jr	$t8
 .Lfunc_end27:

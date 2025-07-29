@@ -2849,7 +2849,7 @@ intrapred_chroma:                       # @intrapred_chroma
 	move	$a7, $zero
 	b	.LBB2_11
 .LBB2_14:                               # %.preheader458
-	blt	$s5, $a1, .LBB2_19
+	blez	$s5, .LBB2_19
 # %bb.15:                               # %.lr.ph468
 	slli.d	$a1, $a4, 4
 	alsl.d	$a1, $a4, $a1, 3
@@ -3985,10 +3985,9 @@ intrapred_chroma:                       # @intrapred_chroma
 	addi.d	$a7, $a7, 24
 	bnez	$t0, .LBB2_136
 .LBB2_137:                              # %._crit_edge531
-	ori	$a2, $zero, 1
-	blt	$s5, $a2, .LBB2_191
+	blez	$s5, .LBB2_191
 # %bb.138:                              # %.preheader.lr.ph
-	blt	$s6, $a2, .LBB2_191
+	blez	$s6, .LBB2_191
 # %bb.139:                              # %.preheader.lr.ph.split.us
 	move	$a2, $zero
 	addi.d	$a7, $s6, -8
@@ -7151,8 +7150,7 @@ itrans_sp_chroma:                       # @itrans_sp_chroma
 	ldx.bu	$a6, $a1, $a6
 .LBB9_2:                                # %.thread
 	ld.w	$a1, $a0, 32
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB9_4
+	bltz	$a1, .LBB9_4
 # %bb.3:                                # %.thread260
 	pcalau12i	$a2, %got_pc_hi20(QP_SCALE_CR)
 	ld.d	$a2, $a2, %got_pc_lo12(QP_SCALE_CR)

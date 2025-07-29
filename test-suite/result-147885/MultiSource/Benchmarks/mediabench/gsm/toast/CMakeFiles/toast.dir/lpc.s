@@ -234,20 +234,21 @@ Gsm_LPC_Analysis:                       # @Gsm_LPC_Analysis
 	vreplvei.h	$vr1, $vr0, 1
 	vmax.hu	$vr0, $vr0, $vr1
 	vpickve2gr.h	$a0, $vr0, 0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	move	$s2, $a2
-	beqz	$a0, .LBB0_5
+	beqz	$a1, .LBB0_5
 # %bb.1:
+	bstrpick.d	$a0, $a0, 15, 0
 	slli.d	$a0, $a0, 16
 	pcaddu18i	$ra, %call36(gsm_norm)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 4
 	sub.d	$a1, $a1, $a0
 	ext.w.h	$a1, $a1
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_6
+	blez	$a1, .LBB0_6
 # %bb.2:
 	ori	$a3, $zero, 3
+	ori	$a2, $zero, 1
 	bltu	$a3, $a0, .LBB0_11
 # %bb.3:
 	bstrpick.d	$a0, $a0, 15, 0

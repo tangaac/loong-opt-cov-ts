@@ -39,92 +39,91 @@ _Z20ConvertUTF8ToUnicodeRK11CStringBaseIcERS_IwE: # @_Z20ConvertUTF8ToUnicodeRK1
 	move	$a1, $zero
 	beqz	$s3, .LBB0_18
 # %bb.1:                                # %.lr.ph.i.preheader
-	move	$t0, $zero
-	addi.w	$a2, $zero, -1
-	ori	$a3, $zero, 192
-	ori	$a4, $zero, 224
-	lu12i.w	$a5, -256
-	ori	$a6, $zero, 240
-	ori	$a7, $zero, 248
+	move	$a7, $zero
+	ori	$a2, $zero, 192
+	ori	$a3, $zero, 224
+	lu12i.w	$a4, -256
+	ori	$a5, $zero, 240
+	ori	$a6, $zero, 248
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
-	move	$t0, $t1
+	move	$a7, $t0
 .LBB0_3:                                #   in Loop: Header=BB0_4 Depth=1
-	add.w	$a1, $t2, $a1
-	beq	$t0, $s3, .LBB0_18
+	add.w	$a1, $t1, $a1
+	beq	$a7, $s3, .LBB0_18
 .LBB0_4:                                # %.lr.ph.i
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_11 Depth 2
-	ldx.b	$t3, $s4, $t0
-	addi.d	$t1, $t0, 1
-	ori	$t2, $zero, 1
-	blt	$a2, $t3, .LBB0_2
+	ldx.b	$t2, $s4, $a7
+	addi.d	$t0, $a7, 1
+	ori	$t1, $zero, 1
+	bgez	$t2, .LBB0_2
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
-	andi	$t3, $t3, 255
-	bltu	$t3, $a3, .LBB0_18
+	andi	$t2, $t2, 255
+	bltu	$t2, $a2, .LBB0_18
 # %bb.6:                                # %.preheader.preheader.i
                                         #   in Loop: Header=BB0_4 Depth=1
-	ori	$t2, $zero, 1
-	bltu	$t3, $a4, .LBB0_10
+	ori	$t1, $zero, 1
+	bltu	$t2, $a3, .LBB0_10
 # %bb.7:                                # %.preheader.1.i
                                         #   in Loop: Header=BB0_4 Depth=1
-	ori	$t2, $zero, 2
-	bltu	$t3, $a6, .LBB0_10
+	ori	$t1, $zero, 2
+	bltu	$t2, $a5, .LBB0_10
 # %bb.8:                                # %.preheader.2.i
                                         #   in Loop: Header=BB0_4 Depth=1
-	ori	$t2, $zero, 3
-	bltu	$t3, $a7, .LBB0_10
+	ori	$t1, $zero, 3
+	bltu	$t2, $a6, .LBB0_10
 # %bb.9:                                # %.preheader.3.i
                                         #   in Loop: Header=BB0_4 Depth=1
-	sltui	$t2, $t3, 252
-	xori	$t2, $t2, 5
+	sltui	$t1, $t2, 252
+	xori	$t1, $t1, 5
 	.p2align	4, , 16
 .LBB0_10:                               #   in Loop: Header=BB0_4 Depth=1
-	addi.d	$t4, $t2, -1
-	ldx.bu	$t5, $s2, $t4
-	sub.d	$t3, $t3, $t5
-	add.d	$t0, $t0, $t4
-	addi.d	$t0, $t0, 2
+	addi.d	$t3, $t1, -1
+	ldx.bu	$t4, $s2, $t3
+	sub.d	$t2, $t2, $t4
+	add.d	$a7, $a7, $t3
+	addi.d	$a7, $a7, 2
 	.p2align	4, , 16
 .LBB0_11:                               #   Parent Loop BB0_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	beq	$s3, $t1, .LBB0_15
+	beq	$s3, $t0, .LBB0_15
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=2
-	ldx.b	$t4, $s4, $t1
-	addi.w	$t5, $zero, -65
-	blt	$t5, $t4, .LBB0_16
+	ldx.b	$t3, $s4, $t0
+	addi.w	$t4, $zero, -65
+	blt	$t4, $t3, .LBB0_16
 # %bb.13:                               #   in Loop: Header=BB0_11 Depth=2
-	addi.d	$t1, $t1, 1
-	andi	$t4, $t4, 255
-	slli.d	$t3, $t3, 6
-	add.d	$t3, $t4, $t3
-	addi.w	$t2, $t2, -1
-	addi.w	$t3, $t3, -128
-	bnez	$t2, .LBB0_11
+	addi.d	$t0, $t0, 1
+	andi	$t3, $t3, 255
+	slli.d	$t2, $t2, 6
+	add.d	$t2, $t3, $t2
+	addi.w	$t1, $t1, -1
+	addi.w	$t2, $t2, -128
+	bnez	$t1, .LBB0_11
 # %bb.14:                               # %.thread.i
                                         #   in Loop: Header=BB0_4 Depth=1
-	bstrpick.d	$t1, $t3, 31, 16
-	ori	$t2, $zero, 1
-	beqz	$t1, .LBB0_3
+	bstrpick.d	$t0, $t2, 31, 16
+	ori	$t1, $zero, 1
+	beqz	$t0, .LBB0_3
 	b	.LBB0_17
 .LBB0_15:                               #   in Loop: Header=BB0_4 Depth=1
-	move	$t0, $s3
-	bstrpick.d	$t1, $t3, 31, 16
-	ori	$t2, $zero, 1
-	beqz	$t1, .LBB0_3
+	move	$a7, $s3
+	bstrpick.d	$t0, $t2, 31, 16
+	ori	$t1, $zero, 1
+	beqz	$t0, .LBB0_3
 	b	.LBB0_17
 .LBB0_16:                               # %..thread.i_crit_edge
                                         #   in Loop: Header=BB0_4 Depth=1
-	addi.d	$t0, $t1, 1
-	bstrpick.d	$t1, $t3, 31, 16
-	ori	$t2, $zero, 1
-	beqz	$t1, .LBB0_3
+	addi.d	$a7, $t0, 1
+	bstrpick.d	$t0, $t2, 31, 16
+	ori	$t1, $zero, 1
+	beqz	$t0, .LBB0_3
 .LBB0_17:                               #   in Loop: Header=BB0_4 Depth=1
-	addu16i.d	$t1, $t3, -17
-	addi.w	$t1, $t1, 0
-	ori	$t2, $zero, 2
-	bgeu	$t1, $a5, .LBB0_3
+	addu16i.d	$t0, $t2, -17
+	addi.w	$t0, $t0, 0
+	ori	$t1, $zero, 2
+	bgeu	$t0, $a4, .LBB0_3
 .LBB0_18:                               # %_ZL13Utf8_To_Utf16PwPmPKcm.exit
 	ld.w	$s7, $fp, 12
 	blt	$a1, $s7, .LBB0_20
@@ -147,9 +146,8 @@ _Z20ConvertUTF8ToUnicodeRK11CStringBaseIcERS_IwE: # @_Z20ConvertUTF8ToUnicodeRK1
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$s7, $a1, .LBB0_23
+	blez	$s7, .LBB0_23
 # %bb.22:                               # %._crit_edge.thread.i.i
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -407,12 +405,11 @@ _Z20ConvertUnicodeToUTF8RK11CStringBaseIwERS_IcE: # @_Z20ConvertUnicodeToUTF8RK1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s6, $a2, .LBB1_35
+	blez	$s6, .LBB1_35
 # %bb.19:                               # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB1_27
+	blez	$a1, .LBB1_27
 # %bb.20:                               # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero

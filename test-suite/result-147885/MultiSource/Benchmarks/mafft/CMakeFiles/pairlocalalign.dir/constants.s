@@ -3112,8 +3112,7 @@ constants:                              # @constants
 	pcaddu18i	$ra, %call36(MtxuntDouble)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_65
+	blez	$a0, .LBB2_65
 # %bb.63:                               # %.lr.ph1275.preheader
 	move	$fp, $zero
 	.p2align	4, , 16
@@ -3980,8 +3979,7 @@ constants:                              # @constants
 	pcaddu18i	$ra, %call36(MtxuntDouble)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_107
+	blez	$a0, .LBB2_107
 # %bb.105:                              # %.lr.ph.preheader
 	move	$fp, $zero
 	.p2align	4, , 16
@@ -11504,38 +11502,36 @@ calcfreq_nuc:                           # @calcfreq_nuc
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a2
 	vrepli.b	$vr0, 0
 	vst	$vr0, $a2, 16
 	vst	$vr0, $a2, 0
-	ori	$s4, $zero, 1
 	pcalau12i	$s3, %pc_hi20(.LCPI3_0)
-	blt	$a0, $s4, .LBB3_9
+	blez	$a0, .LBB3_9
 # %bb.1:                                # %.lr.ph50.preheader
 	move	$s0, $a1
 	move	$s1, $a0
 	pcalau12i	$a0, %got_pc_hi20(amino_n)
-	ld.d	$s5, $a0, %got_pc_lo12(amino_n)
-	move	$s6, $zero
-	ori	$s7, $zero, 3
+	ld.d	$s4, $a0, %got_pc_lo12(amino_n)
+	move	$s5, $zero
+	ori	$s6, $zero, 3
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                # %._crit_edge
                                         #   in Loop: Header=BB3_3 Depth=1
-	addi.d	$s6, $s6, 1
-	beq	$s6, $s1, .LBB3_8
+	addi.d	$s5, $s5, 1
+	beq	$s5, $s1, .LBB3_8
 .LBB3_3:                                # %.lr.ph50
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_6 Depth 2
-	slli.d	$a0, $s6, 3
+	slli.d	$a0, $s5, 3
 	ldx.d	$s2, $s0, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s4, .LBB3_2
+	blez	$a1, .LBB3_2
 # %bb.4:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
 	bstrpick.d	$a0, $a0, 30, 0
@@ -11550,13 +11546,13 @@ calcfreq_nuc:                           # @calcfreq_nuc
                                         # =>  This Inner Loop Header: Depth=2
 	ld.b	$a1, $s2, 0
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $s5, $a1
+	ldx.w	$a1, $s4, $a1
 	addi.d	$a2, $a1, -4
 	sltui	$a2, $a2, 1
 	masknez	$a1, $a1, $a2
-	maskeqz	$a2, $s7, $a2
+	maskeqz	$a2, $s6, $a2
 	or	$a1, $a2, $a1
-	bltu	$s7, $a1, .LBB3_5
+	bltu	$s6, $a1, .LBB3_5
 # %bb.7:                                #   in Loop: Header=BB3_6 Depth=2
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $fp, $a1
@@ -11594,7 +11590,6 @@ calcfreq_nuc:                           # @calcfreq_nuc
 	fst.d	$fa0, $fp, 16
 	fdiv.d	$fa0, $fa2, $fa4
 	fst.d	$fa0, $fp, 24
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -11618,18 +11613,17 @@ calcfreq_nuc:                           # @calcfreq_nuc
 	.type	calcfreq,@function
 calcfreq:                               # @calcfreq
 # %bb.0:                                # %.preheader48
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a1
 	move	$s1, $a0
@@ -11638,32 +11632,31 @@ calcfreq:                               # @calcfreq
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
-	ori	$s5, $zero, 1
 	lu12i.w	$s3, -85564
 	pcalau12i	$s4, %pc_hi20(.LCPI4_0)
-	blt	$s1, $s5, .LBB4_30
+	blez	$s1, .LBB4_30
 # %bb.1:                                # %.lr.ph54.preheader
 	pcalau12i	$a0, %got_pc_hi20(amino_n)
-	ld.d	$s6, $a0, %got_pc_lo12(amino_n)
-	move	$s7, $zero
-	ori	$s8, $zero, 19
+	ld.d	$s5, $a0, %got_pc_lo12(amino_n)
+	move	$s6, $zero
+	ori	$s7, $zero, 19
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                # %._crit_edge
                                         #   in Loop: Header=BB4_3 Depth=1
-	addi.d	$s7, $s7, 1
-	beq	$s7, $s1, .LBB4_8
+	addi.d	$s6, $s6, 1
+	beq	$s6, $s1, .LBB4_8
 .LBB4_3:                                # %.lr.ph54
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_6 Depth 2
-	slli.d	$a0, $s7, 3
+	slli.d	$a0, $s6, 3
 	ldx.d	$s2, $s0, $a0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	vldi	$vr1, -912
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s5, .LBB4_2
+	blez	$a1, .LBB4_2
 # %bb.4:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_3 Depth=1
 	bstrpick.d	$a0, $a0, 30, 0
@@ -11678,8 +11671,8 @@ calcfreq:                               # @calcfreq
                                         # =>  This Inner Loop Header: Depth=2
 	ld.b	$a1, $s2, 0
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $s6, $a1
-	bltu	$s8, $a1, .LBB4_5
+	ldx.w	$a1, $s5, $a1
+	bltu	$s7, $a1, .LBB4_5
 # %bb.7:                                #   in Loop: Header=BB4_6 Depth=2
 	slli.d	$a1, $a1, 3
 	fldx.d	$fa0, $fp, $a1
@@ -11965,18 +11958,17 @@ calcfreq:                               # @calcfreq
 	vfdiv.d	$vr1, $vr3, $vr2
 	vst	$vr1, $fp, 128
 	vst	$vr0, $fp, 144
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB4_30:                               # %.preheader47.thread
 	ori	$a0, $s3, 813

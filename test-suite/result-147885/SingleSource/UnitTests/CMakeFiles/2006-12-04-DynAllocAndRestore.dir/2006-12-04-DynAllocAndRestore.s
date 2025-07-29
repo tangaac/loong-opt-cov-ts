@@ -53,8 +53,7 @@ _ZN13BabyDebugTest4doitEv:              # @_ZN13BabyDebugTest4doitEv
 	slli.d	$a2, $a2, 4
 	sub.d	$a2, $sp, $a2
 	move	$sp, $a2
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	bstrpick.d	$a3, $a1, 30, 3

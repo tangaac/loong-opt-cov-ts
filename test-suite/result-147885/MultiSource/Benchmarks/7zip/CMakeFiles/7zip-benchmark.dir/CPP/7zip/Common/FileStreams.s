@@ -67,66 +67,63 @@ _ZN13CInFileStream4ReadEPvjPj:          # @_ZN13CInFileStream4ReadEPvjPj
 _ZN16CStdInFileStream4ReadEPvjPj:       # @_ZN16CStdInFileStream4ReadEPvjPj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a3
-	move	$s0, $a1
+	move	$s1, $a1
 	beqz	$a3, .LBB3_2
 # %bb.1:
 	st.w	$zero, $fp, 0
 .LBB3_2:
 	bstrpick.d	$s2, $a2, 31, 0
-	addi.w	$s3, $zero, -1
-	ori	$s4, $zero, 4
+	ori	$s3, $zero, 4
 	.p2align	4, , 16
 .LBB3_3:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $zero
-	move	$a1, $s0
+	move	$a1, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	blt	$s3, $a0, .LBB3_5
+	move	$s0, $a0
+	bgez	$a0, .LBB3_5
 # %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s4, .LBB3_3
+	beq	$a0, $s3, .LBB3_3
 .LBB3_5:                                # %.critedge
-	addi.d	$a0, $s1, 1
+	addi.d	$a0, $s0, 1
 	sltui	$a0, $a0, 1
 	lu12i.w	$a1, -524284
 	ori	$a1, $a1, 5
 	maskeqz	$a0, $a1, $a0
 	beqz	$fp, .LBB3_8
 # %bb.6:                                # %.critedge
-	beq	$s1, $s3, .LBB3_8
+	addi.w	$a1, $zero, -1
+	beq	$s0, $a1, .LBB3_8
 # %bb.7:
 	move	$a0, $zero
-	st.w	$s1, $fp, 0
+	st.w	$s0, $fp, 0
 .LBB3_8:
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end3:
 	.size	_ZN16CStdInFileStream4ReadEPvjPj, .Lfunc_end3-_ZN16CStdInFileStream4ReadEPvjPj
@@ -381,66 +378,63 @@ _ZN14COutFileStream7SetSizeEy:          # @_ZN14COutFileStream7SetSizeEy
 _ZN17CStdOutFileStream5WriteEPKvjPj:    # @_ZN17CStdOutFileStream5WriteEPKvjPj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$fp, $a3
-	move	$s0, $a1
+	move	$s1, $a1
 	beqz	$a3, .LBB11_2
 # %bb.1:
 	st.w	$zero, $fp, 0
 .LBB11_2:
 	bstrpick.d	$s2, $a2, 31, 0
-	addi.w	$s3, $zero, -1
-	ori	$s4, $zero, 4
+	ori	$s3, $zero, 4
 	.p2align	4, , 16
 .LBB11_3:                               # =>This Inner Loop Header: Depth=1
 	ori	$a0, $zero, 1
-	move	$a1, $s0
+	move	$a1, $s1
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(write)
 	jirl	$ra, $ra, 0
-	move	$s1, $a0
-	blt	$s3, $a0, .LBB11_5
+	move	$s0, $a0
+	bgez	$a0, .LBB11_5
 # %bb.4:                                #   in Loop: Header=BB11_3 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s4, .LBB11_3
+	beq	$a0, $s3, .LBB11_3
 .LBB11_5:                               # %.critedge
-	addi.d	$a0, $s1, 1
+	addi.d	$a0, $s0, 1
 	sltui	$a0, $a0, 1
 	lu12i.w	$a1, -524284
 	ori	$a1, $a1, 5
 	maskeqz	$a0, $a1, $a0
 	beqz	$fp, .LBB11_8
 # %bb.6:                                # %.critedge
-	beq	$s1, $s3, .LBB11_8
+	addi.w	$a1, $zero, -1
+	beq	$s0, $a1, .LBB11_8
 # %bb.7:
 	move	$a0, $zero
-	st.w	$s1, $fp, 0
+	st.w	$s0, $fp, 0
 .LBB11_8:
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end11:
 	.size	_ZN17CStdOutFileStream5WriteEPKvjPj, .Lfunc_end11-_ZN17CStdOutFileStream5WriteEPKvjPj

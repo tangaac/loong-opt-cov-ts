@@ -294,16 +294,16 @@ main:                                   # @main
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
 	move	$fp, $a1
-	ori	$s4, $zero, 1
 	st.w	$a0, $sp, 540
-	blt	$a0, $s4, .LBB5_12
+	blez	$a0, .LBB5_12
 # %bb.1:                                # %.lr.ph
-	move	$s5, $zero
+	move	$s4, $zero
 	move	$s3, $zero
-	addi.d	$s6, $sp, 56
-	ori	$s7, $zero, 16
+	addi.d	$s5, $sp, 56
+	ori	$s6, $zero, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.10)
+	ori	$s7, $zero, 1
 	move	$s8, $fp
 	b	.LBB5_3
 	.p2align	4, , 16
@@ -313,12 +313,12 @@ main:                                   # @main
 	ld.w	$a1, $sp, 540
 	sltu	$a0, $zero, $a0
 	or	$s3, $s3, $a0
-	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 1
 	addi.d	$s8, $s8, 8
-	bge	$s5, $a1, .LBB5_13
+	bge	$s4, $a1, .LBB5_13
 .LBB5_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$s1, $s8, 0
-	st.d	$s6, $sp, 40
+	st.d	$s5, $sp, 40
 	beqz	$s1, .LBB5_71
 # %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
 	move	$a0, $s1
@@ -326,8 +326,8 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
 	st.d	$a0, $sp, 432
-	move	$a0, $s6
-	bltu	$s2, $s7, .LBB5_6
+	move	$a0, $s5
+	bltu	$s2, $s6, .LBB5_6
 # %bb.5:                                # %.noexc.i
                                         #   in Loop: Header=BB5_3 Depth=1
 	addi.d	$a0, $sp, 40
@@ -343,7 +343,7 @@ main:                                   # @main
 	beqz	$s2, .LBB5_10
 # %bb.7:                                # %._crit_edge.i.i
                                         #   in Loop: Header=BB5_3 Depth=1
-	bne	$s2, $s4, .LBB5_9
+	bne	$s2, $s7, .LBB5_9
 # %bb.8:                                #   in Loop: Header=BB5_3 Depth=1
 	ld.b	$a1, $s1, 0
 	st.b	$a1, $a0, 0
@@ -367,7 +367,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $sp, 40
 	move	$s1, $a0
-	beq	$a2, $s6, .LBB5_2
+	beq	$a2, $s5, .LBB5_2
 # %bb.11:                               # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i
                                         #   in Loop: Header=BB5_3 Depth=1
 	ld.d	$a0, $sp, 56

@@ -88,13 +88,12 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(current_test)
 	ld.w	$s0, $s6, %pc_lo12(current_test)
-	move	$s8, $a4
+	move	$s5, $a4
 	move	$s2, $a2
 	move	$s3, $a1
 	move	$fp, $a0
-	ori	$s5, $zero, 1
 	pcalau12i	$s7, %pc_hi20(results)
-	blt	$s0, $s5, .LBB1_3
+	blez	$s0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s7, %pc_lo12(results)
 	addi.d	$s4, $a0, 8
@@ -132,9 +131,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s5, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.5:                                # %.lr.ph45.preheader
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	move	$s8, $zero
 	move	$s4, $zero
@@ -180,10 +179,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	addi.d	$s8, $s8, 16
 	blt	$s0, $a0, .LBB1_6
 # %bb.7:                                # %.preheader39
-	ori	$a1, $zero, 1
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB1_10
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	blez	$a0, .LBB1_10
 # %bb.8:                                # %.lr.ph49
 	ld.d	$a1, $s7, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
@@ -201,7 +199,7 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	beqz	$s8, .LBB1_15
+	beqz	$s5, .LBB1_15
 # %bb.11:                               # %._crit_edge50
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	ori	$a1, $zero, 2
@@ -278,11 +276,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	ld.w	$fp, $s5, %pc_lo12(current_test)
 	move	$s0, $a1
 	move	$s7, $a0
-	ori	$s3, $zero, 1
-	pcalau12i	$s4, %pc_hi20(results)
-	blt	$fp, $s3, .LBB2_3
+	pcalau12i	$s3, %pc_hi20(results)
+	blez	$fp, .LBB2_3
 # %bb.1:                                # %.lr.ph
-	ld.d	$a0, $s4, %pc_lo12(results)
+	ld.d	$a0, $s3, %pc_lo12(results)
 	addi.d	$s2, $a0, 8
 	ori	$s1, $zero, 12
 	.p2align	4, , 16
@@ -320,7 +317,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s3, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.5:                                # %.lr.ph32.preheader
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	move	$s8, $zero
@@ -330,11 +327,11 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.5)
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph32
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s6, $s4, %pc_lo12(results)
+	ld.d	$s6, $s3, %pc_lo12(results)
 	add.d	$a0, $s6, $s8
 	move	$s0, $s5
 	ld.d	$s5, $a0, 8
@@ -346,7 +343,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	move	$a0, $s7
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $s2
-	move	$a4, $s3
+	move	$a4, $s4
 	move	$a5, $s5
 	move	$s5, $s0
 	pcaddu18i	$ra, %call36(fprintf)
@@ -357,11 +354,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$s8, $s8, 16
 	blt	$fp, $a0, .LBB2_6
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.8:                                # %.lr.ph36
-	ld.d	$a1, $s4, %pc_lo12(results)
+	ld.d	$a1, $s3, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
 	.p2align	4, , 16
 .LBB2_9:                                # =>This Inner Loop Header: Depth=1
@@ -640,20 +636,19 @@ main:                                   # @main
 	bne	$a2, $a0, .LBB5_24
 .LBB5_25:                               # %_ZN9benchmark4fillIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEEEEEEEESB_EEvT_SD_T0_.exit
 	ld.w	$a0, $s5, %pc_lo12(iterations)
-	ori	$a1, $zero, 1
-	pcalau12i	$a2, %pc_hi20(dPb)
-	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(dPe)
-	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(DVPb)
-	st.d	$a2, $sp, 176                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(DVPe)
-	st.d	$a2, $sp, 168                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(DV10Pb)
-	st.d	$a2, $sp, 144                   # 8-byte Folded Spill
-	pcalau12i	$a2, %pc_hi20(DV10Pe)
-	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
-	blt	$a0, $a1, .LBB5_97
+	pcalau12i	$a1, %pc_hi20(dPb)
+	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(dPe)
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(DVPb)
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(DVPe)
+	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(DV10Pb)
+	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(DV10Pe)
+	st.d	$a1, $sp, 136                   # 8-byte Folded Spill
+	blez	$a0, .LBB5_97
 # %bb.26:                               # %.lr.ph.i74
 	pcalau12i	$s4, %pc_hi20(.LCPI5_0)
 	pcalau12i	$s0, %pc_hi20(current_test)
@@ -724,8 +719,7 @@ main:                                   # @main
 	ld.w	$a0, $s5, %pc_lo12(iterations)
 	b	.LBB5_34
 .LBB5_37:                               # %_Z15test_accumulateIPddEvT_S1_T0_PKc.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_97
+	blez	$a0, .LBB5_97
 # %bb.38:                               # %.lr.ph.i76
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s1, $a1, %pc_lo12(dPb)
@@ -801,8 +795,7 @@ main:                                   # @main
 	ld.w	$a0, $s5, %pc_lo12(iterations)
 	b	.LBB5_46
 .LBB5_49:                               # %_Z15test_accumulateI14PointerWrapperIdEdEvT_S2_T0_PKc.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_97
+	blez	$a0, .LBB5_97
 # %bb.50:                               # %.lr.ph.i85
 	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$s1, $a1, %pc_lo12(DVpb)
@@ -875,8 +868,7 @@ main:                                   # @main
 	ld.w	$a0, $s5, %pc_lo12(iterations)
 	b	.LBB5_58
 .LBB5_61:                               # %_Z15test_accumulateIP12ValueWrapperIdES1_EvT_S3_T0_PKc.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_97
+	blez	$a0, .LBB5_97
 # %bb.62:                               # %.lr.ph.i99
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s1, $a1, %pc_lo12(DVPb)
@@ -949,8 +941,7 @@ main:                                   # @main
 	ld.w	$a0, $s5, %pc_lo12(iterations)
 	b	.LBB5_70
 .LBB5_73:                               # %_Z15test_accumulateI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_T0_PKc.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_97
+	blez	$a0, .LBB5_97
 # %bb.74:                               # %.lr.ph.i107
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	ld.d	$s1, $a1, %pc_lo12(DV10pb)
@@ -1023,8 +1014,7 @@ main:                                   # @main
 	ld.w	$a0, $s5, %pc_lo12(iterations)
 	b	.LBB5_82
 .LBB5_85:                               # %_Z15test_accumulateIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEEEESA_EvT_SC_T0_PKc.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_97
+	blez	$a0, .LBB5_97
 # %bb.86:                               # %.lr.ph.i122
 	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$s1, $a1, %pc_lo12(DV10Pb)
@@ -1504,8 +1494,7 @@ _Z19test_insertion_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z19test_insertion_sortIPddEv
 	pcalau12i	$a4, %pc_hi20(iterations)
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a4, $a4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB6_50
+	blez	$a4, .LBB6_50
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -1908,8 +1897,7 @@ _Z19test_insertion_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z19test_ins
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB7_52
+	blez	$a4, .LBB7_52
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -2317,8 +2305,7 @@ _Z19test_insertion_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z19test_in
 	pcalau12i	$a4, %pc_hi20(iterations)
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a4, $a4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB8_50
+	blez	$a4, .LBB8_50
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -2723,8 +2710,7 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PK
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB9_52
+	blez	$a4, .LBB9_52
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -3134,8 +3120,7 @@ _Z19test_insertion_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEE
 	pcalau12i	$a4, %pc_hi20(iterations)
 	st.d	$a4, $sp, 48                    # 8-byte Folded Spill
 	ld.w	$a4, $a4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB10_50
+	blez	$a4, .LBB10_50
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -3540,8 +3525,7 @@ _Z19test_insertion_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_I
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB11_52
+	blez	$a4, .LBB11_52
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -3950,8 +3934,7 @@ _Z14test_quicksortIPddEvT_S1_S1_S1_T0_PKc: # @_Z14test_quicksortIPddEvT_S1_S1_S1
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB12_19
+	blez	$a4, .LBB12_19
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -4148,8 +4131,7 @@ _Z14test_quicksortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z14test_quicksor
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB13_20
+	blez	$a4, .LBB13_20
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -4349,8 +4331,7 @@ _Z14test_quicksortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z14test_quickso
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB14_19
+	blez	$a4, .LBB14_19
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -4547,8 +4528,7 @@ _Z14test_quicksortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PKc: # 
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB15_20
+	blez	$a4, .LBB15_20
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -4748,8 +4728,7 @@ _Z14test_quicksortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEE
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB16_19
+	blez	$a4, .LBB16_19
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -4946,8 +4925,7 @@ _Z14test_quicksortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB17_20
+	blez	$a4, .LBB17_20
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -5147,8 +5125,7 @@ _Z14test_heap_sortIPddEvT_S1_S1_S1_T0_PKc: # @_Z14test_heap_sortIPddEvT_S1_S1_S1
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB18_19
+	blez	$a4, .LBB18_19
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -5345,8 +5322,7 @@ _Z14test_heap_sortI14PointerWrapperIdEdEvT_S2_S2_S2_T0_PKc: # @_Z14test_heap_sor
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB19_20
+	blez	$a4, .LBB19_20
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -5546,8 +5522,7 @@ _Z14test_heap_sortIP12ValueWrapperIdES1_EvT_S3_S3_S3_T0_PKc: # @_Z14test_heap_so
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB20_19
+	blez	$a4, .LBB20_19
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -5744,8 +5719,7 @@ _Z14test_heap_sortI14PointerWrapperI12ValueWrapperIdEES2_EvT_S4_S4_S4_T0_PKc: # 
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB21_20
+	blez	$a4, .LBB21_20
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -5945,8 +5919,7 @@ _Z14test_heap_sortIP12ValueWrapperIS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IS0_IdEEEEEEEE
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB22_19
+	blez	$a4, .LBB22_19
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -6143,8 +6116,7 @@ _Z14test_heap_sortI14PointerWrapperI12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS
 	.cfi_offset 31, -88
 	pcalau12i	$s4, %pc_hi20(iterations)
 	ld.w	$a4, $s4, %pc_lo12(iterations)
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB23_20
+	blez	$a4, .LBB23_20
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
 	move	$s0, $a2
@@ -7009,7 +6981,7 @@ _ZN9benchmark8heapsortIPddEEvT_S2_:     # @_ZN9benchmark8heapsortIPddEEvT_S2_
 	ori	$a7, $zero, 2
 	beq	$a7, $a1, .LBB30_20
 .LBB30_22:                              #   in Loop: Header=BB30_16 Depth=1
-	blt	$a6, $a3, .LBB30_15
+	blez	$a6, .LBB30_15
 	.p2align	4, , 16
 .LBB30_23:                              # %.lr.ph50.i26
                                         #   Parent Loop BB30_16 Depth=1
@@ -7185,7 +7157,7 @@ _ZN9benchmark8heapsortI14PointerWrapperIdEdEEvT_S3_: # @_ZN9benchmark8heapsortI1
 	ori	$t0, $zero, 2
 	beq	$t0, $a1, .LBB31_20
 .LBB31_22:                              #   in Loop: Header=BB31_16 Depth=1
-	blt	$a7, $a4, .LBB31_15
+	blez	$a7, .LBB31_15
 	.p2align	4, , 16
 .LBB31_23:                              # %.lr.ph58.i22
                                         #   Parent Loop BB31_16 Depth=1
@@ -7363,7 +7335,7 @@ _ZN9benchmark8heapsortIP12ValueWrapperIdES2_EEvT_S4_: # @_ZN9benchmark8heapsortI
 	ori	$a7, $zero, 2
 	beq	$a7, $a1, .LBB32_20
 .LBB32_22:                              #   in Loop: Header=BB32_16 Depth=1
-	blt	$a6, $a3, .LBB32_15
+	blez	$a6, .LBB32_15
 	.p2align	4, , 16
 .LBB32_23:                              # %.lr.ph47.i27
                                         #   Parent Loop BB32_16 Depth=1
@@ -7539,7 +7511,7 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIdEES3_EEvT_S5_: # @_ZN9be
 	ori	$t0, $zero, 2
 	beq	$t0, $a1, .LBB33_20
 .LBB33_22:                              #   in Loop: Header=BB33_16 Depth=1
-	blt	$a7, $a4, .LBB33_15
+	blez	$a7, .LBB33_15
 	.p2align	4, , 16
 .LBB33_23:                              # %.lr.ph58.i25
                                         #   Parent Loop BB33_16 Depth=1
@@ -7717,7 +7689,7 @@ _ZN9benchmark8heapsortIP12ValueWrapperIS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IS1_IdEEEE
 	ori	$a7, $zero, 2
 	beq	$a7, $a1, .LBB34_20
 .LBB34_22:                              #   in Loop: Header=BB34_16 Depth=1
-	blt	$a6, $a3, .LBB34_15
+	blez	$a6, .LBB34_15
 	.p2align	4, , 16
 .LBB34_23:                              # %.lr.ph47.i27
                                         #   Parent Loop BB34_16 Depth=1
@@ -7893,7 +7865,7 @@ _ZN9benchmark8heapsortI14PointerWrapperI12ValueWrapperIS2_IS2_IS2_IS2_IS2_IS2_IS
 	ori	$t0, $zero, 2
 	beq	$t0, $a1, .LBB35_20
 .LBB35_22:                              #   in Loop: Header=BB35_16 Depth=1
-	blt	$a7, $a4, .LBB35_15
+	blez	$a7, .LBB35_15
 	.p2align	4, , 16
 .LBB35_23:                              # %.lr.ph58.i25
                                         #   Parent Loop BB35_16 Depth=1

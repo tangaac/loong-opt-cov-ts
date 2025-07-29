@@ -150,9 +150,9 @@ start_input_gif:                        # @start_input_gif
 .LBB1_15:
 	ld.bu	$a1, $sp, 18
 	ld.bu	$a0, $sp, 20
-	ext.w.b	$s2, $a1
-	andi	$s3, $a1, 7
-	ori	$s4, $zero, 2
+	ext.w.b	$s1, $a1
+	andi	$s2, $a1, 7
+	ori	$s3, $zero, 2
 	beqz	$a0, .LBB1_18
 # %bb.16:
 	ori	$a1, $zero, 49
@@ -166,17 +166,17 @@ start_input_gif:                        # @start_input_gif
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
 .LBB1_18:
-	addi.w	$s1, $zero, -1
-	sll.w	$a0, $s4, $s3
+	sll.w	$a0, $s3, $s2
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	bge	$s1, $s2, .LBB1_41
+	bltz	$s1, .LBB1_41
 .LBB1_19:                               # %ReadColorMap.exit
 	ori	$s3, $zero, 43
+	addi.w	$s1, $zero, -1
 	ori	$s4, $zero, 33
 	ori	$s6, $zero, 42
-	ori	$s8, $zero, 1
-	ori	$s5, $zero, 1022
-	ori	$s7, $zero, 59
+	ori	$s7, $zero, 1019
+	ori	$s8, $zero, 1022
+	ori	$s5, $zero, 59
 	b	.LBB1_23
 	.p2align	4, , 16
 .LBB1_20:                               # %ReadByte.exit.thread
@@ -194,7 +194,7 @@ start_input_gif:                        # @start_input_gif
 	st.w	$s2, $a0, 44
 	ld.d	$a1, $fp, 0
 	ld.d	$a2, $a1, 8
-	st.w	$s5, $a0, 40
+	st.w	$s8, $a0, 40
 	move	$a0, $fp
 	move	$a1, $s1
 	jirl	$ra, $a2, 0
@@ -232,8 +232,7 @@ start_input_gif:                        # @start_input_gif
 	ld.d	$a0, $s0, 48
 	ld.d	$a2, $a0, 0
 	ld.d	$a2, $a2, 8
-	ori	$a3, $zero, 1019
-	st.w	$a3, $a1, 40
+	st.w	$s7, $a1, 40
 	ori	$a1, $zero, 1
 	jirl	$ra, $a2, 0
 	b	.LBB1_31
@@ -257,7 +256,7 @@ start_input_gif:                        # @start_input_gif
 	beq	$a0, $s1, .LBB1_29
 # %bb.32:                               # %ReadByte.exit.i.i.i
                                         #   in Loop: Header=BB1_31 Depth=2
-	blt	$s2, $s8, .LBB1_23
+	blez	$s2, .LBB1_23
 # %bb.33:                               #   in Loop: Header=BB1_31 Depth=2
 	ld.d	$a3, $s0, 24
 	addi.d	$a0, $sp, 24
@@ -272,7 +271,7 @@ start_input_gif:                        # @start_input_gif
                                         #   in Loop: Header=BB1_23 Depth=1
 	ori	$a1, $zero, 1015
 	move	$a0, $fp
-	beq	$s2, $s7, .LBB1_21
+	beq	$s2, $s5, .LBB1_21
 # %bb.35:                               # %.backedge
                                         #   in Loop: Header=BB1_23 Depth=1
 	ori	$a0, $zero, 44
@@ -300,7 +299,7 @@ start_input_gif:                        # @start_input_gif
 	ext.w.b	$a0, $a1
 	andi	$a1, $a1, 64
 	st.w	$a1, $s0, 408
-	bge	$s1, $a0, .LBB1_49
+	bltz	$a0, .LBB1_49
 .LBB1_39:                               # %ReadColorMap.exit143
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
@@ -314,25 +313,26 @@ start_input_gif:                        # @start_input_gif
 	bgeu	$a1, $a0, .LBB1_58
 	b	.LBB1_59
 .LBB1_41:
+	move	$s2, $zero
 	ld.d	$s3, $s0, 56
-	move	$s4, $zero
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
-	bstrpick.d	$s5, $a0, 31, 0
+	bstrpick.d	$s4, $a0, 31, 0
+	addi.w	$s5, $zero, -1
 	ori	$s6, $zero, 42
 	b	.LBB1_43
 	.p2align	4, , 16
 .LBB1_42:                               # %ReadByte.exit12.i
                                         #   in Loop: Header=BB1_43 Depth=1
 	ld.d	$a0, $s3, 16
-	stx.b	$s2, $a0, $s4
-	addi.d	$s4, $s4, 1
-	beq	$s5, $s4, .LBB1_19
+	stx.b	$s1, $a0, $s2
+	addi.d	$s2, $s2, 1
+	beq	$s4, $s2, .LBB1_19
 .LBB1_43:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	bne	$a0, $s1, .LBB1_45
+	move	$s1, $a0
+	bne	$a0, $s5, .LBB1_45
 # %bb.44:                               #   in Loop: Header=BB1_43 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
@@ -342,12 +342,12 @@ start_input_gif:                        # @start_input_gif
 .LBB1_45:                               # %ReadByte.exit.i
                                         #   in Loop: Header=BB1_43 Depth=1
 	ld.d	$a0, $s3, 0
-	stx.b	$s2, $a0, $s4
+	stx.b	$s1, $a0, $s2
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	bne	$a0, $s1, .LBB1_47
+	move	$s1, $a0
+	bne	$a0, $s5, .LBB1_47
 # %bb.46:                               #   in Loop: Header=BB1_43 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
@@ -357,12 +357,12 @@ start_input_gif:                        # @start_input_gif
 .LBB1_47:                               # %ReadByte.exit11.i
                                         #   in Loop: Header=BB1_43 Depth=1
 	ld.d	$a0, $s3, 8
-	stx.b	$s2, $a0, $s4
+	stx.b	$s1, $a0, $s2
 	ld.d	$a0, $s0, 24
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	move	$s2, $a0
-	bne	$a0, $s1, .LBB1_42
+	move	$s1, $a0
+	bne	$a0, $s5, .LBB1_42
 # %bb.48:                               #   in Loop: Header=BB1_43 Depth=1
 	ld.d	$a0, $s0, 48
 	ld.d	$a1, $a0, 0
@@ -793,7 +793,6 @@ LZWReadByte:                            # @LZWReadByte
 	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
 	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 364
 	beqz	$a0, .LBB5_7
@@ -841,7 +840,6 @@ LZWReadByte:                            # @LZWReadByte
 	st.d	$a1, $fp, 400
 	ld.bu	$a0, $a0, -1
 .LBB5_9:
-	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
 	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
@@ -864,7 +862,6 @@ LZWReadByte:                            # @LZWReadByte
 # %bb.13:
 	addi.w	$s1, $zero, -1
 	ori	$s2, $zero, 42
-	ori	$s3, $zero, 1
 	b	.LBB5_16
 	.p2align	4, , 16
 .LBB5_14:                               # %.sink.split.i.i
@@ -885,10 +882,10 @@ LZWReadByte:                            # @LZWReadByte
 	beq	$a0, $s1, .LBB5_14
 # %bb.17:                               # %ReadByte.exit.i.i
                                         #   in Loop: Header=BB5_16 Depth=1
-	blt	$s0, $s3, .LBB5_31
+	blez	$s0, .LBB5_31
 # %bb.18:                               #   in Loop: Header=BB5_16 Depth=1
 	ld.d	$a3, $fp, 24
-	addi.d	$a0, $sp, 0
+	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 1
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(fread)
@@ -1088,7 +1085,6 @@ GetCode:                                # @GetCode
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 332
 	ld.w	$a1, $fp, 352
@@ -1100,7 +1096,6 @@ GetCode:                                # @GetCode
 	addi.d	$s3, $fp, 64
 	addi.d	$s0, $fp, 66
 	ori	$s4, $zero, 42
-	ori	$s5, $zero, 1
 	b	.LBB7_5
 	.p2align	4, , 16
 .LBB7_2:                                # %.sink.split.i
@@ -1144,7 +1139,7 @@ GetCode:                                # @GetCode
 	beq	$a0, $s2, .LBB7_2
 # %bb.7:                                # %ReadByte.exit.i
                                         #   in Loop: Header=BB7_5 Depth=1
-	blt	$s1, $s5, .LBB7_3
+	blez	$s1, .LBB7_3
 # %bb.8:                                #   in Loop: Header=BB7_5 Depth=1
 	ld.d	$a3, $fp, 24
 	ori	$a1, $zero, 1
@@ -1192,7 +1187,6 @@ GetCode:                                # @GetCode
 .LBB7_12:
 	ld.w	$a0, $fp, 348
 .LBB7_13:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

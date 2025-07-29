@@ -21,7 +21,7 @@ hypre_StructStencilCreate:              # @hypre_StructStencilCreate
 	st.w	$s1, $a0, 16
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 20
-	blt	$fp, $a1, .LBB0_3
+	blez	$fp, .LBB0_3
 # %bb.1:                                # %.preheader.preheader
 	ori	$a1, $zero, 8
 	bgeu	$fp, $a1, .LBB0_4
@@ -220,9 +220,8 @@ hypre_StructStencilElementRank:         # @hypre_StructStencilElementRank
 # %bb.0:
 	move	$a2, $a0
 	ld.w	$a3, $a0, 8
-	ori	$a4, $zero, 1
 	addi.w	$a0, $zero, -1
-	blt	$a3, $a4, .LBB3_7
+	blez	$a3, .LBB3_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a5, $a2, 0
 	ld.w	$a2, $a1, 0
@@ -279,9 +278,8 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s5, $a1, .LBB4_15
+	blez	$s5, .LBB4_15
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $s2, 8
 	addi.d	$a1, $s1, 8
@@ -318,82 +316,81 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	move	$a0, $zero
 	addi.d	$a1, $s2, 8
 	sub.d	$a2, $zero, $s6
-	addi.w	$a3, $zero, -1
-	ori	$a4, $zero, 12
-	move	$a5, $s1
+	ori	$a3, $zero, 12
+	move	$a4, $s1
 	b	.LBB4_5
 	.p2align	4, , 16
 .LBB4_4:                                #   in Loop: Header=BB4_5 Depth=1
 	addi.d	$a0, $a0, 1
-	addi.d	$a5, $a5, 4
+	addi.d	$a4, $a4, 4
 	addi.d	$a1, $a1, 12
 	addi.d	$a2, $a2, 1
 	beq	$a0, $s6, .LBB4_16
 .LBB4_5:                                # %.lr.ph92
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_8 Depth 2
-	slli.d	$a6, $a0, 2
-	ldx.w	$a6, $s1, $a6
-	blt	$a3, $a6, .LBB4_4
+	slli.d	$a5, $a0, 2
+	ldx.w	$a5, $s1, $a5
+	bgez	$a5, .LBB4_4
 # %bb.6:                                # %.lr.ph87
                                         #   in Loop: Header=BB4_5 Depth=1
-	move	$a6, $zero
-	slli.d	$a7, $a0, 3
-	alsl.d	$a7, $a0, $a7, 2
-	add.d	$a7, $s2, $a7
-	ori	$t2, $zero, 1
-	move	$t0, $a1
-	move	$t1, $a5
+	move	$a5, $zero
+	slli.d	$a6, $a0, 3
+	alsl.d	$a6, $a0, $a6, 2
+	add.d	$a6, $s2, $a6
+	ori	$t1, $zero, 1
+	move	$a7, $a1
+	move	$t0, $a4
 	b	.LBB4_8
 	.p2align	4, , 16
 .LBB4_7:                                #   in Loop: Header=BB4_8 Depth=2
-	addi.d	$a6, $a6, -1
-	addi.d	$t1, $t1, 4
-	addi.d	$t0, $t0, 12
-	beq	$a2, $a6, .LBB4_13
+	addi.d	$a5, $a5, -1
+	addi.d	$t0, $t0, 4
+	addi.d	$a7, $a7, 12
+	beq	$a2, $a5, .LBB4_13
 .LBB4_8:                                #   Parent Loop BB4_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t3, $a7, 0
-	ld.w	$t4, $t0, -8
-	sub.w	$t3, $zero, $t3
-	bne	$t4, $t3, .LBB4_7
+	ld.w	$t2, $a6, 0
+	ld.w	$t3, $a7, -8
+	sub.w	$t2, $zero, $t2
+	bne	$t3, $t2, .LBB4_7
 # %bb.9:                                #   in Loop: Header=BB4_8 Depth=2
-	ld.w	$t3, $a7, 4
-	ld.w	$t4, $t0, -4
-	sub.w	$t3, $zero, $t3
-	bne	$t4, $t3, .LBB4_7
+	ld.w	$t2, $a6, 4
+	ld.w	$t3, $a7, -4
+	sub.w	$t2, $zero, $t2
+	bne	$t3, $t2, .LBB4_7
 # %bb.10:                               #   in Loop: Header=BB4_8 Depth=2
-	ld.w	$t3, $a7, 8
-	ld.w	$t4, $t0, 0
-	sub.w	$t3, $zero, $t3
-	bne	$t4, $t3, .LBB4_7
+	ld.w	$t2, $a6, 8
+	ld.w	$t3, $a7, 0
+	sub.w	$t2, $zero, $t2
+	bne	$t3, $t2, .LBB4_7
 # %bb.11:                               #   in Loop: Header=BB4_8 Depth=2
-	move	$t2, $zero
-	beqz	$a6, .LBB4_7
+	move	$t1, $zero
+	beqz	$a5, .LBB4_7
 # %bb.12:                               #   in Loop: Header=BB4_8 Depth=2
-	st.w	$a0, $t1, 0
+	st.w	$a0, $t0, 0
 	b	.LBB4_7
 	.p2align	4, , 16
 .LBB4_13:                               # %._crit_edge88
                                         #   in Loop: Header=BB4_5 Depth=1
-	beqz	$t2, .LBB4_4
+	beqz	$t1, .LBB4_4
 # %bb.14:                               # %.preheader
                                         #   in Loop: Header=BB4_5 Depth=1
-	mul.d	$a6, $a0, $a4
-	ldx.w	$a7, $s2, $a6
-	add.d	$a6, $s2, $a6
-	sub.d	$a7, $zero, $a7
-	mul.d	$t0, $s5, $a4
-	ld.w	$t1, $a6, 4
-	stx.w	$a7, $s2, $t0
-	ld.w	$a6, $a6, 8
-	add.d	$a7, $s2, $t0
-	sub.d	$t0, $zero, $t1
-	st.w	$t0, $a7, 4
+	mul.d	$a5, $a0, $a3
+	ldx.w	$a6, $s2, $a5
+	add.d	$a5, $s2, $a5
 	sub.d	$a6, $zero, $a6
-	st.w	$a6, $a7, 8
-	slli.d	$a6, $s5, 2
-	stx.w	$a0, $s1, $a6
+	mul.d	$a7, $s5, $a3
+	ld.w	$t0, $a5, 4
+	stx.w	$a6, $s2, $a7
+	ld.w	$a5, $a5, 8
+	add.d	$a6, $s2, $a7
+	sub.d	$a7, $zero, $t0
+	st.w	$a7, $a6, 4
+	sub.d	$a5, $zero, $a5
+	st.w	$a5, $a6, 8
+	slli.d	$a5, $s5, 2
+	stx.w	$a0, $s1, $a5
 	addi.w	$s5, $s5, 1
 	b	.LBB4_4
 .LBB4_15:                               # %.preheader80
@@ -412,7 +409,7 @@ hypre_StructStencilSymmetrize:          # @hypre_StructStencilSymmetrize
 	st.w	$s3, $a0, 16
 	ori	$a1, $zero, 1
 	st.w	$a1, $a0, 20
-	blt	$s5, $a1, .LBB4_19
+	blez	$s5, .LBB4_19
 # %bb.17:                               # %.preheader.preheader.i
 	ori	$a1, $zero, 8
 	bgeu	$s5, $a1, .LBB4_20

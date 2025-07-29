@@ -2395,19 +2395,19 @@ _ZN13HexxagonBoard11writeToFileEP8_IO_FILE: # @_ZN13HexxagonBoard11writeToFileEP
 _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextEi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -208
-	.cfi_def_cfa_offset 208
-	st.d	$ra, $sp, 200                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 184                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 120                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -192
+	.cfi_def_cfa_offset 192
+	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2421,20 +2421,20 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	.cfi_offset 31, -88
 	move	$fp, $a0
 	ld.d	$a0, $a0, 8
-	st.d	$a0, $sp, 112
+	st.d	$a0, $sp, 96
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	bnez	$a1, .LBB16_2
 # %bb.1:
-	addi.d	$a0, $sp, 112
+	addi.d	$a0, $sp, 96
 	pcaddu18i	$ra, %call36(_ZN10BitBoard64coEv)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 104
-	addi.d	$a0, $sp, 112
-	addi.d	$a1, $sp, 104
+	st.d	$a0, $sp, 88
+	addi.d	$a0, $sp, 96
+	addi.d	$a1, $sp, 88
 	pcaddu18i	$ra, %call36(_ZN10BitBoard64aSERKS_)
 	jirl	$ra, $ra, 0
 .LBB16_2:
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
 	addi.d	$a0, $fp, 8
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
@@ -2451,29 +2451,26 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ori	$s5, $zero, 1
-	ori	$s0, $zero, 4
+	ori	$fp, $zero, 4
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.4)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	addi.w	$a0, $zero, -9
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s7, $zero, 10
+	ori	$s1, $zero, 10
 	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.8)
-	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.7)
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.6)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
-	ori	$s1, $zero, 4
-	ori	$s4, $zero, 1
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	ori	$s0, $zero, 4
+	ori	$s7, $zero, 1
 	b	.LBB16_4
 	.p2align	4, , 16
 .LBB16_3:                               #   in Loop: Header=BB16_4 Depth=1
@@ -2483,32 +2480,30 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	addi.w	$s4, $s4, 1
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	addi.w	$s1, $s1, -1
-	ori	$s0, $zero, 4
-	ori	$s7, $zero, 10
-	beq	$s4, $s7, .LBB16_18
+	addi.w	$s7, $s7, 1
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	addi.w	$s0, $s0, -1
+	ori	$fp, $zero, 4
+	ori	$s1, $zero, 10
+	beq	$s7, $s1, .LBB16_18
 .LBB16_4:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_6 Depth 2
                                         #     Child Loop BB16_10 Depth 2
 	move	$a0, $s2
-	move	$a1, $s4
+	move	$a1, $s7
 	pcaddu18i	$ra, %call36(_ZNSolsEi)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 2
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	bltu	$s0, $s4, .LBB16_7
+	bltu	$fp, $s7, .LBB16_7
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB16_4 Depth=1
 	ori	$a1, $zero, 1
-	sltu	$a0, $a1, $s1
-	ori	$s5, $zero, 1
+	sltu	$a0, $a1, $s0
 	masknez	$a1, $a1, $a0
-	maskeqz	$a0, $s1, $a0
+	maskeqz	$a0, $s0, $a0
 	or	$fp, $a0, $a1
 	.p2align	4, , 16
 .LBB16_6:                               # %.lr.ph
@@ -2524,15 +2519,16 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	bnez	$fp, .LBB16_6
 .LBB16_7:                               # %.loopexit
                                         #   in Loop: Header=BB16_4 Depth=1
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	move	$t0, $s4
-	sltu	$s4, $s0, $s4
-	addi.w	$s6, $t0, 4
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	ori	$a0, $zero, 4
+	sltu	$s0, $a0, $s7
+	addi.w	$s5, $s7, 4
 	ori	$a0, $zero, 5
-	sltu	$a0, $a0, $t0
-	addi.w	$fp, $t0, -5
-	alsl.d	$a1, $t0, $t0, 3
-	sltu	$a2, $s5, $t0
+	sltu	$a0, $a0, $s7
+	addi.w	$s4, $s7, -5
+	alsl.d	$a1, $s7, $s7, 3
+	ori	$a2, $zero, 1
+	sltu	$a2, $a2, $s7
 	addi.d	$a3, $zero, -10
 	masknez	$a3, $a3, $a2
 	addi.d	$a4, $zero, -14
@@ -2540,15 +2536,15 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	or	$a2, $a2, $a3
 	add.d	$a1, $a2, $a1
 	ori	$a2, $zero, 2
-	sltu	$a2, $a2, $t0
+	sltu	$a2, $a2, $s7
 	addi.d	$a3, $a1, -3
 	ori	$a4, $zero, 3
-	sltu	$a4, $a4, $t0
-	add.d	$a0, $s4, $a0
+	sltu	$a4, $a4, $s7
+	add.d	$a0, $s0, $a0
 	ori	$a7, $zero, 6
-	sltu	$a5, $a7, $t0
+	sltu	$a5, $a7, $s7
 	ori	$a6, $zero, 7
-	sltu	$a6, $a6, $t0
+	sltu	$a6, $a6, $s7
 	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $a3, $a2
 	or	$a1, $a2, $a1
@@ -2563,16 +2559,14 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	masknez	$a0, $a0, $a6
 	maskeqz	$a2, $a3, $a6
 	or	$a0, $a2, $a0
-	add.d	$a0, $a1, $a0
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
-	sltui	$s1, $t0, 6
-	st.d	$t0, $sp, 40                    # 8-byte Folded Spill
-	addi.d	$a0, $t0, -9
+	add.d	$s6, $a1, $a0
+	sltui	$fp, $s7, 6
+	addi.d	$a0, $s7, -9
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s7, $a0
+	masknez	$a1, $s1, $a0
 	maskeqz	$a0, $a7, $a0
-	or	$s0, $a0, $a1
-	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
+	or	$s3, $a0, $a1
+	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB16_10
 	.p2align	4, , 16
 .LBB16_8:                               # %_Z16getHexxagonIndexii.exit.thread
@@ -2584,37 +2578,36 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 .LBB16_9:                               #   in Loop: Header=BB16_10 Depth=2
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s7, 31, 0
-	addi.d	$s7, $a0, 1
-	and	$a0, $s7, $s3
-	bnez	$a0, .LBB16_3
+	bstrpick.d	$a0, $s1, 31, 0
+	addi.d	$s1, $a0, 1
+	slli.d	$a0, $s1, 31
+	bltz	$a0, .LBB16_3
 .LBB16_10:                              #   Parent Loop BB16_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.w	$a0, $s7, 10
-	sltu	$a1, $s6, $a0
+	addi.w	$a0, $s1, 10
+	sltu	$a1, $s5, $a0
 	xori	$a1, $a1, 1
-	or	$a1, $s4, $a1
-	bne	$a1, $s5, .LBB16_8
+	or	$a1, $s0, $a1
+	beqz	$a1, .LBB16_8
 # %bb.11:                               #   in Loop: Header=BB16_10 Depth=2
-	sltu	$a0, $fp, $a0
-	or	$a0, $s1, $a0
+	sltu	$a0, $s4, $a0
+	or	$a0, $fp, $a0
 	beqz	$a0, .LBB16_8
 # %bb.12:                               # %_Z16getHexxagonIndexii.exit
                                         #   in Loop: Header=BB16_10 Depth=2
-	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	add.d	$a0, $a0, $s7
-	add.w	$s8, $a0, $s0
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	add.d	$a0, $s6, $s1
+	add.w	$s8, $a0, $s3
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	beq	$s8, $a0, .LBB16_8
 # %bb.13:                               #   in Loop: Header=BB16_10 Depth=2
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(_ZN10BitBoard646getBitEi)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB16_16
 # %bb.14:                               # %_Z16getHexxagonIndexii.exit43
                                         #   in Loop: Header=BB16_10 Depth=2
-	addi.d	$a0, $sp, 112
+	addi.d	$a0, $sp, 96
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(_ZN10BitBoard646getBitEi)
 	jirl	$ra, $ra, 0
@@ -2622,16 +2615,16 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	beqz	$a0, .LBB16_17
 # %bb.15:                               #   in Loop: Header=BB16_10 Depth=2
 	move	$a0, $s2
-	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	b	.LBB16_9
 .LBB16_16:                              #   in Loop: Header=BB16_10 Depth=2
 	ori	$a2, $zero, 2
 	move	$a0, $s2
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB16_9
 .LBB16_17:                              #   in Loop: Header=BB16_10 Depth=2
 	move	$a0, $s2
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB16_9
 .LBB16_18:
 	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
@@ -2640,7 +2633,7 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	move	$s2, $zero
 	move	$s4, $zero
 	ori	$fp, $zero, 61
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB16_21
 	.p2align	4, , 16
@@ -2666,7 +2659,7 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	move	$s2, $zero
 	move	$s4, $zero
 	ori	$fp, $zero, 61
-	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB16_25
 	.p2align	4, , 16
@@ -2924,18 +2917,18 @@ _ZN13HexxagonBoard16displayBoardTextEi: # @_ZN13HexxagonBoard16displayBoardTextE
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
-	ld.d	$s8, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 200                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 208
+	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 192
 	ret
 .Lfunc_end16:
 	.size	_ZN13HexxagonBoard16displayBoardTextEi, .Lfunc_end16-_ZN13HexxagonBoard16displayBoardTextEi

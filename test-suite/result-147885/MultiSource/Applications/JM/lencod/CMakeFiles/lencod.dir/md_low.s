@@ -127,7 +127,7 @@ encode_one_macroblock_low:              # @encode_one_macroblock_low
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(store_coding_state)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $fp, 15, 0
+	slli.d	$a0, $fp, 48
 	lu12i.w	$s4, 524287
 	move	$s1, $s2
 	st.d	$s3, $sp, 56                    # 8-byte Folded Spill

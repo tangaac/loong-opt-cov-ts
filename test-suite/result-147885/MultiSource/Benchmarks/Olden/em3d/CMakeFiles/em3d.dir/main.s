@@ -100,8 +100,7 @@ main:                                   # @main
 	beqz	$a1, .LBB1_8
 # %bb.1:
 	ld.w	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_8
+	blez	$a0, .LBB1_8
 # %bb.2:                                # %.lr.ph
 	move	$s3, $zero
 	addi.d	$s4, $fp, 8

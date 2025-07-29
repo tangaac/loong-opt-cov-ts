@@ -768,8 +768,7 @@ main:                                   # @main
 	ld.w	$a1, $a0, 12
 	ld.w	$a2, $a0, 0
 	mul.w	$a2, $a2, $a1
-	ori	$s3, $zero, 1
-	blt	$a2, $s3, .LBB0_83
+	blez	$a2, .LBB0_83
 # %bb.81:                               # %.lr.ph230.preheader
 	ld.d	$a1, $a0, 24
 	alsl.d	$a2, $a2, $a1, 2
@@ -1460,8 +1459,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(cube)
 	ld.d	$fp, $a0, %got_pc_lo12(cube)
 	ld.w	$a0, $fp, 8
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB0_151
+	blez	$a0, .LBB0_151
 # %bb.147:                              # %.lr.ph223.preheader
 	move	$s0, $zero
 	.p2align	4, , 16

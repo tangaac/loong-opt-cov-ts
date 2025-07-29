@@ -142,9 +142,8 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $a0
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$s2, $zero, 1
 	addi.w	$s0, $zero, -10
-	blt	$a0, $s2, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.4:
 	pcalau12i	$a0, %pc_hi20(name_FontMatrix)
 	addi.d	$a2, $a0, %pc_lo12(name_FontMatrix)
@@ -153,7 +152,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s2, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(name_FontType)
 	addi.d	$a2, $a0, %pc_lo12(name_FontType)
@@ -162,8 +161,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.6:
 	ld.d	$a0, $sp, 176
 	ld.hu	$a1, $a0, 8
@@ -182,8 +180,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.9:
 	pcalau12i	$a0, %pc_hi20(name_Encoding)
 	addi.d	$a2, $a0, %pc_lo12(name_Encoding)
@@ -192,7 +189,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s2, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.10:
 	ld.d	$a0, $sp, 184
 	addi.d	$a1, $sp, 24
@@ -235,9 +232,8 @@ zdefinefont:                            # @zdefinefont
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
 	addi.w	$s2, $zero, -1
-	ori	$s4, $zero, 1
 	move	$s3, $s2
-	blt	$a0, $s4, .LBB1_20
+	blez	$a0, .LBB1_20
 # %bb.18:
 	ld.d	$a0, $sp, 144
 	ld.hu	$a1, $a0, 8
@@ -256,7 +252,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s4, .LBB1_23
+	blez	$a0, .LBB1_23
 # %bb.21:
 	ld.d	$a0, $sp, 136
 	ld.hu	$a1, $a0, 8
@@ -288,9 +284,9 @@ zdefinefont:                            # @zdefinefont
 	st.h	$a2, $a1, 8
 	st.d	$zero, $a1, 0
 	st.d	$a1, $sp, 152
-	ld.d	$a2, $a3, 0
-	ori	$a1, $zero, 1
-	bne	$a2, $a1, .LBB1_35
+	ld.d	$a1, $a3, 0
+	ori	$a2, $zero, 1
+	bne	$a1, $a2, .LBB1_35
 # %bb.24:
 	bgtz	$a0, .LBB1_43
 # %bb.25:
@@ -301,8 +297,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.26:
 	ld.d	$a0, $sp, 152
 	ld.hu	$a0, $a0, 8
@@ -317,8 +312,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.28:
 	ld.d	$a0, $sp, 208
 	ld.hu	$a1, $a0, 8
@@ -332,8 +326,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $a0
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB1_32
+	blez	$a0, .LBB1_32
 # %bb.30:
 	ld.d	$a0, $sp, 120
 	ld.h	$a0, $a0, 8
@@ -350,7 +343,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $a0
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s1, .LBB1_52
+	blez	$a0, .LBB1_52
 # %bb.33:
 	ld.d	$a0, $sp, 192
 	ld.hu	$a1, $a0, 8
@@ -363,7 +356,7 @@ zdefinefont:                            # @zdefinefont
 	bltu	$a0, $s4, .LBB1_43
 	b	.LBB1_53
 .LBB1_35:
-	blt	$a0, $a1, .LBB1_43
+	blez	$a0, .LBB1_43
 # %bb.36:
 	ld.d	$a0, $sp, 128
 	ld.hu	$a1, $a0, 8
@@ -389,11 +382,10 @@ zdefinefont:                            # @zdefinefont
 	ld.hu	$a2, $fp, 8
 	andi	$a3, $a2, 256
 	move	$a1, $a0
+	move	$a0, $s0
 	bnez	$a3, .LBB1_46
 # %bb.40:
-	ori	$a3, $zero, 1
-	move	$a0, $s0
-	blt	$a1, $a3, .LBB1_44
+	blez	$a1, .LBB1_44
 .LBB1_41:
 	lu12i.w	$a0, 15
 	ori	$a1, $a0, 3839
@@ -433,7 +425,6 @@ zdefinefont:                            # @zdefinefont
 	addi.w	$a0, $zero, -7
 	b	.LBB1_44
 .LBB1_46:
-	move	$a0, $s0
 	bgtz	$a1, .LBB1_44
 # %bb.47:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
@@ -527,8 +518,7 @@ zdefinefont:                            # @zdefinefont
 	move	$a1, $a0
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_57
+	blez	$a0, .LBB1_57
 # %bb.55:
 	ld.d	$a0, $sp, 136
 	ld.hu	$a1, $a0, 8
@@ -946,8 +936,7 @@ zcachestatus:                           # @zcachestatus
 	.type	make_uint_array,@function
 make_uint_array:                        # @make_uint_array
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB10_3
+	blez	$a2, .LBB10_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 20
 	.p2align	4, , 16

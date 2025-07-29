@@ -329,8 +329,7 @@ list_copy:                              # @list_copy
 	alsl.d	$a0, $a0, $a1, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB8_3
+	blez	$s0, .LBB8_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $s0
 	move	$a3, $a0

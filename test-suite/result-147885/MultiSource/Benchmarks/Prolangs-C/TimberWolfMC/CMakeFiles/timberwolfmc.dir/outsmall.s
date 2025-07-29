@@ -75,9 +75,8 @@ outsmall:                               # @outsmall
 	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
 	ld.w	$a1, $a2, 0
 	add.w	$a0, $a1, $a0
-	ori	$a1, $zero, 1
 	st.d	$s7, $fp, %pc_lo12(fpNodes)
-	blt	$a0, $a1, .LBB0_22
+	blez	$a0, .LBB0_22
 # %bb.4:                                # %.lr.ph119.preheader
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
@@ -295,8 +294,7 @@ outsmall:                               # @outsmall
 # %bb.19:                               # %.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	ld.w	$a0, $s2, 132
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.20:                               # %.lr.ph115
                                         #   in Loop: Header=BB0_6 Depth=1
 	move	$fp, $zero

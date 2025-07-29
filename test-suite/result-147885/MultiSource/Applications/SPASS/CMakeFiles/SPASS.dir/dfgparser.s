@@ -22,7 +22,7 @@ dfg_parse:                              # @dfg_parse
 	move	$s3, $zero
 	pcalau12i	$a0, %pc_hi20(dfg_nerrs)
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1872
+	ori	$a1, $a1, 1880
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	st.w	$zero, $a0, %pc_lo12(dfg_nerrs)
@@ -38,7 +38,7 @@ dfg_parse:                              # @dfg_parse
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPEMASK)
 	lu32i.d	$a2, 0
 	lu12i.w	$a3, -1
-	ori	$a3, $a3, 1888
+	ori	$a3, $a3, 1896
 	add.d	$a3, $fp, $a3
 	st.d	$a2, $a3, 0                     # 8-byte Folded Spill
 	st.w	$a2, $s6, %pc_lo12(dfg_char)
@@ -101,7 +101,7 @@ dfg_parse:                              # @dfg_parse
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	addi.d	$s1, $fp, -496
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1880
+	ori	$a0, $a0, 1888
 	add.d	$a0, $fp, $a0
 	st.d	$s6, $a0, 0                     # 8-byte Folded Spill
 	b	.LBB0_3
@@ -249,11 +249,10 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $zero, 35
 	beq	$a2, $a1, .LBB0_310
 # %bb.18:                               #   in Loop: Header=BB0_3 Depth=1
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_20
+	blez	$a0, .LBB0_20
 # %bb.19:                               #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1888
+	ori	$a0, $a0, 1896
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	st.w	$a0, $s6, %pc_lo12(dfg_char)
@@ -524,8 +523,7 @@ dfg_parse:                              # @dfg_parse
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(dfg_Symbol)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_345
+	bgez	$a0, .LBB0_345
 # %bb.64:                               # %symbol_IsPredicate.exit.i643
                                         #   in Loop: Header=BB0_3 Depth=1
 	sub.w	$a1, $zero, $a0
@@ -561,8 +559,7 @@ dfg_parse:                              # @dfg_parse
 	beqz	$a0, .LBB0_340
 # %bb.69:                               # %.split
                                         #   in Loop: Header=BB0_68 Depth=2
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_323
+	bgez	$a0, .LBB0_323
 # %bb.70:                               # %symbol_IsPredicate.exit685
                                         #   in Loop: Header=BB0_68 Depth=2
 	sub.w	$s2, $zero, $a0
@@ -702,7 +699,7 @@ dfg_parse:                              # @dfg_parse
 	move	$a1, $a0
 	st.d	$s6, $a0, 8
 	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1880
+	ori	$a2, $a2, 1888
 	add.d	$a2, $fp, $a2
 	ld.d	$s6, $a2, 0                     # 8-byte Folded Reload
 	st.d	$s3, $a0, 0
@@ -834,7 +831,7 @@ dfg_parse:                              # @dfg_parse
 	st.w	$a0, $a2, 12
 	ld.w	$a0, $s0, -8
 	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1880
+	ori	$a2, $a2, 1888
 	add.d	$a2, $fp, $a2
 	ld.d	$s6, $a2, 0                     # 8-byte Folded Reload
 	beqz	$a0, .LBB0_292
@@ -880,8 +877,7 @@ dfg_parse:                              # @dfg_parse
 	jirl	$ra, $ra, 0
 	bgtz	$a0, .LBB0_289
 # %bb.109:                              #   in Loop: Header=BB0_3 Depth=1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_353
+	bgez	$a0, .LBB0_353
 # %bb.110:                              #   in Loop: Header=BB0_3 Depth=1
 	sub.w	$a1, $zero, $a0
 	lu12i.w	$a2, -1
@@ -1011,21 +1007,20 @@ dfg_parse:                              # @dfg_parse
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(dfg_Symbol)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $s6, .LBB0_343
+	bgez	$s6, .LBB0_343
 # %bb.125:                              # %symbol_IsPredicate.exit.i
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$s2, $a0
 	sub.w	$a0, $zero, $s6
-	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1920
-	add.d	$a2, $fp, $a2
-	ld.d	$a2, $a2, 0                     # 8-byte Folded Reload
-	and	$a0, $a2, $a0
-	ori	$a2, $zero, 2
-	bne	$a0, $a2, .LBB0_343
+	lu12i.w	$a1, -1
+	ori	$a1, $a1, 1920
+	add.d	$a1, $fp, $a1
+	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
+	and	$a0, $a1, $a0
+	ori	$a1, $zero, 2
+	bne	$a0, $a1, .LBB0_343
 # %bb.126:                              #   in Loop: Header=BB0_3 Depth=1
-	blt	$a1, $s2, .LBB0_343
+	bgez	$s2, .LBB0_343
 # %bb.127:                              # %symbol_IsPredicate.exit14.i
                                         #   in Loop: Header=BB0_3 Depth=1
 	sub.w	$a0, $zero, $s2
@@ -1064,7 +1059,7 @@ dfg_parse:                              # @dfg_parse
 	pcaddu18i	$ra, %call36(term_Create)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1896
+	ori	$a1, $a1, 1872
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	move	$a0, $s3
@@ -1095,7 +1090,7 @@ dfg_parse:                              # @dfg_parse
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1896
+	ori	$a0, $a0, 1872
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	st.d	$a0, $a1, 8
@@ -1107,7 +1102,7 @@ dfg_parse:                              # @dfg_parse
 	ld.d	$a1, $a1, %got_pc_lo12(fol_ALL)
 	ld.w	$a1, $a1, 0
 	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1896
+	ori	$a2, $a2, 1872
 	add.d	$a2, $fp, $a2
 	st.d	$a1, $a2, 0                     # 8-byte Folded Spill
 	move	$s6, $a0
@@ -1131,7 +1126,7 @@ dfg_parse:                              # @dfg_parse
 	st.d	$s6, $a0, 8
 	st.d	$zero, $a0, 0
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1896
+	ori	$a0, $a0, 1872
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	move	$a1, $s2
@@ -1430,8 +1425,7 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(dfg_Symbol)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_345
+	bgez	$a0, .LBB0_345
 # %bb.173:                              # %symbol_IsPredicate.exit
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$s2, $a0
@@ -1521,12 +1515,7 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(dfg_Symbol)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1896
-	add.d	$a2, $fp, $a2
-	st.d	$a1, $a2, 0                     # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB0_343
+	bgez	$a0, .LBB0_343
 # %bb.189:                              # %symbol_IsPredicate.exit.i562
                                         #   in Loop: Header=BB0_3 Depth=1
 	sub.w	$a1, $zero, $a0
@@ -1653,8 +1642,7 @@ dfg_parse:                              # @dfg_parse
 	jirl	$ra, $ra, 0
 	bgtz	$a0, .LBB0_210
 # %bb.208:                              #   in Loop: Header=BB0_3 Depth=1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_353
+	bgez	$a0, .LBB0_353
 # %bb.209:                              #   in Loop: Header=BB0_3 Depth=1
 	sub.w	$a1, $zero, $a0
 	lu12i.w	$a2, -1
@@ -1681,8 +1669,7 @@ dfg_parse:                              # @dfg_parse
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(dfg_Symbol)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_345
+	bgez	$a0, .LBB0_345
 # %bb.213:                              # %symbol_IsPredicate.exit.i639
                                         #   in Loop: Header=BB0_3 Depth=1
 	sub.w	$a1, $zero, $a0
@@ -1851,7 +1838,7 @@ dfg_parse:                              # @dfg_parse
 	ld.d	$a0, $s0, -48
 .LBB0_236:                              #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1880
+	ori	$a1, $a1, 1888
 	add.d	$a1, $fp, $a1
 	ld.d	$s6, $a1, 0                     # 8-byte Folded Reload
 	pcalau12i	$a1, %pc_hi20(dfg_VARLIST)
@@ -1909,11 +1896,11 @@ dfg_parse:                              # @dfg_parse
 	ori	$a3, $a3, 512
 	st.w	$a3, $a2, 20
 	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1864
+	ori	$a2, $a2, 1872
 	add.d	$a2, $fp, $a2
 	st.d	$t0, $a2, 0                     # 8-byte Folded Spill
 	lu12i.w	$a2, -1
-	ori	$a2, $a2, 1856
+	ori	$a2, $a2, 1864
 	add.d	$a2, $fp, $a2
 	st.d	$t1, $a2, 0                     # 8-byte Folded Spill
 	beqz	$a1, .LBB0_295
@@ -1923,38 +1910,34 @@ dfg_parse:                              # @dfg_parse
 	ld.w	$a2, $a1, 20
 	ori	$a2, $a2, 256
 	st.w	$a2, $a1, 20
-	move	$s3, $t1
+	move	$s6, $t1
 	beqz	$t1, .LBB0_300
 	.p2align	4, , 16
 .LBB0_243:                              # %.lr.ph.split.i
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s3, 8
+	ld.d	$a0, $s6, 8
 	pcaddu18i	$ra, %call36(symbol_Lookup)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_342
 # %bb.244:                              #   in Loop: Header=BB0_243 Depth=2
 	move	$s2, $a0
-	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1896
-	add.d	$a0, $fp, $a0
-	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
-	blt	$a0, $s2, .LBB0_324
+	bgez	$a0, .LBB0_324
 # %bb.245:                              #   in Loop: Header=BB0_243 Depth=2
-	sub.w	$s6, $zero, $s2
+	sub.w	$s3, $zero, $s2
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1920
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
-	and	$a0, $a0, $s6
+	and	$a0, $a0, $s3
 	ori	$a1, $zero, 2
 	bgeu	$a0, $a1, .LBB0_324
 # %bb.246:                              # %symbol_IsFunction.exit.thread35.i
                                         #   in Loop: Header=BB0_243 Depth=2
-	ld.d	$a0, $s3, 8
+	ld.d	$a0, $s6, 8
 	pcaddu18i	$ra, %call36(string_StringFree)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $s3, 8
+	st.d	$s2, $s6, 8
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1904
 	add.d	$a0, $fp, $a0
@@ -1964,7 +1947,7 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $a1, 1912
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
-	srl.w	$a1, $s6, $a1
+	srl.w	$a1, $s3, $a1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a2, $a0, $a1
 	ld.w	$a3, $a2, 20
@@ -1974,8 +1957,8 @@ dfg_parse:                              # @dfg_parse
 	ld.w	$a2, $a1, 20
 	ori	$a2, $a2, 256
 	st.w	$a2, $a1, 20
-	ld.d	$s3, $s3, 0
-	bnez	$s3, .LBB0_243
+	ld.d	$s6, $s6, 0
+	bnez	$s6, .LBB0_243
 	b	.LBB0_300
 .LBB0_247:                              #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a0, $s0, -16
@@ -2017,7 +2000,7 @@ dfg_parse:                              # @dfg_parse
 .LBB0_257:                              # %list_Nconc.exit683
                                         #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1880
+	ori	$a0, $a0, 1888
 	add.d	$a0, $fp, $a0
 	ld.d	$s6, $a0, 0                     # 8-byte Folded Reload
 	st.d	$s3, $s2, %pc_lo12(dfg_TERMLIST)
@@ -2060,7 +2043,7 @@ dfg_parse:                              # @dfg_parse
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	ld.d	$a0, $s0, -72
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1896
+	ori	$a1, $a1, 1872
 	add.d	$a1, $fp, $a1
 	st.d	$a0, $a1, 0                     # 8-byte Folded Spill
 	ld.d	$s6, $s0, -32
@@ -2075,7 +2058,7 @@ dfg_parse:                              # @dfg_parse
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1896
+	ori	$a0, $a0, 1872
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	st.d	$a0, $s3, 8
@@ -2098,7 +2081,7 @@ dfg_parse:                              # @dfg_parse
 	st.d	$s2, $a0, 8
 	st.d	$s6, $a0, 0
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1880
+	ori	$a1, $a1, 1888
 	add.d	$a1, $fp, $a1
 	ld.d	$s6, $a1, 0                     # 8-byte Folded Reload
 	st.d	$a0, $s3, %pc_lo12(dfg_PROOFLIST)
@@ -2268,38 +2251,34 @@ dfg_parse:                              # @dfg_parse
 	ldx.hu	$s3, $a0, $a2
 	b	.LBB0_2
 .LBB0_295:                              #   in Loop: Header=BB0_3 Depth=1
-	move	$s3, $t1
+	move	$s6, $t1
 	beqz	$t1, .LBB0_300
 	.p2align	4, , 16
 .LBB0_296:                              # %.lr.ph.split.us.i
                                         #   Parent Loop BB0_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s3, 8
+	ld.d	$a0, $s6, 8
 	pcaddu18i	$ra, %call36(symbol_Lookup)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_342
 # %bb.297:                              #   in Loop: Header=BB0_296 Depth=2
 	move	$s2, $a0
-	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1896
-	add.d	$a0, $fp, $a0
-	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
-	blt	$a0, $s2, .LBB0_324
+	bgez	$a0, .LBB0_324
 # %bb.298:                              #   in Loop: Header=BB0_296 Depth=2
-	sub.w	$s6, $zero, $s2
+	sub.w	$s3, $zero, $s2
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1920
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
-	and	$a0, $a0, $s6
+	and	$a0, $a0, $s3
 	ori	$a1, $zero, 1
 	bltu	$a1, $a0, .LBB0_324
 # %bb.299:                              # %symbol_IsFunction.exit.thread35.us.i
                                         #   in Loop: Header=BB0_296 Depth=2
-	ld.d	$a0, $s3, 8
+	ld.d	$a0, $s6, 8
 	pcaddu18i	$ra, %call36(string_StringFree)
 	jirl	$ra, $ra, 0
-	st.d	$s2, $s3, 8
+	st.d	$s2, $s6, 8
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1904
 	add.d	$a0, $fp, $a0
@@ -2309,30 +2288,30 @@ dfg_parse:                              # @dfg_parse
 	ori	$a1, $a1, 1912
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
-	srl.w	$a1, $s6, $a1
+	srl.w	$a1, $s3, $a1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $a0, $a1
 	ld.w	$a2, $a1, 20
 	ori	$a2, $a2, 512
 	st.w	$a2, $a1, 20
-	ld.d	$s3, $s3, 0
-	bnez	$s3, .LBB0_296
+	ld.d	$s6, $s6, 0
+	bnez	$s6, .LBB0_296
 .LBB0_300:                              # %dfg_SymbolGenerated.exit
                                         #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1864
+	ori	$a1, $a1, 1872
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a1
 	lu12i.w	$a1, -1
-	ori	$a1, $a1, 1856
+	ori	$a1, $a1, 1864
 	add.d	$a1, $fp, $a1
 	ld.d	$a1, $a1, 0                     # 8-byte Folded Reload
 	st.d	$a1, $a0, 32
 .LBB0_301:                              # %.loopexit742
                                         #   in Loop: Header=BB0_3 Depth=1
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1880
+	ori	$a0, $a0, 1888
 	add.d	$a0, $fp, $a0
 	ld.d	$s6, $a0, 0                     # 8-byte Folded Reload
 	b	.LBB0_292
@@ -2389,7 +2368,7 @@ dfg_parse:                              # @dfg_parse
 	b	.LBB0_309
 .LBB0_312:
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1872
+	ori	$a0, $a0, 1880
 	add.d	$a0, $fp, $a0
 	ld.d	$a2, $a0, 0                     # 8-byte Folded Reload
 	ld.w	$a0, $a2, %pc_lo12(dfg_nerrs)
@@ -2399,7 +2378,7 @@ dfg_parse:                              # @dfg_parse
 	blt	$s2, $a1, .LBB0_322
 # %bb.313:
 	lu12i.w	$a0, -1
-	ori	$a0, $a0, 1880
+	ori	$a0, $a0, 1888
 	add.d	$a0, $fp, $a0
 	ld.d	$a0, $a0, 0                     # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(dfg_char)
@@ -2619,7 +2598,7 @@ dfg_parse:                              # @dfg_parse
 	pcaddu18i	$ra, %call36(misc_Error)
 	jirl	$ra, $ra, 0
 .LBB0_342:
-	addi.d	$s0, $s3, 8
+	addi.d	$s0, $s6, 8
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
@@ -3074,8 +3053,7 @@ dfg_SymbolDecl:                         # @dfg_SymbolDecl
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPEMASK)
 	ld.w	$s2, $a1, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_31
+	bgez	$a0, .LBB1_31
 # %bb.10:                               # %symbol_IsJunctor.exit
 	sub.w	$a1, $zero, $a0
 	and	$a1, $s2, $a1
@@ -3103,8 +3081,7 @@ dfg_SymbolDecl:                         # @dfg_SymbolDecl
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPEMASK)
 	ld.w	$s2, $a1, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_31
+	bgez	$a0, .LBB1_31
 # %bb.15:
 	sub.w	$a1, $zero, $a0
 	and	$a2, $s2, $a1
@@ -3118,8 +3095,7 @@ dfg_SymbolDecl:                         # @dfg_SymbolDecl
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPEMASK)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPEMASK)
 	ld.w	$s2, $a1, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_31
+	bgez	$a0, .LBB1_31
 # %bb.18:                               # %.symbol_IsPredicate.exit_crit_edge
 	sub.w	$a1, $zero, $a0
 .LBB1_19:                               # %symbol_IsPredicate.exit
@@ -3284,18 +3260,17 @@ dfg_SymbolDecl:                         # @dfg_SymbolDecl
 	.type	dfg_CreateQuantifier,@function
 dfg_CreateQuantifier:                   # @dfg_CreateQuantifier
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a2
 	move	$fp, $a0
 	beqz	$a1, .LBB2_20
@@ -3307,7 +3282,6 @@ dfg_CreateQuantifier:                   # @dfg_CreateQuantifier
 	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	move	$s1, $zero
 	move	$s3, $zero
-	ori	$s7, $zero, 1
 	b	.LBB2_5
 	.p2align	4, , 16
 .LBB2_2:                                #   in Loop: Header=BB2_5 Depth=1
@@ -3337,13 +3311,13 @@ dfg_CreateQuantifier:                   # @dfg_CreateQuantifier
                                         #     Child Loop BB2_12 Depth 2
                                         #     Child Loop BB2_17 Depth 2
 	ld.d	$s4, $s2, 8
-	ld.w	$s8, $s4, 0
-	blt	$s8, $s7, .LBB2_10
+	ld.w	$s7, $s4, 0
+	blez	$s7, .LBB2_10
 # %bb.6:                                #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 8
 	st.d	$zero, $a0, 0
 	beqz	$s3, .LBB2_2
 # %bb.7:                                # %.preheader.i.preheader
@@ -3363,11 +3337,11 @@ dfg_CreateQuantifier:                   # @dfg_CreateQuantifier
 .LBB2_10:                               #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a0, $s4, 16
 	ld.d	$a0, $a0, 8
-	ld.w	$s8, $a0, 0
+	ld.w	$s7, $a0, 0
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s8, $a0, 8
+	st.d	$s7, $a0, 8
 	st.d	$zero, $a0, 0
 	beqz	$s3, .LBB2_14
 # %bb.11:                               # %.preheader.i75.preheader
@@ -3573,18 +3547,17 @@ dfg_CreateQuantifier:                   # @dfg_CreateQuantifier
 	st.d	$zero, $a0, 0
 	move	$a0, $fp
 	move	$a1, $s2
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(fol_CreateQuantifier)
 	jr	$t8
 .Lfunc_end2:
@@ -4749,18 +4722,17 @@ dfg_DFGParser:                          # @dfg_DFGParser
 	.type	dfg_CreateClauseFromTerm,@function
 dfg_CreateClauseFromTerm:               # @dfg_CreateClauseFromTerm
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a4, %got_pc_hi20(fol_ALL)
 	ld.d	$a4, $a4, %got_pc_lo12(fol_ALL)
 	ld.w	$a5, $a0, 0
@@ -4792,24 +4764,23 @@ dfg_CreateClauseFromTerm:               # @dfg_CreateClauseFromTerm
 	ld.d	$s4, $a0, %got_pc_lo12(fol_FALSE)
 	pcalau12i	$a0, %got_pc_hi20(fol_TRUE)
 	ld.d	$s5, $a0, %got_pc_lo12(fol_TRUE)
-	addi.w	$s6, $zero, -1
-	ori	$s7, $zero, 2
-	move	$s8, $s1
+	ori	$s6, $zero, 2
+	move	$s7, $s1
 	b	.LBB18_5
 	.p2align	4, , 16
 .LBB18_4:                               # %.thread
                                         #   in Loop: Header=BB18_5 Depth=1
-	ld.d	$s8, $s8, 0
-	beqz	$s8, .LBB18_13
+	ld.d	$s7, $s7, 0
+	beqz	$s7, .LBB18_13
 .LBB18_5:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s8, 8
+	ld.d	$a0, $s7, 8
 	ld.w	$a1, $a0, 0
-	blt	$s6, $a1, .LBB18_10
+	bgez	$a1, .LBB18_10
 # %bb.6:                                # %symbol_IsPredicate.exit
                                         #   in Loop: Header=BB18_5 Depth=1
 	sub.w	$a2, $zero, $a1
 	and	$a2, $s3, $a2
-	bne	$a2, $s7, .LBB18_10
+	bne	$a2, $s6, .LBB18_10
 # %bb.7:                                #   in Loop: Header=BB18_5 Depth=1
 	ld.w	$a2, $s5, 0
 	beq	$a2, $a1, .LBB18_16
@@ -4819,7 +4790,7 @@ dfg_CreateClauseFromTerm:               # @dfg_CreateClauseFromTerm
 # %bb.9:                                #   in Loop: Header=BB18_5 Depth=1
 	pcaddu18i	$ra, %call36(term_Delete)
 	jirl	$ra, $ra, 0
-	st.d	$zero, $s8, 8
+	st.d	$zero, $s7, 8
 	b	.LBB18_4
 	.p2align	4, , 16
 .LBB18_10:                              # %symbol_IsPredicate.exit.thread
@@ -4884,18 +4855,17 @@ dfg_CreateClauseFromTerm:               # @dfg_CreateClauseFromTerm
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 .LBB18_17:                              # %list_Delete.exit
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end18:
 	.size	dfg_CreateClauseFromTerm, .Lfunc_end18-dfg_CreateClauseFromTerm

@@ -19,8 +19,7 @@ interv:                                 # @interv
 # %bb.1:
 	bge	$a1, $a2, .LBB0_4
 .LBB0_2:
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB0_7
+	blez	$fp, .LBB0_7
 # %bb.3:
 	addi.w	$a0, $fp, -1
 	move	$s0, $a1
@@ -145,9 +144,8 @@ interh:                                 # @interh
 # %bb.6:
 	bge	$fp, $a0, .LBB1_10
 .LBB1_7:
-	ori	$s2, $zero, 1
 	move	$s1, $a1
-	blt	$a1, $s2, .LBB1_11
+	blez	$a1, .LBB1_11
 # %bb.8:
 	addi.w	$a1, $a1, -1
 	move	$a0, $fp
@@ -155,7 +153,7 @@ interh:                                 # @interh
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
 	move	$s0, $a0
-	bge	$fp, $s2, .LBB1_12
+	bgtz	$fp, .LBB1_12
 	b	.LBB1_22
 .LBB1_9:                                # %._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(nlin)
@@ -167,7 +165,7 @@ interh:                                 # @interh
 	b	.LBB1_38
 .LBB1_11:
 	move	$s0, $zero
-	blt	$fp, $s2, .LBB1_22
+	blez	$fp, .LBB1_22
 .LBB1_12:
 	ori	$a0, $zero, 1
 	blt	$a0, $s0, .LBB1_22
@@ -194,10 +192,9 @@ interh:                                 # @interh
 	pcaddu18i	$ra, %call36(allh)
 	jirl	$ra, $ra, 0
 	sltui	$a1, $a0, 1
-	ori	$a2, $zero, 1
 	maskeqz	$s0, $s0, $a1
 	move	$a1, $s1
-	blt	$s1, $a2, .LBB1_22
+	blez	$s1, .LBB1_22
 # %bb.17:                               # %up1.exit
 	beqz	$a0, .LBB1_22
 # %bb.18:                               # %.preheader61.preheader
@@ -226,9 +223,9 @@ interh:                                 # @interh
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(thish)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB1_33
+	blez	$fp, .LBB1_33
 # %bb.23:
+	ori	$a1, $zero, 1
 	blt	$a1, $a0, .LBB1_33
 # %bb.24:                               # %.preheader60.preheader
 	pcalau12i	$a0, %got_pc_hi20(instead)
@@ -252,8 +249,7 @@ interh:                                 # @interh
 .LBB1_27:                               # %up1.exit54
 	pcaddu18i	$ra, %call36(allh)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
-	blt	$s1, $a2, .LBB1_36
+	blez	$s1, .LBB1_36
 # %bb.28:                               # %up1.exit54
 	beqz	$a0, .LBB1_36
 # %bb.29:                               # %.preheader.preheader

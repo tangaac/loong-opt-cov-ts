@@ -5,12 +5,11 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB0_5
+	blez	$a1, .LBB0_5
 # %bb.1:                                # %.lr.ph22
 	move	$a3, $a0
 	move	$a0, $zero
-	blt	$a3, $a4, .LBB0_4
+	blez	$a3, .LBB0_4
 # %bb.2:                                # %.lr.ph22
 	beqz	$a2, .LBB0_4
 # %bb.3:                                # %.lr.ph22.split.us.split

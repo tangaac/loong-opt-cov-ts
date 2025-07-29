@@ -27,9 +27,8 @@ map:                                    # @map
 	pcalau12i	$s8, %pc_hi20(map.hostz)
 	pcalau12i	$a0, %pc_hi20(map.hostbuf)
 	addi.d	$s6, $a0, %pc_lo12(map.hostbuf)
-	ori	$a0, $zero, 1
 	st.d	$s6, $s8, %pc_lo12(map.hostz)
-	blt	$s4, $a0, .LBB0_6
+	blez	$s4, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a5
 	move	$s0, $a4

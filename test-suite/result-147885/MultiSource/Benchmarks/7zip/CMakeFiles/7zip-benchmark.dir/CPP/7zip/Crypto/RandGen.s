@@ -174,8 +174,7 @@ _ZN16CRandomGenerator8GenerateEPhj:     # @_ZN16CRandomGenerator8GenerateEPhj
 	pcaddu18i	$ra, %call36(pthread_mutex_lock)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 20
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB2_2
+	beqz	$a0, .LBB2_2
 # %bb.1:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN16CRandomGenerator4InitEv)

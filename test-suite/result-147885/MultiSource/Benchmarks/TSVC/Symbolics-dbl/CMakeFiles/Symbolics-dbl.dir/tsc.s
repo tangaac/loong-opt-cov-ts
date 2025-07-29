@@ -18405,8 +18405,7 @@ s171:                                   # @s171
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_8
+	blez	$a0, .LBB6_8
 # %bb.1:                                # %.preheader.preheader
 	move	$fp, $zero
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
@@ -18577,8 +18576,7 @@ s172:                                   # @s172
 	jirl	$ra, $ra, 0
 	pcalau12i	$a2, %pc_hi20(ntimes)
 	ld.w	$a0, $a2, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_8
+	blez	$a0, .LBB7_8
 # %bb.1:                                # %.lr.ph18
 	lu12i.w	$a1, 7
 	ori	$a0, $a1, 3329
@@ -18766,8 +18764,7 @@ s173:                                   # @s173
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_5
+	blez	$a0, .LBB8_5
 # %bb.1:                                # %vector.ph.preheader
 	move	$s8, $zero
 	pcalau12i	$a0, %pc_hi20(global_data)
@@ -18912,12 +18909,11 @@ s174:                                   # @s174
 	addi.d	$a0, $a0, %pc_lo12(.L.str.28)
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
-	pcalau12i	$a2, %pc_hi20(ntimes)
-	ld.w	$a0, $a2, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_13
+	pcalau12i	$a1, %pc_hi20(ntimes)
+	ld.w	$a0, $a1, %pc_lo12(ntimes)
+	blez	$a0, .LBB9_13
 # %bb.1:                                # %.preheader.lr.ph
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	blez	$s3, .LBB9_11
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s8, $zero
@@ -19154,8 +19150,7 @@ s175:                                   # @s175
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_5
+	blez	$a0, .LBB10_5
 # %bb.1:                                # %.preheader.preheader
 	move	$s8, $zero
 	slli.d	$s1, $fp, 3

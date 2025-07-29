@@ -53,8 +53,7 @@ zsetscreen:                             # @zsetscreen
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(gs_screen_init)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_11
+	bltz	$a0, .LBB0_11
 # %bb.6:
 	pcalau12i	$a0, %got_pc_hi20(esp)
 	ld.d	$s2, $a0, %got_pc_lo12(esp)

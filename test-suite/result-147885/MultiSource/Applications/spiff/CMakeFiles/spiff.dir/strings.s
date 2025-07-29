@@ -111,14 +111,13 @@ S_skipspace:                            # @S_skipspace
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
 	addi.d	$a1, $s1, 1
-	lu12i.w	$a2, 2
 	.p2align	4, , 16
 .LBB2_2:                                # =>This Inner Loop Header: Depth=1
-	ext.w.b	$a3, $s0
-	slli.d	$a3, $a3, 1
-	ldx.hu	$a3, $a0, $a3
-	and	$a3, $a3, $a2
-	beqz	$a3, .LBB2_4
+	ext.w.b	$a2, $s0
+	slli.d	$a2, $a2, 1
+	ldx.hu	$a2, $a0, $a2
+	slli.d	$a2, $a2, 50
+	bgez	$a2, .LBB2_4
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
 	st.d	$a1, $fp, 0
 	ld.bu	$s0, $a1, 0
@@ -172,14 +171,13 @@ S_nextword:                             # @S_nextword
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	lu12i.w	$a1, 2
 	.p2align	4, , 16
 .LBB3_5:                                # =>This Inner Loop Header: Depth=1
-	ext.w.b	$a2, $s1
-	slli.d	$a2, $a2, 1
-	ldx.hu	$a2, $a0, $a2
-	and	$a2, $a2, $a1
-	beqz	$a2, .LBB3_7
+	ext.w.b	$a1, $s1
+	slli.d	$a1, $a1, 1
+	ldx.hu	$a1, $a0, $a1
+	slli.d	$a1, $a1, 50
+	bgez	$a1, .LBB3_7
 # %bb.6:                                #   in Loop: Header=BB3_5 Depth=1
 	st.d	$s0, $fp, 0
 	ld.bu	$s1, $s0, 0

@@ -406,12 +406,10 @@ NodeList_insertFront:                   # @NodeList_insertFront
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 16
-	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	sltu	$a1, $zero, $fp
@@ -419,7 +417,7 @@ NodeList_insertFront:                   # @NodeList_insertFront
 	and	$a1, $a1, $a2
 	sltu	$a2, $zero, $a0
 	and	$a1, $a1, $a2
-	bne	$a1, $s1, .LBB10_2
+	beqz	$a1, .LBB10_2
 # %bb.1:
 	vld	$vr0, $fp, 0
 	vst	$vr0, $a0, 0
@@ -427,7 +425,6 @@ NodeList_insertFront:                   # @NodeList_insertFront
 	st.d	$a0, $fp, 8
 .LBB10_2:
 	move	$a0, $a1
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

@@ -230,8 +230,7 @@ _ZN2kc5leaveEi:                         # @_ZN2kc5leaveEi
 	bnez	$a0, .LBB2_15
 # %bb.7:
 	ld.bu	$a0, $s1, %pc_lo12(g_options+65)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB2_13
+	beqz	$a0, .LBB2_13
 # %bb.8:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -311,8 +310,7 @@ _ZN2kc5leaveEi:                         # @_ZN2kc5leaveEi
 	bnez	$a0, .LBB2_24
 # %bb.16:
 	ld.bu	$a0, $s1, %pc_lo12(g_options+65)
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB2_22
+	beqz	$a0, .LBB2_22
 # %bb.17:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -386,14 +384,14 @@ _ZN2kc5leaveEi:                         # @_ZN2kc5leaveEi
 .LBB2_24:                               # %_ZN2kcL7cleanupEv.exit
 	pcalau12i	$a0, %got_pc_hi20(gp_no_fatal_problems)
 	ld.d	$a0, $a0, %got_pc_lo12(gp_no_fatal_problems)
-	ld.bu	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	bne	$a1, $a0, .LBB2_26
+	ld.bu	$a0, $a0, 0
+	beqz	$a0, .LBB2_26
 # %bb.25:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
 .LBB2_26:
+	ori	$a0, $zero, 1
 	sltu	$a1, $a0, $fp
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $fp, $a1
@@ -528,17 +526,17 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(pg_storageclasseshavebeendefined)
 	ld.d	$a0, $a0, %got_pc_lo12(pg_storageclasseshavebeendefined)
 	pcalau12i	$a1, %got_pc_hi20(pg_lineno)
-	ld.d	$a3, $a1, %got_pc_lo12(pg_lineno)
+	ld.d	$a2, $a1, %got_pc_lo12(pg_lineno)
 	pcalau12i	$a1, %got_pc_hi20(pg_column)
-	ld.d	$a2, $a1, %got_pc_lo12(pg_column)
+	ld.d	$a3, $a1, %got_pc_lo12(pg_column)
 	pcalau12i	$a1, %got_pc_hi20(pg_charpos)
 	ld.d	$a1, $a1, %got_pc_lo12(pg_charpos)
 	st.b	$zero, $a0, 0
-	st.d	$a3, $sp, 120                   # 8-byte Folded Spill
-	st.w	$zero, $a3, 0
 	st.d	$a2, $sp, 136                   # 8-byte Folded Spill
 	st.w	$zero, $a2, 0
-	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
+	st.w	$zero, $a3, 0
+	st.d	$a1, $sp, 120                   # 8-byte Folded Spill
 	st.w	$zero, $a1, 0
 	ld.d	$fp, $s1, 0
 	ori	$a1, $zero, 47
@@ -641,7 +639,7 @@ main:                                   # @main
 	ld.bu	$a1, $a0, 64
 	ori	$a2, $zero, 1
 	st.b	$a2, $a0, 65
-	bne	$a1, $a2, .LBB4_3
+	beqz	$a1, .LBB4_3
 # %bb.9:                                #   in Loop: Header=BB4_3 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
@@ -1116,7 +1114,7 @@ main:                                   # @main
 	ld.bu	$a1, $a0, 65
 	ori	$a2, $zero, 1
 	st.b	$a2, $a0, 64
-	bne	$a1, $a2, .LBB4_3
+	beqz	$a1, .LBB4_3
 # %bb.67:                               #   in Loop: Header=BB4_3 Depth=1
 	pcaddu18i	$ra, %call36(_ZN2kc10NoFileLineEv)
 	jirl	$ra, $ra, 0
@@ -1407,8 +1405,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(g_options)
 	addi.d	$s8, $a0, %pc_lo12(g_options)
 	ld.bu	$a0, $s8, 66
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_109
+	beqz	$a0, .LBB4_109
 # %bb.108:
 	ld.b	$a0, $s8, 69
 	andi	$a0, $a0, 1
@@ -2335,11 +2332,11 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .LBB4_222:
 	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
-	st.w	$zero, $a0, 0
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
+	st.w	$zero, $a0, 0
+	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	st.w	$zero, $a0, 0
 .LBB4_223:                              # %_ZN2kcL11processargsEiPPc.exit
 	pcalau12i	$a0, %pc_hi20(cleanup_and_die)
@@ -2385,13 +2382,13 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.w	$s0, $a1, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	st.w	$zero, $a1, 0
+	st.w	$s0, $a1, 0
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	st.w	$zero, $a1, 0
-	bne	$a0, $s0, .LBB4_225
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	st.w	$zero, $a1, 0
+	beqz	$a0, .LBB4_225
 # %bb.224:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cout)
@@ -3211,7 +3208,7 @@ main:                                   # @main
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
 	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
-	bne	$a0, $s0, .LBB4_229
+	beqz	$a0, .LBB4_229
 # %bb.228:                              # %_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc.exit.i
                                         #   in Loop: Header=BB4_227 Depth=1
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
@@ -3330,11 +3327,11 @@ main:                                   # @main
 	ld.d	$s4, $a1, %got_pc_lo12(yyin)
 	st.d	$a0, $a2, 0
 	ld.d	$a0, $s4, 0
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.w	$s0, $a1, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
-	st.w	$zero, $a1, 0
+	st.w	$s0, $a1, 0
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	st.w	$zero, $a1, 0
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	st.w	$zero, $a1, 0
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
@@ -3383,8 +3380,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(_ZL13no_inputfiles)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_244
+	blez	$a0, .LBB4_244
 # %bb.243:
 	pcalau12i	$a0, %got_pc_hi20(yyin)
 	ld.d	$a0, $a0, %got_pc_lo12(yyin)
@@ -3408,17 +3404,16 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZSt16__ostream_insertIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_PKS3_l)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 65
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.w	$zero, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(Thebindingidmarks)
 	ld.d	$a1, $a1, %got_pc_lo12(Thebindingidmarks)
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	st.w	$zero, $a2, 0
 	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	st.w	$zero, $a2, 0
-	ori	$a2, $zero, 1
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
+	st.w	$zero, $a2, 0
 	st.d	$zero, $a1, 0
-	bne	$a0, $a2, .LBB4_249
+	beqz	$a0, .LBB4_249
 # %bb.247:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -3431,11 +3426,11 @@ main:                                   # @main
 .LBB4_248:                              # %.thread
 	pcalau12i	$a0, %got_pc_hi20(Thebindingidmarks)
 	ld.d	$a0, $a0, %got_pc_lo12(Thebindingidmarks)
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
-	st.w	$zero, $a1, 0
 	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	st.w	$zero, $a1, 0
 	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	st.w	$zero, $a1, 0
+	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
 	st.w	$zero, $a1, 0
 	st.d	$zero, $a0, 0
 .LBB4_249:
@@ -3843,8 +3838,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(pg_languageshavebeendefined)
 	ld.d	$s7, $a0, %got_pc_lo12(pg_languageshavebeendefined)
 	ld.bu	$a0, $s7, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_292
+	beqz	$a0, .LBB4_292
 # %bb.291:
 	pcaddu18i	$ra, %call36(_ZN2kc15collect_stringsEv)
 	jirl	$ra, $ra, 0
@@ -3875,8 +3869,7 @@ main:                                   # @main
 	st.d	$a0, $s0, 0
 .LBB4_295:
 	ld.bu	$a0, $fp, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_297
+	beqz	$a0, .LBB4_297
 # %bb.296:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s2, $a0, %got_pc_lo12(_ZSt4cout)
@@ -4179,8 +4172,7 @@ main:                                   # @main
 .LBB4_349:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit253
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_352
+	bnez	$a0, .LBB4_352
 	b	.LBB4_372
 .LBB4_350:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i248
 	ld.d	$a1, $sp, 440
@@ -4197,8 +4189,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_372
+	beqz	$a0, .LBB4_372
 .LBB4_352:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s2, $a0, 184
@@ -4915,8 +4906,7 @@ main:                                   # @main
 .LBB4_410:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit329
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_413
+	bnez	$a0, .LBB4_413
 	b	.LBB4_420
 .LBB4_411:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i324
 	ld.d	$a1, $sp, 440
@@ -4933,8 +4923,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_420
+	beqz	$a0, .LBB4_420
 .LBB4_413:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
@@ -5249,10 +5238,10 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 .Ltmp186:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
-	addi.d	$s0, $a0, 216
+	addi.d	$fp, $a0, 216
 	addi.d	$a0, $sp, 424
 	addi.d	$a1, $sp, 392
-	move	$a2, $s0
+	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_RKS8_)
 	jirl	$ra, $ra, 0
 .Ltmp187:
@@ -5279,8 +5268,7 @@ main:                                   # @main
 .LBB4_443:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit398
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_446
+	bnez	$a0, .LBB4_446
 	b	.LBB4_453
 .LBB4_444:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i393
 	ld.d	$a1, $sp, 440
@@ -5297,8 +5285,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_453
+	beqz	$a0, .LBB4_453
 .LBB4_446:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
@@ -5379,17 +5366,17 @@ main:                                   # @main
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc17view_gen_includesE)
-	ld.d	$s6, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
+	ld.d	$s0, $a1, %got_pc_lo12(_ZN2kc17view_gen_includesE)
 	move	$a1, $s4
-	move	$a2, $s6
+	move	$a2, $s0
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc19view_open_namespaceE)
-	ld.d	$fp, $a0, %got_pc_lo12(_ZN2kc19view_open_namespaceE)
+	ld.d	$s6, $a0, %got_pc_lo12(_ZN2kc19view_open_namespaceE)
 	move	$a0, $s1
 	move	$a1, $s4
-	move	$a2, $fp
+	move	$a2, $s6
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5457,13 +5444,13 @@ main:                                   # @main
 	ld.d	$a1, $a0, 0
 	ld.d	$a3, $a1, 72
 	move	$a1, $s8
-	move	$a2, $s6
+	move	$a2, $s0
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
 	move	$a0, $s1
 	move	$a1, $s8
-	move	$a2, $fp
+	move	$a2, $s6
 	jirl	$ra, $a3, 0
 	ld.d	$a0, $s1, 0
 	ld.d	$a3, $a0, 72
@@ -5480,8 +5467,7 @@ main:                                   # @main
 	move	$a1, $s8
 	jirl	$ra, $a3, 0
 	ld.bu	$a0, $s7, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_455
+	beqz	$a0, .LBB4_455
 # %bb.454:
 	pcaddu18i	$ra, %call36(_ZN2kc25unparse_string_collectionEv)
 	jirl	$ra, $ra, 0
@@ -5550,7 +5536,7 @@ main:                                   # @main
 .Ltmp200:
 	addi.d	$a0, $sp, 424
 	addi.d	$a1, $sp, 392
-	move	$a2, $s0
+	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZStplIcSt11char_traitsIcESaIcEENSt7__cxx1112basic_stringIT_T0_T1_EEOS8_RKS8_)
 	jirl	$ra, $ra, 0
 .Ltmp201:
@@ -5674,8 +5660,7 @@ main:                                   # @main
 .LBB4_478:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit458
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB4_481
+	bnez	$a0, .LBB4_481
 	b	.LBB4_488
 .LBB4_479:                              # %_ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE11_M_is_localEv.exit.i.i453
 	ld.d	$a1, $sp, 440
@@ -5692,8 +5677,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_488
+	beqz	$a0, .LBB4_488
 .LBB4_481:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
@@ -6127,8 +6111,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZN14kc_filePrinter4initEPKcS1_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_513
+	beqz	$a0, .LBB4_513
 # %bb.509:                              #   in Loop: Header=BB4_507 Depth=1
 	ori	$a2, $zero, 1
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
@@ -6490,8 +6473,7 @@ main:                                   # @main
 .LBB4_536:                              # %._crit_edge698
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 71
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_554
+	beqz	$a0, .LBB4_554
 # %bb.537:
 	pcalau12i	$a0, %pc_hi20(.L.str.49)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.49)
@@ -6523,8 +6505,7 @@ main:                                   # @main
 .LBB4_540:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit533
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_548
+	beqz	$a0, .LBB4_548
 # %bb.541:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
@@ -6666,8 +6647,7 @@ main:                                   # @main
 .LBB4_558:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit564
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_566
+	beqz	$a0, .LBB4_566
 # %bb.559:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
@@ -6775,8 +6755,7 @@ main:                                   # @main
 .LBB4_572:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 112
-	ori	$fp, $zero, 1
-	bne	$a0, $fp, .LBB4_590
+	beqz	$a0, .LBB4_590
 # %bb.573:
 	pcalau12i	$a0, %pc_hi20(.L.str.51)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.51)
@@ -6808,8 +6787,7 @@ main:                                   # @main
 .LBB4_576:                              # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED2Ev.exit595
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_584
+	beqz	$a0, .LBB4_584
 # %bb.577:
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
@@ -6915,7 +6893,7 @@ main:                                   # @main
 .LBB4_590:
 	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 65
-	bne	$a0, $fp, .LBB4_592
+	beqz	$a0, .LBB4_592
 # %bb.591:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$a0, $a0, %got_pc_lo12(_ZSt4cout)
@@ -8832,8 +8810,7 @@ _ZN2kcL26compare_and_delete_or_moveEPKcRKNSt7__cxx1112basic_stringIcSt11char_tra
 	jr	$t8
 .LBB10_23:
 	ld.bu	$a0, $a0, 65
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB10_31
+	beqz	$a0, .LBB10_31
 # %bb.24:
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
 	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cout)

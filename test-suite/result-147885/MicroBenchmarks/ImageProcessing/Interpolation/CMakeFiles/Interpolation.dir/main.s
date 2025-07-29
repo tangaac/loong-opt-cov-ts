@@ -107,22 +107,20 @@ main:                                   # @main
 _Z31BENCHMARK_BICUBIC_INTERPOLATIONRN9benchmark5StateE: # @_Z31BENCHMARK_BICUBIC_INTERPOLATIONRN9benchmark5StateE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$s1, $a0
 	ld.d	$a0, $a0, 32
 	ld.w	$s2, $a0, 0
@@ -136,24 +134,18 @@ _Z31BENCHMARK_BICUBIC_INTERPOLATIONRN9benchmark5StateE: # @_Z31BENCHMARK_BICUBIC
 	move	$s0, $a0
 	pcalau12i	$s3, %pc_hi20(inputImage)
 	ld.d	$a2, $s3, %pc_lo12(inputImage)
-	move	$a0, $s2
-	move	$a1, $s2
-	move	$a3, $s0
-	pcaddu18i	$ra, %call36(bicubicKernel)
-	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 1
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a2, $s3, %pc_lo12(inputImage)
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s1, 0
+.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $s2
 	move	$a1, $s2
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(bicubicKernel)
 	jirl	$ra, $ra, 0
-.LBB1_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
 	bgtz	$a0, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
@@ -167,7 +159,7 @@ _Z31BENCHMARK_BICUBIC_INTERPOLATIONRN9benchmark5StateE: # @_Z31BENCHMARK_BICUBIC
 	bnez	$a0, .LBB1_7
 # %bb.6:                                #   in Loop: Header=BB1_3 Depth=1
 	ld.d	$a0, $s1, 0
-	bge	$a0, $s4, .LBB1_2
+	bgtz	$a0, .LBB1_2
 .LBB1_7:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -186,14 +178,13 @@ _Z31BENCHMARK_BICUBIC_INTERPOLATIONRN9benchmark5StateE: # @_Z31BENCHMARK_BICUBIC
 	jirl	$ra, $ra, 0
 .LBB1_9:
 	move	$a0, $s0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .LBB1_10:
@@ -216,22 +207,20 @@ _Z31BENCHMARK_BICUBIC_INTERPOLATIONRN9benchmark5StateE: # @_Z31BENCHMARK_BICUBIC
 _Z32BENCHMARK_BILINEAR_INTERPOLATIONRN9benchmark5StateE: # @_Z32BENCHMARK_BILINEAR_INTERPOLATIONRN9benchmark5StateE
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	.cfi_def_cfa_offset 64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	.cfi_def_cfa_offset 48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
-	.cfi_offset 27, -56
 	move	$s1, $a0
 	ld.d	$a0, $a0, 32
 	ld.w	$s2, $a0, 0
@@ -245,24 +234,18 @@ _Z32BENCHMARK_BILINEAR_INTERPOLATIONRN9benchmark5StateE: # @_Z32BENCHMARK_BILINE
 	move	$s0, $a0
 	pcalau12i	$s3, %pc_hi20(inputImage)
 	ld.d	$a2, $s3, %pc_lo12(inputImage)
-	move	$a0, $s2
-	move	$a1, $s2
-	move	$a3, $s0
-	pcaddu18i	$ra, %call36(bilinearKernel)
-	jirl	$ra, $ra, 0
-	ori	$s4, $zero, 1
 	b	.LBB2_3
 	.p2align	4, , 16
 .LBB2_2:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a2, $s3, %pc_lo12(inputImage)
 	addi.d	$a0, $a0, -1
 	st.d	$a0, $s1, 0
+.LBB2_3:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $s2
 	move	$a1, $s2
 	move	$a3, $s0
 	pcaddu18i	$ra, %call36(bilinearKernel)
 	jirl	$ra, $ra, 0
-.LBB2_3:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s1, 0
 	bgtz	$a0, .LBB2_2
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
@@ -276,7 +259,7 @@ _Z32BENCHMARK_BILINEAR_INTERPOLATIONRN9benchmark5StateE: # @_Z32BENCHMARK_BILINE
 	bnez	$a0, .LBB2_7
 # %bb.6:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a0, $s1, 0
-	bge	$a0, $s4, .LBB2_2
+	bgtz	$a0, .LBB2_2
 .LBB2_7:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9benchmark5State17FinishKeepRunningEv)
@@ -295,14 +278,13 @@ _Z32BENCHMARK_BILINEAR_INTERPOLATIONRN9benchmark5StateE: # @_Z32BENCHMARK_BILINE
 	jirl	$ra, $ra, 0
 .LBB2_9:
 	move	$a0, $s0
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	pcaddu18i	$t8, %call36(free)
 	jr	$t8
 .LBB2_10:

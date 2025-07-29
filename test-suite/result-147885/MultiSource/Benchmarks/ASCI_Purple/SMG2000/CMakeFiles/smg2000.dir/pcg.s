@@ -118,8 +118,7 @@ hypre_PCGDestroy:                       # @hypre_PCGDestroy
 	move	$s0, $a0
 	ld.w	$a0, $a0, 92
 	ld.d	$fp, $s0, 80
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_2
+	blez	$a0, .LBB2_2
 # %bb.1:
 	ld.d	$a1, $fp, 8
 	ld.d	$a0, $s0, 96
@@ -204,8 +203,7 @@ hypre_PCGSetup:                         # @hypre_PCGSetup
 	move	$a3, $s1
 	jirl	$ra, $s6, 0
 	ld.w	$a0, $fp, 92
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_2
+	blez	$a0, .LBB3_2
 # %bb.1:
 	ld.d	$a2, $s4, 0
 	addi.w	$s0, $s5, 1
@@ -334,10 +332,9 @@ hypre_PCGSolve:                         # @hypre_PCGSolve
 	move	$a0, $s2
 	move	$a1, $s2
 	jirl	$ra, $a2, 0
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	fst.d	$fa0, $sp, 24                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB4_8
+	blez	$a0, .LBB4_8
 # %bb.6:
 	fsqrt.d	$fa0, $fa0
 	fcmp.cor.d	$fcc0, $fa0, $fa0
@@ -358,8 +355,7 @@ hypre_PCGSolve:                         # @hypre_PCGSolve
 	move	$a0, $s2
 	move	$a1, $s0
 	jirl	$ra, $a2, 0
-	ori	$s7, $zero, 1
-	blt	$s6, $s7, .LBB4_27
+	blez	$s6, .LBB4_27
 # %bb.9:                                # %.lr.ph
 	fmov.d	$fs3, $fa0
 	fmul.d	$fa0, $fs1, $fs1
@@ -378,6 +374,7 @@ hypre_PCGSolve:                         # @hypre_PCGSolve
 	addi.d	$s5, $s4, 8
 	addi.d	$s3, $s3, 8
 	addi.d	$s4, $a0, -1
+	ori	$s7, $zero, 1
 	ori	$s6, $zero, 2
 	fld.d	$fa0, $sp, 40                   # 8-byte Folded Reload
 	fcmp.cule.d	$fcc0, $fa0, $fs0
@@ -547,9 +544,8 @@ hypre_PCGSolve:                         # @hypre_PCGSolve
 	move	$a0, $s7
 	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
 	jirl	$ra, $a2, 0
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB4_30
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	blez	$a0, .LBB4_30
 # %bb.26:
 	st.d	$zero, $s3, 0
 	st.d	$zero, $s4, 0
@@ -715,9 +711,8 @@ hypre_PCGPrintLogging:                  # @hypre_PCGPrintLogging
 # %bb.0:
 	bnez	$a1, .LBB15_6
 # %bb.1:
-	ld.w	$a2, $a0, 92
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB15_6
+	ld.w	$a1, $a0, 92
+	blez	$a1, .LBB15_6
 # %bb.2:
 	addi.d	$sp, $sp, -64
 	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
@@ -728,7 +723,7 @@ hypre_PCGPrintLogging:                  # @hypre_PCGPrintLogging
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$s2, $a0, 88
-	blt	$s2, $a1, .LBB15_5
+	blez	$s2, .LBB15_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$fp, $zero
 	ld.d	$s3, $a0, 96
@@ -776,8 +771,7 @@ hypre_PCGPrintLogging:                  # @hypre_PCGPrintLogging
 hypre_PCGGetFinalRelativeResidualNorm:  # @hypre_PCGGetFinalRelativeResidualNorm
 # %bb.0:
 	ld.w	$a2, $a0, 92
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB16_2
+	blez	$a2, .LBB16_2
 # %bb.1:
 	ld.w	$a2, $a0, 88
 	ld.d	$a0, $a0, 104

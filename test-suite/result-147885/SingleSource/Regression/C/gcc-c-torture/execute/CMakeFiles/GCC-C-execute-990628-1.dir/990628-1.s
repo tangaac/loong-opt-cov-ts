@@ -49,7 +49,6 @@ load_data:                              # @load_data
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	ori	$a0, $zero, 404
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -75,8 +74,6 @@ load_data:                              # @load_data
 	addi.w	$s1, $a0, -1
 	pcalau12i	$a0, %pc_hi20(data_tmp)
 	addi.d	$fp, $a0, %pc_lo12(data_tmp)
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	move	$a0, $s2
 	.p2align	4, , 16
 .LBB2_2:                                # %.lr.ph
@@ -93,9 +90,9 @@ load_data:                              # @load_data
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s1, $a0, 1
-	and	$a1, $s1, $s3
+	slli.d	$a1, $s1, 31
 	move	$a0, $s2
-	beqz	$a1, .LBB2_2
+	bgez	$a1, .LBB2_2
 # %bb.3:                                # %._crit_edge
 	ori	$a0, $zero, 2
 	st.w	$a0, $s0, %pc_lo12(fetch.fetch_count)
@@ -103,7 +100,6 @@ load_data:                              # @load_data
 	pcalau12i	$a0, %pc_hi20(sqlca)
 	ori	$a1, $zero, 100
 	st.d	$a1, $a0, %pc_lo12(sqlca)
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -119,14 +115,13 @@ load_data:                              # @load_data
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	ori	$a0, $zero, 404
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
@@ -153,13 +148,11 @@ main:                                   # @main
 	addi.w	$s2, $a0, -1
 	pcalau12i	$a0, %pc_hi20(data_tmp)
 	addi.d	$s0, $a0, %pc_lo12(data_tmp)
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
 	move	$a0, $fp
 	.p2align	4, , 16
 .LBB3_2:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$s4, $a0, 404
+	addi.d	$s3, $a0, 404
 	ori	$a2, $zero, 404
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(memcpy)
@@ -171,9 +164,9 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s2, $a0, 1
-	and	$a1, $s2, $s3
-	move	$a0, $s4
-	beqz	$a1, .LBB3_2
+	slli.d	$a1, $s2, 31
+	move	$a0, $s3
+	bgez	$a1, .LBB3_2
 # %bb.3:                                # %load_data.exit
 	ori	$a0, $zero, 2
 	st.w	$a0, $s1, %pc_lo12(fetch.fetch_count)

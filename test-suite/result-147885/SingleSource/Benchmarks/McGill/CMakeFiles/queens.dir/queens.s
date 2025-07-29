@@ -427,8 +427,7 @@ find:                                   # @find
 	move	$fp, $a0
 	pcalau12i	$s1, %pc_hi20(files)
 	ld.w	$a0, $s1, %pc_lo12(files)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_12
+	blez	$a0, .LBB1_12
 # %bb.6:                                # %.lr.ph
 	move	$s2, $zero
 	add.d	$a1, $fp, $a0
@@ -497,18 +496,17 @@ find:                                   # @find
 	.type	pboard,@function
 pboard:                                 # @pboard
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(findall)
 	ld.w	$a0, $a0, %pc_lo12(findall)
 	beqz	$a0, .LBB2_2
@@ -522,73 +520,71 @@ pboard:                                 # @pboard
 .LBB2_2:
 	pcalau12i	$fp, %pc_hi20(ranks)
 	ld.w	$a0, $fp, %pc_lo12(ranks)
-	ori	$s0, $zero, 1
-	blt	$a0, $s0, .LBB2_8
+	blez	$a0, .LBB2_8
 # %bb.3:                                # %.preheader.preheader
-	move	$s1, $zero
-	pcalau12i	$s2, %pc_hi20(files)
+	move	$s0, $zero
+	pcalau12i	$s1, %pc_hi20(files)
 	pcalau12i	$a0, %pc_hi20(queen)
 	pcalau12i	$a1, %got_pc_hi20(stdout)
-	ld.d	$s3, $a1, %got_pc_lo12(stdout)
-	addi.d	$s4, $a0, %pc_lo12(queen)
-	ori	$s5, $zero, 45
-	ori	$s6, $zero, 81
+	ld.d	$s2, $a1, %got_pc_lo12(stdout)
+	addi.d	$s3, $a0, %pc_lo12(queen)
+	ori	$s4, $zero, 45
+	ori	$s5, $zero, 81
 	b	.LBB2_5
 	.p2align	4, , 16
 .LBB2_4:                                # %._crit_edge
                                         #   in Loop: Header=BB2_5 Depth=1
-	ld.d	$a1, $s3, 0
+	ld.d	$a1, $s2, 0
 	ori	$a0, $zero, 10
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, %pc_lo12(ranks)
-	addi.d	$s1, $s1, 1
-	bge	$s1, $a0, .LBB2_8
+	addi.d	$s0, $s0, 1
+	bge	$s0, $a0, .LBB2_8
 .LBB2_5:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_7 Depth 2
-	ld.w	$a0, $s2, %pc_lo12(files)
-	blt	$a0, $s0, .LBB2_4
+	ld.w	$a0, $s1, %pc_lo12(files)
+	blez	$a0, .LBB2_4
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB2_5 Depth=1
-	move	$s7, $zero
-	alsl.d	$s8, $s1, $s4, 2
+	move	$s6, $zero
+	alsl.d	$s7, $s0, $s3, 2
 	.p2align	4, , 16
 .LBB2_7:                                #   Parent Loop BB2_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s3, 0
+	ld.d	$a1, $s2, 0
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s8, 0
-	xor	$a0, $s7, $a0
+	ld.w	$a0, $s7, 0
+	xor	$a0, $s6, $a0
 	sltui	$a0, $a0, 1
-	ld.d	$a1, $s3, 0
-	masknez	$a2, $s5, $a0
-	maskeqz	$a0, $s6, $a0
+	ld.d	$a1, $s2, 0
+	masknez	$a2, $s4, $a0
+	maskeqz	$a0, $s5, $a0
 	or	$a0, $a0, $a2
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s2, %pc_lo12(files)
-	addi.w	$s7, $s7, 1
-	blt	$s7, $a0, .LBB2_7
+	ld.w	$a0, $s1, %pc_lo12(files)
+	addi.w	$s6, $s6, 1
+	blt	$s6, $a0, .LBB2_7
 	b	.LBB2_4
 .LBB2_8:                                # %._crit_edge9
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	pcaddu18i	$t8, %call36(fflush)
 	jr	$t8
 .Lfunc_end2:

@@ -244,7 +244,7 @@ cdiff_apply:                            # @cdiff_apply
 	ld.w	$a0, $sp, 56
 	add.d	$a0, $a0, $s1
 	addi.w	$a0, $a0, -350
-	bge	$s2, $a0, .LBB0_39
+	bltz	$a0, .LBB0_39
 # %bb.29:
 	move	$a0, $s0
 	move	$a1, $zero
@@ -264,8 +264,8 @@ cdiff_apply:                            # @cdiff_apply
 	move	$s1, $zero
 	move	$s4, $zero
 	addi.d	$s5, $sp, 144
-	ori	$s6, $zero, 1
-	ori	$s7, $zero, 58
+	ori	$s6, $zero, 58
+	ori	$s7, $zero, 3
 	lu12i.w	$a0, 1
 	ori	$s8, $a0, 4095
 	b	.LBB0_33
@@ -280,14 +280,13 @@ cdiff_apply:                            # @cdiff_apply
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s6, .LBB0_41
+	blez	$a0, .LBB0_41
 # %bb.34:                               #   in Loop: Header=BB0_33 Depth=1
 	ldx.bu	$a0, $s3, $s5
-	bne	$a0, $s7, .LBB0_32
+	bne	$a0, $s6, .LBB0_32
 # %bb.35:                               #   in Loop: Header=BB0_33 Depth=1
 	addi.w	$s4, $s4, 1
-	ori	$a0, $zero, 3
-	bne	$s4, $a0, .LBB0_32
+	bne	$s4, $s7, .LBB0_32
 # %bb.36:                               # %..critedge.loopexit_crit_edge
 	addi.w	$s1, $s1, 1
 	b	.LBB0_41

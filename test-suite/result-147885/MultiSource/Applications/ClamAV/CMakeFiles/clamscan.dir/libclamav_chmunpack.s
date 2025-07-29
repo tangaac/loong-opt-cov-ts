@@ -328,19 +328,16 @@ chm_unpack:                             # @chm_unpack
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.33)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.33)
-	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.34)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.34)
-	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.35)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.35)
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	lu12i.w	$a0, 300148
 	ori	$a0, $a0, 3408
-	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB0_32
 .LBB0_31:                               # %read_chunk.exit
                                         #   in Loop: Header=BB0_32 Depth=1
@@ -354,12 +351,11 @@ chm_unpack:                             # @chm_unpack
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s8, $a0, 1
-	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
-	and	$a0, $s8, $a0
+	slli.d	$a0, $s8, 31
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	add.d	$a1, $a1, $s5
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
-	bnez	$a0, .LBB0_54
+	bltz	$a0, .LBB0_54
 .LBB0_32:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	addu16i.d	$a0, $s5, -512
@@ -464,7 +460,7 @@ chm_unpack:                             # @chm_unpack
 	beq	$a0, $a1, .LBB0_48
 .LBB0_47:                               #   in Loop: Header=BB0_32 Depth=1
 	ld.w	$a0, $s6, 0
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_51
 	b	.LBB0_57
 .LBB0_48:                               # %.thread.i
@@ -509,15 +505,15 @@ chm_unpack:                             # @chm_unpack
 	bne	$a0, $a1, .LBB0_31
 # %bb.52:                               #   in Loop: Header=BB0_32 Depth=1
 	ld.w	$a1, $s6, 12
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s6, 16
-	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $s6, 32
-	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
 	b	.LBB0_31
@@ -995,7 +991,7 @@ chm_unpack:                             # @chm_unpack
 .LBB0_129:
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	ld.wu	$a0, $a0, 12
-	bstrpick.d	$a2, $a0, 14, 0
+	slli.d	$a2, $a0, 49
 	beqz	$a2, .LBB0_146
 # %bb.130:
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
@@ -1126,9 +1122,8 @@ chm_unpack:                             # @chm_unpack
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
-	bge	$a1, $a0, .LBB0_168
+	bltz	$a0, .LBB0_168
 # %bb.148:
 	addi.d	$a0, $sp, 488
 	pcaddu18i	$ra, %call36(unlink)
@@ -1484,7 +1479,7 @@ read_chunk_entries:                     # @read_chunk_entries
 	addi.d	$a0, $a0, %pc_lo12(.L.str.30)
 	pcaddu18i	$ra, %call36(cli_dbgmsg)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s1, 15, 0
+	slli.d	$a0, $s1, 48
 	bnez	$a0, .LBB1_2
 .LBB1_35:                               # %.loopexit
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload

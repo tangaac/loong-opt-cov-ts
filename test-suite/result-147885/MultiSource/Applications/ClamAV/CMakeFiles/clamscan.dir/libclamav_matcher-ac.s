@@ -2238,7 +2238,7 @@ cli_ac_addsig:                          # @cli_ac_addsig
                                         #   in Loop: Header=BB8_8 Depth=1
 	ld.hu	$s4, $s8, 18
 .LBB8_20:                               #   in Loop: Header=BB8_8 Depth=1
-	bstrpick.d	$a0, $s4, 15, 0
+	slli.d	$a0, $s4, 48
 	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
 	beqz	$a0, .LBB8_33
 # %bb.21:                               # %.lr.ph447

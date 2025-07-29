@@ -24,13 +24,13 @@ f:                                      # @f
 	addi.d	$s0, $fp, 2
 	pcaddu18i	$ra, %call36(ff)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $s0, 15, 0
+	slli.d	$a0, $s0, 48
 	beqz	$a0, .LBB1_3
 # %bb.1:
 	add.d	$fp, $s0, $fp
 	pcaddu18i	$ra, %call36(ff)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $fp, 15, 0
+	slli.d	$a0, $fp, 48
 	beqz	$a0, .LBB1_4
 .LBB1_2:
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
@@ -44,7 +44,7 @@ f:                                      # @f
 	add.d	$fp, $s0, $fp
 	pcaddu18i	$ra, %call36(ff)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $fp, 15, 0
+	slli.d	$a0, $fp, 48
 	bnez	$a0, .LBB1_2
 .LBB1_4:
 	#APP

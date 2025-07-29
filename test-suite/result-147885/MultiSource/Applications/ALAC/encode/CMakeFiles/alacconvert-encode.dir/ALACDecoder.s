@@ -318,7 +318,7 @@ _ZN11ALACDecoder6DecodeEP9BitBufferPhjjPj: # @_ZN11ALACDecoder6DecodeEP9BitBuffe
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(BitBufferRead)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB3_109
 # %bb.12:                               #   in Loop: Header=BB3_8 Depth=1
 	ori	$a1, $zero, 4
@@ -495,7 +495,7 @@ _ZN11ALACDecoder6DecodeEP9BitBufferPhjjPj: # @_ZN11ALACDecoder6DecodeEP9BitBuffe
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(BitBufferRead)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB3_109
 # %bb.31:                               #   in Loop: Header=BB3_8 Depth=1
 	st.d	$s6, $sp, 128                   # 8-byte Folded Spill

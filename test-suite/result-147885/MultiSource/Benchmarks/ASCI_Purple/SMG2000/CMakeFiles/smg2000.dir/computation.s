@@ -39,9 +39,8 @@ hypre_CreateComputeInfo:                # @hypre_CreateComputeInfo
 	pcaddu18i	$ra, %call36(hypre_BoxArrayArrayCreate)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s8, 8
-	ori	$a2, $zero, 1
 	move	$s6, $a0
-	blt	$a1, $a2, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $zero
 	move	$s0, $zero

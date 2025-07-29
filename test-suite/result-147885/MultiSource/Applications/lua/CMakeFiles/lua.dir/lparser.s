@@ -1265,7 +1265,7 @@ chunk:                                  # @chunk
 	pcaddu18i	$ra, %call36(luaK_setreturns)
 	jirl	$ra, $ra, 0
 	ori	$s1, $zero, 1
-	blt	$s5, $s1, .LBB2_156
+	blez	$s5, .LBB2_156
 # %bb.82:                               #   in Loop: Header=BB2_4 Depth=1
 	move	$a0, $s0
 	move	$a1, $s2
@@ -1828,7 +1828,7 @@ chunk:                                  # @chunk
 	pcaddu18i	$ra, %call36(luaK_exp2nextreg)
 	jirl	$ra, $ra, 0
 .LBB2_154:                              #   in Loop: Header=BB2_4 Depth=1
-	blt	$s5, $s1, .LBB2_156
+	blez	$s5, .LBB2_156
 .LBB2_155:                              #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$s1, $s0, 60
 	move	$a0, $s0
@@ -4691,21 +4691,20 @@ singlevaraux:                           # @singlevaraux
 	ld.bu	$a4, $a0, 74
 	slli.d	$a0, $a4, 1
 	addi.d	$a0, $a0, 194
-	ori	$a5, $zero, 1
 	move	$a2, $a4
 	.p2align	4, , 16
 .LBB17_2:                               # =>This Inner Loop Header: Depth=1
-	blt	$a2, $a5, .LBB17_10
+	blez	$a2, .LBB17_10
 # %bb.3:                                #   in Loop: Header=BB17_2 Depth=1
-	ld.d	$a6, $s0, 0
-	ldx.hu	$a7, $s0, $a0
-	ld.d	$a6, $a6, 48
-	slli.d	$a7, $a7, 4
-	ldx.d	$a6, $a6, $a7
+	ld.d	$a5, $s0, 0
+	ldx.hu	$a6, $s0, $a0
+	ld.d	$a5, $a5, 48
+	slli.d	$a6, $a6, 4
+	ldx.d	$a5, $a5, $a6
 	addi.d	$a2, $a2, -1
 	addi.d	$a4, $a4, -1
 	addi.d	$a0, $a0, -2
-	bne	$a1, $a6, .LBB17_2
+	bne	$a1, $a5, .LBB17_2
 # %bb.4:                                # %searchvar.exit
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $fp, 16
@@ -5402,8 +5401,7 @@ assignment:                             # @assignment
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(luaK_setreturns)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB19_25
+	blez	$s2, .LBB19_25
 # %bb.20:
 	move	$a0, $s3
 	move	$a1, $s4
@@ -5418,8 +5416,7 @@ assignment:                             # @assignment
 	pcaddu18i	$ra, %call36(luaK_exp2nextreg)
 	jirl	$ra, $ra, 0
 .LBB19_23:
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB19_25
+	blez	$s2, .LBB19_25
 # %bb.24:
 	ld.w	$s4, $s3, 60
 	move	$a0, $s3

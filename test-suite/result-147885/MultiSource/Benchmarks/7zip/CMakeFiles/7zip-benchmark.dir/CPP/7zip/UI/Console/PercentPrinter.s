@@ -20,8 +20,7 @@ _ZN15CPercentPrinter10ClosePrintEv:     # @_ZN15CPercentPrinter10ClosePrintEv
 	beqz	$s0, .LBB0_5
 # %bb.1:
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB0_3
+	blez	$s0, .LBB0_3
 # %bb.2:                                # %.lr.ph25.preheader.i
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 8
@@ -86,8 +85,7 @@ _ZN15CPercentPrinter11PrintStringEPKc:  # @_ZN15CPercentPrinter11PrintStringEPKc
 	beqz	$s0, .LBB1_5
 # %bb.1:
 	move	$s2, $a1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB1_3
+	blez	$s0, .LBB1_3
 # %bb.2:                                # %.lr.ph25.preheader.i.i
 	addi.d	$a0, $sp, 0
 	ori	$a1, $zero, 8
@@ -157,8 +155,7 @@ _ZN15CPercentPrinter11PrintStringEPKw:  # @_ZN15CPercentPrinter11PrintStringEPKw
 	beqz	$s0, .LBB2_5
 # %bb.1:
 	move	$s2, $a1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB2_3
+	blez	$s0, .LBB2_3
 # %bb.2:                                # %.lr.ph25.preheader.i.i
 	addi.d	$a0, $sp, 0
 	ori	$a1, $zero, 8
@@ -225,8 +222,7 @@ _ZN15CPercentPrinter12PrintNewLineEv:   # @_ZN15CPercentPrinter12PrintNewLineEv
 	ld.w	$s0, $a0, 32
 	beqz	$s0, .LBB3_5
 # %bb.1:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB3_3
+	blez	$s0, .LBB3_3
 # %bb.2:                                # %.lr.ph25.preheader.i.i
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 8
@@ -332,8 +328,7 @@ _ZN15CPercentPrinter12RePrintRatioEv:   # @_ZN15CPercentPrinter12RePrintRatioEv
 	addi.d	$a3, $sp, 8
 	beqz	$a0, .LBB4_7
 # %bb.4:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_8
+	blez	$a0, .LBB4_8
 .LBB4_5:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 32
 	bgeu	$a0, $a1, .LBB4_9
@@ -355,8 +350,7 @@ _ZN15CPercentPrinter12RePrintRatioEv:   # @_ZN15CPercentPrinter12RePrintRatioEv
 	jirl	$ra, $ra, 0
 	add.d	$a3, $s3, $s0
 	move	$a0, $s2
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB4_5
+	bgtz	$a0, .LBB4_5
 .LBB4_8:
 	move	$a1, $a3
 	b	.LBB4_14

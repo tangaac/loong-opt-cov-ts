@@ -352,13 +352,12 @@ yylex:                                  # @yylex
 .LBB0_37:                               # %.loopexit848
                                         #   in Loop: Header=BB0_22 Depth=3
 	ld.d	$a1, $t1, %pc_lo12(yytext)
-	nor	$a0, $a5, $zero
-	add.w	$a3, $a0, $s0
+	nor	$a2, $a5, $zero
 	ld.bu	$a0, $t4, %pc_lo12(yy_start)
+	add.w	$a3, $a2, $s0
 	add.d	$a2, $a1, $a3
-	ori	$a4, $zero, 1
 	st.d	$a2, $t2, %pc_lo12(yy_c_buf_p)
-	blt	$a3, $a4, .LBB0_48
+	blez	$a3, .LBB0_48
 # %bb.38:                               # %.lr.ph25.i.preheader
                                         #   in Loop: Header=BB0_22 Depth=3
 	move	$a3, $a1
@@ -481,11 +480,10 @@ yylex:                                  # @yylex
                                         #   in Loop: Header=BB0_14 Depth=2
 	ld.d	$a1, $t1, %pc_lo12(yytext)
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	nor	$a0, $a0, $zero
-	add.w	$a2, $a0, $s0
+	nor	$a2, $a0, $zero
 	ld.bu	$a0, $t4, %pc_lo12(yy_start)
+	add.w	$a2, $a2, $s0
 	add.d	$s0, $a1, $a2
-	ori	$a3, $zero, 1
 	st.d	$s0, $t2, %pc_lo12(yy_c_buf_p)
 	ld.d	$t3, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$t5, $sp, 48                    # 8-byte Folded Reload
@@ -493,7 +491,7 @@ yylex:                                  # @yylex
 	ori	$t7, $zero, 41
 	ld.d	$t8, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	blt	$a2, $a3, .LBB0_14
+	blez	$a2, .LBB0_14
 # %bb.58:                               # %.lr.ph25.i127.preheader
                                         #   in Loop: Header=BB0_14 Depth=2
 	move	$a2, $a1
@@ -1353,7 +1351,6 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s3, %pc_hi20(yy_current_buffer)
 	ld.d	$a0, $s3, %pc_lo12(yy_current_buffer)
 	ld.d	$a4, $a0, 8
@@ -1369,8 +1366,7 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	ld.d	$a3, $s1, %pc_lo12(yytext)
 	sub.d	$s2, $a1, $a3
 	addi.w	$s4, $s2, 0
-	ori	$a2, $zero, 1
-	blt	$s4, $a2, .LBB5_7
+	blez	$s4, .LBB5_7
 # %bb.2:                                # %iter.check
 	bstrpick.d	$a5, $s2, 30, 0
 	ori	$a6, $zero, 8
@@ -1386,21 +1382,19 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	move	$a6, $a4
 .LBB5_5:                                # %.lr.ph.preheader
 	add.d	$a3, $a7, $a3
-	sub.w	$a3, $a3, $a1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
+	sub.w	$a1, $a3, $a1
 	.p2align	4, , 16
 .LBB5_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a4, $a2, 0
+	ld.b	$a3, $a2, 0
 	addi.d	$a2, $a2, 1
-	addi.d	$a5, $a6, 1
-	bstrpick.d	$a3, $a3, 31, 0
-	addi.d	$a3, $a3, 1
-	and	$a7, $a3, $a1
-	st.b	$a4, $a6, 0
-	move	$a6, $a5
-	beqz	$a7, .LBB5_6
+	addi.d	$a4, $a6, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	addi.d	$a1, $a1, 1
+	slli.d	$a5, $a1, 31
+	st.b	$a3, $a6, 0
+	move	$a6, $a4
+	bgez	$a5, .LBB5_6
 .LBB5_7:                                # %._crit_edge
 	ld.w	$a1, $a0, 32
 	beqz	$a1, .LBB5_11
@@ -1428,8 +1422,7 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	blez	$a0, .LBB5_32
 .LBB5_13:
 	pcalau12i	$s5, %pc_hi20(yyin)
-	addi.w	$s6, $zero, -1
-	ori	$s7, $zero, 4
+	ori	$s6, $zero, 4
 	.p2align	4, , 16
 .LBB5_14:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s5, %pc_lo12(yyin)
@@ -1443,12 +1436,12 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
 	st.w	$a0, $s0, %pc_lo12(yy_n_chars)
-	blt	$s6, $a1, .LBB5_18
+	bgez	$a1, .LBB5_18
 # %bb.15:                               #   in Loop: Header=BB5_14 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s7, .LBB5_14
+	beq	$a0, $s6, .LBB5_14
 # %bb.16:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$fp, $a0, %got_pc_lo12(stderr)
@@ -1484,7 +1477,6 @@ yy_get_next_buffer:                     # @yy_get_next_buffer
 	ld.d	$a1, $a1, 8
 	addi.d	$a1, $a1, 1
 	st.d	$a1, $s1, %pc_lo12(yytext)
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

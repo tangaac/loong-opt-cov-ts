@@ -228,8 +228,7 @@ dumpMapping:                            # @dumpMapping
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero

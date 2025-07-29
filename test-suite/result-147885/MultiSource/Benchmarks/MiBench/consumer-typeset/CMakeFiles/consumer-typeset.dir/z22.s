@@ -371,8 +371,8 @@ FlushInners:                            # @FlushInners
 	beqz	$a1, .LBB1_7
 # %bb.20:                               #   in Loop: Header=BB1_9 Depth=1
 	ld.hu	$a1, $a1, 41
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB1_8
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB1_8
 	b	.LBB1_7
 .LBB1_21:                               #   in Loop: Header=BB1_9 Depth=1
 	ld.d	$a0, $a1, 8

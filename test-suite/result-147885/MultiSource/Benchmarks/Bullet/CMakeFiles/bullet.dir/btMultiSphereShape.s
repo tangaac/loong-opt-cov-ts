@@ -41,9 +41,9 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	st.b	$a0, $fp, 160
 	st.d	$zero, $fp, 152
 	st.d	$zero, $fp, 140
-	ori	$a1, $zero, 9
-	st.w	$a1, $fp, 8
-	blt	$s0, $a0, .LBB0_20
+	ori	$a0, $zero, 9
+	st.w	$a0, $fp, 8
+	blez	$s0, .LBB0_20
 # %bb.1:
 	slli.d	$a0, $s0, 4
 .Ltmp0:
@@ -54,8 +54,7 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 # %bb.2:                                # %_ZN20btAlignedObjectArrayI9btVector3E8allocateEi.exit.i.i
 	move	$s3, $a0
 	ld.w	$a1, $fp, 108
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_5
+	blez	$a1, .LBB0_5
 # %bb.3:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -100,8 +99,7 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	move	$s3, $a0
 	ld.w	$a1, $fp, 140
 	ld.d	$a0, $fp, 152
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_22
+	blez	$a1, .LBB0_22
 # %bb.12:                               # %.lr.ph.i.i.i30
 	ori	$a3, $zero, 8
 	move	$a2, $zero
@@ -144,8 +142,7 @@ _ZN18btMultiSphereShapeC2EPK9btVector3PKfi: # @_ZN18btMultiSphereShapeC2EPK9btVe
 	bnez	$a1, .LBB0_18
 .LBB0_19:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
 	ld.bu	$a1, $fp, 160
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB0_24
+	bnez	$a1, .LBB0_24
 	b	.LBB0_25
 .LBB0_20:                               # %.loopexit
 	st.w	$s0, $fp, 108
@@ -445,8 +442,7 @@ _ZNK18btMultiSphereShape37localGetSupportingVertexWithoutMarginERK9btVector3: # 
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	fmov.s	$fs1, $fs0
 	ld.w	$s1, $fp, 108
-	ori	$a0, $zero, 1
-	bge	$s1, $a0, .LBB4_4
+	bgtz	$s1, .LBB4_4
 .LBB4_2:
 	move	$a1, $zero
 	move	$s0, $zero
@@ -458,8 +454,7 @@ _ZNK18btMultiSphereShape37localGetSupportingVertexWithoutMarginERK9btVector3: # 
 	fmul.s	$fs0, $fa1, $fa3
 	fmul.s	$fs1, $fa2, $fa3
 	ld.w	$s1, $fp, 108
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_2
+	blez	$s1, .LBB4_2
 .LBB4_4:                                # %.lr.ph
 	ld.d	$s2, $fp, 152
 	ld.d	$s3, $fp, 120
@@ -554,8 +549,7 @@ _ZNK18btMultiSphereShape37localGetSupportingVertexWithoutMarginERK9btVector3: # 
 _ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB5_10
+	blez	$a3, .LBB5_10
 # %bb.1:                                # %.lr.ph92
 	addi.d	$sp, $sp, -128
 	.cfi_def_cfa_offset 128
@@ -593,7 +587,7 @@ _ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9b
 	.cfi_offset 60, -128
 	move	$s2, $a0
 	ld.w	$s3, $a0, 108
-	blt	$s3, $a4, .LBB5_9
+	blez	$s3, .LBB5_9
 # %bb.2:                                # %.lr.ph92.split.preheader
 	move	$fp, $a3
 	move	$s0, $a2
@@ -601,30 +595,29 @@ _ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9b
 	pcalau12i	$a0, %pc_hi20(.LCPI5_0)
 	fld.s	$fs0, $a0, %pc_lo12(.LCPI5_0)
 	move	$s4, $zero
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB5_7
+	blez	$s3, .LBB5_7
 	.p2align	4, , 16
 .LBB5_3:                                # %.lr.ph
-	ld.d	$s6, $s2, 152
-	ld.d	$s7, $s2, 120
-	alsl.d	$s8, $s4, $s1, 4
-	alsl.d	$s5, $s4, $s0, 4
+	ld.d	$s5, $s2, 152
+	ld.d	$s6, $s2, 120
+	alsl.d	$s7, $s4, $s1, 4
+	alsl.d	$s8, $s4, $s0, 4
 	fmov.s	$fs1, $fs0
 	b	.LBB5_5
 	.p2align	4, , 16
 .LBB5_4:                                #   in Loop: Header=BB5_5 Depth=1
-	addi.d	$s6, $s6, 4
+	addi.d	$s5, $s5, 4
 	addi.w	$s3, $s3, -1
-	addi.d	$s7, $s7, 16
+	addi.d	$s6, $s6, 16
 	beqz	$s3, .LBB5_7
 .LBB5_5:                                # =>This Inner Loop Header: Depth=1
-	fld.s	$fa0, $s8, 0
+	fld.s	$fa0, $s7, 0
 	fld.s	$fa1, $s2, 24
-	fld.s	$fa2, $s8, 4
+	fld.s	$fa2, $s7, 4
 	fld.s	$fa3, $s2, 28
-	fld.s	$fa4, $s8, 8
+	fld.s	$fa4, $s7, 8
 	fld.s	$fa5, $s2, 32
-	fld.s	$fa6, $s6, 0
+	fld.s	$fa6, $s5, 0
 	fmul.s	$fa0, $fa0, $fa1
 	fmul.s	$fa1, $fa2, $fa3
 	fmul.s	$fa2, $fa4, $fa5
@@ -632,18 +625,18 @@ _ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9b
 	fmul.s	$fa1, $fa1, $fa6
 	fmul.s	$fa2, $fa6, $fa2
 	ld.d	$a0, $s2, 0
-	fld.s	$fa3, $s7, 0
-	fld.s	$fa4, $s7, 4
-	fld.s	$fa5, $s7, 8
+	fld.s	$fa3, $s6, 0
+	fld.s	$fa4, $s6, 4
+	fld.s	$fa5, $s6, 8
 	ld.d	$a1, $a0, 88
 	fadd.s	$fs2, $fa3, $fa0
 	fadd.s	$fs3, $fa1, $fa4
 	fadd.s	$fs4, $fa2, $fa5
 	move	$a0, $s2
 	jirl	$ra, $a1, 0
-	fld.s	$fa3, $s8, 0
-	fld.s	$fa4, $s8, 4
-	fld.s	$fa5, $s8, 8
+	fld.s	$fa3, $s7, 0
+	fld.s	$fa4, $s7, 4
+	fld.s	$fa5, $s7, 8
 	fmul.s	$fa1, $fa0, $fa3
 	fmul.s	$fa2, $fa0, $fa4
 	fmul.s	$fa6, $fa0, $fa5
@@ -656,10 +649,10 @@ _ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9b
 	fcmp.cule.s	$fcc0, $fa3, $fs1
 	bcnez	$fcc0, .LBB5_4
 # %bb.6:                                #   in Loop: Header=BB5_5 Depth=1
-	fst.s	$fa0, $s5, 0
-	fst.s	$fa1, $s5, 4
-	fst.s	$fa2, $s5, 8
-	st.w	$zero, $s5, 12
+	fst.s	$fa0, $s8, 0
+	fst.s	$fa1, $s8, 4
+	fst.s	$fa2, $s8, 8
+	st.w	$zero, $s8, 12
 	fmov.s	$fs1, $fa3
 	b	.LBB5_4
 	.p2align	4, , 16
@@ -670,8 +663,7 @@ _ZNK18btMultiSphereShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9b
 # %bb.8:                                # %.lr.ph92.splitthread-pre-split
                                         #   in Loop: Header=BB5_7 Depth=1
 	ld.w	$s3, $s2, 108
-	ori	$a0, $zero, 1
-	bge	$s3, $a0, .LBB5_3
+	bgtz	$s3, .LBB5_3
 	b	.LBB5_7
 .LBB5_9:
 	fld.d	$fs4, $sp, 0                    # 8-byte Folded Reload

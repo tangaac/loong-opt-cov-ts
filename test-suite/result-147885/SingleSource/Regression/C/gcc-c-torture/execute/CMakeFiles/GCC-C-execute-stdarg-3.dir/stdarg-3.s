@@ -25,9 +25,8 @@ f1:                                     # @f1
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
 	addi.d	$a1, $sp, 24
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 8
-	blt	$a0, $a2, .LBB1_5
+	blez	$a0, .LBB1_5
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a2, $sp, 8
 	ori	$a3, $zero, 20
@@ -112,9 +111,8 @@ f2:                                     # @f2
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
 	addi.d	$a1, $sp, 24
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 8
-	blt	$a0, $a2, .LBB2_5
+	blez	$a0, .LBB2_5
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a2, $sp, 8
 	ori	$a3, $zero, 20
@@ -197,23 +195,23 @@ f3:                                     # @f3
 	st.d	$a4, $sp, 48
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 24
-	blt	$a0, $a2, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $sp, 32
-	pcalau12i	$a3, %pc_hi20(x)
-	pcalau12i	$a4, %pc_hi20(bar_arg)
+	pcalau12i	$a2, %pc_hi20(x)
+	pcalau12i	$a3, %pc_hi20(bar_arg)
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB3_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $sp, 8
 	ld.d	$a5, $sp, 24
-	st.d	$a5, $a3, %pc_lo12(x)
+	st.d	$a5, $a2, %pc_lo12(x)
 	addi.w	$a0, $a0, -1
-	st.w	$a5, $a4, %pc_lo12(bar_arg)
-	bltu	$a2, $a0, .LBB3_2
+	st.w	$a5, $a3, %pc_lo12(bar_arg)
+	bltu	$a4, $a0, .LBB3_2
 .LBB3_3:                                # %._crit_edge
 	addi.d	$sp, $sp, 80
 	ret
@@ -232,27 +230,27 @@ f4:                                     # @f4
 	st.d	$a4, $sp, 48
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 24
-	blt	$a0, $a2, .LBB4_3
+	blez	$a0, .LBB4_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $sp, 32
-	pcalau12i	$a3, %pc_hi20(d)
+	pcalau12i	$a2, %pc_hi20(d)
 	vldi	$vr0, -1008
-	pcalau12i	$a4, %pc_hi20(bar_arg)
+	pcalau12i	$a3, %pc_hi20(bar_arg)
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB4_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $sp, 8
 	fld.d	$fa1, $sp, 24
-	fst.d	$fa1, $a3, %pc_lo12(d)
+	fst.d	$fa1, $a2, %pc_lo12(d)
 	fadd.d	$fa1, $fa1, $fa0
 	ftintrz.w.d	$fa1, $fa1
 	movfr2gr.s	$a5, $fa1
 	addi.w	$a0, $a0, -1
-	st.w	$a5, $a4, %pc_lo12(bar_arg)
-	bltu	$a2, $a0, .LBB4_2
+	st.w	$a5, $a3, %pc_lo12(bar_arg)
+	bltu	$a4, $a0, .LBB4_2
 .LBB4_3:                                # %._crit_edge
 	addi.d	$sp, $sp, 80
 	ret
@@ -272,28 +270,28 @@ f5:                                     # @f5
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
-	addi.d	$a2, $sp, 24
-	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 8
-	blt	$a0, $a1, .LBB5_3
+	addi.d	$a1, $sp, 24
+	st.d	$a1, $sp, 8
+	blez	$a0, .LBB5_3
 # %bb.1:                                # %.lr.ph.preheader
-	ld.d	$a2, $sp, 8
+	ld.d	$a1, $sp, 8
 	addi.d	$a0, $a0, 1
-	addi.d	$a2, $a2, 8
-	pcalau12i	$a3, %pc_hi20(s1)
-	addi.d	$a3, $a3, %pc_lo12(s1)
+	addi.d	$a1, $a1, 8
+	pcalau12i	$a2, %pc_hi20(s1)
+	addi.d	$a2, $a2, %pc_lo12(s1)
+	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB5_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$a2, $sp, 8
-	ld.d	$a4, $a2, -8
+	st.d	$a1, $sp, 8
+	ld.d	$a4, $a1, -8
 	vld	$vr0, $a4, 16
-	vst	$vr0, $a3, 16
+	vst	$vr0, $a2, 16
 	vld	$vr0, $a4, 0
-	vst	$vr0, $a3, 0
+	vst	$vr0, $a2, 0
 	addi.w	$a0, $a0, -1
-	addi.d	$a2, $a2, 8
-	bltu	$a1, $a0, .LBB5_2
+	addi.d	$a1, $a1, 8
+	bltu	$a3, $a0, .LBB5_2
 .LBB5_3:                                # %._crit_edge
 	addi.d	$sp, $sp, 80
 	ret
@@ -313,24 +311,24 @@ f6:                                     # @f6
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
-	addi.d	$a2, $sp, 24
-	ori	$a1, $zero, 1
-	st.d	$a2, $sp, 8
-	blt	$a0, $a1, .LBB6_4
+	addi.d	$a1, $sp, 24
+	st.d	$a1, $sp, 8
+	blez	$a0, .LBB6_4
 # %bb.1:                                # %.lr.ph.preheader
-	ld.d	$a3, $sp, 8
+	ld.d	$a2, $sp, 8
 	addi.d	$a0, $a0, 1
-	pcalau12i	$a2, %pc_hi20(s2)
+	pcalau12i	$a1, %pc_hi20(s2)
+	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB6_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a3, 0
-	addi.d	$a3, $a3, 16
+	vld	$vr0, $a2, 0
+	addi.d	$a2, $a2, 16
 	addi.w	$a0, $a0, -1
-	vst	$vr0, $a2, %pc_lo12(s2)
-	bltu	$a1, $a0, .LBB6_2
+	vst	$vr0, $a1, %pc_lo12(s2)
+	bltu	$a3, $a0, .LBB6_2
 # %bb.3:                                # %._crit_edge
-	st.d	$a3, $sp, 8
+	st.d	$a2, $sp, 8
 .LBB6_4:
 	addi.d	$sp, $sp, 80
 	ret
@@ -349,28 +347,28 @@ f7:                                     # @f7
 	st.d	$a4, $sp, 48
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 24
-	blt	$a0, $a2, .LBB7_3
+	blez	$a0, .LBB7_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $sp, 32
-	pcalau12i	$a3, %pc_hi20(s1)
-	addi.d	$a3, $a3, %pc_lo12(s1)
-	pcalau12i	$a4, %pc_hi20(bar_arg)
+	pcalau12i	$a2, %pc_hi20(s1)
+	addi.d	$a2, $a2, %pc_lo12(s1)
+	pcalau12i	$a3, %pc_hi20(bar_arg)
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB7_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	st.d	$a1, $sp, 8
 	ld.d	$a5, $sp, 24
 	vld	$vr0, $a5, 0
-	vst	$vr0, $a3, 0
+	vst	$vr0, $a2, 0
 	vld	$vr0, $a5, 16
-	ld.w	$a5, $a3, 0
-	vst	$vr0, $a3, 16
+	ld.w	$a5, $a2, 0
+	vst	$vr0, $a2, 16
 	addi.w	$a0, $a0, -1
-	st.w	$a5, $a4, %pc_lo12(bar_arg)
-	bltu	$a2, $a0, .LBB7_2
+	st.w	$a5, $a3, %pc_lo12(bar_arg)
+	bltu	$a4, $a0, .LBB7_2
 .LBB7_3:                                # %._crit_edge
 	addi.d	$sp, $sp, 80
 	ret
@@ -389,16 +387,16 @@ f8:                                     # @f8
 	st.d	$a4, $sp, 48
 	st.d	$a3, $sp, 40
 	st.d	$a2, $sp, 32
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 24
-	blt	$a0, $a2, .LBB8_3
+	blez	$a0, .LBB8_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(s2)
 	addi.d	$a1, $a1, %pc_lo12(s2)
-	addi.d	$a3, $sp, 48
-	pcalau12i	$a4, %pc_hi20(y)
-	pcalau12i	$a5, %pc_hi20(bar_arg)
+	addi.d	$a2, $sp, 48
+	pcalau12i	$a3, %pc_hi20(y)
+	pcalau12i	$a4, %pc_hi20(bar_arg)
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB8_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -406,11 +404,11 @@ f8:                                     # @f8
 	ld.w	$a6, $sp, 40
 	vst	$vr0, $a1, 0
 	ld.d	$a7, $a1, 8
-	st.d	$a3, $sp, 8
-	st.w	$a6, $a4, %pc_lo12(y)
+	st.d	$a2, $sp, 8
+	st.w	$a6, $a3, %pc_lo12(y)
 	addi.w	$a0, $a0, -1
-	st.w	$a7, $a5, %pc_lo12(bar_arg)
-	bltu	$a2, $a0, .LBB8_2
+	st.w	$a7, $a4, %pc_lo12(bar_arg)
+	bltu	$a5, $a0, .LBB8_2
 .LBB8_3:                                # %._crit_edge
 	addi.d	$sp, $sp, 80
 	ret

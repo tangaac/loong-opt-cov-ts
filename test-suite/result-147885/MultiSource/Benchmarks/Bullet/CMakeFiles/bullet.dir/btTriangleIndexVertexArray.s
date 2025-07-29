@@ -16,19 +16,18 @@ _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi: # @_ZN26btTriangleIndexVertexArrayC2
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -39,7 +38,6 @@ _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi: # @_ZN26btTriangleIndexVertexArrayC2
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	pcalau12i	$a7, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a7, %pc_lo12(.LCPI0_0)
 	move	$s2, $a6
@@ -54,8 +52,8 @@ _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi: # @_ZN26btTriangleIndexVertexArrayC2
 	addi.d	$a0, $a0, %pc_lo12(_ZTV26btTriangleIndexVertexArray+16)
 	st.d	$a0, $fp, 0
 	addi.d	$s7, $fp, 24
-	ori	$s8, $zero, 1
-	st.b	$s8, $fp, 48
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 48
 	st.d	$zero, $fp, 40
 	st.d	$zero, $fp, 28
 	st.w	$zero, $fp, 64
@@ -68,7 +66,7 @@ _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi: # @_ZN26btTriangleIndexVertexArrayC2
 # %bb.1:                                # %.noexc
 	move	$s6, $a0
 	ld.w	$a1, $fp, 28
-	blt	$a1, $s8, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.2:                                # %.lr.ph.i.i.i.i
 	move	$a0, $zero
 	slli.d	$a2, $a1, 5
@@ -121,18 +119,17 @@ _ZN26btTriangleIndexVertexArrayC2EiPiiiPfi: # @_ZN26btTriangleIndexVertexArrayC2
 	mul.d	$a0, $a3, $a0
 	add.d	$a0, $s6, $a0
 	st.w	$a1, $a0, 36
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .LBB0_8:
 .Ltmp4:

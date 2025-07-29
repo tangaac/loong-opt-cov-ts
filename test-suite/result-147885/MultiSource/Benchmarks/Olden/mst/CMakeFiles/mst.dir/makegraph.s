@@ -110,8 +110,7 @@ MakeGraph:                              # @MakeGraph
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	mul.w	$s1, $a4, $a0
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB0_18
+	blez	$s1, .LBB0_18
 # %bb.9:                                # %.lr.ph.split.us.preheader
 	slli.d	$a0, $fp, 3
 	ldx.d	$s2, $s5, $a0

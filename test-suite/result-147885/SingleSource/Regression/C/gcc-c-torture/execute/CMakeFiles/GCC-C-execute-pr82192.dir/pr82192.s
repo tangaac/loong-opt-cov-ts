@@ -34,7 +34,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(b)
 	ld.hu	$a0, $a0, %pc_lo12(b)
-	bstrpick.d	$a0, $a0, 12, 0
+	slli.d	$a0, $a0, 51
 	bnez	$a0, .LBB1_2
 # %bb.1:
 	move	$a0, $zero

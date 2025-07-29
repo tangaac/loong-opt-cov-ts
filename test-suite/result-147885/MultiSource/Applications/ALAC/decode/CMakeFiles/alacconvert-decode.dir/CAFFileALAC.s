@@ -492,50 +492,48 @@ _Z14ReadBERIntegerPhPi:                 # @_Z14ReadBERIntegerPhPi
 # %bb.0:
 	ld.b	$a4, $a0, 0
 	andi	$a2, $a4, 127
-	addi.w	$a5, $zero, -1
 	ori	$a3, $zero, 1
-	bge	$a5, $a4, .LBB10_2
+	bltz	$a4, .LBB10_2
 .LBB10_1:                               # %.critedge
 	st.w	$a3, $a1, 0
 	addi.w	$a0, $a2, 0
 	ret
 .LBB10_2:
 	ld.w	$a4, $a1, 0
-	ori	$a3, $zero, 1
-	blt	$a4, $a3, .LBB10_1
+	blez	$a4, .LBB10_1
 # %bb.3:
-	ld.b	$a7, $a0, 1
-	move	$a6, $a7
-	bstrins.d	$a6, $a2, 63, 7
+	ld.b	$a6, $a0, 1
+	move	$a5, $a6
+	bstrins.d	$a5, $a2, 63, 7
 	ori	$a3, $zero, 2
-	blt	$a5, $a7, .LBB10_12
+	bgez	$a6, .LBB10_12
 # %bb.4:
 	ori	$a2, $zero, 1
 	beq	$a4, $a2, .LBB10_12
 # %bb.5:
-	ld.b	$a7, $a0, 2
-	move	$a2, $a7
-	bstrins.d	$a2, $a6, 63, 7
+	ld.b	$a6, $a0, 2
+	move	$a2, $a6
+	bstrins.d	$a2, $a5, 63, 7
 	ori	$a3, $zero, 3
-	blt	$a5, $a7, .LBB10_1
+	bgez	$a6, .LBB10_1
 # %bb.6:
-	ori	$a6, $zero, 3
-	bltu	$a4, $a6, .LBB10_1
+	ori	$a5, $zero, 3
+	bltu	$a4, $a5, .LBB10_1
 # %bb.7:
-	ld.b	$a7, $a0, 3
-	move	$a6, $a7
-	bstrins.d	$a6, $a2, 63, 7
+	ld.b	$a6, $a0, 3
+	move	$a5, $a6
+	bstrins.d	$a5, $a2, 63, 7
 	ori	$a3, $zero, 4
-	blt	$a5, $a7, .LBB10_12
+	bgez	$a6, .LBB10_12
 # %bb.8:
 	ori	$a2, $zero, 3
 	beq	$a4, $a2, .LBB10_12
 # %bb.9:
 	ld.b	$a0, $a0, 4
 	move	$a2, $a0
-	bstrins.d	$a2, $a6, 63, 7
+	bstrins.d	$a2, $a5, 63, 7
 	ori	$a3, $zero, 5
-	blt	$a5, $a0, .LBB10_1
+	bgez	$a0, .LBB10_1
 # %bb.10:
 	ori	$a0, $zero, 4
 	bgeu	$a0, $a4, .LBB10_1
@@ -543,7 +541,7 @@ _Z14ReadBERIntegerPhPi:                 # @_Z14ReadBERIntegerPhPi
 	addi.w	$a0, $zero, 0
 	ret
 .LBB10_12:
-	move	$a2, $a6
+	move	$a2, $a5
 	st.w	$a3, $a1, 0
 	addi.w	$a0, $a2, 0
 	ret

@@ -3038,9 +3038,9 @@ CutOff:                                 # @CutOff
 	st.h	$a5, $a3, 4
 .LBB17_6:                               #   in Loop: Header=BB17_7 Depth=1
 	ld.d	$a3, $s0, 56
-	ld.wu	$a2, $fp, 4
+	ld.wu	$a0, $fp, 4
 	addi.d	$s5, $s5, -6
-	add.d	$a1, $a3, $a2
+	add.d	$a1, $a3, $a0
 	bltu	$s5, $a1, .LBB17_11
 .LBB17_7:                               # =>This Inner Loop Header: Depth=1
 	ld.hu	$a0, $s5, 4
@@ -3068,12 +3068,11 @@ CutOff:                                 # @CutOff
 .LBB17_11:                              # %._crit_edge
 	beqz	$s1, .LBB17_40
 # %bb.12:                               # %._crit_edge
-	ld.bu	$a0, $fp, 0
-	beq	$s4, $a0, .LBB17_40
+	ld.bu	$a2, $fp, 0
+	beq	$s4, $a2, .LBB17_40
 # %bb.13:
-	addi.w	$a0, $zero, -1
 	st.b	$s4, $fp, 0
-	bge	$a0, $s4, .LBB17_24
+	bltz	$s4, .LBB17_24
 # %bb.14:
 	beqz	$s4, .LBB17_33
 # %bb.15:
@@ -3181,13 +3180,14 @@ CutOff:                                 # @CutOff
 	st.w	$a0, $a7, 0
 	b	.LBB17_4
 .LBB17_24:
-	add.d	$a4, $s2, $s0
-	ld.bu	$a6, $a4, 165
-	lu32i.d	$a0, 0
-	st.w	$a0, $a1, 0
-	addi.d	$a4, $s0, 296
+	add.d	$a2, $s2, $s0
+	ld.bu	$a6, $a2, 165
+	addi.w	$a4, $zero, -1
+	lu32i.d	$a4, 0
+	st.w	$a4, $a1, 0
+	addi.d	$a2, $s0, 296
 	slli.d	$a7, $a6, 2
-	ldx.w	$a5, $a4, $a7
+	ldx.w	$a5, $a2, $a7
 	st.w	$a5, $a1, 4
 	addi.d	$a5, $s0, 128
 	ldx.bu	$a6, $a5, $a6
@@ -3195,21 +3195,21 @@ CutOff:                                 # @CutOff
 	addi.d	$a1, $s0, 448
 	ldx.w	$t0, $a1, $a7
 	ld.d	$a6, $s0, 88
-	stx.w	$a2, $a4, $a7
-	addi.d	$a2, $t0, 1
-	stx.w	$a2, $a1, $a7
+	stx.w	$a0, $a2, $a7
+	addi.d	$a0, $t0, 1
+	stx.w	$a0, $a1, $a7
 	beq	$fp, $a6, .LBB17_43
 # %bb.25:
-	st.w	$a0, $fp, 0
-	ld.w	$a0, $a4, 0
+	st.w	$a4, $fp, 0
+	ld.w	$a0, $a2, 0
 	st.w	$a0, $fp, 4
 	ld.bu	$a0, $a5, 0
 	st.w	$a0, $fp, 8
-	ld.w	$a2, $a1, 0
+	ld.w	$a4, $a1, 0
 	move	$a0, $zero
 	sub.d	$a3, $fp, $a3
-	st.w	$a3, $a4, 0
-	addi.d	$a2, $a2, 1
+	st.w	$a3, $a2, 0
+	addi.d	$a2, $a4, 1
 	st.w	$a2, $a1, 0
 	b	.LBB17_41
 .LBB17_26:
@@ -3252,35 +3252,36 @@ CutOff:                                 # @CutOff
 	sub.w	$a0, $fp, $a0
 	b	.LBB17_41
 .LBB17_33:
-	ld.bu	$a2, $a1, 0
-	ld.bu	$a3, $fp, 1
-	ori	$a4, $zero, 63
-	sltu	$a2, $a4, $a2
-	slli.d	$a2, $a2, 3
-	srli.d	$a3, $a3, 4
-	bstrins.d	$a2, $a3, 4, 4
-	st.b	$a2, $fp, 1
-	ld.h	$a2, $a1, 4
-	st.h	$a2, $fp, 6
-	ld.w	$a2, $a1, 0
-	st.w	$a2, $fp, 2
-	add.d	$a2, $s2, $s0
-	ld.bu	$a2, $a2, 165
-	lu32i.d	$a0, 0
-	st.w	$a0, $a1, 0
-	alsl.d	$a0, $a2, $s0, 2
-	ld.w	$a3, $a0, 296
+	ld.bu	$a0, $a1, 0
+	ld.bu	$a2, $fp, 1
+	ori	$a3, $zero, 63
+	sltu	$a0, $a3, $a0
+	slli.d	$a0, $a0, 3
+	srli.d	$a2, $a2, 4
+	bstrins.d	$a0, $a2, 4, 4
+	st.b	$a0, $fp, 1
+	ld.h	$a0, $a1, 4
+	st.h	$a0, $fp, 6
+	ld.w	$a0, $a1, 0
+	st.w	$a0, $fp, 2
+	add.d	$a0, $s2, $s0
+	ld.bu	$a0, $a0, 165
+	addi.w	$a2, $zero, -1
+	lu32i.d	$a2, 0
+	st.w	$a2, $a1, 0
+	alsl.d	$a2, $a0, $s0, 2
+	ld.w	$a3, $a2, 296
 	st.w	$a3, $a1, 4
-	add.d	$a2, $s0, $a2
-	ld.bu	$a2, $a2, 128
+	add.d	$a0, $s0, $a0
+	ld.bu	$a0, $a0, 128
 	ld.d	$a3, $s0, 56
-	st.w	$a2, $a1, 8
-	ld.w	$a2, $a0, 448
+	st.w	$a0, $a1, 8
+	ld.w	$a0, $a2, 448
 	sub.d	$a1, $a1, $a3
 	ld.b	$a4, $fp, 3
-	st.w	$a1, $a0, 296
-	addi.d	$a1, $a2, 1
-	st.w	$a1, $a0, 448
+	st.w	$a1, $a2, 296
+	addi.d	$a0, $a0, 1
+	st.w	$a0, $a2, 448
 	addi.d	$a0, $a4, 11
 	bstrpick.d	$a0, $a0, 7, 3
 	st.b	$a0, $fp, 3

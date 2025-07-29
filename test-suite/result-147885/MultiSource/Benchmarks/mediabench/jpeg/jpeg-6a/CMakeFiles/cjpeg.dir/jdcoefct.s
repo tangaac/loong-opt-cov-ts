@@ -21,7 +21,6 @@ jinit_d_coef_controller:                # @jinit_d_coef_controller
 	move	$s1, $a1
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 224
-	ori	$s2, $zero, 1
 	move	$a0, $s0
 	jirl	$ra, $a3, 0
 	move	$fp, $a0
@@ -36,7 +35,7 @@ jinit_d_coef_controller:                # @jinit_d_coef_controller
 	beqz	$s1, .LBB0_5
 # %bb.1:
 	ld.w	$a0, $s0, 48
-	blt	$a0, $s2, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.2:                                # %.lr.ph
 	ld.d	$a0, $s0, 296
 	move	$s2, $zero
@@ -189,9 +188,8 @@ start_output_pass:                      # @start_output_pass
 	ld.d	$a1, $s0, 216
 	beqz	$a1, .LBB2_6
 # %bb.5:
-	ld.w	$a3, $a0, 48
-	ori	$a2, $zero, 1
-	bge	$a3, $a2, .LBB2_7
+	ld.w	$a2, $a0, 48
+	bgtz	$a2, .LBB2_7
 	b	.LBB2_19
 .LBB2_6:
 	ld.d	$a1, $a0, 8
@@ -205,19 +203,19 @@ start_output_pass:                      # @start_output_pass
 	move	$a1, $a0
 	move	$a0, $fp
 	st.d	$a1, $s0, 216
-	ld.w	$a3, $a0, 48
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB2_19
+	ld.w	$a2, $a0, 48
+	blez	$a2, .LBB2_19
 .LBB2_7:                                # %.lr.ph.preheader.i
-	ld.d	$a6, $a0, 296
+	ld.d	$a5, $a0, 296
+	move	$a2, $zero
 	move	$a3, $zero
 	move	$a4, $zero
-	move	$a5, $zero
-	addi.d	$a6, $a6, 80
+	addi.d	$a5, $a5, 80
 	addi.d	$a1, $a1, 12
+	ori	$a6, $zero, 1
 .LBB2_8:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a6, 0
+	ld.d	$a7, $a5, 0
 	beqz	$a7, .LBB2_19
 # %bb.9:                                #   in Loop: Header=BB2_8 Depth=1
 	ld.hu	$t0, $a7, 0
@@ -239,11 +237,11 @@ start_output_pass:                      # @start_output_pass
 	beqz	$a7, .LBB2_19
 # %bb.15:                               #   in Loop: Header=BB2_8 Depth=1
 	ld.d	$a7, $a0, 184
-	ldx.w	$t0, $a7, $a3
+	ldx.w	$t0, $a7, $a2
 	bltz	$t0, .LBB2_19
 # %bb.16:                               # %.preheader.preheader.i
                                         #   in Loop: Header=BB2_8 Depth=1
-	add.d	$a7, $a7, $a3
+	add.d	$a7, $a7, $a2
 	ld.w	$t0, $a7, 4
 	st.w	$t0, $a1, -8
 	ld.w	$t1, $a7, 8
@@ -259,17 +257,17 @@ start_output_pass:                      # @start_output_pass
 	or	$a7, $a7, $t3
 	or	$a7, $a7, $t0
 	sltui	$a7, $a7, 1
-	masknez	$t0, $a2, $a7
-	maskeqz	$a5, $a5, $a7
-	or	$a5, $a5, $t0
+	masknez	$t0, $a6, $a7
+	maskeqz	$a4, $a4, $a7
+	or	$a4, $a4, $t0
 	ld.w	$a7, $a0, 48
-	addi.d	$a4, $a4, 1
-	addi.d	$a3, $a3, 256
-	addi.d	$a6, $a6, 96
+	addi.d	$a3, $a3, 1
+	addi.d	$a2, $a2, 256
+	addi.d	$a5, $a5, 96
 	addi.d	$a1, $a1, 24
-	blt	$a4, $a7, .LBB2_8
+	blt	$a3, $a7, .LBB2_8
 # %bb.17:                               # %smoothing_ok.exit
-	beqz	$a5, .LBB2_19
+	beqz	$a4, .LBB2_19
 # %bb.18:
 	pcalau12i	$a1, %pc_hi20(decompress_smooth_data)
 	addi.d	$a1, $a1, %pc_lo12(decompress_smooth_data)
@@ -302,28 +300,26 @@ start_output_pass:                      # @start_output_pass
 	.type	consume_data,@function
 consume_data:                           # @consume_data
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 416
 	ld.d	$s1, $fp, 544
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s2, $zero
 	addi.d	$s3, $s1, 136
-	addi.d	$s4, $sp, 8
+	addi.d	$s4, $sp, 0
 	.p2align	4, , 16
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
 	add.d	$a0, $fp, $s0
@@ -351,12 +347,11 @@ consume_data:                           # @consume_data
 # %bb.4:                                # %.lr.ph87
 	addi.d	$s3, $fp, 424
 	addi.d	$s0, $s1, 56
-	ld.w	$s8, $s1, 40
+	ld.w	$s7, $s1, 40
 	ld.w	$a1, $fp, 456
 	addi.d	$s4, $s1, 72
-	ori	$s5, $zero, 1
-	addi.d	$s6, $sp, 8
-	ori	$s7, $zero, 4
+	addi.d	$s5, $sp, 0
+	ori	$s6, $zero, 4
 	b	.LBB3_7
 	.p2align	4, , 16
 .LBB3_5:                                # %._crit_edge84.loopexit
@@ -364,7 +359,7 @@ consume_data:                           # @consume_data
 	ld.w	$a0, $s1, 48
 .LBB3_6:                                # %._crit_edge84
                                         #   in Loop: Header=BB3_7 Depth=1
-	move	$s8, $zero
+	move	$s7, $zero
 	addi.d	$s2, $s2, 1
 	st.w	$zero, $s1, 40
 	bge	$s2, $a0, .LBB3_24
@@ -374,7 +369,7 @@ consume_data:                           # @consume_data
                                         #         Child Loop BB3_15 Depth 4
                                         #           Child Loop BB3_18 Depth 5
                                         #           Child Loop BB3_21 Depth 5
-	bgeu	$s8, $a1, .LBB3_6
+	bgeu	$s7, $a1, .LBB3_6
 	.p2align	4, , 16
 .LBB3_8:                                # %.preheader
                                         #   Parent Loop BB3_7 Depth=1
@@ -384,7 +379,7 @@ consume_data:                           # @consume_data
                                         #           Child Loop BB3_18 Depth 5
                                         #           Child Loop BB3_21 Depth 5
 	ld.w	$a0, $fp, 416
-	blt	$a0, $s5, .LBB3_22
+	blez	$a0, .LBB3_22
 # %bb.9:                                # %.lr.ph81.preheader
                                         #   in Loop: Header=BB3_8 Depth=2
 	move	$a1, $zero
@@ -405,16 +400,16 @@ consume_data:                           # @consume_data
 	slli.d	$a5, $a1, 3
 	ldx.d	$a4, $s3, $a5
 	ld.w	$a3, $a4, 56
-	blt	$a3, $s5, .LBB3_10
+	blez	$a3, .LBB3_10
 # %bb.12:                               # %.lr.ph76
                                         #   in Loop: Header=BB3_11 Depth=3
 	ld.w	$a4, $a4, 52
-	blt	$a4, $s5, .LBB3_10
+	blez	$a4, .LBB3_10
 # %bb.13:                               # %.lr.ph71.us.preheader
                                         #   in Loop: Header=BB3_11 Depth=3
-	ldx.d	$a6, $a5, $s6
+	ldx.d	$a6, $a5, $s5
 	move	$a5, $zero
-	mul.d	$a7, $a4, $s8
+	mul.d	$a7, $a4, $s7
 	bstrpick.d	$t2, $a7, 31, 0
 	alsl.d	$a6, $s2, $a6, 3
 	bstrpick.d	$t0, $a4, 30, 2
@@ -439,7 +434,7 @@ consume_data:                           # @consume_data
 	slli.d	$t3, $a5, 3
 	ldx.d	$t3, $a6, $t3
 	add.d	$t5, $t3, $t2
-	bgeu	$a4, $s7, .LBB3_17
+	bgeu	$a4, $s6, .LBB3_17
 # %bb.16:                               #   in Loop: Header=BB3_15 Depth=4
 	move	$t4, $a2
 	move	$t3, $t5
@@ -502,8 +497,8 @@ consume_data:                           # @consume_data
 	beqz	$a0, .LBB3_27
 # %bb.23:                               #   in Loop: Header=BB3_8 Depth=2
 	ld.w	$a1, $fp, 456
-	addi.w	$s8, $s8, 1
-	bltu	$s8, $a1, .LBB3_8
+	addi.w	$s7, $s7, 1
+	bltu	$s7, $a1, .LBB3_8
 	b	.LBB3_5
 .LBB3_24:                               # %._crit_edge88
 	ld.w	$a0, $fp, 168
@@ -522,7 +517,7 @@ consume_data:                           # @consume_data
 .LBB3_27:
 	move	$a0, $zero
 	st.w	$s2, $s1, 44
-	st.w	$s8, $s1, 40
+	st.w	$s7, $s1, 40
 	b	.LBB3_33
 .LBB3_28:
 	ld.d	$a0, $fp, 560
@@ -545,18 +540,17 @@ consume_data:                           # @consume_data
 	st.d	$zero, $a0, 40
 	ori	$a0, $zero, 3
 .LBB3_33:
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end3:
 	.size	consume_data, .Lfunc_end3-consume_data
@@ -604,11 +598,10 @@ decompress_data:                        # @decompress_data
 	bgeu	$a1, $a0, .LBB4_1
 .LBB4_5:                                # %.critedge2
 	ld.w	$a0, $fp, 48
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_19
+	blez	$a0, .LBB4_19
 # %bb.6:                                # %.lr.ph80
 	ld.d	$s1, $fp, 296
-	move	$s8, $zero
+	move	$s7, $zero
 	addi.d	$a0, $s0, 136
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB4_8
@@ -616,9 +609,9 @@ decompress_data:                        # @decompress_data
 .LBB4_7:                                # %.loopexit
                                         #   in Loop: Header=BB4_8 Depth=1
 	ld.w	$a0, $fp, 48
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	addi.d	$s1, $s1, 96
-	bge	$s8, $a0, .LBB4_19
+	bge	$s7, $a0, .LBB4_19
 .LBB4_8:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_16 Depth 2
                                         #       Child Loop BB4_18 Depth 3
@@ -627,11 +620,11 @@ decompress_data:                        # @decompress_data
 # %bb.9:                                #   in Loop: Header=BB4_8 Depth=1
 	ld.d	$a0, $fp, 8
 	ld.d	$a5, $a0, 64
-	slli.d	$s0, $s8, 3
+	slli.d	$s3, $s7, 3
 	ld.w	$a0, $fp, 176
 	ld.w	$a3, $s1, 12
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	ldx.d	$a1, $a1, $s0
+	ldx.d	$a1, $a1, $s3
 	mul.w	$a2, $a3, $a0
 	move	$a0, $fp
 	move	$a4, $zero
@@ -641,10 +634,9 @@ decompress_data:                        # @decompress_data
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB4_11
 # %bb.10:                               #   in Loop: Header=BB4_8 Depth=1
-	ld.wu	$s7, $s1, 12
-	addi.w	$a0, $s7, 0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB4_12
+	ld.wu	$s0, $s1, 12
+	addi.w	$a0, $s0, 0
+	bgtz	$a0, .LBB4_12
 	b	.LBB4_7
 	.p2align	4, , 16
 .LBB4_11:                               #   in Loop: Header=BB4_8 Depth=1
@@ -654,10 +646,9 @@ decompress_data:                        # @decompress_data
 	sltui	$a2, $a0, 1
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
-	or	$s7, $a1, $a0
-	addi.w	$a0, $s7, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_7
+	or	$s0, $a1, $a0
+	addi.w	$a0, $s0, 0
+	blez	$a0, .LBB4_7
 .LBB4_12:                               # %.lr.ph76
                                         #   in Loop: Header=BB4_8 Depth=1
 	ld.w	$a0, $s1, 28
@@ -665,11 +656,11 @@ decompress_data:                        # @decompress_data
 # %bb.13:                               # %.lr.ph76.split.preheader
                                         #   in Loop: Header=BB4_8 Depth=1
 	ld.d	$a0, $fp, 584
-	alsl.d	$a0, $s8, $a0, 3
+	alsl.d	$a0, $s7, $a0, 3
 	ld.d	$s6, $a0, 8
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	ldx.d	$s3, $a0, $s0
-	move	$s0, $zero
+	ldx.d	$s3, $a0, $s3
+	move	$s8, $zero
 	ori	$a0, $zero, 1
 	b	.LBB4_16
 	.p2align	4, , 16
@@ -679,9 +670,9 @@ decompress_data:                        # @decompress_data
 	move	$a0, $zero
 .LBB4_15:                               # %._crit_edge
                                         #   in Loop: Header=BB4_16 Depth=2
-	addi.d	$s0, $s0, 1
+	addi.d	$s8, $s8, 1
 	alsl.d	$s3, $a1, $s3, 3
-	beq	$s0, $s7, .LBB4_7
+	beq	$s8, $s0, .LBB4_7
 .LBB4_16:                               # %.lr.ph76.split
                                         #   Parent Loop BB4_8 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -689,7 +680,7 @@ decompress_data:                        # @decompress_data
 	beqz	$a0, .LBB4_14
 # %bb.17:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_16 Depth=2
-	slli.d	$a0, $s0, 3
+	slli.d	$a0, $s8, 3
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	ldx.d	$s4, $a1, $a0
 	move	$s5, $zero
@@ -781,9 +772,8 @@ decompress_onepass:                     # @decompress_onepass
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	addi.d	$a1, $a3, 56
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	ld.w	$s3, $a3, 40
 	addi.d	$s1, $fp, 424
-	ld.w	$s4, $a3, 40
-	ori	$s3, $zero, 1
 	move	$a1, $a3
 	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
@@ -793,14 +783,14 @@ decompress_onepass:                     # @decompress_onepass
                                         #         Child Loop BB6_14 Depth 4
                                         #           Child Loop BB6_17 Depth 5
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	bgeu	$a2, $s4, .LBB6_4
+	bgeu	$a2, $s3, .LBB6_4
 	b	.LBB6_22
 	.p2align	4, , 16
 .LBB6_3:                                # %._crit_edge
                                         #   in Loop: Header=BB6_4 Depth=2
-	addi.w	$s4, $s4, 1
+	addi.w	$s3, $s3, 1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bltu	$a0, $s4, .LBB6_21
+	bltu	$a0, $s3, .LBB6_21
 .LBB6_4:                                # %.lr.ph104
                                         #   Parent Loop BB6_2 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -822,12 +812,12 @@ decompress_onepass:                     # @decompress_onepass
 # %bb.5:                                # %.preheader
                                         #   in Loop: Header=BB6_4 Depth=2
 	ld.w	$a1, $fp, 416
-	blt	$a1, $s3, .LBB6_3
+	blez	$a1, .LBB6_3
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB6_4 Depth=2
 	move	$a6, $zero
 	move	$s5, $zero
-	st.d	$s4, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	b	.LBB6_9
 	.p2align	4, , 16
 .LBB6_7:                                #   in Loop: Header=BB6_9 Depth=3
@@ -848,11 +838,11 @@ decompress_onepass:                     # @decompress_onepass
 	beqz	$a0, .LBB6_7
 # %bb.10:                               #   in Loop: Header=BB6_9 Depth=3
 	ld.w	$a0, $s2, 56
-	blt	$a0, $s3, .LBB6_8
+	blez	$a0, .LBB6_8
 # %bb.11:                               # %.lr.ph92
                                         #   in Loop: Header=BB6_9 Depth=3
 	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	sltu	$a3, $s4, $a3
+	sltu	$a3, $s3, $a3
 	ori	$a4, $zero, 68
 	masknez	$a4, $a4, $a3
 	ori	$a5, $zero, 52
@@ -860,7 +850,7 @@ decompress_onepass:                     # @decompress_onepass
 	or	$a3, $a3, $a4
 	ldx.w	$a3, $s2, $a3
 	st.d	$a3, $sp, 72                    # 8-byte Folded Spill
-	blt	$a3, $s3, .LBB6_20
+	blez	$a3, .LBB6_20
 # %bb.12:                               # %.lr.ph92.split.us.preheader
                                         #   in Loop: Header=BB6_9 Depth=3
 	st.d	$a6, $sp, 48                    # 8-byte Folded Spill
@@ -873,7 +863,7 @@ decompress_onepass:                     # @decompress_onepass
 	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
 	ldx.d	$a2, $a5, $a2
 	ld.d	$s1, $a3, 8
-	mul.w	$s8, $a4, $s4
+	mul.w	$s8, $a4, $s3
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	mul.w	$a3, $a1, $a3
 	alsl.d	$s3, $a3, $a2, 3
@@ -903,8 +893,8 @@ decompress_onepass:                     # @decompress_onepass
 .LBB6_16:                               # %.lr.ph.us
                                         #   in Loop: Header=BB6_14 Depth=4
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	alsl.d	$s0, $s5, $a0, 3
-	ld.d	$s7, $sp, 72                    # 8-byte Folded Reload
+	alsl.d	$s7, $s5, $a0, 3
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
 	move	$s4, $s8
 	.p2align	4, , 16
 .LBB6_17:                               #   Parent Loop BB6_2 Depth=1
@@ -912,7 +902,7 @@ decompress_onepass:                     # @decompress_onepass
                                         #       Parent Loop BB6_9 Depth=3
                                         #         Parent Loop BB6_14 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a2, $s0, 0
+	ld.d	$a2, $s7, 0
 	move	$a0, $fp
 	move	$a1, $s2
 	move	$a3, $s3
@@ -920,9 +910,9 @@ decompress_onepass:                     # @decompress_onepass
 	jirl	$ra, $s1, 0
 	ld.w	$a1, $s2, 36
 	add.w	$s4, $a1, $s4
-	addi.d	$s7, $s7, -1
-	addi.d	$s0, $s0, 8
-	bnez	$s7, .LBB6_17
+	addi.d	$s0, $s0, -1
+	addi.d	$s7, $s7, 8
+	bnez	$s0, .LBB6_17
 # %bb.18:                               # %..loopexit_crit_edge.us.loopexit
                                         #   in Loop: Header=BB6_14 Depth=4
 	ld.w	$a0, $s2, 56
@@ -932,8 +922,7 @@ decompress_onepass:                     # @decompress_onepass
                                         #   in Loop: Header=BB6_9 Depth=3
 	ld.w	$a1, $fp, 416
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ori	$s3, $zero, 1
-	ld.d	$s4, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB6_8
 .LBB6_20:                               # %.lr.ph92.split
@@ -949,7 +938,7 @@ decompress_onepass:                     # @decompress_onepass
 	ld.w	$a0, $a1, 48
 .LBB6_22:                               # %._crit_edge105
                                         #   in Loop: Header=BB6_2 Depth=1
-	move	$s4, $zero
+	move	$s3, $zero
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	addi.w	$a2, $a2, 1
 	st.w	$zero, $a1, 40
@@ -978,7 +967,7 @@ decompress_onepass:                     # @decompress_onepass
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	st.w	$a2, $a1, 44
-	st.w	$s4, $a1, 40
+	st.w	$s3, $a1, 40
 	b	.LBB6_33
 .LBB6_28:
 	ld.d	$a0, $fp, 560
@@ -1033,9 +1022,9 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	st.d	$s6, $sp, 408                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 400                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 392                   # 8-byte Folded Spill
-	move	$s6, $a0
+	move	$s0, $a0
 	ld.w	$a0, $a0, 400
-	ld.d	$a2, $s6, 544
+	ld.d	$a2, $s0, 544
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
 	addi.w	$a0, $a0, -1
@@ -1044,59 +1033,58 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	.p2align	4, , 16
 .LBB7_1:                                #   in Loop: Header=BB7_2 Depth=1
 	ld.d	$a1, $a0, 0
-	move	$a0, $s6
+	move	$a0, $s0
 	jirl	$ra, $a1, 0
 	beqz	$a0, .LBB7_62
 .LBB7_2:                                # =>This Inner Loop Header: Depth=1
-	ld.w	$a1, $s6, 164
-	ld.w	$a2, $s6, 172
+	ld.w	$a1, $s0, 164
+	ld.w	$a2, $s0, 172
 	blt	$a2, $a1, .LBB7_6
 # %bb.3:                                #   in Loop: Header=BB7_2 Depth=1
-	ld.d	$a0, $s6, 560
+	ld.d	$a0, $s0, 560
 	ld.w	$a3, $a0, 36
 	bnez	$a3, .LBB7_6
 # %bb.4:                                #   in Loop: Header=BB7_2 Depth=1
 	bne	$a1, $a2, .LBB7_1
 # %bb.5:                                #   in Loop: Header=BB7_2 Depth=1
-	ld.w	$a1, $s6, 508
-	ld.w	$a2, $s6, 176
-	ld.w	$a3, $s6, 168
+	ld.w	$a1, $s0, 508
+	ld.w	$a2, $s0, 176
+	ld.w	$a3, $s0, 168
 	sltui	$a1, $a1, 1
 	add.w	$a1, $a2, $a1
 	bgeu	$a1, $a3, .LBB7_1
 .LBB7_6:                                # %.critedge
-	ld.w	$a0, $s6, 48
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_61
+	ld.w	$a0, $s0, 48
+	blez	$a0, .LBB7_61
 # %bb.7:                                # %.lr.ph366
-	ld.d	$s0, $s6, 296
+	ld.d	$s1, $s0, 296
 	st.d	$zero, $sp, 24                  # 8-byte Folded Spill
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	addi.d	$a0, $a0, 136
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
 	b	.LBB7_9
 	.p2align	4, , 16
 .LBB7_8:                                # %.loopexit
                                         #   in Loop: Header=BB7_9 Depth=1
-	ld.w	$a0, $s6, 48
+	ld.w	$a0, $s0, 48
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	addi.d	$s0, $s0, 96
+	addi.d	$s1, $s1, 96
 	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
 	bge	$a1, $a0, .LBB7_61
 .LBB7_9:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_17 Depth 2
                                         #       Child Loop BB7_26 Depth 3
-	ld.w	$a0, $s0, 48
+	ld.w	$a0, $s1, 48
 	beqz	$a0, .LBB7_8
 # %bb.10:                               #   in Loop: Header=BB7_9 Depth=1
-	ld.w	$s1, $s6, 176
+	ld.w	$s2, $s0, 176
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bltu	$s1, $a0, .LBB7_13
+	bltu	$s2, $a0, .LBB7_13
 # %bb.11:                               #   in Loop: Header=BB7_9 Depth=1
-	ld.w	$a1, $s0, 32
-	ld.w	$a0, $s0, 12
+	ld.w	$a1, $s1, 32
+	ld.w	$a0, $s1, 12
 	mod.wu	$a1, $a1, $a0
 	sltui	$a2, $a1, 1
 	masknez	$a1, $a1, $a2
@@ -1105,51 +1093,49 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	slli.d	$fp, $a1, 3
-	beqz	$s1, .LBB7_14
+	beqz	$s2, .LBB7_14
 .LBB7_12:                               #   in Loop: Header=BB7_9 Depth=1
-	ld.d	$a1, $s6, 8
+	ld.d	$a1, $s0, 8
 	ld.d	$a5, $a1, 64
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ldx.d	$a1, $a1, $fp
 	add.w	$a3, $a0, $a3
-	addi.d	$a2, $s1, -1
+	addi.d	$a2, $s2, -1
 	mul.w	$a2, $a0, $a2
-	move	$a0, $s6
+	move	$a0, $s0
 	move	$a4, $zero
 	jirl	$ra, $a5, 0
-	ld.w	$a1, $s0, 12
+	ld.w	$a1, $s1, 12
 	alsl.d	$a0, $a1, $a0, 3
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	bge	$a1, $a0, .LBB7_15
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	bgtz	$a0, .LBB7_15
 	b	.LBB7_8
 	.p2align	4, , 16
 .LBB7_13:                               #   in Loop: Header=BB7_9 Depth=1
-	ld.w	$a0, $s0, 12
+	ld.w	$a0, $s1, 12
 	slli.w	$a3, $a0, 1
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	slli.d	$fp, $a1, 3
-	bnez	$s1, .LBB7_12
+	bnez	$s2, .LBB7_12
 .LBB7_14:                               #   in Loop: Header=BB7_9 Depth=1
-	ld.d	$a0, $s6, 8
+	ld.d	$a0, $s0, 8
 	ld.d	$a5, $a0, 64
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ldx.d	$a1, $a0, $fp
-	move	$a0, $s6
+	move	$a0, $s0
 	move	$a2, $zero
 	move	$a4, $zero
 	jirl	$ra, $a5, 0
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB7_8
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	blez	$a0, .LBB7_8
 .LBB7_15:                               # %.lr.ph
                                         #   in Loop: Header=BB7_9 Depth=1
-	ld.d	$a0, $s6, 584
+	ld.d	$a0, $s0, 584
 	move	$t1, $zero
-	ld.d	$a1, $s0, 80
+	ld.d	$a1, $s1, 80
 	ld.d	$t0, $sp, 24                    # 8-byte Folded Reload
 	alsl.d	$a0, $t0, $a0, 3
 	ld.d	$a0, $a0, 8
@@ -1199,8 +1185,8 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	st.d	$a1, $sp, 88                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 8
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 208                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB7_17
 	.p2align	4, , 16
 .LBB7_16:                               #   in Loop: Header=BB7_17 Depth=2
@@ -1209,8 +1195,8 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	ld.d	$a1, $sp, 216                   # 8-byte Folded Reload
 	alsl.d	$a1, $a0, $a1, 3
 	st.d	$a1, $sp, 216                   # 8-byte Folded Spill
-	ld.d	$s0, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	beq	$t1, $a0, .LBB7_8
 .LBB7_17:                               #   Parent Loop BB7_9 Depth=1
@@ -1219,7 +1205,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	slli.d	$a0, $t1, 3
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ldx.d	$s4, $a2, $a0
-	or	$a0, $s1, $t1
+	or	$a0, $s2, $t1
 	addi.w	$a1, $a0, 0
 	alsl.d	$a2, $t1, $a2, 3
 	move	$a0, $s4
@@ -1228,7 +1214,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	ld.d	$a0, $a2, -8
 .LBB7_19:                               #   in Loop: Header=BB7_17 Depth=2
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	bltu	$s1, $a1, .LBB7_21
+	bltu	$s2, $a1, .LBB7_21
 # %bb.20:                               #   in Loop: Header=BB7_17 Depth=2
 	move	$a1, $s4
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
@@ -1238,20 +1224,19 @@ decompress_smooth_data:                 # @decompress_smooth_data
 .LBB7_22:                               #   in Loop: Header=BB7_17 Depth=2
 	st.d	$t1, $sp, 72                    # 8-byte Folded Spill
 	ld.h	$s7, $a0, 0
-	ld.w	$a2, $s0, 28
-	ld.h	$s0, $s4, 0
+	ld.w	$a2, $s1, 28
+	ld.h	$a3, $s4, 0
 	ld.h	$fp, $a1, 0
-	move	$s2, $zero
+	move	$s6, $zero
 	move	$s5, $zero
-	addi.w	$a2, $a2, -1
+	addi.w	$s2, $a2, -1
 	addi.d	$a0, $a0, 128
-	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
 	addi.d	$s1, $a1, 128
 	move	$s8, $fp
-	st.d	$s0, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 232                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a3, $sp, 256                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 248                   # 8-byte Folded Spill
-	move	$s7, $a2
 	b	.LBB7_26
 .LBB7_23:                               #   in Loop: Header=BB7_26 Depth=3
 	slt	$a2, $zero, $a0
@@ -1276,48 +1261,47 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	st.h	$a1, $sp, 268
 .LBB7_25:                               #   in Loop: Header=BB7_26 Depth=3
 	addi.d	$a2, $sp, 264
-	ld.d	$s6, $sp, 168                   # 8-byte Folded Reload
-	move	$a0, $s6
-	move	$fp, $s0
-	ld.d	$s0, $sp, 208                   # 8-byte Folded Reload
-	move	$a1, $s0
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	move	$a0, $s0
+	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
+	move	$a1, $s7
 	ld.d	$a3, $sp, 216                   # 8-byte Folded Reload
 	move	$a4, $s5
 	ld.d	$a5, $sp, 200                   # 8-byte Folded Reload
 	jirl	$ra, $a5, 0
-	ld.w	$a0, $s0, 36
-	move	$s0, $fp
+	ld.w	$a0, $s7, 36
 	addi.d	$s4, $s4, 128
 	add.w	$s5, $a0, $s5
-	addi.w	$s2, $s2, 1
-	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	addi.w	$s6, $s6, 1
+	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$a1, $a1, 128
-	st.d	$a1, $sp, 240                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 232                   # 8-byte Folded Spill
 	addi.d	$s1, $s1, 128
-	move	$fp, $s7
-	move	$s7, $s3
-	bltu	$s3, $s2, .LBB7_16
+	move	$s7, $fp
+	move	$fp, $s2
+	move	$s2, $s3
+	bltu	$s3, $s6, .LBB7_16
 .LBB7_26:                               #   Parent Loop BB7_9 Depth=1
                                         #     Parent Loop BB7_17 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $sp, 248                   # 8-byte Folded Reload
 	st.d	$a0, $sp, 224                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
-	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 248                   # 8-byte Folded Spill
 	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
-	st.d	$s0, $sp, 256                   # 8-byte Folded Spill
-	move	$s6, $fp
+	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 256                   # 8-byte Folded Spill
+	move	$s0, $fp
 	addi.d	$a1, $sp, 264
 	ori	$a2, $zero, 1
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(jcopy_block_row)
 	jirl	$ra, $ra, 0
-	bgeu	$s2, $s7, .LBB7_28
+	bgeu	$s6, $s2, .LBB7_28
 # %bb.27:                               #   in Loop: Header=BB7_26 Depth=3
-	ld.d	$a0, $sp, 240                   # 8-byte Folded Reload
-	ld.h	$a0, $a0, 0
-	st.d	$a0, $sp, 232                   # 8-byte Folded Spill
-	ld.h	$s0, $s4, 128
+	ld.d	$a0, $sp, 232                   # 8-byte Folded Reload
+	ld.h	$s7, $a0, 0
+	ld.h	$a0, $s4, 128
+	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	ld.h	$fp, $s1, 0
 .LBB7_28:                               #   in Loop: Header=BB7_26 Depth=3
 	ld.d	$a5, $sp, 176                   # 8-byte Folded Reload
@@ -1327,7 +1311,8 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	ld.hu	$a1, $sp, 266
 	bnez	$a1, .LBB7_35
 # %bb.30:                               #   in Loop: Header=BB7_26 Depth=3
-	sub.w	$a1, $s3, $s0
+	ld.d	$a1, $sp, 240                   # 8-byte Folded Reload
+	sub.w	$a1, $s3, $a1
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	mul.d	$a1, $a2, $a1
 	bltz	$a1, .LBB7_33
@@ -1336,8 +1321,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	add.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 152                   # 8-byte Folded Reload
 	div.du	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_34
+	blez	$a0, .LBB7_34
 # %bb.32:                               #   in Loop: Header=BB7_26 Depth=3
 	addi.w	$a1, $a1, 0
 	addi.d	$a2, $zero, -1
@@ -1378,7 +1362,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	bnez	$a1, .LBB7_42
 # %bb.37:                               #   in Loop: Header=BB7_26 Depth=3
 	ld.d	$a1, $sp, 248                   # 8-byte Folded Reload
-	sub.w	$a1, $a1, $s6
+	sub.w	$a1, $a1, $s0
 	ld.d	$a2, $sp, 192                   # 8-byte Folded Reload
 	mul.d	$a1, $a2, $a1
 	bltz	$a1, .LBB7_40
@@ -1387,8 +1371,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	add.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
 	div.du	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_41
+	blez	$a0, .LBB7_41
 # %bb.39:                               #   in Loop: Header=BB7_26 Depth=3
 	addi.w	$a1, $a1, 0
 	addi.d	$a2, $zero, -1
@@ -1432,7 +1415,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	slli.d	$a1, $a1, 1
 	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
 	sub.d	$a1, $a2, $a1
-	add.w	$a1, $a1, $s6
+	add.w	$a1, $a1, $s0
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	mul.d	$a1, $a2, $a1
 	bltz	$a1, .LBB7_47
@@ -1441,8 +1424,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	add.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	div.du	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_48
+	blez	$a0, .LBB7_48
 # %bb.46:                               #   in Loop: Header=BB7_26 Depth=3
 	addi.w	$a1, $a1, 0
 	addi.d	$a2, $zero, -1
@@ -1482,8 +1464,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	ld.hu	$a1, $sp, 282
 	bnez	$a1, .LBB7_56
 # %bb.51:                               #   in Loop: Header=BB7_26 Depth=3
-	ld.d	$a1, $sp, 232                   # 8-byte Folded Reload
-	add.d	$a1, $s8, $a1
+	add.d	$a1, $s8, $s7
 	ld.d	$a2, $sp, 224                   # 8-byte Folded Reload
 	sub.d	$a1, $a2, $a1
 	add.w	$a1, $a1, $fp
@@ -1495,8 +1476,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	add.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	div.du	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_55
+	blez	$a0, .LBB7_55
 # %bb.53:                               #   in Loop: Header=BB7_26 Depth=3
 	addi.w	$a1, $a1, 0
 	addi.d	$a2, $zero, -1
@@ -1531,9 +1511,10 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	st.h	$a1, $sp, 282
 .LBB7_56:                               #   in Loop: Header=BB7_26 Depth=3
 	move	$a2, $s3
-	move	$s8, $s6
-	move	$s3, $s7
-	move	$s7, $fp
+	move	$s8, $s0
+	move	$s3, $s2
+	move	$s2, $fp
+	move	$fp, $s7
 	ld.w	$a0, $a5, 20
 	beqz	$a0, .LBB7_25
 # %bb.57:                               #   in Loop: Header=BB7_26 Depth=3
@@ -1543,7 +1524,8 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	ld.d	$a1, $sp, 256                   # 8-byte Folded Reload
 	slli.d	$a1, $a1, 1
 	sub.d	$a1, $a2, $a1
-	add.w	$a1, $a1, $s0
+	ld.d	$a2, $sp, 240                   # 8-byte Folded Reload
+	add.w	$a1, $a1, $a2
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	mul.d	$a1, $a2, $a1
 	bltz	$a1, .LBB7_23
@@ -1552,8 +1534,7 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	add.d	$a1, $a1, $a2
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	div.du	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB7_24
+	blez	$a0, .LBB7_24
 # %bb.60:                               #   in Loop: Header=BB7_26 Depth=3
 	addi.w	$a1, $a1, 0
 	addi.d	$a2, $zero, -1
@@ -1566,10 +1547,10 @@ decompress_smooth_data:                 # @decompress_smooth_data
 	or	$a1, $a1, $a0
 	b	.LBB7_24
 .LBB7_61:                               # %._crit_edge
-	ld.w	$a0, $s6, 176
-	ld.w	$a1, $s6, 400
+	ld.w	$a0, $s0, 176
+	ld.w	$a1, $s0, 400
 	addi.w	$a0, $a0, 1
-	st.w	$a0, $s6, 176
+	st.w	$a0, $s0, 176
 	sltu	$a0, $a0, $a1
 	ori	$a1, $zero, 4
 	sub.d	$a0, $a1, $a0

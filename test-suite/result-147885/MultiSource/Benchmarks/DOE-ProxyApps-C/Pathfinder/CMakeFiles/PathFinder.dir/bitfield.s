@@ -102,12 +102,11 @@ Bitfield_copy:                          # @Bitfield_copy
 # %bb.0:
 	beqz	$a0, .LBB3_11
 # %bb.1:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$s0, $a0, 0
 	ori	$a0, $zero, 16
@@ -120,18 +119,17 @@ Bitfield_copy:                          # @Bitfield_copy
 	add.w	$a1, $a1, $a2
 	srai.d	$a2, $a1, 3
 	ori	$a1, $zero, 1
-	ori	$s1, $zero, 1
-	move	$s2, $a0
+	move	$s1, $a0
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
-	move	$a0, $s2
-	st.d	$a1, $s2, 8
+	move	$a0, $s1
+	st.d	$a1, $s1, 8
 	beqz	$a1, .LBB3_13
 # %bb.3:                                # %Bitfield_new.exit
 	st.w	$s0, $a0, 0
-	blt	$s0, $s1, .LBB3_20
+	blez	$s0, .LBB3_20
 # %bb.4:                                # %iter.check
 	ld.d	$a2, $fp, 8
 	ori	$a4, $zero, 121
@@ -215,12 +213,11 @@ Bitfield_copy:                          # @Bitfield_copy
 	addi.d	$a2, $a2, 1
 	bltu	$a3, $s0, .LBB3_19
 .LBB3_20:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end3:
 	.size	Bitfield_copy, .Lfunc_end3-Bitfield_copy

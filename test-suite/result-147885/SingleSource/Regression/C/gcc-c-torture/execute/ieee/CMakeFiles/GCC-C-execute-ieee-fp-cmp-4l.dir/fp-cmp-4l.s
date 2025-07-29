@@ -38,8 +38,7 @@ test_isless:                            # @test_isless
 	move	$fp, $a4
 	pcaddu18i	$ra, %call36(__lttf2)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_3
+	bgez	$a0, .LBB1_3
 # %bb.1:
 	bnez	$fp, .LBB1_4
 .LBB1_2:
@@ -93,8 +92,7 @@ test_isgreater:                         # @test_isgreater
 	move	$fp, $a4
 	pcaddu18i	$ra, %call36(__gttf2)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_3
+	blez	$a0, .LBB3_3
 # %bb.1:
 	bnez	$fp, .LBB3_4
 .LBB3_2:

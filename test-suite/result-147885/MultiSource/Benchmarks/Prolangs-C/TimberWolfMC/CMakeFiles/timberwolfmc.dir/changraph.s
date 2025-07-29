@@ -57,34 +57,33 @@ changraph:                              # @changraph
 	ld.d	$a0, $a0, %got_pc_lo12(numRects)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ld.w	$fp, $a0, 0
-	addi.w	$s1, $fp, 1
-	slli.d	$a0, $s1, 3
+	addi.w	$s0, $fp, 1
+	slli.d	$a0, $s0, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(eIndexArray)
 	ld.d	$a1, $a1, %got_pc_lo12(eIndexArray)
-	ori	$s0, $zero, 1
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$a0, $a1, 0
-	blt	$fp, $s0, .LBB0_3
+	blez	$fp, .LBB0_3
 # %bb.1:                                # %.lr.ph
-	slli.d	$fp, $s1, 2
-	bstrpick.d	$a1, $s1, 31, 0
-	addi.d	$s1, $a0, 8
-	addi.d	$s3, $a1, -1
+	slli.d	$fp, $s0, 2
+	bstrpick.d	$a1, $s0, 31, 0
+	addi.d	$s0, $a0, 8
+	addi.d	$s1, $a1, -1
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s1, 0
-	addi.d	$s3, $s3, -1
-	addi.d	$s1, $s1, 8
-	bnez	$s3, .LBB0_2
+	st.d	$a0, $s0, 0
+	addi.d	$s1, $s1, -1
+	addi.d	$s0, $s0, 8
+	bnez	$s1, .LBB0_2
 .LBB0_3:                                # %.preheader
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	blt	$a0, $s0, .LBB0_9
+	blez	$a0, .LBB0_9
 # %bb.4:                                # %.lr.ph56.preheader
 	ld.d	$a0, $s7, 0
 	pcalau12i	$a1, %got_pc_hi20(rectArray)
@@ -173,7 +172,7 @@ changraph:                              # @changraph
 	jirl	$ra, $ra, 0
 	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
 	ld.w	$a0, $s5, 0
-	blt	$a0, $fp, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.10:                               # %.lr.ph60.preheader
 	pcalau12i	$a0, %got_pc_hi20(rectArray)
 	ld.d	$s2, $a0, %got_pc_lo12(rectArray)
@@ -241,10 +240,10 @@ exploreUp:                              # @exploreUp
 	pcalau12i	$a0, %got_pc_hi20(numRects)
 	ld.d	$a0, $a0, %got_pc_lo12(numRects)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_12
+	ld.w	$a0, $a0, 0
+	blez	$a0, .LBB1_12
 # %bb.1:                                # %.lr.ph38.preheader
+	ori	$a0, $zero, 1
 	pcalau12i	$a1, %got_pc_hi20(rectArray)
 	ld.d	$s1, $a1, %got_pc_lo12(rectArray)
 	pcalau12i	$a1, %got_pc_hi20(BEptrs)
@@ -353,10 +352,10 @@ exploreRite:                            # @exploreRite
 	pcalau12i	$a0, %got_pc_hi20(numRects)
 	ld.d	$a0, $a0, %got_pc_lo12(numRects)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_12
+	ld.w	$a0, $a0, 0
+	blez	$a0, .LBB2_12
 # %bb.1:                                # %.lr.ph38.preheader
+	ori	$a0, $zero, 1
 	pcalau12i	$a1, %got_pc_hi20(rectArray)
 	ld.d	$s1, $a1, %got_pc_lo12(rectArray)
 	pcalau12i	$a1, %got_pc_hi20(LEptrs)
@@ -611,10 +610,9 @@ constructVedge:                         # @constructVedge
 	bne	$a7, $t0, .LBB3_24
 # %bb.19:
 	ld.w	$a5, $a5, 0
-	ori	$a7, $zero, 1
-	blt	$a6, $a7, .LBB3_26
+	blez	$a6, .LBB3_26
 # %bb.20:
-	blt	$a5, $a7, .LBB3_28
+	blez	$a5, .LBB3_28
 # %bb.21:
 	slt	$a5, $a3, $a2
 	masknez	$a3, $a3, $a5
@@ -1091,10 +1089,9 @@ constructHedge:                         # @constructHedge
 	bne	$a7, $t0, .LBB4_24
 # %bb.19:
 	ld.w	$a5, $a5, 0
-	ori	$a7, $zero, 1
-	blt	$a6, $a7, .LBB4_26
+	blez	$a6, .LBB4_26
 # %bb.20:
-	blt	$a5, $a7, .LBB4_28
+	blez	$a5, .LBB4_28
 # %bb.21:
 	slt	$a5, $a3, $a2
 	masknez	$a3, $a3, $a5

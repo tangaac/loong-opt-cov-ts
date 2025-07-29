@@ -263,7 +263,7 @@ X_com:                                  # @X_com
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(F_floatcmp)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s5, .LBB0_46
+	blez	$a0, .LBB0_46
 # %bb.44:                               #   in Loop: Header=BB0_41 Depth=1
 	move	$a0, $fp
 	b	.LBB0_47
@@ -285,7 +285,7 @@ X_com:                                  # @X_com
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(F_floatcmp)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s5, .LBB0_33
+	blez	$a0, .LBB0_33
 # %bb.49:                               #   in Loop: Header=BB0_41 Depth=1
 	ld.d	$s1, $s1, 16
 	ori	$a0, $zero, 1

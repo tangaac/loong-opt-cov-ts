@@ -30,8 +30,7 @@ C_docmds:                               # @C_docmds
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$fp, %pc_hi20(_C_nextcmd)
 	ld.w	$a0, $fp, %pc_lo12(_C_nextcmd)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	pcalau12i	$a0, %pc_hi20(_C_cmds)

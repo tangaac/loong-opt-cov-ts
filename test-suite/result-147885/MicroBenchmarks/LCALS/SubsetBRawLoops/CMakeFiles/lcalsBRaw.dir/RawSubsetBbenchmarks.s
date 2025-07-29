@@ -52,8 +52,7 @@ _ZL12BM_INIT3_RAWRN9benchmark5StateE:   # @_ZL12BM_INIT3_RAWRN9benchmark5StateE
 # %bb.2:                                # %.preheader.lr.ph
 	ld.d	$a0, $fp, 32
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.3:                                # %.preheader.us.preheader
 	sub.d	$a1, $s2, $s3
 	sub.d	$a2, $s1, $s3
@@ -225,8 +224,7 @@ _ZL16BM_MULADDSUB_RAWRN9benchmark5StateE: # @_ZL16BM_MULADDSUB_RAWRN9benchmark5S
 # %bb.2:                                # %.preheader.lr.ph
 	ld.d	$a0, $fp, 32
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_12
+	blez	$a0, .LBB1_12
 # %bb.3:                                # %.preheader.us.preheader
 	alsl.d	$a1, $a0, $s1, 3
 	alsl.d	$a2, $a0, $s2, 3
@@ -430,8 +428,7 @@ _ZL14BM_IF_QUAD_RAWRN9benchmark5StateE: # @_ZL14BM_IF_QUAD_RAWRN9benchmark5State
 	move	$a4, $s6
 	ld.d	$a1, $a0, 32
 	ld.d	$s6, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$s6, $a1, .LBB2_12
+	blez	$s6, .LBB2_12
 # %bb.3:                                # %.preheader.us.preheader
 	move	$a3, $s4
 	move	$a2, $s3
@@ -597,8 +594,7 @@ _ZL15BM_TRAP_INT_RAWRN9benchmark5StateE: # @_ZL15BM_TRAP_INT_RAWRN9benchmark5Sta
 	fadd.d	$fa2, $fa2, $fa3
 	vldi	$vr3, -928
 	fmul.d	$fa2, $fa2, $fa3
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 8
 	b	.LBB3_4
 	.p2align	4, , 16
 .LBB3_3:                                # %._crit_edge
@@ -612,27 +608,27 @@ _ZL15BM_TRAP_INT_RAWRN9benchmark5StateE: # @_ZL15BM_TRAP_INT_RAWRN9benchmark5Sta
 .LBB3_4:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_6 Depth 2
-	ld.d	$a2, $fp, 32
-	ld.d	$a2, $a2, 0
-	blt	$a2, $a0, .LBB3_3
+	ld.d	$a1, $fp, 32
+	ld.d	$a1, $a1, 0
+	blez	$a1, .LBB3_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
-	move	$a3, $zero
+	move	$a2, $zero
 	.p2align	4, , 16
 .LBB3_6:                                # %.lr.ph
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bstrpick.d	$a4, $a3, 31, 0
-	movgr2fr.d	$fa3, $a4
+	bstrpick.d	$a3, $a2, 31, 0
+	movgr2fr.d	$fa3, $a3
 	ffint.d.l	$fa3, $fa3
 	fmadd.d	$fa3, $fa3, $fa0, $fs0
 	fsub.d	$fa3, $fa3, $fs1
 	fmadd.d	$fa3, $fa3, $fa3, $fa1
 	frsqrt.d	$fa3, $fa3
 	fadd.d	$fa2, $fa2, $fa3
-	addi.d	$a2, $a2, -1
-	addi.w	$a3, $a3, 1
-	bnez	$a2, .LBB3_6
+	addi.d	$a1, $a1, -1
+	addi.w	$a2, $a2, 1
+	bnez	$a1, .LBB3_6
 	b	.LBB3_3
 .LBB3_7:                                # %._crit_edge54
 	move	$a0, $fp

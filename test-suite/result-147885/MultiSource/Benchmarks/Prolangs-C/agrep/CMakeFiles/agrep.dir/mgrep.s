@@ -5,8 +5,7 @@
 	.type	countline,@function
 countline:                              # @countline
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_5
+	blez	$a1, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a2, %got_pc_hi20(total_line)
 	ld.d	$a2, $a2, %got_pc_lo12(total_line)
@@ -388,8 +387,7 @@ f_prep:                                 # @f_prep
 	stx.b	$a0, $a4, $a7
 	b	.LBB2_7
 .LBB2_10:                               # %._crit_edge
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB2_14
+	blez	$a3, .LBB2_14
 # %bb.11:                               # %.lr.ph41.preheader
 	pcalau12i	$a0, %pc_hi20(SHORT)
 	ld.w	$a3, $a0, %pc_lo12(SHORT)
@@ -751,9 +749,8 @@ prepf:                                  # @prepf
 	pcalau12i	$a0, %pc_hi20(buf)
 	addi.d	$s1, $a0, %pc_lo12(buf)
 	lu12i.w	$s0, 2
-	ori	$s4, $zero, 1
 	lu12i.w	$s2, 63
-	ori	$s5, $s2, 1953
+	ori	$s4, $s2, 1953
 	.p2align	4, , 16
 .LBB3_1:                                # =>This Inner Loop Header: Depth=1
 	add.d	$a1, $s1, $s3
@@ -762,12 +759,12 @@ prepf:                                  # @prepf
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s4, .LBB3_4
+	blez	$a1, .LBB3_4
 # %bb.2:                                #   in Loop: Header=BB3_1 Depth=1
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$s3, $s3, $a0
 	addi.w	$a0, $s3, 0
-	blt	$a0, $s5, .LBB3_1
+	blt	$a0, $s4, .LBB3_1
 # %bb.3:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -785,9 +782,8 @@ prepf:                                  # @prepf
 .LBB3_4:
 	ori	$a1, $zero, 10
 	addi.w	$fp, $s3, 0
-	ori	$s0, $zero, 1
 	stx.b	$a1, $s1, $s3
-	blt	$fp, $s0, .LBB3_19
+	blez	$fp, .LBB3_19
 # %bb.5:                                # %.lr.ph.preheader
 	move	$a3, $zero
 	pcalau12i	$a0, %pc_hi20(pat_spool)
@@ -879,6 +875,7 @@ prepf:                                  # @prepf
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
 .LBB3_19:
+	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(pat_spool)
 	addi.d	$a0, $a0, %pc_lo12(pat_spool)
 .LBB3_20:                               # %.preheader93.preheader
@@ -1560,8 +1557,7 @@ mgrep:                                  # @mgrep
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_21
+	blez	$a1, .LBB5_21
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a1, %got_pc_hi20(INVERSE)
 	ld.d	$a1, $a1, %got_pc_lo12(INVERSE)
@@ -1573,13 +1569,13 @@ mgrep:                                  # @mgrep
 	ld.d	$s1, $a1, %got_pc_lo12(total_line)
 	addi.d	$s0, $sp, 56
 	ori	$s6, $zero, 1025
+	pcalau12i	$a1, %pc_hi20(SHORT)
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(FILENAMEONLY)
 	ld.d	$fp, $a1, %got_pc_lo12(FILENAMEONLY)
 	pcalau12i	$a1, %got_pc_hi20(num_of_matched)
 	ld.d	$a1, $a1, %got_pc_lo12(num_of_matched)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(SHORT)
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	move	$a1, $a0
 	ori	$s2, $zero, 1023
 	b	.LBB5_3
@@ -1693,9 +1689,8 @@ mgrep:                                  # @mgrep
 	st.b	$a0, $sp, 1080
 	addi.d	$a1, $sp, 56
 	add.d	$a1, $s2, $a1
-	ori	$a2, $zero, 1
 	st.b	$a0, $a1, -1
-	blt	$s7, $a2, .LBB5_21
+	blez	$s7, .LBB5_21
 # %bb.18:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(SHORT)

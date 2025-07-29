@@ -214,9 +214,8 @@ _ZN23btConvexConvexAlgorithmD2Ev:       # @_ZN23btConvexConvexAlgorithmD2Ev
 	ld.bu	$a0, $a0, 128
 	pcalau12i	$a1, %pc_hi20(_ZTV23btConvexConvexAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV23btConvexConvexAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB5_3
+	beqz	$a0, .LBB5_3
 # %bb.1:
 	ld.d	$a1, $fp, 136
 	beqz	$a1, .LBB5_3
@@ -313,9 +312,8 @@ _ZN23btConvexConvexAlgorithmD0Ev:       # @_ZN23btConvexConvexAlgorithmD0Ev
 	ld.bu	$a0, $a0, 128
 	pcalau12i	$a1, %pc_hi20(_ZTV23btConvexConvexAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV23btConvexConvexAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB6_3
+	beqz	$a0, .LBB6_3
 # %bb.1:
 	ld.d	$a1, $fp, 136
 	beqz	$a1, .LBB6_3
@@ -616,8 +614,7 @@ _ZN23btConvexConvexAlgorithm16processCollisionEP17btCollisionObjectS1_RK16btDisp
 	pcaddu18i	$ra, %call36(_ZN30btConvexSeparatingDistanceUtil24updateSeparatingDistanceERK11btTransformS2_)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s3, 40
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB8_14
+	beqz	$a0, .LBB8_14
 # %bb.13:
 	fld.s	$fa0, $s1, 104
 	movgr2fr.w	$fa1, $zero
@@ -686,9 +683,8 @@ _ZN23btConvexConvexAlgorithm16processCollisionEP17btCollisionObjectS1_RK16btDisp
 	pcaddu18i	$ra, %call36(_ZN17btGjkPairDetector16getClosestPointsERKN36btDiscreteCollisionDetectorInterface17ClosestPointInputERNS0_6ResultEP12btIDebugDrawb)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $s3, 40
-	ori	$a1, $zero, 1
 	pcalau12i	$a3, %pc_hi20(.LCPI8_1)
-	bne	$a0, $a1, .LBB8_21
+	beqz	$a0, .LBB8_21
 # %bb.18:
 	fld.s	$fa6, $sp, 692
 	fld.s	$fa0, $a3, %pc_lo12(.LCPI8_1)
@@ -779,20 +775,19 @@ _ZN23btConvexConvexAlgorithm16processCollisionEP17btCollisionObjectS1_RK16btDisp
 	ld.d	$a4, $a4, %got_pc_lo12(gContactBreakingThreshold)
 	vld	$vr1, $a1, 0
 	masknez	$a1, $s8, $a0
-	vld	$vr2, $a2, 0
-	addi.d	$a2, $sp, 760
-	maskeqz	$a0, $a2, $a0
+	addi.d	$a5, $sp, 760
+	maskeqz	$a0, $a5, $a0
 	or	$a0, $a0, $a1
 	vst	$vr1, $sp, 552
-	vst	$vr2, $sp, 568
-	vld	$vr2, $a3, 0
-	vld	$vr3, $a0, 0
+	vld	$vr2, $a2, 0
+	vld	$vr3, $a3, 0
+	vld	$vr4, $a0, 0
 	ld.w	$a0, $s1, 148
 	fld.s	$fa1, $a4, 0
-	vst	$vr2, $sp, 584
-	ori	$a1, $zero, 1
-	vst	$vr3, $sp, 600
-	blt	$a0, $a1, .LBB8_30
+	vst	$vr2, $sp, 568
+	vst	$vr3, $sp, 584
+	vst	$vr4, $sp, 600
+	blez	$a0, .LBB8_30
 # %bb.25:                               # %.lr.ph
 	move	$s6, $zero
 	addi.d	$a0, $s2, 24
@@ -1242,8 +1237,7 @@ _ZN23btConvexConvexAlgorithm16processCollisionEP17btCollisionObjectS1_RK16btDisp
 	vst	$vr1, $s1, 32
 .LBB8_34:
 	ld.bu	$a0, $s1, 128
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB8_50
+	bnez	$a0, .LBB8_50
 	b	.LBB8_52
 .LBB8_35:
 	fcmp.cule.s	$fcc0, $ft12, $ft7
@@ -2232,8 +2226,7 @@ _ZN23btConvexConvexAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20
 	move	$fp, $a0
 	move	$a0, $s1
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB14_15
+	blez	$a3, .LBB14_15
 .LBB14_6:                               # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -2276,14 +2269,12 @@ _ZN23btConvexConvexAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20
 	bnez	$a5, .LBB14_12
 .LBB14_13:                              # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a1, 24
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB14_17
+	bnez	$a4, .LBB14_17
 	b	.LBB14_18
 .LBB14_14:
 	move	$fp, $zero
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	bge	$a3, $a4, .LBB14_6
+	bgtz	$a3, .LBB14_6
 .LBB14_15:                              # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a2, .LBB14_18
 # %bb.16:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
@@ -2680,18 +2671,17 @@ _ZN24btPerturbedContactResult15addContactPointERK9btVector3S2_f: # @_ZN24btPertu
 	fld.s	$fa2, $a1, 0
 	fld.s	$fa3, $a1, 4
 	ld.bu	$a3, $a0, 376
-	fmul.s	$fa4, $fa0, $fa2
-	fld.s	$fa1, $a1, 8
+	fmul.s	$fa5, $fa0, $fa2
 	fmul.s	$fa7, $fa0, $fa3
+	fld.s	$fa1, $a1, 8
 	fld.s	$fa6, $a2, 0
 	fld.s	$ft0, $a2, 4
+	fld.s	$fa4, $a2, 8
 	fmul.s	$fa0, $fa0, $fa1
-	fld.s	$fa5, $a2, 8
-	fadd.s	$fa4, $fa4, $fa6
+	fadd.s	$fa5, $fa5, $fa6
 	fadd.s	$fa7, $fa7, $ft0
-	ori	$a2, $zero, 1
-	fadd.s	$fa0, $fa0, $fa5
-	bne	$a3, $a2, .LBB20_2
+	fadd.s	$fa0, $fa0, $fa4
+	beqz	$a3, .LBB20_2
 # %bb.1:
 	fld.s	$ft8, $a0, 184
 	fld.s	$ft6, $a0, 200
@@ -2763,31 +2753,31 @@ _ZN24btPerturbedContactResult15addContactPointERK9btVector3S2_f: # @_ZN24btPertu
 	fmadd.s	$ft11, $ft11, $ft3, $ft14
 	fmadd.s	$ft3, $fs3, $ft3, $ft5
 	fmul.s	$ft5, $fa7, $ft8
-	fmadd.s	$ft5, $ft12, $fa4, $ft5
+	fmadd.s	$ft5, $ft12, $fa5, $ft5
 	fmul.s	$ft8, $fa7, $ft9
-	fmadd.s	$ft8, $ft13, $fa4, $ft8
+	fmadd.s	$ft8, $ft13, $fa5, $ft8
 	fmul.s	$fa7, $fa7, $ft2
-	fmadd.s	$fa4, $ft1, $fa4, $fa7
+	fmadd.s	$fa5, $ft1, $fa5, $fa7
 	fld.s	$fa7, $a0, 360
 	fmadd.s	$ft1, $ft6, $fa0, $ft5
 	fld.s	$ft2, $a0, 364
 	fmadd.s	$ft5, $ft10, $fa0, $ft8
 	fld.s	$ft6, $a0, 368
-	fmadd.s	$fa0, $ft4, $fa0, $fa4
-	fadd.s	$fa4, $ft7, $fa7
+	fmadd.s	$fa0, $ft4, $fa0, $fa5
+	fadd.s	$fa5, $ft7, $fa7
 	fadd.s	$fa7, $ft11, $ft2
 	fadd.s	$ft2, $ft3, $ft6
-	fadd.s	$fa4, $ft1, $fa4
+	fadd.s	$fa5, $ft1, $fa5
 	fadd.s	$fa7, $ft5, $fa7
 	fadd.s	$ft1, $ft2, $fa0
-	fsub.s	$fa0, $fa4, $fa6
+	fsub.s	$fa0, $fa5, $fa6
 	fsub.s	$fa6, $fa7, $ft0
 	fmul.s	$fa6, $fa3, $fa6
 	fmadd.s	$fa0, $fa0, $fa2, $fa6
-	fsub.s	$fa5, $ft1, $fa5
-	fmadd.s	$fa0, $fa5, $fa1, $fa0
+	fsub.s	$fa4, $ft1, $fa4
+	fmadd.s	$fa0, $fa4, $fa1, $fa0
 	fmul.s	$fa2, $fa2, $fa0
-	fadd.s	$fa2, $fa4, $fa2
+	fadd.s	$fa2, $fa5, $fa2
 	fmul.s	$fa3, $fa3, $fa0
 	fadd.s	$fa3, $fa7, $fa3
 	fmul.s	$fa1, $fa1, $fa0
@@ -2873,10 +2863,10 @@ _ZN24btPerturbedContactResult15addContactPointERK9btVector3S2_f: # @_ZN24btPertu
 	fmul.s	$ft0, $ft0, $ft2
 	fmadd.s	$fa6, $ft1, $fa6, $ft0
 	fld.s	$ft0, $a0, 360
-	fmadd.s	$ft1, $ft6, $fa5, $ft5
+	fmadd.s	$ft1, $ft6, $fa4, $ft5
 	fld.s	$ft2, $a0, 364
-	fmadd.s	$ft5, $ft10, $fa5, $ft8
-	fmadd.s	$fa5, $ft4, $fa5, $fa6
+	fmadd.s	$ft5, $ft10, $fa4, $ft8
+	fmadd.s	$fa4, $ft4, $fa4, $fa6
 	fadd.s	$fa6, $ft7, $ft0
 	fadd.s	$ft0, $ft11, $ft2
 	fadd.s	$fa6, $ft1, $fa6
@@ -2884,10 +2874,10 @@ _ZN24btPerturbedContactResult15addContactPointERK9btVector3S2_f: # @_ZN24btPertu
 	fld.s	$ft1, $a0, 368
 	fsub.s	$fa7, $fa7, $ft0
 	fmul.s	$fa3, $fa3, $fa7
-	fsub.s	$fa4, $fa4, $fa6
-	fmadd.s	$fa2, $fa4, $fa2, $fa3
+	fsub.s	$fa5, $fa5, $fa6
+	fmadd.s	$fa2, $fa5, $fa2, $fa3
 	fadd.s	$fa3, $ft3, $ft1
-	fadd.s	$fa3, $fa3, $fa5
+	fadd.s	$fa3, $fa3, $fa4
 	fsub.s	$fa0, $fa0, $fa3
 	fmadd.s	$fa0, $fa0, $fa1, $fa2
 	movfr2gr.s	$a2, $fa6

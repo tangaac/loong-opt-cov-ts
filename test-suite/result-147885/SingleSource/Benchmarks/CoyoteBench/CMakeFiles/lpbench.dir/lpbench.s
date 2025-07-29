@@ -161,9 +161,9 @@ matgen:                                 # @matgen
 	.type	idamax,@function
 idamax:                                 # @idamax
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:
+	ori	$a4, $zero, 1
 	bne	$a0, $a4, .LBB1_4
 # %bb.2:
 	move	$a0, $zero
@@ -173,8 +173,7 @@ idamax:                                 # @idamax
 	move	$a0, $a4
 	ret
 .LBB1_4:
-	ori	$a5, $zero, 1
-	bne	$a3, $a5, .LBB1_8
+	bne	$a3, $a4, .LBB1_8
 # %bb.5:                                # %.lr.ph49.preheader
 	slli.d	$a3, $a2, 3
 	fldx.d	$fa0, $a1, $a3
@@ -206,11 +205,12 @@ idamax:                                 # @idamax
 	slli.d	$a2, $a2, 3
 	fldx.d	$fa0, $a1, $a2
 	move	$a4, $zero
-	addi.w	$a6, $a3, 1
+	addi.w	$a5, $a3, 1
 	fabs.d	$fa0, $fa0
-	alsl.d	$a2, $a6, $a2, 3
+	alsl.d	$a2, $a5, $a2, 3
 	add.d	$a1, $a1, $a2
 	slli.d	$a2, $a3, 3
+	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB1_9:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -218,13 +218,13 @@ idamax:                                 # @idamax
 	fabs.d	$fa1, $fa1
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa0, $fa1, $fcc0
-	movcf2gr	$a3, $fcc0
-	masknez	$a4, $a4, $a3
-	maskeqz	$a3, $a5, $a3
-	or	$a4, $a3, $a4
-	addi.w	$a5, $a5, 1
+	movcf2gr	$a5, $fcc0
+	masknez	$a4, $a4, $a5
+	maskeqz	$a5, $a3, $a5
+	or	$a4, $a5, $a4
+	addi.w	$a3, $a3, 1
 	add.d	$a1, $a1, $a2
-	bne	$a0, $a5, .LBB1_9
+	bne	$a0, $a3, .LBB1_9
 	b	.LBB1_7
 .Lfunc_end1:
 	.size	idamax, .Lfunc_end1-idamax
@@ -234,10 +234,10 @@ idamax:                                 # @idamax
 	.type	dscal,@function
 dscal:                                  # @dscal
 # %bb.0:
-	ori	$a4, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a0, $a4, .LBB2_12
+	blez	$a0, .LBB2_12
 # %bb.1:
+	ori	$a4, $zero, 1
 	bne	$a3, $a4, .LBB2_4
 # %bb.2:                                # %.lr.ph23.preheader
 	ori	$a4, $zero, 4
@@ -248,8 +248,7 @@ dscal:                                  # @dscal
 	b	.LBB2_10
 .LBB2_4:
 	mul.w	$a0, $a3, $a0
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB2_12
+	blez	$a0, .LBB2_12
 # %bb.5:                                # %.lr.ph.preheader
 	move	$a4, $zero
 	alsl.d	$a1, $a2, $a1, 3
@@ -309,9 +308,8 @@ dscal:                                  # @dscal
 	.type	daxpy,@function
 daxpy:                                  # @daxpy
 # %bb.0:
-	ori	$a7, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a0, $a7, .LBB3_15
+	blez	$a0, .LBB3_15
 # %bb.1:
 	movgr2fr.d	$fa1, $zero
 	fcmp.ceq.d	$fcc0, $fa0, $fa1

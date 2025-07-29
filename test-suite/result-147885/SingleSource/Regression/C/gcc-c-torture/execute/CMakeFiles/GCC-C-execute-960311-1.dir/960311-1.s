@@ -19,8 +19,7 @@ a1:                                     # @a1
 b:                                      # @b
 # %bb.0:
 	ext.w.b	$a1, $a0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB1_4
+	bltz	$a1, .LBB1_4
 # %bb.1:
 	andi	$a1, $a0, 64
 	bnez	$a1, .LBB1_5

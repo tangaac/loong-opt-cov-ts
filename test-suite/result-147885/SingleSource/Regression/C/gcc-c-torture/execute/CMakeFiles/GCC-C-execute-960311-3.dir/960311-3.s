@@ -18,35 +18,29 @@ a1:                                     # @a1
 	.type	b,@function
 b:                                      # @b
 # %bb.0:
-	lu12i.w	$a1, -524288
-	lu32i.d	$a1, 0
-	and	$a2, $a0, $a1
+	slli.d	$a2, $a0, 32
 	pcalau12i	$a1, %pc_hi20(count)
-	bnez	$a2, .LBB1_4
+	bltz	$a2, .LBB1_4
 # %bb.1:
-	lu12i.w	$a2, 262144
-	and	$a2, $a0, $a2
-	bnez	$a2, .LBB1_5
+	slli.d	$a2, $a0, 33
+	bltz	$a2, .LBB1_5
 .LBB1_2:
-	lu12i.w	$a2, 131072
-	and	$a0, $a0, $a2
-	bnez	$a0, .LBB1_6
+	slli.d	$a0, $a0, 34
+	bltz	$a0, .LBB1_6
 .LBB1_3:
 	ret
 .LBB1_4:
 	ld.w	$a2, $a1, %pc_lo12(count)
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a1, %pc_lo12(count)
-	lu12i.w	$a2, 262144
-	and	$a2, $a0, $a2
-	beqz	$a2, .LBB1_2
+	slli.d	$a2, $a0, 33
+	bgez	$a2, .LBB1_2
 .LBB1_5:
 	ld.w	$a2, $a1, %pc_lo12(count)
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a1, %pc_lo12(count)
-	lu12i.w	$a2, 131072
-	and	$a0, $a0, $a2
-	beqz	$a0, .LBB1_3
+	slli.d	$a0, $a0, 34
+	bgez	$a0, .LBB1_3
 .LBB1_6:
 	ld.w	$a0, $a1, %pc_lo12(count)
 	addi.d	$a0, $a0, 1

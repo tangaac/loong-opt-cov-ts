@@ -46,7 +46,7 @@ lua_checkstack:                         # @lua_checkstack
 	b	.LBB1_9
 .LBB1_4:
 	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_9
+	blez	$a1, .LBB1_9
 # %bb.5:
 	ld.d	$a3, $fp, 56
 	sub.d	$a3, $a3, $a2
@@ -86,9 +86,8 @@ lua_xmove:                              # @lua_xmove
 	ld.d	$a4, $a0, 16
 	slli.d	$a3, $a2, 4
 	sub.d	$a4, $a4, $a3
-	ori	$a5, $zero, 1
 	st.d	$a4, $a0, 16
-	blt	$a2, $a5, .LBB2_4
+	blez	$a2, .LBB2_4
 # %bb.2:                                # %.lr.ph
 	move	$a2, $zero
 	.p2align	4, , 16
@@ -249,8 +248,7 @@ lua_settop:                             # @lua_settop
 	.type	lua_remove,@function
 lua_remove:                             # @lua_remove
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_2
+	blez	$a1, .LBB8_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -344,8 +342,7 @@ lua_remove:                             # @lua_remove
 	.type	lua_insert,@function
 lua_insert:                             # @lua_insert
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_2
+	blez	$a1, .LBB9_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -487,8 +484,7 @@ lua_replace:                            # @lua_replace
 	move	$a0, $fp
 	b	.LBB10_12
 .LBB10_7:
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB10_9
+	blez	$a1, .LBB10_9
 # %bb.8:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -582,8 +578,7 @@ lua_replace:                            # @lua_replace
 	.type	lua_pushvalue,@function
 lua_pushvalue:                          # @lua_pushvalue
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB11_2
+	blez	$a1, .LBB11_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -664,8 +659,7 @@ lua_pushvalue:                          # @lua_pushvalue
 	.type	lua_type,@function
 lua_type:                               # @lua_type
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB12_2
+	blez	$a1, .LBB12_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -757,8 +751,7 @@ lua_typename:                           # @lua_typename
 	.type	lua_iscfunction,@function
 lua_iscfunction:                        # @lua_iscfunction
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB14_3
+	blez	$a1, .LBB14_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -841,8 +834,7 @@ lua_iscfunction:                        # @lua_iscfunction
 	.type	lua_isnumber,@function
 lua_isnumber:                           # @lua_isnumber
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB15_3
+	blez	$a1, .LBB15_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -931,8 +923,7 @@ lua_isnumber:                           # @lua_isnumber
 	.type	lua_isstring,@function
 lua_isstring:                           # @lua_isstring
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB16_2
+	blez	$a1, .LBB16_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -1006,8 +997,7 @@ lua_isstring:                           # @lua_isstring
 	.type	lua_isuserdata,@function
 lua_isuserdata:                         # @lua_isuserdata
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_3
+	blez	$a1, .LBB17_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -1086,10 +1076,9 @@ lua_isuserdata:                         # @lua_isuserdata
 	.type	lua_rawequal,@function
 lua_rawequal:                           # @lua_rawequal
 # %bb.0:
-	ori	$a3, $zero, 1
-	pcalau12i	$a4, %pc_hi20(luaO_nilobject_)
-	addi.d	$a4, $a4, %pc_lo12(luaO_nilobject_)
-	blt	$a1, $a3, .LBB18_2
+	pcalau12i	$a3, %pc_hi20(luaO_nilobject_)
+	addi.d	$a4, $a3, %pc_lo12(luaO_nilobject_)
+	blez	$a1, .LBB18_2
 # %bb.1:
 	ld.d	$a3, $a0, 24
 	ld.d	$a5, $a0, 16
@@ -1108,8 +1097,7 @@ lua_rawequal:                           # @lua_rawequal
 	ld.d	$a3, $a0, 16
 	alsl.d	$a3, $a1, $a3, 4
 .LBB18_4:                               # %index2adr.exit
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB18_7
+	blez	$a2, .LBB18_7
 # %bb.5:
 	ld.d	$a1, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -1228,10 +1216,9 @@ lua_rawequal:                           # @lua_rawequal
 	.type	lua_equal,@function
 lua_equal:                              # @lua_equal
 # %bb.0:
-	ori	$a3, $zero, 1
-	pcalau12i	$a4, %pc_hi20(luaO_nilobject_)
-	addi.d	$a4, $a4, %pc_lo12(luaO_nilobject_)
-	blt	$a1, $a3, .LBB19_2
+	pcalau12i	$a3, %pc_hi20(luaO_nilobject_)
+	addi.d	$a4, $a3, %pc_lo12(luaO_nilobject_)
+	blez	$a1, .LBB19_2
 # %bb.1:
 	ld.d	$a3, $a0, 24
 	ld.d	$a5, $a0, 16
@@ -1250,8 +1237,7 @@ lua_equal:                              # @lua_equal
 	ld.d	$a3, $a0, 16
 	alsl.d	$a1, $a1, $a3, 4
 .LBB19_4:                               # %index2adr.exit
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB19_6
+	blez	$a2, .LBB19_6
 # %bb.5:
 	ld.d	$a3, $a0, 24
 	ld.d	$a5, $a0, 16
@@ -1382,10 +1368,9 @@ lua_equal:                              # @lua_equal
 	.type	lua_lessthan,@function
 lua_lessthan:                           # @lua_lessthan
 # %bb.0:
-	ori	$a4, $zero, 1
 	pcalau12i	$a3, %pc_hi20(luaO_nilobject_)
 	addi.d	$a3, $a3, %pc_lo12(luaO_nilobject_)
-	blt	$a1, $a4, .LBB20_2
+	blez	$a1, .LBB20_2
 # %bb.1:
 	ld.d	$a4, $a0, 24
 	ld.d	$a5, $a0, 16
@@ -1404,8 +1389,7 @@ lua_lessthan:                           # @lua_lessthan
 	ld.d	$a4, $a0, 16
 	alsl.d	$a1, $a1, $a4, 4
 .LBB20_4:                               # %index2adr.exit
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB20_6
+	blez	$a2, .LBB20_6
 # %bb.5:
 	ld.d	$a4, $a0, 24
 	ld.d	$a5, $a0, 16
@@ -1523,8 +1507,7 @@ lua_lessthan:                           # @lua_lessthan
 	.type	lua_tonumber,@function
 lua_tonumber:                           # @lua_tonumber
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB21_3
+	blez	$a1, .LBB21_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -1617,8 +1600,7 @@ lua_tonumber:                           # @lua_tonumber
 	.type	lua_tointeger,@function
 lua_tointeger:                          # @lua_tointeger
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB22_3
+	blez	$a1, .LBB22_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -1713,8 +1695,7 @@ lua_tointeger:                          # @lua_tointeger
 	.type	lua_toboolean,@function
 lua_toboolean:                          # @lua_toboolean
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB23_3
+	blez	$a1, .LBB23_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -1802,11 +1783,10 @@ lua_tolstring:                          # @lua_tolstring
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
-	blt	$a1, $a3, .LBB24_2
+	blez	$a1, .LBB24_2
 # %bb.1:
 	ld.d	$a0, $s0, 24
 	ld.d	$a1, $s0, 16
@@ -1845,8 +1825,7 @@ lua_tolstring:                          # @lua_tolstring
 	pcaddu18i	$ra, %call36(luaC_step)
 	jirl	$ra, $ra, 0
 .LBB24_8:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB24_16
+	blez	$s1, .LBB24_16
 # %bb.9:
 	ld.d	$a0, $s0, 24
 	ld.d	$a1, $s0, 16
@@ -1985,8 +1964,7 @@ lua_objlen:                             # @lua_objlen
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB25_2
+	blez	$a1, .LBB25_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -2106,8 +2084,7 @@ lua_objlen:                             # @lua_objlen
 	.type	lua_tocfunction,@function
 lua_tocfunction:                        # @lua_tocfunction
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB26_3
+	blez	$a1, .LBB26_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -2192,8 +2169,7 @@ lua_tocfunction:                        # @lua_tocfunction
 	.type	lua_touserdata,@function
 lua_touserdata:                         # @lua_touserdata
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB27_3
+	blez	$a1, .LBB27_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -2281,8 +2257,7 @@ lua_touserdata:                         # @lua_touserdata
 	.type	lua_tothread,@function
 lua_tothread:                           # @lua_tothread
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB28_3
+	blez	$a1, .LBB28_3
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -2363,8 +2338,7 @@ lua_tothread:                           # @lua_tothread
 	.type	lua_topointer,@function
 lua_topointer:                          # @lua_topointer
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB29_2
+	blez	$a1, .LBB29_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -2401,8 +2375,7 @@ lua_topointer:                          # @lua_topointer
 	ld.d	$a0, $a3, 0
 	ret
 .LBB29_7:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB29_14
+	blez	$a1, .LBB29_14
 # %bb.8:
 	ld.d	$a2, $a0, 24
 	ld.d	$a0, $a0, 16
@@ -2894,8 +2867,7 @@ lua_pushthread:                         # @lua_pushthread
 	.type	lua_gettable,@function
 lua_gettable:                           # @lua_gettable
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB41_2
+	blez	$a1, .LBB41_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -2996,10 +2968,9 @@ lua_getfield:                           # @lua_getfield
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$s0, $a2
 	move	$fp, $a0
-	blt	$a1, $a3, .LBB42_2
+	blez	$a1, .LBB42_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -3100,9 +3071,8 @@ lua_rawget:                             # @lua_rawget
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB43_2
+	blez	$a1, .LBB43_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -3191,9 +3161,8 @@ lua_rawgeti:                            # @lua_rawgeti
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a3, .LBB44_2
+	blez	$a1, .LBB44_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a3, $fp, 16
@@ -3324,8 +3293,7 @@ lua_createtable:                        # @lua_createtable
 	.type	lua_getmetatable,@function
 lua_getmetatable:                       # @lua_getmetatable
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB46_2
+	blez	$a1, .LBB46_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -3427,8 +3395,7 @@ lua_getmetatable:                       # @lua_getmetatable
 	.type	lua_getfenv,@function
 lua_getfenv:                            # @lua_getfenv
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB47_2
+	blez	$a1, .LBB47_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -3535,9 +3502,8 @@ lua_settable:                           # @lua_settable
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB48_2
+	blez	$a1, .LBB48_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -3627,10 +3593,9 @@ lua_setfield:                           # @lua_setfield
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$s0, $a2
 	move	$fp, $a0
-	blt	$a1, $a3, .LBB49_2
+	blez	$a1, .LBB49_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -3734,9 +3699,8 @@ lua_rawset:                             # @lua_rawset
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB50_2
+	blez	$a1, .LBB50_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -3851,9 +3815,8 @@ lua_rawseti:                            # @lua_rawseti
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
-	ori	$a3, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a3, .LBB51_2
+	blez	$a1, .LBB51_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a3, $fp, 16
@@ -3965,9 +3928,8 @@ lua_setmetatable:                       # @lua_setmetatable
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB52_2
+	blez	$a1, .LBB52_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -4104,8 +4066,7 @@ lua_setmetatable:                       # @lua_setmetatable
 	.type	lua_setfenv,@function
 lua_setfenv:                            # @lua_setfenv
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB53_2
+	blez	$a1, .LBB53_2
 # %bb.1:
 	ld.d	$a2, $a0, 24
 	ld.d	$a3, $a0, 16
@@ -4276,8 +4237,7 @@ lua_pcall:                              # @lua_pcall
 	move	$fp, $a0
 	beqz	$a3, .LBB55_3
 # %bb.1:
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB55_4
+	blez	$a3, .LBB55_4
 # %bb.2:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -4663,9 +4623,8 @@ lua_next:                               # @lua_next
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB64_2
+	blez	$a1, .LBB64_2
 # %bb.1:
 	ld.d	$a0, $fp, 24
 	ld.d	$a2, $fp, 16
@@ -4899,8 +4858,7 @@ lua_newuserdata:                        # @lua_newuserdata
 	.type	lua_getupvalue,@function
 lua_getupvalue:                         # @lua_getupvalue
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB69_2
+	blez	$a1, .LBB69_2
 # %bb.1:
 	ld.d	$a3, $a0, 24
 	ld.d	$a4, $a0, 16
@@ -4929,8 +4887,7 @@ lua_getupvalue:                         # @lua_getupvalue
 	ld.bu	$a3, $a1, 10
 	beqz	$a3, .LBB69_13
 # %bb.6:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB69_15
+	blez	$a2, .LBB69_15
 # %bb.7:
 	ld.bu	$a3, $a1, 11
 	bltu	$a3, $a2, .LBB69_15
@@ -4954,8 +4911,7 @@ lua_getupvalue:                         # @lua_getupvalue
 	addi.d	$a1, $a1, 160
 	b	.LBB69_4
 .LBB69_13:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB69_15
+	blez	$a2, .LBB69_15
 # %bb.14:
 	ld.d	$a3, $a1, 32
 	ld.w	$a4, $a3, 72
@@ -5021,8 +4977,7 @@ lua_getupvalue:                         # @lua_getupvalue
 	.type	lua_setupvalue,@function
 lua_setupvalue:                         # @lua_setupvalue
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB70_2
+	blez	$a1, .LBB70_2
 # %bb.1:
 	ld.d	$a3, $a0, 24
 	ld.d	$a4, $a0, 16
@@ -5054,8 +5009,7 @@ lua_setupvalue:                         # @lua_setupvalue
 	ld.bu	$a4, $a3, 10
 	beqz	$a4, .LBB70_13
 # %bb.6:
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB70_15
+	blez	$a2, .LBB70_15
 # %bb.7:
 	ld.bu	$a4, $a3, 11
 	bltu	$a4, $a2, .LBB70_15
@@ -5079,8 +5033,7 @@ lua_setupvalue:                         # @lua_setupvalue
 	addi.d	$a1, $a1, 160
 	b	.LBB70_4
 .LBB70_13:
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB70_15
+	blez	$a2, .LBB70_15
 # %bb.14:
 	ld.d	$a4, $a3, 32
 	ld.w	$a5, $a4, 72

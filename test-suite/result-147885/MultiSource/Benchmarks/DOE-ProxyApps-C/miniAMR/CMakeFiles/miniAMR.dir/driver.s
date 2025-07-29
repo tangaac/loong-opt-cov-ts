@@ -65,23 +65,23 @@ driver:                                 # @driver
 .LBB0_4:
 	pcaddu18i	$ra, %call36(timer)
 	jirl	$ra, $ra, 0
-	pcalau12i	$s5, %pc_hi20(timer_plot)
-	fld.d	$fa1, $s5, %pc_lo12(timer_plot)
-	pcalau12i	$s6, %pc_hi20(global_active)
-	ld.w	$a0, $s6, %pc_lo12(global_active)
+	pcalau12i	$s3, %pc_hi20(timer_plot)
+	fld.d	$fa1, $s3, %pc_lo12(timer_plot)
 	fsub.d	$fa0, $fa0, $fs1
 	fadd.d	$fa0, $fa1, $fa0
-	pcalau12i	$s7, %pc_hi20(nb_max)
-	st.w	$a0, $s7, %pc_lo12(nb_max)
-	pcalau12i	$s8, %pc_hi20(num_tsteps)
-	ld.w	$a1, $s8, %pc_lo12(num_tsteps)
+	fst.d	$fa0, $s3, %pc_lo12(timer_plot)
+	pcalau12i	$s4, %pc_hi20(global_active)
+	ld.w	$a0, $s4, %pc_lo12(global_active)
+	pcalau12i	$s5, %pc_hi20(num_tsteps)
+	ld.w	$a1, $s5, %pc_lo12(num_tsteps)
+	pcalau12i	$s8, %pc_hi20(nb_max)
+	st.w	$a0, $s8, %pc_lo12(nb_max)
 	pcalau12i	$a4, %pc_hi20(nb_min)
 	st.w	$a0, $a4, %pc_lo12(nb_min)
-	ori	$a0, $zero, 1
-	fst.d	$fa0, $s5, %pc_lo12(timer_plot)
-	blt	$a1, $a0, .LBB0_35
+	blez	$a1, .LBB0_35
 # %bb.5:                                # %.preheader.preheader
 	st.d	$zero, $sp, 112                 # 8-byte Folded Spill
+	ori	$a1, $zero, 1
 	pcalau12i	$a2, %pc_hi20(stages_per_ts)
 	pcalau12i	$a5, %pc_hi20(total_blocks)
 	pcalau12i	$a0, %pc_hi20(num_vars)
@@ -90,20 +90,19 @@ driver:                                 # @driver
 	st.d	$a0, $sp, 96                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(timer_comm_all)
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
-	pcalau12i	$s4, %pc_hi20(timer_calc_all)
+	pcalau12i	$s7, %pc_hi20(timer_calc_all)
 	pcalau12i	$a0, %pc_hi20(checksum_freq)
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	pcalau12i	$s3, %pc_hi20(timer_cs_all)
-	ori	$a1, $zero, 1
+	pcalau12i	$s6, %pc_hi20(timer_cs_all)
                                         # implicit-def: $f25_64
 	st.d	$a4, $sp, 72                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 56                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s8, $sp, 0                     # 8-byte Folded Spill
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 .LBB0_6:                                # %.preheader
@@ -113,8 +112,7 @@ driver:                                 # @driver
                                         #         Child Loop BB0_18 Depth 4
 	ld.w	$a0, $a2, %pc_lo12(stages_per_ts)
 	move	$s0, $a1
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_27
+	blez	$a0, .LBB0_27
 # %bb.7:                                # %.lr.ph94.preheader
                                         #   in Loop: Header=BB0_6 Depth=1
 	st.d	$zero, $sp, 136                 # 8-byte Folded Spill
@@ -124,39 +122,37 @@ driver:                                 # @driver
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_15 Depth 3
                                         #         Child Loop BB0_18 Depth 4
-	ld.w	$a1, $s6, %pc_lo12(global_active)
+	ld.w	$a1, $s4, %pc_lo12(global_active)
 	ld.d	$a2, $a5, %pc_lo12(total_blocks)
 	ld.w	$a3, $a4, %pc_lo12(nb_min)
 	add.d	$a2, $a2, $a1
 	st.d	$a2, $a5, %pc_lo12(total_blocks)
 	blt	$a1, $a3, .LBB0_11
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$a2, $s7, %pc_lo12(nb_max)
+	ld.w	$a2, $s8, %pc_lo12(nb_max)
 	blt	$a2, $a1, .LBB0_12
 .LBB0_10:                               #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(num_vars)
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB0_13
+	bgtz	$a1, .LBB0_13
 	b	.LBB0_26
 	.p2align	4, , 16
 .LBB0_11:                               #   in Loop: Header=BB0_8 Depth=2
 	st.w	$a1, $a4, %pc_lo12(nb_min)
-	ld.w	$a2, $s7, %pc_lo12(nb_max)
+	ld.w	$a2, $s8, %pc_lo12(nb_max)
 	bge	$a2, $a1, .LBB0_10
 .LBB0_12:                               #   in Loop: Header=BB0_8 Depth=2
-	st.w	$a1, $s7, %pc_lo12(nb_max)
+	st.w	$a1, $s8, %pc_lo12(nb_max)
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(num_vars)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_26
+	blez	$a1, .LBB0_26
 .LBB0_13:                               # %.lr.ph88.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(comm_vars)
-	move	$s7, $zero
+	move	$s5, $zero
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_15
 	.p2align	4, , 16
 .LBB0_14:                               # %._crit_edge
@@ -165,23 +161,23 @@ driver:                                 # @driver
 	ld.w	$a0, $a0, %pc_lo12(comm_vars)
 	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(num_vars)
-	add.w	$s7, $a0, $s7
-	bge	$s7, $a1, .LBB0_25
+	add.w	$s5, $a0, $s5
+	bge	$s5, $a1, .LBB0_25
 .LBB0_15:                               # %.lr.ph88
                                         #   Parent Loop BB0_6 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_18 Depth 4
-	add.w	$a2, $a0, $s7
+	add.w	$a2, $a0, $s5
 	slt	$a2, $a1, $a2
-	sub.w	$a1, $a1, $s7
+	sub.w	$a1, $a1, $s5
 	maskeqz	$a1, $a1, $a2
 	masknez	$a0, $a0, $a2
 	or	$s2, $a1, $a0
 	pcaddu18i	$ra, %call36(timer)
 	jirl	$ra, $ra, 0
 	fmov.d	$fs2, $fa0
-	move	$a0, $s7
+	move	$a0, $s5
 	move	$a1, $s2
 	ld.d	$a2, $sp, 112                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(comm)
@@ -194,24 +190,23 @@ driver:                                 # @driver
 	fsub.d	$fa0, $fa0, $fs2
 	fadd.d	$fa0, $fa1, $fa0
 	fst.d	$fa0, $a0, %pc_lo12(timer_comm_all)
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_14
+	blez	$s2, .LBB0_14
 # %bb.16:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_15 Depth=3
-	add.w	$s8, $s2, $s7
-	slli.d	$fp, $s7, 3
-	move	$s2, $s7
-	move	$s1, $s7
+	add.w	$s8, $s2, $s5
+	slli.d	$fp, $s5, 3
+	move	$s2, $s5
+	move	$s1, $s5
 	b	.LBB0_18
 	.p2align	4, , 16
 .LBB0_17:                               #   in Loop: Header=BB0_18 Depth=4
 	pcaddu18i	$ra, %call36(timer)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $s3, %pc_lo12(timer_cs_all)
+	fld.d	$fa1, $s6, %pc_lo12(timer_cs_all)
 	fmov.d	$fs1, $fa0
 	fsub.d	$fa0, $fa0, $fs2
 	fadd.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $s3, %pc_lo12(timer_cs_all)
+	fst.d	$fa0, $s6, %pc_lo12(timer_cs_all)
 	addi.d	$s1, $s1, 1
 	addi.d	$fp, $fp, 8
 	addi.w	$s2, $s2, 1
@@ -226,15 +221,15 @@ driver:                                 # @driver
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(timer)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $s4, %pc_lo12(timer_calc_all)
+	fld.d	$fa1, $s7, %pc_lo12(timer_calc_all)
 	ld.w	$a0, $s0, %pc_lo12(checksum_freq)
 	fmov.d	$fs2, $fa0
 	fsub.d	$fa0, $fa0, $fs1
 	fadd.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $s4, %pc_lo12(timer_calc_all)
+	fst.d	$fa0, $s7, %pc_lo12(timer_calc_all)
 	beqz	$a0, .LBB0_17
 # %bb.19:                               #   in Loop: Header=BB0_18 Depth=4
-	mod.w	$a0, $s5, $a0
+	mod.w	$a0, $s3, $a0
 	bnez	$a0, .LBB0_17
 # %bb.20:                               #   in Loop: Header=BB0_18 Depth=4
 	move	$a0, $s2
@@ -244,19 +239,19 @@ driver:                                 # @driver
 	ld.w	$a0, $a0, %pc_lo12(report_diffusion)
 	fmov.d	$fs1, $fa0
 	pcalau12i	$s0, %pc_hi20(my_pe)
-	pcalau12i	$s6, %pc_hi20(grid_sum)
-	pcalau12i	$s5, %pc_hi20(tol)
+	pcalau12i	$s3, %pc_hi20(grid_sum)
+	pcalau12i	$s4, %pc_hi20(tol)
 	beqz	$a0, .LBB0_23
 # %bb.21:                               #   in Loop: Header=BB0_18 Depth=4
 	ld.w	$a0, $s0, %pc_lo12(my_pe)
 	bnez	$a0, .LBB0_23
 # %bb.22:                               #   in Loop: Header=BB0_18 Depth=4
-	ld.d	$a0, $s6, %pc_lo12(grid_sum)
+	ld.d	$a0, $s3, %pc_lo12(grid_sum)
 	fldx.d	$fa0, $a0, $fp
 	fsub.d	$fa1, $fs1, $fa0
 	fabs.d	$fa1, $fa1
 	fdiv.d	$fa1, $fa1, $fa0
-	ld.d	$a6, $s5, %pc_lo12(tol)
+	ld.d	$a6, $s4, %pc_lo12(tol)
 	movfr2gr.d	$a5, $fa1
 	movfr2gr.d	$a4, $fa0
 	movfr2gr.d	$a3, $fs1
@@ -267,9 +262,9 @@ driver:                                 # @driver
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 .LBB0_23:                               #   in Loop: Header=BB0_18 Depth=4
-	ld.d	$a0, $s6, %pc_lo12(grid_sum)
+	ld.d	$a0, $s3, %pc_lo12(grid_sum)
 	fldx.d	$fa0, $a0, $fp
-	fld.d	$fa1, $s5, %pc_lo12(tol)
+	fld.d	$fa1, $s4, %pc_lo12(tol)
 	fsub.d	$fa2, $fs1, $fa0
 	fabs.d	$fa2, $fa2
 	fdiv.d	$fa2, $fa2, $fa0
@@ -278,7 +273,7 @@ driver:                                 # @driver
 # %bb.24:                               #   in Loop: Header=BB0_18 Depth=4
 	fstx.d	$fs1, $a0, $fp
 	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 136                   # 8-byte Folded Reload
 	b	.LBB0_17
 .LBB0_25:                               # %._crit_edge89.loopexit
                                         #   in Loop: Header=BB0_8 Depth=2
@@ -287,9 +282,9 @@ driver:                                 # @driver
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a5, $sp, 56                    # 8-byte Folded Reload
@@ -347,11 +342,11 @@ driver:                                 # @driver
 .LBB0_34:                               #   in Loop: Header=BB0_6 Depth=1
 	pcaddu18i	$ra, %call36(timer)
 	jirl	$ra, $ra, 0
-	fld.d	$fa1, $s5, %pc_lo12(timer_plot)
-	ld.w	$a0, $s8, %pc_lo12(num_tsteps)
+	fld.d	$fa1, $s3, %pc_lo12(timer_plot)
+	ld.w	$a0, $s5, %pc_lo12(num_tsteps)
 	fsub.d	$fa0, $fa0, $fs2
 	fadd.d	$fa0, $fa1, $fa0
-	fst.d	$fa0, $s5, %pc_lo12(timer_plot)
+	fst.d	$fa0, $s3, %pc_lo12(timer_plot)
 	addi.w	$a1, $s0, 1
 	ld.d	$a4, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload

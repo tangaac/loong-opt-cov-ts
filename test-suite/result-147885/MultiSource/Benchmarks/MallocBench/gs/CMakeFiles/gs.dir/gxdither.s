@@ -68,46 +68,45 @@ gx_color_render:                        # @gx_color_render
 	mul.d	$a4, $a4, $a1
 	lu12i.w	$a5, -524280
 	ori	$s1, $a5, 1
-	mul.d	$a1, $a0, $a1
-	move	$a0, $s1
-	lu32i.d	$a0, 0
-	mul.d	$a5, $a3, $a0
+	mul.d	$a0, $a0, $a1
+	move	$a1, $s1
+	lu32i.d	$a1, 0
+	mul.d	$a5, $a3, $a1
 	srli.d	$s5, $a5, 47
-	mul.d	$a5, $a4, $a0
+	mul.d	$a5, $a4, $a1
 	srli.d	$s4, $a5, 47
-	mul.d	$a0, $a1, $a0
-	srli.d	$s3, $a0, 47
-	add.d	$a0, $s5, $a3
+	mul.d	$a1, $a0, $a1
+	srli.d	$s3, $a1, 47
+	add.d	$a1, $s5, $a3
 	add.d	$a3, $s4, $a4
-	add.d	$a1, $s3, $a1
-	or	$a4, $a3, $a0
-	or	$a4, $a4, $a1
-	bstrpick.d	$a4, $a4, 15, 0
+	add.d	$a0, $s3, $a0
+	or	$a4, $a3, $a1
+	or	$a4, $a4, $a0
+	slli.d	$a4, $a4, 48
 	beqz	$a4, .LBB0_23
 # %bb.10:
-	ext.w.h	$s8, $a0
+	ext.w.h	$s8, $a1
 	ext.w.h	$s7, $a3
-	addi.w	$a0, $zero, -1
-	ori	$a5, $zero, 1
-	bge	$a0, $s8, .LBB0_24
+	ori	$a4, $zero, 1
+	bltz	$s8, .LBB0_24
 # %bb.11:
-	move	$a4, $zero
-	ori	$a3, $zero, 1
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	ext.w.h	$s6, $a1
-	blt	$a0, $s7, .LBB0_13
+	move	$a3, $zero
+	ori	$a1, $zero, 1
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	ext.w.h	$s6, $a0
+	bgez	$s7, .LBB0_13
 .LBB0_12:
 	nor	$s7, $s7, $zero
 	addi.d	$s4, $s4, 1
-	addi.d	$a4, $a4, 59
-	lu12i.w	$a1, 15
-	ori	$a5, $a1, 4095
+	addi.d	$a3, $a3, 59
+	lu12i.w	$a0, 15
+	ori	$a4, $a0, 4095
 .LBB0_13:
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
-	bge	$a0, $s6, .LBB0_25
+	st.d	$a4, $sp, 32                    # 8-byte Folded Spill
+	bltz	$s6, .LBB0_25
 # %bb.14:
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	b	.LBB0_26
 .LBB0_15:
@@ -182,18 +181,18 @@ gx_color_render:                        # @gx_color_render
 .LBB0_24:
 	nor	$s8, $s8, $zero
 	addi.d	$s5, $s5, 1
-	ori	$a4, $zero, 30
-	lu12i.w	$a3, 15
-	ori	$a3, $a3, 4095
-	st.d	$a3, $sp, 8                     # 8-byte Folded Spill
-	ext.w.h	$s6, $a1
-	blt	$a0, $s7, .LBB0_13
+	ori	$a3, $zero, 30
+	lu12i.w	$a1, 15
+	ori	$a1, $a1, 4095
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	ext.w.h	$s6, $a0
+	bgez	$s7, .LBB0_13
 	b	.LBB0_12
 .LBB0_25:
 	nor	$s6, $s6, $zero
 	addi.d	$s3, $s3, 1
-	addi.d	$a4, $a4, 11
-	st.d	$a4, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$a3, $a3, 11
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	lu12i.w	$a0, 15
 	ori	$a0, $a0, 4095
 .LBB0_26:

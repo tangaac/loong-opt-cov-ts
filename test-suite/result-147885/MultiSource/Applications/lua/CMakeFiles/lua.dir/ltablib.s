@@ -292,7 +292,7 @@ foreachi:                               # @foreachi
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaL_checktype)
 	jirl	$ra, $ra, 0
-	blt	$s2, $s0, .LBB3_4
+	blez	$s2, .LBB3_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $s1, 1
 	bstrpick.d	$s5, $a0, 31, 0
@@ -546,18 +546,16 @@ tinsert:                                # @tinsert
 	.type	tremove,@function
 tremove:                                # @tremove
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 5
-	ori	$s4, $zero, 1
 	pcaddu18i	$ra, %call36(luaL_checktype)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -572,7 +570,7 @@ tremove:                                # @tremove
 	jirl	$ra, $ra, 0
 	addi.w	$s3, $a0, 0
 	move	$s1, $zero
-	blt	$s3, $s4, .LBB7_5
+	blez	$s3, .LBB7_5
 # %bb.1:
 	blt	$s0, $s3, .LBB7_5
 # %bb.2:
@@ -611,14 +609,13 @@ tremove:                                # @tremove
 	jirl	$ra, $ra, 0
 .LBB7_5:
 	move	$a0, $s1
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .Lfunc_end7:
 	.size	tremove, .Lfunc_end7-tremove
@@ -660,11 +657,9 @@ sort:                                   # @sort
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 5
-	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(luaL_checktype)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
@@ -682,7 +677,7 @@ sort:                                   # @sort
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_type)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s1, .LBB9_2
+	blez	$a0, .LBB9_2
 # %bb.1:
 	ori	$a1, $zero, 2
 	ori	$a2, $zero, 6
@@ -700,7 +695,6 @@ sort:                                   # @sort
 	pcaddu18i	$ra, %call36(auxsort)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

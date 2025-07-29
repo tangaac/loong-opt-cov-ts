@@ -168,9 +168,8 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 216
-	ori	$a2, $zero, 1
 	move	$s4, $a0
-	blt	$a1, $a2, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	move	$s6, $zero
 	addi.d	$s7, $sp, 24

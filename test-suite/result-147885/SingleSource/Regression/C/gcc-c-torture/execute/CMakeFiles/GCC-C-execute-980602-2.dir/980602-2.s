@@ -9,12 +9,12 @@ main:                                   # @main
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(t)
 	ld.wu	$a1, $a0, %pc_lo12(t)
-	bstrpick.d	$a2, $a1, 29, 0
-	addi.d	$a3, $a1, 1
-	srli.d	$a1, $a1, 30
-	bstrins.d	$a3, $a1, 63, 30
-	st.w	$a3, $a0, %pc_lo12(t)
-	bnez	$a2, .LBB0_2
+	addi.d	$a2, $a1, 1
+	srli.d	$a3, $a1, 30
+	bstrins.d	$a2, $a3, 63, 30
+	slli.d	$a1, $a1, 34
+	st.w	$a2, $a0, %pc_lo12(t)
+	bnez	$a1, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)

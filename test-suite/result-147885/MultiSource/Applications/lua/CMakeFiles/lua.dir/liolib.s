@@ -1135,7 +1135,7 @@ g_read:                                 # @g_read
 	st.d	$s7, $sp, 1952                  # 8-byte Folded Spill
 	st.d	$s8, $sp, 1944                  # 8-byte Folded Spill
 	lu12i.w	$a3, 1
-	ori	$a3, $a3, 2208
+	ori	$a3, $a3, 2192
 	sub.d	$sp, $sp, $a3
 	move	$s0, $a2
 	move	$s1, $a1
@@ -1147,7 +1147,7 @@ g_read:                                 # @g_read
 	pcaddu18i	$ra, %call36(clearerr)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	bne	$s2, $a0, .LBB15_2
 # %bb.1:
 	move	$a0, $fp
@@ -1169,11 +1169,8 @@ g_read:                                 # @g_read
 	addi.w	$s7, $zero, -1
 	move	$s3, $s7
 	lu32i.d	$s3, 0
-	ori	$s4, $zero, 0
-	lu32i.d	$s4, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.22)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.22)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$s4, $a0, %pc_lo12(.L.str.22)
 	move	$s2, $a1
 	.p2align	4, , 16
 .LBB15_3:                               # =>This Loop Header: Depth=1
@@ -1192,7 +1189,7 @@ g_read:                                 # @g_read
 	beqz	$a0, .LBB15_18
 # %bb.5:                                #   in Loop: Header=BB15_3 Depth=1
 	move	$s5, $a0
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaL_buffinit)
 	jirl	$ra, $ra, 0
@@ -1200,7 +1197,7 @@ g_read:                                 # @g_read
 	.p2align	4, , 16
 .LBB15_6:                               #   Parent Loop BB15_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(luaL_prepbuffer)
 	jirl	$ra, $ra, 0
 	sltu	$a1, $s6, $s5
@@ -1212,15 +1209,15 @@ g_read:                                 # @g_read
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 16
 	add.d	$a1, $a1, $a0
-	st.d	$a1, $sp, 32
+	st.d	$a1, $sp, 16
 	sub.d	$s5, $s5, $a0
 	bne	$a0, $s6, .LBB15_8
 # %bb.7:                                #   in Loop: Header=BB15_6 Depth=2
 	bnez	$s5, .LBB15_6
 .LBB15_8:                               #   in Loop: Header=BB15_3 Depth=1
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(luaL_pushresult)
 	jirl	$ra, $ra, 0
 	beqz	$s5, .LBB15_25
@@ -1247,7 +1244,7 @@ g_read:                                 # @g_read
 .LBB15_12:                              #   in Loop: Header=BB15_3 Depth=1
 	move	$a0, $fp
 	move	$a1, $s2
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	move	$a2, $s4
 	pcaddu18i	$ra, %call36(luaL_argerror)
 	jirl	$ra, $ra, 0
 .LBB15_13:                              #   in Loop: Header=BB15_3 Depth=1
@@ -1263,14 +1260,14 @@ g_read:                                 # @g_read
 # %bb.16:                               #   in Loop: Header=BB15_3 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.24)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.24)
-	addi.d	$a2, $sp, 32
+	addi.d	$a2, $sp, 16
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB15_26
 # %bb.17:                               #   in Loop: Header=BB15_3 Depth=1
-	fld.d	$fa0, $sp, 32
+	fld.d	$fa0, $sp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_pushnumber)
 	jirl	$ra, $ra, 0
@@ -1299,7 +1296,7 @@ g_read:                                 # @g_read
 	jirl	$ra, $ra, 0
 	b	.LBB15_27
 .LBB15_20:                              #   in Loop: Header=BB15_3 Depth=1
-	addi.d	$a1, $sp, 32
+	addi.d	$a1, $sp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(luaL_buffinit)
 	jirl	$ra, $ra, 0
@@ -1308,7 +1305,7 @@ g_read:                                 # @g_read
 	.p2align	4, , 16
 .LBB15_21:                              #   Parent Loop BB15_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(luaL_prepbuffer)
 	jirl	$ra, $ra, 0
 	sltu	$a1, $s5, $s6
@@ -1320,15 +1317,15 @@ g_read:                                 # @g_read
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 32
+	ld.d	$a1, $sp, 16
 	add.d	$a1, $a1, $a0
-	st.d	$a1, $sp, 32
+	st.d	$a1, $sp, 16
 	sub.d	$s6, $s6, $a0
 	bne	$a0, $s5, .LBB15_23
 # %bb.22:                               #   in Loop: Header=BB15_21 Depth=2
 	bnez	$s6, .LBB15_21
 .LBB15_23:                              #   in Loop: Header=BB15_3 Depth=1
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(luaL_pushresult)
 	jirl	$ra, $ra, 0
 	beqz	$s6, .LBB15_25
@@ -1347,9 +1344,9 @@ g_read:                                 # @g_read
                                         #   in Loop: Header=BB15_3 Depth=1
 	bstrpick.d	$a1, $s0, 31, 0
 	add.d	$s0, $a1, $s3
-	and	$a1, $s0, $s4
+	slli.d	$a1, $s0, 31
 	addi.w	$s2, $s2, 1
-	beqz	$a1, .LBB15_29
+	bgez	$a1, .LBB15_29
 # %bb.28:                               # %.thread
                                         #   in Loop: Header=BB15_3 Depth=1
 	bnez	$a0, .LBB15_3
@@ -1392,11 +1389,11 @@ g_read:                                 # @g_read
 	pcaddu18i	$ra, %call36(lua_pushnil)
 	jirl	$ra, $ra, 0
 .LBB15_33:
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	sub.w	$a0, $s2, $a0
 .LBB15_34:
 	lu12i.w	$a1, 1
-	ori	$a1, $a1, 2208
+	ori	$a1, $a1, 2192
 	add.d	$sp, $sp, $a1
 	ld.d	$s8, $sp, 1944                  # 8-byte Folded Reload
 	ld.d	$s7, $sp, 1952                  # 8-byte Folded Reload
@@ -2211,11 +2208,10 @@ g_iofile:                               # @g_iofile
 	move	$fp, $a1
 	move	$s0, $a0
 	ori	$a1, $zero, 1
-	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(lua_type)
 	jirl	$ra, $ra, 0
 	lu12i.w	$s4, -3
-	blt	$a0, $s2, .LBB27_8
+	blez	$a0, .LBB27_8
 # %bb.1:
 	ori	$a1, $zero, 1
 	move	$a0, $s0

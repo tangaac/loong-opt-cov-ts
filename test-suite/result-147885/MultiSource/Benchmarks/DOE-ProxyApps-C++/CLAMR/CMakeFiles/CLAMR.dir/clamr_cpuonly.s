@@ -85,13 +85,12 @@ main:                                   # @main
 	pcalau12i	$s1, %pc_hi20(_ZL4crux)
 	st.d	$s0, $s1, %pc_lo12(_ZL4crux)
 	fmul.d	$fa0, $fa0, $fa2
-	pcalau12i	$s4, %pc_hi20(_ZL11circ_radius)
 	ld.bu	$a0, $s2, %pc_lo12(restart)
+	pcalau12i	$s4, %pc_hi20(_ZL11circ_radius)
 	fst.d	$fa0, $s4, %pc_lo12(_ZL11circ_radius)
-	ori	$a1, $zero, 1
 	pcalau12i	$s2, %pc_hi20(_ZL4mesh)
 	pcalau12i	$s3, %pc_hi20(_ZL5state)
-	bne	$a0, $a1, .LBB0_7
+	beqz	$a0, .LBB0_7
 # %bb.3:
 	pcalau12i	$a0, %pc_hi20(restart_file)
 	ld.d	$a1, $a0, %pc_lo12(restart_file)
@@ -1368,8 +1367,7 @@ do_calc:                                # @do_calc
 	ld.d	$a0, $s5, %pc_lo12(_ZL5state)
 	ld.d	$a2, $sp, 104                   # 8-byte Folded Reload
 	fld.d	$fa0, $a2, %pc_lo12(_ZL6deltaT)
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB4_12
+	beqz	$a1, .LBB4_12
 # %bb.11:                               #   in Loop: Header=BB4_4 Depth=1
 .Ltmp58:
 	pcaddu18i	$ra, %call36(_ZN5State32calc_finite_difference_via_facesEd)
@@ -1792,8 +1790,7 @@ do_calc:                                # @do_calc
 	ld.w	$a2, $s7, %pc_lo12(_ZL6ncycle)
 	mul.d	$a0, $a1, $a0
 	sub.w	$a1, $a2, $a0
-	addi.w	$a0, $zero, -1
-	bge	$a0, $a1, .LBB4_75
+	bltz	$a1, .LBB4_75
 # %bb.74:
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.9)
@@ -4048,7 +4045,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -4058,7 +4054,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	beqz	$a1, .LBB15_15
 # %bb.1:
 	move	$s0, $a1
@@ -4091,9 +4086,9 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
 	add.d	$s6, $a0, $s2
-	ori	$s7, $zero, 1
-	stx.w	$zero, $a0, $s2
-	beq	$s0, $s7, .LBB15_5
+	ori	$a0, $zero, 1
+	stx.w	$zero, $s3, $s2
+	beq	$s0, $a0, .LBB15_5
 # %bb.4:                                # %.lr.ph.i.preheader.i.i.i31
 	addi.d	$a0, $s6, 4
 	slli.d	$a1, $s0, 2
@@ -4102,7 +4097,7 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB15_5:                               # %_ZSt27__uninitialized_default_n_aIPimiET_S1_T0_RSaIT1_E.exit33
-	blt	$s2, $s7, .LBB15_7
+	blez	$s2, .LBB15_7
 # %bb.6:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -4144,7 +4139,6 @@ _ZNSt6vectorIiSaIiEE17_M_default_appendEm: # @_ZNSt6vectorIiSaIiEE17_M_default_a
 .LBB15_14:                              # %_ZSt27__uninitialized_default_n_aIPimiET_S1_T0_RSaIT1_E.exit
 	st.d	$s0, $fp, 8
 .LBB15_15:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload

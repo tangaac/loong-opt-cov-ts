@@ -141,8 +141,7 @@ DO_STORE:                               # @DO_STORE
 	st.d	$zero, $a0, 8
 	move	$a3, $s2
 .LBB3_7:
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB3_15
+	blez	$s1, .LBB3_15
 # %bb.8:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	add.d	$s3, $a3, $a2
@@ -947,14 +946,13 @@ PRINT_MEM:                              # @PRINT_MEM
 	.type	OUTPUT_MEM,@function
 OUTPUT_MEM:                             # @OUTPUT_MEM
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(LOCATIONS_USED)
 	ld.d	$s2, $a2, %pc_lo12(LOCATIONS_USED)
 	beqz	$s2, .LBB11_6
@@ -963,7 +961,6 @@ OUTPUT_MEM:                             # @OUTPUT_MEM
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str.15)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.15)
-	ori	$s3, $zero, 1
 	b	.LBB11_3
 	.p2align	4, , 16
 .LBB11_2:                               # %._crit_edge
@@ -980,31 +977,31 @@ OUTPUT_MEM:                             # @OUTPUT_MEM
 	ld.w	$a0, $s2, 0
 	ori	$a1, $zero, 16
 	ori	$a2, $zero, 6
-	addi.d	$a3, $sp, 17
+	addi.d	$a3, $sp, 9
 	pcaddu18i	$ra, %call36(NUM_TO_STR)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 4
 	ori	$a1, $zero, 16
 	ori	$a2, $zero, 2
-	addi.d	$a3, $sp, 14
+	addi.d	$a3, $sp, 6
 	pcaddu18i	$ra, %call36(NUM_TO_STR)
 	jirl	$ra, $ra, 0
-	addi.d	$a2, $sp, 17
-	addi.d	$a3, $sp, 14
+	addi.d	$a2, $sp, 9
+	addi.d	$a3, $sp, 6
 	move	$a0, $fp
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 4
-	blt	$a0, $s3, .LBB11_2
+	blez	$a0, .LBB11_2
 # %bb.4:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB11_3 Depth=1
-	ld.w	$s4, $s2, 0
+	ld.w	$s3, $s2, 0
 	.p2align	4, , 16
 .LBB11_5:                               # %.lr.ph
                                         #   Parent Loop BB11_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.b	$a0, $s0, $s4
+	ldx.b	$a0, $s0, $s3
 	slti	$a1, $a0, 0
 	addi.d	$a2, $a0, 256
 	masknez	$a0, $a0, $a1
@@ -1012,28 +1009,27 @@ OUTPUT_MEM:                             # @OUTPUT_MEM
 	or	$a0, $a1, $a0
 	ori	$a1, $zero, 16
 	ori	$a2, $zero, 2
-	addi.d	$a3, $sp, 14
+	addi.d	$a3, $sp, 6
 	pcaddu18i	$ra, %call36(NUM_TO_STR)
 	jirl	$ra, $ra, 0
-	addi.d	$a0, $sp, 14
+	addi.d	$a0, $sp, 6
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(fputs)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 0
 	ld.w	$a1, $s2, 4
-	addi.d	$s4, $s4, 1
+	addi.d	$s3, $s3, 1
 	add.w	$a0, $a1, $a0
-	blt	$s4, $a0, .LBB11_5
+	blt	$s3, $a0, .LBB11_5
 	b	.LBB11_2
 .LBB11_6:                               # %._crit_edge20
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end11:
 	.size	OUTPUT_MEM, .Lfunc_end11-OUTPUT_MEM

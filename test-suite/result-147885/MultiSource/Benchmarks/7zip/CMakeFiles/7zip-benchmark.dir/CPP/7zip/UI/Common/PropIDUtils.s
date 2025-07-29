@@ -241,9 +241,9 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	ori	$a3, $zero, 45
 	maskeqz	$a3, $a3, $a1
 	or	$a2, $a3, $a2
-	andi	$a3, $s3, 2048
+	slli.d	$a3, $s3, 52
 	st.w	$a2, $sp, 84
-	bnez	$a3, .LBB1_35
+	bltz	$a3, .LBB1_35
 # %bb.9:
 	andi	$a2, $s3, 1024
 	bnez	$a2, .LBB1_36
@@ -354,44 +354,40 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	addi.d	$a4, $sp, 48
 	ori	$a5, $zero, 114
 	stx.w	$a5, $a3, $a4
-	andi	$a3, $a1, 2048
-	beqz	$a3, .LBB1_55
+	slli.d	$a3, $a1, 52
+	bgez	$a3, .LBB1_55
 .LBB1_26:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 48
 	ori	$a5, $zero, 67
 	stx.w	$a5, $a3, $a4
-	lu12i.w	$a3, 1
-	and	$a3, $a1, $a3
-	beqz	$a3, .LBB1_56
+	slli.d	$a3, $a1, 51
+	bgez	$a3, .LBB1_56
 .LBB1_27:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 48
 	ori	$a5, $zero, 79
 	stx.w	$a5, $a3, $a4
-	lu12i.w	$a3, 2
-	and	$a3, $a1, $a3
-	beqz	$a3, .LBB1_57
+	slli.d	$a3, $a1, 50
+	bgez	$a3, .LBB1_57
 .LBB1_28:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 48
 	ori	$a5, $zero, 110
 	stx.w	$a5, $a3, $a4
-	lu12i.w	$a3, 4
-	and	$a3, $a1, $a3
-	beqz	$a3, .LBB1_58
+	slli.d	$a3, $a1, 49
+	bgez	$a3, .LBB1_58
 .LBB1_29:
 	slli.d	$a3, $a2, 2
 	addi.d	$a2, $a2, 1
 	addi.d	$a4, $sp, 48
 	ori	$a5, $zero, 69
 	stx.w	$a5, $a3, $a4
-	lu12i.w	$a3, 8
-	and	$a1, $a1, $a3
-	bnez	$a1, .LBB1_59
+	slli.d	$a1, $a1, 48
+	bltz	$a1, .LBB1_59
 	b	.LBB1_60
 .LBB1_30:
 	ld.hu	$a2, $a1, 0
@@ -632,24 +628,20 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	andi	$a3, $a1, 1024
 	bnez	$a3, .LBB1_25
 .LBB1_54:
-	andi	$a3, $a1, 2048
-	bnez	$a3, .LBB1_26
+	slli.d	$a3, $a1, 52
+	bltz	$a3, .LBB1_26
 .LBB1_55:
-	lu12i.w	$a3, 1
-	and	$a3, $a1, $a3
-	bnez	$a3, .LBB1_27
+	slli.d	$a3, $a1, 51
+	bltz	$a3, .LBB1_27
 .LBB1_56:
-	lu12i.w	$a3, 2
-	and	$a3, $a1, $a3
-	bnez	$a3, .LBB1_28
+	slli.d	$a3, $a1, 50
+	bltz	$a3, .LBB1_28
 .LBB1_57:
-	lu12i.w	$a3, 4
-	and	$a3, $a1, $a3
-	bnez	$a3, .LBB1_29
+	slli.d	$a3, $a1, 49
+	bltz	$a3, .LBB1_29
 .LBB1_58:
-	lu12i.w	$a3, 8
-	and	$a1, $a1, $a3
-	beqz	$a1, .LBB1_60
+	slli.d	$a1, $a1, 48
+	bgez	$a1, .LBB1_60
 .LBB1_59:
 	slli.d	$a1, $a2, 2
 	addi.d	$a2, $a2, 1
@@ -738,12 +730,10 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 	ld.w	$s1, $sp, 24
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $sp, 32
-	beqz	$a0, .LBB1_72
+	bgez	$a0, .LBB1_72
 # %bb.71:
 	move	$a0, $zero
 	b	.LBB1_74
@@ -807,8 +797,7 @@ _Z23ConvertPropertyToStringRK14tagPROPVARIANTjb: # @_Z23ConvertPropertyToStringR
 .Ltmp19:
 # %bb.81:                               # %.noexc109
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB1_83
+	blez	$s5, .LBB1_83
 # %bb.82:                               # %._crit_edge.thread.i.i107
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1046,7 +1035,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1054,7 +1042,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -1076,8 +1063,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -1096,11 +1083,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB2_11
+	blez	$s4, .LBB2_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB2_12
+	blez	$s0, .LBB2_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -1170,7 +1156,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1247,12 +1232,11 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$s4, $a2, .LBB3_11
+	blez	$s4, .LBB3_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a1, $s3, 0
-	blt	$s1, $a2, .LBB3_12
+	blez	$s1, .LBB3_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a0, $zero

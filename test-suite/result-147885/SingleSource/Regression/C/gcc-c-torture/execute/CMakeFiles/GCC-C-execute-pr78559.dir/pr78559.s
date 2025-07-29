@@ -26,8 +26,7 @@ main:                                   # @main
 # %bb.1:                                # %.split.preheader
 	beqz	$a0, .LBB1_4
 # %bb.2:                                # %.preheader
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB1_6
+	bltz	$a0, .LBB1_6
 .LBB1_3:
 	move	$a0, $zero
 	ret

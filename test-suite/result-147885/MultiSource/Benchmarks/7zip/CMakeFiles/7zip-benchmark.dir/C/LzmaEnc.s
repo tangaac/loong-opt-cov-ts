@@ -26,118 +26,118 @@ LzmaEncProps_Init:                      # @LzmaEncProps_Init
 LzmaEncProps_Normalize:                 # @LzmaEncProps_Normalize
 # %bb.0:
 	ld.w	$a1, $a0, 0
-	slti	$a2, $a1, 0
-	masknez	$a3, $a1, $a2
+	slti	$a3, $a1, 0
+	masknez	$a1, $a1, $a3
 	ld.w	$a4, $a0, 4
-	ori	$a1, $zero, 5
-	maskeqz	$a2, $a1, $a2
-	or	$a2, $a2, $a3
-	st.w	$a2, $a0, 0
+	ori	$a2, $zero, 5
+	maskeqz	$a3, $a2, $a3
+	or	$a1, $a3, $a1
+	st.w	$a1, $a0, 0
 	beqz	$a4, .LBB1_11
 # %bb.1:
-	ld.w	$a3, $a0, 8
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a3, .LBB1_15
+	ld.w	$a2, $a0, 8
+	bltz	$a2, .LBB1_14
 .LBB1_2:
-	ld.w	$a3, $a0, 12
-	bge	$a1, $a3, .LBB1_16
+	ld.w	$a2, $a0, 12
+	bltz	$a2, .LBB1_15
 .LBB1_3:
-	ld.w	$a3, $a0, 16
-	bge	$a1, $a3, .LBB1_17
+	ld.w	$a2, $a0, 16
+	bltz	$a2, .LBB1_16
 .LBB1_4:
-	ld.w	$a3, $a0, 20
-	bge	$a1, $a3, .LBB1_18
+	ld.w	$a2, $a0, 20
+	bltz	$a2, .LBB1_17
 .LBB1_5:
-	ld.w	$a4, $a0, 24
-	bge	$a1, $a4, .LBB1_19
+	ld.w	$a3, $a0, 24
+	bltz	$a3, .LBB1_18
 .LBB1_6:
-	ld.w	$a2, $a0, 28
-	bge	$a1, $a2, .LBB1_20
+	ld.w	$a1, $a0, 28
+	bltz	$a1, .LBB1_19
 .LBB1_7:
-	ld.w	$a5, $a0, 32
-	bge	$a1, $a5, .LBB1_21
+	ld.w	$a4, $a0, 32
+	bltz	$a4, .LBB1_20
 .LBB1_8:
-	ld.w	$a5, $a0, 36
-	beqz	$a5, .LBB1_22
+	ld.w	$a4, $a0, 36
+	beqz	$a4, .LBB1_21
 .LBB1_9:
-	ld.w	$a4, $a0, 44
-	bge	$a1, $a4, .LBB1_23
+	ld.w	$a3, $a0, 44
+	bltz	$a3, .LBB1_22
 .LBB1_10:
 	ret
 .LBB1_11:
-	blt	$a1, $a2, .LBB1_13
+	blt	$a2, $a1, .LBB1_13
 # %bb.12:
-	slli.d	$a1, $a2, 1
-	addi.d	$a1, $a1, 14
-	bstrpick.d	$a1, $a1, 31, 1
-	slli.d	$a1, $a1, 1
+	slli.d	$a2, $a1, 1
+	addi.d	$a2, $a2, 14
+	bstrpick.d	$a2, $a2, 31, 1
+	slli.d	$a2, $a2, 1
 	ori	$a3, $zero, 1
-	sll.w	$a1, $a3, $a1
+	sll.w	$a2, $a3, $a2
+	st.w	$a2, $a0, 4
+	ld.w	$a2, $a0, 8
+	bgez	$a2, .LBB1_2
 	b	.LBB1_14
 .LBB1_13:
-	addi.d	$a1, $a2, -6
-	sltui	$a1, $a1, 1
+	addi.d	$a2, $a1, -6
+	sltui	$a2, $a2, 1
 	lu12i.w	$a3, 16384
-	masknez	$a3, $a3, $a1
+	masknez	$a3, $a3, $a2
 	lu12i.w	$a4, 8192
-	maskeqz	$a1, $a4, $a1
-	or	$a1, $a1, $a3
+	maskeqz	$a2, $a4, $a2
+	or	$a2, $a2, $a3
+	st.w	$a2, $a0, 4
+	ld.w	$a2, $a0, 8
+	bgez	$a2, .LBB1_2
 .LBB1_14:
-	st.w	$a1, $a0, 4
-	ld.w	$a3, $a0, 8
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a3, .LBB1_2
+	ori	$a2, $zero, 3
+	st.w	$a2, $a0, 8
+	ld.w	$a2, $a0, 12
+	bgez	$a2, .LBB1_3
 .LBB1_15:
-	ori	$a3, $zero, 3
-	st.w	$a3, $a0, 8
-	ld.w	$a3, $a0, 12
-	blt	$a1, $a3, .LBB1_3
-.LBB1_16:
 	st.w	$zero, $a0, 12
-	ld.w	$a3, $a0, 16
-	blt	$a1, $a3, .LBB1_4
+	ld.w	$a2, $a0, 16
+	bgez	$a2, .LBB1_4
+.LBB1_16:
+	ori	$a2, $zero, 2
+	st.w	$a2, $a0, 16
+	ld.w	$a2, $a0, 20
+	bgez	$a2, .LBB1_5
 .LBB1_17:
-	ori	$a3, $zero, 2
-	st.w	$a3, $a0, 16
-	ld.w	$a3, $a0, 20
-	blt	$a1, $a3, .LBB1_5
+	ori	$a2, $zero, 4
+	slt	$a2, $a2, $a1
+	st.w	$a2, $a0, 20
+	ld.w	$a3, $a0, 24
+	bgez	$a3, .LBB1_6
 .LBB1_18:
-	ori	$a3, $zero, 4
-	slt	$a3, $a3, $a2
-	st.w	$a3, $a0, 20
-	ld.w	$a4, $a0, 24
-	blt	$a1, $a4, .LBB1_6
+	slti	$a1, $a1, 7
+	ori	$a3, $zero, 64
+	masknez	$a3, $a3, $a1
+	ori	$a4, $zero, 32
+	maskeqz	$a1, $a4, $a1
+	or	$a3, $a1, $a3
+	st.w	$a3, $a0, 24
+	ld.w	$a1, $a0, 28
+	bgez	$a1, .LBB1_7
 .LBB1_19:
-	slti	$a2, $a2, 7
-	ori	$a4, $zero, 64
-	masknez	$a4, $a4, $a2
-	ori	$a5, $zero, 32
-	maskeqz	$a2, $a5, $a2
-	or	$a4, $a2, $a4
-	st.w	$a4, $a0, 24
-	ld.w	$a2, $a0, 28
-	blt	$a1, $a2, .LBB1_7
+	sltu	$a1, $zero, $a2
+	st.w	$a1, $a0, 28
+	ld.w	$a4, $a0, 32
+	bgez	$a4, .LBB1_8
 .LBB1_20:
-	sltu	$a2, $zero, $a3
-	st.w	$a2, $a0, 28
-	ld.w	$a5, $a0, 32
-	blt	$a1, $a5, .LBB1_8
+	ori	$a4, $zero, 4
+	st.w	$a4, $a0, 32
+	ld.w	$a4, $a0, 36
+	bnez	$a4, .LBB1_9
 .LBB1_21:
-	ori	$a5, $zero, 4
-	st.w	$a5, $a0, 32
-	ld.w	$a5, $a0, 36
-	bnez	$a5, .LBB1_9
+	bstrpick.d	$a3, $a3, 31, 1
+	addi.d	$a3, $a3, 16
+	sltui	$a4, $a1, 1
+	srl.w	$a3, $a3, $a4
+	st.w	$a3, $a0, 36
+	ld.w	$a3, $a0, 44
+	bgez	$a3, .LBB1_10
 .LBB1_22:
-	bstrpick.d	$a4, $a4, 31, 1
-	addi.d	$a4, $a4, 16
-	sltui	$a5, $a2, 1
-	srl.w	$a4, $a4, $a5
-	st.w	$a4, $a0, 36
-	ld.w	$a4, $a0, 44
-	blt	$a1, $a4, .LBB1_10
-.LBB1_23:
-	sltui	$a1, $a2, 1
-	sltui	$a2, $a3, 1
+	sltui	$a1, $a1, 1
+	sltui	$a2, $a2, 1
 	or	$a1, $a1, $a2
 	ori	$a2, $zero, 2
 	sub.d	$a1, $a2, $a1
@@ -10168,16 +10168,14 @@ Flush:                                  # @Flush
 	jirl	$ra, $ra, 0
 .LBB31_17:                              # %RcTree_Encode.exit.i.preheader
 	add.d	$s1, $fp, $s1
-	addi.w	$s6, $zero, -26
-	ori	$s5, $zero, 0
-	lu32i.d	$s5, 1
+	addi.w	$s5, $zero, -26
 	b	.LBB31_19
 	.p2align	4, , 16
 .LBB31_18:                              #   in Loop: Header=BB31_19 Depth=1
-	bstrpick.d	$a0, $s6, 31, 0
-	addi.d	$s6, $a0, 1
-	and	$a0, $s6, $s5
-	bnez	$a0, .LBB31_21
+	bstrpick.d	$a0, $s5, 31, 0
+	addi.d	$s5, $a0, 1
+	slli.d	$a0, $s5, 31
+	bltz	$a0, .LBB31_21
 .LBB31_19:                              # %RcTree_Encode.exit.i
                                         # =>This Inner Loop Header: Depth=1
 	ld.wu	$a1, $s2, 8

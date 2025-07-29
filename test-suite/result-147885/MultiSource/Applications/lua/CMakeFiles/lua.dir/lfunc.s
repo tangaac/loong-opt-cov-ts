@@ -431,8 +431,7 @@ luaF_freeclosure:                       # @luaF_freeclosure
 luaF_getlocalname:                      # @luaF_getlocalname
 # %bb.0:
 	ld.w	$a3, $a0, 92
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB9_7
+	blez	$a3, .LBB9_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $a0, 48
 	addi.d	$a0, $a0, 12

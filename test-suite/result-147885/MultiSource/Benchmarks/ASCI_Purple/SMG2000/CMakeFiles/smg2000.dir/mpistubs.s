@@ -186,8 +186,7 @@ hypre_MPI_Allgather:                    # @hypre_MPI_Allgather
 	ori	$a4, $zero, 2
 	bne	$a2, $a4, .LBB17_33
 # %bb.3:                                # %.preheader29
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_33
+	blez	$a1, .LBB17_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
@@ -221,7 +220,7 @@ hypre_MPI_Allgather:                    # @hypre_MPI_Allgather
 	bne	$a2, $a1, .LBB17_31
 	b	.LBB17_33
 .LBB17_11:                              # %.preheader
-	blt	$a1, $a4, .LBB17_33
+	blez	$a1, .LBB17_33
 # %bb.12:                               # %.lr.ph35.preheader
 	ori	$a4, $zero, 8
 	move	$a2, $zero
@@ -264,8 +263,7 @@ hypre_MPI_Allgather:                    # @hypre_MPI_Allgather
 	bnez	$a1, .LBB17_18
 	b	.LBB17_33
 .LBB17_19:                              # %.preheader27
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_33
+	blez	$a1, .LBB17_33
 # %bb.20:                               # %.lr.ph33.preheader
 	ori	$a4, $zero, 4
 	move	$a2, $zero
@@ -361,8 +359,7 @@ hypre_MPI_Allgatherv:                   # @hypre_MPI_Allgatherv
 	ori	$a4, $zero, 2
 	bne	$a2, $a4, .LBB18_33
 # %bb.3:                                # %.preheader29.i
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB18_33
+	blez	$a1, .LBB18_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
@@ -396,7 +393,7 @@ hypre_MPI_Allgatherv:                   # @hypre_MPI_Allgatherv
 	bne	$a2, $a1, .LBB18_31
 	b	.LBB18_33
 .LBB18_11:                              # %.preheader.i
-	blt	$a1, $a4, .LBB18_33
+	blez	$a1, .LBB18_33
 # %bb.12:                               # %.lr.ph35.preheader.i
 	ori	$a4, $zero, 8
 	move	$a2, $zero
@@ -439,8 +436,7 @@ hypre_MPI_Allgatherv:                   # @hypre_MPI_Allgatherv
 	bnez	$a1, .LBB18_18
 	b	.LBB18_33
 .LBB18_19:                              # %.preheader27.i
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB18_33
+	blez	$a1, .LBB18_33
 # %bb.20:                               # %.lr.ph33.preheader.i
 	ori	$a4, $zero, 4
 	move	$a2, $zero
@@ -536,8 +532,7 @@ hypre_MPI_Gather:                       # @hypre_MPI_Gather
 	ori	$a4, $zero, 2
 	bne	$a2, $a4, .LBB19_33
 # %bb.3:                                # %.preheader29.i
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB19_33
+	blez	$a1, .LBB19_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
@@ -571,7 +566,7 @@ hypre_MPI_Gather:                       # @hypre_MPI_Gather
 	bne	$a2, $a1, .LBB19_31
 	b	.LBB19_33
 .LBB19_11:                              # %.preheader.i
-	blt	$a1, $a4, .LBB19_33
+	blez	$a1, .LBB19_33
 # %bb.12:                               # %.lr.ph35.preheader.i
 	ori	$a4, $zero, 8
 	move	$a2, $zero
@@ -614,8 +609,7 @@ hypre_MPI_Gather:                       # @hypre_MPI_Gather
 	bnez	$a1, .LBB19_18
 	b	.LBB19_33
 .LBB19_19:                              # %.preheader27.i
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB19_33
+	blez	$a1, .LBB19_33
 # %bb.20:                               # %.lr.ph33.preheader.i
 	ori	$a4, $zero, 4
 	move	$a2, $zero
@@ -711,8 +705,7 @@ hypre_MPI_Scatter:                      # @hypre_MPI_Scatter
 	ori	$a4, $zero, 2
 	bne	$a2, $a4, .LBB20_33
 # %bb.3:                                # %.preheader29.i
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB20_33
+	blez	$a1, .LBB20_33
 # %bb.4:                                # %iter.check
 	ori	$a4, $zero, 16
 	move	$a2, $zero
@@ -746,7 +739,7 @@ hypre_MPI_Scatter:                      # @hypre_MPI_Scatter
 	bne	$a2, $a1, .LBB20_31
 	b	.LBB20_33
 .LBB20_11:                              # %.preheader.i
-	blt	$a1, $a4, .LBB20_33
+	blez	$a1, .LBB20_33
 # %bb.12:                               # %.lr.ph35.preheader.i
 	ori	$a4, $zero, 8
 	move	$a2, $zero
@@ -789,8 +782,7 @@ hypre_MPI_Scatter:                      # @hypre_MPI_Scatter
 	bnez	$a1, .LBB20_18
 	b	.LBB20_33
 .LBB20_19:                              # %.preheader27.i
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB20_33
+	blez	$a1, .LBB20_33
 # %bb.20:                               # %.lr.ph33.preheader.i
 	ori	$a4, $zero, 4
 	move	$a2, $zero

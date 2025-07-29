@@ -23,29 +23,29 @@ doublecheck:                            # @doublecheck
 	ld.w	$a1, $s1, 0
 	ld.w	$a2, $s2, 0
 	add.w	$a0, $a2, $a1
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB0_10
+	blez	$a0, .LBB0_10
 # %bb.1:                                # %.lr.ph122
-	pcalau12i	$a4, %got_pc_hi20(cellarray)
-	ld.d	$a4, $a4, %got_pc_lo12(cellarray)
-	pcalau12i	$a5, %got_pc_hi20(termarray)
-	ld.d	$a5, $a5, %got_pc_lo12(termarray)
+	pcalau12i	$a3, %got_pc_hi20(cellarray)
+	ld.d	$a3, $a3, %got_pc_lo12(cellarray)
+	pcalau12i	$a4, %got_pc_hi20(termarray)
+	ld.d	$a4, $a4, %got_pc_lo12(termarray)
+	ld.d	$a3, $a3, 0
 	ld.d	$a4, $a4, 0
-	ld.d	$a5, $a5, 0
-	addi.d	$a6, $a0, 1
-	bstrpick.d	$a6, $a6, 31, 0
+	addi.d	$a5, $a0, 1
+	bstrpick.d	$a5, $a5, 31, 0
+	ori	$a6, $zero, 1
 	ori	$a7, $zero, 1
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %.loopexit111
                                         #   in Loop: Header=BB0_3 Depth=1
 	addi.d	$a7, $a7, 1
-	beq	$a7, $a6, .LBB0_10
+	beq	$a7, $a5, .LBB0_10
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_5 Depth 2
                                         #     Child Loop BB0_9 Depth 2
 	slli.d	$t0, $a7, 3
-	ldx.d	$t0, $a4, $t0
+	ldx.d	$t0, $a3, $t0
 	ld.w	$t1, $t0, 56
 	alsl.d	$t1, $t1, $t0, 3
 	ld.d	$t1, $t1, 152
@@ -60,7 +60,7 @@ doublecheck:                            # @doublecheck
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t5, $t2, 24
 	slli.d	$t5, $t5, 3
-	ldx.d	$t5, $a5, $t5
+	ldx.d	$t5, $a4, $t5
 	ld.w	$t6, $t2, 8
 	ld.d	$t5, $t5, 8
 	ld.w	$t7, $t2, 12
@@ -73,11 +73,11 @@ doublecheck:                            # @doublecheck
 .LBB0_6:                                # %._crit_edge
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$t2, $t0, 76
-	bne	$t2, $a3, .LBB0_2
+	bne	$t2, $a6, .LBB0_2
 # %bb.7:                                # %.preheader110
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$t3, $t0, 132
-	blt	$t3, $a3, .LBB0_2
+	blez	$t3, .LBB0_2
 # %bb.8:                                # %.lr.ph118
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$t4, $t0, 144
@@ -94,7 +94,7 @@ doublecheck:                            # @doublecheck
 	ld.w	$t5, $t3, -4
 	ld.w	$t6, $t3, 0
 	slli.d	$t5, $t5, 3
-	ldx.d	$t5, $a5, $t5
+	ldx.d	$t5, $a4, $t5
 	alsl.d	$t7, $t6, $t1, 4
 	slli.d	$t6, $t6, 4
 	ldx.w	$t6, $t1, $t6
@@ -111,16 +111,16 @@ doublecheck:                            # @doublecheck
 .LBB0_10:                               # %.preheader109
 	pcalau12i	$a3, %got_pc_hi20(numnets)
 	ld.d	$a3, $a3, %got_pc_lo12(numnets)
-	ld.w	$a5, $a3, 0
-	ori	$a3, $zero, 1
-	blt	$a5, $a3, .LBB0_29
+	ld.w	$a4, $a3, 0
+	blez	$a4, .LBB0_29
 # %bb.11:                               # %.lr.ph131
-	pcalau12i	$a4, %got_pc_hi20(netarray)
-	ld.d	$a4, $a4, %got_pc_lo12(netarray)
+	pcalau12i	$a3, %got_pc_hi20(netarray)
+	ld.d	$a3, $a3, %got_pc_lo12(netarray)
 	move	$fp, $zero
-	ld.d	$a4, $a4, 0
-	addi.d	$a5, $a5, 1
-	bstrpick.d	$a5, $a5, 31, 0
+	ld.d	$a3, $a3, 0
+	addi.d	$a4, $a4, 1
+	bstrpick.d	$a4, $a4, 31, 0
+	ori	$a5, $zero, 1
 	ori	$a6, $zero, 1
 	b	.LBB0_14
 	.p2align	4, , 16
@@ -148,14 +148,14 @@ doublecheck:                            # @doublecheck
 	add.w	$fp, $a7, $t0
 .LBB0_13:                               #   in Loop: Header=BB0_14 Depth=1
 	addi.d	$a6, $a6, 1
-	beq	$a6, $a5, .LBB0_30
+	beq	$a6, $a4, .LBB0_30
 .LBB0_14:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_16 Depth 2
                                         #     Child Loop BB0_21 Depth 2
 	slli.d	$a7, $a6, 3
-	ldx.d	$a7, $a4, $a7
+	ldx.d	$a7, $a3, $a7
 	ld.w	$t0, $a7, 8
-	beq	$t0, $a3, .LBB0_13
+	beq	$t0, $a5, .LBB0_13
 # %bb.15:                               # %.preheader108.preheader
                                         #   in Loop: Header=BB0_14 Depth=1
 	move	$t0, $a7
@@ -167,7 +167,7 @@ doublecheck:                            # @doublecheck
 	beqz	$t0, .LBB0_12
 # %bb.17:                               #   in Loop: Header=BB0_16 Depth=2
 	ld.w	$t1, $t0, 40
-	beq	$t1, $a3, .LBB0_16
+	beq	$t1, $a5, .LBB0_16
 # %bb.18:                               # %.loopexit
                                         #   in Loop: Header=BB0_14 Depth=1
 	ld.w	$t1, $t0, 8
@@ -188,7 +188,7 @@ doublecheck:                            # @doublecheck
 .LBB0_21:                               #   Parent Loop BB0_14 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.w	$t1, $t0, 40
-	beq	$t1, $a3, .LBB0_20
+	beq	$t1, $a5, .LBB0_20
 # %bb.22:                               #   in Loop: Header=BB0_21 Depth=2
 	ld.w	$t2, $t0, 8
 	ld.w	$t3, $a7, 12

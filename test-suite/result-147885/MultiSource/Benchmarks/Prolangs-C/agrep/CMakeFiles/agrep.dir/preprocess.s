@@ -23,26 +23,26 @@ preprocess:                             # @preprocess
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_8
+	blez	$a0, .LBB0_8
 # %bb.1:                                # %.lr.ph.preheader
-	move	$a2, $zero
+	move	$a1, $zero
+	ori	$a2, $zero, 42
 	pcalau12i	$a3, %got_pc_hi20(REGEX)
 	ld.d	$a3, $a3, %got_pc_lo12(REGEX)
-	ori	$a4, $zero, 42
+	ori	$a4, $zero, 1
 	ori	$a5, $zero, 124
 	ori	$a6, $zero, 92
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
-	st.w	$a1, $a3, 0
+	st.w	$a4, $a3, 0
 .LBB0_3:                                #   in Loop: Header=BB0_4 Depth=1
-	addi.w	$a2, $a2, 1
-	bge	$a2, $a0, .LBB0_8
+	addi.w	$a1, $a1, 1
+	bge	$a1, $a0, .LBB0_8
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ldx.bu	$a7, $fp, $a2
-	beq	$a7, $a4, .LBB0_2
+	ldx.bu	$a7, $fp, $a1
+	beq	$a7, $a2, .LBB0_2
 # %bb.5:                                # %.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
 	beq	$a7, $a5, .LBB0_2
@@ -50,7 +50,7 @@ preprocess:                             # @preprocess
                                         #   in Loop: Header=BB0_4 Depth=1
 	bne	$a7, $a6, .LBB0_3
 # %bb.7:                                #   in Loop: Header=BB0_4 Depth=1
-	addi.d	$a2, $a2, 1
+	addi.d	$a1, $a1, 1
 	b	.LBB0_3
 .LBB0_8:                                # %._crit_edge
 	move	$a0, $fp
@@ -485,23 +485,23 @@ preprocess:                             # @preprocess
 	move	$s1, $fp
 	beq	$a0, $a1, .LBB0_72
 # %bb.68:                               # %.preheader
-	ori	$a0, $zero, 1
 	move	$s1, $fp
-	blt	$s4, $a0, .LBB0_72
+	blez	$s4, .LBB0_72
 # %bb.69:
-	ori	$a1, $zero, 238
+	ori	$a0, $zero, 238
+	ori	$a1, $zero, 1
 	move	$s1, $fp
 	.p2align	4, , 16
 .LBB0_70:                               # %.lr.ph239
                                         # =>This Inner Loop Header: Depth=1
 	ld.bu	$a3, $s1, 1
 	addi.d	$s1, $s1, 1
-	beq	$a3, $a1, .LBB0_72
+	beq	$a3, $a0, .LBB0_72
 # %bb.71:                               # %.lr.ph239
                                         #   in Loop: Header=BB0_70 Depth=1
 	move	$a2, $s4
 	addi.w	$s4, $s4, -1
-	bltu	$a0, $a2, .LBB0_70
+	bltu	$a1, $a2, .LBB0_70
 .LBB0_72:                               # %.critedge
 	pcalau12i	$a0, %got_pc_hi20(table)
 	ld.d	$a1, $a0, %got_pc_lo12(table)

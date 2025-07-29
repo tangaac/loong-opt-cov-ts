@@ -130,8 +130,7 @@ VirtualAlloc:                           # @VirtualAlloc
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(unlink)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $zero, -1
-	bge	$s3, $s2, .LBB3_10
+	bltz	$s2, .LBB3_10
 # %bb.6:
 	ori	$a2, $zero, 3
 	ori	$a3, $zero, 1
@@ -145,7 +144,8 @@ VirtualAlloc:                           # @VirtualAlloc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(close)
 	jirl	$ra, $ra, 0
-	beq	$s1, $s3, .LBB3_11
+	addi.w	$a0, $zero, -1
+	beq	$s1, $a0, .LBB3_11
 # %bb.7:
 	vld	$vr0, $fp, -96                  # 16-byte Folded Reload
 	vpickve2gr.b	$a0, $vr0, 0

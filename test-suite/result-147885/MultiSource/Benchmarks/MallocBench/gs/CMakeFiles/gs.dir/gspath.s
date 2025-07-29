@@ -264,7 +264,7 @@ arc_either:                             # @arc_either
 	bceqz	$fcc0, .LBB8_2
 # %bb.1:
 	addi.w	$a0, $zero, -15
-	b	.LBB8_26
+	b	.LBB8_24
 .LBB8_2:
 	move	$s0, $a1
 	fmov.d	$fs2, $fa0
@@ -344,12 +344,12 @@ arc_either:                             # @arc_either
 	fadd.d	$fa2, $fa2, $fa1
 	fcvt.s.d	$fa5, $fa2
 	sub.d	$s2, $s1, $s3
-	beqz	$s0, .LBB8_15
+	beqz	$s0, .LBB8_14
 # %bb.8:                                # %.preheader158
 	lu12i.w	$a0, -91
 	ori	$s4, $a0, 4095
 	ori	$s0, $zero, 1
-	blt	$s4, $s2, .LBB8_22
+	blt	$s4, $s2, .LBB8_20
 # %bb.9:                                # %.lr.ph.preheader
 	fadd.d	$fa1, $fs2, $fa1
 	fcvt.s.d	$fs7, $fa1
@@ -368,18 +368,16 @@ arc_either:                             # @arc_either
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(arc_add)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB8_26
+	bltz	$a0, .LBB8_24
 # %bb.10:
 	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
 	sub.d	$a0, $s1, $s3
 	lu12i.w	$s0, 90
 	add.d	$s2, $a0, $s0
 	fneg.s	$fs6, $fs3
-	blt	$s4, $s2, .LBB8_21
-# %bb.11:
-	addi.w	$s3, $zero, -1
+	blt	$s4, $s2, .LBB8_19
 	.p2align	4, , 16
-.LBB8_12:                               # %.lr.ph
+.LBB8_11:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	fmov.s	$fs3, $fs6
 	fcvt.d.s	$fa0, $fs6
@@ -401,23 +399,23 @@ arc_either:                             # @arc_either
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(arc_add)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB8_26
-# %bb.13:                               #   in Loop: Header=BB8_12 Depth=1
+	bltz	$a0, .LBB8_24
+# %bb.12:                               #   in Loop: Header=BB8_11 Depth=1
 	add.d	$s2, $s2, $s0
 	fneg.s	$fs6, $fs0
 	fmov.s	$fs0, $fs3
-	bge	$s4, $s2, .LBB8_12
-# %bb.14:
+	bge	$s4, $s2, .LBB8_11
+# %bb.13:
 	move	$s0, $zero
 	fmov.s	$fs0, $fs3
-	bnez	$s2, .LBB8_23
-	b	.LBB8_25
-.LBB8_15:                               # %.preheader
+	bnez	$s2, .LBB8_21
+	b	.LBB8_23
+.LBB8_14:                               # %.preheader
 	lu12i.w	$a0, 90
 	ori	$s4, $a0, 1
 	ori	$s0, $zero, 1
-	blt	$s2, $s4, .LBB8_22
-# %bb.16:                               # %.lr.ph193.preheader
+	blt	$s2, $s4, .LBB8_20
+# %bb.15:                               # %.lr.ph193.preheader
 	fsub.d	$fa1, $fs2, $fa1
 	fcvt.s.d	$fs7, $fa1
 	fld.d	$fa1, $sp, 32                   # 8-byte Folded Reload
@@ -435,18 +433,16 @@ arc_either:                             # @arc_either
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(arc_add)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB8_26
-# %bb.17:
+	bltz	$a0, .LBB8_24
+# %bb.16:
 	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
 	sub.d	$a0, $s1, $s3
 	lu12i.w	$s0, -90
 	add.d	$s2, $a0, $s0
 	fneg.s	$fs0, $fs0
-	blt	$s2, $s4, .LBB8_24
-# %bb.18:
-	addi.w	$s3, $zero, -1
+	blt	$s2, $s4, .LBB8_22
 	.p2align	4, , 16
-.LBB8_19:                               # %.lr.ph193
+.LBB8_17:                               # %.lr.ph193
                                         # =>This Inner Loop Header: Depth=1
 	fmov.s	$fs6, $fs0
 	fcvt.d.s	$fa0, $fs3
@@ -468,24 +464,24 @@ arc_either:                             # @arc_either
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(arc_add)
 	jirl	$ra, $ra, 0
-	bge	$s3, $a0, .LBB8_26
-# %bb.20:                               #   in Loop: Header=BB8_19 Depth=1
+	bltz	$a0, .LBB8_24
+# %bb.18:                               #   in Loop: Header=BB8_17 Depth=1
 	add.d	$s2, $s2, $s0
 	fneg.s	$fs0, $fs3
 	fmov.s	$fs3, $fs6
-	bge	$s2, $s4, .LBB8_19
-.LBB8_21:
+	bge	$s2, $s4, .LBB8_17
+.LBB8_19:
 	move	$s0, $zero
-	bnez	$s2, .LBB8_23
-	b	.LBB8_25
-.LBB8_22:
+	bnez	$s2, .LBB8_21
+	b	.LBB8_23
+.LBB8_20:
 	fst.d	$fs6, $sp, 24                   # 8-byte Folded Spill
 	fmov.s	$fs7, $fa4
 	fmov.s	$fs1, $fa5
 	fmov.s	$fs6, $fs0
 	fmov.s	$fs0, $fs3
-	beqz	$s2, .LBB8_25
-.LBB8_23:
+	beqz	$s2, .LBB8_23
+.LBB8_21:
 	movgr2fr.d	$fa0, $s2
 	ffint.d.l	$fa0, $fa0
 	pcalau12i	$a0, %pc_hi20(.LCPI8_3)
@@ -547,13 +543,13 @@ arc_either:                             # @arc_either
 	addi.d	$sp, $sp, 160
 	pcaddu18i	$t8, %call36(arc_add)
 	jr	$t8
-.LBB8_24:
+.LBB8_22:
 	move	$s0, $zero
 	fmov.s	$fs6, $fs3
-	bnez	$s2, .LBB8_23
-.LBB8_25:
+	bnez	$s2, .LBB8_21
+.LBB8_23:
 	move	$a0, $zero
-.LBB8_26:                               # %.thread
+.LBB8_24:                               # %.thread
 	fld.d	$fs7, $sp, 40                   # 8-byte Folded Reload
 	fld.d	$fs6, $sp, 48                   # 8-byte Folded Reload
 	fld.d	$fs5, $sp, 56                   # 8-byte Folded Reload
@@ -714,8 +710,7 @@ gs_arcto:                               # @gs_arcto
 	addi.d	$a1, $sp, 24
 	pcaddu18i	$ra, %call36(gx_path_current_point)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB11_12
+	bltz	$a0, .LBB11_12
 # %bb.3:                                # %gs_currentpoint.exit
 	ld.d	$a0, $sp, 24
 	pcalau12i	$a1, %pc_hi20(.LCPI11_0)

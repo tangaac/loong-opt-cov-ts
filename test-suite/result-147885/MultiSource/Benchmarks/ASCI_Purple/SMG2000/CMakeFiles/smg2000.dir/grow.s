@@ -24,8 +24,7 @@ hypre_GrowBoxByStencil:                 # @hypre_GrowBoxByStencil
 	pcaddu18i	$ra, %call36(hypre_BoxCreate)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_6
+	blez	$a1, .LBB0_6
 # %bb.1:                                # %.lr.ph
 	ld.d	$a3, $s0, 0
 	move	$a1, $zero
@@ -162,9 +161,8 @@ hypre_GrowBoxArrayByStencil:            # @hypre_GrowBoxArrayByStencil
 	pcaddu18i	$ra, %call36(hypre_BoxArrayArrayCreate)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s2, $a0
-	blt	$a1, $a2, .LBB1_3
+	blez	$a1, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a1, $s2, 0
 	move	$s3, $zero

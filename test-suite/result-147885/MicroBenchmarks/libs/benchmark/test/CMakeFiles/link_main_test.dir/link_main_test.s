@@ -27,20 +27,19 @@ _Z8BM_emptyRN9benchmark5StateE:         # @_Z8BM_emptyRN9benchmark5StateE
 	beqz	$s0, .LBB0_7
 # %bb.2:
 	movgr2fr.d	$fa0, $zero
-	ori	$a0, $zero, 1
-	addi.d	$a1, $sp, 8
+	addi.d	$a0, $sp, 8
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $fp, 24
+	ld.bu	$a1, $fp, 24
 	fmov.d	$fa1, $fa0
-	bne	$a2, $a0, .LBB0_5
+	beqz	$a1, .LBB0_5
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
-	ld.d	$a2, $fp, 16
-	ld.d	$a3, $fp, 0
-	ld.d	$a4, $fp, 8
-	sub.d	$a2, $a2, $a3
-	add.d	$a2, $a2, $a4
-	movgr2fr.d	$fa1, $a2
+	ld.d	$a1, $fp, 16
+	ld.d	$a2, $fp, 0
+	ld.d	$a3, $fp, 8
+	sub.d	$a1, $a1, $a2
+	add.d	$a1, $a1, $a3
+	movgr2fr.d	$fa1, $a1
 	ffint.d.l	$fa1, $fa1
 	fmul.d	$fa1, $fa1, $fa1
 .LBB0_5:                                # %_ZNK9benchmark5State10iterationsEv.exit

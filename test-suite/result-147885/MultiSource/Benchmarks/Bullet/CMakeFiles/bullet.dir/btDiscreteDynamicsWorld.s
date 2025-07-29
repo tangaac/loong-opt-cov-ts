@@ -353,9 +353,8 @@ _ZN23btDiscreteDynamicsWorldD2Ev:       # @_ZN23btDiscreteDynamicsWorldD2Ev
 	ld.bu	$a0, $a0, 332
 	pcalau12i	$a1, %pc_hi20(_ZTV23btDiscreteDynamicsWorld+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV23btDiscreteDynamicsWorld+16)
-	ori	$s0, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $s0, .LBB5_3
+	beqz	$a0, .LBB5_3
 # %bb.1:
 	ld.d	$a0, $fp, 240
 	ld.d	$a1, $a0, 0
@@ -371,7 +370,7 @@ _ZN23btDiscreteDynamicsWorldD2Ev:       # @_ZN23btDiscreteDynamicsWorldD2Ev
 .Ltmp22:
 .LBB5_3:
 	ld.bu	$a0, $fp, 333
-	bne	$a0, $s0, .LBB5_6
+	beqz	$a0, .LBB5_6
 # %bb.4:
 	ld.d	$a0, $fp, 232
 	ld.d	$a1, $a0, 0
@@ -608,6 +607,9 @@ GCC_except_table6:
 _ZN23btDiscreteDynamicsWorld18saveKinematicStateEf: # @_ZN23btDiscreteDynamicsWorld18saveKinematicStateEf
 	.cfi_startproc
 # %bb.0:
+	ld.w	$a1, $a0, 12
+	blez	$a1, .LBB7_9
+# %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -48
 	.cfi_def_cfa_offset 48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -623,10 +625,6 @@ _ZN23btDiscreteDynamicsWorld18saveKinematicStateEf: # @_ZN23btDiscreteDynamicsWo
 	.cfi_offset 25, -40
 	.cfi_offset 56, -48
 	move	$fp, $a0
-	ld.w	$a1, $a0, 12
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB7_8
-# %bb.1:                                # %.lr.ph
 	fmov.s	$fs0, $fa0
 	move	$s0, $zero
 	move	$s1, $zero
@@ -657,7 +655,7 @@ _ZN23btDiscreteDynamicsWorld18saveKinematicStateEf: # @_ZN23btDiscreteDynamicsWo
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 12
 	b	.LBB7_2
-.LBB7_8:                                # %._crit_edge
+.LBB7_8:
 	fld.d	$fs0, $sp, 0                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -665,6 +663,7 @@ _ZN23btDiscreteDynamicsWorld18saveKinematicStateEf: # @_ZN23btDiscreteDynamicsWo
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB7_9:                                # %._crit_edge
 	ret
 .Lfunc_end7:
 	.size	_ZN23btDiscreteDynamicsWorld18saveKinematicStateEf, .Lfunc_end7-_ZN23btDiscreteDynamicsWorld18saveKinematicStateEf
@@ -754,9 +753,8 @@ _ZN23btDiscreteDynamicsWorld14debugDrawWorldEv: # @_ZN23btDiscreteDynamicsWorld1
 # %bb.6:
 	move	$s0, $a0
 	vrepli.b	$vr0, 0
-	ori	$s3, $zero, 1
 	vst	$vr0, $sp, 56
-	blt	$a0, $s3, .LBB8_15
+	blez	$a0, .LBB8_15
 # %bb.7:                                # %.lr.ph121.preheader
 	move	$s1, $zero
 	b	.LBB8_9
@@ -776,8 +774,8 @@ _ZN23btDiscreteDynamicsWorld14debugDrawWorldEv: # @_ZN23btDiscreteDynamicsWorld1
 	jirl	$ra, $a2, 0
 .Ltmp60:
 # %bb.10:                               #   in Loop: Header=BB8_9 Depth=1
-	ld.w	$s4, $a0, 728
-	blt	$s4, $s3, .LBB8_8
+	ld.w	$s3, $a0, 728
+	blez	$s3, .LBB8_8
 # %bb.11:                               # %.lr.ph
                                         #   in Loop: Header=BB8_9 Depth=1
 	addi.d	$s2, $a0, 72
@@ -802,9 +800,9 @@ _ZN23btDiscreteDynamicsWorld14debugDrawWorldEv: # @_ZN23btDiscreteDynamicsWorld1
 	jirl	$ra, $a5, 0
 .Ltmp65:
 # %bb.14:                               #   in Loop: Header=BB8_12 Depth=2
-	addi.d	$s4, $s4, -1
+	addi.d	$s3, $s3, -1
 	addi.d	$s2, $s2, 176
-	bnez	$s4, .LBB8_12
+	bnez	$s3, .LBB8_12
 	b	.LBB8_8
 .LBB8_15:
 	ld.d	$a0, $fp, 0
@@ -890,8 +888,7 @@ _ZN23btDiscreteDynamicsWorld14debugDrawWorldEv: # @_ZN23btDiscreteDynamicsWorld1
 	beqz	$a0, .LBB8_55
 # %bb.30:                               # %.preheader116
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_46
+	blez	$a0, .LBB8_46
 # %bb.31:                               # %.lr.ph124
 	move	$s0, $zero
 	move	$s1, $zero
@@ -1028,8 +1025,7 @@ _ZN23btDiscreteDynamicsWorld14debugDrawWorldEv: # @_ZN23btDiscreteDynamicsWorld1
 	beqz	$a0, .LBB8_55
 # %bb.51:                               # %.preheader
 	ld.w	$a0, $fp, 340
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_55
+	blez	$a0, .LBB8_55
 # %bb.52:                               # %.lr.ph127
 	move	$s0, $zero
 	move	$s1, $zero
@@ -3082,8 +3078,7 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	ld.d	$a1, $a0, 152
 	move	$a0, $s2
 	jirl	$ra, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_30
+	blez	$a0, .LBB10_30
 # %bb.13:                               # %.lr.ph1292
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -3199,18 +3194,18 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	b	.LBB10_28
 .LBB10_17:
 	ld.w	$a0, $s2, 108
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB10_30
+	blez	$a0, .LBB10_30
 # %bb.18:                               # %.lr.ph
-	addi.d	$s4, $a0, 1
+	addi.d	$s3, $a0, 1
 	slli.d	$a1, $a0, 2
-	addi.d	$s5, $a1, -4
-	slli.d	$s6, $a0, 4
+	addi.d	$s4, $a1, -4
+	slli.d	$s5, $a0, 4
 	movgr2fr.w	$fs0, $zero
+	ori	$s6, $zero, 1
 	.p2align	4, , 16
 .LBB10_19:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 120
-	add.d	$a0, $a0, $s6
+	add.d	$a0, $a0, $s5
 	fld.s	$fa1, $a0, -16
 	fld.s	$fa3, $a0, -12
 	fld.s	$fa2, $a0, -8
@@ -3218,7 +3213,7 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.s	$fa4, $s0, 4
 	fld.s	$fa5, $s0, 0
 	fld.s	$fa6, $s0, 8
-	fldx.s	$fa0, $a0, $s5
+	fldx.s	$fa0, $a0, $s4
 	fmul.s	$fa7, $fa4, $fs0
 	fadd.s	$ft0, $fa5, $fa7
 	fmadd.s	$ft0, $fa6, $fs0, $ft0
@@ -3285,24 +3280,24 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(_ZN23btDiscreteDynamicsWorld15debugDrawSphereEfRK11btTransformRK9btVector3)
 	jirl	$ra, $ra, 0
-	addi.d	$s4, $s4, -1
-	addi.d	$s5, $s5, -4
-	addi.d	$s6, $s6, -16
-	bltu	$s3, $s4, .LBB10_19
+	addi.d	$s3, $s3, -1
+	addi.d	$s4, $s4, -4
+	addi.d	$s5, $s5, -16
+	bltu	$s6, $s3, .LBB10_19
 	b	.LBB10_30
 .LBB10_20:
 	ld.w	$a0, $s2, 28
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB10_30
+	blez	$a0, .LBB10_30
 # %bb.21:                               # %.lr.ph1290
-	addi.d	$s4, $a0, 1
+	addi.d	$s3, $a0, 1
 	ori	$a1, $zero, 88
 	mul.d	$a0, $a0, $a1
-	addi.d	$s5, $a0, -40
+	addi.d	$s4, $a0, -40
+	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB10_22:                              # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 40
-	add.d	$a1, $a0, $s5
+	add.d	$a1, $a0, $s4
 	fld.s	$fa5, $a1, -48
 	fld.s	$fa6, $a1, -44
 	fld.s	$fa7, $a1, -40
@@ -3312,7 +3307,7 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	fld.s	$ft3, $a1, -16
 	fld.s	$ft4, $a1, -12
 	fld.s	$ft5, $a1, -8
-	fldx.s	$fa0, $a0, $s5
+	fldx.s	$fa0, $a0, $s4
 	fld.s	$fa2, $a1, 4
 	fld.s	$fa1, $a1, 8
 	fld.s	$ft6, $s0, 4
@@ -3391,9 +3386,9 @@ _ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShap
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(_ZN23btDiscreteDynamicsWorld15debugDrawObjectERK11btTransformPK16btCollisionShapeRK9btVector3)
 	jirl	$ra, $ra, 0
-	addi.d	$s4, $s4, -1
-	addi.d	$s5, $s5, -88
-	bltu	$s3, $s4, .LBB10_22
+	addi.d	$s3, $s3, -1
+	addi.d	$s4, $s4, -88
+	bltu	$s5, $s3, .LBB10_22
 	b	.LBB10_30
 .LBB10_23:
 	ld.w	$s7, $s2, 64
@@ -4898,8 +4893,7 @@ _ZN12btIDebugDraw8drawAabbERK9btVector3S2_S2_: # @_ZN12btIDebugDraw8drawAabbERK9
 _ZN23btDiscreteDynamicsWorld11clearForcesEv: # @_ZN23btDiscreteDynamicsWorld11clearForcesEv
 # %bb.0:
 	ld.w	$a1, $a0, 284
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB12_3
+	blez	$a1, .LBB12_3
 # %bb.1:                                # %.lr.ph
 	move	$a1, $zero
 	move	$a2, $zero
@@ -4925,6 +4919,9 @@ _ZN23btDiscreteDynamicsWorld11clearForcesEv: # @_ZN23btDiscreteDynamicsWorld11cl
 _ZN23btDiscreteDynamicsWorld12applyGravityEv: # @_ZN23btDiscreteDynamicsWorld12applyGravityEv
 	.cfi_startproc
 # %bb.0:
+	ld.w	$a1, $a0, 284
+	blez	$a1, .LBB13_7
+# %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -48
 	.cfi_def_cfa_offset 48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -4940,10 +4937,6 @@ _ZN23btDiscreteDynamicsWorld12applyGravityEv: # @_ZN23btDiscreteDynamicsWorld12a
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	move	$fp, $a0
-	ld.w	$a1, $a0, 284
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB13_6
-# %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
 	ori	$s2, $zero, 2
@@ -4966,7 +4959,7 @@ _ZN23btDiscreteDynamicsWorld12applyGravityEv: # @_ZN23btDiscreteDynamicsWorld12a
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 284
 	b	.LBB13_2
-.LBB13_6:                               # %._crit_edge
+.LBB13_6:
 	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
@@ -4974,6 +4967,7 @@ _ZN23btDiscreteDynamicsWorld12applyGravityEv: # @_ZN23btDiscreteDynamicsWorld12a
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB13_7:                               # %._crit_edge
 	ret
 .Lfunc_end13:
 	.size	_ZN23btDiscreteDynamicsWorld12applyGravityEv, .Lfunc_end13-_ZN23btDiscreteDynamicsWorld12applyGravityEv
@@ -5257,8 +5251,7 @@ _ZN23btDiscreteDynamicsWorld23synchronizeMotionStatesEv: # @_ZN23btDiscreteDynam
 	beqz	$a0, .LBB16_11
 # %bb.1:                                # %.preheader
 	ld.w	$a0, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB16_21
+	blez	$a0, .LBB16_21
 # %bb.2:                                # %.lr.ph31
 	move	$s0, $zero
 	move	$s1, $zero
@@ -5311,8 +5304,7 @@ _ZN23btDiscreteDynamicsWorld23synchronizeMotionStatesEv: # @_ZN23btDiscreteDynam
 	b	.LBB16_3
 .LBB16_11:                              # %.preheader27
 	ld.w	$a0, $fp, 284
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB16_21
+	blez	$a0, .LBB16_21
 # %bb.12:                               # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -5560,8 +5552,7 @@ _ZN23btDiscreteDynamicsWorld14stepSimulationEfif: # @_ZN23btDiscreteDynamicsWorl
 	masknez	$a1, $s0, $a0
 	maskeqz	$a0, $s1, $a0
 	or	$s0, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB17_18
+	blez	$s0, .LBB17_18
 	.p2align	4, , 16
 .LBB17_14:                              # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -5801,8 +5792,7 @@ _ZN23btDiscreteDynamicsWorld28internalSingleStepSimulationEf: # @_ZN23btDiscrete
 .Ltmp197:
 # %bb.9:                                # %.noexc
 	ld.w	$a0, $fp, 340
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB19_13
+	blez	$a0, .LBB19_13
 # %bb.10:                               # %.lr.ph.i
 	move	$s0, $zero
 	move	$s1, $zero
@@ -5973,8 +5963,7 @@ _ZN23btDiscreteDynamicsWorld13updateActionsEf: # @_ZN23btDiscreteDynamicsWorld13
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 340
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB20_4
+	blez	$a0, .LBB20_4
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -6105,18 +6094,18 @@ _ZN23btDiscreteDynamicsWorld21updateActivationStateEf: # @_ZN23btDiscreteDynamic
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 284
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB21_23
+	blez	$a0, .LBB21_23
 # %bb.1:                                # %.lr.ph
+	move	$s1, $zero
 	move	$s2, $zero
-	move	$s3, $zero
-	ori	$s4, $zero, 2
+	ori	$s3, $zero, 2
+	ori	$s4, $zero, 4
 	pcalau12i	$a0, %got_pc_hi20(gDisableDeactivation)
 	ld.d	$s5, $a0, %got_pc_lo12(gDisableDeactivation)
 	pcalau12i	$a0, %got_pc_hi20(gDeactivationTime)
 	ld.d	$s6, $a0, %got_pc_lo12(gDeactivationTime)
-	ori	$s7, $zero, 4
 	movgr2fr.w	$fs1, $zero
+	ori	$s7, $zero, 1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	b	.LBB21_5
@@ -6136,18 +6125,18 @@ _ZN23btDiscreteDynamicsWorld21updateActivationStateEf: # @_ZN23btDiscreteDynamic
 .LBB21_4:                               # %.thread34
                                         #   in Loop: Header=BB21_5 Depth=1
 	ld.w	$a0, $fp, 284
-	addi.d	$s3, $s3, 1
-	addi.d	$s2, $s2, 8
-	bge	$s3, $a0, .LBB21_23
+	addi.d	$s2, $s2, 1
+	addi.d	$s1, $s1, 8
+	bge	$s2, $a0, .LBB21_23
 .LBB21_5:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 296
-	ldx.d	$s0, $a0, $s2
+	ldx.d	$s0, $a0, $s1
 	beqz	$s0, .LBB21_4
 # %bb.6:                                #   in Loop: Header=BB21_5 Depth=1
 	ld.w	$a0, $s0, 228
-	beq	$a0, $s4, .LBB21_13
+	beq	$a0, $s3, .LBB21_13
 # %bb.7:                                #   in Loop: Header=BB21_5 Depth=1
-	beq	$a0, $s7, .LBB21_13
+	beq	$a0, $s4, .LBB21_13
 # %bb.8:                                #   in Loop: Header=BB21_5 Depth=1
 	fld.s	$fa0, $s0, 332
 	fld.s	$fa1, $s0, 328
@@ -6189,7 +6178,7 @@ _ZN23btDiscreteDynamicsWorld21updateActivationStateEf: # @_ZN23btDiscreteDynamic
 	ld.w	$a0, $s0, 228
 .LBB21_13:                              # %_ZN11btRigidBody18updateDeactivationEf.exit
                                         #   in Loop: Header=BB21_5 Depth=1
-	beq	$a0, $s7, .LBB21_4
+	beq	$a0, $s4, .LBB21_4
 .LBB21_14:                              #   in Loop: Header=BB21_5 Depth=1
 	ld.bu	$a2, $s5, 0
 	ori	$a1, $zero, 1
@@ -6201,7 +6190,7 @@ _ZN23btDiscreteDynamicsWorld21updateActivationStateEf: # @_ZN23btDiscreteDynamic
 # %bb.16:                               #   in Loop: Header=BB21_5 Depth=1
 	bstrpick.d	$a2, $a0, 31, 1
 	slli.w	$a2, $a2, 1
-	beq	$a2, $s4, .LBB21_2
+	beq	$a2, $s3, .LBB21_2
 # %bb.17:                               # %_ZN11btRigidBody13wantsSleepingEv.exit
                                         #   in Loop: Header=BB21_5 Depth=1
 	fld.s	$fa1, $s0, 232
@@ -6209,7 +6198,7 @@ _ZN23btDiscreteDynamicsWorld21updateActivationStateEf: # @_ZN23btDiscreteDynamic
 	bceqz	$fcc0, .LBB21_2
 	b	.LBB21_3
 .LBB21_18:                              #   in Loop: Header=BB21_5 Depth=1
-	bne	$a0, $s1, .LBB21_21
+	bne	$a0, $s7, .LBB21_21
 # %bb.19:                               #   in Loop: Header=BB21_5 Depth=1
 .Ltmp222:
 	ori	$a1, $zero, 3
@@ -6221,7 +6210,7 @@ _ZN23btDiscreteDynamicsWorld21updateActivationStateEf: # @_ZN23btDiscreteDynamic
                                         #   in Loop: Header=BB21_5 Depth=1
 	ld.w	$a0, $s0, 228
 .LBB21_21:                              #   in Loop: Header=BB21_5 Depth=1
-	bne	$a0, $s4, .LBB21_4
+	bne	$a0, $s3, .LBB21_4
 # %bb.22:                               #   in Loop: Header=BB21_5 Depth=1
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $s0, 344
@@ -6326,13 +6315,12 @@ _ZN23btDiscreteDynamicsWorld10setGravityERK9btVector3: # @_ZN23btDiscreteDynamic
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	move	$fp, $a1
-	move	$s0, $a0
 	vld	$vr0, $a1, 0
 	ld.w	$a1, $a0, 284
-	ori	$a0, $zero, 1
-	vst	$vr0, $s0, 312
-	blt	$a1, $a0, .LBB22_6
+	vst	$vr0, $a0, 312
+	blez	$a1, .LBB22_6
 # %bb.1:                                # %.lr.ph
+	move	$s0, $a0
 	move	$s1, $zero
 	move	$s2, $zero
 	ori	$s3, $zero, 2
@@ -6423,8 +6411,7 @@ _ZN23btDiscreteDynamicsWorld15removeRigidBodyEP11btRigidBody: # @_ZN23btDiscrete
 	.cfi_startproc
 # %bb.0:
 	ld.w	$a2, $a0, 284
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB26_4
+	blez	$a2, .LBB26_4
 # %bb.1:                                # %.lr.ph.i.i
 	ld.d	$a3, $a0, 296
 	move	$a5, $zero
@@ -6510,8 +6497,7 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 	ld.w	$a1, $s0, 284
 	move	$s1, $a0
 	ld.d	$a0, $s0, 296
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB27_19
+	blez	$a1, .LBB27_19
 .LBB27_7:                               # %.lr.ph.i.i.i
 	ori	$a3, $zero, 4
 	move	$a2, $zero
@@ -6554,8 +6540,7 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 	bnez	$a3, .LBB27_13
 .LBB27_14:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a2, $s0, 304
-	ori	$a3, $zero, 1
-	beq	$a2, $a3, .LBB27_21
+	bnez	$a2, .LBB27_21
 	b	.LBB27_22
 .LBB27_15:
 	addi.d	$a1, $s0, 312
@@ -6581,8 +6566,7 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBody: # @_ZN23btDiscreteDyn
 .LBB27_18:
 	move	$s1, $zero
 	ld.d	$a0, $s0, 296
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB27_7
+	bgtz	$a1, .LBB27_7
 .LBB27_19:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB27_22
 # %bb.20:                               # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
@@ -6686,8 +6670,7 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBodyss: # @_ZN23btDiscreteD
 	ld.w	$a1, $s2, 284
 	move	$s3, $a0
 	ld.d	$a0, $s2, 296
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB28_19
+	blez	$a1, .LBB28_19
 .LBB28_7:                               # %.lr.ph.i.i.i
 	ori	$a3, $zero, 4
 	move	$a2, $zero
@@ -6730,8 +6713,7 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBodyss: # @_ZN23btDiscreteD
 	bnez	$a3, .LBB28_13
 .LBB28_14:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a2, $s2, 304
-	ori	$a3, $zero, 1
-	beq	$a2, $a3, .LBB28_21
+	bnez	$a2, .LBB28_21
 	b	.LBB28_22
 .LBB28_15:
 	addi.d	$a1, $s2, 312
@@ -6759,8 +6741,7 @@ _ZN23btDiscreteDynamicsWorld12addRigidBodyEP11btRigidBodyss: # @_ZN23btDiscreteD
 .LBB28_18:
 	move	$s3, $zero
 	ld.d	$a0, $s2, 296
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB28_7
+	bgtz	$a1, .LBB28_7
 .LBB28_19:                              # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB28_22
 # %bb.20:                               # %_ZNK20btAlignedObjectArrayIP11btRigidBodyE4copyEiiPS1_.exit.i.i
@@ -6846,8 +6827,7 @@ _ZN23btDiscreteDynamicsWorld13addConstraintEP17btTypedConstraintb: # @_ZN23btDis
 	ld.w	$a3, $s0, 252
 	move	$s1, $a0
 	ld.d	$a0, $s0, 264
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB29_13
+	blez	$a3, .LBB29_13
 .LBB29_4:                               # %.lr.ph.i.i.i
 	ori	$a4, $zero, 4
 	move	$a1, $zero
@@ -6891,14 +6871,12 @@ _ZN23btDiscreteDynamicsWorld13addConstraintEP17btTypedConstraintb: # @_ZN23btDis
 	bnez	$a4, .LBB29_10
 .LBB29_11:                              # %_ZNK20btAlignedObjectArrayIP17btTypedConstraintE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a1, $s0, 272
-	ori	$a4, $zero, 1
-	beq	$a1, $a4, .LBB29_15
+	bnez	$a1, .LBB29_15
 	b	.LBB29_16
 .LBB29_12:
 	move	$s1, $zero
 	ld.d	$a0, $s0, 264
-	ori	$a1, $zero, 1
-	bge	$a3, $a1, .LBB29_4
+	bgtz	$a3, .LBB29_4
 .LBB29_13:                              # %_ZNK20btAlignedObjectArrayIP17btTypedConstraintE4copyEiiPS1_.exit.i.i
 	move	$a2, $s3
 	beqz	$a0, .LBB29_16
@@ -6965,9 +6943,8 @@ _ZN23btDiscreteDynamicsWorld16removeConstraintEP17btTypedConstraint: # @_ZN23btD
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	ld.w	$a2, $a0, 252
-	ori	$a3, $zero, 1
 	move	$fp, $a1
-	blt	$a2, $a3, .LBB30_6
+	blez	$a2, .LBB30_6
 # %bb.1:                                # %.lr.ph.i.i
 	ld.d	$a3, $a0, 264
 	move	$a5, $zero
@@ -7050,8 +7027,7 @@ _ZN23btDiscreteDynamicsWorld9addActionEP17btActionInterface: # @_ZN23btDiscreteD
 	ld.w	$a2, $fp, 340
 	move	$s0, $a0
 	ld.d	$a0, $fp, 352
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB31_13
+	blez	$a2, .LBB31_13
 .LBB31_4:                               # %.lr.ph.i.i.i
 	ori	$a4, $zero, 4
 	move	$a3, $zero
@@ -7095,14 +7071,12 @@ _ZN23btDiscreteDynamicsWorld9addActionEP17btActionInterface: # @_ZN23btDiscreteD
 	bnez	$a4, .LBB31_10
 .LBB31_11:                              # %_ZNK20btAlignedObjectArrayIP17btActionInterfaceE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a3, $fp, 360
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB31_15
+	bnez	$a3, .LBB31_15
 	b	.LBB31_16
 .LBB31_12:
 	move	$s0, $zero
 	ld.d	$a0, $fp, 352
-	ori	$a1, $zero, 1
-	bge	$a2, $a1, .LBB31_4
+	bgtz	$a2, .LBB31_4
 .LBB31_13:                              # %_ZNK20btAlignedObjectArrayIP17btActionInterfaceE4copyEiiPS1_.exit.i.i
 	move	$a1, $s2
 	beqz	$a0, .LBB31_16
@@ -7143,8 +7117,7 @@ _ZN23btDiscreteDynamicsWorld9addActionEP17btActionInterface: # @_ZN23btDiscreteD
 _ZN23btDiscreteDynamicsWorld12removeActionEP17btActionInterface: # @_ZN23btDiscreteDynamicsWorld12removeActionEP17btActionInterface
 # %bb.0:
 	ld.w	$a2, $a0, 340
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB32_4
+	blez	$a2, .LBB32_4
 # %bb.1:                                # %.lr.ph.i.i
 	ld.d	$a3, $a0, 352
 	move	$a5, $zero
@@ -7263,7 +7236,7 @@ _ZN23btDiscreteDynamicsWorld16solveConstraintsER19btContactSolverInfo: # @_ZN23b
 	st.b	$a0, $sp, 96
 	st.d	$zero, $sp, 88
 	st.d	$zero, $sp, 76
-	blt	$s3, $a0, .LBB37_3
+	blez	$s3, .LBB37_3
 # %bb.1:
 	slli.d	$s2, $s3, 3
 .Ltmp230:
@@ -7557,8 +7530,7 @@ _ZN23btDiscreteDynamicsWorld26calculateSimulationIslandsEv: # @_ZN23btDiscreteDy
 # %bb.1:
 	ld.w	$a1, $fp, 252
 	ld.d	$a0, $fp, 240
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB39_18
+	blez	$a1, .LBB39_18
 # %bb.2:                                # %.lr.ph
 	ld.d	$a2, $fp, 264
 	move	$a3, $zero
@@ -7766,8 +7738,7 @@ _ZN23btDiscreteDynamicsWorld19integrateTransformsEf: # @_ZN23btDiscreteDynamicsW
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 284
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB40_21
+	blez	$a0, .LBB40_21
 # %bb.1:                                # %.lr.ph
 	move	$s2, $zero
 	move	$s3, $zero
@@ -8114,8 +8085,7 @@ _ZN23btDiscreteDynamicsWorld25predictUnconstraintMotionEf: # @_ZN23btDiscreteDyn
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 284
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB42_8
+	blez	$a0, .LBB42_8
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	move	$s2, $zero
@@ -8911,10 +8881,10 @@ _ZN12btIDebugDraw7drawArcERK9btVector3S2_S2_ffffS2_bf: # @_ZN12btIDebugDraw7draw
 	fdiv.s	$fa1, $fs3, $fa1
 	ftintrz.w.s	$fa1, $fa1
 	movfr2gr.s	$a0, $fa1
-	ori	$s5, $zero, 1
-	sltu	$a1, $s5, $a0
-	maskeqz	$a0, $a0, $a1
-	masknez	$a1, $s5, $a1
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
 	or	$s4, $a0, $a1
 	fmul.s	$fs7, $fa0, $ft0
 	fmul.s	$fs4, $fa0, $ft1
@@ -8970,7 +8940,7 @@ _ZN12btIDebugDraw7drawArcERK9btVector3S2_S2_ffffS2_bf: # @_ZN12btIDebugDraw7draw
 	jirl	$ra, $a4, 0
 .LBB46_2:
 	fld.s	$fs2, $sp, 16                   # 4-byte Folded Reload
-	blt	$s4, $s5, .LBB46_5
+	blez	$s4, .LBB46_5
 # %bb.3:                                # %.lr.ph
 	fmov.s	$fs7, $fs5
 	fmov.s	$fs6, $fs4
@@ -9222,11 +9192,11 @@ _ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f: # @_ZN12btIDebug
 	fdiv.s	$fa1, $fa0, $fa5
 	ftintrz.w.s	$fa1, $fa1
 	movfr2gr.s	$a1, $fa1
-	ori	$a3, $zero, 1
-	slt	$a2, $a3, $a1
-	maskeqz	$a1, $a1, $a2
-	masknez	$a2, $a3, $a2
-	or	$s6, $a1, $a2
+	ori	$a2, $zero, 1
+	slt	$a3, $a2, $a1
+	maskeqz	$a1, $a1, $a3
+	masknez	$a3, $a2, $a3
+	or	$s6, $a1, $a3
 	movgr2fr.w	$fa1, $s6
 	ffint.s.w	$fa1, $fa1
 	fdiv.s	$fa0, $fa0, $fa1
@@ -9244,17 +9214,17 @@ _ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f: # @_ZN12btIDebug
 	fsel	$fa1, $fa4, $fa2, $fcc0
 	fsel	$fs4, $fa3, $fa0, $fcc0
 	movcf2gr	$a1, $fcc0
-	movcf2gr	$a2, $fcc1
-	or	$s7, $a1, $a2
+	movcf2gr	$a3, $fcc1
+	or	$s7, $a1, $a3
 	fsub.s	$fa0, $fa1, $fs4
 	fdiv.s	$fa1, $fa0, $fa5
 	ftintrz.w.s	$fa1, $fa1
-	movfr2gr.s	$a2, $fa1
-	slt	$a1, $a3, $a2
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	maskeqz	$a2, $a2, $a1
-	masknez	$a1, $a3, $a1
-	or	$a1, $a2, $a1
+	movfr2gr.s	$a3, $fa1
+	slt	$a1, $a2, $a3
+	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
+	maskeqz	$a3, $a3, $a1
+	masknez	$a1, $a2, $a1
+	or	$a1, $a3, $a1
 	st.d	$a1, $sp, 96                    # 8-byte Folded Spill
 	movgr2fr.w	$fa1, $a1
 	ffint.s.w	$fa1, $fa1
@@ -9353,8 +9323,7 @@ _ZN12btIDebugDraw15drawSpherePatchERK9btVector3S2_S2_fffffS2_f: # @_ZN12btIDebug
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
 	or	$a0, $a0, $s5
 	st.d	$a1, $s8, 8
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB47_8
+	beqz	$a0, .LBB47_8
 # %bb.7:                                # %.sink.split
                                         #   in Loop: Header=BB47_6 Depth=1
 	ld.d	$a0, $s3, 0
@@ -10398,9 +10367,8 @@ _ZN23btDiscreteDynamicsWorld19setConstraintSolverEP18btConstraintSolver: # @_ZN2
 	.cfi_offset 23, -24
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 333
-	ori	$a2, $zero, 1
 	move	$s0, $a1
-	bne	$a0, $a2, .LBB49_2
+	beqz	$a0, .LBB49_2
 # %bb.1:
 	ld.d	$a0, $fp, 232
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
@@ -10533,8 +10501,7 @@ _ZN23btDiscreteDynamicsWorld14updateVehiclesEf: # @_ZN23btDiscreteDynamicsWorld1
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 340
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB58_4
+	blez	$a0, .LBB58_4
 # %bb.1:                                # %.lr.ph.i
 	move	$s0, $zero
 	move	$s1, $zero
@@ -10802,30 +10769,28 @@ _ZZN23btDiscreteDynamicsWorld16solveConstraintsER19btContactSolverInfoEN27Inplac
 	bltz	$a5, .LBB61_8
 # %bb.1:                                # %.preheader
 	move	$a7, $a5
-	ori	$a5, $zero, 1
-	blt	$a6, $a5, .LBB61_10
+	blez	$a6, .LBB61_10
 # %bb.2:                                # %.lr.ph
 	ld.d	$a5, $a0, 24
 	move	$t1, $zero
-	addi.w	$t0, $zero, -1
-	move	$t2, $a6
+	move	$t0, $a6
 	.p2align	4, , 16
 .LBB61_3:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$t4, $a5, 0
-	ld.d	$t3, $t4, 24
-	ld.w	$t3, $t3, 220
-	blt	$t0, $t3, .LBB61_5
+	ld.d	$t3, $a5, 0
+	ld.d	$t2, $t3, 24
+	ld.w	$t2, $t2, 220
+	bgez	$t2, .LBB61_5
 # %bb.4:                                #   in Loop: Header=BB61_3 Depth=1
-	ld.d	$t3, $t4, 32
-	ld.w	$t3, $t3, 220
+	ld.d	$t2, $t3, 32
+	ld.w	$t2, $t2, 220
 .LBB61_5:                               # %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit
                                         #   in Loop: Header=BB61_3 Depth=1
-	beq	$t3, $a7, .LBB61_11
+	beq	$t2, $a7, .LBB61_11
 # %bb.6:                                #   in Loop: Header=BB61_3 Depth=1
 	addi.w	$t1, $t1, 1
-	addi.d	$t2, $t2, -1
+	addi.d	$t0, $t0, -1
 	addi.d	$a5, $a5, 8
-	bnez	$t2, .LBB61_3
+	bnez	$t0, .LBB61_3
 # %bb.7:
 	move	$a5, $zero
 	b	.LBB61_16
@@ -10854,25 +10819,24 @@ _ZZN23btDiscreteDynamicsWorld16solveConstraintsER19btContactSolverInfoEN27Inplac
 	move	$t0, $zero
 	bstrpick.d	$t3, $t1, 31, 0
 	alsl.d	$t2, $t3, $t2, 3
-	addi.w	$t3, $zero, -1
 	b	.LBB61_14
 	.p2align	4, , 16
 .LBB61_13:                              # %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit29
                                         #   in Loop: Header=BB61_14 Depth=1
-	xor	$t4, $t4, $a7
-	sltui	$t4, $t4, 1
-	add.w	$t0, $t0, $t4
+	xor	$t3, $t3, $a7
+	sltui	$t3, $t3, 1
+	add.w	$t0, $t0, $t3
 	addi.w	$t1, $t1, 1
 	addi.d	$t2, $t2, 8
 	bge	$t1, $a6, .LBB61_17
 .LBB61_14:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$t5, $t2, 0
-	ld.d	$t4, $t5, 24
-	ld.w	$t4, $t4, 220
-	blt	$t3, $t4, .LBB61_13
+	ld.d	$t4, $t2, 0
+	ld.d	$t3, $t4, 24
+	ld.w	$t3, $t3, 220
+	bgez	$t3, .LBB61_13
 # %bb.15:                               #   in Loop: Header=BB61_14 Depth=1
-	ld.d	$t4, $t5, 32
-	ld.w	$t4, $t4, 220
+	ld.d	$t3, $t4, 32
+	ld.w	$t3, $t3, 220
 	b	.LBB61_13
 .LBB61_16:
 	move	$t0, $zero
@@ -10971,42 +10935,40 @@ _ZNK34btClosestNotMeConvexResultCallback14needsCollisionEP17btBroadphaseProxy: #
 # %bb.5:
 	beqz	$a0, .LBB63_16
 # %bb.6:
-	ld.d	$a2, $a0, 16
-	ori	$a0, $zero, 1
-	beqz	$a2, .LBB63_15
+	ld.d	$a0, $a0, 16
+	ori	$a1, $zero, 1
+	beqz	$a0, .LBB63_19
 # %bb.7:                                # %.loopexit
-	ld.d	$a0, $a2, 0
-	ld.d	$a3, $a0, 32
+	ld.d	$a1, $a0, 0
+	ld.d	$a2, $a1, 32
 	st.w	$zero, $sp, 12
 .Ltmp322:
 	addi.d	$a1, $sp, 8
-	move	$a0, $a2
-	jirl	$ra, $a3, 0
+	jirl	$ra, $a2, 0
 .Ltmp323:
 # %bb.8:                                # %.preheader
-	ld.w	$a2, $sp, 12
-	ld.d	$a1, $sp, 24
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB63_12
+	ld.w	$a1, $sp, 12
+	ld.d	$a0, $sp, 24
+	blez	$a1, .LBB63_12
 # %bb.9:
-	ori	$a3, $zero, 1
-	move	$a4, $a1
+	move	$a2, $a0
 	.p2align	4, , 16
 .LBB63_10:                              # =>This Inner Loop Header: Depth=1
-	ld.d	$a5, $a4, 0
-	ld.w	$a5, $a5, 728
-	bge	$a5, $a3, .LBB63_17
+	ld.d	$a3, $a2, 0
+	ld.w	$a3, $a3, 728
+	bgtz	$a3, .LBB63_17
 # %bb.11:                               #   in Loop: Header=BB63_10 Depth=1
-	addi.d	$a2, $a2, -1
-	addi.d	$a4, $a4, 8
-	bnez	$a2, .LBB63_10
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	bnez	$a1, .LBB63_10
 .LBB63_12:                              # %.critedge31
-	beqz	$a1, .LBB63_15
+	ori	$a1, $zero, 1
+	beqz	$a0, .LBB63_19
 # %bb.13:                               # %.critedge31
 	ld.b	$a2, $sp, 32
 	andi	$a2, $a2, 1
 	bnez	$a2, .LBB63_18
-	b	.LBB63_15
+	b	.LBB63_19
 .LBB63_14:
 	move	$a0, $zero
 .LBB63_15:                              # %_ZNK16btCollisionWorld20ConvexResultCallback14needsCollisionEP17btBroadphaseProxy.exit.thread
@@ -11016,39 +10978,40 @@ _ZNK34btClosestNotMeConvexResultCallback14needsCollisionEP17btBroadphaseProxy: #
 	addi.d	$sp, $sp, 64
 	ret
 .LBB63_16:
-	ori	$a0, $zero, 1
-	b	.LBB63_15
+	ori	$a1, $zero, 1
+	b	.LBB63_19
 .LBB63_17:
 	ld.bu	$a2, $sp, 32
-	move	$a0, $zero
-	beqz	$a2, .LBB63_15
+	move	$a1, $zero
+	beqz	$a2, .LBB63_19
 .LBB63_18:                              # %_ZNK16btCollisionWorld20ConvexResultCallback14needsCollisionEP17btBroadphaseProxy.exit.thread.sink.split.sink.split
-	move	$fp, $a0
-	move	$a0, $a1
+	move	$fp, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $fp
+	move	$a1, $fp
+.LBB63_19:                              # %_ZNK16btCollisionWorld20ConvexResultCallback14needsCollisionEP17btBroadphaseProxy.exit.thread.sink.split
+	move	$a0, $a1
 	b	.LBB63_15
-.LBB63_19:
+.LBB63_20:
 .Ltmp324:
 	ld.d	$a1, $sp, 24
 	move	$fp, $a0
-	beqz	$a1, .LBB63_22
-# %bb.20:
+	beqz	$a1, .LBB63_23
+# %bb.21:
 	ld.b	$a0, $sp, 32
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB63_22
-# %bb.21:
+	beqz	$a0, .LBB63_23
+# %bb.22:
 .Ltmp325:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 .Ltmp326:
-.LBB63_22:
+.LBB63_23:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB63_23:
+.LBB63_24:
 .Ltmp327:
 	pcaddu18i	$ra, %call36(__clang_call_terminate)
 	jirl	$ra, $ra, 0
@@ -11653,26 +11616,23 @@ _ZThn8_N17DebugDrawcallback28internalProcessTriangleIndexEP9btVector3ii: # @_ZTh
 _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConstraintOnIslandPredicateEEvT_ii: # @_ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConstraintOnIslandPredicateEEvT_ii
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a3
 	move	$s0, $a0
-	addi.w	$s1, $zero, -1
 	b	.LBB71_2
 	.p2align	4, , 16
 .LBB71_1:                               #   in Loop: Header=BB71_2 Depth=1
-	move	$a2, $s2
-	bge	$s2, $fp, .LBB71_29
+	move	$a2, $s1
+	bge	$s1, $fp, .LBB71_29
 .LBB71_2:                               # %tailrecurse
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB71_17 Depth 2
@@ -11695,26 +11655,26 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 # %bb.3:                                # %.split.us.us.preheader
                                         #   in Loop: Header=BB71_2 Depth=1
 	move	$a3, $fp
-	move	$s2, $a2
+	move	$s1, $a2
 	b	.LBB71_5
 	.p2align	4, , 16
 .LBB71_4:                               #   in Loop: Header=BB71_5 Depth=2
-	addi.w	$s2, $s2, -1
+	addi.w	$s1, $s1, -1
 	addi.w	$a3, $a3, 1
-	blt	$a3, $s2, .LBB71_27
+	blt	$a3, $s1, .LBB71_27
 .LBB71_5:                               # %.split.us.us
                                         #   Parent Loop BB71_2 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB71_7 Depth 3
                                         #       Child Loop BB71_11 Depth 3
-	addi.d	$a6, $s2, -1
-	alsl.d	$a5, $s2, $a0, 3
+	addi.d	$a6, $s1, -1
+	alsl.d	$a5, $s1, $a0, 3
 	b	.LBB71_7
 	.p2align	4, , 16
 .LBB71_6:                               # %_ZN33btSortConstraintOnIslandPredicateclEPK17btTypedConstraintS2_.exit.us.us
                                         #   in Loop: Header=BB71_7 Depth=3
 	addi.d	$a6, $a6, 1
-	addi.w	$s2, $s2, 1
+	addi.w	$s1, $s1, 1
 	addi.d	$a5, $a5, 8
 	bge	$t0, $a4, .LBB71_9
 .LBB71_7:                               # %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit.i.us.us
@@ -11724,7 +11684,7 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 	ld.d	$a7, $a5, 0
 	ld.d	$t0, $a7, 24
 	ld.w	$t0, $t0, 220
-	blt	$s1, $t0, .LBB71_6
+	bgez	$t0, .LBB71_6
 # %bb.8:                                #   in Loop: Header=BB71_7 Depth=3
 	ld.d	$t0, $a7, 32
 	ld.w	$t0, $t0, 220
@@ -11748,7 +11708,7 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 	ld.d	$t2, $t0, -8
 	ld.d	$t3, $t2, 24
 	ld.w	$t3, $t3, 220
-	blt	$s1, $t3, .LBB71_10
+	bgez	$t3, .LBB71_10
 # %bb.12:                               #   in Loop: Header=BB71_11 Depth=3
 	ld.d	$t3, $t2, 32
 	ld.w	$t3, $t3, 220
@@ -11760,7 +11720,7 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 # %bb.14:                               #   in Loop: Header=BB71_5 Depth=2
 	st.d	$t2, $a5, -8
 	st.d	$a7, $t0, 0
-	bge	$a3, $s2, .LBB71_5
+	bge	$a3, $s1, .LBB71_5
 	b	.LBB71_27
 	.p2align	4, , 16
 .LBB71_15:                              # %tailrecurse.split
@@ -11768,26 +11728,26 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 	ld.d	$a3, $a3, 32
 	ld.w	$a4, $a3, 220
 	move	$a3, $fp
-	move	$s2, $a2
+	move	$s1, $a2
 	b	.LBB71_17
 	.p2align	4, , 16
 .LBB71_16:                              #   in Loop: Header=BB71_17 Depth=2
 	st.d	$t2, $a5, -8
 	st.d	$a7, $t0, 0
-	blt	$a3, $s2, .LBB71_27
+	blt	$a3, $s1, .LBB71_27
 .LBB71_17:                              # %.split
                                         #   Parent Loop BB71_2 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB71_19 Depth 3
                                         #       Child Loop BB71_23 Depth 3
-	addi.d	$a6, $s2, -1
-	alsl.d	$a5, $s2, $a0, 3
+	addi.d	$a6, $s1, -1
+	alsl.d	$a5, $s1, $a0, 3
 	b	.LBB71_19
 	.p2align	4, , 16
 .LBB71_18:                              # %_ZN33btSortConstraintOnIslandPredicateclEPK17btTypedConstraintS2_.exit
                                         #   in Loop: Header=BB71_19 Depth=3
 	addi.d	$a6, $a6, 1
-	addi.w	$s2, $s2, 1
+	addi.w	$s1, $s1, 1
 	addi.d	$a5, $a5, 8
 	bge	$t0, $a4, .LBB71_21
 .LBB71_19:                              # %_Z23btGetConstraintIslandIdPK17btTypedConstraint.exit.i
@@ -11797,7 +11757,7 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 	ld.d	$a7, $a5, 0
 	ld.d	$t0, $a7, 24
 	ld.w	$t0, $t0, 220
-	blt	$s1, $t0, .LBB71_18
+	bgez	$t0, .LBB71_18
 # %bb.20:                               #   in Loop: Header=BB71_19 Depth=3
 	ld.d	$t0, $a7, 32
 	ld.w	$t0, $t0, 220
@@ -11821,7 +11781,7 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 	ld.d	$t2, $t0, -8
 	ld.d	$t3, $t2, 24
 	ld.w	$t3, $t3, 220
-	blt	$s1, $t3, .LBB71_22
+	bgez	$t3, .LBB71_22
 # %bb.24:                               #   in Loop: Header=BB71_23 Depth=3
 	ld.d	$t3, $t2, 32
 	ld.w	$t3, $t3, 220
@@ -11831,9 +11791,9 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
                                         #   in Loop: Header=BB71_17 Depth=2
 	bge	$t1, $a6, .LBB71_16
 # %bb.26:                               #   in Loop: Header=BB71_17 Depth=2
-	addi.w	$s2, $s2, -1
+	addi.w	$s1, $s1, -1
 	addi.w	$a3, $a3, 1
-	bge	$a3, $s2, .LBB71_17
+	bge	$a3, $s1, .LBB71_17
 	.p2align	4, , 16
 .LBB71_27:                              # %.split61.us
                                         #   in Loop: Header=BB71_2 Depth=1
@@ -11845,12 +11805,11 @@ _ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConst
 	jirl	$ra, $ra, 0
 	b	.LBB71_1
 .LBB71_29:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end71:
 	.size	_ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConstraintOnIslandPredicateEEvT_ii, .Lfunc_end71-_ZN20btAlignedObjectArrayIP17btTypedConstraintE17quickSortInternalI33btSortConstraintOnIslandPredicateEEvT_ii

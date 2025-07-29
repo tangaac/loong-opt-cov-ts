@@ -26,9 +26,8 @@ cv_sharp:                               # @cv_sharp
 	ld.w	$a1, $s0, 12
 	ld.w	$a2, $s0, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB0_6
+	blez	$a1, .LBB0_6
 # %bb.1:                                # %.lr.ph
 	ld.d	$s2, $s0, 24
 	alsl.d	$s4, $a1, $s2, 2
@@ -278,8 +277,7 @@ sharp:                                  # @sharp
 	pcaddu18i	$ra, %call36(set_diff)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, 4
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_6
+	blez	$a0, .LBB3_6
 # %bb.2:                                # %.lr.ph
 	move	$s4, $zero
 	move	$s6, $zero
@@ -371,9 +369,8 @@ make_disjoint:                          # @make_disjoint
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB4_3
+	blez	$a1, .LBB4_3
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s2, $a1, $s1, 2
@@ -428,9 +425,8 @@ cv_dsharp:                              # @cv_dsharp
 	ld.w	$a1, $s0, 12
 	ld.w	$a2, $s0, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB5_3
+	blez	$a1, .LBB5_3
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s2, $s0, 24
 	alsl.d	$s3, $a1, $s2, 2
@@ -486,9 +482,8 @@ cb1_dsharp:                             # @cb1_dsharp
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB6_3
+	blez	$a1, .LBB6_3
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s2, $fp, 24
 	alsl.d	$s3, $a1, $s2, 2
@@ -535,7 +530,6 @@ cb_dsharp:                              # @cb_dsharp
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a2, %got_pc_hi20(cube)
 	ld.d	$s4, $a2, %got_pc_lo12(cube)
 	move	$fp, $a1
@@ -561,11 +555,10 @@ cb_dsharp:                              # @cb_dsharp
 	ld.w	$a0, $fp, 12
 	ld.w	$a1, $fp, 0
 	mul.w	$a0, $a1, $a0
-	ori	$s5, $zero, 1
-	blt	$a0, $s5, .LBB7_8
+	blez	$a0, .LBB7_8
 # %bb.2:                                # %.lr.ph.preheader
 	ld.d	$s1, $fp, 24
-	alsl.d	$s6, $a0, $s1, 2
+	alsl.d	$s5, $a0, $s1, 2
 	b	.LBB7_4
 	.p2align	4, , 16
 .LBB7_3:                                # %cb1_dsharp.exit
@@ -576,7 +569,7 @@ cb_dsharp:                              # @cb_dsharp
 	ld.w	$a0, $fp, 0
 	alsl.d	$s1, $a0, $s1, 2
 	move	$s0, $s2
-	bgeu	$s1, $s6, .LBB7_9
+	bgeu	$s1, $s5, .LBB7_9
 .LBB7_4:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_6 Depth 2
@@ -588,11 +581,11 @@ cb_dsharp:                              # @cb_dsharp
 	ld.w	$a2, $s0, 0
 	mul.w	$a1, $a2, $a1
 	move	$s2, $a0
-	blt	$a1, $s5, .LBB7_3
+	blez	$a1, .LBB7_3
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB7_4 Depth=1
 	ld.d	$s3, $s0, 24
-	alsl.d	$s7, $a1, $s3, 2
+	alsl.d	$s6, $a1, $s3, 2
 	.p2align	4, , 16
 .LBB7_6:                                # %.lr.ph.i
                                         #   Parent Loop BB7_4 Depth=1
@@ -608,14 +601,13 @@ cb_dsharp:                              # @cb_dsharp
 	ld.w	$a1, $s0, 0
 	alsl.d	$s3, $a1, $s3, 2
 	move	$s2, $a0
-	bltu	$s3, $s7, .LBB7_6
+	bltu	$s3, $s6, .LBB7_6
 	b	.LBB7_3
 .LBB7_7:
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
 	move	$a1, $s1
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -632,7 +624,6 @@ cb_dsharp:                              # @cb_dsharp
 	move	$s2, $s0
 .LBB7_9:                                # %.loopexit
 	move	$a0, $s2
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -746,13 +737,12 @@ dsharp:                                 # @dsharp
 	pcaddu18i	$ra, %call36(set_clear)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s5, 4
-	ori	$s7, $zero, 1
 	move	$s3, $a0
 	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
-	blt	$a1, $s7, .LBB8_24
+	blez	$a1, .LBB8_24
 # %bb.8:                                # %.lr.ph
-	move	$s8, $zero
+	move	$s7, $zero
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	sub.d	$a0, $a2, $s6
 	sub.d	$a1, $s3, $s6
@@ -766,6 +756,7 @@ dsharp:                                 # @dsharp
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a0, $a2, -12
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$s8, $zero, 1
 	vrepli.b	$vr0, -1
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	b	.LBB8_10
@@ -773,8 +764,8 @@ dsharp:                                 # @dsharp
 .LBB8_9:                                # %.loopexit
                                         #   in Loop: Header=BB8_10 Depth=1
 	ld.w	$a0, $s5, 4
-	addi.d	$s8, $s8, 1
-	bge	$s8, $a0, .LBB8_24
+	addi.d	$s7, $s7, 1
+	bge	$s7, $a0, .LBB8_24
 .LBB8_10:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_12 Depth 2
                                         #     Child Loop BB8_14 Depth 2
@@ -782,7 +773,7 @@ dsharp:                                 # @dsharp
                                         #     Child Loop BB8_21 Depth 2
                                         #     Child Loop BB8_23 Depth 2
 	ld.d	$a0, $s5, 72
-	slli.d	$s1, $s8, 3
+	slli.d	$s1, $s7, 3
 	ldx.d	$a1, $a0, $s1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(setp_disjoint)
@@ -819,7 +810,7 @@ dsharp:                                 # @dsharp
 	stx.w	$a2, $s6, $a1
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, -4
-	bltu	$s7, $a0, .LBB8_12
+	bltu	$s8, $a0, .LBB8_12
 # %bb.13:                               #   in Loop: Header=BB8_10 Depth=1
 	ld.wu	$a0, $s4, 0
 	andi	$a1, $a0, 1023
@@ -834,7 +825,7 @@ dsharp:                                 # @dsharp
 	stx.w	$a2, $s4, $a1
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, -4
-	bltu	$s7, $a0, .LBB8_14
+	bltu	$s8, $a0, .LBB8_14
 # %bb.15:                               #   in Loop: Header=BB8_10 Depth=1
 	ld.d	$a0, $s5, 72
 	ldx.d	$a2, $a0, $s1
@@ -908,7 +899,7 @@ dsharp:                                 # @dsharp
 	addi.d	$a2, $a2, -4
 	addi.d	$a3, $a3, -4
 	addi.d	$a1, $a1, -4
-	bltu	$s7, $a0, .LBB8_21
+	bltu	$s8, $a0, .LBB8_21
 .LBB8_22:                               # %.loopexit99
                                         #   in Loop: Header=BB8_10 Depth=1
 	ld.wu	$a0, $s4, 0
@@ -930,7 +921,7 @@ dsharp:                                 # @dsharp
 	addi.d	$a0, $a0, -1
 	addi.d	$a1, $a1, -4
 	addi.d	$a2, $a2, -4
-	bltu	$s7, $a0, .LBB8_23
+	bltu	$s8, $a0, .LBB8_23
 	b	.LBB8_9
 .LBB8_24:                               # %._crit_edge
 	beqz	$s0, .LBB8_26
@@ -1014,9 +1005,8 @@ cv_intersect:                           # @cv_intersect
 	ld.w	$a2, $s8, 12
 	ld.w	$a1, $s8, 0
 	mul.w	$a2, $a1, $a2
-	ori	$a3, $zero, 1
 	move	$s2, $a0
-	blt	$a2, $a3, .LBB9_15
+	blez	$a2, .LBB9_15
 # %bb.1:                                # %.lr.ph56
 	ld.d	$s1, $s8, 24
 	ld.d	$s4, $s2, 24
@@ -1038,8 +1028,7 @@ cv_intersect:                           # @cv_intersect
                                         #     Child Loop BB9_8 Depth 2
 	ld.w	$a2, $fp, 12
 	mul.w	$a2, $a0, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB9_3
+	blez	$a2, .LBB9_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB9_4 Depth=1
 	ld.d	$s5, $fp, 24

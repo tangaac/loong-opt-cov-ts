@@ -15,7 +15,6 @@ jinit_phuff_decoder:                    # @jinit_phuff_decoder
 	ld.d	$a3, $a0, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 96
-	ori	$s1, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	st.d	$a0, $fp, 576
@@ -35,7 +34,7 @@ jinit_phuff_decoder:                    # @jinit_phuff_decoder
 	jirl	$ra, $a4, 0
 	ld.w	$a1, $fp, 48
 	st.d	$a0, $fp, 184
-	blt	$a1, $s1, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.preheader.preheader
 	move	$s0, $a0
 	move	$s1, $zero
@@ -98,11 +97,10 @@ start_pass_phuff_decoder:               # @start_pass_phuff_decoder
 	ld.d	$a2, $fp, 576
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	ori	$a2, $zero, 13
-	addi.w	$s0, $zero, -1
 	blt	$a2, $a1, .LBB1_17
 # %bb.4:                                # %._crit_edge160
 	ld.wu	$a2, $fp, 516
-	move	$a3, $s0
+	addi.w	$a3, $zero, -1
 	lu32i.d	$a3, 0
 	add.d	$a2, $a2, $a3
 	srli.d	$a3, $a2, 32
@@ -115,8 +113,7 @@ start_pass_phuff_decoder:               # @start_pass_phuff_decoder
 	bnez	$a0, .LBB1_17
 # %bb.6:
 	ld.w	$a0, $fp, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_18
+	blez	$a0, .LBB1_18
 .LBB1_7:                                # %.lr.ph141
 	addi.d	$s3, $fp, 424
 	beqz	$s1, .LBB1_22
@@ -124,6 +121,7 @@ start_pass_phuff_decoder:               # @start_pass_phuff_decoder
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	move	$s4, $zero
 	ori	$s5, $zero, 111
+	addi.w	$s0, $zero, -1
 	b	.LBB1_10
 	.p2align	4, , 16
 .LBB1_9:                                # %._crit_edge
@@ -140,7 +138,7 @@ start_pass_phuff_decoder:               # @start_pass_phuff_decoder
 	ld.d	$s2, $fp, 184
 	slli.d	$s1, $s6, 8
 	ldx.w	$a0, $s2, $s1
-	bge	$s0, $a0, .LBB1_12
+	bltz	$a0, .LBB1_12
 # %bb.11:                               #   in Loop: Header=BB1_10 Depth=1
 	ld.w	$s7, $fp, 508
 	ld.w	$a0, $fp, 512
@@ -215,8 +213,7 @@ start_pass_phuff_decoder:               # @start_pass_phuff_decoder
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.w	$a0, $fp, 416
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB1_7
+	bgtz	$a0, .LBB1_7
 .LBB1_18:
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 .LBB1_19:                               # %._crit_edge142
@@ -253,10 +250,9 @@ start_pass_phuff_decoder:               # @start_pass_phuff_decoder
 .LBB1_25:                               # %.thread
 	maskeqz	$a1, $a3, $a1
 	or	$a1, $a1, $a2
-	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
-	st.d	$a1, $a3, 8
-	blt	$a0, $a2, .LBB1_39
+	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	st.d	$a1, $a2, 8
+	blez	$a0, .LBB1_39
 # %bb.26:                               # %.lr.ph145
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$s0, $a0, 56
@@ -471,8 +467,7 @@ decode_mcu_DC_first:                    # @decode_mcu_DC_first
 	beqz	$a0, .LBB2_24
 # %bb.3:                                # %.preheader.i
 	ld.w	$a0, $fp, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_6
+	blez	$a0, .LBB2_6
 # %bb.4:                                # %.lr.ph.i
 	move	$a0, $zero
 	addi.d	$a1, $s1, 36
@@ -488,57 +483,56 @@ decode_mcu_DC_first:                    # @decode_mcu_DC_first
 	ld.w	$a0, $fp, 360
 	st.w	$a0, $s1, 52
 .LBB2_7:
-	ld.d	$t0, $fp, 32
-	ld.d	$a3, $t0, 0
-	ld.d	$a4, $t0, 8
-	ld.w	$a5, $fp, 524
+	ld.d	$a0, $fp, 32
+	ld.d	$a3, $a0, 0
 	st.d	$fp, $sp, 88
 	st.d	$a3, $sp, 48
+	ld.d	$a4, $a0, 8
+	addi.d	$a1, $s1, 28
+	st.d	$a1, $sp, 96
+	ld.w	$a2, $s1, 48
+	ld.w	$a5, $fp, 524
+	ld.d	$a1, $s1, 16
+	vld	$vr0, $s1, 32
+	st.w	$a2, $sp, 40
+	ld.w	$a6, $fp, 464
+	ld.w	$a2, $s1, 24
 	st.d	$a4, $sp, 56
 	st.w	$a5, $sp, 64
-	ld.d	$a1, $s1, 16
-	addi.d	$a2, $s1, 28
-	st.d	$a2, $sp, 96
-	ld.w	$a6, $s1, 48
-	vld	$vr0, $s1, 32
-	ld.w	$a7, $fp, 464
-	ld.w	$a2, $s1, 24
-	st.w	$a6, $sp, 40
-	ori	$a0, $zero, 1
 	vst	$vr0, $sp, 24
-	blt	$a7, $a0, .LBB2_26
+	blez	$a6, .LBB2_26
 # %bb.8:                                # %.lr.ph
-	move	$s5, $zero
-	addi.d	$s6, $fp, 468
-	addi.d	$s7, $fp, 424
+	move	$s4, $zero
+	addi.d	$s5, $fp, 468
+	addi.d	$s6, $fp, 424
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$s8, $s1, 56
-	addi.d	$s1, $sp, 28
+	addi.d	$s7, $s1, 56
+	addi.d	$s8, $sp, 28
 	b	.LBB2_11
 	.p2align	4, , 16
 .LBB2_9:                                #   in Loop: Header=BB2_11 Depth=1
 	move	$a0, $zero
 .LBB2_10:                               #   in Loop: Header=BB2_11 Depth=1
-	slli.d	$a3, $s3, 2
-	ldx.w	$a4, $s1, $a3
+	slli.d	$a3, $s2, 2
+	ldx.w	$a4, $s8, $a3
 	add.d	$a0, $a4, $a0
-	stx.w	$a0, $s1, $a3
+	stx.w	$a0, $s8, $a3
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
 	sll.w	$a0, $a0, $a3
 	ld.w	$a3, $fp, 464
-	st.h	$a0, $s4, 0
-	addi.d	$s5, $s5, 1
-	addi.d	$s6, $s6, 4
+	st.h	$a0, $s3, 0
+	addi.d	$s4, $s4, 1
+	addi.d	$s5, $s5, 4
 	addi.d	$s0, $s0, 8
-	bge	$s5, $a3, .LBB2_25
+	bge	$s4, $a3, .LBB2_25
 .LBB2_11:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$s3, $s6, 0
-	slli.d	$a0, $s3, 3
-	ldx.d	$a0, $s7, $a0
+	ld.w	$s2, $s5, 0
+	slli.d	$a0, $s2, 3
+	ldx.d	$a0, $s6, $a0
 	ld.w	$a0, $a0, 20
-	ld.d	$s4, $s0, 0
+	ld.d	$s3, $s0, 0
 	slli.d	$a0, $a0, 3
-	ldx.d	$s2, $s8, $a0
+	ldx.d	$s1, $s7, $a0
 	ori	$a0, $zero, 7
 	blt	$a0, $a2, .LBB2_14
 # %bb.12:                               #   in Loop: Header=BB2_11 Depth=1
@@ -557,34 +551,34 @@ decode_mcu_DC_first:                    # @decode_mcu_DC_first
 	addi.d	$a0, $a2, -8
 	sra.d	$a0, $a1, $a0
 	andi	$a0, $a0, 255
-	alsl.d	$a3, $a0, $s2, 2
+	alsl.d	$a3, $a0, $s1, 2
 	ld.w	$a3, $a3, 360
 	beqz	$a3, .LBB2_16
 # %bb.15:                               #   in Loop: Header=BB2_11 Depth=1
-	add.d	$a0, $s2, $a0
-	ld.bu	$s2, $a0, 1384
+	add.d	$a0, $s1, $a0
+	ld.bu	$s1, $a0, 1384
 	sub.w	$a2, $a2, $a3
-	bnez	$s2, .LBB2_19
+	bnez	$s1, .LBB2_19
 	b	.LBB2_9
 	.p2align	4, , 16
 .LBB2_16:                               #   in Loop: Header=BB2_11 Depth=1
 	ori	$a4, $zero, 9
 .LBB2_17:                               #   in Loop: Header=BB2_11 Depth=1
 	addi.d	$a0, $sp, 48
-	move	$a3, $s2
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
 	bltz	$a0, .LBB2_24
 # %bb.18:                               #   in Loop: Header=BB2_11 Depth=1
-	move	$s2, $a0
+	move	$s1, $a0
 	ld.d	$a1, $sp, 72
 	ld.w	$a2, $sp, 80
-	beqz	$s2, .LBB2_9
+	beqz	$s1, .LBB2_9
 .LBB2_19:                               #   in Loop: Header=BB2_11 Depth=1
-	bge	$a2, $s2, .LBB2_22
+	bge	$a2, $s1, .LBB2_22
 # %bb.20:                               #   in Loop: Header=BB2_11 Depth=1
 	addi.d	$a0, $sp, 48
-	move	$a3, $s2
+	move	$a3, $s1
 	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB2_24
@@ -592,14 +586,14 @@ decode_mcu_DC_first:                    # @decode_mcu_DC_first
 	ld.d	$a1, $sp, 72
 	ld.w	$a2, $sp, 80
 .LBB2_22:                               #   in Loop: Header=BB2_11 Depth=1
-	sub.w	$a2, $a2, $s2
+	sub.w	$a2, $a2, $s1
 	sra.d	$a0, $a1, $a2
 	addi.d	$a4, $zero, -1
-	slli.d	$a3, $s2, 2
+	slli.d	$a3, $s1, 2
 	pcalau12i	$a5, %pc_hi20(extend_test)
 	addi.d	$a5, $a5, %pc_lo12(extend_test)
 	ldx.w	$a5, $a5, $a3
-	sll.w	$a4, $a4, $s2
+	sll.w	$a4, $a4, $s1
 	andn	$a0, $a0, $a4
 	addi.w	$a0, $a0, 0
 	bge	$a0, $a5, .LBB2_10
@@ -614,25 +608,25 @@ decode_mcu_DC_first:                    # @decode_mcu_DC_first
 	b	.LBB2_27
 .LBB2_25:                               # %._crit_edge.loopexit
 	ld.d	$a3, $sp, 48
-	ld.d	$t0, $fp, 32
+	ld.d	$a0, $fp, 32
 	ld.d	$a4, $sp, 56
 	ld.w	$a5, $sp, 64
 	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ori	$a0, $zero, 1
 .LBB2_26:                               # %._crit_edge
 	addi.d	$a6, $s1, 32
-	st.d	$a3, $t0, 0
-	st.d	$a4, $t0, 8
+	st.d	$a3, $a0, 0
+	st.d	$a4, $a0, 8
 	st.w	$a5, $fp, 524
 	st.d	$a1, $s1, 16
 	vld	$vr0, $sp, 24
-	ld.w	$a3, $sp, 40
+	ld.w	$a0, $sp, 40
 	ld.w	$a1, $s1, 52
 	st.w	$a2, $s1, 24
 	vst	$vr0, $a6, 0
-	st.w	$a3, $a6, 16
-	addi.d	$a1, $a1, -1
-	st.w	$a1, $s1, 52
+	st.w	$a0, $a6, 16
+	addi.d	$a0, $a1, -1
+	st.w	$a0, $s1, 52
+	ori	$a0, $zero, 1
 .LBB2_27:                               # %process_restart.exit.thread
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
@@ -698,8 +692,7 @@ decode_mcu_AC_first:                    # @decode_mcu_AC_first
 	beqz	$a0, .LBB3_37
 # %bb.5:                                # %.preheader.i
 	ld.w	$a0, $fp, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.6:                                # %.lr.ph.i
 	move	$a0, $zero
 	addi.d	$a1, $s2, 36
@@ -927,8 +920,7 @@ decode_mcu_DC_refine:                   # @decode_mcu_DC_refine
 	beqz	$a0, .LBB4_17
 # %bb.3:                                # %.preheader.i
 	ld.w	$a0, $fp, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_6
+	blez	$a0, .LBB4_6
 # %bb.4:                                # %.lr.ph.i
 	move	$a0, $zero
 	addi.d	$a1, $s1, 36
@@ -946,22 +938,22 @@ decode_mcu_DC_refine:                   # @decode_mcu_DC_refine
 .LBB4_7:
 	ld.d	$a0, $fp, 32
 	ld.d	$a3, $a0, 0
-	ld.d	$a4, $a0, 8
-	ori	$a6, $zero, 1
+	ld.d	$a5, $a0, 8
 	st.d	$fp, $sp, 40
 	st.d	$a3, $sp, 0
-	st.d	$a4, $sp, 8
-	ld.w	$a5, $fp, 524
+	st.d	$a5, $sp, 8
+	ld.w	$a4, $fp, 524
 	ld.d	$a1, $s1, 16
-	ld.w	$a7, $fp, 464
+	ld.w	$a6, $fp, 464
 	ld.w	$a2, $s1, 24
-	st.w	$a5, $sp, 16
-	addi.d	$t0, $s1, 28
-	st.d	$t0, $sp, 48
-	blt	$a7, $a6, .LBB4_16
+	st.w	$a4, $sp, 16
+	addi.d	$a7, $s1, 28
+	st.d	$a7, $sp, 48
+	blez	$a6, .LBB4_16
 # %bb.8:                                # %.lr.ph
 	move	$s3, $zero
-	sll.w	$s2, $a6, $s2
+	ori	$a0, $zero, 1
+	sll.w	$s2, $a0, $s2
 	b	.LBB4_10
 	.p2align	4, , 16
 .LBB4_9:                                #   in Loop: Header=BB4_10 Depth=1
@@ -1000,13 +992,13 @@ decode_mcu_DC_refine:                   # @decode_mcu_DC_refine
 .LBB4_15:                               # %._crit_edge.loopexit
 	ld.d	$a3, $sp, 0
 	ld.d	$a0, $fp, 32
-	ld.d	$a4, $sp, 8
-	ld.w	$a5, $sp, 16
+	ld.d	$a5, $sp, 8
+	ld.w	$a4, $sp, 16
 .LBB4_16:                               # %._crit_edge
 	st.d	$a3, $a0, 0
-	st.d	$a4, $a0, 8
+	st.d	$a5, $a0, 8
 	ld.w	$a0, $s1, 52
-	st.w	$a5, $fp, 524
+	st.w	$a4, $fp, 524
 	st.d	$a1, $s1, 16
 	st.w	$a2, $s1, 24
 	addi.d	$a0, $a0, -1
@@ -1044,19 +1036,19 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	st.d	$s6, $sp, 392                   # 8-byte Folded Spill
 	st.d	$s7, $sp, 384                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 376                   # 8-byte Folded Spill
-	move	$s3, $a0
-	ld.d	$fp, $a0, 576
+	move	$fp, $a0
+	ld.d	$s2, $a0, 576
 	ld.w	$s5, $a0, 512
 	ld.w	$a0, $a0, 360
-	ld.wu	$s1, $s3, 520
+	ld.wu	$s1, $fp, 520
 	move	$s0, $a1
 	beqz	$a0, .LBB5_7
 # %bb.1:
-	ld.w	$a0, $fp, 52
+	ld.w	$a0, $s2, 52
 	bnez	$a0, .LBB5_7
 # %bb.2:
-	ld.w	$a0, $fp, 24
-	ld.d	$a1, $s3, 568
+	ld.w	$a0, $s2, 24
+	ld.d	$a1, $fp, 568
 	bstrpick.d	$a2, $a0, 62, 60
 	ld.w	$a3, $a1, 172
 	add.w	$a0, $a0, $a2
@@ -1064,47 +1056,47 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ld.d	$a2, $a1, 16
 	add.d	$a0, $a3, $a0
 	st.w	$a0, $a1, 172
-	st.w	$zero, $fp, 24
-	move	$a0, $s3
+	st.w	$zero, $s2, 24
+	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	beqz	$a0, .LBB5_63
+	beqz	$a0, .LBB5_68
 # %bb.3:                                # %.preheader.i
-	ld.w	$a0, $s3, 416
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_6
+	ld.w	$a0, $fp, 416
+	blez	$a0, .LBB5_6
 # %bb.4:                                # %.lr.ph.i
 	move	$a0, $zero
-	addi.d	$a1, $fp, 36
+	addi.d	$a1, $s2, 36
 	.p2align	4, , 16
 .LBB5_5:                                # =>This Inner Loop Header: Depth=1
 	st.w	$zero, $a1, 0
-	ld.w	$a2, $s3, 416
+	ld.w	$a2, $fp, 416
 	addi.d	$a0, $a0, 1
 	addi.d	$a1, $a1, 4
 	blt	$a0, $a2, .LBB5_5
 .LBB5_6:                                # %process_restart.exit
-	st.d	$zero, $fp, 28
-	ld.w	$a0, $s3, 360
-	st.w	$a0, $fp, 52
+	st.d	$zero, $s2, 28
+	ld.w	$a0, $fp, 360
+	st.w	$a0, $s2, 52
 .LBB5_7:
 	ori	$a0, $zero, 1
 	sll.w	$s4, $a0, $s1
 	addi.d	$a0, $zero, -1
-	ld.d	$a1, $s3, 32
-	ld.w	$a2, $s3, 524
+	ld.d	$a1, $fp, 32
+	ld.w	$a2, $fp, 524
 	sll.w	$a0, $a0, $s1
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 360
+	st.d	$fp, $sp, 360
 	vld	$vr0, $a1, 0
 	st.w	$a2, $sp, 336
-	ld.d	$a1, $fp, 16
-	ld.w	$a2, $fp, 24
-	ld.w	$s8, $fp, 32
+	ld.d	$a1, $s2, 16
+	ld.w	$a2, $s2, 24
+	ld.w	$s8, $s2, 32
+	move	$a0, $s2
 	ld.d	$s2, $s0, 0
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	ld.w	$s7, $s3, 508
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	addi.d	$a0, $fp, 28
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	ld.w	$s7, $fp, 508
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$a0, $a0, 28
 	st.d	$a0, $sp, 368
 	vst	$vr0, $sp, 320
 	bnez	$s8, .LBB5_41
@@ -1125,8 +1117,8 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	b	.LBB5_11
 	.p2align	4, , 16
 .LBB5_10:                               #   in Loop: Header=BB5_11 Depth=1
-	addi.w	$s7, $s1, 1
-	bge	$s1, $s5, .LBB5_65
+	addi.w	$s7, $s8, 1
+	bge	$s8, $s5, .LBB5_54
 .LBB5_11:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_29 Depth 2
 	ori	$a0, $zero, 7
@@ -1136,7 +1128,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	move	$a3, $zero
 	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_45
+	beqz	$a0, .LBB5_60
 # %bb.13:                               #   in Loop: Header=BB5_11 Depth=1
 	ld.w	$a2, $sp, 352
 	ld.d	$a1, $sp, 344
@@ -1156,14 +1148,14 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ldx.bu	$a0, $a4, $a0
 	sub.w	$a2, $a2, $a3
 	andi	$a3, $a0, 15
-	bstrpick.d	$s3, $a0, 31, 4
+	bstrpick.d	$s0, $a0, 31, 4
 	bnez	$a3, .LBB5_21
 .LBB5_16:                               #   in Loop: Header=BB5_11 Depth=1
-	addi.w	$a3, $s3, 0
+	addi.w	$a3, $s0, 0
 	ori	$a4, $zero, 15
-	bne	$a3, $a4, .LBB5_67
+	bne	$a3, $a4, .LBB5_55
 # %bb.17:                               #   in Loop: Header=BB5_11 Depth=1
-	move	$s8, $zero
+	move	$s3, $zero
 	b	.LBB5_27
 	.p2align	4, , 16
 .LBB5_18:                               #   in Loop: Header=BB5_11 Depth=1
@@ -1173,12 +1165,12 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(jpeg_huff_decode)
 	jirl	$ra, $ra, 0
-	bltz	$a0, .LBB5_45
+	bltz	$a0, .LBB5_60
 # %bb.20:                               #   in Loop: Header=BB5_11 Depth=1
 	ld.d	$a1, $sp, 344
 	ld.w	$a2, $sp, 352
 	andi	$a3, $a0, 15
-	bstrpick.d	$s3, $a0, 31, 4
+	bstrpick.d	$s0, $a0, 31, 4
 	beqz	$a3, .LBB5_16
 .LBB5_21:                               #   in Loop: Header=BB5_11 Depth=1
 	ori	$a0, $zero, 1
@@ -1190,12 +1182,12 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ori	$a5, $zero, 114
 	st.w	$a5, $a3, 40
 	addi.w	$a3, $zero, -1
-	move	$fp, $a1
+	move	$s1, $a1
 	move	$a1, $a3
-	move	$s1, $a2
+	move	$s3, $a2
 	jirl	$ra, $a4, 0
-	move	$a1, $fp
-	move	$a2, $s1
+	move	$a1, $s1
+	move	$a2, $s3
 .LBB5_23:                               #   in Loop: Header=BB5_11 Depth=1
 	bgtz	$a2, .LBB5_26
 # %bb.24:                               #   in Loop: Header=BB5_11 Depth=1
@@ -1203,7 +1195,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_45
+	beqz	$a0, .LBB5_60
 # %bb.25:                               #   in Loop: Header=BB5_11 Depth=1
 	ld.d	$a1, $sp, 344
 	ld.w	$a2, $sp, 352
@@ -1215,29 +1207,29 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	masknez	$a3, $s4, $a0
 	ld.d	$a4, $sp, 56                    # 8-byte Folded Reload
 	maskeqz	$a0, $a4, $a0
-	or	$s8, $a0, $a3
+	or	$s3, $a0, $a3
 .LBB5_27:                               #   in Loop: Header=BB5_11 Depth=1
 	slt	$a0, $s5, $s7
-	move	$s0, $s5
+	move	$fp, $s5
 	masknez	$a3, $s5, $a0
 	maskeqz	$a0, $s7, $a0
 	or	$a0, $a0, $a3
-	addi.w	$s1, $a0, 1
+	addi.w	$s8, $a0, 1
 	sub.d	$a0, $a0, $s7
-	addi.d	$s6, $a0, 1
+	addi.d	$s1, $a0, 1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	alsl.d	$s5, $s7, $a0, 2
+	alsl.d	$s6, $s7, $a0, 2
 	b	.LBB5_29
 	.p2align	4, , 16
 .LBB5_28:                               #   in Loop: Header=BB5_29 Depth=2
 	addi.w	$s7, $s7, 1
-	addi.d	$s6, $s6, -1
-	addi.d	$s5, $s5, 4
-	beqz	$s6, .LBB5_39
+	addi.d	$s1, $s1, -1
+	addi.d	$s6, $s6, 4
+	beqz	$s1, .LBB5_39
 .LBB5_29:                               #   Parent Loop BB5_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$fp, $s5, 0
-	slli.d	$a0, $fp, 1
+	ld.w	$s5, $s6, 0
+	slli.d	$a0, $s5, 1
 	ldx.hu	$a0, $s2, $a0
 	beqz	$a0, .LBB5_32
 # %bb.30:                               #   in Loop: Header=BB5_29 Depth=2
@@ -1250,11 +1242,10 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	b	.LBB5_28
 	.p2align	4, , 16
 .LBB5_32:                               #   in Loop: Header=BB5_29 Depth=2
-	addi.w	$a0, $s3, 0
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB5_38
+	addi.w	$a0, $s0, 0
+	blez	$a0, .LBB5_38
 # %bb.33:                               #   in Loop: Header=BB5_29 Depth=2
-	addi.d	$s3, $s3, -1
+	addi.d	$s0, $s0, -1
 	b	.LBB5_28
 	.p2align	4, , 16
 .LBB5_34:                               #   in Loop: Header=BB5_29 Depth=2
@@ -1262,7 +1253,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_45
+	beqz	$a0, .LBB5_60
 # %bb.35:                               #   in Loop: Header=BB5_29 Depth=2
 	ld.d	$a1, $sp, 344
 	ld.w	$a2, $sp, 352
@@ -1271,7 +1262,7 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB5_28
 .LBB5_36:                               #   in Loop: Header=BB5_29 Depth=2
-	alsl.d	$a0, $fp, $s2, 1
+	alsl.d	$a0, $s5, $s2, 1
 	ld.h	$a3, $a0, 0
 	and	$a4, $s4, $a3
 	bnez	$a4, .LBB5_28
@@ -1287,17 +1278,17 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	b	.LBB5_28
 	.p2align	4, , 16
 .LBB5_38:                               #   in Loop: Header=BB5_11 Depth=1
-	move	$s1, $s7
+	move	$s8, $s7
 .LBB5_39:                               # %.split.loop.exit308
                                         #   in Loop: Header=BB5_11 Depth=1
-	move	$s5, $s0
-	beqz	$s8, .LBB5_10
+	move	$s5, $fp
+	beqz	$s3, .LBB5_10
 # %bb.40:                               #   in Loop: Header=BB5_11 Depth=1
-	slli.d	$a0, $s1, 2
+	slli.d	$a0, $s8, 2
 	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	ldx.w	$a0, $a3, $a0
 	slli.d	$a3, $a0, 1
-	stx.h	$s8, $s2, $a3
+	stx.h	$s3, $s2, $a3
 	ld.d	$a4, $sp, 40                    # 8-byte Folded Reload
 	slli.d	$a3, $a4, 2
 	addi.w	$a4, $a4, 1
@@ -1306,11 +1297,11 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	st.d	$a4, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB5_10
 .LBB5_41:                               # %.loopexit213
-	move	$fp, $zero
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	move	$a0, $zero
 	beqz	$s8, .LBB5_44
 .LBB5_42:                               # %.preheader
-	bge	$s5, $s7, .LBB5_49
+	bge	$s5, $s7, .LBB5_45
 .LBB5_43:                               # %._crit_edge
 	addi.d	$a0, $s8, -1
 .LBB5_44:                               # %.loopexit213.thread285
@@ -1328,64 +1319,53 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	addi.d	$a0, $a3, -1
 	st.w	$a0, $a4, 52
 	ori	$a0, $zero, 1
-	b	.LBB5_64
-.LBB5_45:
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-.LBB5_46:                               # %.loopexit
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB5_63
-# %bb.47:                               # %.lr.ph250.preheader
-	bne	$fp, $a0, .LBB5_58
-# %bb.48:
-	move	$a0, $fp
-	b	.LBB5_61
-.LBB5_49:                               # %.lr.ph245
-	move	$s3, $fp
+	b	.LBB5_69
+.LBB5_45:                               # %.lr.ph245
 	pcalau12i	$a0, %got_pc_hi20(jpeg_natural_order)
 	ld.d	$a0, $a0, %got_pc_lo12(jpeg_natural_order)
 	alsl.d	$s0, $s7, $a0, 2
 	sub.d	$a0, $s5, $s7
 	addi.d	$s1, $a0, 1
-	b	.LBB5_51
+	b	.LBB5_47
 	.p2align	4, , 16
-.LBB5_50:                               #   in Loop: Header=BB5_51 Depth=1
+.LBB5_46:                               #   in Loop: Header=BB5_47 Depth=1
 	addi.w	$s1, $s1, -1
 	addi.d	$s0, $s0, 4
 	beqz	$s1, .LBB5_43
-.LBB5_51:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$fp, $s0, 0
-	slli.d	$a0, $fp, 1
+.LBB5_47:                               # =>This Inner Loop Header: Depth=1
+	ld.w	$s3, $s0, 0
+	slli.d	$a0, $s3, 1
 	ldx.hu	$a0, $s2, $a0
-	beqz	$a0, .LBB5_50
-# %bb.52:                               #   in Loop: Header=BB5_51 Depth=1
-	blez	$a2, .LBB5_54
-# %bb.53:                               #   in Loop: Header=BB5_51 Depth=1
+	beqz	$a0, .LBB5_46
+# %bb.48:                               #   in Loop: Header=BB5_47 Depth=1
+	blez	$a2, .LBB5_50
+# %bb.49:                               #   in Loop: Header=BB5_47 Depth=1
 	addi.w	$a2, $a2, -1
 	srl.d	$a0, $a1, $a2
 	andi	$a0, $a0, 1
-	bnez	$a0, .LBB5_56
-	b	.LBB5_50
+	bnez	$a0, .LBB5_52
+	b	.LBB5_46
 	.p2align	4, , 16
-.LBB5_54:                               #   in Loop: Header=BB5_51 Depth=1
+.LBB5_50:                               #   in Loop: Header=BB5_47 Depth=1
 	addi.d	$a0, $sp, 320
 	ori	$a3, $zero, 1
 	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_66
-# %bb.55:                               #   in Loop: Header=BB5_51 Depth=1
+	beqz	$a0, .LBB5_60
+# %bb.51:                               #   in Loop: Header=BB5_47 Depth=1
 	ld.d	$a1, $sp, 344
 	ld.w	$a2, $sp, 352
 	addi.w	$a2, $a2, -1
 	srl.d	$a0, $a1, $a2
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB5_50
-.LBB5_56:                               #   in Loop: Header=BB5_51 Depth=1
-	alsl.d	$a0, $fp, $s2, 1
+	beqz	$a0, .LBB5_46
+.LBB5_52:                               #   in Loop: Header=BB5_47 Depth=1
+	alsl.d	$a0, $s3, $s2, 1
 	ld.h	$a3, $a0, 0
 	and	$a4, $s4, $a3
-	bnez	$a4, .LBB5_50
-# %bb.57:                               # %.sink.split313
-                                        #   in Loop: Header=BB5_51 Depth=1
+	bnez	$a4, .LBB5_46
+# %bb.53:                               # %.sink.split313
+                                        #   in Loop: Header=BB5_47 Depth=1
 	slti	$a4, $a3, 0
 	masknez	$a5, $s4, $a4
 	ld.d	$a6, $sp, 56                    # 8-byte Folded Reload
@@ -1393,47 +1373,80 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	or	$a4, $a4, $a5
 	add.d	$a3, $a3, $a4
 	st.h	$a3, $a0, 0
-	b	.LBB5_50
-.LBB5_58:                               # %vector.ph
-	bstrpick.d	$a0, $fp, 30, 1
-	slli.d	$a1, $a0, 1
-	andi	$a0, $fp, 1
-	addi.d	$a2, $sp, 64
-	alsl.d	$a2, $fp, $a2, 2
-	addi.d	$a2, $a2, -4
-	move	$a3, $a1
+	b	.LBB5_46
+.LBB5_54:
+	move	$a0, $zero
+	b	.LBB5_44
+.LBB5_55:
+	ori	$a4, $zero, 1
+	ori	$a5, $zero, 16
+	sll.w	$s8, $a4, $s0
+	bltu	$a0, $a5, .LBB5_42
+# %bb.56:
+	bge	$a2, $a3, .LBB5_59
+# %bb.57:
+	addi.d	$a0, $sp, 320
+	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
+	jirl	$ra, $ra, 0
+	beqz	$a0, .LBB5_60
+# %bb.58:
+	ld.d	$a1, $sp, 344
+	ld.w	$a2, $sp, 352
+.LBB5_59:
+	sub.w	$a2, $a2, $s0
+	sra.d	$a0, $a1, $a2
+	addi.d	$a3, $s8, -1
+	and	$a0, $a3, $a0
+	add.d	$s8, $a0, $s8
+	b	.LBB5_42
+.LBB5_60:                               # %.loopexit
+	ld.d	$a7, $sp, 40                    # 8-byte Folded Reload
+	blez	$a7, .LBB5_68
+# %bb.61:                               # %.lr.ph250.preheader
+	ori	$a0, $zero, 1
+	bne	$a7, $a0, .LBB5_63
+# %bb.62:
+	move	$a1, $a7
+	b	.LBB5_66
+.LBB5_63:                               # %vector.ph
+	bstrpick.d	$a1, $a7, 30, 1
+	slli.d	$a2, $a1, 1
+	andi	$a1, $a7, 1
+	addi.d	$a3, $sp, 64
+	alsl.d	$a3, $a7, $a3, 2
+	addi.d	$a3, $a3, -4
+	move	$a4, $a2
 	.p2align	4, , 16
-.LBB5_59:                               # %vector.body
+.LBB5_64:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	ld.w	$a5, $a2, -4
-	slli.d	$a4, $a4, 1
+	ld.w	$a5, $a3, 0
+	ld.w	$a6, $a3, -4
 	slli.d	$a5, $a5, 1
-	stx.h	$zero, $s2, $a4
+	slli.d	$a6, $a6, 1
 	stx.h	$zero, $s2, $a5
-	addi.d	$a3, $a3, -2
-	addi.d	$a2, $a2, -8
-	bnez	$a3, .LBB5_59
-# %bb.60:                               # %middle.block
-	beq	$a1, $fp, .LBB5_63
-.LBB5_61:                               # %.lr.ph250.preheader339
-	addi.d	$a1, $a0, 1
-	addi.d	$a2, $sp, 64
-	alsl.d	$a0, $a0, $a2, 2
-	addi.d	$a0, $a0, -4
-	ori	$a2, $zero, 1
+	stx.h	$zero, $s2, $a6
+	addi.d	$a4, $a4, -2
+	addi.d	$a3, $a3, -8
+	bnez	$a4, .LBB5_64
+# %bb.65:                               # %middle.block
+	beq	$a2, $a7, .LBB5_68
+.LBB5_66:                               # %.lr.ph250.preheader339
+	addi.d	$a2, $a1, 1
+	addi.d	$a3, $sp, 64
+	alsl.d	$a1, $a1, $a3, 2
+	addi.d	$a1, $a1, -4
 	.p2align	4, , 16
-.LBB5_62:                               # %.lr.ph250
+.LBB5_67:                               # %.lr.ph250
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a3, $a0, 0
+	ld.w	$a3, $a1, 0
 	slli.d	$a3, $a3, 1
 	stx.h	$zero, $s2, $a3
-	addi.d	$a1, $a1, -1
-	addi.d	$a0, $a0, -4
-	bltu	$a2, $a1, .LBB5_62
-.LBB5_63:
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, -4
+	bltu	$a0, $a2, .LBB5_67
+.LBB5_68:
 	move	$a0, $zero
-.LBB5_64:                               # %process_restart.exit.thread
+.LBB5_69:                               # %process_restart.exit.thread
 	ld.d	$s8, $sp, 376                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 384                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 392                   # 8-byte Folded Reload
@@ -1447,38 +1460,6 @@ decode_mcu_AC_refine:                   # @decode_mcu_AC_refine
 	ld.d	$ra, $sp, 456                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 464
 	ret
-.LBB5_65:
-	move	$a0, $zero
-	b	.LBB5_44
-.LBB5_66:
-	move	$fp, $s3
-	b	.LBB5_46
-.LBB5_67:
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 16
-	sll.w	$s8, $a4, $s3
-	bgeu	$a0, $a5, .LBB5_69
-# %bb.68:
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	b	.LBB5_42
-.LBB5_69:
-	ld.d	$fp, $sp, 40                    # 8-byte Folded Reload
-	bge	$a2, $a3, .LBB5_72
-# %bb.70:
-	addi.d	$a0, $sp, 320
-	pcaddu18i	$ra, %call36(jpeg_fill_bit_buffer)
-	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB5_46
-# %bb.71:
-	ld.d	$a1, $sp, 344
-	ld.w	$a2, $sp, 352
-.LBB5_72:
-	sub.w	$a2, $a2, $s3
-	sra.d	$a0, $a1, $a2
-	addi.d	$a3, $s8, -1
-	and	$a0, $a3, $a0
-	add.d	$s8, $a0, $s8
-	b	.LBB5_42
 .Lfunc_end5:
 	.size	decode_mcu_AC_refine, .Lfunc_end5-decode_mcu_AC_refine
                                         # -- End function

@@ -5,14 +5,14 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB0_7
+	blez	$a3, .LBB0_7
 # %bb.1:                                # %.lr.ph101
-	sub.d	$a5, $zero, $a0
-	andi	$a5, $a5, 15
-	move	$a6, $zero
-	bge	$a4, $a2, .LBB0_8
+	sub.d	$a4, $zero, $a0
+	ori	$a6, $zero, 1
+	andi	$a5, $a4, 15
+	bge	$a6, $a2, .LBB0_8
 # %bb.2:                                # %.lr.ph101.split.us.preheader
+	move	$a6, $zero
 	move	$a4, $zero
 	addi.d	$a7, $a1, 8
 	addi.d	$t0, $a2, -1
@@ -51,6 +51,7 @@ foo:                                    # @foo
 	blt	$a6, $a5, .LBB0_12
 	b	.LBB0_21
 .LBB0_8:                                # %.lr.ph101.split.preheader
+	move	$a6, $zero
 	move	$a4, $zero
 	slli.d	$a5, $a5, 2
 	slli.d	$a7, $a3, 2

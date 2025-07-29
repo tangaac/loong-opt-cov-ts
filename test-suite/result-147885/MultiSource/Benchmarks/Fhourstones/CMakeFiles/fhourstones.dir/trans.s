@@ -801,8 +801,7 @@ htstat:                                 # @htstat
 	add.d	$a0, $s1, $a0
 	add.d	$a0, $fp, $a0
 	add.w	$s4, $a1, $a0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB8_9
+	blez	$s4, .LBB8_9
 # %bb.5:
 	pcalau12i	$a0, %pc_hi20(posed)
 	ld.d	$a0, $a0, %pc_lo12(posed)

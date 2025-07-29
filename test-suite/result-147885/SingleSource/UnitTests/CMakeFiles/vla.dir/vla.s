@@ -5,8 +5,7 @@
 	.type	function,@function
 function:                               # @function
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_13
+	blez	$a0, .LBB0_13
 # %bb.1:                                # %.preheader.us.preheader
 	bstrpick.d	$a0, $a0, 15, 0
 	pcalau12i	$a2, %pc_hi20(bork)
@@ -90,10 +89,9 @@ test:                                   # @test
 	.type	function2,@function
 function2:                              # @function2
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB2_12
+	blez	$a0, .LBB2_12
 # %bb.1:
-	blt	$a1, $a3, .LBB2_12
+	blez	$a1, .LBB2_12
 # %bb.2:                                # %.preheader.us.us.us.preheader
 	move	$a5, $zero
 	bstrpick.d	$a3, $a0, 15, 0

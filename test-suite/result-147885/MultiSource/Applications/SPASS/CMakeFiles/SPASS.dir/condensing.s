@@ -26,8 +26,7 @@ cond_CondFast:                          # @cond_CondFast
 	ld.w	$s7, $s2, 0
 	add.d	$a0, $a1, $a0
 	add.w	$a0, $a0, $a2
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(vec_VECTOR)
 	ld.d	$s3, $a0, %got_pc_lo12(vec_VECTOR)
@@ -49,8 +48,7 @@ cond_CondFast:                          # @cond_CondFast
 	addi.d	$a2, $a2, 8
 	blt	$a1, $s4, .LBB0_2
 # %bb.3:                                # %.preheader46
-	ori	$a1, $zero, 1
-	blt	$s4, $a1, .LBB0_5
+	blez	$s4, .LBB0_5
 # %bb.4:                                # %.preheader.lr.ph
 	addi.w	$a1, $a0, -1
 	bge	$a1, $s7, .LBB0_7
@@ -88,8 +86,8 @@ cond_CondFast:                          # @cond_CondFast
 	ld.d	$s1, $a1, %got_pc_lo12(cont_LASTBINDING)
 	pcalau12i	$a1, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s8, $a1, %got_pc_lo12(cont_CURRENTBINDING)
-	ori	$fp, $zero, 1
 	vrepli.b	$vr0, 0
+	ori	$fp, $zero, 1
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
 	b	.LBB0_9
@@ -175,7 +173,7 @@ cond_CondFast:                          # @cond_CondFast
 	beqz	$a0, .LBB0_26
 # %bb.16:                               #   in Loop: Header=BB0_14 Depth=2
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	blt	$a1, $fp, .LBB0_19
+	blez	$a1, .LBB0_19
 # %bb.17:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_14 Depth=2
 	addi.d	$a0, $a1, 1
@@ -237,7 +235,7 @@ cond_CondFast:                          # @cond_CondFast
 	b	.LBB0_23
 .LBB0_26:                               #   in Loop: Header=BB0_14 Depth=2
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	blt	$a1, $fp, .LBB0_29
+	blez	$a1, .LBB0_29
 # %bb.27:                               # %.lr.ph.i43.preheader
                                         #   in Loop: Header=BB0_14 Depth=2
 	addi.d	$a0, $a1, 1

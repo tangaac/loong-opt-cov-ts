@@ -31,9 +31,8 @@ luaS_resize:                            # @luaS_resize
 	pcaddu18i	$ra, %call36(luaM_realloc_)
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s0, 32
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$fp, $a1, .LBB0_5
+	blez	$fp, .LBB0_5
 # %bb.3:                                # %.lr.ph.preheader
 	move	$a0, $s1
 	move	$a1, $zero

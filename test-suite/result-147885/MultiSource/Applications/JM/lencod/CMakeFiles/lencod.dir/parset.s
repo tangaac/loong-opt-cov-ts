@@ -478,9 +478,8 @@ GeneratePictureParameterSet:            # @GeneratePictureParameterSet
 	st.w	$a2, $fp, 4
 	sltu	$a0, $zero, $a3
 	st.w	$a0, $fp, 12
-	ori	$a0, $zero, 1
 	lu12i.w	$s6, 1
-	bne	$s7, $a0, .LBB2_3
+	beqz	$s7, .LBB2_3
 # %bb.1:
 	ori	$a0, $s6, 1004
 	ldx.w	$a0, $s8, $a0
@@ -2136,9 +2135,8 @@ Scaling_List:                           # @Scaling_List
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
-	ori	$a5, $zero, 1
 	st.d	$a4, $sp, 0                     # 8-byte Folded Spill
-	blt	$a2, $a5, .LBB8_6
+	blez	$a2, .LBB8_6
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a3
 	move	$s1, $a1

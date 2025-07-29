@@ -612,8 +612,7 @@ _ZN8NArchive4NZip11COutArchive10WriteExtraERKNS0_11CExtraBlockE: # @_ZN8NArchive
 	.cfi_offset 28, -64
 	move	$fp, $a1
 	ld.w	$a1, $a1, 12
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB10_17
+	blez	$a1, .LBB10_17
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a0
 	move	$s2, $zero
@@ -1023,9 +1022,8 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	ld.w	$a1, $s0, 60
 	maskeqz	$a0, $s2, $s3
 	addi.d	$a2, $a2, 1
-	ori	$a3, $zero, 1
 	st.d	$a2, $fp, 64
-	blt	$a1, $a3, .LBB12_23
+	blez	$a1, .LBB12_23
 # %bb.21:                               # %.lr.ph.i
 	ld.d	$a2, $s0, 64
 	ori	$a3, $zero, 4
@@ -1248,8 +1246,7 @@ _ZN8NArchive4NZip11COutArchive16WriteLocalHeaderERKNS0_10CLocalItemE: # @_ZN8NAr
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NZip11COutArchive10WriteExtraERKNS0_11CExtraBlockE)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 60
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB12_54
+	blez	$a0, .LBB12_54
 # %bb.52:                               # %.lr.ph.i53
 	ld.d	$a1, $s0, 64
 	ori	$a2, $zero, 4
@@ -1656,13 +1653,12 @@ _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE: # @_ZN8NArchiv
 	alsl.d	$s8, $s6, $a0, 3
 	ori	$a0, $s8, 4
 	ld.bu	$a2, $s0, 178
-	maskeqz	$a0, $a0, $s5
 	ld.w	$a1, $s0, 132
+	maskeqz	$a0, $a0, $s5
 	ori	$a3, $zero, 36
 	maskeqz	$a2, $a3, $a2
-	ori	$a3, $zero, 1
 	add.d	$a0, $a2, $a0
-	blt	$a1, $a3, .LBB13_23
+	blez	$a1, .LBB13_23
 # %bb.21:                               # %.lr.ph.i
 	ld.d	$a2, $s0, 136
 	ori	$a3, $zero, 4
@@ -1992,9 +1988,8 @@ _ZN8NArchive4NZip11COutArchive18WriteCentralHeaderERKNS0_5CItemE: # @_ZN8NArchiv
 	jirl	$ra, $ra, 0
 .LBB13_63:
 	ld.bu	$a0, $s0, 178
-	ori	$a1, $zero, 1
 	addi.d	$s2, $s0, 120
-	bne	$a0, $a1, .LBB13_81
+	beqz	$a0, .LBB13_81
 # %bb.64:
 	ld.wu	$a0, $fp, 16
 	ld.d	$a1, $fp, 8
@@ -2275,8 +2270,7 @@ _ZN8NArchive4NZip11COutArchive15WriteCentralDirERK13CObjectVectorINS0_5CItemEEPK
 # %bb.1:                                # %_ZN8NArchive4NZip11COutArchive6SeekToEy.exit
 	ld.w	$a0, $s4, 12
 	ld.d	$s2, $fp, 64
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB14_5
+	blez	$a0, .LBB14_5
 # %bb.2:                                # %.lr.ph
 	move	$s1, $zero
 	move	$s3, $zero

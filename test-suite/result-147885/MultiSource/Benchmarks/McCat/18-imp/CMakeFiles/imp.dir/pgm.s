@@ -171,18 +171,16 @@ PGM_GetValue:                           # @PGM_GetValue
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
-	addi.d	$a2, $sp, 4
+	addi.d	$a2, $sp, 12
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB3_2
 .LBB3_1:                                # %._crit_edge
-	ld.w	$a0, $sp, 4
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.w	$a0, $sp, 12
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
@@ -194,8 +192,7 @@ PGM_GetValue:                           # @PGM_GetValue
 .LBB3_2:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.5)
-	ori	$s3, $zero, 1
-	ori	$s4, $zero, 10
+	ori	$s3, $zero, 10
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.6)
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
@@ -209,7 +206,7 @@ PGM_GetValue:                           # @PGM_GetValue
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 24
-	addi.d	$a2, $sp, 4
+	addi.d	$a2, $sp, 12
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -218,12 +215,12 @@ PGM_GetValue:                           # @PGM_GetValue
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_5 Depth 2
 	ld.d	$a0, $fp, 24
-	addi.d	$a2, $sp, 4
+	addi.d	$a2, $sp, 12
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 4
-	blt	$a0, $s3, .LBB3_3
+	ld.w	$a0, $sp, 12
+	blez	$a0, .LBB3_3
 	.p2align	4, , 16
 .LBB3_5:                                # %.preheader
                                         #   Parent Loop BB3_4 Depth=1
@@ -232,7 +229,7 @@ PGM_GetValue:                           # @PGM_GetValue
 	pcaddu18i	$ra, %call36(fgetc)
 	jirl	$ra, $ra, 0
 	andi	$a0, $a0, 255
-	bne	$a0, $s4, .LBB3_5
+	bne	$a0, $s3, .LBB3_5
 	b	.LBB3_3
 .Lfunc_end3:
 	.size	PGM_GetValue, .Lfunc_end3-PGM_GetValue
@@ -315,13 +312,12 @@ PGM_Close:                              # @PGM_Close
 	.type	PGM_LoadImage,@function
 PGM_LoadImage:                          # @PGM_LoadImage
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
-	st.w	$zero, $sp, 8
+	st.w	$zero, $sp, 0
 	pcaddu18i	$ra, %call36(PGM_Open)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB6_15
@@ -352,22 +348,21 @@ PGM_LoadImage:                          # @PGM_LoadImage
 	st.d	$zero, $fp, 72
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
-	addi.d	$a2, $sp, 8
+	addi.d	$a2, $sp, 0
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 8
-	ori	$s0, $zero, 1
-	blt	$a0, $s0, .LBB6_6
+	ld.w	$a0, $sp, 0
+	blez	$a0, .LBB6_6
 # %bb.4:                                # %.preheader35.preheader
-	ori	$s1, $zero, 10
+	ori	$s0, $zero, 10
 	.p2align	4, , 16
 .LBB6_5:                                # %.preheader35
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 24
 	pcaddu18i	$ra, %call36(fgetc)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB6_5
+	bne	$a0, $s0, .LBB6_5
 .LBB6_6:                                # %.loopexit
 	ld.d	$a0, $fp, 24
 	pcalau12i	$a1, %pc_hi20(.L.str.6)
@@ -377,19 +372,19 @@ PGM_LoadImage:                          # @PGM_LoadImage
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a3, $a1, $a0
-	blt	$a3, $s0, .LBB6_9
+	blez	$a3, .LBB6_9
 # %bb.7:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
 .LBB6_8:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a3, $fp, 24
-	addi.d	$a0, $sp, 15
+	addi.d	$a0, $sp, 7
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	ld.bu	$a0, $sp, 15
+	ld.bu	$a0, $sp, 7
 	ld.d	$a1, $fp, 48
 	stx.b	$a0, $a1, $s0
 	ld.d	$a1, $fp, 112
@@ -405,8 +400,7 @@ PGM_LoadImage:                          # @PGM_LoadImage
 	blt	$s0, $a0, .LBB6_8
 .LBB6_9:                                # %.preheader
 	ld.w	$a0, $fp, 40
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_13
+	blez	$a0, .LBB6_13
 # %bb.10:                               # %.lr.ph38
 	ld.d	$a1, $fp, 112
 	ld.d	$a2, $fp, 120
@@ -442,11 +436,10 @@ PGM_LoadImage:                          # @PGM_LoadImage
 	jirl	$ra, $ra, 0
 	addi.w	$a0, $zero, -3
 .LBB6_15:
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB6_16:                               # %vector.scevcheck
 	addi.w	$a4, $a0, -1
@@ -546,7 +539,6 @@ PGM_WriteBinary:                        # @PGM_WriteBinary
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -566,7 +558,7 @@ PGM_WriteBinary:                        # @PGM_WriteBinary
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s2, .LBB7_9
+	blez	$a0, .LBB7_9
 # %bb.4:                                # %.lr.ph
 	move	$s2, $zero
 	b	.LBB7_7
@@ -663,7 +655,6 @@ PGM_WriteImage:                         # @PGM_WriteImage
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -683,7 +674,7 @@ PGM_WriteImage:                         # @PGM_WriteImage
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s2, .LBB8_17
+	blez	$a0, .LBB8_17
 # %bb.7:                                # %.lr.ph68.preheader
 	move	$s2, $zero
 	.p2align	4, , 16
@@ -725,7 +716,6 @@ PGM_WriteImage:                         # @PGM_WriteImage
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -746,7 +736,7 @@ PGM_WriteImage:                         # @PGM_WriteImage
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s2, .LBB8_17
+	blez	$a0, .LBB8_17
 # %bb.11:                               # %.lr.ph64.preheader
 	move	$s2, $zero
 	move	$s3, $zero
@@ -793,7 +783,6 @@ PGM_WriteImage:                         # @PGM_WriteImage
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -814,7 +803,7 @@ PGM_WriteImage:                         # @PGM_WriteImage
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s2, .LBB8_17
+	blez	$a0, .LBB8_17
 # %bb.15:                               # %.lr.ph.preheader
 	move	$s2, $zero
 	move	$s3, $zero

@@ -9,19 +9,19 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception0
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -36,28 +36,28 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$fp, $a2
 	move	$s0, $a1
 	move	$s1, $a0
-	st.d	$zero, $sp, 96
+	st.d	$zero, $sp, 80
 	ori	$a0, $zero, 4
 	ori	$s3, $zero, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 88
+	st.d	$a0, $sp, 72
 	st.b	$zero, $a0, 0
-	st.w	$s3, $sp, 100
-	st.d	$zero, $sp, 80
+	st.w	$s3, $sp, 84
+	st.d	$zero, $sp, 64
 .Ltmp0:
 	ori	$a0, $zero, 4
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 .Ltmp1:
 # %bb.1:
-	st.d	$a0, $sp, 72
+	st.d	$a0, $sp, 56
 	st.b	$zero, $a0, 0
 	ld.d	$s2, $s0, 0
-	st.w	$s3, $sp, 84
+	st.w	$s3, $sp, 68
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	vst	$vr0, $sp, 56
+	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
+	vst	$vr0, $sp, 40
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -69,9 +69,9 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	jirl	$ra, $ra, 0
 .Ltmp4:
 # %bb.2:                                # %.noexc
-	st.d	$a0, $sp, 56
+	st.d	$a0, $sp, 40
 	st.b	$zero, $a0, 0
-	st.w	$s4, $sp, 68
+	st.w	$s4, $sp, 52
 	.p2align	4, , 16
 .LBB0_3:                                # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i
                                         # =>This Inner Loop Header: Depth=1
@@ -82,22 +82,22 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$a0, $a2
 	bnez	$a1, .LBB0_3
 # %bb.4:
-	st.w	$s3, $sp, 64
+	st.w	$s3, $sp, 48
 .Ltmp6:
-	addi.d	$a0, $sp, 56
-	addi.d	$a1, $sp, 88
-	addi.d	$a2, $sp, 72
+	addi.d	$a0, $sp, 40
+	addi.d	$a1, $sp, 72
+	addi.d	$a2, $sp, 56
 	pcaddu18i	$ra, %call36(_Z21my_windows_split_pathRK11CStringBaseIcERS0_S3_)
 	jirl	$ra, $ra, 0
 .Ltmp7:
 # %bb.5:
-	ld.d	$a0, $sp, 56
+	ld.d	$a0, $sp, 40
 	beqz	$a0, .LBB0_7
 # %bb.6:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_7:                                # %_ZN11CStringBaseIcED2Ev.exit
-	ld.d	$a3, $sp, 88
+	ld.d	$a3, $sp, 72
 	pcalau12i	$a0, %pc_hi20(_ZZ18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEEE14p7zip_home_dir)
 	addi.d	$s2, $a0, %pc_lo12(_ZZ18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEEE14p7zip_home_dir)
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -111,13 +111,13 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(putenv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB0_9
 # %bb.8:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_9:                                # %_ZN11CStringBaseIcED2Ev.exit49
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB0_11
 # %bb.10:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -189,37 +189,33 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector5ClearEv)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB0_47
+	blez	$s1, .LBB0_47
 # %bb.23:                               # %.lr.ph68
-	move	$s8, $zero
-	ori	$s7, $zero, 2
+	move	$s7, $zero
+	ori	$s8, $zero, 2
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.4)
 	pcalau12i	$a0, %got_pc_hi20(global_use_utf16_conversion)
 	ld.d	$a0, $a0, %got_pc_lo12(global_use_utf16_conversion)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.5)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ori	$s3, $zero, 0
-	lu32i.d	$s3, 1
-	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	pcalau12i	$a0, %pc_hi20(.L.str.5)
+	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
+	addi.w	$a0, $zero, -1
+	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB0_26
 .LBB0_24:                               #   in Loop: Header=BB0_26 Depth=1
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.w	$zero, $a0, 0
 	.p2align	4, , 16
 .LBB0_25:                               #   in Loop: Header=BB0_26 Depth=1
-	addi.d	$s8, $s8, 1
-	beq	$s8, $s1, .LBB0_47
+	addi.d	$s7, $s7, 1
+	beq	$s7, $s1, .LBB0_47
 .LBB0_26:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_30 Depth 2
                                         #     Child Loop BB0_41 Depth 2
-	slli.d	$a0, $s8, 3
+	slli.d	$a0, $s7, 3
 	ldx.d	$s4, $s0, $a0
-	bltu	$s7, $s8, .LBB0_29
+	bltu	$s8, $s7, .LBB0_29
 # %bb.27:                               #   in Loop: Header=BB0_26 Depth=1
 	move	$a0, $s4
 	move	$a1, $s2
@@ -228,14 +224,14 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	beqz	$a0, .LBB0_24
 # %bb.28:                               #   in Loop: Header=BB0_26 Depth=1
 	move	$a0, $s4
-	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_46
 .LBB0_29:                               # %.critedge
                                         #   in Loop: Header=BB0_26 Depth=1
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 72
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vst	$vr0, $sp, 56
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
@@ -244,9 +240,9 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 72
+	st.d	$a0, $sp, 56
 	st.b	$zero, $a0, 0
-	st.w	$s6, $sp, 84
+	st.w	$s6, $sp, 68
 	.p2align	4, , 16
 .LBB0_30:                               # %_ZN11CStringBaseIcE11SetCapacityEi.exit.i55
                                         #   Parent Loop BB0_26 Depth=1
@@ -259,23 +255,23 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	bnez	$a1, .LBB0_30
 # %bb.31:                               # %_ZN11CStringBaseIcEC2EPKc.exit59
                                         #   in Loop: Header=BB0_26 Depth=1
-	st.w	$s5, $sp, 80
+	st.w	$s5, $sp, 64
 .Ltmp9:
-	addi.d	$a0, $sp, 88
-	addi.d	$a1, $sp, 72
+	addi.d	$a0, $sp, 72
+	addi.d	$a1, $sp, 56
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_Z24MultiByteToUnicodeStringRK11CStringBaseIcEj)
 	jirl	$ra, $ra, 0
 .Ltmp10:
 # %bb.32:                               #   in Loop: Header=BB0_26 Depth=1
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB0_34
 # %bb.33:                               #   in Loop: Header=BB0_26 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 .LBB0_34:                               # %_ZN11CStringBaseIcED2Ev.exit60
                                         #   in Loop: Header=BB0_26 Depth=1
-	ld.w	$s5, $sp, 96
+	ld.w	$s5, $sp, 80
 	beqz	$s5, .LBB0_44
 # %bb.35:                               #   in Loop: Header=BB0_26 Depth=1
 .Ltmp12:
@@ -288,10 +284,10 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$s4, $a0
 	bstrpick.d	$a0, $s5, 31, 0
 	addi.d	$s6, $a0, 1
-	and	$a0, $s6, $s3
-	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
+	slli.d	$a0, $s6, 31
+	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vst	$vr0, $s4, 0
-	beqz	$a0, .LBB0_38
+	bgez	$a0, .LBB0_38
 # %bb.37:                               #   in Loop: Header=BB0_26 Depth=1
 	move	$a0, $zero
 	b	.LBB0_40
@@ -300,7 +296,7 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	addi.w	$a0, $s6, 0
 	slti	$a1, $s5, -1
 	slli.d	$a0, $a0, 2
-	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
 	maskeqz	$a2, $a2, $a1
 	masknez	$a0, $a0, $a1
 	or	$a0, $a2, $a0
@@ -315,7 +311,7 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	st.w	$s6, $s4, 12
 .LBB0_40:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
                                         #   in Loop: Header=BB0_26 Depth=1
-	ld.d	$a1, $sp, 88
+	ld.d	$a1, $sp, 72
 	.p2align	4, , 16
 .LBB0_41:                               #   Parent Loop BB0_26 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -341,59 +337,59 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 12
 .LBB0_44:                               #   in Loop: Header=BB0_26 Depth=1
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB0_25
 # %bb.45:                               #   in Loop: Header=BB0_26 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	b	.LBB0_25
 .LBB0_46:                               #   in Loop: Header=BB0_26 Depth=1
-	ori	$a0, $zero, 1
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	st.w	$a0, $a1, 0
+	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, 0
 	b	.LBB0_25
 .LBB0_47:                               # %._crit_edge69
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB0_48:
 .Ltmp8:
-	ld.d	$a1, $sp, 56
+	ld.d	$a1, $sp, 40
 	move	$fp, $a0
 	bnez	$a1, .LBB0_51
 # %bb.49:                               # %_ZN11CStringBaseIcED2Ev.exit51
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 56
 	bnez	$a0, .LBB0_53
 .LBB0_50:                               # %.body
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB0_60
 	b	.LBB0_61
 .LBB0_51:
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB0_50
 	b	.LBB0_53
 .LBB0_52:
 .Ltmp5:
 	move	$fp, $a0
-	ld.d	$a0, $sp, 72
+	ld.d	$a0, $sp, 56
 	beqz	$a0, .LBB0_50
 .LBB0_53:
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB0_60
 	b	.LBB0_61
 .LBB0_54:
@@ -406,12 +402,12 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdlPvm)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB0_60
 	b	.LBB0_61
 .LBB0_56:
 .Ltmp11:
-	ld.d	$a1, $sp, 72
+	ld.d	$a1, $sp, 56
 	move	$fp, $a0
 	beqz	$a1, .LBB0_61
 # %bb.57:
@@ -421,7 +417,7 @@ _Z18mySplitCommandLineiPPKcR13CObjectVectorI11CStringBaseIwEE: # @_Z18mySplitCom
 .Ltmp19:
 .LBB0_59:                               # %.body
 	move	$fp, $a0
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB0_61
 .LBB0_60:
 	pcaddu18i	$ra, %call36(_ZdaPv)

@@ -720,9 +720,8 @@ _ZN9benchmark15ConsoleReporter12PrintRunDataERKNS_17BenchmarkReporter3RunE: # @_
 .Ltmp37:
 # %bb.21:                               # %_ZN9benchmarkL10FormatTimeB5cxx11Ed.exit107
 	ld.bu	$a0, $s0, 488
-	ori	$a1, $zero, 1
 	addi.d	$s7, $sp, 88
-	bne	$a0, $a1, .LBB3_26
+	beqz	$a0, .LBB3_26
 # %bb.22:
 	ld.w	$a1, $s0, 460
 .Ltmp44:

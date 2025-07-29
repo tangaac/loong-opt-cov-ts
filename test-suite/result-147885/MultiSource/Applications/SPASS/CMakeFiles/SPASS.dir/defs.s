@@ -3483,9 +3483,9 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	pcalau12i	$a0, %got_pc_hi20(cont_CURRENTBINDING)
 	ld.d	$s3, $a0, %got_pc_lo12(cont_CURRENTBINDING)
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
-	ori	$s1, $zero, 1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 96                   # 16-byte Folded Spill
+	ori	$s1, $zero, 1
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
 	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
 	.p2align	4, , 16
@@ -3565,7 +3565,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 # %bb.10:                               #   in Loop: Header=BB20_9 Depth=3
 	ld.w	$a0, $s0, 0
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
-	blt	$a0, $s1, .LBB20_13
+	blez	$a0, .LBB20_13
 # %bb.11:                               # %.lr.ph.i.us.us.us.preheader
                                         #   in Loop: Header=BB20_9 Depth=3
 	addi.d	$a0, $a0, 1
@@ -3646,7 +3646,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ld.w	$a0, $s0, 0
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
-	blt	$a0, $s1, .LBB20_21
+	blez	$a0, .LBB20_21
 # %bb.19:                               # %.lr.ph.i106.us.us.us.preheader
                                         #   in Loop: Header=BB20_9 Depth=3
 	addi.d	$a0, $a0, 1
@@ -3789,7 +3789,7 @@ def_ApplyDefinitionToTermList:          # @def_ApplyDefinitionToTermList
 .LBB20_32:                              #   in Loop: Header=BB20_9 Depth=3
 	vld	$vr0, $sp, 96                   # 16-byte Folded Reload
 	ld.w	$a1, $s0, 0
-	blt	$a1, $s1, .LBB20_36
+	blez	$a1, .LBB20_36
 # %bb.33:                               # %.lr.ph.i112.us.us.us.preheader
                                         #   in Loop: Header=BB20_9 Depth=3
 	addi.d	$a0, $a1, 1

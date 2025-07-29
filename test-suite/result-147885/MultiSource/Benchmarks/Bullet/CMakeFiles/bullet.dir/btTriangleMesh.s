@@ -25,7 +25,6 @@ _ZN14btTriangleMeshC2Ebb:               # @_ZN14btTriangleMeshC2Ebb
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -33,33 +32,32 @@ _ZN14btTriangleMeshC2Ebb:               # @_ZN14btTriangleMeshC2Ebb
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	pcalau12i	$a3, %pc_hi20(.LCPI0_0)
 	vld	$vr0, $a3, %pc_lo12(.LCPI0_0)
 	move	$fp, $a0
 	vst	$vr0, $a0, 8
-	ori	$s5, $zero, 1
-	st.b	$s5, $a0, 48
-	st.d	$zero, $a0, 40
-	st.d	$zero, $a0, 28
-	st.w	$zero, $a0, 64
-	pcalau12i	$a0, %pc_hi20(_ZTV14btTriangleMesh+16)
-	addi.d	$a0, $a0, %pc_lo12(_ZTV14btTriangleMesh+16)
-	st.d	$a0, $fp, 0
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 48
+	st.d	$zero, $fp, 40
+	st.d	$zero, $fp, 28
+	st.w	$zero, $fp, 64
+	pcalau12i	$a3, %pc_hi20(_ZTV14btTriangleMesh+16)
+	addi.d	$a3, $a3, %pc_lo12(_ZTV14btTriangleMesh+16)
+	st.d	$a3, $fp, 0
 	addi.d	$s1, $fp, 104
-	st.b	$s5, $fp, 128
+	st.b	$a0, $fp, 128
 	st.d	$zero, $fp, 120
 	st.d	$zero, $fp, 108
 	addi.d	$s2, $fp, 136
-	st.b	$s5, $fp, 160
+	st.b	$a0, $fp, 160
 	st.d	$zero, $fp, 152
 	st.d	$zero, $fp, 140
 	addi.d	$s3, $fp, 168
-	st.b	$s5, $fp, 192
+	st.b	$a0, $fp, 192
 	st.d	$zero, $fp, 184
 	st.d	$zero, $fp, 172
 	addi.d	$s4, $fp, 200
-	st.b	$s5, $fp, 224
+	st.b	$a0, $fp, 224
 	st.d	$zero, $fp, 216
 	st.d	$zero, $fp, 204
 	st.b	$a1, $fp, 232
@@ -74,7 +72,7 @@ _ZN14btTriangleMeshC2Ebb:               # @_ZN14btTriangleMeshC2Ebb
 # %bb.1:                                # %_ZN20btAlignedObjectArrayI13btIndexedMeshE8allocateEi.exit.i.i
 	move	$s0, $a0
 	ld.w	$a1, $fp, 28
-	blt	$a1, $s5, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.2:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a2, $a1, 5
@@ -163,7 +161,6 @@ _ZN14btTriangleMeshC2Ebb:               # @_ZN14btTriangleMeshC2Ebb
 	st.w	$a1, $s0, 20
 	st.d	$zero, $s0, 24
 	st.w	$a0, $s0, 32
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -430,8 +427,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	.cfi_offset 25, -40
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 232
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB6_12
+	beqz	$a0, .LBB6_12
 # %bb.1:
 	ld.w	$a2, $fp, 172
 	ld.w	$a0, $fp, 176
@@ -456,8 +452,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	ld.w	$a2, $fp, 172
 	move	$s0, $a0
 	ld.d	$a0, $fp, 184
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB6_24
+	blez	$a2, .LBB6_24
 .LBB6_5:                                # %.lr.ph.i.i.i
 	ori	$a4, $zero, 8
 	move	$a3, $zero
@@ -522,8 +517,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	ld.w	$a2, $fp, 204
 	move	$s0, $a0
 	ld.d	$a0, $fp, 216
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB6_31
+	blez	$a2, .LBB6_31
 .LBB6_16:                               # %iter.check
 	ori	$a4, $zero, 8
 	move	$a3, $zero
@@ -560,14 +554,12 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 .LBB6_23:
 	move	$s0, $zero
 	ld.d	$a0, $fp, 184
-	ori	$a3, $zero, 1
-	bge	$a2, $a3, .LBB6_5
+	bgtz	$a2, .LBB6_5
 .LBB6_24:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.i.i
 	beqz	$a0, .LBB6_28
 .LBB6_25:                               # %_ZNK20btAlignedObjectArrayIjE4copyEiiPj.exit.thread.i.i
 	ld.bu	$a2, $fp, 192
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB6_27
+	beqz	$a2, .LBB6_27
 # %bb.26:
 	move	$s2, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
@@ -591,8 +583,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 .LBB6_30:
 	move	$s0, $zero
 	ld.d	$a0, $fp, 216
-	ori	$a1, $zero, 1
-	bge	$a2, $a1, .LBB6_16
+	bgtz	$a2, .LBB6_16
 .LBB6_31:                               # %_ZNK20btAlignedObjectArrayItE4copyEiiPt.exit.i.i
 	move	$a1, $s2
 	beqz	$a0, .LBB6_41
@@ -638,8 +629,7 @@ _ZN14btTriangleMesh8addIndexEi:         # @_ZN14btTriangleMesh8addIndexEi
 	bnez	$a4, .LBB6_38
 .LBB6_39:                               # %_ZNK20btAlignedObjectArrayItE4copyEiiPt.exit.thread.i.i
 	ld.bu	$a3, $fp, 224
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB6_41
+	beqz	$a3, .LBB6_41
 .LBB6_40:
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
@@ -694,15 +684,13 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	.cfi_offset 56, -56
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 233
-	ori	$a3, $zero, 1
 	move	$s0, $a1
-	bne	$a0, $a3, .LBB7_10
+	beqz	$a0, .LBB7_10
 # %bb.1:
 	ld.w	$a1, $fp, 108
 	beqz	$a2, .LBB7_6
 # %bb.2:
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB7_6
+	blez	$a1, .LBB7_6
 # %bb.3:                                # %.lr.ph113
 	ld.d	$a2, $fp, 120
 	fld.s	$fa0, $s0, 0
@@ -754,16 +742,14 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 108
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB7_77
+	bgtz	$a1, .LBB7_77
 	b	.LBB7_79
 .LBB7_10:
 	beqz	$a2, .LBB7_15
 # %bb.11:                               # %.preheader106
 	ld.w	$a2, $fp, 140
 	fld.s	$fs0, $s0, 0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB7_16
+	blez	$a2, .LBB7_16
 # %bb.12:                               # %.lr.ph
 	ld.d	$a1, $fp, 152
 	fld.s	$fa0, $s0, 4
@@ -813,8 +799,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	ld.w	$a2, $fp, 140
 	move	$s1, $a0
 	ld.d	$a0, $fp, 152
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB7_31
+	blez	$a2, .LBB7_31
 .LBB7_20:                               # %.lr.ph.i.i.i46
 	ori	$a3, $zero, 8
 	move	$a1, $zero
@@ -857,8 +842,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	bnez	$a3, .LBB7_26
 .LBB7_27:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i
 	ld.bu	$a1, $fp, 160
-	ori	$a3, $zero, 1
-	beq	$a1, $a3, .LBB7_33
+	bnez	$a1, .LBB7_33
 	b	.LBB7_34
 .LBB7_28:
 	move	$s2, $a2
@@ -874,8 +858,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 .LBB7_30:
 	move	$s1, $zero
 	ld.d	$a0, $fp, 152
-	ori	$a1, $zero, 1
-	bge	$a2, $a1, .LBB7_20
+	bgtz	$a2, .LBB7_20
 .LBB7_31:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
 	beqz	$a0, .LBB7_34
 # %bb.32:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i
@@ -917,8 +900,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	ld.w	$s2, $fp, 140
 	ld.d	$a1, $fp, 152
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB7_50
+	blez	$s2, .LBB7_50
 .LBB7_39:                               # %.lr.ph.i.i.i62
 	ori	$a2, $zero, 8
 	move	$a0, $zero
@@ -961,8 +943,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	bnez	$a2, .LBB7_45
 .LBB7_46:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i67
 	ld.bu	$a0, $fp, 160
-	ori	$a2, $zero, 1
-	beq	$a0, $a2, .LBB7_52
+	bnez	$a0, .LBB7_52
 	b	.LBB7_53
 .LBB7_47:
 	move	$s3, $s2
@@ -974,8 +955,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	b	.LBB7_54
 .LBB7_49:
 	move	$s1, $zero
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB7_39
+	bgtz	$s2, .LBB7_39
 .LBB7_50:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i56
 	beqz	$a1, .LBB7_53
 # %bb.51:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i56
@@ -1019,8 +999,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	ld.w	$s3, $fp, 140
 	ld.d	$s1, $fp, 152
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB7_70
+	blez	$s3, .LBB7_70
 .LBB7_59:                               # %.lr.ph.i.i.i83
 	ori	$a1, $zero, 8
 	move	$a0, $zero
@@ -1063,8 +1042,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	bnez	$a1, .LBB7_65
 .LBB7_66:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.thread.i.i88
 	ld.bu	$a0, $fp, 160
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB7_72
+	bnez	$a0, .LBB7_72
 	b	.LBB7_73
 .LBB7_67:
 	move	$s0, $s1
@@ -1074,8 +1052,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	b	.LBB7_74
 .LBB7_69:
 	move	$s0, $zero
-	ori	$a0, $zero, 1
-	bge	$s3, $a0, .LBB7_59
+	bgtz	$s3, .LBB7_59
 .LBB7_70:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i77
 	beqz	$s1, .LBB7_73
 # %bb.71:                               # %_ZNK20btAlignedObjectArrayIfE4copyEiiPf.exit.i.i77
@@ -1114,8 +1091,7 @@ _ZN14btTriangleMesh15findOrAddVertexERK9btVector3b: # @_ZN14btTriangleMesh15find
 	b	.LBB7_84
 .LBB7_76:
 	move	$s1, $zero
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB7_79
+	blez	$a1, .LBB7_79
 .LBB7_77:                               # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4

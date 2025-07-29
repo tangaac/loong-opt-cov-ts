@@ -310,8 +310,7 @@ deleteChar:                             # @deleteChar
 	beqz	$a1, .LBB6_5
 # %bb.2:
 	ld.w	$a2, $a0, 12
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB6_4
+	blez	$a2, .LBB6_4
 # %bb.3:
 	addi.w	$a2, $a2, -1
 	st.w	$a2, $a0, 12
@@ -381,12 +380,11 @@ ssInit:                                 # @ssInit
 	.type	printTheRest,@function
 printTheRest:                           # @printTheRest
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	beqz	$a0, .LBB9_9
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
@@ -394,7 +392,6 @@ printTheRest:                           # @printTheRest
 	beqz	$a1, .LBB9_10
 # %bb.2:
 	addi.w	$s1, $zero, -1
-	ori	$s2, $zero, 1
 	b	.LBB9_4
 	.p2align	4, , 16
 .LBB9_3:                                # %deleteChar.exit
@@ -423,19 +420,18 @@ printTheRest:                           # @printTheRest
 	beqz	$a0, .LBB9_12
 # %bb.7:                                #   in Loop: Header=BB9_4 Depth=1
 	ld.w	$a1, $s0, 12
-	blt	$a1, $s2, .LBB9_3
+	blez	$a1, .LBB9_3
 # %bb.8:                                #   in Loop: Header=BB9_4 Depth=1
 	addi.w	$a1, $a1, -1
 	st.w	$a1, $s0, 12
 	stx.b	$zero, $a0, $a1
 	b	.LBB9_3
 .LBB9_9:                                # %tailrecurse._crit_edge
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .LBB9_10:                               # %.lr.ph.split.us
 	ld.b	$a1, $fp, 0

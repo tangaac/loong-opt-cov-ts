@@ -31,8 +31,7 @@ delete:                                 # @delete
 	jirl	$ra, $ra, 0
 	ld.d	$s0, $fp, 0
 	ld.d	$a0, $s0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_7
+	blez	$a0, .LBB0_7
 # %bb.3:
 	ld.d	$a0, $s0, 8
 	bnez	$a0, .LBB0_8

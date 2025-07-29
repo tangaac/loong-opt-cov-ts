@@ -145,7 +145,7 @@ gs_matrix_multiply:                     # @gs_matrix_multiply
 	fld.s	$fa7, $a1, 32
 	fst.s	$fa6, $sp, 8
 	or	$a4, $a0, $a3
-	bstrpick.d	$a4, $a4, 62, 0
+	slli.d	$a4, $a4, 1
 	fst.s	$fa7, $sp, 0
 	beqz	$a4, .LBB4_2
 # %bb.1:
@@ -180,12 +180,12 @@ gs_matrix_multiply:                     # @gs_matrix_multiply
 .LBB4_2:
 	fld.s	$fa6, $a1, 64
 	fld.s	$fa7, $a1, 80
-	ld.d	$a0, $sp, 8
 	fmadd.s	$fa6, $fa3, $fa4, $fa6
+	ld.d	$a0, $sp, 8
 	fst.s	$fa6, $a2, 64
 	fmadd.s	$ft1, $fa0, $fa1, $fa7
-	bstrpick.d	$a1, $a0, 62, 0
 	movgr2fr.w	$fa7, $zero
+	slli.d	$a1, $a0, 1
 	fst.s	$ft1, $a2, 80
 	fmov.s	$ft0, $fa7
 	beqz	$a1, .LBB4_4
@@ -198,7 +198,7 @@ gs_matrix_multiply:                     # @gs_matrix_multiply
 	ld.d	$a0, $sp, 0
 	fst.s	$ft0, $a2, 16
 	fmul.s	$fa3, $fa5, $fa4
-	bstrpick.d	$a1, $a0, 62, 0
+	slli.d	$a1, $a0, 1
 	fst.s	$fa3, $a2, 0
 	beqz	$a1, .LBB4_6
 # %bb.5:
@@ -225,7 +225,7 @@ gs_matrix_invert:                       # @gs_matrix_invert
 	ld.d	$a3, $a0, 16
 	ld.d	$a2, $a0, 32
 	or	$a4, $a2, $a3
-	bstrpick.d	$a4, $a4, 62, 0
+	slli.d	$a4, $a4, 1
 	beqz	$a4, .LBB5_3
 # %bb.1:
 	movgr2fr.w	$fa1, $a3
@@ -244,12 +244,12 @@ gs_matrix_invert:                       # @gs_matrix_invert
 	ret
 .LBB5_3:
 	ld.d	$a3, $a0, 0
-	bstrpick.d	$a4, $a3, 62, 0
+	slli.d	$a4, $a3, 1
 	addi.w	$a2, $zero, -23
 	beqz	$a4, .LBB5_8
 # %bb.4:
 	ld.d	$a4, $a0, 48
-	bstrpick.d	$a5, $a4, 62, 0
+	slli.d	$a5, $a4, 1
 	beqz	$a5, .LBB5_8
 # %bb.5:
 	movgr2fr.w	$fa0, $a3
@@ -428,7 +428,7 @@ gs_point_transform:                     # @gs_point_transform
 	fcvt.s.d	$fa2, $fa2
 	fst.s	$fa2, $a1, 4
 	ld.d	$a2, $a0, 32
-	bstrpick.d	$a3, $a2, 62, 0
+	slli.d	$a3, $a2, 1
 	beqz	$a3, .LBB7_2
 # %bb.1:
 	movgr2fr.w	$fa4, $a2
@@ -439,7 +439,7 @@ gs_point_transform:                     # @gs_point_transform
 	fst.s	$fa1, $a1, 0
 .LBB7_2:
 	ld.d	$a0, $a0, 16
-	bstrpick.d	$a2, $a0, 62, 0
+	slli.d	$a2, $a0, 1
 	beqz	$a2, .LBB7_4
 # %bb.3:
 	movgr2fr.w	$fa1, $a0
@@ -463,7 +463,7 @@ gs_point_transform_inverse:             # @gs_point_transform_inverse
 	ld.d	$a2, $a0, 32
 	fld.s	$fa2, $a0, 0
 	or	$a4, $a2, $a3
-	bstrpick.d	$a4, $a4, 62, 0
+	slli.d	$a4, $a4, 1
 	beqz	$a4, .LBB8_3
 # %bb.1:
 	movgr2fr.w	$fa3, $a3
@@ -566,7 +566,7 @@ gs_distance_transform:                  # @gs_distance_transform
 	fcvt.s.d	$fa2, $fa2
 	fst.s	$fa2, $a1, 4
 	ld.d	$a2, $a0, 32
-	bstrpick.d	$a3, $a2, 62, 0
+	slli.d	$a3, $a2, 1
 	beqz	$a3, .LBB9_2
 # %bb.1:
 	movgr2fr.w	$fa4, $a2
@@ -577,7 +577,7 @@ gs_distance_transform:                  # @gs_distance_transform
 	fst.s	$fa1, $a1, 0
 .LBB9_2:
 	ld.d	$a0, $a0, 16
-	bstrpick.d	$a2, $a0, 62, 0
+	slli.d	$a2, $a0, 1
 	beqz	$a2, .LBB9_4
 # %bb.3:
 	movgr2fr.w	$fa1, $a0
@@ -601,7 +601,7 @@ gs_distance_transform_inverse:          # @gs_distance_transform_inverse
 	ld.d	$a2, $a0, 32
 	fld.s	$fa2, $a0, 0
 	or	$a4, $a2, $a3
-	bstrpick.d	$a4, $a4, 62, 0
+	slli.d	$a4, $a4, 1
 	beqz	$a4, .LBB10_3
 # %bb.1:
 	movgr2fr.w	$fa3, $a3
@@ -656,14 +656,14 @@ gs_distance_transform_inverse:          # @gs_distance_transform_inverse
 	.type	gs_bbox_transform_inverse,@function
 gs_bbox_transform_inverse:              # @gs_bbox_transform_inverse
 # %bb.0:
-	fld.s	$fa1, $a0, 0
+	fld.s	$fa2, $a0, 0
 	ld.d	$a4, $a1, 16
 	ld.d	$a3, $a1, 32
-	fcvt.d.s	$fa2, $fa1
+	fcvt.d.s	$fa1, $fa2
 	fld.s	$fa4, $a0, 4
 	fld.s	$fa3, $a1, 0
 	or	$a5, $a3, $a4
-	bstrpick.d	$a5, $a5, 62, 0
+	slli.d	$a5, $a5, 1
 	fcvt.d.s	$ft1, $fa4
 	beqz	$a5, .LBB11_3
 # %bb.1:
@@ -682,23 +682,23 @@ gs_bbox_transform_inverse:              # @gs_bbox_transform_inverse
 .LBB11_3:
 	fld.s	$fa0, $a1, 64
 	fcvt.d.s	$fa0, $fa0
-	fsub.d	$fa0, $fa2, $fa0
-	fcvt.d.s	$fa2, $fa3
+	fsub.d	$fa0, $fa1, $fa0
+	fcvt.d.s	$fa1, $fa3
 	fld.s	$fa5, $a1, 80
-	fdiv.d	$fa0, $fa0, $fa2
+	fdiv.d	$fa0, $fa0, $fa1
 	fcvt.s.d	$fa0, $fa0
 	fld.s	$fa6, $a1, 48
-	fcvt.d.s	$fa2, $fa5
-	fsub.d	$fa2, $ft1, $fa2
+	fcvt.d.s	$fa1, $fa5
+	fsub.d	$fa1, $ft1, $fa1
 	fld.s	$fa5, $a0, 8
 	fcvt.d.s	$fa7, $fa6
-	fdiv.d	$fa2, $fa2, $fa7
-	fcvt.s.d	$fa2, $fa2
-	fsub.s	$fa1, $fa5, $fa1
+	fdiv.d	$fa1, $fa1, $fa7
+	fcvt.s.d	$fa1, $fa1
+	fsub.s	$fa2, $fa5, $fa2
 	fld.s	$ft0, $a0, 12
-	fdiv.s	$fa5, $fa1, $fa3
+	fdiv.s	$fa5, $fa2, $fa3
 	movgr2fr.w	$ft1, $zero
-	fdiv.s	$fa1, $ft1, $fa6
+	fdiv.s	$fa2, $ft1, $fa6
 	fsub.s	$fa4, $ft0, $fa4
 	fcvt.d.s	$fa4, $fa4
 	fdiv.s	$fa3, $ft1, $fa3
@@ -718,7 +718,7 @@ gs_bbox_transform_inverse:              # @gs_bbox_transform_inverse
 	fnmadd.s	$ft2, $ft2, $ft4, $ft5
 	fcvt.d.s	$ft3, $ft3
 	fcvt.d.s	$ft5, $ft7
-	fmadd.d	$ft3, $fa2, $ft3, $ft5
+	fmadd.d	$ft3, $fa1, $ft3, $ft5
 	fcvt.s.d	$ft3, $ft3
 	fcvt.d.s	$ft5, $ft6
 	fcvt.d.s	$ft2, $ft2
@@ -742,25 +742,25 @@ gs_bbox_transform_inverse:              # @gs_bbox_transform_inverse
 	andi	$a1, $a1, 1
 	fcvt.d.s	$ft1, $ft4
 	fcvt.d.s	$ft3, $ft2
-	fmadd.d	$fa2, $fa2, $ft1, $ft3
+	fmadd.d	$fa1, $fa1, $ft1, $ft3
 	fld.s	$ft1, $a0, 12
-	fcvt.s.d	$fa2, $fa2
+	fcvt.s.d	$fa1, $fa1
 	movgr2cf	$fcc0, $a1
-	fsel	$fa2, $fa2, $ft2, $fcc0
+	fsel	$fa1, $fa1, $ft2, $fcc0
 	fld.s	$ft2, $a0, 8
 	fsub.s	$fa4, $ft1, $fa4
 	fcvt.d.s	$fa4, $fa4
 	fcvt.d.s	$ft1, $fa3
-	fsub.s	$fa1, $ft2, $fa1
-	fcvt.d.s	$fa3, $fa1
+	fsub.s	$fa2, $ft2, $fa2
+	fcvt.d.s	$fa3, $fa2
 	fcvt.d.s	$fa7, $fa7
-	fneg.d	$fa1, $fa7
-	fmul.d	$fa1, $fa1, $fa3
+	fneg.d	$fa2, $fa7
+	fmul.d	$fa2, $fa2, $fa3
 	movgr2fr.d	$ft2, $zero
-	fmadd.d	$fa1, $ft1, $ft2, $fa1
+	fmadd.d	$fa2, $ft1, $ft2, $fa2
 	fcvt.d.s	$ft0, $ft0
-	fdiv.d	$fa1, $fa1, $ft0
-	fcvt.s.d	$fa1, $fa1
+	fdiv.d	$fa2, $fa2, $ft0
+	fcvt.s.d	$fa2, $fa2
 	fcvt.d.s	$fa6, $fa6
 	fcvt.d.s	$ft3, $fa5
 	fneg.d	$ft4, $ft2
@@ -789,19 +789,19 @@ gs_bbox_transform_inverse:              # @gs_bbox_transform_inverse
 	fcmp.clt.s	$fcc0, $fa3, $fa7
 	fsel	$fa3, $fa5, $fa6, $fcc0
 	fsel	$fa0, $ft0, $fa0, $fcc0
-	fadd.s	$fa5, $fa1, $fa2
-	fcmp.clt.s	$fcc0, $fa1, $fa7
-	fsel	$fa1, $fa2, $fa5, $fcc0
-	fsel	$fa2, $fa5, $fa2, $fcc0
-	fadd.s	$fa5, $fa1, $fa4
-	fadd.s	$fa6, $fa2, $fa4
+	fadd.s	$fa5, $fa2, $fa1
+	fcmp.clt.s	$fcc0, $fa2, $fa7
+	fsel	$fa2, $fa1, $fa5, $fcc0
+	fsel	$fa1, $fa5, $fa1, $fcc0
+	fadd.s	$fa5, $fa2, $fa4
+	fadd.s	$fa6, $fa1, $fa4
 	fcmp.clt.s	$fcc0, $fa4, $fa7
-	fsel	$fa1, $fa1, $fa5, $fcc0
-	fsel	$fa2, $fa6, $fa2, $fcc0
+	fsel	$fa2, $fa2, $fa5, $fcc0
+	fsel	$fa1, $fa6, $fa1, $fcc0
 	fst.s	$fa3, $a2, 0
-	fst.s	$fa1, $a2, 4
+	fst.s	$fa2, $a2, 4
 	fst.s	$fa0, $a2, 8
-	fst.s	$fa2, $a2, 12
+	fst.s	$fa1, $a2, 12
 	ret
 .Lfunc_end11:
 	.size	gs_bbox_transform_inverse, .Lfunc_end11-gs_bbox_transform_inverse
@@ -837,7 +837,7 @@ gs_point_transform2fixed:               # @gs_point_transform2fixed
 	add.d	$a2, $a2, $a4
 	st.d	$a2, $a1, 8
 	ld.d	$a4, $a0, 32
-	bstrpick.d	$a5, $a4, 62, 0
+	slli.d	$a5, $a4, 1
 	beqz	$a5, .LBB12_2
 # %bb.1:
 	movgr2fr.w	$fa3, $a4
@@ -850,7 +850,7 @@ gs_point_transform2fixed:               # @gs_point_transform2fixed
 	st.d	$a3, $a1, 0
 .LBB12_2:
 	ld.d	$a0, $a0, 16
-	bstrpick.d	$a3, $a0, 62, 0
+	slli.d	$a3, $a0, 1
 	beqz	$a3, .LBB12_4
 # %bb.3:
 	movgr2fr.w	$fa1, $a0
@@ -892,7 +892,7 @@ gs_distance_transform2fixed:            # @gs_distance_transform2fixed
 	ftintrz.l.d	$fa3, $fa3
 	fst.d	$fa3, $a1, 8
 	ld.d	$a2, $a0, 32
-	bstrpick.d	$a3, $a2, 62, 0
+	slli.d	$a3, $a2, 1
 	beqz	$a3, .LBB13_2
 # %bb.1:
 	movfr2gr.d	$a3, $fa4
@@ -906,7 +906,7 @@ gs_distance_transform2fixed:            # @gs_distance_transform2fixed
 	st.d	$a2, $a1, 0
 .LBB13_2:
 	ld.d	$a0, $a0, 16
-	bstrpick.d	$a2, $a0, 62, 0
+	slli.d	$a2, $a0, 1
 	beqz	$a2, .LBB13_4
 # %bb.3:
 	movfr2gr.d	$a2, $fa3

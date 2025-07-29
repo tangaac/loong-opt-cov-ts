@@ -16,8 +16,7 @@ match:                                  # @match
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$s1, $a0, 30, 0
 	.p2align	4, , 16

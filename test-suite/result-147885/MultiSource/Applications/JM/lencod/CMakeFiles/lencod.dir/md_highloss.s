@@ -1510,11 +1510,11 @@ encode_one_macroblock_highloss:         # @encode_one_macroblock_highloss
 	bstrpick.d	$a0, $a0, 15, 0
 	addi.d	$a3, $a0, -10
 	sltui	$a3, $a3, 1
-	or	$a3, $a2, $a3
-	ori	$a2, $zero, 1
-	bne	$a3, $a2, .LBB0_153
+	or	$a2, $a2, $a3
+	beqz	$a2, .LBB0_153
 # %bb.152:
 	ori	$a3, $zero, 14
+	ori	$a2, $zero, 1
 	bne	$a0, $a3, .LBB0_157
 .LBB0_153:
 	bnez	$a1, .LBB0_155

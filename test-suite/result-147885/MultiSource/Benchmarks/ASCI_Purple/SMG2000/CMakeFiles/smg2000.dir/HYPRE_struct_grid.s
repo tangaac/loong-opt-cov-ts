@@ -31,13 +31,12 @@ HYPRE_StructGridSetExtents:             # @HYPRE_StructGridSetExtents
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a2
-	st.d	$zero, $sp, 16
 	ld.w	$a2, $a0, 4
+	st.d	$zero, $sp, 16
 	st.w	$zero, $sp, 24
 	st.d	$zero, $sp, 0
-	ori	$a3, $zero, 1
 	st.w	$zero, $sp, 8
-	blt	$a2, $a3, .LBB2_2
+	blez	$a2, .LBB2_2
 # %bb.1:                                # %.lr.ph.preheader
 	slli.d	$s0, $a2, 2
 	move	$s1, $a0
@@ -75,9 +74,8 @@ HYPRE_StructGridSetPeriodic:            # @HYPRE_StructGridSetPeriodic
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a2, $a0, 4
 	st.d	$zero, $sp, 0
-	ori	$a3, $zero, 1
 	st.w	$zero, $sp, 8
-	blt	$a2, $a3, .LBB3_2
+	blez	$a2, .LBB3_2
 # %bb.1:                                # %.lr.ph.preheader
 	slli.d	$a2, $a2, 2
 	move	$fp, $a0

@@ -156,24 +156,22 @@ get_points_on_hull:                     # @get_points_on_hull
 	.type	add_segments,@function
 add_segments:                           # @add_segments
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s0, $a1
 	move	$s1, $a0
 	beqz	$a3, .LBB5_4
 # %bb.1:                                # %tailrecurse.outer.split
-	ori	$s2, $zero, 1
-	ori	$s3, $zero, 24
-	ori	$s4, $zero, 16
+	ori	$s2, $zero, 24
+	ori	$s3, $zero, 16
 	.p2align	4, , 16
 .LBB5_2:                                # %tailrecurse
                                         # =>This Inner Loop Header: Depth=1
@@ -182,27 +180,27 @@ add_segments:                           # @add_segments
 	xor	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	ld.d	$s6, $s1, 8
-	ldx.d	$s5, $s0, $a0
+	ld.d	$s5, $s1, 8
+	ldx.d	$s4, $s0, $a0
 	srli.d	$a0, $a1, 32
-	srli.d	$a2, $s6, 32
-	srli.d	$a3, $s5, 32
+	srli.d	$a2, $s5, 32
+	srli.d	$a3, $s4, 32
 	sub.d	$a4, $a2, $a3
 	mul.d	$a1, $a4, $a1
-	sub.d	$a4, $s5, $s6
+	sub.d	$a4, $s4, $s5
 	mul.d	$a0, $a4, $a0
-	mul.d	$a3, $a3, $s6
-	mul.d	$a2, $a2, $s5
+	mul.d	$a3, $a3, $s5
+	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a3
 	sub.d	$a0, $a0, $a2
 	add.w	$a0, $a0, $a1
-	blt	$a0, $s2, .LBB5_7
+	blez	$a0, .LBB5_7
 # %bb.3:                                #   in Loop: Header=BB5_2 Depth=1
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 0
-	st.d	$s6, $a0, 8
+	st.d	$s4, $a0, 0
+	st.d	$s5, $a0, 8
 	ld.d	$a1, $s0, 32
 	st.d	$a1, $a0, 32
 	st.d	$s1, $a0, 40
@@ -210,10 +208,10 @@ add_segments:                           # @add_segments
 	st.d	$fp, $a0, 24
 	st.d	$a0, $s1, 24
 	ld.d	$a2, $a1, 0
-	xor	$a2, $a2, $s5
+	xor	$a2, $a2, $s4
 	sltui	$a2, $a2, 1
-	masknez	$a3, $s3, $a2
-	maskeqz	$a2, $s4, $a2
+	masknez	$a3, $s2, $a2
+	maskeqz	$a2, $s3, $a2
 	or	$a2, $a2, $a3
 	stx.d	$a0, $a1, $a2
 	st.d	$a0, $s0, 32
@@ -222,9 +220,8 @@ add_segments:                           # @add_segments
 	move	$s0, $a1
 	b	.LBB5_2
 .LBB5_4:                                # %tailrecurse.outer.split.us.us.preheader
-	addi.w	$s2, $zero, -1
-	ori	$s3, $zero, 40
-	ori	$s4, $zero, 32
+	ori	$s2, $zero, 40
+	ori	$s3, $zero, 32
 	.p2align	4, , 16
 .LBB5_5:                                # %tailrecurse.outer.split.us.us
                                         # =>This Inner Loop Header: Depth=1
@@ -233,28 +230,28 @@ add_segments:                           # @add_segments
 	xor	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	ld.d	$s6, $s1, 8
-	ldx.d	$s5, $s0, $a0
+	ld.d	$s5, $s1, 8
+	ldx.d	$s4, $s0, $a0
 	srli.d	$a0, $a1, 32
-	srli.d	$a2, $s6, 32
-	srli.d	$a3, $s5, 32
+	srli.d	$a2, $s5, 32
+	srli.d	$a3, $s4, 32
 	sub.d	$a4, $a2, $a3
 	mul.d	$a1, $a4, $a1
-	sub.d	$a4, $s5, $s6
+	sub.d	$a4, $s4, $s5
 	mul.d	$a0, $a4, $a0
-	mul.d	$a3, $a3, $s6
-	mul.d	$a2, $a2, $s5
+	mul.d	$a3, $a3, $s5
+	mul.d	$a2, $a2, $s4
 	add.d	$a0, $a0, $a3
 	sub.d	$a0, $a0, $a2
 	add.w	$a0, $a0, $a1
-	blt	$s2, $a0, .LBB5_7
+	bgez	$a0, .LBB5_7
 # %bb.6:                                # %.split72.us.us
                                         #   in Loop: Header=BB5_5 Depth=1
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 0
-	st.d	$s6, $a0, 8
+	st.d	$s4, $a0, 0
+	st.d	$s5, $a0, 8
 	ld.d	$a1, $s0, 16
 	st.d	$a1, $a0, 16
 	st.d	$s1, $a0, 24
@@ -262,10 +259,10 @@ add_segments:                           # @add_segments
 	st.d	$fp, $a0, 40
 	st.d	$a0, $s1, 40
 	ld.d	$a2, $a1, 0
-	xor	$a2, $a2, $s5
+	xor	$a2, $a2, $s4
 	sltui	$a2, $a2, 1
-	masknez	$a3, $s3, $a2
-	maskeqz	$a2, $s4, $a2
+	masknez	$a3, $s2, $a2
+	maskeqz	$a2, $s3, $a2
 	or	$a2, $a2, $a3
 	stx.d	$a0, $a1, $a2
 	st.d	$a0, $s0, 16
@@ -274,16 +271,15 @@ add_segments:                           # @add_segments
 	move	$s1, $a0
 	b	.LBB5_5
 .LBB5_7:                                # %.split.us
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end5:
 	.size	add_segments, .Lfunc_end5-add_segments
@@ -306,10 +302,10 @@ construct_ch:                           # @construct_ch
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(Splaytree)
-	ld.d	$s1, $a0, %got_pc_lo12(Splaytree)
+	ld.d	$s0, $a0, %got_pc_lo12(Splaytree)
 	pcalau12i	$a0, %got_pc_hi20(CHno)
 	ld.d	$a0, $a0, %got_pc_lo12(CHno)
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s0, 0
 	st.w	$zero, $a0, 0
 	beqz	$a1, .LBB6_11
 # %bb.1:
@@ -317,36 +313,36 @@ construct_ch:                           # @construct_ch
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(delete_min)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 0
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s0, 0
 	st.d	$fp, $fp, 16
 	st.d	$fp, $fp, 24
 	st.d	$fp, $fp, 32
 	st.d	$fp, $fp, 40
 	beqz	$a1, .LBB6_12
 # %bb.2:
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(delete_min)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s0, 0
 	st.d	$a0, $fp, 8
 	beqz	$a1, .LBB6_13
 # %bb.3:                                # %.lr.ph.preheader
-	addi.w	$s3, $zero, -1
-	ori	$s4, $zero, 1
-	ori	$s7, $zero, 40
-	ori	$s8, $zero, 32
+	ori	$s3, $zero, 24
+	ori	$s4, $zero, 16
+	ori	$s5, $zero, 40
+	ori	$s6, $zero, 32
 	move	$s2, $fp
-	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	b	.LBB6_5
 	.p2align	4, , 16
 .LBB6_4:                                # %add_segments.exit47
                                         #   in Loop: Header=BB6_5 Depth=1
-	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a0, $s1, 0
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a0, $s0, 0
 	ld.d	$fp, $s2, 40
 	beqz	$a0, .LBB6_14
 .LBB6_5:                                # %.lr.ph
@@ -357,120 +353,118 @@ construct_ch:                           # @construct_ch
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s2, 8
-	move	$s0, $a0
+	move	$s1, $a0
 	st.d	$a1, $a0, 0
-	move	$a0, $s1
+	move	$a0, $s0
 	pcaddu18i	$ra, %call36(delete_min)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s0, 8
-	st.d	$s2, $s0, 16
-	st.d	$fp, $s0, 32
-	st.d	$s0, $s0, 24
-	st.d	$s0, $s0, 40
-	st.d	$s0, $fp, 24
-	st.d	$s0, $s2, 40
-	move	$s1, $s0
+	st.d	$a0, $s1, 8
+	st.d	$s2, $s1, 16
+	st.d	$fp, $s1, 32
+	st.d	$s1, $s1, 24
+	st.d	$s1, $s1, 40
+	st.d	$s1, $fp, 24
+	st.d	$s1, $s2, 40
+	move	$s7, $s1
 	.p2align	4, , 16
 .LBB6_6:                                # %tailrecurse.outer.split.us.us.i
                                         #   Parent Loop BB6_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s2, 0
-	ld.d	$a1, $s1, 0
+	ld.d	$a1, $s7, 0
 	xor	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	ld.d	$s6, $s1, 8
-	ldx.d	$s5, $s2, $a0
+	ld.d	$s0, $s7, 8
+	ldx.d	$s8, $s2, $a0
 	srli.d	$a0, $a1, 32
-	srli.d	$a2, $s6, 32
-	srli.d	$a3, $s5, 32
+	srli.d	$a2, $s0, 32
+	srli.d	$a3, $s8, 32
 	sub.d	$a4, $a2, $a3
 	mul.d	$a1, $a4, $a1
-	sub.d	$a4, $s5, $s6
+	sub.d	$a4, $s8, $s0
 	mul.d	$a0, $a4, $a0
-	mul.d	$a3, $a3, $s6
-	mul.d	$a2, $a2, $s5
+	mul.d	$a3, $a3, $s0
+	mul.d	$a2, $a2, $s8
 	add.d	$a0, $a0, $a3
 	sub.d	$a0, $a0, $a2
 	add.w	$a0, $a0, $a1
-	blt	$s3, $a0, .LBB6_8
+	bgez	$a0, .LBB6_8
 # %bb.7:                                # %.split72.us.us.i
                                         #   in Loop: Header=BB6_6 Depth=2
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 0
-	st.d	$s6, $a0, 8
+	st.d	$s8, $a0, 0
+	st.d	$s0, $a0, 8
 	ld.d	$a1, $s2, 16
 	st.d	$a1, $a0, 16
-	st.d	$s1, $a0, 24
+	st.d	$s7, $a0, 24
 	st.d	$s2, $a0, 32
-	st.d	$s0, $a0, 40
-	st.d	$a0, $s1, 40
+	st.d	$s1, $a0, 40
+	st.d	$a0, $s7, 40
 	ld.d	$a2, $a1, 0
-	xor	$a2, $a2, $s5
+	xor	$a2, $a2, $s8
 	sltui	$a2, $a2, 1
-	masknez	$a3, $s7, $a2
-	maskeqz	$a2, $s8, $a2
+	masknez	$a3, $s5, $a2
+	maskeqz	$a2, $s6, $a2
 	or	$a2, $a2, $a3
 	stx.d	$a0, $a1, $a2
 	st.d	$a0, $s2, 16
-	st.d	$a0, $s0, 24
+	st.d	$a0, $s1, 24
 	move	$s2, $a1
-	move	$s1, $a0
+	move	$s7, $a0
 	b	.LBB6_6
 	.p2align	4, , 16
 .LBB6_8:                                # %add_segments.exit
                                         #   in Loop: Header=BB6_5 Depth=1
-	ld.d	$s2, $s0, 24
-	ori	$s6, $zero, 24
+	ld.d	$s2, $s1, 24
 	.p2align	4, , 16
 .LBB6_9:                                # %tailrecurse.i
                                         #   Parent Loop BB6_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $fp, 0
-	ld.d	$a1, $s0, 0
+	ld.d	$a1, $s1, 0
 	xor	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	slli.d	$a0, $a0, 3
-	ld.d	$s5, $s0, 8
-	ldx.d	$s1, $fp, $a0
+	ld.d	$s0, $s1, 8
+	ldx.d	$s7, $fp, $a0
 	srli.d	$a0, $a1, 32
-	srli.d	$a2, $s5, 32
-	srli.d	$a3, $s1, 32
+	srli.d	$a2, $s0, 32
+	srli.d	$a3, $s7, 32
 	sub.d	$a4, $a2, $a3
 	mul.d	$a1, $a4, $a1
-	sub.d	$a4, $s1, $s5
+	sub.d	$a4, $s7, $s0
 	mul.d	$a0, $a4, $a0
-	mul.d	$a3, $a3, $s5
-	mul.d	$a2, $a2, $s1
+	mul.d	$a3, $a3, $s0
+	mul.d	$a2, $a2, $s7
 	add.d	$a0, $a0, $a3
 	sub.d	$a0, $a0, $a2
 	add.w	$a0, $a0, $a1
-	blt	$a0, $s4, .LBB6_4
+	blez	$a0, .LBB6_4
 # %bb.10:                               #   in Loop: Header=BB6_9 Depth=2
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s1, $a0, 0
-	st.d	$s5, $a0, 8
+	st.d	$s7, $a0, 0
+	st.d	$s0, $a0, 8
 	ld.d	$a1, $fp, 32
 	st.d	$a1, $a0, 32
-	st.d	$s0, $a0, 40
+	st.d	$s1, $a0, 40
 	st.d	$fp, $a0, 16
 	st.d	$s2, $a0, 24
-	st.d	$a0, $s0, 24
+	st.d	$a0, $s1, 24
 	ld.d	$a2, $a1, 0
-	xor	$a2, $a2, $s1
+	xor	$a2, $a2, $s7
 	sltui	$a2, $a2, 1
-	masknez	$a3, $s6, $a2
-	ori	$a4, $zero, 16
-	maskeqz	$a2, $a4, $a2
+	masknez	$a3, $s3, $a2
+	maskeqz	$a2, $s4, $a2
 	or	$a2, $a2, $a3
 	stx.d	$a0, $a1, $a2
 	st.d	$a0, $fp, 32
 	st.d	$a0, $s2, 40
-	move	$s0, $a0
+	move	$s1, $a0
 	move	$fp, $a1
 	b	.LBB6_9
 .LBB6_11:

@@ -758,8 +758,7 @@ laccess_problem:                        # @laccess_problem
 	addi.w	$a0, $s1, 0
 	pcaddu18i	$ra, %call36(no_interrupt)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -1
-	bge	$a0, $fp, .LBB15_11
+	bltz	$fp, .LBB15_11
 # %bb.10:
 	move	$a0, $zero
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
@@ -1108,10 +1107,8 @@ lreadlink:                              # @lreadlink
 	pcaddu18i	$ra, %call36(readlink)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	lu12i.w	$a0, -524288
-	lu32i.d	$a0, 0
-	and	$a0, $s0, $a0
-	bnez	$a0, .LBB21_2
+	slli.d	$a0, $a0, 32
+	bltz	$a0, .LBB21_2
 # %bb.1:
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(no_interrupt)
@@ -1341,9 +1338,8 @@ list2char:                              # @list2char
 	ld.d	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(cons)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	st.d	$a0, $fp, 0
-	blt	$s0, $a2, .LBB26_3
+	blez	$s0, .LBB26_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s5, $zero
 	.p2align	4, , 16
@@ -1562,7 +1558,7 @@ assemble_options:                       # @assemble_options
 .LBB29_4:                               #   in Loop: Header=BB29_7 Depth=1
 	addi.w	$a0, $s0, 0
 	or	$s1, $s5, $s1
-	blt	$a0, $s4, .LBB29_11
+	blez	$a0, .LBB29_11
 # %bb.5:                                #   in Loop: Header=BB29_7 Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(llength)
@@ -1619,8 +1615,7 @@ assemble_options:                       # @assemble_options
 	addi.w	$a0, $zero, -1
 	beq	$a1, $a0, .LBB29_18
 # %bb.16:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB29_19
+	blez	$a1, .LBB29_19
 # %bb.17:
 	sll.w	$a1, $a0, $s0
 	xor	$a1, $a1, $s3
@@ -2618,8 +2613,8 @@ decode_st_moden:                        # @decode_st_moden
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB50_2
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB50_2
 # %bb.1:
 	move	$s0, $zero
 	andi	$a0, $fp, 1024
@@ -4119,7 +4114,6 @@ url_decode:                             # @url_decode
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(get_c_string)
 	jirl	$ra, $ra, 0
@@ -4129,8 +4123,7 @@ url_decode:                             # @url_decode
 	move	$s3, $zero
 	addi.d	$s4, $a0, 2
 	ori	$s5, $zero, 37
-	lu12i.w	$s6, 1
-	ori	$s7, $zero, 43
+	ori	$s6, $zero, 43
 	b	.LBB75_2
 	.p2align	4, , 16
 .LBB75_1:                               #   in Loop: Header=BB75_2 Depth=1
@@ -4140,7 +4133,7 @@ url_decode:                             # @url_decode
 	ld.bu	$a0, $s4, -2
 	beq	$a0, $s5, .LBB75_6
 # %bb.3:                                #   in Loop: Header=BB75_2 Depth=1
-	beq	$a0, $s7, .LBB75_1
+	beq	$a0, $s6, .LBB75_1
 # %bb.4:                                #   in Loop: Header=BB75_2 Depth=1
 	beqz	$a0, .LBB75_10
 # %bb.5:                                #   in Loop: Header=BB75_2 Depth=1
@@ -4155,14 +4148,14 @@ url_decode:                             # @url_decode
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a1, $a0, $a1
-	and	$a1, $a1, $s6
-	beqz	$a1, .LBB75_9
+	slli.d	$a1, $a1, 51
+	bgez	$a1, .LBB75_9
 # %bb.7:                                #   in Loop: Header=BB75_2 Depth=1
 	ld.b	$a1, $s4, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	and	$a0, $a0, $s6
-	beqz	$a0, .LBB75_9
+	slli.d	$a0, $a0, 51
+	bgez	$a0, .LBB75_9
 # %bb.8:                                #   in Loop: Header=BB75_2 Depth=1
 	addi.w	$s2, $s2, 1
 	addi.d	$s4, $s4, 1
@@ -4212,8 +4205,8 @@ url_decode:                             # @url_decode
 	ext.w.b	$s5, $a1
 	slli.d	$a2, $s5, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB75_19
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB75_19
 # %bb.18:                               #   in Loop: Header=BB75_14 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_toupper_loc)
 	jirl	$ra, $ra, 0
@@ -4230,8 +4223,8 @@ url_decode:                             # @url_decode
 	ld.d	$a0, $s2, 0
 	slli.d	$a1, $s6, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB75_22
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB75_22
 # %bb.21:                               #   in Loop: Header=BB75_14 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_toupper_loc)
 	jirl	$ra, $ra, 0
@@ -4252,7 +4245,6 @@ url_decode:                             # @url_decode
 	st.b	$zero, $s1, 0
 .LBB75_25:                              # %.loopexit
 	move	$a0, $fp
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -4300,9 +4292,8 @@ html_encode:                            # @html_encode
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$a0, $a1, .LBB76_7
+	blez	$a0, .LBB76_7
 # %bb.4:                                # %.lr.ph.preheader
 	ori	$a0, $zero, 4
 	bgeu	$s1, $a0, .LBB76_8
@@ -4401,8 +4392,7 @@ html_encode:                            # @html_encode
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(get_c_string)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB76_23
+	blez	$s1, .LBB76_23
 # %bb.13:                               # %.lr.ph52.preheader
 	move	$s2, $a0
 	ori	$s3, $zero, 28
@@ -4616,9 +4606,8 @@ lgets:                                  # @lgets
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(get_c_long)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
 	move	$s0, $a0
-	bge	$a1, $a0, .LBB78_5
+	bltz	$a0, .LBB78_5
 # %bb.2:
 	ori	$a0, $zero, 2049
 	bltu	$s0, $a0, .LBB78_7
@@ -4886,8 +4875,7 @@ pclose_l:                               # @pclose_l
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(no_interrupt)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $zero, -1
-	blt	$a0, $fp, .LBB82_2
+	bgez	$fp, .LBB82_2
 # %bb.1:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(llast_c_errmsg)
@@ -5981,9 +5969,8 @@ datref:                                 # @datref
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(get_c_long)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
 	move	$s1, $a0
-	blt	$a1, $a0, .LBB102_2
+	bgez	$a0, .LBB102_2
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(.L.str.119)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.119)
@@ -6363,10 +6350,9 @@ siod_main:                              # @siod_main
 	move	$s2, $a2
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	pcalau12i	$a1, %pc_hi20(.L.str.115)
-	addi.d	$a1, $a1, %pc_lo12(.L.str.115)
-	st.d	$a1, $sp, 56
+	addi.d	$a2, $a1, %pc_lo12(.L.str.115)
 	ori	$a1, $zero, 2
-	ori	$s0, $zero, 1
+	st.d	$a2, $sp, 56
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	blt	$a0, $a1, .LBB106_19
 # %bb.1:                                # %.lr.ph
@@ -6374,6 +6360,7 @@ siod_main:                              # @siod_main
 	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	move	$s1, $zero
 	move	$a3, $zero
+	ori	$fp, $zero, 1
 	ori	$s2, $zero, 45
 	pcalau12i	$a1, %pc_hi20(.L.str.122)
 	addi.d	$s3, $a1, %pc_lo12(.L.str.122)
@@ -6382,7 +6369,6 @@ siod_main:                              # @siod_main
 	addi.d	$a1, $a1, %pc_lo12(.Lstr.1)
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
 	ori	$s4, $zero, 109
-	ori	$fp, $zero, 1
 	b	.LBB106_3
 	.p2align	4, , 16
 .LBB106_2:                              #   in Loop: Header=BB106_3 Depth=1
@@ -6454,8 +6440,7 @@ siod_main:                              # @siod_main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB106_14
+	blez	$a0, .LBB106_14
 # %bb.12:                               #   in Loop: Header=BB106_7 Depth=2
 	ld.bu	$a0, $s6, 0
 	ori	$a1, $zero, 48
@@ -6495,7 +6480,6 @@ siod_main:                              # @siod_main
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	sltui	$s5, $a0, 1
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ori	$s0, $zero, 1
 	b	.LBB106_20
 .LBB106_19:
 	move	$s1, $zero
@@ -6509,7 +6493,7 @@ siod_main:                              # @siod_main
 	pcaddu18i	$ra, %call36(init_storage)
 	jirl	$ra, $ra, 0
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	blt	$fp, $s0, .LBB106_23
+	blez	$fp, .LBB106_23
 # %bb.21:                               # %.lr.ph106.preheader
 	move	$s3, $zero
 	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload

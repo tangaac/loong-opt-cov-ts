@@ -21,34 +21,33 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	pcaddu18i	$ra, %call36(makeup_labels)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(cube)
-	ld.d	$fp, $a0, %got_pc_lo12(cube)
-	ld.w	$s1, $fp, 124
-	ld.d	$a0, $fp, 32
+	ld.d	$s0, $a0, %got_pc_lo12(cube)
+	ld.w	$s1, $s0, 124
+	ld.d	$a0, $s0, 32
 	slli.d	$a1, $s1, 2
 	ldx.w	$s2, $a0, $a1
-	slli.d	$s0, $s2, 3
-	move	$a0, $s0
+	slli.d	$fp, $s2, 3
+	move	$a0, $fp
+	pcaddu18i	$ra, %call36(malloc)
+	jirl	$ra, $ra, 0
+	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	move	$a0, $s0
-	pcaddu18i	$ra, %call36(malloc)
-	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	move	$s3, $a0
-	blt	$s2, $a1, .LBB0_51
+	blez	$s2, .LBB0_51
 # %bb.1:                                # %.lr.ph
-	move	$s0, $zero
+	move	$fp, $zero
 	move	$s2, $zero
-	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $fp, 16
+	ld.d	$a0, $s0, 16
 	slli.d	$a1, $s1, 2
 	ldx.w	$a1, $a0, $a1
 	ld.d	$a0, $s5, 16
-	add.w	$a1, $s0, $a1
+	add.w	$a1, $fp, $a1
 	pcaddu18i	$ra, %call36(cof_output)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s3, 0
@@ -56,24 +55,23 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(complement)
 	jirl	$ra, $ra, 0
-	ld.w	$s1, $fp, 124
-	ld.d	$a1, $fp, 32
+	ld.w	$s1, $s0, 124
+	ld.d	$a1, $s0, 32
 	st.d	$a0, $s4, 0
 	slli.d	$a0, $s1, 2
 	ldx.w	$a0, $a1, $a0
 	addi.d	$s2, $s2, 1
-	addi.d	$s0, $s0, 1
+	addi.d	$fp, $fp, 1
 	addi.d	$s4, $s4, 8
 	addi.d	$s3, $s3, 8
 	blt	$s2, $a0, .LBB0_2
 # %bb.3:                                # %.preheader
 	ori	$a2, $zero, 2
-	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
 	blt	$a0, $a2, .LBB0_51
 # %bb.4:                                # %.lr.ph129
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
 	move	$a3, $zero
-	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
+	st.d	$zero, $sp, 48                  # 8-byte Folded Spill
 	ori	$s4, $zero, 1
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB0_6
@@ -81,9 +79,9 @@ find_equiv_outputs:                     # @find_equiv_outputs
 .LBB0_5:                                # %.loopexit121
                                         #   in Loop: Header=BB0_6 Depth=1
 	addi.w	$a2, $a0, -1
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
 	addi.d	$s4, $s4, 1
-	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 	bge	$a3, $a2, .LBB0_47
 .LBB0_6:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_8 Depth 2
@@ -94,16 +92,16 @@ find_equiv_outputs:                     # @find_equiv_outputs
                                         #       Child Loop BB0_36 Depth 3
                                         #       Child Loop BB0_42 Depth 3
 	addi.d	$a2, $a3, 1
-	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
 	bge	$a2, $a0, .LBB0_5
 # %bb.7:                                # %.lr.ph126
                                         #   in Loop: Header=BB0_6 Depth=1
 	slli.d	$a0, $a3, 3
-	ldx.d	$s3, $s2, $a0
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	st.d	$a3, $sp, 64                    # 8-byte Folded Spill
-	alsl.d	$a0, $a3, $a0, 3
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
+	ldx.d	$s3, $a1, $a0
+	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	alsl.d	$a0, $a3, $s2, 3
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB0_8:                                #   Parent Loop BB0_6 Depth=1
@@ -114,11 +112,12 @@ find_equiv_outputs:                     # @find_equiv_outputs
                                         #       Child Loop BB0_31 Depth 3
                                         #       Child Loop BB0_36 Depth 3
                                         #       Child Loop BB0_42 Depth 3
-	ld.d	$a0, $fp, 16
+	ld.d	$a0, $s0, 16
 	slli.d	$a1, $s1, 2
 	ldx.w	$s1, $a0, $a1
-	slli.d	$s0, $s4, 3
-	ldx.d	$s5, $s2, $s0
+	slli.d	$fp, $s4, 3
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
+	ldx.d	$s5, $a0, $fp
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(cube1list)
 	jirl	$ra, $ra, 0
@@ -126,8 +125,7 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.w	$a2, $s5, 0
 	mul.w	$a1, $a2, $a1
 	move	$s6, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_12
+	blez	$a1, .LBB0_12
 # %bb.9:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$s7, $s5, 24
@@ -164,8 +162,7 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.w	$a2, $s3, 0
 	mul.w	$a1, $a2, $a1
 	move	$s7, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_18
+	blez	$a1, .LBB0_18
 # %bb.15:                               # %.lr.ph42.i.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$s6, $s3, 24
@@ -201,8 +198,8 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	jirl	$ra, $ra, 0
 .LBB0_21:                               # %.sink.split
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 56
 	add.w	$a3, $s1, $a1
 	add.w	$a2, $s1, $s4
@@ -215,10 +212,10 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 	ori	$a0, $zero, 1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 .LBB0_22:                               #   in Loop: Header=BB0_8 Depth=2
-	ld.w	$s1, $fp, 124
-	ld.d	$a1, $fp, 32
+	ld.w	$s1, $s0, 124
+	ld.d	$a1, $s0, 32
 	slli.d	$a0, $s1, 2
 	ldx.w	$a0, $a1, $a0
 	addi.d	$s4, $s4, 1
@@ -228,8 +225,7 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	.p2align	4, , 16
 .LBB0_23:                               # %.loopexit119
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	ldx.d	$s6, $a0, $s0
+	ldx.d	$s6, $s2, $fp
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(cube1list)
 	jirl	$ra, $ra, 0
@@ -237,12 +233,11 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.w	$a2, $s6, 0
 	mul.w	$a1, $a2, $a1
 	move	$s7, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_27
+	blez	$a1, .LBB0_27
 # %bb.24:                               # %.lr.ph.i92.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$s8, $s6, 24
-	alsl.d	$s0, $a1, $s8, 2
+	alsl.d	$fp, $a1, $s8, 2
 	.p2align	4, , 16
 .LBB0_25:                               # %.lr.ph.i92
                                         #   Parent Loop BB0_6 Depth=1
@@ -256,7 +251,7 @@ find_equiv_outputs:                     # @find_equiv_outputs
 # %bb.26:                               #   in Loop: Header=BB0_25 Depth=3
 	ld.w	$a0, $s6, 0
 	alsl.d	$s8, $a0, $s8, 2
-	bltu	$s8, $s0, .LBB0_25
+	bltu	$s8, $fp, .LBB0_25
 .LBB0_27:                               # %._crit_edge.i83
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a0, $s7, 0
@@ -275,12 +270,11 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.w	$a2, $s3, 0
 	mul.w	$a1, $a2, $a1
 	move	$s7, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_33
+	blez	$a1, .LBB0_33
 # %bb.30:                               # %.lr.ph42.i89.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$s8, $s3, 24
-	alsl.d	$s0, $a1, $s8, 2
+	alsl.d	$fp, $a1, $s8, 2
 	.p2align	4, , 16
 .LBB0_31:                               # %.lr.ph42.i89
                                         #   Parent Loop BB0_6 Depth=1
@@ -294,7 +288,7 @@ find_equiv_outputs:                     # @find_equiv_outputs
 # %bb.32:                               #   in Loop: Header=BB0_31 Depth=3
 	ld.w	$a0, $s3, 0
 	alsl.d	$s8, $a0, $s8, 2
-	bltu	$s8, $s0, .LBB0_31
+	bltu	$s8, $fp, .LBB0_31
 .LBB0_33:                               # %._crit_edge43.i86
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a0, $s7, 0
@@ -314,26 +308,25 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.w	$a2, $s5, 0
 	mul.w	$a1, $a2, $a1
 	move	$s7, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_38
+	blez	$a1, .LBB0_38
 # %bb.35:                               # %.lr.ph.i106.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s0, $s5, 24
-	alsl.d	$s2, $a1, $s0, 2
+	ld.d	$fp, $s5, 24
+	alsl.d	$s2, $a1, $fp, 2
 	.p2align	4, , 16
 .LBB0_36:                               # %.lr.ph.i106
                                         #   Parent Loop BB0_6 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$a0, $s7
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(cube_is_covered)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_45
 # %bb.37:                               #   in Loop: Header=BB0_36 Depth=3
 	ld.w	$a0, $s5, 0
-	alsl.d	$s0, $a0, $s0, 2
-	bltu	$s0, $s2, .LBB0_36
+	alsl.d	$fp, $a0, $fp, 2
+	bltu	$fp, $s2, .LBB0_36
 .LBB0_38:                               # %._crit_edge.i97
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a0, $s7, 0
@@ -352,26 +345,25 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.w	$a2, $s8, 0
 	mul.w	$a1, $a2, $a1
 	move	$s7, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_44
+	blez	$a1, .LBB0_44
 # %bb.41:                               # %.lr.ph42.i103.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s0, $s8, 24
-	alsl.d	$s2, $a1, $s0, 2
+	ld.d	$fp, $s8, 24
+	alsl.d	$s2, $a1, $fp, 2
 	.p2align	4, , 16
 .LBB0_42:                               # %.lr.ph42.i103
                                         #   Parent Loop BB0_6 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	move	$a0, $s7
-	move	$a1, $s0
+	move	$a1, $fp
 	pcaddu18i	$ra, %call36(cube_is_covered)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_45
 # %bb.43:                               #   in Loop: Header=BB0_42 Depth=3
 	ld.w	$a0, $s8, 0
-	alsl.d	$s0, $a0, $s0, 2
-	bltu	$s0, $s2, .LBB0_42
+	alsl.d	$fp, $a0, $fp, 2
+	bltu	$fp, $s2, .LBB0_42
 .LBB0_44:                               # %._crit_edge43.i100
                                         #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a0, $s7, 0
@@ -393,18 +385,16 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	addi.d	$s5, $a0, %pc_lo12(.L.str.3)
 	b	.LBB0_21
 .LBB0_47:                               # %._crit_edge
-	ld.d	$s3, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_51
 # %bb.48:
 	slli.d	$a0, $s1, 2
 	ldx.w	$a0, $a1, $a0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_52
+	blez	$a0, .LBB0_52
 .LBB0_49:                               # %.lr.ph133.preheader
-	move	$s0, $zero
-	ld.d	$s1, $sp, 24                    # 8-byte Folded Reload
-	move	$s2, $s3
+	move	$fp, $zero
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_50:                               # %.lr.ph133
                                         # =>This Inner Loop Header: Depth=1
@@ -414,37 +404,36 @@ find_equiv_outputs:                     # @find_equiv_outputs
 	ld.d	$a0, $s2, 0
 	pcaddu18i	$ra, %call36(sf_free)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, 124
-	ld.d	$a1, $fp, 32
+	ld.w	$a0, $s0, 124
+	ld.d	$a1, $s0, 32
 	slli.d	$a0, $a0, 2
 	ldx.w	$a0, $a1, $a0
-	addi.d	$s0, $s0, 1
+	addi.d	$fp, $fp, 1
 	addi.d	$s2, $s2, 8
 	addi.d	$s1, $s1, 8
-	blt	$s0, $a0, .LBB0_50
+	blt	$fp, $a0, .LBB0_50
 	b	.LBB0_53
 .LBB0_51:                               # %._crit_edge.thread
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $fp, 32
-	ld.w	$s1, $fp, 124
+	ld.d	$a1, $s0, 32
+	ld.w	$s1, $s0, 124
 	slli.d	$a0, $s1, 2
 	ldx.w	$a0, $a1, $a0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB0_49
+	bgtz	$a0, .LBB0_49
 .LBB0_52:                               # %._crit_edge134
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	beqz	$a0, .LBB0_54
 .LBB0_53:                               # %._crit_edge134.thread
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB0_54:
-	beqz	$s3, .LBB0_56
+	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
+	beqz	$a0, .LBB0_56
 # %bb.55:
-	move	$a0, $s3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB0_56:
@@ -484,9 +473,8 @@ check_equiv:                            # @check_equiv
 	ld.w	$a1, $s0, 12
 	ld.w	$a2, $s0, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB1_4
+	blez	$a1, .LBB1_4
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s2, $s0, 24
 	alsl.d	$s3, $a1, $s2, 2
@@ -518,9 +506,8 @@ check_equiv:                            # @check_equiv
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB1_10
+	blez	$a1, .LBB1_10
 # %bb.7:                                # %.lr.ph42.preheader
 	ld.d	$s1, $fp, 24
 	alsl.d	$s2, $a1, $s1, 2

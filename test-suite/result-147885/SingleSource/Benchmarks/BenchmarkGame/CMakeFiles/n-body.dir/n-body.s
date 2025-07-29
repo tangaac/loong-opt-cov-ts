@@ -5,34 +5,34 @@
 	.type	advance,@function
 advance:                                # @advance
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_8
+	blez	$a0, .LBB0_8
 # %bb.1:                                # %.lr.ph69.preheader
-	move	$a5, $zero
-	addi.d	$a3, $a1, 104
-	ori	$a4, $zero, 56
+	move	$a3, $zero
+	addi.d	$a2, $a1, 104
+	ori	$a4, $zero, 1
+	ori	$a5, $zero, 56
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                # %.loopexit
                                         #   in Loop: Header=BB0_3 Depth=1
-	addi.d	$a2, $a2, 1
-	addi.d	$a3, $a3, 56
-	beq	$a5, $a0, .LBB0_6
+	addi.d	$a4, $a4, 1
+	addi.d	$a2, $a2, 56
+	beq	$a3, $a0, .LBB0_6
 .LBB0_3:                                # %.lr.ph69
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_5 Depth 2
-	move	$a6, $a5
-	addi.d	$a5, $a5, 1
-	bgeu	$a5, $a0, .LBB0_2
+	move	$a6, $a3
+	addi.d	$a3, $a3, 1
+	bgeu	$a3, $a0, .LBB0_2
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	mul.d	$a7, $a6, $a4
+	mul.d	$a7, $a6, $a5
 	add.d	$a6, $a1, $a7
 	fldx.d	$fa1, $a1, $a7
 	fld.d	$fa2, $a6, 8
 	fld.d	$fa3, $a6, 16
 	fld.d	$fa4, $a6, 48
-	move	$a7, $a3
+	move	$a7, $a2
 	move	$t0, $a0
 	.p2align	4, , 16
 .LBB0_5:                                #   Parent Loop BB0_3 Depth=1
@@ -78,7 +78,7 @@ advance:                                # @advance
 	fst.d	$fa5, $a7, -8
 	addi.d	$t0, $t0, -1
 	addi.d	$a7, $a7, 56
-	bne	$a2, $t0, .LBB0_5
+	bne	$a4, $t0, .LBB0_5
 	b	.LBB0_2
 .LBB0_6:                                # %.lr.ph71.preheader
 	addi.d	$a1, $a1, 24
@@ -110,25 +110,25 @@ advance:                                # @advance
 	.type	energy,@function
 energy:                                 # @energy
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_6
+	blez	$a0, .LBB1_6
 # %bb.1:                                # %.lr.ph42.preheader
-	move	$a3, $zero
-	addi.d	$a4, $a1, 56
+	move	$a2, $zero
+	addi.d	$a3, $a1, 56
 	movgr2fr.d	$fa0, $zero
+	ori	$a4, $zero, 1
 	ori	$a5, $zero, 56
 	vldi	$vr1, -928
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                # %.loopexit
                                         #   in Loop: Header=BB1_3 Depth=1
-	addi.d	$a2, $a2, 1
-	addi.d	$a4, $a4, 56
-	beq	$a3, $a0, .LBB1_7
+	addi.d	$a4, $a4, 1
+	addi.d	$a3, $a3, 56
+	beq	$a2, $a0, .LBB1_7
 .LBB1_3:                                # %.lr.ph42
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_5 Depth 2
-	mul.d	$a6, $a3, $a5
+	mul.d	$a6, $a2, $a5
 	add.d	$a6, $a1, $a6
 	fld.d	$fa2, $a6, 48
 	fld.d	$fa3, $a6, 32
@@ -138,15 +138,15 @@ energy:                                 # @energy
 	fmul.d	$fa3, $fa3, $fa3
 	fmadd.d	$fa3, $fa4, $fa4, $fa3
 	fmadd.d	$fa3, $fa5, $fa5, $fa3
-	addi.d	$a3, $a3, 1
+	addi.d	$a2, $a2, 1
 	fmadd.d	$fa0, $fa6, $fa3, $fa0
-	bgeu	$a3, $a0, .LBB1_2
+	bgeu	$a2, $a0, .LBB1_2
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB1_3 Depth=1
 	fld.d	$fa3, $a6, 0
 	fld.d	$fa4, $a6, 8
 	fld.d	$fa5, $a6, 16
-	move	$a6, $a4
+	move	$a6, $a3
 	move	$a7, $a0
 	.p2align	4, , 16
 .LBB1_5:                                #   Parent Loop BB1_3 Depth=1
@@ -167,7 +167,7 @@ energy:                                 # @energy
 	fsub.d	$fa0, $fa0, $fa6
 	addi.d	$a7, $a7, -1
 	addi.d	$a6, $a6, 56
-	bne	$a2, $a7, .LBB1_5
+	bne	$a4, $a7, .LBB1_5
 	b	.LBB1_2
 .LBB1_6:
 	movgr2fr.d	$fa0, $zero
@@ -186,8 +186,7 @@ energy:                                 # @energy
 	.type	offset_momentum,@function
 offset_momentum:                        # @offset_momentum
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_3
+	blez	$a0, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a2, $a1, 48
 	vrepli.b	$vr1, 0

@@ -44,22 +44,21 @@ domainlist_match:                       # @domainlist_match
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $s2, 1
-	ldx.hu	$a2, $a0, $a1
-	lu12i.w	$a1, 1
-	and	$a2, $a2, $a1
-	beqz	$a2, .LBB0_9
+	ldx.hu	$a1, $a0, $a1
+	slli.d	$a1, $a1, 51
+	bgez	$a1, .LBB0_9
 # %bb.7:
-	ld.b	$a2, $fp, 1
-	slli.d	$a2, $a2, 1
-	ldx.hu	$a2, $a0, $a2
-	and	$a2, $a2, $a1
-	beqz	$a2, .LBB0_9
+	ld.b	$a1, $fp, 1
+	slli.d	$a1, $a1, 1
+	ldx.hu	$a1, $a0, $a1
+	slli.d	$a1, $a1, 51
+	bgez	$a1, .LBB0_9
 # %bb.8:
-	ld.b	$a2, $fp, 2
-	slli.d	$a2, $a2, 1
-	ldx.hu	$a0, $a0, $a2
-	and	$a0, $a0, $a1
-	bnez	$a0, .LBB0_13
+	ld.b	$a1, $fp, 2
+	slli.d	$a1, $a1, 1
+	ldx.hu	$a0, $a0, $a1
+	slli.d	$a0, $a0, 51
+	bltz	$a0, .LBB0_13
 .LBB0_9:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)

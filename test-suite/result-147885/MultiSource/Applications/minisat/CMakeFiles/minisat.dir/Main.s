@@ -379,9 +379,10 @@ main:                                   # @main
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN6SolverC1Ev)
 	jirl	$ra, $ra, 0
+	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
 	ori	$a0, $zero, 1
 	st.w	$a0, $sp, 152
-	blt	$s0, $a0, .LBB3_35
+	blez	$s0, .LBB3_35
 # %bb.1:                                # %.lr.ph
 	move	$fp, $zero
 	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
@@ -417,7 +418,7 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB3_3:                                #   in Loop: Header=BB3_4 Depth=1
 	addi.d	$fp, $fp, 8
-	beq	$s5, $fp, .LBB3_36
+	beq	$s5, $fp, .LBB3_35
 .LBB3_4:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ldx.d	$s2, $a0, $fp
@@ -464,23 +465,23 @@ main:                                   # @main
 # %bb.10:                               # %_Z9hasPrefixPKcS0_.exit113.thread.tail
                                         #   in Loop: Header=BB3_4 Depth=1
 	ld.bu	$a0, $s2, 2
-	beqz	$a0, .LBB3_117
+	beqz	$a0, .LBB3_116
 .LBB3_11:                               # %_Z9hasPrefixPKcS0_.exit113.thread.tail.thread
                                         #   in Loop: Header=BB3_4 Depth=1
 	move	$a0, $s2
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_117
+	beqz	$a0, .LBB3_116
 # %bb.12:                               #   in Loop: Header=BB3_4 Depth=1
 	move	$a0, $s2
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB3_117
+	beqz	$a0, .LBB3_116
 # %bb.13:                               #   in Loop: Header=BB3_4 Depth=1
 	ori	$a0, $zero, 45
-	beq	$s1, $a0, .LBB3_118
+	beq	$s1, $a0, .LBB3_117
 # %bb.14:                               #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	slli.d	$a0, $a1, 3
@@ -513,7 +514,7 @@ main:                                   # @main
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(strcmp)
 	jirl	$ra, $ra, 0
-	bnez	$a0, .LBB3_122
+	bnez	$a0, .LBB3_121
 # %bb.19:                               #   in Loop: Header=BB3_4 Depth=1
 	ori	$a0, $zero, 3
 	st.w	$a0, $sp, 148
@@ -531,16 +532,15 @@ main:                                   # @main
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc23_sscanf)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_120
+	blez	$a0, .LBB3_119
 # %bb.22:                               #   in Loop: Header=BB3_4 Depth=1
 	fld.d	$fa0, $sp, 592
 	fcmp.clt.d	$fcc0, $fa0, $fs0
-	bcnez	$fcc0, .LBB3_120
+	bcnez	$fcc0, .LBB3_119
 # %bb.23:                               #   in Loop: Header=BB3_4 Depth=1
 	vldi	$vr1, -912
 	fcmp.cule.d	$fcc0, $fa0, $fa1
-	bceqz	$fcc0, .LBB3_120
+	bceqz	$fcc0, .LBB3_119
 # %bb.24:                               #   in Loop: Header=BB3_4 Depth=1
 	fst.d	$fa0, $sp, 104
 	b	.LBB3_3
@@ -557,16 +557,15 @@ main:                                   # @main
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc23_sscanf)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_121
+	blez	$a0, .LBB3_120
 # %bb.27:                               #   in Loop: Header=BB3_4 Depth=1
 	fld.d	$fa0, $sp, 592
 	fcmp.cle.d	$fcc0, $fa0, $fs0
-	bcnez	$fcc0, .LBB3_121
+	bcnez	$fcc0, .LBB3_120
 # %bb.28:                               #   in Loop: Header=BB3_4 Depth=1
 	vldi	$vr1, -912
 	fcmp.cule.d	$fcc0, $fa0, $fa1
-	bceqz	$fcc0, .LBB3_121
+	bceqz	$fcc0, .LBB3_120
 # %bb.29:                               #   in Loop: Header=BB3_4 Depth=1
 	frecip.d	$fa0, $fa0
 	fst.d	$fa0, $sp, 88
@@ -584,10 +583,10 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 592
-	beq	$a1, $s1, .LBB3_119
+	beq	$a1, $s1, .LBB3_118
 # %bb.32:                               #   in Loop: Header=BB3_4 Depth=1
 	ld.bu	$a1, $a1, 0
-	bnez	$a1, .LBB3_119
+	bnez	$a1, .LBB3_118
 # %bb.33:                               #   in Loop: Header=BB3_4 Depth=1
 	st.w	$a0, $sp, 152
 	b	.LBB3_3
@@ -595,9 +594,7 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	st.w	$a0, $sp, 148
 	b	.LBB3_3
-.LBB3_35:
-	st.d	$zero, $sp, 40                  # 8-byte Folded Spill
-.LBB3_36:                               # %._crit_edge
+.LBB3_35:                               # %._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$s0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $s0, 0
@@ -624,8 +621,8 @@ main:                                   # @main
 	st.d	$a1, $a0, %pc_lo12(solver)
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB3_38
-# %bb.37:
+	bne	$a0, $a1, .LBB3_37
+# %bb.36:
 	ld.d	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
@@ -642,8 +639,8 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(stdin)
 	ld.d	$a0, $a0, %got_pc_lo12(stdin)
 	ld.d	$s2, $a0, 0
-	b	.LBB3_39
-.LBB3_38:                               # %.critedge
+	b	.LBB3_38
+.LBB3_37:                               # %.critedge
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 8
 	pcalau12i	$a1, %pc_hi20(.L.str.35)
@@ -651,13 +648,13 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-.LBB3_39:
+.LBB3_38:
 	ld.d	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
 	ld.d	$a3, $fp, 0
-	beqz	$s2, .LBB3_124
-# %bb.40:
+	beqz	$s2, .LBB3_123
+# %bb.39:
 	pcalau12i	$a0, %pc_hi20(.L.str.38)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.38)
 	ori	$a1, $zero, 80
@@ -687,7 +684,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 .Ltmp1:
-# %bb.41:                               # %.noexc.split
+# %bb.40:                               # %.noexc.split
 	move	$s1, $a0
 	st.d	$s0, $sp, 32                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
@@ -705,7 +702,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp4:
-# %bb.42:
+# %bb.41:
 	addu16i.d	$a1, $s1, 16
 	addi.d	$s8, $a1, 8
 	st.w	$a0, $s8, 4
@@ -718,10 +715,10 @@ main:                                   # @main
 	ori	$s6, $zero, 99
 	ori	$fp, $zero, 255
 	ori	$s5, $zero, 2
-	b	.LBB3_45
+	b	.LBB3_44
 	.p2align	4, , 16
-.LBB3_43:                               # %_ZL10readClauseI12StreamBufferEvRT_R6SolverR3vecI3LitE.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_42:                               # %_ZL10readClauseI12StreamBufferEvRT_R6SolverR3vecI3LitE.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 .Ltmp46:
 	addi.d	$a0, $sp, 56
 	addi.d	$a1, $sp, 592
@@ -730,38 +727,38 @@ main:                                   # @main
 .Ltmp47:
 	ori	$s4, $zero, 32
 	ori	$s6, $zero, 99
-.LBB3_44:                               # %_ZL8skipLineI12StreamBufferEvRT_.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_43:                               # %_ZL8skipLineI12StreamBufferEvRT_.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ld.w	$a0, $s8, 4
-.LBB3_45:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_46 Depth 2
-                                        #     Child Loop BB3_61 Depth 2
-                                        #       Child Loop BB3_63 Depth 3
-                                        #     Child Loop BB3_69 Depth 2
+.LBB3_44:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB3_45 Depth 2
+                                        #     Child Loop BB3_60 Depth 2
+                                        #       Child Loop BB3_62 Depth 3
+                                        #     Child Loop BB3_68 Depth 2
 	ld.w	$a1, $s8, 0
 	.p2align	4, , 16
-.LBB3_46:                               #   Parent Loop BB3_45 Depth=1
+.LBB3_45:                               #   Parent Loop BB3_44 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB3_53
-# %bb.47:                               # %_ZN12StreamBufferdeEv.exit.i.i.i
-                                        #   in Loop: Header=BB3_46 Depth=2
+	bge	$a1, $a2, .LBB3_52
+# %bb.46:                               # %_ZN12StreamBufferdeEv.exit.i.i.i
+                                        #   in Loop: Header=BB3_45 Depth=2
 	ldx.b	$a2, $s2, $a1
-	blt	$a2, $s0, .LBB3_53
-# %bb.48:                               # %_ZN12StreamBufferdeEv.exit5.i.i.i
-                                        #   in Loop: Header=BB3_46 Depth=2
+	blt	$a2, $s0, .LBB3_52
+# %bb.47:                               # %_ZN12StreamBufferdeEv.exit5.i.i.i
+                                        #   in Loop: Header=BB3_45 Depth=2
 	andi	$a2, $a2, 255
-	bltu	$a2, $s7, .LBB3_50
-# %bb.49:                               # %_ZN12StreamBufferdeEv.exit5.i.i.i
-                                        #   in Loop: Header=BB3_46 Depth=2
-	bne	$a2, $s4, .LBB3_53
-.LBB3_50:                               # %.critedge.i.i.i
-                                        #   in Loop: Header=BB3_46 Depth=2
+	bltu	$a2, $s7, .LBB3_49
+# %bb.48:                               # %_ZN12StreamBufferdeEv.exit5.i.i.i
+                                        #   in Loop: Header=BB3_45 Depth=2
+	bne	$a2, $s4, .LBB3_52
+.LBB3_49:                               # %.critedge.i.i.i
+                                        #   in Loop: Header=BB3_45 Depth=2
 	addi.w	$a1, $a1, 1
 	addi.w	$a2, $a0, 0
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_46
-# %bb.51:                               #   in Loop: Header=BB3_46 Depth=2
+	blt	$a1, $a2, .LBB3_45
+# %bb.50:                               #   in Loop: Header=BB3_45 Depth=2
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -772,45 +769,45 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp7:
-# %bb.52:                               # %.noexc.i.i
-                                        #   in Loop: Header=BB3_46 Depth=2
+# %bb.51:                               # %.noexc.i.i
+                                        #   in Loop: Header=BB3_45 Depth=2
 	ld.w	$a1, $s8, 0
 	st.w	$a0, $s8, 4
-	b	.LBB3_46
+	b	.LBB3_45
 	.p2align	4, , 16
-.LBB3_53:                               # %_ZL14skipWhitespaceI12StreamBufferEvRT_.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_52:                               # %_ZL14skipWhitespaceI12StreamBufferEvRT_.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB3_103
-# %bb.54:                               # %_ZN12StreamBufferdeEv.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	bge	$a1, $a2, .LBB3_102
+# %bb.53:                               # %_ZN12StreamBufferdeEv.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ldx.bu	$a3, $s2, $a1
-	beq	$a3, $s6, .LBB3_69
-# %bb.55:                               # %_ZN12StreamBufferdeEv.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	beq	$a3, $s6, .LBB3_68
+# %bb.54:                               # %_ZN12StreamBufferdeEv.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ori	$a4, $zero, 112
-	beq	$a3, $a4, .LBB3_77
-# %bb.56:                               # %_ZN12StreamBufferdeEv.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
-	beq	$a3, $fp, .LBB3_103
-# %bb.57:                               # %_ZN12StreamBufferdeEv.exit37.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	beq	$a3, $a4, .LBB3_76
+# %bb.55:                               # %_ZN12StreamBufferdeEv.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
+	beq	$a3, $fp, .LBB3_102
+# %bb.56:                               # %_ZN12StreamBufferdeEv.exit37.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $sp, 592
-	beqz	$a0, .LBB3_59
-# %bb.58:                               # %.preheader.i.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	beqz	$a0, .LBB3_58
+# %bb.57:                               # %.preheader.i.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	st.w	$zero, $sp, 600
-.LBB3_59:                               # %_ZN3vecI3LitE5clearEb.exit.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_58:                               # %_ZN3vecI3LitE5clearEb.exit.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 .Ltmp38:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZL8parseIntI12StreamBufferEiRT_)
 	jirl	$ra, $ra, 0
 .Ltmp39:
-	b	.LBB3_61
+	b	.LBB3_60
 	.p2align	4, , 16
-.LBB3_60:                               # %_ZN3vecI3LitE4pushERKS0_.exit.i.i.i
-                                        #   in Loop: Header=BB3_61 Depth=2
+.LBB3_59:                               # %_ZN3vecI3LitE4pushERKS0_.exit.i.i.i
+                                        #   in Loop: Header=BB3_60 Depth=2
 	slti	$a2, $s4, 1
 	slli.d	$a3, $s6, 1
 	or	$a2, $a3, $a2
@@ -824,23 +821,23 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZL8parseIntI12StreamBufferEiRT_)
 	jirl	$ra, $ra, 0
 .Ltmp44:
-.LBB3_61:                               # %.noexc47.i.i
-                                        #   Parent Loop BB3_45 Depth=1
+.LBB3_60:                               # %.noexc47.i.i
+                                        #   Parent Loop BB3_44 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_63 Depth 3
+                                        #       Child Loop BB3_62 Depth 3
 	move	$s4, $a0
-	beqz	$a0, .LBB3_43
-# %bb.62:                               # %.lr.ph13.i.i.i
-                                        #   in Loop: Header=BB3_61 Depth=2
+	beqz	$a0, .LBB3_42
+# %bb.61:                               # %.lr.ph13.i.i.i
+                                        #   in Loop: Header=BB3_60 Depth=2
 	ld.w	$a0, $sp, 328
 	srai.d	$a1, $s4, 31
 	xor	$a2, $s4, $a1
 	sub.w	$s6, $a2, $a1
-	bge	$a0, $s6, .LBB3_65
+	bge	$a0, $s6, .LBB3_64
 	.p2align	4, , 16
-.LBB3_63:                               # %.lr.ph.i.i.i
-                                        #   Parent Loop BB3_45 Depth=1
-                                        #     Parent Loop BB3_61 Depth=2
+.LBB3_62:                               # %.lr.ph.i.i.i
+                                        #   Parent Loop BB3_44 Depth=1
+                                        #     Parent Loop BB3_60 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 .Ltmp40:
 	addi.d	$a0, $sp, 56
@@ -849,17 +846,17 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(_ZN6Solver6newVarEbb)
 	jirl	$ra, $ra, 0
 .Ltmp41:
-# %bb.64:                               # %.noexc48.i.i
-                                        #   in Loop: Header=BB3_63 Depth=3
+# %bb.63:                               # %.noexc48.i.i
+                                        #   in Loop: Header=BB3_62 Depth=3
 	ld.w	$a0, $sp, 328
-	blt	$a0, $s6, .LBB3_63
-.LBB3_65:                               # %._crit_edge.i.i.i
-                                        #   in Loop: Header=BB3_61 Depth=2
+	blt	$a0, $s6, .LBB3_62
+.LBB3_64:                               # %._crit_edge.i.i.i
+                                        #   in Loop: Header=BB3_60 Depth=2
 	ld.w	$a1, $sp, 600
 	ld.w	$a2, $sp, 604
 	ld.d	$a0, $sp, 592
-	bne	$a1, $a2, .LBB3_60
-# %bb.66:                               #   in Loop: Header=BB3_61 Depth=2
+	bne	$a1, $a2, .LBB3_59
+# %bb.65:                               #   in Loop: Header=BB3_60 Depth=2
 	alsl.d	$a1, $a1, $a1, 1
 	addi.w	$a1, $a1, 1
 	srai.d	$a1, $a1, 1
@@ -873,34 +870,34 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $sp, 600
 	st.d	$a0, $sp, 592
-	b	.LBB3_60
+	b	.LBB3_59
 	.p2align	4, , 16
-.LBB3_67:                               # %.noexc45.i.i
-                                        #   in Loop: Header=BB3_69 Depth=2
+.LBB3_66:                               # %.noexc45.i.i
+                                        #   in Loop: Header=BB3_68 Depth=2
 	ld.w	$a1, $s8, 0
 	st.w	$a0, $s8, 4
-.LBB3_68:                               # %_ZN12StreamBufferppEv.exit10.i.i.i
-                                        #   in Loop: Header=BB3_69 Depth=2
+.LBB3_67:                               # %_ZN12StreamBufferppEv.exit10.i.i.i
+                                        #   in Loop: Header=BB3_68 Depth=2
 	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB3_44
-.LBB3_69:                               # %_ZN12StreamBufferdeEv.exit.i40.i.i
-                                        #   Parent Loop BB3_45 Depth=1
+	bge	$a1, $a2, .LBB3_43
+.LBB3_68:                               # %_ZN12StreamBufferdeEv.exit.i40.i.i
+                                        #   Parent Loop BB3_44 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ldx.bu	$a3, $s2, $a1
-	beqz	$a3, .LBB3_44
+	beqz	$a3, .LBB3_43
+# %bb.69:                               # %_ZN12StreamBufferdeEv.exit.i40.i.i
+                                        #   in Loop: Header=BB3_68 Depth=2
+	beq	$a3, $fp, .LBB3_43
 # %bb.70:                               # %_ZN12StreamBufferdeEv.exit.i40.i.i
-                                        #   in Loop: Header=BB3_69 Depth=2
-	beq	$a3, $fp, .LBB3_44
-# %bb.71:                               # %_ZN12StreamBufferdeEv.exit.i40.i.i
-                                        #   in Loop: Header=BB3_69 Depth=2
+                                        #   in Loop: Header=BB3_68 Depth=2
 	addi.w	$a1, $a1, 1
 	addi.w	$a2, $a0, 0
 	ori	$a4, $zero, 10
-	beq	$a3, $a4, .LBB3_74
-# %bb.72:                               #   in Loop: Header=BB3_69 Depth=2
+	beq	$a3, $a4, .LBB3_73
+# %bb.71:                               #   in Loop: Header=BB3_68 Depth=2
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_68
-# %bb.73:                               #   in Loop: Header=BB3_69 Depth=2
+	blt	$a1, $a2, .LBB3_67
+# %bb.72:                               #   in Loop: Header=BB3_68 Depth=2
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -911,11 +908,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp12:
-	b	.LBB3_67
-.LBB3_74:                               #   in Loop: Header=BB3_45 Depth=1
+	b	.LBB3_66
+.LBB3_73:                               #   in Loop: Header=BB3_44 Depth=1
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_44
-# %bb.75:                               #   in Loop: Header=BB3_45 Depth=1
+	blt	$a1, $a2, .LBB3_43
+# %bb.74:                               #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -926,17 +923,17 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp10:
-# %bb.76:                               # %.noexc44.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+# %bb.75:                               # %.noexc44.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	st.w	$a0, $s8, 4
 	ld.w	$a0, $s8, 4
-	b	.LBB3_45
-.LBB3_77:                               # %_ZN12StreamBufferdeEv.exit.i23.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	b	.LBB3_44
+.LBB3_76:                               # %_ZN12StreamBufferdeEv.exit.i23.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_80
-# %bb.78:                               #   in Loop: Header=BB3_45 Depth=1
+	blt	$a1, $a2, .LBB3_79
+# %bb.77:                               #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -947,23 +944,23 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp15:
-# %bb.79:                               # %.noexc27.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+# %bb.78:                               # %.noexc27.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ld.w	$a1, $s8, 0
 	st.w	$a0, $s8, 4
-.LBB3_80:                               # %_ZN12StreamBufferppEv.exit.i26.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_79:                               # %_ZN12StreamBufferppEv.exit.i26.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB3_113
-# %bb.81:                               # %_ZN12StreamBufferdeEv.exit.1.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	bge	$a1, $a2, .LBB3_112
+# %bb.80:                               # %_ZN12StreamBufferdeEv.exit.1.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ldx.bu	$a3, $s2, $a1
-	bne	$a3, $s4, .LBB3_113
-# %bb.82:                               #   in Loop: Header=BB3_45 Depth=1
+	bne	$a3, $s4, .LBB3_112
+# %bb.81:                               #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_85
-# %bb.83:                               #   in Loop: Header=BB3_45 Depth=1
+	blt	$a1, $a2, .LBB3_84
+# %bb.82:                               #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -974,23 +971,23 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp17:
-# %bb.84:                               # %.noexc28.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+# %bb.83:                               # %.noexc28.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ld.w	$a1, $s8, 0
 	st.w	$a0, $s8, 4
-.LBB3_85:                               # %_ZN12StreamBufferppEv.exit.1.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_84:                               # %_ZN12StreamBufferppEv.exit.1.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB3_113
-# %bb.86:                               # %_ZN12StreamBufferdeEv.exit.2.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	bge	$a1, $a2, .LBB3_112
+# %bb.85:                               # %_ZN12StreamBufferdeEv.exit.2.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ldx.bu	$a3, $s2, $a1
-	bne	$a3, $s6, .LBB3_113
-# %bb.87:                               #   in Loop: Header=BB3_45 Depth=1
+	bne	$a3, $s6, .LBB3_112
+# %bb.86:                               #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_90
-# %bb.88:                               #   in Loop: Header=BB3_45 Depth=1
+	blt	$a1, $a2, .LBB3_89
+# %bb.87:                               #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -1001,24 +998,24 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp19:
-# %bb.89:                               # %.noexc29.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+# %bb.88:                               # %.noexc29.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ld.w	$a1, $s8, 0
 	st.w	$a0, $s8, 4
-.LBB3_90:                               # %_ZN12StreamBufferppEv.exit.2.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_89:                               # %_ZN12StreamBufferppEv.exit.2.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a2, $a0, 0
-	bge	$a1, $a2, .LBB3_113
-# %bb.91:                               # %_ZN12StreamBufferdeEv.exit.3.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	bge	$a1, $a2, .LBB3_112
+# %bb.90:                               # %_ZN12StreamBufferdeEv.exit.3.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ldx.bu	$a3, $s2, $a1
 	ori	$a4, $zero, 110
-	bne	$a3, $a4, .LBB3_113
-# %bb.92:                               #   in Loop: Header=BB3_45 Depth=1
+	bne	$a3, $a4, .LBB3_112
+# %bb.91:                               #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s8, 0
-	blt	$a1, $a2, .LBB3_95
-# %bb.93:                               #   in Loop: Header=BB3_45 Depth=1
+	blt	$a1, $a2, .LBB3_94
+# %bb.92:                               #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -1029,24 +1026,24 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp21:
-# %bb.94:                               # %.noexc30.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+# %bb.93:                               # %.noexc30.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ld.w	$a1, $s8, 0
 	st.w	$a0, $s8, 4
-.LBB3_95:                               # %_ZN12StreamBufferppEv.exit.3.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_94:                               # %_ZN12StreamBufferppEv.exit.3.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a0, $a0, 0
-	bge	$a1, $a0, .LBB3_113
-# %bb.96:                               # %_ZN12StreamBufferdeEv.exit.4.i.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+	bge	$a1, $a0, .LBB3_112
+# %bb.95:                               # %_ZN12StreamBufferdeEv.exit.4.i.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	ldx.bu	$a2, $s2, $a1
 	ori	$a3, $zero, 102
-	bne	$a2, $a3, .LBB3_113
-# %bb.97:                               #   in Loop: Header=BB3_45 Depth=1
+	bne	$a2, $a3, .LBB3_112
+# %bb.96:                               #   in Loop: Header=BB3_44 Depth=1
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $s8, 0
-	blt	$a1, $a0, .LBB3_100
-# %bb.98:                               #   in Loop: Header=BB3_45 Depth=1
+	blt	$a1, $a0, .LBB3_99
+# %bb.97:                               #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a0, $s1, 0
 	st.w	$zero, $s8, 0
 	pcaddu18i	$ra, %call36(fileno)
@@ -1057,24 +1054,24 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(read)
 	jirl	$ra, $ra, 0
 .Ltmp23:
-# %bb.99:                               # %.noexc31.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+# %bb.98:                               # %.noexc31.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 	st.w	$a0, $s8, 4
-.LBB3_100:                              # %_ZL5matchI12StreamBufferEbRT_Pc.exit.i.i
-                                        #   in Loop: Header=BB3_45 Depth=1
+.LBB3_99:                               # %_ZL5matchI12StreamBufferEbRT_Pc.exit.i.i
+                                        #   in Loop: Header=BB3_44 Depth=1
 .Ltmp24:
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZL8parseIntI12StreamBufferEiRT_)
 	jirl	$ra, $ra, 0
 .Ltmp25:
-# %bb.101:                              #   in Loop: Header=BB3_45 Depth=1
+# %bb.100:                              #   in Loop: Header=BB3_44 Depth=1
 .Ltmp27:
 	move	$s4, $a0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZL8parseIntI12StreamBufferEiRT_)
 	jirl	$ra, $ra, 0
 .Ltmp28:
-# %bb.102:                              #   in Loop: Header=BB3_45 Depth=1
+# %bb.101:                              #   in Loop: Header=BB3_44 Depth=1
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$a0, $a1, 0
@@ -1106,15 +1103,15 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s8, 4
-	b	.LBB3_45
-.LBB3_103:                              # %_ZN12StreamBufferdeEv.exit.thread.i.i
+	b	.LBB3_44
+.LBB3_102:                              # %_ZN12StreamBufferdeEv.exit.thread.i.i
 	ld.d	$a0, $sp, 592
-	beqz	$a0, .LBB3_105
-# %bb.104:                              # %.preheader.i.i51.i.i
+	beqz	$a0, .LBB3_104
+# %bb.103:                              # %.preheader.i.i51.i.i
 	st.w	$zero, $sp, 600
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB3_105:
+.LBB3_104:
 	ori	$a1, $s3, 16
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdlPvm)
@@ -1125,8 +1122,8 @@ main:                                   # @main
 	ori	$a0, $zero, 3
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 32                    # 8-byte Folded Reload
-	blt	$a1, $a0, .LBB3_107
-# %bb.106:
+	blt	$a1, $a0, .LBB3_106
+# %bb.105:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(.L.str.40)
@@ -1134,18 +1131,18 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	b	.LBB3_108
-.LBB3_107:
+	b	.LBB3_107
+.LBB3_106:
 	move	$fp, $zero
-.LBB3_108:
+.LBB3_107:
 .Ltmp30:
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN6Solver8simplifyEv)
 	jirl	$ra, $ra, 0
 .Ltmp31:
+# %bb.108:
+	bnez	$a0, .LBB3_125
 # %bb.109:
-	bnez	$a0, .LBB3_126
-# %bb.110:
 	ld.d	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
@@ -1160,8 +1157,8 @@ main:                                   # @main
 	ld.d	$a0, $s0, 0
 	pcaddu18i	$ra, %call36(fflush)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB3_112
-# %bb.111:
+	beqz	$fp, .LBB3_111
+# %bb.110:
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.42)
 	ori	$a1, $zero, 6
@@ -1172,7 +1169,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-.LBB3_112:
+.LBB3_111:
 	pcalau12i	$a0, %pc_hi20(.Lstr)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr)
 	pcaddu18i	$ra, %call36(puts)
@@ -1180,7 +1177,7 @@ main:                                   # @main
 	ori	$a0, $zero, 20
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_113:                              # %split.i.i
+.LBB3_112:                              # %split.i.i
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(fflush)
@@ -1189,13 +1186,13 @@ main:                                   # @main
 	ld.w	$a2, $s8, 4
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $fp, 0
-	bge	$a1, $a2, .LBB3_115
-# %bb.114:
+	bge	$a1, $a2, .LBB3_114
+# %bb.113:
 	ldx.b	$a2, $s2, $a1
-	b	.LBB3_116
-.LBB3_115:
+	b	.LBB3_115
+.LBB3_114:
 	addi.w	$a2, $zero, -1
-.LBB3_116:                              # %_ZN12StreamBufferdeEv.exit33.i.i
+.LBB3_115:                              # %_ZN12StreamBufferdeEv.exit33.i.i
 	pcalau12i	$a1, %pc_hi20(.L.str.55)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.55)
 	pcaddu18i	$ra, %call36(fprintf)
@@ -1206,14 +1203,14 @@ main:                                   # @main
 	ori	$a0, $zero, 3
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_117:
+.LBB3_116:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(_Z10printUsagePPc)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_118:
+.LBB3_117:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
@@ -1234,7 +1231,7 @@ main:                                   # @main
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_119:
+.LBB3_118:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
@@ -1245,8 +1242,8 @@ main:                                   # @main
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.27)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.27)
-	b	.LBB3_123
-.LBB3_120:
+	b	.LBB3_122
+.LBB3_119:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
@@ -1257,8 +1254,8 @@ main:                                   # @main
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.23)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.23)
-	b	.LBB3_123
-.LBB3_121:
+	b	.LBB3_122
+.LBB3_120:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
@@ -1269,8 +1266,8 @@ main:                                   # @main
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.25)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.25)
-	b	.LBB3_123
-.LBB3_122:
+	b	.LBB3_122
+.LBB3_121:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
@@ -1281,7 +1278,7 @@ main:                                   # @main
 	ld.d	$a0, $fp, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.20)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.20)
-.LBB3_123:
+.LBB3_122:
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
@@ -1291,28 +1288,28 @@ main:                                   # @main
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_124:
+.LBB3_123:
 	ori	$a0, $zero, 1
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	bne	$a1, $a0, .LBB3_138
-# %bb.125:
+	bne	$a1, $a0, .LBB3_137
+# %bb.124:
 	pcalau12i	$a0, %pc_hi20(.L.str.37)
 	addi.d	$a2, $a0, %pc_lo12(.L.str.37)
-	b	.LBB3_139
-.LBB3_126:
+	b	.LBB3_138
+.LBB3_125:
 .Ltmp33:
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN6Solver5solveEv)
 	jirl	$ra, $ra, 0
 .Ltmp34:
-# %bb.127:
+# %bb.126:
 .Ltmp35:
 	move	$s0, $a0
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_Z10printStatsR6Solver)
 	jirl	$ra, $ra, 0
 .Ltmp36:
-# %bb.128:
+# %bb.127:
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	pcaddu18i	$ra, %call36(fflush)
@@ -1334,15 +1331,14 @@ main:                                   # @main
 	or	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	beqz	$fp, .LBB3_142
+	beqz	$fp, .LBB3_141
+# %bb.128:
+	beqz	$s0, .LBB3_139
 # %bb.129:
-	beqz	$s0, .LBB3_140
-# %bb.130:
 	pcalau12i	$a0, %pc_hi20(.L.str.45)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.45)
 	ori	$a1, $zero, 4
 	ori	$a2, $zero, 1
-	ori	$s3, $zero, 1
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -1350,16 +1346,16 @@ main:                                   # @main
 	pcalau12i	$a1, %pc_hi20(.L.str.49)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.49)
 	ori	$s2, $zero, 3
-	blt	$a0, $s3, .LBB3_141
-# %bb.131:                              # %.lr.ph148.preheader
+	blez	$a0, .LBB3_140
+# %bb.130:                              # %.lr.ph148.preheader
 	ld.d	$a1, $sp, 56
 	ld.bu	$a1, $a1, 0
 	pcalau12i	$a2, %pc_hi20(.L.str.31)
 	addi.d	$s8, $a2, %pc_lo12(.L.str.31)
 	pcalau12i	$a2, %pc_hi20(.L.str.47)
 	addi.d	$s3, $a2, %pc_lo12(.L.str.47)
-	beqz	$a1, .LBB3_133
-# %bb.132:
+	beqz	$a1, .LBB3_132
+# %bb.131:
 	addi.d	$a0, $a1, -1
 	sltui	$a0, $a0, 1
 	masknez	$a1, $s8, $a0
@@ -1373,27 +1369,27 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 328
-.LBB3_133:
+.LBB3_132:
 	ori	$s4, $zero, 2
-	blt	$a0, $s4, .LBB3_141
-# %bb.134:                              # %.lr.ph148.preheader238
+	blt	$a0, $s4, .LBB3_140
+# %bb.133:                              # %.lr.ph148.preheader238
 	ori	$s7, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.46)
 	addi.d	$s5, $a1, %pc_lo12(.L.str.46)
 	pcalau12i	$a1, %pc_hi20(.L.str.48)
 	addi.d	$s6, $a1, %pc_lo12(.L.str.48)
-	b	.LBB3_136
+	b	.LBB3_135
 	.p2align	4, , 16
-.LBB3_135:                              #   in Loop: Header=BB3_136 Depth=1
+.LBB3_134:                              #   in Loop: Header=BB3_135 Depth=1
 	addi.d	$s7, $s7, 1
 	addi.w	$s4, $s4, 1
-	bge	$s7, $a0, .LBB3_141
-.LBB3_136:                              # %.lr.ph148
+	bge	$s7, $a0, .LBB3_140
+.LBB3_135:                              # %.lr.ph148
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a1, $sp, 56
 	ldx.bu	$a1, $a1, $s7
-	beqz	$a1, .LBB3_135
-# %bb.137:                              #   in Loop: Header=BB3_136 Depth=1
+	beqz	$a1, .LBB3_134
+# %bb.136:                              #   in Loop: Header=BB3_135 Depth=1
 	addi.d	$a0, $a1, -1
 	sltui	$a0, $a0, 1
 	masknez	$a1, $s8, $a0
@@ -1406,11 +1402,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 328
-	b	.LBB3_135
-.LBB3_138:
+	b	.LBB3_134
+.LBB3_137:
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a2, $a0, 8
-.LBB3_139:
+.LBB3_138:
 	pcalau12i	$a0, %pc_hi20(.L.str.36)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.36)
 	move	$a0, $a3
@@ -1422,11 +1418,11 @@ main:                                   # @main
 	ori	$a0, $zero, 1
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_140:
+.LBB3_139:
 	pcalau12i	$a0, %pc_hi20(.L.str.42)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.42)
 	ori	$s2, $zero, 6
-.LBB3_141:                              # %._crit_edge149
+.LBB3_140:                              # %._crit_edge149
 	ori	$a2, $zero, 1
 	move	$a0, $s1
 	move	$a1, $s2
@@ -1436,7 +1432,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-.LBB3_142:
+.LBB3_141:
 	ori	$a0, $zero, 20
 	masknez	$a0, $a0, $s0
 	ori	$a1, $zero, 10
@@ -1444,13 +1440,13 @@ main:                                   # @main
 	or	$a0, $a1, $a0
 	pcaddu18i	$ra, %call36(exit)
 	jirl	$ra, $ra, 0
-.LBB3_143:
+.LBB3_142:
 .Ltmp37:
-	b	.LBB3_147
-.LBB3_144:
+	b	.LBB3_146
+.LBB3_143:
 .Ltmp32:
-	b	.LBB3_147
-.LBB3_145:
+	b	.LBB3_146
+.LBB3_144:
 .Ltmp5:
 	move	$fp, $a0
 	move	$a0, $s1
@@ -1463,9 +1459,9 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB3_146:
+.LBB3_145:
 .Ltmp2:
-.LBB3_147:                              # %.body
+.LBB3_146:                              # %.body
 	move	$fp, $a0
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN6SolverD1Ev)
@@ -1473,35 +1469,35 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Unwind_Resume)
 	jirl	$ra, $ra, 0
-.LBB3_148:
+.LBB3_147:
 .Ltmp29:
-	b	.LBB3_155
-.LBB3_149:
+	b	.LBB3_154
+.LBB3_148:
 .Ltmp26:
-	b	.LBB3_155
-.LBB3_150:                              # %.loopexit.split-lp.loopexit.i.i
+	b	.LBB3_154
+.LBB3_149:                              # %.loopexit.split-lp.loopexit.i.i
 .Ltmp13:
-	b	.LBB3_155
-.LBB3_151:                              # %.loopexit.split-lp.loopexit.split-lp.loopexit.split-lp.loopexit.split-lp.i.i
+	b	.LBB3_154
+.LBB3_150:                              # %.loopexit.split-lp.loopexit.split-lp.loopexit.split-lp.loopexit.split-lp.i.i
 .Ltmp48:
-	b	.LBB3_155
-.LBB3_152:                              # %.loopexit.split-lp.loopexit.split-lp.loopexit.split-lp.loopexit.i.i
+	b	.LBB3_154
+.LBB3_151:                              # %.loopexit.split-lp.loopexit.split-lp.loopexit.split-lp.loopexit.i.i
 .Ltmp8:
-	b	.LBB3_155
-.LBB3_153:                              # %.loopexit.split-lp.loopexit.split-lp.loopexit.i.i
+	b	.LBB3_154
+.LBB3_152:                              # %.loopexit.split-lp.loopexit.split-lp.loopexit.i.i
 .Ltmp45:
-	b	.LBB3_155
-.LBB3_154:                              # %.loopexit.i.i
+	b	.LBB3_154
+.LBB3_153:                              # %.loopexit.i.i
 .Ltmp42:
-.LBB3_155:                              # %.loopexit.split-lp.i.i
+.LBB3_154:                              # %.loopexit.split-lp.i.i
 	move	$fp, $a0
 	ld.d	$a0, $sp, 592
-	beqz	$a0, .LBB3_157
-# %bb.156:                              # %.preheader.i.i54.i.i
+	beqz	$a0, .LBB3_156
+# %bb.155:                              # %.preheader.i.i54.i.i
 	st.w	$zero, $sp, 600
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
-.LBB3_157:                              # %.body
+.LBB3_156:                              # %.body
 	addi.d	$a0, $sp, 56
 	pcaddu18i	$ra, %call36(_ZN6SolverD1Ev)
 	jirl	$ra, $ra, 0

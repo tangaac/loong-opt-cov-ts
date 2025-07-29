@@ -63,8 +63,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, %pc_lo12(i_ub)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.4:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.3)

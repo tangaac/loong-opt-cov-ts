@@ -157,26 +157,23 @@ _ZN29btGeneric6DofSpringConstraint19setEquilibriumPointEi: # @_ZN29btGeneric6Dof
 	.type	_ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint17btConstraintInfo2E,@function
 _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint17btConstraintInfo2E: # @_ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint17btConstraintInfo2E
 # %bb.0:
-	ld.bu	$a3, $a0, 1266
-	ori	$a2, $zero, 1
-	beq	$a3, $a2, .LBB6_7
+	ld.bu	$a2, $a0, 1266
+	bnez	$a2, .LBB6_7
 # %bb.1:
-	ld.bu	$a3, $a0, 1267
-	beq	$a3, $a2, .LBB6_8
+	ld.bu	$a2, $a0, 1267
+	bnez	$a2, .LBB6_8
 .LBB6_2:
-	ld.bu	$a3, $a0, 1268
-	ori	$a2, $zero, 1
-	beq	$a3, $a2, .LBB6_9
+	ld.bu	$a2, $a0, 1268
+	bnez	$a2, .LBB6_9
 .LBB6_3:                                # %.preheader
-	ld.bu	$a3, $a0, 1269
-	beq	$a3, $a2, .LBB6_10
+	ld.bu	$a2, $a0, 1269
+	bnez	$a2, .LBB6_10
 .LBB6_4:
-	ld.bu	$a3, $a0, 1270
-	ori	$a2, $zero, 1
-	beq	$a3, $a2, .LBB6_11
+	ld.bu	$a2, $a0, 1270
+	bnez	$a2, .LBB6_11
 .LBB6_5:
-	ld.bu	$a3, $a0, 1271
-	beq	$a3, $a2, .LBB6_12
+	ld.bu	$a2, $a0, 1271
+	bnez	$a2, .LBB6_12
 .LBB6_6:
 	ret
 .LBB6_7:
@@ -185,11 +182,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa2, $a0, 1296
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a0, 1320
-	ld.w	$a3, $a1, 88
+	ld.w	$a2, $a1, 88
 	fsub.s	$fa0, $fa0, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fmul.s	$fa1, $fa3, $fa4
-	movgr2fr.w	$fa2, $a3
+	movgr2fr.w	$fa2, $a2
 	ffint.s.w	$fa2, $fa2
 	fdiv.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa0, $fa1
@@ -198,8 +195,8 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fabs.s	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 808
-	ld.bu	$a3, $a0, 1267
-	bne	$a3, $a2, .LBB6_2
+	ld.bu	$a2, $a0, 1267
+	beqz	$a2, .LBB6_2
 .LBB6_8:
 	fld.s	$fa0, $a0, 1236
 	fld.s	$fa1, $a0, 1276
@@ -219,20 +216,19 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fabs.s	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 812
-	ld.bu	$a3, $a0, 1268
-	ori	$a2, $zero, 1
-	bne	$a3, $a2, .LBB6_3
+	ld.bu	$a2, $a0, 1268
+	beqz	$a2, .LBB6_3
 .LBB6_9:
 	fld.s	$fa0, $a0, 1240
 	fld.s	$fa1, $a0, 1280
 	fld.s	$fa2, $a0, 1304
 	fld.s	$fa3, $a1, 0
 	fld.s	$fa4, $a0, 1328
-	ld.w	$a3, $a1, 88
+	ld.w	$a2, $a1, 88
 	fsub.s	$fa0, $fa0, $fa1
 	fmul.s	$fa0, $fa0, $fa2
 	fmul.s	$fa1, $fa3, $fa4
-	movgr2fr.w	$fa2, $a3
+	movgr2fr.w	$fa2, $a2
 	ffint.s.w	$fa2, $fa2
 	fdiv.s	$fa1, $fa1, $fa2
 	fmul.s	$fa1, $fa0, $fa1
@@ -241,8 +237,8 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fabs.s	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $a0, 816
-	ld.bu	$a3, $a0, 1269
-	bne	$a3, $a2, .LBB6_4
+	ld.bu	$a2, $a0, 1269
+	beqz	$a2, .LBB6_4
 .LBB6_10:
 	fld.s	$fa0, $a0, 1168
 	fld.s	$fa1, $a0, 1284
@@ -262,9 +258,8 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fabs.s	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fa2
 	fst.s	$fa0, $a0, 880
-	ld.bu	$a3, $a0, 1270
-	ori	$a2, $zero, 1
-	bne	$a3, $a2, .LBB6_5
+	ld.bu	$a2, $a0, 1270
+	beqz	$a2, .LBB6_5
 .LBB6_11:
 	fld.s	$fa0, $a0, 1172
 	fld.s	$fa1, $a0, 1288
@@ -272,11 +267,11 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fld.s	$fa1, $a0, 1312
 	fld.s	$fa2, $a1, 0
 	fld.s	$fa3, $a0, 1336
-	ld.w	$a3, $a1, 88
+	ld.w	$a2, $a1, 88
 	fneg.s	$fa0, $fa0
 	fmul.s	$fa0, $fa1, $fa0
 	fmul.s	$fa1, $fa2, $fa3
-	movgr2fr.w	$fa3, $a3
+	movgr2fr.w	$fa3, $a2
 	ffint.s.w	$fa3, $fa3
 	fdiv.s	$fa1, $fa1, $fa3
 	fmul.s	$fa1, $fa0, $fa1
@@ -284,8 +279,8 @@ _ZN29btGeneric6DofSpringConstraint21internalUpdateSpringsEPN17btTypedConstraint1
 	fabs.s	$fa0, $fa0
 	fdiv.s	$fa0, $fa0, $fa2
 	fst.s	$fa0, $a0, 936
-	ld.bu	$a3, $a0, 1271
-	bne	$a3, $a2, .LBB6_6
+	ld.bu	$a2, $a0, 1271
+	beqz	$a2, .LBB6_6
 .LBB6_12:
 	fld.s	$fa0, $a0, 1176
 	fld.s	$fa1, $a0, 1292

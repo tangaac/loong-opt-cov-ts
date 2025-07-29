@@ -18404,8 +18404,7 @@ s331:                                   # @s331
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 104                   # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_6
+	blez	$a0, .LBB6_6
 # %bb.1:                                # %vector.ph.preheader
 	move	$s8, $zero
 	lu12i.w	$a0, -524288
@@ -18582,8 +18581,7 @@ s332:                                   # @s332
 	pcalau12i	$a0, %pc_hi20(ntimes)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, %pc_lo12(ntimes)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_9
+	blez	$a0, .LBB8_9
 # %bb.1:                                # %vector.ph.preheader
 	move	$s8, $zero
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload

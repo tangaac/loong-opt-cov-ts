@@ -190,17 +190,16 @@ luaO_str2d:                             # @luaO_str2d
 	pcaddu18i	$ra, %call36(__ctype_b_loc)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $a0, 0
-	lu12i.w	$a1, 2
 	.p2align	4, , 16
 .LBB4_5:                                # =>This Inner Loop Header: Depth=1
-	ld.bu	$a2, $s0, 0
-	slli.d	$a3, $a2, 1
-	ldx.hu	$a3, $a0, $a3
-	and	$a3, $a3, $a1
+	ld.bu	$a1, $s0, 0
+	slli.d	$a2, $a1, 1
+	ldx.hu	$a2, $a0, $a2
+	slli.d	$a2, $a2, 50
 	addi.d	$s0, $s0, 1
-	bnez	$a3, .LBB4_5
+	bltz	$a2, .LBB4_5
 # %bb.6:
-	sltui	$a0, $a2, 1
+	sltui	$a0, $a1, 1
 	b	.LBB4_9
 .LBB4_7:
 	move	$a0, $zero

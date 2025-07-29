@@ -67,8 +67,7 @@ newCombList:                            # @newCombList
 	.type	initWorkList,@function
 initWorkList:                           # @initWorkList
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_8
+	blez	$a2, .LBB2_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	move	$a3, $zero
@@ -119,9 +118,9 @@ initWorkList:                           # @initWorkList
 	.type	initCombList,@function
 initCombList:                           # @initCombList
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_8
+	blez	$a1, .LBB3_8
 # %bb.1:                                # %.lr.ph.preheader
+	ori	$a2, $zero, 1
 	bne	$a1, $a2, .LBB3_3
 # %bb.2:
 	move	$a2, $zero
@@ -164,8 +163,7 @@ initCombList:                           # @initCombList
 	.type	saveSolution,@function
 saveSolution:                           # @saveSolution
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB4_3
+	blez	$a2, .LBB4_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a3, $a0, 8
 	addi.d	$a1, $a1, 8
@@ -245,8 +243,7 @@ calculate:                              # @calculate
 	.type	printSolution,@function
 printSolution:                          # @printSolution
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB6_20
+	blez	$a1, .LBB6_20
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -96
 	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
@@ -429,8 +426,7 @@ printSolution:                          # @printSolution
 	.type	printList,@function
 printList:                              # @printList
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB7_6
+	blez	$a1, .LBB7_6
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -532,27 +528,26 @@ recSearch:                              # @recSearch
 	ld.w	$a1, $a0, -4
 	pcalau12i	$a0, %pc_hi20(goal)
 	ld.w	$a2, $a0, %pc_lo12(goal)
-	sub.w	$a3, $a1, $a2
-	pcalau12i	$a0, %pc_hi20(best)
-	ld.w	$a4, $a0, %pc_lo12(best)
+	sub.w	$a0, $a1, $a2
+	pcalau12i	$a4, %pc_hi20(best)
+	ld.w	$a3, $a4, %pc_lo12(best)
+	srai.d	$a5, $a0, 31
+	xor	$a0, $a0, $a5
+	sub.w	$a0, $a0, $a5
+	sub.w	$a3, $a3, $a2
 	srai.d	$a5, $a3, 31
 	xor	$a3, $a3, $a5
 	sub.w	$a3, $a3, $a5
-	sub.w	$a4, $a4, $a2
-	srai.d	$a5, $a4, 31
-	xor	$a4, $a4, $a5
-	sub.w	$a4, $a4, $a5
-	bgeu	$a3, $a4, .LBB8_1
+	bgeu	$a0, $a3, .LBB8_1
 # %bb.4:
-	st.w	$a1, $a0, %pc_lo12(best)
 	pcalau12i	$a0, %pc_hi20(solution)
 	ld.d	$a3, $a0, %pc_lo12(solution)
 	pcalau12i	$a0, %pc_hi20(combList)
 	ld.d	$a0, $a0, %pc_lo12(combList)
+	st.w	$a1, $a4, %pc_lo12(best)
 	pcalau12i	$a4, %pc_hi20(bestDepth)
-	ori	$a5, $zero, 1
 	st.w	$t0, $a4, %pc_lo12(bestDepth)
-	blt	$t0, $a5, .LBB8_7
+	blez	$t0, .LBB8_7
 # %bb.5:                                # %.lr.ph.preheader.i
 	addi.d	$a4, $a3, 8
 	addi.d	$a5, $a0, 8
@@ -603,7 +598,7 @@ recSearch:                              # @recSearch
                                         #     Child Loop BB8_15 Depth 2
                                         #       Child Loop BB8_21 Depth 3
 	add.w	$a1, $a0, $t0
-	blt	$a1, $s3, .LBB8_10
+	blez	$a1, .LBB8_10
 # %bb.12:                               # %.lr.ph72
                                         #   in Loop: Header=BB8_11 Depth=1
 	move	$s7, $zero
@@ -941,17 +936,17 @@ getInput:                               # @getInput
 # %bb.6:                                # %newCombList.exit9
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(solution)
-	ori	$s4, $zero, 1
 	st.d	$s0, $a0, %pc_lo12(solution)
-	blt	$fp, $s4, .LBB10_21
+	blez	$fp, .LBB10_21
 # %bb.7:                                # %.lr.ph.preheader.i
 	addi.d	$a1, $sp, 0
 	move	$a0, $s3
 	move	$a2, $s2
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
+	ori	$a1, $zero, 1
 	bstrpick.d	$a0, $fp, 30, 1
-	bne	$fp, $s4, .LBB10_9
+	bne	$fp, $a1, .LBB10_9
 # %bb.8:
 	move	$a1, $zero
 	b	.LBB10_12

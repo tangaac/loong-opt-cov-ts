@@ -111,104 +111,85 @@ pat_insert:                             # @pat_insert
 	b	.LBB0_55
 .LBB0_17:                               # %.preheader84
 	xor	$a6, $a2, $a3
-	lu12i.w	$a2, 262144
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 33
 	ori	$a2, $zero, 1
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.18:
-	lu12i.w	$a2, 131072
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 34
 	ori	$a2, $zero, 2
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.19:
-	lu12i.w	$a2, 65536
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 35
 	ori	$a2, $zero, 3
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.20:
-	lu12i.w	$a2, 32768
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 36
 	ori	$a2, $zero, 4
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.21:
-	lu12i.w	$a2, 16384
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 37
 	ori	$a2, $zero, 5
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.22:
-	lu12i.w	$a2, 8192
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 38
 	ori	$a2, $zero, 6
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.23:
-	lu12i.w	$a2, 4096
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 39
 	ori	$a2, $zero, 7
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.24:
-	lu12i.w	$a2, 2048
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 40
 	ori	$a2, $zero, 8
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.25:
-	lu12i.w	$a2, 1024
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 41
 	ori	$a2, $zero, 9
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.26:
-	lu12i.w	$a2, 512
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 42
 	ori	$a2, $zero, 10
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.27:
-	lu12i.w	$a2, 256
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 43
 	ori	$a2, $zero, 11
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.28:
-	lu12i.w	$a2, 128
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 44
 	ori	$a2, $zero, 12
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.29:
-	lu12i.w	$a2, 64
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 45
 	ori	$a2, $zero, 13
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.30:
-	lu12i.w	$a2, 32
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 46
 	ori	$a2, $zero, 14
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.31:
-	lu12i.w	$a2, 16
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 47
 	ori	$a2, $zero, 15
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.32:
-	lu12i.w	$a2, 8
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 48
 	ori	$a2, $zero, 16
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.33:
-	lu12i.w	$a2, 4
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 49
 	ori	$a2, $zero, 17
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.34:
-	lu12i.w	$a2, 2
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 50
 	ori	$a2, $zero, 18
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.35:
-	lu12i.w	$a2, 1
-	and	$a7, $a6, $a2
+	slli.d	$a7, $a6, 51
 	ori	$a2, $zero, 19
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.36:
-	andi	$a7, $a6, 2048
+	slli.d	$a7, $a6, 52
 	ori	$a2, $zero, 20
-	bnez	$a7, .LBB0_48
+	bltz	$a7, .LBB0_48
 # %bb.37:
 	andi	$a7, $a6, 1024
 	ori	$a2, $zero, 21

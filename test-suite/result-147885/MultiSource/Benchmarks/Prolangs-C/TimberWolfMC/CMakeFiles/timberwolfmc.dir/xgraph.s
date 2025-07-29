@@ -256,7 +256,7 @@ xgraph:                                 # @xgraph
 	ld.w	$a2, $a0, 20
 	ld.w	$a1, $a0, 12
 	st.w	$a1, $sp, 100
-	blt	$a2, $s1, .LBB0_28
+	blez	$a2, .LBB0_28
 # %bb.23:                               #   in Loop: Header=BB0_22 Depth=2
 	ld.d	$a0, $s4, 0
 	pcaddu18i	$ra, %call36(tplist)
@@ -606,9 +606,8 @@ xgraph:                                 # @xgraph
 	pcalau12i	$a1, %got_pc_hi20(xNodeArray)
 	ld.d	$a1, $a1, %got_pc_lo12(xNodeArray)
 	move	$s0, $a0
-	ori	$s3, $zero, 1
 	st.d	$a0, $a1, 0
-	blt	$s2, $s3, .LBB0_69
+	blez	$s2, .LBB0_69
 # %bb.68:                               # %.lr.ph303.preheader
 	addi.d	$a0, $s0, 8
 	move	$a1, $zero
@@ -620,7 +619,7 @@ xgraph:                                 # @xgraph
 	ld.w	$a0, $a0, 0
 	st.d	$s0, $sp, 80                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	blt	$a0, $s3, .LBB0_77
+	blez	$a0, .LBB0_77
 # %bb.70:                               # %.lr.ph319
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0

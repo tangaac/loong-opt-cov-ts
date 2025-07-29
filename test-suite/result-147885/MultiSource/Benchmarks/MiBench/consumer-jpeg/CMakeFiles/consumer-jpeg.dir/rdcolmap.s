@@ -149,7 +149,7 @@ read_color_map:                         # @read_color_map
 	beqz	$a0, .LBB0_141
 # %bb.23:                               # %.preheader105.us.i.preheader
 	move	$a1, $zero
-	ori	$fp, $zero, 35
+	ori	$s1, $zero, 35
 	ori	$s2, $zero, 10
 	addi.w	$s3, $zero, -1
 	ori	$a0, $zero, 56
@@ -171,23 +171,23 @@ read_color_map:                         # @read_color_map
                                         #       Child Loop BB0_35 Depth 3
                                         #       Child Loop BB0_44 Depth 3
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	move	$s8, $zero
+	move	$s7, $zero
 	b	.LBB0_28
 	.p2align	4, , 16
 .LBB0_26:                               # %._crit_edge.thread.i95.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
-	stx.b	$a2, $s6, $s5
-	stx.b	$a1, $s7, $s5
-	stx.b	$a0, $s1, $s5
-	ld.w	$a0, $fp, 148
+	stx.b	$a2, $s4, $s6
+	stx.b	$a1, $s5, $s6
+	stx.b	$a0, $s1, $s6
+	ld.w	$a0, $s8, 148
 	addi.d	$a0, $a0, 1
-	st.w	$a0, $fp, 148
+	st.w	$a0, $s8, 148
 .LBB0_27:                               # %add_map_entry.exit103.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
-	addi.w	$s8, $s8, 1
+	addi.w	$s7, $s7, 1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	ori	$fp, $zero, 35
-	beq	$s8, $a0, .LBB0_24
+	ori	$s1, $zero, 35
+	beq	$s7, $a0, .LBB0_24
 .LBB0_28:                               #   Parent Loop BB0_25 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_29 Depth 3
@@ -197,7 +197,7 @@ read_color_map:                         # @read_color_map
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	bne	$a0, $fp, .LBB0_31
+	bne	$a0, $s1, .LBB0_31
 	.p2align	4, , 16
 .LBB0_29:                               # %.preheader.i.us.i
                                         #   Parent Loop BB0_25 Depth=1
@@ -216,7 +216,7 @@ read_color_map:                         # @read_color_map
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	bne	$a0, $fp, .LBB0_34
+	bne	$a0, $s1, .LBB0_34
 	.p2align	4, , 16
 .LBB0_32:                               # %.preheader.i90.us.i
                                         #   Parent Loop BB0_25 Depth=1
@@ -231,11 +231,11 @@ read_color_map:                         # @read_color_map
 	bne	$a0, $s3, .LBB0_32
 .LBB0_34:                               # %pbm_getc.exit91.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
-	move	$s4, $a0
+	move	$fp, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
-	bne	$a0, $fp, .LBB0_37
+	bne	$a0, $s1, .LBB0_37
 	.p2align	4, , 16
 .LBB0_35:                               # %.preheader.i93.us.i
                                         #   Parent Loop BB0_25 Depth=1
@@ -254,8 +254,8 @@ read_color_map:                         # @read_color_map
 	beq	$a2, $s3, .LBB0_40
 # %bb.38:                               # %pbm_getc.exit94.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
-	move	$a1, $s4
-	beq	$s4, $s3, .LBB0_40
+	move	$a1, $fp
+	beq	$fp, $s3, .LBB0_40
 # %bb.39:                               # %pbm_getc.exit94.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
 	bne	$a0, $s3, .LBB0_41
@@ -269,22 +269,21 @@ read_color_map:                         # @read_color_map
 	move	$a0, $a3
 	jirl	$ra, $a2, 0
 	move	$a0, $s1
-	move	$a1, $s4
+	move	$a1, $fp
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 .LBB0_41:                               #   in Loop: Header=BB0_28 Depth=2
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a3, $fp, 152
-	ld.d	$s6, $a3, 0
-	ld.d	$s7, $a3, 8
-	ld.w	$s5, $fp, 148
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$a3, $s8, 152
+	ld.d	$s4, $a3, 0
+	ld.d	$s5, $a3, 8
+	ld.w	$s6, $s8, 148
 	ld.d	$s1, $a3, 16
-	ori	$a3, $zero, 1
-	blt	$s5, $a3, .LBB0_26
+	blez	$s6, .LBB0_26
 # %bb.42:                               # %.lr.ph.preheader.i96.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
-	move	$a3, $s6
-	move	$a4, $s5
-	move	$a5, $s7
+	move	$a3, $s4
+	move	$a4, $s6
+	move	$a5, $s5
 	move	$a6, $s1
 	b	.LBB0_44
 	.p2align	4, , 16
@@ -310,20 +309,20 @@ read_color_map:                         # @read_color_map
 	.p2align	4, , 16
 .LBB0_47:                               # %._crit_edge.i102.us.i
                                         #   in Loop: Header=BB0_28 Depth=2
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	ori	$a3, $zero, 256
-	blt	$s5, $a3, .LBB0_26
+	blt	$s6, $a3, .LBB0_26
 # %bb.48:                               #   in Loop: Header=BB0_28 Depth=2
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s8, 0
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	st.d	$a2, $a1, 40
-	ld.d	$a1, $fp, 0
+	ld.d	$a1, $s8, 0
 	ld.d	$a1, $a1, 0
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	move	$a0, $fp
+	move	$a0, $s8
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	move	$a1, $s4
+	move	$a1, $fp
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	b	.LBB0_26
 .LBB0_49:                               # %read_gif_map.exit.sink.split
@@ -377,10 +376,10 @@ read_color_map:                         # @read_color_map
 	ori	$s7, $zero, 33
 	addi.w	$a0, $zero, -11
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	ori	$s3, $zero, 1
 	ori	$a0, $zero, 56
 	lu32i.d	$a0, 256
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$s3, $zero, 1
 	lu12i.w	$a0, 4
 	ori	$s1, $a0, 3072
 	lu32i.d	$s1, 2
@@ -727,7 +726,7 @@ read_color_map:                         # @read_color_map
 	ld.d	$a6, $a0, 8
 	ld.w	$a7, $a2, 148
 	ld.d	$t0, $a0, 16
-	blt	$a7, $s3, .LBB0_57
+	blez	$a7, .LBB0_57
 # %bb.103:                              # %.lr.ph.preheader.i.us.i
                                         #   in Loop: Header=BB0_59 Depth=2
 	move	$a0, $a5
@@ -945,9 +944,9 @@ read_color_map:                         # @read_color_map
 	.p2align	4, , 16
 .LBB0_127:                              # %._crit_edge.thread.i.i
                                         #   in Loop: Header=BB0_129 Depth=1
-	stx.b	$s1, $s5, $s7
-	stx.b	$s2, $s6, $s7
-	stx.b	$s3, $s4, $s7
+	stx.b	$s1, $s6, $s5
+	stx.b	$s2, $s7, $s5
+	stx.b	$s3, $s4, $s5
 	ld.w	$a0, $s8, 148
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s8, 148
@@ -986,17 +985,16 @@ read_color_map:                         # @read_color_map
 	jirl	$ra, $a1, 0
 .LBB0_133:                              #   in Loop: Header=BB0_129 Depth=1
 	ld.d	$a0, $s8, 152
-	ld.d	$s5, $a0, 0
-	ld.d	$s6, $a0, 8
-	ld.w	$s7, $s8, 148
+	ld.d	$s6, $a0, 0
+	ld.d	$s7, $a0, 8
+	ld.w	$s5, $s8, 148
 	ld.d	$s4, $a0, 16
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB0_127
+	blez	$s5, .LBB0_127
 # %bb.134:                              # %.lr.ph.preheader.i.i
                                         #   in Loop: Header=BB0_129 Depth=1
-	move	$a0, $s5
-	move	$a1, $s7
-	move	$a2, $s6
+	move	$a0, $s6
+	move	$a1, $s5
+	move	$a2, $s7
 	move	$a3, $s4
 	b	.LBB0_136
 	.p2align	4, , 16
@@ -1023,7 +1021,7 @@ read_color_map:                         # @read_color_map
                                         #   in Loop: Header=BB0_129 Depth=1
 	ld.d	$s8, $sp, 80                    # 8-byte Folded Reload
 	ori	$a0, $zero, 256
-	blt	$s7, $a0, .LBB0_127
+	blt	$s5, $a0, .LBB0_127
 # %bb.140:                              #   in Loop: Header=BB0_129 Depth=1
 	ld.d	$a0, $s8, 0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload

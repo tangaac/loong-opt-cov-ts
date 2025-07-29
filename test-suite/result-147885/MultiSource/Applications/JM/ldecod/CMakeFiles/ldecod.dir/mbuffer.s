@@ -1508,7 +1508,7 @@ init_lists:                             # @init_lists
 	st.w	$zero, $s3, %pc_lo12(listXsize)
 	bne	$fp, $a4, .LBB11_91
 # %bb.71:                               # %.preheader88.i
-	blt	$s2, $a4, .LBB11_94
+	blez	$s2, .LBB11_94
 # %bb.72:                               # %.preheader86.i.preheader
 	move	$a1, $zero
 	move	$a2, $zero
@@ -2077,8 +2077,7 @@ init_lists:                             # @init_lists
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB11_189
+	blez	$s3, .LBB11_189
 # %bb.182:                              # %.lr.ph746.preheader
 	ori	$a0, $zero, 4
 	bgeu	$s3, $a0, .LBB11_184
@@ -2148,7 +2147,7 @@ init_lists:                             # @init_lists
 	st.d	$zero, $s6, 0
 	bne	$fp, $a4, .LBB11_212
 # %bb.192:                              # %.preheader88.i360
-	blt	$s8, $a4, .LBB11_259
+	blez	$s8, .LBB11_259
 # %bb.193:                              # %.preheader86.i361.preheader
 	move	$a1, $zero
 	move	$a2, $zero
@@ -2362,7 +2361,7 @@ init_lists:                             # @init_lists
 	ori	$a1, $zero, 1
 	bne	$fp, $a1, .LBB11_255
 # %bb.235:                              # %.preheader88.i412
-	blt	$s8, $a1, .LBB11_259
+	blez	$s8, .LBB11_259
 # %bb.236:                              # %.preheader86.i413.preheader
 	ld.w	$a3, $s6, 4
 	move	$a1, $zero
@@ -2804,9 +2803,8 @@ init_lists:                             # @init_lists
 	pcaddu18i	$ra, %call36(qsort)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 0
-	ori	$a2, $zero, 1
 	slli.d	$a1, $fp, 3
-	blt	$fp, $a2, .LBB11_327
+	blez	$fp, .LBB11_327
 # %bb.322:                              # %.lr.ph775
 	ld.d	$a2, $s1, 8
 	ori	$a3, $zero, 12
@@ -3674,67 +3672,29 @@ init_mbaff_lists:                       # @init_mbaff_lists
 	st.d	$a3, $a1, 216
 	st.d	$a3, $a1, 224
 	st.d	$a3, $a1, 232
-	ld.d	$a4, $a0, 24
+	ld.d	$a5, $a0, 24
 	st.d	$a3, $a1, 240
 	st.d	$a3, $a1, 248
 	st.d	$a3, $a1, 256
-	st.d	$a3, $a4, 0
-	ld.d	$a3, $a2, %pc_lo12(no_reference_picture)
-	pcalau12i	$a1, %pc_hi20(listXsize)
-	addi.d	$a1, $a1, %pc_lo12(listXsize)
-	st.w	$zero, $a1, 8
-	st.d	$a3, $a4, 8
-	st.d	$a3, $a4, 16
-	st.d	$a3, $a4, 24
-	st.d	$a3, $a4, 32
-	st.d	$a3, $a4, 40
-	st.d	$a3, $a4, 48
-	st.d	$a3, $a4, 56
-	st.d	$a3, $a4, 64
-	st.d	$a3, $a4, 72
-	st.d	$a3, $a4, 80
-	st.d	$a3, $a4, 88
-	st.d	$a3, $a4, 96
-	st.d	$a3, $a4, 104
-	st.d	$a3, $a4, 112
-	st.d	$a3, $a4, 120
-	st.d	$a3, $a4, 128
-	st.d	$a3, $a4, 136
-	st.d	$a3, $a4, 144
-	st.d	$a3, $a4, 152
-	st.d	$a3, $a4, 160
-	st.d	$a3, $a4, 168
-	st.d	$a3, $a4, 176
-	st.d	$a3, $a4, 184
-	st.d	$a3, $a4, 192
-	st.d	$a3, $a4, 200
-	st.d	$a3, $a4, 208
-	st.d	$a3, $a4, 216
-	st.d	$a3, $a4, 224
-	st.d	$a3, $a4, 232
-	st.d	$a3, $a4, 240
-	ld.d	$a5, $a0, 32
-	st.d	$a3, $a4, 248
-	st.d	$a3, $a4, 256
-	st.w	$zero, $a1, 12
 	st.d	$a3, $a5, 0
-	st.d	$a3, $a5, 8
-	st.d	$a3, $a5, 16
-	st.d	$a3, $a5, 24
-	st.d	$a3, $a5, 32
-	st.d	$a3, $a5, 40
-	st.d	$a3, $a5, 48
-	st.d	$a3, $a5, 56
-	st.d	$a3, $a5, 64
-	st.d	$a3, $a5, 72
-	st.d	$a3, $a5, 80
-	st.d	$a3, $a5, 88
-	st.d	$a3, $a5, 96
-	st.d	$a3, $a5, 104
 	ld.d	$a4, $a2, %pc_lo12(no_reference_picture)
-	st.d	$a3, $a5, 112
-	st.d	$a3, $a5, 120
-	st.d	$a3, $a5, 128
+	pcalau12i	$a1, %pc_hi20(listXsize)
+	st.d	$a4, $a5, 8
+	st.d	$a4, $a5, 16
+	st.d	$a4, $a5, 24
+	st.d	$a4, $a5, 32
+	st.d	$a4, $a5, 40
+	st.d	$a4, $a5, 48
+	st.d	$a4, $a5, 56
+	st.d	$a4, $a5, 64
+	st.d	$a4, $a5, 72
+	st.d	$a4, $a5, 80
+	st.d	$a4, $a5, 88
+	st.d	$a4, $a5, 96
+	st.d	$a4, $a5, 104
+	st.d	$a4, $a5, 112
+	st.d	$a4, $a5, 120
+	st.d	$a4, $a5, 128
 	st.d	$a4, $a5, 136
 	st.d	$a4, $a5, 144
 	st.d	$a4, $a5, 152
@@ -3749,93 +3709,130 @@ init_mbaff_lists:                       # @init_mbaff_lists
 	st.d	$a4, $a5, 224
 	st.d	$a4, $a5, 232
 	st.d	$a4, $a5, 240
-	ld.d	$a2, $a0, 40
 	st.d	$a4, $a5, 248
 	st.d	$a4, $a5, 256
+	ld.d	$a5, $a0, 32
+	addi.d	$a1, $a1, %pc_lo12(listXsize)
+	st.w	$zero, $a1, 8
+	st.w	$zero, $a1, 12
+	st.d	$a4, $a5, 0
+	st.d	$a4, $a5, 8
+	st.d	$a4, $a5, 16
+	st.d	$a4, $a5, 24
+	st.d	$a4, $a5, 32
+	st.d	$a4, $a5, 40
+	st.d	$a4, $a5, 48
+	st.d	$a4, $a5, 56
+	st.d	$a4, $a5, 64
+	st.d	$a4, $a5, 72
+	st.d	$a4, $a5, 80
+	st.d	$a4, $a5, 88
+	st.d	$a4, $a5, 96
+	st.d	$a4, $a5, 104
+	ld.d	$a3, $a2, %pc_lo12(no_reference_picture)
+	st.d	$a4, $a5, 112
+	st.d	$a4, $a5, 120
+	st.d	$a4, $a5, 128
+	st.d	$a3, $a5, 136
+	st.d	$a3, $a5, 144
+	st.d	$a3, $a5, 152
+	st.d	$a3, $a5, 160
+	st.d	$a3, $a5, 168
+	st.d	$a3, $a5, 176
+	st.d	$a3, $a5, 184
+	st.d	$a3, $a5, 192
+	st.d	$a3, $a5, 200
+	st.d	$a3, $a5, 208
+	st.d	$a3, $a5, 216
+	st.d	$a3, $a5, 224
+	st.d	$a3, $a5, 232
+	st.d	$a3, $a5, 240
+	ld.d	$a2, $a0, 40
+	st.d	$a3, $a5, 248
+	st.d	$a3, $a5, 256
 	st.w	$zero, $a1, 16
-	st.d	$a4, $a2, 0
-	st.d	$a4, $a2, 8
-	st.d	$a4, $a2, 16
-	st.d	$a4, $a2, 24
-	st.d	$a4, $a2, 32
-	st.d	$a4, $a2, 40
-	st.d	$a4, $a2, 48
-	st.d	$a4, $a2, 56
-	st.d	$a4, $a2, 64
-	st.d	$a4, $a2, 72
-	st.d	$a4, $a2, 80
-	st.d	$a4, $a2, 88
-	st.d	$a4, $a2, 96
-	st.d	$a4, $a2, 104
-	st.d	$a4, $a2, 112
-	st.d	$a4, $a2, 120
-	st.d	$a4, $a2, 128
-	st.d	$a4, $a2, 136
-	st.d	$a4, $a2, 144
-	st.d	$a4, $a2, 152
-	st.d	$a4, $a2, 160
-	st.d	$a4, $a2, 168
-	st.d	$a4, $a2, 176
-	st.d	$a4, $a2, 184
-	st.d	$a4, $a2, 192
-	st.d	$a4, $a2, 200
-	st.d	$a4, $a2, 208
-	st.d	$a4, $a2, 216
-	st.d	$a4, $a2, 224
-	st.d	$a4, $a2, 232
-	st.d	$a4, $a2, 240
-	ld.w	$a5, $a1, 0
-	st.d	$a4, $a2, 248
-	st.d	$a4, $a2, 256
-	ori	$a4, $zero, 1
+	st.d	$a3, $a2, 0
+	st.d	$a3, $a2, 8
+	st.d	$a3, $a2, 16
+	st.d	$a3, $a2, 24
+	st.d	$a3, $a2, 32
+	st.d	$a3, $a2, 40
+	st.d	$a3, $a2, 48
+	st.d	$a3, $a2, 56
+	st.d	$a3, $a2, 64
+	st.d	$a3, $a2, 72
+	st.d	$a3, $a2, 80
+	st.d	$a3, $a2, 88
+	st.d	$a3, $a2, 96
+	st.d	$a3, $a2, 104
+	st.d	$a3, $a2, 112
+	st.d	$a3, $a2, 120
+	st.d	$a3, $a2, 128
+	st.d	$a3, $a2, 136
+	st.d	$a3, $a2, 144
+	st.d	$a3, $a2, 152
+	st.d	$a3, $a2, 160
+	st.d	$a3, $a2, 168
+	st.d	$a3, $a2, 176
+	st.d	$a3, $a2, 184
+	st.d	$a3, $a2, 192
+	st.d	$a3, $a2, 200
+	st.d	$a3, $a2, 208
+	st.d	$a3, $a2, 216
+	st.d	$a3, $a2, 224
+	st.d	$a3, $a2, 232
+	ld.w	$a4, $a1, 0
+	st.d	$a3, $a2, 240
+	st.d	$a3, $a2, 248
+	st.d	$a3, $a2, 256
 	lu12i.w	$a3, 77
-	blt	$a5, $a4, .LBB20_3
+	blez	$a4, .LBB20_3
 # %bb.1:                                # %.lr.ph
-	ld.d	$a7, $a0, 32
-	ld.d	$t0, $a0, 16
-	ld.d	$a6, $a0, 0
+	ld.d	$a6, $a0, 32
+	ld.d	$a7, $a0, 16
+	ld.d	$a5, $a0, 0
+	addi.d	$a6, $a6, 8
 	addi.d	$a7, $a7, 8
-	addi.d	$t0, $t0, 8
-	ori	$t1, $a3, 1608
-	ori	$t2, $a3, 1616
-	move	$t3, $a5
+	ori	$t0, $a3, 1608
+	ori	$t1, $a3, 1616
+	move	$t2, $a4
 	.p2align	4, , 16
 .LBB20_2:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$t4, $a6, 0
-	ldx.d	$t4, $t4, $t1
-	st.d	$t4, $t0, -8
-	ld.d	$t4, $a6, 0
-	ldx.d	$t4, $t4, $t2
-	st.d	$t4, $t0, 0
-	ld.d	$t4, $a6, 0
-	ldx.d	$t4, $t4, $t2
-	st.d	$t4, $a7, -8
-	ld.d	$t4, $a6, 0
-	ldx.d	$t4, $t4, $t1
-	st.d	$t4, $a7, 0
-	addi.d	$a6, $a6, 8
+	ld.d	$t3, $a5, 0
+	ldx.d	$t3, $t3, $t0
+	st.d	$t3, $a7, -8
+	ld.d	$t3, $a5, 0
+	ldx.d	$t3, $t3, $t1
+	st.d	$t3, $a7, 0
+	ld.d	$t3, $a5, 0
+	ldx.d	$t3, $t3, $t1
+	st.d	$t3, $a6, -8
+	ld.d	$t3, $a5, 0
+	ldx.d	$t3, $t3, $t0
+	st.d	$t3, $a6, 0
+	addi.d	$a5, $a5, 8
+	addi.d	$a6, $a6, 16
+	addi.d	$t2, $t2, -1
 	addi.d	$a7, $a7, 16
-	addi.d	$t3, $t3, -1
-	addi.d	$t0, $t0, 16
-	bnez	$t3, .LBB20_2
+	bnez	$t2, .LBB20_2
 .LBB20_3:                               # %._crit_edge
-	ld.w	$a6, $a1, 4
-	slli.d	$a5, $a5, 1
-	st.w	$a5, $a1, 16
-	st.w	$a5, $a1, 8
-	blt	$a6, $a4, .LBB20_6
+	ld.w	$a5, $a1, 4
+	slli.d	$a4, $a4, 1
+	st.w	$a4, $a1, 16
+	st.w	$a4, $a1, 8
+	blez	$a5, .LBB20_6
 # %bb.4:                                # %.lr.ph37
 	ld.d	$a4, $a0, 24
 	ld.d	$a0, $a0, 8
 	addi.d	$a2, $a2, 8
 	addi.d	$a4, $a4, 8
-	ori	$a5, $a3, 1608
+	ori	$a6, $a3, 1608
 	ori	$a3, $a3, 1616
-	move	$a7, $a6
+	move	$a7, $a5
 	.p2align	4, , 16
 .LBB20_5:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$t0, $a0, 0
-	ldx.d	$t0, $t0, $a5
+	ldx.d	$t0, $t0, $a6
 	st.d	$t0, $a4, -8
 	ld.d	$t0, $a0, 0
 	ldx.d	$t0, $t0, $a3
@@ -3844,7 +3841,7 @@ init_mbaff_lists:                       # @init_mbaff_lists
 	ldx.d	$t0, $t0, $a3
 	st.d	$t0, $a2, -8
 	ld.d	$t0, $a0, 0
-	ldx.d	$t0, $t0, $a5
+	ldx.d	$t0, $t0, $a6
 	st.d	$t0, $a2, 0
 	addi.d	$a0, $a0, 8
 	addi.d	$a2, $a2, 16
@@ -3852,7 +3849,7 @@ init_mbaff_lists:                       # @init_mbaff_lists
 	addi.d	$a4, $a4, 16
 	bnez	$a7, .LBB20_5
 .LBB20_6:                               # %._crit_edge38
-	slli.d	$a0, $a6, 1
+	slli.d	$a0, $a5, 1
 	st.w	$a0, $a1, 20
 	st.w	$a0, $a1, 12
 	ret
@@ -5607,8 +5604,7 @@ store_picture_in_dpb:                   # @store_picture_in_dpb
 	ld.w	$a2, $a0, 12
 	sltui	$a1, $a1, 1
 	sltui	$a2, $a2, 1
-	xor	$a1, $a1, $a2
-	beqz	$a1, .LBB25_286
+	beq	$a1, $a2, .LBB25_286
 .LBB25_215:
 	ld.w	$a0, $s7, 204
 	beqz	$a0, .LBB25_224
@@ -6913,17 +6909,17 @@ dpb_split_field:                        # @dpb_split_field
 	ld.d	$a1, $a3, 72
 	alsl.w	$a4, $a0, $s2, 1
 	ldx.bu	$a1, $a1, $a4
-	ld.d	$a5, $a3, 88
+	ld.d	$s1, $a3, 88
 	beqz	$a1, .LBB30_33
 # %bb.30:                               #   in Loop: Header=BB30_28 Depth=2
-	ld.d	$a1, $a5, 0
+	ld.d	$a1, $s1, 0
 	ldx.d	$a1, $a1, $s5
-	ldx.b	$s1, $a1, $t8
+	ldx.b	$a5, $a1, $t8
 	addi.w	$ra, $a0, 0
 	slli.d	$t4, $s3, 3
 	slli.d	$t5, $s3, 8
-	slli.d	$a0, $s1, 3
-	bltz	$s1, .LBB30_37
+	slli.d	$a0, $a5, 3
+	bltz	$a5, .LBB30_37
 # %bb.31:                               #   in Loop: Header=BB30_28 Depth=2
 	ld.d	$a1, $a3, 80
 	ldx.d	$a1, $a1, $s6
@@ -6938,13 +6934,13 @@ dpb_split_field:                        # @dpb_split_field
 	.p2align	4, , 16
 .LBB30_32:                              # %._crit_edge630
                                         #   in Loop: Header=BB30_28 Depth=2
-	ld.d	$a5, $a3, 88
+	ld.d	$s1, $a3, 88
 .LBB30_33:                              #   in Loop: Header=BB30_28 Depth=2
-	ld.d	$a1, $a5, 0
+	ld.d	$a1, $s1, 0
 	ldx.d	$a1, $a1, $s5
-	ldx.b	$a6, $a1, $t8
+	ldx.b	$a5, $a1, $t8
 	move	$a1, $t6
-	bltz	$a6, .LBB30_35
+	bltz	$a5, .LBB30_35
 # %bb.34:                               #   in Loop: Header=BB30_28 Depth=2
 	ld.d	$a1, $a3, 80
 	ldx.d	$a1, $a1, $s6
@@ -6953,10 +6949,10 @@ dpb_split_field:                        # @dpb_split_field
 	ldx.h	$a1, $a1, $a4
 	mul.d	$a1, $a1, $t7
 	add.d	$a1, $a7, $a1
-	slli.d	$a4, $a6, 3
+	slli.d	$a4, $a5, 3
 	ldx.d	$a1, $a1, $a4
 .LBB30_35:                              #   in Loop: Header=BB30_28 Depth=2
-	ld.d	$a4, $a5, 8
+	ld.d	$a4, $s1, 8
 	ld.d	$s8, $a3, 104
 	ldx.d	$a4, $a4, $s5
 	ld.d	$a6, $s8, 0
@@ -6971,7 +6967,7 @@ dpb_split_field:                        # @dpb_split_field
 	move	$a6, $zero
 .LBB30_38:                              #   in Loop: Header=BB30_28 Depth=2
 	ld.d	$s8, $a3, 104
-	ld.d	$a1, $a5, 8
+	ld.d	$a1, $s1, 8
 	ldx.d	$a4, $s8, $t4
 	ldx.d	$a1, $a1, $s5
 	ldx.d	$a4, $a4, $s5
@@ -6979,7 +6975,7 @@ dpb_split_field:                        # @dpb_split_field
 	stx.d	$a6, $a4, $s7
 	slli.d	$a6, $s4, 3
 	slli.d	$s0, $s4, 8
-	slli.d	$a5, $a1, 3
+	slli.d	$s1, $a1, 3
 	bltz	$a1, .LBB30_42
 # %bb.39:                               #   in Loop: Header=BB30_28 Depth=2
 	ld.d	$a4, $a3, 80
@@ -6990,20 +6986,20 @@ dpb_split_field:                        # @dpb_split_field
 	mul.d	$a4, $a4, $t7
 	add.d	$a4, $a7, $a4
 	add.d	$a4, $a4, $t1
-	ldx.d	$a4, $a4, $a5
+	ldx.d	$a4, $a4, $s1
 	ldx.d	$t1, $s8, $a6
 	ldx.d	$t1, $t1, $s5
 	stx.d	$a4, $t1, $s7
-	bltz	$s1, .LBB30_43
+	bltz	$a5, .LBB30_43
 .LBB30_40:                              #   in Loop: Header=BB30_28 Depth=2
 	ld.d	$a4, $a3, 80
 	ldx.d	$a4, $a4, $s6
-	slli.d	$t1, $ra, 1
-	ldx.h	$a4, $a4, $t1
-	or	$t1, $t5, $t4
+	slli.d	$a5, $ra, 1
+	ldx.h	$a4, $a4, $a5
+	or	$a5, $t5, $t4
 	mul.d	$a4, $a4, $t7
 	add.d	$a4, $t0, $a4
-	add.d	$a4, $a4, $t1
+	add.d	$a4, $a4, $a5
 	ldx.d	$a0, $a4, $a0
 	ld.d	$a4, $s8, 0
 	ldx.d	$a4, $a4, $s5
@@ -7018,14 +7014,14 @@ dpb_split_field:                        # @dpb_split_field
 	mul.d	$a0, $a0, $t7
 	add.d	$a0, $t0, $a0
 	add.d	$a0, $a0, $a1
-	ldx.d	$a0, $a0, $a5
+	ldx.d	$a0, $a0, $s1
 	b	.LBB30_27
 .LBB30_42:                              #   in Loop: Header=BB30_28 Depth=2
 	move	$a4, $zero
 	ldx.d	$t1, $s8, $a6
 	ldx.d	$t1, $t1, $s5
 	stx.d	$a4, $t1, $s7
-	bgez	$s1, .LBB30_40
+	bgez	$a5, .LBB30_40
 .LBB30_43:                              #   in Loop: Header=BB30_28 Depth=2
 	move	$a0, $zero
 	ld.d	$a4, $s8, 0
@@ -7604,7 +7600,6 @@ dpb_combine_field_yuv:                  # @dpb_combine_field_yuv
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$a0, $a0, 56
 	lu12i.w	$s0, 77
@@ -7620,50 +7615,49 @@ dpb_combine_field_yuv:                  # @dpb_combine_field_yuv
 	pcaddu18i	$ra, %call36(alloc_storable_picture)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 56
-	ori	$s3, $s0, 1476
-	ldx.w	$a2, $a1, $s3
-	ori	$s2, $zero, 1
+	ori	$s2, $s0, 1476
+	ldx.w	$a2, $a1, $s2
 	st.d	$a0, $fp, 48
-	blt	$a2, $s2, .LBB31_3
+	blez	$a2, .LBB31_3
 # %bb.1:                                # %.lr.ph
+	move	$s3, $zero
 	move	$s4, $zero
 	move	$s5, $zero
-	move	$s6, $zero
-	ori	$s7, $s0, 1528
+	ori	$s6, $s0, 1528
 	.p2align	4, , 16
 .LBB31_2:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 48
-	ldx.d	$a0, $a0, $s7
+	ldx.d	$a0, $a0, $s6
 	add.d	$a2, $a1, $s1
 	ld.d	$a2, $a2, 56
-	ldx.d	$a0, $a0, $s5
+	ldx.d	$a0, $a0, $s4
 	ldx.w	$a3, $a1, $s1
-	ldx.d	$a1, $a2, $s4
+	ldx.d	$a1, $a2, $s3
 	slli.d	$a2, $a3, 1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 48
 	ld.d	$a1, $fp, 64
-	ldx.d	$a0, $a0, $s7
+	ldx.d	$a0, $a0, $s6
 	add.d	$a2, $a1, $s1
 	ld.d	$a2, $a2, 56
-	add.d	$a0, $a0, $s5
+	add.d	$a0, $a0, $s4
 	ld.d	$a0, $a0, 8
 	ldx.w	$a3, $a1, $s1
-	ldx.d	$a1, $a2, $s4
+	ldx.d	$a1, $a2, $s3
 	slli.d	$a2, $a3, 1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 56
-	ldx.w	$a0, $a1, $s3
-	addi.d	$s6, $s6, 1
-	addi.d	$s5, $s5, 16
-	addi.d	$s4, $s4, 8
-	blt	$s6, $a0, .LBB31_2
+	ldx.w	$a0, $a1, $s2
+	addi.d	$s5, $s5, 1
+	addi.d	$s4, $s4, 16
+	addi.d	$s3, $s3, 8
+	blt	$s5, $a0, .LBB31_2
 .LBB31_3:                               # %.preheader
 	ori	$s1, $s0, 1484
 	ldx.w	$a0, $a1, $s1
-	blt	$a0, $s2, .LBB31_6
+	blez	$a0, .LBB31_6
 # %bb.4:                                # %.lr.ph90
 	move	$s2, $zero
 	move	$s3, $zero
@@ -7795,7 +7789,6 @@ dpb_combine_field_yuv:                  # @dpb_combine_field_yuv
 .LBB31_14:
 	st.d	$a0, $a4, 172
 	st.d	$a0, $a2, 172
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -10544,126 +10537,125 @@ compute_colocated:                      # @compute_colocated
 	srli.d	$t3, $t3, 1
 	b	.LBB38_147
 .LBB38_155:                             # %.preheader818
-	ldptr.w	$t7, $a4, 5624
-	bltz	$t7, .LBB38_139
+	ldptr.w	$t6, $a4, 5624
+	bltz	$t6, .LBB38_139
 # %bb.156:                              # %.preheader.lr.ph
-	move	$t8, $zero
+	move	$t7, $zero
 	addi.d	$a0, $a4, 616
 	pcalau12i	$a2, %pc_hi20(listXsize)
 	addi.d	$a3, $a2, %pc_lo12(listXsize)
-	ori	$a5, $zero, 1
 	pcalau12i	$a2, %got_pc_hi20(dec_picture)
-	ld.d	$a6, $a2, %got_pc_lo12(dec_picture)
+	ld.d	$a5, $a2, %got_pc_lo12(dec_picture)
 	lu12i.w	$a2, 2
-	ori	$a7, $a2, 1807
+	ori	$a6, $a2, 1807
 	lu12i.w	$a2, 1
 	ori	$a2, $a2, 1528
-	addi.w	$t0, $zero, -128
-	ori	$t1, $zero, 127
-	lu12i.w	$t2, 4
-	addi.w	$t3, $zero, -1024
-	ori	$t4, $zero, 1023
-	ori	$t5, $zero, 2
+	addi.w	$a7, $zero, -128
+	ori	$t0, $zero, 127
+	lu12i.w	$t1, 4
+	addi.w	$t2, $zero, -1024
+	ori	$t3, $zero, 1023
+	ori	$t4, $zero, 2
 	b	.LBB38_159
 	.p2align	4, , 16
 .LBB38_157:                             # %._crit_edge863.loopexit
                                         #   in Loop: Header=BB38_159 Depth=1
-	ldx.w	$t7, $a4, $a2
+	ldx.w	$t6, $a4, $a2
 .LBB38_158:                             # %._crit_edge863
                                         #   in Loop: Header=BB38_159 Depth=1
-	addi.d	$t8, $t6, 2
-	slli.w	$fp, $t7, 2
+	addi.d	$t7, $t5, 2
+	slli.w	$t8, $t6, 2
 	addi.d	$a0, $a0, 256
-	bge	$t6, $fp, .LBB38_139
+	bge	$t5, $t8, .LBB38_139
 .LBB38_159:                             # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB38_162 Depth 2
-	move	$t6, $t8
-	slli.d	$t8, $t8, 2
-	ldx.w	$t8, $a3, $t8
-	blt	$t8, $a5, .LBB38_158
+	move	$t5, $t7
+	slli.d	$t7, $t7, 2
+	ldx.w	$t7, $a3, $t7
+	blez	$t7, .LBB38_158
 # %bb.160:                              # %.lr.ph862
                                         #   in Loop: Header=BB38_159 Depth=1
-	move	$t7, $zero
-	alsl.d	$t8, $t6, $a1, 3
-	ld.d	$fp, $t8, 8
-	alsl.d	$t8, $t6, $a3, 2
-	ld.d	$s3, $a6, 0
-	slli.d	$s0, $t6, 3
-	ld.d	$fp, $fp, 0
-	ldx.d	$s0, $a1, $s0
-	addi.d	$s1, $s3, 8
-	addi.d	$s2, $s3, 4
-	addi.d	$s3, $s3, 12
-	move	$s4, $a0
+	move	$t6, $zero
+	alsl.d	$t7, $t5, $a1, 3
+	ld.d	$t8, $t7, 8
+	alsl.d	$t7, $t5, $a3, 2
+	ld.d	$s2, $a5, 0
+	slli.d	$fp, $t5, 3
+	ld.d	$t8, $t8, 0
+	ldx.d	$fp, $a1, $fp
+	addi.d	$s0, $s2, 8
+	addi.d	$s1, $s2, 4
+	addi.d	$s2, $s2, 12
+	move	$s3, $a0
 	b	.LBB38_162
 	.p2align	4, , 16
 .LBB38_161:                             #   in Loop: Header=BB38_162 Depth=2
-	st.w	$s8, $s4, 0
-	ld.w	$s5, $t8, 0
-	addi.d	$t7, $t7, 1
-	addi.d	$s4, $s4, 4
-	addi.d	$s0, $s0, 8
-	bge	$t7, $s5, .LBB38_157
+	st.w	$s7, $s3, 0
+	ld.w	$s4, $t7, 0
+	addi.d	$t6, $t6, 1
+	addi.d	$s3, $s3, 4
+	addi.d	$fp, $fp, 8
+	bge	$t6, $s4, .LBB38_157
 .LBB38_162:                             #   Parent Loop BB38_159 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$s5, $s2
-	beqz	$t6, .LBB38_165
+	move	$s4, $s1
+	beqz	$t5, .LBB38_165
 # %bb.163:                              #   in Loop: Header=BB38_162 Depth=2
-	move	$s5, $s1
-	beq	$t6, $t5, .LBB38_165
+	move	$s4, $s0
+	beq	$t5, $t4, .LBB38_165
 # %bb.164:                              #   in Loop: Header=BB38_162 Depth=2
-	move	$s5, $s3
+	move	$s4, $s2
 .LBB38_165:                             #   in Loop: Header=BB38_162 Depth=2
-	ld.d	$s7, $s0, 0
-	ld.w	$s6, $fp, 4
-	ld.w	$s7, $s7, 4
-	move	$s8, $a7
-	beq	$s6, $s7, .LBB38_161
+	ld.d	$s6, $fp, 0
+	ld.w	$s5, $t8, 4
+	ld.w	$s6, $s6, 4
+	move	$s7, $a6
+	beq	$s5, $s6, .LBB38_161
 # %bb.166:                              #   in Loop: Header=BB38_162 Depth=2
-	ld.d	$s8, $s0, 0
-	ld.w	$s8, $s8, 4
-	ld.w	$s5, $s5, 0
-	sub.w	$s5, $s5, $s8
-	slt	$s8, $t0, $s5
-	maskeqz	$s5, $s5, $s8
-	masknez	$s8, $t0, $s8
-	or	$s5, $s5, $s8
-	slti	$s8, $s5, 127
-	maskeqz	$s5, $s5, $s8
-	masknez	$s8, $t1, $s8
-	or	$s5, $s5, $s8
-	sub.w	$s6, $s6, $s7
-	slt	$s7, $t0, $s6
-	maskeqz	$s6, $s6, $s7
+	ld.d	$s7, $fp, 0
+	ld.w	$s7, $s7, 4
+	ld.w	$s4, $s4, 0
+	sub.w	$s4, $s4, $s7
+	slt	$s7, $a7, $s4
+	maskeqz	$s4, $s4, $s7
+	masknez	$s7, $a7, $s7
+	or	$s4, $s4, $s7
+	slti	$s7, $s4, 127
+	maskeqz	$s4, $s4, $s7
 	masknez	$s7, $t0, $s7
-	or	$s6, $s6, $s7
-	slti	$s7, $s6, 127
-	maskeqz	$s6, $s6, $s7
-	masknez	$s7, $t1, $s7
-	or	$s6, $s6, $s7
-	bstrpick.d	$s7, $s6, 7, 7
-	add.d	$s7, $s6, $s7
-	ext.w.b	$s7, $s7
-	srai.d	$s7, $s7, 1
-	srai.d	$s8, $s7, 63
-	xor	$s7, $s7, $s8
-	sub.d	$s7, $s7, $s8
-	or	$s7, $s7, $t2
-	ext.w.h	$s6, $s6
-	div.d	$s6, $s7, $s6
-	ext.w.h	$s6, $s6
-	mul.d	$s5, $s5, $s6
-	addi.w	$s5, $s5, 32
-	srai.d	$s5, $s5, 6
-	slt	$s6, $t3, $s5
+	or	$s4, $s4, $s7
+	sub.w	$s5, $s5, $s6
+	slt	$s6, $a7, $s5
 	maskeqz	$s5, $s5, $s6
-	masknez	$s6, $t3, $s6
+	masknez	$s6, $a7, $s6
 	or	$s5, $s5, $s6
-	slti	$s6, $s5, 1023
+	slti	$s6, $s5, 127
 	maskeqz	$s5, $s5, $s6
-	masknez	$s6, $t4, $s6
-	or	$s8, $s5, $s6
+	masknez	$s6, $t0, $s6
+	or	$s5, $s5, $s6
+	bstrpick.d	$s6, $s5, 7, 7
+	add.d	$s6, $s5, $s6
+	ext.w.b	$s6, $s6
+	srai.d	$s6, $s6, 1
+	srai.d	$s7, $s6, 63
+	xor	$s6, $s6, $s7
+	sub.d	$s6, $s6, $s7
+	or	$s6, $s6, $t1
+	ext.w.h	$s5, $s5
+	div.d	$s5, $s6, $s5
+	ext.w.h	$s5, $s5
+	mul.d	$s4, $s4, $s5
+	addi.w	$s4, $s4, 32
+	srai.d	$s4, $s4, 6
+	slt	$s5, $t2, $s4
+	maskeqz	$s4, $s4, $s5
+	masknez	$s5, $t2, $s5
+	or	$s4, $s4, $s5
+	slti	$s5, $s4, 1023
+	maskeqz	$s4, $s4, $s5
+	masknez	$s5, $t3, $s5
+	or	$s7, $s4, $s5
 	b	.LBB38_161
 .Lfunc_end38:
 	.size	compute_colocated, .Lfunc_end38-compute_colocated
@@ -10672,8 +10664,7 @@ compute_colocated:                      # @compute_colocated
 	.type	unmark_long_term_field_for_reference_by_frame_idx,@function
 unmark_long_term_field_for_reference_by_frame_idx: # @unmark_long_term_field_for_reference_by_frame_idx
 # %bb.0:
-	addi.w	$a5, $zero, -1
-	blt	$a5, $a4, .LBB39_2
+	bgez	$a4, .LBB39_2
 # %bb.1:
 	pcalau12i	$a5, %got_pc_hi20(img)
 	ld.d	$a5, $a5, %got_pc_lo12(img)

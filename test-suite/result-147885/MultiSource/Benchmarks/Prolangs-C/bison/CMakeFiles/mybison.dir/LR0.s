@@ -26,7 +26,6 @@ allocate_itemsets:                      # @allocate_itemsets
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a0, $zero
 	addi.d	$a1, $a1, 2
-	ori	$a3, $zero, 1
 	b	.LBB0_3
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_3 Depth=1
@@ -35,14 +34,14 @@ allocate_itemsets:                      # @allocate_itemsets
 	beqz	$a2, .LBB0_5
 .LBB0_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ext.w.h	$a4, $a2
-	blt	$a4, $a3, .LBB0_2
+	ext.w.h	$a3, $a2
+	blez	$a3, .LBB0_2
 # %bb.4:                                #   in Loop: Header=BB0_3 Depth=1
 	slli.d	$a2, $a2, 1
-	ldx.h	$a4, $fp, $a2
+	ldx.h	$a3, $fp, $a2
 	addi.d	$a0, $a0, 1
-	addi.d	$a4, $a4, 1
-	stx.h	$a4, $fp, $a2
+	addi.d	$a3, $a3, 1
+	stx.h	$a3, $fp, $a2
 	b	.LBB0_2
 .LBB0_5:                                # %._crit_edge.loopexit
 	slli.w	$s0, $a0, 1
@@ -61,9 +60,8 @@ allocate_itemsets:                      # @allocate_itemsets
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 0
 	pcalau12i	$a2, %pc_hi20(kernel_items)
-	ori	$a3, $zero, 1
 	st.d	$a0, $a2, %pc_lo12(kernel_items)
-	blt	$a1, $a3, .LBB0_10
+	blez	$a1, .LBB0_10
 # %bb.8:                                # %.lr.ph38
 	ld.d	$a2, $s2, %pc_lo12(kernel_base)
 	move	$a3, $zero
@@ -123,7 +121,6 @@ allocate_storage:                       # @allocate_storage
 # %bb.1:                                # %.lr.ph.i.preheader
 	move	$a0, $zero
 	addi.d	$a1, $a1, 2
-	ori	$a3, $zero, 1
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_3 Depth=1
@@ -132,14 +129,14 @@ allocate_storage:                       # @allocate_storage
 	beqz	$a2, .LBB1_5
 .LBB1_3:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ext.w.h	$a4, $a2
-	blt	$a4, $a3, .LBB1_2
+	ext.w.h	$a3, $a2
+	blez	$a3, .LBB1_2
 # %bb.4:                                #   in Loop: Header=BB1_3 Depth=1
 	slli.d	$a2, $a2, 1
-	ldx.h	$a4, $fp, $a2
+	ldx.h	$a3, $fp, $a2
 	addi.d	$a0, $a0, 1
-	addi.d	$a4, $a4, 1
-	stx.h	$a4, $fp, $a2
+	addi.d	$a3, $a3, 1
+	stx.h	$a3, $fp, $a2
 	b	.LBB1_2
 .LBB1_5:                                # %._crit_edge.loopexit.i
 	slli.w	$s0, $a0, 1
@@ -158,9 +155,8 @@ allocate_storage:                       # @allocate_storage
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, 0
 	pcalau12i	$a2, %pc_hi20(kernel_items)
-	ori	$a3, $zero, 1
 	st.d	$a0, $a2, %pc_lo12(kernel_items)
-	blt	$a1, $a3, .LBB1_10
+	blez	$a1, .LBB1_10
 # %bb.8:                                # %.lr.ph38.i
 	ld.d	$a2, $s2, %pc_lo12(kernel_base)
 	move	$a3, $zero
@@ -318,25 +314,23 @@ generate_states:                        # @generate_states
 	beqz	$a0, .LBB3_64
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a1, %got_pc_hi20(itemset)
-	ld.d	$s7, $a1, %got_pc_lo12(itemset)
+	ld.d	$s1, $a1, %got_pc_lo12(itemset)
 	pcalau12i	$a1, %got_pc_hi20(itemsetend)
 	ld.d	$s2, $a1, %got_pc_lo12(itemsetend)
 	pcalau12i	$a1, %got_pc_hi20(ritem)
 	ld.d	$s3, $a1, %got_pc_lo12(ritem)
-	pcalau12i	$a1, %pc_hi20(redset)
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$s5, $zero, -1
+	pcalau12i	$s6, %pc_hi20(redset)
 	pcalau12i	$a1, %got_pc_hi20(nsyms)
 	ld.d	$a1, $a1, %got_pc_lo12(nsyms)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	pcalau12i	$s6, %pc_hi20(shift_symbol)
-	pcalau12i	$s4, %pc_hi20(shiftset)
+	st.d	$fp, $sp, 8                     # 8-byte Folded Spill
+	pcalau12i	$s8, %pc_hi20(shift_symbol)
+	pcalau12i	$s5, %pc_hi20(shiftset)
 	b	.LBB3_4
 	.p2align	4, , 16
 .LBB3_2:                                # %append_states.exit.thread
                                         #   in Loop: Header=BB3_4 Depth=1
-	st.w	$zero, $s8, %pc_lo12(nshifts)
+	st.w	$zero, $s7, %pc_lo12(nshifts)
 .LBB3_3:                                # %append_states.exit.thread15
                                         #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a0, $fp, %pc_lo12(this_state)
@@ -360,15 +354,14 @@ generate_states:                        # @generate_states
 	addi.d	$a0, $a0, 22
 	pcaddu18i	$ra, %call36(closure)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s1, 0
 	ld.d	$a1, $s2, 0
 	bgeu	$a0, $a1, .LBB3_17
 # %bb.5:                                # %.lr.ph.i
                                         #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a2, $s3, 0
-	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a3, $a3, %pc_lo12(redset)
-	move	$s8, $zero
+	ld.d	$a3, $s6, %pc_lo12(redset)
+	move	$s7, $zero
 	b	.LBB3_7
 	.p2align	4, , 16
 .LBB3_6:                                #   in Loop: Header=BB3_7 Depth=2
@@ -379,32 +372,31 @@ generate_states:                        # @generate_states
 	ld.h	$a4, $a0, 0
 	slli.d	$a4, $a4, 1
 	ldx.h	$a4, $a2, $a4
-	blt	$s5, $a4, .LBB3_6
+	bgez	$a4, .LBB3_6
 # %bb.8:                                #   in Loop: Header=BB3_7 Depth=2
 	sub.d	$a4, $zero, $a4
-	slli.d	$a5, $s8, 1
-	addi.w	$s8, $s8, 1
+	slli.d	$a5, $s7, 1
+	addi.w	$s7, $s7, 1
 	stx.h	$a4, $a3, $a5
 	b	.LBB3_6
 	.p2align	4, , 16
 .LBB3_9:                                # %._crit_edge.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	beqz	$s8, .LBB3_17
+	beqz	$s7, .LBB3_17
 # %bb.10:                               #   in Loop: Header=BB3_4 Depth=1
 	ori	$a0, $zero, 14
-	alsl.w	$a0, $s8, $a0, 1
+	alsl.w	$a0, $s7, $a0, 1
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, %pc_lo12(this_state)
 	ld.h	$a1, $a1, 16
 	st.h	$a1, $a0, 8
-	st.h	$s8, $a0, 10
-	blt	$s8, $s0, .LBB3_16
+	st.h	$s7, $a0, 10
+	blez	$s7, .LBB3_16
 # %bb.11:                               # %iter.check35
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$a2, $a1, %pc_lo12(redset)
-	slli.d	$a1, $s8, 1
+	ld.d	$a2, $s6, %pc_lo12(redset)
+	slli.d	$a1, $s7, 1
 	nor	$a3, $a2, $zero
 	add.d	$a1, $a1, $a2
 	addi.d	$a4, $a2, 2
@@ -426,7 +418,7 @@ generate_states:                        # @generate_states
 	move	$a4, $a2
 .LBB3_14:                               # %.lr.ph32.i.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
-	alsl.d	$a2, $s8, $a2, 1
+	alsl.d	$a2, $s7, $a2, 1
 	.p2align	4, , 16
 .LBB3_15:                               # %.lr.ph32.i
                                         #   Parent Loop BB3_4 Depth=1
@@ -454,25 +446,25 @@ generate_states:                        # @generate_states
                                         #   in Loop: Header=BB3_4 Depth=1
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
-	pcalau12i	$s1, %pc_hi20(kernel_end)
-	blt	$a1, $s0, .LBB3_19
+	pcalau12i	$s4, %pc_hi20(kernel_end)
+	blez	$a1, .LBB3_19
 # %bb.18:                               # %.lr.ph.i4
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a0, $s1, %pc_lo12(kernel_end)
+	ld.d	$a0, $s4, %pc_lo12(kernel_end)
 	slli.d	$a2, $a1, 3
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB3_19:                               # %._crit_edge.i1
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a2, $s7, 0
+	ld.d	$a2, $s1, 0
 	ld.d	$a5, $s2, 0
-	pcalau12i	$s8, %pc_hi20(nshifts)
+	pcalau12i	$s7, %pc_hi20(nshifts)
 	bgeu	$a2, $a5, .LBB3_2
 # %bb.20:                               # %.lr.ph25.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a3, $s1, %pc_lo12(kernel_end)
-	ld.d	$a0, $s6, %pc_lo12(shift_symbol)
+	ld.d	$a3, $s4, %pc_lo12(kernel_end)
+	ld.d	$a0, $s8, %pc_lo12(shift_symbol)
 	pcalau12i	$a1, %pc_hi20(kernel_base)
 	ld.d	$a4, $a1, %pc_lo12(kernel_base)
 	ld.d	$a6, $s3, 0
@@ -480,14 +472,14 @@ generate_states:                        # @generate_states
 	b	.LBB3_23
 	.p2align	4, , 16
 .LBB3_21:                               #   in Loop: Header=BB3_23 Depth=2
-	alsl.d	$a5, $t1, $a3, 3
-	addi.d	$a6, $t0, 2
+	alsl.d	$a5, $t0, $a3, 3
+	addi.d	$a6, $t1, 2
 	st.d	$a6, $a5, 0
 	ld.d	$a6, $s3, 0
 	ld.d	$a5, $s2, 0
 	bstrpick.d	$a7, $a7, 15, 0
 	addi.d	$a7, $a7, 1
-	st.h	$a7, $t0, 0
+	st.h	$a7, $t1, 0
 .LBB3_22:                               #   in Loop: Header=BB3_23 Depth=2
 	addi.d	$a2, $a2, 2
 	bgeu	$a2, $a5, .LBB3_26
@@ -495,22 +487,22 @@ generate_states:                        # @generate_states
                                         # =>  This Inner Loop Header: Depth=2
 	ld.h	$a7, $a2, 0
 	slli.d	$t0, $a7, 1
-	ldx.h	$t1, $a6, $t0
-	blt	$t1, $s0, .LBB3_22
+	ldx.h	$t0, $a6, $t0
+	blez	$t0, .LBB3_22
 # %bb.24:                               #   in Loop: Header=BB3_23 Depth=2
-	slli.d	$a5, $t1, 3
-	ldx.d	$t0, $a3, $a5
-	bnez	$t0, .LBB3_21
+	slli.d	$a5, $t0, 3
+	ldx.d	$t1, $a3, $a5
+	bnez	$t1, .LBB3_21
 # %bb.25:                               #   in Loop: Header=BB3_23 Depth=2
-	ldx.d	$t0, $a4, $a5
+	ldx.d	$t1, $a4, $a5
 	slli.d	$a5, $a1, 1
 	addi.w	$a1, $a1, 1
-	stx.h	$t1, $a0, $a5
+	stx.h	$t0, $a0, $a5
 	b	.LBB3_21
 	.p2align	4, , 16
 .LBB3_26:                               # %new_itemsets.exit
                                         #   in Loop: Header=BB3_4 Depth=1
-	st.w	$a1, $s8, %pc_lo12(nshifts)
+	st.w	$a1, $s7, %pc_lo12(nshifts)
 	ori	$a2, $zero, 2
 	blt	$a1, $a2, .LBB3_33
 # %bb.27:                               # %.lr.ph.i6
@@ -549,31 +541,33 @@ generate_states:                        # @generate_states
 	.p2align	4, , 16
 .LBB3_33:                               # %.preheader.i
                                         #   in Loop: Header=BB3_4 Depth=1
-	blt	$a1, $s0, .LBB3_3
+	blez	$a1, .LBB3_3
 # %bb.34:                               # %.lr.ph21.i.preheader
                                         #   in Loop: Header=BB3_4 Depth=1
-	move	$fp, $s7
-	move	$s7, $zero
-	move	$s1, $zero
+	move	$fp, $s1
+	move	$s1, $s6
+	move	$s4, $zero
+	move	$s6, $zero
 	.p2align	4, , 16
 .LBB3_35:                               # %.lr.ph21.i
                                         #   Parent Loop BB3_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s6, %pc_lo12(shift_symbol)
-	ldx.h	$a0, $a0, $s7
+	ld.d	$a0, $s8, %pc_lo12(shift_symbol)
+	ldx.h	$a0, $a0, $s4
 	pcaddu18i	$ra, %call36(get_state)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s4, %pc_lo12(shiftset)
-	ld.w	$a1, $s8, %pc_lo12(nshifts)
-	stx.h	$a0, $a2, $s7
-	addi.d	$s1, $s1, 1
-	addi.d	$s7, $s7, 2
-	blt	$s1, $a1, .LBB3_35
+	ld.d	$a2, $s5, %pc_lo12(shiftset)
+	ld.w	$a1, $s7, %pc_lo12(nshifts)
+	stx.h	$a0, $a2, $s4
+	addi.d	$s6, $s6, 1
+	addi.d	$s4, $s4, 2
+	blt	$s6, $a1, .LBB3_35
 # %bb.36:                               # %append_states.exit
                                         #   in Loop: Header=BB3_4 Depth=1
-	move	$s7, $fp
-	ld.d	$fp, $sp, 0                     # 8-byte Folded Reload
-	blt	$a1, $s0, .LBB3_3
+	move	$s6, $s1
+	move	$s1, $fp
+	ld.d	$fp, $sp, 8                     # 8-byte Folded Reload
+	blez	$a1, .LBB3_3
 # %bb.37:                               #   in Loop: Header=BB3_4 Depth=1
 	ori	$a0, $zero, 14
 	alsl.w	$a0, $a1, $a0, 1
@@ -581,13 +575,13 @@ generate_states:                        # @generate_states
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, %pc_lo12(this_state)
 	ld.h	$a2, $a1, 16
-	ld.w	$a1, $s8, %pc_lo12(nshifts)
+	ld.w	$a1, $s7, %pc_lo12(nshifts)
 	st.h	$a2, $a0, 8
 	st.h	$a1, $a0, 10
-	blt	$a1, $s0, .LBB3_43
+	blez	$a1, .LBB3_43
 # %bb.38:                               # %iter.check
                                         #   in Loop: Header=BB3_4 Depth=1
-	ld.d	$a3, $s4, %pc_lo12(shiftset)
+	ld.d	$a3, $s5, %pc_lo12(shiftset)
 	slli.d	$a2, $a1, 1
 	add.d	$a2, $a2, $a3
 	addi.d	$a4, $a3, 2
@@ -830,22 +824,21 @@ save_reductions:                        # @save_reductions
 	pcalau12i	$s0, %pc_hi20(redset)
 	ld.d	$a3, $s0, %pc_lo12(redset)
 	move	$fp, $zero
-	addi.w	$a4, $zero, -1
 	b	.LBB5_3
 	.p2align	4, , 16
 .LBB5_2:                                #   in Loop: Header=BB5_3 Depth=1
 	addi.d	$a0, $a0, 2
 	bgeu	$a0, $a1, .LBB5_5
 .LBB5_3:                                # =>This Inner Loop Header: Depth=1
-	ld.h	$a5, $a0, 0
-	slli.d	$a5, $a5, 1
-	ldx.h	$a5, $a2, $a5
-	blt	$a4, $a5, .LBB5_2
+	ld.h	$a4, $a0, 0
+	slli.d	$a4, $a4, 1
+	ldx.h	$a4, $a2, $a4
+	bgez	$a4, .LBB5_2
 # %bb.4:                                #   in Loop: Header=BB5_3 Depth=1
-	sub.d	$a5, $zero, $a5
-	slli.d	$a6, $fp, 1
+	sub.d	$a4, $zero, $a4
+	slli.d	$a5, $fp, 1
 	addi.w	$fp, $fp, 1
-	stx.h	$a5, $a3, $a6
+	stx.h	$a4, $a3, $a5
 	b	.LBB5_2
 .LBB5_5:                                # %._crit_edge
 	beqz	$fp, .LBB5_13
@@ -858,9 +851,8 @@ save_reductions:                        # @save_reductions
 	ld.d	$a1, $a1, %pc_lo12(this_state)
 	ld.h	$a1, $a1, 16
 	st.h	$a1, $a0, 8
-	ori	$a1, $zero, 1
 	st.h	$fp, $a0, 10
-	blt	$fp, $a1, .LBB5_12
+	blez	$fp, .LBB5_12
 # %bb.7:                                # %iter.check
 	ld.d	$a2, $s0, %pc_lo12(redset)
 	slli.d	$a1, $fp, 1
@@ -979,9 +971,8 @@ new_itemsets:                           # @new_itemsets
 	pcalau12i	$a0, %got_pc_hi20(nsyms)
 	ld.d	$a0, $a0, %got_pc_lo12(nsyms)
 	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
 	pcalau12i	$fp, %pc_hi20(kernel_end)
-	blt	$a1, $a0, .LBB6_2
+	blez	$a1, .LBB6_2
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $fp, %pc_lo12(kernel_end)
 	slli.d	$a2, $a1, 3
@@ -994,8 +985,8 @@ new_itemsets:                           # @new_itemsets
 	pcalau12i	$a0, %got_pc_hi20(itemsetend)
 	ld.d	$a0, $a0, %got_pc_lo12(itemsetend)
 	ld.d	$a1, $a1, 0
-	ld.d	$t0, $a0, 0
-	bgeu	$a1, $t0, .LBB6_9
+	ld.d	$a7, $a0, 0
+	bgeu	$a1, $a7, .LBB6_9
 # %bb.3:                                # %.lr.ph25
 	ld.d	$a2, $fp, %pc_lo12(kernel_end)
 	pcalau12i	$a4, %pc_hi20(shift_symbol)
@@ -1004,37 +995,36 @@ new_itemsets:                           # @new_itemsets
 	ld.d	$a4, $a4, %pc_lo12(shift_symbol)
 	pcalau12i	$a5, %pc_hi20(kernel_base)
 	ld.d	$a5, $a5, %pc_lo12(kernel_base)
-	ld.d	$t1, $a3, 0
+	ld.d	$t0, $a3, 0
 	move	$a6, $zero
-	ori	$a7, $zero, 1
 	b	.LBB6_6
 	.p2align	4, , 16
 .LBB6_4:                                #   in Loop: Header=BB6_6 Depth=1
-	alsl.d	$t0, $t4, $a2, 3
-	addi.d	$t1, $t3, 2
-	st.d	$t1, $t0, 0
-	ld.d	$t1, $a3, 0
-	ld.d	$t0, $a0, 0
-	bstrpick.d	$t2, $t2, 15, 0
-	addi.d	$t2, $t2, 1
-	st.h	$t2, $t3, 0
+	alsl.d	$a7, $t3, $a2, 3
+	addi.d	$t0, $t2, 2
+	st.d	$t0, $a7, 0
+	ld.d	$t0, $a3, 0
+	ld.d	$a7, $a0, 0
+	bstrpick.d	$t1, $t1, 15, 0
+	addi.d	$t1, $t1, 1
+	st.h	$t1, $t2, 0
 .LBB6_5:                                #   in Loop: Header=BB6_6 Depth=1
 	addi.d	$a1, $a1, 2
-	bgeu	$a1, $t0, .LBB6_10
+	bgeu	$a1, $a7, .LBB6_10
 .LBB6_6:                                # =>This Inner Loop Header: Depth=1
-	ld.h	$t2, $a1, 0
-	slli.d	$t3, $t2, 1
-	ldx.h	$t4, $t1, $t3
-	blt	$t4, $a7, .LBB6_5
+	ld.h	$t1, $a1, 0
+	slli.d	$t2, $t1, 1
+	ldx.h	$t3, $t0, $t2
+	blez	$t3, .LBB6_5
 # %bb.7:                                #   in Loop: Header=BB6_6 Depth=1
-	slli.d	$t0, $t4, 3
-	ldx.d	$t3, $a2, $t0
-	bnez	$t3, .LBB6_4
+	slli.d	$a7, $t3, 3
+	ldx.d	$t2, $a2, $a7
+	bnez	$t2, .LBB6_4
 # %bb.8:                                #   in Loop: Header=BB6_6 Depth=1
-	ldx.d	$t3, $a5, $t0
-	slli.d	$t0, $a6, 1
+	ldx.d	$t2, $a5, $a7
+	slli.d	$a7, $a6, 1
 	addi.w	$a6, $a6, 1
-	stx.h	$t4, $a4, $t0
+	stx.h	$t3, $a4, $a7
 	b	.LBB6_4
 .LBB6_9:
 	move	$a6, $zero
@@ -1097,8 +1087,7 @@ append_states:                          # @append_states
 	blt	$a3, $a6, .LBB7_5
 	b	.LBB7_2
 .LBB7_7:                                # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_10
+	blez	$a0, .LBB7_10
 # %bb.8:                                # %.lr.ph21.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -1148,9 +1137,8 @@ save_shifts:                            # @save_shifts
 	ld.h	$a2, $a1, 16
 	ld.w	$a1, $s0, %pc_lo12(nshifts)
 	st.h	$a2, $a0, 8
-	ori	$a2, $zero, 1
 	st.h	$a1, $a0, 10
-	blt	$a1, $a2, .LBB8_6
+	blez	$a1, .LBB8_6
 # %bb.1:                                # %iter.check
 	pcalau12i	$a2, %pc_hi20(shiftset)
 	ld.d	$a3, $a2, %pc_lo12(shiftset)
@@ -1391,8 +1379,7 @@ augment_automaton:                      # @augment_automaton
 	ld.h	$s4, $a2, 16
 	bne	$a1, $a3, .LBB9_21
 # %bb.11:
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB9_29
+	blez	$s4, .LBB9_29
 	.p2align	4, , 16
 .LBB9_12:                               # %.lr.ph107
                                         # =>This Inner Loop Header: Depth=1
@@ -1417,9 +1404,8 @@ augment_automaton:                      # @augment_automaton
 	ld.hu	$a1, $fp, 10
 	st.d	$a3, $a0, 0
 	ext.w.h	$a2, $a1
-	ori	$a3, $zero, 1
 	st.h	$s4, $a0, 8
-	blt	$a2, $a3, .LBB9_20
+	blez	$a2, .LBB9_20
 # %bb.15:                               # %.lr.ph113
 	ori	$a2, $zero, 8
 	bltu	$a1, $a2, .LBB9_17
@@ -1461,9 +1447,8 @@ augment_automaton:                      # @augment_automaton
 	ld.h	$a2, $fp, 10
 	st.d	$a1, $a0, 0
 	addi.d	$a1, $a2, 1
-	ori	$a2, $zero, 1
 	st.h	$a1, $a0, 10
-	blt	$s4, $a2, .LBB9_37
+	blez	$s4, .LBB9_37
 # %bb.22:                               # %iter.check
 	ori	$a2, $zero, 8
 	move	$a1, $zero

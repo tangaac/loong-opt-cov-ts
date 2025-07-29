@@ -7,8 +7,7 @@ foo:                                    # @foo
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(n)
 	ld.w	$a1, $a0, %pc_lo12(n)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a1, %pc_hi20(a)
 	ld.d	$a1, $a1, %pc_lo12(a)

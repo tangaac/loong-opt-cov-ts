@@ -26,9 +26,8 @@ verify:                                 # @verify
 	ld.w	$a1, $s2, 12
 	ld.w	$a2, $s2, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s3, $a0
-	blt	$a1, $a2, .LBB0_6
+	blez	$a1, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$s4, $s2, 24
 	move	$s0, $zero
@@ -83,9 +82,8 @@ verify:                                 # @verify
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB0_16
+	blez	$a1, .LBB0_16
 # %bb.10:                               # %.lr.ph55.preheader
 	ld.d	$s2, $fp, 24
 	pcalau12i	$a0, %got_pc_hi20(verbose_debug)
@@ -244,15 +242,14 @@ PLA_permute:                            # @PLA_permute
 	slli.d	$a0, $s4, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $s0, 0
-	ori	$a1, $zero, 1
+	ld.d	$a1, $s0, 0
 	move	$s5, $a0
-	blt	$s4, $a1, .LBB2_8
+	blez	$s4, .LBB2_8
 # %bb.1:                                # %.lr.ph66
-	ld.w	$fp, $a2, 4
-	blt	$fp, $a1, .LBB2_24
+	ld.w	$fp, $a1, 4
+	blez	$fp, .LBB2_24
 # %bb.2:                                # %.lr.ph66.split.preheader
-	st.d	$a2, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$s6, $s1, 56
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
@@ -293,15 +290,15 @@ PLA_permute:                            # @PLA_permute
 	bnez	$s5, .LBB2_6
 	b	.LBB2_4
 .LBB2_8:
-	st.d	$a2, $sp, 0                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	move	$s1, $zero
 .LBB2_9:                                # %._crit_edge
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
-	bnez	$a2, .LBB2_25
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
+	bnez	$a1, .LBB2_25
 # %bb.10:
 	ld.d	$a0, $s0, 16
 	beqz	$a0, .LBB2_12
@@ -327,9 +324,8 @@ PLA_permute:                            # @PLA_permute
 	slli.d	$a0, $s3, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s1, $a1, .LBB2_17
+	blez	$s1, .LBB2_17
 # %bb.15:                               # %.lr.ph69
 	ld.d	$a0, $s0, 56
 	move	$a1, $s1
@@ -388,7 +384,7 @@ PLA_permute:                            # @PLA_permute
 .LBB2_24:
 	move	$s1, $zero
 .LBB2_25:                               # %._crit_edge.thread
-	move	$a0, $a2
+	move	$a0, $a1
 	move	$a1, $s5
 	move	$a2, $s1
 	pcaddu18i	$ra, %call36(sf_permute)

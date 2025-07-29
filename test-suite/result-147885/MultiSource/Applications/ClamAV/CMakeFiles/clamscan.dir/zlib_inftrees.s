@@ -409,7 +409,7 @@ inflate_table:                          # @inflate_table
 	masknez	$s1, $t5, $a0
 	addi.w	$t7, $t7, 1
 	addi.d	$a0, $s5, -1
-	bstrpick.d	$t5, $a0, 15, 0
+	slli.d	$t5, $a0, 48
 	stx.h	$a0, $s4, $s3
 	move	$s4, $t3
 	bnez	$t5, .LBB0_76
@@ -445,7 +445,7 @@ inflate_table:                          # @inflate_table
 	slli.d	$a0, $a0, 1
 	ldx.hu	$a0, $a0, $s3
 	sub.w	$a6, $a6, $a0
-	blt	$a6, $fp, .LBB0_82
+	blez	$a6, .LBB0_82
 # %bb.81:                               #   in Loop: Header=BB0_80 Depth=2
 	addi.w	$ra, $ra, 1
 	slli.d	$a6, $a6, 1

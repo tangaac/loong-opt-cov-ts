@@ -31,8 +31,7 @@ main:                                   # @main
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB0_12
+	blez	$fp, .LBB0_12
 # %bb.2:                                # %.lr.ph.preheader
 	bstrpick.d	$a1, $s0, 31, 0
 	ori	$a2, $zero, 8

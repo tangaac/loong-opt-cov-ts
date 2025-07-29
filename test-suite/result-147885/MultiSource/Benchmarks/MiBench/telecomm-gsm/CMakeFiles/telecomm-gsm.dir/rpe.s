@@ -1281,7 +1281,7 @@ Gsm_RPE_Decoding:                       # @Gsm_RPE_Decoding
 	maskeqz	$a5, $a5, $a0
 	slli.d	$a0, $a5, 3
 	sub.d	$a1, $a1, $a0
-	bstrpick.d	$a6, $a1, 15, 0
+	slli.d	$a6, $a1, 48
 	move	$s0, $a4
 	move	$a0, $a3
 	move	$fp, $a2

@@ -376,8 +376,7 @@ AdjustSize:                             # @AdjustSize
 	ld.bu	$a0, $s5, 32
 	addi.d	$a0, $a0, -30
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s1, $a0
-	bnez	$a0, .LBB2_170
+	bne	$s1, $a0, .LBB2_170
 	.p2align	4, , 16
 .LBB2_2:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$s7, $sp, 96
@@ -431,8 +430,7 @@ AdjustSize:                             # @AdjustSize
 	bltz	$s7, .LBB2_10
 .LBB2_9:                                #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a0, $sp, 92
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB2_11
+	bgez	$a0, .LBB2_11
 .LBB2_10:                               #   in Loop: Header=BB2_3 Depth=1
 	addi.d	$a4, $s6, 32
 	ori	$a0, $zero, 16
@@ -496,8 +494,7 @@ AdjustSize:                             # @AdjustSize
 	sltu	$a4, $zero, $a4
 	addi.d	$a5, $a0, -19
 	sltui	$a5, $a5, 1
-	xor	$a4, $a4, $a5
-	beqz	$a4, .LBB2_46
+	beq	$a4, $a5, .LBB2_46
 # %bb.20:                               #   in Loop: Header=BB2_3 Depth=1
 	ori	$a2, $zero, 16
 	bnez	$fp, .LBB2_70
@@ -523,8 +520,7 @@ AdjustSize:                             # @AdjustSize
 .LBB2_24:                               #   in Loop: Header=BB2_3 Depth=1
 	addi.d	$a0, $a0, -16
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s1, $a0
-	bnez	$a0, .LBB2_26
+	bne	$s1, $a0, .LBB2_26
 # %bb.25:                               #   in Loop: Header=BB2_3 Depth=1
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
@@ -673,8 +669,7 @@ AdjustSize:                             # @AdjustSize
 	ld.bu	$a0, $s5, 32
 	addi.d	$a0, $a0, -32
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s1, $a0
-	beqz	$a0, .LBB2_2
+	beq	$s1, $a0, .LBB2_2
 	b	.LBB2_170
 .LBB2_44:                               #   in Loop: Header=BB2_3 Depth=1
 	beqz	$fp, .LBB2_34
@@ -1364,8 +1359,7 @@ AdjustSize:                             # @AdjustSize
 .LBB2_152:
 	addi.d	$a0, $a0, -13
 	sltu	$a0, $zero, $a0
-	xor	$a0, $s1, $a0
-	bnez	$a0, .LBB2_154
+	bne	$s1, $a0, .LBB2_154
 # %bb.153:
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0
@@ -1393,8 +1387,7 @@ AdjustSize:                             # @AdjustSize
 	addi.d	$a0, $a0, -16
 	sltui	$a0, $a0, 1
 	sltu	$a1, $zero, $fp
-	xor	$a0, $a1, $a0
-	bnez	$a0, .LBB2_157
+	bne	$a1, $a0, .LBB2_157
 # %bb.156:
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$a4, $a0, 0

@@ -87,7 +87,7 @@ _ZN41btSoftBodyRigidBodyCollisionConfigurationC2ERK34btDefaultCollisionConstruct
 	st.d	$a0, $fp, 208
 	ori	$a1, $zero, 1
 	st.b	$a1, $a0, 8
-	bne	$a2, $a1, .LBB0_17
+	beqz	$a2, .LBB0_17
 # %bb.6:
 	ld.d	$a0, $fp, 48
 	beqz	$a0, .LBB0_17

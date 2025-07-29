@@ -2041,20 +2041,17 @@ _ZNK22btGImpactMeshShapePart20getBulletTetrahedronEiR20btTetrahedronShapeEx: # @
 _ZNK22btGImpactMeshShapePart15lockChildShapesEv: # @_ZNK22btGImpactMeshShapePart15lockChildShapesEv
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
-	.cfi_offset 23, -24
 	ld.d	$fp, $a0, 168
 	ld.w	$a0, $fp, 44
-	ori	$s0, $zero, 1
-	blt	$a0, $s0, .LBB50_2
+	blez	$a0, .LBB50_2
 # %bb.1:
-	addi.d	$s0, $a0, 1
+	addi.d	$a0, $a0, 1
 	b	.LBB50_3
 .LBB50_2:
 	ld.d	$a0, $fp, 16
@@ -2072,12 +2069,12 @@ _ZNK22btGImpactMeshShapePart15lockChildShapesEv: # @_ZNK22btGImpactMeshShapePart
 	st.d	$t0, $sp, 8
 	st.d	$t2, $sp, 0
 	jirl	$ra, $t1, 0
+	ori	$a0, $zero, 1
 .LBB50_3:                               # %_ZN22btGImpactMeshShapePart23TrimeshPrimitiveManager4lockEv.exit
-	st.w	$s0, $fp, 44
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	st.w	$a0, $fp, 44
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end50:
 	.size	_ZNK22btGImpactMeshShapePart15lockChildShapesEv, .Lfunc_end50-_ZNK22btGImpactMeshShapePart15lockChildShapesEv
@@ -2674,7 +2671,6 @@ _ZN18btGImpactMeshShape13calcLocalAABBEv: # @_ZN18btGImpactMeshShape13calcLocalA
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2682,7 +2678,6 @@ _ZN18btGImpactMeshShape13calcLocalAABBEv: # @_ZN18btGImpactMeshShape13calcLocalA
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a0
 	lu12i.w	$a0, 522239
 	ori	$a0, $a0, 4095
@@ -2699,15 +2694,14 @@ _ZN18btGImpactMeshShape13calcLocalAABBEv: # @_ZN18btGImpactMeshShape13calcLocalA
 	beqz	$s1, .LBB62_5
 # %bb.1:                                # %.lr.ph
 	addi.d	$s2, $fp, 28
-	addi.d	$s3, $fp, 44
 	pcalau12i	$a0, %pc_hi20(.LCPI62_0)
 	fld.s	$fa0, $a0, %pc_lo12(.LCPI62_0)
 	pcalau12i	$a0, %pc_hi20(.LCPI62_1)
 	fld.s	$fa1, $a0, %pc_lo12(.LCPI62_1)
 	ld.d	$a0, $fp, 200
+	addi.d	$s3, $fp, 44
 	slli.d	$a1, $s1, 3
 	addi.d	$s4, $a1, -8
-	ori	$s5, $zero, 1
 	fmov.s	$fa4, $fa1
 	fmov.s	$fa2, $fa1
 	fmov.s	$fa5, $fa0
@@ -2764,7 +2758,7 @@ _ZN18btGImpactMeshShape13calcLocalAABBEv: # @_ZN18btGImpactMeshShape13calcLocalA
 .LBB62_3:                               # =>This Inner Loop Header: Depth=1
 	ldx.d	$s0, $a0, $s4
 	ld.bu	$a1, $s0, 60
-	bne	$a1, $s5, .LBB62_2
+	beqz	$a1, .LBB62_2
 # %bb.4:                                #   in Loop: Header=BB62_3 Depth=1
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 104
@@ -2781,7 +2775,6 @@ _ZN18btGImpactMeshShape13calcLocalAABBEv: # @_ZN18btGImpactMeshShape13calcLocalA
 	ldx.d	$s0, $a0, $s4
 	b	.LBB62_2
 .LBB62_5:                               # %._crit_edge
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

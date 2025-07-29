@@ -27,8 +27,8 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
 # %bb.1:
 	beqz	$s0, .LBB0_24
 # %bb.2:                                # %.preheader64
-	ld.d	$a1, $s1, 0
-	beqz	$a1, .LBB0_22
+	ld.d	$a0, $s1, 0
+	beqz	$a0, .LBB0_22
 # %bb.3:                                # %.preheader63.lr.ph
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 	ori	$s6, $zero, 1
@@ -38,27 +38,27 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
                                         #     Child Loop BB0_7 Depth 2
                                         #       Child Loop BB0_13 Depth 3
                                         #         Child Loop BB0_16 Depth 4
-	ld.w	$a0, $a1, 0
-	blt	$a0, $s6, .LBB0_21
+	ld.w	$a1, $a0, 0
+	blez	$a1, .LBB0_21
 # %bb.5:                                # %.lr.ph69.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
 	move	$s8, $zero
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	alsl.d	$s7, $a2, $a0, 3
+	alsl.d	$s7, $a2, $a1, 3
 	b	.LBB0_7
 	.p2align	4, , 16
 .LBB0_6:                                # %._crit_edge
                                         #   in Loop: Header=BB0_7 Depth=2
-	ld.w	$a0, $a1, 0
+	ld.w	$a1, $a0, 0
 	addi.d	$s8, $s8, 1
-	bge	$s8, $a0, .LBB0_21
+	bge	$s8, $a1, .LBB0_21
 .LBB0_7:                                # %.lr.ph69
                                         #   Parent Loop BB0_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB0_13 Depth 3
                                         #         Child Loop BB0_16 Depth 4
-	ld.d	$a0, $a1, 8
+	ld.d	$a0, $a0, 8
 	slli.d	$s5, $s8, 3
 	ldx.d	$a0, $a0, $s5
 	ld.d	$a0, $a0, 8
@@ -87,10 +87,10 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
 	st.w	$zero, $s2, 20
 .LBB0_10:                               # %getDuplicateNodeForGraph.exit
                                         #   in Loop: Header=BB0_7 Depth=2
-	ld.d	$a1, $s7, 0
-	ld.d	$a0, $a1, 8
-	ldx.d	$a0, $a0, $s5
-	ld.w	$a2, $a0, 0
+	ld.d	$a0, $s7, 0
+	ld.d	$a1, $a0, 8
+	ldx.d	$a1, $a1, $s5
+	ld.w	$a2, $a1, 0
 	ori	$a3, $zero, 2
 	blt	$a2, $a3, .LBB0_6
 # %bb.11:                               # %.lr.ph.preheader
@@ -103,10 +103,10 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(Node_addEdgeToNode)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s7, 0
-	ld.d	$a0, $a1, 8
-	ldx.d	$a0, $a0, $s5
-	ld.w	$a2, $a0, 0
+	ld.d	$a0, $s7, 0
+	ld.d	$a1, $a0, 8
+	ldx.d	$a1, $a1, $s5
+	ld.w	$a2, $a1, 0
 	addi.w	$s1, $s1, 1
 	move	$s2, $s3
 	bge	$s1, $a2, .LBB0_6
@@ -121,19 +121,19 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
 	bne	$fp, $s6, .LBB0_18
 # %bb.15:                               # %.preheader
                                         #   in Loop: Header=BB0_13 Depth=3
-	ld.d	$a1, $a0, 8
+	ld.d	$a0, $a1, 8
 	addi.d	$a2, $s1, -1
-	alsl.d	$a1, $s1, $a1, 3
+	alsl.d	$a0, $s1, $a0, 3
 	move	$s1, $a2
 	.p2align	4, , 16
 .LBB0_16:                               #   Parent Loop BB0_4 Depth=1
                                         #     Parent Loop BB0_7 Depth=2
                                         #       Parent Loop BB0_13 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.d	$a2, $a1, 0
+	ld.d	$a2, $a0, 0
 	ld.w	$a2, $a2, 16
 	addi.w	$s1, $s1, 1
-	addi.d	$a1, $a1, 8
+	addi.d	$a0, $a0, 8
 	bltz	$a2, .LBB0_16
 	b	.LBB0_18
 	.p2align	4, , 16
@@ -141,7 +141,7 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
 	addi.w	$s1, $a2, -1
 .LBB0_18:                               # %.loopexit
                                         #   in Loop: Header=BB0_13 Depth=3
-	ld.d	$a0, $a0, 8
+	ld.d	$a0, $a1, 8
 	slli.d	$a1, $s1, 3
 	ldx.d	$s4, $a0, $a1
 	ld.w	$a1, $s4, 0
@@ -175,8 +175,8 @@ buildGraphFromPaths:                    # @buildGraphFromPaths
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	slli.d	$a0, $a0, 3
 	ld.d	$s1, $sp, 8                     # 8-byte Folded Reload
-	ldx.d	$a1, $s1, $a0
-	bnez	$a1, .LBB0_4
+	ldx.d	$a0, $s1, $a0
+	bnez	$a0, .LBB0_4
 .LBB0_22:
 	move	$a0, $s0
 	b	.LBB0_24

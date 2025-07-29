@@ -40,7 +40,7 @@ main:                                   # @main
 foo:                                    # @foo
 # %bb.0:
 	ld.wu	$a2, $a0, 0
-	bstrpick.d	$a1, $a2, 15, 0
+	slli.d	$a1, $a2, 48
 	beqz	$a1, .LBB1_3
 # %bb.1:
 	ld.w	$a1, $a0, 4

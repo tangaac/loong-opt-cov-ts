@@ -10,16 +10,16 @@ config1:                                # @config1
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(numcells)
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
-	ld.w	$a3, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB0_8
+	ld.w	$a2, $a0, 0
+	blez	$a2, .LBB0_8
 # %bb.1:                                # %.lr.ph52
-	pcalau12i	$a1, %got_pc_hi20(cellarray)
-	ld.d	$a2, $a1, %got_pc_lo12(cellarray)
-	move	$a1, $zero
-	ld.d	$a2, $a2, 0
-	addi.d	$a3, $a3, 1
-	bstrpick.d	$a3, $a3, 31, 0
+	pcalau12i	$a0, %got_pc_hi20(cellarray)
+	ld.d	$a1, $a0, %got_pc_lo12(cellarray)
+	move	$a0, $zero
+	ld.d	$a1, $a1, 0
+	addi.d	$a2, $a2, 1
+	bstrpick.d	$a2, $a2, 31, 0
+	ori	$a3, $zero, 1
 	ori	$a4, $zero, 1
 	b	.LBB0_4
 	.p2align	4, , 16
@@ -31,20 +31,20 @@ config1:                                # @config1
 	sub.d	$a6, $a7, $a6
 	sub.d	$a5, $a5, $t0
 	mul.d	$a5, $a5, $a6
-	add.w	$a1, $a5, $a1
+	add.w	$a0, $a5, $a0
 .LBB0_3:                                # %.loopexit
                                         #   in Loop: Header=BB0_4 Depth=1
 	addi.d	$a4, $a4, 1
-	beq	$a4, $a3, .LBB0_7
+	beq	$a4, $a2, .LBB0_7
 .LBB0_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_6 Depth 2
 	slli.d	$a5, $a4, 3
-	ldx.d	$a5, $a2, $a5
+	ldx.d	$a5, $a1, $a5
 	ld.w	$a6, $a5, 56
 	ld.w	$a7, $a5, 60
 	alsl.d	$a5, $a6, $a5, 3
 	ld.d	$a5, $a5, 152
-	beq	$a7, $a0, .LBB0_2
+	beq	$a7, $a3, .LBB0_2
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
 	ld.d	$a5, $a5, 0
 	beqz	$a5, .LBB0_3
@@ -60,11 +60,11 @@ config1:                                # @config1
 	sub.d	$a6, $a7, $a6
 	sub.d	$a7, $t1, $t0
 	mul.d	$a6, $a7, $a6
-	add.w	$a1, $a6, $a1
+	add.w	$a0, $a6, $a0
 	bnez	$a5, .LBB0_6
 	b	.LBB0_3
 .LBB0_7:                                # %._crit_edge.loopexit
-	movgr2fr.w	$fa0, $a1
+	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
 	b	.LBB0_9
 .LBB0_8:

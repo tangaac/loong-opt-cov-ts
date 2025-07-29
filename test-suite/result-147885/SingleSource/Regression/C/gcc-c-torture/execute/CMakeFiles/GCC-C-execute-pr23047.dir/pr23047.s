@@ -8,8 +8,7 @@ f:                                      # @f
 	srai.d	$a1, $a0, 31
 	xor	$a0, $a0, $a1
 	sub.w	$a0, $a0, $a1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_2
+	bgez	$a0, .LBB0_2
 # %bb.1:
 	ret
 .LBB0_2:

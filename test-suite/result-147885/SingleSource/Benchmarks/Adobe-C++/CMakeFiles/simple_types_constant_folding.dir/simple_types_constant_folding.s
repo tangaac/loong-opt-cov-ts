@@ -88,13 +88,12 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	fst.d	$fs1, $sp, 24                   # 8-byte Folded Spill
 	pcalau12i	$s6, %pc_hi20(current_test)
 	ld.w	$s0, $s6, %pc_lo12(current_test)
-	move	$s8, $a4
+	move	$s5, $a4
 	move	$s2, $a2
 	move	$s3, $a1
 	move	$fp, $a0
-	ori	$s5, $zero, 1
 	pcalau12i	$s7, %pc_hi20(results)
-	blt	$s0, $s5, .LBB1_3
+	blez	$s0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s7, %pc_lo12(results)
 	addi.d	$s4, $a0, 8
@@ -132,9 +131,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s5, .LBB1_10
+	blez	$a0, .LBB1_10
 # %bb.5:                                # %.lr.ph45.preheader
-	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	move	$s8, $zero
 	move	$s4, $zero
@@ -180,10 +179,9 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	addi.d	$s8, $s8, 16
 	blt	$s0, $a0, .LBB1_6
 # %bb.7:                                # %.preheader39
-	ori	$a1, $zero, 1
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB1_10
+	ld.d	$s5, $sp, 8                     # 8-byte Folded Reload
+	blez	$a0, .LBB1_10
 # %bb.8:                                # %.lr.ph49
 	ld.d	$a1, $s7, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
@@ -201,7 +199,7 @@ _Z9summarizePKciiii:                    # @_Z9summarizePKciiii
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	beqz	$s8, .LBB1_15
+	beqz	$s5, .LBB1_15
 # %bb.11:                               # %._crit_edge50
 	ld.w	$a0, $s6, %pc_lo12(current_test)
 	ori	$a1, $zero, 2
@@ -278,11 +276,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	ld.w	$fp, $s5, %pc_lo12(current_test)
 	move	$s0, $a1
 	move	$s7, $a0
-	ori	$s3, $zero, 1
-	pcalau12i	$s4, %pc_hi20(results)
-	blt	$fp, $s3, .LBB2_3
+	pcalau12i	$s3, %pc_hi20(results)
+	blez	$fp, .LBB2_3
 # %bb.1:                                # %.lr.ph
-	ld.d	$a0, $s4, %pc_lo12(results)
+	ld.d	$a0, $s3, %pc_lo12(results)
 	addi.d	$s2, $a0, 8
 	ori	$s1, $zero, 12
 	.p2align	4, , 16
@@ -320,7 +317,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, %pc_lo12(current_test)
 	movgr2fr.d	$fs0, $zero
-	blt	$a0, $s3, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.5:                                # %.lr.ph32.preheader
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
 	move	$s8, $zero
@@ -330,11 +327,11 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$a0, $a0, %pc_lo12(.L.str.10)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
-	addi.d	$s3, $a0, %pc_lo12(.L.str.5)
+	addi.d	$s4, $a0, %pc_lo12(.L.str.5)
 	.p2align	4, , 16
 .LBB2_6:                                # %.lr.ph32
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$s6, $s4, %pc_lo12(results)
+	ld.d	$s6, $s3, %pc_lo12(results)
 	add.d	$a0, $s6, $s8
 	move	$s0, $s5
 	ld.d	$s5, $a0, 8
@@ -346,7 +343,7 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	move	$a0, $s7
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $s2
-	move	$a4, $s3
+	move	$a4, $s4
 	move	$a5, $s5
 	move	$s5, $s0
 	pcaddu18i	$ra, %call36(fprintf)
@@ -357,11 +354,10 @@ _Z17summarize_simplefP8_IO_FILEPKc:     # @_Z17summarize_simplefP8_IO_FILEPKc
 	addi.d	$s8, $s8, 16
 	blt	$fp, $a0, .LBB2_6
 # %bb.7:                                # %.preheader
-	ori	$a1, $zero, 1
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB2_10
+	blez	$a0, .LBB2_10
 # %bb.8:                                # %.lr.ph36
-	ld.d	$a1, $s4, %pc_lo12(results)
+	ld.d	$a1, $s3, %pc_lo12(results)
 	movgr2fr.d	$fs0, $zero
 	.p2align	4, , 16
 .LBB2_9:                                # =>This Inner Loop Header: Depth=1
@@ -2548,9 +2544,8 @@ _Z13test_constantIa10custom_twoIaEEvPT_iPKc: # @_Z13test_constantIa10custom_twoI
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB6_8
+	blez	$a1, .LBB6_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB6_6
@@ -2691,9 +2686,8 @@ _Z13test_constantIa20custom_add_constantsIaEEvPT_iPKc: # @_Z13test_constantIa20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB7_8
+	blez	$a1, .LBB7_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB7_6
@@ -2834,9 +2828,8 @@ _Z13test_constantIa20custom_sub_constantsIaEEvPT_iPKc: # @_Z13test_constantIa20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB8_8
+	blez	$a1, .LBB8_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB8_6
@@ -2977,9 +2970,8 @@ _Z13test_constantIa25custom_multiply_constantsIaEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB9_8
+	blez	$a1, .LBB9_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB9_6
@@ -3122,9 +3114,8 @@ _Z13test_constantIa23custom_divide_constantsIaEEvPT_iPKc: # @_Z13test_constantIa
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB10_8
+	blez	$a1, .LBB10_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB10_6
@@ -3265,9 +3256,8 @@ _Z13test_constantIa20custom_mod_constantsIaEEvPT_iPKc: # @_Z13test_constantIa20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB11_8
+	blez	$a1, .LBB11_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB11_6
@@ -3500,9 +3490,8 @@ _Z13test_constantIa25custom_notequal_constantsIaEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB13_8
+	blez	$a1, .LBB13_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB13_6
@@ -3643,9 +3632,8 @@ _Z13test_constantIa28custom_greaterthan_constantsIaEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB14_8
+	blez	$a1, .LBB14_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB14_6
@@ -3878,9 +3866,8 @@ _Z13test_constantIa33custom_greaterthanequal_constantsIaEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB16_8
+	blez	$a1, .LBB16_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB16_6
@@ -4113,9 +4100,8 @@ _Z13test_constantIa20custom_and_constantsIaEEvPT_iPKc: # @_Z13test_constantIa20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB18_8
+	blez	$a1, .LBB18_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB18_6
@@ -4256,9 +4242,8 @@ _Z13test_constantIa19custom_or_constantsIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB19_8
+	blez	$a1, .LBB19_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB19_6
@@ -4401,9 +4386,8 @@ _Z13test_constantIa20custom_xor_constantsIaEEvPT_iPKc: # @_Z13test_constantIa20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB20_8
+	blez	$a1, .LBB20_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB20_6
@@ -4571,9 +4555,8 @@ _Z13test_constantIa19custom_constant_addIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB21_23
+	blez	$a1, .LBB21_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB21_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -4885,9 +4868,8 @@ _Z13test_constantIa28custom_multiple_constant_addIaEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB22_23
+	blez	$a1, .LBB22_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB22_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -5199,9 +5181,8 @@ _Z13test_constantIa19custom_constant_subIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB23_23
+	blez	$a1, .LBB23_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB23_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -5516,9 +5497,8 @@ _Z13test_constantIa28custom_multiple_constant_subIaEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB24_23
+	blez	$a1, .LBB24_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB24_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -5833,11 +5813,10 @@ _Z13test_constantIa24custom_constant_multiplyIaEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB25_19
+	blez	$a1, .LBB25_19
 # %bb.1:
-	blt	$s0, $a0, .LBB25_19
+	blez	$s0, .LBB25_19
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s6, $zero
 	bstrpick.d	$a0, $s0, 30, 5
@@ -6113,11 +6092,10 @@ _Z13test_constantIa33custom_multiple_constant_multiplyIaEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB26_19
+	blez	$a1, .LBB26_19
 # %bb.1:
-	blt	$s0, $a0, .LBB26_19
+	blez	$s0, .LBB26_19
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s6, $zero
 	bstrpick.d	$a0, $s0, 30, 5
@@ -6393,9 +6371,8 @@ _Z13test_constantIa34custom_multiple_constant_multiply2IaEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB27_23
+	blez	$a1, .LBB27_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB27_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -6707,9 +6684,8 @@ _Z13test_constantIa22custom_constant_divideIaEEvPT_iPKc: # @_Z13test_constantIa2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB28_23
+	blez	$a1, .LBB28_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB28_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -7102,9 +7078,8 @@ _Z13test_constantIa31custom_multiple_constant_divideIaEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB29_23
+	blez	$a1, .LBB29_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB29_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -7505,9 +7480,8 @@ _Z13test_constantIa32custom_multiple_constant_divide2IaEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB30_23
+	blez	$a1, .LBB30_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB30_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -7819,9 +7793,8 @@ _Z13test_constantIa30custom_multiple_constant_mixedIaEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB31_23
+	blez	$a1, .LBB31_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB31_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -8126,9 +8099,8 @@ _Z13test_constantIa19custom_constant_andIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB32_23
+	blez	$a1, .LBB32_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB32_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -8437,9 +8409,8 @@ _Z13test_constantIa28custom_multiple_constant_andIaEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB33_23
+	blez	$a1, .LBB33_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB33_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -8748,9 +8719,8 @@ _Z13test_constantIa18custom_constant_orIaEEvPT_iPKc: # @_Z13test_constantIa18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB34_21
+	blez	$a1, .LBB34_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB34_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -9048,9 +9018,8 @@ _Z13test_constantIa27custom_multiple_constant_orIaEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB35_21
+	blez	$a1, .LBB35_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB35_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -9342,9 +9311,8 @@ _Z13test_constantIa19custom_constant_xorIaEEvPT_iPKc: # @_Z13test_constantIa19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB36_23
+	blez	$a1, .LBB36_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB36_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -9656,9 +9624,8 @@ _Z13test_constantIa28custom_multiple_constant_xorIaEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB37_23
+	blez	$a1, .LBB37_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB37_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -9945,9 +9912,8 @@ _Z13test_constantIh10custom_twoIhEEvPT_iPKc: # @_Z13test_constantIh10custom_twoI
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB38_8
+	blez	$a1, .LBB38_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB38_6
@@ -10088,9 +10054,8 @@ _Z13test_constantIh20custom_add_constantsIhEEvPT_iPKc: # @_Z13test_constantIh20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB39_8
+	blez	$a1, .LBB39_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB39_6
@@ -10231,9 +10196,8 @@ _Z13test_constantIh20custom_sub_constantsIhEEvPT_iPKc: # @_Z13test_constantIh20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB40_8
+	blez	$a1, .LBB40_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB40_6
@@ -10374,9 +10338,8 @@ _Z13test_constantIh25custom_multiply_constantsIhEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB41_8
+	blez	$a1, .LBB41_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB41_6
@@ -10519,9 +10482,8 @@ _Z13test_constantIh23custom_divide_constantsIhEEvPT_iPKc: # @_Z13test_constantIh
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB42_8
+	blez	$a1, .LBB42_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB42_6
@@ -10662,9 +10624,8 @@ _Z13test_constantIh20custom_mod_constantsIhEEvPT_iPKc: # @_Z13test_constantIh20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB43_8
+	blez	$a1, .LBB43_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB43_6
@@ -10897,9 +10858,8 @@ _Z13test_constantIh25custom_notequal_constantsIhEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB45_8
+	blez	$a1, .LBB45_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB45_6
@@ -11040,9 +11000,8 @@ _Z13test_constantIh28custom_greaterthan_constantsIhEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB46_8
+	blez	$a1, .LBB46_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB46_6
@@ -11275,9 +11234,8 @@ _Z13test_constantIh33custom_greaterthanequal_constantsIhEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB48_8
+	blez	$a1, .LBB48_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB48_6
@@ -11510,9 +11468,8 @@ _Z13test_constantIh20custom_and_constantsIhEEvPT_iPKc: # @_Z13test_constantIh20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB50_8
+	blez	$a1, .LBB50_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB50_6
@@ -11653,9 +11610,8 @@ _Z13test_constantIh19custom_or_constantsIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB51_8
+	blez	$a1, .LBB51_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB51_6
@@ -11798,9 +11754,8 @@ _Z13test_constantIh20custom_xor_constantsIhEEvPT_iPKc: # @_Z13test_constantIh20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB52_8
+	blez	$a1, .LBB52_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB52_6
@@ -11968,9 +11923,8 @@ _Z13test_constantIh19custom_constant_addIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB53_23
+	blez	$a1, .LBB53_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB53_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -12282,9 +12236,8 @@ _Z13test_constantIh28custom_multiple_constant_addIhEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB54_23
+	blez	$a1, .LBB54_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB54_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -12596,9 +12549,8 @@ _Z13test_constantIh19custom_constant_subIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB55_23
+	blez	$a1, .LBB55_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB55_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -12913,9 +12865,8 @@ _Z13test_constantIh28custom_multiple_constant_subIhEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB56_23
+	blez	$a1, .LBB56_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB56_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -13230,11 +13181,10 @@ _Z13test_constantIh24custom_constant_multiplyIhEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB57_19
+	blez	$a1, .LBB57_19
 # %bb.1:
-	blt	$s0, $a0, .LBB57_19
+	blez	$s0, .LBB57_19
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s6, $zero
 	bstrpick.d	$a0, $s0, 30, 5
@@ -13510,11 +13460,10 @@ _Z13test_constantIh33custom_multiple_constant_multiplyIhEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB58_19
+	blez	$a1, .LBB58_19
 # %bb.1:
-	blt	$s0, $a0, .LBB58_19
+	blez	$s0, .LBB58_19
 # %bb.2:                                # %.preheader.us.preheader
 	move	$s6, $zero
 	bstrpick.d	$a0, $s0, 30, 5
@@ -13790,9 +13739,8 @@ _Z13test_constantIh34custom_multiple_constant_multiply2IhEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB59_23
+	blez	$a1, .LBB59_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB59_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -14104,9 +14052,8 @@ _Z13test_constantIh22custom_constant_divideIhEEvPT_iPKc: # @_Z13test_constantIh2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB60_23
+	blez	$a1, .LBB60_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB60_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -14463,9 +14410,8 @@ _Z13test_constantIh31custom_multiple_constant_divideIhEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB61_23
+	blez	$a1, .LBB61_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB61_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -14820,9 +14766,8 @@ _Z13test_constantIh32custom_multiple_constant_divide2IhEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB62_23
+	blez	$a1, .LBB62_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB62_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -15134,9 +15079,8 @@ _Z13test_constantIh30custom_multiple_constant_mixedIhEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB63_23
+	blez	$a1, .LBB63_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB63_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -15441,9 +15385,8 @@ _Z13test_constantIh19custom_constant_andIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB64_23
+	blez	$a1, .LBB64_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB64_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -15752,9 +15695,8 @@ _Z13test_constantIh28custom_multiple_constant_andIhEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB65_23
+	blez	$a1, .LBB65_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB65_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -16063,9 +16005,8 @@ _Z13test_constantIh18custom_constant_orIhEEvPT_iPKc: # @_Z13test_constantIh18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB66_21
+	blez	$a1, .LBB66_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB66_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -16363,9 +16304,8 @@ _Z13test_constantIh27custom_multiple_constant_orIhEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB67_21
+	blez	$a1, .LBB67_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB67_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -16657,9 +16597,8 @@ _Z13test_constantIh19custom_constant_xorIhEEvPT_iPKc: # @_Z13test_constantIh19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB68_23
+	blez	$a1, .LBB68_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB68_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -16971,9 +16910,8 @@ _Z13test_constantIh28custom_multiple_constant_xorIhEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB69_23
+	blez	$a1, .LBB69_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB69_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -17260,9 +17198,8 @@ _Z13test_constantIs10custom_twoIsEEvPT_iPKc: # @_Z13test_constantIs10custom_twoI
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB70_8
+	blez	$a1, .LBB70_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB70_6
@@ -17404,9 +17341,8 @@ _Z13test_constantIs20custom_add_constantsIsEEvPT_iPKc: # @_Z13test_constantIs20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB71_8
+	blez	$a1, .LBB71_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB71_6
@@ -17548,9 +17484,8 @@ _Z13test_constantIs20custom_sub_constantsIsEEvPT_iPKc: # @_Z13test_constantIs20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB72_8
+	blez	$a1, .LBB72_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB72_6
@@ -17692,9 +17627,8 @@ _Z13test_constantIs25custom_multiply_constantsIsEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB73_8
+	blez	$a1, .LBB73_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB73_6
@@ -17838,9 +17772,8 @@ _Z13test_constantIs23custom_divide_constantsIsEEvPT_iPKc: # @_Z13test_constantIs
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB74_8
+	blez	$a1, .LBB74_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB74_6
@@ -17982,9 +17915,8 @@ _Z13test_constantIs20custom_mod_constantsIsEEvPT_iPKc: # @_Z13test_constantIs20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB75_8
+	blez	$a1, .LBB75_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB75_6
@@ -18218,9 +18150,8 @@ _Z13test_constantIs25custom_notequal_constantsIsEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB77_8
+	blez	$a1, .LBB77_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB77_6
@@ -18362,9 +18293,8 @@ _Z13test_constantIs28custom_greaterthan_constantsIsEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB78_8
+	blez	$a1, .LBB78_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB78_6
@@ -18598,9 +18528,8 @@ _Z13test_constantIs33custom_greaterthanequal_constantsIsEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB80_8
+	blez	$a1, .LBB80_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB80_6
@@ -18834,9 +18763,8 @@ _Z13test_constantIs20custom_and_constantsIsEEvPT_iPKc: # @_Z13test_constantIs20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB82_8
+	blez	$a1, .LBB82_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB82_6
@@ -18978,9 +18906,8 @@ _Z13test_constantIs19custom_or_constantsIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB83_8
+	blez	$a1, .LBB83_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB83_6
@@ -19124,9 +19051,8 @@ _Z13test_constantIs20custom_xor_constantsIsEEvPT_iPKc: # @_Z13test_constantIs20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB84_8
+	blez	$a1, .LBB84_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB84_6
@@ -19287,9 +19213,8 @@ _Z13test_constantIs19custom_constant_addIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB85_23
+	blez	$a1, .LBB85_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB85_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -19600,9 +19525,8 @@ _Z13test_constantIs28custom_multiple_constant_addIsEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB86_23
+	blez	$a1, .LBB86_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB86_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -19913,9 +19837,8 @@ _Z13test_constantIs19custom_constant_subIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB87_23
+	blez	$a1, .LBB87_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB87_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -20229,9 +20152,8 @@ _Z13test_constantIs28custom_multiple_constant_subIsEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB88_23
+	blez	$a1, .LBB88_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB88_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -20545,9 +20467,8 @@ _Z13test_constantIs24custom_constant_multiplyIsEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB89_23
+	blez	$a1, .LBB89_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB89_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -20854,9 +20775,8 @@ _Z13test_constantIs33custom_multiple_constant_multiplyIsEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB90_23
+	blez	$a1, .LBB90_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB90_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -21163,9 +21083,8 @@ _Z13test_constantIs34custom_multiple_constant_multiply2IsEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB91_23
+	blez	$a1, .LBB91_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB91_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -21479,10 +21398,9 @@ _Z13test_constantIs22custom_constant_divideIsEEvPT_iPKc: # @_Z13test_constantIs2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB92_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a1, .LBB92_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB92_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -21845,10 +21763,9 @@ _Z13test_constantIs31custom_multiple_constant_divideIsEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB93_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
+	blez	$a1, .LBB93_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB93_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -22226,9 +22143,8 @@ _Z13test_constantIs32custom_multiple_constant_divide2IsEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB94_23
+	blez	$a1, .LBB94_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB94_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -22539,9 +22455,8 @@ _Z13test_constantIs30custom_multiple_constant_mixedIsEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB95_23
+	blez	$a1, .LBB95_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB95_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -22842,9 +22757,8 @@ _Z13test_constantIs19custom_constant_andIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB96_23
+	blez	$a1, .LBB96_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB96_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -23154,9 +23068,8 @@ _Z13test_constantIs28custom_multiple_constant_andIsEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB97_23
+	blez	$a1, .LBB97_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB97_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -23466,9 +23379,8 @@ _Z13test_constantIs18custom_constant_orIsEEvPT_iPKc: # @_Z13test_constantIs18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB98_21
+	blez	$a1, .LBB98_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB98_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -23761,9 +23673,8 @@ _Z13test_constantIs27custom_multiple_constant_orIsEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB99_21
+	blez	$a1, .LBB99_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB99_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -24058,9 +23969,8 @@ _Z13test_constantIs19custom_constant_xorIsEEvPT_iPKc: # @_Z13test_constantIs19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB100_23
+	blez	$a1, .LBB100_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB100_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -24370,9 +24280,8 @@ _Z13test_constantIs28custom_multiple_constant_xorIsEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB101_23
+	blez	$a1, .LBB101_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB101_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -24665,9 +24574,8 @@ _Z13test_constantIt10custom_twoItEEvPT_iPKc: # @_Z13test_constantIt10custom_twoI
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB102_8
+	blez	$a1, .LBB102_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB102_6
@@ -24809,9 +24717,8 @@ _Z13test_constantIt20custom_add_constantsItEEvPT_iPKc: # @_Z13test_constantIt20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB103_8
+	blez	$a1, .LBB103_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB103_6
@@ -24953,9 +24860,8 @@ _Z13test_constantIt20custom_sub_constantsItEEvPT_iPKc: # @_Z13test_constantIt20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB104_8
+	blez	$a1, .LBB104_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB104_6
@@ -25097,9 +25003,8 @@ _Z13test_constantIt25custom_multiply_constantsItEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB105_8
+	blez	$a1, .LBB105_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB105_6
@@ -25243,9 +25148,8 @@ _Z13test_constantIt23custom_divide_constantsItEEvPT_iPKc: # @_Z13test_constantIt
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB106_8
+	blez	$a1, .LBB106_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB106_6
@@ -25387,9 +25291,8 @@ _Z13test_constantIt20custom_mod_constantsItEEvPT_iPKc: # @_Z13test_constantIt20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB107_8
+	blez	$a1, .LBB107_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB107_6
@@ -25623,9 +25526,8 @@ _Z13test_constantIt25custom_notequal_constantsItEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB109_8
+	blez	$a1, .LBB109_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB109_6
@@ -25767,9 +25669,8 @@ _Z13test_constantIt28custom_greaterthan_constantsItEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB110_8
+	blez	$a1, .LBB110_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB110_6
@@ -26003,9 +25904,8 @@ _Z13test_constantIt33custom_greaterthanequal_constantsItEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB112_8
+	blez	$a1, .LBB112_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB112_6
@@ -26239,9 +26139,8 @@ _Z13test_constantIt20custom_and_constantsItEEvPT_iPKc: # @_Z13test_constantIt20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB114_8
+	blez	$a1, .LBB114_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB114_6
@@ -26383,9 +26282,8 @@ _Z13test_constantIt19custom_or_constantsItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB115_8
+	blez	$a1, .LBB115_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB115_6
@@ -26529,9 +26427,8 @@ _Z13test_constantIt20custom_xor_constantsItEEvPT_iPKc: # @_Z13test_constantIt20c
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB116_8
+	blez	$a1, .LBB116_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB116_6
@@ -26692,9 +26589,8 @@ _Z13test_constantIt19custom_constant_addItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB117_23
+	blez	$a1, .LBB117_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB117_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -27005,9 +26901,8 @@ _Z13test_constantIt28custom_multiple_constant_addItEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB118_23
+	blez	$a1, .LBB118_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB118_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -27318,9 +27213,8 @@ _Z13test_constantIt19custom_constant_subItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB119_23
+	blez	$a1, .LBB119_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB119_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -27634,9 +27528,8 @@ _Z13test_constantIt28custom_multiple_constant_subItEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB120_23
+	blez	$a1, .LBB120_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB120_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -27950,9 +27843,8 @@ _Z13test_constantIt24custom_constant_multiplyItEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB121_23
+	blez	$a1, .LBB121_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB121_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -28259,9 +28151,8 @@ _Z13test_constantIt33custom_multiple_constant_multiplyItEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB122_23
+	blez	$a1, .LBB122_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB122_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -28568,9 +28459,8 @@ _Z13test_constantIt34custom_multiple_constant_multiply2ItEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB123_23
+	blez	$a1, .LBB123_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB123_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -28884,10 +28774,9 @@ _Z13test_constantIt22custom_constant_divideItEEvPT_iPKc: # @_Z13test_constantIt2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB124_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a1, .LBB124_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB124_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -29228,10 +29117,9 @@ _Z13test_constantIt31custom_multiple_constant_divideItEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 120                   # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB125_23
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
+	blez	$a1, .LBB125_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB125_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -29572,9 +29460,8 @@ _Z13test_constantIt32custom_multiple_constant_divide2ItEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB126_23
+	blez	$a1, .LBB126_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB126_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -29885,9 +29772,8 @@ _Z13test_constantIt30custom_multiple_constant_mixedItEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB127_23
+	blez	$a1, .LBB127_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB127_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -30188,9 +30074,8 @@ _Z13test_constantIt19custom_constant_andItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB128_23
+	blez	$a1, .LBB128_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB128_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -30500,9 +30385,8 @@ _Z13test_constantIt28custom_multiple_constant_andItEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB129_23
+	blez	$a1, .LBB129_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB129_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -30812,9 +30696,8 @@ _Z13test_constantIt18custom_constant_orItEEvPT_iPKc: # @_Z13test_constantIt18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB130_21
+	blez	$a1, .LBB130_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB130_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -31107,9 +30990,8 @@ _Z13test_constantIt27custom_multiple_constant_orItEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB131_21
+	blez	$a1, .LBB131_21
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB131_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -31404,9 +31286,8 @@ _Z13test_constantIt19custom_constant_xorItEEvPT_iPKc: # @_Z13test_constantIt19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB132_23
+	blez	$a1, .LBB132_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB132_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -31716,9 +31597,8 @@ _Z13test_constantIt28custom_multiple_constant_xorItEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB133_23
+	blez	$a1, .LBB133_23
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB133_19
 # %bb.2:                                # %.preheader.us.preheader
@@ -32011,9 +31891,8 @@ _Z13test_constantIi10custom_twoIiEEvPT_iPKc: # @_Z13test_constantIi10custom_twoI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB134_8
+	blez	$a1, .LBB134_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB134_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -32155,9 +32034,8 @@ _Z13test_constantIi20custom_add_constantsIiEEvPT_iPKc: # @_Z13test_constantIi20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB135_8
+	blez	$a1, .LBB135_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB135_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -32299,9 +32177,8 @@ _Z13test_constantIi20custom_sub_constantsIiEEvPT_iPKc: # @_Z13test_constantIi20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB136_8
+	blez	$a1, .LBB136_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB136_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -32443,9 +32320,8 @@ _Z13test_constantIi25custom_multiply_constantsIiEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB137_8
+	blez	$a1, .LBB137_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB137_6
@@ -32588,9 +32464,8 @@ _Z13test_constantIi23custom_divide_constantsIiEEvPT_iPKc: # @_Z13test_constantIi
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB138_8
+	blez	$a1, .LBB138_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB138_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -32732,9 +32607,8 @@ _Z13test_constantIi20custom_mod_constantsIiEEvPT_iPKc: # @_Z13test_constantIi20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB139_8
+	blez	$a1, .LBB139_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB139_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -32968,9 +32842,8 @@ _Z13test_constantIi25custom_notequal_constantsIiEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB141_8
+	blez	$a1, .LBB141_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB141_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -33112,9 +32985,8 @@ _Z13test_constantIi28custom_greaterthan_constantsIiEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB142_8
+	blez	$a1, .LBB142_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB142_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -33348,9 +33220,8 @@ _Z13test_constantIi33custom_greaterthanequal_constantsIiEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB144_8
+	blez	$a1, .LBB144_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB144_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -33584,9 +33455,8 @@ _Z13test_constantIi20custom_and_constantsIiEEvPT_iPKc: # @_Z13test_constantIi20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB146_8
+	blez	$a1, .LBB146_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB146_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -33728,9 +33598,8 @@ _Z13test_constantIi19custom_or_constantsIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB147_8
+	blez	$a1, .LBB147_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB147_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -33872,9 +33741,8 @@ _Z13test_constantIi20custom_xor_constantsIiEEvPT_iPKc: # @_Z13test_constantIi20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB148_8
+	blez	$a1, .LBB148_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB148_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -34022,9 +33890,8 @@ _Z13test_constantIi19custom_constant_addIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB149_17
+	blez	$a1, .LBB149_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB149_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -34261,9 +34128,8 @@ _Z13test_constantIi28custom_multiple_constant_addIiEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB150_17
+	blez	$a1, .LBB150_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB150_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -34500,9 +34366,8 @@ _Z13test_constantIi19custom_constant_subIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB151_17
+	blez	$a1, .LBB151_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB151_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -34742,9 +34607,8 @@ _Z13test_constantIi28custom_multiple_constant_subIiEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB152_17
+	blez	$a1, .LBB152_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB152_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -34984,9 +34848,8 @@ _Z13test_constantIi24custom_constant_multiplyIiEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB153_17
+	blez	$a1, .LBB153_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB153_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -35217,9 +35080,8 @@ _Z13test_constantIi33custom_multiple_constant_multiplyIiEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB154_17
+	blez	$a1, .LBB154_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB154_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -35450,9 +35312,8 @@ _Z13test_constantIi34custom_multiple_constant_multiply2IiEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB155_17
+	blez	$a1, .LBB155_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB155_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -35692,9 +35553,8 @@ _Z13test_constantIi22custom_constant_divideIiEEvPT_iPKc: # @_Z13test_constantIi2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB156_17
+	blez	$a1, .LBB156_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB156_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -35943,9 +35803,8 @@ _Z13test_constantIi31custom_multiple_constant_divideIiEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB157_17
+	blez	$a1, .LBB157_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB157_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -36200,9 +36059,8 @@ _Z13test_constantIi32custom_multiple_constant_divide2IiEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB158_17
+	blez	$a1, .LBB158_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB158_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -36439,9 +36297,8 @@ _Z13test_constantIi30custom_multiple_constant_mixedIiEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB159_17
+	blez	$a1, .LBB159_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB159_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -36666,9 +36523,8 @@ _Z13test_constantIi19custom_constant_andIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB160_17
+	blez	$a1, .LBB160_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB160_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -36901,9 +36757,8 @@ _Z13test_constantIi28custom_multiple_constant_andIiEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB161_17
+	blez	$a1, .LBB161_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB161_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -37136,9 +36991,8 @@ _Z13test_constantIi18custom_constant_orIiEEvPT_iPKc: # @_Z13test_constantIi18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB162_15
+	blez	$a1, .LBB162_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB162_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -37359,9 +37213,8 @@ _Z13test_constantIi27custom_multiple_constant_orIiEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB163_15
+	blez	$a1, .LBB163_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB163_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -37582,9 +37435,8 @@ _Z13test_constantIi19custom_constant_xorIiEEvPT_iPKc: # @_Z13test_constantIi19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB164_17
+	blez	$a1, .LBB164_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB164_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -37817,9 +37669,8 @@ _Z13test_constantIi28custom_multiple_constant_xorIiEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB165_17
+	blez	$a1, .LBB165_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB165_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -38046,9 +37897,8 @@ _Z13test_constantIj10custom_twoIjEEvPT_iPKc: # @_Z13test_constantIj10custom_twoI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB166_8
+	blez	$a1, .LBB166_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB166_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -38190,9 +38040,8 @@ _Z13test_constantIj20custom_add_constantsIjEEvPT_iPKc: # @_Z13test_constantIj20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB167_8
+	blez	$a1, .LBB167_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB167_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -38334,9 +38183,8 @@ _Z13test_constantIj20custom_sub_constantsIjEEvPT_iPKc: # @_Z13test_constantIj20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB168_8
+	blez	$a1, .LBB168_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB168_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -38478,9 +38326,8 @@ _Z13test_constantIj25custom_multiply_constantsIjEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s3, %pc_lo12(iterations)
 	pcalau12i	$s2, %pc_hi20(start_time)
 	st.d	$a0, $s2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s1, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB169_8
+	blez	$a1, .LBB169_8
 # %bb.1:                                # %.preheader.lr.ph
 	move	$s4, $zero
 	blez	$s0, .LBB169_6
@@ -38623,9 +38470,8 @@ _Z13test_constantIj23custom_divide_constantsIjEEvPT_iPKc: # @_Z13test_constantIj
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB170_8
+	blez	$a1, .LBB170_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB170_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -38767,9 +38613,8 @@ _Z13test_constantIj20custom_mod_constantsIjEEvPT_iPKc: # @_Z13test_constantIj20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB171_8
+	blez	$a1, .LBB171_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB171_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -39003,9 +38848,8 @@ _Z13test_constantIj25custom_notequal_constantsIjEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB173_8
+	blez	$a1, .LBB173_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB173_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -39147,9 +38991,8 @@ _Z13test_constantIj28custom_greaterthan_constantsIjEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB174_8
+	blez	$a1, .LBB174_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB174_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -39383,9 +39226,8 @@ _Z13test_constantIj33custom_greaterthanequal_constantsIjEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB176_8
+	blez	$a1, .LBB176_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB176_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -39619,9 +39461,8 @@ _Z13test_constantIj20custom_and_constantsIjEEvPT_iPKc: # @_Z13test_constantIj20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB178_8
+	blez	$a1, .LBB178_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB178_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -39763,9 +39604,8 @@ _Z13test_constantIj19custom_or_constantsIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB179_8
+	blez	$a1, .LBB179_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB179_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -39907,9 +39747,8 @@ _Z13test_constantIj20custom_xor_constantsIjEEvPT_iPKc: # @_Z13test_constantIj20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB180_8
+	blez	$a1, .LBB180_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB180_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -40057,9 +39896,8 @@ _Z13test_constantIj19custom_constant_addIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB181_17
+	blez	$a1, .LBB181_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB181_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -40296,9 +40134,8 @@ _Z13test_constantIj28custom_multiple_constant_addIjEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB182_17
+	blez	$a1, .LBB182_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB182_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -40535,9 +40372,8 @@ _Z13test_constantIj19custom_constant_subIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB183_17
+	blez	$a1, .LBB183_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB183_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -40777,9 +40613,8 @@ _Z13test_constantIj28custom_multiple_constant_subIjEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB184_17
+	blez	$a1, .LBB184_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB184_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -41019,9 +40854,8 @@ _Z13test_constantIj24custom_constant_multiplyIjEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB185_17
+	blez	$a1, .LBB185_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB185_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -41255,9 +41089,8 @@ _Z13test_constantIj33custom_multiple_constant_multiplyIjEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB186_17
+	blez	$a1, .LBB186_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB186_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -41491,9 +41324,8 @@ _Z13test_constantIj34custom_multiple_constant_multiply2IjEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB187_17
+	blez	$a1, .LBB187_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB187_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -41733,9 +41565,8 @@ _Z13test_constantIj22custom_constant_divideIjEEvPT_iPKc: # @_Z13test_constantIj2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB188_17
+	blez	$a1, .LBB188_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB188_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -41983,9 +41814,8 @@ _Z13test_constantIj31custom_multiple_constant_divideIjEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB189_17
+	blez	$a1, .LBB189_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB189_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -42233,9 +42063,8 @@ _Z13test_constantIj32custom_multiple_constant_divide2IjEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB190_17
+	blez	$a1, .LBB190_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB190_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -42472,9 +42301,8 @@ _Z13test_constantIj30custom_multiple_constant_mixedIjEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB191_17
+	blez	$a1, .LBB191_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB191_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -42702,9 +42530,8 @@ _Z13test_constantIj19custom_constant_andIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB192_17
+	blez	$a1, .LBB192_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB192_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -42937,9 +42764,8 @@ _Z13test_constantIj28custom_multiple_constant_andIjEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB193_17
+	blez	$a1, .LBB193_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB193_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -43172,9 +42998,8 @@ _Z13test_constantIj18custom_constant_orIjEEvPT_iPKc: # @_Z13test_constantIj18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB194_15
+	blez	$a1, .LBB194_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB194_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -43395,9 +43220,8 @@ _Z13test_constantIj27custom_multiple_constant_orIjEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB195_15
+	blez	$a1, .LBB195_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB195_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -43618,9 +43442,8 @@ _Z13test_constantIj19custom_constant_xorIjEEvPT_iPKc: # @_Z13test_constantIj19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB196_17
+	blez	$a1, .LBB196_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB196_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -43856,9 +43679,8 @@ _Z13test_constantIj28custom_multiple_constant_xorIjEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB197_17
+	blez	$a1, .LBB197_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB197_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -44088,9 +43910,8 @@ _Z13test_constantIl10custom_twoIlEEvPT_iPKc: # @_Z13test_constantIl10custom_twoI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB198_8
+	blez	$a1, .LBB198_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB198_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -44232,9 +44053,8 @@ _Z13test_constantIl20custom_add_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB199_8
+	blez	$a1, .LBB199_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB199_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -44376,9 +44196,8 @@ _Z13test_constantIl20custom_sub_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB200_8
+	blez	$a1, .LBB200_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB200_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -44520,9 +44339,8 @@ _Z13test_constantIl25custom_multiply_constantsIlEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB201_8
+	blez	$a1, .LBB201_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB201_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -44664,9 +44482,8 @@ _Z13test_constantIl23custom_divide_constantsIlEEvPT_iPKc: # @_Z13test_constantIl
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB202_8
+	blez	$a1, .LBB202_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB202_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -44808,9 +44625,8 @@ _Z13test_constantIl20custom_mod_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB203_8
+	blez	$a1, .LBB203_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB203_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -45044,9 +44860,8 @@ _Z13test_constantIl25custom_notequal_constantsIlEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB205_8
+	blez	$a1, .LBB205_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB205_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -45188,9 +45003,8 @@ _Z13test_constantIl28custom_greaterthan_constantsIlEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB206_8
+	blez	$a1, .LBB206_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB206_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -45424,9 +45238,8 @@ _Z13test_constantIl33custom_greaterthanequal_constantsIlEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB208_8
+	blez	$a1, .LBB208_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB208_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -45660,9 +45473,8 @@ _Z13test_constantIl20custom_and_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB210_8
+	blez	$a1, .LBB210_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB210_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -45804,9 +45616,8 @@ _Z13test_constantIl19custom_or_constantsIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB211_8
+	blez	$a1, .LBB211_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB211_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -45948,9 +45759,8 @@ _Z13test_constantIl20custom_xor_constantsIlEEvPT_iPKc: # @_Z13test_constantIl20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB212_8
+	blez	$a1, .LBB212_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB212_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -46098,9 +45908,8 @@ _Z13test_constantIl19custom_constant_addIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB213_17
+	blez	$a1, .LBB213_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB213_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -46335,9 +46144,8 @@ _Z13test_constantIl28custom_multiple_constant_addIlEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB214_17
+	blez	$a1, .LBB214_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB214_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -46572,9 +46380,8 @@ _Z13test_constantIl19custom_constant_subIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB215_17
+	blez	$a1, .LBB215_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB215_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -46812,9 +46619,8 @@ _Z13test_constantIl28custom_multiple_constant_subIlEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB216_17
+	blez	$a1, .LBB216_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB216_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -47052,9 +46858,8 @@ _Z13test_constantIl24custom_constant_multiplyIlEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB217_17
+	blez	$a1, .LBB217_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB217_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -47283,9 +47088,8 @@ _Z13test_constantIl33custom_multiple_constant_multiplyIlEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB218_17
+	blez	$a1, .LBB218_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB218_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -47514,9 +47318,8 @@ _Z13test_constantIl34custom_multiple_constant_multiply2IlEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB219_17
+	blez	$a1, .LBB219_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB219_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -47754,9 +47557,8 @@ _Z13test_constantIl22custom_constant_divideIlEEvPT_iPKc: # @_Z13test_constantIl2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB220_17
+	blez	$a1, .LBB220_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB220_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -48005,9 +47807,8 @@ _Z13test_constantIl31custom_multiple_constant_divideIlEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB221_17
+	blez	$a1, .LBB221_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB221_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -48260,9 +48061,8 @@ _Z13test_constantIl32custom_multiple_constant_divide2IlEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB222_17
+	blez	$a1, .LBB222_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB222_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -48497,9 +48297,8 @@ _Z13test_constantIl30custom_multiple_constant_mixedIlEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB223_17
+	blez	$a1, .LBB223_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB223_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -48722,9 +48521,8 @@ _Z13test_constantIl19custom_constant_andIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB224_17
+	blez	$a1, .LBB224_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB224_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -48955,9 +48753,8 @@ _Z13test_constantIl28custom_multiple_constant_andIlEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB225_17
+	blez	$a1, .LBB225_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB225_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -49188,9 +48985,8 @@ _Z13test_constantIl18custom_constant_orIlEEvPT_iPKc: # @_Z13test_constantIl18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB226_15
+	blez	$a1, .LBB226_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB226_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -49409,9 +49205,8 @@ _Z13test_constantIl27custom_multiple_constant_orIlEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB227_15
+	blez	$a1, .LBB227_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB227_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -49630,9 +49425,8 @@ _Z13test_constantIl19custom_constant_xorIlEEvPT_iPKc: # @_Z13test_constantIl19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB228_17
+	blez	$a1, .LBB228_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB228_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -49863,9 +49657,8 @@ _Z13test_constantIl28custom_multiple_constant_xorIlEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB229_17
+	blez	$a1, .LBB229_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB229_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -50090,9 +49883,8 @@ _Z13test_constantIm10custom_twoImEEvPT_iPKc: # @_Z13test_constantIm10custom_twoI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB230_8
+	blez	$a1, .LBB230_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB230_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -50234,9 +50026,8 @@ _Z13test_constantIm20custom_add_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB231_8
+	blez	$a1, .LBB231_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB231_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -50378,9 +50169,8 @@ _Z13test_constantIm20custom_sub_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB232_8
+	blez	$a1, .LBB232_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB232_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -50522,9 +50312,8 @@ _Z13test_constantIm25custom_multiply_constantsImEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB233_8
+	blez	$a1, .LBB233_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB233_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -50666,9 +50455,8 @@ _Z13test_constantIm23custom_divide_constantsImEEvPT_iPKc: # @_Z13test_constantIm
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB234_8
+	blez	$a1, .LBB234_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB234_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -50810,9 +50598,8 @@ _Z13test_constantIm20custom_mod_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB235_8
+	blez	$a1, .LBB235_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB235_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -51046,9 +50833,8 @@ _Z13test_constantIm25custom_notequal_constantsImEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB237_8
+	blez	$a1, .LBB237_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB237_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -51190,9 +50976,8 @@ _Z13test_constantIm28custom_greaterthan_constantsImEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB238_8
+	blez	$a1, .LBB238_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB238_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -51426,9 +51211,8 @@ _Z13test_constantIm33custom_greaterthanequal_constantsImEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB240_8
+	blez	$a1, .LBB240_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB240_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -51662,9 +51446,8 @@ _Z13test_constantIm20custom_and_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB242_8
+	blez	$a1, .LBB242_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB242_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -51806,9 +51589,8 @@ _Z13test_constantIm19custom_or_constantsImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB243_8
+	blez	$a1, .LBB243_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB243_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -51950,9 +51732,8 @@ _Z13test_constantIm20custom_xor_constantsImEEvPT_iPKc: # @_Z13test_constantIm20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB244_8
+	blez	$a1, .LBB244_8
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB244_6
 # %bb.2:                                # %.preheader.us.preheader
@@ -52104,9 +51885,8 @@ _Z13test_constantIm19custom_constant_addImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB245_17
+	blez	$a1, .LBB245_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB245_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -52366,9 +52146,8 @@ _Z13test_constantIm28custom_multiple_constant_addImEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB246_17
+	blez	$a1, .LBB246_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB246_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -52628,9 +52407,8 @@ _Z13test_constantIm19custom_constant_subImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB247_17
+	blez	$a1, .LBB247_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB247_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -52893,9 +52671,8 @@ _Z13test_constantIm28custom_multiple_constant_subImEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB248_17
+	blez	$a1, .LBB248_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB248_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -53158,9 +52935,8 @@ _Z13test_constantIm24custom_constant_multiplyImEEvPT_iPKc: # @_Z13test_constantI
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB249_17
+	blez	$a1, .LBB249_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB249_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -53417,9 +53193,8 @@ _Z13test_constantIm33custom_multiple_constant_multiplyImEEvPT_iPKc: # @_Z13test_
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB250_17
+	blez	$a1, .LBB250_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB250_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -53676,9 +53451,8 @@ _Z13test_constantIm34custom_multiple_constant_multiply2ImEEvPT_iPKc: # @_Z13test
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB251_17
+	blez	$a1, .LBB251_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB251_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -53941,10 +53715,9 @@ _Z13test_constantIm22custom_constant_divideImEEvPT_iPKc: # @_Z13test_constantIm2
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB252_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	blez	$a1, .LBB252_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB252_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -54224,10 +53997,9 @@ _Z13test_constantIm31custom_multiple_constant_divideImEEvPT_iPKc: # @_Z13test_co
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
-	pcalau12i	$a2, %pc_hi20(current_test)
-	st.d	$a2, $sp, 56                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB253_17
+	pcalau12i	$a0, %pc_hi20(current_test)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	blez	$a1, .LBB253_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB253_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -54507,9 +54279,8 @@ _Z13test_constantIm32custom_multiple_constant_divide2ImEEvPT_iPKc: # @_Z13test_c
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s8, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB254_17
+	blez	$a1, .LBB254_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB254_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -54769,9 +54540,8 @@ _Z13test_constantIm30custom_multiple_constant_mixedImEEvPT_iPKc: # @_Z13test_con
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB255_17
+	blez	$a1, .LBB255_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB255_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -55022,9 +54792,8 @@ _Z13test_constantIm19custom_constant_andImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB256_17
+	blez	$a1, .LBB256_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB256_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -55280,9 +55049,8 @@ _Z13test_constantIm28custom_multiple_constant_andImEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB257_17
+	blez	$a1, .LBB257_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB257_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -55538,9 +55306,8 @@ _Z13test_constantIm18custom_constant_orImEEvPT_iPKc: # @_Z13test_constantIm18cus
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB258_15
+	blez	$a1, .LBB258_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB258_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -55774,9 +55541,8 @@ _Z13test_constantIm27custom_multiple_constant_orImEEvPT_iPKc: # @_Z13test_consta
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB259_15
+	blez	$a1, .LBB259_15
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB259_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -56010,9 +55776,8 @@ _Z13test_constantIm19custom_constant_xorImEEvPT_iPKc: # @_Z13test_constantIm19cu
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB260_17
+	blez	$a1, .LBB260_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB260_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -56271,9 +56036,8 @@ _Z13test_constantIm28custom_multiple_constant_xorImEEvPT_iPKc: # @_Z13test_const
 	pcalau12i	$a2, %pc_hi20(start_time)
 	st.d	$a2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$a0, $a2, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB261_17
+	blez	$a1, .LBB261_17
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB261_13
 # %bb.2:                                # %.preheader.us.preheader
@@ -56536,9 +56300,8 @@ _Z13test_constantIf10custom_twoIfEEvPT_iPKc: # @_Z13test_constantIf10custom_twoI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB262_10
+	blez	$a1, .LBB262_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB262_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -56724,9 +56487,8 @@ _Z13test_constantIf20custom_add_constantsIfEEvPT_iPKc: # @_Z13test_constantIf20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB263_10
+	blez	$a1, .LBB263_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB263_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -56912,9 +56674,8 @@ _Z13test_constantIf20custom_sub_constantsIfEEvPT_iPKc: # @_Z13test_constantIf20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB264_10
+	blez	$a1, .LBB264_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB264_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -57100,9 +56861,8 @@ _Z13test_constantIf25custom_multiply_constantsIfEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB265_10
+	blez	$a1, .LBB265_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB265_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -57288,9 +57048,8 @@ _Z13test_constantIf23custom_divide_constantsIfEEvPT_iPKc: # @_Z13test_constantIf
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB266_10
+	blez	$a1, .LBB266_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB266_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -57481,9 +57240,8 @@ _Z13test_constantIf19custom_constant_addIfEEvPT_iPKc: # @_Z13test_constantIf19cu
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB267_12
+	blez	$a1, .LBB267_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB267_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -57708,9 +57466,8 @@ _Z13test_constantIf28custom_multiple_constant_addIfEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB268_12
+	blez	$a1, .LBB268_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB268_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -57956,9 +57713,8 @@ _Z13test_constantIf19custom_constant_subIfEEvPT_iPKc: # @_Z13test_constantIf19cu
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB269_12
+	blez	$a1, .LBB269_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB269_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -58183,9 +57939,8 @@ _Z13test_constantIf28custom_multiple_constant_subIfEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB270_12
+	blez	$a1, .LBB270_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB270_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -58439,9 +58194,8 @@ _Z13test_constantIf24custom_constant_multiplyIfEEvPT_iPKc: # @_Z13test_constantI
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB271_12
+	blez	$a1, .LBB271_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB271_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -58670,9 +58424,8 @@ _Z13test_constantIf33custom_multiple_constant_multiplyIfEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB272_12
+	blez	$a1, .LBB272_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB272_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -58920,9 +58673,8 @@ _Z13test_constantIf34custom_multiple_constant_multiply2IfEEvPT_iPKc: # @_Z13test
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB273_12
+	blez	$a1, .LBB273_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB273_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -59148,9 +58900,8 @@ _Z13test_constantIf22custom_constant_divideIfEEvPT_iPKc: # @_Z13test_constantIf2
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB274_12
+	blez	$a1, .LBB274_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB274_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -59377,9 +59128,8 @@ _Z13test_constantIf31custom_multiple_constant_divideIfEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB275_12
+	blez	$a1, .LBB275_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB275_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -59627,9 +59377,8 @@ _Z13test_constantIf32custom_multiple_constant_divide2IfEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB276_12
+	blez	$a1, .LBB276_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB276_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -59858,9 +59607,8 @@ _Z13test_constantIf30custom_multiple_constant_mixedIfEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB277_12
+	blez	$a1, .LBB277_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB277_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -60086,9 +59834,8 @@ _Z13test_constantId10custom_twoIdEEvPT_iPKc: # @_Z13test_constantId10custom_twoI
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB278_10
+	blez	$a1, .LBB278_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB278_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -60270,9 +60017,8 @@ _Z13test_constantId20custom_add_constantsIdEEvPT_iPKc: # @_Z13test_constantId20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB279_10
+	blez	$a1, .LBB279_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB279_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -60454,9 +60200,8 @@ _Z13test_constantId20custom_sub_constantsIdEEvPT_iPKc: # @_Z13test_constantId20c
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB280_10
+	blez	$a1, .LBB280_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB280_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -60638,9 +60383,8 @@ _Z13test_constantId25custom_multiply_constantsIdEEvPT_iPKc: # @_Z13test_constant
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB281_10
+	blez	$a1, .LBB281_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB281_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -60822,9 +60566,8 @@ _Z13test_constantId23custom_divide_constantsIdEEvPT_iPKc: # @_Z13test_constantId
 	ld.w	$a1, $s4, %pc_lo12(iterations)
 	pcalau12i	$s3, %pc_hi20(start_time)
 	st.d	$a0, $s3, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s2, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB282_10
+	blez	$a1, .LBB282_10
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB282_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -61011,9 +60754,8 @@ _Z13test_constantId19custom_constant_addIdEEvPT_iPKc: # @_Z13test_constantId19cu
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB283_12
+	blez	$a1, .LBB283_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB283_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -61231,9 +60973,8 @@ _Z13test_constantId28custom_multiple_constant_addIdEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB284_12
+	blez	$a1, .LBB284_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB284_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -61472,9 +61213,8 @@ _Z13test_constantId19custom_constant_subIdEEvPT_iPKc: # @_Z13test_constantId19cu
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB285_12
+	blez	$a1, .LBB285_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB285_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -61692,9 +61432,8 @@ _Z13test_constantId28custom_multiple_constant_subIdEEvPT_iPKc: # @_Z13test_const
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB286_12
+	blez	$a1, .LBB286_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB286_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -61941,9 +61680,8 @@ _Z13test_constantId24custom_constant_multiplyIdEEvPT_iPKc: # @_Z13test_constantI
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB287_12
+	blez	$a1, .LBB287_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB287_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -62165,9 +61903,8 @@ _Z13test_constantId33custom_multiple_constant_multiplyIdEEvPT_iPKc: # @_Z13test_
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB288_12
+	blez	$a1, .LBB288_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB288_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -62408,9 +62145,8 @@ _Z13test_constantId34custom_multiple_constant_multiply2IdEEvPT_iPKc: # @_Z13test
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB289_12
+	blez	$a1, .LBB289_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB289_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -62629,9 +62365,8 @@ _Z13test_constantId22custom_constant_divideIdEEvPT_iPKc: # @_Z13test_constantId2
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB290_12
+	blez	$a1, .LBB290_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB290_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -62851,9 +62586,8 @@ _Z13test_constantId31custom_multiple_constant_divideIdEEvPT_iPKc: # @_Z13test_co
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB291_12
+	blez	$a1, .LBB291_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB291_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -63094,9 +62828,8 @@ _Z13test_constantId32custom_multiple_constant_divide2IdEEvPT_iPKc: # @_Z13test_c
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB292_12
+	blez	$a1, .LBB292_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB292_8
 # %bb.2:                                # %.preheader.us.preheader
@@ -63318,9 +63051,8 @@ _Z13test_constantId30custom_multiple_constant_mixedIdEEvPT_iPKc: # @_Z13test_con
 	ld.w	$a1, $s5, %pc_lo12(iterations)
 	pcalau12i	$s4, %pc_hi20(start_time)
 	st.d	$a0, $s4, %pc_lo12(start_time)
-	ori	$a0, $zero, 1
 	pcalau12i	$s3, %pc_hi20(current_test)
-	blt	$a1, $a0, .LBB293_12
+	blez	$a1, .LBB293_12
 # %bb.1:                                # %.preheader.lr.ph
 	blez	$s0, .LBB293_8
 # %bb.2:                                # %.preheader.us.preheader

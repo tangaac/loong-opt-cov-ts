@@ -19,16 +19,13 @@ a1:                                     # @a1
 b:                                      # @b
 # %bb.0:
 	ext.w.h	$a1, $a0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB1_4
+	bltz	$a1, .LBB1_4
 # %bb.1:
-	lu12i.w	$a1, 4
-	and	$a1, $a0, $a1
-	bnez	$a1, .LBB1_5
+	slli.d	$a1, $a0, 49
+	bltz	$a1, .LBB1_5
 .LBB1_2:
-	lu12i.w	$a1, 2
-	and	$a0, $a0, $a1
-	bnez	$a0, .LBB1_6
+	slli.d	$a0, $a0, 50
+	bltz	$a0, .LBB1_6
 .LBB1_3:
 	ret
 .LBB1_4:
@@ -36,17 +33,15 @@ b:                                      # @b
 	ld.w	$a2, $a1, %pc_lo12(count)
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a1, %pc_lo12(count)
-	lu12i.w	$a1, 4
-	and	$a1, $a0, $a1
-	beqz	$a1, .LBB1_2
+	slli.d	$a1, $a0, 49
+	bgez	$a1, .LBB1_2
 .LBB1_5:
 	pcalau12i	$a1, %pc_hi20(count)
 	ld.w	$a2, $a1, %pc_lo12(count)
 	addi.d	$a2, $a2, 1
 	st.w	$a2, $a1, %pc_lo12(count)
-	lu12i.w	$a1, 2
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB1_3
+	slli.d	$a0, $a0, 50
+	bgez	$a0, .LBB1_3
 .LBB1_6:
 	pcalau12i	$a0, %pc_hi20(count)
 	ld.w	$a1, $a0, %pc_lo12(count)

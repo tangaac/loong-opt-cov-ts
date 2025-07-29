@@ -63,8 +63,7 @@ init_def_table:                         # @init_def_table
 	st.d	$a0, $a1, %pc_lo12(def_table)
 	beqz	$a0, .LBB1_5
 # %bb.1:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB1_4
+	blez	$s0, .LBB1_4
 # %bb.2:                                # %.lr.ph.preheader
 	move	$a0, $zero
 	.p2align	4, , 16
@@ -157,8 +156,7 @@ main:                                   # @main
 	st.d	$a0, $a1, %pc_lo12(def_table)
 	beqz	$a0, .LBB3_51
 # %bb.2:                                # %.preheader.i
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB3_5
+	blez	$s2, .LBB3_5
 # %bb.3:                                # %.lr.ph.preheader.i
 	move	$a0, $zero
 	.p2align	4, , 16
@@ -226,19 +224,19 @@ main:                                   # @main
 	beqz	$a0, .LBB3_55
 # %bb.11:                               # %.preheader285
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB3_14
+	blez	$fp, .LBB3_14
 # %bb.12:                               # %.lr.ph.preheader
-	addi.d	$a1, $s1, 16
+	addi.d	$a0, $s1, 16
 	vrepli.b	$vr0, 0
+	ori	$a1, $zero, 1
 	move	$a2, $fp
 	.p2align	4, , 16
 .LBB3_13:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a1, -16
-	st.w	$a0, $a1, 0
+	vst	$vr0, $a0, -16
+	st.w	$a1, $a0, 0
 	addi.d	$a2, $a2, -1
-	addi.d	$a1, $a1, 56
+	addi.d	$a0, $a0, 56
 	bnez	$a2, .LBB3_13
 .LBB3_14:                               # %._crit_edge
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
@@ -523,15 +521,13 @@ main:                                   # @main
 	st.d	$a0, $a3, 0
 	st.w	$zero, $a3, 16
 	st.d	$a0, $a3, 8
-	ori	$a0, $zero, 1
-	bge	$a2, $a0, .LBB3_38
+	bgtz	$a2, .LBB3_38
 	b	.LBB3_30
 .LBB3_37:                               #   in Loop: Header=BB3_31 Depth=2
 	ld.d	$a4, $a3, 8
 	st.d	$a0, $a4, 24
 	st.d	$a0, $a3, 8
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB3_30
+	blez	$a2, .LBB3_30
 .LBB3_38:                               # %.lr.ph302.preheader
                                         #   in Loop: Header=BB3_31 Depth=2
 	move	$s7, $zero

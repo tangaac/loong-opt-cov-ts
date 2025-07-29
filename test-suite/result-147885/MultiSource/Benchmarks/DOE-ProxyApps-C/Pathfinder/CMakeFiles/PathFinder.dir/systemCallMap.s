@@ -87,8 +87,7 @@ SystemCallMapElement_delete:            # @SystemCallMapElement_delete
 	.type	SystemCallMap_new,@function
 SystemCallMap_new:                      # @SystemCallMap_new
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_4
+	blez	$a0, .LBB2_4
 # %bb.1:
 	addi.d	$sp, $sp, -32
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
@@ -143,8 +142,7 @@ SystemCallMap_delete:                   # @SystemCallMap_delete
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.2:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -210,8 +208,7 @@ SystemCallMap_insert:                   # @SystemCallMap_insert
 	beqz	$a2, .LBB4_20
 # %bb.3:                                # %.preheader
 	ld.w	$s3, $s0, 0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB4_7
+	blez	$s3, .LBB4_7
 # %bb.4:                                # %.lr.ph
 	ld.d	$s5, $s0, 8
 	move	$s4, $zero
@@ -352,8 +349,7 @@ SystemCallMap_findLabeledNodes:         # @SystemCallMap_findLabeledNodes
 	beqz	$fp, .LBB5_8
 # %bb.2:                                # %.preheader
 	ld.w	$s0, $a1, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB5_6
+	blez	$s0, .LBB5_6
 # %bb.3:                                # %.lr.ph
 	ld.d	$s1, $a1, 8
 	.p2align	4, , 16
@@ -397,11 +393,10 @@ SystemCallMap_getLabelIndex:            # @SystemCallMap_getLabelIndex
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	ld.w	$s1, $a0, 0
-	move	$s0, $a1
-	ori	$a1, $zero, 1
 	addi.w	$fp, $zero, -1
-	blt	$s1, $a1, .LBB6_5
+	blez	$s1, .LBB6_5
 # %bb.1:                                # %.lr.ph
+	move	$s0, $a1
 	ld.d	$s2, $a0, 8
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -447,17 +442,18 @@ SystemCallMap_signatureRepresented:     # @SystemCallMap_signatureRepresented
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
-	ld.d	$s0, $a1, 0
-	beqz	$s0, .LBB7_8
-# %bb.1:                                # %.lr.ph
 	move	$fp, $a1
-	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_7
+	ld.d	$s0, $a1, 0
+	move	$a1, $a0
+	ori	$a0, $zero, 1
+	beqz	$s0, .LBB7_9
+# %bb.1:                                # %.lr.ph
+	ld.w	$a0, $a1, 0
+	blez	$a0, .LBB7_8
 # %bb.2:                                # %.lr.ph.split.us
-	ld.d	$s1, $a0, 8
+	ld.d	$s1, $a1, 8
 	move	$s2, $zero
-	bstrpick.d	$s3, $a1, 31, 0
+	bstrpick.d	$s3, $a0, 31, 0
 .LBB7_3:                                # %.lr.ph.i.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB7_4 Depth 2
@@ -476,21 +472,19 @@ SystemCallMap_signatureRepresented:     # @SystemCallMap_signatureRepresented
 	addi.d	$s5, $s5, -1
 	addi.d	$s4, $s4, 8
 	bnez	$s5, .LBB7_4
-	b	.LBB7_7
+	b	.LBB7_8
 	.p2align	4, , 16
 .LBB7_6:                                # %SystemCallMap_getLabelIndex.exit.loopexit.us
                                         #   in Loop: Header=BB7_3 Depth=1
 	addi.d	$s2, $s2, 1
 	slli.d	$a0, $s2, 3
 	ldx.d	$s0, $fp, $a0
-	ori	$a0, $zero, 1
 	bnez	$s0, .LBB7_3
-	b	.LBB7_9
-.LBB7_7:
-	move	$a0, $zero
+# %bb.7:
+	ori	$a0, $zero, 1
 	b	.LBB7_9
 .LBB7_8:
-	ori	$a0, $zero, 1
+	move	$a0, $zero
 .LBB7_9:                                # %._crit_edge
 	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload

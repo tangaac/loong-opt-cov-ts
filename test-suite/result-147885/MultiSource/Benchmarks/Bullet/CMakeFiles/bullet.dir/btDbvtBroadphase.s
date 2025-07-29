@@ -214,9 +214,8 @@ _ZN16btDbvtBroadphaseD2Ev:              # @_ZN16btDbvtBroadphaseD2Ev
 	ld.bu	$a0, $a0, 220
 	pcalau12i	$a1, %pc_hi20(_ZTV16btDbvtBroadphase+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV16btDbvtBroadphase+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB2_3
+	beqz	$a0, .LBB2_3
 # %bb.1:
 	ld.d	$a0, $fp, 160
 	ld.d	$a1, $a0, 0
@@ -1753,9 +1752,8 @@ _ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE: # @_ZN6btD
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 36
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$a1, $a2, .LBB12_7
+	blez	$a1, .LBB12_7
 # %bb.5:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 4
@@ -1844,7 +1842,7 @@ _ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE: # @_ZN6btD
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s0, 36
 	move	$s3, $a0
-	blt	$a1, $s4, .LBB12_21
+	blez	$a1, .LBB12_21
 # %bb.19:                               # %.lr.ph.i.i.i64
                                         #   in Loop: Header=BB12_14 Depth=1
 	move	$a0, $zero
@@ -2162,13 +2160,12 @@ _ZN16btDbvtBroadphase7collideEP12btDispatcher: # @_ZN16btDbvtBroadphase7collideE
 	ori	$a0, $zero, 1
 	st.b	$a0, $fp, 222
 .LBB14_12:
-	pcalau12i	$a0, %pc_hi20(_ZTV18btDbvtTreeCollider+16)
-	ld.bu	$a1, $fp, 221
-	addi.d	$a0, $a0, %pc_lo12(_ZTV18btDbvtTreeCollider+16)
-	st.d	$a0, $sp, 8
-	ori	$s2, $zero, 1
+	ld.bu	$a0, $fp, 221
+	pcalau12i	$a1, %pc_hi20(_ZTV18btDbvtTreeCollider+16)
+	addi.d	$a1, $a1, %pc_lo12(_ZTV18btDbvtTreeCollider+16)
+	st.d	$a1, $sp, 8
 	st.d	$fp, $sp, 16
-	bne	$a1, $s2, .LBB14_15
+	beqz	$a0, .LBB14_15
 # %bb.13:
 	ld.d	$a1, $fp, 8
 	ld.d	$a2, $fp, 72
@@ -2177,7 +2174,7 @@ _ZN16btDbvtBroadphase7collideEP12btDispatcher: # @_ZN16btDbvtBroadphase7collideE
 	pcaddu18i	$ra, %call36(_ZN6btDbvt24collideTTpersistentStackEPK10btDbvtNodeS2_RNS_8ICollideE)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 221
-	bne	$a0, $s2, .LBB14_15
+	beqz	$a0, .LBB14_15
 # %bb.14:
 	ld.d	$a1, $s1, 0
 	addi.d	$a3, $sp, 8
@@ -2187,7 +2184,7 @@ _ZN16btDbvtBroadphase7collideEP12btDispatcher: # @_ZN16btDbvtBroadphase7collideE
 	jirl	$ra, $ra, 0
 .LBB14_15:                              # %.thread
 	ld.bu	$a0, $fp, 222
-	bne	$a0, $s2, .LBB14_30
+	beqz	$a0, .LBB14_30
 # %bb.16:
 	ld.d	$a0, $fp, 160
 	ld.d	$a1, $a0, 0
@@ -2195,25 +2192,24 @@ _ZN16btDbvtBroadphase7collideEP12btDispatcher: # @_ZN16btDbvtBroadphase7collideE
 	jirl	$ra, $a1, 0
 	move	$s1, $a0
 	ld.w	$a0, $a0, 4
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB14_30
+	blez	$a0, .LBB14_30
 # %bb.17:
-	ld.w	$a2, $fp, 184
-	mul.w	$a2, $a2, $a0
-	mul.d	$a2, $a2, $s4
-	ld.w	$a3, $fp, 188
-	srli.d	$a4, $a2, 63
-	srai.d	$a2, $a2, 37
-	add.d	$a2, $a2, $a4
-	slt	$a4, $a2, $a3
-	masknez	$a2, $a2, $a4
-	maskeqz	$a3, $a3, $a4
-	or	$a2, $a3, $a2
-	slt	$a3, $a0, $a2
-	masknez	$a4, $a2, $a3
-	maskeqz	$a3, $a0, $a3
-	or	$s2, $a3, $a4
-	blt	$a2, $a1, .LBB14_28
+	ld.w	$a1, $fp, 184
+	mul.w	$a1, $a1, $a0
+	mul.d	$a1, $a1, $s4
+	ld.w	$a2, $fp, 188
+	srli.d	$a3, $a1, 63
+	srai.d	$a1, $a1, 37
+	add.d	$a1, $a1, $a3
+	slt	$a3, $a1, $a2
+	masknez	$a1, $a1, $a3
+	maskeqz	$a2, $a2, $a3
+	or	$a1, $a2, $a1
+	slt	$a2, $a0, $a1
+	masknez	$a3, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$s2, $a2, $a3
+	blez	$a1, .LBB14_28
 # %bb.18:                               # %.lr.ph
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -2383,8 +2379,7 @@ _ZN16btDbvtBroadphase22performDeferredRemovalEP12btDispatcher: # @_ZN16btDbvtBro
 	jirl	$ra, $ra, 0
 	ld.w	$s4, $fp, 4
 .LBB15_3:                               # %_ZN20btAlignedObjectArrayI16btBroadphasePairE9quickSortI29btBroadphasePairSortPredicateEEvT_.exit
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB15_32
+	blez	$s4, .LBB15_32
 # %bb.4:                                # %.lr.ph
 	move	$s5, $zero
 	move	$s6, $zero
@@ -2467,9 +2462,8 @@ _ZN16btDbvtBroadphase22performDeferredRemovalEP12btDispatcher: # @_ZN16btDbvtBro
 	vld	$vr2, $sp, 0                    # 16-byte Folded Reload
 	ld.w	$s4, $fp, 4
 .LBB15_17:                              # %_ZN20btAlignedObjectArrayI16btBroadphasePairE9quickSortI29btBroadphasePairSortPredicateEEvT_.exit28
-	addi.w	$a0, $zero, -1
 	sub.w	$s1, $s4, $s3
-	blt	$a0, $s3, .LBB15_31
+	bgez	$s3, .LBB15_31
 # %bb.18:
 	ld.w	$a0, $fp, 8
 	bge	$a0, $s1, .LBB15_29
@@ -2484,9 +2478,8 @@ _ZN16btDbvtBroadphase22performDeferredRemovalEP12btDispatcher: # @_ZN16btDbvtBro
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 4
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $a2, .LBB15_24
+	blez	$a1, .LBB15_24
 # %bb.22:                               # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 5

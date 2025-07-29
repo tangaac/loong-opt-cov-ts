@@ -1024,34 +1024,34 @@ prfs_InsertInSortTheories:              # @prfs_InsertInSortTheories
 	beqz	$a0, .LBB11_18
 # %bb.3:
 	ld.w	$a0, $s0, 72
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB11_18
+	blez	$a0, .LBB11_18
 # %bb.4:                                # %.lr.ph77
 	pcalau12i	$a1, %got_pc_hi20(symbol_TYPESTATBITS)
 	ld.d	$a1, $a1, %got_pc_lo12(symbol_TYPESTATBITS)
 	ld.w	$a2, $s0, 68
 	ld.w	$a3, $s0, 64
-	ld.w	$s3, $a1, 0
+	ld.w	$s2, $a1, 0
 	pcalau12i	$a1, %got_pc_hi20(symbol_SIGNATURE)
-	ld.d	$s4, $a1, %got_pc_lo12(symbol_SIGNATURE)
+	ld.d	$s3, $a1, %got_pc_lo12(symbol_SIGNATURE)
 	pcalau12i	$a1, %got_pc_hi20(memory_ARRAY)
-	ld.d	$s5, $a1, %got_pc_lo12(memory_ARRAY)
+	ld.d	$s4, $a1, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a1, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$s6, $a1, %got_pc_lo12(memory_FREEDBYTES)
-	add.w	$s7, $a2, $a3
-	add.w	$s8, $s7, $a0
+	ld.d	$s5, $a1, %got_pc_lo12(memory_FREEDBYTES)
+	add.w	$s6, $a2, $a3
+	add.w	$s7, $s6, $a0
+	ori	$s8, $zero, 1
 	b	.LBB11_6
 	.p2align	4, , 16
 .LBB11_5:                               # %.loopexit
                                         #   in Loop: Header=BB11_6 Depth=1
-	addi.d	$s7, $s7, 1
-	bge	$s7, $s8, .LBB11_18
+	addi.d	$s6, $s6, 1
+	bge	$s6, $s7, .LBB11_18
 .LBB11_6:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_10 Depth 2
                                         #     Child Loop BB11_12 Depth 2
                                         #     Child Loop BB11_17 Depth 2
 	ld.d	$a0, $s0, 56
-	slli.d	$s1, $s7, 3
+	slli.d	$s1, $s6, 3
 	ldx.d	$a0, $a0, $s1
 	ld.bu	$a1, $a0, 0
 	andi	$a1, $a1, 1
@@ -1059,13 +1059,13 @@ prfs_InsertInSortTheories:              # @prfs_InsertInSortTheories
 # %bb.7:                                #   in Loop: Header=BB11_6 Depth=1
 	ld.d	$a0, $a0, 24
 	ld.w	$a0, $a0, 0
-	ld.d	$a1, $s4, 0
+	ld.d	$a1, $s3, 0
 	sub.d	$a0, $zero, $a0
-	sra.w	$a0, $a0, $s3
+	sra.w	$a0, $a0, $s2
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $a1, $a0
 	ld.w	$a0, $a0, 16
-	bne	$a0, $s2, .LBB11_5
+	bne	$a0, $s8, .LBB11_5
 # %bb.8:                                #   in Loop: Header=BB11_6 Depth=1
 	ld.d	$a0, $fp, 80
 	beqz	$a0, .LBB11_14
@@ -1080,15 +1080,15 @@ prfs_InsertInSortTheories:              # @prfs_InsertInSortTheories
 .LBB11_10:                              # %.lr.ph.i
                                         #   Parent Loop BB11_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s5, 128
+	ld.d	$a1, $s4, 128
 	ld.w	$a3, $a1, 32
-	ld.d	$a4, $s6, 0
+	ld.d	$a4, $s5, 0
 	ld.d	$a5, $a0, 0
 	add.d	$a3, $a4, $a3
-	st.d	$a3, $s6, 0
+	st.d	$a3, $s5, 0
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $a0, 0
-	ld.d	$a1, $s5, 128
+	ld.d	$a1, $s4, 128
 	st.d	$a0, $a1, 0
 	move	$a0, $a5
 	bnez	$a5, .LBB11_10
@@ -1101,15 +1101,15 @@ prfs_InsertInSortTheories:              # @prfs_InsertInSortTheories
 .LBB11_12:                              # %.lr.ph.i65
                                         #   Parent Loop BB11_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a1, $s5, 128
+	ld.d	$a1, $s4, 128
 	ld.w	$a3, $a1, 32
-	ld.d	$a4, $s6, 0
+	ld.d	$a4, $s5, 0
 	ld.d	$a5, $a0, 0
 	add.d	$a3, $a4, $a3
-	st.d	$a3, $s6, 0
+	st.d	$a3, $s5, 0
 	ld.d	$a1, $a1, 0
 	st.d	$a1, $a0, 0
-	ld.d	$a1, $s5, 128
+	ld.d	$a1, $s4, 128
 	st.d	$a0, $a1, 0
 	move	$a0, $a5
 	bnez	$a5, .LBB11_12
@@ -1152,15 +1152,15 @@ prfs_InsertInSortTheories:              # @prfs_InsertInSortTheories
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(sort_TheoryInsertClause)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, 128
+	ld.d	$a0, $s4, 128
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $s6, 0
+	ld.d	$a2, $s5, 0
 	ld.d	$a3, $s1, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $s6, 0
+	st.d	$a1, $s5, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s1, 0
-	ld.d	$a0, $s5, 128
+	ld.d	$a0, $s4, 128
 	st.d	$s1, $a0, 0
 	move	$s1, $a3
 	bnez	$a3, .LBB11_17
@@ -2237,8 +2237,7 @@ prfs_DoSplitting:                       # @prfs_DoSplitting
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(clause_LiteralCopy)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s5, $a1, .LBB24_3
+	blez	$s5, .LBB24_3
 # %bb.6:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB24_5 Depth=1
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
@@ -2459,7 +2458,7 @@ prfs_DoSplitting:                       # @prfs_DoSplitting
 	pcalau12i	$a0, %got_pc_hi20(memory_ARRAY)
 	ld.d	$s7, $a0, %got_pc_lo12(memory_ARRAY)
 	pcalau12i	$a0, %got_pc_hi20(memory_FREEDBYTES)
-	ld.d	$fp, $a0, %got_pc_lo12(memory_FREEDBYTES)
+	ld.d	$s6, $a0, %got_pc_lo12(memory_FREEDBYTES)
 	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -2519,10 +2518,10 @@ prfs_DoSplitting:                       # @prfs_DoSplitting
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s7, 128
 	ld.w	$a1, $a0, 32
-	ld.d	$a2, $fp, 0
+	ld.d	$a2, $s6, 0
 	ld.d	$a3, $s5, 0
 	add.d	$a1, $a2, $a1
-	st.d	$a1, $fp, 0
+	st.d	$a1, $s6, 0
 	ld.d	$a0, $a0, 0
 	st.d	$a0, $s5, 0
 	ld.d	$a0, $s7, 128
@@ -2539,43 +2538,43 @@ prfs_DoSplitting:                       # @prfs_DoSplitting
 	pcaddu18i	$ra, %call36(clause_UpdateSplitDataFromNewSplitting)
 	jirl	$ra, $ra, 0
 	ld.w	$s5, $s2, 0
-	ld.d	$s6, $s4, 32
+	ld.d	$fp, $s4, 32
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s5, $a0, 8
-	st.d	$s6, $a0, 0
-	ld.d	$s5, $s4, 40
+	st.d	$fp, $a0, 0
+	ld.d	$fp, $s4, 40
 	st.d	$a0, $s4, 32
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s8, $a0, 8
+	st.d	$fp, $a0, 0
+	st.d	$a0, $s4, 40
+	ld.w	$fp, $s0, 0
+	ld.d	$s5, $s4, 32
+	ori	$a0, $zero, 16
+	pcaddu18i	$ra, %call36(memory_Malloc)
+	jirl	$ra, $ra, 0
+	st.d	$fp, $a0, 8
+	st.d	$s5, $a0, 0
+	st.d	$a0, $s4, 32
+	ld.w	$fp, $s3, 8
+	ld.d	$s5, $s4, 40
+	ori	$a0, $zero, 16
+	pcaddu18i	$ra, %call36(memory_Malloc)
+	jirl	$ra, $ra, 0
+	st.d	$fp, $a0, 8
 	st.d	$s5, $a0, 0
 	st.d	$a0, $s4, 40
-	ld.w	$s5, $s0, 0
-	ld.d	$s6, $s4, 32
-	ori	$a0, $zero, 16
-	pcaddu18i	$ra, %call36(memory_Malloc)
-	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 8
-	st.d	$s6, $a0, 0
-	st.d	$a0, $s4, 32
-	ld.w	$s5, $s3, 8
-	ld.d	$s6, $s4, 40
-	ori	$a0, $zero, 16
-	pcaddu18i	$ra, %call36(memory_Malloc)
-	jirl	$ra, $ra, 0
-	st.d	$s5, $a0, 8
-	st.d	$s6, $a0, 0
-	st.d	$a0, $s4, 40
 	ld.d	$s3, $s3, 0
-	ld.d	$s5, $s1, 8
+	ld.d	$fp, $s1, 8
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(memory_Malloc)
 	jirl	$ra, $ra, 0
 	st.d	$s4, $a0, 8
-	st.d	$s5, $a0, 0
+	st.d	$fp, $a0, 0
 	addi.d	$s8, $s8, 1
 	st.d	$a0, $s1, 8
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
@@ -2874,7 +2873,7 @@ prfs_PerformSplitting:                  # @prfs_PerformSplitting
 	add.d	$a0, $a0, $a1
 	add.d	$a0, $a0, $a2
 	addi.w	$s7, $a0, -1
-	blt	$s7, $a3, .LBB26_31
+	blez	$s7, .LBB26_31
 # %bb.11:                               # %.lr.ph18.preheader.i
                                         #   in Loop: Header=BB26_10 Depth=1
 	move	$fp, $zero
@@ -2985,8 +2984,7 @@ prfs_PerformSplitting:                  # @prfs_PerformSplitting
 	b	.LBB26_13
 .LBB26_26:                              # %clause_HasGroundSuccLit.exit.i
 	ld.w	$a0, $s4, 72
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB26_30
+	blez	$a0, .LBB26_30
 # %bb.27:                               # %.lr.ph.i89.i
 	ld.w	$a1, $s4, 68
 	ld.w	$a2, $s4, 64

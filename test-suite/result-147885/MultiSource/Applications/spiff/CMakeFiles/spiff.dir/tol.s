@@ -5,12 +5,11 @@
 	.type	T_initdefault,@function
 T_initdefault:                          # @T_initdefault
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(T_initdefault.called_before)
 	ld.bu	$a0, $s1, %pc_lo12(T_initdefault.called_before)
 	beqz	$a0, .LBB0_2
@@ -75,8 +74,8 @@ T_initdefault:                          # @T_initdefault
 	move	$fp, $a0
 	st.d	$a0, $s0, %pc_lo12(_T_gtol)
 .LBB0_9:
-	ori	$s2, $zero, 1
-	st.w	$s2, $fp, 0
+	ori	$a0, $zero, 1
+	st.w	$a0, $fp, 0
 	st.d	$zero, $fp, 16
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
@@ -111,7 +110,7 @@ T_initdefault:                          # @T_initdefault
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(F_floatcmp)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s2, .LBB0_13
+	blez	$a0, .LBB0_13
 # %bb.12:
 	pcalau12i	$a0, %got_pc_hi20(Z_err_buf)
 	ld.d	$fp, $a0, %got_pc_lo12(Z_err_buf)
@@ -128,12 +127,11 @@ T_initdefault:                          # @T_initdefault
 .LBB0_13:                               # %_T_addtol.exit6
 	ori	$a0, $zero, 1
 	st.b	$a0, $s1, %pc_lo12(T_initdefault.called_before)
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end0:
 	.size	T_initdefault, .Lfunc_end0-T_initdefault
@@ -170,20 +168,20 @@ T_setdef:                               # @T_setdef
 	.type	_T_settol,@function
 _T_settol:                              # @_T_settol
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	ld.bu	$a2, $a1, 0
-	st.d	$a1, $sp, 32
+	st.d	$a1, $sp, 16
 	beqz	$a2, .LBB3_30
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a0
@@ -195,12 +193,10 @@ _T_settol:                              # @_T_settol
 	pcalau12i	$a0, %pc_hi20(.LJTI3_0)
 	addi.d	$s7, $a0, %pc_lo12(.LJTI3_0)
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$s2, $a0, %pc_lo12(.L.str.3)
 	pcalau12i	$s8, %pc_hi20(_T_gtol)
 	vrepli.b	$vr0, 0
-	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	ori	$s2, $zero, 1
+	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	b	.LBB3_5
 .LBB3_2:                                #   in Loop: Header=BB3_5 Depth=1
 	ext.w.b	$a2, $s3
@@ -215,10 +211,10 @@ _T_settol:                              # @_T_settol
 	jirl	$ra, $ra, 0
 .LBB3_4:                                # %_T_addtol.exit
                                         #   in Loop: Header=BB3_5 Depth=1
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(S_nextword)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 16
 	ld.bu	$a0, $a0, 0
 	beqz	$a0, .LBB3_30
 .LBB3_5:                                # %.lr.ph
@@ -227,14 +223,14 @@ _T_settol:                              # @_T_settol
                                         #     Child Loop BB3_11 Depth 2
                                         #     Child Loop BB3_14 Depth 2
                                         #     Child Loop BB3_8 Depth 2
-	addi.d	$a0, $sp, 32
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(S_skipspace)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 32
+	ld.d	$a0, $sp, 16
 	ld.bu	$s3, $a0, 0
 	addi.d	$a0, $a0, 1
-	st.d	$a0, $sp, 32
-	addi.d	$a0, $sp, 32
+	st.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(S_skipspace)
 	jirl	$ra, $ra, 0
 	addi.d	$a0, $s3, -97
@@ -247,7 +243,7 @@ _T_settol:                              # @_T_settol
 	jr	$a0
 .LBB3_7:                                #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $fp, 0
-	ld.d	$s3, $sp, 32
+	ld.d	$s3, $sp, 16
 	beqz	$a0, .LBB3_21
 	.p2align	4, , 16
 .LBB3_8:                                # %.preheader.i
@@ -296,7 +292,7 @@ _T_settol:                              # @_T_settol
 	b	.LBB3_4
 .LBB3_16:                               #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $fp, 0
-	ld.d	$s3, $sp, 32
+	ld.d	$s3, $sp, 16
 	beqz	$a0, .LBB3_25
 	.p2align	4, , 16
 .LBB3_17:                               # %.preheader.i5
@@ -321,7 +317,7 @@ _T_settol:                              # @_T_settol
                                         #   in Loop: Header=BB3_5 Depth=1
 	ori	$a1, $zero, 2
 	st.w	$a1, $a0, 0
-	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
+	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $a0, 8
 	b	.LBB3_4
 .LBB3_21:                               #   in Loop: Header=BB3_5 Depth=1
@@ -342,7 +338,7 @@ _T_settol:                              # @_T_settol
 	beqz	$a1, .LBB3_4
 # %bb.23:                               #   in Loop: Header=BB3_5 Depth=1
 	move	$a0, $s0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	move	$a1, $s2
 	move	$a2, $s3
 	b	.LBB3_3
 .LBB3_24:                               #   in Loop: Header=BB3_5 Depth=1
@@ -355,7 +351,8 @@ _T_settol:                              # @_T_settol
 	move	$s4, $a0
 	st.d	$a0, $fp, 0
 .LBB3_26:                               #   in Loop: Header=BB3_5 Depth=1
-	st.w	$s2, $s4, 0
+	ori	$a0, $zero, 1
+	st.w	$a0, $s4, 0
 	st.d	$zero, $s4, 16
 	move	$a0, $s3
 	move	$a1, $zero
@@ -386,7 +383,7 @@ _T_settol:                              # @_T_settol
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(F_floatcmp)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s2, .LBB3_4
+	blez	$a0, .LBB3_4
 # %bb.29:                               #   in Loop: Header=BB3_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.5)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.5)
@@ -394,18 +391,18 @@ _T_settol:                              # @_T_settol
 	move	$a2, $s3
 	b	.LBB3_3
 .LBB3_30:                               # %._crit_edge
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end3:
 	.size	_T_settol, .Lfunc_end3-_T_settol
@@ -670,8 +667,8 @@ _T_addtol:                              # @_T_addtol
 	pcaddu18i	$ra, %call36(Z_fatal)
 	jirl	$ra, $ra, 0
 .LBB9_7:
-	ori	$s2, $zero, 1
-	bne	$s0, $s2, .LBB9_10
+	ori	$a0, $zero, 1
+	bne	$s0, $a0, .LBB9_10
 # %bb.8:
 	ld.d	$s0, $s1, 8
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
@@ -683,7 +680,7 @@ _T_addtol:                              # @_T_addtol
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(F_floatcmp)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s2, .LBB9_10
+	blez	$a0, .LBB9_10
 # %bb.9:
 	pcalau12i	$a0, %got_pc_hi20(Z_err_buf)
 	ld.d	$s0, $a0, %got_pc_lo12(Z_err_buf)

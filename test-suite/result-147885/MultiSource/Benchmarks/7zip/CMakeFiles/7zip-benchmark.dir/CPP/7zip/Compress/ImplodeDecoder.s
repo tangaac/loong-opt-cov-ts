@@ -624,8 +624,7 @@ _ZN9NCompress8NImplode8NDecoder6CCoder10ReadTablesEv: # @_ZN9NCompress8NImplode8
 	.cfi_offset 22, -16
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 625
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB5_2
+	beqz	$a0, .LBB5_2
 # %bb.1:
 	addi.d	$a1, $fp, 144
 	addi.d	$a2, $sp, 64
@@ -738,13 +737,12 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZN9CInBuffer4InitEv)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 32
-	ld.bu	$a1, $fp, 625
-	st.d	$a0, $fp, 80
+	ld.bu	$a0, $fp, 625
+	ori	$a1, $zero, 32
+	st.d	$a1, $fp, 80
 	st.d	$zero, $fp, 136
-	ori	$a0, $zero, 1
 	st.d	$fp, $sp, 56
-	bne	$a1, $a0, .LBB6_6
+	beqz	$a0, .LBB6_6
 # %bb.4:
 	addi.d	$a1, $fp, 144
 .Ltmp24:
@@ -1147,8 +1145,7 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	b	.LBB6_62
 .LBB6_67:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.bu	$a2, $fp, 625
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB6_70
+	beqz	$a2, .LBB6_70
 # %bb.68:                               #   in Loop: Header=BB6_15 Depth=1
 .Ltmp39:
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
@@ -1233,8 +1230,7 @@ _ZN9NCompress8NImplode8NDecoder6CCoder8CodeRealEP19ISequentialInStreamP20ISequen
 	b	.LBB6_76
 .LBB6_81:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.bu	$a1, $fp, 72
-	ori	$a3, $zero, 1
-	bne	$a1, $a3, .LBB6_13
+	beqz	$a1, .LBB6_13
 # %bb.82:                               #   in Loop: Header=BB6_15 Depth=1
 	ld.w	$a1, $fp, 44
 	bgeu	$s0, $a1, .LBB6_13

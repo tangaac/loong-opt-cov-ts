@@ -293,8 +293,7 @@ _ZN25btContinuousDynamicsWorld19updateTemporalAabbsEf: # @_ZN25btContinuousDynam
 	.cfi_offset 57, -64
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_6
+	blez	$a0, .LBB5_6
 # %bb.1:                                # %.lr.ph
 	fmov.s	$fs0, $fa0
 	move	$s0, $zero

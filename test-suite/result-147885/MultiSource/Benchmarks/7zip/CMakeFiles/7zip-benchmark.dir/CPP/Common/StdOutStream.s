@@ -11,9 +11,8 @@ _ZN13CStdOutStream4OpenEPKc:            # @_ZN13CStdOutStream4OpenEPKc
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a1
-	bne	$a0, $a2, .LBB0_3
+	beqz	$a0, .LBB0_3
 # %bb.1:
 	ld.d	$a0, $fp, 8
 	pcaddu18i	$ra, %call36(fclose)
@@ -47,7 +46,7 @@ _ZN13CStdOutStream5CloseEv:             # @_ZN13CStdOutStream5CloseEv
 	move	$a1, $a0
 	ld.bu	$a2, $a0, 0
 	ori	$a0, $zero, 1
-	bne	$a2, $a0, .LBB1_5
+	beqz	$a2, .LBB1_5
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
@@ -104,8 +103,7 @@ _ZN13CStdOutStreamD2Ev:                 # @_ZN13CStdOutStreamD2Ev
 	.cfi_offset 22, -16
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB3_2
+	beqz	$a0, .LBB3_2
 # %bb.1:
 	ld.d	$a0, $fp, 8
 	pcaddu18i	$ra, %call36(fclose)

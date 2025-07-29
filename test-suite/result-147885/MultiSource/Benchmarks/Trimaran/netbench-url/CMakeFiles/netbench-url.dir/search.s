@@ -1083,29 +1083,29 @@ find_lcs:                               # @find_lcs
 	addi.d	$a1, $a1, -1
 	bnez	$a2, .LBB5_11
 .LBB5_12:                               # %calculate_bm_table.exit
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB5_31
+	blez	$s0, .LBB5_31
 # %bb.13:                               # %.lr.ph120
-	add.d	$a2, $s1, $s3
-	ld.bu	$a2, $a2, -1
-	slli.d	$a2, $a2, 2
-	ldx.w	$a5, $a0, $a2
+	add.d	$a1, $s1, $s3
+	ld.bu	$a1, $a1, -1
+	slli.d	$a1, $a1, 2
+	ldx.w	$a5, $a0, $a1
+	move	$a1, $zero
 	move	$a2, $zero
-	move	$a3, $zero
 	move	$s2, $zero
-	addi.d	$a4, $s3, -1
+	addi.d	$a3, $s3, -1
+	ori	$a4, $zero, 1
 	b	.LBB5_16
 	.p2align	4, , 16
 .LBB5_14:                               #   in Loop: Header=BB5_16 Depth=1
-	addi.d	$a5, $a3, 1
+	addi.d	$a5, $a2, 1
 .LBB5_15:                               # %.thread
                                         #   in Loop: Header=BB5_16 Depth=1
-	bge	$a2, $s0, .LBB5_32
+	bge	$a1, $s0, .LBB5_32
 .LBB5_16:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB5_19 Depth 2
                                         #     Child Loop BB5_24 Depth 2
-	add.w	$a2, $a5, $a2
-	add.w	$a6, $a4, $a2
+	add.w	$a1, $a5, $a1
+	add.w	$a6, $a3, $a1
 	ldx.bu	$a5, $s1, $a6
 	slli.d	$a5, $a5, 2
 	ldx.w	$a5, $a0, $a5
@@ -1116,9 +1116,9 @@ find_lcs:                               # @find_lcs
 # %bb.18:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB5_16 Depth=1
 	add.d	$t0, $s1, $a6
-	add.d	$a7, $a2, $a5
+	add.d	$a7, $a1, $a5
 	addi.d	$a7, $a7, -1
-	sub.w	$t1, $a4, $a5
+	sub.w	$t1, $a3, $a5
 	.p2align	4, , 16
 .LBB5_19:                               # %.lr.ph
                                         #   Parent Loop BB5_16 Depth=1
@@ -1140,7 +1140,7 @@ find_lcs:                               # @find_lcs
                                         #   in Loop: Header=BB5_16 Depth=1
 	addi.w	$a7, $a6, 1
 	move	$t0, $zero
-	blt	$a5, $a1, .LBB5_27
+	blez	$a5, .LBB5_27
 # %bb.23:                               # %.lr.ph110.preheader
                                         #   in Loop: Header=BB5_16 Depth=1
 	add.d	$a6, $a5, $a6
@@ -1160,32 +1160,32 @@ find_lcs:                               # @find_lcs
 	addi.w	$t0, $t0, 1
 	addi.d	$t1, $t1, -1
 	addi.d	$t3, $t3, 1
-	blt	$a1, $t1, .LBB5_24
+	blt	$a4, $t1, .LBB5_24
 # %bb.26:                               #   in Loop: Header=BB5_16 Depth=1
 	move	$t0, $a5
 	move	$a7, $a6
 .LBB5_27:                               # %.critedge2
                                         #   in Loop: Header=BB5_16 Depth=1
 	ori	$a5, $zero, 1
-	bge	$a3, $t0, .LBB5_15
+	bge	$a2, $t0, .LBB5_15
 	b	.LBB5_29
 .LBB5_28:                               # %.critedge2.loopexit.split.loop.exit132
                                         #   in Loop: Header=BB5_16 Depth=1
 	add.d	$a7, $a7, $t0
 	ori	$a5, $zero, 1
-	bge	$a3, $t0, .LBB5_15
+	bge	$a2, $t0, .LBB5_15
 .LBB5_29:                               #   in Loop: Header=BB5_16 Depth=1
-	sub.w	$a3, $a7, $t0
-	add.d	$s2, $s1, $a3
+	sub.w	$a2, $a7, $t0
+	add.d	$s2, $s1, $a2
 	beq	$t0, $s3, .LBB5_34
 # %bb.30:                               #   in Loop: Header=BB5_16 Depth=1
-	move	$a3, $t0
+	move	$a2, $t0
 	b	.LBB5_15
 .LBB5_31:
 	move	$s2, $zero
-	move	$a3, $zero
+	move	$a2, $zero
 .LBB5_32:                               # %._crit_edge
-	st.w	$a3, $fp, 0
+	st.w	$a2, $fp, 0
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB5_33:
@@ -1364,7 +1364,7 @@ db_init:                                # @db_init
 	addi.d	$s0, $sp, 25
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.7)
-	ori	$s7, $zero, 44
+	ori	$s8, $zero, 44
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.9)
 	pcalau12i	$a0, %pc_hi20(.L.str.6)
@@ -1418,18 +1418,17 @@ db_init:                                # @db_init
 # %bb.9:                                # %.preheader17
                                         #   in Loop: Header=BB7_4 Depth=1
 	move	$s4, $a0
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB7_3
+	blez	$s5, .LBB7_3
 # %bb.10:                               # %.preheader.preheader
                                         #   in Loop: Header=BB7_4 Depth=1
-	move	$s8, $zero
+	move	$s7, $zero
 	move	$s6, $s0
 	.p2align	4, , 16
 .LBB7_11:                               #   Parent Loop BB7_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a0, $s6, 0
 	addi.d	$s6, $s6, 1
-	bne	$a0, $s7, .LBB7_11
+	bne	$a0, $s8, .LBB7_11
 # %bb.12:                               #   in Loop: Header=BB7_11 Depth=2
 	addi.d	$a2, $sp, 20
 	move	$a0, $s6
@@ -1438,9 +1437,9 @@ db_init:                                # @db_init
 	jirl	$ra, $ra, 0
 	ld.b	$a0, $sp, 20
 	ld.w	$s5, $sp, 16
-	stx.b	$a0, $s4, $s8
-	addi.d	$s8, $s8, 1
-	blt	$s8, $s5, .LBB7_11
+	stx.b	$a0, $s4, $s7
+	addi.d	$s7, $s7, 1
+	blt	$s7, $s5, .LBB7_11
 	b	.LBB7_3
 .LBB7_13:                               # %._crit_edge24
 	addi.d	$sp, $sp, 128

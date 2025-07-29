@@ -24,11 +24,9 @@ _ZN8NArchive9NItemName13MakeLegalNameERK11CStringBaseIwE: # @_ZN8NArchive9NItemN
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB0_2
+	bgez	$a0, .LBB0_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB0_3
@@ -92,11 +90,9 @@ _ZN8NArchive9NItemName9GetOSNameERK11CStringBaseIwE: # @_ZN8NArchive9NItemName9G
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB1_2
+	bgez	$a0, .LBB1_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB1_3
@@ -161,11 +157,9 @@ _ZN8NArchive9NItemName10GetOSName2ERK11CStringBaseIwE: # @_ZN8NArchive9NItemName
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s0, 31, 0
 	addi.d	$s1, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s1, $a0
+	slli.d	$a0, $s1, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB2_4
+	bgez	$a0, .LBB2_4
 # %bb.2:
 	move	$a0, $zero
 	b	.LBB2_5
@@ -272,11 +266,9 @@ _ZN8NArchive9NItemName15WinNameToOSNameERK11CStringBaseIwE: # @_ZN8NArchive9NIte
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s1, 31, 0
 	addi.d	$s2, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
+	slli.d	$a0, $s2, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB4_2
+	bgez	$a0, .LBB4_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB4_3
@@ -305,9 +297,8 @@ _ZN8NArchive9NItemName15WinNameToOSNameERK11CStringBaseIwE: # @_ZN8NArchive9NIte
 	move	$a2, $a4
 	bnez	$a3, .LBB4_4
 # %bb.5:                                # %_ZN11CStringBaseIwEC2ERKS0_.exit
-	ori	$a1, $zero, 1
 	st.w	$s1, $fp, 8
-	blt	$s1, $a1, .LBB4_13
+	blez	$s1, .LBB4_13
 # %bb.6:                                # %.lr.ph.i
 	move	$a3, $zero
 	ori	$a1, $zero, 92

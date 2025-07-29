@@ -612,8 +612,7 @@ _ZN16CInOutTempBuffer13WriteToStreamEP20ISequentialOutStream: # @_ZN16CInOutTemp
 	ld.wu	$s4, $fp, 1120
 	move	$s1, $a0
 	ld.bu	$a0, $fp, 1144
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB7_6
+	bnez	$a0, .LBB7_6
 	b	.LBB7_18
 .LBB7_4:
 	ori	$a0, $s3, 5
@@ -622,8 +621,7 @@ _ZN16CInOutTempBuffer13WriteToStreamEP20ISequentialOutStream: # @_ZN16CInOutTemp
 	move	$s4, $zero
 	addi.w	$s1, $zero, -1
 	ld.bu	$a0, $fp, 1144
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB7_18
+	beqz	$a0, .LBB7_18
 .LBB7_6:
 	addi.w	$a0, $zero, -1
 	lu32i.d	$a0, 0

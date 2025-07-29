@@ -1386,7 +1386,6 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	or	$a2, $a2, $a5
 	add.d	$a2, $a2, $s2
 	ori	$a5, $zero, 2
-	ori	$s0, $zero, 1
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
 	beqz	$a2, .LBB3_74
 # %bb.72:                               # %.loopexit916
@@ -1482,7 +1481,7 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	addi.d	$s5, $sp, 296
 	pcaddu18i	$ra, %call36(_ZL18intersectRectQuad2PfS_S_)
 	jirl	$ra, $ra, 0
-	blt	$a0, $s0, .LBB3_87
+	blez	$a0, .LBB3_87
 # %bb.77:
 	move	$a2, $zero
 	move	$s0, $zero
@@ -1559,36 +1558,35 @@ _Z8dBoxBox2RK9btVector3PKfS1_S1_S3_S1_RS_PfPiiP12dContactGeomiRN36btDiscreteColl
 	addi.w	$s0, $s0, 1
 	b	.LBB3_78
 .LBB3_81:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB3_87
+	blez	$s0, .LBB3_87
 # %bb.82:
-	slt	$a2, $a1, $s0
-	masknez	$a3, $s0, $a2
-	maskeqz	$a1, $a1, $a2
-	or	$a1, $a1, $a3
+	slt	$a0, $a1, $s0
+	masknez	$a2, $s0, $a0
+	maskeqz	$a0, $a1, $a0
+	or	$a1, $a0, $a2
+	ori	$a0, $zero, 1
 	slt	$a2, $a0, $a1
 	maskeqz	$a1, $a1, $a2
-	masknez	$a0, $a0, $a2
-	or	$s1, $a1, $a0
+	masknez	$a2, $a0, $a2
+	or	$s1, $a1, $a2
 	bgeu	$s1, $s0, .LBB3_89
 # %bb.83:
-	move	$a3, $zero
 	fld.s	$fa0, $sp, 168
-	addi.d	$a0, $sp, 172
-	addi.d	$a1, $s0, -1
-	ori	$a2, $zero, 1
+	move	$a3, $zero
+	addi.d	$a1, $sp, 172
+	addi.d	$a2, $s0, -1
 .LBB3_84:                               # =>This Inner Loop Header: Depth=1
-	fld.s	$fa1, $a0, 0
+	fld.s	$fa1, $a1, 0
 	fcmp.clt.s	$fcc0, $fa0, $fa1
 	fsel	$fa0, $fa0, $fa1, $fcc0
 	movcf2gr	$a4, $fcc0
 	masknez	$a3, $a3, $a4
-	maskeqz	$a4, $a2, $a4
+	maskeqz	$a4, $a0, $a4
 	or	$a3, $a4, $a3
-	addi.d	$a0, $a0, 4
-	addi.d	$a1, $a1, -1
-	addi.w	$a2, $a2, 1
-	bnez	$a1, .LBB3_84
+	addi.d	$a1, $a1, 4
+	addi.d	$a2, $a2, -1
+	addi.w	$a0, $a0, 1
+	bnez	$a2, .LBB3_84
 # %bb.85:
 	addi.d	$a1, $sp, 296
 	addi.d	$a4, $sp, 120
@@ -1947,31 +1945,31 @@ _ZL18intersectRectQuad2PfS_S_:          # @_ZL18intersectRectQuad2PfS_S_
 	addi.d	$a4, $a4, 8
 	b	.LBB4_19
 .LBB4_26:                               # %._crit_edge.1
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB4_44
+	blez	$fp, .LBB4_44
 # %bb.27:                               # %.lr.ph.1179
-	addi.d	$a3, $sp, 4
-	addi.w	$a4, $fp, 1
-	addi.d	$a5, $sp, 8
-	addi.d	$a6, $sp, 0
+	addi.d	$a1, $sp, 4
+	addi.w	$a3, $fp, 1
+	addi.d	$a4, $sp, 8
+	addi.d	$a5, $sp, 0
+	ori	$a6, $zero, 1
 	move	$a7, $a2
 	move	$fp, $zero
 	b	.LBB4_29
 	.p2align	4, , 16
 .LBB4_28:                               #   in Loop: Header=BB4_29 Depth=1
-	addi.w	$a4, $a4, -1
-	addi.d	$a5, $a5, 8
-	bge	$a1, $a4, .LBB4_35
+	addi.w	$a3, $a3, -1
+	addi.d	$a4, $a4, 8
+	bge	$a6, $a3, .LBB4_35
 .LBB4_29:                               # =>This Inner Loop Header: Depth=1
-	fld.s	$fa0, $a5, -4
+	fld.s	$fa0, $a4, -4
 	fld.s	$fa1, $a0, 4
 	fneg.s	$fa2, $fa0
 	fcmp.cule.s	$fcc0, $fa1, $fa2
 	bcnez	$fcc0, .LBB4_32
 # %bb.30:                               #   in Loop: Header=BB4_29 Depth=1
-	fld.s	$fa0, $a5, -8
+	fld.s	$fa0, $a4, -8
 	fst.s	$fa0, $a7, 0
-	fld.s	$fa0, $a5, -4
+	fld.s	$fa0, $a4, -4
 	addi.w	$fp, $fp, 1
 	andi	$t0, $fp, 8
 	fst.s	$fa0, $a7, 4
@@ -1982,11 +1980,11 @@ _ZL18intersectRectQuad2PfS_S_:          # @_ZL18intersectRectQuad2PfS_S_
 	addi.d	$a7, $a7, 8
 	fneg.s	$fa2, $fa0
 .LBB4_32:                               #   in Loop: Header=BB4_29 Depth=1
-	addi.d	$t0, $a4, -2
+	addi.d	$t0, $a3, -2
 	sltui	$t0, $t0, 1
-	addi.d	$t1, $a5, 4
+	addi.d	$t1, $a4, 4
 	masknez	$t1, $t1, $t0
-	maskeqz	$t2, $a3, $t0
+	maskeqz	$t2, $a1, $t0
 	or	$t1, $t2, $t1
 	fld.s	$fa3, $t1, 0
 	fcmp.clt.s	$fcc0, $fa2, $fa1
@@ -1996,10 +1994,10 @@ _ZL18intersectRectQuad2PfS_S_:          # @_ZL18intersectRectQuad2PfS_S_
 	movcf2gr	$t2, $fcc1
 	beq	$t1, $t2, .LBB4_28
 # %bb.33:                               #   in Loop: Header=BB4_29 Depth=1
-	masknez	$t1, $a5, $t0
-	maskeqz	$t0, $a6, $t0
+	masknez	$t1, $a4, $t0
+	maskeqz	$t0, $a5, $t0
 	or	$t0, $t0, $t1
-	fld.s	$fa2, $a5, -8
+	fld.s	$fa2, $a4, -8
 	fld.s	$fa4, $t0, 0
 	fsub.s	$fa4, $fa4, $fa2
 	fsub.s	$fa3, $fa3, $fa0
@@ -2018,43 +2016,43 @@ _ZL18intersectRectQuad2PfS_S_:          # @_ZL18intersectRectQuad2PfS_S_
 	addi.d	$a7, $a7, 8
 	b	.LBB4_28
 .LBB4_35:                               # %._crit_edge.1194
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB4_44
+	blez	$fp, .LBB4_44
 # %bb.36:                               # %.lr.ph.1.1
 	fld.s	$fa0, $a0, 4
-	addi.d	$a3, $a2, 4
-	addi.w	$a4, $fp, 1
-	addi.d	$a5, $a2, 8
-	addi.d	$a6, $sp, 0
+	addi.d	$a1, $a2, 4
+	addi.w	$a3, $fp, 1
+	addi.d	$a4, $a2, 8
+	addi.d	$a5, $sp, 0
+	ori	$a6, $zero, 1
 	move	$fp, $zero
 	b	.LBB4_38
 	.p2align	4, , 16
 .LBB4_37:                               #   in Loop: Header=BB4_38 Depth=1
-	addi.w	$a4, $a4, -1
-	addi.d	$a5, $a5, 8
-	bge	$a1, $a4, .LBB4_45
+	addi.w	$a3, $a3, -1
+	addi.d	$a4, $a4, 8
+	bge	$a6, $a3, .LBB4_45
 .LBB4_38:                               # =>This Inner Loop Header: Depth=1
-	fld.s	$fa1, $a5, -4
+	fld.s	$fa1, $a4, -4
 	fcmp.cule.s	$fcc0, $fa0, $fa1
 	bcnez	$fcc0, .LBB4_41
 # %bb.39:                               #   in Loop: Header=BB4_38 Depth=1
-	fld.s	$fa0, $a5, -8
-	fst.s	$fa0, $a6, 0
-	fld.s	$fa1, $a5, -4
+	fld.s	$fa0, $a4, -8
+	fst.s	$fa0, $a5, 0
+	fld.s	$fa1, $a4, -4
 	addi.w	$fp, $fp, 1
 	andi	$a7, $fp, 8
-	fst.s	$fa1, $a6, 4
+	fst.s	$fa1, $a5, 4
 	bnez	$a7, .LBB4_45
 # %bb.40:                               # %._crit_edge243
                                         #   in Loop: Header=BB4_38 Depth=1
 	fld.s	$fa0, $a0, 4
-	addi.d	$a6, $a6, 8
+	addi.d	$a5, $a5, 8
 .LBB4_41:                               #   in Loop: Header=BB4_38 Depth=1
-	addi.d	$a7, $a4, -2
+	addi.d	$a7, $a3, -2
 	sltui	$a7, $a7, 1
-	addi.d	$t0, $a5, 4
+	addi.d	$t0, $a4, 4
 	masknez	$t0, $t0, $a7
-	maskeqz	$t1, $a3, $a7
+	maskeqz	$t1, $a1, $a7
 	or	$t0, $t1, $t0
 	fld.s	$fa2, $t0, 0
 	fcmp.clt.s	$fcc0, $fa1, $fa0
@@ -2063,24 +2061,24 @@ _ZL18intersectRectQuad2PfS_S_:          # @_ZL18intersectRectQuad2PfS_S_
 	movcf2gr	$t1, $fcc1
 	beq	$t0, $t1, .LBB4_37
 # %bb.42:                               #   in Loop: Header=BB4_38 Depth=1
-	masknez	$t0, $a5, $a7
+	masknez	$t0, $a4, $a7
 	maskeqz	$a7, $a2, $a7
 	or	$a7, $a7, $t0
-	fld.s	$fa3, $a5, -8
+	fld.s	$fa3, $a4, -8
 	fld.s	$fa4, $a7, 0
 	fsub.s	$fa4, $fa4, $fa3
 	fsub.s	$fa2, $fa2, $fa1
 	fdiv.s	$fa2, $fa4, $fa2
 	fsub.s	$fa0, $fa0, $fa1
 	fmadd.s	$fa0, $fa2, $fa0, $fa3
-	fst.s	$fa0, $a6, 0
+	fst.s	$fa0, $a5, 0
 	fld.s	$fa0, $a0, 4
 	addi.w	$fp, $fp, 1
 	andi	$a7, $fp, 8
-	fst.s	$fa0, $a6, 4
+	fst.s	$fa0, $a5, 4
 	bnez	$a7, .LBB4_45
 # %bb.43:                               #   in Loop: Header=BB4_38 Depth=1
-	addi.d	$a6, $a6, 8
+	addi.d	$a5, $a5, 8
 	b	.LBB4_37
 .LBB4_44:
 	move	$fp, $zero

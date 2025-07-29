@@ -13,8 +13,7 @@ sgesl:                                  # @sgesl
 	ld.w	$a4, $a0, 0
 	beqz	$a3, .LBB0_15
 # %bb.1:                                # %.preheader131
-	ori	$a3, $zero, 1
-	blt	$a4, $a3, .LBB0_42
+	blez	$a4, .LBB0_42
 # %bb.2:                                # %.lr.ph137
 	move	$a3, $zero
 	addi.d	$a0, $a0, 8
@@ -226,8 +225,7 @@ sgesl:                                  # @sgesl
 	beq	$t7, $s0, .LBB0_17
 	b	.LBB0_24
 .LBB0_29:                               # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a4, $a1, .LBB0_42
+	blez	$a4, .LBB0_42
 # %bb.30:                               # %.lr.ph166
 	addi.d	$a0, $a0, 8
 	slli.d	$a1, $a3, 3

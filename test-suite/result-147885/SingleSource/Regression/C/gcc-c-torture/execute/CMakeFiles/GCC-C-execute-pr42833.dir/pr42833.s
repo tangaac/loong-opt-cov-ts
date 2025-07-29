@@ -29,8 +29,7 @@ helper_neon_rshl_s8:                    # @helper_neon_rshl_s8
 	lu12i.w	$a5, -32768
 	beq	$a4, $a5, .LBB0_1
 # %bb.5:
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a2, .LBB0_7
+	bltz	$a2, .LBB0_7
 # %bb.6:
 	sll.w	$a2, $a0, $a2
 	slli.w	$a4, $a1, 16
@@ -83,16 +82,14 @@ helper_neon_rshl_s8:                    # @helper_neon_rshl_s8
 	addi.w	$a7, $zero, -8
 	beq	$a4, $a7, .LBB0_21
 # %bb.15:
-	addi.w	$a7, $zero, -1
-	bge	$a7, $a4, .LBB0_19
+	bltz	$a4, .LBB0_19
 # %bb.16:
 	sll.w	$a4, $a6, $a4
 	srai.d	$a1, $a1, 24
 	bge	$a5, $a1, .LBB0_22
 	b	.LBB0_25
 .LBB0_17:
-	addi.w	$a5, $zero, -1
-	bge	$a5, $a4, .LBB0_20
+	bltz	$a4, .LBB0_20
 # %bb.18:
 	sll.w	$a3, $a3, $a4
 	slli.w	$a4, $a1, 8
@@ -146,8 +143,7 @@ helper_neon_rshl_s8:                    # @helper_neon_rshl_s8
 	addi.w	$a0, $a0, 0
 	ret
 .LBB0_27:
-	addi.w	$a5, $zero, -1
-	bge	$a5, $a1, .LBB0_29
+	bltz	$a1, .LBB0_29
 # %bb.28:
 	bstrpick.d	$a0, $a0, 31, 24
 	sll.w	$a0, $a0, $a1

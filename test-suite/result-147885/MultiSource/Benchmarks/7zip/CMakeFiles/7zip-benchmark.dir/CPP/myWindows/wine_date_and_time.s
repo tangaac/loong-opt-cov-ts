@@ -619,11 +619,11 @@ SystemTimeToFileTime:                   # @SystemTimeToFileTime
 	bltu	$a6, $t1, .LBB8_10
 # %bb.5:
 	ld.h	$a6, $a0, 6
-	ori	$t0, $zero, 1
-	blt	$a6, $t0, .LBB8_9
+	blez	$a6, .LBB8_9
 # %bb.6:
 	ld.h	$a0, $a0, 0
 	ori	$t1, $zero, 2
+	ori	$t0, $zero, 1
 	beq	$a7, $t1, .LBB8_13
 # %bb.7:
 	andi	$t1, $a0, 3

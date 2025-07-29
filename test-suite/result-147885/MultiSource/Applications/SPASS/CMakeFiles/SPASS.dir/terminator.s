@@ -512,8 +512,7 @@ red_SearchTerminator:                   # @red_SearchTerminator
 	add.d	$a0, $a1, $a2
 	add.d	$a0, $a0, $a3
 	addi.w	$a0, $a0, -1
-	addi.w	$a4, $zero, -1
-	bge	$a4, $a0, .LBB1_46
+	bltz	$a0, .LBB1_46
 # %bb.37:                               # %.lr.ph.i92
                                         #   in Loop: Header=BB1_34 Depth=2
 	move	$a0, $zero

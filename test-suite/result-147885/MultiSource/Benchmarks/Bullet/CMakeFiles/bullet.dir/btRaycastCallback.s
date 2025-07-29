@@ -729,8 +729,7 @@ _ZNK15btTriangleShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_Z
 _ZNK15btTriangleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK15btTriangleShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB16_3
+	blez	$a3, .LBB16_3
 # %bb.1:                                # %.lr.ph
 	addi.d	$a4, $a0, 64
 	addi.d	$a1, $a1, 8

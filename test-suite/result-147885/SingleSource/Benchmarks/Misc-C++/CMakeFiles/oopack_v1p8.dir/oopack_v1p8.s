@@ -741,9 +741,8 @@ _ZNK9Benchmark8time_oneEMS_KFvvEiRdS2_S2_: # @_ZNK9Benchmark8time_oneEMS_KFvvEiR
 	jirl	$ra, $a1, 0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s6, $a0
-	blt	$s3, $a1, .LBB16_9
+	blez	$s3, .LBB16_9
 # %bb.4:                                # %.lr.ph
 	bnez	$s7, .LBB16_7
 # %bb.5:                                # %.lr.ph.split.us.preheader
@@ -828,8 +827,7 @@ _ZN9Benchmark4findEPKc:                 # @_ZN9Benchmark4findEPKc
 	.cfi_offset 25, -40
 	pcalau12i	$s0, %pc_hi20(_ZN9Benchmark5countE)
 	ld.w	$a1, $s0, %pc_lo12(_ZN9Benchmark5countE)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_4
+	blez	$a1, .LBB17_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a0
 	move	$s1, $zero
@@ -880,20 +878,18 @@ _ZN9Benchmark4findEPKc:                 # @_ZN9Benchmark4findEPKc
 _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 32                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 24                   # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
-	.cfi_offset 56, -48
+	.cfi_offset 56, -40
 	move	$s0, $a0
 	ld.d	$a0, $a0, 0
 	ld.d	$a2, $a0, 8
@@ -910,10 +906,9 @@ _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	jirl	$ra, $a1, 0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
-	blt	$fp, $s1, .LBB18_3
+	blez	$fp, .LBB18_3
 # %bb.1:                                # %.lr.ph.split.i.preheader
-	move	$s2, $fp
+	move	$s1, $fp
 	.p2align	4, , 16
 .LBB18_2:                               # %.lr.ph.split.i
                                         # =>This Inner Loop Header: Depth=1
@@ -921,15 +916,15 @@ _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	ld.d	$a1, $a0, 16
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	addi.w	$s2, $s2, -1
-	bnez	$s2, .LBB18_2
+	addi.w	$s1, $s1, -1
+	bnez	$s1, .LBB18_2
 .LBB18_3:                               # %_ZNK9Benchmark8time_oneEMS_KFvvEiRdS2_S2_.exit
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a4, $a0, 32
-	addi.d	$a2, $sp, 24
-	addi.d	$a3, $sp, 16
+	addi.d	$a2, $sp, 16
+	addi.d	$a3, $sp, 8
 	move	$a0, $s0
 	move	$a1, $fp
 	jirl	$ra, $a4, 0
@@ -947,7 +942,7 @@ _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	jirl	$ra, $a1, 0
 	pcaddu18i	$ra, %call36(clock)
 	jirl	$ra, $ra, 0
-	blt	$fp, $s1, .LBB18_6
+	blez	$fp, .LBB18_6
 # %bb.4:                                # %.lr.ph.split.i18.preheader
 	move	$s1, $fp
 	.p2align	4, , 16
@@ -964,13 +959,13 @@ _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.d	$a4, $a0, 32
-	addi.d	$a2, $sp, 24
-	addi.d	$a3, $sp, 8
+	addi.d	$a2, $sp, 16
+	addi.d	$a3, $sp, 0
 	move	$a0, $s0
 	move	$a1, $fp
 	jirl	$ra, $a4, 0
-	fld.d	$fa0, $sp, 16
-	fld.d	$fa1, $sp, 8
+	fld.d	$fa0, $sp, 8
+	fld.d	$fa1, $sp, 0
 	fsub.d	$fa2, $fa0, $fa1
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	pcalau12i	$a0, %pc_hi20(.LCPI18_0)
@@ -985,8 +980,8 @@ _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	ld.d	$a1, $a0, 0
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
-	ld.d	$a4, $sp, 8
-	ld.d	$a3, $sp, 16
+	ld.d	$a4, $sp, 0
+	ld.d	$a3, $sp, 8
 	move	$a1, $a0
 	movfr2gr.d	$a2, $fs0
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -1004,13 +999,12 @@ _ZNK9Benchmark9time_bothEi:             # @_ZNK9Benchmark9time_bothEi
 	move	$a2, $fp
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	fld.d	$fs0, $sp, 24                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end18:
 	.size	_ZNK9Benchmark9time_bothEi, .Lfunc_end18-_ZNK9Benchmark9time_bothEi
@@ -1176,8 +1170,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, %pc_lo12(_ZN9Benchmark5countE)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB20_32
+	blez	$a1, .LBB20_32
 # %bb.5:                                # %.lr.ph.i.preheader
 	move	$s0, $a0
 	move	$s2, $zero
@@ -1234,8 +1227,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, %pc_lo12(_ZN9Benchmark5countE)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB20_32
+	blez	$a1, .LBB20_32
 # %bb.13:                               # %.lr.ph.i.1.preheader
 	move	$s0, $a0
 	move	$s2, $zero
@@ -1292,8 +1284,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, %pc_lo12(_ZN9Benchmark5countE)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB20_32
+	blez	$a1, .LBB20_32
 # %bb.21:                               # %.lr.ph.i.2.preheader
 	move	$s0, $a0
 	move	$s2, $zero
@@ -1350,8 +1341,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(__isoc23_strtol)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s1, %pc_lo12(_ZN9Benchmark5countE)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB20_32
+	blez	$a1, .LBB20_32
 # %bb.29:                               # %.lr.ph.i.3.preheader
 	move	$s0, $a0
 	move	$s2, $zero

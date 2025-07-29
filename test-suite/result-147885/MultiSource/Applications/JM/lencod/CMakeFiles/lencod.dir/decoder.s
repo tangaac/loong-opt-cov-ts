@@ -286,8 +286,8 @@ decode_one_b8block:                     # @decode_one_b8block
 	ori	$t7, $zero, 1
 	bne	$t2, $t7, .LBB0_6
 # %bb.17:
-	ldptr.w	$t8, $a7, 15360
-	blt	$t8, $t7, .LBB0_6
+	ldptr.w	$t7, $a7, 15360
+	blez	$t7, .LBB0_6
 .LBB0_18:                               # %.preheader181
 	slli.d	$a1, $a6, 6
 	addi.d	$t8, $sp, 88
@@ -362,8 +362,8 @@ decode_one_b8block:                     # @decode_one_b8block
 	ori	$a1, $zero, 1
 	bne	$t2, $a1, .LBB0_32
 # %bb.24:
-	ldptr.w	$a3, $a7, 15360
-	blt	$a3, $a1, .LBB0_32
+	ldptr.w	$a1, $a7, 15360
+	blez	$a1, .LBB0_32
 .LBB0_25:
 	nor	$a1, $s6, $zero
 	add.w	$a1, $t6, $a1
@@ -1890,82 +1890,81 @@ UpdateDecoders:                         # @UpdateDecoders
 	ld.d	$s3, $a0, %got_pc_lo12(input)
 	ld.d	$a0, $s3, 0
 	ldptr.w	$a0, $a0, 4728
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB4_15
+	blez	$a0, .LBB4_15
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %got_pc_hi20(decs)
-	ld.d	$s5, $a0, %got_pc_lo12(decs)
+	ld.d	$s4, $a0, %got_pc_lo12(decs)
 	pcalau12i	$a0, %got_pc_hi20(img)
-	ld.d	$s7, $a0, %got_pc_lo12(img)
+	ld.d	$s6, $a0, %got_pc_lo12(img)
 	pcalau12i	$a0, %got_pc_hi20(start_frame_no_in_this_IGOP)
 	ld.d	$a0, $a0, %got_pc_lo12(start_frame_no_in_this_IGOP)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	move	$s6, $zero
-	ori	$s8, $zero, 16
+	move	$s5, $zero
+	ori	$s7, $zero, 16
 	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
+	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB4_3
 	.p2align	4, , 16
 .LBB4_2:                                # %DecOneForthPix.exit
                                         #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $s3, 0
 	ldptr.w	$a0, $a0, 4728
-	addi.d	$s6, $s6, 1
-	bge	$s6, $a0, .LBB4_15
+	addi.d	$s5, $s5, 1
+	bge	$s5, $a0, .LBB4_15
 .LBB4_3:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_7 Depth 2
                                         #       Child Loop BB4_9 Depth 3
                                         #     Child Loop BB4_14 Depth 2
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a0, $a0, 40
 	pcaddu18i	$ra, %call36(Build_Status_Map)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, 0
-	ld.d	$a1, $s7, 0
+	ld.d	$a0, $s4, 0
+	ld.d	$a1, $s6, 0
 	ld.d	$a3, $a0, 24
-	slli.d	$a5, $s6, 3
+	slli.d	$a5, $s5, 3
 	ld.w	$a2, $a1, 68
 	ldx.d	$fp, $a3, $a5
-	blt	$a2, $s8, .LBB4_12
+	blt	$a2, $s7, .LBB4_12
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB4_3 Depth=1
 	ld.w	$a3, $a1, 52
-	blt	$a3, $s8, .LBB4_12
+	blt	$a3, $s7, .LBB4_12
 # %bb.5:                                # %.preheader.us.preheader.i
                                         #   in Loop: Header=BB4_3 Depth=1
-	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	ld.d	$a1, $a0, 16
 	ld.d	$s0, $a0, 40
 	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
 	ldx.d	$s1, $a1, $a5
 	move	$s2, $zero
 	bstrpick.d	$s4, $a3, 31, 4
-	bstrpick.d	$s6, $a2, 31, 4
+	bstrpick.d	$s5, $a2, 31, 4
 	b	.LBB4_7
 	.p2align	4, , 16
 .LBB4_6:                                # %._crit_edge.us.i
                                         #   in Loop: Header=BB4_7 Depth=2
 	addi.d	$s2, $s2, 1
-	beq	$s2, $s6, .LBB4_11
+	beq	$s2, $s5, .LBB4_11
 .LBB4_7:                                # %.preheader.us.i
                                         #   Parent Loop BB4_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB4_9 Depth 3
 	move	$s3, $zero
-	move	$s8, $zero
-	alsl.d	$s5, $s2, $s0, 3
+	move	$s7, $zero
+	alsl.d	$s8, $s2, $s0, 3
 	b	.LBB4_9
 	.p2align	4, , 16
 .LBB4_8:                                #   in Loop: Header=BB4_9 Depth=3
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	addi.w	$s3, $s3, 1
-	beq	$s4, $s8, .LBB4_6
+	beq	$s4, $s7, .LBB4_6
 .LBB4_9:                                #   Parent Loop BB4_3 Depth=1
                                         #     Parent Loop BB4_7 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$a0, $s5, 0
-	ldx.bu	$a0, $a0, $s8
+	ld.d	$a0, $s8, 0
+	ldx.bu	$a0, $a0, $s7
 	beqz	$a0, .LBB4_8
 # %bb.10:                               #   in Loop: Header=BB4_9 Depth=3
 	move	$a0, $fp
@@ -1979,20 +1978,19 @@ UpdateDecoders:                         # @UpdateDecoders
 	.p2align	4, , 16
 .LBB4_11:                               # %Error_Concealment.exit.loopexit
                                         #   in Loop: Header=BB4_3 Depth=1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a0, $s5, 0
+	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a0, $s4, 0
 	ld.d	$a2, $a0, 24
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
 	ldx.d	$fp, $a2, $a5
 	ld.w	$a2, $a1, 68
 	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	ori	$s4, $zero, 1
-	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
-	ori	$s8, $zero, 16
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ori	$s7, $zero, 16
 .LBB4_12:                               # %Error_Concealment.exit
                                         #   in Loop: Header=BB4_3 Depth=1
-	blt	$a2, $s4, .LBB4_2
+	blez	$a2, .LBB4_2
 # %bb.13:                               # %.lr.ph.i
                                         #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $a0, 16
@@ -2016,7 +2014,7 @@ UpdateDecoders:                         # @UpdateDecoders
 	slli.d	$a2, $a2, 1
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	ld.w	$a0, $a1, 68
 	addi.d	$s1, $s1, 1
 	addi.d	$s0, $s0, 8
@@ -2314,8 +2312,7 @@ DecOneForthPix:                         # @DecOneForthPix
 	ld.d	$s0, $a2, %got_pc_lo12(img)
 	ld.d	$a2, $s0, 0
 	ld.w	$a3, $a2, 68
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB7_3
+	blez	$a3, .LBB7_3
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	pcalau12i	$a0, %got_pc_hi20(start_frame_no_in_this_IGOP)
@@ -2375,23 +2372,22 @@ compute_residue_b8block:                # @compute_residue_b8block
 	add.d	$a2, $a0, $a2
 	addi.w	$a4, $a2, 0
 	bstrpick.d	$a2, $a2, 31, 1
-	slli.d	$a2, $a2, 1
 	pcalau12i	$a3, %got_pc_hi20(enc_picture)
 	ld.d	$a3, $a3, %got_pc_lo12(enc_picture)
+	slli.d	$a2, $a2, 1
 	sub.d	$a0, $a0, $a2
 	slli.w	$s4, $a0, 3
-	ori	$a2, $zero, 8
-	ld.d	$a5, $a3, 0
+	ld.d	$a2, $a3, 0
 	pcalau12i	$a3, %got_pc_hi20(img)
-	ld.d	$a6, $a3, %got_pc_lo12(img)
-	alsl.w	$a3, $a0, $a2, 3
+	ld.d	$a5, $a3, %got_pc_lo12(img)
+	ori	$a3, $zero, 8
+	alsl.w	$a3, $a0, $a3, 3
+	ldptr.d	$s0, $a2, 6440
+	ld.d	$a0, $a5, 0
 	slli.d	$a4, $a4, 2
-	ldptr.d	$s0, $a5, 6440
-	ld.d	$a0, $a6, 0
 	bstrins.d	$a4, $zero, 2, 0
-	addi.w	$a5, $zero, -1
 	addi.w	$a2, $a4, 8
-	bge	$a5, $a1, .LBB8_5
+	bltz	$a1, .LBB8_5
 # %bb.1:                                # %.preheader37
 	pcalau12i	$a5, %got_pc_hi20(decs)
 	ld.d	$a5, $a5, %got_pc_lo12(decs)

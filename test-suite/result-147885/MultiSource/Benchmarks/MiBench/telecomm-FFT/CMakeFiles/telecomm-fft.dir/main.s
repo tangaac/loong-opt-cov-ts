@@ -151,11 +151,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	bstrpick.d	$a2, $s4, 31, 0
+	slli.d	$a0, $s4, 32
 	addi.w	$s2, $fp, 0
 	bstrpick.d	$s3, $fp, 31, 0
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
-	bnez	$a2, .LBB2_8
+	bnez	$a0, .LBB2_8
 # %bb.6:                                # %.preheader
 	beqz	$s2, .LBB2_33
 # %bb.7:                                # %.lr.ph113.split.preheader
@@ -167,6 +167,7 @@ main:                                   # @main
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	b	.LBB2_24
 .LBB2_8:                                # %.lr.ph.preheader
+	bstrpick.d	$a2, $s4, 31, 0
 	ori	$a0, $zero, 4
 	lu12i.w	$a1, 67108
 	st.d	$a2, $sp, 72                    # 8-byte Folded Spill
@@ -239,8 +240,8 @@ main:                                   # @main
 	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 32                    # 8-byte Folded Spill
-	move	$s1, $zero
-	ori	$s4, $zero, 1
+	move	$s4, $zero
+	ori	$s8, $zero, 1
 	movgr2fr.w	$fs0, $zero
 	lu12i.w	$a0, 269412
 	ori	$s7, $a0, 3693
@@ -253,21 +254,21 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB2_17:                               # %._crit_edge.us
                                         #   in Loop: Header=BB2_18 Depth=1
-	slli.d	$a0, $s1, 2
+	slli.d	$a0, $s4, 2
 	fst.s	$fs2, $s0, 0
-	addi.d	$s1, $s1, 1
+	addi.d	$s4, $s4, 1
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	stx.w	$zero, $a1, $a0
 	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	beq	$s1, $s3, .LBB2_23
+	beq	$s4, $s3, .LBB2_23
 .LBB2_18:                               # %.lr.ph109.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_21 Depth 2
-	alsl.d	$s0, $s1, $s5, 2
-	bstrpick.d	$a0, $s1, 31, 0
+	alsl.d	$s0, $s4, $s5, 2
+	bstrpick.d	$a0, $s4, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.s.l	$fs1, $fa0
-	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 88                    # 8-byte Folded Reload
 	fmov.s	$fs2, $fs0
@@ -282,15 +283,15 @@ main:                                   # @main
 	fmadd.d	$fa0, $fa1, $fa0, $fa2
 	fcvt.s.d	$fs2, $fa0
 	addi.d	$s5, $s5, 4
-	addi.d	$s8, $s8, -1
+	addi.d	$s1, $s1, -1
 	addi.d	$s6, $s6, 4
-	beqz	$s8, .LBB2_17
+	beqz	$s1, .LBB2_17
 .LBB2_21:                               #   Parent Loop BB2_18 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	mul.d	$a0, $s4, $s7
-	add.d	$s4, $a0, $s2
-	srli.d	$a0, $s4, 16
-	bstrpick.d	$a1, $s4, 47, 16
+	mul.d	$a0, $s8, $s7
+	add.d	$s8, $a0, $s2
+	srli.d	$a0, $s8, 16
+	bstrpick.d	$a1, $s8, 47, 16
 	mul.d	$a1, $a1, $fp
 	srli.d	$a1, $a1, 32
 	sub.d	$a2, $a0, $a1
@@ -310,7 +311,7 @@ main:                                   # @main
 	b	.LBB2_20
 .LBB2_23:                               # %._crit_edge114.loopexit
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	st.d	$s4, $a0, %pc_lo12(next)
+	st.d	$s8, $a0, %pc_lo12(next)
 	ld.d	$s6, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload

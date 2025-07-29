@@ -870,8 +870,7 @@ run_file:                               # @run_file
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lib_file_open)
 	jirl	$ra, $ra, 0
-	addi.w	$s2, $zero, -1
-	bge	$s2, $a0, .LBB7_8
+	bltz	$a0, .LBB7_8
 # %bb.1:
 	pcalau12i	$s1, %pc_hi20(quiet)
 	ld.w	$a0, $s1, %pc_lo12(quiet)
@@ -895,7 +894,7 @@ run_file:                               # @run_file
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(interpret)
 	jirl	$ra, $ra, 0
-	bge	$s2, $a0, .LBB7_6
+	bltz	$a0, .LBB7_6
 # %bb.4:
 	ld.w	$a0, $s1, %pc_lo12(quiet)
 	beqz	$a0, .LBB7_7

@@ -79,100 +79,98 @@ adler32_z:                              # @adler32_z
 	bltu	$a0, $a5, .LBB0_15
 # %bb.9:
 	addi.w	$a0, $zero, -347
-	ori	$a5, $zero, 0
-	lu32i.d	$a5, 1
-	lu12i.w	$a6, -2
-	ori	$a6, $a6, 2640
-	lu12i.w	$a7, 1
-	ori	$a7, $a7, 1456
-	lu12i.w	$t0, 54012
-	ori	$t0, $t0, 1485
-	lu32i.d	$t0, -65311
-	lu52i.d	$t0, $t0, 0
-	lu12i.w	$t1, 15
-	ori	$t1, $t1, 4081
-	ori	$t2, $zero, 346
+	lu12i.w	$a5, -2
+	ori	$a5, $a5, 2640
+	lu12i.w	$a6, 1
+	ori	$a6, $a6, 1456
+	lu12i.w	$a7, 54012
+	ori	$a7, $a7, 1485
+	lu32i.d	$a7, -65311
+	lu52i.d	$a7, $a7, 0
+	lu12i.w	$t0, 15
+	ori	$t0, $t0, 4081
+	ori	$t1, $zero, 346
 	.p2align	4, , 16
 .LBB0_10:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_11 Depth 2
-	move	$t3, $a0
-	move	$t4, $a1
+	move	$t2, $a0
+	move	$t3, $a1
 	.p2align	4, , 16
 .LBB0_11:                               #   Parent Loop BB0_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.bu	$t5, $t4, 0
-	ld.bu	$t6, $t4, 1
-	add.d	$a3, $a3, $t5
+	ld.bu	$t4, $t3, 0
+	ld.bu	$t5, $t3, 1
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a3, $a4
-	ld.bu	$t5, $t4, 2
-	add.d	$a3, $a3, $t6
-	add.d	$a4, $a4, $a3
-	ld.bu	$t6, $t4, 3
+	ld.bu	$t4, $t3, 2
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	ld.bu	$t5, $t4, 4
-	add.d	$a3, $a3, $t6
+	ld.bu	$t5, $t3, 3
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a4, $a3
-	ld.bu	$t6, $t4, 5
+	ld.bu	$t4, $t3, 4
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	ld.bu	$t5, $t4, 6
-	add.d	$a3, $a3, $t6
+	ld.bu	$t5, $t3, 5
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a4, $a3
-	ld.bu	$t6, $t4, 7
+	ld.bu	$t4, $t3, 6
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	ld.bu	$t5, $t4, 8
-	add.d	$a3, $a3, $t6
+	ld.bu	$t5, $t3, 7
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a4, $a3
-	ld.bu	$t6, $t4, 9
+	ld.bu	$t4, $t3, 8
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	ld.bu	$t5, $t4, 10
-	add.d	$a3, $a3, $t6
+	ld.bu	$t5, $t3, 9
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a4, $a3
-	ld.bu	$t6, $t4, 11
+	ld.bu	$t4, $t3, 10
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	ld.bu	$t5, $t4, 12
-	add.d	$a3, $a3, $t6
+	ld.bu	$t5, $t3, 11
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a4, $a3
-	ld.bu	$t6, $t4, 13
+	ld.bu	$t4, $t3, 12
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	ld.bu	$t5, $t4, 14
-	add.d	$a3, $a3, $t6
-	ld.bu	$t6, $t4, 15
+	ld.bu	$t5, $t3, 13
+	add.d	$a3, $a3, $t4
+	add.d	$a4, $a4, $a3
+	ld.bu	$t4, $t3, 14
+	add.d	$a3, $a3, $t5
+	ld.bu	$t5, $t3, 15
+	add.d	$a4, $a4, $a3
+	add.d	$a3, $a3, $t4
 	add.d	$a4, $a4, $a3
 	add.d	$a3, $a3, $t5
 	add.d	$a4, $a4, $a3
-	add.d	$a3, $a3, $t6
-	add.d	$a4, $a4, $a3
-	bstrpick.d	$t3, $t3, 31, 0
-	addi.d	$t3, $t3, 1
-	and	$t5, $t3, $a5
-	addi.d	$t4, $t4, 16
-	beqz	$t5, .LBB0_11
+	bstrpick.d	$t2, $t2, 31, 0
+	addi.d	$t2, $t2, 1
+	slli.d	$t4, $t2, 31
+	addi.d	$t3, $t3, 16
+	bgez	$t4, .LBB0_11
 # %bb.12:                               #   in Loop: Header=BB0_10 Depth=1
-	add.d	$a2, $a2, $a6
-	add.d	$a1, $a1, $a7
-	mulh.du	$t3, $a3, $t0
-	sub.d	$t4, $a3, $t3
-	srli.d	$t4, $t4, 1
-	add.d	$t3, $t4, $t3
-	srli.d	$t3, $t3, 15
-	mul.d	$t3, $t3, $t1
-	sub.d	$a3, $a3, $t3
-	mulh.du	$t3, $a4, $t0
-	sub.d	$t4, $a4, $t3
-	srli.d	$t4, $t4, 1
-	add.d	$t3, $t4, $t3
-	srli.d	$t3, $t3, 15
-	mul.d	$t3, $t3, $t1
-	srli.d	$t4, $a2, 4
-	sub.d	$a4, $a4, $t3
-	bltu	$t2, $t4, .LBB0_10
+	add.d	$a2, $a2, $a5
+	add.d	$a1, $a1, $a6
+	mulh.du	$t2, $a3, $a7
+	sub.d	$t3, $a3, $t2
+	srli.d	$t3, $t3, 1
+	add.d	$t2, $t3, $t2
+	srli.d	$t2, $t2, 15
+	mul.d	$t2, $t2, $t0
+	sub.d	$a3, $a3, $t2
+	mulh.du	$t2, $a4, $a7
+	sub.d	$t3, $a4, $t2
+	srli.d	$t3, $t3, 1
+	add.d	$t2, $t3, $t2
+	srli.d	$t2, $t2, 15
+	mul.d	$t2, $t2, $t0
+	srli.d	$t3, $a2, 4
+	sub.d	$a4, $a4, $t2
+	bltu	$t1, $t3, .LBB0_10
 # %bb.13:                               # %._crit_edge
 	beqz	$a2, .LBB0_20
 # %bb.14:                               # %.preheader201

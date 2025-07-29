@@ -1653,15 +1653,25 @@ testJ:                                  # @testJ
 	lu12i.w	$a6, -364478
 	ori	$a6, $a6, 2015
 	add.d	$a5, $a5, $a6
-	srli.d	$a6, $a5, 16
+	bstrpick.d	$a6, $a5, 31, 16
 	mul.d	$a5, $a5, $a2
 	add.w	$a5, $a5, $a3
+	srli.d	$a7, $a5, 16
+	move	$t0, $a4
+	bstrins.d	$t0, $a6, 63, 9
+	add.d	$a6, $a7, $a6
+	andi	$a6, $a6, 127
+	lu12i.w	$a7, 69905
+	ori	$a7, $a7, 274
+	lu32i.d	$a7, 69905
+	lu52i.d	$a7, $a7, 273
+	mulh.du	$a7, $a6, $a7
+	slli.d	$t1, $a7, 4
+	sub.d	$a7, $a7, $t1
 	st.w	$a5, $a1, %pc_lo12(myrnd.s)
-	move	$a7, $a4
-	bstrins.d	$a7, $a6, 63, 9
-	ori	$a6, $zero, 1
-	st.h	$a7, $a0, 0
-	beqz	$a6, .LBB60_3
+	add.d	$a6, $a6, $a7
+	st.h	$t0, $a0, 0
+	bne	$a6, $a6, .LBB60_3
 # %bb.1:
 	andi	$a4, $a4, 511
 	mul.d	$a5, $a5, $a2
@@ -4630,7 +4640,7 @@ testZ:                                  # @testZ
 	st.w	$a2, $a0, 16
 	bnez	$a5, .LBB156_4
 # %bb.1:
-	bstrpick.d	$a0, $a3, 12, 0
+	slli.d	$a0, $a3, 51
 	bnez	$a0, .LBB156_4
 # %bb.2:
 	bstrpick.d	$a0, $a2, 31, 20

@@ -46,8 +46,7 @@ _ZN24CMtCompressProgressMixer4InitEiP21ICompressProgressInfo: # @_ZN24CMtCompres
 	jirl	$ra, $ra, 0
 .Ltmp3:
 # %bb.2:                                # %.preheader
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_6
+	blez	$s2, .LBB0_6
 	.p2align	4, , 16
 .LBB0_3:                                # =>This Inner Loop Header: Depth=1
 .Ltmp4:

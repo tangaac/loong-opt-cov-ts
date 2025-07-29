@@ -340,76 +340,76 @@ crc32_combine:                          # @crc32_combine
 	.type	crc32_combine_,@function
 crc32_combine_:                         # @crc32_combine_
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB4_52
+	blez	$a2, .LBB4_52
 # %bb.1:                                # %.preheader80.preheader
 	addi.d	$sp, $sp, -512
-	move	$a4, $zero
-	pcalau12i	$a5, %pc_hi20(.LCPI4_0)
-	vld	$vr0, $a5, %pc_lo12(.LCPI4_0)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_1)
-	vld	$vr1, $a5, %pc_lo12(.LCPI4_1)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_2)
-	vld	$vr2, $a5, %pc_lo12(.LCPI4_2)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_3)
-	vld	$vr3, $a5, %pc_lo12(.LCPI4_3)
+	move	$a3, $zero
+	pcalau12i	$a4, %pc_hi20(.LCPI4_0)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_0)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_1)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_1)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_2)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_2)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_3)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_3)
 	vst	$vr0, $sp, 0
 	vst	$vr1, $sp, 16
 	vst	$vr2, $sp, 32
 	vst	$vr3, $sp, 48
-	pcalau12i	$a5, %pc_hi20(.LCPI4_4)
-	vld	$vr0, $a5, %pc_lo12(.LCPI4_4)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_5)
-	vld	$vr1, $a5, %pc_lo12(.LCPI4_5)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_6)
-	vld	$vr2, $a5, %pc_lo12(.LCPI4_6)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_7)
-	vld	$vr3, $a5, %pc_lo12(.LCPI4_7)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_4)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_4)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_5)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_5)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_6)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_6)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_7)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_7)
 	vst	$vr0, $sp, 64
 	vst	$vr1, $sp, 80
 	vst	$vr2, $sp, 96
 	vst	$vr3, $sp, 112
-	pcalau12i	$a5, %pc_hi20(.LCPI4_8)
-	vld	$vr0, $a5, %pc_lo12(.LCPI4_8)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_9)
-	vld	$vr1, $a5, %pc_lo12(.LCPI4_9)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_10)
-	vld	$vr2, $a5, %pc_lo12(.LCPI4_10)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_11)
-	vld	$vr3, $a5, %pc_lo12(.LCPI4_11)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_8)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_8)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_9)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_9)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_10)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_10)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_11)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_11)
 	vst	$vr0, $sp, 128
 	vst	$vr1, $sp, 144
 	vst	$vr2, $sp, 160
 	vst	$vr3, $sp, 176
-	pcalau12i	$a5, %pc_hi20(.LCPI4_12)
-	vld	$vr0, $a5, %pc_lo12(.LCPI4_12)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_13)
-	vld	$vr1, $a5, %pc_lo12(.LCPI4_13)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_14)
-	vld	$vr2, $a5, %pc_lo12(.LCPI4_14)
-	pcalau12i	$a5, %pc_hi20(.LCPI4_15)
-	vld	$vr3, $a5, %pc_lo12(.LCPI4_15)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_12)
+	vld	$vr0, $a4, %pc_lo12(.LCPI4_12)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_13)
+	vld	$vr1, $a4, %pc_lo12(.LCPI4_13)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_14)
+	vld	$vr2, $a4, %pc_lo12(.LCPI4_14)
+	pcalau12i	$a4, %pc_hi20(.LCPI4_15)
+	vld	$vr3, $a4, %pc_lo12(.LCPI4_15)
 	vst	$vr0, $sp, 192
 	vst	$vr1, $sp, 208
 	vst	$vr2, $sp, 224
 	vst	$vr3, $sp, 240
-	addi.d	$a5, $sp, 0
-	addi.d	$a6, $sp, 256
-	ori	$a7, $zero, 32
+	addi.d	$a4, $sp, 0
+	addi.d	$a5, $sp, 256
+	ori	$a6, $zero, 32
+	ori	$a7, $zero, 1
 	b	.LBB4_4
 	.p2align	4, , 16
 .LBB4_2:                                #   in Loop: Header=BB4_4 Depth=1
 	move	$t1, $zero
 .LBB4_3:                                # %gf2_matrix_times.exit.i
                                         #   in Loop: Header=BB4_4 Depth=1
-	addi.d	$a4, $a4, 1
-	stx.d	$t1, $t0, $a6
-	beq	$a4, $a7, .LBB4_9
+	addi.d	$a3, $a3, 1
+	stx.d	$t1, $t0, $a5
+	beq	$a3, $a6, .LBB4_9
 .LBB4_4:                                # %.preheader80
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_7 Depth 2
-	slli.d	$t0, $a4, 3
-	ldx.d	$t3, $t0, $a5
+	slli.d	$t0, $a3, 3
+	ldx.d	$t3, $t0, $a4
 	beqz	$t3, .LBB4_2
 # %bb.5:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB4_4 Depth=1
@@ -420,7 +420,7 @@ crc32_combine_:                         # @crc32_combine_
 .LBB4_6:                                #   in Loop: Header=BB4_7 Depth=2
 	srli.d	$t3, $t4, 1
 	addi.d	$t2, $t2, 8
-	bgeu	$a3, $t4, .LBB4_3
+	bgeu	$a7, $t4, .LBB4_3
 .LBB4_7:                                # %.lr.ph.i.i
                                         #   Parent Loop BB4_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2

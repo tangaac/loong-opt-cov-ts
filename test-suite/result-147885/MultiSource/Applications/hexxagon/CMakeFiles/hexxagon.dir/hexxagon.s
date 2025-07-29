@@ -380,10 +380,9 @@ main:                                   # @main
 	addi.d	$s0, $sp, 16
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a1, $a0, 31, 0
-	beqz	$a1, .LBB4_4
-# %bb.2:
 	slli.d	$a0, $a0, 32
+	beqz	$a0, .LBB4_4
+# %bb.2:
 	ori	$a1, $zero, 0
 	lu32i.d	$a1, -1
 	add.d	$a0, $a0, $a1

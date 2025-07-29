@@ -5804,8 +5804,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_0E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_0E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB7_4
+	blez	$a3, .LBB7_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -5869,8 +5868,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_0E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB9_3
+	blez	$a3, .LBB9_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6265,8 +6263,7 @@ _ZL9init_dataIfEvRKSt10unique_ptrIA_T_St14default_deleteIS2_EEj: # @_ZL9init_dat
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_0E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_0E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB12_4
+	blez	$a3, .LBB12_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6331,8 +6328,7 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_0E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_1E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB14_3
+	blez	$a3, .LBB14_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6535,9 +6531,8 @@ _ZNSt24uniform_int_distributionIsEclISt23mersenne_twister_engineImLm32ELm624ELm3
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_2E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a4, $zero, 1
 	lu12i.w	$a3, 15
-	blt	$a0, $a4, .LBB17_4
+	blez	$a0, .LBB17_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6606,9 +6601,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_2E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a3, $zero, 1
 	lu12i.w	$a4, 15
-	blt	$a0, $a3, .LBB19_3
+	blez	$a0, .LBB19_3
 # %bb.1:                                # %iter.check
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6775,8 +6769,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_3E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_4E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_4E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB21_4
+	blez	$a3, .LBB21_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6840,8 +6833,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_4E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB23_3
+	blez	$a3, .LBB23_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -6949,8 +6941,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_5E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_4E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_4E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB25_4
+	blez	$a3, .LBB25_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7015,8 +7006,7 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_4E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB27_3
+	blez	$a3, .LBB27_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7125,9 +7115,8 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_5E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_6E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a4, $zero, 1
 	lu12i.w	$a3, 15
-	blt	$a0, $a4, .LBB29_4
+	blez	$a0, .LBB29_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7196,9 +7185,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_6E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a3, $zero, 1
 	lu12i.w	$a4, 15
-	blt	$a0, $a3, .LBB31_3
+	blez	$a0, .LBB31_3
 # %bb.1:                                # %iter.check
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7365,8 +7353,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE3$_7E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a0, $a3, 0
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB33_3
+	blez	$a0, .LBB33_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7427,8 +7414,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_8E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB35_3
+	blez	$a3, .LBB35_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7535,8 +7521,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE3$_9E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_8E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a0, $a3, 0
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB37_3
+	blez	$a0, .LBB37_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7598,8 +7583,7 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_8E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB39_3
+	blez	$a3, .LBB39_3
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7707,8 +7691,7 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE3$_9E10_M_managerERSt9_Any_dataRKS4_St1
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_10E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_10E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB41_4
+	blez	$a0, .LBB41_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7778,8 +7761,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E9_M_invokeERKSt9_Any_dataOS0_S7_O
 # %bb.0:
 	ld.h	$a0, $a3, 0
 	ext.w.h	$a3, $a0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB43_15
+	blez	$a3, .LBB43_15
 # %bb.1:                                # %iter.check
 	ld.d	$a3, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -7944,8 +7926,7 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_11E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_12E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_12E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB45_4
+	blez	$a3, .LBB45_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -8002,8 +7983,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_12E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB47_4
+	blez	$a3, .LBB47_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -8060,8 +8040,7 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_13E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_12E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_12E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB49_4
+	blez	$a3, .LBB49_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -8119,8 +8098,7 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_12E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_13E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB51_4
+	blez	$a3, .LBB51_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -8178,9 +8156,8 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_13E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_14E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_14E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a4, $zero, 1
 	lu12i.w	$a3, 15
-	blt	$a0, $a4, .LBB53_4
+	blez	$a0, .LBB53_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -8237,9 +8214,8 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_14E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_15E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
 	ld.h	$a0, $a3, 0
-	ori	$a4, $zero, 1
 	lu12i.w	$a3, 15
-	blt	$a0, $a4, .LBB55_4
+	blez	$a0, .LBB55_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a1, $a1, 0
 	ld.d	$a2, $a2, 0
@@ -8296,19 +8272,19 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_15E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_16E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_16E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB57_4
+	blez	$a3, .LBB57_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a0, $a2, 0
-	ld.d	$a5, $a1, 0
+	ld.d	$a4, $a1, 0
 	addi.d	$a1, $a3, 1
 	alsl.d	$a2, $a3, $a0, 2
-	alsl.d	$a5, $a3, $a5, 2
+	alsl.d	$a4, $a3, $a4, 2
 	addi.w	$a0, $zero, -1
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB57_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a5, 0
+	ld.w	$a6, $a4, 0
 	ld.w	$a7, $a2, 0
 	slt	$a6, $a7, $a6
 	masknez	$a0, $a0, $a6
@@ -8317,8 +8293,8 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_16E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a1, $a1, -1
 	addi.w	$a3, $a3, -1
 	addi.d	$a2, $a2, -4
-	addi.d	$a5, $a5, -4
-	bltu	$a4, $a1, .LBB57_2
+	addi.d	$a4, $a4, -4
+	bltu	$a5, $a1, .LBB57_2
 # %bb.3:                                # %"_ZSt10__invoke_rIiRZ4mainE4$_16JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .LBB57_4:
@@ -8355,19 +8331,19 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_16E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_17E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_17E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB59_4
+	blez	$a3, .LBB59_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a0, $a2, 0
-	ld.d	$a5, $a1, 0
+	ld.d	$a4, $a1, 0
 	addi.d	$a1, $a3, 1
 	alsl.d	$a2, $a3, $a0, 2
-	alsl.d	$a5, $a3, $a5, 2
+	alsl.d	$a4, $a3, $a4, 2
 	addi.w	$a0, $zero, -1
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB59_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a6, $a5, 0
+	ld.w	$a6, $a4, 0
 	ld.w	$a7, $a2, 0
 	slt	$a6, $a7, $a6
 	masknez	$a0, $a0, $a6
@@ -8376,8 +8352,8 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_17E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a1, $a1, -1
 	addi.w	$a3, $a3, -1
 	addi.d	$a2, $a2, -4
-	addi.d	$a5, $a5, -4
-	bltu	$a4, $a1, .LBB59_2
+	addi.d	$a4, $a4, -4
+	bltu	$a5, $a1, .LBB59_2
 # %bb.3:                                # %"_ZSt10__invoke_rIiRZ4mainE4$_17JPiS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .LBB59_4:
@@ -8414,19 +8390,19 @@ _ZNSt17_Function_handlerIFiPiS0_iEZ4mainE4$_17E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_16E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_16E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB61_4
+	blez	$a3, .LBB61_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a0, $a2, 0
-	ld.d	$a5, $a1, 0
+	ld.d	$a4, $a1, 0
 	addi.d	$a1, $a3, 1
 	alsl.d	$a2, $a3, $a0, 2
-	alsl.d	$a5, $a3, $a5, 2
+	alsl.d	$a4, $a3, $a4, 2
 	addi.w	$a0, $zero, -1
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB61_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa0, $a5, 0
+	fld.s	$fa0, $a4, 0
 	fld.s	$fa1, $a2, 0
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	movcf2gr	$a6, $fcc0
@@ -8436,8 +8412,8 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_16E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a1, $a1, -1
 	addi.w	$a3, $a3, -1
 	addi.d	$a2, $a2, -4
-	addi.d	$a5, $a5, -4
-	bltu	$a4, $a1, .LBB61_2
+	addi.d	$a4, $a4, -4
+	bltu	$a5, $a1, .LBB61_2
 # %bb.3:                                # %"_ZSt10__invoke_rIiRZ4mainE4$_16JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .LBB61_4:
@@ -8474,19 +8450,19 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_16E10_M_managerERSt9_Any_dataRKS4_St
 _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_17E9_M_invokeERKSt9_Any_dataOS0_S7_Oi: # @"_ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_17E9_M_invokeERKSt9_Any_dataOS0_S7_Oi"
 # %bb.0:
 	ld.w	$a3, $a3, 0
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB63_4
+	blez	$a3, .LBB63_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a0, $a2, 0
-	ld.d	$a5, $a1, 0
+	ld.d	$a4, $a1, 0
 	addi.d	$a1, $a3, 1
 	alsl.d	$a2, $a3, $a0, 2
-	alsl.d	$a5, $a3, $a5, 2
+	alsl.d	$a4, $a3, $a4, 2
 	addi.w	$a0, $zero, -1
+	ori	$a5, $zero, 1
 	.p2align	4, , 16
 .LBB63_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	fld.s	$fa0, $a5, 0
+	fld.s	$fa0, $a4, 0
 	fld.s	$fa1, $a2, 0
 	fcmp.clt.s	$fcc0, $fa1, $fa0
 	movcf2gr	$a6, $fcc0
@@ -8496,8 +8472,8 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_17E9_M_invokeERKSt9_Any_dataOS0_S7_O
 	addi.d	$a1, $a1, -1
 	addi.w	$a3, $a3, -1
 	addi.d	$a2, $a2, -4
-	addi.d	$a5, $a5, -4
-	bltu	$a4, $a1, .LBB63_2
+	addi.d	$a4, $a4, -4
+	bltu	$a5, $a1, .LBB63_2
 # %bb.3:                                # %"_ZSt10__invoke_rIiRZ4mainE4$_17JPfS2_iEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ret
 .LBB63_4:
@@ -8533,35 +8509,35 @@ _ZNSt17_Function_handlerIFiPfS0_iEZ4mainE4$_17E10_M_managerERSt9_Any_dataRKS4_St
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_18E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_18E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_18E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
-	ld.h	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	lu12i.w	$a5, 15
-	blt	$a3, $a0, .LBB65_4
+	ld.h	$a0, $a3, 0
+	lu12i.w	$a4, 15
+	blez	$a0, .LBB65_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a2, $a2, 0
 	ld.d	$a1, $a1, 0
-	alsl.d	$a2, $a3, $a2, 1
-	alsl.d	$a4, $a3, $a1, 1
-	ori	$a1, $a5, 4095
+	alsl.d	$a2, $a0, $a2, 1
+	alsl.d	$a3, $a0, $a1, 1
+	ori	$a1, $a4, 4095
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB65_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a5, $a4, 0
+	ld.h	$a5, $a3, 0
 	ld.h	$a6, $a2, 0
-	move	$a7, $a3
-	slt	$a3, $a6, $a5
-	masknez	$a1, $a1, $a3
-	maskeqz	$a3, $a7, $a3
-	or	$a1, $a3, $a1
-	addi.d	$a3, $a7, -1
+	move	$a7, $a0
+	slt	$a0, $a6, $a5
+	masknez	$a1, $a1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a1, $a0, $a1
+	addi.d	$a0, $a7, -1
 	addi.d	$a2, $a2, -2
-	addi.d	$a4, $a4, -2
-	bltu	$a0, $a7, .LBB65_2
+	addi.d	$a3, $a3, -2
+	bltu	$a4, $a7, .LBB65_2
 # %bb.3:                                # %"_ZSt10__invoke_rIsRZ4mainE4$_18JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a1
 	ret
 .LBB65_4:
-	ori	$a1, $a5, 4095
+	ori	$a1, $a4, 4095
 	ext.w.h	$a0, $a1
 	ret
 .Lfunc_end65:
@@ -8594,35 +8570,35 @@ _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_18E10_M_managerERSt9_Any_dataRKS4_St
 	.type	_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_19E9_M_invokeERKSt9_Any_dataOS0_S7_Os,@function
 _ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_19E9_M_invokeERKSt9_Any_dataOS0_S7_Os: # @"_ZNSt17_Function_handlerIFsPsS0_sEZ4mainE4$_19E9_M_invokeERKSt9_Any_dataOS0_S7_Os"
 # %bb.0:
-	ld.h	$a3, $a3, 0
-	ori	$a0, $zero, 1
-	lu12i.w	$a5, 15
-	blt	$a3, $a0, .LBB67_4
+	ld.h	$a0, $a3, 0
+	lu12i.w	$a4, 15
+	blez	$a0, .LBB67_4
 # %bb.1:                                # %.lr.ph.preheader.i.i.i
 	ld.d	$a2, $a2, 0
 	ld.d	$a1, $a1, 0
-	alsl.d	$a2, $a3, $a2, 1
-	alsl.d	$a4, $a3, $a1, 1
-	ori	$a1, $a5, 4095
+	alsl.d	$a2, $a0, $a2, 1
+	alsl.d	$a3, $a0, $a1, 1
+	ori	$a1, $a4, 4095
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB67_2:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.h	$a5, $a4, 0
+	ld.h	$a5, $a3, 0
 	ld.h	$a6, $a2, 0
-	move	$a7, $a3
-	slt	$a3, $a6, $a5
-	masknez	$a1, $a1, $a3
-	maskeqz	$a3, $a7, $a3
-	or	$a1, $a3, $a1
-	addi.d	$a3, $a7, -1
+	move	$a7, $a0
+	slt	$a0, $a6, $a5
+	masknez	$a1, $a1, $a0
+	maskeqz	$a0, $a7, $a0
+	or	$a1, $a0, $a1
+	addi.d	$a0, $a7, -1
 	addi.d	$a2, $a2, -2
-	addi.d	$a4, $a4, -2
-	bltu	$a0, $a7, .LBB67_2
+	addi.d	$a3, $a3, -2
+	bltu	$a4, $a7, .LBB67_2
 # %bb.3:                                # %"_ZSt10__invoke_rIsRZ4mainE4$_19JPsS2_sEENSt9enable_ifIX16is_invocable_r_vIT_T0_DpT1_EES4_E4typeEOS5_DpOS6_.exit"
 	ext.w.h	$a0, $a1
 	ret
 .LBB67_4:
-	ori	$a1, $a5, 4095
+	ori	$a1, $a4, 4095
 	ext.w.h	$a0, $a1
 	ret
 .Lfunc_end67:

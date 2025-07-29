@@ -422,12 +422,12 @@ main:                                   # @main
 	ffint.d.l	$fs0, $fa0
 	movgr2fr.d	$fa0, $s0
 	pcalau12i	$a1, %pc_hi20(.LCPI0_0)
-	ld.d	$fp, $sp, 128                   # 8-byte Folded Reload
-	ld.w	$a2, $fp, %pc_lo12(g_timeout_in_seconds)
+	ld.d	$s0, $sp, 128                   # 8-byte Folded Reload
+	ld.w	$a2, $s0, %pc_lo12(g_timeout_in_seconds)
 	fld.d	$fs1, $a1, %pc_lo12(.LCPI0_0)
 	ffint.d.l	$fs2, $fa0
-	pcalau12i	$s0, %pc_hi20(g_monitored_pid)
-	st.w	$a0, $s0, %pc_lo12(g_monitored_pid)
+	pcalau12i	$fp, %pc_hi20(g_monitored_pid)
+	st.w	$a0, $fp, %pc_lo12(g_monitored_pid)
 	beqz	$a2, .LBB0_61
 # %bb.60:
 	addi.d	$a0, $sp, 160
@@ -437,26 +437,25 @@ main:                                   # @main
 	ori	$a1, $zero, 14
 	pcaddu18i	$ra, %call36(sigaddset)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $fp, %pc_lo12(g_timeout_in_seconds)
+	ld.w	$a0, $s0, %pc_lo12(g_timeout_in_seconds)
 	pcaddu18i	$ra, %call36(alarm)
 	jirl	$ra, $ra, 0
 .LBB0_61:                               # %.preheader
 	fmadd.d	$fs0, $fs2, $fs1, $fs0
-	addi.w	$fp, $zero, -1
-	ori	$s1, $zero, 4
+	ori	$s0, $zero, 4
 	.p2align	4, , 16
 .LBB0_62:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$a0, $s0, %pc_lo12(g_monitored_pid)
+	ld.w	$a0, $fp, %pc_lo12(g_monitored_pid)
 	addi.d	$a1, $sp, 144
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(waitpid)
 	jirl	$ra, $ra, 0
-	blt	$fp, $a0, .LBB0_65
+	bgez	$a0, .LBB0_65
 # %bb.63:                               #   in Loop: Header=BB0_62 Depth=1
 	pcaddu18i	$ra, %call36(__errno_location)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $a0, 0
-	beq	$a0, $s1, .LBB0_62
+	beq	$a0, $s0, .LBB0_62
 # %bb.64:                               # %.critedge.i7.i
 	pcalau12i	$a0, %pc_hi20(.L.str.83)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.83)
@@ -466,23 +465,23 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(gettimeofday)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 160
-	ld.w	$a0, $s0, %pc_lo12(g_monitored_pid)
-	ld.d	$s0, $sp, 168
+	ld.d	$s0, $sp, 160
+	ld.w	$a0, $fp, %pc_lo12(g_monitored_pid)
+	ld.d	$fp, $sp, 168
 	sub.w	$a0, $zero, $a0
 	ori	$a1, $zero, 9
 	pcaddu18i	$ra, %call36(kill)
 	jirl	$ra, $ra, 0
+	addi.w	$a0, $zero, -1
 	addi.d	$a1, $sp, 160
-	move	$a0, $fp
 	pcaddu18i	$ra, %call36(getrusage)
 	jirl	$ra, $ra, 0
-	bge	$fp, $a0, .LBB0_110
+	bltz	$a0, .LBB0_110
 # %bb.66:
-	movgr2fr.d	$fa0, $s1
+	movgr2fr.d	$fa0, $s0
 	ffint.d.l	$fa0, $fa0
 	ld.d	$a0, $sp, 160
-	movgr2fr.d	$fa1, $s0
+	movgr2fr.d	$fa1, $fp
 	ffint.d.l	$fa1, $fa1
 	fmadd.d	$fs1, $fa1, $fs1, $fa0
 	movgr2fr.d	$fa0, $a0
@@ -635,7 +634,7 @@ main:                                   # @main
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_86
+	bgez	$a0, .LBB0_86
 # %bb.85:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -670,7 +669,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_89
+	bgez	$a0, .LBB0_89
 # %bb.88:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -705,7 +704,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_92
+	bgez	$a0, .LBB0_92
 # %bb.91:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -740,7 +739,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_95
+	bgez	$a0, .LBB0_95
 # %bb.94:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -775,7 +774,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_98
+	bgez	$a0, .LBB0_98
 # %bb.97:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -810,7 +809,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_101
+	bgez	$a0, .LBB0_101
 # %bb.100:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -845,7 +844,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_104
+	bgez	$a0, .LBB0_104
 # %bb.103:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -880,7 +879,7 @@ main:                                   # @main
 	addi.d	$a1, $sp, 144
 	pcaddu18i	$ra, %call36(setrlimit)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_107
+	bgez	$a0, .LBB0_107
 # %bb.106:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
@@ -902,7 +901,7 @@ main:                                   # @main
 # %bb.108:
 	pcaddu18i	$ra, %call36(chdir)
 	jirl	$ra, $ra, 0
-	blt	$s0, $a0, .LBB0_120
+	bgez	$a0, .LBB0_120
 # %bb.109:
 	pcalau12i	$a0, %pc_hi20(.L.str.80)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.80)
@@ -954,8 +953,7 @@ main:                                   # @main
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(dup2)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_128
+	bltz	$a0, .LBB0_128
 # %bb.116:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(fclose)
@@ -976,8 +974,7 @@ main:                                   # @main
 	ori	$a1, $zero, 1
 	pcaddu18i	$ra, %call36(dup2)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_80
+	bgez	$a0, .LBB0_80
 	b	.LBB0_128
 .LBB0_119:
 	pcalau12i	$a1, %pc_hi20(.L.str.87)
@@ -1025,8 +1022,7 @@ main:                                   # @main
 	ori	$a1, $zero, 2
 	pcaddu18i	$ra, %call36(dup2)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_81
+	bgez	$a0, .LBB0_81
 	b	.LBB0_128
 .LBB0_123:
 	pcalau12i	$a0, %pc_hi20(.L.str.71)

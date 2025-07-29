@@ -279,19 +279,19 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception1
 # %bb.0:
-	addi.d	$sp, $sp, -192
-	.cfi_def_cfa_offset 192
-	st.d	$ra, $sp, 184                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 128                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 120                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -176
+	.cfi_def_cfa_offset 176
+	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 112                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 104                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 88                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -303,23 +303,20 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
 	.cfi_offset 31, -88
-	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 	addi.w	$s6, $zero, -1
 	st.w	$s6, $a0, 16
 	st.d	$s6, $a0, 8
 	st.d	$s6, $a0, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	st.b	$zero, $a0, 20
-	blt	$a3, $a1, .LBB2_127
+	blez	$a3, .LBB2_127
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a3
-	move	$s1, $a2
-	move	$s8, $zero
+	move	$s8, $a2
+	move	$s1, $a1
+	move	$s7, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 32                   # 16-byte Folded Spill
-	ori	$s7, $zero, 0
-	lu32i.d	$s7, 1
 	lu12i.w	$a0, -524176
 	ori	$a0, $a0, 87
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -339,19 +336,18 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #     Child Loop BB2_52 Depth 2
                                         #     Child Loop BB2_64 Depth 2
                                         #     Child Loop BB2_43 Depth 2
-	slli.d	$a0, $s8, 3
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
-	ldx.d	$s3, $a1, $a0
+	slli.d	$a0, $s7, 3
+	ldx.d	$s3, $s1, $a0
 	vld	$vr0, $sp, 32                   # 16-byte Folded Reload
-	vst	$vr0, $sp, 88
+	vst	$vr0, $sp, 72
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(wcslen)
 	jirl	$ra, $ra, 0
 	move	$s4, $a0
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$s0, $a0, 1
-	and	$a0, $s0, $s7
-	beqz	$a0, .LBB2_4
+	slli.d	$a0, $s0, 31
+	bgez	$a0, .LBB2_4
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
 	move	$a0, $zero
 	b	.LBB2_5
@@ -366,9 +362,9 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $sp, 88
+	st.d	$a0, $sp, 72
 	st.w	$zero, $a0, 0
-	st.w	$s0, $sp, 100
+	st.w	$s0, $sp, 84
 .LBB2_5:                                # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i
                                         #   in Loop: Header=BB2_2 Depth=1
 	move	$a1, $zero
@@ -381,24 +377,24 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	bnez	$a2, .LBB2_6
 # %bb.7:                                # %_ZN11CStringBaseIwEC2EPKw.exit
                                         #   in Loop: Header=BB2_2 Depth=1
-	st.w	$s4, $sp, 96
+	st.w	$s4, $sp, 80
 .Ltmp21:
 	pcaddu18i	$ra, %call36(_Z13MyStringUpperPw)
 	jirl	$ra, $ra, 0
 .Ltmp22:
 # %bb.8:                                # %_ZN11CStringBaseIwE9MakeUpperEv.exit
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$s2, $sp, 96
-	beqz	$s2, .LBB2_33
+	ld.w	$s0, $sp, 80
+	beqz	$s0, .LBB2_33
 # %bb.9:                                #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$s5, $sp, 88
+	ld.d	$s5, $sp, 72
 	ld.w	$a0, $s5, 0
-	alsl.d	$s3, $s8, $s1, 4
+	alsl.d	$s3, $s7, $s8, 4
 	ori	$a1, $zero, 88
 	bne	$a0, $a1, .LBB2_13
 # %bb.10:                               #   in Loop: Header=BB2_2 Depth=1
 	ori	$a0, $zero, 9
-	st.w	$a0, $sp, 84
+	st.w	$a0, $sp, 68
 .Ltmp84:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -406,23 +402,23 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp85:
 # %bb.11:                               # %.noexc
                                         #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$s0, $s2, -1
-	st.d	$a0, $sp, 64
+	addi.w	$s2, $s0, -1
+	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 76
-	bne	$s2, $a1, .LBB2_37
+	st.w	$a1, $sp, 60
+	bne	$s0, $a1, .LBB2_37
 # %bb.12:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	bstrpick.d	$a0, $s0, 31, 0
+	bstrpick.d	$a0, $s2, 31, 0
 	ori	$a1, $zero, 9
-	bgeu	$s2, $a1, .LBB2_40
+	bgeu	$s0, $a1, .LBB2_40
 	b	.LBB2_41
 	.p2align	4, , 16
 .LBB2_13:                               #   in Loop: Header=BB2_2 Depth=1
 .Ltmp24:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	ori	$a3, $zero, 1
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
@@ -430,7 +426,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp25:
 # %bb.14:                               # %_ZNK11CStringBaseIwE4LeftEi.exit
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 .Ltmp27:
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
@@ -439,7 +435,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp28:
 # %bb.15:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_17
 # %bb.16:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -449,8 +445,8 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	beqz	$s4, .LBB2_44
 # %bb.18:                               #   in Loop: Header=BB2_2 Depth=1
 .Ltmp30:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	ori	$a3, $zero, 4
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
@@ -458,7 +454,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp31:
 # %bb.19:                               # %_ZNK11CStringBaseIwE4LeftEi.exit127
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 .Ltmp33:
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
@@ -467,7 +463,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp34:
 # %bb.20:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_22
 # %bb.21:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -477,8 +473,8 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	beqz	$s4, .LBB2_54
 # %bb.23:                               #   in Loop: Header=BB2_2 Depth=1
 .Ltmp36:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	ori	$a3, $zero, 2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
@@ -486,7 +482,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp37:
 # %bb.24:                               # %_ZNK11CStringBaseIwE4LeftEi.exit134
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 .Ltmp39:
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.2)
@@ -495,7 +491,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp40:
 # %bb.25:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_27
 # %bb.26:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -505,8 +501,8 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	beqz	$s4, .LBB2_71
 # %bb.28:                               #   in Loop: Header=BB2_2 Depth=1
 .Ltmp42:
-	addi.d	$a0, $sp, 64
-	addi.d	$a1, $sp, 88
+	addi.d	$a0, $sp, 48
+	addi.d	$a1, $sp, 72
 	ori	$a3, $zero, 2
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(_ZNK11CStringBaseIwE3MidEii)
@@ -514,7 +510,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp43:
 # %bb.29:                               # %_ZNK11CStringBaseIwE4LeftEi.exit141
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 .Ltmp45:
 	pcalau12i	$a1, %pc_hi20(.L.str.3)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.3)
@@ -523,7 +519,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp46:
 # %bb.30:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_32
 # %bb.31:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -536,7 +532,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	move	$s0, $zero
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB2_35
 .LBB2_34:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -545,13 +541,13 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	beqz	$s0, .LBB2_128
 # %bb.36:                               #   in Loop: Header=BB2_2 Depth=1
-	addi.d	$s8, $s8, 1
-	bne	$s8, $fp, .LBB2_2
+	addi.d	$s7, $s7, 1
+	bne	$s7, $fp, .LBB2_2
 	b	.LBB2_127
 .LBB2_37:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s5, $a0
-	slti	$a0, $s2, 0
-	slli.d	$a1, $s2, 2
+	slti	$a0, $s0, 0
+	slli.d	$a1, $s0, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$a0, $a0, $a1
@@ -565,17 +561,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
-	st.d	$s4, $sp, 64
+	st.d	$s4, $sp, 48
 	st.w	$zero, $s4, 0
-	st.w	$s2, $sp, 76
+	st.w	$s0, $sp, 60
 	ori	$a0, $zero, 2
-	blt	$s2, $a0, .LBB2_53
+	blt	$s0, $a0, .LBB2_53
 # %bb.39:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i150..lr.ph.i_crit_edge
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$s5, $sp, 88
-	bstrpick.d	$a0, $s0, 31, 0
+	ld.d	$s5, $sp, 72
+	bstrpick.d	$a0, $s2, 31, 0
 	ori	$a1, $zero, 9
-	bltu	$s2, $a1, .LBB2_41
+	bltu	$s0, $a1, .LBB2_41
 .LBB2_40:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_2 Depth=1
 	sub.d	$a1, $s4, $s5
@@ -600,9 +596,9 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	bnez	$a3, .LBB2_43
 	b	.LBB2_66
 .LBB2_44:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$s2, $sp, 96
+	ld.w	$s0, $sp, 80
 	ori	$a0, $zero, 1
-	st.w	$a0, $sp, 84
+	st.w	$a0, $sp, 68
 .Ltmp75:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -610,16 +606,16 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp76:
 # %bb.45:                               # %.noexc162
                                         #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$s0, $s2, -1
-	st.d	$a0, $sp, 64
+	addi.w	$s2, $s0, -1
+	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 76
-	beq	$s2, $a1, .LBB2_48
+	st.w	$a1, $sp, 60
+	beq	$s0, $a1, .LBB2_48
 # %bb.46:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	slti	$a0, $s2, 0
-	slli.d	$a1, $s2, 2
+	slti	$a0, $s0, 0
+	slli.d	$a1, $s0, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$a0, $a0, $a1
@@ -634,17 +630,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
-	st.d	$s5, $sp, 64
+	st.d	$s5, $sp, 48
 	st.w	$zero, $s5, 0
-	st.w	$s2, $sp, 76
+	st.w	$s0, $sp, 60
 	ori	$a1, $zero, 1
-	bge	$a1, $s2, .LBB2_80
+	bge	$a1, $s0, .LBB2_80
 .LBB2_48:                               # %.lr.ph.i157
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a2, $sp, 88
-	bstrpick.d	$a1, $s0, 31, 0
+	ld.d	$a2, $sp, 72
+	bstrpick.d	$a1, $s2, 31, 0
 	ori	$a3, $zero, 8
-	bltu	$s0, $a3, .LBB2_50
+	bltu	$s2, $a3, .LBB2_50
 # %bb.49:                               # %vector.memcheck266
                                         #   in Loop: Header=BB2_2 Depth=1
 	sub.d	$a3, $a0, $a2
@@ -670,12 +666,12 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_94
 .LBB2_53:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i
                                         #   in Loop: Header=BB2_2 Depth=1
-	move	$a0, $s0
+	move	$a0, $s2
 	b	.LBB2_66
 .LBB2_54:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$s2, $sp, 96
+	ld.w	$s0, $sp, 80
 	ori	$a0, $zero, 10
-	st.w	$a0, $sp, 84
+	st.w	$a0, $sp, 68
 .Ltmp66:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -683,17 +679,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp67:
 # %bb.55:                               # %.noexc177
                                         #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$s0, $s2, -4
-	st.d	$a0, $sp, 64
+	addi.w	$s2, $s0, -4
+	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
-	addi.w	$s1, $s2, -3
+	addi.w	$s8, $s0, -3
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 76
-	beq	$s1, $a1, .LBB2_58
+	st.w	$a1, $sp, 60
+	beq	$s8, $a1, .LBB2_58
 # %bb.56:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	slti	$a0, $s2, 3
-	slli.d	$a1, $s1, 2
+	slti	$a0, $s0, 3
+	slli.d	$a1, $s8, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$a0, $a0, $a1
@@ -708,17 +704,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
-	st.d	$s5, $sp, 64
+	st.d	$s5, $sp, 48
 	st.w	$zero, $s5, 0
-	st.w	$s1, $sp, 76
+	st.w	$s8, $sp, 60
 	ori	$a1, $zero, 4
-	bge	$a1, $s2, .LBB2_99
+	bge	$a1, $s0, .LBB2_99
 .LBB2_58:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 88
-	bstrpick.d	$a1, $s0, 31, 0
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72
+	bstrpick.d	$a1, $s2, 31, 0
 	ori	$a3, $zero, 8
-	bltu	$s0, $a3, .LBB2_60
+	bltu	$s2, $a3, .LBB2_60
 # %bb.59:                               # %vector.memcheck281
                                         #   in Loop: Header=BB2_2 Depth=1
 	sub.d	$a3, $a0, $a2
@@ -769,17 +765,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a0, $a0, 2
 	stx.w	$zero, $s4, $a0
-	st.w	$s0, $sp, 72
+	st.w	$s2, $sp, 56
 .Ltmp90:
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 84
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 68
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp91:
 # %bb.67:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s3, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_69
 # %bb.68:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -788,17 +784,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	bnez	$s3, .LBB2_125
 # %bb.70:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$a0, $sp, 84
+	ld.w	$a0, $sp, 68
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
 	ori	$s0, $zero, 1
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB2_34
 	b	.LBB2_35
 .LBB2_71:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$s2, $sp, 96
+	ld.w	$s0, $sp, 80
 	ori	$a0, $zero, 128
-	st.w	$a0, $sp, 84
+	st.w	$a0, $sp, 68
 .Ltmp57:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -806,17 +802,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp58:
 # %bb.72:                               # %.noexc192
                                         #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$s0, $s2, -2
-	st.d	$a0, $sp, 64
+	addi.w	$s2, $s0, -2
+	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
-	addi.w	$s1, $s2, -1
+	addi.w	$s8, $s0, -1
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 76
-	beq	$s1, $a1, .LBB2_75
+	st.w	$a1, $sp, 60
+	beq	$s8, $a1, .LBB2_75
 # %bb.73:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s4, $a0
-	slti	$a0, $s2, 1
-	slli.d	$a1, $s1, 2
+	slti	$a0, $s0, 1
+	slli.d	$a1, $s8, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$a0, $a0, $a1
@@ -831,17 +827,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
-	st.d	$s5, $sp, 64
+	st.d	$s5, $sp, 48
 	st.w	$zero, $s5, 0
-	st.w	$s1, $sp, 76
+	st.w	$s8, $sp, 60
 	ori	$a1, $zero, 2
-	bge	$a1, $s2, .LBB2_108
+	bge	$a1, $s0, .LBB2_108
 .LBB2_75:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
-	ld.d	$a2, $sp, 88
-	bstrpick.d	$a1, $s0, 31, 0
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a2, $sp, 72
+	bstrpick.d	$a1, $s2, 31, 0
 	ori	$a3, $zero, 8
-	bltu	$s0, $a3, .LBB2_77
+	bltu	$s2, $a3, .LBB2_77
 # %bb.76:                               # %vector.memcheck296
                                         #   in Loop: Header=BB2_2 Depth=1
 	sub.d	$a3, $a0, $a2
@@ -867,13 +863,13 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_112
 .LBB2_80:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i154
                                         #   in Loop: Header=BB2_2 Depth=1
-	move	$a1, $s0
+	move	$a1, $s2
 	b	.LBB2_94
 .LBB2_81:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$s2, $sp, 96
+	ld.w	$s0, $sp, 80
 	move	$a0, $s6
 	lu32i.d	$a0, 0
-	st.w	$a0, $sp, 84
+	st.w	$a0, $sp, 68
 .Ltmp48:
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znam)
@@ -881,18 +877,18 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .Ltmp49:
 # %bb.82:                               # %.noexc207
                                         #   in Loop: Header=BB2_2 Depth=1
-	addi.w	$a7, $s2, -2
-	st.d	$a0, $sp, 64
+	addi.w	$a7, $s0, -2
+	st.d	$a0, $sp, 48
 	st.w	$zero, $a0, 0
-	addi.w	$s0, $s2, -1
+	addi.w	$s2, $s0, -1
 	ori	$a1, $zero, 4
-	st.w	$a1, $sp, 76
-	beq	$s0, $a1, .LBB2_86
+	st.w	$a1, $sp, 60
+	beq	$s2, $a1, .LBB2_86
 # %bb.83:                               #   in Loop: Header=BB2_2 Depth=1
-	move	$s1, $a7
+	move	$s8, $a7
 	move	$s4, $a0
-	slti	$a0, $s2, 1
-	slli.d	$a1, $s0, 2
+	slti	$a0, $s0, 1
+	slli.d	$a1, $s2, 2
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s6, $a0
 	or	$a0, $a0, $a1
@@ -907,17 +903,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	pcaddu18i	$ra, %call36(_ZdaPv)
 	jirl	$ra, $ra, 0
 	move	$a0, $s5
-	st.d	$s5, $sp, 64
+	st.d	$s5, $sp, 48
 	st.w	$zero, $s5, 0
-	st.w	$s0, $sp, 76
+	st.w	$s2, $sp, 60
 	ori	$a1, $zero, 2
-	bge	$a1, $s2, .LBB2_117
+	bge	$a1, $s0, .LBB2_117
 # %bb.85:                               #   in Loop: Header=BB2_2 Depth=1
-	move	$a7, $s1
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	move	$a7, $s8
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 .LBB2_86:                               # %.lr.ph.i202
                                         #   in Loop: Header=BB2_2 Depth=1
-	ld.d	$a2, $sp, 88
+	ld.d	$a2, $sp, 72
 	bstrpick.d	$a1, $a7, 31, 0
 	ori	$a3, $zero, 8
 	bltu	$a7, $a3, .LBB2_88
@@ -970,17 +966,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a0, $a1
-	st.w	$s0, $sp, 72
+	st.w	$s2, $sp, 56
 .Ltmp81:
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 84
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 68
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp82:
 # %bb.95:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s3, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_97
 # %bb.96:                               #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -989,17 +985,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	bnez	$s3, .LBB2_125
 # %bb.98:                               #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$a0, $sp, 84
+	ld.w	$a0, $sp, 68
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 12
 	ori	$s0, $zero, 1
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB2_34
 	b	.LBB2_35
 .LBB2_99:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i169
                                         #   in Loop: Header=BB2_2 Depth=1
-	move	$a1, $s0
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	move	$a1, $s2
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 	b	.LBB2_103
 .LBB2_100:                              # %vector.ph285
                                         #   in Loop: Header=BB2_2 Depth=1
@@ -1027,17 +1023,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a0, $a1
-	st.w	$s0, $sp, 72
+	st.w	$s2, $sp, 56
 .Ltmp72:
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 84
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 68
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp73:
 # %bb.104:                              #   in Loop: Header=BB2_2 Depth=1
 	move	$s3, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_106
 # %bb.105:                              #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1046,17 +1042,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	bnez	$s3, .LBB2_125
 # %bb.107:                              #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$a0, $sp, 84
+	ld.w	$a0, $sp, 68
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 4
 	ori	$s0, $zero, 1
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB2_34
 	b	.LBB2_35
 .LBB2_108:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i184
                                         #   in Loop: Header=BB2_2 Depth=1
-	move	$a1, $s0
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	move	$a1, $s2
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 	b	.LBB2_112
 .LBB2_109:                              # %vector.ph300
                                         #   in Loop: Header=BB2_2 Depth=1
@@ -1084,17 +1080,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a0, $a1
-	st.w	$s0, $sp, 72
+	st.w	$s2, $sp, 56
 .Ltmp63:
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 84
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 68
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp64:
 # %bb.113:                              #   in Loop: Header=BB2_2 Depth=1
 	move	$s3, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_115
 # %bb.114:                              #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1103,18 +1099,18 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	bnez	$s3, .LBB2_125
 # %bb.116:                              #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$a0, $sp, 84
+	ld.w	$a0, $sp, 68
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 8
 	ori	$s0, $zero, 1
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB2_34
 	b	.LBB2_35
 .LBB2_117:                              # %_ZN11CStringBaseIwE11SetCapacityEi.exit.._crit_edge_crit_edge.i199
                                         #   in Loop: Header=BB2_2 Depth=1
-	move	$a7, $s1
-	move	$a1, $s1
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	move	$a7, $s8
+	move	$a1, $s8
+	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 	b	.LBB2_121
 .LBB2_118:                              # %vector.ph315
                                         #   in Loop: Header=BB2_2 Depth=1
@@ -1142,17 +1138,17 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a0, $a1
-	st.w	$a7, $sp, 72
+	st.w	$a7, $sp, 56
 .Ltmp54:
-	addi.d	$a0, $sp, 64
-	addi.d	$a2, $sp, 84
+	addi.d	$a0, $sp, 48
+	addi.d	$a2, $sp, 68
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(_Z14ParsePropValueRK11CStringBaseIwERK14tagPROPVARIANTRj)
 	jirl	$ra, $ra, 0
 .Ltmp55:
 # %bb.122:                              #   in Loop: Header=BB2_2 Depth=1
 	move	$s3, $a0
-	ld.d	$a0, $sp, 64
+	ld.d	$a0, $sp, 48
 	beqz	$a0, .LBB2_124
 # %bb.123:                              #   in Loop: Header=BB2_2 Depth=1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1165,16 +1161,16 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
                                         #   in Loop: Header=BB2_2 Depth=1
 	move	$s0, $zero
 	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB2_34
 	b	.LBB2_35
 .LBB2_126:                              #   in Loop: Header=BB2_2 Depth=1
-	ld.w	$a0, $sp, 84
+	ld.w	$a0, $sp, 68
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 16
 	ori	$s0, $zero, 1
 	st.b	$s0, $a1, 20
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	bnez	$a0, .LBB2_34
 	b	.LBB2_35
 .LBB2_127:
@@ -1184,18 +1180,18 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 .LBB2_129:                              # %._crit_edge
 	addi.w	$a0, $a0, 0
-	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 184                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 192
+	ld.d	$s8, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 176
 	ret
 .LBB2_130:                              # %_ZN11CStringBaseIwED2Ev.exit.i197
 .Ltmp53:
@@ -1213,7 +1209,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_157
 .LBB2_132:
 .Ltmp56:
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $a0
 	bnez	$a1, .LBB2_154
 	b	.LBB2_157
@@ -1229,7 +1225,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_157
 .LBB2_135:
 .Ltmp65:
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $a0
 	bnez	$a1, .LBB2_154
 	b	.LBB2_157
@@ -1245,7 +1241,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_157
 .LBB2_138:
 .Ltmp74:
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $a0
 	bnez	$a1, .LBB2_154
 	b	.LBB2_157
@@ -1260,7 +1256,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_156
 .LBB2_142:
 .Ltmp83:
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $a0
 	bnez	$a1, .LBB2_154
 	b	.LBB2_157
@@ -1292,7 +1288,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .LBB2_150:
 .Ltmp29:
 .LBB2_151:
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $a0
 	bnez	$a1, .LBB2_154
 	b	.LBB2_157
@@ -1301,7 +1297,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 	b	.LBB2_156
 .LBB2_153:
 .Ltmp92:
-	ld.d	$a1, $sp, 64
+	ld.d	$a1, $sp, 48
 	move	$fp, $a0
 	beqz	$a1, .LBB2_157
 .LBB2_154:
@@ -1314,7 +1310,7 @@ _ZN8NArchive13CDeflateProps13SetPropertiesEPPKwPK14tagPROPVARIANTi: # @_ZN8NArch
 .LBB2_156:
 	move	$fp, $a0
 .LBB2_157:
-	ld.d	$a0, $sp, 88
+	ld.d	$a0, $sp, 72
 	beqz	$a0, .LBB2_159
 # %bb.158:
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1555,11 +1551,9 @@ _ZNK11CStringBaseIwE3MidEii:            # @_ZNK11CStringBaseIwE3MidEii
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s1, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s1, $a0
+	slli.d	$a0, $s1, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB4_13
+	bgez	$a0, .LBB4_13
 # %bb.3:
 	move	$a0, $zero
 	b	.LBB4_14

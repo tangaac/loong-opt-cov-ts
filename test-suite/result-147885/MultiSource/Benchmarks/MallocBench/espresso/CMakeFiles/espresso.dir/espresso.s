@@ -27,8 +27,8 @@ espresso:                               # @espresso
 	pcalau12i	$a0, %got_pc_hi20(unwrap_onset)
 	ld.d	$s6, $a0, %got_pc_lo12(unwrap_onset)
 	lu12i.w	$a0, -9
-	ori	$s8, $a0, 4095
-	lu32i.d	$s8, 0
+	ori	$s7, $a0, 4095
+	lu32i.d	$s7, 0
 	pcalau12i	$a0, %got_pc_hi20(single_expand)
 	ld.d	$a0, $a0, %got_pc_lo12(single_expand)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
@@ -36,11 +36,11 @@ espresso:                               # @espresso
 	ld.d	$a0, $a0, %got_pc_lo12(remove_essential)
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(cube)
-	ld.d	$s7, $a0, %got_pc_lo12(cube)
+	ld.d	$s2, $a0, %got_pc_lo12(cube)
 	pcalau12i	$a0, %got_pc_hi20(use_super_gasp)
 	ld.d	$s5, $a0, %got_pc_lo12(use_super_gasp)
 	pcalau12i	$a0, %got_pc_hi20(trace)
-	ld.d	$s2, $a0, %got_pc_lo12(trace)
+	ld.d	$s8, $a0, %got_pc_lo12(trace)
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
@@ -75,7 +75,7 @@ espresso:                               # @espresso
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(simplify)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s8, 0
 	move	$s3, $a0
 	beqz	$a1, .LBB0_4
 # %bb.3:                                #   in Loop: Header=BB0_1 Depth=1
@@ -105,8 +105,8 @@ espresso:                               # @espresso
 	ld.w	$a0, $s6, 0
 	beqz	$a0, .LBB0_12
 # %bb.7:                                #   in Loop: Header=BB0_1 Depth=1
-	ld.d	$a0, $s7, 32
-	ld.w	$a1, $s7, 4
+	ld.d	$a0, $s2, 32
+	ld.w	$a1, $s2, 4
 	alsl.d	$a0, $a1, $a0, 2
 	ld.w	$a0, $a0, -4
 	ori	$a1, $zero, 2
@@ -122,7 +122,7 @@ espresso:                               # @espresso
 # %bb.10:                               #   in Loop: Header=BB0_1 Depth=1
 	pcaddu18i	$ra, %call36(util_cpu_time)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s7, 4
+	ld.w	$a1, $s2, 4
 	ld.d	$a2, $sp, 112
 	move	$s3, $a0
 	addi.w	$a1, $a1, -1
@@ -131,7 +131,7 @@ espresso:                               # @espresso
 	jirl	$ra, $ra, 0
 	pcaddu18i	$ra, %call36(sf_contain)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s8, 0
 	st.d	$a0, $sp, 112
 	beqz	$a1, .LBB0_12
 # %bb.11:                               #   in Loop: Header=BB0_1 Depth=1
@@ -150,8 +150,7 @@ espresso:                               # @espresso
 	ld.w	$a1, $a0, 12
 	ld.w	$a2, $a0, 0
 	mul.w	$a2, $a2, $a1
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB0_15
+	blez	$a2, .LBB0_15
 # %bb.13:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_1 Depth=1
 	ld.d	$a1, $a0, 24
@@ -161,7 +160,7 @@ espresso:                               # @espresso
                                         #   Parent Loop BB0_1 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.wu	$a3, $a1, 0
-	and	$a3, $a3, $s8
+	and	$a3, $a3, $s7
 	st.w	$a3, $a1, 0
 	ld.w	$a3, $a0, 0
 	alsl.d	$a1, $a3, $a1, 2
@@ -223,7 +222,7 @@ espresso:                               # @espresso
 	jirl	$ra, $ra, 0
 	b	.LBB0_19
 .LBB0_18:                               #   in Loop: Header=BB0_1 Depth=1
-	ld.w	$a1, $s7, 0
+	ld.w	$a1, $s2, 0
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(sf_new)
 	jirl	$ra, $ra, 0
@@ -329,7 +328,7 @@ espresso:                               # @espresso
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(sf_append)
 	jirl	$ra, $ra, 0
-	ld.w	$a1, $s2, 0
+	ld.w	$a1, $s8, 0
 	st.d	$a0, $sp, 112
 	beqz	$a1, .LBB0_29
 # %bb.28:                               #   in Loop: Header=BB0_1 Depth=1

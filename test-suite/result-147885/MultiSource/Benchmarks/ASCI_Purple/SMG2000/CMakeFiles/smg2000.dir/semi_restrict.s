@@ -170,8 +170,8 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	st.d	$fp, $sp, 128                   # 8-byte Folded Spill
 	addi.d	$a5, $fp, 36
 	st.d	$a5, $sp, 208                   # 8-byte Folded Spill
-	ld.d	$s0, $a1, 0
-	ld.d	$s2, $a2, 16
+	ld.d	$fp, $a1, 0
+	ld.d	$s1, $a2, 16
 	ld.d	$a1, $a3, 8
 	st.d	$a1, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$a1, $a3, 16
@@ -181,10 +181,10 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
 	addi.d	$a1, $a4, 16
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	ori	$s1, $zero, 16
 	ori	$a2, $zero, 1
-	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	ori	$s0, $zero, 16
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB2_2
 	.p2align	4, , 16
 .LBB2_1:                                # %._crit_edge560
@@ -212,8 +212,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a7, $a1, 8
-	ori	$a1, $zero, 1
-	bge	$a7, $a1, .LBB2_5
+	bgtz	$a7, .LBB2_5
 	b	.LBB2_1
 	.p2align	4, , 16
 .LBB2_4:                                #   in Loop: Header=BB2_2 Depth=1
@@ -226,8 +225,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a7, $a1, 8
-	ori	$a1, $zero, 1
-	blt	$a7, $a1, .LBB2_1
+	blez	$a7, .LBB2_1
 .LBB2_5:                                # %.preheader383.preheader
                                         #   in Loop: Header=BB2_2 Depth=1
 	ld.d	$a0, $a0, 0
@@ -240,8 +238,8 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
                                         #   in Loop: Header=BB2_8 Depth=2
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a7, $a0, 8
-	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$t6, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$t7, $sp, 112                   # 8-byte Folded Reload
 .LBB2_7:                                # %._crit_edge556
@@ -271,7 +269,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 .LBB2_9:                                #   Parent Loop BB2_2 Depth=1
                                         #     Parent Loop BB2_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ldx.w	$a3, $s2, $a2
+	ldx.w	$a3, $s1, $a2
 	addi.d	$t0, $t0, 8
 	addi.d	$a2, $a2, 4
 	addi.w	$t7, $t7, 1
@@ -281,19 +279,19 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	ld.d	$a4, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a1, $a4, 40
 	ld.d	$a3, $a4, 64
-	ld.d	$s3, $a1, 0
+	ld.d	$s2, $a1, 0
 	ld.d	$a1, $a4, 48
 	ldx.d	$a6, $a3, $t0
-	ld.w	$a3, $s0, 12
-	ld.w	$a4, $s0, 16
-	ld.w	$a5, $s0, 20
-	add.d	$s4, $s3, $t8
+	ld.w	$a3, $fp, 12
+	ld.w	$a4, $fp, 16
+	ld.w	$a5, $fp, 20
+	add.d	$s3, $s2, $t8
 	ld.d	$t1, $sp, 88                    # 8-byte Folded Reload
 	beqz	$t1, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_8 Depth=2
 	ld.w	$t1, $a6, 4
-	ld.w	$t2, $s4, 4
-	ld.w	$t3, $s4, -8
+	ld.w	$t2, $s3, 4
+	ld.w	$t3, $s3, -8
 	alsl.d	$t1, $t1, $a1, 3
 	sub.w	$t2, $t2, $t3
 	addi.w	$t3, $zero, -1
@@ -301,8 +299,8 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	maskeqz	$t2, $t2, $t4
 	masknez	$t4, $t3, $t4
 	or	$t2, $t2, $t4
-	ldx.w	$t4, $s3, $t8
-	ld.w	$t5, $s4, -12
+	ldx.w	$t4, $s2, $t8
+	ld.w	$t5, $s3, -12
 	addi.d	$t2, $t2, 1
 	mul.d	$t2, $t2, $a5
 	add.d	$t2, $t2, $a4
@@ -315,12 +313,12 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	mul.d	$t2, $t2, $t3
 	add.w	$t2, $t2, $a3
 	slli.d	$t2, $t2, 3
-	sub.d	$fp, $t1, $t2
+	sub.d	$s8, $t1, $t2
 	b	.LBB2_13
 	.p2align	4, , 16
 .LBB2_12:                               #   in Loop: Header=BB2_8 Depth=2
 	ld.w	$t1, $a6, 0
-	alsl.d	$fp, $t1, $a1, 3
+	alsl.d	$s8, $t1, $a1, 3
 	addi.d	$a6, $a6, 4
 .LBB2_13:                               # %.split
                                         #   in Loop: Header=BB2_8 Depth=2
@@ -328,12 +326,11 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	ld.d	$t1, $t1, 0
 	ldx.d	$s6, $t1, $t0
 	ld.w	$t0, $s6, 8
-	ori	$t1, $zero, 1
-	blt	$t0, $t1, .LBB2_7
+	blez	$t0, .LBB2_7
 # %bb.14:                               # %.lr.ph
                                         #   in Loop: Header=BB2_8 Depth=2
-	st.d	$s4, $sp, 168                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 168                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 176                   # 8-byte Folded Spill
 	st.d	$t7, $sp, 112                   # 8-byte Folded Spill
 	ld.d	$t5, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a7, $t5, 16
@@ -342,7 +339,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	ld.d	$t3, $a7, 0
 	move	$t7, $zero
 	ld.d	$a7, $t0, 0
-	add.d	$s2, $t3, $t8
+	add.d	$s1, $t3, $t8
 	slli.d	$t0, $t6, 4
 	st.d	$t6, $sp, 120                   # 8-byte Folded Spill
 	alsl.d	$t0, $t6, $t0, 3
@@ -350,11 +347,11 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	st.d	$a7, $sp, 144                   # 8-byte Folded Spill
 	ld.d	$a7, $t5, 40
 	ld.w	$a6, $a6, 0
-	ld.w	$t0, $s2, 4
-	ld.w	$t1, $s2, -8
+	ld.w	$t0, $s1, 4
+	ld.w	$t1, $s1, -8
 	add.d	$a2, $a7, $a2
-	ld.w	$a7, $s0, 4
-	ld.w	$t2, $s0, 8
+	ld.w	$a7, $fp, 4
+	ld.w	$t2, $fp, 8
 	sub.w	$t0, $t0, $t1
 	addi.w	$t6, $zero, -1
 	slt	$t1, $t6, $t0
@@ -365,8 +362,8 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	st.d	$t8, $sp, 184                   # 8-byte Folded Spill
 	st.d	$t3, $sp, 160                   # 8-byte Folded Spill
 	ldx.w	$t1, $t3, $t8
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
-	ld.w	$t3, $s2, -12
+	st.d	$s1, $sp, 152                   # 8-byte Folded Spill
+	ld.w	$t3, $s1, -12
 	mul.d	$t2, $t0, $t2
 	add.d	$a7, $t2, $a7
 	ld.d	$t2, $t5, 24
@@ -381,22 +378,22 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	mul.d	$a5, $a5, $t0
 	ld.d	$t0, $t4, 24
 	ldx.w	$a0, $t3, $a0
-	ld.w	$t3, $s0, 0
+	ld.w	$t3, $fp, 0
 	addi.d	$t1, $t1, 1
 	add.d	$a4, $a5, $a4
-	alsl.d	$s2, $a0, $t0, 3
+	alsl.d	$s1, $a0, $t0, 3
 	alsl.d	$s5, $a2, $t2, 3
 	mul.d	$a0, $a4, $t1
 	add.w	$a0, $a3, $a0
-	slli.d	$s4, $a0, 3
+	slli.d	$fp, $a0, 3
 	alsl.d	$a0, $a0, $s5, 3
 	st.d	$a0, $sp, 272                   # 8-byte Folded Spill
 	mul.d	$a0, $a7, $t1
 	add.w	$a0, $t3, $a0
-	slli.d	$s0, $a0, 3
+	slli.d	$s2, $a0, 3
 	alsl.d	$a0, $a0, $s5, 3
 	st.d	$a0, $sp, 264                   # 8-byte Folded Spill
-	alsl.d	$s7, $a6, $a1, 3
+	alsl.d	$s4, $a6, $a1, 3
 	st.d	$s6, $sp, 200                   # 8-byte Folded Spill
 	b	.LBB2_16
 	.p2align	4, , 16
@@ -414,12 +411,12 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
                                         #           Child Loop BB2_24 Depth 5
                                         #             Child Loop BB2_31 Depth 6
                                         #             Child Loop BB2_35 Depth 6
-	ld.d	$s8, $s6, 0
+	ld.d	$s7, $s6, 0
 	slli.d	$a0, $t7, 4
 	st.d	$t7, $sp, 216                   # 8-byte Folded Spill
 	alsl.d	$a0, $t7, $a0, 3
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
-	add.d	$s6, $s8, $a0
+	add.d	$s6, $s7, $a0
 	addi.d	$a3, $sp, 280
 	move	$a0, $s6
 	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
@@ -444,21 +441,17 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	st.d	$a4, $sp, 248                   # 8-byte Folded Spill
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_15
+	blez	$a2, .LBB2_15
 # %bb.17:                               # %.preheader382.lr.ph
                                         #   in Loop: Header=BB2_16 Depth=3
-	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 248                   # 8-byte Folded Reload
-	blt	$a3, $a2, .LBB2_15
+	ld.d	$a2, $sp, 248                   # 8-byte Folded Reload
+	blez	$a2, .LBB2_15
 # %bb.18:                               # %.preheader382.lr.ph
                                         #   in Loop: Header=BB2_16 Depth=3
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_15
+	blez	$a1, .LBB2_15
 # %bb.19:                               # %.preheader382.lr.ph
                                         #   in Loop: Header=BB2_16 Depth=3
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_15
+	blez	$a0, .LBB2_15
 # %bb.20:                               # %.preheader381.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB2_16 Depth=3
 	st.d	$zero, $sp, 256                 # 8-byte Folded Spill
@@ -494,7 +487,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	mul.d	$a3, $a4, $t3
 	add.w	$a4, $t1, $a3
 	ld.d	$a3, $sp, 240                   # 8-byte Folded Reload
-	ldx.w	$a3, $s8, $a3
+	ldx.w	$a3, $s7, $a3
 	ld.d	$t6, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a5, $t6, -12
 	ld.w	$t1, $s6, 4
@@ -626,46 +619,46 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	beqz	$t6, .LBB2_33
 # %bb.25:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_24 Depth=5
-	alsl.d	$a3, $a6, $s2, 3
+	alsl.d	$a3, $a6, $s1, 3
 	ld.d	$t5, $sp, 272                   # 8-byte Folded Reload
 	alsl.d	$t5, $a5, $t5, 3
 	sub.d	$t5, $a3, $t5
 	move	$t7, $zero
-	bltu	$t5, $s1, .LBB2_34
+	bltu	$t5, $s0, .LBB2_34
 # %bb.26:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_24 Depth=5
 	ld.d	$t5, $sp, 264                   # 8-byte Folded Reload
 	alsl.d	$t5, $a5, $t5, 3
 	sub.d	$t5, $a3, $t5
-	bltu	$t5, $s1, .LBB2_34
+	bltu	$t5, $s0, .LBB2_34
 # %bb.27:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_24 Depth=5
 	alsl.d	$t5, $a5, $s5, 3
 	sub.d	$t5, $a3, $t5
-	bltu	$t5, $s1, .LBB2_34
+	bltu	$t5, $s0, .LBB2_34
 # %bb.28:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_24 Depth=5
-	alsl.d	$t5, $a4, $s7, 3
+	alsl.d	$t5, $a4, $s4, 3
 	sub.d	$t5, $a3, $t5
-	bltu	$t5, $s1, .LBB2_34
+	bltu	$t5, $s0, .LBB2_34
 # %bb.29:                               # %vector.memcheck
                                         #   in Loop: Header=BB2_24 Depth=5
-	alsl.d	$t5, $a4, $fp, 3
+	alsl.d	$t5, $a4, $s8, 3
 	sub.d	$a3, $a3, $t5
-	bltu	$a3, $s1, .LBB2_34
+	bltu	$a3, $s0, .LBB2_34
 # %bb.30:                               # %vector.ph
                                         #   in Loop: Header=BB2_24 Depth=5
 	move	$a3, $zero
 	slli.d	$t5, $a6, 3
-	slli.d	$s8, $a5, 3
+	slli.d	$s7, $a5, 3
 	slli.d	$s3, $a4, 3
 	add.d	$a6, $t4, $a6
 	add.d	$a5, $t8, $a5
 	add.d	$a4, $t4, $a4
-	add.d	$t5, $s2, $t5
-	add.d	$t7, $s7, $s3
-	add.d	$s3, $fp, $s3
-	add.d	$s8, $s5, $s8
+	add.d	$t5, $s1, $t5
+	add.d	$t7, $s4, $s3
+	add.d	$s3, $s8, $s3
+	add.d	$s7, $s5, $s7
 	.p2align	4, , 16
 .LBB2_31:                               # %vector.body
                                         #   Parent Loop BB2_2 Depth=1
@@ -676,15 +669,15 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
                                         # =>          This Inner Loop Header: Depth=6
 	vldx	$vr0, $s3, $a3
 	vldx	$vr1, $t7, $a3
-	vldx	$vr2, $s8, $s4
-	vldx	$vr3, $s8, $s0
-	vld	$vr4, $s8, 0
+	vldx	$vr2, $s7, $fp
+	vldx	$vr3, $s7, $s2
+	vld	$vr4, $s7, 0
 	vfmul.d	$vr1, $vr1, $vr2
 	vfmadd.d	$vr0, $vr0, $vr3, $vr1
 	vfadd.d	$vr0, $vr4, $vr0
 	vstx	$vr0, $t5, $a3
 	addi.d	$a3, $a3, 16
-	add.d	$s8, $s8, $ra
+	add.d	$s7, $s7, $ra
 	bne	$s6, $a3, .LBB2_31
 # %bb.32:                               # %middle.block
                                         #   in Loop: Header=BB2_24 Depth=5
@@ -696,10 +689,10 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	move	$t7, $zero
 .LBB2_34:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB2_24 Depth=5
-	alsl.d	$t5, $a6, $s2, 3
+	alsl.d	$t5, $a6, $s1, 3
 	alsl.d	$a3, $a5, $s5, 3
-	alsl.d	$s8, $a4, $fp, 3
-	alsl.d	$s3, $a4, $s7, 3
+	alsl.d	$s7, $a4, $s8, 3
+	alsl.d	$s3, $a4, $s4, 3
 	sub.d	$t7, $a0, $t7
 	.p2align	4, , 16
 .LBB2_35:                               # %scalar.ph
@@ -709,10 +702,10 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
                                         #         Parent Loop BB2_22 Depth=4
                                         #           Parent Loop BB2_24 Depth=5
                                         # =>          This Inner Loop Header: Depth=6
-	fld.d	$fa0, $s8, 0
+	fld.d	$fa0, $s7, 0
 	fld.d	$fa1, $s3, 0
-	fldx.d	$fa2, $a3, $s4
-	fldx.d	$fa3, $a3, $s0
+	fldx.d	$fa2, $a3, $fp
+	fldx.d	$fa3, $a3, $s2
 	fld.d	$fa4, $a3, 0
 	fmul.d	$fa1, $fa1, $fa2
 	fmadd.d	$fa0, $fa0, $fa3, $fa1
@@ -723,7 +716,7 @@ hypre_SemiRestrict:                     # @hypre_SemiRestrict
 	addi.d	$a6, $a6, 1
 	addi.d	$t5, $t5, 8
 	add.d	$a3, $a3, $a2
-	addi.d	$s8, $s8, 8
+	addi.d	$s7, $s7, 8
 	addi.w	$t7, $t7, -1
 	addi.d	$s3, $s3, 8
 	bnez	$t7, .LBB2_35

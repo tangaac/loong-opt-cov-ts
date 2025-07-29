@@ -123,8 +123,7 @@ sendReceiveParallel:                    # @sendReceiveParallel
 	.type	addIntParallel,@function
 addIntParallel:                         # @addIntParallel
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB8_8
+	blez	$a2, .LBB8_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	move	$a3, $zero
@@ -175,8 +174,7 @@ addIntParallel:                         # @addIntParallel
 	.type	addRealParallel,@function
 addRealParallel:                        # @addRealParallel
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB9_8
+	blez	$a2, .LBB9_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 4
 	move	$a3, $zero
@@ -227,8 +225,7 @@ addRealParallel:                        # @addRealParallel
 	.type	addDoubleParallel,@function
 addDoubleParallel:                      # @addDoubleParallel
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB10_8
+	blez	$a2, .LBB10_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 4
 	move	$a3, $zero
@@ -279,8 +276,7 @@ addDoubleParallel:                      # @addDoubleParallel
 	.type	maxIntParallel,@function
 maxIntParallel:                         # @maxIntParallel
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB11_8
+	blez	$a2, .LBB11_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	move	$a3, $zero
@@ -331,8 +327,7 @@ maxIntParallel:                         # @maxIntParallel
 	.type	minRankDoubleParallel,@function
 minRankDoubleParallel:                  # @minRankDoubleParallel
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB12_3
+	blez	$a2, .LBB12_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 8
@@ -357,8 +352,7 @@ minRankDoubleParallel:                  # @minRankDoubleParallel
 	.type	maxRankDoubleParallel,@function
 maxRankDoubleParallel:                  # @maxRankDoubleParallel
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB13_3
+	blez	$a2, .LBB13_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 8

@@ -195,7 +195,7 @@ hypre_SeqVectorRead:                    # @hypre_SeqVectorRead
 	st.d	$a0, $s0, 0
 	st.w	$s2, $s0, 24
 	st.w	$s3, $s0, 28
-	blt	$a1, $s3, .LBB5_3
+	blez	$a1, .LBB5_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $a0
 	move	$s3, $zero
@@ -271,7 +271,7 @@ hypre_SeqVectorPrint:                   # @hypre_SeqVectorPrint
 	ori	$a0, $zero, 1
 	blt	$a0, $s1, .LBB6_6
 .LBB6_2:                                # %.preheader36
-	blt	$s0, $a0, .LBB6_13
+	blez	$s0, .LBB6_13
 # %bb.3:                                # %.lr.ph.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.7)
@@ -380,9 +380,8 @@ hypre_SeqVectorSetConstantValues:       # @hypre_SeqVectorSetConstantValues
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 16
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a1, $a2, .LBB7_8
+	blez	$a1, .LBB7_8
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ori	$a2, $zero, 4
@@ -430,8 +429,7 @@ hypre_SeqVectorCopy:                    # @hypre_SeqVectorCopy
 	ld.w	$a2, $a0, 8
 	ld.w	$a3, $a0, 16
 	mul.w	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB8_8
+	blez	$a2, .LBB8_8
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
@@ -530,8 +528,7 @@ hypre_SeqVectorCloneDeep:               # @hypre_SeqVectorCloneDeep
 	ld.w	$a2, $fp, 8
 	ld.w	$a3, $fp, 16
 	mul.w	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB9_12
+	blez	$a2, .LBB9_12
 # %bb.5:                                # %.lr.ph.preheader.i
 	ld.d	$a3, $fp, 0
 	ori	$a5, $zero, 4
@@ -661,9 +658,8 @@ hypre_SeqVectorScale:                   # @hypre_SeqVectorScale
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 16
 	mul.w	$a1, $a2, $a1
-	ori	$a2, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a1, $a2, .LBB11_8
+	blez	$a1, .LBB11_8
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ori	$a2, $zero, 4
@@ -717,9 +713,8 @@ hypre_SeqVectorAxpy:                    # @hypre_SeqVectorAxpy
 	ld.w	$a2, $a0, 8
 	ld.w	$a3, $a0, 16
 	mul.w	$a2, $a3, $a2
-	ori	$a3, $zero, 1
                                         # kill: def $f0_64 killed $f0_64 def $vr0
-	blt	$a2, $a3, .LBB12_7
+	blez	$a2, .LBB12_7
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
@@ -787,8 +782,7 @@ hypre_SeqVectorInnerProd:               # @hypre_SeqVectorInnerProd
 	ld.w	$a2, $a0, 8
 	ld.w	$a3, $a0, 16
 	mul.w	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB13_4
+	blez	$a2, .LBB13_4
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $a1, 0
@@ -817,8 +811,7 @@ hypre_SeqVectorInnerProd:               # @hypre_SeqVectorInnerProd
 hypre_VectorSumElts:                    # @hypre_VectorSumElts
 # %bb.0:
 	ld.w	$a1, $a0, 8
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB14_4
+	blez	$a1, .LBB14_4
 # %bb.1:                                # %.lr.ph.preheader
 	ld.d	$a0, $a0, 0
 	movgr2fr.d	$fa0, $zero

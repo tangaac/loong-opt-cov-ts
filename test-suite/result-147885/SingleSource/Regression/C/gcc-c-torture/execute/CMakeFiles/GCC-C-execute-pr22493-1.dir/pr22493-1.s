@@ -5,8 +5,7 @@
 	.type	f,@function
 f:                                      # @f
 # %bb.0:
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB0_3
+	bgtz	$a0, .LBB0_3
 # %bb.1:
 	addi.w	$a0, $a0, -1
 	bltz	$a0, .LBB0_3

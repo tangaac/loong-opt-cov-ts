@@ -92,11 +92,10 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	st.d	$s5, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s3, $sp, 40                    # 8-byte Folded Spill
-	blt	$s4, $a1, .LBB2_6
+	blez	$s4, .LBB2_6
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 8
 	move	$a4, $zero
@@ -261,11 +260,10 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	move	$s3, $a0
 	pcaddu18i	$ra, %call36(hypre_BoxCreate)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
 	st.d	$s4, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s2, $sp, 80                    # 8-byte Folded Spill
-	blt	$s4, $a1, .LBB2_32
+	blez	$s4, .LBB2_32
 # %bb.18:                               # %.lr.ph588
 	move	$a2, $zero
 	move	$s8, $zero
@@ -297,8 +295,7 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 # %bb.21:                               # %.preheader566
                                         #   in Loop: Header=BB2_20 Depth=1
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_19
+	blez	$a0, .LBB2_19
 # %bb.22:                               # %.lr.ph578.preheader
                                         #   in Loop: Header=BB2_20 Depth=1
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
@@ -490,8 +487,7 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_BoxDestroy)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s4, $a0, .LBB2_36
+	blez	$s4, .LBB2_36
 # %bb.34:                               # %.lr.ph596.preheader
 	move	$fp, $zero
 	slli.d	$a0, $s4, 4
@@ -559,12 +555,11 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
 	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
-	blt	$s8, $a1, .LBB2_40
+	blez	$s8, .LBB2_40
 # %bb.38:                               # %.lr.ph600.preheader
 	move	$fp, $zero
 	slli.d	$s0, $s8, 2
@@ -598,9 +593,8 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	ld.w	$a1, $s7, 8
 	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	slli.d	$a0, $a1, 3
-	ori	$a1, $zero, 1
 	st.w	$a0, $sp, 256
-	blt	$fp, $a1, .LBB2_45
+	blez	$fp, .LBB2_45
 # %bb.42:                               # %.lr.ph603.preheader
 	move	$a0, $fp
 	move	$fp, $zero
@@ -645,9 +639,8 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	slli.w	$a0, $s8, 3
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s8, $a1, .LBB2_54
+	blez	$s8, .LBB2_54
 # %bb.51:                               # %.lr.ph606.preheader
 	st.d	$s0, $sp, 112                   # 8-byte Folded Spill
 	move	$fp, $zero
@@ -687,53 +680,52 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	slli.w	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB2_58
+	blez	$a0, .LBB2_58
 # %bb.56:                               # %.lr.ph614
-	ld.d	$a4, $s7, 0
+	ld.d	$a3, $s7, 0
 	move	$a0, $zero
-	addi.d	$a2, $s3, 12
-	addi.d	$a3, $s3, 16
-	addi.d	$a4, $a4, 12
-	ld.d	$a5, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 144                   # 8-byte Folded Reload
+	addi.d	$a1, $s3, 12
+	addi.d	$a2, $s3, 16
+	addi.d	$a3, $a3, 12
+	ld.d	$a4, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 144                   # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB2_57:                               # =>This Inner Loop Header: Depth=1
-	ld.w	$t0, $a6, 0
-	slli.d	$t1, $a0, 2
-	stx.w	$t0, $s3, $t1
-	ld.w	$t0, $a5, 0
-	alsl.d	$t2, $a0, $s3, 2
-	st.w	$t0, $t2, 4
-	ld.w	$t0, $a4, -12
-	addi.w	$t2, $a0, 2
-	slli.d	$t3, $t2, 2
-	stx.w	$t0, $s3, $t3
-	ld.w	$t0, $a4, 0
-	stx.w	$t0, $a2, $t1
-	ld.w	$t0, $a4, -8
-	addi.d	$t1, $t2, 2
+	ld.w	$a7, $a5, 0
+	slli.d	$t0, $a0, 2
+	stx.w	$a7, $s3, $t0
+	ld.w	$a7, $a4, 0
+	alsl.d	$t1, $a0, $s3, 2
+	st.w	$a7, $t1, 4
+	ld.w	$a7, $a3, -12
+	addi.w	$t1, $a0, 2
 	slli.d	$t2, $t1, 2
-	stx.w	$t0, $s3, $t2
-	ld.w	$t0, $a4, 4
-	stx.w	$t0, $a2, $t3
-	ld.w	$t0, $a4, -4
-	stx.w	$t0, $a3, $t3
-	ld.w	$t0, $a4, 8
-	slli.d	$t1, $t1, 32
-	srai.d	$t1, $t1, 30
-	stx.w	$t0, $a2, $t1
+	stx.w	$a7, $s3, $t2
+	ld.w	$a7, $a3, 0
+	stx.w	$a7, $a1, $t0
+	ld.w	$a7, $a3, -8
+	addi.d	$t0, $t1, 2
+	slli.d	$t1, $t0, 2
+	stx.w	$a7, $s3, $t1
+	ld.w	$a7, $a3, 4
+	stx.w	$a7, $a1, $t2
+	ld.w	$a7, $a3, -4
+	stx.w	$a7, $a2, $t2
+	ld.w	$a7, $a3, 8
+	slli.d	$t0, $t0, 32
+	srai.d	$t0, $t0, 30
+	stx.w	$a7, $a1, $t0
 	addi.w	$a0, $a0, 8
-	addi.d	$a7, $a7, -1
-	addi.d	$a6, $a6, 4
+	addi.d	$a6, $a6, -1
 	addi.d	$a5, $a5, 4
-	addi.d	$a4, $a4, 24
-	bnez	$a7, .LBB2_57
+	addi.d	$a4, $a4, 4
+	addi.d	$a3, $a3, 24
+	bnez	$a6, .LBB2_57
 .LBB2_58:                               # %.preheader562
-	blt	$fp, $a1, .LBB2_106
+	blez	$fp, .LBB2_106
 # %bb.59:                               # %.lr.ph616.preheader
 	move	$s4, $s2
 	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
@@ -901,8 +893,7 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	.p2align	4, , 16
 .LBB2_75:                               # %.thread
                                         #   in Loop: Header=BB2_73 Depth=1
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB2_94
+	blez	$s8, .LBB2_94
 # %bb.76:                               #   in Loop: Header=BB2_73 Depth=1
 	addi.w	$s4, $zero, -2
 	lu32i.d	$s4, 0
@@ -1034,8 +1025,7 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	ld.d	$s5, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB2_72
 .LBB2_91:                               # %.preheader561
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB2_94
+	blez	$s8, .LBB2_94
 # %bb.92:                               # %.lr.ph632.preheader
 	ld.d	$fp, $sp, 136                   # 8-byte Folded Reload
 	.p2align	4, , 16
@@ -1095,8 +1085,7 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 # %bb.97:                               # %.preheader
 	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	addi.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_107
+	blez	$a0, .LBB2_107
 # %bb.98:                               # %.lr.ph640
 	move	$a2, $zero
 	move	$a1, $zero
@@ -1213,25 +1202,24 @@ hypre_StructCoarsen:                    # @hypre_StructCoarsen
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_StructGridSetHoodInfo)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB2_114
+	blez	$fp, .LBB2_114
 # %bb.110:                              # %.lr.ph648.preheader
-	addi.d	$a1, $sp, 260
+	addi.d	$a0, $sp, 260
 	b	.LBB2_112
 	.p2align	4, , 16
 .LBB2_111:                              #   in Loop: Header=BB2_112 Depth=1
 	addi.d	$s1, $s1, 4
 	addi.d	$fp, $fp, -1
-	addi.d	$a1, $a1, 4
+	addi.d	$a0, $a0, 4
 	beqz	$fp, .LBB2_114
 .LBB2_112:                              # %.lr.ph648
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a2, $a1, 0
-	blt	$a2, $a0, .LBB2_111
+	ld.w	$a1, $a0, 0
+	blez	$a1, .LBB2_111
 # %bb.113:                              #   in Loop: Header=BB2_112 Depth=1
-	ld.w	$a3, $s1, 0
-	div.w	$a2, $a2, $a3
-	st.w	$a2, $a1, 0
+	ld.w	$a2, $s1, 0
+	div.w	$a1, $a1, $a2
+	st.w	$a1, $a0, 0
 	b	.LBB2_111
 .LBB2_114:                              # %._crit_edge649
 	ld.d	$a0, $sp, 272

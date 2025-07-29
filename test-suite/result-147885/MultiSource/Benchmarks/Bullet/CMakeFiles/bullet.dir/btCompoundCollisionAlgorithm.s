@@ -181,8 +181,7 @@ _ZN28btCompoundCollisionAlgorithm26preallocateChildAlgorithmsEP17btCollisionObje
 	ld.w	$a1, $fp, 20
 	move	$s3, $a0
 	ld.d	$a0, $fp, 32
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_14
+	blez	$a1, .LBB1_14
 .LBB1_4:                                # %.lr.ph.i.i.i
 	ori	$a3, $zero, 4
 	move	$a2, $zero
@@ -225,8 +224,7 @@ _ZN28btCompoundCollisionAlgorithm26preallocateChildAlgorithmsEP17btCollisionObje
 	bnez	$a1, .LBB1_10
 .LBB1_11:                               # %_ZNK20btAlignedObjectArrayIP20btCollisionAlgorithmE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a1, $fp, 40
-	ori	$a2, $zero, 1
-	beq	$a1, $a2, .LBB1_16
+	bnez	$a1, .LBB1_16
 	b	.LBB1_17
 .LBB1_12:                               # %..lr.ph.i_crit_edge
 	ld.d	$s3, $fp, 32
@@ -235,8 +233,7 @@ _ZN28btCompoundCollisionAlgorithm26preallocateChildAlgorithmsEP17btCollisionObje
 	move	$s3, $zero
 	move	$a1, $s8
 	ld.d	$a0, $fp, 32
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB1_4
+	bgtz	$a1, .LBB1_4
 .LBB1_14:                               # %_ZNK20btAlignedObjectArrayIP20btCollisionAlgorithmE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB1_17
 # %bb.15:                               # %_ZNK20btAlignedObjectArrayIP20btCollisionAlgorithmE4copyEiiPS1_.exit.i.i
@@ -259,9 +256,8 @@ _ZN28btCompoundCollisionAlgorithm26preallocateChildAlgorithmsEP17btCollisionObje
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 .LBB1_19:                               # %_ZN20btAlignedObjectArrayIP20btCollisionAlgorithmE6resizeEiRKS1_.exit
-	ori	$a0, $zero, 1
 	st.w	$s7, $fp, 20
-	blt	$s7, $a0, .LBB1_26
+	blez	$s7, .LBB1_26
 # %bb.20:                               # %.lr.ph
 	ld.d	$a0, $s4, 88
 	beqz	$a0, .LBB1_22
@@ -411,8 +407,7 @@ _ZN28btCompoundCollisionAlgorithm21removeChildAlgorithmsEv: # @_ZN28btCompoundCo
 	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.w	$a0, $a0, 20
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_5
+	blez	$a0, .LBB4_5
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	slli.d	$s1, $a0, 3
@@ -470,9 +465,8 @@ _ZN28btCompoundCollisionAlgorithmD2Ev:  # @_ZN28btCompoundCollisionAlgorithmD2Ev
 	ld.w	$a0, $a0, 20
 	pcalau12i	$a1, %pc_hi20(_ZTV28btCompoundCollisionAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV28btCompoundCollisionAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	blt	$a0, $a2, .LBB5_6
+	blez	$a0, .LBB5_6
 # %bb.1:                                # %.lr.ph.i
 	move	$s0, $zero
 	slli.d	$s1, $a0, 3
@@ -719,8 +713,7 @@ _ZN28btCompoundCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK16b
 	beq	$a1, $a2, .LBB7_7
 # %bb.1:
 	ld.w	$a0, $fp, 20
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_6
+	blez	$a0, .LBB7_6
 # %bb.2:                                # %.lr.ph.i
 	move	$s5, $zero
 	slli.d	$s7, $a0, 3
@@ -772,7 +765,7 @@ _ZN28btCompoundCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK16b
 	st.b	$s2, $sp, 88
 	st.d	$zero, $sp, 80
 	st.d	$zero, $sp, 68
-	blt	$a1, $s2, .LBB7_22
+	blez	$a1, .LBB7_22
 # %bb.8:                                # %.lr.ph153
 	move	$s3, $zero
 	ori	$s7, $zero, 80
@@ -804,7 +797,7 @@ _ZN28btCompoundCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK16b
 # %bb.13:                               # %.preheader
                                         #   in Loop: Header=BB7_11 Depth=1
 	ld.w	$a1, $sp, 68
-	blt	$a1, $s2, .LBB7_19
+	blez	$a1, .LBB7_19
 # %bb.14:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB7_11 Depth=1
 	move	$s0, $zero
@@ -986,9 +979,8 @@ _ZN28btCompoundCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK16b
 	b	.LBB7_28
 .LBB7_25:
 	ld.w	$a0, $fp, 20
-	ori	$a1, $zero, 1
 	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
-	blt	$a0, $a1, .LBB7_41
+	blez	$a0, .LBB7_41
 # %bb.26:                               # %.lr.ph157
 	move	$s1, $zero
 	move	$s0, $zero
@@ -1008,8 +1000,7 @@ _ZN28btCompoundCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK16b
 	bne	$s2, $s1, .LBB7_27
 .LBB7_28:                               # %.loopexit
 	ld.w	$a0, $fp, 20
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_41
+	blez	$a0, .LBB7_41
 # %bb.29:                               # %.lr.ph160
 	move	$s1, $zero
 	move	$s2, $zero
@@ -2054,8 +2045,7 @@ _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_
 	.cfi_offset 59, -112
 	move	$fp, $a0
 	ld.w	$a0, $a0, 20
-	ori	$a5, $zero, 1
-	blt	$a0, $a5, .LBB11_3
+	blez	$a0, .LBB11_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a4
 	move	$s1, $a3
@@ -2241,6 +2231,9 @@ _ZN28btCompoundCollisionAlgorithm21calculateTimeOfImpactEP17btCollisionObjectS1_
 _ZN28btCompoundCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20btPersistentManifoldE: # @_ZN28btCompoundCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20btPersistentManifoldE
 	.cfi_startproc
 # %bb.0:
+	ld.w	$a2, $a0, 20
+	blez	$a2, .LBB12_6
+# %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -48
 	.cfi_def_cfa_offset 48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
@@ -2254,10 +2247,6 @@ _ZN28btCompoundCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArra
 	.cfi_offset 24, -32
 	.cfi_offset 25, -40
 	move	$fp, $a0
-	ld.w	$a2, $a0, 20
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB12_5
-# %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	move	$s1, $zero
 	move	$s2, $zero
@@ -2278,13 +2267,14 @@ _ZN28btCompoundCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArra
 	jirl	$ra, $a2, 0
 	ld.w	$a2, $fp, 20
 	b	.LBB12_2
-.LBB12_5:                               # %._crit_edge
+.LBB12_5:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB12_6:                               # %._crit_edge
 	ret
 .Lfunc_end12:
 	.size	_ZN28btCompoundCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20btPersistentManifoldE, .Lfunc_end12-_ZN28btCompoundCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectArrayIP20btPersistentManifoldE

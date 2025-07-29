@@ -216,9 +216,8 @@ _ZN18CBenchProgressInfo12SetRatioInfoEPKyS1_: # @_ZN18CBenchProgressInfo12SetRat
 	ld.d	$a2, $fp, 40
 	ld.bu	$a1, $a1, 44
 	sub.d	$a0, $a0, $a2
-	ori	$a2, $zero, 1
 	st.d	$a0, $sp, 24
-	bne	$a1, $a2, .LBB3_9
+	beqz	$a1, .LBB3_9
 # %bb.8:
 	ld.d	$a0, $fp, 88
 	ld.d	$a1, $s0, 0
@@ -494,7 +493,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t2, $t1, .LBB7_3
 .LBB7_5:                                # %middle.split
-	bstrpick.d	$t1, $t3, 15, 0
+	slli.d	$t1, $t3, 48
 	beqz	$t1, .LBB7_7
 # %bb.6:
 	ori	$t0, $t0, 1792
@@ -539,7 +538,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_8
 .LBB7_10:                               # %middle.split204
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_12
 # %bb.11:
 	addi.w	$t0, $zero, -2048
@@ -584,7 +583,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_13
 .LBB7_15:                               # %middle.split217
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_17
 # %bb.16:
 	addi.w	$t0, $zero, -1792
@@ -629,7 +628,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_18
 .LBB7_20:                               # %middle.split230
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_22
 # %bb.21:
 	addi.w	$t0, $zero, -1536
@@ -674,7 +673,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_23
 .LBB7_25:                               # %middle.split243
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_27
 # %bb.26:
 	addi.w	$t0, $zero, -1280
@@ -718,7 +717,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_28
 .LBB7_30:                               # %middle.split256
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_32
 # %bb.31:
 	addi.w	$t0, $zero, -1024
@@ -762,7 +761,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_33
 .LBB7_35:                               # %middle.split269
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_37
 # %bb.36:
 	addi.w	$t0, $zero, -768
@@ -806,7 +805,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_38
 .LBB7_40:                               # %middle.split282
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_42
 # %bb.41:
 	addi.w	$t0, $zero, -512
@@ -850,7 +849,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_43
 .LBB7_45:                               # %middle.split295
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_47
 # %bb.46:
 	addi.w	$t0, $zero, -256
@@ -894,7 +893,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_48
 .LBB7_50:                               # %middle.split308
-	bstrpick.d	$t0, $t2, 15, 0
+	slli.d	$t0, $t2, 48
 	beqz	$t0, .LBB7_52
 # %bb.51:
 	move	$t0, $zero
@@ -938,7 +937,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_53
 .LBB7_55:                               # %middle.split321
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 256
 	bnez	$t1, .LBB7_104
 # %bb.56:                               # %vector.ph326
@@ -980,7 +979,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_57
 .LBB7_59:                               # %middle.split334
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 512
 	bnez	$t1, .LBB7_104
 # %bb.60:                               # %vector.ph339
@@ -1022,7 +1021,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_61
 .LBB7_63:                               # %middle.split347
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 768
 	bnez	$t1, .LBB7_104
 # %bb.64:                               # %vector.ph352
@@ -1064,7 +1063,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_65
 .LBB7_67:                               # %middle.split360
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 1024
 	bnez	$t1, .LBB7_104
 # %bb.68:                               # %vector.ph365
@@ -1106,7 +1105,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_69
 .LBB7_71:                               # %middle.split373
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 1280
 	bnez	$t1, .LBB7_104
 # %bb.72:                               # %vector.ph378
@@ -1148,7 +1147,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_73
 .LBB7_75:                               # %middle.split386
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 1536
 	bnez	$t1, .LBB7_104
 # %bb.76:                               # %vector.ph391
@@ -1190,7 +1189,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_77
 .LBB7_79:                               # %middle.split399
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 1792
 	bnez	$t1, .LBB7_104
 # %bb.80:                               # %vector.ph404
@@ -1232,7 +1231,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_81
 .LBB7_83:                               # %middle.split412
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 2048
 	bnez	$t1, .LBB7_104
 # %bb.84:                               # %vector.ph417
@@ -1274,7 +1273,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_85
 .LBB7_87:                               # %middle.split425
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 2304
 	bnez	$t1, .LBB7_104
 # %bb.88:                               # %vector.ph430
@@ -1316,7 +1315,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_89
 .LBB7_91:                               # %middle.split438
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 2560
 	bnez	$t1, .LBB7_104
 # %bb.92:                               # %vector.ph443
@@ -1358,7 +1357,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_93
 .LBB7_95:                               # %middle.split451
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 2816
 	bnez	$t1, .LBB7_104
 # %bb.96:                               # %vector.ph456
@@ -1400,7 +1399,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$t1, $t0, .LBB7_97
 .LBB7_99:                               # %middle.split464
-	bstrpick.d	$t1, $t2, 15, 0
+	slli.d	$t1, $t2, 48
 	ori	$t0, $zero, 3072
 	bnez	$t1, .LBB7_104
 # %bb.100:                              # %vector.ph469
@@ -1440,7 +1439,7 @@ _Z17GetCompressRatingjyyy:              # @_Z17GetCompressRatingjyyy
 	vaddi.wu	$vr2, $vr2, 16
 	bne	$a5, $a4, .LBB7_101
 .LBB7_103:                              # %middle.split477
-	bstrpick.d	$a4, $a6, 15, 0
+	slli.d	$a4, $a6, 48
 	ori	$t0, $zero, 3328
 	beqz	$a4, .LBB7_109
 .LBB7_104:                              # %.loopexit27.i.sink.split

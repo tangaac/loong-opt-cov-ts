@@ -1208,14 +1208,13 @@ flag_InitFlotterSubproofFlags:          # @flag_InitFlotterSubproofFlags
 	bge	$s1, $a0, .LBB14_26
 # %bb.8:                                # %flag_TransferFlag.exit24
 	st.w	$s1, $fp, 220
-	ld.w	$a1, $s2, 1848
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB14_27
+	ld.w	$a0, $s2, 1848
+	bgtz	$a0, .LBB14_27
 # %bb.9:
 	ld.w	$a1, $s2, 1852
+	ori	$a0, $zero, 1
 	bge	$a0, $a1, .LBB14_28
 # %bb.10:                               # %flag_SetFlagValue.exit
-	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 308
 	ld.w	$a0, $s2, 1248
 	bgez	$a0, .LBB14_29

@@ -848,8 +848,7 @@ jpeg_default_colorspace:                # @jpeg_default_colorspace
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.w	$a0, $fp, 68
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_5
+	blez	$a0, .LBB5_5
 .LBB5_13:                               # %.lr.ph.i
 	ld.d	$a1, $fp, 80
 	ori	$a3, $zero, 2
@@ -1063,8 +1062,7 @@ jpeg_set_colorspace:                    # @jpeg_set_colorspace
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 	ld.w	$a0, $fp, 68
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_19
+	blez	$a0, .LBB6_19
 .LBB6_6:                                # %.lr.ph
 	ld.d	$a1, $fp, 80
 	ori	$a3, $zero, 2
@@ -1425,9 +1423,8 @@ jpeg_simple_progression:                # @jpeg_simple_progression
 	ori	$a1, $zero, 5
 	bge	$s0, $a1, .LBB7_24
 # %bb.11:
-	ori	$a1, $zero, 1
 	st.w	$s0, $a0, 0
-	blt	$s0, $a1, .LBB7_72
+	blez	$s0, .LBB7_72
 # %bb.12:                               # %.lr.ph.i
 	pcalau12i	$a1, %pc_hi20(.LCPI7_1)
 	vld	$vr1, $a1, %pc_lo12(.LCPI7_1)

@@ -521,7 +521,7 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	addi.d	$a2, $a0, 2
 	st.w	$a2, $sp, 36
 	bstrpick.d	$a1, $a1, 31, 0
-	ldx.bu	$s3, $a1, $s6
+	ldx.bu	$s4, $a1, $s6
 	addi.d	$a1, $a0, 3
 	st.w	$a1, $sp, 36
 	bstrpick.d	$a2, $a2, 31, 0
@@ -529,7 +529,7 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	addi.d	$a2, $a0, 4
 	st.w	$a2, $sp, 36
 	bstrpick.d	$a1, $a1, 31, 0
-	ldx.b	$s4, $a1, $s6
+	ldx.b	$s3, $a1, $s6
 	addi.d	$a1, $a0, 5
 	st.w	$a1, $sp, 36
 	bstrpick.d	$a2, $a2, 31, 0
@@ -563,15 +563,15 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 .LBB5_4:
 	st.w	$zero, $fp, 32
 	ld.w	$s6, $s0, 0
-	ld.bu	$a1, $fp, 49
+	ld.bu	$a0, $fp, 49
 	ld.w	$a2, $fp, 36
-	ori	$a0, $zero, 1
 	st.d	$zero, $sp, 16
-	bne	$a1, $a0, .LBB5_11
+	beqz	$a0, .LBB5_11
 # %bb.5:
 	bnez	$a2, .LBB5_11
 # %bb.6:
 	ori	$a1, $zero, 2
+	ori	$a0, $zero, 1
 	bltu	$s6, $a1, .LBB5_1
 # %bb.7:
 	ld.d	$a0, $fp, 16
@@ -597,10 +597,10 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	pcaddu18i	$ra, %call36(_ZN8NArchive4NCab10CCheckSum26UpdateEPKvj)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $fp, 36
-	ori	$a0, $zero, 1
 .LBB5_11:
-	lu12i.w	$a1, 16
-	sub.w	$a1, $a1, $a2
+	lu12i.w	$a0, 16
+	sub.w	$a1, $a0, $a2
+	ori	$a0, $zero, 1
 	bltu	$a1, $s6, .LBB5_1
 # %bb.12:
 	beqz	$s6, .LBB5_15
@@ -629,16 +629,15 @@ _ZN8NArchive4NCab17CCabBlockInStream7PreReadERjS2_: # @_ZN8NArchive4NCab17CCabBl
 	ori	$a0, $zero, 1
 	bne	$s8, $s6, .LBB5_1
 .LBB5_15:
-	slli.w	$a0, $s3, 8
+	slli.w	$a0, $s4, 8
 	or	$a0, $a0, $s2
-	slli.w	$a1, $s5, 16
-	or	$a0, $a0, $a1
+	slli.w	$a3, $s5, 16
 	ld.w	$a1, $sp, 20
-	slli.w	$a3, $s4, 24
 	or	$a0, $a0, $a3
-	ori	$a3, $zero, 1
+	slli.w	$a3, $s3, 24
+	or	$a0, $a0, $a3
 	st.w	$a2, $fp, 40
-	blt	$a1, $a3, .LBB5_24
+	blez	$a1, .LBB5_24
 # %bb.16:                               # %.lr.ph.i
 	ld.w	$a3, $sp, 16
 	ori	$a2, $zero, 8

@@ -339,8 +339,8 @@ lex:                                    # @lex
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $s1, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB3_16
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB3_16
 # %bb.14:                               # %.lr.ph123.preheader
 	pcalau12i	$a1, %got_pc_hi20(finput)
 	ld.d	$s1, $a1, %got_pc_lo12(finput)
@@ -360,8 +360,8 @@ lex:                                    # @lex
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB3_15
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB3_15
 .LBB3_16:                               # %._crit_edge124
 	pcalau12i	$a1, %got_pc_hi20(finput)
 	ld.d	$a1, $a1, %got_pc_lo12(finput)

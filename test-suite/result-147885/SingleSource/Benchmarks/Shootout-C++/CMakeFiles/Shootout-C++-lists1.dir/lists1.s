@@ -33,14 +33,14 @@ _Z12list_print_nNSt7__cxx114listIiSaIiEEEi: # @_Z12list_print_nNSt7__cxx114listI
 	ld.d	$s3, $a0, 0
 	beq	$s3, $a0, .LBB0_7
 # %bb.1:
-	move	$fp, $a0
 	move	$s0, $a1
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_7
+	blez	$a1, .LBB0_7
 # %bb.2:                                # %.lr.ph.preheader
-	pcalau12i	$a1, %got_pc_hi20(_ZSt4cout)
-	ld.d	$s1, $a1, %got_pc_lo12(_ZSt4cout)
+	move	$fp, $a0
 	addi.w	$s4, $s0, -1
+	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)
+	ld.d	$s1, $a0, %got_pc_lo12(_ZSt4cout)
+	ori	$a0, $zero, 1
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$s2, $a1, %pc_lo12(.L.str)
 	.p2align	4, , 16

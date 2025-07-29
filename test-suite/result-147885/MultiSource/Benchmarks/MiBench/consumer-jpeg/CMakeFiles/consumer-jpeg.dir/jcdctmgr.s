@@ -111,18 +111,17 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	fst.d	$fs5, $sp, 56                   # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 68
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_21
+	blez	$a0, .LBB1_21
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $fp, 480
-	move	$s1, $zero
-	ld.d	$s2, $fp, 80
-	addi.d	$s3, $fp, 88
+	move	$s0, $zero
+	ld.d	$s1, $fp, 80
+	addi.d	$s2, $fp, 88
 	addi.d	$a1, $a0, 64
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	addi.d	$s5, $a0, 24
+	addi.d	$s4, $a0, 24
 	pcalau12i	$a0, %pc_hi20(start_pass_fdctmgr.aanscalefactor)
-	addi.d	$s7, $a0, %pc_lo12(start_pass_fdctmgr.aanscalefactor)
+	addi.d	$s6, $a0, %pc_lo12(start_pass_fdctmgr.aanscalefactor)
 	vldi	$vr5, -992
 	pcalau12i	$a0, %pc_hi20(.LCPI1_0)
 	fld.d	$fs0, $a0, %pc_lo12(.LCPI1_0)
@@ -136,11 +135,11 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	fld.d	$fs4, $a0, %pc_lo12(.LCPI1_4)
 	pcalau12i	$a0, %pc_hi20(.LCPI1_5)
 	fld.d	$fs5, $a0, %pc_lo12(.LCPI1_5)
-	ori	$s4, $zero, 64
+	ori	$s3, $zero, 64
 	vrepli.b	$vr6, 0
 	ori	$a0, $zero, 1024
 	vreplgr2vr.d	$vr7, $a0
-	ori	$s0, $zero, 128
+	ori	$s8, $zero, 128
 	vst	$vr6, $sp, 32                   # 16-byte Folded Spill
 	vst	$vr7, $sp, 16                   # 16-byte Folded Spill
 	b	.LBB1_4
@@ -158,22 +157,22 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 .LBB1_3:                                # %.loopexit
                                         #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$a0, $fp, 68
-	addi.w	$s1, $s1, 1
-	addi.d	$s2, $s2, 96
-	bge	$s1, $a0, .LBB1_21
+	addi.w	$s0, $s0, 1
+	addi.d	$s1, $s1, 96
+	bge	$s0, $a0, .LBB1_21
 .LBB1_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_16 Depth 2
                                         #     Child Loop BB1_20 Depth 2
-	ld.w	$s8, $s2, 16
+	ld.w	$s7, $s1, 16
 	ori	$a0, $zero, 3
-	bltu	$a0, $s8, .LBB1_6
+	bltu	$a0, $s7, .LBB1_6
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
-	slli.d	$a0, $s8, 3
-	ldx.d	$s6, $s3, $a0
-	bnez	$s6, .LBB1_7
+	slli.d	$a0, $s7, 3
+	ldx.d	$s5, $s2, $a0
+	bnez	$s5, .LBB1_7
 .LBB1_6:                                #   in Loop: Header=BB1_4 Depth=1
 	ld.d	$a0, $fp, 0
-	st.w	$s8, $a0, 44
+	st.w	$s7, $a0, 44
 	ld.d	$a1, $fp, 0
 	ld.d	$a1, $a1, 0
 	ori	$a2, $zero, 51
@@ -183,8 +182,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	vld	$vr7, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
 	vldi	$vr5, -992
-	slli.d	$a0, $s8, 3
-	ldx.d	$s6, $s3, $a0
+	slli.d	$a0, $s7, 3
+	ldx.d	$s5, $s2, $a0
 .LBB1_7:                                #   in Loop: Header=BB1_4 Depth=1
 	ld.w	$a0, $fp, 268
 	ori	$a1, $zero, 2
@@ -195,13 +194,13 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 # %bb.9:                                #   in Loop: Header=BB1_4 Depth=1
 	bnez	$a0, .LBB1_2
 # %bb.10:                               #   in Loop: Header=BB1_4 Depth=1
-	slli.d	$a0, $s8, 3
-	ldx.d	$a0, $s5, $a0
+	slli.d	$a0, $s7, 3
+	ldx.d	$a0, $s4, $a0
 	bnez	$a0, .LBB1_12
 # %bb.11:                               #   in Loop: Header=BB1_4 Depth=1
 	ld.d	$a0, $fp, 8
 	ld.d	$a3, $a0, 0
-	alsl.d	$s8, $s8, $s5, 3
+	alsl.d	$s7, $s7, $s4, 3
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 256
 	move	$a0, $fp
@@ -209,69 +208,69 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	vld	$vr7, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
 	vldi	$vr5, -992
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 .LBB1_12:                               # %vector.body
                                         #   in Loop: Header=BB1_4 Depth=1
-	ld.d	$a1, $s6, 0
-	ld.d	$a2, $s6, 8
+	ld.d	$a1, $s5, 0
+	ld.d	$a2, $s5, 8
 	vinsgr2vr.d	$vr0, $a1, 0
 	vinsgr2vr.d	$vr1, $a2, 0
-	ld.d	$a1, $s6, 16
+	ld.d	$a1, $s5, 16
 	vilvl.h	$vr0, $vr6, $vr0
 	vslli.w	$vr0, $vr0, 3
 	vst	$vr0, $a0, 0
 	vinsgr2vr.d	$vr0, $a1, 0
-	ld.d	$a1, $s6, 24
+	ld.d	$a1, $s5, 24
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr1, $vr1, 3
 	vst	$vr1, $a0, 16
 	vinsgr2vr.d	$vr1, $a1, 0
-	ld.d	$a1, $s6, 32
+	ld.d	$a1, $s5, 32
 	vilvl.h	$vr0, $vr6, $vr0
 	vslli.w	$vr0, $vr0, 3
 	vst	$vr0, $a0, 32
 	vinsgr2vr.d	$vr0, $a1, 0
-	ld.d	$a1, $s6, 40
+	ld.d	$a1, $s5, 40
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr1, $vr1, 3
 	vst	$vr1, $a0, 48
 	vinsgr2vr.d	$vr1, $a1, 0
-	ld.d	$a1, $s6, 48
+	ld.d	$a1, $s5, 48
 	vilvl.h	$vr0, $vr6, $vr0
 	vslli.w	$vr0, $vr0, 3
 	vst	$vr0, $a0, 64
 	vinsgr2vr.d	$vr0, $a1, 0
-	ld.d	$a1, $s6, 56
+	ld.d	$a1, $s5, 56
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr1, $vr1, 3
 	vst	$vr1, $a0, 80
 	vinsgr2vr.d	$vr1, $a1, 0
-	ld.d	$a1, $s6, 64
+	ld.d	$a1, $s5, 64
 	vilvl.h	$vr0, $vr6, $vr0
 	vslli.w	$vr0, $vr0, 3
 	vst	$vr0, $a0, 96
 	vinsgr2vr.d	$vr0, $a1, 0
-	ld.d	$a1, $s6, 72
+	ld.d	$a1, $s5, 72
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr1, $vr1, 3
 	vst	$vr1, $a0, 112
 	vinsgr2vr.d	$vr1, $a1, 0
-	ld.d	$a1, $s6, 80
+	ld.d	$a1, $s5, 80
 	vilvl.h	$vr0, $vr6, $vr0
 	vslli.w	$vr0, $vr0, 3
 	vst	$vr0, $a0, 128
 	vinsgr2vr.d	$vr0, $a1, 0
-	ld.d	$a1, $s6, 88
+	ld.d	$a1, $s5, 88
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr1, $vr1, 3
 	vst	$vr1, $a0, 144
 	vinsgr2vr.d	$vr1, $a1, 0
-	ld.d	$a1, $s6, 96
+	ld.d	$a1, $s5, 96
 	vilvl.h	$vr0, $vr6, $vr0
 	vslli.w	$vr0, $vr0, 3
 	vst	$vr0, $a0, 160
 	vinsgr2vr.d	$vr0, $a1, 0
-	ld.d	$a1, $s6, 104
+	ld.d	$a1, $s5, 104
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr1, $vr1, 3
 	vst	$vr1, $a0, 176
@@ -280,8 +279,8 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	vilvl.h	$vr1, $vr6, $vr1
 	vslli.w	$vr0, $vr0, 3
 	vslli.w	$vr1, $vr1, 3
-	ld.d	$a1, $s6, 112
-	ld.d	$a2, $s6, 120
+	ld.d	$a1, $s5, 112
+	ld.d	$a2, $s5, 120
 	vst	$vr0, $a0, 192
 	vst	$vr1, $a0, 208
 	vinsgr2vr.d	$vr0, $a1, 0
@@ -295,13 +294,13 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_13:                               #   in Loop: Header=BB1_4 Depth=1
-	slli.d	$a0, $s8, 3
-	ldx.d	$a0, $s5, $a0
+	slli.d	$a0, $s7, 3
+	ldx.d	$a0, $s4, $a0
 	bnez	$a0, .LBB1_15
 # %bb.14:                               #   in Loop: Header=BB1_4 Depth=1
 	ld.d	$a0, $fp, 8
 	ld.d	$a3, $a0, 0
-	alsl.d	$s8, $s8, $s5, 3
+	alsl.d	$s7, $s7, $s4, 3
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 256
 	move	$a0, $fp
@@ -309,7 +308,7 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	vld	$vr7, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
 	vldi	$vr5, -992
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 .LBB1_15:                               # %vector.ph106
                                         #   in Loop: Header=BB1_4 Depth=1
 	move	$a1, $zero
@@ -317,7 +316,7 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 .LBB1_16:                               # %vector.body107
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ldx.d	$a2, $s6, $a1
+	ldx.d	$a2, $s5, $a1
 	vinsgr2vr.d	$vr0, $a2, 0
 	pcalau12i	$a2, %pc_hi20(start_pass_fdctmgr.aanscales)
 	addi.d	$a2, $a2, %pc_lo12(start_pass_fdctmgr.aanscales)
@@ -343,11 +342,11 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	vst	$vr0, $a0, 0
 	addi.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 16
-	bne	$a1, $s0, .LBB1_16
+	bne	$a1, $s8, .LBB1_16
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_17:                               #   in Loop: Header=BB1_4 Depth=1
-	slli.d	$a0, $s8, 3
+	slli.d	$a0, $s7, 3
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ldx.d	$a0, $a1, $a0
 	bnez	$a0, .LBB1_19
@@ -355,7 +354,7 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	ld.d	$a0, $fp, 8
 	ld.d	$a3, $a0, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	alsl.d	$s8, $s8, $a0, 3
+	alsl.d	$s7, $s7, $a0, 3
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 256
 	move	$a0, $fp
@@ -363,17 +362,17 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	vld	$vr7, $sp, 16                   # 16-byte Folded Reload
 	vld	$vr6, $sp, 32                   # 16-byte Folded Reload
 	vldi	$vr5, -992
-	st.d	$a0, $s8, 0
+	st.d	$a0, $s7, 0
 .LBB1_19:                               #   in Loop: Header=BB1_4 Depth=1
 	move	$a1, $zero
 	addi.d	$a0, $a0, 16
-	addi.d	$a2, $s6, 8
+	addi.d	$a2, $s5, 8
 	.p2align	4, , 16
 .LBB1_20:                               # %.preheader
                                         #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.hu	$a3, $a2, -8
-	fldx.d	$fa0, $s7, $a1
+	fldx.d	$fa0, $s6, $a1
 	movgr2fr.w	$fa1, $a3
 	ffint.d.w	$fa1, $fa1
 	fmul.d	$fa1, $fa0, $fa1
@@ -446,7 +445,7 @@ start_pass_fdctmgr:                     # @start_pass_fdctmgr
 	addi.d	$a1, $a1, 8
 	addi.d	$a0, $a0, 32
 	addi.d	$a2, $a2, 16
-	bne	$a1, $s4, .LBB1_20
+	bne	$a1, $s3, .LBB1_20
 	b	.LBB1_3
 .LBB1_21:                               # %._crit_edge
 	fld.d	$fs5, $sp, 56                   # 8-byte Folded Reload

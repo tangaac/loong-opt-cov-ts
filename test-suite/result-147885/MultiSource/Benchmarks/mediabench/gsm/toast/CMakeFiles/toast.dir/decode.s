@@ -112,53 +112,51 @@ Gsm_Decoder:                            # @Gsm_Decoder
 	move	$a3, $fp
 	pcaddu18i	$ra, %call36(Gsm_Short_Term_Synthesis_Filter)
 	jirl	$ra, $ra, 0
-	ld.hu	$a6, $s0, 650
+	ld.hu	$a5, $s0, 650
 	addi.w	$a1, $zero, -160
 	ori	$a0, $zero, 0
 	ori	$a2, $zero, 0
 	lu32i.d	$a2, 56360
-	ori	$a3, $zero, 0
-	lu32i.d	$a3, 32768
-	lu12i.w	$a4, 7
-	ori	$a4, $a4, 4095
-	lu12i.w	$a5, -8
-	lu32i.d	$a0, 1
+	lu32i.d	$a0, 32768
+	lu12i.w	$a3, 7
+	ori	$a3, $a3, 4095
+	lu12i.w	$a4, -8
 	.p2align	4, , 16
 .LBB0_1:                                # =>This Inner Loop Header: Depth=1
-	ext.w.h	$a6, $a6
-	ld.h	$a7, $fp, 0
-	mul.d	$a6, $a6, $a2
-	add.d	$a6, $a6, $a3
-	srai.d	$a6, $a6, 48
-	add.d	$a6, $a6, $a7
-	slt	$a7, $a6, $a4
+	ext.w.h	$a5, $a5
+	ld.h	$a6, $fp, 0
+	mul.d	$a5, $a5, $a2
+	add.d	$a5, $a5, $a0
+	srai.d	$a5, $a5, 48
+	add.d	$a5, $a5, $a6
+	slt	$a6, $a5, $a3
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a3, $a6
+	or	$a5, $a5, $a6
+	slt	$a6, $a4, $a5
+	maskeqz	$a5, $a5, $a6
+	masknez	$a6, $a4, $a6
+	or	$a5, $a5, $a6
+	slli.d	$a6, $a5, 48
+	srai.d	$a6, $a6, 47
+	slt	$a7, $a4, $a6
 	maskeqz	$a6, $a6, $a7
 	masknez	$a7, $a4, $a7
 	or	$a6, $a6, $a7
-	slt	$a7, $a5, $a6
+	slt	$a7, $a6, $a3
 	maskeqz	$a6, $a6, $a7
-	masknez	$a7, $a5, $a7
+	masknez	$a7, $a3, $a7
 	or	$a6, $a6, $a7
-	slli.d	$a7, $a6, 48
-	srai.d	$a7, $a7, 47
-	slt	$t0, $a5, $a7
-	maskeqz	$a7, $a7, $t0
-	masknez	$t0, $a5, $t0
-	or	$a7, $a7, $t0
-	slt	$t0, $a7, $a4
-	maskeqz	$a7, $a7, $t0
-	masknez	$t0, $a4, $t0
-	or	$a7, $a7, $t0
-	bstrpick.d	$a7, $a7, 15, 3
-	slli.d	$a7, $a7, 3
-	st.h	$a7, $fp, 0
+	bstrpick.d	$a6, $a6, 15, 3
+	slli.d	$a6, $a6, 3
+	st.h	$a6, $fp, 0
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	and	$a7, $a1, $a0
+	slli.d	$a6, $a1, 31
 	addi.d	$fp, $fp, 2
-	beqz	$a7, .LBB0_1
+	bgez	$a6, .LBB0_1
 # %bb.2:                                # %Postprocessing.exit
-	st.h	$a6, $s0, 650
+	st.h	$a5, $s0, 650
 	ld.d	$s8, $sp, 408                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 416                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 424                   # 8-byte Folded Reload

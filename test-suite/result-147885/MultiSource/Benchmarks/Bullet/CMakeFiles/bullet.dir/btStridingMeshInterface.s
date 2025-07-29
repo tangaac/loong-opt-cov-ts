@@ -60,15 +60,15 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 	move	$s0, $a1
 	move	$a0, $fp
 	jirl	$ra, $a2, 0
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB2_21
+	blez	$a0, .LBB2_21
 # %bb.1:                                # %.lr.ph165
 	move	$s1, $a0
 	move	$s2, $zero
 	fld.s	$fs0, $fp, 8
 	fld.s	$fs1, $fp, 12
 	fld.s	$fs2, $fp, 16
-	addi.d	$s5, $sp, 76
+	addi.d	$s4, $sp, 76
+	ori	$s5, $zero, 1
 	ori	$s6, $zero, 2
 	ori	$s7, $zero, 3
 	b	.LBB2_3
@@ -97,11 +97,11 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 	addi.d	$a5, $sp, 88
 	addi.d	$a6, $sp, 84
 	addi.d	$a7, $sp, 64
-	st.d	$s5, $sp, 0
+	st.d	$s4, $sp, 0
 	move	$a0, $fp
 	jirl	$ra, $t0, 0
 	ld.w	$a0, $sp, 80
-	beq	$a0, $s4, .LBB2_10
+	beq	$a0, $s5, .LBB2_10
 # %bb.4:                                #   in Loop: Header=BB2_3 Depth=1
 	bnez	$a0, .LBB2_2
 # %bb.5:                                #   in Loop: Header=BB2_3 Depth=1
@@ -112,7 +112,7 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 # %bb.7:                                # %.preheader151
                                         #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a0, $sp, 64
-	blt	$a0, $s4, .LBB2_2
+	blez	$a0, .LBB2_2
 # %bb.8:                                # %.lr.ph161.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	move	$s3, $zero
@@ -185,7 +185,7 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 # %bb.12:                               # %.preheader155
                                         #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a0, $sp, 64
-	blt	$a0, $s4, .LBB2_2
+	blez	$a0, .LBB2_2
 # %bb.13:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	move	$s3, $zero
@@ -261,7 +261,7 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 .LBB2_15:                               # %.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a0, $sp, 64
-	blt	$a0, $s4, .LBB2_2
+	blez	$a0, .LBB2_2
 # %bb.16:                               # %.lr.ph163.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	move	$s3, $zero
@@ -331,7 +331,7 @@ _ZNK23btStridingMeshInterface27InternalProcessAllTrianglesEP31btInternalTriangle
 .LBB2_18:                               # %.preheader153
                                         #   in Loop: Header=BB2_3 Depth=1
 	ld.w	$a0, $sp, 64
-	blt	$a0, $s4, .LBB2_2
+	blez	$a0, .LBB2_2
 # %bb.19:                               # %.lr.ph159.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	move	$s3, $zero

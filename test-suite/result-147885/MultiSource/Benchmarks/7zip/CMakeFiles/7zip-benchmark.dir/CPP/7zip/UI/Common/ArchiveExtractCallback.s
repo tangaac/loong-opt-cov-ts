@@ -109,9 +109,8 @@ _ZN23CArchiveExtractCallback4InitEPKN9NWildcard11CCensorNodeEPK4CArcP29IFolderAr
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$s5, $a1, .LBB0_11
+	blez	$s5, .LBB0_11
 # %bb.10:                               # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -201,9 +200,8 @@ _ZN11CStringBaseIwEaSERKS0_:            # @_ZN11CStringBaseIwEaSERKS0_
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s4, $a1, .LBB1_5
+	blez	$s4, .LBB1_5
 # %bb.4:                                # %._crit_edge.thread.i
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -816,9 +814,8 @@ _ZN23CArchiveExtractCallback22CreateComplexDirectoryERK13CObjectVectorI11CString
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s1, $a0
-	blt	$s6, $a1, .LBB6_5
+	blez	$s6, .LBB6_5
 # %bb.4:                                # %._crit_edge.thread.i.i
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -848,8 +845,7 @@ _ZN23CArchiveExtractCallback22CreateComplexDirectoryERK13CObjectVectorI11CString
 	st.w	$a0, $fp, 8
 .LBB6_10:                               # %_ZN11CStringBaseIwEaSERKS0_.exit
 	ld.w	$a0, $s0, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_14
+	blez	$a0, .LBB6_14
 # %bb.11:
 	ld.d	$a0, $s0, 16
 	ld.d	$a1, $a0, 0
@@ -916,7 +912,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -924,7 +919,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s0, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s0, $zero
@@ -946,8 +940,8 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -966,11 +960,10 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	blt	$s4, $s5, .LBB7_11
+	blez	$s4, .LBB7_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB7_12
+	blez	$s0, .LBB7_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero
@@ -1040,7 +1033,6 @@ _ZN11CStringBaseIwEpLEw:                # @_ZN11CStringBaseIwEpLEw
 	st.w	$a1, $a0, 8
 	slli.d	$a1, $a1, 2
 	stx.w	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -1117,12 +1109,11 @@ _ZN11CStringBaseIwEpLERKS0_:            # @_ZN11CStringBaseIwEpLERKS0_
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a0
-	blt	$s4, $a2, .LBB8_11
+	blez	$s4, .LBB8_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a1, $s3, 0
-	blt	$s1, $a2, .LBB8_12
+	blez	$s1, .LBB8_12
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a0, $zero
@@ -1598,8 +1589,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 .Ltmp67:
 # %bb.15:                               # %.noexc312
 	move	$s1, $a0
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB11_17
+	blez	$s8, .LBB11_17
 # %bb.16:                               # %._crit_edge.thread.i.i
 	move	$a0, $s6
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1711,8 +1701,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 	bnez	$a0, .LBB11_45
 # %bb.41:
 	ld.bu	$a0, $s0, 264
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_55
+	beqz	$a0, .LBB11_55
 # %bb.42:
 .Ltmp225:
 	ori	$a0, $zero, 16
@@ -1739,8 +1728,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 	st.d	$zero, $fp, 0
 .LBB11_46:
 	ld.bu	$a0, $s0, 266
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_54
+	beqz	$a0, .LBB11_54
 # %bb.47:
 .Ltmp230:
 	ori	$a0, $zero, 40
@@ -1984,8 +1972,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 	ld.w	$s3, $s0, 244
 	bge	$s3, $a0, .LBB11_97
 # %bb.92:                               # %.preheader
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB11_100
+	blez	$s3, .LBB11_100
 # %bb.93:                               # %.lr.ph
 	move	$s8, $zero
 	sltui	$a0, $s7, 1
@@ -2083,22 +2070,21 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 .Ltmp127:
 # %bb.110:
 	ld.bu	$a0, $s2, 0
-	ori	$a3, $zero, 1
-	bne	$a0, $a3, .LBB11_115
+	beqz	$a0, .LBB11_115
 # %bb.111:
 	ld.b	$a1, $s0, 172
 	ld.d	$a0, $sp, 56
 	ld.bu	$a2, $s0, 138
 	andi	$a1, $a1, 1
 	maskeqz	$a1, $s5, $a1
-	ld.b	$a4, $s0, 173
-	ld.bu	$a5, $s0, 139
-	ld.bu	$a6, $s0, 140
+	ld.b	$a3, $s0, 173
+	ld.bu	$a4, $s0, 139
+	ld.bu	$a5, $s0, 140
 	maskeqz	$a1, $a1, $a2
-	andi	$a2, $a4, 1
+	andi	$a2, $a3, 1
 	maskeqz	$a2, $s6, $a2
-	maskeqz	$a2, $a2, $a5
-	bne	$a6, $a3, .LBB11_113
+	maskeqz	$a2, $a2, $a4
+	beqz	$a5, .LBB11_113
 # %bb.112:
 	ld.b	$a3, $s0, 174
 	andi	$a4, $a3, 1
@@ -2130,8 +2116,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 .Ltmp132:
 # %bb.118:
 	ld.bu	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_123
+	beqz	$a0, .LBB11_123
 # %bb.119:
 	addi.d	$s1, $s0, 96
 .Ltmp220:
@@ -2142,8 +2127,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 .Ltmp221:
 # %bb.120:
 	ld.bu	$a0, $sp, 183
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_122
+	beqz	$a0, .LBB11_122
 # %bb.121:
 	ld.d	$a0, $s1, 0
 .Ltmp222:
@@ -2498,8 +2482,7 @@ _ZN23CArchiveExtractCallback9GetStreamEjPP20ISequentialOutStreami: # @_ZN23CArch
 	beqz	$a0, .LBB11_199
 # %bb.190:
 	ld.bu	$a0, $s0, 136
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB11_193
+	beqz	$a0, .LBB11_193
 # %bb.191:
 	ld.d	$a0, $s0, 200
 	ld.d	$a2, $a0, 0
@@ -3317,8 +3300,7 @@ _ZN13CObjectVectorI11CStringBaseIwEE6DeleteEii: # @_ZN13CObjectVectorI11CStringB
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB12_7
+	blez	$s1, .LBB12_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -3394,11 +3376,9 @@ _ZplIwE11CStringBaseIT_ERKS2_S4_:       # @_ZplIwE11CStringBaseIT_ERKS2_S4_
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a0, $s2, 31, 0
 	addi.d	$s3, $a0, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s3, $a0
+	slli.d	$a0, $s3, 31
 	vst	$vr0, $fp, 0
-	beqz	$a0, .LBB13_2
+	bgez	$a0, .LBB13_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB13_3
@@ -3569,11 +3549,9 @@ _ZN11CStringBaseIwEC2ERKS0_:            # @_ZN11CStringBaseIwEC2ERKS0_
 	vst	$vr0, $a0, 0
 	ld.wu	$a0, $a1, 8
 	addi.d	$s2, $a0, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $s2, $a1
+	slli.d	$a1, $s2, 31
 	addi.w	$s1, $a0, 0
-	beqz	$a1, .LBB15_2
+	bgez	$a1, .LBB15_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB15_3
@@ -4022,17 +4000,16 @@ _ZN23CArchiveExtractCallback18SetOperationResultEi: # @_ZN23CArchiveExtractCallb
 	ld.bu	$a2, $fp, 138
 	andi	$a1, $a1, 1
 	addi.d	$a3, $fp, 144
-	ld.b	$a4, $fp, 173
 	maskeqz	$a1, $a3, $a1
+	ld.b	$a3, $fp, 173
 	maskeqz	$a1, $a1, $a2
 	ld.bu	$a2, $fp, 139
-	andi	$a3, $a4, 1
 	ld.bu	$a4, $fp, 140
+	andi	$a3, $a3, 1
 	addi.d	$a5, $fp, 152
 	maskeqz	$a3, $a5, $a3
-	ori	$a5, $zero, 1
 	maskeqz	$a2, $a3, $a2
-	bne	$a4, $a5, .LBB20_11
+	beqz	$a4, .LBB20_11
 # %bb.6:
 	ld.b	$a3, $fp, 174
 	andi	$a3, $a3, 1
@@ -4102,8 +4079,7 @@ _ZN23CArchiveExtractCallback18SetOperationResultEi: # @_ZN23CArchiveExtractCallb
 .Ltmp282:
 # %bb.20:
 	ld.bu	$a0, $fp, 192
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB20_22
+	beqz	$a0, .LBB20_22
 .LBB20_21:                              # %.thread
 	ld.d	$a0, $fp, 184
 	ld.d	$a1, $fp, 320
@@ -4119,9 +4095,8 @@ _ZN23CArchiveExtractCallback18SetOperationResultEi: # @_ZN23CArchiveExtractCallb
 	ldx.d	$a1, $fp, $a0
 	ld.bu	$a2, $fp, 137
 	addi.d	$a1, $a1, 1
-	ori	$a3, $zero, 1
 	stx.d	$a1, $fp, $a0
-	bne	$a2, $a3, .LBB20_25
+	beqz	$a2, .LBB20_25
 # %bb.23:
 	ld.b	$a0, $fp, 175
 	andi	$a0, $a0, 1
@@ -5213,19 +5188,18 @@ _ZN13CObjectVectorI11CStringBaseIwEEpLERKS2_: # @_ZN13CObjectVectorI11CStringBas
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception15
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	.cfi_def_cfa_offset 112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	.cfi_def_cfa_offset 96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -5236,7 +5210,6 @@ _ZN13CObjectVectorI11CStringBaseIwEEpLERKS2_: # @_ZN13CObjectVectorI11CStringBas
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
 	.cfi_offset 30, -80
-	.cfi_offset 31, -88
 	move	$s0, $a1
 	move	$fp, $a0
 	ld.w	$s2, $a1, 12
@@ -5245,41 +5218,38 @@ _ZN13CObjectVectorI11CStringBaseIwEEpLERKS2_: # @_ZN13CObjectVectorI11CStringBas
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector7ReserveEi)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB41_9
+	blez	$s2, .LBB41_9
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-	ori	$s4, $zero, 0
-	lu32i.d	$s4, 1
-	addi.w	$s5, $zero, -1
+	addi.w	$s4, $zero, -1
 	.p2align	4, , 16
 .LBB41_2:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB41_7 Depth 2
 	ld.d	$a0, $s0, 16
 	slli.d	$a1, $s3, 3
-	ldx.d	$s7, $a0, $a1
+	ldx.d	$s6, $a0, $a1
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vst	$vr0, $a0, 0
-	ld.w	$s6, $s7, 8
-	bstrpick.d	$a0, $s6, 31, 0
-	addi.d	$s8, $a0, 1
-	and	$a0, $s8, $s4
-	beqz	$a0, .LBB41_4
+	ld.w	$s5, $s6, 8
+	bstrpick.d	$a0, $s5, 31, 0
+	addi.d	$s7, $a0, 1
+	slli.d	$a0, $s7, 31
+	bgez	$a0, .LBB41_4
 # %bb.3:                                #   in Loop: Header=BB41_2 Depth=1
 	move	$a0, $zero
 	b	.LBB41_6
 	.p2align	4, , 16
 .LBB41_4:                               #   in Loop: Header=BB41_2 Depth=1
-	addi.w	$a0, $s8, 0
-	slti	$a1, $s6, -1
+	addi.w	$a0, $s7, 0
+	slti	$a1, $s5, -1
 	slli.d	$a0, $a0, 2
-	maskeqz	$a2, $s5, $a1
+	maskeqz	$a2, $s4, $a1
 	masknez	$a0, $a0, $a1
 	or	$a0, $a2, $a0
 .Ltmp327:
@@ -5290,10 +5260,10 @@ _ZN13CObjectVectorI11CStringBaseIwEEpLERKS2_: # @_ZN13CObjectVectorI11CStringBas
                                         #   in Loop: Header=BB41_2 Depth=1
 	st.d	$a0, $s1, 0
 	st.w	$zero, $a0, 0
-	st.w	$s8, $s1, 12
+	st.w	$s7, $s1, 12
 .LBB41_6:                               # %_ZN11CStringBaseIwE11SetCapacityEi.exit.i.i
                                         #   in Loop: Header=BB41_2 Depth=1
-	ld.d	$a1, $s7, 0
+	ld.d	$a1, $s6, 0
 	.p2align	4, , 16
 .LBB41_7:                               #   Parent Loop BB41_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
@@ -5305,7 +5275,7 @@ _ZN13CObjectVectorI11CStringBaseIwEEpLERKS2_: # @_ZN13CObjectVectorI11CStringBas
 	bnez	$a2, .LBB41_7
 # %bb.8:                                # %_ZN13CObjectVectorI11CStringBaseIwEE3AddERKS1_.exit
                                         #   in Loop: Header=BB41_2 Depth=1
-	st.w	$s6, $s1, 8
+	st.w	$s5, $s1, 8
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector18ReserveOnePositionEv)
 	jirl	$ra, $ra, 0
@@ -5319,18 +5289,17 @@ _ZN13CObjectVectorI11CStringBaseIwEEpLERKS2_: # @_ZN13CObjectVectorI11CStringBas
 	bne	$s3, $s2, .LBB41_2
 .LBB41_9:                               # %._crit_edge
 	move	$a0, $fp
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB41_10:
 .Ltmp329:

@@ -333,7 +333,7 @@ _ZN9NCompress6NBZip211CThreadInfo10ThreadFuncEv: # @_ZN9NCompress6NBZip211CThrea
 	bnez	$a1, .LBB5_1
 .LBB5_7:                                # =>This Inner Loop Header: Depth=1
 	ld.bu	$a1, $a0, 589
-	beq	$a1, $s4, .LBB5_3
+	bnez	$a1, .LBB5_3
 # %bb.8:                                #   in Loop: Header=BB5_7 Depth=1
 	ld.d	$a1, $fp, 0
 	ori	$s8, $zero, 1
@@ -689,8 +689,7 @@ _ZN9NCompress6NBZip211CThreadInfo12EncodeBlock3Ej: # @_ZN9NCompress6NBZip211CThr
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s1, 16
 	ld.bu	$a1, $a0, 580
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB7_2
+	beqz	$a1, .LBB7_2
 # %bb.1:
 	ld.wu	$a1, $s1, 4
 	ld.d	$a0, $a0, 424
@@ -1265,7 +1264,6 @@ _ZN9NCompress6NBZip28CEncoder4FreeEv:   # @_ZN9NCompress6NBZip28CEncoder4FreeEv
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1275,13 +1273,12 @@ _ZN9NCompress6NBZip28CEncoder4FreeEv:   # @_ZN9NCompress6NBZip28CEncoder4FreeEv
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$fp, $a0
 	ld.d	$a0, $a0, 424
 	beqz	$a0, .LBB12_12
 # %bb.1:
-	ori	$s0, $zero, 1
-	st.b	$s0, $fp, 588
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 588
 	addi.d	$a0, $fp, 432
 	pcaddu18i	$ra, %call36(Event_Set)
 	jirl	$ra, $ra, 0
@@ -1289,32 +1286,32 @@ _ZN9NCompress6NBZip28CEncoder4FreeEv:   # @_ZN9NCompress6NBZip28CEncoder4FreeEv
 	lu12i.w	$s1, 8
 	beqz	$a0, .LBB12_6
 # %bb.2:                                # %.lr.ph
+	move	$s0, $zero
 	move	$s2, $zero
-	move	$s3, $zero
-	ori	$s4, $s1, 3328
-	ori	$s5, $s1, 3920
+	ori	$s3, $s1, 3328
+	ori	$s4, $s1, 3920
 	b	.LBB12_4
 	.p2align	4, , 16
 .LBB12_3:                               #   in Loop: Header=BB12_4 Depth=1
-	ld.d	$a0, $s7, 24
+	ld.d	$a0, $s6, 24
 	pcaddu18i	$ra, %call36(BigFree)
 	jirl	$ra, $ra, 0
-	ldx.d	$a0, $s6, $s2
-	st.d	$zero, $s7, 24
+	ldx.d	$a0, $s5, $s0
+	st.d	$zero, $s6, 24
 	pcaddu18i	$ra, %call36(MidFree)
 	jirl	$ra, $ra, 0
 	ld.wu	$a0, $fp, 576
-	stx.d	$zero, $s6, $s2
-	addi.d	$s3, $s3, 1
-	add.d	$s2, $s2, $s5
-	bgeu	$s3, $a0, .LBB12_6
+	stx.d	$zero, $s5, $s0
+	addi.d	$s2, $s2, 1
+	add.d	$s0, $s0, $s4
+	bgeu	$s2, $a0, .LBB12_6
 .LBB12_4:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s6, $fp, 424
+	ld.d	$s5, $fp, 424
 	ld.bu	$a0, $fp, 580
-	add.d	$s7, $s6, $s2
-	bne	$a0, $s0, .LBB12_3
+	add.d	$s6, $s5, $s0
+	beqz	$a0, .LBB12_3
 # %bb.5:                                #   in Loop: Header=BB12_4 Depth=1
-	add.d	$a0, $s7, $s4
+	add.d	$a0, $s6, $s3
 	pcaddu18i	$ra, %call36(Thread_Wait)
 	jirl	$ra, $ra, 0
 	b	.LBB12_3
@@ -1348,7 +1345,6 @@ _ZN9NCompress6NBZip28CEncoder4FreeEv:   # @_ZN9NCompress6NBZip28CEncoder4FreeEv
 .LBB12_11:
 	st.d	$zero, $fp, 424
 .LBB12_12:
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -1612,7 +1608,6 @@ _ZN9NCompress6NBZip28CEncoder6CreateEv: # @_ZN9NCompress6NBZip28CEncoder6CreateE
 	move	$s4, $zero
 	move	$s6, $zero
 	ori	$s7, $s0, 3320
-	ori	$a2, $zero, 1
 	ori	$s8, $s0, 3344
 	ori	$a0, $s0, 3448
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -1635,7 +1630,7 @@ _ZN9NCompress6NBZip28CEncoder6CreateEv: # @_ZN9NCompress6NBZip28CEncoder6CreateE
 	ld.bu	$a1, $fp, 580
 	add.d	$s1, $a0, $s5
 	stx.d	$fp, $s1, $s7
-	bne	$a1, $a2, .LBB19_15
+	beqz	$a1, .LBB19_15
 # %bb.17:                               #   in Loop: Header=BB19_16 Depth=1
 	add.d	$a0, $s1, $s8
 	pcaddu18i	$ra, %call36(AutoResetEvent_CreateNotSignaled)
@@ -1665,7 +1660,6 @@ _ZN9NCompress6NBZip28CEncoder6CreateEv: # @_ZN9NCompress6NBZip28CEncoder6CreateE
 # %bb.21:                               # %_ZN9NCompress6NBZip211CThreadInfo6CreateEv.exit._crit_edge
                                         #   in Loop: Header=BB19_16 Depth=1
 	ld.wu	$s3, $fp, 576
-	ori	$a2, $zero, 1
 	b	.LBB19_15
 .LBB19_22:                              # %_ZN8NWindows16NSynchronization17CManualResetEvent18CreateIfNotCreatedEv.exit
 	addi.d	$a0, $fp, 432
@@ -1892,8 +1886,7 @@ GCC_except_table20:
 	.type	_ZN9NCompress6NBZip211CThreadInfo10WriteBits2Ejj,@function
 _ZN9NCompress6NBZip211CThreadInfo10WriteBits2Ejj: # @_ZN9NCompress6NBZip211CThreadInfo10WriteBits2Ejj
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB21_5
+	blez	$a2, .LBB21_5
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a0, $a0, 32
 	ld.w	$a3, $a0, 4
@@ -2645,8 +2638,8 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 .LBB29_22:                              # %.preheader409.preheader
 	move	$a0, $zero
 	move	$s3, $zero
-	ori	$a1, $zero, 1
-	addi.d	$a2, $sp, 344
+	addi.d	$a1, $sp, 344
+	ori	$a2, $zero, 1
 	addi.d	$a3, $sp, 1576
 	b	.LBB29_24
 	.p2align	4, , 16
@@ -2656,12 +2649,12 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 .LBB29_24:                              # %.preheader409
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a4, $a0, $s2
-	bne	$a4, $a1, .LBB29_23
+	beqz	$a4, .LBB29_23
 # %bb.25:                               #   in Loop: Header=BB29_24 Depth=1
 	bstrpick.d	$a4, $a0, 31, 4
 	stx.b	$a0, $s3, $a3
 	addi.w	$s3, $s3, 1
-	stx.b	$a1, $a4, $a2
+	stx.b	$a2, $a4, $a1
 	b	.LBB29_23
 .LBB29_26:                              # %.preheader408.preheader
 	move	$a0, $zero
@@ -2715,57 +2708,56 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 .LBB29_32:                              # %.preheader407.preheader
 	move	$a0, $zero
 	addi.d	$a1, $sp, 344
-	ori	$a2, $zero, 1
-	addi.d	$a3, $sp, 544
-	ori	$a4, $zero, 256
+	addi.d	$a2, $sp, 544
+	ori	$a3, $zero, 256
 	b	.LBB29_34
 	.p2align	4, , 16
 .LBB29_33:                              # %_ZN9NCompress6NBZip211CThreadInfo9WriteBit2Eb.exit342
                                         #   in Loop: Header=BB29_34 Depth=1
 	addi.d	$a0, $a0, 1
-	beq	$a0, $a4, .LBB29_39
+	beq	$a0, $a3, .LBB29_39
 .LBB29_34:                              # %.preheader407
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB29_37 Depth 2
-	bstrpick.d	$a5, $a0, 31, 4
-	ldx.bu	$a5, $a5, $a1
-	bne	$a5, $a2, .LBB29_33
+	bstrpick.d	$a4, $a0, 31, 4
+	ldx.bu	$a4, $a4, $a1
+	beqz	$a4, .LBB29_33
 # %bb.35:                               #   in Loop: Header=BB29_34 Depth=1
-	ld.d	$a5, $fp, 32
-	ldx.bu	$a6, $a0, $a3
-	ld.w	$t0, $a5, 4
-	ori	$a7, $zero, 1
+	ld.d	$a4, $fp, 32
+	ldx.bu	$a5, $a0, $a2
+	ld.w	$a7, $a4, 4
+	ori	$a6, $zero, 1
 	b	.LBB29_37
 	.p2align	4, , 16
 .LBB29_36:                              #   in Loop: Header=BB29_37 Depth=2
-	sll.w	$t0, $t1, $a7
-	sub.d	$a6, $a6, $t0
-	move	$t0, $t2
-	blez	$a7, .LBB29_33
+	sll.w	$a7, $t0, $a6
+	sub.d	$a5, $a5, $a7
+	move	$a7, $t1
+	blez	$a6, .LBB29_33
 .LBB29_37:                              #   Parent Loop BB29_34 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	move	$t4, $a7
-	slt	$a7, $a7, $t0
-	masknez	$t1, $t0, $a7
-	ld.bu	$t2, $a5, 8
-	maskeqz	$a7, $t4, $a7
-	or	$t5, $a7, $t1
-	sub.w	$a7, $t4, $t5
-	sll.w	$t2, $t2, $t5
-	srl.w	$t1, $a6, $a7
-	or	$t3, $t2, $t1
-	st.b	$t3, $a5, 8
-	sub.w	$t2, $t0, $t5
-	st.w	$t2, $a5, 4
-	blt	$t4, $t0, .LBB29_36
+	move	$t3, $a6
+	slt	$a6, $a6, $a7
+	masknez	$t0, $a7, $a6
+	ld.bu	$t1, $a4, 8
+	maskeqz	$a6, $t3, $a6
+	or	$t4, $a6, $t0
+	sub.w	$a6, $t3, $t4
+	sll.w	$t1, $t1, $t4
+	srl.w	$t0, $a5, $a6
+	or	$t2, $t1, $t0
+	st.b	$t2, $a4, 8
+	sub.w	$t1, $a7, $t4
+	st.w	$t1, $a4, 4
+	blt	$t3, $a7, .LBB29_36
 # %bb.38:                               #   in Loop: Header=BB29_37 Depth=2
-	ld.wu	$t0, $a5, 0
-	ld.d	$t2, $a5, 16
-	addi.d	$t4, $t0, 1
-	st.w	$t4, $a5, 0
-	stx.b	$t3, $t2, $t0
-	ori	$t2, $zero, 8
-	st.w	$t2, $a5, 4
+	ld.wu	$a7, $a4, 0
+	ld.d	$t1, $a4, 16
+	addi.d	$t3, $a7, 1
+	st.w	$t3, $a4, 0
+	stx.b	$t2, $t1, $a7
+	ori	$t1, $zero, 8
+	st.w	$t1, $a4, 4
 	b	.LBB29_36
 .LBB29_39:
 	vst	$vr8, $sp, 208                  # 16-byte Folded Spill
@@ -4152,7 +4144,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 .LBB29_171:                             # %_ZN9NCompress6NBZip211CThreadInfo9WriteBit2Eb.exit362.preheader
                                         #   in Loop: Header=BB29_165 Depth=2
 	addi.w	$a3, $a2, 0
-	blt	$a3, $s4, .LBB29_164
+	blez	$a3, .LBB29_164
 # %bb.172:                              # %_ZN9NCompress6NBZip211CThreadInfo9WriteBit2Eb.exit362.preheader462
                                         #   in Loop: Header=BB29_165 Depth=2
 	bgeu	$a2, $t6, .LBB29_180
@@ -4610,7 +4602,7 @@ _ZN9NCompress6NBZip211CThreadInfo11EncodeBlockEPKhj: # @_ZN9NCompress6NBZip211CT
 	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
 	ld.bu	$a0, $a0, 0
 	ld.d	$a5, $sp, 184                   # 8-byte Folded Reload
-	bne	$a0, $s4, .LBB29_227
+	beqz	$a0, .LBB29_227
 # %bb.225:                              #   in Loop: Header=BB29_69 Depth=1
 	ld.d	$a1, $fp, 32
 	ld.w	$a0, $a1, 0
@@ -5510,11 +5502,11 @@ _ZN9NCompress6NBZip28CEncoder8CodeRealEP19ISequentialInStreamP20ISequentialOutSt
 	move	$s7, $zero
 	move	$s8, $zero
 	lu12i.w	$a0, 8
-	ori	$s3, $a0, 3344
-	ori	$s4, $a0, 3448
+	ori	$s6, $a0, 3344
+	ori	$s3, $a0, 3448
 	ori	$a1, $a0, 3552
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	ori	$s0, $a0, 3312
+	ori	$s1, $a0, 3312
 	lu12i.w	$a1, 1821
 	ori	$a1, $a1, 3328
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
@@ -5539,54 +5531,53 @@ _ZN9NCompress6NBZip28CEncoder8CodeRealEP19ISequentialInStreamP20ISequentialOutSt
 	add.d	$s7, $s7, $s5
 	bgeu	$s8, $a0, .LBB33_15
 .LBB33_6:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$s1, $fp, 424
+	ld.d	$s4, $fp, 424
 	ld.bu	$a0, $fp, 580
-	add.d	$s6, $s1, $s7
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB33_10
+	add.d	$s0, $s4, $s7
+	beqz	$a0, .LBB33_10
 # %bb.7:                                #   in Loop: Header=BB33_6 Depth=1
-	add.d	$a0, $s6, $s3
+	add.d	$a0, $s0, $s6
 	pcaddu18i	$ra, %call36(Event_Reset)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB33_1
 # %bb.8:                                #   in Loop: Header=BB33_6 Depth=1
-	add.d	$a0, $s6, $s4
+	add.d	$a0, $s0, $s3
 	pcaddu18i	$ra, %call36(Event_Reset)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB33_1
 # %bb.9:                                #   in Loop: Header=BB33_6 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a0, $s6, $a0
+	add.d	$a0, $s0, $a0
 	pcaddu18i	$ra, %call36(Event_Reset)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB33_1
 .LBB33_10:                              #   in Loop: Header=BB33_6 Depth=1
 	ld.b	$a0, $fp, 32
-	ld.d	$a1, $s6, 24
-	stx.b	$a0, $s6, $s0
+	ld.d	$a1, $s0, 24
+	stx.b	$a0, $s0, $s1
 	bnez	$a1, .LBB33_12
 # %bb.11:                               #   in Loop: Header=BB33_6 Depth=1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(BigAlloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s6, 24
+	st.d	$a0, $s0, 24
 	beqz	$a0, .LBB33_2
 .LBB33_12:                              #   in Loop: Header=BB33_6 Depth=1
-	ldx.d	$a0, $s1, $s7
+	ldx.d	$a0, $s4, $s7
 	bnez	$a0, .LBB33_5
 # %bb.13:                               #   in Loop: Header=BB33_6 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(MidAlloc)
 	jirl	$ra, $ra, 0
-	stx.d	$a0, $s1, $s7
+	stx.d	$a0, $s4, $s7
 	beqz	$a0, .LBB33_2
 # %bb.14:                               #   in Loop: Header=BB33_6 Depth=1
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a1, $a0, $a1
-	st.d	$a1, $s6, 8
+	st.d	$a1, $s0, 8
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a0, $a0, $a1
-	st.d	$a0, $s6, 16
+	st.d	$a0, $s0, 16
 	b	.LBB33_5
 .LBB33_15:                              # %._crit_edge
 	addi.d	$s5, $fp, 48

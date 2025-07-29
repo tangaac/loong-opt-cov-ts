@@ -30,9 +30,8 @@ does_next_player_win:                   # @does_next_player_win
 	ldx.w	$a3, $a1, $a3
 	ld.d	$a1, $a2, %got_pc_lo12(g_empty_squares)
 	slli.d	$a2, $s2, 3
-	ori	$a4, $zero, 1
 	alsl.d	$a2, $s2, $a2, 2
-	blt	$a3, $a4, .LBB0_7
+	blez	$a3, .LBB0_7
 # %bb.1:                                # %.lr.ph52.preheader.i
 	pcalau12i	$a4, %got_pc_hi20(g_board)
 	ld.d	$a4, $a4, %got_pc_lo12(g_board)
@@ -174,10 +173,9 @@ does_next_player_win:                   # @does_next_player_win
 	andi	$a4, $a3, 1
 	bnez	$a4, .LBB0_25
 # %bb.18:
-	ori	$a3, $zero, 1
-	bge	$a1, $a3, .LBB0_12
+	bgtz	$a1, .LBB0_12
 # %bb.19:
-	blt	$a2, $a3, .LBB0_45
+	blez	$a2, .LBB0_45
 .LBB0_20:
 	ld.w	$a3, $sp, 168
 	addi.d	$a4, $a2, -1
@@ -411,8 +409,7 @@ does_next_player_win:                   # @does_next_player_win
 	st.w	$t1, $sp, 164
 	b	.LBB0_34
 .LBB0_45:
-	ori	$a2, $zero, 1
-	blt	$s0, $a2, .LBB0_47
+	blez	$s0, .LBB0_47
 # %bb.46:
 	addi.d	$s0, $s0, -1
 	addi.d	$s1, $s1, 2
@@ -442,28 +439,28 @@ pack_vuln:                              # @pack_vuln
 	pcalau12i	$a7, %got_pc_hi20(g_board_size)
 	ld.d	$t6, $a7, %got_pc_lo12(g_board_size)
 	slli.d	$a7, $a1, 2
-	ldx.w	$t0, $t6, $a7
-	ori	$a7, $zero, 1
+	ldx.w	$a7, $t6, $a7
 	st.d	$a6, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 8                     # 8-byte Folded Spill
-	blt	$t0, $a7, .LBB1_38
+	blez	$a7, .LBB1_38
 # %bb.1:                                # %.lr.ph188.preheader
+	move	$t4, $zero
 	move	$t5, $zero
-	move	$t7, $zero
+	move	$a7, $zero
 	move	$t0, $zero
 	move	$t1, $zero
 	move	$t2, $zero
 	move	$t3, $zero
-	move	$t4, $zero
 	move	$s7, $zero
 	pcalau12i	$a6, %got_pc_hi20(g_board)
-	ld.d	$t8, $a6, %got_pc_lo12(g_board)
+	ld.d	$t7, $a6, %got_pc_lo12(g_board)
 	alsl.d	$a5, $a1, $t6, 2
 	ld.w	$s3, $a0, 0
 	slli.d	$a1, $a1, 7
-	add.d	$a1, $t8, $a1
+	add.d	$a1, $t7, $a1
 	addi.w	$t6, $zero, -1
-	ori	$t8, $zero, 3
+	ori	$t7, $zero, 3
+	ori	$t8, $zero, 1
 	ori	$fp, $zero, 4
 	b	.LBB1_4
 	.p2align	4, , 16
@@ -474,13 +471,13 @@ pack_vuln:                              # @pack_vuln
 	ld.w	$a6, $a5, 0
 	move	$s3, $s0
 	move	$s7, $s1
-	bge	$t5, $a6, .LBB1_39
+	bge	$t4, $a6, .LBB1_39
 .LBB1_4:                                # %.lr.ph188
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_9 Depth 2
-	move	$s1, $t5
-	addi.d	$t5, $t5, 1
-	slli.d	$s0, $t5, 2
+	move	$s1, $t4
+	addi.d	$t4, $t4, 1
+	slli.d	$s0, $t4, 2
 	ldx.w	$s2, $a1, $s0
 	ldx.w	$s0, $a0, $s0
 	or	$s2, $s0, $s2
@@ -497,7 +494,7 @@ pack_vuln:                              # @pack_vuln
 	ldx.wu	$s1, $a1, $s1
 	or	$s4, $s4, $s5
 	orn	$s4, $s3, $s4
-	alsl.d	$s3, $t5, $a0, 2
+	alsl.d	$s3, $t4, $a0, 2
 	and	$s5, $s1, $s5
 	nor	$s6, $s2, $zero
 	b	.LBB1_9
@@ -506,7 +503,7 @@ pack_vuln:                              # @pack_vuln
 	.p2align	4, , 16
 .LBB1_7:                                # %.fold.split
                                         #   in Loop: Header=BB1_9 Depth=2
-	move	$t7, $s6
+	move	$t5, $s6
 .LBB1_8:                                #   in Loop: Header=BB1_9 Depth=2
 	addi.w	$a6, $s1, 0
 	addi.w	$s2, $s7, 0
@@ -521,21 +518,21 @@ pack_vuln:                              # @pack_vuln
 	and	$s7, $s1, $s6
 	bstrpick.d	$ra, $s7, 31, 1
 	and	$a6, $ra, $s2
-	move	$s6, $t7
+	move	$s6, $t5
 	beqz	$a6, .LBB1_18
 .LBB1_10:                               #   in Loop: Header=BB1_9 Depth=2
 	and	$a6, $s5, $s7
 	beqz	$a6, .LBB1_14
 # %bb.11:                               #   in Loop: Header=BB1_9 Depth=2
-	bltu	$t8, $s8, .LBB1_25
+	bltu	$t7, $s8, .LBB1_25
 # %bb.12:                               #   in Loop: Header=BB1_9 Depth=2
 	slli.d	$a6, $s8, 2
-	pcalau12i	$t7, %pc_hi20(.LJTI1_0)
-	addi.d	$t7, $t7, %pc_lo12(.LJTI1_0)
-	ldx.w	$a6, $t7, $a6
-	add.d	$a6, $t7, $a6
+	pcalau12i	$t5, %pc_hi20(.LJTI1_0)
+	addi.d	$t5, $t5, %pc_lo12(.LJTI1_0)
+	ldx.w	$a6, $t5, $a6
+	add.d	$a6, $t5, $a6
 	ori	$s8, $zero, 1
-	move	$t7, $s6
+	move	$t5, $s6
 	jr	$a6
 .LBB1_13:                               #   in Loop: Header=BB1_9 Depth=2
 	move	$s8, $zero
@@ -545,12 +542,12 @@ pack_vuln:                              # @pack_vuln
 	bltu	$fp, $s8, .LBB1_7
 # %bb.15:                               #   in Loop: Header=BB1_9 Depth=2
 	slli.d	$a6, $s8, 2
-	pcalau12i	$t7, %pc_hi20(.LJTI1_1)
-	addi.d	$t7, $t7, %pc_lo12(.LJTI1_1)
-	ldx.w	$a6, $t7, $a6
-	add.d	$a6, $t7, $a6
+	pcalau12i	$t5, %pc_hi20(.LJTI1_1)
+	addi.d	$t5, $t5, %pc_lo12(.LJTI1_1)
+	ldx.w	$a6, $t5, $a6
+	add.d	$a6, $t5, $a6
 	ori	$s8, $zero, 2
-	move	$t7, $s7
+	move	$t5, $s7
 	jr	$a6
 .LBB1_16:                               #   in Loop: Header=BB1_9 Depth=2
 	or	$a6, $s7, $s0
@@ -562,16 +559,16 @@ pack_vuln:                              # @pack_vuln
 	move	$s8, $zero
 	beqz	$a6, .LBB1_31
 # %bb.17:                               #   in Loop: Header=BB1_9 Depth=2
-	addi.d	$t3, $t3, 1
+	addi.d	$t2, $t2, 1
 	b	.LBB1_7
 	.p2align	4, , 16
 .LBB1_18:                               #   in Loop: Header=BB1_9 Depth=2
-	beq	$s8, $t8, .LBB1_22
+	beq	$s8, $t7, .LBB1_22
 # %bb.19:                               #   in Loop: Header=BB1_9 Depth=2
-	bne	$s8, $a7, .LBB1_24
+	bne	$s8, $t8, .LBB1_24
 # %bb.20:                               #   in Loop: Header=BB1_9 Depth=2
 	move	$s8, $zero
-	addi.d	$t0, $t0, 1
+	addi.d	$a7, $a7, 1
 	or	$s0, $s0, $s2
 	st.w	$s0, $s3, 0
 	b	.LBB1_10
@@ -588,7 +585,7 @@ pack_vuln:                              # @pack_vuln
 	move	$s8, $zero
 	bnez	$a6, .LBB1_27
 # %bb.23:                               #   in Loop: Header=BB1_9 Depth=2
-	addi.d	$t1, $t1, 1
+	addi.d	$t0, $t0, 1
 	b	.LBB1_10
 .LBB1_24:                               #   in Loop: Header=BB1_9 Depth=2
 	move	$s8, $zero
@@ -596,9 +593,9 @@ pack_vuln:                              # @pack_vuln
 .LBB1_25:                               #   in Loop: Header=BB1_9 Depth=2
 	addi.d	$a6, $s8, -4
 	sltui	$a6, $a6, 1
-	masknez	$t7, $s8, $a6
-	maskeqz	$a6, $t8, $a6
-	or	$s8, $a6, $t7
+	masknez	$t5, $s8, $a6
+	maskeqz	$a6, $t7, $a6
+	or	$s8, $a6, $t5
 	b	.LBB1_7
 .LBB1_26:                               #   in Loop: Header=BB1_9 Depth=2
 	slli.d	$a6, $s6, 1
@@ -607,14 +604,14 @@ pack_vuln:                              # @pack_vuln
 	st.w	$s0, $s3, 0
 	and	$a6, $a6, $s4
 	addi.w	$a6, $a6, 0
-	sltui	$t7, $a6, 1
+	sltui	$t5, $a6, 1
 	sltu	$a6, $zero, $a6
-	add.d	$t3, $t3, $a6
-	add.d	$t1, $t1, $t7
-	move	$t7, $s7
+	add.d	$t2, $t2, $a6
+	add.d	$t0, $t0, $t5
+	move	$t5, $s7
 	b	.LBB1_8
 .LBB1_27:                               #   in Loop: Header=BB1_9 Depth=2
-	addi.d	$t3, $t3, 1
+	addi.d	$t2, $t2, 1
 	b	.LBB1_10
 .LBB1_28:                               #   in Loop: Header=BB1_9 Depth=2
 	slli.d	$a6, $s6, 1
@@ -626,57 +623,57 @@ pack_vuln:                              # @pack_vuln
 	move	$s8, $zero
 	bnez	$a6, .LBB1_30
 # %bb.29:                               #   in Loop: Header=BB1_9 Depth=2
-	addi.d	$t2, $t2, 1
+	addi.d	$t1, $t1, 1
 	b	.LBB1_7
 .LBB1_30:                               #   in Loop: Header=BB1_9 Depth=2
-	addi.d	$t4, $t4, 1
+	addi.d	$t3, $t3, 1
 	b	.LBB1_7
 .LBB1_31:                               #   in Loop: Header=BB1_9 Depth=2
-	addi.d	$t1, $t1, 1
+	addi.d	$t0, $t0, 1
 	b	.LBB1_7
 	.p2align	4, , 16
 .LBB1_32:                               # %._crit_edge
                                         #   in Loop: Header=BB1_4 Depth=1
-	beq	$s8, $t8, .LBB1_35
+	beq	$s8, $t7, .LBB1_35
 # %bb.33:                               # %._crit_edge
                                         #   in Loop: Header=BB1_4 Depth=1
-	bne	$s8, $a7, .LBB1_3
+	bne	$s8, $t8, .LBB1_3
 # %bb.34:                               #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$t0, $t0, 1
+	addi.d	$a7, $a7, 1
 	or	$s0, $s0, $s1
 	st.w	$s0, $s3, 0
 	b	.LBB1_3
 	.p2align	4, , 16
 .LBB1_35:                               #   in Loop: Header=BB1_4 Depth=1
-	slli.d	$a6, $t7, 1
-	or	$a6, $t7, $a6
+	slli.d	$a6, $t5, 1
+	or	$a6, $t5, $a6
 	or	$s0, $a6, $s0
 	and	$a6, $a6, $s4
 	addi.w	$a6, $a6, 0
 	st.w	$s0, $s3, 0
 	bnez	$a6, .LBB1_37
 # %bb.36:                               #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$t1, $t1, 1
+	addi.d	$t0, $t0, 1
 	b	.LBB1_3
 .LBB1_37:                               #   in Loop: Header=BB1_4 Depth=1
-	addi.d	$t3, $t3, 1
+	addi.d	$t2, $t2, 1
 	b	.LBB1_3
 .LBB1_38:
-	move	$t4, $zero
 	move	$t3, $zero
 	move	$t2, $zero
 	move	$t1, $zero
 	move	$t0, $zero
+	move	$a7, $zero
 .LBB1_39:                               # %._crit_edge189
-	add.d	$a0, $t3, $t4
+	add.d	$a0, $t2, $t3
 	st.w	$a0, $a2, 0
-	st.w	$t3, $a3, 0
-	add.d	$a0, $t1, $t2
+	st.w	$t2, $a3, 0
+	add.d	$a0, $t0, $t1
 	st.w	$a0, $a4, 0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	st.w	$t1, $a0, 0
-	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$t0, $a0, 0
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	st.w	$a7, $a0, 0
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -725,8 +722,7 @@ pack_safe:                              # @pack_safe
 	ld.d	$t3, $a5, %got_pc_lo12(g_board_size)
 	slli.d	$a5, $a1, 2
 	ldx.w	$t6, $t3, $a5
-	ori	$a5, $zero, 1
-	blt	$t6, $a5, .LBB2_21
+	blez	$t6, .LBB2_21
 # %bb.1:                                # %.lr.ph132.preheader
 	pcalau12i	$a5, %got_pc_hi20(g_board)
 	ld.d	$a5, $a5, %got_pc_lo12(g_board)
@@ -916,9 +912,8 @@ does_who_just_moved_win:                # @does_who_just_moved_win
 	ldx.w	$a3, $a1, $a3
 	ld.d	$a1, $a2, %got_pc_lo12(g_empty_squares)
 	slli.d	$a2, $s1, 3
-	ori	$a4, $zero, 1
 	alsl.d	$a2, $s1, $a2, 2
-	blt	$a3, $a4, .LBB3_7
+	blez	$a3, .LBB3_7
 # %bb.1:                                # %.lr.ph52.preheader.i
 	pcalau12i	$a4, %got_pc_hi20(g_board)
 	ld.d	$a4, $a4, %got_pc_lo12(g_board)

@@ -62,9 +62,8 @@ MakeHash:                               # @MakeHash
 	st.d	$a1, $s5, %pc_lo12(temp)
 	sub.d	$a1, $s3, $s6
 	st.w	$a1, $s4, %pc_lo12(remaining)
-	ori	$a1, $zero, 1
 	st.d	$a0, $s1, 0
-	blt	$s0, $a1, .LBB0_9
+	blez	$s0, .LBB0_9
 # %bb.8:                                # %.lr.ph.preheader
 	move	$a1, $zero
 	move	$a2, $s2
@@ -101,8 +100,7 @@ HashLookup:                             # @HashLookup
 	ld.d	$a1, $a1, 8
 	move	$fp, $a0
 	jirl	$ra, $a1, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB1_8
+	bltz	$a0, .LBB1_8
 # %bb.1:
 	ld.w	$a1, $s0, 16
 	bge	$a0, $a1, .LBB1_9
@@ -171,8 +169,7 @@ HashInsert:                             # @HashInsert
 	move	$fp, $a0
 	move	$a0, $a1
 	jirl	$ra, $a2, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB2_10
+	bltz	$a0, .LBB2_10
 # %bb.1:
 	ld.w	$a1, $s1, 16
 	bge	$a0, $a1, .LBB2_11

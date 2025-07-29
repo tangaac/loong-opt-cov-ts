@@ -276,7 +276,7 @@ printSoln:                              # @printSoln
 # %bb.22:
 	ld.h	$a0, $s0, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s0, 0
 	beqz	$a1, .LBB3_26
 .LBB3_23:
@@ -284,7 +284,7 @@ printSoln:                              # @printSoln
 .LBB3_24:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	beqz	$a1, .LBB3_27
 .LBB3_25:
@@ -515,7 +515,7 @@ combineSoln:                            # @combineSoln
 # %bb.15:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	beqz	$a1, .LBB4_17
 .LBB4_16:
@@ -649,7 +649,7 @@ newSoln:                                # @newSoln
 # %bb.11:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB5_13
 # %bb.12:
@@ -688,7 +688,7 @@ freeSoln:                               # @freeSoln
 # %bb.2:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB6_4
 # %bb.3:
@@ -700,7 +700,7 @@ freeSoln:                               # @freeSoln
 # %bb.5:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB6_7
 # %bb.6:
@@ -712,7 +712,7 @@ freeSoln:                               # @freeSoln
 # %bb.8:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB6_10
 # %bb.9:
@@ -765,7 +765,7 @@ freeSolns:                              # @freeSolns
 # %bb.4:                                #   in Loop: Header=BB7_3 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	beqz	$a2, .LBB7_8
 .LBB7_5:                                #   in Loop: Header=BB7_3 Depth=1
@@ -774,7 +774,7 @@ freeSolns:                              # @freeSolns
 .LBB7_6:                                #   in Loop: Header=BB7_3 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB7_9
 # %bb.7:                                #   in Loop: Header=BB7_3 Depth=1
@@ -794,7 +794,7 @@ freeSolns:                              # @freeSolns
 # %bb.10:                               #   in Loop: Header=BB7_3 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB7_2
 # %bb.11:                               #   in Loop: Header=BB7_3 Depth=1
@@ -847,7 +847,7 @@ findSoln:                               # @findSoln
 # %bb.7:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB8_9
 # %bb.8:
@@ -893,7 +893,7 @@ freeEas:                                # @freeEas
 # %bb.5:                                #   in Loop: Header=BB9_4 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB9_3
 # %bb.6:                                #   in Loop: Header=BB9_4 Depth=1
@@ -1084,7 +1084,7 @@ pfactorbase:                            # @pfactorbase
 # %bb.12:
 	ld.h	$a0, $s1, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s1, 0
 	bnez	$a1, .LBB12_14
 # %bb.13:
@@ -1096,7 +1096,7 @@ pfactorbase:                            # @pfactorbase
 # %bb.15:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB12_17
 # %bb.16:
@@ -1416,7 +1416,7 @@ getEas:                                 # @getEas
 # %bb.19:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB13_21
 # %bb.20:
@@ -1427,7 +1427,7 @@ getEas:                                 # @getEas
 # %bb.22:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB13_26
 # %bb.23:
@@ -1622,7 +1622,7 @@ pfactorQ:                               # @pfactorQ
 # %bb.17:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB14_19
 # %bb.18:
@@ -1634,7 +1634,7 @@ pfactorQ:                               # @pfactorQ
 # %bb.20:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB14_22
 # %bb.21:
@@ -2113,7 +2113,7 @@ pcfrac:                                 # @pcfrac
 # %bb.36:                               #   in Loop: Header=BB15_17 Depth=2
 	ld.h	$a0, $s4, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $s4, 0
 	bnez	$a1, .LBB15_38
 # %bb.37:                               #   in Loop: Header=BB15_17 Depth=2
@@ -2456,7 +2456,7 @@ pcfrac:                                 # @pcfrac
 # %bb.76:                               #   in Loop: Header=BB15_74 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	beqz	$a2, .LBB15_80
 .LBB15_77:                              #   in Loop: Header=BB15_74 Depth=1
@@ -2465,7 +2465,7 @@ pcfrac:                                 # @pcfrac
 .LBB15_78:                              #   in Loop: Header=BB15_74 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_81
 # %bb.79:                               #   in Loop: Header=BB15_74 Depth=1
@@ -2484,7 +2484,7 @@ pcfrac:                                 # @pcfrac
 # %bb.82:                               #   in Loop: Header=BB15_74 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_72
 # %bb.83:                               #   in Loop: Header=BB15_74 Depth=1
@@ -2511,7 +2511,7 @@ pcfrac:                                 # @pcfrac
 # %bb.89:                               #   in Loop: Header=BB15_88 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_87
 # %bb.90:                               #   in Loop: Header=BB15_88 Depth=1
@@ -2536,7 +2536,7 @@ pcfrac:                                 # @pcfrac
 # %bb.94:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_96
 # %bb.95:
@@ -2548,7 +2548,7 @@ pcfrac:                                 # @pcfrac
 # %bb.97:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_99
 # %bb.98:
@@ -2560,7 +2560,7 @@ pcfrac:                                 # @pcfrac
 # %bb.100:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_102
 # %bb.101:
@@ -2572,7 +2572,7 @@ pcfrac:                                 # @pcfrac
 # %bb.103:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_105
 # %bb.104:
@@ -2584,7 +2584,7 @@ pcfrac:                                 # @pcfrac
 # %bb.106:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_108
 # %bb.107:
@@ -2596,7 +2596,7 @@ pcfrac:                                 # @pcfrac
 # %bb.109:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_111
 # %bb.110:
@@ -2608,7 +2608,7 @@ pcfrac:                                 # @pcfrac
 # %bb.112:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_114
 # %bb.113:
@@ -2620,7 +2620,7 @@ pcfrac:                                 # @pcfrac
 # %bb.115:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_117
 # %bb.116:
@@ -2632,7 +2632,7 @@ pcfrac:                                 # @pcfrac
 # %bb.118:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_120
 # %bb.119:
@@ -2644,7 +2644,7 @@ pcfrac:                                 # @pcfrac
 # %bb.121:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_123
 # %bb.122:
@@ -2656,7 +2656,7 @@ pcfrac:                                 # @pcfrac
 # %bb.124:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_126
 # %bb.125:
@@ -2668,7 +2668,7 @@ pcfrac:                                 # @pcfrac
 # %bb.127:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_129
 # %bb.128:
@@ -2680,7 +2680,7 @@ pcfrac:                                 # @pcfrac
 # %bb.130:
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_132
 # %bb.131:
@@ -2691,7 +2691,7 @@ pcfrac:                                 # @pcfrac
 # %bb.133:
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB15_135
 # %bb.134:
@@ -2734,7 +2734,7 @@ pcfrac:                                 # @pcfrac
 # %bb.138:                              #   in Loop: Header=BB15_137 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	beqz	$a2, .LBB15_142
 .LBB15_139:                             #   in Loop: Header=BB15_137 Depth=1
@@ -2743,7 +2743,7 @@ pcfrac:                                 # @pcfrac
 .LBB15_140:                             #   in Loop: Header=BB15_137 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_143
 # %bb.141:                              #   in Loop: Header=BB15_137 Depth=1
@@ -2763,7 +2763,7 @@ pcfrac:                                 # @pcfrac
 # %bb.144:                              #   in Loop: Header=BB15_137 Depth=1
 	ld.h	$a1, $a0, 0
 	addi.d	$a1, $a1, -1
-	bstrpick.d	$a2, $a1, 15, 0
+	slli.d	$a2, $a1, 48
 	st.h	$a1, $a0, 0
 	bnez	$a2, .LBB15_136
 # %bb.145:                              #   in Loop: Header=BB15_137 Depth=1

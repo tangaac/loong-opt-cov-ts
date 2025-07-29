@@ -93,9 +93,8 @@ KDTree_AddElement:                      # @KDTree_AddElement
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 48
-	ori	$a2, $zero, 1
 	move	$s0, $a1
-	bne	$a0, $a2, .LBB3_6
+	beqz	$a0, .LBB3_6
 # %bb.1:
 	ld.d	$a0, $fp, 56
 	st.b	$zero, $fp, 48
@@ -165,50 +164,49 @@ KDTree_AddElement:                      # @KDTree_AddElement
 	.type	KDTree_CreateTree,@function
 KDTree_CreateTree:                      # @KDTree_CreateTree
 # %bb.0:
-	addi.d	$sp, $sp, -304
-	st.d	$ra, $sp, 296                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 288                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 280                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 272                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 264                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 256                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 248                   # 8-byte Folded Spill
-	st.d	$s5, $sp, 240                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 232                   # 8-byte Folded Spill
-	st.d	$s7, $sp, 224                   # 8-byte Folded Spill
-	st.d	$s8, $sp, 216                   # 8-byte Folded Spill
-	fst.d	$fs0, $sp, 208                  # 8-byte Folded Spill
-	fst.d	$fs1, $sp, 200                  # 8-byte Folded Spill
-	move	$s5, $a0
+	addi.d	$sp, $sp, -288
+	st.d	$ra, $sp, 280                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 272                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 264                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 256                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 248                   # 8-byte Folded Spill
+	st.d	$s3, $sp, 240                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 232                   # 8-byte Folded Spill
+	st.d	$s5, $sp, 224                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 208                   # 8-byte Folded Spill
+	st.d	$s8, $sp, 200                   # 8-byte Folded Spill
+	fst.d	$fs0, $sp, 192                  # 8-byte Folded Spill
+	fst.d	$fs1, $sp, 184                  # 8-byte Folded Spill
+	move	$s8, $a0
 	ld.bu	$a0, $a0, 48
 	bnez	$a0, .LBB4_45
 # %bb.1:
-	ld.w	$s1, $s5, 32
-	ori	$fp, $zero, 1
-	blt	$s1, $fp, .LBB4_44
+	ld.w	$s1, $s8, 32
+	blez	$s1, .LBB4_44
 # %bb.2:
 	slli.w	$fp, $s1, 1
-	st.w	$fp, $s5, 52
+	st.w	$fp, $s8, 52
 	slli.d	$a0, $fp, 5
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	st.d	$a0, $s5, 56
+	st.d	$a0, $s8, 56
 	slli.d	$a0, $fp, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s5, 64
+	st.d	$a0, $s8, 64
 	slli.d	$s0, $s1, 2
 	alsl.w	$a0, $s1, $s0, 1
 	slli.d	$a0, $a0, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$fp, $a0
+	move	$s4, $a0
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 8
-	move	$s4, $a0
+	move	$s3, $a0
 	bgeu	$s1, $a1, .LBB4_4
 # %bb.3:
 	move	$a0, $zero
@@ -218,7 +216,7 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 	vld	$vr0, $a0, %pc_lo12(.LCPI4_0)
 	bstrpick.d	$a0, $s1, 30, 3
 	slli.d	$a0, $a0, 3
-	addi.d	$a1, $s4, 16
+	addi.d	$a1, $s3, 16
 	move	$a2, $a0
 	.p2align	4, , 16
 .LBB4_5:                                # %vector.body
@@ -233,7 +231,7 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 # %bb.6:                                # %middle.block
 	beq	$a0, $s1, .LBB4_9
 .LBB4_7:                                # %scalar.ph.preheader
-	alsl.d	$a1, $a0, $s4, 2
+	alsl.d	$a1, $a0, $s3, 2
 	sub.d	$a2, $s1, $a0
 	.p2align	4, , 16
 .LBB4_8:                                # %scalar.ph
@@ -244,25 +242,23 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 	addi.d	$a1, $a1, 4
 	bnez	$a2, .LBB4_8
 .LBB4_9:                                # %.loopexit
-	st.d	$zero, $fp, 0
+	st.d	$zero, $s4, 0
 	addi.d	$a0, $s1, -1
-	st.w	$a0, $fp, 8
-	move	$a0, $s5
+	st.w	$a0, $s4, 8
+	move	$a0, $s8
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_Copy)
 	jirl	$ra, $ra, 0
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
-	addi.d	$s1, $fp, -4
-	addi.d	$a0, $s4, 4
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$a1, $s4, -4
+	addi.d	$s2, $s3, 4
 	ori	$s6, $zero, 3
-	ori	$s2, $zero, 0
+	ori	$s1, $zero, 0
 	pcalau12i	$a0, %pc_hi20(.LCPI4_1)
 	fld.d	$fs1, $a0, %pc_lo12(.LCPI4_1)
-	lu32i.d	$s2, -3
+	lu32i.d	$s1, -3
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 104                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
 .LBB4_10:                               # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_11 Depth 2
@@ -273,51 +269,53 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
                                         #     Child Loop BB4_37 Depth 2
                                         #     Child Loop BB4_39 Depth 2
 	move	$s0, $s6
-	slli.d	$s7, $s6, 32
+	slli.d	$a0, $s6, 32
 	addi.w	$s6, $s6, 3
-	alsl.d	$s8, $s0, $s1, 2
+	alsl.d	$s7, $s0, $a1, 2
 	.p2align	4, , 16
 .LBB4_11:                               #   Parent Loop BB4_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$a0, $s8, 0
-	ld.w	$a2, $s8, -4
-	ld.w	$s3, $s8, -8
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	ld.w	$a0, $s7, 0
+	ld.w	$a2, $s7, -4
+	ld.w	$s5, $s7, -8
 	bne	$a0, $a2, .LBB4_13
 # %bb.12:                               #   in Loop: Header=BB4_11 Depth=2
 	slli.d	$a0, $a0, 2
-	ldx.w	$fp, $s4, $a0
-	ld.d	$a0, $s5, 40
+	ldx.w	$fp, $s3, $a0
+	ld.d	$a0, $s8, 40
 	addi.d	$s0, $s0, -3
-	ld.d	$a1, $s5, 56
+	ld.d	$a1, $s8, 56
 	slli.d	$a2, $fp, 5
 	add.d	$a0, $a0, $a2
-	slli.d	$a2, $s3, 5
+	slli.d	$a2, $s5, 5
 	add.d	$a1, $a1, $a2
 	pcaddu18i	$ra, %call36(Bounds_Copy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, 64
+	ld.d	$a0, $s8, 64
 	sub.d	$a1, $zero, $fp
-	slli.d	$a2, $s3, 2
+	slli.d	$a2, $s5, 2
 	stx.w	$a1, $a0, $a2
-	add.d	$s7, $s7, $s2
+	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	add.d	$a0, $a0, $s1
 	addi.w	$s6, $s6, -3
-	addi.d	$s8, $s8, -12
+	addi.d	$s7, $s7, -12
 	bnez	$s0, .LBB4_11
 	b	.LBB4_42
 	.p2align	4, , 16
 .LBB4_13:                               # %.preheader
                                         #   in Loop: Header=BB4_10 Depth=1
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
-	move	$s8, $a0
-	ld.d	$a0, $s5, 56
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	slli.d	$fp, $s3, 5
+	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
+	move	$s7, $a0
+	ld.d	$a0, $s8, 56
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	slli.d	$fp, $s5, 5
 	add.d	$a0, $a0, $fp
 	move	$a1, $zero
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(Bounds_WidthAxis)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, 56
+	ld.d	$a0, $s8, 56
 	fcmp.cule.d	$fcc0, $fa0, $fs1
 	fsel	$fs0, $fa0, $fs1, $fcc0
 	movcf2gr	$a1, $fcc0
@@ -333,59 +331,56 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 	maskeqz	$a0, $a2, $a0
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
 	or	$a0, $a0, $a1
-	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
-	sub.w	$a1, $s8, $a2
-	st.d	$s8, $sp, 112                   # 8-byte Folded Spill
-	add.d	$a0, $a2, $s8
-	move	$s8, $a1
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
+	sub.w	$a1, $s7, $a2
+	st.d	$s7, $sp, 96                    # 8-byte Folded Spill
+	add.d	$a0, $a2, $s7
+	move	$s7, $a1
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
-	srai.d	$s3, $a0, 1
-	alsl.d	$a0, $a2, $s4, 2
-	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
+	srai.d	$s5, $a0, 1
+	alsl.d	$a0, $a2, $s3, 2
+	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	ori	$a0, $zero, 2
 	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	blt	$s8, $a0, .LBB4_31
+	blt	$s7, $a0, .LBB4_31
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB4_10 Depth=1
 	st.d	$s4, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $zero
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	sub.w	$a0, $s3, $a2
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
+	sub.w	$a0, $s5, $a2
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
-	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
-	alsl.d	$a0, $a2, $a0, 2
-	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s6, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 176                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	alsl.d	$a0, $a2, $s2, 2
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 88                    # 8-byte Folded Spill
 	b	.LBB4_16
 	.p2align	4, , 16
 .LBB4_15:                               #   in Loop: Header=BB4_16 Depth=2
 	addi.w	$a0, $s0, 1
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
-	st.w	$s5, $a1, 0
+	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	st.w	$s8, $a1, 0
 	ld.d	$a3, $sp, 80                    # 8-byte Folded Reload
 	slt	$a0, $a3, $a0
 	addi.w	$a1, $s0, -1
-	ld.d	$a2, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	masknez	$a2, $a2, $a0
 	maskeqz	$a0, $a1, $a0
-	or	$s8, $a0, $a2
+	or	$s7, $a0, $a2
 	slt	$a0, $a3, $s0
-	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	masknez	$a1, $a1, $a0
-	ld.d	$a2, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$fp, $a0, $a1
-	sub.w	$a0, $s8, $fp
-	ld.d	$a1, $sp, 120                   # 8-byte Folded Reload
+	sub.w	$a0, $s7, $fp
+	ld.d	$a1, $sp, 104                   # 8-byte Folded Reload
 	st.w	$a1, $s1, 0
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
+	move	$s8, $s2
 	ori	$a1, $zero, 1
-	ld.d	$s2, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload
 	bge	$a1, $a0, .LBB4_32
 .LBB4_16:                               # %.lr.ph.i
                                         #   Parent Loop BB4_10 Depth=1
@@ -393,165 +388,165 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
                                         #       Child Loop BB4_25 Depth 3
                                         #         Child Loop BB4_26 Depth 4
                                         #         Child Loop BB4_28 Depth 4
-	add.d	$a0, $s8, $fp
+	add.d	$a0, $s7, $fp
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
 	addi.w	$a3, $fp, 1
 	slli.d	$a1, $a3, 2
-	ld.d	$s2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 168                   # 8-byte Folded Reload
 	ldx.w	$a2, $s2, $a1
 	slli.d	$a0, $a0, 1
 	bstrins.d	$a0, $zero, 1, 0
-	ldx.w	$s4, $s2, $a0
+	ldx.w	$s3, $s2, $a0
 	stx.w	$a2, $s2, $a0
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $s8, 40
 	move	$s6, $a3
 	alsl.d	$s0, $a3, $s2, 2
-	stx.w	$s4, $s2, $a1
-	slli.d	$a1, $s4, 5
+	stx.w	$s3, $s2, $a1
+	slli.d	$a1, $s3, 5
 	add.d	$a0, $a0, $a1
-	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
-	move	$a1, $s3
+	ld.d	$s4, $sp, 160                   # 8-byte Folded Reload
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
-	slli.d	$a0, $s8, 2
+	slli.d	$a0, $s7, 2
 	ldx.w	$s1, $s2, $a0
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $s8, 40
 	fmov.d	$fs0, $fa0
-	alsl.d	$s5, $s8, $s2, 2
+	alsl.d	$s5, $s7, $s2, 2
+	move	$s2, $s4
 	slli.d	$a1, $s1, 5
 	add.d	$a0, $a0, $a1
-	move	$a1, $s3
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	fcmp.cule.d	$fcc0, $fs0, $fa0
 	bcnez	$fcc0, .LBB4_18
 # %bb.17:                               #   in Loop: Header=BB4_16 Depth=2
 	st.w	$s1, $s0, 0
-	st.w	$s4, $s5, 0
-	move	$s1, $s4
+	st.w	$s3, $s5, 0
+	move	$s1, $s3
 	b	.LBB4_19
 	.p2align	4, , 16
 .LBB4_18:                               #   in Loop: Header=BB4_16 Depth=2
-	move	$s4, $s1
+	move	$s3, $s1
 .LBB4_19:                               #   in Loop: Header=BB4_16 Depth=2
 	slli.d	$a0, $fp, 2
 	move	$a1, $fp
-	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a2, $sp, 168                   # 8-byte Folded Reload
 	ldx.w	$fp, $a2, $a0
-	ld.d	$s2, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$a0, $s2, 40
-	st.d	$a1, $sp, 144                   # 8-byte Folded Spill
-	alsl.d	$s7, $a1, $a2, 2
+	ld.d	$a0, $s8, 40
+	st.d	$a1, $sp, 128                   # 8-byte Folded Spill
+	alsl.d	$s4, $a1, $a2, 2
 	slli.d	$a1, $fp, 5
 	add.d	$a0, $a0, $a1
-	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
-	move	$a1, $s3
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 40
+	ld.d	$a0, $s8, 40
 	fmov.d	$fs0, $fa0
 	slli.d	$a1, $s1, 5
+	move	$s1, $s4
 	add.d	$a0, $a0, $a1
-	move	$a1, $s3
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	fcmp.cule.d	$fcc0, $fs0, $fa0
 	bcnez	$fcc0, .LBB4_21
 # %bb.20:                               #   in Loop: Header=BB4_16 Depth=2
-	st.w	$s4, $s7, 0
+	st.w	$s3, $s1, 0
 	st.w	$fp, $s5, 0
 .LBB4_21:                               #   in Loop: Header=BB4_16 Depth=2
 	ld.w	$fp, $s0, 0
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $s8, 40
 	slli.d	$a1, $fp, 5
 	add.d	$a0, $a0, $a1
-	move	$a1, $s3
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
-	ld.w	$s2, $s7, 0
-	ld.d	$a0, $s5, 40
+	ld.w	$s4, $s1, 0
+	ld.d	$a0, $s8, 40
 	fmov.d	$fs0, $fa0
-	slli.d	$a1, $s2, 5
+	slli.d	$a1, $s4, 5
 	add.d	$a0, $a0, $a1
-	move	$a1, $s3
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	fcmp.cule.d	$fcc0, $fs0, $fa0
-	st.d	$s7, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 112                   # 8-byte Folded Spill
 	bcnez	$fcc0, .LBB4_23
 # %bb.22:                               #   in Loop: Header=BB4_16 Depth=2
-	st.w	$s2, $s0, 0
-	st.w	$fp, $s7, 0
-	st.d	$fp, $sp, 120                   # 8-byte Folded Spill
-	move	$s2, $fp
+	st.w	$s4, $s0, 0
+	st.w	$fp, $s1, 0
+	st.d	$fp, $sp, 104                   # 8-byte Folded Spill
+	move	$s4, $fp
 	b	.LBB4_24
 	.p2align	4, , 16
 .LBB4_23:                               #   in Loop: Header=BB4_16 Depth=2
-	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 104                   # 8-byte Folded Spill
 .LBB4_24:                               #   in Loop: Header=BB4_16 Depth=2
 	move	$fp, $s6
-	st.d	$s8, $sp, 136                   # 8-byte Folded Spill
-	move	$s0, $s8
-	st.d	$s2, $sp, 152                   # 8-byte Folded Spill
+	st.d	$s7, $sp, 120                   # 8-byte Folded Spill
+	move	$s0, $s7
+	st.d	$s4, $sp, 144                   # 8-byte Folded Spill
 	.p2align	4, , 16
 .LBB4_25:                               #   Parent Loop BB4_10 Depth=1
                                         #     Parent Loop BB4_16 Depth=2
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB4_26 Depth 4
                                         #         Child Loop BB4_28 Depth 4
-	ld.d	$a0, $sp, 160                   # 8-byte Folded Reload
-	alsl.d	$s7, $fp, $a0, 2
-	move	$s4, $fp
+	ld.d	$a0, $sp, 152                   # 8-byte Folded Reload
+	alsl.d	$s6, $fp, $a0, 2
+	move	$s3, $fp
 	.p2align	4, , 16
 .LBB4_26:                               #   Parent Loop BB4_10 Depth=1
                                         #     Parent Loop BB4_16 Depth=2
                                         #       Parent Loop BB4_25 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.w	$s6, $s7, 0
-	ld.d	$a0, $s5, 40
-	addi.d	$s4, $s4, 1
-	slli.d	$a1, $s6, 5
+	ld.w	$s5, $s6, 0
+	ld.d	$a0, $s8, 40
+	addi.d	$s3, $s3, 1
+	slli.d	$a1, $s5, 5
 	add.d	$a0, $a0, $a1
-	move	$a1, $s3
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $s8, 40
 	fmov.d	$fs0, $fa0
-	slli.d	$s8, $s2, 5
-	add.d	$a0, $a0, $s8
-	move	$a1, $s3
+	slli.d	$s7, $s4, 5
+	add.d	$a0, $a0, $s7
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	addi.w	$fp, $fp, 1
 	fcmp.clt.d	$fcc0, $fs0, $fa0
-	addi.d	$s7, $s7, 4
+	addi.d	$s6, $s6, 4
 	bcnez	$fcc0, .LBB4_26
 # %bb.27:                               # %.preheader.i
                                         #   in Loop: Header=BB4_25 Depth=3
-	st.d	$fp, $sp, 192                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 176                   # 8-byte Folded Spill
 	addi.d	$fp, $s0, 1
-	ld.d	$a0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 168                   # 8-byte Folded Reload
 	alsl.d	$s1, $s0, $a0, 2
-	move	$s2, $s5
+	move	$s4, $s2
+	move	$s2, $s8
 	.p2align	4, , 16
 .LBB4_28:                               #   Parent Loop BB4_10 Depth=1
                                         #     Parent Loop BB4_16 Depth=2
                                         #       Parent Loop BB4_25 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.w	$s5, $s1, -4
+	ld.w	$s8, $s1, -4
 	ld.d	$a0, $s2, 40
 	addi.d	$s1, $s1, -4
-	slli.d	$a1, $s5, 5
+	slli.d	$a1, $s8, 5
 	add.d	$a0, $a0, $a1
-	move	$a1, $s3
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 40
 	fmov.d	$fs0, $fa0
-	add.d	$a0, $a0, $s8
-	move	$a1, $s3
+	add.d	$a0, $a0, $s7
+	move	$a1, $s4
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s0, -1
@@ -559,78 +554,84 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 	addi.d	$fp, $fp, -1
 	bcnez	$fcc0, .LBB4_28
 # %bb.29:                               #   in Loop: Header=BB4_25 Depth=3
-	bge	$s4, $fp, .LBB4_15
+	bge	$s3, $fp, .LBB4_15
 # %bb.30:                               #   in Loop: Header=BB4_25 Depth=3
-	st.w	$s5, $s7, -4
-	st.w	$s6, $s1, 0
-	ld.d	$s5, $sp, 176                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 168                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 152                   # 8-byte Folded Reload
+	st.w	$s8, $s6, -4
+	st.w	$s5, $s1, 0
+	move	$s8, $s2
+	ld.d	$s2, $sp, 160                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 144                   # 8-byte Folded Reload
 	b	.LBB4_25
 .LBB4_31:                               #   in Loop: Header=BB4_10 Depth=1
-	move	$a0, $s8
-	move	$s8, $zero
+	move	$a0, $s7
+	move	$s7, $zero
 	move	$s1, $a0
 	ori	$a1, $zero, 1
 	beq	$a0, $a1, .LBB4_33
 	b	.LBB4_35
 .LBB4_32:                               # %._crit_edge.loopexit.i
                                         #   in Loop: Header=BB4_10 Depth=1
-	move	$s1, $s8
-	move	$s8, $fp
+	move	$s1, $s7
+	move	$s7, $fp
+	ld.d	$s3, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ori	$a1, $zero, 1
 	bne	$a0, $a1, .LBB4_35
 .LBB4_33:                               #   in Loop: Header=BB4_10 Depth=1
 	slli.d	$a0, $s1, 2
-	ld.d	$s0, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
 	ldx.w	$a1, $s0, $a0
-	ld.d	$a0, $s5, 40
-	st.d	$a1, $sp, 192                   # 8-byte Folded Spill
+	ld.d	$a0, $s8, 40
+	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	slli.d	$a1, $a1, 5
 	add.d	$a0, $a0, $a1
-	ld.d	$fp, $sp, 168                   # 8-byte Folded Reload
-	move	$a1, $fp
+	move	$fp, $s4
+	move	$s4, $s2
+	ld.d	$s2, $sp, 160                   # 8-byte Folded Reload
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
-	slli.d	$a0, $s8, 2
+	slli.d	$a0, $s7, 2
 	ldx.w	$s0, $s0, $a0
-	ld.d	$a0, $s5, 40
+	ld.d	$a0, $s8, 40
 	fmov.d	$fs0, $fa0
 	slli.d	$a1, $s0, 5
 	add.d	$a0, $a0, $a1
-	move	$a1, $fp
+	move	$a1, $s2
+	move	$s2, $s4
+	move	$s4, $fp
 	pcaddu18i	$ra, %call36(Bounds_CenterAxis)
 	jirl	$ra, $ra, 0
 	fcmp.cule.d	$fcc0, $fa0, $fs0
 	bcnez	$fcc0, .LBB4_35
 # %bb.34:                               #   in Loop: Header=BB4_10 Depth=1
-	ld.d	$a1, $sp, 184                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	alsl.d	$a0, $s1, $a1, 2
-	alsl.d	$a1, $s8, $a1, 2
+	alsl.d	$a1, $s7, $a1, 2
 	st.w	$s0, $a0, 0
-	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 176                   # 8-byte Folded Reload
 	st.w	$a0, $a1, 0
 .LBB4_35:                               # %median_sort.exit
                                         #   in Loop: Header=BB4_10 Depth=1
-	ld.d	$a0, $s5, 64
+	ld.d	$a0, $s8, 64
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	slli.d	$a1, $a1, 2
 	ld.d	$a2, $sp, 72                    # 8-byte Folded Reload
 	stx.w	$a2, $a0, $a1
-	ld.d	$a0, $s5, 56
+	ld.d	$a0, $s8, 56
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	st.w	$a2, $a1, -8
-	st.w	$s3, $a1, 0
+	st.w	$s5, $a1, 0
 	slli.d	$s0, $a2, 5
 	add.d	$a0, $a0, $s0
 	pcaddu18i	$ra, %call36(Bounds_Infinite)
 	jirl	$ra, $ra, 0
-	addi.d	$fp, $s3, 1
+	addi.d	$fp, $s5, 1
 	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
-	blt	$s3, $a0, .LBB4_38
+	blt	$s5, $a0, .LBB4_38
 # %bb.36:                               # %.lr.ph149.preheader
                                         #   in Loop: Header=BB4_10 Depth=1
 	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
@@ -638,11 +639,11 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 .LBB4_37:                               # %.lr.ph149
                                         #   Parent Loop BB4_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s5, 56
+	ld.d	$a0, $s8, 56
 	bstrpick.d	$a1, $s1, 31, 0
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $s4, $a1
-	ld.d	$a2, $s5, 40
+	ldx.w	$a1, $s3, $a1
+	ld.d	$a2, $s8, 40
 	add.d	$a0, $a0, $s0
 	slli.d	$a1, $a1, 5
 	add.d	$a1, $a2, $a1
@@ -654,13 +655,13 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
                                         #   in Loop: Header=BB4_10 Depth=1
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
-	srai.d	$a1, $s7, 30
-	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
-	add.d	$a2, $a3, $a1
-	stx.w	$a0, $a3, $a1
-	ld.d	$a1, $s5, 56
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
+	srai.d	$a1, $a1, 30
+	add.d	$a2, $s4, $a1
+	stx.w	$a0, $s4, $a1
+	ld.d	$a1, $s8, 56
 	st.w	$fp, $a2, 4
-	ld.d	$s0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 96                    # 8-byte Folded Reload
 	st.w	$s0, $a2, 8
 	slli.d	$fp, $a0, 5
 	add.d	$a0, $a1, $fp
@@ -674,18 +675,18 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 .LBB4_39:                               # %.lr.ph155
                                         #   Parent Loop BB4_10 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s5, 56
+	ld.d	$a0, $s8, 56
 	bstrpick.d	$a1, $s0, 31, 0
 	slli.d	$a1, $a1, 2
-	ldx.w	$a1, $s4, $a1
-	ld.d	$a2, $s5, 40
+	ldx.w	$a1, $s3, $a1
+	ld.d	$a2, $s8, 40
 	add.d	$a0, $a0, $fp
 	slli.d	$a1, $a1, 5
 	add.d	$a1, $a2, $a1
 	pcaddu18i	$ra, %call36(Bounds_AddBounds)
 	jirl	$ra, $ra, 0
 	addi.w	$s0, $s0, 1
-	ld.d	$a0, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	bge	$a0, $s0, .LBB4_39
 .LBB4_40:                               # %.outer
                                         #   in Loop: Header=BB4_10 Depth=1
@@ -693,40 +694,40 @@ KDTree_CreateTree:                      # @KDTree_CreateTree
 	addi.d	$a0, $a0, 2
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	bnez	$s6, .LBB4_10
 # %bb.41:                               # %.outer._crit_edge
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-	ori	$fp, $zero, 1
-	bnez	$s4, .LBB4_43
-	b	.LBB4_44
-.LBB4_42:                               # %.outer._crit_edge.thread
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	pcaddu18i	$ra, %call36(free)
-	jirl	$ra, $ra, 0
-	ori	$fp, $zero, 1
-.LBB4_43:
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
+	bnez	$s3, .LBB4_43
+	b	.LBB4_44
+.LBB4_42:                               # %.outer._crit_edge.thread
+	move	$a0, $s4
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
+.LBB4_43:
+	move	$a0, $s3
+	pcaddu18i	$ra, %call36(free)
+	jirl	$ra, $ra, 0
 .LBB4_44:
-	st.b	$fp, $s5, 48
+	ori	$a0, $zero, 1
+	st.b	$a0, $s8, 48
 .LBB4_45:
-	fld.d	$fs1, $sp, 200                  # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 208                  # 8-byte Folded Reload
-	ld.d	$s8, $sp, 216                   # 8-byte Folded Reload
-	ld.d	$s7, $sp, 224                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 232                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 240                   # 8-byte Folded Reload
-	ld.d	$s4, $sp, 248                   # 8-byte Folded Reload
-	ld.d	$s3, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 264                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 272                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 280                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 296                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 304
+	fld.d	$fs1, $sp, 184                  # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 192                  # 8-byte Folded Reload
+	ld.d	$s8, $sp, 200                   # 8-byte Folded Reload
+	ld.d	$s7, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s5, $sp, 224                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 232                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 240                   # 8-byte Folded Reload
+	ld.d	$s2, $sp, 248                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 256                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 264                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 272                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 280                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 288
 	ret
 .Lfunc_end4:
 	.size	KDTree_CreateTree, .Lfunc_end4-KDTree_CreateTree
@@ -873,9 +874,8 @@ KDTree_QueryCircleIntersect_Double:     # @KDTree_QueryCircleIntersect_Double
 	pcaddu18i	$ra, %call36(KDTree_QueryBoxIntersect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 44
-	ori	$a1, $zero, 1
 	st.w	$zero, $s4, 0
-	blt	$a0, $a1, .LBB6_20
+	blez	$a0, .LBB6_20
 # %bb.3:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	move	$a1, $s5
@@ -1031,9 +1031,8 @@ KDTree_QueryCircleIntersect_Float:      # @KDTree_QueryCircleIntersect_Float
 	pcaddu18i	$ra, %call36(KDTree_QueryBoxIntersect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 44
-	ori	$a1, $zero, 1
 	st.w	$zero, $s4, 0
-	blt	$a0, $a1, .LBB7_20
+	blez	$a0, .LBB7_20
 # %bb.3:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	move	$a1, $s5
@@ -1193,29 +1192,28 @@ KDTree_QueryCircleIntersectWeighted_Double: # @KDTree_QueryCircleIntersectWeight
 	pcaddu18i	$ra, %call36(KDTree_QueryBoxIntersect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 44
-	ori	$a1, $zero, 1
 	st.w	$zero, $s4, 0
-	blt	$a0, $a1, .LBB8_23
+	blez	$a0, .LBB8_23
 # %bb.3:                                # %.lr.ph.preheader
-	ld.d	$a2, $sp, 128
-	move	$a4, $zero
+	ld.d	$a1, $sp, 128
+	move	$a3, $zero
 	vldi	$vr0, -928
 	movgr2fr.d	$fa1, $zero
-	move	$a3, $s5
+	move	$a2, $s5
 	b	.LBB8_5
 	.p2align	4, , 16
 .LBB8_4:                                #   in Loop: Header=BB8_5 Depth=1
 	addi.d	$a0, $a0, -1
-	addi.d	$a3, $a3, 4
+	addi.d	$a2, $a2, 4
 	beqz	$a0, .LBB8_23
 .LBB8_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, 0
-	slli.d	$a7, $a5, 3
-	fldx.d	$fa7, $s1, $a7
-	fldx.d	$fa6, $fp, $a7
+	ld.w	$a4, $a2, 0
+	slli.d	$a6, $a4, 3
+	fldx.d	$fa7, $s1, $a6
+	fldx.d	$fa6, $fp, $a6
 	fmul.d	$fa4, $fa7, $fa7
-	fldx.d	$ft0, $s0, $a7
+	fldx.d	$ft0, $s0, $a6
 	fmul.d	$fa3, $fa6, $fa6
 	fadd.d	$fa2, $fa4, $fa3
 	fsqrt.d	$fa2, $fa2
@@ -1231,15 +1229,15 @@ KDTree_QueryCircleIntersectWeighted_Double: # @KDTree_QueryCircleIntersectWeight
 	bcnez	$fcc0, .LBB8_9
 .LBB8_7:                                #   in Loop: Header=BB8_5 Depth=1
 	fcmp.cule.d	$fcc1, $fs0, $fa2
-	move	$a6, $zero
+	move	$a5, $zero
 	bcnez	$fcc1, .LBB8_10
 # %bb.8:                                #   in Loop: Header=BB8_5 Depth=1
 	fcmp.cule.d	$fcc1, $fa3, $fs0
 	bcnez	$fcc1, .LBB8_10
 .LBB8_9:                                #   in Loop: Header=BB8_5 Depth=1
-	ori	$a6, $zero, 1
+	ori	$a5, $zero, 1
 .LBB8_10:                               #   in Loop: Header=BB8_5 Depth=1
-	fldx.d	$ft1, $a2, $a7
+	fldx.d	$ft1, $a1, $a6
 	fadd.d	$ft2, $fa6, $ft1
 	fmul.d	$ft2, $ft2, $ft2
 	fadd.d	$fa5, $fa5, $ft2
@@ -1261,29 +1259,29 @@ KDTree_QueryCircleIntersectWeighted_Double: # @KDTree_QueryCircleIntersectWeight
 	b	.LBB8_19
 	.p2align	4, , 16
 .LBB8_13:                               #   in Loop: Header=BB8_5 Depth=1
-	movcf2gr	$a7, $fcc1
-	xori	$t0, $a7, 1
-	movcf2gr	$t1, $fcc2
-	or	$t0, $t1, $t0
-	bnez	$t0, .LBB8_15
+	movcf2gr	$a6, $fcc1
+	xori	$a7, $a6, 1
+	movcf2gr	$t0, $fcc2
+	or	$a7, $t0, $a7
+	bnez	$a7, .LBB8_15
 # %bb.14:                               #   in Loop: Header=BB8_5 Depth=1
 	fsub.d	$fa6, $fs0, $fa3
 	fsub.d	$fa7, $fa4, $fa3
 	b	.LBB8_19
 	.p2align	4, , 16
 .LBB8_15:                               #   in Loop: Header=BB8_5 Depth=1
-	movcf2gr	$t0, $fcc2
-	and	$a7, $a7, $t0
-	bne	$a7, $a1, .LBB8_17
+	movcf2gr	$a7, $fcc2
+	and	$a6, $a6, $a7
+	beqz	$a6, .LBB8_17
 # %bb.16:                               #   in Loop: Header=BB8_5 Depth=1
 	fsub.d	$fa6, $fs0, $fa5
 	fsub.d	$fa7, $fa2, $fa5
 	b	.LBB8_19
 .LBB8_17:                               #   in Loop: Header=BB8_5 Depth=1
-	xori	$a7, $t0, 1
-	movcf2gr	$t0, $fcc1
-	or	$a7, $t0, $a7
-	bnez	$a7, .LBB8_22
+	xori	$a6, $a7, 1
+	movcf2gr	$a7, $fcc1
+	or	$a6, $a7, $a6
+	bnez	$a6, .LBB8_22
 # %bb.18:                               #   in Loop: Header=BB8_5 Depth=1
 	fsub.d	$fa6, $fs0, $fa4
 	fsub.d	$fa7, $fa3, $fa4
@@ -1294,39 +1292,39 @@ KDTree_QueryCircleIntersectWeighted_Double: # @KDTree_QueryCircleIntersectWeight
 	fcmp.clt.d	$fcc2, $fs0, $fa3
 	fcmp.clt.d	$fcc3, $fa5, $fs0
 	fcmp.clt.d	$fcc1, $fs0, $fa2
-	movcf2gr	$a7, $fcc2
-	movcf2gr	$t0, $fcc3
+	movcf2gr	$a6, $fcc2
+	movcf2gr	$a7, $fcc3
 	fcmp.clt.d	$fcc2, $fs0, $fa5
-	and	$a7, $a7, $t0
-	movcf2gr	$t1, $fcc0
-	movcf2gr	$t2, $fcc2
-	and	$t1, $t1, $t2
+	and	$a6, $a6, $a7
+	movcf2gr	$t0, $fcc0
+	movcf2gr	$t1, $fcc2
+	and	$t0, $t0, $t1
 	fcmp.clt.d	$fcc0, $fa4, $fs0
-	or	$a7, $a7, $t1
-	movcf2gr	$t1, $fcc0
+	or	$a6, $a6, $t0
+	movcf2gr	$t0, $fcc0
 	fcmp.clt.d	$fcc0, $fs0, $fa4
-	and	$t2, $t2, $t1
-	movcf2gr	$t3, $fcc0
-	and	$t0, $t0, $t3
-	fcmp.clt.d	$fcc0, $fa2, $fs0
-	or	$t0, $t2, $t0
+	and	$t1, $t1, $t0
 	movcf2gr	$t2, $fcc0
-	and	$t2, $t2, $t3
-	movcf2gr	$t3, $fcc1
-	and	$t1, $t3, $t1
-	or	$t1, $t2, $t1
-	slli.d	$t2, $a4, 3
-	or	$a6, $t0, $a6
-	or	$a6, $t1, $a6
-	or	$a6, $a7, $a6
-	fstx.d	$fa6, $s2, $t2
-	bne	$a6, $a1, .LBB8_4
+	and	$a7, $a7, $t2
+	fcmp.clt.d	$fcc0, $fa2, $fs0
+	or	$a7, $t1, $a7
+	movcf2gr	$t1, $fcc0
+	and	$t1, $t1, $t2
+	movcf2gr	$t2, $fcc1
+	and	$t0, $t2, $t0
+	or	$t0, $t1, $t0
+	slli.d	$t1, $a3, 3
+	or	$a5, $a7, $a5
+	or	$a5, $t0, $a5
+	or	$a5, $a6, $a5
+	fstx.d	$fa6, $s2, $t1
+	beqz	$a5, .LBB8_4
 # %bb.21:                               #   in Loop: Header=BB8_5 Depth=1
-	slli.d	$a4, $a4, 2
-	stx.w	$a5, $s3, $a4
-	ld.w	$a4, $s4, 0
-	addi.w	$a4, $a4, 1
-	st.w	$a4, $s4, 0
+	slli.d	$a3, $a3, 2
+	stx.w	$a4, $s3, $a3
+	ld.w	$a3, $s4, 0
+	addi.w	$a3, $a3, 1
+	st.w	$a3, $s4, 0
 	b	.LBB8_4
 .LBB8_22:                               #   in Loop: Header=BB8_5 Depth=1
 	vldi	$vr6, -928
@@ -1398,31 +1396,30 @@ KDTree_QueryCircleIntersectWeighted_Float: # @KDTree_QueryCircleIntersectWeighte
 	pcaddu18i	$ra, %call36(KDTree_QueryBoxIntersect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 44
-	ori	$a1, $zero, 1
 	st.w	$zero, $s4, 0
-	blt	$a0, $a1, .LBB9_23
+	blez	$a0, .LBB9_23
 # %bb.3:                                # %.lr.ph.preheader
-	ld.d	$a2, $sp, 128
-	move	$a4, $zero
+	ld.d	$a1, $sp, 128
+	move	$a3, $zero
 	vldi	$vr0, -928
 	movgr2fr.d	$fa1, $zero
-	move	$a3, $s5
+	move	$a2, $s5
 	b	.LBB9_5
 	.p2align	4, , 16
 .LBB9_4:                                #   in Loop: Header=BB9_5 Depth=1
 	addi.d	$a0, $a0, -1
-	addi.d	$a3, $a3, 4
+	addi.d	$a2, $a2, 4
 	beqz	$a0, .LBB9_23
 .LBB9_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a5, $a3, 0
-	slli.d	$a7, $a5, 2
-	fldx.s	$fa3, $s1, $a7
-	fldx.s	$fa5, $fp, $a7
+	ld.w	$a4, $a2, 0
+	slli.d	$a6, $a4, 2
+	fldx.s	$fa3, $s1, $a6
+	fldx.s	$fa5, $fp, $a6
 	fcvt.d.s	$fa7, $fa3
 	fmul.d	$fa4, $fa7, $fa7
 	fcvt.d.s	$fa6, $fa5
-	fldx.s	$ft0, $s0, $a7
+	fldx.s	$ft0, $s0, $a6
 	fmul.d	$ft2, $fa6, $fa6
 	fadd.d	$fa2, $fa4, $ft2
 	fsqrt.d	$fa2, $fa2
@@ -1439,15 +1436,15 @@ KDTree_QueryCircleIntersectWeighted_Float: # @KDTree_QueryCircleIntersectWeighte
 	bcnez	$fcc0, .LBB9_9
 .LBB9_7:                                #   in Loop: Header=BB9_5 Depth=1
 	fcmp.cule.d	$fcc1, $fs0, $fa2
-	move	$a6, $zero
+	move	$a5, $zero
 	bcnez	$fcc1, .LBB9_10
 # %bb.8:                                #   in Loop: Header=BB9_5 Depth=1
 	fcmp.cule.d	$fcc1, $fa3, $fs0
 	bcnez	$fcc1, .LBB9_10
 .LBB9_9:                                #   in Loop: Header=BB9_5 Depth=1
-	ori	$a6, $zero, 1
+	ori	$a5, $zero, 1
 .LBB9_10:                               #   in Loop: Header=BB9_5 Depth=1
-	fldx.s	$ft2, $a2, $a7
+	fldx.s	$ft2, $a1, $a6
 	fadd.s	$fa5, $fa5, $ft2
 	fcvt.d.s	$fa5, $fa5
 	fmul.d	$ft3, $fa5, $fa5
@@ -1472,29 +1469,29 @@ KDTree_QueryCircleIntersectWeighted_Float: # @KDTree_QueryCircleIntersectWeighte
 	b	.LBB9_19
 	.p2align	4, , 16
 .LBB9_13:                               #   in Loop: Header=BB9_5 Depth=1
-	movcf2gr	$a7, $fcc1
-	xori	$t0, $a7, 1
-	movcf2gr	$t1, $fcc2
-	or	$t0, $t1, $t0
-	bnez	$t0, .LBB9_15
+	movcf2gr	$a6, $fcc1
+	xori	$a7, $a6, 1
+	movcf2gr	$t0, $fcc2
+	or	$a7, $t0, $a7
+	bnez	$a7, .LBB9_15
 # %bb.14:                               #   in Loop: Header=BB9_5 Depth=1
 	fsub.d	$fa6, $fs0, $fa3
 	fsub.d	$fa7, $fa4, $fa3
 	b	.LBB9_19
 	.p2align	4, , 16
 .LBB9_15:                               #   in Loop: Header=BB9_5 Depth=1
-	movcf2gr	$t0, $fcc2
-	and	$a7, $a7, $t0
-	bne	$a7, $a1, .LBB9_17
+	movcf2gr	$a7, $fcc2
+	and	$a6, $a6, $a7
+	beqz	$a6, .LBB9_17
 # %bb.16:                               #   in Loop: Header=BB9_5 Depth=1
 	fsub.d	$fa6, $fs0, $fa5
 	fsub.d	$fa7, $fa2, $fa5
 	b	.LBB9_19
 .LBB9_17:                               #   in Loop: Header=BB9_5 Depth=1
-	xori	$a7, $t0, 1
-	movcf2gr	$t0, $fcc1
-	or	$a7, $t0, $a7
-	bnez	$a7, .LBB9_22
+	xori	$a6, $a7, 1
+	movcf2gr	$a7, $fcc1
+	or	$a6, $a7, $a6
+	bnez	$a6, .LBB9_22
 # %bb.18:                               #   in Loop: Header=BB9_5 Depth=1
 	fsub.d	$fa6, $fs0, $fa4
 	fsub.d	$fa7, $fa3, $fa4
@@ -1505,39 +1502,39 @@ KDTree_QueryCircleIntersectWeighted_Float: # @KDTree_QueryCircleIntersectWeighte
 	fcmp.clt.d	$fcc2, $fs0, $fa3
 	fcmp.clt.d	$fcc3, $fa5, $fs0
 	fcmp.clt.d	$fcc1, $fs0, $fa2
-	movcf2gr	$a7, $fcc2
-	movcf2gr	$t0, $fcc3
+	movcf2gr	$a6, $fcc2
+	movcf2gr	$a7, $fcc3
 	fcmp.clt.d	$fcc2, $fs0, $fa5
-	and	$a7, $a7, $t0
-	movcf2gr	$t1, $fcc0
-	movcf2gr	$t2, $fcc2
-	and	$t1, $t1, $t2
+	and	$a6, $a6, $a7
+	movcf2gr	$t0, $fcc0
+	movcf2gr	$t1, $fcc2
+	and	$t0, $t0, $t1
 	fcmp.clt.d	$fcc0, $fa4, $fs0
-	or	$a7, $a7, $t1
-	movcf2gr	$t1, $fcc0
+	or	$a6, $a6, $t0
+	movcf2gr	$t0, $fcc0
 	fcmp.clt.d	$fcc0, $fs0, $fa4
-	and	$t2, $t2, $t1
-	movcf2gr	$t3, $fcc0
-	and	$t0, $t0, $t3
-	fcmp.clt.d	$fcc0, $fa2, $fs0
-	or	$t0, $t2, $t0
+	and	$t1, $t1, $t0
 	movcf2gr	$t2, $fcc0
-	and	$t2, $t2, $t3
-	movcf2gr	$t3, $fcc1
-	and	$t1, $t3, $t1
-	or	$t1, $t2, $t1
-	slli.d	$t2, $a4, 3
-	or	$a6, $t0, $a6
-	or	$a6, $t1, $a6
-	or	$a6, $a7, $a6
-	fstx.d	$fa6, $s2, $t2
-	bne	$a6, $a1, .LBB9_4
+	and	$a7, $a7, $t2
+	fcmp.clt.d	$fcc0, $fa2, $fs0
+	or	$a7, $t1, $a7
+	movcf2gr	$t1, $fcc0
+	and	$t1, $t1, $t2
+	movcf2gr	$t2, $fcc1
+	and	$t0, $t2, $t0
+	or	$t0, $t1, $t0
+	slli.d	$t1, $a3, 3
+	or	$a5, $a7, $a5
+	or	$a5, $t0, $a5
+	or	$a5, $a6, $a5
+	fstx.d	$fa6, $s2, $t1
+	beqz	$a5, .LBB9_4
 # %bb.21:                               #   in Loop: Header=BB9_5 Depth=1
-	slli.d	$a4, $a4, 2
-	stx.w	$a5, $s3, $a4
-	ld.w	$a4, $s4, 0
-	addi.w	$a4, $a4, 1
-	st.w	$a4, $s4, 0
+	slli.d	$a3, $a3, 2
+	stx.w	$a4, $s3, $a3
+	ld.w	$a3, $s4, 0
+	addi.w	$a3, $a3, 1
+	st.w	$a3, $s4, 0
 	b	.LBB9_4
 .LBB9_22:                               #   in Loop: Header=BB9_5 Depth=1
 	vldi	$vr6, -928
@@ -1609,9 +1606,8 @@ KDTree_QueryCircleInterior_Double:      # @KDTree_QueryCircleInterior_Double
 	pcaddu18i	$ra, %call36(KDTree_QueryBoxIntersect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 44
-	ori	$a1, $zero, 1
 	st.w	$zero, $s4, 0
-	blt	$a0, $a1, .LBB10_10
+	blez	$a0, .LBB10_10
 # %bb.3:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	move	$a1, $s5
@@ -1731,9 +1727,8 @@ KDTree_QueryCircleInterior_Float:       # @KDTree_QueryCircleInterior_Float
 	pcaddu18i	$ra, %call36(KDTree_QueryBoxIntersect)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 44
-	ori	$a1, $zero, 1
 	st.w	$zero, $s4, 0
-	blt	$a0, $a1, .LBB11_10
+	blez	$a0, .LBB11_10
 # %bb.3:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	move	$a1, $s5

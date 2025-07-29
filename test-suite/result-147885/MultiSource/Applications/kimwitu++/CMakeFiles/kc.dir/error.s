@@ -76,8 +76,7 @@ _ZN14kc_filePrinter13check_keywordEPKc: # @_ZN14kc_filePrinter13check_keywordEPK
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 89
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB3_3
+	beqz	$a0, .LBB3_3
 # %bb.1:
 	ld.b	$a0, $a1, 0
 	pcaddu18i	$ra, %call36(isspace)
@@ -241,9 +240,8 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	ld.w	$a1, $fp, 16
 	ld.bu	$a2, $a3, 114
 	addi.d	$a0, $a1, 1
-	ori	$a4, $zero, 1
 	st.w	$a0, $fp, 16
-	bne	$a2, $a4, .LBB4_5
+	beqz	$a2, .LBB4_5
 # %bb.4:
 	pcalau12i	$a0, %got_pc_hi20(pg_line)
 	ld.d	$a2, $a0, %got_pc_lo12(pg_line)
@@ -268,7 +266,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	beqz	$s4, .LBB4_102
 # %bb.7:
 	ori	$s6, $zero, 10
-	ori	$s7, $zero, 1
+	ori	$s2, $zero, 1
 	pcalau12i	$a0, %got_pc_hi20(_ZN2kc17view_gen_unpstr_cE)
 	ld.d	$s8, $a0, %got_pc_lo12(_ZN2kc17view_gen_unpstr_cE)
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
@@ -308,13 +306,13 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 .LBB4_10:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB4_79 Depth 2
                                         #     Child Loop BB4_82 Depth 2
-	andi	$s2, $s4, 255
-	bne	$s2, $s6, .LBB4_12
+	andi	$s7, $s4, 255
+	bne	$s7, $s6, .LBB4_12
 # %bb.11:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.w	$a0, $fp, 16
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 16
-	st.b	$s7, $fp, 77
+	st.b	$s2, $fp, 77
 .LBB4_12:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s8, 0
@@ -326,7 +324,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	blt	$a0, $a1, .LBB4_23
 # %bb.14:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a1, $fp, 60
-	bne	$a1, $s7, .LBB4_20
+	beqz	$a1, .LBB4_20
 # %bb.15:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.d	$a3, $fp, 8
 	ori	$a1, $zero, 4
@@ -355,7 +353,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	b	.LBB4_22
 	.p2align	4, , 16
 .LBB4_16:                               #   in Loop: Header=BB4_10 Depth=1
-	bne	$s2, $s3, .LBB4_24
+	bne	$s7, $s3, .LBB4_24
 # %bb.17:                               #   in Loop: Header=BB4_10 Depth=1
 	pcalau12i	$a1, %got_pc_hi20(_ZN2kc13view_filenameE)
 	ld.d	$a1, $a1, %got_pc_lo12(_ZN2kc13view_filenameE)
@@ -375,10 +373,10 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	bnez	$a0, .LBB4_36
 	b	.LBB4_32
 .LBB4_20:                               #   in Loop: Header=BB4_10 Depth=1
-	beq	$s2, $s6, .LBB4_23
+	beq	$s7, $s6, .LBB4_23
 # %bb.21:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a1, $zero, 1
-	beq	$s2, $s3, .LBB4_23
+	beq	$s7, $s3, .LBB4_23
 .LBB4_22:                               # %.sink.split
                                         #   in Loop: Header=BB4_10 Depth=1
 	st.b	$a1, $fp, 60
@@ -390,7 +388,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	beqz	$a0, .LBB4_28
 # %bb.25:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 34
-	bne	$s2, $a0, .LBB4_36
+	bne	$s7, $a0, .LBB4_36
 # %bb.26:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 68
 	andi	$a0, $a0, 1
@@ -404,7 +402,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	beqz	$a0, .LBB4_32
 # %bb.29:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 39
-	bne	$s2, $a0, .LBB4_36
+	bne	$s7, $a0, .LBB4_36
 # %bb.30:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 68
 	andi	$a0, $a0, 1
@@ -415,10 +413,10 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	.p2align	4, , 16
 .LBB4_32:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 74
-	bne	$a0, $s7, .LBB4_38
+	beqz	$a0, .LBB4_38
 # %bb.33:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 47
-	bne	$s2, $a0, .LBB4_42
+	bne	$s7, $a0, .LBB4_42
 # %bb.34:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 61
 	ori	$a1, $zero, 42
@@ -442,9 +440,9 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	b	.LBB4_9
 .LBB4_38:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 75
-	bne	$a0, $s7, .LBB4_44
+	beqz	$a0, .LBB4_44
 # %bb.39:                               #   in Loop: Header=BB4_10 Depth=1
-	addi.d	$a0, $s2, -8
+	addi.d	$a0, $s7, -8
 	ori	$a1, $zero, 5
 	bltu	$a1, $a0, .LBB4_36
 # %bb.40:                               #   in Loop: Header=BB4_10 Depth=1
@@ -459,9 +457,9 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	b	.LBB4_36
 .LBB4_42:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 13
-	bltu	$a0, $s2, .LBB4_36
+	bltu	$a0, $s7, .LBB4_36
 # %bb.43:                               #   in Loop: Header=BB4_10 Depth=1
-	sll.d	$a0, $s7, $s2
+	sll.d	$a0, $s2, $s7
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB4_8
@@ -482,7 +480,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $fp, 64
 .LBB4_47:                               #   in Loop: Header=BB4_10 Depth=1
-	addi.d	$a0, $s2, -8
+	addi.d	$a0, $s7, -8
 	move	$a2, $zero
 	ori	$a1, $zero, 51
 	bltu	$a1, $a0, .LBB4_61
@@ -495,14 +493,14 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	jr	$a0
 .LBB4_49:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.b	$s5, $fp, 61
-	andi	$s2, $s5, 255
+	andi	$s7, $s5, 255
 	move	$a2, $zero
 	ori	$a0, $zero, 8
-	beq	$s2, $a0, .LBB4_75
+	beq	$s7, $a0, .LBB4_71
 # %bb.50:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.b	$a0, $fp, 77
 	andi	$a0, $a0, 1
-	beqz	$a0, .LBB4_75
+	beqz	$a0, .LBB4_71
 # %bb.51:                               #   in Loop: Header=BB4_10 Depth=1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(isspace)
@@ -515,19 +513,19 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	bnez	$a0, .LBB4_56
 # %bb.53:                               # %switch.early.test103
                                         #   in Loop: Header=BB4_10 Depth=1
-	addi.d	$a0, $s2, -34
+	addi.d	$a0, $s7, -34
 	ori	$a1, $zero, 61
 	bltu	$a1, $a0, .LBB4_55
 # %bb.54:                               # %switch.early.test103
                                         #   in Loop: Header=BB4_10 Depth=1
-	sll.d	$a0, $s7, $a0
+	sll.d	$a0, $s2, $a0
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB4_56
 .LBB4_55:                               # %switch.early.test103
                                         #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 125
-	bne	$s2, $a0, .LBB4_8
+	bne	$s7, $a0, .LBB4_8
 .LBB4_56:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.b	$s5, $s1, 2
 	move	$a0, $s5
@@ -543,26 +541,26 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	bltu	$a1, $a0, .LBB4_59
 # %bb.58:                               # %switch.early.test104
                                         #   in Loop: Header=BB4_10 Depth=1
-	sll.d	$a0, $s7, $a0
+	sll.d	$a0, $s2, $a0
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	and	$a0, $a0, $a1
 	bnez	$a0, .LBB4_70
 .LBB4_59:                               #   in Loop: Header=BB4_10 Depth=1
 	move	$a0, $zero
-	st.b	$s7, $fp, 76
+	st.b	$s2, $fp, 76
 	b	.LBB4_9
 .LBB4_60:                               #   in Loop: Header=BB4_10 Depth=1
 	move	$s5, $zero
-	addi.d	$a0, $s2, -8
+	addi.d	$a0, $s7, -8
 	move	$a2, $zero
 	ori	$a1, $zero, 51
 	bgeu	$a1, $a0, .LBB4_48
 .LBB4_61:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 123
-	beq	$s2, $a0, .LBB4_72
+	beq	$s7, $a0, .LBB4_73
 # %bb.62:                               #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 125
-	bne	$s2, $a0, .LBB4_75
+	bne	$s7, $a0, .LBB4_71
 .LBB4_63:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.w	$a0, $fp, 64
 	beqz	$a0, .LBB4_70
@@ -570,7 +568,11 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	move	$a2, $zero
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 64
-	b	.LBB4_75
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.bu	$a0, $fp, 61
+	andi	$s7, $s4, 255
+	bne	$a0, $s6, .LBB4_83
+	b	.LBB4_76
 .LBB4_65:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.w	$a1, $fp, 64
 	move	$a0, $zero
@@ -594,43 +596,50 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 64
 	st.b	$zero, $fp, 88
-	b	.LBB4_75
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.bu	$a0, $fp, 61
+	andi	$s7, $s4, 255
+	bne	$a0, $s6, .LBB4_83
+	b	.LBB4_76
 .LBB4_70:                               #   in Loop: Header=BB4_10 Depth=1
 	move	$a2, $zero
-	b	.LBB4_75
 .LBB4_71:                               #   in Loop: Header=BB4_10 Depth=1
+	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
+	ld.bu	$a0, $fp, 61
+	andi	$s7, $s4, 255
+	bne	$a0, $s6, .LBB4_83
+	b	.LBB4_76
+.LBB4_72:                               #   in Loop: Header=BB4_10 Depth=1
 	move	$a0, $zero
 	ori	$a1, $zero, 8
 	st.b	$a1, $fp, 61
 	b	.LBB4_9
-.LBB4_72:                               #   in Loop: Header=BB4_10 Depth=1
-	beqz	$s5, .LBB4_74
-# %bb.73:                               #   in Loop: Header=BB4_10 Depth=1
+.LBB4_73:                               #   in Loop: Header=BB4_10 Depth=1
+	beqz	$s5, .LBB4_75
+# %bb.74:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.w	$a0, $fp, 64
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 64
 	st.b	$zero, $fp, 88
-.LBB4_74:                               #   in Loop: Header=BB4_10 Depth=1
-	ori	$a2, $zero, 1
 .LBB4_75:                               #   in Loop: Header=BB4_10 Depth=1
+	ori	$a2, $zero, 1
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	ld.bu	$a0, $fp, 61
-	andi	$s2, $s4, 255
-	ori	$a1, $zero, 10
+	andi	$s7, $s4, 255
 	bne	$a0, $s6, .LBB4_83
-# %bb.76:                               # %switch.early.test
+.LBB4_76:                               # %switch.early.test
                                         #   in Loop: Header=BB4_10 Depth=1
-	beq	$s2, $a1, .LBB4_83
+	beq	$s7, $s6, .LBB4_83
 # %bb.77:                               # %switch.early.test
                                         #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 35
-	beq	$s2, $a0, .LBB4_83
+	beq	$s7, $a0, .LBB4_83
 # %bb.78:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.w	$a0, $fp, 64
 	pcalau12i	$a1, %pc_hi20(_ZN14kc_filePrinter12indent_levelE)
 	ld.w	$a1, $a1, %pc_lo12(_ZN14kc_filePrinter12indent_levelE)
 	mul.w	$s5, $a1, $a0
-	blt	$s5, $s7, .LBB4_83
+	blez	$s5, .LBB4_83
 	.p2align	4, , 16
 .LBB4_79:                               # %.lr.ph119
                                         #   Parent Loop BB4_10 Depth=1
@@ -648,7 +657,7 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	b	.LBB4_83
 .LBB4_81:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_10 Depth=1
-	move	$s6, $zero
+	move	$s2, $zero
 	.p2align	4, , 16
 .LBB4_82:                               # %.lr.ph
                                         #   Parent Loop BB4_10 Depth=1
@@ -657,8 +666,8 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	ori	$a0, $zero, 32
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	addi.w	$s6, $s6, 1
-	bne	$s5, $s6, .LBB4_82
+	addi.w	$s2, $s2, 1
+	bne	$s5, $s2, .LBB4_82
 .LBB4_83:                               # %.loopexit115
                                         #   in Loop: Header=BB4_10 Depth=1
 	ext.w.b	$s5, $s4
@@ -669,11 +678,12 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 # %bb.84:                               #   in Loop: Header=BB4_10 Depth=1
 	st.b	$zero, $fp, 77
 .LBB4_85:                               #   in Loop: Header=BB4_10 Depth=1
-	addi.d	$s2, $s2, -34
+	addi.d	$s7, $s7, -34
+	ori	$s2, $zero, 1
 	ori	$a0, $zero, 13
-	bltu	$a0, $s2, .LBB4_95
+	bltu	$a0, $s7, .LBB4_95
 # %bb.86:                               #   in Loop: Header=BB4_10 Depth=1
-	slli.d	$a0, $s2, 2
+	slli.d	$a0, $s7, 2
 	pcalau12i	$a1, %pc_hi20(.LJTI4_1)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI4_1)
 	ldx.w	$a0, $a1, $a0
@@ -684,32 +694,31 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB4_95
 # %bb.88:                               #   in Loop: Header=BB4_10 Depth=1
-	st.b	$s7, $fp, 72
+	st.b	$s2, $fp, 72
 	b	.LBB4_95
 .LBB4_89:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 61
 	ori	$a1, $zero, 47
 	bne	$a0, $a1, .LBB4_95
 # %bb.90:                               #   in Loop: Header=BB4_10 Depth=1
-	st.b	$s7, $fp, 74
+	st.b	$s2, $fp, 74
 	b	.LBB4_95
 .LBB4_91:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 68
 	andi	$a0, $a0, 1
 	bnez	$a0, .LBB4_95
 # %bb.92:                               #   in Loop: Header=BB4_10 Depth=1
-	st.b	$s7, $fp, 73
+	st.b	$s2, $fp, 73
 	b	.LBB4_95
 .LBB4_93:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 61
 	ori	$a1, $zero, 47
 	bne	$a0, $a1, .LBB4_95
 # %bb.94:                               #   in Loop: Header=BB4_10 Depth=1
-	st.b	$s7, $fp, 75
+	st.b	$s2, $fp, 75
 .LBB4_95:                               #   in Loop: Header=BB4_10 Depth=1
 	ld.bu	$a0, $fp, 76
-	ori	$s6, $zero, 10
-	bne	$a0, $s7, .LBB4_101
+	beqz	$a0, .LBB4_101
 # %bb.96:                               #   in Loop: Header=BB4_10 Depth=1
 	move	$a0, $s5
 	pcaddu18i	$ra, %call36(isalnum)
@@ -718,10 +727,10 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 # %bb.97:                               # %switch.early.test102
                                         #   in Loop: Header=BB4_10 Depth=1
 	ori	$a0, $zero, 61
-	bltu	$a0, $s2, .LBB4_100
+	bltu	$a0, $s7, .LBB4_100
 # %bb.98:                               # %switch.early.test102
                                         #   in Loop: Header=BB4_10 Depth=1
-	sll.d	$a0, $s7, $s2
+	sll.d	$a0, $s2, $s7
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	and	$a0, $a0, $a1
 	beqz	$a0, .LBB4_100
@@ -767,57 +776,57 @@ _ZN14kc_filePrinterclEPKcRN2kc11uview_classE: # @_ZN14kc_filePrinterclEPKcRN2kc1
 	.section	.rodata,"a",@progbits
 	.p2align	2, 0x0
 .LJTI4_0:
+	.word	.LBB4_72-.LJTI4_0
+	.word	.LBB4_49-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_65-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_66-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
 	.word	.LBB4_71-.LJTI4_0
 	.word	.LBB4_49-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
 	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_65-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_66-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_49-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_74-.LJTI4_0
 	.word	.LBB4_63-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
-	.word	.LBB4_75-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
+	.word	.LBB4_71-.LJTI4_0
 	.word	.LBB4_68-.LJTI4_0
 .LJTI4_1:
 	.word	.LBB4_87-.LJTI4_1

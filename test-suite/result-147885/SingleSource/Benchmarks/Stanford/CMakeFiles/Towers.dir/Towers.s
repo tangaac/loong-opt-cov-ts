@@ -66,8 +66,7 @@ Getelement:                             # @Getelement
 # %bb.0:
 	pcalau12i	$a1, %pc_hi20(freelist)
 	ld.w	$a0, $a1, %pc_lo12(freelist)
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB4_2
+	blez	$a0, .LBB4_2
 # %bb.1:
 	pcalau12i	$a2, %pc_hi20(cellspace)
 	addi.d	$a2, $a2, %pc_lo12(cellspace)
@@ -102,26 +101,25 @@ Push:                                   # @Push
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a2, %pc_hi20(stack)
-	addi.d	$a3, $a2, %pc_lo12(stack)
+	addi.d	$a4, $a2, %pc_lo12(stack)
 	slli.d	$a2, $a1, 2
-	ldx.w	$a2, $a3, $a2
-	ori	$a5, $zero, 1
-	pcalau12i	$a4, %pc_hi20(cellspace)
-	addi.d	$fp, $a4, %pc_lo12(cellspace)
-	blt	$a2, $a5, .LBB5_2
+	ldx.w	$a2, $a4, $a2
+	pcalau12i	$a3, %pc_hi20(cellspace)
+	addi.d	$fp, $a3, %pc_lo12(cellspace)
+	blez	$a2, .LBB5_2
 # %bb.1:
-	slli.d	$a4, $a2, 3
-	ldx.w	$a4, $fp, $a4
-	bge	$a0, $a4, .LBB5_4
+	slli.d	$a3, $a2, 3
+	ldx.w	$a3, $fp, $a3
+	bge	$a0, $a3, .LBB5_4
 .LBB5_2:
-	pcalau12i	$a6, %pc_hi20(freelist)
-	ld.w	$a4, $a6, %pc_lo12(freelist)
-	alsl.d	$s0, $a1, $a3, 2
-	blt	$a4, $a5, .LBB5_5
+	pcalau12i	$a5, %pc_hi20(freelist)
+	ld.w	$a3, $a5, %pc_lo12(freelist)
+	alsl.d	$s0, $a1, $a4, 2
+	blez	$a3, .LBB5_5
 # %bb.3:
-	alsl.d	$a1, $a4, $fp, 3
+	alsl.d	$a1, $a3, $fp, 3
 	ld.w	$a1, $a1, 4
-	st.w	$a1, $a6, %pc_lo12(freelist)
+	st.w	$a1, $a5, %pc_lo12(freelist)
 	b	.LBB5_6
 .LBB5_4:                                # %.critedge
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -146,13 +144,13 @@ Push:                                   # @Push
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
 	ld.w	$a2, $s0, 0
-	move	$a4, $zero
+	move	$a3, $zero
 .LBB5_6:                                # %Getelement.exit
-	alsl.d	$a1, $a4, $fp, 3
-	slli.d	$a3, $a4, 3
+	alsl.d	$a1, $a3, $fp, 3
+	slli.d	$a4, $a3, 3
 	st.w	$a2, $a1, 4
-	st.w	$a4, $s0, 0
-	stx.w	$a0, $fp, $a3
+	st.w	$a3, $s0, 0
+	stx.w	$a0, $fp, $a4
 	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
@@ -181,36 +179,36 @@ Init:                                   # @Init
 	pcalau12i	$a1, %pc_hi20(stack)
 	addi.d	$a2, $a1, %pc_lo12(stack)
 	slli.d	$a1, $a0, 2
-	ori	$s3, $zero, 1
 	stx.w	$zero, $a2, $a1
-	blt	$fp, $s3, .LBB6_9
+	blez	$fp, .LBB6_9
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $zero
-	alsl.d	$s4, $a0, $a2, 2
+	alsl.d	$s3, $a0, $a2, 2
 	pcalau12i	$a0, %pc_hi20(cellspace)
-	addi.d	$s5, $a0, %pc_lo12(cellspace)
+	addi.d	$s4, $a0, %pc_lo12(cellspace)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s0, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.2)
-	pcalau12i	$s6, %pc_hi20(freelist)
+	pcalau12i	$s5, %pc_hi20(freelist)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
+	ori	$s6, $zero, 1
 	addi.w	$a0, $a1, 0
-	blt	$a0, $s3, .LBB6_3
+	blez	$a0, .LBB6_3
 	.p2align	4, , 16
 .LBB6_2:
 	slli.d	$a0, $a1, 3
-	ldx.w	$a0, $s5, $a0
+	ldx.w	$a0, $s4, $a0
 	bge	$fp, $a0, .LBB6_5
 .LBB6_3:
-	ld.w	$a0, $s6, %pc_lo12(freelist)
-	blt	$a0, $s3, .LBB6_6
+	ld.w	$a0, $s5, %pc_lo12(freelist)
+	blez	$a0, .LBB6_6
 # %bb.4:
 	bstrpick.d	$a0, $a0, 31, 0
-	alsl.d	$a2, $a0, $s5, 3
+	alsl.d	$a2, $a0, $s4, 3
 	ld.w	$a2, $a2, 4
-	st.w	$a2, $s6, %pc_lo12(freelist)
+	st.w	$a2, $s5, %pc_lo12(freelist)
 	b	.LBB6_7
 	.p2align	4, , 16
 .LBB6_5:                                # %.critedge.i
@@ -218,7 +216,7 @@ Init:                                   # @Init
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	blt	$s3, $fp, .LBB6_8
+	blt	$s6, $fp, .LBB6_8
 	b	.LBB6_9
 	.p2align	4, , 16
 .LBB6_6:
@@ -226,20 +224,20 @@ Init:                                   # @Init
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ld.wu	$a1, $s4, 0
+	ld.wu	$a1, $s3, 0
 	move	$a0, $zero
 .LBB6_7:                                # %Getelement.exit.i
-	alsl.d	$a2, $a0, $s5, 3
+	alsl.d	$a2, $a0, $s4, 3
 	slli.d	$a3, $a0, 3
 	st.w	$a1, $a2, 4
-	st.w	$a0, $s4, 0
-	stx.w	$fp, $s5, $a3
-	bge	$s3, $fp, .LBB6_9
+	st.w	$a0, $s3, 0
+	stx.w	$fp, $s4, $a3
+	bge	$s6, $fp, .LBB6_9
 .LBB6_8:                                # %.lr.phthread-pre-split
-	ld.wu	$a1, $s4, 0
+	ld.wu	$a1, $s3, 0
 	addi.w	$fp, $fp, -1
 	addi.w	$a0, $a1, 0
-	bge	$a0, $s3, .LBB6_2
+	bgtz	$a0, .LBB6_2
 	b	.LBB6_3
 .LBB6_9:                                # %._crit_edge
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
@@ -265,8 +263,7 @@ Pop:                                    # @Pop
 	addi.d	$a2, $a1, %pc_lo12(stack)
 	slli.d	$a1, $a0, 2
 	ldx.w	$a1, $a2, $a1
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB7_2
+	blez	$a1, .LBB7_2
 # %bb.1:
 	alsl.d	$a2, $a0, $a2, 2
 	pcalau12i	$a0, %pc_hi20(cellspace)
@@ -309,30 +306,28 @@ Move:                                   # @Move
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(stack)
+	addi.d	$s2, $a2, %pc_lo12(stack)
+	slli.d	$a2, $a0, 2
+	ldx.w	$a2, $s2, $a2
 	move	$fp, $a1
-	pcalau12i	$a1, %pc_hi20(stack)
-	addi.d	$s2, $a1, %pc_lo12(stack)
-	slli.d	$a1, $a0, 2
-	ldx.w	$a1, $s2, $a1
-	ori	$a2, $zero, 1
-	pcalau12i	$a3, %pc_hi20(cellspace)
-	addi.d	$s0, $a3, %pc_lo12(cellspace)
+	pcalau12i	$a1, %pc_hi20(cellspace)
+	addi.d	$s0, $a1, %pc_lo12(cellspace)
 	pcalau12i	$s3, %pc_hi20(freelist)
-	blt	$a1, $a2, .LBB8_2
+	blez	$a2, .LBB8_2
 # %bb.1:
 	alsl.d	$a0, $a0, $s2, 2
-	alsl.d	$a2, $a1, $s0, 3
+	alsl.d	$a1, $a2, $s0, 3
 	ld.w	$a3, $s3, %pc_lo12(freelist)
-	slli.d	$a4, $a1, 3
-	ld.w	$a5, $a2, 4
+	slli.d	$a4, $a2, 3
+	ld.w	$a5, $a1, 4
 	ldx.w	$s1, $s0, $a4
-	st.w	$a3, $a2, 4
-	st.w	$a1, $s3, %pc_lo12(freelist)
+	st.w	$a3, $a1, 4
+	st.w	$a2, $s3, %pc_lo12(freelist)
 	st.w	$a5, $a0, 0
 	slli.d	$a0, $fp, 2
 	ldx.w	$a0, $s2, $a0
-	ori	$a2, $zero, 1
-	bge	$a0, $a2, .LBB8_3
+	bgtz	$a0, .LBB8_3
 	b	.LBB8_4
 .LBB8_2:
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -344,8 +339,7 @@ Move:                                   # @Move
 	move	$s1, $zero
 	slli.d	$a0, $fp, 2
 	ldx.w	$a0, $s2, $a0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB8_4
+	blez	$a0, .LBB8_4
 .LBB8_3:
 	slli.d	$a1, $a0, 3
 	ldx.w	$a1, $s0, $a1
@@ -353,7 +347,7 @@ Move:                                   # @Move
 .LBB8_4:
 	ld.w	$a1, $s3, %pc_lo12(freelist)
 	alsl.d	$fp, $fp, $s2, 2
-	blt	$a1, $a2, .LBB8_7
+	blez	$a1, .LBB8_7
 # %bb.5:
 	alsl.d	$a2, $a1, $s0, 3
 	ld.w	$a2, $a2, 4
@@ -518,7 +512,7 @@ Towers:                                 # @Towers
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
 	addi.d	$s1, $a1, %pc_lo12(.L.str.1)
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s3, .LBB10_2
+	blez	$a1, .LBB10_2
 	.p2align	4, , 16
 .LBB10_1:
 	slli.d	$a1, $a0, 3
@@ -526,7 +520,7 @@ Towers:                                 # @Towers
 	bge	$s4, $a1, .LBB10_4
 .LBB10_2:
 	ld.w	$a1, $s5, %pc_lo12(freelist)
-	blt	$a1, $s3, .LBB10_5
+	blez	$a1, .LBB10_5
 # %bb.3:
 	bstrpick.d	$a1, $a1, 31, 0
 	alsl.d	$a2, $a1, $s2, 3
@@ -560,7 +554,7 @@ Towers:                                 # @Towers
 	ld.wu	$a0, $s6, 4
 	addi.w	$s4, $s4, -1
 	addi.w	$a1, $a0, 0
-	bge	$a1, $s3, .LBB10_1
+	bgtz	$a1, .LBB10_1
 	b	.LBB10_2
 .LBB10_8:                               # %Init.exit
 	st.d	$zero, $s6, 8

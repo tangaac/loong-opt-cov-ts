@@ -1970,8 +1970,7 @@ GCC_except_table5:
 	.type	_ZL11loopAutoVecIhEmPT_S1_S1_i,@function
 _ZL11loopAutoVecIhEmPT_S1_S1_i:         # @_ZL11loopAutoVecIhEmPT_S1_S1_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB6_5
+	blez	$a3, .LBB6_5
 # %bb.1:                                # %iter.check
 	ori	$a4, $zero, 15
 	bltu	$a4, $a3, .LBB6_6
@@ -2327,8 +2326,7 @@ _ZNSt23mersenne_twister_engineImLm32ELm624ELm397ELm31ELm2567483615ELm11ELm429496
 	.type	_ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i,@function
 _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB10_3
+	blez	$a3, .LBB10_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a3, $a1, .LBB10_4
@@ -2393,8 +2391,7 @@ _ZL24loopWithReductionAutoVecIhEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIhE
 	.type	_ZL11loopAutoVecItEmPT_S1_S1_i,@function
 _ZL11loopAutoVecItEmPT_S1_S1_i:         # @_ZL11loopAutoVecItEmPT_S1_S1_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB11_5
+	blez	$a3, .LBB11_5
 # %bb.1:                                # %iter.check
 	ori	$a4, $zero, 7
 	bltu	$a4, $a3, .LBB11_6
@@ -2618,8 +2615,7 @@ _ZNSt24uniform_int_distributionItEclISt23mersenne_twister_engineImLm32ELm624ELm3
 	.type	_ZL24loopWithReductionAutoVecItEmPT_S1_S1_i,@function
 _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItEmPT_S1_S1_i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB14_3
+	blez	$a3, .LBB14_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a3, $a1, .LBB14_4
@@ -2682,8 +2678,7 @@ _ZL24loopWithReductionAutoVecItEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecItE
 	.type	_ZL11loopAutoVecIjEmPT_S1_S1_i,@function
 _ZL11loopAutoVecIjEmPT_S1_S1_i:         # @_ZL11loopAutoVecIjEmPT_S1_S1_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB15_5
+	blez	$a3, .LBB15_5
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	bgeu	$a3, $a4, .LBB15_6
@@ -2887,8 +2882,7 @@ _ZNSt24uniform_int_distributionIjEclISt23mersenne_twister_engineImLm32ELm624ELm3
 	.type	_ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i,@function
 _ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i: # @_ZL24loopWithReductionAutoVecIjEmPT_S1_S1_i
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB18_3
+	blez	$a3, .LBB18_3
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a1, $zero, 4
 	bgeu	$a3, $a1, .LBB18_4

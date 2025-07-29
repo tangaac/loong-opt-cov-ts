@@ -445,8 +445,7 @@ grayscale_convert:                      # @grayscale_convert
 	.type	ycc_rgb_convert,@function
 ycc_rgb_convert:                        # @ycc_rgb_convert
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB3_7
+	blez	$a4, .LBB3_7
 # %bb.1:                                # %.lr.ph51
 	ld.wu	$a5, $a0, 128
 	beqz	$a5, .LBB3_7
@@ -531,11 +530,10 @@ ycc_rgb_convert:                        # @ycc_rgb_convert
 	.type	null_convert,@function
 null_convert:                           # @null_convert
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a4, $a6, .LBB4_9
+	blez	$a4, .LBB4_9
 # %bb.1:                                # %.preheader.lr.ph
 	ld.w	$a5, $a0, 48
-	blt	$a5, $a6, .LBB4_9
+	blez	$a5, .LBB4_9
 # %bb.2:                                # %.preheader.lr.ph
 	ld.w	$a0, $a0, 128
 	beqz	$a0, .LBB4_9
@@ -589,8 +587,7 @@ null_convert:                           # @null_convert
 	.type	ycck_cmyk_convert,@function
 ycck_cmyk_convert:                      # @ycck_cmyk_convert
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB5_7
+	blez	$a4, .LBB5_7
 # %bb.1:                                # %.lr.ph62
 	ld.wu	$a5, $a0, 128
 	beqz	$a5, .LBB5_7

@@ -405,10 +405,10 @@ ab:                                     # @ab
 .LBB1_61:
 	pcaddu18i	$ra, %call36(transpose)
 	jirl	$ra, $ra, 0
-	addi.w	$a3, $zero, -128
-	bne	$a0, $a3, .LBB1_75
+	addi.w	$a2, $zero, -128
+	bne	$a0, $a2, .LBB1_75
 # %bb.62:
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 .LBB1_63:                               # %.preheader147.lr.ph
 	pcalau12i	$a0, %got_pc_hi20(posed)
@@ -515,27 +515,28 @@ ab:                                     # @ab
 	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 	b	.LBB1_65
 .LBB1_75:
+	move	$a1, $a0
 	srai.d	$s2, $a0, 5
-	ori	$a1, $zero, 1
-	beq	$s2, $a1, .LBB1_79
+	ori	$a0, $zero, 1
+	beq	$s2, $a0, .LBB1_79
 # %bb.76:
-	addi.w	$a2, $zero, -1
-	bne	$s2, $a2, .LBB1_54
+	addi.w	$a0, $zero, -1
+	bne	$s2, $a0, .LBB1_54
 # %bb.77:
-	move	$s2, $a2
-	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
-	blt	$a2, $a1, .LBB1_54
+	move	$s2, $a0
+	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
+	bgez	$a0, .LBB1_54
 # %bb.78:
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	move	$s0, $zero
 	b	.LBB1_63
 .LBB1_79:
 	ori	$s2, $zero, 1
-	blt	$s0, $a1, .LBB1_54
+	blez	$s0, .LBB1_54
 # %bb.80:
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
 	st.d	$zero, $sp, 96                  # 8-byte Folded Spill
 	b	.LBB1_63
 .LBB1_81:
@@ -547,18 +548,16 @@ ab:                                     # @ab
 	slt	$s2, $a0, $a1
 	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
 .LBB1_83:                               # %.loopexit148
-	ld.d	$t1, $sp, 64                    # 8-byte Folded Reload
-	addi.w	$a0, $t1, 0
-	ori	$fp, $zero, 1
-	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
-	blt	$a0, $fp, .LBB1_87
+	ld.d	$t0, $sp, 64                    # 8-byte Folded Reload
+	addi.w	$a0, $t0, 0
+	blez	$a0, .LBB1_87
 # %bb.84:                               # %.preheader
 	addi.d	$a1, $sp, 104
 	ori	$a2, $zero, 224
-	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
-	mul.d	$a2, $a7, $a2
-	ld.d	$t0, $sp, 8                     # 8-byte Folded Reload
-	add.d	$a2, $t0, $a2
+	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	mul.d	$a2, $a6, $a2
+	ld.d	$a7, $sp, 8                     # 8-byte Folded Reload
+	add.d	$a2, $a7, $a2
 	move	$a3, $a0
 .LBB1_85:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a1, 0
@@ -583,10 +582,10 @@ ab:                                     # @ab
 	or	$a0, $a1, $a0
 	slli.d	$a0, $a0, 2
 	ori	$a1, $zero, 224
-	mul.d	$a1, $a7, $a1
-	add.d	$a1, $t0, $a1
+	mul.d	$a1, $a6, $a1
+	add.d	$a1, $a7, $a1
 	ldx.w	$a2, $a1, $a0
-	add.d	$a2, $a2, $t1
+	add.d	$a2, $a2, $t0
 	stx.w	$a2, $a1, $a0
 .LBB1_87:
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
@@ -594,6 +593,7 @@ ab:                                     # @ab
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	sub.d	$a0, $a0, $a1
 	ori	$a1, $zero, 2
+	ori	$fp, $zero, 1
 	bltu	$a0, $a1, .LBB1_90
 # %bb.88:                               # %.lr.ph.preheader
 	ori	$a1, $zero, 1
@@ -604,8 +604,9 @@ ab:                                     # @ab
 	addi.w	$fp, $fp, 1
 	bltu	$a1, $a0, .LBB1_89
 .LBB1_90:                               # %._crit_edge
-	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
-	bne	$a6, $a0, .LBB1_92
+	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB1_92
 # %bb.91:
 	move	$a0, $s2
 	move	$a1, $fp
@@ -613,7 +614,7 @@ ab:                                     # @ab
 	jirl	$ra, $ra, 0
 	b	.LBB1_93
 .LBB1_92:
-	srai.d	$a0, $a6, 5
+	srai.d	$a0, $a0, 5
 	sub.d	$a0, $zero, $a0
 	xor	$a0, $s2, $a0
 	sltui	$a0, $a0, 1

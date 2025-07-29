@@ -275,8 +275,7 @@ pmain:                                  # @pmain
 	ldx.d	$a0, $s1, $a0
 	beqz	$a0, .LBB2_28
 .LBB2_24:                               # %collectargs.exit
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s4, .LBB2_72
+	bltz	$s4, .LBB2_72
 # %bb.25:                               # %collectargs.exit.thread67
 	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
@@ -947,8 +946,7 @@ dotty:                                  # @dotty
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_gettop)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_4
+	blez	$a0, .LBB4_4
 # %bb.20:                               #   in Loop: Header=BB4_4 Depth=1
 	move	$a0, $fp
 	move	$a1, $s2

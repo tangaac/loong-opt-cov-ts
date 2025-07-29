@@ -96,7 +96,7 @@ main:                                   # @main
 	vaddi.bu	$vr0, $vr0, 16
 	bne	$a1, $a0, .LBB1_3
 .LBB1_5:                                # %middle.split
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB1_26
 # %bb.6:                                # %middle.block64
 	addi.d	$a0, $sp, 16
@@ -122,7 +122,7 @@ main:                                   # @main
 	addi.d	$a3, $a3, 16
 	bne	$a1, $a0, .LBB1_7
 .LBB1_9:                                # %middle.split72
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB1_26
 # %bb.10:                               # %middle.block73
 	lu12i.w	$a2, 32
@@ -152,7 +152,7 @@ main:                                   # @main
 	vaddi.bu	$vr0, $vr0, 16
 	bne	$a0, $s0, .LBB1_11
 .LBB1_13:                               # %middle.split84
-	bstrpick.d	$a0, $a1, 15, 0
+	slli.d	$a0, $a1, 48
 	bnez	$a0, .LBB1_26
 # %bb.14:                               # %middle.block85
 	lu12i.w	$a2, 32
@@ -168,7 +168,7 @@ main:                                   # @main
 	vldx	$vr0, $a2, $s1
 	vmsknz.b	$vr0, $vr0
 	vpickve2gr.hu	$a1, $vr0, 0
-	bstrpick.d	$a1, $a1, 15, 0
+	slli.d	$a1, $a1, 48
 	bnez	$a1, .LBB1_17
 # %bb.16:                               # %vector.body90
                                         #   in Loop: Header=BB1_15 Depth=1
@@ -205,7 +205,7 @@ main:                                   # @main
 	vaddi.bu	$vr0, $vr0, 16
 	bne	$a1, $a0, .LBB1_19
 .LBB1_21:                               # %middle.split106
-	bstrpick.d	$a0, $a2, 15, 0
+	slli.d	$a0, $a2, 48
 	bnez	$a0, .LBB1_26
 # %bb.22:                               # %middle.block107
 	lu12i.w	$a2, 32
@@ -234,7 +234,7 @@ main:                                   # @main
 	addi.d	$s1, $s1, 16
 	bnez	$a1, .LBB1_23
 .LBB1_25:                               # %middle.split118
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	beqz	$a0, .LBB1_27
 .LBB1_26:                               # %vector.early.exit
 	pcaddu18i	$ra, %call36(abort)

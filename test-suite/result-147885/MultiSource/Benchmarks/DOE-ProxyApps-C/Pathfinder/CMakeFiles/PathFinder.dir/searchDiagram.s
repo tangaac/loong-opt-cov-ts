@@ -44,45 +44,43 @@ SearchDiagram_build:                    # @SearchDiagram_build
 	move	$s0, $zero
 	beqz	$a0, .LBB1_31
 # %bb.1:
-	move	$s2, $a1
+	move	$s1, $a1
 	beqz	$a1, .LBB1_31
 # %bb.2:
 	move	$fp, $a0
-	slli.d	$s1, $s2, 4
-	addi.d	$a0, $s1, 16
+	slli.d	$s2, $s1, 4
+	addi.d	$a0, $s2, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_30
 # %bb.3:                                # %.lr.ph141.preheader
 	move	$s0, $a0
 	move	$s4, $zero
-	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
-	addi.w	$s3, $s2, -1
+	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
+	addi.w	$s3, $s1, -1
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 16                   # 16-byte Folded Spill
-	vstx	$vr0, $a0, $s1
-	addi.d	$a0, $a0, 8
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s6, $zero, 1
+	vstx	$vr0, $a0, $s2
+	addi.d	$s5, $a0, 8
 	move	$s2, $s3
-	move	$s7, $fp
+	move	$s6, $fp
 	b	.LBB1_5
 	.p2align	4, , 16
 .LBB1_4:                                # %._crit_edge
                                         #   in Loop: Header=BB1_5 Depth=1
-	ld.d	$s7, $s7, 8
+	ld.d	$s6, $s6, 8
 	addi.d	$s4, $s4, 1
-	beqz	$s7, .LBB1_13
+	beqz	$s6, .LBB1_13
 .LBB1_5:                                # %.lr.ph141
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_11 Depth 2
-	ld.d	$s1, $s7, 0
-	ld.w	$a0, $s1, 48
-	ld.w	$a1, $s1, 52
+	ld.d	$s7, $s6, 0
+	ld.w	$a0, $s7, 48
+	ld.w	$a1, $s7, 52
 	slli.d	$a2, $s4, 4
 	add.w	$a0, $a1, $a0
-	stx.d	$s1, $s0, $a2
-	blt	$a0, $s6, .LBB1_7
+	stx.d	$s7, $s0, $a2
+	blez	$a0, .LBB1_7
 # %bb.6:                                #   in Loop: Header=BB1_5 Depth=1
 	slli.d	$s8, $a0, 4
 	addi.d	$a0, $s8, 16
@@ -90,46 +88,45 @@ SearchDiagram_build:                    # @SearchDiagram_build
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
 	vstx	$vr0, $a0, $s8
-	ld.d	$s8, $s1, 32
+	ld.d	$s7, $s7, 32
 	alsl.d	$a1, $s4, $s0, 4
 	st.d	$a0, $a1, 8
-	bnez	$s8, .LBB1_8
+	bnez	$s7, .LBB1_8
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_7:                                #   in Loop: Header=BB1_5 Depth=1
 	move	$a0, $zero
-	ld.d	$s8, $s1, 32
+	ld.d	$s7, $s7, 32
 	alsl.d	$a1, $s4, $s0, 4
 	st.d	$a0, $a1, 8
-	beqz	$s8, .LBB1_4
+	beqz	$s7, .LBB1_4
 .LBB1_8:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_5 Depth=1
-	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	alsl.d	$s1, $s2, $a0, 4
+	alsl.d	$s8, $s2, $s5, 4
 	b	.LBB1_11
 	.p2align	4, , 16
 .LBB1_9:                                #   in Loop: Header=BB1_11 Depth=2
 	ld.w	$a0, $a0, 52
 	add.w	$a0, $a0, $a1
-	slli.d	$s5, $a0, 4
-	addi.d	$a0, $s5, 16
+	slli.d	$s1, $a0, 4
+	addi.d	$a0, $s1, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	vld	$vr0, $sp, 16                   # 16-byte Folded Reload
-	vstx	$vr0, $a0, $s5
+	vstx	$vr0, $a0, $s1
 .LBB1_10:                               #   in Loop: Header=BB1_11 Depth=2
-	ld.d	$s8, $s8, 8
-	st.d	$a0, $s1, 0
-	addi.d	$s1, $s1, -16
+	ld.d	$s7, $s7, 8
+	st.d	$a0, $s8, 0
+	addi.d	$s8, $s8, -16
 	addi.w	$s2, $s2, -1
-	beqz	$s8, .LBB1_4
+	beqz	$s7, .LBB1_4
 .LBB1_11:                               # %.lr.ph
                                         #   Parent Loop BB1_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s7, 0
 	ld.w	$a1, $a0, 48
-	st.d	$a0, $s1, -8
-	bge	$a1, $s6, .LBB1_9
+	st.d	$a0, $s8, -8
+	bgtz	$a1, .LBB1_9
 # %bb.12:                               #   in Loop: Header=BB1_11 Depth=2
 	move	$a0, $zero
 	b	.LBB1_10
@@ -141,7 +138,7 @@ SearchDiagram_build:                    # @SearchDiagram_build
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	move	$a2, $s2
-	ld.d	$a3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
 .LBB1_15:                               # %.lr.ph168.preheader

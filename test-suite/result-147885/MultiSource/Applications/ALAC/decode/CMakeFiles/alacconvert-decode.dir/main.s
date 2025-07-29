@@ -1393,8 +1393,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 .LBB4_21:                               # %.preheader137
                                         #   in Loop: Header=BB4_12 Depth=1
 	addi.w	$a0, $s8, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_11
+	blez	$a0, .LBB4_11
 # %bb.22:                               # %.lr.ph147.preheader
                                         #   in Loop: Header=BB4_12 Depth=1
 	move	$s1, $zero
@@ -1456,8 +1455,7 @@ _Z10EncodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_i: # @_Z10EncodeALACP8_IO_
 	blt	$s1, $a0, .LBB4_31
 	b	.LBB4_6
 .LBB4_32:                               # %.preheader
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_6
+	blez	$a0, .LBB4_6
 # %bb.33:                               # %.lr.ph164.preheader
 	move	$s1, $zero
 	move	$s0, $s8
@@ -1611,7 +1609,6 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	ori	$a1, $a1, 1605
 	move	$s7, $a0
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	bne	$s8, $a1, .LBB5_3
 # %bb.2:
 	pcalau12i	$a0, %pc_hi20(.L__const._Z18WriteWAVERIFFChunkP8_IO_FILE.theReadBuffer)
@@ -1707,6 +1704,7 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	pcaddu18i	$ra, %call36(_Z18WriteCAFFdataChunkP8_IO_FILE)
 	jirl	$ra, $ra, 0
 .LBB5_6:
+	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
 	addi.d	$a1, $sp, 104
 	addi.d	$a2, $sp, 108
 	move	$a0, $s6
@@ -1719,7 +1717,6 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 5
-	ori	$s8, $zero, 1
 	move	$a0, $fp
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(fread)
@@ -1739,9 +1736,9 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	move	$a2, $zero
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-	blt	$s3, $s8, .LBB5_10
-# %bb.7:                                # %.lr.ph
 	move	$s8, $zero
+	blez	$s3, .LBB5_10
+# %bb.7:                                # %.lr.ph
 	add.w	$s7, $s3, $s7
 	.p2align	4, , 16
 .LBB5_8:                                # =>This Inner Loop Header: Depth=1
@@ -1751,7 +1748,7 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	move	$a3, $s6
 	pcaddu18i	$ra, %call36(fread)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s3, .LBB5_11
+	bne	$a0, $s3, .LBB5_10
 # %bb.9:                                #   in Loop: Header=BB5_8 Depth=1
 	ld.w	$a3, $s5, 20
 	ld.w	$a4, $s5, 28
@@ -1803,10 +1800,7 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	pcaddu18i	$ra, %call36(BitBufferReset)
 	jirl	$ra, $ra, 0
 	bgtz	$s3, .LBB5_8
-	b	.LBB5_11
-.LBB5_10:
-	move	$s8, $zero
-.LBB5_11:                               # %.critedge
+.LBB5_10:                               # %.critedge
 	move	$a0, $s1
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	move	$a2, $zero
@@ -1814,8 +1808,8 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB5_13
-# %bb.12:
+	bne	$a0, $a1, .LBB5_12
+# %bb.11:
 	st.w	$s8, $sp, 112
 	addi.d	$a0, $sp, 112
 	ori	$a1, $zero, 1
@@ -1836,13 +1830,13 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	b	.LBB5_14
-.LBB5_13:
+	b	.LBB5_13
+.LBB5_12:
 	addi.d	$a1, $s8, 4
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_Z18WriteCAFFChunkSizeP8_IO_FILEl)
 	jirl	$ra, $ra, 0
-.LBB5_14:
+.LBB5_13:
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_ZN11ALACDecoderD1Ev)
 	jirl	$ra, $ra, 0
@@ -1870,7 +1864,7 @@ _Z10DecodeALACP8_IO_FILES0_22AudioFormatDescriptionS1_ij: # @_Z10DecodeALACP8_IO
 	ld.d	$ra, $sp, 216                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 224
 	ret
-.LBB5_15:
+.LBB5_14:
 .Ltmp5:
 	move	$fp, $a0
 	ori	$a1, $zero, 64

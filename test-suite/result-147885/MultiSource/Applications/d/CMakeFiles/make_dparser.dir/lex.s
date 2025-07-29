@@ -3972,8 +3972,7 @@ build_regex_nfa:                        # @build_regex_nfa
 	addi.d	$a1, $s0, -94
 	sltui	$a1, $a1, 1
 	sltui	$a0, $a0, 1
-	xor	$a0, $a1, $a0
-	bnez	$a0, .LBB1_135
+	bne	$a1, $a0, .LBB1_135
 # %bb.137:                              #   in Loop: Header=BB1_136 Depth=2
 	add.d	$a2, $s6, $s3
 	ld.d	$a1, $a2, 56

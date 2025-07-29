@@ -81,8 +81,8 @@ cli_hex2ui:                             # @cli_hex2ui
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $fp, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB0_20
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB0_20
 # %bb.12:                               #   in Loop: Header=BB0_6 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -113,8 +113,8 @@ cli_hex2ui:                             # @cli_hex2ui
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $s8, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB0_22
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB0_22
 # %bb.18:                               #   in Loop: Header=BB0_6 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -155,8 +155,8 @@ cli_hex2ui:                             # @cli_hex2ui
 	ld.d	$fp, $a0, 0
 	slli.d	$a0, $s5, 1
 	ldx.hu	$a0, $fp, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB0_29
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB0_29
 # %bb.27:                               #   in Loop: Header=BB0_6 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -182,8 +182,8 @@ cli_hex2ui:                             # @cli_hex2ui
 # %bb.32:                               #   in Loop: Header=BB0_6 Depth=1
 	slli.d	$a0, $s8, 1
 	ldx.hu	$a0, $fp, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB0_35
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB0_35
 # %bb.33:                               #   in Loop: Header=BB0_6 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -272,13 +272,12 @@ cli_hex2str:                            # @cli_hex2str
 	srai.d	$a0, $s1, 1
 	addi.d	$a0, $a0, 1
 	ori	$a1, $zero, 1
-	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(cli_calloc)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB1_20
 # %bb.2:                                # %.preheader
 	move	$fp, $a0
-	blt	$s1, $s2, .LBB1_21
+	blez	$s1, .LBB1_21
 # %bb.3:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	addi.d	$s0, $s0, 1
@@ -296,8 +295,8 @@ cli_hex2str:                            # @cli_hex2str
 	ld.d	$s7, $a0, 0
 	slli.d	$a0, $s6, 1
 	ldx.hu	$a0, $s7, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB1_8
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB1_8
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -322,8 +321,8 @@ cli_hex2str:                            # @cli_hex2str
 # %bb.11:                               #   in Loop: Header=BB1_4 Depth=1
 	slli.d	$a0, $s8, 1
 	ldx.hu	$a0, $s7, $a0
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB1_14
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB1_14
 # %bb.12:                               #   in Loop: Header=BB1_4 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -406,10 +405,9 @@ cli_hex2num:                            # @cli_hex2num
 	andi	$a1, $a0, 1
 	bnez	$a1, .LBB2_10
 # %bb.1:                                # %.preheader
-	addi.w	$a1, $a0, 0
 	move	$s0, $zero
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_11
+	addi.w	$a1, $a0, 0
+	blez	$a1, .LBB2_11
 # %bb.2:                                # %.lr.ph.preheader
 	bstrpick.d	$s1, $a0, 30, 0
 	ori	$s2, $zero, 5
@@ -432,8 +430,8 @@ cli_hex2num:                            # @cli_hex2num
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $s4, 1
 	ldx.hu	$a0, $a0, $a1
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB2_8
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB2_8
 # %bb.6:                                #   in Loop: Header=BB2_4 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_tolower_loc)
 	jirl	$ra, $ra, 0
@@ -1205,12 +1203,12 @@ cli_chomp:                              # @cli_chomp
 	addi.w	$a0, $a0, 0
 	beqz	$a0, .LBB6_8
 # %bb.2:                                # %.preheader
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB6_7
+	blez	$a0, .LBB6_7
 # %bb.3:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $a1, 30, 0
 	addi.d	$a1, $fp, -1
-	ori	$a3, $zero, 13
+	ori	$a2, $zero, 13
+	ori	$a3, $zero, 1
 	ori	$a4, $zero, 10
 	move	$a5, $a0
 	b	.LBB6_5
@@ -1221,11 +1219,11 @@ cli_chomp:                              # @cli_chomp
 	addi.d	$a5, $a5, -1
 	addi.d	$a6, $a5, 1
 	addi.w	$a0, $a0, -1
-	bgeu	$a2, $a6, .LBB6_8
+	bgeu	$a3, $a6, .LBB6_8
 .LBB6_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ldx.bu	$a6, $a1, $a5
-	beq	$a6, $a3, .LBB6_4
+	beq	$a6, $a2, .LBB6_4
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB6_5 Depth=1
 	beq	$a6, $a4, .LBB6_4

@@ -151,47 +151,47 @@ main:                                   # @main
 	slli.d	$a0, $s1, 3
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s0, $a1, .LBB2_7
+	blez	$s0, .LBB2_7
 # %bb.4:                                # %.lr.ph.preheader
-	pcalau12i	$a2, %pc_hi20(gen_random.last)
-	ld.d	$a5, $a2, %pc_lo12(gen_random.last)
-	bstrpick.d	$a4, $s1, 31, 0
-	addi.d	$a3, $a0, 8
-	addi.d	$a4, $a4, -1
-	ori	$a6, $zero, 3877
-	lu12i.w	$a7, 7
-	ori	$a7, $a7, 901
-	lu12i.w	$t0, -10549
-	ori	$t0, $t0, 3729
-	lu32i.d	$t0, -86783
-	pcalau12i	$t1, %pc_hi20(.LCPI2_0)
-	fld.d	$fa0, $t1, %pc_lo12(.LCPI2_0)
-	lu52i.d	$t0, $t0, 958
-	lu12i.w	$t1, 34
-	ori	$t1, $t1, 704
+	pcalau12i	$a1, %pc_hi20(gen_random.last)
+	ld.d	$a4, $a1, %pc_lo12(gen_random.last)
+	bstrpick.d	$a3, $s1, 31, 0
+	addi.d	$a2, $a0, 8
+	addi.d	$a3, $a3, -1
+	ori	$a5, $zero, 3877
+	lu12i.w	$a6, 7
+	ori	$a6, $a6, 901
+	lu12i.w	$a7, -10549
+	ori	$a7, $a7, 3729
+	lu32i.d	$a7, -86783
+	pcalau12i	$t0, %pc_hi20(.LCPI2_0)
+	fld.d	$fa0, $t0, %pc_lo12(.LCPI2_0)
+	lu52i.d	$a7, $a7, 958
+	lu12i.w	$t0, 34
+	ori	$t0, $t0, 704
 	.p2align	4, , 16
 .LBB2_5:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	mul.d	$a5, $a5, $a6
-	add.d	$a5, $a5, $a7
-	mulh.du	$t2, $a5, $t0
-	srli.d	$t2, $t2, 15
-	mul.d	$t2, $t2, $t1
-	sub.d	$a5, $a5, $t2
-	movgr2fr.d	$fa1, $a5
+	mul.d	$a4, $a4, $a5
+	add.d	$a4, $a4, $a6
+	mulh.du	$t1, $a4, $a7
+	srli.d	$t1, $t1, 15
+	mul.d	$t1, $t1, $t0
+	sub.d	$a4, $a4, $t1
+	movgr2fr.d	$fa1, $a4
 	ffint.d.l	$fa1, $fa1
 	fdiv.d	$fa1, $fa1, $fa0
-	fst.d	$fa1, $a3, 0
-	addi.d	$a4, $a4, -1
-	addi.d	$a3, $a3, 8
-	bnez	$a4, .LBB2_5
+	fst.d	$fa1, $a2, 0
+	addi.d	$a3, $a3, -1
+	addi.d	$a2, $a2, 8
+	bnez	$a3, .LBB2_5
 # %bb.6:                                # %._crit_edge
-	st.d	$a5, $a2, %pc_lo12(gen_random.last)
+	st.d	$a4, $a1, %pc_lo12(gen_random.last)
 .LBB2_7:
-	srai.d	$a2, $s0, 1
-	addi.w	$a2, $a2, 1
-	ori	$a3, $zero, 2
+	srai.d	$a1, $s0, 1
+	addi.w	$a1, $a1, 1
+	ori	$a2, $zero, 2
+	ori	$a3, $zero, 1
 	b	.LBB2_10
 	.p2align	4, , 16
 .LBB2_8:                                #   in Loop: Header=BB2_10 Depth=1
@@ -202,10 +202,10 @@ main:                                   # @main
 	fstx.d	$fa0, $a0, $a4
 .LBB2_10:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_15 Depth 2
-	blt	$a2, $a3, .LBB2_12
+	blt	$a1, $a2, .LBB2_12
 # %bb.11:                               #   in Loop: Header=BB2_10 Depth=1
-	addi.w	$a2, $a2, -1
-	slli.d	$a4, $a2, 3
+	addi.w	$a1, $a1, -1
+	slli.d	$a4, $a1, 3
 	fldx.d	$fa0, $a0, $a4
 	b	.LBB2_13
 	.p2align	4, , 16
@@ -216,15 +216,15 @@ main:                                   # @main
 	fldx.d	$fa0, $a0, $a4
 	addi.w	$fp, $fp, -1
 	fstx.d	$fa1, $a0, $a4
-	beq	$fp, $a1, .LBB2_21
+	beq	$fp, $a3, .LBB2_21
 .LBB2_13:                               #   in Loop: Header=BB2_10 Depth=1
-	slli.w	$a5, $a2, 1
+	slli.w	$a5, $a1, 1
 	addi.w	$a4, $fp, 0
-	move	$a7, $a2
+	move	$a7, $a1
 	blt	$a4, $a5, .LBB2_9
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB2_10 Depth=1
-	move	$a6, $a2
+	move	$a6, $a1
 	.p2align	4, , 16
 .LBB2_15:                               # %.lr.ph.i
                                         #   Parent Loop BB2_10 Depth=1

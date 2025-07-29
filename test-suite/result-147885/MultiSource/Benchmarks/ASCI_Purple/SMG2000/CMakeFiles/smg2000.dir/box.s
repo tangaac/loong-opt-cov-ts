@@ -113,7 +113,6 @@ hypre_BoxArrayArrayCreate:              # @hypre_BoxArrayArrayCreate
 	move	$fp, $a0
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 16
-	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -122,7 +121,7 @@ hypre_BoxArrayArrayCreate:              # @hypre_BoxArrayArrayCreate
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 0
-	blt	$fp, $s1, .LBB4_3
+	blez	$fp, .LBB4_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	slli.d	$s3, $fp, 3
@@ -219,8 +218,7 @@ hypre_BoxArrayArrayDestroy:             # @hypre_BoxArrayArrayDestroy
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_6
+	blez	$a0, .LBB7_6
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	move	$s2, $zero
@@ -320,9 +318,8 @@ hypre_BoxArrayDuplicate:                # @hypre_BoxArrayDuplicate
 	st.w	$s0, $s1, 8
 	ld.w	$a2, $fp, 8
 	st.d	$a0, $s1, 0
-	ori	$a3, $zero, 1
 	st.w	$s0, $s1, 12
-	blt	$a2, $a3, .LBB9_3
+	blez	$a2, .LBB9_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a3, $fp, 0
 	move	$a2, $zero
@@ -379,7 +376,6 @@ hypre_BoxArrayArrayDuplicate:           # @hypre_BoxArrayArrayDuplicate
 	ld.w	$fp, $a0, 8
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 16
-	ori	$s2, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
@@ -389,7 +385,7 @@ hypre_BoxArrayArrayDuplicate:           # @hypre_BoxArrayArrayDuplicate
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s0, 0
 	st.d	$s0, $sp, 0                     # 8-byte Folded Spill
-	blt	$fp, $s2, .LBB10_10
+	blez	$fp, .LBB10_10
 # %bb.1:                                # %.lr.ph.preheader.i
 	move	$s4, $zero
 	slli.d	$s5, $fp, 3
@@ -414,7 +410,6 @@ hypre_BoxArrayArrayDuplicate:           # @hypre_BoxArrayArrayDuplicate
 	ld.d	$s1, $s1, 0
 	move	$s2, $zero
 	st.w	$fp, $s0, 8
-	ori	$a3, $zero, 1
 	b	.LBB10_5
 	.p2align	4, , 16
 .LBB10_4:                               # %hypre_AppendBoxArray.exit
@@ -425,35 +420,34 @@ hypre_BoxArrayArrayDuplicate:           # @hypre_BoxArrayArrayDuplicate
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB10_9 Depth 2
 	slli.d	$a0, $s2, 3
-	ldx.d	$s8, $s3, $a0
-	ldx.d	$s7, $s1, $a0
-	ld.w	$s6, $s8, 8
+	ldx.d	$s7, $s3, $a0
+	ldx.d	$s6, $s1, $a0
 	ld.w	$s5, $s7, 8
-	ld.w	$a0, $s8, 12
-	add.w	$s4, $s5, $s6
-	bge	$a0, $s4, .LBB10_7
+	ld.w	$s4, $s6, 8
+	ld.w	$a0, $s7, 12
+	add.w	$s8, $s4, $s5
+	bge	$a0, $s8, .LBB10_7
 # %bb.6:                                #   in Loop: Header=BB10_5 Depth=1
-	ld.d	$a0, $s8, 0
+	ld.d	$a0, $s7, 0
 	move	$s0, $fp
-	addi.d	$fp, $s4, 10
+	addi.d	$fp, $s8, 10
 	slli.d	$a1, $fp, 4
 	alsl.w	$a1, $fp, $a1, 3
 	pcaddu18i	$ra, %call36(hypre_ReAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a3, $zero, 1
-	st.d	$a0, $s8, 0
-	st.w	$fp, $s8, 12
+	st.d	$a0, $s7, 0
+	st.w	$fp, $s7, 12
 	move	$fp, $s0
 .LBB10_7:                               # %hypre_BoxArraySetSize.exit.i
                                         #   in Loop: Header=BB10_5 Depth=1
-	st.w	$s4, $s8, 8
-	blt	$s5, $a3, .LBB10_4
+	st.w	$s8, $s7, 8
+	blez	$s4, .LBB10_4
 # %bb.8:                                # %.lr.ph.i13
                                         #   in Loop: Header=BB10_5 Depth=1
-	ld.d	$a0, $s8, 0
-	ld.d	$a1, $s7, 0
-	slli.d	$a2, $s6, 4
-	alsl.d	$a2, $s6, $a2, 3
+	ld.d	$a0, $s7, 0
+	ld.d	$a1, $s6, 0
+	slli.d	$a2, $s5, 4
+	alsl.d	$a2, $s5, $a2, 3
 	add.d	$a0, $a0, $a2
 	addi.d	$a0, $a0, 12
 	addi.d	$a1, $a1, 12
@@ -472,10 +466,10 @@ hypre_BoxArrayArrayDuplicate:           # @hypre_BoxArrayArrayDuplicate
 	st.w	$a2, $a0, 4
 	ld.w	$a2, $a1, 8
 	st.w	$a2, $a0, 8
-	addi.d	$s5, $s5, -1
+	addi.d	$s4, $s4, -1
 	addi.d	$a0, $a0, 24
 	addi.d	$a1, $a1, 24
-	bnez	$s5, .LBB10_9
+	bnez	$s4, .LBB10_9
 	b	.LBB10_4
 .LBB10_10:                              # %hypre_BoxArrayArrayCreate.exit
 	st.w	$fp, $s0, 8
@@ -527,9 +521,8 @@ hypre_AppendBoxArray:                   # @hypre_AppendBoxArray
 	st.d	$a0, $fp, 0
 	st.w	$s4, $fp, 12
 .LBB11_2:                               # %hypre_BoxArraySetSize.exit
-	ori	$a0, $zero, 1
 	st.w	$s3, $fp, 8
-	blt	$s1, $a0, .LBB11_5
+	blez	$s1, .LBB11_5
 # %bb.3:                                # %.lr.ph
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $fp, 0
@@ -755,8 +748,7 @@ hypre_IModPeriod:                       # @hypre_IModPeriod
 # %bb.1:
 	bge	$a0, $a1, .LBB16_5
 # %bb.2:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB16_4
+	bltz	$a0, .LBB16_4
 .LBB16_3:
 	ret
 .LBB16_4:
@@ -782,8 +774,7 @@ hypre_IModPeriodX:                      # @hypre_IModPeriodX
 # %bb.1:
 	bge	$a0, $a1, .LBB17_5
 # %bb.2:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB17_4
+	bltz	$a0, .LBB17_4
 .LBB17_3:                               # %hypre_IModPeriod.exit
 	ret
 .LBB17_4:
@@ -809,8 +800,7 @@ hypre_IModPeriodY:                      # @hypre_IModPeriodY
 # %bb.1:
 	bge	$a0, $a1, .LBB18_5
 # %bb.2:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB18_4
+	bltz	$a0, .LBB18_4
 .LBB18_3:                               # %hypre_IModPeriod.exit
 	ret
 .LBB18_4:
@@ -836,8 +826,7 @@ hypre_IModPeriodZ:                      # @hypre_IModPeriodZ
 # %bb.1:
 	bge	$a0, $a1, .LBB19_5
 # %bb.2:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a0, .LBB19_4
+	bltz	$a0, .LBB19_4
 .LBB19_3:                               # %hypre_IModPeriod.exit
 	ret
 .LBB19_4:

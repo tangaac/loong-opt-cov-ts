@@ -141,8 +141,7 @@ fuloop:                                 # @fuloop
 	ld.d	$a0, $a0, %got_pc_lo12(attmax)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_25
+	blez	$a0, .LBB0_25
 # %bb.1:                                # %.preheader140.lr.ph.preheader
 	move	$s3, $zero
 	move	$s7, $zero
@@ -362,8 +361,7 @@ fuloop:                                 # @fuloop
 # %bb.22:                               # %.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.w	$a0, $s5, 72
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.23:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
 	move	$s6, $zero

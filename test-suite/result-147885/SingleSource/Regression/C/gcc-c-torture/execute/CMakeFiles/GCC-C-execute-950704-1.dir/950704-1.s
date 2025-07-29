@@ -13,8 +13,7 @@ f:                                      # @f
 # %bb.1:
 	bltz	$a1, .LBB0_3
 # %bb.2:
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB0_6
+	bltz	$a0, .LBB0_6
 .LBB0_3:
 	ret
 .LBB0_4:

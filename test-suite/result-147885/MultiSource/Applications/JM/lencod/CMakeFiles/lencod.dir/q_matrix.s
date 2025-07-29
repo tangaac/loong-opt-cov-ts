@@ -101,8 +101,7 @@ CheckParameterName:                     # @CheckParameterName
 	.type	ParseMatrix,@function
 ParseMatrix:                            # @ParseMatrix
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_39
+	blez	$a1, .LBB1_39
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
@@ -218,38 +217,36 @@ ParseMatrix:                            # @ParseMatrix
 	ori	$a0, $zero, 2
 	blt	$a2, $a0, .LBB1_38
 # %bb.23:                               # %.lr.ph84.preheader
-	move	$s0, $zero
+	move	$s3, $zero
 	addi.w	$a0, $a2, -1
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$s6, $sp, 88
-	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$s7, $zero, 61
 	pcalau12i	$a0, %pc_hi20(ScalingList4x4input)
 	addi.d	$a0, $a0, %pc_lo12(ScalingList4x4input)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(matrix4x4_check)
 	addi.d	$a0, $a0, %pc_lo12(matrix4x4_check)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s3, $zero, 1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.3)
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.4)
 	pcalau12i	$a0, %pc_hi20(ScalingList8x8input)
 	addi.d	$a0, $a0, %pc_lo12(ScalingList8x8input)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(matrix8x8_check)
 	addi.d	$a0, $a0, %pc_lo12(matrix8x8_check)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB1_25
 	.p2align	4, , 16
 .LBB1_24:                               #   in Loop: Header=BB1_25 Depth=1
@@ -257,8 +254,8 @@ ParseMatrix:                            # @ParseMatrix
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	add.d	$s0, $s0, $a0
-	addi.w	$a0, $s0, 0
+	add.d	$s3, $s3, $a0
+	addi.w	$a0, $s3, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$s6, $sp, 88
 	ori	$s7, $zero, 61
@@ -266,18 +263,17 @@ ParseMatrix:                            # @ParseMatrix
 .LBB1_25:                               # %.lr.ph84
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_36 Depth 2
-	slli.d	$a0, $s0, 3
+	slli.d	$a0, $s3, 3
 	ldx.d	$s4, $a0, $s6
 	addi.d	$a1, $sp, 80
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(CheckParameterName)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bge	$a0, $s5, .LBB1_28
+	bltz	$a0, .LBB1_28
 # %bb.26:                               # %sub_0
                                         #   in Loop: Header=BB1_25 Depth=1
-	alsl.d	$a0, $s0, $s6, 3
+	alsl.d	$a0, $s3, $s6, 3
 	ld.d	$a0, $a0, 8
 	ld.bu	$a1, $a0, 0
 	bne	$a1, $s7, .LBB1_29
@@ -291,7 +287,7 @@ ParseMatrix:                            # @ParseMatrix
 .LBB1_28:                               #   in Loop: Header=BB1_25 Depth=1
 	ori	$a1, $zero, 300
 	move	$a0, $fp
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
@@ -299,7 +295,7 @@ ParseMatrix:                            # @ParseMatrix
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	alsl.d	$a0, $s0, $s6, 3
+	alsl.d	$a0, $s3, $s6, 3
 	ld.d	$a0, $a0, 8
 	ld.bu	$a1, $a0, 0
 	beq	$a1, $s7, .LBB1_27
@@ -309,7 +305,7 @@ ParseMatrix:                            # @ParseMatrix
 .LBB1_30:                               #   in Loop: Header=BB1_25 Depth=1
 	ori	$a2, $zero, 78
 	move	$a0, $fp
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 300
@@ -322,34 +318,34 @@ ParseMatrix:                            # @ParseMatrix
 	beqz	$a1, .LBB1_33
 # %bb.32:                               #   in Loop: Header=BB1_25 Depth=1
 	slli.d	$a1, $s5, 7
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
-	add.d	$s8, $a2, $a1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	stx.w	$s3, $a1, $a0
-	ori	$a0, $zero, 64
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	add.d	$s6, $a2, $a1
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	stx.w	$s0, $a1, $a0
+	ori	$s8, $zero, 64
 	b	.LBB1_34
 	.p2align	4, , 16
 .LBB1_33:                               #   in Loop: Header=BB1_25 Depth=1
 	slli.d	$a1, $s5, 5
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
-	add.d	$s8, $a2, $a1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	stx.w	$s3, $a1, $a0
-	ori	$a0, $zero, 16
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	add.d	$s6, $a2, $a1
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	stx.w	$s0, $a1, $a0
+	ori	$s8, $zero, 16
 .LBB1_34:                               #   in Loop: Header=BB1_25 Depth=1
-	addi.d	$s0, $s0, 2
-	alsl.d	$s7, $s0, $s6, 3
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	move	$s6, $a0
+	addi.d	$s3, $s3, 2
+	addi.d	$a0, $sp, 88
+	alsl.d	$s7, $s3, $a0, 3
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB1_36
 	.p2align	4, , 16
 .LBB1_35:                               #   in Loop: Header=BB1_36 Depth=2
 	ld.h	$a0, $sp, 84
-	st.h	$a0, $s8, 0
+	st.h	$a0, $s6, 0
 	addi.d	$s7, $s7, 8
-	addi.d	$s6, $s6, -1
-	addi.d	$s8, $s8, 2
-	beqz	$s6, .LBB1_24
+	addi.d	$s8, $s8, -1
+	addi.d	$s6, $s6, 2
+	beqz	$s8, .LBB1_24
 .LBB1_36:                               #   Parent Loop BB1_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s5, $s7, 0
@@ -358,7 +354,7 @@ ParseMatrix:                            # @ParseMatrix
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB1_35
+	beq	$a0, $s0, .LBB1_35
 # %bb.37:                               #   in Loop: Header=BB1_36 Depth=2
 	ori	$a1, $zero, 300
 	move	$a0, $fp
@@ -749,8 +745,7 @@ allocate_QMatrix:                       # @allocate_QMatrix
 	pcaddu18i	$ra, %call36(no_mem_exit)
 	jirl	$ra, $ra, 0
 .LBB3_4:
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB3_12
+	blez	$s0, .LBB3_12
 # %bb.5:                                # %.lr.ph
 	ld.d	$a1, $s1, %pc_lo12(qp_per_matrix)
 	ld.d	$a2, $fp, %pc_lo12(qp_rem_matrix)

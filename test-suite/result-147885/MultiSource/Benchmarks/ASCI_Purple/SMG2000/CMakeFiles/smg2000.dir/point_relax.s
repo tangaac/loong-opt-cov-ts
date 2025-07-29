@@ -83,16 +83,14 @@ hypre_PointRelaxSetNumPointsets:        # @hypre_PointRelaxSetNumPointsets
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 40
-	ori	$s2, $zero, 1
 	move	$s0, $a1
-	blt	$a0, $s2, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $fp, 72
 	move	$s1, $zero
-	move	$s3, $zero
+	move	$s2, $zero
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
 	ldx.d	$a0, $a0, $s1
@@ -101,9 +99,9 @@ hypre_PointRelaxSetNumPointsets:        # @hypre_PointRelaxSetNumPointsets
 	ld.d	$a0, $fp, 72
 	ld.w	$a1, $fp, 40
 	stx.d	$zero, $a0, $s1
-	addi.d	$s3, $s3, 1
+	addi.d	$s2, $s2, 1
 	addi.d	$s1, $s1, 8
-	blt	$s3, $a1, .LBB1_2
+	blt	$s2, $a1, .LBB1_2
 .LBB1_3:                                # %._crit_edge
 	ld.d	$a0, $fp, 48
 	pcaddu18i	$ra, %call36(hypre_Free)
@@ -122,8 +120,8 @@ hypre_PointRelaxSetNumPointsets:        # @hypre_PointRelaxSetNumPointsets
 	jirl	$ra, $ra, 0
 	st.d	$zero, $fp, 72
 	st.w	$s0, $fp, 40
-	slli.d	$s3, $s0, 2
-	addi.w	$s1, $s3, 0
+	slli.d	$s2, $s0, 2
+	addi.w	$s1, $s2, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
@@ -141,7 +139,7 @@ hypre_PointRelaxSetNumPointsets:        # @hypre_PointRelaxSetNumPointsets
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $fp, 72
-	blt	$s0, $s2, .LBB1_6
+	blez	$s0, .LBB1_6
 # %bb.4:                                # %.lr.ph39.preheader
 	move	$a1, $zero
 	move	$a2, $zero
@@ -156,10 +154,9 @@ hypre_PointRelaxSetNumPointsets:        # @hypre_PointRelaxSetNumPointsets
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 4
 	addi.d	$a0, $a0, 8
-	bne	$s3, $a1, .LBB1_5
+	bne	$s2, $a1, .LBB1_5
 .LBB1_6:                                # %._crit_edge40
 	move	$a0, $zero
-	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
@@ -212,9 +209,8 @@ hypre_PointRelaxSetPointset:            # @hypre_PointRelaxSetPointset
 	add.d	$a2, $a2, $a3
 	st.w	$a1, $a2, 4
 	ld.w	$a1, $s3, 8
-	ori	$a3, $zero, 1
 	st.w	$a1, $a2, 8
-	blt	$fp, $a3, .LBB2_3
+	blez	$fp, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a0, 8
 	addi.d	$a1, $s0, 8
@@ -259,8 +255,7 @@ hypre_PointRelaxDestroy:                # @hypre_PointRelaxDestroy
 	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 40
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_4
+	blez	$a0, .LBB3_4
 # %bb.2:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s1, $zero
@@ -389,17 +384,17 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	pcaddu18i	$ra, %call36(hypre_StructStencilElementRank)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	ori	$s5, $zero, 1
+	ori	$a1, $zero, 1
 	ori	$a0, $zero, 1
 	lu32i.d	$a0, 1
 	st.d	$a0, $sp, 268
-	st.w	$s5, $sp, 276
+	st.w	$a1, $sp, 276
 	ori	$a1, $zero, 8
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
-	blt	$s1, $s5, .LBB4_23
+	blez	$s1, .LBB4_23
 # %bb.3:                                # %.lr.ph144
 	move	$s0, $zero
 	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
@@ -419,7 +414,8 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	ld.d	$s0, $sp, 144                   # 8-byte Folded Reload
 	alsl.d	$a3, $s0, $a3, 3
 	st.d	$a3, $sp, 32
-	st.d	$s5, $sp, 24
+	ori	$a3, $zero, 1
+	st.d	$a3, $sp, 24
 	st.d	$a2, $sp, 16
 	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
 	st.d	$fp, $sp, 8
@@ -475,7 +471,7 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 176                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	blt	$fp, $s5, .LBB4_14
+	blez	$fp, .LBB4_14
 # %bb.6:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
@@ -487,7 +483,6 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
                                         #   in Loop: Header=BB4_8 Depth=2
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 1
-	ori	$s5, $zero, 1
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	beq	$a2, $a1, .LBB4_14
 .LBB4_8:                                # %.lr.ph
@@ -503,23 +498,23 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	ld.d	$a1, $sp, 176                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
 	ld.w	$s7, $s4, 8
-	ldx.d	$s2, $a1, $a2
+	ldx.d	$fp, $a1, $a2
 	mul.w	$a1, $a0, $s7
-	move	$a0, $s2
+	move	$a0, $fp
 	pcaddu18i	$ra, %call36(hypre_BoxArraySetSize)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	blt	$a0, $s5, .LBB4_7
+	blez	$a0, .LBB4_7
 # %bb.9:                                # %.lr.ph
                                         #   in Loop: Header=BB4_8 Depth=2
-	blt	$s7, $s5, .LBB4_7
+	blez	$s7, .LBB4_7
 # %bb.10:                               # %.lr.ph.us.preheader
                                         #   in Loop: Header=BB4_8 Depth=2
 	move	$s0, $zero
 	move	$s3, $zero
 	slli.d	$a0, $s7, 4
-	alsl.d	$s5, $s7, $a0, 3
+	alsl.d	$s1, $s7, $a0, 3
 	.p2align	4, , 16
 .LBB4_11:                               # %.lr.ph.us
                                         #   Parent Loop BB4_5 Depth=1
@@ -528,12 +523,12 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
                                         #         Child Loop BB4_12 Depth 4
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	move	$s1, $zero
+	move	$s6, $zero
 	slli.d	$a1, $s0, 3
 	alsl.d	$a1, $s0, $a1, 2
-	add.d	$fp, $a0, $a1
+	add.d	$s2, $a0, $a1
 	slli.d	$a0, $s3, 4
-	alsl.d	$s6, $s3, $a0, 3
+	alsl.d	$s5, $s3, $a0, 3
 	add.w	$s3, $s7, $s3
 	.p2align	4, , 16
 .LBB4_12:                               #   Parent Loop BB4_5 Depth=1
@@ -541,13 +536,13 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
                                         #       Parent Loop BB4_11 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	ld.d	$a0, $s4, 0
-	ld.d	$a1, $s2, 0
-	ldx.w	$a2, $a0, $s1
-	add.d	$a3, $a0, $s1
-	add.d	$a0, $a1, $s6
-	stx.w	$a2, $a0, $s1
+	ld.d	$a1, $fp, 0
+	ldx.w	$a2, $a0, $s6
+	add.d	$a3, $a0, $s6
+	add.d	$a0, $a1, $s5
+	stx.w	$a2, $a0, $s6
 	ld.w	$a1, $a3, 4
-	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $s6
 	st.w	$a1, $a0, 4
 	ld.w	$a1, $a3, 8
 	st.w	$a1, $a0, 8
@@ -557,12 +552,12 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	st.w	$a1, $a0, 16
 	ld.w	$a1, $a3, 20
 	st.w	$a1, $a0, 20
-	move	$a1, $fp
+	move	$a1, $s2
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(hypre_ProjectBox)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, 24
-	bne	$s5, $s1, .LBB4_12
+	addi.d	$s6, $s6, 24
+	bne	$s1, $s6, .LBB4_12
 # %bb.13:                               # %._crit_edge.us
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
@@ -581,7 +576,7 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 168                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 152                   # 8-byte Folded Spill
-	blt	$fp, $s5, .LBB4_4
+	blez	$fp, .LBB4_4
 # %bb.15:                               # %.lr.ph.preheader.1
                                         #   in Loop: Header=BB4_5 Depth=1
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
@@ -593,7 +588,6 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
                                         #   in Loop: Header=BB4_17 Depth=2
 	ld.d	$a2, $sp, 184                   # 8-byte Folded Reload
 	addi.d	$a2, $a2, 1
-	ori	$s5, $zero, 1
 	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	beq	$a2, $a1, .LBB4_4
 .LBB4_17:                               # %.lr.ph.1
@@ -605,10 +599,10 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	ld.d	$a1, $a1, 0
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	slli.d	$a2, $a2, 3
-	ldx.d	$s7, $a1, $a2
+	ldx.d	$s4, $a1, $a2
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
-	ld.w	$s3, $s7, 8
+	ld.w	$s3, $s4, 8
 	ldx.d	$fp, $a1, $a2
 	mul.w	$a1, $a0, $s3
 	move	$a0, $fp
@@ -616,16 +610,16 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	blt	$a0, $s5, .LBB4_16
+	blez	$a0, .LBB4_16
 # %bb.18:                               # %.lr.ph.1
                                         #   in Loop: Header=BB4_17 Depth=2
-	blt	$s3, $s5, .LBB4_16
+	blez	$s3, .LBB4_16
 # %bb.19:                               # %.lr.ph.us.preheader.1
                                         #   in Loop: Header=BB4_17 Depth=2
-	move	$s5, $zero
+	move	$s1, $zero
 	move	$s2, $zero
 	slli.d	$a0, $s3, 4
-	alsl.d	$s4, $s3, $a0, 3
+	alsl.d	$s7, $s3, $a0, 3
 	.p2align	4, , 16
 .LBB4_20:                               # %.lr.ph.us.1
                                         #   Parent Loop BB4_5 Depth=1
@@ -634,26 +628,26 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
                                         #         Child Loop BB4_21 Depth 4
 	ld.d	$a0, $sp, 192                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	move	$s1, $zero
-	slli.d	$a1, $s5, 3
-	alsl.d	$a1, $s5, $a1, 2
+	move	$s6, $zero
+	slli.d	$a1, $s1, 3
+	alsl.d	$a1, $s1, $a1, 2
 	add.d	$s0, $a0, $a1
 	slli.d	$a0, $s2, 4
-	alsl.d	$s6, $s2, $a0, 3
+	alsl.d	$s5, $s2, $a0, 3
 	add.w	$s2, $s3, $s2
 	.p2align	4, , 16
 .LBB4_21:                               #   Parent Loop BB4_5 Depth=1
                                         #     Parent Loop BB4_17 Depth=2
                                         #       Parent Loop BB4_20 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
-	ld.d	$a0, $s7, 0
+	ld.d	$a0, $s4, 0
 	ld.d	$a1, $fp, 0
-	ldx.w	$a2, $a0, $s1
-	add.d	$a3, $a0, $s1
-	add.d	$a0, $a1, $s6
-	stx.w	$a2, $a0, $s1
+	ldx.w	$a2, $a0, $s6
+	add.d	$a3, $a0, $s6
+	add.d	$a0, $a1, $s5
+	stx.w	$a2, $a0, $s6
 	ld.w	$a1, $a3, 4
-	add.d	$a0, $a0, $s1
+	add.d	$a0, $a0, $s6
 	st.w	$a1, $a0, 4
 	ld.w	$a1, $a3, 8
 	st.w	$a1, $a0, 8
@@ -667,14 +661,14 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	move	$a2, $s8
 	pcaddu18i	$ra, %call36(hypre_ProjectBox)
 	jirl	$ra, $ra, 0
-	addi.d	$s1, $s1, 24
-	bne	$s4, $s1, .LBB4_21
+	addi.d	$s6, $s6, 24
+	bne	$s7, $s6, .LBB4_21
 # %bb.22:                               # %._crit_edge.us.1
                                         #   in Loop: Header=BB4_20 Depth=3
 	ld.d	$a0, $sp, 200                   # 8-byte Folded Reload
 	ld.w	$a0, $a0, 0
-	addi.d	$s5, $s5, 1
-	blt	$s5, $a0, .LBB4_20
+	addi.d	$s1, $s1, 1
+	blt	$s1, $a0, .LBB4_20
 	b	.LBB4_16
 .LBB4_23:                               # %._crit_edge145
 	ld.d	$s0, $sp, 64                    # 8-byte Folded Reload
@@ -695,7 +689,7 @@ hypre_PointRelaxSetup:                  # @hypre_PointRelaxSetup
 	st.w	$a0, $fp, 112
 	ld.d	$a0, $sp, 128                   # 8-byte Folded Reload
 	st.d	$a0, $fp, 120
-	blt	$s1, $s5, .LBB4_26
+	blez	$s1, .LBB4_26
 # %bb.24:                               # %.lr.ph149.preheader
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
 	addi.d	$a0, $a0, 8
@@ -780,7 +774,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ld.d	$a0, $s0, 104
 	st.d	$a0, $sp, 112                   # 8-byte Folded Spill
 	ld.w	$a0, $s0, 112
-	st.d	$a0, $sp, 344                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 352                   # 8-byte Folded Spill
 	ld.d	$a0, $s0, 120
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a0, $s0, 132
@@ -822,7 +816,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	st.d	$a1, $sp, 264                   # 8-byte Folded Spill
 	ld.w	$a0, $a0, 8
 	st.d	$a0, $sp, 424                   # 8-byte Folded Spill
-	st.d	$s4, $sp, 392                   # 8-byte Folded Spill
+	st.d	$s4, $sp, 304                   # 8-byte Folded Spill
 	beqz	$fp, .LBB5_36
 # %bb.2:                                # %.split1330
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
@@ -830,21 +824,21 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	slli.d	$a1, $a0, 3
 	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	ldx.d	$a2, $a2, $a1
-	st.d	$a2, $sp, 352                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 360                   # 8-byte Folded Spill
 	alsl.d	$a0, $a0, $a1, 2
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
 	ori	$a0, $zero, 8
-	ld.d	$a1, $sp, 344                   # 8-byte Folded Reload
-	slli.d	$a1, $a1, 2
-	st.d	$a1, $sp, 368                   # 8-byte Folded Spill
 	ori	$a2, $zero, 1
+	ld.d	$a1, $sp, 352                   # 8-byte Folded Reload
+	slli.d	$a1, $a1, 2
+	st.d	$a1, $sp, 376                   # 8-byte Folded Spill
 	b	.LBB5_4
 	.p2align	4, , 16
 .LBB5_3:                                # %._crit_edge1329
                                         #   in Loop: Header=BB5_4 Depth=1
-	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	andi	$a1, $a0, 1
 	ori	$a0, $zero, 16
 	move	$a2, $zero
@@ -857,27 +851,27 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #           Child Loop BB5_19 Depth 5
                                         #             Child Loop BB5_23 Depth 6
                                         #             Child Loop BB5_28 Depth 6
-	st.d	$a2, $sp, 360                   # 8-byte Folded Spill
-	ld.d	$a1, $sp, 352                   # 8-byte Folded Reload
-	ldx.d	$a4, $a1, $a0
-	ld.w	$a1, $a4, 8
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB5_3
+	st.d	$a2, $sp, 368                   # 8-byte Folded Spill
+	ld.d	$a1, $sp, 360                   # 8-byte Folded Reload
+	ldx.d	$a3, $a1, $a0
+	ld.w	$a1, $a3, 8
+	blez	$a1, .LBB5_3
 # %bb.5:                                # %.split.preheader
                                         #   in Loop: Header=BB5_4 Depth=1
-	move	$t0, $zero
-	st.d	$a4, $sp, 376                   # 8-byte Folded Spill
+	move	$a7, $zero
+	st.d	$a3, $sp, 384                   # 8-byte Folded Spill
 	b	.LBB5_8
 	.p2align	4, , 16
 .LBB5_6:                                # %._crit_edge1326.loopexit
                                         #   in Loop: Header=BB5_8 Depth=2
-	ld.d	$a4, $sp, 376                   # 8-byte Folded Reload
-	ld.w	$a1, $a4, 8
-	ld.d	$t0, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 384                   # 8-byte Folded Reload
+	ld.w	$a1, $a3, 8
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 392                   # 8-byte Folded Reload
 .LBB5_7:                                # %._crit_edge1326
                                         #   in Loop: Header=BB5_8 Depth=2
-	addi.d	$t0, $t0, 1
-	bge	$t0, $a1, .LBB5_3
+	addi.d	$a7, $a7, 1
+	bge	$a7, $a1, .LBB5_3
 .LBB5_8:                                # %.split
                                         #   Parent Loop BB5_4 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -886,62 +880,60 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #           Child Loop BB5_19 Depth 5
                                         #             Child Loop BB5_23 Depth 6
                                         #             Child Loop BB5_28 Depth 6
-	ld.d	$a2, $a4, 0
-	slli.d	$a0, $t0, 3
-	ldx.d	$t1, $a2, $a0
-	ld.w	$a2, $t1, 8
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB5_7
+	ld.d	$a2, $a3, 0
+	slli.d	$a0, $a7, 3
+	ldx.d	$t0, $a2, $a0
+	ld.w	$a2, $t0, 8
+	blez	$a2, .LBB5_7
 # %bb.9:                                # %.lr.ph
                                         #   in Loop: Header=BB5_8 Depth=2
-	ld.d	$a7, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a1, $a7, 40
-	move	$t2, $zero
+	ld.d	$a1, $s4, 40
+	move	$t1, $zero
 	ld.d	$a1, $a1, 0
 	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
 	ld.d	$a2, $a6, 16
 	ld.d	$a5, $sp, 288                   # 8-byte Folded Reload
 	ld.d	$a3, $a5, 16
-	alsl.d	$a4, $t0, $t0, 1
+	alsl.d	$a4, $a7, $a7, 1
 	slli.d	$a4, $a4, 3
 	ld.d	$a2, $a2, 0
 	ld.d	$a3, $a3, 0
 	add.d	$a1, $a1, $a4
 	st.d	$a1, $sp, 416                   # 8-byte Folded Spill
-	ld.d	$a1, $a7, 64
+	ld.d	$a1, $s4, 64
 	add.d	$a2, $a2, $a4
 	st.d	$a2, $sp, 408                   # 8-byte Folded Spill
 	add.d	$a2, $a3, $a4
 	st.d	$a2, $sp, 400                   # 8-byte Folded Spill
-	ld.d	$fp, $a7, 48
+	ld.d	$s3, $s4, 48
 	ldx.d	$a0, $a1, $a0
 	ld.d	$a1, $a5, 40
 	ld.d	$a2, $a6, 40
-	st.d	$t0, $sp, 384                   # 8-byte Folded Spill
-	slli.d	$a3, $t0, 2
+	st.d	$a7, $sp, 392                   # 8-byte Folded Spill
+	slli.d	$a3, $a7, 2
 	ld.d	$a4, $a5, 24
 	ldx.w	$a1, $a1, $a3
-	ld.d	$a5, $sp, 368                   # 8-byte Folded Reload
-	ldx.w	$s1, $a0, $a5
+	ld.d	$a5, $sp, 376                   # 8-byte Folded Reload
+	ldx.w	$s8, $a0, $a5
 	ld.d	$s2, $a6, 24
-	ldx.w	$s8, $a2, $a3
-	alsl.d	$s3, $a1, $a4, 3
-	alsl.d	$s4, $s1, $fp, 3
+	ldx.w	$s1, $a2, $a3
+	alsl.d	$s7, $a1, $a4, 3
+	alsl.d	$s4, $s8, $s3, 3
 	addi.d	$a0, $s4, 16
 	st.d	$a0, $sp, 504                   # 8-byte Folded Spill
-	alsl.d	$s5, $s8, $s2, 3
+	alsl.d	$s5, $s1, $s2, 3
 	addi.d	$a0, $s5, 16
 	st.d	$a0, $sp, 496                   # 8-byte Folded Spill
-	st.d	$t1, $sp, 432                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 432                   # 8-byte Folded Spill
 	b	.LBB5_11
 	.p2align	4, , 16
 .LBB5_10:                               # %._crit_edge
                                         #   in Loop: Header=BB5_11 Depth=3
-	ld.d	$t1, $sp, 432                   # 8-byte Folded Reload
-	ld.w	$a0, $t1, 8
-	ld.d	$t2, $sp, 448                   # 8-byte Folded Reload
-	addi.d	$t2, $t2, 1
-	bge	$t2, $a0, .LBB5_6
+	ld.d	$t0, $sp, 432                   # 8-byte Folded Reload
+	ld.w	$a0, $t0, 8
+	ld.d	$t1, $sp, 448                   # 8-byte Folded Reload
+	addi.d	$t1, $t1, 1
+	bge	$t1, $a0, .LBB5_6
 .LBB5_11:                               #   Parent Loop BB5_4 Depth=1
                                         #     Parent Loop BB5_8 Depth=2
                                         # =>    This Loop Header: Depth=3
@@ -949,13 +941,13 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #           Child Loop BB5_19 Depth 5
                                         #             Child Loop BB5_23 Depth 6
                                         #             Child Loop BB5_28 Depth 6
-	ld.d	$s6, $t1, 0
-	slli.d	$a0, $t2, 4
-	st.d	$t2, $sp, 448                   # 8-byte Folded Spill
-	alsl.d	$s7, $t2, $a0, 3
-	add.d	$s0, $s6, $s7
+	ld.d	$s0, $t0, 0
+	slli.d	$a0, $t1, 4
+	st.d	$t1, $sp, 448                   # 8-byte Folded Spill
+	alsl.d	$s6, $t1, $a0, 3
+	add.d	$fp, $s0, $s6
 	addi.d	$a2, $sp, 516
-	move	$a0, $s0
+	move	$a0, $fp
 	ld.d	$a1, $sp, 440                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(hypre_BoxGetStrideSize)
 	jirl	$ra, $ra, 0
@@ -971,30 +963,26 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	st.d	$a4, $sp, 480                   # 8-byte Folded Spill
 	maskeqz	$a3, $a4, $a3
 	or	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB5_10
+	blez	$a2, .LBB5_10
 # %bb.12:                               # %.preheader1162.lr.ph
                                         #   in Loop: Header=BB5_11 Depth=3
-	ori	$a2, $zero, 1
-	ld.d	$a3, $sp, 480                   # 8-byte Folded Reload
-	blt	$a3, $a2, .LBB5_10
+	ld.d	$a2, $sp, 480                   # 8-byte Folded Reload
+	blez	$a2, .LBB5_10
 # %bb.13:                               # %.preheader1162.lr.ph
                                         #   in Loop: Header=BB5_11 Depth=3
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_10
+	blez	$a1, .LBB5_10
 # %bb.14:                               # %.preheader1162.lr.ph
                                         #   in Loop: Header=BB5_11 Depth=3
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB5_10
+	blez	$a0, .LBB5_10
 # %bb.15:                               # %.preheader1161.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB5_11 Depth=3
 	st.d	$zero, $sp, 488                 # 8-byte Folded Spill
-	ldx.w	$a3, $s6, $s7
+	ldx.w	$a3, $s0, $s6
 	ld.d	$t4, $sp, 416                   # 8-byte Folded Reload
 	ld.w	$a5, $t4, 0
-	ld.w	$a7, $s0, 4
+	ld.w	$a7, $fp, 4
 	ld.w	$a2, $t4, 4
-	ld.w	$t0, $s0, 8
+	ld.w	$t0, $fp, 8
 	ld.w	$a4, $t4, 8
 	ld.w	$a6, $t4, 16
 	sub.d	$t1, $a3, $a5
@@ -1066,33 +1054,33 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	masknez	$a4, $a4, $t0
 	or	$a4, $a5, $a4
 	addi.d	$t0, $a4, 1
-	ld.d	$s0, $sp, 440                   # 8-byte Folded Reload
-	ld.w	$t6, $s0, 4
+	ld.d	$fp, $sp, 440                   # 8-byte Folded Reload
+	ld.w	$t6, $fp, 4
 	mul.d	$a4, $a7, $t0
 	add.w	$a4, $a3, $a4
-	ld.w	$a5, $s0, 0
+	ld.w	$a5, $fp, 0
 	mul.d	$a3, $t0, $t6
 	mul.d	$t7, $a1, $a3
 	mul.d	$a7, $t6, $t4
 	mul.d	$t8, $a1, $a7
 	mul.d	$t6, $t6, $a6
 	mul.d	$t0, $t0, $t5
-	ld.w	$t5, $s0, 8
-	mul.d	$s0, $a1, $t6
+	ld.w	$t5, $fp, 8
+	mul.d	$fp, $a1, $t6
 	mul.d	$t1, $t4, $t1
 	mul.d	$t4, $a5, $a0
-	mul.d	$s6, $t0, $t5
+	mul.d	$s0, $t0, $t5
 	mul.d	$t1, $t1, $t5
 	mul.d	$a2, $a6, $a2
 	mul.d	$a2, $a2, $t5
 	sub.d	$a6, $t6, $t4
 	sub.d	$a7, $a7, $t4
 	sub.d	$t0, $a3, $t4
-	sub.d	$a2, $a2, $s0
+	sub.d	$a2, $a2, $fp
 	st.d	$a2, $sp, 472                   # 8-byte Folded Spill
 	sub.d	$a2, $t1, $t8
 	st.d	$a2, $sp, 464                   # 8-byte Folded Spill
-	sub.d	$a2, $s6, $t7
+	sub.d	$a2, $s0, $t7
 	st.d	$a2, $sp, 456                   # 8-byte Folded Spill
 	ori	$a2, $zero, 5
 	sltu	$a2, $a2, $a0
@@ -1148,30 +1136,30 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	beqz	$t4, .LBB5_25
 # %bb.20:                               # %vector.memcheck
                                         #   in Loop: Header=BB5_19 Depth=5
-	alsl.d	$s0, $a4, $s3, 3
-	add.d	$t1, $s8, $t2
+	alsl.d	$fp, $a4, $s7, 3
+	add.d	$t1, $s1, $t2
 	alsl.d	$t1, $t1, $s2, 3
-	sub.d	$t1, $s0, $t1
+	sub.d	$t1, $fp, $t1
 	move	$t5, $zero
-	ori	$s6, $zero, 32
-	bltu	$t1, $s6, .LBB5_26
+	ori	$s0, $zero, 32
+	bltu	$t1, $s0, .LBB5_26
 # %bb.21:                               # %vector.memcheck
                                         #   in Loop: Header=BB5_19 Depth=5
-	add.d	$t1, $s1, $t3
-	alsl.d	$t1, $t1, $fp, 3
-	sub.d	$t1, $s0, $t1
-	bltu	$t1, $s6, .LBB5_26
+	add.d	$t1, $s8, $t3
+	alsl.d	$t1, $t1, $s3, 3
+	sub.d	$t1, $fp, $t1
+	bltu	$t1, $s0, .LBB5_26
 # %bb.22:                               # %vector.ph
                                         #   in Loop: Header=BB5_19 Depth=5
 	move	$t5, $zero
 	add.d	$a4, $t6, $a4
 	add.d	$t1, $t6, $t2
 	add.d	$ra, $t6, $t3
-	ld.d	$s6, $sp, 504                   # 8-byte Folded Reload
-	alsl.d	$t3, $t3, $s6, 3
-	ld.d	$s6, $sp, 496                   # 8-byte Folded Reload
-	alsl.d	$t2, $t2, $s6, 3
-	move	$s7, $a3
+	ld.d	$s0, $sp, 504                   # 8-byte Folded Reload
+	alsl.d	$t3, $t3, $s0, 3
+	ld.d	$s0, $sp, 496                   # 8-byte Folded Reload
+	alsl.d	$t2, $t2, $s0, 3
+	move	$s0, $a3
 	.p2align	4, , 16
 .LBB5_23:                               # %vector.body
                                         #   Parent Loop BB5_4 Depth=1
@@ -1188,12 +1176,12 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	vldx	$vr3, $t3, $t5
 	vfdiv.d	$vr0, $vr0, $vr2
 	vfdiv.d	$vr1, $vr1, $vr3
-	add.d	$s6, $s0, $t5
-	vstx	$vr0, $s0, $t5
+	add.d	$s6, $fp, $t5
+	vstx	$vr0, $fp, $t5
 	vst	$vr1, $s6, 16
-	addi.d	$s7, $s7, -4
+	addi.d	$s0, $s0, -4
 	add.d	$t5, $t5, $t7
-	bnez	$s7, .LBB5_23
+	bnez	$s0, .LBB5_23
 # %bb.24:                               # %middle.block
                                         #   in Loop: Header=BB5_19 Depth=5
 	move	$t5, $a3
@@ -1209,8 +1197,8 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #   in Loop: Header=BB5_19 Depth=5
 	move	$t2, $zero
 	move	$t3, $zero
-	alsl.d	$s0, $a4, $s3, 3
-	alsl.d	$s7, $t1, $s5, 3
+	alsl.d	$fp, $a4, $s7, 3
+	alsl.d	$s0, $t1, $s5, 3
 	alsl.d	$s6, $ra, $s4, 3
 	sub.d	$t5, $a0, $t5
 	.p2align	4, , 16
@@ -1221,10 +1209,10 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #         Parent Loop BB5_17 Depth=4
                                         #           Parent Loop BB5_19 Depth=5
                                         # =>          This Inner Loop Header: Depth=6
-	fldx.d	$fa0, $s7, $t3
+	fldx.d	$fa0, $s0, $t3
 	fldx.d	$fa1, $s6, $t3
 	fdiv.d	$fa0, $fa0, $fa1
-	fstx.d	$fa0, $s0, $t3
+	fstx.d	$fa0, $fp, $t3
 	add.d	$t3, $t3, $t8
 	addi.w	$t5, $t5, -1
 	sub.d	$t2, $t2, $a5
@@ -1269,12 +1257,12 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	bge	$a1, $a0, .LBB5_109
 .LBB5_37:                               # %.split1894.lr.ph
-	ld.d	$a3, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$a3, $sp, 352                   # 8-byte Folded Reload
 	bstrpick.d	$a0, $a3, 31, 0
 	st.d	$a0, $sp, 416                   # 8-byte Folded Spill
 	vldi	$vr0, -912
 	fsub.d	$fs1, $fa0, $fs0
-	ori	$s8, $zero, 32
+	ori	$s3, $zero, 32
 	slli.d	$a0, $a3, 2
 	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	fcmp.ceq.d	$fcc0, $fs0, $fa0
@@ -1347,7 +1335,8 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
 	addi.d	$a1, $fp, 16
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
-	ori	$a2, $zero, 1
+	ori	$a1, $zero, 1
+	st.d	$a1, $sp, 104                   # 8-byte Folded Spill
 	b	.LBB5_43
 	.p2align	4, , 16
 .LBB5_42:                               # %._crit_edge1893
@@ -1355,7 +1344,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ld.d	$a0, $sp, 104                   # 8-byte Folded Reload
 	andi	$a1, $a0, 1
 	ori	$a0, $zero, 1
-	move	$a2, $zero
+	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	beqz	$a1, .LBB5_38
 .LBB5_43:                               #   Parent Loop BB5_41 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1374,7 +1363,6 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #             Child Loop BB5_98 Depth 6
                                         #               Child Loop BB5_106 Depth 7
                                         #               Child Loop BB5_103 Depth 7
-	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	andi	$a0, $a0, 1
 	beqz	$a0, .LBB5_45
 # %bb.44:                               #   in Loop: Header=BB5_43 Depth=2
@@ -1382,10 +1370,9 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	pcaddu18i	$ra, %call36(hypre_FinalizeIndtComputations)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$a3, $a0, 0
-	ld.w	$a0, $a3, 8
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB5_46
+	ld.d	$a2, $a0, 0
+	ld.w	$a0, $a2, 8
+	bgtz	$a0, .LBB5_46
 	b	.LBB5_42
 	.p2align	4, , 16
 .LBB5_45:                               #   in Loop: Header=BB5_43 Depth=2
@@ -1396,20 +1383,20 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	pcaddu18i	$ra, %call36(hypre_InitializeIndtComputations)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a3, $a0, 0
-	ld.w	$a0, $a3, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_42
+	ld.d	$a2, $a0, 0
+	ld.w	$a0, $a2, 8
+	blez	$a0, .LBB5_42
 .LBB5_46:                               # %.split1887.preheader
                                         #   in Loop: Header=BB5_43 Depth=2
 	move	$a7, $zero
-	st.d	$a3, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 128                   # 8-byte Folded Spill
 	b	.LBB5_49
 	.p2align	4, , 16
 .LBB5_47:                               # %._crit_edge1890.loopexit
                                         #   in Loop: Header=BB5_49 Depth=3
-	ld.d	$a3, $sp, 128                   # 8-byte Folded Reload
-	ld.w	$a0, $a3, 8
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	ld.w	$a0, $a2, 8
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 136                   # 8-byte Folded Reload
 .LBB5_48:                               # %._crit_edge1890
                                         #   in Loop: Header=BB5_49 Depth=3
@@ -1433,17 +1420,15 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #             Child Loop BB5_98 Depth 6
                                         #               Child Loop BB5_106 Depth 7
                                         #               Child Loop BB5_103 Depth 7
-	ld.d	$a1, $a3, 0
-	slli.d	$a2, $a7, 3
-	st.d	$a2, $sp, 304                   # 8-byte Folded Spill
-	ldx.d	$t0, $a1, $a2
+	ld.d	$a1, $a2, 0
+	slli.d	$a3, $a7, 3
+	st.d	$a3, $sp, 312                   # 8-byte Folded Spill
+	ldx.d	$t0, $a1, $a3
 	ld.w	$a1, $t0, 8
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_48
+	blez	$a1, .LBB5_48
 # %bb.50:                               # %.lr.ph1889
                                         #   in Loop: Header=BB5_49 Depth=3
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 40
+	ld.d	$a0, $s4, 40
 	move	$t1, $zero
 	ld.d	$a0, $a0, 0
 	ld.d	$a6, $sp, 120                   # 8-byte Folded Reload
@@ -1471,7 +1456,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ldx.w	$a1, $a1, $a4
 	ld.d	$a5, $a6, 24
 	st.d	$a4, $sp, 272                   # 8-byte Folded Spill
-	ldx.w	$a2, $a2, $a4
+	ldx.w	$s6, $a2, $a4
 	add.d	$a0, $a0, $a3
 	st.d	$a0, $sp, 184                   # 8-byte Folded Spill
 	st.d	$a1, $sp, 208                   # 8-byte Folded Spill
@@ -1479,12 +1464,12 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	addi.d	$a0, $s7, 8
 	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	st.d	$a5, $sp, 200                   # 8-byte Folded Spill
-	st.d	$a2, $sp, 192                   # 8-byte Folded Spill
-	alsl.d	$a1, $a2, $a5, 3
+	alsl.d	$a1, $s6, $a5, 3
 	addi.d	$a0, $a1, 16
 	st.d	$a0, $sp, 440                   # 8-byte Folded Spill
 	st.d	$t0, $sp, 224                   # 8-byte Folded Spill
 	st.d	$ra, $sp, 216                   # 8-byte Folded Spill
+	st.d	$s6, $sp, 192                   # 8-byte Folded Spill
 	st.d	$a1, $sp, 176                   # 8-byte Folded Spill
 	b	.LBB5_52
 	.p2align	4, , 16
@@ -1494,6 +1479,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ld.w	$a0, $t0, 8
 	ld.d	$t1, $sp, 232                   # 8-byte Folded Reload
 	addi.d	$t1, $t1, 1
+	ori	$s3, $zero, 32
 	bge	$t1, $a0, .LBB5_47
 .LBB5_52:                               #   Parent Loop BB5_41 Depth=1
                                         #     Parent Loop BB5_43 Depth=2
@@ -1524,21 +1510,22 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	pcaddu18i	$ra, %call36(hypre_BoxGetStrideSize)
 	jirl	$ra, $ra, 0
 	ld.d	$ra, $sp, 176                   # 8-byte Folded Reload
+	ld.d	$s8, $sp, 192                   # 8-byte Folded Reload
 	ldx.w	$a4, $fp, $s0
 	ld.w	$a5, $s6, 4
 	ld.w	$t0, $s6, 8
-	ld.d	$s3, $sp, 216                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 216                   # 8-byte Folded Reload
 	addi.w	$a7, $zero, -1
 	ld.d	$a6, $sp, 184                   # 8-byte Folded Reload
 	ld.w	$a0, $a6, 0
 	ld.w	$a1, $a6, 4
 	ld.w	$a2, $a6, 8
 	ld.w	$a3, $a6, 16
-	st.d	$a4, $sp, 352                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 360                   # 8-byte Folded Spill
 	sub.d	$a4, $a4, $a0
-	st.d	$a5, $sp, 344                   # 8-byte Folded Spill
+	st.d	$a5, $sp, 352                   # 8-byte Folded Spill
 	sub.d	$a5, $a5, $a1
-	st.d	$t0, $sp, 336                   # 8-byte Folded Spill
+	st.d	$t0, $sp, 344                   # 8-byte Folded Spill
 	sub.d	$a2, $t0, $a2
 	sub.w	$a1, $a3, $a1
 	slt	$a3, $a7, $a1
@@ -1552,22 +1539,22 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	sub.w	$a0, $a3, $a0
 	slt	$a2, $a7, $a0
 	maskeqz	$a0, $a0, $a2
-	st.d	$a7, $sp, 360                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 368                   # 8-byte Folded Spill
 	masknez	$a2, $a7, $a2
 	or	$a0, $a0, $a2
 	addi.d	$a0, $a0, 1
 	mul.d	$a1, $a1, $a0
 	ld.w	$a2, $s1, 4
 	add.w	$a1, $a1, $a4
-	st.d	$a1, $sp, 384                   # 8-byte Folded Spill
+	st.d	$a1, $sp, 392                   # 8-byte Folded Spill
 	ld.w	$a1, $s1, 0
 	ld.w	$a4, $s1, 8
-	st.d	$a2, $sp, 376                   # 8-byte Folded Spill
+	st.d	$a2, $sp, 384                   # 8-byte Folded Spill
 	mul.d	$a7, $a0, $a2
 	ld.wu	$a2, $sp, 516
 	mulw.d.w	$a0, $a0, $a6
 	ld.w	$a3, $sp, 520
-	st.d	$a4, $sp, 328                   # 8-byte Folded Spill
+	st.d	$a4, $sp, 336                   # 8-byte Folded Spill
 	mul.d	$a0, $a0, $a4
 	st.d	$a0, $sp, 248                   # 8-byte Folded Spill
 	addi.w	$a4, $a2, 0
@@ -1586,27 +1573,22 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	mul.d	$a0, $a3, $a7
 	st.d	$a0, $sp, 240                   # 8-byte Folded Spill
 	mul.d	$a0, $a2, $a1
-	st.d	$a0, $sp, 368                   # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	ld.d	$s4, $sp, 208                   # 8-byte Folded Reload
-	ld.d	$s5, $sp, 200                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 192                   # 8-byte Folded Reload
+	st.d	$a0, $sp, 376                   # 8-byte Folded Spill
+	ld.d	$s5, $sp, 208                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 200                   # 8-byte Folded Reload
 	st.d	$a4, $sp, 408                   # 8-byte Folded Spill
-	blt	$a4, $a0, .LBB5_69
+	blez	$a4, .LBB5_69
 # %bb.53:                               # %.preheader1157.lr.ph
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
-	blt	$a4, $a0, .LBB5_69
+	ld.d	$a0, $sp, 472                   # 8-byte Folded Reload
+	blez	$a0, .LBB5_69
 # %bb.54:                               # %.preheader1157.lr.ph
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB5_69
+	blez	$a3, .LBB5_69
 # %bb.55:                               # %.preheader1157.lr.ph
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	ld.d	$a4, $sp, 480                   # 8-byte Folded Reload
-	blt	$a4, $a0, .LBB5_69
+	ld.d	$a0, $sp, 480                   # 8-byte Folded Reload
+	blez	$a0, .LBB5_69
 # %bb.56:                               # %.preheader1153.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB5_52 Depth=4
 	move	$a0, $zero
@@ -1615,14 +1597,14 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ld.w	$a5, $t2, 4
 	ld.w	$a6, $t2, 8
 	ld.w	$a7, $t2, 16
-	ld.d	$t0, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 360                   # 8-byte Folded Reload
 	sub.d	$t0, $t0, $a4
-	ld.d	$t1, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 352                   # 8-byte Folded Reload
 	sub.d	$t1, $t1, $a5
-	ld.d	$t3, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 344                   # 8-byte Folded Reload
 	sub.d	$a6, $t3, $a6
 	sub.w	$a5, $a7, $a5
-	ld.d	$t3, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$t3, $sp, 368                   # 8-byte Folded Reload
 	slt	$a7, $t3, $a5
 	maskeqz	$a5, $a5, $a7
 	masknez	$a7, $t3, $a7
@@ -1639,13 +1621,13 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	addi.d	$a4, $a4, 1
 	mul.d	$a6, $a6, $a4
 	add.w	$t7, $t0, $a6
-	ld.d	$a6, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a6, $sp, 384                   # 8-byte Folded Reload
 	mul.d	$a6, $a6, $a4
 	mul.d	$a7, $a3, $a6
 	mul.d	$a4, $a4, $a5
-	ld.d	$a5, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 336                   # 8-byte Folded Reload
 	mul.d	$a4, $a4, $a5
-	ld.d	$t0, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 376                   # 8-byte Folded Reload
 	sub.d	$a5, $a6, $t0
 	ld.d	$a6, $sp, 256                   # 8-byte Folded Reload
 	sub.d	$a6, $a6, $t0
@@ -1664,7 +1646,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	mul.d	$t3, $t2, $a1
 	slli.d	$t4, $a1, 5
 	slli.d	$t5, $a1, 3
-	ld.d	$s0, $sp, 384                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 392                   # 8-byte Folded Reload
 	b	.LBB5_58
 	.p2align	4, , 16
 .LBB5_57:                               # %._crit_edge1342.split.us.us.us.us.us.us
@@ -1704,12 +1686,12 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	beqz	$t1, .LBB5_62
 # %bb.61:                               # %vector.memcheck2117
                                         #   in Loop: Header=BB5_60 Depth=6
-	add.d	$a4, $s4, $s0
-	alsl.d	$a4, $a4, $s3, 3
-	add.d	$t8, $s6, $t7
-	alsl.d	$t8, $t8, $s5, 3
+	add.d	$a4, $s5, $s0
+	alsl.d	$a4, $a4, $s4, 3
+	add.d	$t8, $s8, $t7
+	alsl.d	$t8, $t8, $s6, 3
 	sub.d	$a4, $a4, $t8
-	bgeu	$a4, $s8, .LBB5_66
+	bgeu	$a4, $s3, .LBB5_66
 .LBB5_62:                               #   in Loop: Header=BB5_60 Depth=6
 	move	$a4, $zero
 	move	$t8, $s0
@@ -1779,21 +1761,20 @@ hypre_PointRelax:                       # @hypre_PointRelax
 .LBB5_69:                               # %.preheader1159
                                         #   in Loop: Header=BB5_52 Depth=4
 	ld.d	$a0, $sp, 424                   # 8-byte Folded Reload
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB5_90
+	blez	$a0, .LBB5_90
 # %bb.70:                               # %.lr.ph1671
                                         #   in Loop: Header=BB5_52 Depth=4
 	move	$t0, $zero
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	mul.d	$a0, $a0, $a3
-	st.d	$a0, $sp, 320                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 328                   # 8-byte Folded Spill
 	ld.d	$a0, $sp, 472                   # 8-byte Folded Reload
 	slti	$a0, $a0, 1
 	slti	$a4, $a3, 1
 	ld.d	$a5, $sp, 480                   # 8-byte Folded Reload
 	slti	$a5, $a5, 1
 	ld.d	$a6, $sp, 256                   # 8-byte Folded Reload
-	ld.d	$a7, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$a7, $sp, 376                   # 8-byte Folded Reload
 	sub.d	$t5, $a6, $a7
 	ld.d	$a6, $sp, 248                   # 8-byte Folded Reload
 	ld.d	$a7, $sp, 240                   # 8-byte Folded Reload
@@ -1802,7 +1783,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	addi.d	$a6, $a2, -1
 	bstrpick.d	$a6, $a6, 31, 0
 	slli.d	$a7, $a6, 3
-	st.d	$a7, $sp, 312                   # 8-byte Folded Spill
+	st.d	$a7, $sp, 320                   # 8-byte Folded Spill
 	ld.d	$a7, $sp, 160                   # 8-byte Folded Reload
 	alsl.d	$a6, $a6, $a7, 3
 	st.d	$a6, $sp, 504                   # 8-byte Folded Spill
@@ -1840,34 +1821,34 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	st.d	$t0, $sp, 432                   # 8-byte Folded Spill
 	beq	$t0, $a0, .LBB5_71
 # %bb.73:                               #   in Loop: Header=BB5_72 Depth=5
-	ori	$a0, $zero, 1
-	ld.d	$a4, $sp, 408                   # 8-byte Folded Reload
-	blt	$a4, $a0, .LBB5_71
+	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
+	blez	$a0, .LBB5_71
 # %bb.74:                               # %.preheader1152.lr.ph
                                         #   in Loop: Header=BB5_72 Depth=5
 	ld.d	$a0, $sp, 400                   # 8-byte Folded Reload
 	bnez	$a0, .LBB5_71
 # %bb.75:                               # %.preheader1149.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB5_72 Depth=5
-	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$a0, $a0, 64
-	ld.d	$a4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$s4, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a0, $s4, 64
+	ld.d	$a4, $sp, 312                   # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a4
 	st.d	$zero, $sp, 488                 # 8-byte Folded Spill
 	ld.d	$a5, $sp, 432                   # 8-byte Folded Reload
 	slli.d	$a4, $a5, 2
-	ldx.w	$s4, $a0, $a4
+	ldx.w	$a0, $a0, $a4
+	st.d	$a0, $sp, 496                   # 8-byte Folded Spill
 	alsl.d	$a4, $a5, $a5, 1
 	slli.d	$a5, $a4, 2
 	ld.d	$s8, $sp, 280                   # 8-byte Folded Reload
 	ld.w	$a4, $s8, 16
 	ld.w	$a6, $s8, 4
-	ld.d	$s6, $sp, 264                   # 8-byte Folded Reload
-	add.d	$t0, $s6, $a5
+	ld.d	$s5, $sp, 264                   # 8-byte Folded Reload
+	add.d	$t0, $s5, $a5
 	ld.w	$t2, $t0, 4
 	ld.w	$t0, $t0, 8
 	sub.w	$a4, $a4, $a6
-	ld.d	$s3, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$s3, $sp, 368                   # 8-byte Folded Reload
 	slt	$t4, $s3, $a4
 	maskeqz	$a4, $a4, $t4
 	masknez	$t4, $s3, $t4
@@ -1881,16 +1862,16 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	slt	$t4, $s3, $t2
 	maskeqz	$t2, $t2, $t4
 	masknez	$t4, $s3, $t4
-	ld.d	$s5, $sp, 296                   # 8-byte Folded Reload
-	ld.w	$t8, $s5, 4
-	ld.w	$fp, $s5, 16
+	ld.d	$s6, $sp, 296                   # 8-byte Folded Reload
+	ld.w	$t8, $s6, 4
+	ld.w	$fp, $s6, 16
 	or	$t2, $t2, $t4
 	addi.d	$t4, $t2, 1
-	ld.w	$s0, $s5, 0
+	ld.w	$s0, $s6, 0
 	sub.w	$fp, $fp, $t8
 	slt	$s1, $s3, $fp
 	maskeqz	$fp, $fp, $s1
-	ld.w	$s2, $s5, 12
+	ld.w	$s2, $s6, 12
 	masknez	$s1, $s3, $s1
 	or	$fp, $fp, $s1
 	addi.d	$fp, $fp, 1
@@ -1901,75 +1882,75 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	or	$s1, $s1, $s2
 	addi.d	$s2, $s1, 1
 	nor	$t2, $t2, $zero
-	ld.d	$a0, $sp, 320                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
 	mul.d	$t2, $a0, $t2
 	nor	$s1, $s1, $zero
 	mul.d	$s1, $a0, $s1
-	ld.d	$a0, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
 	mul.d	$s3, $fp, $a0
 	mul.d	$s3, $s3, $s2
 	add.d	$s1, $s1, $s3
 	st.d	$s1, $sp, 464                   # 8-byte Folded Spill
-	ld.w	$s1, $s5, 8
+	ld.w	$s1, $s6, 8
 	mul.d	$s3, $a4, $a0
 	mul.d	$s3, $s3, $t4
 	add.d	$a0, $t2, $s3
 	st.d	$a0, $sp, 456                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 336                   # 8-byte Folded Reload
-	sub.d	$t2, $a0, $s1
-	mul.d	$t2, $fp, $t2
-	ld.d	$fp, $sp, 392                   # 8-byte Folded Reload
-	ld.d	$fp, $fp, 48
-	ld.d	$s1, $sp, 352                   # 8-byte Folded Reload
-	sub.d	$s0, $s1, $s0
 	ld.d	$s3, $sp, 344                   # 8-byte Folded Reload
-	sub.d	$t8, $s3, $t8
+	sub.d	$t2, $s3, $s1
+	mul.d	$t2, $fp, $t2
+	ld.d	$fp, $s4, 48
+	ld.d	$s4, $sp, 360                   # 8-byte Folded Reload
+	sub.d	$s0, $s4, $s0
+	ld.d	$s6, $sp, 352                   # 8-byte Folded Reload
+	sub.d	$t8, $s6, $t8
 	add.d	$t2, $t8, $t2
 	ld.w	$t8, $s8, 8
 	mul.d	$t2, $t2, $s2
-	add.w	$s5, $s0, $t2
-	ld.d	$s0, $sp, 288                   # 8-byte Folded Reload
-	ld.d	$t2, $s0, 40
-	sub.d	$t8, $a0, $t8
+	add.w	$s0, $s0, $t2
+	ld.d	$s1, $sp, 288                   # 8-byte Folded Reload
+	ld.d	$t2, $s1, 40
+	sub.d	$t8, $s3, $t8
 	mul.d	$a4, $t8, $a4
-	ld.d	$s0, $s0, 24
+	ld.d	$s3, $s1, 24
 	ld.d	$t8, $sp, 272                   # 8-byte Folded Reload
 	ldx.w	$t2, $t2, $t8
-	ldx.w	$a5, $s6, $a5
-	sub.d	$a6, $s3, $a6
+	ldx.w	$a5, $s5, $a5
+	sub.d	$a6, $s6, $a6
 	add.d	$a4, $a6, $a4
+	ld.d	$t8, $sp, 384                   # 8-byte Folded Reload
+	mul.d	$a6, $t4, $t8
+	mul.d	$t8, $s2, $t8
 	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
-	mul.d	$a6, $t4, $a0
-	mul.d	$t8, $s2, $a0
-	ld.d	$a0, $sp, 368                   # 8-byte Folded Reload
 	sub.d	$t8, $t8, $a0
 	sub.d	$a6, $a6, $a0
-	sub.d	$t6, $s1, $t6
+	sub.d	$t6, $s4, $t6
 	mul.d	$a4, $a4, $t4
 	add.w	$s6, $t6, $a4
-	alsl.d	$s2, $s4, $fp, 3
-	ld.d	$t6, $sp, 312                   # 8-byte Folded Reload
-	add.d	$a0, $s2, $t6
+	ld.d	$a0, $sp, 496                   # 8-byte Folded Reload
+	alsl.d	$s1, $a0, $fp, 3
+	ld.d	$t6, $sp, 320                   # 8-byte Folded Reload
+	add.d	$a0, $s1, $t6
 	addi.d	$fp, $a0, 8
 	mul.d	$a0, $t0, $t4
 	add.w	$a0, $a5, $a0
 	add.d	$a4, $t2, $a0
-	alsl.d	$a5, $a4, $s0, 3
+	alsl.d	$a5, $a4, $s3, 3
 	add.d	$a4, $a5, $t6
-	addi.d	$s8, $a4, 8
-	addi.d	$a4, $s2, 16
+	addi.d	$s5, $a4, 8
+	addi.d	$a4, $s1, 16
 	st.d	$a4, $sp, 496                   # 8-byte Folded Spill
 	slli.d	$a4, $t2, 3
 	alsl.d	$a0, $a0, $a4, 3
-	add.d	$s4, $s0, $a0
-	addi.d	$s1, $s4, 16
-	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
+	add.d	$s3, $s3, $a0
+	addi.d	$s4, $s3, 16
+	ld.d	$a0, $sp, 392                   # 8-byte Folded Reload
 	b	.LBB5_77
 	.p2align	4, , 16
 .LBB5_76:                               # %._crit_edge1470.split.us.us.us.us.us.us
                                         #   in Loop: Header=BB5_77 Depth=6
 	ld.d	$a4, $sp, 464                   # 8-byte Folded Reload
-	add.w	$s5, $a4, $s5
+	add.w	$s0, $a4, $s0
 	ld.d	$a4, $sp, 456                   # 8-byte Folded Reload
 	add.w	$s6, $a4, $s6
 	ld.d	$t0, $sp, 488                   # 8-byte Folded Reload
@@ -1994,8 +1975,8 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	.p2align	4, , 16
 .LBB5_78:                               # %._crit_edge1462.us.us.us.us.us.us
                                         #   in Loop: Header=BB5_79 Depth=7
-	add.w	$s5, $t8, $s0
-	add.w	$s6, $a6, $t0
+	add.w	$s0, $t8, $t0
+	add.w	$s6, $a6, $s2
 	addi.w	$t6, $t6, 1
 	add.w	$a0, $t5, $a0
 	beq	$t6, $a3, .LBB5_76
@@ -2015,8 +1996,8 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	alsl.d	$t2, $a0, $s7, 3
 	ld.d	$a4, $sp, 504                   # 8-byte Folded Reload
 	alsl.d	$a4, $a0, $a4, 3
-	alsl.d	$t0, $s5, $s2, 3
-	alsl.d	$t4, $s5, $fp, 3
+	alsl.d	$t0, $s0, $s1, 3
+	alsl.d	$t4, $s0, $fp, 3
 	sltu	$t4, $t2, $t4
 	sltu	$t0, $t0, $a4
 	and	$t0, $t4, $t0
@@ -2025,20 +2006,20 @@ hypre_PointRelax:                       # @hypre_PointRelax
 # %bb.81:                               # %vector.memcheck2066
                                         #   in Loop: Header=BB5_79 Depth=7
 	alsl.d	$t0, $s6, $a5, 3
-	alsl.d	$s0, $s6, $s8, 3
-	sltu	$s0, $t2, $s0
+	alsl.d	$s2, $s6, $s5, 3
+	sltu	$s2, $t2, $s2
 	sltu	$a4, $t0, $a4
-	and	$a4, $s0, $a4
+	and	$a4, $s2, $a4
 	bnez	$a4, .LBB5_86
 # %bb.82:                               # %vector.ph2094
                                         #   in Loop: Header=BB5_79 Depth=7
 	move	$t4, $zero
 	add.d	$a0, $t7, $a0
-	add.d	$t0, $t7, $s6
-	add.d	$s0, $t7, $s5
+	add.d	$s2, $t7, $s6
+	add.d	$t0, $t7, $s0
 	ld.d	$a4, $sp, 496                   # 8-byte Folded Reload
-	alsl.d	$s5, $s5, $a4, 3
-	alsl.d	$s6, $s6, $s1, 3
+	alsl.d	$s0, $s0, $a4, 3
+	alsl.d	$s6, $s6, $s4, 3
 	move	$a4, $a7
 	.p2align	4, , 16
 .LBB5_83:                               # %vector.body2097
@@ -2050,21 +2031,21 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #             Parent Loop BB5_77 Depth=6
                                         #               Parent Loop BB5_79 Depth=7
                                         # =>              This Inner Loop Header: Depth=8
-	add.d	$s3, $s5, $t4
-	vld	$vr0, $s3, -16
-	vldx	$vr1, $s5, $t4
-	add.d	$s3, $s6, $t4
-	vld	$vr2, $s3, -16
+	add.d	$s8, $s0, $t4
+	vld	$vr0, $s8, -16
+	vldx	$vr1, $s0, $t4
+	add.d	$s8, $s6, $t4
+	vld	$vr2, $s8, -16
 	vldx	$vr3, $s6, $t4
-	add.d	$s3, $t2, $t4
+	add.d	$s8, $t2, $t4
 	vldx	$vr4, $t2, $t4
-	vld	$vr5, $s3, 16
+	vld	$vr5, $s8, 16
 	vbitrevi.d	$vr0, $vr0, 63
 	vbitrevi.d	$vr1, $vr1, 63
 	vfmadd.d	$vr0, $vr0, $vr2, $vr4
 	vfmadd.d	$vr1, $vr1, $vr3, $vr5
 	vstx	$vr0, $t2, $t4
-	vst	$vr1, $s3, 16
+	vst	$vr1, $s8, 16
 	addi.d	$a4, $a4, -4
 	add.d	$t4, $t4, $t3
 	bnez	$a4, .LBB5_83
@@ -2077,15 +2058,15 @@ hypre_PointRelax:                       # @hypre_PointRelax
 .LBB5_85:                               #   in Loop: Header=BB5_79 Depth=7
 	move	$t4, $zero
 .LBB5_86:                               #   in Loop: Header=BB5_79 Depth=7
-	move	$t0, $s6
-	move	$s0, $s5
+	move	$s2, $s6
+	move	$t0, $s0
 .LBB5_87:                               # %scalar.ph2092.preheader
                                         #   in Loop: Header=BB5_79 Depth=7
 	move	$t2, $zero
 	move	$a4, $zero
-	alsl.d	$s5, $a0, $s7, 3
-	alsl.d	$s6, $t0, $s4, 3
-	alsl.d	$s3, $s0, $s2, 3
+	alsl.d	$s0, $a0, $s7, 3
+	alsl.d	$s6, $s2, $s3, 3
+	alsl.d	$s8, $t0, $s1, 3
 	sub.d	$t4, $a2, $t4
 	.p2align	4, , 16
 .LBB5_88:                               # %scalar.ph2092
@@ -2097,12 +2078,12 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #             Parent Loop BB5_77 Depth=6
                                         #               Parent Loop BB5_79 Depth=7
                                         # =>              This Inner Loop Header: Depth=8
-	fldx.d	$fa0, $s3, $a4
+	fldx.d	$fa0, $s8, $a4
 	fldx.d	$fa1, $s6, $a4
-	fldx.d	$fa2, $s5, $a4
+	fldx.d	$fa2, $s0, $a4
 	fneg.d	$fa0, $fa0
 	fmadd.d	$fa0, $fa0, $fa1, $fa2
-	fstx.d	$fa0, $s5, $a4
+	fstx.d	$fa0, $s0, $a4
 	add.d	$a4, $a4, $ra
 	addi.w	$t4, $t4, -1
 	sub.d	$t2, $t2, $a1
@@ -2110,49 +2091,44 @@ hypre_PointRelax:                       # @hypre_PointRelax
 # %bb.89:                               # %._crit_edge1462.us.us.us.us.us.us.loopexit
                                         #   in Loop: Header=BB5_79 Depth=7
 	sub.d	$a0, $a0, $t2
+	sub.d	$s2, $s2, $t2
 	sub.d	$t0, $t0, $t2
-	sub.d	$s0, $s0, $t2
 	b	.LBB5_78
 	.p2align	4, , 16
 .LBB5_90:                               # %._crit_edge1672
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	ori	$s8, $zero, 32
-	ld.d	$s4, $sp, 384                   # 8-byte Folded Reload
-	ld.d	$a4, $sp, 408                   # 8-byte Folded Reload
-	blt	$a4, $a0, .LBB5_51
+	ld.d	$s4, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 408                   # 8-byte Folded Reload
+	blez	$a0, .LBB5_51
 # %bb.91:                               # %.preheader1154.lr.ph
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
-	blt	$a4, $a0, .LBB5_51
+	ld.d	$a0, $sp, 472                   # 8-byte Folded Reload
+	blez	$a0, .LBB5_51
 # %bb.92:                               # %.preheader1154.lr.ph
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB5_51
+	blez	$a3, .LBB5_51
 # %bb.93:                               # %.preheader1154.lr.ph
                                         #   in Loop: Header=BB5_52 Depth=4
-	ori	$a0, $zero, 1
-	ld.d	$a4, $sp, 480                   # 8-byte Folded Reload
-	blt	$a4, $a0, .LBB5_51
+	ld.d	$a0, $sp, 480                   # 8-byte Folded Reload
+	blez	$a0, .LBB5_51
 # %bb.94:                               # %.preheader1151.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB5_52 Depth=4
-	ld.d	$t2, $sp, 392                   # 8-byte Folded Reload
+	ld.d	$t2, $sp, 304                   # 8-byte Folded Reload
 	ld.d	$a0, $t2, 64
 	move	$a6, $zero
 	ld.d	$t3, $sp, 296                   # 8-byte Folded Reload
 	ld.w	$a4, $t3, 8
-	ld.d	$a5, $sp, 304                   # 8-byte Folded Reload
+	ld.d	$a5, $sp, 312                   # 8-byte Folded Reload
 	ldx.d	$a0, $a0, $a5
 	ld.w	$a5, $t3, 4
 	ld.w	$a7, $t3, 16
-	ld.d	$t0, $sp, 336                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 344                   # 8-byte Folded Reload
 	sub.d	$a4, $t0, $a4
 	ld.w	$t0, $t3, 0
-	ld.d	$t1, $sp, 344                   # 8-byte Folded Reload
+	ld.d	$t1, $sp, 352                   # 8-byte Folded Reload
 	sub.d	$t1, $t1, $a5
 	sub.w	$a5, $a7, $a5
-	ld.d	$t4, $sp, 360                   # 8-byte Folded Reload
+	ld.d	$t4, $sp, 368                   # 8-byte Folded Reload
 	slt	$a7, $t4, $a5
 	maskeqz	$a5, $a5, $a7
 	masknez	$a7, $t4, $a7
@@ -2164,7 +2140,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	ld.d	$t2, $t2, 48
 	ld.d	$t1, $sp, 144                   # 8-byte Folded Reload
 	ldx.w	$t3, $a0, $t1
-	ld.d	$a0, $sp, 352                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 360                   # 8-byte Folded Reload
 	sub.d	$a0, $a0, $t0
 	sub.w	$a7, $a7, $t0
 	slt	$t0, $t4, $a7
@@ -2173,14 +2149,14 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	or	$a7, $a7, $t0
 	addi.d	$a7, $a7, 1
 	mul.d	$a4, $a4, $a7
-	add.w	$s1, $a0, $a4
-	ld.d	$a0, $sp, 376                   # 8-byte Folded Reload
+	add.w	$s0, $a0, $a4
+	ld.d	$a0, $sp, 384                   # 8-byte Folded Reload
 	mul.d	$a0, $a7, $a0
 	mul.d	$a4, $a0, $a3
-	ld.d	$t0, $sp, 328                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 336                   # 8-byte Folded Reload
 	mul.d	$a5, $a5, $t0
 	mul.d	$a7, $a5, $a7
-	ld.d	$t0, $sp, 368                   # 8-byte Folded Reload
+	ld.d	$t0, $sp, 376                   # 8-byte Folded Reload
 	sub.d	$a0, $a0, $t0
 	ld.d	$a5, $sp, 256                   # 8-byte Folded Reload
 	sub.d	$a5, $a5, $t0
@@ -2211,7 +2187,7 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	.p2align	4, , 16
 .LBB5_95:                               # %._crit_edge1683.split.us.us.us.us.us.us
                                         #   in Loop: Header=BB5_96 Depth=5
-	add.w	$s1, $a7, $s1
+	add.w	$s0, $a7, $s0
 	addi.w	$a6, $a6, 1
 	add.w	$s4, $t0, $s4
 	ld.d	$a4, $sp, 472                   # 8-byte Folded Reload
@@ -2225,15 +2201,15 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #             Child Loop BB5_98 Depth 6
                                         #               Child Loop BB5_106 Depth 7
                                         #               Child Loop BB5_103 Depth 7
-	move	$s0, $zero
+	move	$s1, $zero
 	b	.LBB5_98
 	.p2align	4, , 16
 .LBB5_97:                               # %._crit_edge1677.us.us.us.us.us.us
                                         #   in Loop: Header=BB5_98 Depth=6
-	add.w	$s1, $a0, $s2
-	addi.w	$s0, $s0, 1
+	add.w	$s0, $a0, $s2
+	addi.w	$s1, $s1, 1
 	add.w	$s4, $a5, $s4
-	beq	$s0, $a3, .LBB5_95
+	beq	$s1, $a3, .LBB5_95
 .LBB5_98:                               # %.preheader1148.us.us.us.us.us.us
                                         #   Parent Loop BB5_41 Depth=1
                                         #     Parent Loop BB5_43 Depth=2
@@ -2247,21 +2223,21 @@ hypre_PointRelax:                       # @hypre_PointRelax
 # %bb.99:                               # %vector.memcheck2034
                                         #   in Loop: Header=BB5_98 Depth=6
 	alsl.d	$a4, $s4, $s7, 3
-	alsl.d	$s2, $s1, $t3, 3
+	alsl.d	$s2, $s0, $t3, 3
 	bgeu	$a4, $s2, .LBB5_105
 # %bb.100:                              # %vector.memcheck2034
                                         #   in Loop: Header=BB5_98 Depth=6
 	alsl.d	$s2, $s4, $t1, 3
-	alsl.d	$s3, $s1, $t2, 3
+	alsl.d	$s3, $s0, $t2, 3
 	bgeu	$s3, $s2, .LBB5_105
 .LBB5_101:                              #   in Loop: Header=BB5_98 Depth=6
 	move	$a4, $zero
-	move	$s2, $s1
+	move	$s2, $s0
 .LBB5_102:                              # %scalar.ph2045.preheader
                                         #   in Loop: Header=BB5_98 Depth=6
-	move	$s1, $zero
+	move	$s0, $zero
 	move	$s3, $zero
-	move	$s6, $s4
+	move	$s8, $s4
 	alsl.d	$s4, $s4, $s7, 3
 	alsl.d	$s5, $s2, $t2, 3
 	sub.d	$a4, $a2, $a4
@@ -2280,20 +2256,20 @@ hypre_PointRelax:                       # @hypre_PointRelax
 	fstx.d	$fa0, $s4, $s3
 	add.d	$s3, $s3, $fp
 	addi.w	$a4, $a4, -1
-	sub.d	$s1, $s1, $a1
+	sub.d	$s0, $s0, $a1
 	bnez	$a4, .LBB5_103
 # %bb.104:                              # %._crit_edge1677.us.us.us.us.us.us.loopexit
                                         #   in Loop: Header=BB5_98 Depth=6
-	sub.d	$s4, $s6, $s1
-	sub.d	$s2, $s2, $s1
+	sub.d	$s4, $s8, $s0
+	sub.d	$s2, $s2, $s0
 	b	.LBB5_97
 	.p2align	4, , 16
 .LBB5_105:                              # %vector.ph2047
                                         #   in Loop: Header=BB5_98 Depth=6
 	move	$s3, $zero
-	add.d	$s6, $t6, $s4
-	add.d	$s2, $t6, $s1
-	alsl.d	$s1, $s1, $t8, 3
+	add.d	$s8, $t6, $s4
+	add.d	$s2, $t6, $s0
+	alsl.d	$s0, $s0, $t8, 3
 	move	$s4, $t5
 	.p2align	4, , 16
 .LBB5_106:                              # %vector.body2050
@@ -2304,9 +2280,9 @@ hypre_PointRelax:                       # @hypre_PointRelax
                                         #           Parent Loop BB5_96 Depth=5
                                         #             Parent Loop BB5_98 Depth=6
                                         # =>            This Inner Loop Header: Depth=7
-	add.d	$s5, $s1, $s3
+	add.d	$s5, $s0, $s3
 	vld	$vr0, $s5, -16
-	vldx	$vr1, $s1, $s3
+	vldx	$vr1, $s0, $s3
 	add.d	$s5, $a4, $s3
 	vldx	$vr2, $a4, $s3
 	vld	$vr3, $s5, 16
@@ -2320,9 +2296,9 @@ hypre_PointRelax:                       # @hypre_PointRelax
 # %bb.107:                              # %middle.block2059
                                         #   in Loop: Header=BB5_98 Depth=6
 	move	$a4, $t5
-	move	$s4, $s6
-	ld.d	$s1, $sp, 480                   # 8-byte Folded Reload
-	beq	$t5, $s1, .LBB5_97
+	move	$s4, $s8
+	ld.d	$s0, $sp, 480                   # 8-byte Folded Reload
+	beq	$t5, $s0, .LBB5_97
 	b	.LBB5_102
 	.p2align	4, , 16
 .LBB5_108:                              #   in Loop: Header=BB5_41 Depth=1

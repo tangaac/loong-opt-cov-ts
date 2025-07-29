@@ -142,7 +142,7 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	move	$a3, $a0
 	bstrins.d	$a3, $zero, 0, 0
 	ori	$a4, $zero, 2
-	beq	$a3, $a4, .LBB3_26
+	beq	$a3, $a4, .LBB3_17
 # %bb.1:
 	move	$fp, $a1
 	bstrpick.d	$a1, $a0, 31, 31
@@ -162,9 +162,9 @@ FFT_transform_internal:                 # @FFT_transform_internal
 .LBB3_4:                                # %._crit_edge.i
 	ori	$a1, $zero, 1
 	sll.w	$a1, $a1, $s1
-	bne	$s0, $a1, .LBB3_27
+	bne	$s0, $a1, .LBB3_26
 # %bb.5:                                # %int_log2.exit
-	beqz	$a0, .LBB3_26
+	beqz	$a0, .LBB3_17
 # %bb.6:
 	ori	$a1, $zero, 4
 	blt	$a0, $a1, .LBB3_13
@@ -209,33 +209,67 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	add.w	$a4, $a6, $a5
 	bne	$a1, $a3, .LBB3_8
 .LBB3_13:                               # %FFT_bitreverse.exit
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB3_26
+	blez	$s1, .LBB3_17
 # %bb.14:                               # %.lr.ph114
-	pcalau12i	$a3, %pc_hi20(.LCPI3_0)
-	fld.d	$fa0, $a3, %pc_lo12(.LCPI3_0)
-	movgr2fr.w	$fa1, $a2
-	ffint.d.w	$fa1, $fa1
-	fadd.d	$fa1, $fa1, $fa1
-	fmul.d	$fs2, $fa1, $fa0
-	bge	$a1, $a0, .LBB3_24
+	movgr2fr.w	$fa0, $a2
+	pcalau12i	$a1, %pc_hi20(.LCPI3_0)
+	fld.d	$fa1, $a1, %pc_lo12(.LCPI3_0)
+	ffint.d.w	$fa0, $fa0
+	fadd.d	$fa0, $fa0, $fa0
+	ori	$s2, $zero, 1
+	fmul.d	$fs2, $fa0, $fa1
+	bge	$s2, $a0, .LBB3_16
 # %bb.15:                               # %.lr.ph114.split.us.preheader
 	move	$s2, $zero
 	addi.d	$s3, $fp, 24
 	ori	$s5, $zero, 1
 	ori	$s4, $zero, 2
 	movgr2fr.d	$fs3, $zero
-	b	.LBB3_17
+	b	.LBB3_19
 	.p2align	4, , 16
-.LBB3_16:                               # %._crit_edge111.split.us.us
-                                        #   in Loop: Header=BB3_17 Depth=1
+.LBB3_16:                               # %.preheader
+                                        # =>This Inner Loop Header: Depth=1
+	slli.d	$s2, $s2, 1
+	bstrpick.d	$a0, $s2, 31, 1
+	slli.d	$a0, $a0, 1
+	movgr2fr.d	$fa0, $a0
+	ffint.d.l	$fa0, $fa0
+	fdiv.d	$fs0, $fs2, $fa0
+	fmov.d	$fa0, $fs0
+	pcaddu18i	$ra, %call36(sin)
+	jirl	$ra, $ra, 0
+	vldi	$vr0, -928
+	fmul.d	$fa0, $fs0, $fa0
+	pcaddu18i	$ra, %call36(sin)
+	jirl	$ra, $ra, 0
+	addi.w	$s1, $s1, -1
+	bnez	$s1, .LBB3_16
+.LBB3_17:                               # %.loopexit
+	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
+	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
+	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
+	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
+	ret
+	.p2align	4, , 16
+.LBB3_18:                               # %._crit_edge111.split.us.us
+                                        #   in Loop: Header=BB3_19 Depth=1
 	addi.w	$s2, $s2, 1
-	beq	$s2, $s1, .LBB3_26
-.LBB3_17:                               # %.lr.ph.us.preheader
+	beq	$s2, $s1, .LBB3_17
+.LBB3_19:                               # %.lr.ph.us.preheader
                                         # =>This Loop Header: Depth=1
-                                        #     Child Loop BB3_18 Depth 2
-                                        #     Child Loop BB3_21 Depth 2
-                                        #       Child Loop BB3_22 Depth 3
+                                        #     Child Loop BB3_20 Depth 2
+                                        #     Child Loop BB3_23 Depth 2
+                                        #       Child Loop BB3_24 Depth 3
 	move	$s6, $s5
 	slli.d	$s5, $s5, 1
 	bstrpick.d	$a0, $s5, 31, 1
@@ -259,8 +293,8 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	slli.d	$a4, $a3, 4
 	move	$a5, $fp
 	.p2align	4, , 16
-.LBB3_18:                               # %.lr.ph.us
-                                        #   Parent Loop BB3_17 Depth=1
+.LBB3_20:                               # %.lr.ph.us
+                                        #   Parent Loop BB3_19 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	vldx	$vr1, $a5, $a4
 	vld	$vr3, $a5, 0
@@ -270,12 +304,12 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	vst	$vr1, $a5, 0
 	add.d	$a2, $a2, $a0
 	add.d	$a5, $a5, $a1
-	blt	$a2, $s0, .LBB3_18
-# %bb.19:                               # %.preheader.us
-                                        #   in Loop: Header=BB3_17 Depth=1
-	bltu	$a3, $s4, .LBB3_16
-# %bb.20:                               # %.lr.ph110.us
-                                        #   in Loop: Header=BB3_17 Depth=1
+	blt	$a2, $s0, .LBB3_20
+# %bb.21:                               # %.preheader.us
+                                        #   in Loop: Header=BB3_19 Depth=1
+	bltu	$a3, $s4, .LBB3_18
+# %bb.22:                               # %.lr.ph110.us
+                                        #   in Loop: Header=BB3_19 Depth=1
 	fneg.d	$fa1, $fs0
 	fneg.d	$fa0, $fa0
 	fmul.d	$fa0, $fa2, $fa0
@@ -287,10 +321,10 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	move	$a6, $s3
 	fmov.d	$fa3, $fs3
 	.p2align	4, , 16
-.LBB3_21:                               # %.lr.ph106.us.us
-                                        #   Parent Loop BB3_17 Depth=1
+.LBB3_23:                               # %.lr.ph106.us.us
+                                        #   Parent Loop BB3_19 Depth=1
                                         # =>  This Loop Header: Depth=2
-                                        #       Child Loop BB3_22 Depth 3
+                                        #       Child Loop BB3_24 Depth 3
 	move	$a7, $zero
                                         # kill: def $f2_64 killed $f2_64 killed $vr2
 	fmadd.d	$fa4, $fa1, $fa3, $fa2
@@ -300,8 +334,8 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	move	$t0, $a6
 	move	$t1, $a3
 	.p2align	4, , 16
-.LBB3_22:                               #   Parent Loop BB3_17 Depth=1
-                                        #     Parent Loop BB3_21 Depth=2
+.LBB3_24:                               #   Parent Loop BB3_19 Depth=1
+                                        #     Parent Loop BB3_23 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
 	alsl.d	$t2, $t1, $fp, 3
 	fld.d	$fa4, $t2, 8
@@ -325,51 +359,15 @@ FFT_transform_internal:                 # @FFT_transform_internal
 	add.d	$a7, $a7, $a0
 	add.w	$t1, $t1, $a4
 	add.d	$t0, $t0, $a1
-	blt	$a7, $s0, .LBB3_22
-# %bb.23:                               # %._crit_edge.us.us
-                                        #   in Loop: Header=BB3_21 Depth=2
+	blt	$a7, $s0, .LBB3_24
+# %bb.25:                               # %._crit_edge.us.us
+                                        #   in Loop: Header=BB3_23 Depth=2
 	addi.d	$a5, $a5, 1
 	addi.w	$a3, $a3, 2
 	addi.d	$a6, $a6, 16
-	bne	$a5, $a2, .LBB3_21
-	b	.LBB3_16
-.LBB3_24:                               # %.preheader.preheader
-	ori	$fp, $zero, 1
-	.p2align	4, , 16
-.LBB3_25:                               # %.preheader
-                                        # =>This Inner Loop Header: Depth=1
-	slli.d	$fp, $fp, 1
-	bstrpick.d	$a0, $fp, 31, 1
-	slli.d	$a0, $a0, 1
-	movgr2fr.d	$fa0, $a0
-	ffint.d.l	$fa0, $fa0
-	fdiv.d	$fs0, $fs2, $fa0
-	fmov.d	$fa0, $fs0
-	pcaddu18i	$ra, %call36(sin)
-	jirl	$ra, $ra, 0
-	vldi	$vr0, -928
-	fmul.d	$fa0, $fs0, $fa0
-	pcaddu18i	$ra, %call36(sin)
-	jirl	$ra, $ra, 0
-	addi.w	$s1, $s1, -1
-	bnez	$s1, .LBB3_25
-.LBB3_26:                               # %.loopexit
-	fld.d	$fs3, $sp, 8                    # 8-byte Folded Reload
-	fld.d	$fs2, $sp, 16                   # 8-byte Folded Reload
-	fld.d	$fs1, $sp, 24                   # 8-byte Folded Reload
-	fld.d	$fs0, $sp, 32                   # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
-	ret
-.LBB3_27:
+	bne	$a5, $a2, .LBB3_23
+	b	.LBB3_18
+.LBB3_26:
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
 	move	$a1, $s0
@@ -390,14 +388,12 @@ FFT_inverse:                            # @FFT_inverse
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
 	ori	$a2, $zero, 1
-	ori	$s1, $zero, 1
 	pcaddu18i	$ra, %call36(FFT_transform_internal)
 	jirl	$ra, $ra, 0
-	blt	$fp, $s1, .LBB4_8
+	blez	$fp, .LBB4_8
 # %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a0, $fp, 31, 31
 	add.w	$a0, $fp, $a0
@@ -443,7 +439,6 @@ FFT_inverse:                            # @FFT_inverse
 	addi.d	$a1, $a1, 8
 	bnez	$a0, .LBB4_7
 .LBB4_8:                                # %._crit_edge
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload

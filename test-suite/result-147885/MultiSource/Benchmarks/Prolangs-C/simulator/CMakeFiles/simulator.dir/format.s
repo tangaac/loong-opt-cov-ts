@@ -160,8 +160,7 @@ FORMAT3_4:                              # @FORMAT3_4
 # %bb.11:
 	bltu	$s2, $s1, .LBB1_38
 # %bb.12:                               # %.preheader
-	ori	$a0, $zero, 1
-	blt	$fp, $a0, .LBB1_40
+	blez	$fp, .LBB1_40
 # %bb.13:                               # %.lr.ph84.preheader
 	move	$a1, $zero
 	.p2align	4, , 16
@@ -252,8 +251,7 @@ FORMAT3_4:                              # @FORMAT3_4
 	ori	$a1, $zero, 2
 	blt	$a2, $a0, .LBB1_39
 # %bb.27:                               # %.preheader79
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB1_40
+	blez	$fp, .LBB1_40
 # %bb.28:                               # %.lr.ph.preheader
 	move	$a2, $zero
 	.p2align	4, , 16

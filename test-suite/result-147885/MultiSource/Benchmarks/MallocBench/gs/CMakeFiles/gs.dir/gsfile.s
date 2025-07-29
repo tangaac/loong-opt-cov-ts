@@ -74,8 +74,7 @@ gs_writeppmfile:                        # @gs_writeppmfile
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_38
+	blez	$s2, .LBB0_38
 # %bb.8:                                # %.lr.ph102
 	ori	$a0, $zero, 8
 	add.d	$fp, $s0, $s3

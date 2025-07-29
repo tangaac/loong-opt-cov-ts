@@ -102,11 +102,10 @@ _Z12read_HPC_rowPcPP24HPC_Sparse_Matrix_STRUCTPPdS4_S4_: # @_Z12read_HPC_rowPcPP
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$s1, $sp, 24                    # 8-byte Folded Spill
 	st.d	$a0, $s1, 0
 	move	$s1, $zero
-	blt	$s5, $a1, .LBB0_7
+	blez	$s5, .LBB0_7
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	move	$s6, $zero
@@ -186,7 +185,6 @@ _Z12read_HPC_rowPcPP24HPC_Sparse_Matrix_STRUCTPPdS4_S4_: # @_Z12read_HPC_rowPcPP
 	st.d	$zero, $sp, 72                  # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.3)
-	ori	$s8, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.8)
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
@@ -201,7 +199,6 @@ _Z12read_HPC_rowPcPP24HPC_Sparse_Matrix_STRUCTPPdS4_S4_: # @_Z12read_HPC_rowPcPP
 	move	$s5, $s2
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 32                    # 8-byte Folded Reload
-	ori	$s8, $zero, 1
 .LBB0_14:                               # %.loopexit
                                         #   in Loop: Header=BB0_15 Depth=1
 	ld.w	$a0, $sp, 132
@@ -221,12 +218,12 @@ _Z12read_HPC_rowPcPP24HPC_Sparse_Matrix_STRUCTPPdS4_S4_: # @_Z12read_HPC_rowPcPP
 # %bb.16:                               # %.preheader
                                         #   in Loop: Header=BB0_15 Depth=1
 	move	$s2, $s5
-	blt	$a0, $s8, .LBB0_13
+	blez	$a0, .LBB0_13
 # %bb.17:                               # %.lr.ph175
                                         #   in Loop: Header=BB0_15 Depth=1
+	move	$s5, $zero
 	move	$s6, $zero
 	move	$s4, $zero
-	move	$s5, $zero
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
 	alsl.d	$s0, $a1, $a0, 3
@@ -243,20 +240,20 @@ _Z12read_HPC_rowPcPP24HPC_Sparse_Matrix_STRUCTPPdS4_S4_: # @_Z12read_HPC_rowPcPP
 	jirl	$ra, $ra, 0
 	fld.d	$fa0, $sp, 104
 	ld.d	$a0, $s0, 0
-	fstx.d	$fa0, $a0, $s6
+	fstx.d	$fa0, $a0, $s5
 	ld.w	$a0, $sp, 116
 	ld.d	$a1, $s8, 0
-	stx.w	$a0, $a1, $s4
+	stx.w	$a0, $a1, $s6
 	ld.w	$a0, $sp, 96
-	addi.d	$s5, $s5, 1
-	addi.d	$s4, $s4, 4
-	addi.d	$s6, $s6, 8
-	blt	$s5, $a0, .LBB0_18
+	addi.d	$s4, $s4, 1
+	addi.d	$s6, $s6, 4
+	addi.d	$s5, $s5, 8
+	blt	$s4, $a0, .LBB0_18
 	b	.LBB0_13
 	.p2align	4, , 16
 .LBB0_19:                               # %.preheader164
                                         #   in Loop: Header=BB0_15 Depth=1
-	blt	$a0, $s8, .LBB0_14
+	blez	$a0, .LBB0_14
 # %bb.20:                               # %.lr.ph173.preheader
                                         #   in Loop: Header=BB0_15 Depth=1
 	move	$s0, $zero
@@ -275,8 +272,7 @@ _Z12read_HPC_rowPcPP24HPC_Sparse_Matrix_STRUCTPPdS4_S4_: # @_Z12read_HPC_rowPcPP
 	blt	$s0, $a0, .LBB0_21
 	b	.LBB0_14
 .LBB0_22:                               # %._crit_edge180
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_27
+	blez	$a0, .LBB0_27
 # %bb.23:                               # %.lr.ph184.preheader
 	move	$s1, $zero
 	move	$s2, $zero

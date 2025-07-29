@@ -220,8 +220,7 @@ _ZN13CObjectVectorIN8NArchive4NCab11CDatabaseExEE6DeleteEii: # @_ZN13CObjectVect
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB3_7
+	blez	$s1, .LBB3_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -690,8 +689,7 @@ _ZN13CObjectVectorIN8NArchive4NCab5CItemEE6DeleteEii: # @_ZN13CObjectVectorIN8NA
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB9_7
+	blez	$s1, .LBB9_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -838,8 +836,7 @@ _ZN13CObjectVectorIN8NArchive4NCab7CFolderEE6DeleteEii: # @_ZN13CObjectVectorIN8
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB11_5
+	blez	$s1, .LBB11_5
 # %bb.1:                                # %.lr.ph
 	move	$s2, $zero
 	slli.d	$s3, $s0, 3

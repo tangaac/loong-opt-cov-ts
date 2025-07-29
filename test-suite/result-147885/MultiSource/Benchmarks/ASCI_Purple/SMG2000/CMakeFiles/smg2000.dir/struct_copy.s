@@ -21,15 +21,14 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	ld.d	$a1, $a1, 8
 	ld.d	$a2, $a1, 8
 	ld.w	$a1, $a2, 8
-	ori	$a3, $zero, 1
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	blt	$a1, $a3, .LBB0_19
+	blez	$a1, .LBB0_19
 # %bb.1:                                # %.lr.ph
-	move	$s4, $zero
+	move	$s3, $zero
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s6, $zero, 4
-	ori	$s7, $zero, 32
+	ori	$s5, $zero, 4
+	ori	$s6, $zero, 32
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB0_3
 	.p2align	4, , 16
@@ -37,8 +36,8 @@ hypre_StructCopy:                       # @hypre_StructCopy
                                         #   in Loop: Header=BB0_3 Depth=1
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a0, $a2, 8
-	addi.d	$s4, $s4, 1
-	bge	$s4, $a0, .LBB0_19
+	addi.d	$s3, $s3, 1
+	bge	$s3, $a0, .LBB0_19
 .LBB0_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
                                         #       Child Loop BB0_11 Depth 3
@@ -49,23 +48,22 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	ld.d	$a4, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$a1, $a4, 16
 	ld.d	$a2, $a2, 0
-	ld.d	$fp, $a0, 0
-	ld.d	$s0, $a1, 0
+	ld.d	$s0, $a0, 0
+	ld.d	$fp, $a1, 0
 	ld.d	$a0, $a3, 40
-	ld.d	$s8, $a3, 24
+	ld.d	$s7, $a3, 24
 	ld.d	$a1, $a4, 40
-	slli.d	$a3, $s4, 2
-	ldx.w	$s3, $a0, $a3
+	slli.d	$a3, $s3, 2
+	ldx.w	$s8, $a0, $a3
 	ld.d	$s2, $a4, 24
-	ldx.w	$s5, $a1, $a3
-	alsl.d	$a0, $s4, $s4, 1
+	ldx.w	$s4, $a1, $a3
+	alsl.d	$a0, $s3, $s3, 1
 	slli.d	$a0, $a0, 3
 	add.d	$s1, $a2, $a0
 	addi.d	$a1, $sp, 44
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 1
 	ld.w	$a0, $sp, 44
 	ld.w	$a1, $sp, 48
 	ld.w	$a2, $sp, 52
@@ -77,25 +75,25 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	masknez	$a3, $a3, $a4
 	maskeqz	$a4, $a2, $a4
 	or	$a3, $a4, $a3
-	blt	$a3, $a5, .LBB0_2
+	blez	$a3, .LBB0_2
 # %bb.4:                                # %.preheader216.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	blt	$a2, $a5, .LBB0_2
+	blez	$a2, .LBB0_2
 # %bb.5:                                # %.preheader216.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	blt	$a1, $a5, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.6:                                # %.preheader216.lr.ph
                                         #   in Loop: Header=BB0_3 Depth=1
-	blt	$a0, $a5, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.7:                                # %.preheader215.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB0_3 Depth=1
-	slli.d	$a3, $s4, 4
-	alsl.d	$a4, $s4, $a3, 3
-	add.d	$t1, $s0, $a4
+	slli.d	$a3, $s3, 4
+	alsl.d	$a4, $s3, $a3, 3
+	add.d	$t1, $fp, $a4
 	ld.w	$t0, $t1, 4
 	ld.w	$a5, $t1, 16
 	move	$a3, $zero
-	ldx.w	$t2, $s0, $a4
+	ldx.w	$t2, $fp, $a4
 	sub.w	$a5, $a5, $t0
 	ld.d	$t8, $sp, 8                     # 8-byte Folded Reload
 	slt	$a6, $t8, $a5
@@ -108,12 +106,12 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	slt	$a6, $t8, $a5
 	maskeqz	$a5, $a5, $a6
 	masknez	$a6, $t8, $a6
-	add.d	$a7, $fp, $a4
+	add.d	$a7, $s0, $a4
 	ld.w	$t4, $a7, 4
 	ld.w	$t5, $a7, 16
 	or	$a5, $a5, $a6
 	addi.d	$t6, $a5, 1
-	ldx.w	$t7, $fp, $a4
+	ldx.w	$t7, $s0, $a4
 	sub.w	$a4, $t5, $t4
 	slt	$a5, $t8, $a4
 	maskeqz	$a4, $a4, $a5
@@ -154,9 +152,9 @@ hypre_StructCopy:                       # @hypre_StructCopy
 	add.w	$fp, $t2, $t0
 	bstrpick.d	$t0, $a0, 30, 2
 	slli.d	$t0, $t0, 2
-	alsl.d	$t1, $s5, $s2, 3
+	alsl.d	$t1, $s4, $s2, 3
 	addi.d	$t2, $t1, 16
-	alsl.d	$t3, $s3, $s8, 3
+	alsl.d	$t3, $s8, $s7, 3
 	addi.d	$t4, $t3, 16
 	b	.LBB0_9
 	.p2align	4, , 16
@@ -187,15 +185,15 @@ hypre_StructCopy:                       # @hypre_StructCopy
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB0_17 Depth 4
                                         #         Child Loop BB0_15 Depth 4
-	bltu	$a0, $s6, .LBB0_13
+	bltu	$a0, $s5, .LBB0_13
 # %bb.12:                               # %vector.memcheck
                                         #   in Loop: Header=BB0_11 Depth=3
-	add.d	$t6, $s5, $fp
+	add.d	$t6, $s4, $fp
 	alsl.d	$t6, $t6, $s2, 3
-	add.d	$t7, $s3, $t8
-	alsl.d	$t7, $t7, $s8, 3
+	add.d	$t7, $s8, $t8
+	alsl.d	$t7, $t7, $s7, 3
 	sub.d	$t6, $t6, $t7
-	bgeu	$t6, $s7, .LBB0_16
+	bgeu	$t6, $s6, .LBB0_16
 .LBB0_13:                               #   in Loop: Header=BB0_11 Depth=3
 	move	$s0, $zero
 	move	$t6, $fp

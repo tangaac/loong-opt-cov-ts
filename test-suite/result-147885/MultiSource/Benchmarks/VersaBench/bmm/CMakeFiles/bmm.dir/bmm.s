@@ -90,8 +90,7 @@ mm_inner:                               # @mm_inner
 # %bb.0:
 	pcalau12i	$a3, %pc_hi20(BLOCK)
 	ld.w	$a5, $a3, %pc_lo12(BLOCK)
-	ori	$a3, $zero, 1
-	blt	$a5, $a3, .LBB2_7
+	blez	$a5, .LBB2_7
 # %bb.1:                                # %.preheader20.us.us.preheader
 	add.w	$a3, $a5, $a0
 	add.w	$a4, $a5, $a1
@@ -163,12 +162,11 @@ matmult:                                # @matmult
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(NUM)
 	ld.w	$a0, $a0, %pc_lo12(NUM)
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB3_15
+	blez	$a0, .LBB3_15
 # %bb.1:                                # %.preheader11.lr.ph
 	pcalau12i	$a1, %pc_hi20(BLOCK)
 	ld.w	$a1, $a1, %pc_lo12(BLOCK)
-	blt	$a1, $a2, .LBB3_15
+	blez	$a1, .LBB3_15
 # %bb.2:                                # %.preheader11.us.us.preheader
 	addi.d	$sp, $sp, -80
 	st.d	$fp, $sp, 72                    # 8-byte Folded Spill
@@ -317,8 +315,7 @@ mm_sum:                                 # @mm_sum
 # %bb.0:
 	pcalau12i	$a2, %pc_hi20(BLOCK)
 	ld.w	$a3, $a2, %pc_lo12(BLOCK)
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB4_6
+	blez	$a3, .LBB4_6
 # %bb.1:                                # %.preheader.us.preheader
 	add.w	$a2, $a3, $a0
 	add.w	$a3, $a3, $a1
@@ -363,13 +360,12 @@ sumup:                                  # @sumup
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(NUM)
 	ld.w	$a0, $a0, %pc_lo12(NUM)
-	ori	$a2, $zero, 1
 	movgr2fr.w	$fa0, $zero
-	blt	$a0, $a2, .LBB5_10
+	blez	$a0, .LBB5_10
 # %bb.1:                                # %.preheader.lr.ph
 	pcalau12i	$a1, %pc_hi20(BLOCK)
 	ld.w	$a1, $a1, %pc_lo12(BLOCK)
-	blt	$a1, $a2, .LBB5_10
+	blez	$a1, .LBB5_10
 # %bb.2:                                # %.preheader.us.us.preheader
 	move	$a4, $zero
 	slli.d	$a2, $a1, 12

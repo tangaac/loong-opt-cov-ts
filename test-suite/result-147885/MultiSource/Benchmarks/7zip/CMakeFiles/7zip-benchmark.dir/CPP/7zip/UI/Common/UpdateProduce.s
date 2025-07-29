@@ -32,10 +32,9 @@ _Z13UpdateProduceRK13CRecordVectorI11CUpdatePairERKN14NUpdateArchive10CActionSet
 	.cfi_offset 31, -88
 	move	$fp, $a0
 	ld.w	$a0, $a0, 12
-	ori	$a4, $zero, 1
 	st.d	$a3, $sp, 16                    # 8-byte Folded Spill
 	move	$s0, $a2
-	blt	$a0, $a4, .LBB0_21
+	blez	$a0, .LBB0_21
 # %bb.1:                                # %.lr.ph
 	move	$s1, $a1
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload

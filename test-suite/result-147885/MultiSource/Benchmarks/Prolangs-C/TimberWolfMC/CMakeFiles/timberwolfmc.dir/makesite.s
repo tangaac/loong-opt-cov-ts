@@ -252,31 +252,31 @@ Vside:                                  # @Vside
 	masknez	$a1, $a1, $a0
 	maskeqz	$a0, $s2, $a0
 	or	$a0, $a0, $a1
-	addi.d	$a1, $a0, 1
-	addi.w	$a2, $a1, 0
-	movgr2fr.w	$fa0, $a1
+	addi.d	$a2, $a0, 1
+	addi.w	$a1, $a2, 0
+	movgr2fr.w	$fa0, $a2
 	ffint.d.w	$fa0, $fa0
 	fdiv.d	$fa0, $fs0, $fa0
-	ori	$a1, $zero, 1
 	bge	$fp, $s1, .LBB0_24
 # %bb.21:                               # %.preheader
-	blt	$a0, $a1, .LBB0_28
+	blez	$a0, .LBB0_28
 # %bb.22:                               # %.lr.ph127
-	pcalau12i	$a3, %got_pc_hi20(kArray)
-	ld.d	$a3, $a3, %got_pc_lo12(kArray)
-	ld.d	$a3, $a3, 0
-	bstrpick.d	$a2, $a2, 31, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 36
-	ori	$a4, $zero, 2
+	pcalau12i	$a2, %got_pc_hi20(kArray)
+	ld.d	$a2, $a2, %got_pc_lo12(kArray)
+	ld.d	$a2, $a2, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 36
+	ori	$a3, $zero, 2
 	vldi	$vr1, -928
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB0_23:                               # =>This Inner Loop Header: Depth=1
-	st.w	$s0, $a3, -4
-	bstrpick.d	$a5, $a4, 31, 0
+	st.w	$s0, $a2, -4
+	bstrpick.d	$a5, $a3, 31, 0
 	movgr2fr.d	$fa2, $a5
 	ffint.d.l	$fa3, $fa2
-	addi.d	$a5, $a4, -1
+	addi.d	$a5, $a3, -1
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$fa2, $a5
 	ffint.d.l	$fa2, $fa2
@@ -297,35 +297,36 @@ Vside:                                  # @Vside
 	ffint.d.w	$fa4, $fa4
 	fsub.d	$fa4, $fa3, $fa4
 	fcmp.cle.d	$fcc0, $fa1, $fa4
-	st.w	$a6, $a3, 0
+	st.w	$a6, $a2, 0
 	movcf2gr	$a6, $fcc0
 	add.d	$a6, $a6, $a7
 	sub.d	$a5, $a6, $a5
-	st.w	$a5, $a3, -8
-	st.w	$a1, $a3, -12
-	addi.w	$a4, $a4, 1
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 20
-	bnez	$a2, .LBB0_23
+	st.w	$a5, $a2, -8
+	st.w	$a4, $a2, -12
+	addi.w	$a3, $a3, 1
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 20
+	bnez	$a1, .LBB0_23
 	b	.LBB0_27
 .LBB0_24:                               # %.preheader103
-	blt	$a0, $a1, .LBB0_28
+	blez	$a0, .LBB0_28
 # %bb.25:                               # %.lr.ph123
-	pcalau12i	$a3, %got_pc_hi20(kArray)
-	ld.d	$a3, $a3, %got_pc_lo12(kArray)
-	ld.d	$a3, $a3, 0
-	bstrpick.d	$a2, $a2, 31, 0
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 36
-	ori	$a4, $zero, 2
+	pcalau12i	$a2, %got_pc_hi20(kArray)
+	ld.d	$a2, $a2, %got_pc_lo12(kArray)
+	ld.d	$a2, $a2, 0
+	bstrpick.d	$a1, $a1, 31, 0
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 36
+	ori	$a3, $zero, 2
 	vldi	$vr1, -928
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB0_26:                               # =>This Inner Loop Header: Depth=1
-	st.w	$s0, $a3, -4
-	bstrpick.d	$a5, $a4, 31, 0
+	st.w	$s0, $a2, -4
+	bstrpick.d	$a5, $a3, 31, 0
 	movgr2fr.d	$fa2, $a5
 	ffint.d.l	$fa3, $fa2
-	addi.d	$a5, $a4, -1
+	addi.d	$a5, $a3, -1
 	bstrpick.d	$a5, $a5, 31, 0
 	movgr2fr.d	$fa2, $a5
 	ffint.d.l	$fa2, $fa2
@@ -346,16 +347,16 @@ Vside:                                  # @Vside
 	ffint.d.w	$fa4, $fa4
 	fsub.d	$fa4, $fa3, $fa4
 	fcmp.cle.d	$fcc0, $fa1, $fa4
-	st.w	$a6, $a3, 0
+	st.w	$a6, $a2, 0
 	movcf2gr	$a6, $fcc0
 	add.d	$a6, $a6, $a7
 	sub.d	$a5, $a6, $a5
-	st.w	$a5, $a3, -8
-	st.w	$a1, $a3, -12
-	addi.w	$a4, $a4, 1
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 20
-	bnez	$a2, .LBB0_26
+	st.w	$a5, $a2, -8
+	st.w	$a4, $a2, -12
+	addi.w	$a3, $a3, 1
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 20
+	bnez	$a1, .LBB0_26
 .LBB0_27:                               # %..loopexit104_crit_edge
 	pcalau12i	$a1, %pc_hi20(val1)
 	fst.d	$fa3, $a1, %pc_lo12(val1)
@@ -644,10 +645,9 @@ Hside:                                  # @Hside
 	movgr2fr.w	$fa0, $a2
 	ffint.d.w	$fa0, $fa0
 	fdiv.d	$fa0, $fs0, $fa0
-	ori	$a2, $zero, 1
 	bge	$s0, $s1, .LBB1_24
 # %bb.21:                               # %.preheader
-	blt	$a0, $a2, .LBB1_28
+	blez	$a0, .LBB1_28
 # %bb.22:                               # %.lr.ph128
 	pcalau12i	$a2, %got_pc_hi20(kArray)
 	ld.d	$a2, $a2, %got_pc_lo12(kArray)
@@ -696,7 +696,7 @@ Hside:                                  # @Hside
 	bnez	$a1, .LBB1_23
 	b	.LBB1_27
 .LBB1_24:                               # %.preheader104
-	blt	$a0, $a2, .LBB1_28
+	blez	$a0, .LBB1_28
 # %bb.25:                               # %.lr.ph124
 	pcalau12i	$a2, %got_pc_hi20(kArray)
 	ld.d	$a2, $a2, %got_pc_lo12(kArray)

@@ -30,15 +30,15 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_64
+	bne	$a0, $a1, .LBB0_63
 # %bb.1:                                # %.lr.ph315.preheader
 	st.d	$zero, $sp, 168                 # 8-byte Folded Spill
 	st.d	$zero, $sp, 104                 # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
-	addi.d	$a1, $a0, %pc_lo12(.L.str.1)
+	addi.d	$s6, $a0, %pc_lo12(.L.str.1)
 	pcalau12i	$a0, %got_pc_hi20(cellarray)
 	ld.d	$a0, $a0, %got_pc_lo12(cellarray)
-	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
 	st.d	$a0, $sp, 88                    # 8-byte Folded Spill
@@ -46,15 +46,15 @@ grdcell:                                # @grdcell
 	addi.d	$a0, $a0, %pc_lo12(.L.str.3)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(A)
-	ld.d	$s2, $a0, %got_pc_lo12(A)
+	ld.d	$s8, $a0, %got_pc_lo12(A)
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.4)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 160                   # 8-byte Folded Spill
 	lu12i.w	$a0, 1606
 	ori	$a0, $a0, 368
-	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 136                   # 8-byte Folded Spill
 	lu12i.w	$a0, 472646
 	ori	$a0, $a0, 368
 	lu32i.d	$a0, 353385
@@ -70,25 +70,27 @@ grdcell:                                # @grdcell
                                         # kill: killed $r4
                                         # implicit-def: $r4
                                         # kill: killed $r4
-                                        # implicit-def: $r27
-                                        # implicit-def: $r31
-                                        # implicit-def: $r30
                                         # implicit-def: $r23
+                                        # implicit-def: $r27
+                                        # implicit-def: $r30
+                                        # implicit-def: $r25
                                         # implicit-def: $r4
                                         # kill: killed $r4
-                                        # implicit-def: $r29
-	st.d	$a1, $sp, 160                   # 8-byte Folded Spill
+                                        # implicit-def: $r4
+                                        # kill: killed $r4
+	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	b	.LBB0_5
 .LBB0_2:                                #   in Loop: Header=BB0_5 Depth=1
-	move	$s0, $s8
-	move	$s7, $s4
+	move	$s2, $s4
+	move	$s7, $s0
 .LBB0_3:                                # %._crit_edge277
                                         #   in Loop: Header=BB0_5 Depth=1
-	add.d	$a0, $s8, $s0
+	add.d	$a0, $s4, $s2
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
-	srai.d	$s6, $a0, 1
-	add.d	$a0, $s4, $s7
+	srai.d	$a0, $a0, 1
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	add.d	$a0, $s0, $s7
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
 	srai.d	$a0, $a0, 1
@@ -101,13 +103,14 @@ grdcell:                                # @grdcell
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	bne	$a0, $s1, .LBB0_64
+	ori	$a1, $zero, 1
+	bne	$a0, $a1, .LBB0_63
 .LBB0_5:                                # %.lr.ph315
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_18 Depth 2
                                         #       Child Loop BB0_19 Depth 3
-                                        #     Child Loop BB0_55 Depth 2
-                                        #     Child Loop BB0_58 Depth 2
+                                        #     Child Loop BB0_54 Depth 2
+                                        #     Child Loop BB0_57 Depth 2
                                         #     Child Loop BB0_49 Depth 2
                                         #     Child Loop BB0_52 Depth 2
                                         #     Child Loop BB0_32 Depth 2
@@ -118,13 +121,13 @@ grdcell:                                # @grdcell
                                         #     Child Loop BB0_40 Depth 2
 	addi.d	$a0, $sp, 176
 	ori	$a2, $zero, 5
-	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
 	beqz	$a0, .LBB0_22
 # %bb.6:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.w	$a0, $sp, 176
-	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 136                   # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_26
 # %bb.7:                                #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a0, $sp, 176
@@ -137,7 +140,7 @@ grdcell:                                # @grdcell
 	ori	$a2, $zero, 10
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_42
+	beqz	$a0, .LBB0_41
 # %bb.9:                                #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.10)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.10)
@@ -145,12 +148,11 @@ grdcell:                                # @grdcell
 	ori	$a2, $zero, 9
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
 	beqz	$a0, .LBB0_47
 # %bb.10:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.w	$a0, $sp, 176
 	ld.d	$a1, $sp, 72                    # 8-byte Folded Reload
-	beq	$a0, $a1, .LBB0_54
+	beq	$a0, $a1, .LBB0_53
 # %bb.11:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.12)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.12)
@@ -158,7 +160,7 @@ grdcell:                                # @grdcell
 	ori	$a2, $zero, 6
 	pcaddu18i	$ra, %call36(bcmp)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB0_60
+	beqz	$a0, .LBB0_59
 # %bb.12:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.13)
@@ -192,7 +194,6 @@ grdcell:                                # @grdcell
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_4
 .LBB0_16:                               #   in Loop: Header=BB0_5 Depth=1
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.4)
 	addi.d	$a2, $sp, 1256
@@ -200,7 +201,7 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1256
-	blt	$a0, $s1, .LBB0_21
+	blez	$a0, .LBB0_21
 # %bb.17:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	ori	$a0, $zero, 1
@@ -278,18 +279,17 @@ grdcell:                                # @grdcell
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
-	b	.LBB0_53
+	b	.LBB0_60
 	.p2align	4, , 16
 .LBB0_22:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	addi.w	$a1, $a1, 1
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	addi.d	$a2, $sp, 1228
 	move	$a0, $fp
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
@@ -297,7 +297,6 @@ grdcell:                                # @grdcell
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $sp, 176
 	move	$a0, $fp
-	ori	$s6, $zero, 1
 	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
@@ -307,7 +306,7 @@ grdcell:                                # @grdcell
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s8, 0
 	ori	$a2, $zero, 248
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -319,11 +318,11 @@ grdcell:                                # @grdcell
 	jirl	$ra, $ra, 0
 	addi.d	$a2, $sp, 176
 	move	$a0, $fp
-	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1244
-	blt	$a0, $s6, .LBB0_33
+	blez	$a0, .LBB0_33
 # %bb.23:                               # %.lr.ph286.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s1, $zero
@@ -338,7 +337,7 @@ grdcell:                                # @grdcell
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s8, 0
 	ld.w	$a1, $a0, 0
 	ld.w	$a2, $sp, 1236
 	addi.w	$a1, $a1, 1
@@ -354,19 +353,18 @@ grdcell:                                # @grdcell
 	blt	$s1, $a2, .LBB0_24
 # %bb.25:                               # %.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB0_34
+	bgtz	$a1, .LBB0_34
 	b	.LBB0_38
 	.p2align	4, , 16
 .LBB0_26:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	addi.w	$a1, $a1, 1
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
 	addi.d	$a2, $sp, 1228
@@ -385,7 +383,7 @@ grdcell:                                # @grdcell
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s8, 0
 	ori	$a2, $zero, 248
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
@@ -403,8 +401,7 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1244
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_43
+	blez	$a0, .LBB0_43
 # %bb.27:                               # %.lr.ph269.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s1, $zero
@@ -419,7 +416,7 @@ grdcell:                                # @grdcell
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s8, 0
 	ld.w	$a1, $a0, 0
 	ld.w	$a2, $sp, 1236
 	addi.w	$a1, $a1, 1
@@ -435,11 +432,10 @@ grdcell:                                # @grdcell
 	blt	$s1, $a2, .LBB0_28
 # %bb.29:                               # %.preheader245
                                         #   in Loop: Header=BB0_5 Depth=1
-	ori	$s1, $zero, 1
-	bge	$a1, $s1, .LBB0_44
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	bgtz	$a1, .LBB0_44
 	b	.LBB0_3
 .LBB0_30:                               #   in Loop: Header=BB0_5 Depth=1
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	addi.d	$a2, $sp, 176
@@ -470,8 +466,7 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1240
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB0_53
+	blez	$a0, .LBB0_60
 # %bb.31:                               # %.lr.ph264.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s1, $zero
@@ -489,18 +484,17 @@ grdcell:                                # @grdcell
 	ld.w	$a0, $sp, 1240
 	addi.w	$s1, $s1, 1
 	blt	$s1, $a0, .LBB0_32
-	b	.LBB0_41
+	b	.LBB0_4
 .LBB0_33:                               # %..preheader_crit_edge
                                         #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s8, 0
 	ld.w	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_38
+	blez	$a1, .LBB0_38
 .LBB0_34:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.w	$s8, $a0, 8
-	ld.w	$s4, $a0, 12
-	st.w	$s8, $sp, 1236
-	st.w	$s4, $sp, 1232
+	ld.w	$s4, $a0, 8
+	ld.w	$s0, $a0, 12
+	st.w	$s4, $sp, 1236
+	st.w	$s0, $sp, 1232
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 2
 	blt	$a1, $a2, .LBB0_37
@@ -508,8 +502,8 @@ grdcell:                                # @grdcell
                                         #   in Loop: Header=BB0_5 Depth=1
 	addi.d	$a1, $a0, 20
 	ori	$a2, $zero, 1
-	move	$s7, $s4
-	move	$s0, $s8
+	move	$s7, $s0
+	move	$s2, $s4
 	.p2align	4, , 16
 .LBB0_36:                               # %.lr.ph293.peel.next
                                         #   Parent Loop BB0_5 Depth=1
@@ -518,44 +512,45 @@ grdcell:                                # @grdcell
 	st.w	$a3, $sp, 1236
 	ld.w	$a4, $a1, 0
 	st.w	$a4, $sp, 1232
-	slt	$a5, $a3, $s0
-	masknez	$a6, $s0, $a5
+	slt	$a5, $a3, $s2
+	masknez	$a6, $s2, $a5
 	maskeqz	$a5, $a3, $a5
-	or	$s0, $a5, $a6
-	slt	$a5, $s8, $a3
-	masknez	$a6, $s8, $a5
+	or	$s2, $a5, $a6
+	slt	$a5, $s4, $a3
+	masknez	$a6, $s4, $a5
 	maskeqz	$a3, $a3, $a5
-	or	$s8, $a3, $a6
+	or	$s4, $a3, $a6
 	slt	$a3, $a4, $s7
 	masknez	$a5, $s7, $a3
 	maskeqz	$a3, $a4, $a3
 	or	$s7, $a3, $a5
-	slt	$a3, $s4, $a4
-	masknez	$a5, $s4, $a3
+	slt	$a3, $s0, $a4
+	masknez	$a5, $s0, $a3
 	ld.w	$a6, $a0, 0
 	maskeqz	$a3, $a4, $a3
-	or	$s4, $a3, $a5
+	or	$s0, $a3, $a5
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 8
 	blt	$a2, $a6, .LBB0_36
 	b	.LBB0_38
 .LBB0_37:                               #   in Loop: Header=BB0_5 Depth=1
-	move	$s0, $s8
-	move	$s7, $s4
+	move	$s2, $s4
+	move	$s7, $s0
 .LBB0_38:                               # %._crit_edge294
                                         #   in Loop: Header=BB0_5 Depth=1
-	add.d	$a0, $s8, $s0
+	add.d	$a0, $s4, $s2
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
-	srai.d	$s6, $a0, 1
-	add.d	$a0, $s4, $s7
+	srai.d	$a0, $a0, 1
+	st.d	$a0, $sp, 128                   # 8-byte Folded Spill
+	add.d	$a0, $s0, $s7
 	bstrpick.d	$a1, $a0, 31, 31
 	add.w	$a0, $a0, $a1
 	srai.d	$a0, $a0, 1
 	st.d	$a0, $sp, 120                   # 8-byte Folded Spill
 	addi.d	$a2, $sp, 176
 	move	$a0, $fp
-	ld.d	$s1, $sp, 152                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 160                   # 8-byte Folded Reload
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
@@ -575,8 +570,7 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1240
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.39:                               # %.lr.ph302.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s1, $zero
@@ -592,29 +586,28 @@ grdcell:                                # @grdcell
 	ld.w	$a0, $sp, 1240
 	addi.w	$s1, $s1, 1
 	blt	$s1, $a0, .LBB0_40
-.LBB0_41:                               #   in Loop: Header=BB0_5 Depth=1
-	ori	$s1, $zero, 1
 	b	.LBB0_4
-.LBB0_42:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_41:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.9)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.9)
 	addi.d	$a2, $sp, 1200
+.LBB0_42:                               # %.loopexit
+                                        #   in Loop: Header=BB0_5 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ori	$s1, $zero, 1
 	b	.LBB0_4
 .LBB0_43:                               # %..preheader245_crit_edge
                                         #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a0, $s2, 0
+	ld.d	$a0, $s8, 0
 	ld.w	$a1, $a0, 0
-	ori	$s1, $zero, 1
-	blt	$a1, $s1, .LBB0_3
+	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
+	blez	$a1, .LBB0_3
 .LBB0_44:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.w	$s8, $a0, 8
-	ld.w	$s4, $a0, 12
-	st.w	$s8, $sp, 1236
-	st.w	$s4, $sp, 1232
+	ld.w	$s4, $a0, 8
+	ld.w	$s0, $a0, 12
+	st.w	$s4, $sp, 1236
+	st.w	$s0, $sp, 1232
 	ld.w	$a1, $a0, 0
 	ori	$a2, $zero, 2
 	blt	$a1, $a2, .LBB0_2
@@ -622,8 +615,8 @@ grdcell:                                # @grdcell
                                         #   in Loop: Header=BB0_5 Depth=1
 	addi.d	$a1, $a0, 20
 	ori	$a2, $zero, 1
-	move	$s7, $s4
-	move	$s0, $s8
+	move	$s7, $s0
+	move	$s2, $s4
 	.p2align	4, , 16
 .LBB0_46:                               # %.lr.ph276.peel.next
                                         #   Parent Loop BB0_5 Depth=1
@@ -632,37 +625,36 @@ grdcell:                                # @grdcell
 	st.w	$a3, $sp, 1236
 	ld.w	$a4, $a1, 0
 	st.w	$a4, $sp, 1232
-	slt	$a5, $a3, $s0
-	masknez	$a6, $s0, $a5
+	slt	$a5, $a3, $s2
+	masknez	$a6, $s2, $a5
 	maskeqz	$a5, $a3, $a5
-	or	$s0, $a5, $a6
-	slt	$a5, $s8, $a3
-	masknez	$a6, $s8, $a5
+	or	$s2, $a5, $a6
+	slt	$a5, $s4, $a3
+	masknez	$a6, $s4, $a5
 	maskeqz	$a3, $a3, $a5
-	or	$s8, $a3, $a6
+	or	$s4, $a3, $a6
 	slt	$a3, $a4, $s7
 	masknez	$a5, $s7, $a3
 	maskeqz	$a3, $a4, $a3
 	or	$s7, $a3, $a5
-	slt	$a3, $s4, $a4
-	masknez	$a5, $s4, $a3
+	slt	$a3, $s0, $a4
+	masknez	$a5, $s0, $a3
 	ld.w	$a6, $a0, 0
 	maskeqz	$a3, $a4, $a3
-	or	$s4, $a3, $a5
+	or	$s0, $a3, $a5
 	addi.d	$a2, $a2, 1
 	addi.d	$a1, $a1, 8
 	blt	$a2, $a6, .LBB0_46
 	b	.LBB0_3
 .LBB0_47:                               #   in Loop: Header=BB0_5 Depth=1
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
-	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$a0, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	addi.w	$a1, $a1, 1
 	st.d	$a1, $sp, 168                   # 8-byte Folded Spill
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	st.d	$a0, $sp, 144                   # 8-byte Folded Spill
+	st.d	$a0, $sp, 152                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
 	addi.d	$a2, $sp, 1228
@@ -670,7 +662,6 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
-	ori	$s6, $zero, 1
 	addi.d	$s1, $a0, %pc_lo12(.L.str.3)
 	addi.d	$a2, $sp, 176
 	move	$a0, $fp
@@ -695,7 +686,7 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1244
-	blt	$a0, $s6, .LBB0_50
+	blez	$a0, .LBB0_50
 # %bb.48:                               # %.lr.ph255.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s1, $zero
@@ -740,8 +731,7 @@ grdcell:                                # @grdcell
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 1240
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB0_53
+	blez	$a0, .LBB0_60
 # %bb.51:                               # %.lr.ph260.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s1, $zero
@@ -759,12 +749,8 @@ grdcell:                                # @grdcell
 	ld.w	$a0, $sp, 1240
 	addi.w	$s1, $s1, 1
 	blt	$s1, $a0, .LBB0_52
-	b	.LBB0_41
-.LBB0_53:                               # %.loopexit
-                                        #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
 	b	.LBB0_4
-.LBB0_54:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_53:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s5, $a0, %pc_lo12(.L.str)
 	addi.d	$a2, $sp, 176
@@ -806,33 +792,34 @@ grdcell:                                # @grdcell
 	slli.d	$a0, $a0, 3
 	ldx.d	$s5, $a1, $a0
 	.p2align	4, , 16
-.LBB0_55:                               #   Parent Loop BB0_5 Depth=1
+.LBB0_54:                               #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s5, $s5, 0
 	ld.w	$a0, $s5, 24
-	bne	$a0, $a2, .LBB0_55
-# %bb.56:                               #   in Loop: Header=BB0_5 Depth=1
-	ld.d	$a3, $sp, 144                   # 8-byte Folded Reload
+	bne	$a0, $a2, .LBB0_54
+# %bb.55:                               #   in Loop: Header=BB0_5 Depth=1
+	ld.d	$a3, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a0, $a3, 76
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	st.w	$a1, $s5, 32
-	ori	$s1, $zero, 1
-	st.w	$s1, $s5, 36
+	ori	$a1, $zero, 1
+	st.w	$a1, $s5, 36
 	st.d	$a2, $sp, 104                   # 8-byte Folded Spill
 	bnez	$a0, .LBB0_4
-# %bb.57:                               #   in Loop: Header=BB0_5 Depth=1
+# %bb.56:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a0, $a3, 152
 	addi.d	$a3, $a0, 88
 	.p2align	4, , 16
-.LBB0_58:                               #   Parent Loop BB0_5 Depth=1
+.LBB0_57:                               #   Parent Loop BB0_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a3, $a3, 0
 	ld.w	$a0, $a3, 24
-	bne	$a0, $a2, .LBB0_58
-# %bb.59:                               #   in Loop: Header=BB0_5 Depth=1
+	bne	$a0, $a2, .LBB0_57
+# %bb.58:                               #   in Loop: Header=BB0_5 Depth=1
 	ld.w	$a0, $sp, 1264
 	ld.w	$a1, $sp, 1260
-	sub.d	$a0, $a0, $s6
+	ld.d	$a2, $sp, 128                   # 8-byte Folded Reload
+	sub.d	$a0, $a0, $a2
 	st.w	$a0, $a3, 8
 	ld.d	$a2, $sp, 120                   # 8-byte Folded Reload
 	sub.d	$a1, $a1, $a2
@@ -841,7 +828,7 @@ grdcell:                                # @grdcell
 	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
 	st.w	$a1, $a3, 20
 	b	.LBB0_4
-.LBB0_60:                               #   in Loop: Header=BB0_5 Depth=1
+.LBB0_59:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s1, $a0, %pc_lo12(.L.str)
 	addi.d	$a2, $sp, 176
@@ -882,7 +869,6 @@ grdcell:                                # @grdcell
 	ori	$a0, $zero, 48
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	st.d	$s6, $sp, 112                   # 8-byte Folded Spill
 	move	$s6, $a0
 	st.d	$a0, $s5, 0
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
@@ -901,7 +887,7 @@ grdcell:                                # @grdcell
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.d	$a1, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 152                   # 8-byte Folded Reload
 	ld.w	$a0, $a1, 68
 	ld.d	$s5, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s1, $s5, 0
@@ -920,7 +906,7 @@ grdcell:                                # @grdcell
 	add.d	$a1, $a2, $a1
 	ld.w	$a2, $sp, 1260
 	st.w	$a1, $a0, 24
-	ld.d	$a1, $sp, 112                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 128                   # 8-byte Folded Reload
 	sub.d	$a1, $a3, $a1
 	st.w	$a1, $a0, 8
 	ld.d	$a3, $sp, 120                   # 8-byte Folded Reload
@@ -930,25 +916,21 @@ grdcell:                                # @grdcell
 	st.w	$a2, $a0, 20
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	move	$s5, $s6
+.LBB0_60:                               # %.loopexit
+                                        #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$s6, $sp, 112                   # 8-byte Folded Reload
-	ori	$s1, $zero, 1
 	b	.LBB0_4
 .LBB0_61:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
 	addi.d	$a2, $sp, 1208
-	b	.LBB0_63
+	b	.LBB0_42
 .LBB0_62:                               #   in Loop: Header=BB0_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.14)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.14)
 	addi.d	$a2, $sp, 1216
-.LBB0_63:                               # %.loopexit
-                                        #   in Loop: Header=BB0_5 Depth=1
-	move	$a0, $fp
-	pcaddu18i	$ra, %call36(__isoc99_fscanf)
-	jirl	$ra, $ra, 0
-	b	.LBB0_4
-.LBB0_64:                               # %._crit_edge316
+	b	.LBB0_42
+.LBB0_63:                               # %._crit_edge316
 	pcaddu18i	$ra, %call36(ggenorien)
 	jirl	$ra, $ra, 0
 	ld.d	$s8, $sp, 1272                  # 8-byte Folded Reload

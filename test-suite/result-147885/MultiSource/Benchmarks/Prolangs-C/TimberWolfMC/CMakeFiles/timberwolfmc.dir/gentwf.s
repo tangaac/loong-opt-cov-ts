@@ -403,8 +403,7 @@ gentwf:                                 # @gentwf
 	ld.w	$a0, $a0, 4
 	sub.w	$s6, $a3, $a2
 	sub.w	$s1, $a0, $a2
-	addi.w	$a0, $zero, -1
-	bge	$a0, $s6, .LBB0_42
+	bltz	$s6, .LBB0_42
 .LBB0_39:                               #   in Loop: Header=BB0_4 Depth=1
 	bge	$s1, $s6, .LBB0_44
 # %bb.40:                               #   in Loop: Header=BB0_4 Depth=1
@@ -431,8 +430,7 @@ gentwf:                                 # @gentwf
 	ldx.w	$a0, $a0, $a1
 	sub.w	$s6, $a3, $a2
 	sub.w	$s1, $a0, $a2
-	addi.w	$a0, $zero, -1
-	blt	$a0, $s6, .LBB0_39
+	bgez	$s6, .LBB0_39
 .LBB0_42:                               #   in Loop: Header=BB0_4 Depth=1
 	pcalau12i	$a0, %pc_hi20(.Lstr.3)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.3)

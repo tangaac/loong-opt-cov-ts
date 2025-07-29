@@ -89,8 +89,7 @@ _ZNK23btPolyhedralConvexShape37localGetSupportingVertexWithoutMarginERK9btVector
 	ld.d	$a1, $a0, 144
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_9
+	blez	$a0, .LBB1_9
 # %bb.4:                                # %.lr.ph
 	pcalau12i	$a0, %pc_hi20(.LCPI1_1)
 	fld.s	$fs2, $a0, %pc_lo12(.LCPI1_1)
@@ -163,8 +162,7 @@ _ZNK23btPolyhedralConvexShape37localGetSupportingVertexWithoutMarginERK9btVector
 _ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB2_16
+	blez	$a3, .LBB2_16
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -96
 	.cfi_def_cfa_offset 96
@@ -177,7 +175,6 @@ _ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMargin
 	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -187,13 +184,13 @@ _ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMargin
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$fp, $a3
 	move	$s0, $a2
 	move	$s1, $a1
 	move	$s2, $a0
+	ori	$a1, $zero, 1
 	lu12i.w	$a0, -141856
-	bne	$a3, $a4, .LBB2_3
+	bne	$a3, $a1, .LBB2_3
 # %bb.2:
 	move	$a1, $zero
 	b	.LBB2_6
@@ -229,7 +226,6 @@ _ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMargin
 	bnez	$a1, .LBB2_7
 .LBB2_8:                                # %.lr.ph29
 	move	$s4, $zero
-	ori	$s5, $zero, 1
 	b	.LBB2_10
 	.p2align	4, , 16
 .LBB2_9:                                # %._crit_edge
@@ -242,12 +238,12 @@ _ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMargin
 	ld.d	$a1, $a0, 144
 	move	$a0, $s2
 	jirl	$ra, $a1, 0
-	blt	$a0, $s5, .LBB2_9
+	blez	$a0, .LBB2_9
 # %bb.11:                               # %.lr.ph27
                                         #   in Loop: Header=BB2_10 Depth=1
 	move	$s3, $zero
-	alsl.d	$s6, $s4, $s1, 4
-	alsl.d	$s7, $s4, $s0, 4
+	alsl.d	$s5, $s4, $s1, 4
+	alsl.d	$s6, $s4, $s0, 4
 	b	.LBB2_13
 	.p2align	4, , 16
 .LBB2_12:                               #   in Loop: Header=BB2_13 Depth=2
@@ -261,31 +257,30 @@ _ZNK23btPolyhedralConvexShape49batchedUnitVectorGetSupportingVertexWithoutMargin
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s2, 0
 	ld.d	$a3, $a0, 168
-	addi.d	$a2, $sp, 0
+	addi.d	$a2, $sp, 8
 	move	$a0, $s2
 	move	$a1, $s3
 	jirl	$ra, $a3, 0
-	fld.s	$fa0, $s6, 0
-	fld.s	$fa1, $sp, 0
-	fld.s	$fa2, $s6, 4
-	fld.s	$fa3, $sp, 4
-	fld.s	$fa4, $s6, 8
-	fld.s	$fa5, $sp, 8
-	fld.s	$fa6, $s7, 12
+	fld.s	$fa0, $s5, 0
+	fld.s	$fa1, $sp, 8
+	fld.s	$fa2, $s5, 4
+	fld.s	$fa3, $sp, 12
+	fld.s	$fa4, $s5, 8
+	fld.s	$fa5, $sp, 16
+	fld.s	$fa6, $s6, 12
 	fmul.s	$fa2, $fa2, $fa3
 	fmadd.s	$fa0, $fa0, $fa1, $fa2
 	fmadd.s	$fa0, $fa4, $fa5, $fa0
 	fcmp.cule.s	$fcc0, $fa0, $fa6
 	bcnez	$fcc0, .LBB2_12
 # %bb.14:                               #   in Loop: Header=BB2_13 Depth=2
-	ld.w	$a0, $sp, 8
-	ld.d	$a1, $sp, 0
-	st.w	$a0, $s7, 8
-	st.d	$a1, $s7, 0
-	fst.s	$fa0, $s7, 12
+	ld.w	$a0, $sp, 16
+	ld.d	$a1, $sp, 8
+	st.w	$a0, $s6, 8
+	st.d	$a1, $s6, 0
+	fst.s	$fa0, $s6, 12
 	b	.LBB2_12
 .LBB2_15:
-	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload

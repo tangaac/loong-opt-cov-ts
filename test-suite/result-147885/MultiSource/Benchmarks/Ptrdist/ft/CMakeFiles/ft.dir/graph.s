@@ -5,16 +5,15 @@
 	.type	GenGraph,@function
 GenGraph:                               # @GenGraph
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
 	pcaddu18i	$ra, %call36(GenTree)
@@ -24,8 +23,7 @@ GenGraph:                               # @GenGraph
 	bltz	$s3, .LBB0_13
 # %bb.1:                                # %Duplicate.exit.preheader.lr.ph.i
 	move	$a0, $zero
-	ori	$s4, $zero, 1
-	ori	$s5, $zero, 2
+	ori	$s4, $zero, 2
 	.p2align	4, , 16
 .LBB0_2:                                # %Duplicate.exit.preheader.i
                                         # =>This Loop Header: Depth=1
@@ -33,7 +31,7 @@ GenGraph:                               # @GenGraph
                                         #       Child Loop BB0_5 Depth 3
                                         #       Child Loop BB0_8 Depth 3
                                         #       Child Loop BB0_10 Depth 3
-	move	$s6, $a0
+	move	$s5, $a0
 .LBB0_3:                                # %Duplicate.exit.i
                                         #   Parent Loop BB0_2 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -44,7 +42,7 @@ GenGraph:                               # @GenGraph
 	jirl	$ra, $ra, 0
 	mod.d	$a0, $a0, $fp
 	move	$s1, $s0
-	blt	$a0, $s4, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.4:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB0_3 Depth=2
 	move	$s1, $s0
@@ -62,7 +60,7 @@ GenGraph:                               # @GenGraph
 	pcaddu18i	$ra, %call36(random)
 	jirl	$ra, $ra, 0
 	mod.d	$a0, $a0, $fp
-	blt	$a0, $s5, .LBB0_9
+	blt	$a0, $s4, .LBB0_9
 # %bb.7:                                # %.lr.ph.i12.preheader.i
                                         #   in Loop: Header=BB0_3 Depth=2
 	addi.d	$a0, $a0, -1
@@ -94,20 +92,19 @@ GenGraph:                               # @GenGraph
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(Connect)
 	jirl	$ra, $ra, 0
-	addi.w	$a0, $s6, 1
-	bne	$s6, $s3, .LBB0_2
+	addi.w	$a0, $s5, 1
+	bne	$s5, $s3, .LBB0_2
 .LBB0_13:                               # %AddEdges.exit
 	move	$a0, $s0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end0:
 	.size	GenGraph, .Lfunc_end0-GenGraph
@@ -117,18 +114,17 @@ GenGraph:                               # @GenGraph
 	.type	GenTree,@function
 GenTree:                                # @GenTree
 # %bb.0:
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ori	$a0, $zero, 40
 	pcaddu18i	$ra, %call36(malloc)
@@ -153,7 +149,6 @@ GenTree:                                # @GenTree
 	lu32i.d	$a0, 461373
 	lu52i.d	$s5, $a0, -1475
 	ori	$s6, $zero, 100
-	ori	$s7, $zero, 1
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	.p2align	4, , 16
 .LBB1_3:                                # %.lr.ph
@@ -186,10 +181,10 @@ GenTree:                                # @GenTree
 	st.d	$s2, $a0, 0
 	pcaddu18i	$ra, %call36(random)
 	jirl	$ra, $ra, 0
-	mod.d	$a0, $a0, $s7
+	mod.d	$a0, $a0, $s4
 	addi.w	$a2, $a0, 0
 	move	$a1, $s0
-	blt	$a2, $s4, .LBB1_8
+	blez	$a2, .LBB1_8
 # %bb.6:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
 	move	$a1, $s0
@@ -213,8 +208,8 @@ GenTree:                                # @GenTree
 	add.d	$a1, $a1, $a2
 	mul.d	$a1, $a1, $s6
 	ld.d	$a2, $s0, 16
-	sub.d	$s8, $a0, $a1
-	st.w	$s8, $s2, 0
+	sub.d	$s7, $a0, $a1
+	st.w	$s7, $s2, 0
 	st.d	$s1, $s2, 8
 	st.d	$a2, $s1, 16
 	st.d	$s1, $s0, 16
@@ -231,26 +226,25 @@ GenTree:                                # @GenTree
 	st.d	$s1, $a0, 16
 	ld.d	$a1, $a1, 16
 	ld.d	$a3, $a1, 8
-	st.w	$s8, $a0, 0
+	st.w	$s7, $a0, 0
 	st.d	$a2, $a0, 8
 	st.d	$a3, $a0, 24
-	addi.d	$s7, $s7, 1
+	addi.d	$s4, $s4, 1
 	st.d	$a0, $a1, 8
-	bne	$s7, $fp, .LBB1_3
+	bne	$s4, $fp, .LBB1_3
 .LBB1_10:                               # %._crit_edge
 	move	$a0, $s0
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .LBB1_11:
 	pcalau12i	$a0, %got_pc_hi20(stderr)
@@ -273,24 +267,22 @@ GenTree:                                # @GenTree
 	.type	AddEdges,@function
 AddEdges:                               # @AddEdges
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	ori	$s4, $zero, 1
+	addi.d	$sp, $sp, -64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$s0, $a0
-	blt	$a2, $s4, .LBB2_12
+	blez	$a2, .LBB2_12
 # %bb.1:                                # %Duplicate.exit.preheader.lr.ph
 	move	$fp, $a2
 	move	$s1, $a1
-	move	$s5, $zero
-	ori	$s6, $zero, 2
+	move	$s4, $zero
+	ori	$s5, $zero, 2
 	.p2align	4, , 16
 .LBB2_2:                                # %Duplicate.exit
                                         # =>This Loop Header: Depth=1
@@ -301,7 +293,7 @@ AddEdges:                               # @AddEdges
 	jirl	$ra, $ra, 0
 	mod.d	$a0, $a0, $s1
 	move	$s2, $s0
-	blt	$a0, $s4, .LBB2_5
+	blez	$a0, .LBB2_5
 # %bb.3:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB2_2 Depth=1
 	move	$s2, $s0
@@ -318,7 +310,7 @@ AddEdges:                               # @AddEdges
 	pcaddu18i	$ra, %call36(random)
 	jirl	$ra, $ra, 0
 	mod.d	$a0, $a0, $s1
-	blt	$a0, $s6, .LBB2_8
+	blt	$a0, $s5, .LBB2_8
 # %bb.6:                                # %.lr.ph.i12.preheader
                                         #   in Loop: Header=BB2_2 Depth=1
 	addi.d	$a0, $a0, -1
@@ -348,20 +340,19 @@ AddEdges:                               # @AddEdges
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(Connect)
 	jirl	$ra, $ra, 0
-	addi.w	$s5, $s5, 1
-	bne	$s5, $fp, .LBB2_2
+	addi.w	$s4, $s4, 1
+	bne	$s4, $fp, .LBB2_2
 .LBB2_12:                               # %._crit_edge
 	move	$a0, $s0
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end2:
 	.size	AddEdges, .Lfunc_end2-AddEdges
@@ -371,8 +362,7 @@ AddEdges:                               # @AddEdges
 	.type	PickVertex,@function
 PickVertex:                             # @PickVertex
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_2
+	blez	$a1, .LBB3_2
 	.p2align	4, , 16
 .LBB3_1:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1

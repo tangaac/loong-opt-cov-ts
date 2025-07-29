@@ -3283,12 +3283,10 @@ readRunLevel_CABAC:                     # @readRunLevel_CABAC
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s4, %pc_hi20(readRunLevel_CABAC.coeff_ctr)
 	ld.w	$a3, $s4, %pc_lo12(readRunLevel_CABAC.coeff_ctr)
-	addi.w	$s5, $zero, -1
 	move	$fp, $a0
-	bge	$s5, $a3, .LBB25_2
+	bltz	$a3, .LBB25_2
 # %bb.1:
 	bnez	$a3, .LBB25_4
 	b	.LBB25_9
@@ -3359,12 +3357,12 @@ readRunLevel_CABAC:                     # @readRunLevel_CABAC
 	b	.LBB25_10
 .LBB25_9:                               # %.thread22
 	st.d	$zero, $fp, 4
-	lu32i.d	$s5, 0
-	st.w	$s5, $s4, %pc_lo12(readRunLevel_CABAC.coeff_ctr)
+	addi.w	$a0, $zero, -1
+	lu32i.d	$a0, 0
+	st.w	$a0, $s4, %pc_lo12(readRunLevel_CABAC.coeff_ctr)
 	pcalau12i	$a0, %pc_hi20(readRunLevel_CABAC.pos)
 	st.w	$zero, $a0, %pc_lo12(readRunLevel_CABAC.pos)
 .LBB25_10:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

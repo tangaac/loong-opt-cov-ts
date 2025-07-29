@@ -151,13 +151,13 @@ symbol2uvlc:                            # @symbol2uvlc
 writeUVLC2buffer:                       # @writeUVLC2buffer
 # %bb.0:
 	ld.w	$a2, $a0, 12
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB3_7
+	blez	$a2, .LBB3_7
 # %bb.1:                                # %.lr.ph
 	move	$a3, $zero
+	addi.d	$a4, $a2, -1
 	ld.bu	$a6, $a1, 8
-	addi.d	$a5, $a2, -1
-	sll.w	$a4, $a4, $a5
+	ori	$a5, $zero, 1
+	sll.w	$a4, $a5, $a4
 	ori	$a5, $zero, 8
 	b	.LBB3_3
 	.p2align	4, , 16
@@ -354,12 +354,12 @@ u_1:                                    # @u_1
 	.type	u_v,@function
 u_v:                                    # @u_v
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_5
+	blez	$a0, .LBB7_5
 # %bb.1:                                # %.lr.ph.i
+	addi.d	$a1, $a0, -1
 	ld.bu	$a6, $a3, 8
-	addi.d	$a4, $a0, -1
-	sll.w	$a1, $a1, $a4
+	ori	$a4, $zero, 1
+	sll.w	$a1, $a4, $a1
 	ori	$a4, $zero, 8
 	move	$a5, $a0
 	b	.LBB7_3
@@ -1090,7 +1090,7 @@ writeSyntaxElement2Buf_UVLC:            # @writeSyntaxElement2Buf_UVLC
 	and	$a3, $a4, $a3
 	or	$a1, $a3, $a1
 	st.w	$a1, $fp, 20
-	blt	$a0, $a2, .LBB16_7
+	blez	$a0, .LBB16_7
 # %bb.1:                                # %.lr.ph.i
 	move	$a1, $zero
 	ld.bu	$a4, $s0, 8
@@ -1145,13 +1145,13 @@ writeSyntaxElement2Buf_UVLC:            # @writeSyntaxElement2Buf_UVLC
 writeSyntaxElement2Buf_Fixed:           # @writeSyntaxElement2Buf_Fixed
 # %bb.0:
 	ld.w	$a2, $a0, 12
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB17_7
+	blez	$a2, .LBB17_7
 # %bb.1:                                # %.lr.ph.i
 	move	$a3, $zero
+	addi.d	$a4, $a2, -1
 	ld.bu	$a6, $a1, 8
-	addi.d	$a5, $a2, -1
-	sll.w	$a4, $a4, $a5
+	ori	$a5, $zero, 1
+	sll.w	$a4, $a5, $a4
 	ori	$a5, $zero, 8
 	b	.LBB17_3
 	.p2align	4, , 16
@@ -1332,14 +1332,14 @@ writeSE_Dummy:                          # @writeSE_Dummy
 writeSE_Fix:                            # @writeSE_Fix
 # %bb.0:
 	ld.w	$a2, $a0, 12
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB21_7
+	blez	$a2, .LBB21_7
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a1, $a1, 0
 	move	$a3, $zero
+	addi.d	$a4, $a2, -1
 	ld.bu	$a6, $a1, 8
-	addi.d	$a5, $a2, -1
-	sll.w	$a4, $a4, $a5
+	ori	$a5, $zero, 1
+	sll.w	$a4, $a5, $a4
 	ori	$a5, $zero, 8
 	b	.LBB21_3
 	.p2align	4, , 16
@@ -1383,28 +1383,28 @@ writeSE_Fix:                            # @writeSE_Fix
 	.type	symbol2vlc,@function
 symbol2vlc:                             # @symbol2vlc
 # %bb.0:
-	ld.w	$a3, $a0, 12
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB22_4
+	ld.w	$a2, $a0, 12
+	blez	$a2, .LBB22_4
 # %bb.1:                                # %.lr.ph
-	ld.w	$a2, $a0, 16
-	move	$a5, $zero
-	addi.d	$a3, $a3, 1
+	ld.w	$a1, $a0, 16
+	move	$a4, $zero
+	addi.d	$a2, $a2, 1
+	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB22_2:                               # =>This Inner Loop Header: Depth=1
-	addi.d	$a4, $a3, -2
-	srl.w	$a4, $a2, $a4
-	bstrins.d	$a4, $a5, 63, 1
-	addi.w	$a3, $a3, -1
-	move	$a5, $a4
-	bltu	$a1, $a3, .LBB22_2
+	addi.d	$a5, $a2, -2
+	srl.w	$a5, $a1, $a5
+	bstrins.d	$a5, $a4, 63, 1
+	addi.w	$a2, $a2, -1
+	move	$a4, $a5
+	bltu	$a3, $a2, .LBB22_2
 # %bb.3:                                # %._crit_edge
-	st.w	$a4, $a0, 20
+	st.w	$a5, $a0, 20
 	move	$a0, $zero
 	ret
 .LBB22_4:
-	move	$a4, $zero
-	st.w	$a4, $a0, 20
+	move	$a5, $zero
+	st.w	$a5, $a0, 20
 	move	$a0, $zero
 	ret
 .Lfunc_end22:
@@ -1418,21 +1418,21 @@ writeSyntaxElement_VLC:                 # @writeSyntaxElement_VLC
 	ld.w	$a3, $a0, 4
 	ld.w	$a2, $a0, 8
 	st.w	$a3, $a0, 16
-	ori	$a4, $zero, 1
 	st.w	$a2, $a0, 12
-	blt	$a2, $a4, .LBB23_9
+	blez	$a2, .LBB23_9
 # %bb.1:                                # %.lr.ph.i.preheader
 	move	$a5, $zero
-	addi.d	$a6, $a2, 1
+	addi.d	$a4, $a2, 1
+	ori	$a6, $zero, 1
 	.p2align	4, , 16
 .LBB23_2:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a7, $a5
-	addi.d	$a5, $a6, -2
+	addi.d	$a5, $a4, -2
 	srl.w	$a5, $a3, $a5
-	addi.w	$a6, $a6, -1
+	addi.w	$a4, $a4, -1
 	bstrins.d	$a5, $a7, 63, 1
-	bltu	$a4, $a6, .LBB23_2
+	bltu	$a6, $a4, .LBB23_2
 # %bb.3:                                # %.lr.ph.i10
 	ld.d	$a3, $a1, 0
 	move	$a4, $zero
@@ -1502,9 +1502,8 @@ writeSyntaxElement_NumCoeffTrailingOnes: # @writeSyntaxElement_NumCoeffTrailingO
 # %bb.1:
 	ld.w	$a2, $a0, 4
 	ori	$a4, $zero, 6
-	ori	$a5, $zero, 1
 	st.w	$a4, $a0, 12
-	blt	$a2, $a5, .LBB24_3
+	blez	$a2, .LBB24_3
 # %bb.2:
 	ld.w	$a3, $a0, 8
 	addi.d	$a5, $zero, -4
@@ -1535,8 +1534,7 @@ writeSyntaxElement_NumCoeffTrailingOnes: # @writeSyntaxElement_NumCoeffTrailingO
 	st.w	$a3, $a0, 16
 	beqz	$a4, .LBB24_18
 # %bb.5:
-	ori	$a2, $zero, 1
-	blt	$a4, $a2, .LBB24_14
+	blez	$a4, .LBB24_14
 .LBB24_6:                               # %.lr.ph.i
 	move	$a5, $zero
 	addi.d	$a2, $a4, 1
@@ -1652,20 +1650,20 @@ writeSyntaxElement_NumCoeffTrailingOnesChromaDC: # @writeSyntaxElement_NumCoeffT
 	st.w	$a5, $a0, 16
 	beqz	$a3, .LBB25_14
 # %bb.1:
-	ori	$a2, $zero, 1
-	blt	$a3, $a2, .LBB25_10
+	blez	$a3, .LBB25_10
 # %bb.2:                                # %.lr.ph.i.preheader
 	move	$a6, $zero
-	addi.d	$a4, $a3, 1
+	addi.d	$a2, $a3, 1
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
 .LBB25_3:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a7, $a6
-	addi.d	$a6, $a4, -2
+	addi.d	$a6, $a2, -2
 	srl.w	$a6, $a5, $a6
-	addi.w	$a4, $a4, -1
+	addi.w	$a2, $a2, -1
 	bstrins.d	$a6, $a7, 63, 1
-	bltu	$a2, $a4, .LBB25_3
+	bltu	$a4, $a2, .LBB25_3
 # %bb.4:                                # %.lr.ph.i16
 	ld.d	$a2, $a1, 0
 	move	$a4, $zero
@@ -1756,20 +1754,20 @@ writeSyntaxElement_TotalZeros:          # @writeSyntaxElement_TotalZeros
 	st.w	$a4, $a0, 16
 	beqz	$a2, .LBB26_14
 # %bb.1:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB26_10
+	blez	$a2, .LBB26_10
 # %bb.2:                                # %.lr.ph.i.preheader
 	move	$a5, $zero
-	addi.d	$a6, $a2, 1
+	addi.d	$a3, $a2, 1
+	ori	$a6, $zero, 1
 	.p2align	4, , 16
 .LBB26_3:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a7, $a5
-	addi.d	$a5, $a6, -2
+	addi.d	$a5, $a3, -2
 	srl.w	$a5, $a4, $a5
-	addi.w	$a6, $a6, -1
+	addi.w	$a3, $a3, -1
 	bstrins.d	$a5, $a7, 63, 1
-	bltu	$a3, $a6, .LBB26_3
+	bltu	$a6, $a3, .LBB26_3
 # %bb.4:                                # %.lr.ph.i14
 	ld.d	$a3, $a1, 0
 	move	$a4, $zero
@@ -1871,20 +1869,20 @@ writeSyntaxElement_TotalZerosChromaDC:  # @writeSyntaxElement_TotalZerosChromaDC
 	st.w	$a4, $a0, 16
 	beqz	$a2, .LBB27_14
 # %bb.1:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB27_10
+	blez	$a2, .LBB27_10
 # %bb.2:                                # %.lr.ph.i.preheader
 	move	$a5, $zero
-	addi.d	$a6, $a2, 1
+	addi.d	$a3, $a2, 1
+	ori	$a6, $zero, 1
 	.p2align	4, , 16
 .LBB27_3:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a7, $a5
-	addi.d	$a5, $a6, -2
+	addi.d	$a5, $a3, -2
 	srl.w	$a5, $a4, $a5
-	addi.w	$a6, $a6, -1
+	addi.w	$a3, $a3, -1
 	bstrins.d	$a5, $a7, 63, 1
-	bltu	$a3, $a6, .LBB27_3
+	bltu	$a6, $a3, .LBB27_3
 # %bb.4:                                # %.lr.ph.i16
 	ld.d	$a3, $a1, 0
 	move	$a4, $zero
@@ -1975,20 +1973,20 @@ writeSyntaxElement_Run:                 # @writeSyntaxElement_Run
 	st.w	$a4, $a0, 16
 	beqz	$a2, .LBB28_14
 # %bb.1:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB28_10
+	blez	$a2, .LBB28_10
 # %bb.2:                                # %.lr.ph.i.preheader
 	move	$a5, $zero
-	addi.d	$a6, $a2, 1
+	addi.d	$a3, $a2, 1
+	ori	$a6, $zero, 1
 	.p2align	4, , 16
 .LBB28_3:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a7, $a5
-	addi.d	$a5, $a6, -2
+	addi.d	$a5, $a3, -2
 	srl.w	$a5, $a4, $a5
-	addi.w	$a6, $a6, -1
+	addi.w	$a3, $a3, -1
 	bstrins.d	$a5, $a7, 63, 1
-	bltu	$a3, $a6, .LBB28_3
+	bltu	$a6, $a3, .LBB28_3
 # %bb.4:                                # %.lr.ph.i14
 	ld.d	$a3, $a1, 0
 	move	$a4, $zero
@@ -2075,9 +2073,8 @@ writeSyntaxElement_Level_VLC1:          # @writeSyntaxElement_Level_VLC1
 	addi.w	$a2, $a2, -1
 	ori	$a3, $zero, 1
 	st.w	$a2, $a0, 12
-	ori	$a4, $zero, 1
 	st.w	$a3, $a0, 16
-	bge	$a2, $a4, .LBB29_15
+	bgtz	$a2, .LBB29_15
 .LBB29_2:                               # %symbol2vlc.exit
 	st.w	$zero, $a0, 20
 .LBB29_3:                               # %writeUVLC2buffer.exit
@@ -2141,9 +2138,8 @@ writeSyntaxElement_Level_VLC1:          # @writeSyntaxElement_Level_VLC1
 	addi.d	$a2, $zero, -2
 	alsl.w	$a2, $a4, $a2, 1
 	st.w	$a2, $a0, 12
-	ori	$a4, $zero, 1
 	st.w	$a3, $a0, 16
-	blt	$a2, $a4, .LBB29_2
+	blez	$a2, .LBB29_2
 .LBB29_15:                              # %.lr.ph.i
 	move	$a5, $zero
 	addi.d	$a4, $a2, 1
@@ -2274,21 +2270,21 @@ writeSyntaxElement_Level_VLCN:          # @writeSyntaxElement_Level_VLCN
 	or	$a1, $a1, $a5
 .LBB30_9:                               # %.critedge
 	st.w	$a4, $a0, 12
-	ori	$a3, $zero, 1
 	st.w	$a1, $a0, 16
-	blt	$a4, $a3, .LBB30_18
+	blez	$a4, .LBB30_18
 # %bb.10:                               # %.lr.ph.i.preheader
 	move	$a5, $zero
-	addi.d	$a6, $a4, 1
+	addi.d	$a3, $a4, 1
+	ori	$a6, $zero, 1
 	.p2align	4, , 16
 .LBB30_11:                              # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a7, $a5
-	addi.d	$a5, $a6, -2
+	addi.d	$a5, $a3, -2
 	srl.w	$a5, $a1, $a5
-	addi.w	$a6, $a6, -1
+	addi.w	$a3, $a3, -1
 	bstrins.d	$a5, $a7, 63, 1
-	bltu	$a3, $a6, .LBB30_11
+	bltu	$a6, $a3, .LBB30_11
 # %bb.12:                               # %.lr.ph.i63
 	ld.d	$a1, $a2, 0
 	move	$a3, $zero

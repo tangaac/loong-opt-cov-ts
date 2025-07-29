@@ -8,9 +8,8 @@ deleteIndexEntry:                       # @deleteIndexEntry
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.1:
 	ld.d	$a0, $fp, 0
 	pcaddu18i	$ra, %call36(deleteIndexNode)

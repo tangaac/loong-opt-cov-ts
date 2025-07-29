@@ -80,7 +80,7 @@ main:                                   # @main
 	addi.d	$a2, $a2, 16
 	bne	$a1, $a0, .LBB2_2
 .LBB2_4:                                # %middle.split
-	bstrpick.d	$a0, $a3, 15, 0
+	slli.d	$a0, $a3, 48
 	bnez	$a0, .LBB2_27
 # %bb.5:                                # %.preheader
 	ld.bu	$a1, $fp, 512
@@ -139,7 +139,7 @@ main:                                   # @main
 	addi.d	$a2, $a2, 16
 	bne	$a1, $a0, .LBB2_15
 .LBB2_17:                               # %middle.split22
-	bstrpick.d	$a0, $a3, 15, 0
+	slli.d	$a0, $a3, 48
 	bnez	$a0, .LBB2_27
 # %bb.18:                               # %scalar.ph16
 	ld.bu	$a1, $fp, 512

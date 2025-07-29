@@ -17,8 +17,7 @@
 	.type	_Z19GravityForceKernel4iPfS_S_S_fffffRfS0_S0_,@function
 _Z19GravityForceKernel4iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel4iPfS_S_S_fffffRfS0_S0_
 # %bb.0:
-	ori	$t0, $zero, 1
-	blt	$a0, $t0, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader.i
 	pcalau12i	$t0, %pc_hi20(.LCPI0_0)
 	fld.s	$fa7, $t0, %pc_lo12(.LCPI0_0)
@@ -55,13 +54,11 @@ _Z19GravityForceKernel4iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel4iPfS_S_
 	fmadd.s	$ft9, $ft7, $ft7, $ft9
 	fmadd.s	$ft9, $ft8, $ft8, $ft9
 	fcmp.cle.s	$fcc0, $fa3, $ft9
-	movcf2gr	$t0, $fcc0
-	bnez	$t0, .LBB0_2
+	bcnez	$fcc0, .LBB0_2
 # %bb.4:                                # %.lr.ph.i
                                         #   in Loop: Header=BB0_3 Depth=1
 	fcmp.ceq.s	$fcc0, $ft9, $ft5
-	movcf2gr	$t0, $fcc0
-	bnez	$t0, .LBB0_2
+	bcnez	$fcc0, .LBB0_2
 # %bb.5:                                #   in Loop: Header=BB0_3 Depth=1
 	fmadd.s	$ft10, $ft9, $ft0, $fa7
 	fmadd.s	$ft10, $ft10, $ft9, $ft1
@@ -116,8 +113,7 @@ _Z19GravityForceKernel4iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel4iPfS_S_
 	.type	_Z19GravityForceKernel5iPfS_S_S_fffffRfS0_S0_,@function
 _Z19GravityForceKernel5iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel5iPfS_S_S_fffffRfS0_S0_
 # %bb.0:
-	ori	$t0, $zero, 1
-	blt	$a0, $t0, .LBB1_6
+	blez	$a0, .LBB1_6
 # %bb.1:                                # %.lr.ph.preheader.i
 	pcalau12i	$t0, %pc_hi20(.LCPI1_0)
 	fld.s	$fa6, $t0, %pc_lo12(.LCPI1_0)
@@ -156,13 +152,11 @@ _Z19GravityForceKernel5iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel5iPfS_S_
 	fmadd.s	$ft10, $ft8, $ft8, $ft10
 	fmadd.s	$ft10, $ft9, $ft9, $ft10
 	fcmp.cle.s	$fcc0, $fa3, $ft10
-	movcf2gr	$t0, $fcc0
-	bnez	$t0, .LBB1_2
+	bcnez	$fcc0, .LBB1_2
 # %bb.4:                                # %.lr.ph.i
                                         #   in Loop: Header=BB1_3 Depth=1
 	fcmp.ceq.s	$fcc0, $ft10, $ft6
-	movcf2gr	$t0, $fcc0
-	bnez	$t0, .LBB1_2
+	bcnez	$fcc0, .LBB1_2
 # %bb.5:                                #   in Loop: Header=BB1_3 Depth=1
 	fmadd.s	$ft11, $ft10, $ft0, $fa6
 	fmadd.s	$ft11, $ft11, $ft10, $ft1
@@ -220,8 +214,7 @@ _Z19GravityForceKernel5iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel5iPfS_S_
 	.type	_Z19GravityForceKernel6iPfS_S_S_fffffRfS0_S0_,@function
 _Z19GravityForceKernel6iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel6iPfS_S_S_fffffRfS0_S0_
 # %bb.0:
-	ori	$t0, $zero, 1
-	blt	$a0, $t0, .LBB2_6
+	blez	$a0, .LBB2_6
 # %bb.1:                                # %.lr.ph.preheader.i
 	pcalau12i	$t0, %pc_hi20(.LCPI2_0)
 	fld.s	$fa5, $t0, %pc_lo12(.LCPI2_0)
@@ -262,13 +255,11 @@ _Z19GravityForceKernel6iPfS_S_S_fffffRfS0_S0_: # @_Z19GravityForceKernel6iPfS_S_
 	fmadd.s	$ft11, $ft9, $ft9, $ft11
 	fmadd.s	$ft11, $ft10, $ft10, $ft11
 	fcmp.cle.s	$fcc0, $fa3, $ft11
-	movcf2gr	$t0, $fcc0
-	bnez	$t0, .LBB2_2
+	bcnez	$fcc0, .LBB2_2
 # %bb.4:                                # %.lr.ph.i
                                         #   in Loop: Header=BB2_3 Depth=1
 	fcmp.ceq.s	$fcc0, $ft11, $ft7
-	movcf2gr	$t0, $fcc0
-	bnez	$t0, .LBB2_2
+	bcnez	$fcc0, .LBB2_2
 # %bb.5:                                #   in Loop: Header=BB2_3 Depth=1
 	fmadd.s	$ft12, $ft11, $fa7, $fa5
 	fmadd.s	$ft12, $ft12, $ft11, $ft1

@@ -208,52 +208,52 @@ consume_markers:                        # @consume_markers
 	b	.LBB1_10
 .LBB1_21:                               # %._crit_edge.i
 	ori	$s1, $zero, 8
-	ori	$s2, $zero, 1
 	st.w	$s1, $fp, 396
-	blt	$a0, $s2, .LBB1_31
+	blez	$a0, .LBB1_31
 # %bb.22:                               # %.lr.ph90.i
 	ld.d	$a0, $fp, 296
-	move	$s3, $zero
-	addi.d	$s4, $a0, 40
+	move	$s2, $zero
+	addi.d	$s3, $a0, 40
+	ori	$s4, $zero, 1
 	.p2align	4, , 16
 .LBB1_23:                               # =>This Inner Loop Header: Depth=1
 	ld.wu	$a0, $fp, 40
-	ld.w	$a1, $s4, -32
+	ld.w	$a1, $s3, -32
 	ld.w	$a2, $fp, 388
-	st.w	$s1, $s4, -4
+	st.w	$s1, $s3, -4
 	mul.d	$a0, $a1, $a0
 	slli.w	$a1, $a2, 3
 	pcaddu18i	$ra, %call36(jdiv_round_up)
 	jirl	$ra, $ra, 0
 	ld.wu	$a1, $fp, 44
-	ld.w	$a2, $s4, -28
+	ld.w	$a2, $s3, -28
 	ld.w	$a3, $fp, 392
-	st.w	$a0, $s4, -12
+	st.w	$a0, $s3, -12
 	mul.d	$a0, $a2, $a1
 	slli.w	$a1, $a3, 3
 	pcaddu18i	$ra, %call36(jdiv_round_up)
 	jirl	$ra, $ra, 0
 	ld.wu	$a2, $fp, 40
-	ld.w	$a3, $s4, -32
+	ld.w	$a3, $s3, -32
 	ld.w	$a1, $fp, 388
-	st.w	$a0, $s4, -8
+	st.w	$a0, $s3, -8
 	mul.d	$a0, $a3, $a2
 	pcaddu18i	$ra, %call36(jdiv_round_up)
 	jirl	$ra, $ra, 0
 	ld.wu	$a2, $fp, 44
-	ld.w	$a3, $s4, -28
+	ld.w	$a3, $s3, -28
 	ld.w	$a1, $fp, 392
-	st.w	$a0, $s4, 0
+	st.w	$a0, $s3, 0
 	mul.d	$a0, $a3, $a2
 	pcaddu18i	$ra, %call36(jdiv_round_up)
 	jirl	$ra, $ra, 0
-	st.w	$a0, $s4, 4
+	st.w	$a0, $s3, 4
 	ld.w	$a0, $fp, 48
-	st.w	$s2, $s4, 8
-	st.d	$zero, $s4, 40
-	addi.w	$s3, $s3, 1
-	addi.d	$s4, $s4, 96
-	blt	$s3, $a0, .LBB1_23
+	st.w	$s4, $s3, 8
+	st.d	$zero, $s3, 40
+	addi.w	$s2, $s2, 1
+	addi.d	$s3, $s3, 96
+	blt	$s2, $a0, .LBB1_23
 # %bb.24:                               # %._crit_edge91.loopexit.i
 	ld.w	$a1, $fp, 392
 	b	.LBB1_31
@@ -409,25 +409,25 @@ start_input_pass:                       # @start_input_pass
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 416
 	st.w	$a0, $fp, 460
-	ori	$s0, $zero, 1
 	st.w	$zero, $fp, 464
-	blt	$a1, $s0, .LBB3_20
+	blez	$a1, .LBB3_20
 # %bb.5:                                # %.lr.ph81.i
-	move	$s1, $zero
-	addi.d	$s2, $fp, 424
-	addi.d	$s3, $fp, 468
-	ori	$s4, $zero, 11
+	move	$s0, $zero
+	addi.d	$s1, $fp, 424
+	addi.d	$s2, $fp, 468
+	ori	$s3, $zero, 11
+	ori	$s4, $zero, 1
 	b	.LBB3_7
 	.p2align	4, , 16
 .LBB3_6:                                # %._crit_edge.i
                                         #   in Loop: Header=BB3_7 Depth=1
 	ld.w	$a0, $fp, 416
-	addi.d	$s1, $s1, 1
-	bge	$s1, $a0, .LBB3_12
+	addi.d	$s0, $s0, 1
+	bge	$s0, $a0, .LBB3_12
 .LBB3_7:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_11 Depth 2
-	slli.d	$a0, $s1, 3
-	ldx.d	$a0, $s2, $a0
+	slli.d	$a0, $s0, 3
+	ldx.d	$a0, $s1, $a0
 	ld.w	$a1, $a0, 8
 	ld.w	$a2, $a0, 12
 	st.w	$a1, $a0, 52
@@ -453,15 +453,15 @@ start_input_pass:                       # @start_input_pass
 	or	$a1, $a2, $a1
 	add.w	$a2, $a4, $s5
 	st.w	$a1, $a0, 72
-	blt	$a2, $s4, .LBB3_9
+	blt	$a2, $s3, .LBB3_9
 # %bb.8:                                #   in Loop: Header=BB3_7 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0
-	st.w	$s4, $a0, 40
+	st.w	$s3, $a0, 40
 	move	$a0, $fp
 	jirl	$ra, $a1, 0
 .LBB3_9:                                #   in Loop: Header=BB3_7 Depth=1
-	blt	$s5, $s0, .LBB3_6
+	blez	$s5, .LBB3_6
 # %bb.10:                               # %.lr.ph.preheader.i
                                         #   in Loop: Header=BB3_7 Depth=1
 	addi.d	$a0, $s5, 1
@@ -474,12 +474,11 @@ start_input_pass:                       # @start_input_pass
 	st.w	$a2, $fp, 464
 	slli.d	$a1, $a1, 2
 	addi.w	$a0, $a0, -1
-	stx.w	$s1, $s3, $a1
-	bltu	$s0, $a0, .LBB3_11
+	stx.w	$s0, $s2, $a1
+	bltu	$s4, $a0, .LBB3_11
 	b	.LBB3_6
 .LBB3_12:                               # %per_scan_setup.exit
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_20
+	blez	$a0, .LBB3_20
 .LBB3_13:                               # %.lr.ph.i9
 	move	$s1, $zero
 	addi.d	$s2, $fp, 192

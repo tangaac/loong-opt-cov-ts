@@ -64,8 +64,7 @@ main:                                   # @main
 	addi.d	$a3, $a3, -255
 	sltui	$a3, $a3, 1
 	and	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB1_4
+	beqz	$a2, .LBB1_4
 # %bb.1:
 	andi	$a1, $a1, 255
 	bnez	$a1, .LBB1_4

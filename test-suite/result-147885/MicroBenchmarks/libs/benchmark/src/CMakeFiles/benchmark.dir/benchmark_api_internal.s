@@ -601,9 +601,8 @@ _ZN9benchmark8internal17BenchmarkInstanceC2EPNS0_9BenchmarkEiiRKSt6vectorIlSaIlE
 	ld.d	$a0, $fp, 256
 .LBB0_94:
 	ld.bu	$a1, $a0, 140
-	ori	$s1, $zero, 1
 	addi.d	$s0, $fp, 192
-	bne	$a1, $s1, .LBB0_97
+	beqz	$a1, .LBB0_97
 # %bb.95:
 	ld.d	$a2, $fp, 200
 .Ltmp43:
@@ -619,7 +618,7 @@ _ZN9benchmark8internal17BenchmarkInstanceC2EPNS0_9BenchmarkEiiRKSt6vectorIlSaIlE
 	ld.d	$a0, $fp, 256
 .LBB0_97:                               # %_ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSEPKc.exit
 	ld.bu	$a1, $a0, 142
-	bne	$a1, $s1, .LBB0_103
+	beqz	$a1, .LBB0_103
 # %bb.98:
 	ld.d	$s3, $fp, 200
 	ori	$s1, $zero, 11
@@ -663,8 +662,7 @@ _ZN9benchmark8internal17BenchmarkInstanceC2EPNS0_9BenchmarkEiiRKSt6vectorIlSaIlE
 	b	.LBB0_138
 .LBB0_103:
 	ld.bu	$a0, $a0, 141
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB0_110
+	beqz	$a0, .LBB0_110
 # %bb.104:
 	ld.d	$s3, $fp, 200
 	ori	$s1, $zero, 9

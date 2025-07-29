@@ -5,9 +5,8 @@
 	.type	g,@function
 g:                                      # @g
 # %bb.0:
-	ori	$a4, $zero, 1
 	st.d	$zero, $a0, 0
-	blt	$a1, $a4, .LBB0_4
+	blez	$a1, .LBB0_4
 # %bb.1:                                # %.lr.ph
 	move	$a4, $zero
 	move	$a5, $a1

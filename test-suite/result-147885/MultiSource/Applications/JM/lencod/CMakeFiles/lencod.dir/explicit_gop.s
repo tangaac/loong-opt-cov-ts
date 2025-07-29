@@ -17,7 +17,7 @@ create_hierarchy:                       # @create_hierarchy
 	addi.w	$a0, $a4, 0
 	bne	$a3, $a2, .LBB0_9
 # %bb.1:                                # %.preheader
-	blt	$a0, $a2, .LBB0_14
+	blez	$a0, .LBB0_14
 # %bb.2:                                # %.lr.ph78
 	move	$a2, $zero
 	move	$a3, $zero
@@ -79,16 +79,16 @@ create_hierarchy:                       # @create_hierarchy
 	ld.d	$a2, $a2, %got_pc_lo12(img)
 	ld.d	$a2, $a2, 0
 	stptr.w	$a3, $a2, 15612
-	ori	$a6, $zero, 1
 	pcalau12i	$a2, %pc_hi20(gop_structure)
-	blt	$a0, $a6, .LBB0_20
+	blez	$a0, .LBB0_20
 # %bb.12:                               # %.lr.ph
-	ld.d	$a7, $a2, %pc_lo12(gop_structure)
+	ld.d	$t0, $a2, %pc_lo12(gop_structure)
 	ori	$a5, $zero, 2104
 	ldx.w	$a5, $a1, $a5
+	ori	$a6, $zero, 1
 	bne	$a0, $a6, .LBB0_15
 # %bb.13:
-	move	$a6, $zero
+	move	$a7, $zero
 	b	.LBB0_18
 .LBB0_14:                               # %._crit_edge79
 	pcalau12i	$a0, %got_pc_hi20(img)
@@ -98,53 +98,51 @@ create_hierarchy:                       # @create_hierarchy
 	stptr.w	$a1, $a0, 15612
 	b	.LBB0_35
 .LBB0_15:                               # %vector.ph
-	move	$t0, $zero
-	bstrpick.d	$a6, $a0, 30, 1
-	slli.d	$a6, $a6, 1
-	addi.d	$t1, $a7, 24
-	ori	$t2, $zero, 1
-	move	$t3, $a6
+	move	$t1, $zero
+	bstrpick.d	$a7, $a0, 30, 1
+	slli.d	$a7, $a7, 1
+	addi.d	$t2, $t0, 24
+	move	$t3, $a7
 	.p2align	4, , 16
 .LBB0_16:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	addi.d	$t4, $t0, 1
-	st.w	$t0, $t1, -20
-	st.w	$t4, $t1, 4
-	st.w	$t2, $t1, -24
-	st.w	$t2, $t1, 0
-	st.w	$zero, $t1, -8
-	st.w	$zero, $t1, 16
-	st.w	$zero, $t1, -16
-	st.w	$zero, $t1, 8
-	st.w	$a5, $t1, -12
-	st.w	$a5, $t1, 12
-	addi.d	$t0, $t0, 2
+	addi.d	$t4, $t1, 1
+	st.w	$t1, $t2, -20
+	st.w	$t4, $t2, 4
+	st.w	$a6, $t2, -24
+	st.w	$a6, $t2, 0
+	st.w	$zero, $t2, -8
+	st.w	$zero, $t2, 16
+	st.w	$zero, $t2, -16
+	st.w	$zero, $t2, 8
+	st.w	$a5, $t2, -12
+	st.w	$a5, $t2, 12
+	addi.d	$t1, $t1, 2
 	addi.d	$t3, $t3, -2
-	addi.d	$t1, $t1, 48
+	addi.d	$t2, $t2, 48
 	bnez	$t3, .LBB0_16
 # %bb.17:                               # %middle.block
-	beq	$a6, $a0, .LBB0_20
+	beq	$a7, $a0, .LBB0_20
 .LBB0_18:                               # %scalar.ph.preheader
-	slli.d	$t0, $a6, 4
-	alsl.d	$t0, $a6, $t0, 3
-	add.d	$a7, $t0, $a7
-	addi.d	$a7, $a7, 16
-	sub.d	$t0, $a0, $a6
-	ori	$t1, $zero, 1
+	slli.d	$t1, $a7, 4
+	alsl.d	$t1, $a7, $t1, 3
+	add.d	$t0, $t1, $t0
+	addi.d	$t0, $t0, 16
+	sub.d	$t1, $a0, $a7
 	.p2align	4, , 16
 .LBB0_19:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.w	$zero, $a7, 0
+	st.w	$zero, $t0, 0
 	st.w	$a5, $sp, 12
 	st.w	$zero, $sp, 8
-	st.w	$a6, $sp, 4
-	st.w	$t1, $sp, 0
+	st.w	$a7, $sp, 4
+	st.w	$a6, $sp, 0
 	vld	$vr0, $sp, 0
-	vst	$vr0, $a7, -16
-	addi.d	$a6, $a6, 1
-	addi.d	$t0, $t0, -1
-	addi.d	$a7, $a7, 24
-	bnez	$t0, .LBB0_19
+	vst	$vr0, $t0, -16
+	addi.d	$a7, $a7, 1
+	addi.d	$t1, $t1, -1
+	addi.d	$t0, $t0, 24
+	bnez	$t1, .LBB0_19
 .LBB0_20:                               # %.preheader67
 	ori	$a5, $zero, 2
 	bltu	$a3, $a5, .LBB0_29
@@ -352,9 +350,8 @@ interpret_gop_structure:                # @interpret_gop_structure
 	addi.d	$a0, $a0, 929
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$s5, $a0, 0
-	ori	$s0, $zero, 1
-	blt	$s5, $s0, .LBB3_54
+	addi.w	$s0, $a0, 0
+	blez	$s0, .LBB3_54
 # %bb.1:                                # %.preheader
 	move	$fp, $zero
 	st.d	$zero, $sp, 88                  # 8-byte Folded Spill
@@ -364,8 +361,8 @@ interpret_gop_structure:                # @interpret_gop_structure
 	move	$s8, $zero
 	addi.w	$a0, $a0, -2
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s7, $zero, 2976
-	ori	$s0, $zero, 46
+	ori	$s5, $zero, 2976
+	ori	$s7, $zero, 46
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$a0, $a0, %pc_lo12(errortext)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -391,7 +388,7 @@ interpret_gop_structure:                # @interpret_gop_structure
 	lu12i.w	$a0, 3
 	ori	$a0, $a0, 3164
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 48                    # 8-byte Folded Spill
 	b	.LBB3_5
 .LBB3_2:                                #   in Loop: Header=BB3_5 Depth=1
 	ori	$a2, $zero, 83
@@ -411,7 +408,7 @@ interpret_gop_structure:                # @interpret_gop_structure
 .LBB3_4:                                # %.loopexit
                                         #   in Loop: Header=BB3_5 Depth=1
 	addi.w	$s8, $s8, 1
-	bge	$s8, $s5, .LBB3_53
+	bge	$s8, $s0, .LBB3_53
 .LBB3_5:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_23 Depth 2
 	beqz	$s1, .LBB3_12
@@ -430,12 +427,12 @@ interpret_gop_structure:                # @interpret_gop_structure
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 0
 	add.d	$a1, $a1, $s8
-	ldx.b	$a2, $a1, $s7
+	ldx.b	$a2, $a1, $s5
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB3_41
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB3_41
 # %bb.11:                               #   in Loop: Header=BB3_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s4, $a0, %pc_lo12(errortext)
@@ -455,9 +452,9 @@ interpret_gop_structure:                # @interpret_gop_structure
 .LBB3_12:                               #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $s6, 0
 	add.d	$a0, $a0, $s8
-	ldx.bu	$a0, $a0, $s7
+	ldx.bu	$a0, $a0, $s5
 	addi.d	$a0, $a0, -66
-	bltu	$s0, $a0, .LBB3_45
+	bltu	$s7, $a0, .LBB3_45
 # %bb.13:                               #   in Loop: Header=BB3_5 Depth=1
 	ori	$a1, $zero, 1
 	sll.d	$a0, $a1, $a0
@@ -484,14 +481,14 @@ interpret_gop_structure:                # @interpret_gop_structure
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 0
 	add.d	$a1, $a1, $s8
-	ldx.b	$a2, $a1, $s7
+	ldx.b	$a2, $a1, $s5
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	beqz	$a0, .LBB3_2
+	slli.d	$a0, $a0, 52
+	bgez	$a0, .LBB3_2
 # %bb.18:                               #   in Loop: Header=BB3_5 Depth=1
-	add.d	$a0, $a1, $s7
+	add.d	$a0, $a1, $s5
 	addi.d	$a2, $sp, 96
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
@@ -509,7 +506,7 @@ interpret_gop_structure:                # @interpret_gop_structure
 	bge	$a1, $a0, .LBB3_43
 # %bb.20:                               #   in Loop: Header=BB3_5 Depth=1
 	ori	$s1, $zero, 1
-	blt	$fp, $s1, .LBB3_44
+	blez	$fp, .LBB3_44
 .LBB3_21:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $s3, %pc_lo12(gop_structure)
@@ -550,13 +547,13 @@ interpret_gop_structure:                # @interpret_gop_structure
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 0
 	add.d	$a1, $a1, $s8
-	ldx.bu	$a1, $a1, $s7
+	ldx.bu	$a1, $a1, $s5
 	ld.d	$a0, $a0, 0
 	ext.w.b	$a2, $a1
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB3_39
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB3_39
 # %bb.26:                               #   in Loop: Header=BB3_5 Depth=1
 	ori	$a0, $zero, 100
 	blt	$a0, $a1, .LBB3_46
@@ -580,13 +577,13 @@ interpret_gop_structure:                # @interpret_gop_structure
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s6, 0
 	add.d	$a2, $a1, $s8
-	ldx.b	$a2, $a2, $s7
+	ldx.b	$a2, $a2, $s5
 	ld.d	$a0, $a0, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a0, $a0, $a2
-	andi	$a0, $a0, 2048
+	slli.d	$a0, $a0, 52
 	ori	$s1, $zero, 1
-	bnez	$a0, .LBB3_42
+	bltz	$a0, .LBB3_42
 # %bb.32:                               #   in Loop: Header=BB3_5 Depth=1
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	bge	$s8, $a0, .LBB3_42
@@ -631,9 +628,9 @@ interpret_gop_structure:                # @interpret_gop_structure
 	b	.LBB3_4
 .LBB3_38:                               #   in Loop: Header=BB3_5 Depth=1
 	ori	$s4, $zero, 1
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ori	$s7, $zero, 2976
-	ori	$s0, $zero, 46
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	ori	$s5, $zero, 2976
+	ori	$s7, $zero, 46
 	b	.LBB3_4
 .LBB3_39:                               #   in Loop: Header=BB3_5 Depth=1
 	move	$s2, $zero
@@ -644,7 +641,7 @@ interpret_gop_structure:                # @interpret_gop_structure
 	ori	$s4, $zero, 1
 	b	.LBB3_4
 .LBB3_41:                               #   in Loop: Header=BB3_5 Depth=1
-	add.d	$a0, $a1, $s7
+	add.d	$a0, $a1, $s5
 	pcalau12i	$a1, %pc_hi20(.L.str.4)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.4)
 	addi.d	$a2, $sp, 100
@@ -711,11 +708,11 @@ interpret_gop_structure:                # @interpret_gop_structure
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
 	ori	$s1, $zero, 1
-	bge	$fp, $s1, .LBB3_21
+	bgtz	$fp, .LBB3_21
 .LBB3_44:                               #   in Loop: Header=BB3_5 Depth=1
 	ori	$s4, $zero, 1
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ori	$s0, $zero, 46
+	ld.d	$s0, $sp, 48                    # 8-byte Folded Reload
+	ori	$s7, $zero, 46
 	b	.LBB3_4
 .LBB3_45:                               #   in Loop: Header=BB3_5 Depth=1
 	ori	$a2, $zero, 86
@@ -779,7 +776,7 @@ interpret_gop_structure:                # @interpret_gop_structure
 	ori	$s2, $zero, 1
 	b	.LBB3_4
 .LBB3_53:                               # %.loopexit75.loopexit
-	addi.d	$s0, $fp, 1
+	addi.d	$a0, $fp, 1
 	b	.LBB3_55
 .LBB3_54:
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -794,9 +791,10 @@ interpret_gop_structure:                # @interpret_gop_structure
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
+	ori	$a0, $zero, 1
 .LBB3_55:                               # %.loopexit75
-	ld.d	$a0, $s6, 0
-	stptr.w	$s0, $a0, 2096
+	ld.d	$a1, $s6, 0
+	stptr.w	$a0, $a1, 2096
 	ld.d	$s8, $sp, 104                   # 8-byte Folded Reload
 	ld.d	$s7, $sp, 112                   # 8-byte Folded Reload
 	ld.d	$s6, $sp, 120                   # 8-byte Folded Reload
@@ -862,7 +860,7 @@ encode_enhancement_layer:               # @encode_enhancement_layer
 # %bb.4:
 	ori	$s2, $zero, 1
 	stptr.w	$s2, $a0, 14364
-	bge	$a2, $s2, .LBB4_7
+	bgtz	$a2, .LBB4_7
 	b	.LBB4_30
 .LBB4_5:
 	beqz	$a3, .LBB4_32
@@ -870,7 +868,7 @@ encode_enhancement_layer:               # @encode_enhancement_layer
 	stptr.w	$zero, $a0, 15360
 	ori	$s2, $zero, 1
 	stptr.w	$s2, $a0, 14364
-	blt	$a2, $s2, .LBB4_30
+	blez	$a2, .LBB4_30
 .LBB4_7:                                # %.lr.ph.preheader
 	pcalau12i	$s4, %pc_hi20(gop_structure)
 	ld.d	$a4, $s4, %pc_lo12(gop_structure)
@@ -1071,7 +1069,7 @@ encode_enhancement_layer:               # @encode_enhancement_layer
 .LBB4_33:
 	ori	$s2, $zero, 1
 	stptr.w	$s2, $a0, 14364
-	blt	$a2, $s2, .LBB4_31
+	blez	$a2, .LBB4_31
 # %bb.34:                               # %.lr.ph26.preheader
 	lu12i.w	$a3, 3
 	ori	$s3, $a3, 3044

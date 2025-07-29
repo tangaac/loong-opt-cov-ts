@@ -16,9 +16,8 @@ ConvertToFloat:                         # @ConvertToFloat
 	slli.d	$a0, $s0, 2
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $fp, 64
-	blt	$s0, $a1, .LBB0_7
+	blez	$s0, .LBB0_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $fp, 48
 	ori	$a2, $zero, 8
@@ -122,9 +121,8 @@ HorzVariance:                           # @HorzVariance
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $s0, 72
-	blt	$s1, $a1, .LBB1_11
+	blez	$s1, .LBB1_11
 # %bb.1:                                # %.preheader.lr.ph
 	addi.w	$a1, $s2, 0
 	ori	$a2, $zero, 21
@@ -139,9 +137,8 @@ HorzVariance:                           # @HorzVariance
 	movgr2fr.w	$fa0, $a2
 	ffint.s.w	$fa0, $fa0
 	movgr2fr.w	$fa1, $fp
-	addi.w	$a3, $zero, -1
 	ffint.s.w	$fa1, $fa1
-	bge	$a3, $a5, .LBB1_12
+	bltz	$a5, .LBB1_12
 # %bb.3:                                # %.preheader.lr.ph.split.us.split
 	ld.d	$a6, $s0, 48
 	move	$a3, $zero
@@ -231,6 +228,7 @@ HorzVariance:                           # @HorzVariance
 	ret
 .LBB1_12:                               # %.preheader.lr.ph.split.us.split.us.split.us
 	bstrpick.d	$a1, $a4, 31, 0
+	addi.w	$a3, $zero, -1
 	addi.d	$a2, $a1, -10
 	beq	$fp, $a3, .LBB1_21
 # %bb.13:                               # %.preheader.us.us.us.preheader
@@ -385,45 +383,45 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 64                   # 8-byte Folded Spill
 	move	$fp, $a0
-	ld.w	$s1, $a0, 36
-	ld.w	$s0, $a0, 32
+	ld.w	$s0, $a0, 36
+	ld.w	$s1, $a0, 32
 	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
-	mul.w	$a0, $s0, $s1
+	mul.w	$a0, $s1, $s0
 	ori	$a1, $zero, 4
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $fp, 88
-	blt	$s0, $a1, .LBB2_83
+	blez	$s1, .LBB2_83
 # %bb.1:                                # %.preheader175.lr.ph
 	ori	$a0, $zero, 3
-                                        # implicit-def: $r28
-	blt	$s1, $a0, .LBB2_84
+                                        # implicit-def: $r27
+	blt	$s0, $a0, .LBB2_84
 # %bb.2:                                # %.preheader175.preheader
 	st.d	$zero, $sp, 56                  # 8-byte Folded Spill
-	move	$s6, $zero
+	move	$s5, $zero
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	bstrpick.d	$a0, $a0, 31, 0
 	movgr2fr.d	$fa0, $a0
 	ffint.s.l	$fs0, $fa0
 	addi.d	$a0, $zero, -1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ori	$s4, $zero, 1
+	ori	$s3, $zero, 2
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-                                        # implicit-def: $r28
+                                        # implicit-def: $r27
 	b	.LBB2_5
 	.p2align	4, , 16
 .LBB2_3:                                # %._crit_edge196.loopexit
                                         #   in Loop: Header=BB2_5 Depth=1
-	ld.w	$s0, $fp, 32
+	ld.w	$s1, $fp, 32
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 .LBB2_4:                                # %._crit_edge196
                                         #   in Loop: Header=BB2_5 Depth=1
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	move	$s6, $s8
-	bge	$s8, $s0, .LBB2_84
+	move	$s5, $a1
+	bge	$a1, $s1, .LBB2_84
 .LBB2_5:                                # %.preheader175
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_9 Depth 2
@@ -437,29 +435,27 @@ BuildConnectedComponents:               # @BuildConnectedComponents
                                         #         Child Loop BB2_60 Depth 4
                                         #         Child Loop BB2_74 Depth 4
                                         #         Child Loop BB2_77 Depth 4
-	ori	$a0, $zero, 2
-	bge	$a0, $s1, .LBB2_82
+	bge	$s3, $s0, .LBB2_82
 # %bb.6:                                # %.lr.ph195
                                         #   in Loop: Header=BB2_5 Depth=1
 	move	$a2, $zero
-	addi.d	$a0, $s6, -1
+	addi.d	$a0, $s5, -1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	addi.w	$s8, $s6, 1
-	ori	$s7, $zero, 1
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.w	$a0, $s5, 1
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	ori	$s8, $zero, 1
 	b	.LBB2_9
 	.p2align	4, , 16
 .LBB2_7:                                # %.loopexit.loopexit
                                         #   in Loop: Header=BB2_9 Depth=2
-	ld.w	$s1, $fp, 36
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
+	ld.w	$s0, $fp, 36
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 .LBB2_8:                                # %.loopexit
                                         #   in Loop: Header=BB2_9 Depth=2
-	addi.w	$a0, $s1, -1
+	addi.w	$a0, $s0, -1
 	addi.d	$a2, $a2, 1
-	move	$s7, $s0
-	bge	$s0, $a0, .LBB2_3
+	move	$s8, $s6
+	bge	$s6, $a0, .LBB2_3
 .LBB2_9:                                #   Parent Loop BB2_5 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_12 Depth 3
@@ -472,10 +468,10 @@ BuildConnectedComponents:               # @BuildConnectedComponents
                                         #         Child Loop BB2_60 Depth 4
                                         #         Child Loop BB2_74 Depth 4
                                         #         Child Loop BB2_77 Depth 4
-	mul.d	$a0, $s1, $s6
-	add.w	$a0, $a0, $s7
+	mul.d	$a0, $s0, $s5
+	add.w	$a0, $a0, $s8
 	slli.d	$s2, $a0, 2
-	addi.w	$s0, $s7, 1
+	addi.w	$s6, $s8, 1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	bltz	$a0, .LBB2_11
 # %bb.10:                               #   in Loop: Header=BB2_9 Depth=2
@@ -484,9 +480,9 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	fcmp.cune.s	$fcc0, $fa0, $fs0
 	bceqz	$fcc0, .LBB2_8
 .LBB2_11:                               #   in Loop: Header=BB2_9 Depth=2
-	ld.d	$s3, $fp, 88
+	ld.d	$s7, $fp, 88
 	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	mul.d	$a0, $a0, $s1
+	mul.d	$a0, $a0, $s0
 	addi.w	$a1, $zero, -1
 	st.d	$a2, $sp, 48                    # 8-byte Folded Spill
 	add.w	$a2, $a2, $a0
@@ -506,28 +502,28 @@ BuildConnectedComponents:               # @BuildConnectedComponents
                                         #       Parent Loop BB2_12 Depth=3
                                         # =>      This Inner Loop Header: Depth=4
 	slli.d	$a0, $a4, 2
-	ldx.w	$a0, $s3, $a0
+	ldx.w	$a0, $s7, $a0
 	bnez	$a0, .LBB2_15
 # %bb.14:                               #   in Loop: Header=BB2_13 Depth=4
 	move	$a6, $a5
 	addi.d	$a5, $a5, 1
 	addi.w	$a4, $a4, 1
-	blt	$a6, $s4, .LBB2_13
+	blez	$a6, .LBB2_13
 .LBB2_15:                               #   in Loop: Header=BB2_12 Depth=3
 	bnez	$a0, .LBB2_17
 # %bb.16:                               #   in Loop: Header=BB2_12 Depth=3
 	addi.w	$a4, $a3, 1
-	add.w	$a2, $a2, $s1
+	add.w	$a2, $a2, $s0
 	bltz	$a3, .LBB2_12
 .LBB2_17:                               #   in Loop: Header=BB2_9 Depth=2
 	beqz	$a0, .LBB2_21
 # %bb.18:                               # %.preheader173
                                         #   in Loop: Header=BB2_9 Depth=2
-	ld.w	$a1, $s5, 0
-	move	$s1, $s5
+	ld.w	$a1, $s4, 0
+	move	$s1, $s4
 	bne	$a1, $a0, .LBB2_20
 # %bb.19:                               #   in Loop: Header=BB2_9 Depth=2
-	move	$s1, $s5
+	move	$s1, $s4
 	b	.LBB2_25
 	.p2align	4, , 16
 .LBB2_20:                               # %.lr.ph
@@ -543,7 +539,7 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	ori	$a0, $zero, 80
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	move	$s5, $a0
+	move	$s4, $a0
 	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
 	beqz	$a1, .LBB2_23
 # %bb.22:                               #   in Loop: Header=BB2_9 Depth=2
@@ -553,31 +549,31 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 .LBB2_23:                               #   in Loop: Header=BB2_9 Depth=2
 	ori	$a0, $zero, 1
 .LBB2_24:                               #   in Loop: Header=BB2_9 Depth=2
-	st.w	$a0, $s5, 0
-	st.w	$zero, $s5, 4
-	st.w	$s6, $s5, 8
-	st.w	$s7, $s5, 12
-	st.w	$s6, $s5, 16
-	st.w	$s7, $s5, 20
-	st.w	$s6, $s5, 24
-	st.w	$s6, $s5, 28
-	st.w	$s6, $s5, 32
-	st.d	$zero, $s5, 36
+	st.w	$a0, $s4, 0
+	st.w	$zero, $s4, 4
+	st.w	$s5, $s4, 8
+	st.w	$s8, $s4, 12
+	st.w	$s5, $s4, 16
+	st.w	$s8, $s4, 20
+	st.w	$s5, $s4, 24
+	st.w	$s5, $s4, 28
+	st.w	$s5, $s4, 32
+	st.d	$zero, $s4, 36
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
-	vst	$vr0, $s5, 48
-	st.b	$zero, $s5, 64
-	st.d	$a1, $s5, 72
-	move	$s1, $s5
-	st.d	$s5, $sp, 56                    # 8-byte Folded Spill
+	vst	$vr0, $s4, 48
+	st.b	$zero, $s4, 64
+	st.d	$a1, $s4, 72
+	move	$s1, $s4
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 .LBB2_25:                               # %.loopexit174
                                         #   in Loop: Header=BB2_9 Depth=2
-	stx.w	$a0, $s3, $s2
+	stx.w	$a0, $s7, $s2
 	ori	$a0, $zero, 16
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s1, 48
-	st.w	$s7, $a0, 0
-	st.w	$s6, $a0, 4
+	st.w	$s8, $a0, 0
+	st.w	$s5, $a0, 4
 	ld.w	$a2, $s1, 4
 	st.d	$a1, $a0, 8
 	ld.w	$a1, $s1, 8
@@ -586,59 +582,60 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	st.w	$a3, $s1, 4
 	mul.d	$a1, $a1, $a2
 	ld.w	$a0, $s1, 12
-	add.w	$a1, $a1, $s6
+	add.w	$a1, $a1, $s5
 	div.w	$a1, $a1, $a3
 	st.w	$a1, $s1, 8
-	slt	$a1, $a0, $s7
+	slt	$a1, $a0, $s8
 	masknez	$a2, $a0, $a1
 	ld.w	$a3, $s1, 16
-	maskeqz	$a1, $s7, $a1
+	maskeqz	$a1, $s8, $a1
 	or	$a1, $a1, $a2
 	st.w	$a1, $s1, 12
-	slt	$a1, $a3, $s6
+	slt	$a1, $a3, $s5
 	masknez	$a2, $a3, $a1
 	ld.w	$a3, $s1, 20
-	maskeqz	$a1, $s6, $a1
+	maskeqz	$a1, $s5, $a1
 	or	$a1, $a1, $a2
 	st.w	$a1, $s1, 16
-	slt	$a1, $s7, $a3
+	slt	$a1, $s8, $a3
 	masknez	$a2, $a3, $a1
 	ld.w	$a4, $s1, 24
-	maskeqz	$a1, $s7, $a1
+	maskeqz	$a1, $s8, $a1
 	or	$a1, $a1, $a2
 	st.w	$a1, $s1, 20
-	slt	$a1, $s6, $a4
+	slt	$a1, $s5, $a4
 	masknez	$a2, $a4, $a1
-	maskeqz	$a1, $s6, $a1
+	maskeqz	$a1, $s5, $a1
 	or	$a1, $a1, $a2
 	st.w	$a1, $s1, 24
-	blt	$a3, $s7, .LBB2_27
+	blt	$a3, $s8, .LBB2_27
 # %bb.26:                               #   in Loop: Header=BB2_9 Depth=2
-	st.w	$s6, $s1, 28
+	st.w	$s5, $s1, 28
 .LBB2_27:                               #   in Loop: Header=BB2_9 Depth=2
-	blt	$s7, $a0, .LBB2_29
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	blt	$s8, $a0, .LBB2_29
 # %bb.28:                               #   in Loop: Header=BB2_9 Depth=2
-	st.w	$s6, $s1, 32
+	st.w	$s5, $s1, 32
 .LBB2_29:                               #   in Loop: Header=BB2_9 Depth=2
 	ld.w	$a0, $fp, 36
 	ld.d	$a1, $fp, 72
 	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
 	mul.d	$a2, $a0, $a2
-	add.w	$a2, $a2, $s7
+	add.w	$a2, $a2, $s8
 	slli.d	$a2, $a2, 2
 	fldx.s	$fa0, $a1, $a2
 	fld.s	$fa1, $s1, 36
 	fadd.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $s1, 36
-	mul.d	$a0, $a0, $s8
-	add.w	$a0, $a0, $s7
+	mul.d	$a0, $a0, $a3
+	add.w	$a0, $a0, $s8
 	slli.d	$a0, $a0, 2
 	fldx.s	$fa0, $a1, $a0
 	fld.s	$fa1, $s1, 40
 	fadd.s	$fa0, $fa0, $fa1
 	fst.s	$fa0, $s1, 40
-	addi.d	$s8, $s7, -1
-	addi.d	$s2, $zero, -1
+	addi.d	$s2, $s8, -1
+	addi.d	$s7, $zero, -1
 	b	.LBB2_34
 	.p2align	4, , 16
 .LBB2_30:                               # %._crit_edge.thread.i.2
@@ -652,9 +649,8 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 .LBB2_33:                               #   in Loop: Header=BB2_34 Depth=3
-	addi.w	$s2, $s2, 1
-	ori	$a0, $zero, 2
-	beq	$s2, $a0, .LBB2_7
+	addi.w	$s7, $s7, 1
+	beq	$s7, $s3, .LBB2_7
 .LBB2_34:                               # %.preheader171
                                         #   Parent Loop BB2_5 Depth=1
                                         #     Parent Loop BB2_9 Depth=2
@@ -666,10 +662,10 @@ BuildConnectedComponents:               # @BuildConnectedComponents
                                         #         Child Loop BB2_74 Depth 4
                                         #         Child Loop BB2_77 Depth 4
 	ld.w	$a0, $fp, 36
-	add.d	$s3, $s2, $s6
+	add.d	$s0, $s7, $s5
 	ld.d	$a1, $fp, 88
-	mul.d	$a0, $a0, $s3
-	add.w	$a2, $s8, $a0
+	mul.d	$a0, $a0, $s0
+	add.w	$a2, $s2, $a0
 	slli.d	$a2, $a2, 2
 	ldx.w	$a4, $a1, $a2
 	beqz	$a4, .LBB2_52
@@ -678,15 +674,15 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	beq	$a4, $a3, .LBB2_52
 # %bb.36:                               # %.preheader
                                         #   in Loop: Header=BB2_34 Depth=3
-	ld.w	$a0, $s5, 0
+	ld.w	$a0, $s4, 0
 	bne	$a0, $a4, .LBB2_38
 # %bb.37:                               #   in Loop: Header=BB2_34 Depth=3
 	move	$a2, $zero
-	move	$a0, $s5
+	move	$a0, $s4
 	b	.LBB2_40
 .LBB2_38:                               # %.lr.ph182.preheader
                                         #   in Loop: Header=BB2_34 Depth=3
-	move	$a0, $s5
+	move	$a0, $s4
 	.p2align	4, , 16
 .LBB2_39:                               # %.lr.ph182
                                         #   Parent Loop BB2_5 Depth=1
@@ -786,20 +782,20 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	b	.LBB2_51
 .LBB2_49:                               #   in Loop: Header=BB2_34 Depth=3
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	move	$s5, $a1
+	move	$s4, $a1
 	b	.LBB2_32
 .LBB2_50:                               #   in Loop: Header=BB2_34 Depth=3
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	move	$s5, $a1
+	move	$s4, $a1
 .LBB2_51:                               # %MergeComponents.exit
                                         #   in Loop: Header=BB2_34 Depth=3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 36
 	ld.d	$a1, $fp, 88
-	mul.d	$a0, $a0, $s3
+	mul.d	$a0, $a0, $s0
 .LBB2_52:                               #   in Loop: Header=BB2_34 Depth=3
-	add.w	$a2, $s7, $a0
+	add.w	$a2, $s8, $a0
 	slli.d	$a2, $a2, 2
 	ldx.w	$a4, $a1, $a2
 	beqz	$a4, .LBB2_69
@@ -808,15 +804,15 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	beq	$a4, $a3, .LBB2_69
 # %bb.54:                               # %.preheader.1
                                         #   in Loop: Header=BB2_34 Depth=3
-	ld.w	$a0, $s5, 0
+	ld.w	$a0, $s4, 0
 	bne	$a0, $a4, .LBB2_56
 # %bb.55:                               #   in Loop: Header=BB2_34 Depth=3
 	move	$a2, $zero
-	move	$a0, $s5
+	move	$a0, $s4
 	b	.LBB2_58
 .LBB2_56:                               # %.lr.ph182.1.preheader
                                         #   in Loop: Header=BB2_34 Depth=3
-	move	$a0, $s5
+	move	$a0, $s4
 	.p2align	4, , 16
 .LBB2_57:                               # %.lr.ph182.1
                                         #   Parent Loop BB2_5 Depth=1
@@ -916,16 +912,16 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	b	.LBB2_68
 .LBB2_67:                               #   in Loop: Header=BB2_34 Depth=3
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
-	move	$s5, $a1
+	move	$s4, $a1
 .LBB2_68:                               # %MergeComponents.exit.1
                                         #   in Loop: Header=BB2_34 Depth=3
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 36
 	ld.d	$a1, $fp, 88
-	mul.d	$a0, $a0, $s3
+	mul.d	$a0, $a0, $s0
 .LBB2_69:                               #   in Loop: Header=BB2_34 Depth=3
-	add.w	$a0, $s0, $a0
+	add.w	$a0, $s6, $a0
 	slli.d	$a0, $a0, 2
 	ldx.w	$a4, $a1, $a0
 	beqz	$a4, .LBB2_33
@@ -934,15 +930,15 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	beq	$a4, $a3, .LBB2_33
 # %bb.71:                               # %.preheader.2
                                         #   in Loop: Header=BB2_34 Depth=3
-	ld.w	$a0, $s5, 0
+	ld.w	$a0, $s4, 0
 	bne	$a0, $a4, .LBB2_73
 # %bb.72:                               #   in Loop: Header=BB2_34 Depth=3
 	move	$a2, $zero
-	move	$a0, $s5
+	move	$a0, $s4
 	b	.LBB2_75
 .LBB2_73:                               # %.lr.ph182.2.preheader
                                         #   in Loop: Header=BB2_34 Depth=3
-	move	$a0, $s5
+	move	$a0, $s4
 	.p2align	4, , 16
 .LBB2_74:                               # %.lr.ph182.2
                                         #   Parent Loop BB2_5 Depth=1
@@ -1037,12 +1033,12 @@ BuildConnectedComponents:               # @BuildConnectedComponents
 	.p2align	4, , 16
 .LBB2_82:                               # %.preheader175.._crit_edge196_crit_edge
                                         #   in Loop: Header=BB2_5 Depth=1
-	addi.w	$s8, $s6, 1
+	addi.w	$a1, $s5, 1
 	b	.LBB2_4
 .LBB2_83:
-                                        # implicit-def: $r28
+                                        # implicit-def: $r27
 .LBB2_84:                               # %._crit_edge204
-	move	$a0, $s5
+	move	$a0, $s4
 	fld.d	$fs0, $sp, 64                   # 8-byte Folded Reload
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
@@ -1472,7 +1468,6 @@ WriteConnectedComponentsToPGM:          # @WriteConnectedComponentsToPGM
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$s3, $zero, 1
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -1493,7 +1488,7 @@ WriteConnectedComponentsToPGM:          # @WriteConnectedComponentsToPGM
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s3, .LBB6_13
+	blez	$a0, .LBB6_13
 # %bb.11:                               # %.lr.ph47.preheader
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -1813,12 +1808,11 @@ PairComponents:                         # @PairComponents
 # %bb.4:                                # %.preheader139
                                         #   in Loop: Header=BB10_3 Depth=1
 	ld.w	$a4, $s3, 0
-	ori	$a0, $zero, 1
-	blt	$a4, $a0, .LBB10_41
+	blez	$a4, .LBB10_41
 # %bb.5:                                # %.lr.ph176
                                         #   in Loop: Header=BB10_3 Depth=1
 	st.d	$s4, $sp, 0                     # 8-byte Folded Spill
-	move	$s6, $zero
+	move	$s5, $zero
 	move	$a2, $zero
 	move	$a0, $zero
 	move	$a1, $zero
@@ -1828,8 +1822,8 @@ PairComponents:                         # @PairComponents
 .LBB10_6:                               #   in Loop: Header=BB10_7 Depth=2
 	move	$a2, $zero
 	move	$a0, $zero
-	addi.w	$a3, $s7, 1
-	bge	$s7, $a4, .LBB10_39
+	addi.w	$a3, $s6, 1
+	bge	$s6, $a4, .LBB10_39
 .LBB10_7:                               #   Parent Loop BB10_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB10_12 Depth 3
@@ -1837,7 +1831,7 @@ PairComponents:                         # @PairComponents
 	or	$a5, $a0, $a2
 	bnez	$a5, .LBB10_39
 # %bb.8:                                #   in Loop: Header=BB10_7 Depth=2
-	move	$s7, $a3
+	move	$s6, $a3
 	ld.w	$a5, $s1, 20
 	ld.w	$a3, $s1, 12
 	blt	$a3, $a5, .LBB10_6
@@ -1845,15 +1839,15 @@ PairComponents:                         # @PairComponents
                                         #   in Loop: Header=BB10_7 Depth=2
 	move	$a2, $zero
 	move	$a0, $zero
-	sub.d	$s8, $zero, $s7
+	sub.d	$s7, $zero, $s6
 	b	.LBB10_12
 	.p2align	4, , 16
 .LBB10_10:                              #   in Loop: Header=BB10_12 Depth=3
 	move	$a0, $zero
 	move	$a2, $zero
 .LBB10_11:                              #   in Loop: Header=BB10_12 Depth=3
-	addi.w	$a5, $s4, 1
-	bge	$s4, $a3, .LBB10_38
+	addi.w	$a5, $s8, 1
+	bge	$s8, $a3, .LBB10_38
 .LBB10_12:                              #   Parent Loop BB10_3 Depth=1
                                         #     Parent Loop BB10_7 Depth=2
                                         # =>    This Loop Header: Depth=3
@@ -1861,17 +1855,17 @@ PairComponents:                         # @PairComponents
 	or	$a4, $a0, $a2
 	bnez	$a4, .LBB10_38
 # %bb.13:                               #   in Loop: Header=BB10_12 Depth=3
-	move	$s4, $a5
-	beqz	$s6, .LBB10_15
+	move	$s8, $a5
+	beqz	$s5, .LBB10_15
 # %bb.14:                               #   in Loop: Header=BB10_12 Depth=3
 	ld.w	$a0, $s1, 20
-	beq	$s4, $a0, .LBB10_37
+	beq	$s8, $a0, .LBB10_37
 .LBB10_15:                              #   in Loop: Header=BB10_12 Depth=3
 	ld.bu	$a2, $s1, 44
 	sltui	$a0, $a2, 1
 	ld.w	$a4, $s1, 8
-	masknez	$a5, $s7, $a0
-	maskeqz	$a0, $s8, $a0
+	masknez	$a5, $s6, $a0
+	maskeqz	$a0, $s7, $a0
 	or	$a0, $a0, $a5
 	add.w	$a0, $a0, $a4
 	bltz	$a0, .LBB10_10
@@ -1881,7 +1875,7 @@ PairComponents:                         # @PairComponents
 # %bb.17:                               #   in Loop: Header=BB10_12 Depth=3
 	ld.w	$a6, $s0, 36
 	mul.d	$a0, $a0, $a6
-	add.w	$a5, $a0, $s4
+	add.w	$a5, $a0, $s8
 	move	$a0, $zero
 	bltz	$a5, .LBB10_24
 # %bb.18:                               #   in Loop: Header=BB10_12 Depth=3
@@ -1903,7 +1897,7 @@ PairComponents:                         # @PairComponents
 	ld.d	$a0, $a0, %got_pc_lo12(MIN_CHAR_SIZE)
 	ld.w	$a1, $a0, 0
 	ori	$a0, $zero, 1
-	bge	$s7, $a1, .LBB10_27
+	bge	$s6, $a1, .LBB10_27
 # %bb.23:                               #   in Loop: Header=BB10_12 Depth=3
 	move	$a2, $zero
 	b	.LBB10_36
@@ -1919,7 +1913,7 @@ PairComponents:                         # @PairComponents
 	b	.LBB10_36
 .LBB10_27:                              # %.preheader
                                         #   in Loop: Header=BB10_12 Depth=3
-	move	$s5, $s2
+	move	$s4, $s2
 	ld.d	$s2, $s2, 0
 	beqz	$s2, .LBB10_48
 	.p2align	4, , 16
@@ -1956,9 +1950,9 @@ PairComponents:                         # @PairComponents
 .LBB10_34:                              #   in Loop: Header=BB10_12 Depth=3
 	move	$a0, $zero
 	move	$a2, $zero
-	ori	$s6, $zero, 1
+	ori	$s5, $zero, 1
 .LBB10_35:                              #   in Loop: Header=BB10_12 Depth=3
-	move	$s2, $s5
+	move	$s2, $s4
 .LBB10_36:                              #   in Loop: Header=BB10_12 Depth=3
 	ld.d	$a1, $s0, 88
 	ldx.w	$a1, $a1, $fp
@@ -1970,8 +1964,8 @@ PairComponents:                         # @PairComponents
 .LBB10_38:                              # %.critedge2.loopexit
                                         #   in Loop: Header=BB10_7 Depth=2
 	ld.w	$a4, $s3, 0
-	addi.w	$a3, $s7, 1
-	blt	$s7, $a4, .LBB10_7
+	addi.w	$a3, $s6, 1
+	blt	$s6, $a4, .LBB10_7
 .LBB10_39:                              # %.critedge
                                         #   in Loop: Header=BB10_3 Depth=1
 	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
@@ -2070,17 +2064,15 @@ Overlap:                                # @Overlap
 # %bb.2:
 	bltz	$a1, .LBB11_5
 # %bb.3:
-	ori	$a6, $zero, 1
-	blt	$a0, $a6, .LBB11_5
+	blez	$a0, .LBB11_5
 # %bb.4:
 	bstrpick.d	$a0, $a3, 31, 0
 	b	.LBB11_9
 .LBB11_5:
 	slt	$a6, $zero, $a3
 	slti	$a7, $a2, 1
-	and	$a7, $a6, $a7
-	ori	$t0, $zero, 1
-	bne	$a7, $t0, .LBB11_10
+	and	$a6, $a6, $a7
+	beqz	$a6, .LBB11_10
 # %bb.6:
 	bgtz	$a1, .LBB11_10
 # %bb.7:
@@ -2104,28 +2096,25 @@ Overlap:                                # @Overlap
 	and	$a0, $a0, $a1
 	ret
 .LBB11_10:
-	addi.w	$a6, $zero, -1
-	slt	$t1, $a6, $a1
-	and	$a7, $a7, $t1
-	bne	$a7, $t0, .LBB11_13
+	addi.w	$a7, $zero, -1
+	slt	$a7, $a7, $a1
+	and	$a6, $a6, $a7
+	beqz	$a6, .LBB11_13
 # %bb.11:
-	ori	$a7, $zero, 1
-	blt	$a0, $a7, .LBB11_13
+	blez	$a0, .LBB11_13
 # %bb.12:
 	movgr2fr.w	$fa0, $a5
 	ffint.s.w	$fa0, $fa0
 	movgr2fr.w	$fa1, $a4
 	b	.LBB11_18
 .LBB11_13:
-	ori	$a7, $zero, 1
-	blt	$a3, $a7, .LBB11_19
+	blez	$a3, .LBB11_19
 # %bb.14:
 	bltz	$a2, .LBB11_19
 # %bb.15:
 	bgtz	$a1, .LBB11_19
 # %bb.16:
-	ori	$a7, $zero, 1
-	blt	$a0, $a7, .LBB11_19
+	blez	$a0, .LBB11_19
 # %bb.17:
 	movgr2fr.w	$fa0, $a4
 	ffint.s.w	$fa0, $fa0
@@ -2138,21 +2127,19 @@ Overlap:                                # @Overlap
 	movcf2gr	$a0, $fcc0
 	ret
 .LBB11_19:
-	blt	$a6, $a3, .LBB11_23
+	bgez	$a3, .LBB11_23
 # %bb.20:
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB11_23
+	blez	$a2, .LBB11_23
 # %bb.21:
-	blt	$a1, $a4, .LBB11_23
+	blez	$a1, .LBB11_23
 # %bb.22:
 	bgtz	$a0, .LBB11_27
 .LBB11_23:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB11_28
+	blez	$a3, .LBB11_28
 # %bb.24:
-	blt	$a6, $a2, .LBB11_28
+	bgez	$a2, .LBB11_28
 # %bb.25:
-	blt	$a6, $a1, .LBB11_28
+	bgez	$a1, .LBB11_28
 # %bb.26:
 	bgez	$a0, .LBB11_28
 .LBB11_27:
@@ -2296,7 +2283,6 @@ ComputeBoundingBoxes:                   # @ComputeBoundingBoxes
 	addi.d	$a0, $a0, %pc_lo12(.L.str.14)
 	ori	$a1, $zero, 3
 	ori	$a2, $zero, 1
-	ori	$s2, $zero, 1
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
@@ -2317,7 +2303,7 @@ ComputeBoundingBoxes:                   # @ComputeBoundingBoxes
 	ld.w	$a0, $fp, 36
 	ld.w	$a1, $fp, 32
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s2, .LBB12_13
+	blez	$a0, .LBB12_13
 # %bb.11:                               # %.lr.ph90.preheader
 	move	$s2, $zero
 	.p2align	4, , 16

@@ -16,7 +16,6 @@ SetupCPUEmFloatArrays:                  # @SetupCPUEmFloatArrays
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	move	$fp, $a3
 	move	$s0, $a1
 	move	$s1, $a0
@@ -28,22 +27,20 @@ SetupCPUEmFloatArrays:                  # @SetupCPUEmFloatArrays
 	move	$s3, $zero
 	lu12i.w	$a0, 12
 	ori	$s2, $a0, 848
-	addi.w	$s4, $zero, -1
-	addi.w	$s6, $zero, -2
-	ori	$s7, $zero, 0
-	lu32i.d	$s7, 1
-	ori	$s8, $zero, 2
+	ori	$s4, $zero, 258
+	addi.w	$s5, $zero, -2
+	ori	$s6, $zero, 2
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$a1, $zero
-	st.b	$zero, $sp, 0
+	st.b	$zero, $sp, 8
 .LBB0_3:                                # %Int32ToInternalFPF.exit21
                                         #   in Loop: Header=BB0_4 Depth=1
-	st.h	$a1, $sp, 2
-	add.d	$a2, $s0, $s5
-	addi.d	$a0, $sp, 12
-	addi.d	$a1, $sp, 0
+	st.h	$a1, $sp, 10
+	add.d	$a2, $s0, $s7
+	addi.d	$a0, $sp, 20
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(DivideInternalFPF)
 	jirl	$ra, $ra, 0
 	addi.d	$s3, $s3, 1
@@ -55,36 +52,35 @@ SetupCPUEmFloatArrays:                  # @SetupCPUEmFloatArrays
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(randwc)
 	jirl	$ra, $ra, 0
-	bge	$s4, $a0, .LBB0_9
+	bltz	$a0, .LBB0_9
 # %bb.5:                                #   in Loop: Header=BB0_4 Depth=1
-	st.h	$s8, $sp, 12
-	st.d	$zero, $sp, 16
+	st.h	$s6, $sp, 20
+	st.d	$zero, $sp, 24
 	bnez	$a0, .LBB0_10
 # %bb.6:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$a1, $zero
-	st.b	$zero, $sp, 12
-	st.h	$a1, $sp, 14
+	st.b	$zero, $sp, 20
+	st.h	$a1, $sp, 22
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(randwc)
 	jirl	$ra, $ra, 0
-	bge	$s6, $a0, .LBB0_13
+	bge	$s5, $a0, .LBB0_13
 .LBB0_7:                                #   in Loop: Header=BB0_4 Depth=1
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	and	$a1, $a0, $s7
-	st.h	$s8, $sp, 0
-	st.d	$zero, $sp, 4
-	beqz	$a1, .LBB0_14
+	st.h	$s6, $sp, 8
+	slli.d	$a1, $a0, 31
+	st.d	$zero, $sp, 12
+	bgez	$a1, .LBB0_14
 # %bb.8:                                #   in Loop: Header=BB0_4 Depth=1
 	move	$a1, $zero
-	st.b	$zero, $sp, 0
+	st.b	$zero, $sp, 8
 	b	.LBB0_17
 	.p2align	4, , 16
 .LBB0_9:                                # %.thread.i
                                         #   in Loop: Header=BB0_4 Depth=1
 	sub.w	$a0, $zero, $a0
-	ori	$a1, $zero, 258
-	st.h	$a1, $sp, 12
+	st.h	$s4, $sp, 20
 .LBB0_10:                               # %.lr.ph.i.i
                                         #   in Loop: Header=BB0_4 Depth=1
 	bstrpick.d	$a2, $a0, 31, 16
@@ -98,22 +94,21 @@ SetupCPUEmFloatArrays:                  # @SetupCPUEmFloatArrays
 	or	$a2, $a2, $a3
 	ext.w.h	$a2, $a2
 	addi.d	$a1, $a1, -1
-	blt	$s4, $a2, .LBB0_11
+	bgez	$a2, .LBB0_11
 # %bb.12:                               # %._crit_edge.i.i
                                         #   in Loop: Header=BB0_4 Depth=1
-	st.w	$zero, $sp, 20
-	st.h	$a0, $sp, 18
-	st.h	$a2, $sp, 16
-	st.h	$a1, $sp, 14
+	st.w	$zero, $sp, 28
+	st.h	$a0, $sp, 26
+	st.h	$a2, $sp, 24
+	st.h	$a1, $sp, 22
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(randwc)
 	jirl	$ra, $ra, 0
-	blt	$s6, $a0, .LBB0_7
+	blt	$s5, $a0, .LBB0_7
 .LBB0_13:                               # %.thread.i12
                                         #   in Loop: Header=BB0_4 Depth=1
 	nor	$a0, $a0, $zero
-	ori	$a1, $zero, 258
-	st.h	$a1, $sp, 0
+	st.h	$s4, $sp, 8
 .LBB0_14:                               # %.lr.ph.i.i6
                                         #   in Loop: Header=BB0_4 Depth=1
 	bstrpick.d	$a2, $a0, 31, 16
@@ -127,40 +122,39 @@ SetupCPUEmFloatArrays:                  # @SetupCPUEmFloatArrays
 	or	$a2, $a2, $a3
 	ext.w.h	$a2, $a2
 	addi.d	$a1, $a1, -1
-	blt	$s4, $a2, .LBB0_15
+	bgez	$a2, .LBB0_15
 # %bb.16:                               # %._crit_edge.i.i11
                                         #   in Loop: Header=BB0_4 Depth=1
-	st.w	$zero, $sp, 8
-	st.h	$a0, $sp, 6
-	st.h	$a2, $sp, 4
+	st.w	$zero, $sp, 16
+	st.h	$a0, $sp, 14
+	st.h	$a2, $sp, 12
 .LBB0_17:                               # %Int32ToInternalFPF.exit13
                                         #   in Loop: Header=BB0_4 Depth=1
-	st.h	$a1, $sp, 2
+	st.h	$a1, $sp, 10
 	slli.d	$a0, $s3, 3
-	alsl.d	$s5, $s3, $a0, 2
-	add.d	$a2, $s1, $s5
-	addi.d	$a0, $sp, 12
-	addi.d	$a1, $sp, 0
+	alsl.d	$s7, $s3, $a0, 2
+	add.d	$a2, $s1, $s7
+	addi.d	$a0, $sp, 20
+	addi.d	$a1, $sp, 8
 	pcaddu18i	$ra, %call36(DivideInternalFPF)
 	jirl	$ra, $ra, 0
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(randwc)
 	jirl	$ra, $ra, 0
-	blt	$s6, $a0, .LBB0_19
+	blt	$s5, $a0, .LBB0_19
 # %bb.18:                               # %.thread.i20
                                         #   in Loop: Header=BB0_4 Depth=1
 	nor	$a0, $a0, $zero
-	ori	$a1, $zero, 258
-	st.h	$a1, $sp, 0
+	st.h	$s4, $sp, 8
 	b	.LBB0_20
 	.p2align	4, , 16
 .LBB0_19:                               #   in Loop: Header=BB0_4 Depth=1
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	and	$a1, $a0, $s7
-	st.h	$s8, $sp, 0
-	st.d	$zero, $sp, 4
-	bnez	$a1, .LBB0_2
+	st.h	$s6, $sp, 8
+	slli.d	$a1, $a0, 31
+	st.d	$zero, $sp, 12
+	bltz	$a1, .LBB0_2
 .LBB0_20:                               # %.lr.ph.i.i14
                                         #   in Loop: Header=BB0_4 Depth=1
 	bstrpick.d	$a2, $a0, 31, 16
@@ -174,15 +168,14 @@ SetupCPUEmFloatArrays:                  # @SetupCPUEmFloatArrays
 	or	$a2, $a2, $a3
 	ext.w.h	$a2, $a2
 	addi.d	$a1, $a1, -1
-	blt	$s4, $a2, .LBB0_21
+	bgez	$a2, .LBB0_21
 # %bb.22:                               # %._crit_edge.i.i19
                                         #   in Loop: Header=BB0_4 Depth=1
-	st.w	$zero, $sp, 8
-	st.h	$a0, $sp, 6
-	st.h	$a2, $sp, 4
+	st.w	$zero, $sp, 16
+	st.h	$a0, $sp, 14
+	st.h	$a2, $sp, 12
 	b	.LBB0_3
 .LBB0_23:                               # %._crit_edge
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
@@ -232,21 +225,22 @@ DivideInternalFPF:                      # @DivideInternalFPF
 .LBB1_3:
 	ld.hu	$a3, $a0, 4
 	ld.hu	$a4, $a0, 6
+	ld.hu	$a6, $a1, 4
+	ld.hu	$t0, $a1, 6
 	ld.hu	$a5, $a0, 8
-	ld.hu	$a6, $a0, 10
-	or	$a7, $a4, $a3
-	or	$a7, $a7, $a5
-	ld.hu	$t0, $a1, 4
-	ld.hu	$t2, $a1, 6
-	ld.hu	$t3, $a1, 8
-	ld.hu	$t4, $a1, 10
-	or	$t5, $a7, $a6
-	or	$a7, $t2, $t0
-	or	$a7, $a7, $t3
-	or	$a7, $a7, $t4
-	beqz	$t5, .LBB1_18
+	ld.hu	$t2, $a1, 8
+	ld.hu	$a7, $a0, 10
+	or	$a6, $t0, $a6
+	or	$t0, $a4, $a3
+	or	$a6, $a6, $t2
+	ld.hu	$t2, $a1, 10
+	or	$t0, $t0, $a5
+	or	$t0, $t0, $a7
+	slli.d	$t0, $t0, 48
+	or	$a6, $a6, $t2
+	beqz	$t0, .LBB1_18
 # %bb.4:
-	beqz	$a7, .LBB1_24
+	beqz	$a6, .LBB1_24
 # %bb.5:                                # %.lr.ph
 	move	$fp, $zero
 	move	$t7, $zero
@@ -255,7 +249,7 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	move	$t0, $zero
 	move	$t3, $zero
 	move	$t4, $zero
-	move	$a7, $zero
+	move	$a6, $zero
 	ld.b	$t2, $a0, 1
 	ld.b	$t5, $a1, 1
 	st.b	$t1, $a2, 0
@@ -297,8 +291,8 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	ori	$fp, $zero, 1
 .LBB1_7:                                # %.loopexit
                                         #   in Loop: Header=BB1_8 Depth=1
-	bstrpick.d	$s0, $a6, 15, 15
-	slli.d	$a6, $a6, 1
+	bstrpick.d	$s0, $a7, 15, 15
+	slli.d	$a7, $a7, 1
 	slli.d	$s1, $a5, 1
 	bstrpick.d	$a5, $a5, 15, 15
 	or	$s0, $s1, $s0
@@ -319,12 +313,11 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	bstrpick.d	$t0, $t0, 15, 15
 	or	$t3, $fp, $t3
 	st.h	$t3, $a2, 6
-	slli.d	$a7, $a7, 1
-	or	$t0, $a7, $t0
-	ext.w.h	$a7, $t0
+	slli.d	$a6, $a6, 1
+	or	$t0, $a6, $t0
+	ext.w.h	$a6, $t0
 	st.h	$t0, $a2, 4
 	addi.d	$t1, $t1, -1
-	addi.w	$s1, $zero, -1
 	st.h	$t1, $a2, 2
 	move	$fp, $t7
 	move	$t7, $t8
@@ -335,7 +328,7 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	move	$t4, $a4
 	move	$a4, $a5
 	move	$a5, $s0
-	bge	$s1, $a7, .LBB1_28
+	bltz	$a6, .LBB1_28
 .LBB1_8:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_10 Depth 2
 	bstrpick.d	$t5, $a3, 15, 15
@@ -422,7 +415,7 @@ DivideInternalFPF:                      # @DivideInternalFPF
 	st.b	$a0, $a2, 1
 	b	.LBB1_28
 .LBB1_18:
-	beqz	$a7, .LBB1_20
+	beqz	$a6, .LBB1_20
 # %bb.19:
 	lu12i.w	$a0, -524272
 	b	.LBB1_25
@@ -922,16 +915,15 @@ DoEmFloatIteration:                     # @DoEmFloatIteration
 	bstrpick.d	$a7, $a5, 15, 15
 	or	$a5, $a4, $t0
 	slli.d	$a2, $a2, 1
-	or	$a2, $a2, $a7
 	st.h	$a0, $sp, 82
 	vstelm.h	$vr1, $sp, 86, 2
 	vstelm.h	$vr1, $sp, 84, 0
 	vstelm.h	$vr1, $sp, 80, 1
 	vld	$vr0, $sp, 80
+	or	$a2, $a2, $a7
 	ext.w.h	$a2, $a2
-	addi.w	$a4, $zero, -1
 	addi.d	$a1, $a1, -1
-	blt	$a4, $a2, .LBB2_26
+	bgez	$a2, .LBB2_26
 # %bb.27:                               # %._crit_edge.i.us
                                         #   in Loop: Header=BB2_7 Depth=2
 	st.h	$a3, $s4, 10
@@ -946,7 +938,7 @@ DoEmFloatIteration:                     # @DoEmFloatIteration
 	or	$a0, $a1, $a0
 	vpickve2gr.h	$a1, $vr1, 2
 	or	$a0, $a0, $a1
-	bstrpick.d	$a0, $a0, 15, 0
+	slli.d	$a0, $a0, 48
 	bnez	$a0, .LBB2_39
 # %bb.29:                               #   in Loop: Header=BB2_7 Depth=2
 	vpickve2gr.h	$a0, $vr1, 3
@@ -1206,8 +1198,7 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	b	.LBB3_30
 .LBB3_7:
 	sub.d	$t8, $t8, $fp
-	ori	$fp, $zero, 1
-	blt	$t8, $fp, .LBB3_18
+	blez	$t8, .LBB3_18
 # %bb.8:
 	beqz	$a4, .LBB3_22
 # %bb.9:
@@ -1344,8 +1335,7 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	bnez	$a5, .LBB3_26
 # %bb.25:
 	ext.w.h	$a0, $a4
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB3_37
+	bgez	$a0, .LBB3_37
 	b	.LBB3_27
 .LBB3_26:
 	addi.d	$a5, $t6, 1
@@ -1407,10 +1397,9 @@ AddSubInternalFPF:                      # @AddSubInternalFPF
 	bstrpick.d	$t0, $t0, 15, 0
 	add.d	$t0, $t2, $t0
 	sub.d	$a7, $a7, $t0
-	lu12i.w	$t0, 16
-	and	$t0, $a7, $t0
+	slli.d	$t0, $a7, 47
 	st.h	$a7, $a3, 4
-	bnez	$t0, .LBB3_35
+	bltz	$t0, .LBB3_35
 # %bb.31:
 	bstrpick.d	$a0, $t1, 15, 0
 	bstrpick.d	$a1, $a2, 15, 0
@@ -1665,30 +1654,29 @@ normalize:                              # @normalize
 	ld.h	$a1, $a0, 4
 	bltz	$a1, .LBB5_4
 # %bb.1:                                # %.lr.ph
-	ld.hu	$a4, $a0, 10
-	ld.hu	$a5, $a0, 8
-	ld.hu	$a6, $a0, 6
+	ld.hu	$a3, $a0, 10
+	ld.hu	$a4, $a0, 8
+	ld.hu	$a5, $a0, 6
 	ld.hu	$a2, $a0, 2
-	addi.w	$a3, $zero, -1
 	.p2align	4, , 16
 .LBB5_2:                                # =>This Inner Loop Header: Depth=1
-	bstrpick.d	$a7, $a4, 15, 15
-	slli.d	$a4, $a4, 1
-	slli.d	$t0, $a5, 1
-	bstrpick.d	$t1, $a5, 15, 15
-	or	$a5, $t0, $a7
-	slli.d	$a7, $a6, 1
-	bstrpick.d	$t0, $a6, 15, 15
-	or	$a6, $a7, $t1
+	bstrpick.d	$a6, $a3, 15, 15
+	slli.d	$a3, $a3, 1
+	slli.d	$a7, $a4, 1
+	bstrpick.d	$t0, $a4, 15, 15
+	or	$a4, $a7, $a6
+	slli.d	$a6, $a5, 1
+	bstrpick.d	$a7, $a5, 15, 15
+	or	$a5, $a6, $t0
 	slli.d	$a1, $a1, 1
-	or	$a1, $a1, $t0
+	or	$a1, $a1, $a7
 	ext.w.h	$a1, $a1
 	addi.d	$a2, $a2, -1
-	blt	$a3, $a1, .LBB5_2
+	bgez	$a1, .LBB5_2
 # %bb.3:                                # %._crit_edge
-	st.h	$a4, $a0, 10
-	st.h	$a5, $a0, 8
-	st.h	$a6, $a0, 6
+	st.h	$a3, $a0, 10
+	st.h	$a4, $a0, 8
+	st.h	$a5, $a0, 6
 	st.h	$a1, $a0, 4
 	st.h	$a2, $a0, 2
 .LBB5_4:

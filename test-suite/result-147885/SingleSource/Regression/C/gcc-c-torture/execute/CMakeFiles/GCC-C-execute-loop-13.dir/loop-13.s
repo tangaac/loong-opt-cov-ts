@@ -5,11 +5,11 @@
 	.type	scale,@function
 scale:                                  # @scale
 # %bb.0:
-	ld.d	$a4, $a0, 0
-	ori	$a3, $zero, 1
-	beq	$a4, $a3, .LBB0_4
+	ld.d	$a3, $a0, 0
+	ori	$a4, $zero, 1
+	beq	$a3, $a4, .LBB0_4
 # %bb.1:
-	blt	$a2, $a3, .LBB0_4
+	blez	$a2, .LBB0_4
 # %bb.2:                                # %.lr.ph.preheader
 	addi.d	$a1, $a1, 8
 	.p2align	4, , 16

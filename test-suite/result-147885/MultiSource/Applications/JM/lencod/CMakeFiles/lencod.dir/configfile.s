@@ -738,8 +738,7 @@ Configure:                              # @Configure
 	bgtz	$a1, .LBB1_91
 # %bb.90:
 	ldptr.w	$a2, $a0, 4708
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB1_96
+	blez	$a2, .LBB1_96
 .LBB1_91:
 	ldptr.w	$a2, $a0, 2116
 	bnez	$a2, .LBB1_93
@@ -754,7 +753,7 @@ Configure:                              # @Configure
 .LBB1_93:
 	ori	$a2, $zero, 1
 	stptr.w	$a2, $a0, 2116
-	blt	$a1, $a2, .LBB1_96
+	blez	$a1, .LBB1_96
 # %bb.94:
 	ldptr.w	$a3, $a0, 4712
 	ori	$a1, $zero, 2
@@ -849,11 +848,11 @@ Configure:                              # @Configure
 	add.d	$a1, $a0, $a1
 	bstrpick.d	$a1, $a1, 31, 4
 	pcalau12i	$a2, %got_pc_hi20(img)
-	ld.d	$s5, $a2, %got_pc_lo12(img)
+	ld.d	$s1, $a2, %got_pc_lo12(img)
 	slli.d	$a1, $a1, 4
 	sub.w	$a1, $a0, $a1
 	ori	$a2, $zero, 16
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s1, 0
 	ldptr.w	$a3, $s3, 4704
 	sub.w	$a2, $a2, $a1
 	sltui	$a1, $a1, 1
@@ -884,7 +883,7 @@ Configure:                              # @Configure
 	sub.w	$a0, $a1, $a0
 	bnez	$a0, .LBB1_146
 # %bb.108:
-	ld.d	$a0, $s5, 0
+	ld.d	$a0, $s1, 0
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 3296
 	ldx.w	$a2, $a0, $a2
@@ -931,7 +930,7 @@ Configure:                              # @Configure
 	ori	$a0, $s8, 940
 	ldx.w	$a0, $s3, $a0
 	ori	$a1, $zero, 6
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	beq	$a0, $a1, .LBB1_127
 .LBB1_119:
 	ori	$a1, $zero, 2
@@ -984,7 +983,7 @@ Configure:                              # @Configure
 .LBB1_126:
 	move	$fp, $zero
 	ori	$a1, $zero, 6
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	bne	$a0, $a1, .LBB1_119
 .LBB1_127:
 	ldptr.w	$a1, $s3, 4704
@@ -996,7 +995,7 @@ Configure:                              # @Configure
 	ori	$a1, $zero, 2
 	sub.d	$a0, $a1, $a0
 .LBB1_129:
-	ld.d	$a1, $s5, 0
+	ld.d	$a1, $s1, 0
 	ld.w	$a2, $s3, 56
 	lu12i.w	$a5, 3
 	ori	$a3, $a5, 3296
@@ -1021,8 +1020,7 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 .LBB1_131:
 	mul.w	$s8, $s1, $s0
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB1_143
+	blez	$s8, .LBB1_143
 # %bb.132:                              # %.lr.ph.preheader.i
 	move	$s5, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.245)
@@ -1122,8 +1120,7 @@ Configure:                              # @Configure
 	beqz	$a0, .LBB1_149
 .LBB1_142:
 	ldptr.w	$a0, $s3, 5032
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB1_150
+	bgtz	$a0, .LBB1_150
 	b	.LBB1_152
 .LBB1_143:                              # %._crit_edge.i
 	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
@@ -1138,7 +1135,7 @@ Configure:                              # @Configure
 	move	$a3, $zero
 	b	.LBB1_147
 .LBB1_146:
-	ld.d	$a4, $s5, 0
+	ld.d	$a4, $s1, 0
 	lu12i.w	$a2, 3
 	ori	$a2, $a2, 3296
 	ldx.w	$a2, $a4, $a2
@@ -1176,8 +1173,7 @@ Configure:                              # @Configure
 	jirl	$ra, $ra, 0
 	ld.d	$s3, $s4, 0
 	ldptr.w	$a0, $s3, 5032
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_152
+	blez	$a0, .LBB1_152
 .LBB1_150:                              # %.lr.ph159.i.preheader
 	move	$s2, $zero
 	move	$s5, $zero
@@ -1218,7 +1214,7 @@ Configure:                              # @Configure
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(fclose)
 	jirl	$ra, $ra, 0
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 .LBB1_153:
 	ld.d	$a0, $s4, 0
 	ldptr.w	$a1, $a0, 4000
@@ -1400,8 +1396,7 @@ Configure:                              # @Configure
 # %bb.177:
 	bge	$a3, $a4, .LBB1_179
 # %bb.178:
-	ori	$a1, $zero, 1
-	bge	$a3, $a1, .LBB1_180
+	bgtz	$a3, .LBB1_180
 	b	.LBB1_181
 .LBB1_179:
 	pcalau12i	$a0, %pc_hi20(errortext)
@@ -1419,8 +1414,7 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 	ori	$a1, $s8, 640
 	ldx.w	$a3, $a0, $a1
-	ori	$a1, $zero, 1
-	blt	$a3, $a1, .LBB1_181
+	blez	$a3, .LBB1_181
 .LBB1_180:
 	ldptr.w	$a1, $a0, 4012
 	beqz	$a1, .LBB1_183
@@ -1495,8 +1489,7 @@ Configure:                              # @Configure
 	bgtz	$a1, .LBB1_191
 # %bb.190:
 	ldptr.w	$a1, $a0, 2932
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_193
+	blez	$a1, .LBB1_193
 .LBB1_191:
 	ldptr.w	$a1, $a0, 4708
 	beqz	$a1, .LBB1_193
@@ -1516,11 +1509,10 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 .LBB1_193:
 	ldptr.w	$a1, $a0, 4736
-	ori	$s1, $zero, 1
-	blt	$a1, $s1, .LBB1_196
+	blez	$a1, .LBB1_196
 # %bb.194:
 	ldptr.w	$a1, $a0, 2928
-	blt	$a1, $s1, .LBB1_196
+	blez	$a1, .LBB1_196
 # %bb.195:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$s0, $a0, %pc_lo12(errortext)
@@ -1537,7 +1529,7 @@ Configure:                              # @Configure
 	ld.d	$a0, $s4, 0
 .LBB1_196:
 	ldptr.w	$a1, $a0, 5032
-	blt	$a1, $s1, .LBB1_199
+	blez	$a1, .LBB1_199
 # %bb.197:
 	ori	$a1, $s8, 940
 	ldx.w	$a1, $a0, $a1
@@ -1551,7 +1543,7 @@ Configure:                              # @Configure
 	ldptr.w	$a1, $a0, 5116
 	beqz	$a1, .LBB1_206
 # %bb.200:
-	ld.d	$a1, $s5, 0
+	ld.d	$a1, $s1, 0
 	ld.w	$a2, $a0, 60
 	lu12i.w	$a4, 3
 	ori	$a3, $a4, 3300
@@ -1639,12 +1631,12 @@ Configure:                              # @Configure
 	ldptr.w	$a1, $a0, 2112
 	bnez	$a1, .LBB1_216
 # %bb.213:
-	ld.w	$a2, $a0, 32
-	ori	$a1, $zero, 1
-	blt	$a1, $a2, .LBB1_216
-# %bb.214:
-	ldptr.w	$a2, $a0, 2096
+	ld.w	$a1, $a0, 32
+	ori	$a2, $zero, 1
 	blt	$a2, $a1, .LBB1_216
+# %bb.214:
+	ldptr.w	$a1, $a0, 2096
+	blez	$a1, .LBB1_216
 # %bb.215:
 	pcalau12i	$a0, %pc_hi20(.L.str.290)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.290)
@@ -2263,8 +2255,7 @@ Configure:                              # @Configure
 	bgtz	$a1, .LBB1_301
 # %bb.300:
 	ldptr.w	$a1, $a0, 4708
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_302
+	blez	$a1, .LBB1_302
 .LBB1_301:
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
@@ -2655,8 +2646,7 @@ ParseContent:                           # @ParseContent
 	lu12i.w	$a2, 19
 	ori	$a2, $a2, 320
 	sub.d	$sp, $sp, $a2
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_44
+	blez	$a1, .LBB3_44
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	move	$t0, $zero

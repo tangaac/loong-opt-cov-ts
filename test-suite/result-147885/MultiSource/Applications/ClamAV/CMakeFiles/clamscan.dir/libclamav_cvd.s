@@ -551,11 +551,11 @@ cl_cvdhead:                             # @cl_cvdhead
 	st.b	$zero, $a0, 0
 .LBB2_4:
 	addi.w	$a4, $s1, -1
-	ori	$a0, $zero, 1
-	blt	$a4, $a0, .LBB2_9
+	blez	$a4, .LBB2_9
 # %bb.5:                                # %.lr.ph.preheader
-	addi.d	$a1, $sp, 7
-	ori	$a2, $zero, 32
+	addi.d	$a0, $sp, 7
+	ori	$a1, $zero, 32
+	ori	$a2, $zero, 1
 	lu12i.w	$a3, 2
 	ori	$a3, $a3, 1024
 	lu32i.d	$a3, 1
@@ -563,18 +563,18 @@ cl_cvdhead:                             # @cl_cvdhead
 .LBB2_6:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a5, $a4
-	ldx.bu	$a4, $a4, $a1
-	bltu	$a2, $a4, .LBB2_9
+	ldx.bu	$a4, $a4, $a0
+	bltu	$a1, $a4, .LBB2_9
 # %bb.7:                                # %.lr.ph
                                         #   in Loop: Header=BB2_6 Depth=1
-	sll.d	$a4, $a0, $a4
+	sll.d	$a4, $a2, $a4
 	and	$a4, $a4, $a3
 	beqz	$a4, .LBB2_9
 # %bb.8:                                # %.critedge2
                                         #   in Loop: Header=BB2_6 Depth=1
-	stx.b	$zero, $a5, $a1
+	stx.b	$zero, $a5, $a0
 	addi.d	$a4, $a5, -1
-	blt	$a0, $a5, .LBB2_6
+	blt	$a2, $a5, .LBB2_6
 .LBB2_9:                                # %.critedge
 	addi.d	$a0, $sp, 7
 	pcaddu18i	$ra, %call36(cl_cvdparse)

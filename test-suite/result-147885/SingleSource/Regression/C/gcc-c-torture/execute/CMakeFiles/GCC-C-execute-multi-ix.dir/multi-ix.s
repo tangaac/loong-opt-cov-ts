@@ -5,8 +5,7 @@
 	.type	f,@function
 f:                                      # @f
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill

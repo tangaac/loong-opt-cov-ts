@@ -219,9 +219,8 @@ wwunpack:                               # @wwunpack
 	st.w	$a3, $sp, 172
 	st.d	$a2, $sp, 176
 	st.b	$t2, $sp, 167
-	addi.w	$a4, $zero, -1
 	st.w	$a3, $sp, 168
-	bge	$a4, $a0, .LBB0_42
+	bltz	$a0, .LBB0_42
 # %bb.33:                               #   in Loop: Header=BB0_16 Depth=2
 	beq	$t0, $fp, .LBB0_223
 # %bb.34:                               #   in Loop: Header=BB0_16 Depth=2
@@ -605,9 +604,8 @@ wwunpack:                               # @wwunpack
 	beqz	$a5, .LBB0_121
 # %bb.116:                              #   in Loop: Header=BB0_16 Depth=2
 	addi.w	$a0, $a2, 0
-	addi.w	$a6, $zero, -1
 	slli.d	$a3, $a2, 1
-	bge	$a6, $a0, .LBB0_127
+	bltz	$a0, .LBB0_127
 # %bb.117:                              #   in Loop: Header=BB0_16 Depth=2
 	bstrpick.d	$a0, $a3, 31, 31
 	slli.d	$a2, $a2, 2
@@ -932,8 +930,7 @@ wwunpack:                               # @wwunpack
 	ori	$a1, $zero, 32
 	move	$a0, $a3
 .LBB0_187:                              #   in Loop: Header=BB0_16 Depth=2
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a4, .LBB0_190
+	bltz	$a4, .LBB0_190
 # %bb.188:                              #   in Loop: Header=BB0_16 Depth=2
 	st.w	$a2, $sp, 172
 	st.b	$a1, $sp, 167
@@ -1021,9 +1018,10 @@ wwunpack:                               # @wwunpack
 .LBB0_202:                              #   in Loop: Header=BB0_16 Depth=2
 	beq	$t0, $fp, .LBB0_223
 # %bb.203:                              #   in Loop: Header=BB0_16 Depth=2
-	bstrpick.d	$a3, $a0, 15, 0
-	beqz	$a3, .LBB0_223
+	slli.d	$a1, $a0, 48
+	beqz	$a1, .LBB0_223
 # %bb.204:                              #   in Loop: Header=BB0_16 Depth=2
+	bstrpick.d	$a3, $a0, 15, 0
 	bltu	$t7, $a3, .LBB0_223
 # %bb.205:                              #   in Loop: Header=BB0_16 Depth=2
 	sub.d	$a1, $s4, $s0
@@ -1081,10 +1079,10 @@ wwunpack:                               # @wwunpack
                                         # =>    This Inner Loop Header: Depth=3
 	ldx.b	$a3, $a1, $a2
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a4, $a0, 15, 0
 	st.b	$a3, $a1, 0
+	slli.d	$a3, $a0, 48
 	addi.d	$a1, $a1, 1
-	bnez	$a4, .LBB0_217
+	bnez	$a3, .LBB0_217
 	b	.LBB0_15
 .LBB0_218:                              #   in Loop: Header=BB0_4 Depth=1
 	move	$a0, $s7
@@ -1137,10 +1135,9 @@ wwunpack:                               # @wwunpack
 	ld.w	$a2, $a1, 8
 	ld.w	$a3, $a1, 16
 	addi.d	$s8, $s8, -1
-	bstrpick.d	$a4, $s8, 15, 0
-	sltu	$a5, $a2, $a3
-	masknez	$a2, $a2, $a5
-	maskeqz	$a3, $a3, $a5
+	sltu	$a4, $a2, $a3
+	masknez	$a2, $a2, $a4
+	maskeqz	$a3, $a3, $a4
 	or	$a2, $a3, $a2
 	andi	$a3, $a2, 4095
 	sltu	$a3, $zero, $a3
@@ -1152,8 +1149,9 @@ wwunpack:                               # @wwunpack
 	st.w	$a2, $a1, 16
 	add.d	$a2, $a0, $a3
 	st.w	$a2, $a1, 20
+	slli.d	$a2, $s8, 48
 	addi.d	$a1, $a1, 40
-	bnez	$a4, .LBB0_221
+	bnez	$a2, .LBB0_221
 .LBB0_222:                              # %._crit_edge
 	move	$a0, $zero
 	st.d	$zero, $a1, 32

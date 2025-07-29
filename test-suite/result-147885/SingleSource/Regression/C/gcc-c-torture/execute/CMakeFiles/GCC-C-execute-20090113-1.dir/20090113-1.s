@@ -27,7 +27,7 @@ msum_i4:                                # @msum_i4
 	ori	$a3, $zero, 2
 	addi.w	$s1, $a0, 1
                                         # implicit-def: $r5
-                                        # implicit-def: $r11
+                                        # implicit-def: $r10
 	blt	$s5, $a3, .LBB0_8
 # %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$s4, $a2, 31, 0
@@ -94,62 +94,60 @@ msum_i4:                                # @msum_i4
 	addi.d	$a2, $a2, 12
 	bnez	$a0, .LBB0_6
 .LBB0_7:                                # %._crit_edge.loopexit
-	ld.w	$a7, $sp, 4
+	ld.w	$a6, $sp, 4
 	ld.w	$a1, $sp, 32
 .LBB0_8:                                # %._crit_edge
 	ld.d	$a0, $s0, 0
 	blez	$s1, .LBB0_19
 # %bb.9:                                # %.lr.ph34.us.preheader
-	ld.d	$t2, $fp, 0
+	ld.d	$t1, $fp, 0
 	bstrpick.d	$a3, $s1, 30, 3
 	slli.d	$a2, $a3, 3
 	slli.d	$a3, $a3, 5
 	nor	$a4, $s2, $zero
 	add.d	$a4, $a4, $s3
 	ori	$a5, $zero, 8
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
-	addi.w	$a7, $a7, 0
+	addi.w	$a6, $a6, 0
 	vrepli.b	$vr0, 0
 	b	.LBB0_11
 	.p2align	4, , 16
 .LBB0_10:                               # %._crit_edge35.us
                                         #   in Loop: Header=BB0_11 Depth=1
-	st.w	$t1, $a0, 0
+	st.w	$t0, $a0, 0
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $sp, 32
 	addi.d	$a0, $a0, 4
-	move	$t2, $t0
-	beq	$a1, $a7, .LBB0_18
+	move	$t1, $a7
+	beq	$a1, $a6, .LBB0_18
 .LBB0_11:                               # %.lr.ph34.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_14 Depth 2
                                         #     Child Loop BB0_17 Depth 2
 	bgeu	$s1, $a5, .LBB0_13
 # %bb.12:                               #   in Loop: Header=BB0_11 Depth=1
-	move	$t1, $zero
-	move	$t3, $zero
-	move	$t0, $t2
+	move	$t0, $zero
+	move	$t2, $zero
+	move	$a7, $t1
 	b	.LBB0_16
 	.p2align	4, , 16
 .LBB0_13:                               # %vector.ph47
                                         #   in Loop: Header=BB0_11 Depth=1
-	add.d	$t0, $t2, $a3
-	addi.d	$t1, $t2, 16
-	move	$t2, $a2
+	add.d	$a7, $t1, $a3
+	addi.d	$t0, $t1, 16
+	move	$t1, $a2
 	vori.b	$vr1, $vr0, 0
 	vori.b	$vr2, $vr0, 0
 	.p2align	4, , 16
 .LBB0_14:                               # %vector.body50
                                         #   Parent Loop BB0_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	vld	$vr3, $t1, -16
-	vld	$vr4, $t1, 0
+	vld	$vr3, $t0, -16
+	vld	$vr4, $t0, 0
 	vadd.w	$vr1, $vr3, $vr1
 	vadd.w	$vr2, $vr4, $vr2
-	addi.d	$t2, $t2, -8
-	addi.d	$t1, $t1, 32
-	bnez	$t2, .LBB0_14
+	addi.d	$t1, $t1, -8
+	addi.d	$t0, $t0, 32
+	bnez	$t1, .LBB0_14
 # %bb.15:                               # %middle.block55
                                         #   in Loop: Header=BB0_11 Depth=1
 	vadd.w	$vr1, $vr2, $vr1
@@ -157,23 +155,23 @@ msum_i4:                                # @msum_i4
 	vadd.w	$vr1, $vr1, $vr2
 	vreplvei.w	$vr2, $vr1, 1
 	vadd.w	$vr1, $vr1, $vr2
-	vpickve2gr.w	$t1, $vr1, 0
-	move	$t3, $a2
+	vpickve2gr.w	$t0, $vr1, 0
+	move	$t2, $a2
 	beq	$a2, $s1, .LBB0_10
 .LBB0_16:                               # %scalar.ph45.preheader
                                         #   in Loop: Header=BB0_11 Depth=1
-	add.w	$t2, $a4, $t3
+	add.w	$t1, $a4, $t2
 	.p2align	4, , 16
 .LBB0_17:                               # %scalar.ph45
                                         #   Parent Loop BB0_11 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	ld.w	$t3, $t0, 0
-	add.d	$t1, $t3, $t1
-	bstrpick.d	$t2, $t2, 31, 0
-	addi.d	$t2, $t2, 1
-	and	$t3, $t2, $a6
-	addi.d	$t0, $t0, 4
-	beqz	$t3, .LBB0_17
+	ld.w	$t2, $a7, 0
+	add.d	$t0, $t2, $t0
+	bstrpick.d	$t1, $t1, 31, 0
+	addi.d	$t1, $t1, 1
+	slli.d	$t2, $t1, 31
+	addi.d	$a7, $a7, 4
+	bgez	$t2, .LBB0_17
 	b	.LBB0_10
 .LBB0_18:                               # %.split38.us
 	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
@@ -187,7 +185,7 @@ msum_i4:                                # @msum_i4
 	addi.d	$sp, $sp, 128
 	ret
 .LBB0_19:                               # %.split.preheader
-	sub.d	$a1, $a1, $a7
+	sub.d	$a1, $a1, $a6
 	nor	$a1, $a1, $zero
 	bstrpick.d	$a1, $a1, 31, 0
 	slli.d	$a1, $a1, 2

@@ -320,8 +320,7 @@ _ZN25btSimulationIslandManager10findUnionsEP12btDispatcherP16btCollisionWorld: #
 	ld.d	$a1, $a0, 0
 	ld.d	$a1, $a1, 72
 	jirl	$ra, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB6_15
+	blez	$a0, .LBB6_15
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	b	.LBB6_3
@@ -449,38 +448,37 @@ _ZN25btSimulationIslandManager21updateActivationStateEP16btCollisionWorldP12btDi
 	pcaddu18i	$ra, %call36(_ZN11btUnionFind5resetEi)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $fp, 12
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB7_8
+	blez	$a2, .LBB7_8
 # %bb.1:                                # %.lr.ph
 	ld.d	$a3, $fp, 24
+	ori	$a4, $zero, 1
 	lu12i.w	$a0, 260096
-	bne	$a2, $a1, .LBB7_3
+	bne	$a2, $a4, .LBB7_3
 # %bb.2:
 	move	$a1, $zero
 	b	.LBB7_6
 .LBB7_3:                                # %vector.ph
 	bstrpick.d	$a1, $a2, 30, 1
 	slli.d	$a1, $a1, 1
-	addi.d	$a4, $a3, 8
-	ori	$a5, $zero, 1
+	addi.d	$a5, $a3, 8
 	addi.w	$a6, $zero, -1
 	lu32i.d	$a6, 0
 	move	$a7, $a1
 	.p2align	4, , 16
 .LBB7_4:                                # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$t0, $a4, -8
-	ld.d	$t1, $a4, 0
-	addi.d	$t2, $a5, -1
+	ld.d	$t0, $a5, -8
+	ld.d	$t1, $a5, 0
+	addi.d	$t2, $a4, -1
 	st.w	$t2, $t0, 220
-	st.w	$a5, $t1, 220
+	st.w	$a4, $t1, 220
 	st.w	$a6, $t0, 224
 	st.w	$a6, $t1, 224
 	st.w	$a0, $t0, 260
 	st.w	$a0, $t1, 260
-	addi.d	$a4, $a4, 16
+	addi.d	$a5, $a5, 16
 	addi.d	$a7, $a7, -2
-	addi.d	$a5, $a5, 2
+	addi.d	$a4, $a4, 2
 	bnez	$a7, .LBB7_4
 # %bb.5:                                # %middle.block
 	beq	$a1, $a2, .LBB7_8
@@ -519,8 +517,7 @@ _ZN25btSimulationIslandManager21updateActivationStateEP16btCollisionWorldP12btDi
 _ZN25btSimulationIslandManager26storeIslandActivationStateEP16btCollisionWorld: # @_ZN25btSimulationIslandManager26storeIslandActivationStateEP16btCollisionWorld
 # %bb.0:
 	ld.w	$a2, $a1, 12
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB8_8
+	blez	$a2, .LBB8_8
 # %bb.1:                                # %.lr.ph
 	ld.d	$a1, $a1, 24
 	ld.d	$a0, $a0, 24
@@ -611,12 +608,11 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 	pcaddu18i	$ra, %call36(_ZN15CProfileManager13Start_ProfileEPKc)
 	jirl	$ra, $ra, 0
 	ld.w	$s2, $s0, 44
-	addi.w	$a1, $zero, -1
-	blt	$a1, $s2, .LBB9_7
+	bgez	$s2, .LBB9_7
 # %bb.1:
-	ld.w	$a2, $s0, 48
+	ld.w	$a1, $s0, 48
 	ld.d	$a0, $s0, 56
-	blt	$a1, $a2, .LBB9_6
+	bgez	$a1, .LBB9_6
 # %bb.2:                                # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a0, .LBB9_5
 # %bb.3:                                # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
@@ -650,8 +646,7 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 .Ltmp18:
 # %bb.8:
 	ld.w	$s3, $s0, 12
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB9_31
+	blez	$s3, .LBB9_31
 # %bb.9:                                # %.lr.ph146
 	move	$s5, $zero
 	ori	$s4, $zero, 2
@@ -801,16 +796,16 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 .Ltmp27:
 # %bb.32:                               # %.preheader
 	move	$s1, $a0
-	ori	$s6, $zero, 1
-	blt	$a0, $s6, .LBB9_69
+	blez	$a0, .LBB9_69
 # %bb.33:                               # %.lr.ph149
 	move	$s2, $zero
-	ori	$s7, $zero, 2
+	ori	$s6, $zero, 2
+	ori	$s7, $zero, 1
 	ori	$s8, $zero, 4
 	b	.LBB9_37
 .LBB9_34:                               # %_ZN20btAlignedObjectArrayIP20btPersistentManifoldE10deallocateEv.exit.i.i117
                                         #   in Loop: Header=BB9_37 Depth=1
-	st.b	$s6, $s0, 64
+	st.b	$s7, $s0, 64
 	st.d	$s4, $s0, 56
 	st.w	$s5, $s0, 48
 .LBB9_35:                               # %_ZN20btAlignedObjectArrayIP20btPersistentManifoldE9push_backERKS1_.exit
@@ -841,19 +836,19 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 	beqz	$s4, .LBB9_40
 # %bb.39:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.w	$a0, $s4, 228
-	bne	$a0, $s7, .LBB9_42
+	bne	$a0, $s6, .LBB9_42
 .LBB9_40:                               #   in Loop: Header=BB9_37 Depth=1
 	beqz	$s5, .LBB9_36
 # %bb.41:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.w	$a0, $s5, 228
-	beq	$a0, $s7, .LBB9_36
+	beq	$a0, $s6, .LBB9_36
 .LBB9_42:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.bu	$a0, $s4, 216
 	andi	$a0, $a0, 2
 	beqz	$a0, .LBB9_45
 # %bb.43:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.w	$a0, $s4, 228
-	beq	$a0, $s7, .LBB9_45
+	beq	$a0, $s6, .LBB9_45
 # %bb.44:                               #   in Loop: Header=BB9_37 Depth=1
 .Ltmp32:
 	move	$a0, $s5
@@ -867,7 +862,7 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 	beqz	$a0, .LBB9_48
 # %bb.46:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.w	$a0, $s5, 228
-	beq	$a0, $s7, .LBB9_48
+	beq	$a0, $s6, .LBB9_48
 # %bb.47:                               #   in Loop: Header=BB9_37 Depth=1
 .Ltmp34:
 	move	$a0, $s4
@@ -877,7 +872,7 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 .Ltmp35:
 .LBB9_48:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.bu	$a0, $s0, 104
-	bne	$a0, $s6, .LBB9_36
+	beqz	$a0, .LBB9_36
 # %bb.49:                               #   in Loop: Header=BB9_37 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a3, $a0, 56
@@ -897,7 +892,7 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 	sltui	$a0, $a1, 1
 	slli.w	$a2, $a1, 1
 	masknez	$a2, $a2, $a0
-	maskeqz	$a0, $s6, $a0
+	maskeqz	$a0, $s7, $a0
 	or	$s5, $a0, $a2
 	bge	$a1, $s5, .LBB9_35
 # %bb.53:                               #   in Loop: Header=BB9_37 Depth=1
@@ -914,7 +909,7 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 	move	$s4, $a0
 	ld.w	$a1, $s0, 44
 	ld.d	$a0, $s0, 56
-	blt	$a1, $s6, .LBB9_65
+	blez	$a1, .LBB9_65
 .LBB9_56:                               # %.lr.ph.i.i.i118
                                         #   in Loop: Header=BB9_37 Depth=1
 	move	$a2, $zero
@@ -964,12 +959,12 @@ _ZN25btSimulationIslandManager12buildIslandsEP12btDispatcherP16btCollisionWorld:
 .LBB9_63:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i123
                                         #   in Loop: Header=BB9_37 Depth=1
 	ld.bu	$a2, $s0, 64
-	bne	$a2, $s6, .LBB9_34
+	beqz	$a2, .LBB9_34
 	b	.LBB9_67
 .LBB9_64:                               #   in Loop: Header=BB9_37 Depth=1
 	move	$s4, $zero
 	ld.d	$a0, $s0, 56
-	bge	$a1, $s6, .LBB9_56
+	bgtz	$a1, .LBB9_56
 .LBB9_65:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i115
                                         #   in Loop: Header=BB9_37 Depth=1
 	beqz	$a0, .LBB9_34
@@ -1170,12 +1165,11 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 .Ltmp55:
 .LBB10_3:                               # %_ZN20btAlignedObjectArrayIP20btPersistentManifoldE9quickSortI33btPersistentManifoldSortPredicateEEvT_.exit
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
-	ori	$a0, $zero, 1
-	blt	$s5, $a0, .LBB10_53
+	blez	$s5, .LBB10_53
 # %bb.4:                                # %.lr.ph
 	move	$fp, $zero
 	move	$a1, $zero
-	ori	$s8, $zero, 1
+	ori	$s7, $zero, 1
 	b	.LBB10_8
 .LBB10_5:                               # %_ZN20btAlignedObjectArrayIP17btCollisionObjectE10deallocateEv.exit.i.i86
                                         #   in Loop: Header=BB10_8 Depth=1
@@ -1195,7 +1189,7 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 .LBB10_7:                               # %.loopexit
                                         #   in Loop: Header=BB10_8 Depth=1
 	sltui	$a0, $s3, 1
-	masknez	$a1, $s8, $a0
+	masknez	$a1, $s7, $a0
 	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	maskeqz	$a0, $a2, $a0
 	or	$a1, $a0, $a1
@@ -1233,12 +1227,12 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 	ori	$a0, $zero, 1
 	st.b	$a0, $s1, 96
 	st.d	$s3, $s1, 88
-	st.w	$s7, $s1, 80
+	st.w	$fp, $s1, 80
 .LBB10_12:                              #   in Loop: Header=BB10_13 Depth=2
 	ld.d	$a0, $s1, 88
 	slli.d	$a2, $a1, 3
-	ld.w	$a3, $fp, 228
-	stx.d	$fp, $a0, $a2
+	ld.w	$a3, $s8, 228
+	stx.d	$s8, $a0, $a2
 	addi.d	$a0, $a1, 1
 	st.w	$a0, $s1, 76
 	addi.d	$a0, $a3, -2
@@ -1264,7 +1258,7 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 	slli.d	$a0, $a0, 3
 	ld.w	$a1, $s1, 76
 	ld.w	$a3, $s1, 80
-	ldx.d	$fp, $a2, $a0
+	ldx.d	$s8, $a2, $a0
 	bne	$a1, $a3, .LBB10_12
 # %bb.15:                               #   in Loop: Header=BB10_13 Depth=2
 	sltui	$a0, $a1, 1
@@ -1272,12 +1266,12 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 	masknez	$a2, $a2, $a0
 	ori	$a3, $zero, 1
 	maskeqz	$a0, $a3, $a0
-	or	$s7, $a0, $a2
-	bge	$a1, $s7, .LBB10_12
+	or	$fp, $a0, $a2
+	bge	$a1, $fp, .LBB10_12
 # %bb.16:                               #   in Loop: Header=BB10_13 Depth=2
-	beqz	$s7, .LBB10_27
+	beqz	$fp, .LBB10_27
 # %bb.17:                               #   in Loop: Header=BB10_13 Depth=2
-	slli.d	$a0, $s7, 3
+	slli.d	$a0, $fp, 3
 .Ltmp57:
 	ori	$a1, $zero, 16
 	pcaddu18i	$ra, %call36(_Z22btAlignedAllocInternalmi)
@@ -1288,8 +1282,7 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 	move	$s3, $a0
 	ld.w	$a1, $s1, 76
 	ld.d	$a0, $s1, 88
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB10_28
+	blez	$a1, .LBB10_28
 .LBB10_19:                              # %.lr.ph.i.i.i
                                         #   in Loop: Header=BB10_13 Depth=2
 	move	$a2, $zero
@@ -1342,14 +1335,12 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 .LBB10_26:                              # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.thread.i.i
                                         #   in Loop: Header=BB10_13 Depth=2
 	ld.bu	$a2, $s1, 96
-	ori	$a3, $zero, 1
-	beq	$a2, $a3, .LBB10_9
+	bnez	$a2, .LBB10_9
 	b	.LBB10_11
 .LBB10_27:                              #   in Loop: Header=BB10_13 Depth=2
 	move	$s3, $zero
 	ld.d	$a0, $s1, 88
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB10_19
+	bgtz	$a1, .LBB10_19
 .LBB10_28:                              # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i
                                         #   in Loop: Header=BB10_13 Depth=2
 	beqz	$a0, .LBB10_11
@@ -1365,57 +1356,56 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 .LBB10_31:                              # %.critedge
                                         #   in Loop: Header=BB10_8 Depth=1
-	ld.d	$a7, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$t0, $sp, 32                    # 8-byte Folded Reload
-	bge	$t0, $a7, .LBB10_40
+	ld.d	$a6, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a7, $sp, 32                    # 8-byte Folded Reload
+	bge	$a7, $a6, .LBB10_40
 # %bb.32:                               #   in Loop: Header=BB10_8 Depth=1
-	ld.d	$a2, $s1, 56
-	slli.d	$a0, $t0, 3
-	ldx.d	$a3, $a2, $a0
-	ld.d	$a0, $a3, 712
-	ld.w	$a1, $a0, 220
-	addi.w	$a0, $zero, -1
-	bge	$a0, $a1, .LBB10_39
+	ld.d	$a1, $s1, 56
+	slli.d	$a0, $a7, 3
+	ldx.d	$a2, $a1, $a0
+	ld.d	$a0, $a2, 712
+	ld.w	$a0, $a0, 220
+	bltz	$a0, .LBB10_39
 # %bb.33:                               # %_Z11getIslandIdPK20btPersistentManifold.exit
                                         #   in Loop: Header=BB10_8 Depth=1
-	bne	$a1, $s2, .LBB10_40
+	bne	$a0, $s2, .LBB10_40
 .LBB10_34:                              # %.preheader.preheader
                                         #   in Loop: Header=BB10_8 Depth=1
-	alsl.d	$a3, $t0, $a2, 3
-	addi.w	$a1, $t0, 1
-	slt	$a4, $a1, $a7
-	masknez	$a1, $a1, $a4
-	maskeqz	$a4, $a7, $a4
-	or	$a1, $a4, $a1
-	alsl.d	$a2, $t0, $a2, 3
-	addi.d	$a2, $a2, 8
-	addi.d	$a4, $t0, 1
-	move	$s8, $t0
+	alsl.d	$a3, $a7, $a1, 3
+	addi.w	$a0, $a7, 1
+	slt	$a2, $a0, $a6
+	masknez	$a0, $a0, $a2
+	maskeqz	$a2, $a6, $a2
+	or	$a0, $a2, $a0
+	alsl.d	$a1, $a7, $a1, 3
+	addi.d	$a1, $a1, 8
+	addi.d	$a2, $a7, 1
+	move	$s7, $a7
 	b	.LBB10_36
 	.p2align	4, , 16
 .LBB10_35:                              # %_Z11getIslandIdPK20btPersistentManifold.exit81
                                         #   in Loop: Header=BB10_36 Depth=2
-	addi.w	$s8, $s8, 1
-	addi.d	$a2, $a2, 8
-	addi.d	$a4, $a4, 1
-	bne	$s2, $a5, .LBB10_43
+	addi.w	$s7, $s7, 1
+	addi.d	$a1, $a1, 8
+	addi.d	$a2, $a2, 1
+	bne	$s2, $a4, .LBB10_43
 .LBB10_36:                              # %.preheader
                                         #   Parent Loop BB10_8 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	bge	$a4, $a7, .LBB10_42
+	bge	$a2, $a6, .LBB10_42
 # %bb.37:                               #   in Loop: Header=BB10_36 Depth=2
-	ld.d	$a6, $a2, 0
-	ld.d	$a5, $a6, 712
-	ld.w	$a5, $a5, 220
-	blt	$a0, $a5, .LBB10_35
+	ld.d	$a5, $a1, 0
+	ld.d	$a4, $a5, 712
+	ld.w	$a4, $a4, 220
+	bgez	$a4, .LBB10_35
 # %bb.38:                               #   in Loop: Header=BB10_36 Depth=2
-	ld.d	$a5, $a6, 720
-	ld.w	$a5, $a5, 220
+	ld.d	$a4, $a5, 720
+	ld.w	$a4, $a4, 220
 	b	.LBB10_35
 .LBB10_39:                              #   in Loop: Header=BB10_8 Depth=1
-	ld.d	$a1, $a3, 720
-	ld.w	$a1, $a1, 220
-	beq	$a1, $s2, .LBB10_34
+	ld.d	$a0, $a2, 720
+	ld.w	$a0, $a0, 220
+	beq	$a0, $s2, .LBB10_34
 	.p2align	4, , 16
 .LBB10_40:                              #   in Loop: Header=BB10_8 Depth=1
 	move	$s3, $zero
@@ -1425,14 +1415,13 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
 	beqz	$a0, .LBB10_44
 .LBB10_41:                              #   in Loop: Header=BB10_8 Depth=1
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.w	$a1, $zero, -1
-	blt	$a1, $s4, .LBB10_7
+	bgez	$s4, .LBB10_7
 	b	.LBB10_46
 .LBB10_42:                              #   in Loop: Header=BB10_8 Depth=1
-	move	$s8, $a1
+	move	$s7, $a0
 .LBB10_43:                              # %.critedge2
                                         #   in Loop: Header=BB10_8 Depth=1
-	sub.w	$s3, $s8, $t0
+	sub.w	$s3, $s7, $a7
 	ld.w	$s4, $s1, 76
 	andi	$a0, $s6, 1
 	bnez	$a0, .LBB10_41
@@ -1451,12 +1440,11 @@ _ZN25btSimulationIslandManager22buildAndProcessIslandsEP12btDispatcherP16btColli
                                         #   in Loop: Header=BB10_8 Depth=1
 	ld.w	$s4, $s1, 76
 	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	addi.w	$a1, $zero, -1
-	blt	$a1, $s4, .LBB10_7
+	bgez	$s4, .LBB10_7
 .LBB10_46:                              #   in Loop: Header=BB10_8 Depth=1
-	ld.w	$a2, $s1, 80
+	ld.w	$a1, $s1, 80
 	ld.d	$a0, $s1, 88
-	blt	$a1, $a2, .LBB10_6
+	bgez	$a1, .LBB10_6
 # %bb.47:                               # %_ZNK20btAlignedObjectArrayIP17btCollisionObjectE4copyEiiPS1_.exit.i.i84
                                         #   in Loop: Header=BB10_8 Depth=1
 	beqz	$a0, .LBB10_5
@@ -1619,26 +1607,23 @@ GCC_except_table10:
 _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersistentManifoldSortPredicateEEvT_ii: # @_ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersistentManifoldSortPredicateEEvT_ii
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -48
-	.cfi_def_cfa_offset 48
-	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -32
+	.cfi_def_cfa_offset 32
+	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
 	.cfi_offset 24, -32
-	.cfi_offset 25, -40
 	move	$fp, $a3
 	move	$s0, $a0
-	addi.w	$s1, $zero, -1
 	b	.LBB11_2
 	.p2align	4, , 16
 .LBB11_1:                               #   in Loop: Header=BB11_2 Depth=1
-	move	$a2, $s2
-	bge	$s2, $fp, .LBB11_29
+	move	$a2, $s1
+	bge	$s1, $fp, .LBB11_29
 .LBB11_2:                               # %tailrecurse
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB11_17 Depth 2
@@ -1661,26 +1646,26 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 # %bb.3:                                # %.split.us.us.preheader
                                         #   in Loop: Header=BB11_2 Depth=1
 	move	$a3, $fp
-	move	$s2, $a2
+	move	$s1, $a2
 	b	.LBB11_5
 	.p2align	4, , 16
 .LBB11_4:                               #   in Loop: Header=BB11_5 Depth=2
-	addi.w	$s2, $s2, -1
+	addi.w	$s1, $s1, -1
 	addi.w	$a3, $a3, 1
-	blt	$a3, $s2, .LBB11_27
+	blt	$a3, $s1, .LBB11_27
 .LBB11_5:                               # %.split.us.us
                                         #   Parent Loop BB11_2 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB11_7 Depth 3
                                         #       Child Loop BB11_11 Depth 3
-	addi.d	$a6, $s2, -1
-	alsl.d	$a5, $s2, $a0, 3
+	addi.d	$a6, $s1, -1
+	alsl.d	$a5, $s1, $a0, 3
 	b	.LBB11_7
 	.p2align	4, , 16
 .LBB11_6:                               # %_Z11getIslandIdPK20btPersistentManifold.exit.i.us.us
                                         #   in Loop: Header=BB11_7 Depth=3
 	addi.d	$a6, $a6, 1
-	addi.w	$s2, $s2, 1
+	addi.w	$s1, $s1, 1
 	addi.d	$a5, $a5, 8
 	bge	$t0, $a4, .LBB11_9
 .LBB11_7:                               #   Parent Loop BB11_2 Depth=1
@@ -1689,7 +1674,7 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 	ld.d	$a7, $a5, 0
 	ld.d	$t0, $a7, 712
 	ld.w	$t0, $t0, 220
-	blt	$s1, $t0, .LBB11_6
+	bgez	$t0, .LBB11_6
 # %bb.8:                                #   in Loop: Header=BB11_7 Depth=3
 	ld.d	$t0, $a7, 720
 	ld.w	$t0, $t0, 220
@@ -1714,7 +1699,7 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 	ld.d	$t2, $t0, -8
 	ld.d	$t3, $t2, 712
 	ld.w	$t3, $t3, 220
-	blt	$s1, $t3, .LBB11_10
+	bgez	$t3, .LBB11_10
 # %bb.12:                               #   in Loop: Header=BB11_11 Depth=3
 	ld.d	$t3, $t2, 720
 	ld.w	$t3, $t3, 220
@@ -1726,7 +1711,7 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 # %bb.14:                               #   in Loop: Header=BB11_5 Depth=2
 	st.d	$t2, $a5, -8
 	st.d	$a7, $t0, 0
-	bge	$a3, $s2, .LBB11_5
+	bge	$a3, $s1, .LBB11_5
 	b	.LBB11_27
 	.p2align	4, , 16
 .LBB11_15:                              # %tailrecurse.split
@@ -1734,26 +1719,26 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 	ld.d	$a3, $a3, 720
 	ld.w	$a4, $a3, 220
 	move	$a3, $fp
-	move	$s2, $a2
+	move	$s1, $a2
 	b	.LBB11_17
 	.p2align	4, , 16
 .LBB11_16:                              #   in Loop: Header=BB11_17 Depth=2
 	st.d	$t2, $a5, -8
 	st.d	$a7, $t0, 0
-	blt	$a3, $s2, .LBB11_27
+	blt	$a3, $s1, .LBB11_27
 .LBB11_17:                              # %.split
                                         #   Parent Loop BB11_2 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB11_19 Depth 3
                                         #       Child Loop BB11_23 Depth 3
-	addi.d	$a6, $s2, -1
-	alsl.d	$a5, $s2, $a0, 3
+	addi.d	$a6, $s1, -1
+	alsl.d	$a5, $s1, $a0, 3
 	b	.LBB11_19
 	.p2align	4, , 16
 .LBB11_18:                              # %_Z11getIslandIdPK20btPersistentManifold.exit.i
                                         #   in Loop: Header=BB11_19 Depth=3
 	addi.d	$a6, $a6, 1
-	addi.w	$s2, $s2, 1
+	addi.w	$s1, $s1, 1
 	addi.d	$a5, $a5, 8
 	bge	$t0, $a4, .LBB11_21
 .LBB11_19:                              #   Parent Loop BB11_2 Depth=1
@@ -1762,7 +1747,7 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 	ld.d	$a7, $a5, 0
 	ld.d	$t0, $a7, 712
 	ld.w	$t0, $t0, 220
-	blt	$s1, $t0, .LBB11_18
+	bgez	$t0, .LBB11_18
 # %bb.20:                               #   in Loop: Header=BB11_19 Depth=3
 	ld.d	$t0, $a7, 720
 	ld.w	$t0, $t0, 220
@@ -1787,7 +1772,7 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 	ld.d	$t2, $t0, -8
 	ld.d	$t3, $t2, 712
 	ld.w	$t3, $t3, 220
-	blt	$s1, $t3, .LBB11_22
+	bgez	$t3, .LBB11_22
 # %bb.24:                               #   in Loop: Header=BB11_23 Depth=3
 	ld.d	$t3, $t2, 720
 	ld.w	$t3, $t3, 220
@@ -1797,9 +1782,9 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
                                         #   in Loop: Header=BB11_17 Depth=2
 	bge	$t1, $a6, .LBB11_16
 # %bb.26:                               #   in Loop: Header=BB11_17 Depth=2
-	addi.w	$s2, $s2, -1
+	addi.w	$s1, $s1, -1
 	addi.w	$a3, $a3, 1
-	bge	$a3, $s2, .LBB11_17
+	bge	$a3, $s1, .LBB11_17
 	.p2align	4, , 16
 .LBB11_27:                              # %.split62.us
                                         #   in Loop: Header=BB11_2 Depth=1
@@ -1811,12 +1796,11 @@ _ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersis
 	jirl	$ra, $ra, 0
 	b	.LBB11_1
 .LBB11_29:
-	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 48
+	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 32
 	ret
 .Lfunc_end11:
 	.size	_ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersistentManifoldSortPredicateEEvT_ii, .Lfunc_end11-_ZN20btAlignedObjectArrayIP20btPersistentManifoldE17quickSortInternalI33btPersistentManifoldSortPredicateEEvT_ii

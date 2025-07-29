@@ -563,7 +563,7 @@ rsdec_204:                              # @rsdec_204
 	move	$a7, $t2
 	move	$t3, $t7
 	addi.w	$s0, $s0, -1
-	blt	$t2, $a5, .LBB0_21
+	blez	$t2, .LBB0_21
 # %bb.20:                               # %.preheader328.i
                                         #   in Loop: Header=BB0_19 Depth=2
 	ld.w	$t5, $t4, 0
@@ -573,7 +573,7 @@ rsdec_204:                              # @rsdec_204
 	addi.w	$t7, $t3, -1
 	beq	$t5, $s6, .LBB0_19
 .LBB0_21:                               #   in Loop: Header=BB0_17 Depth=1
-	blt	$a7, $a5, .LBB0_29
+	blez	$a7, .LBB0_29
 # %bb.22:                               # %.preheader326.preheader.i
                                         #   in Loop: Header=BB0_17 Depth=1
 	bstrpick.d	$a7, $a7, 31, 0
@@ -837,13 +837,13 @@ rsdec_204:                              # @rsdec_204
 	slli.d	$a7, $a7, 2
 	ldx.w	$t3, $s2, $a7
 	alsl.d	$s0, $s8, $a6, 2
-	bge	$s5, $a5, .LBB0_53
+	bgtz	$s5, .LBB0_53
 	b	.LBB0_16
 	.p2align	4, , 16
 .LBB0_52:                               #   in Loop: Header=BB0_17 Depth=1
 	move	$t3, $zero
 	alsl.d	$s0, $s8, $a6, 2
-	blt	$s5, $a5, .LBB0_16
+	blez	$s5, .LBB0_16
 .LBB0_53:                               # %.lr.ph346.i
                                         #   in Loop: Header=BB0_17 Depth=1
 	addi.d	$a7, $s5, 1
@@ -1314,8 +1314,7 @@ rsdec_204:                              # @rsdec_204
 	addi.d	$a1, $a1, 4
 	bne	$a1, $a2, .LBB0_103
 .LBB0_105:                              # %.preheader310.i
-	ori	$a1, $zero, 1
-	blt	$s5, $a1, .LBB0_94
+	blez	$s5, .LBB0_94
 # %bb.106:                              # %.lr.ph383.i
 	move	$a1, $zero
 	addi.d	$a2, $s6, -1

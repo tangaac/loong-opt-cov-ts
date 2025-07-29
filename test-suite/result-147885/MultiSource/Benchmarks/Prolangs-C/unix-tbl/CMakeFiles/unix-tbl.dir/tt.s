@@ -270,11 +270,11 @@ allh:                                   # @allh
 	pcalau12i	$a0, %got_pc_hi20(ncol)
 	ld.d	$s2, $a0, %got_pc_lo12(ncol)
 	ld.w	$a0, $s2, 0
-	move	$s0, $zero
-	ori	$s3, $zero, 1
-	blt	$a0, $s3, .LBB6_1
+	blez	$a0, .LBB6_8
 # %bb.3:                                # %.lr.ph.preheader
+	move	$s0, $zero
 	move	$s1, $zero
+	ori	$s3, $zero, 1
 	b	.LBB6_5
 	.p2align	4, , 16
 .LBB6_4:                                #   in Loop: Header=BB6_5 Depth=1
@@ -290,11 +290,14 @@ allh:                                   # @allh
 	beq	$a0, $s3, .LBB6_4
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB6_5 Depth=1
-	beqz	$a0, .LBB6_8
+	beqz	$a0, .LBB6_9
 # %bb.7:                                #   in Loop: Header=BB6_5 Depth=1
 	ori	$s0, $zero, 1
 	b	.LBB6_4
 .LBB6_8:
+	move	$s0, $zero
+	b	.LBB6_1
+.LBB6_9:
 	move	$s0, $a0
 	b	.LBB6_1
 .Lfunc_end6:
@@ -347,7 +350,6 @@ thish:                                  # @thish
 	alsl.d	$a2, $a2, $a4, 4
 	add.d	$a4, $a3, $a2
 	ori	$a5, $zero, 115
-	addi.w	$a6, $zero, -1
 	.p2align	4, , 16
 .LBB7_8:                                # %ctype.exit.us.us
                                         # =>This Inner Loop Header: Depth=1
@@ -359,7 +361,7 @@ thish:                                  # @thish
 	addi.w	$a1, $a1, -1
 	or	$a3, $a1, $a0
 	move	$a2, $zero
-	blt	$a6, $a3, .LBB7_8
+	bgez	$a3, .LBB7_8
 	b	.LBB7_6
 .LBB7_10:                               # %ctype.exit.us.us
 	ori	$a4, $zero, 60

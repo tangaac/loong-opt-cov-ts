@@ -5,28 +5,28 @@
 	.type	sethand,@function
 sethand:                                # @sethand
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.1:
 	pcalau12i	$a1, %got_pc_hi20(p)
 	ld.d	$a1, $a1, %got_pc_lo12(p)
-	ori	$a3, $zero, 2
-	st.b	$a3, $a1, 60
-	beq	$a0, $a2, .LBB0_4
+	ori	$a2, $zero, 2
+	ori	$a3, $zero, 1
+	st.b	$a2, $a1, 60
+	beq	$a0, $a3, .LBB0_4
 # %bb.2:
-	ori	$a2, $zero, 3
-	st.b	$a3, $a1, 300
-	bltu	$a0, $a2, .LBB0_4
+	ori	$a3, $zero, 3
+	st.b	$a2, $a1, 300
+	bltu	$a0, $a3, .LBB0_4
 # %bb.3:
-	ori	$a3, $zero, 2
-	st.b	$a3, $a1, 72
-	bne	$a0, $a2, .LBB0_5
+	ori	$a2, $zero, 2
+	st.b	$a2, $a1, 72
+	bne	$a0, $a3, .LBB0_5
 .LBB0_4:                                # %.thread
 	ret
 .LBB0_5:
-	ori	$a2, $zero, 5
-	st.b	$a3, $a1, 288
-	bne	$a0, $a2, .LBB0_7
+	ori	$a3, $zero, 5
+	st.b	$a2, $a1, 288
+	bne	$a0, $a3, .LBB0_7
 # %bb.6:
 	ori	$a0, $zero, 2
 	st.b	$a0, $a1, 180

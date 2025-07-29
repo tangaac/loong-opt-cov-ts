@@ -41,8 +41,7 @@ _ZNK23btConvexPointCloudShape37localGetSupportingVertexWithoutMarginERK9btVector
 	vldi	$vr1, -1168
 	fmov.s	$fa2, $fa0
 	ld.w	$a1, $a0, 112
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB1_4
+	bgtz	$a1, .LBB1_4
 .LBB1_2:
 	move	$a1, $zero
 	move	$a0, $zero
@@ -53,8 +52,7 @@ _ZNK23btConvexPointCloudShape37localGetSupportingVertexWithoutMarginERK9btVector
 	fmul.s	$fa0, $fa2, $fa4
 	fmul.s	$fa2, $fa3, $fa4
 	ld.w	$a1, $a0, 112
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_2
+	blez	$a1, .LBB1_2
 .LBB1_4:                                # %.lr.ph
 	ld.d	$a2, $a0, 104
 	fld.s	$fa3, $a0, 24
@@ -104,9 +102,9 @@ _ZNK23btConvexPointCloudShape37localGetSupportingVertexWithoutMarginERK9btVector
 	.type	_ZNK23btConvexPointCloudShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK23btConvexPointCloudShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK23btConvexPointCloudShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a5, $zero, 1
-	blt	$a3, $a5, .LBB2_15
+	blez	$a3, .LBB2_15
 # %bb.1:                                # %.lr.ph.preheader
+	ori	$a5, $zero, 1
 	lu12i.w	$a4, -141856
 	bne	$a3, $a5, .LBB2_3
 # %bb.2:
@@ -144,8 +142,7 @@ _ZNK23btConvexPointCloudShape49batchedUnitVectorGetSupportingVertexWithoutMargin
 	bnez	$a5, .LBB2_7
 .LBB2_8:                                # %.preheader
 	ld.w	$a4, $a0, 112
-	ori	$a5, $zero, 1
-	blt	$a4, $a5, .LBB2_15
+	blez	$a4, .LBB2_15
 # %bb.9:                                # %.lr.ph34
 	move	$a4, $zero
 	bstrpick.d	$a3, $a3, 31, 0

@@ -36,7 +36,7 @@ vprobes:                                # @vprobes
                                         # implicit-def: $r4
                                         # kill: killed $r4
                                         # implicit-def: $r29
-	st.d	$s2, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	b	.LBB0_5
 .LBB0_2:                                # %.critedge238
@@ -68,7 +68,6 @@ vprobes:                                # @vprobes
 	st.w	$a2, $a1, 12
 	ld.w	$a1, $s5, 0
 	ld.w	$a2, $s2, 0
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
 	sub.d	$a3, $s3, $s8
 	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	add.w	$a1, $a2, $a1
@@ -100,8 +99,6 @@ vprobes:                                # @vprobes
 	ld.d	$a0, $a0, %got_pc_lo12(vEdgeRoot)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	move	$a1, $s4
-	move	$fp, $a4
-	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(fpdebug)
@@ -110,22 +107,22 @@ vprobes:                                # @vprobes
 	ld.w	$a2, $s5, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
-	addi.d	$s7, $a1, %pc_lo12(.L.str.1)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
+	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	ori	$a5, $zero, 1
-	move	$a1, $s7
 	move	$a2, $s8
-	move	$a3, $fp
+	move	$a3, $s7
 	move	$a4, $s4
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s5, 0
 	ld.w	$a1, $s2, 0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s5, 0
@@ -152,7 +149,6 @@ vprobes:                                # @vprobes
 	add.d	$a0, $a2, $a0
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 16
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
 	ld.w	$a0, $s5, 0
 	ld.w	$a1, $s2, 0
 	add.w	$a0, $a1, $a0
@@ -175,7 +171,7 @@ vprobes:                                # @vprobes
 	st.w	$a1, $a0, 20
 	ld.w	$a0, $s5, 0
 	ld.w	$a1, $s2, 0
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	add.w	$a2, $a1, $a0
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a1, $s6
@@ -183,13 +179,13 @@ vprobes:                                # @vprobes
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
 	ld.w	$a2, $s5, 0
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
-	move	$a1, $s7
+	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	move	$a2, $s8
-	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
+	move	$a3, $s7
 	move	$a4, $s6
 	move	$a5, $s4
 	pcaddu18i	$ra, %call36(fprintf)
@@ -249,7 +245,7 @@ vprobes:                                # @vprobes
 # %bb.8:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	ori	$s1, $zero, 40
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB0_10
 	.p2align	4, , 16
 .LBB0_9:                                #   in Loop: Header=BB0_10 Depth=2
@@ -272,10 +268,10 @@ vprobes:                                # @vprobes
 	ld.w	$a1, $a1, 4
 	blt	$s4, $a1, .LBB0_9
 # %bb.13:                               #   in Loop: Header=BB0_5 Depth=1
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	b	.LBB0_16
 .LBB0_14:                               #   in Loop: Header=BB0_5 Depth=1
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 .LBB0_15:                               # %.loopexit245
                                         #   in Loop: Header=BB0_5 Depth=1
 	move	$s5, $zero
@@ -312,6 +308,7 @@ vprobes:                                # @vprobes
 	move	$s5, $a4
 	pcaddu18i	$ra, %call36(tprop)
 	jirl	$ra, $ra, 0
+	move	$a5, $s5
 	slli.d	$a0, $a0, 3
 	ldx.d	$a1, $s0, $a0
 	ld.d	$a0, $s2, 0
@@ -378,6 +375,9 @@ vprobes:                                # @vprobes
 	ld.d	$a0, $a0, %got_pc_lo12(vEdgeRoot)
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	move	$a1, $s4
+	move	$s5, $fp
+	move	$fp, $a5
+	st.d	$a5, $sp, 64                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %got_pc_hi20(fpdebug)
@@ -391,18 +391,18 @@ vprobes:                                # @vprobes
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s8, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.1)
-	st.d	$fp, $sp, 56                    # 8-byte Folded Spill
-	addi.d	$fp, $a1, %pc_lo12(.L.str.1)
+	addi.d	$a1, $a1, %pc_lo12(.L.str.1)
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	ori	$a5, $zero, 1
-	move	$a1, $fp
 	move	$a2, $s7
-	move	$a3, $s5
+	move	$a3, $fp
+	move	$fp, $s5
 	move	$a4, $s4
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 0
 	ld.w	$a1, $s0, 0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s2, 0
@@ -461,16 +461,15 @@ vprobes:                                # @vprobes
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s8, 0
 	ld.w	$a2, $s2, 0
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	move	$a1, $s6
 	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s8, 0
-	move	$a1, $fp
-	ld.d	$fp, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	move	$a2, $s7
-	move	$a3, $s5
+	ld.d	$a3, $sp, 64                    # 8-byte Folded Reload
 	move	$a4, $s0
 	move	$a5, $s4
 	pcaddu18i	$ra, %call36(fprintf)
@@ -491,7 +490,7 @@ vprobes:                                # @vprobes
 	bgtz	$a3, .LBB0_23
 # %bb.25:                               #   in Loop: Header=BB0_24 Depth=2
 	ld.w	$a3, $a2, 12
-	bge	$a3, $s5, .LBB0_22
+	bge	$a3, $a5, .LBB0_22
 # %bb.26:                               #   in Loop: Header=BB0_24 Depth=2
 	ld.w	$a3, $a2, 4
 	bge	$a3, $a4, .LBB0_23
@@ -518,12 +517,12 @@ vprobes:                                # @vprobes
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB0_47
 # %bb.31:                               #   in Loop: Header=BB0_5 Depth=1
-	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a4, $sp, 64                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s0, $a0, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	addi.w	$s5, $a1, 0
 	move	$a1, $s5
 	pcaddu18i	$ra, %call36(tprop)
@@ -548,7 +547,7 @@ vprobes:                                # @vprobes
 	addi.d	$a1, $a1, 8
 	ld.d	$a1, $a1, 0
 	addi.w	$s6, $a4, 0
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	bnez	$a1, .LBB0_54
 	b	.LBB0_43
 	.p2align	4, , 16
@@ -599,7 +598,7 @@ vprobes:                                # @vprobes
 	ld.d	$a1, $a1, %got_pc_lo12(hFixedEnd)
 	ld.d	$a1, $a1, 0
 	addi.w	$s6, $a4, 0
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	bnez	$a1, .LBB0_54
 .LBB0_43:                               #   in Loop: Header=BB0_5 Depth=1
 	move	$a1, $zero
@@ -614,7 +613,7 @@ vprobes:                                # @vprobes
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(tprop)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	slli.d	$a0, $a0, 3
 	ldx.d	$a1, $s0, $a0
 	ld.d	$a0, $s2, 0
@@ -639,9 +638,9 @@ vprobes:                                # @vprobes
 	add.w	$a1, $a2, $a1
 	mul.d	$a1, $a1, $s1
 	add.d	$a1, $a0, $a1
-	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a3, $a1, 8
-	st.d	$a3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 24                    # 8-byte Folded Spill
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s2, 0
 	add.w	$a1, $a2, $a1
@@ -651,7 +650,7 @@ vprobes:                                # @vprobes
 	ld.w	$a1, $s0, 0
 	ld.w	$a2, $s2, 0
 	sub.d	$a3, $a3, $s8
-	st.d	$a3, $sp, 56                    # 8-byte Folded Spill
+	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
 	add.w	$a1, $a2, $a1
 	mul.d	$a1, $a1, $s1
 	add.d	$a1, $a0, $a1
@@ -679,7 +678,7 @@ vprobes:                                # @vprobes
 	add.w	$a2, $a1, $a0
 	pcalau12i	$a0, %got_pc_hi20(vEdgeRoot)
 	ld.d	$a0, $a0, %got_pc_lo12(vEdgeRoot)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
@@ -690,7 +689,7 @@ vprobes:                                # @vprobes
 	ld.w	$a2, $s0, 0
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
-	st.d	$a1, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s8, 0
@@ -706,7 +705,7 @@ vprobes:                                # @vprobes
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s2, 0
-	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, 0
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $s0, 0
@@ -719,7 +718,7 @@ vprobes:                                # @vprobes
 	add.w	$a0, $a1, $a0
 	mul.d	$a0, $a0, $s1
 	add.d	$a0, $a2, $a0
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 8
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s2, 0
@@ -733,7 +732,7 @@ vprobes:                                # @vprobes
 	add.w	$a0, $a1, $a0
 	mul.d	$a0, $a0, $s1
 	add.d	$a0, $a2, $a0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	st.w	$a1, $a0, 16
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s2, 0
@@ -757,16 +756,16 @@ vprobes:                                # @vprobes
 	st.w	$a1, $a0, 20
 	ld.w	$a0, $s0, 0
 	ld.w	$a1, $s2, 0
-	ld.d	$s2, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
 	add.w	$a2, $a1, $a0
-	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(tinsert)
 	jirl	$ra, $ra, 0
 	ld.d	$s8, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$a0, $s8, 0
 	ld.w	$a2, $s0, 0
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s8, 0
@@ -778,7 +777,7 @@ vprobes:                                # @vprobes
 	move	$a5, $s4
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
-	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 64                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_47:                               # %.loopexit242
                                         #   in Loop: Header=BB0_5 Depth=1
@@ -800,10 +799,10 @@ vprobes:                                # @vprobes
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, 0
 	move	$a1, $a4
-	move	$s5, $a4
+	move	$s7, $a4
 	pcaddu18i	$ra, %call36(tprop)
 	jirl	$ra, $ra, 0
-	move	$a4, $s5
+	move	$a4, $s7
 	slli.d	$a0, $a0, 3
 	ldx.d	$a1, $s0, $a0
 	ld.d	$a0, $s2, 0
@@ -889,7 +888,6 @@ vprobes:                                # @vprobes
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(tprop)
 	jirl	$ra, $ra, 0
-	move	$a4, $s5
 	slli.d	$a0, $a0, 3
 	ldx.d	$a1, $s0, $a0
 	ld.d	$s6, $sp, 104                   # 8-byte Folded Reload
@@ -931,7 +929,7 @@ vprobes:                                # @vprobes
 	bgtz	$a3, .LBB0_70
 # %bb.72:                               #   in Loop: Header=BB0_71 Depth=2
 	ld.w	$a3, $a2, 12
-	bge	$a3, $a4, .LBB0_2
+	bge	$a3, $s7, .LBB0_2
 # %bb.73:                               #   in Loop: Header=BB0_71 Depth=2
 	ld.w	$a3, $a2, 4
 	bge	$a3, $s6, .LBB0_70

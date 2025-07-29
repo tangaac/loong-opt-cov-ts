@@ -7,8 +7,7 @@ move:                                   # @move
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(num_objects)
 	ld.w	$a0, $a0, %pc_lo12(num_objects)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_17
+	blez	$a0, .LBB0_17
 # %bb.1:                                # %.preheader.lr.ph
 	pcalau12i	$a1, %pc_hi20(objects)
 	ld.d	$a1, $a1, %pc_lo12(objects)
@@ -143,8 +142,7 @@ check_objects:                          # @check_objects
 	ld.w	$a0, $s0, %pc_lo12(num_refine)
 	alsl.d	$a1, $a0, $a1, 2
 	ld.w	$a1, $a1, 4
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB1_54
+	blez	$a1, .LBB1_54
 # %bb.1:                                # %.lr.ph
 	move	$s1, $zero
 	ori	$s2, $zero, 4
@@ -581,17 +579,17 @@ check_block:                            # @check_block
 	fst.d	$fs0, $sp, 16                   # 8-byte Folded Spill
 	pcalau12i	$fp, %pc_hi20(num_objects)
 	ld.w	$a3, $fp, %pc_lo12(num_objects)
-	ori	$s0, $zero, 1
-	blt	$a3, $s0, .LBB2_166
+	blez	$a3, .LBB2_166
 # %bb.1:                                # %.lr.ph
-	move	$s1, $zero
+	move	$s0, $zero
 	move	$s8, $zero
-	addi.d	$s2, $a0, 16
-	addi.d	$s3, $a0, 32
-	pcalau12i	$s4, %pc_hi20(objects)
-	ld.d	$a4, $s4, %pc_lo12(objects)
-	ori	$s5, $zero, 120
+	addi.d	$s1, $a0, 16
+	addi.d	$s2, $a0, 32
+	pcalau12i	$s3, %pc_hi20(objects)
+	ld.d	$a4, $s3, %pc_lo12(objects)
+	ori	$s4, $zero, 120
 	movgr2fr.d	$fs0, $zero
+	ori	$s5, $zero, 1
 	ori	$t3, $zero, 12
 	vldi	$vr9, -912
 	ori	$t4, $zero, 2
@@ -606,7 +604,7 @@ check_block:                            # @check_block
 .LBB2_2:                                # =>This Inner Loop Header: Depth=1
 	bgtz	$s8, .LBB2_6
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
-	add.d	$a2, $a4, $s5
+	add.d	$a2, $a4, $s4
 	fld.d	$fa1, $a2, -16
 	fcmp.clt.d	$fcc0, $fa1, $fs0
 	bcnez	$fcc0, .LBB2_6
@@ -615,21 +613,21 @@ check_block:                            # @check_block
 	fcmp.clt.d	$fcc0, $fa2, $fs0
 	bcnez	$fcc0, .LBB2_6
 # %bb.5:                                #   in Loop: Header=BB2_2 Depth=1
-	fldx.d	$fa0, $a4, $s5
+	fldx.d	$fa0, $a4, $s4
 	fcmp.clt.d	$fcc0, $fa0, $fs0
 	bceqz	$fcc0, .LBB2_8
 	.p2align	4, , 16
 .LBB2_6:                                #   in Loop: Header=BB2_2 Depth=1
 	move	$a2, $s8
 .LBB2_7:                                #   in Loop: Header=BB2_2 Depth=1
-	addi.d	$s1, $s1, 1
-	addi.d	$s5, $s5, 176
+	addi.d	$s0, $s0, 1
+	addi.d	$s4, $s4, 176
 	move	$s8, $a2
-	blt	$s1, $a3, .LBB2_2
+	blt	$s0, $a3, .LBB2_2
 	b	.LBB2_167
 .LBB2_8:                                #   in Loop: Header=BB2_2 Depth=1
 	ld.w	$a1, $a2, -120
-	beq	$a1, $s0, .LBB2_15
+	beq	$a1, $s5, .LBB2_15
 # %bb.9:                                #   in Loop: Header=BB2_2 Depth=1
 	bnez	$a1, .LBB2_19
 # %bb.10:                               #   in Loop: Header=BB2_2 Depth=1
@@ -671,7 +669,7 @@ check_block:                            # @check_block
 	fcmp.cule.d	$fcc0, $fa3, $fa4
 	bcnez	$fcc0, .LBB2_6
 # %bb.18:                               #   in Loop: Header=BB2_2 Depth=1
-	fld.d	$fa3, $s2, 0
+	fld.d	$fa3, $s1, 0
 	fadd.d	$fa1, $fa2, $fa1
 	fcmp.cule.d	$fcc0, $fa1, $fa3
 	bcnez	$fcc0, .LBB2_6
@@ -708,7 +706,7 @@ check_block:                            # @check_block
 	move	$t8, $zero
 	ori	$a6, $zero, 1
 	fld.d	$fa4, $a2, -104
-	fld.d	$fa5, $s2, 0
+	fld.d	$fa5, $s1, 0
 	fcmp.clt.d	$fcc1, $fa4, $fa5
 	bcnez	$fcc1, .LBB2_60
 .LBB2_27:                               #   in Loop: Header=BB2_2 Depth=1
@@ -716,10 +714,10 @@ check_block:                            # @check_block
 	fcmp.clt.d	$fcc2, $fa5, $fa4
 	movcf2gr	$a5, $fcc2
 	masknez	$a7, $s6, $a5
-	maskeqz	$t0, $s0, $a5
+	maskeqz	$t0, $s5, $a5
 	or	$s6, $t0, $a7
 	fld.d	$fa5, $a2, -96
-	fld.d	$fa6, $s3, 0
+	fld.d	$fa6, $s2, 0
 	fcmp.clt.d	$fcc2, $fa5, $fa6
 	bcnez	$fcc2, .LBB2_61
 .LBB2_28:                               #   in Loop: Header=BB2_2 Depth=1
@@ -727,7 +725,7 @@ check_block:                            # @check_block
 	fcmp.clt.d	$fcc2, $fa7, $fa5
 	movcf2gr	$a7, $fcc2
 	masknez	$a2, $t2, $a7
-	maskeqz	$t0, $s0, $a7
+	maskeqz	$t0, $s5, $a7
 	or	$t2, $t0, $a2
 	bnez	$a6, .LBB2_62
 .LBB2_29:                               #   in Loop: Header=BB2_2 Depth=1
@@ -735,13 +733,13 @@ check_block:                            # @check_block
 # %bb.30:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a2, $s6, 0
 	slli.d	$a2, $a2, 3
-	fldx.d	$fa1, $s2, $a2
+	fldx.d	$fa1, $s1, $a2
 	fsub.d	$fa1, $fa1, $fa4
 	beqz	$a7, .LBB2_111
 # %bb.31:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a2, $t2, 0
 	slli.d	$a2, $a2, 3
-	fldx.d	$fa7, $s3, $a2
+	fldx.d	$fa7, $s2, $a2
 	fdiv.d	$fa1, $fa1, $fa2
 	fsub.d	$fa2, $fa7, $fa5
 	b	.LBB2_88
@@ -778,7 +776,7 @@ check_block:                            # @check_block
 	movcf2gr	$t8, $fcc1
 .LBB2_37:                               #   in Loop: Header=BB2_2 Depth=1
 	fld.d	$fa4, $a2, -104
-	fld.d	$fa5, $s2, 0
+	fld.d	$fa5, $s1, 0
 	fcmp.clt.d	$fcc1, $fa4, $fa5
 	bceqz	$fcc1, .LBB2_39
 # %bb.38:                               #   in Loop: Header=BB2_2 Depth=1
@@ -798,7 +796,7 @@ check_block:                            # @check_block
 	movcf2gr	$s6, $fcc2
 .LBB2_41:                               #   in Loop: Header=BB2_2 Depth=1
 	fld.d	$fa5, $a2, -96
-	fld.d	$fa6, $s3, 0
+	fld.d	$fa6, $s2, 0
 	fcmp.clt.d	$fcc2, $fa5, $fa6
 	bceqz	$fcc2, .LBB2_43
 # %bb.42:                               #   in Loop: Header=BB2_2 Depth=1
@@ -826,7 +824,7 @@ check_block:                            # @check_block
 	beqz	$a5, .LBB2_65
 # %bb.47:                               #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a5, $s6, 3
-	fldx.d	$ft0, $s2, $a5
+	fldx.d	$ft0, $s1, $a5
 	fdiv.d	$fa7, $fa7, $fa1
 	fsub.d	$ft0, $ft0, $fa4
 	fdiv.d	$ft0, $ft0, $fa2
@@ -835,7 +833,7 @@ check_block:                            # @check_block
 	beqz	$a2, .LBB2_68
 # %bb.48:                               #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a2, $t2, 3
-	fldx.d	$ft0, $s3, $a2
+	fldx.d	$ft0, $s2, $a2
 	fsub.d	$ft0, $ft0, $fa5
 	fdiv.d	$ft0, $ft0, $fa0
 	fmadd.d	$fa7, $ft0, $ft0, $fa7
@@ -844,12 +842,12 @@ check_block:                            # @check_block
 	beqz	$a5, .LBB2_70
 # %bb.50:                               #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a5, $s6, 3
-	fldx.d	$fa7, $s2, $a5
+	fldx.d	$fa7, $s1, $a5
 	fsub.d	$fa7, $fa7, $fa4
 	beqz	$a2, .LBB2_90
 # %bb.51:                               #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a2, $t2, 3
-	fldx.d	$ft0, $s3, $a2
+	fldx.d	$ft0, $s2, $a2
 	fdiv.d	$fa7, $fa7, $fa2
 	b	.LBB2_67
 .LBB2_52:                               #   in Loop: Header=BB2_2 Depth=1
@@ -865,7 +863,7 @@ check_block:                            # @check_block
 	fcmp.cule.d	$fcc0, $fa1, $fa4
 	bcnez	$fcc0, .LBB2_6
 # %bb.55:                               #   in Loop: Header=BB2_2 Depth=1
-	fld.d	$fa1, $s2, 0
+	fld.d	$fa1, $s1, 0
 	fadd.d	$fa2, $fa2, $fa3
 	fcmp.cule.d	$fcc0, $fa2, $fa1
 	bcnez	$fcc0, .LBB2_6
@@ -876,7 +874,7 @@ check_block:                            # @check_block
 	fcmp.cule.d	$fcc0, $fa2, $fa3
 	bcnez	$fcc0, .LBB2_6
 # %bb.57:                               #   in Loop: Header=BB2_2 Depth=1
-	fld.d	$fa2, $s3, 0
+	fld.d	$fa2, $s2, 0
 	fadd.d	$fa0, $fa0, $fa1
 	fcmp.cule.d	$fcc0, $fa0, $fa2
 	bcnez	$fcc0, .LBB2_6
@@ -888,16 +886,16 @@ check_block:                            # @check_block
 	fcmp.clt.d	$fcc1, $fa4, $fa3
 	movcf2gr	$a6, $fcc1
 	masknez	$a7, $t8, $a6
-	maskeqz	$t0, $s0, $a6
+	maskeqz	$t0, $s5, $a6
 	or	$t8, $t0, $a7
 	fld.d	$fa4, $a2, -104
-	fld.d	$fa5, $s2, 0
+	fld.d	$fa5, $s1, 0
 	fcmp.clt.d	$fcc1, $fa4, $fa5
 	bceqz	$fcc1, .LBB2_27
 .LBB2_60:                               #   in Loop: Header=BB2_2 Depth=1
 	move	$s6, $zero
 	fld.d	$fa5, $a2, -96
-	fld.d	$fa6, $s3, 0
+	fld.d	$fa6, $s2, 0
 	fcmp.clt.d	$fcc2, $fa5, $fa6
 	bceqz	$fcc2, .LBB2_28
 .LBB2_61:                               #   in Loop: Header=BB2_2 Depth=1
@@ -913,7 +911,7 @@ check_block:                            # @check_block
 # %bb.63:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a2, $s6, 0
 	slli.d	$a2, $a2, 3
-	fldx.d	$ft0, $s2, $a2
+	fldx.d	$ft0, $s1, $a2
 	fdiv.d	$fa1, $fa7, $fa1
 	fsub.d	$fa7, $ft0, $fa4
 	fdiv.d	$fa2, $fa7, $fa2
@@ -923,7 +921,7 @@ check_block:                            # @check_block
 # %bb.64:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a2, $t2, 0
 	slli.d	$a2, $a2, 3
-	fldx.d	$fa2, $s3, $a2
+	fldx.d	$fa2, $s2, $a2
 	fsub.d	$fa2, $fa2, $fa5
 	fdiv.d	$fa0, $fa2, $fa0
 	fmadd.d	$fa0, $fa0, $fa0, $fa1
@@ -932,7 +930,7 @@ check_block:                            # @check_block
 	beqz	$a2, .LBB2_91
 # %bb.66:                               #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a2, $t2, 3
-	fldx.d	$ft0, $s3, $a2
+	fldx.d	$ft0, $s2, $a2
 	fdiv.d	$fa7, $fa7, $fa1
 .LBB2_67:                               #   in Loop: Header=BB2_2 Depth=1
 	fsub.d	$ft0, $ft0, $fa5
@@ -949,7 +947,7 @@ check_block:                            # @check_block
 	beqz	$a2, .LBB2_72
 # %bb.71:                               #   in Loop: Header=BB2_2 Depth=1
 	slli.d	$a2, $t2, 3
-	fldx.d	$fa7, $s3, $a2
+	fldx.d	$fa7, $s2, $a2
 	fsub.d	$fa7, $fa7, $fa5
 	fabs.d	$fa7, $fa7
 	fcmp.cule.d	$fcc2, $fa0, $fa7
@@ -960,13 +958,13 @@ check_block:                            # @check_block
 	fldx.d	$fa7, $a0, $a2
 	xori	$a2, $s6, 1
 	slli.d	$a2, $a2, 3
-	fldx.d	$ft0, $s2, $a2
+	fldx.d	$ft0, $s1, $a2
 	fsub.d	$fa7, $fa7, $fa3
 	fdiv.d	$fa1, $fa7, $fa1
 	fsub.d	$fa7, $ft0, $fa4
 	xori	$a2, $t2, 1
 	slli.d	$a2, $a2, 3
-	fldx.d	$ft0, $s3, $a2
+	fldx.d	$ft0, $s2, $a2
 	fdiv.d	$fa2, $fa7, $fa2
 	fmul.d	$fa2, $fa2, $fa2
 	fmadd.d	$fa1, $fa1, $fa1, $fa2
@@ -998,7 +996,7 @@ check_block:                            # @check_block
 	fcmp.cule.d	$fcc0, $fa1, $fa3
 	bcnez	$fcc0, .LBB2_92
 # %bb.79:                               #   in Loop: Header=BB2_2 Depth=1
-	fld.d	$fa4, $s2, 0
+	fld.d	$fa4, $s1, 0
 	fadd.d	$fa2, $fa2, $fa5
 	fcmp.cule.d	$fcc0, $fa2, $fa4
 	bcnez	$fcc0, .LBB2_92
@@ -1021,7 +1019,7 @@ check_block:                            # @check_block
 # %bb.85:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a2, $t2, 0
 	slli.d	$a2, $a2, 3
-	fldx.d	$fa1, $s3, $a2
+	fldx.d	$fa1, $s2, $a2
 	fsub.d	$fa1, $fa1, $fa5
 	fabs.d	$fa1, $fa1
 	fcmp.cule.d	$fcc2, $fa0, $fa1
@@ -1031,7 +1029,7 @@ check_block:                            # @check_block
 # %bb.87:                               #   in Loop: Header=BB2_2 Depth=1
 	addi.w	$a2, $t2, 0
 	slli.d	$a2, $a2, 3
-	fldx.d	$fa2, $s3, $a2
+	fldx.d	$fa2, $s2, $a2
 	fdiv.d	$fa1, $fa7, $fa1
 	fsub.d	$fa2, $fa2, $fa5
 .LBB2_88:                               #   in Loop: Header=BB2_2 Depth=1
@@ -1056,7 +1054,7 @@ check_block:                            # @check_block
 	fcmp.cule.d	$fcc0, $fa2, $fa1
 	bcnez	$fcc0, .LBB2_6
 # %bb.93:                               #   in Loop: Header=BB2_2 Depth=1
-	fld.d	$fa3, $s3, 0
+	fld.d	$fa3, $s2, 0
 	fadd.d	$fa0, $fa0, $fa4
 	fcmp.cule.d	$fcc0, $fa0, $fa3
 	bcnez	$fcc0, .LBB2_6
@@ -1093,7 +1091,7 @@ check_block:                            # @check_block
 	bcnez	$fcc0, .LBB2_6
 # %bb.101:                              #   in Loop: Header=BB2_2 Depth=1
 	alsl.d	$a1, $a7, $a4, 3
-	add.d	$a6, $a1, $s5
+	add.d	$a6, $a1, $s4
 	fld.d	$fa0, $a6, -112
 	slli.d	$a1, $a7, 4
 	fldx.d	$fa2, $a0, $a1
@@ -1117,7 +1115,7 @@ check_block:                            # @check_block
 .LBB2_105:                              #   in Loop: Header=BB2_2 Depth=1
 	alsl.d	$a1, $a6, $a0, 4
 	alsl.d	$a2, $a6, $a4, 3
-	add.d	$a2, $a2, $s5
+	add.d	$a2, $a2, $s4
 	fld.d	$fa0, $a2, -112
 	fld.d	$fa1, $a2, -16
 	fld.d	$fa2, $a1, 8
@@ -1131,7 +1129,7 @@ check_block:                            # @check_block
 	bcnez	$fcc0, .LBB2_6
 # %bb.107:                              #   in Loop: Header=BB2_2 Depth=1
 	alsl.d	$a1, $a7, $a4, 3
-	add.d	$a1, $a1, $s5
+	add.d	$a1, $a1, $s4
 	fld.d	$fa0, $a1, -112
 	slli.d	$a2, $a7, 4
 	fldx.d	$fa1, $a0, $a2
@@ -1139,7 +1137,7 @@ check_block:                            # @check_block
 	fcmp.clt.d	$fcc0, $fa0, $fa1
 	alsl.d	$a2, $a5, $a0, 4
 	alsl.d	$a6, $a5, $a4, 3
-	add.d	$t0, $a6, $s5
+	add.d	$t0, $a6, $s4
 	bceqz	$fcc0, .LBB2_143
 # %bb.108:                              # %.thread1058
                                         #   in Loop: Header=BB2_2 Depth=1
@@ -1157,21 +1155,21 @@ check_block:                            # @check_block
 	addi.d	$a2, $a2, %pc_lo12(.L.str)
 	move	$s7, $a0
 	move	$a0, $a2
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	move	$s4, $s2
-	move	$s2, $s3
-	move	$s3, $s6
+	move	$s5, $s6
 	move	$s6, $t8
-	move	$s0, $t2
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
+	move	$s3, $s1
+	move	$s1, $s2
+	move	$s2, $t2
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	move	$t2, $s0
-	ori	$s0, $zero, 1
+	move	$t2, $s2
+	move	$s2, $s1
+	move	$s1, $s3
+	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
 	move	$t8, $s6
-	move	$s6, $s3
-	move	$s3, $s2
-	move	$s2, $s4
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	move	$s6, $s5
+	ori	$s5, $zero, 1
 	ori	$t7, $zero, 3
 	ori	$t6, $zero, 5
 	vldi	$vr10, -928
@@ -1180,7 +1178,7 @@ check_block:                            # @check_block
 	vldi	$vr9, -912
 	ori	$t3, $zero, 12
 	move	$a0, $s7
-	ld.d	$a4, $s4, %pc_lo12(objects)
+	ld.d	$a4, $s3, %pc_lo12(objects)
 	ld.w	$a3, $fp, %pc_lo12(num_objects)
 	b	.LBB2_6
 .LBB2_111:                              #   in Loop: Header=BB2_2 Depth=1
@@ -1249,7 +1247,7 @@ check_block:                            # @check_block
 	movcf2gr	$s6, $fcc0
 .LBB2_128:                              #   in Loop: Header=BB2_2 Depth=1
 	alsl.d	$a7, $a5, $a4, 3
-	add.d	$a7, $a7, $s5
+	add.d	$a7, $a7, $s4
 	fld.d	$fa2, $a7, -112
 	slli.d	$t2, $a5, 4
 	fldx.d	$fa3, $a0, $t2
@@ -1408,7 +1406,7 @@ check_block:                            # @check_block
 	fld.d	$fa3, $a1, -16
 	slli.d	$a1, $a5, 3
 	fldx.d	$fa4, $a2, $a1
-	add.d	$a1, $a6, $s5
+	add.d	$a1, $a6, $s4
 	fld.d	$fa5, $a1, -16
 	fsub.d	$fa0, $fa2, $fa0
 	fdiv.d	$fa0, $fa0, $fa3

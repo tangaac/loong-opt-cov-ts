@@ -261,9 +261,8 @@ _ZN16COpenCallbackImp11GetPropertyEjP14tagPROPVARIANT: # @_ZN16COpenCallbackImp1
 	.cfi_offset 23, -24
 	ld.bu	$a3, $a0, 112
 	move	$fp, $a2
-	ori	$a2, $zero, 1
 	st.w	$zero, $sp, 8
-	bne	$a3, $a2, .LBB2_3
+	beqz	$a3, .LBB2_3
 # %bb.1:
 	ori	$a3, $zero, 4
 	ori	$a2, $zero, 120
@@ -506,11 +505,10 @@ _ZN16COpenCallbackImp8FindNameERK11CStringBaseIwE: # @_ZN16COpenCallbackImp8Find
 	.cfi_offset 27, -56
 	move	$s0, $a0
 	ld.w	$a0, $a0, 148
-	move	$s1, $a1
-	ori	$a1, $zero, 1
 	addi.w	$fp, $zero, -1
-	blt	$a0, $a1, .LBB4_5
+	blez	$a0, .LBB4_5
 # %bb.1:                                # %.lr.ph.preheader
+	move	$s1, $a1
 	move	$s3, $zero
 	move	$s2, $zero
 	move	$s4, $zero
@@ -604,12 +602,10 @@ _ZN16COpenCallbackImp9GetStreamEPKwPP9IInStream: # @_ZN16COpenCallbackImp9GetStr
 	vrepli.b	$vr0, 0
 	bstrpick.d	$a1, $s1, 31, 0
 	addi.d	$s3, $a1, 1
-	ori	$a1, $zero, 0
-	lu32i.d	$a1, 1
-	and	$a1, $s3, $a1
+	slli.d	$a1, $s3, 31
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
 	vst	$vr0, $sp, 16
-	bnez	$a1, .LBB5_7
+	bltz	$a1, .LBB5_7
 # %bb.5:
 	addi.w	$a0, $s3, 0
 	slti	$a1, $s1, -1
@@ -766,8 +762,7 @@ _ZN16COpenCallbackImp9GetStreamEPKwPP9IInStream: # @_ZN16COpenCallbackImp9GetStr
 .Ltmp68:
 # %bb.22:                               # %.noexc44
 	move	$s3, $a0
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB5_24
+	blez	$s7, .LBB5_24
 # %bb.23:                               # %._crit_edge.thread.i.i
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1879,17 +1874,16 @@ _ZN16COpenCallbackImpD0Ev:              # @_ZN16COpenCallbackImpD0Ev
 _ZN16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZN16COpenCallbackImp17SetSubArchiveNameEPKw
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -1898,21 +1892,20 @@ _ZN16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZN16COpenCallbackImp17SetSubAr
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$s0, $a1
 	move	$fp, $a0
 	ld.d	$s3, $a0, 120
-	ori	$s5, $zero, 1
-	st.b	$s5, $a0, 112
-	st.w	$zero, $a0, 128
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 112
+	st.w	$zero, $fp, 128
 	st.w	$zero, $s3, 0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(wcslen)
 	jirl	$ra, $ra, 0
-	ld.w	$s6, $fp, 132
+	ld.w	$s5, $fp, 132
 	move	$s1, $a0
 	addi.w	$s4, $a0, 1
-	bne	$s4, $s6, .LBB14_2
+	bne	$s4, $s5, .LBB14_2
 # %bb.1:
 	move	$s2, $s3
 	b	.LBB14_6
@@ -1927,7 +1920,7 @@ _ZN16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZN16COpenCallbackImp17SetSubAr
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	blt	$s6, $s5, .LBB14_4
+	blez	$s5, .LBB14_4
 # %bb.3:                                # %._crit_edge.thread.i.i
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -1954,16 +1947,15 @@ _ZN16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZN16COpenCallbackImp17SetSubAr
 	st.w	$s1, $fp, 128
 	st.d	$zero, $fp, 184
 	move	$a0, $zero
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end14:
 	.size	_ZN16COpenCallbackImp17SetSubArchiveNameEPKw, .Lfunc_end14-_ZN16COpenCallbackImp17SetSubArchiveNameEPKw
@@ -2170,17 +2162,16 @@ _ZThn16_N16COpenCallbackImpD0Ev:        # @_ZThn16_N16COpenCallbackImpD0Ev
 _ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -80
-	.cfi_def_cfa_offset 80
-	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -64
+	.cfi_def_cfa_offset 64
+	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2189,21 +2180,20 @@ _ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZThn16_N16COpenCallbackI
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$s0, $a1
 	move	$fp, $a0
 	ld.d	$s3, $a0, 104
-	ori	$s5, $zero, 1
-	st.b	$s5, $a0, 96
-	st.w	$zero, $a0, 112
+	ori	$a0, $zero, 1
+	st.b	$a0, $fp, 96
+	st.w	$zero, $fp, 112
 	st.w	$zero, $s3, 0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(wcslen)
 	jirl	$ra, $ra, 0
-	ld.w	$s6, $fp, 116
+	ld.w	$s5, $fp, 116
 	move	$s1, $a0
 	addi.w	$s4, $a0, 1
-	bne	$s4, $s6, .LBB25_2
+	bne	$s4, $s5, .LBB25_2
 # %bb.1:
 	move	$s2, $s3
 	b	.LBB25_6
@@ -2218,7 +2208,7 @@ _ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZThn16_N16COpenCallbackI
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	blt	$s6, $s5, .LBB25_4
+	blez	$s5, .LBB25_4
 # %bb.3:                                # %._crit_edge.thread.i.i.i
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2245,16 +2235,15 @@ _ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw: # @_ZThn16_N16COpenCallbackI
 	st.w	$s1, $fp, 112
 	st.d	$zero, $fp, 168
 	move	$a0, $zero
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 80
+	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 64
 	ret
 .Lfunc_end25:
 	.size	_ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw, .Lfunc_end25-_ZThn16_N16COpenCallbackImp17SetSubArchiveNameEPKw
@@ -2682,8 +2671,7 @@ _ZN16CInFileStreamVolD2Ev:              # @_ZN16CInFileStreamVolD2Ev
 # %bb.1:
 	ld.d	$s1, $fp, 1128
 	ld.w	$a0, $s1, 148
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB35_14
+	blez	$a0, .LBB35_14
 # %bb.2:                                # %.lr.ph.i.preheader
 	move	$s0, $zero
 	move	$s4, $zero
@@ -2719,7 +2707,7 @@ _ZN16CInFileStreamVolD2Ev:              # @_ZN16CInFileStreamVolD2Ev
 	maskeqz	$a1, $a2, $a1
 	or	$s1, $a1, $a0
 	addi.d	$s2, $s5, 136
-	blt	$s1, $a2, .LBB35_13
+	blez	$s1, .LBB35_13
 # %bb.7:                                # %.lr.ph.i3
 	move	$s6, $s1
 	b	.LBB35_10
@@ -3017,8 +3005,7 @@ _ZN13CObjectVectorI11CStringBaseIwEE6DeleteEii: # @_ZN13CObjectVectorI11CStringB
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB43_7
+	blez	$s1, .LBB43_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -3272,12 +3259,11 @@ _ZN11CStringBaseIwEpLEPKw:              # @_ZN11CStringBaseIwEpLEPKw
 	or	$a0, $a0, $a1
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $a0
-	blt	$s5, $a1, .LBB46_13
+	blez	$s5, .LBB46_13
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s3, $a1, .LBB46_11
+	blez	$s3, .LBB46_11
 # %bb.4:                                # %.lr.ph.i.i
 	ori	$a2, $zero, 8
 	move	$a1, $zero

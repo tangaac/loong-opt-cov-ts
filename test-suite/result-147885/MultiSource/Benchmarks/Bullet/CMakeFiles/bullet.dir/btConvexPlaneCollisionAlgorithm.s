@@ -91,9 +91,8 @@ _ZN31btConvexPlaneCollisionAlgorithmD2Ev: # @_ZN31btConvexPlaneCollisionAlgorith
 	ld.bu	$a1, $a0, 16
 	pcalau12i	$a2, %pc_hi20(_ZTV31btConvexPlaneCollisionAlgorithm+16)
 	addi.d	$a2, $a2, %pc_lo12(_ZTV31btConvexPlaneCollisionAlgorithm+16)
-	ori	$a3, $zero, 1
 	st.d	$a2, $a0, 0
-	bne	$a1, $a3, .LBB1_3
+	beqz	$a1, .LBB1_3
 # %bb.1:
 	ld.d	$a1, $a0, 24
 	beqz	$a1, .LBB1_3
@@ -129,9 +128,8 @@ _ZN31btConvexPlaneCollisionAlgorithmD0Ev: # @_ZN31btConvexPlaneCollisionAlgorith
 	ld.bu	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV31btConvexPlaneCollisionAlgorithm+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV31btConvexPlaneCollisionAlgorithm+16)
-	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $a2, .LBB2_3
+	beqz	$a0, .LBB2_3
 # %bb.1:
 	ld.d	$a1, $fp, 24
 	beqz	$a1, .LBB2_3
@@ -720,8 +718,7 @@ _ZN31btConvexPlaneCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK
 	pcaddu18i	$ra, %call36(cosf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 36
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_8
+	blez	$a0, .LBB4_8
 # %bb.6:                                # %.lr.ph
 	fmov.s	$fs7, $fa0
 	move	$s3, $zero
@@ -827,8 +824,7 @@ _ZN31btConvexPlaneCollisionAlgorithm16processCollisionEP17btCollisionObjectS1_RK
 	blt	$s3, $a0, .LBB4_7
 .LBB4_8:                                # %.loopexit
 	ld.bu	$a0, $s0, 16
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB4_12
+	beqz	$a0, .LBB4_12
 # %bb.9:
 	ld.d	$a0, $s0, 24
 	ld.w	$a0, $a0, 728
@@ -954,8 +950,7 @@ _ZN31btConvexPlaneCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectA
 	move	$fp, $a0
 	move	$a0, $s1
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB6_15
+	blez	$a3, .LBB6_15
 .LBB6_6:                                # %.lr.ph.i.i.i
 	ori	$a5, $zero, 4
 	move	$a4, $zero
@@ -998,14 +993,12 @@ _ZN31btConvexPlaneCollisionAlgorithm22getAllContactManifoldsER20btAlignedObjectA
 	bnez	$a5, .LBB6_12
 .LBB6_13:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.thread.i.i
 	ld.bu	$a4, $a1, 24
-	ori	$a5, $zero, 1
-	beq	$a4, $a5, .LBB6_17
+	bnez	$a4, .LBB6_17
 	b	.LBB6_18
 .LBB6_14:
 	move	$fp, $zero
 	ld.d	$a2, $a1, 16
-	ori	$a4, $zero, 1
-	bge	$a3, $a4, .LBB6_6
+	bgtz	$a3, .LBB6_6
 .LBB6_15:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i
 	beqz	$a2, .LBB6_18
 # %bb.16:                               # %_ZNK20btAlignedObjectArrayIP20btPersistentManifoldE4copyEiiPS1_.exit.i.i

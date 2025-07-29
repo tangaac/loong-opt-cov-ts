@@ -308,14 +308,14 @@ _ZNK25btConvexTriangleMeshShape49batchedUnitVectorGetSupportingVertexWithoutMarg
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB3_11
+	blez	$a3, .LBB3_11
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a2
 	move	$s0, $a1
 	move	$s1, $a0
+	ori	$a1, $zero, 1
 	lu12i.w	$a0, -141856
-	bne	$a3, $a4, .LBB3_3
+	bne	$a3, $a1, .LBB3_3
 # %bb.2:
 	move	$a1, $zero
 	b	.LBB3_6
@@ -941,23 +941,23 @@ GCC_except_table14:
 _ZN11btMatrix3x311diagonalizeERS_fi:    # @_ZN11btMatrix3x311diagonalizeERS_fi
 	.cfi_startproc
 # %bb.0:
-	lu12i.w	$a4, 260096
-	st.w	$a4, $a1, 0
+	lu12i.w	$a3, 260096
+	st.w	$a3, $a1, 0
 	vrepli.b	$vr1, 0
 	vst	$vr1, $a1, 4
-	st.w	$a4, $a1, 20
+	st.w	$a3, $a1, 20
 	vst	$vr1, $a1, 24
-	ori	$a3, $zero, 1
-	st.d	$a4, $a1, 40
-	blt	$a2, $a3, .LBB15_11
+	st.d	$a3, $a1, 40
+	blez	$a2, .LBB15_11
 # %bb.1:                                # %.lr.ph
-	addi.d	$a4, $a1, 16
-	addi.d	$a5, $a1, 32
-	ori	$a6, $zero, 2
-	pcalau12i	$a7, %pc_hi20(.LCPI15_1)
-	fld.s	$fa1, $a7, %pc_lo12(.LCPI15_1)
+	addi.d	$a3, $a1, 16
+	addi.d	$a4, $a1, 32
+	ori	$a5, $zero, 2
+	pcalau12i	$a6, %pc_hi20(.LCPI15_1)
+	fld.s	$fa1, $a6, %pc_lo12(.LCPI15_1)
 	vldi	$vr2, -1168
 	movgr2fr.w	$fa3, $zero
+	ori	$a6, $zero, 1
 	vldi	$vr4, -1184
 	vldi	$vr5, -1280
 	vldi	$vr6, -1056
@@ -1005,28 +1005,28 @@ _ZN11btMatrix3x311diagonalizeERS_fi:    # @_ZN11btMatrix3x311diagonalizeERS_fi
 	fmadd.s	$ft3, $fa7, $ft2, $ft3
 	fstx.s	$ft3, $a1, $t2
 	fmul.s	$ft2, $ft0, $ft2
-	fldx.s	$ft3, $a4, $t1
+	fldx.s	$ft3, $a3, $t1
 	fmadd.s	$ft1, $fa7, $ft1, $ft2
-	fldx.s	$ft2, $a4, $t2
+	fldx.s	$ft2, $a3, $t2
 	fstx.s	$ft1, $a1, $t1
 	fneg.s	$ft1, $ft3
 	fmul.s	$ft1, $ft0, $ft1
 	fmadd.s	$ft1, $fa7, $ft2, $ft1
-	fstx.s	$ft1, $a4, $t2
+	fstx.s	$ft1, $a3, $t2
 	fmul.s	$ft1, $ft0, $ft2
-	fldx.s	$ft2, $a5, $t1
+	fldx.s	$ft2, $a4, $t1
 	fmadd.s	$ft1, $fa7, $ft3, $ft1
-	fldx.s	$ft3, $a5, $t2
-	fstx.s	$ft1, $a4, $t1
+	fldx.s	$ft3, $a4, $t2
+	fstx.s	$ft1, $a3, $t1
 	fneg.s	$ft1, $ft2
 	fmul.s	$ft1, $ft0, $ft1
 	fmadd.s	$ft1, $fa7, $ft3, $ft1
-	fstx.s	$ft1, $a5, $t2
+	fstx.s	$ft1, $a4, $t2
 	fmul.s	$ft0, $ft0, $ft3
 	fmadd.s	$fa7, $fa7, $ft2, $ft0
-	fstx.s	$fa7, $a5, $t1
+	fstx.s	$fa7, $a4, $t1
 	addi.w	$a2, $t3, -1
-	bge	$a3, $t3, .LBB15_11
+	bge	$a6, $t3, .LBB15_11
 .LBB15_4:                               # =>This Inner Loop Header: Depth=1
 	fld.s	$fa7, $a0, 4
 	fld.s	$ft0, $a0, 8
@@ -1048,7 +1048,7 @@ _ZN11btMatrix3x311diagonalizeERS_fi:    # @_ZN11btMatrix3x311diagonalizeERS_fi
 .LBB15_6:                               #   in Loop: Header=BB15_4 Depth=1
 	move	$t5, $zero
 	movcf2gr	$t1, $fcc0
-	sub.d	$t0, $a6, $t1
+	sub.d	$t0, $a5, $t1
 	addi.d	$t4, $t1, 1
 .LBB15_7:                               #   in Loop: Header=BB15_4 Depth=1
 	fld.s	$ft0, $a0, 0
@@ -1432,8 +1432,7 @@ GCC_except_table24:
 _ZZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR9btVector3RfEN14CenterCallback28internalProcessTriangleIndexEPS2_ii: # @_ZZNK25btConvexTriangleMeshShape31calculatePrincipalAxisTransformER11btTransformR9btVector3RfEN14CenterCallback28internalProcessTriangleIndexEPS2_ii
 # %bb.0:
 	ld.bu	$a2, $a0, 8
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB25_2
+	beqz	$a2, .LBB25_2
 # %bb.1:
 	vld	$vr0, $a1, 0
 	addi.d	$a1, $a0, 12

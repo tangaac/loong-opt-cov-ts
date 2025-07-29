@@ -27,8 +27,7 @@ main:                                   # @main
 	pcalau12i	$a1, %pc_hi20(b)
 	ld.d	$a1, $a1, %pc_lo12(b)
 	mul.d	$a0, $a1, $a0
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB1_2
+	bgez	$a0, .LBB1_2
 # %bb.1:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0

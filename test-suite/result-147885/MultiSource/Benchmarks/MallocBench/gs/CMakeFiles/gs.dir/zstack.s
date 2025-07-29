@@ -154,9 +154,8 @@ zroll:                                  # @zroll
 	ld.d	$a5, $a3, 0
 	mod.d	$a4, $a4, $a2
 	addi.d	$a5, $a5, -32
-	addi.w	$a6, $zero, -1
 	st.d	$a5, $a3, 0
-	bge	$a6, $a4, .LBB4_9
+	bltz	$a4, .LBB4_9
 # %bb.6:
 	bnez	$a4, .LBB4_10
 # %bb.7:

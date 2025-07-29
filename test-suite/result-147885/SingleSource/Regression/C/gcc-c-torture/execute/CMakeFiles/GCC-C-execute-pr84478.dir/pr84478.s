@@ -53,7 +53,7 @@ loadpoolstrings:                        # @loadpoolstrings
 # %bb.3:                                # %.preheader
                                         #   in Loop: Header=BB1_2 Depth=1
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s2, .LBB1_1
+	blez	$a1, .LBB1_1
 # %bb.4:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_2 Depth=1
 	addi.d	$a0, $a0, 1
@@ -142,7 +142,7 @@ main:                                   # @main
 # %bb.4:                                # %.preheader.i
                                         #   in Loop: Header=BB2_3 Depth=1
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s2, .LBB2_2
+	blez	$a1, .LBB2_2
 # %bb.5:                                # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB2_3 Depth=1
 	addi.d	$a0, $a0, 1

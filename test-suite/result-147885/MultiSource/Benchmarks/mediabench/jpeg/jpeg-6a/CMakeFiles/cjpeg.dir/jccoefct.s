@@ -19,7 +19,6 @@ jinit_c_coef_controller:                # @jinit_c_coef_controller
 	move	$s1, $a1
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 192
-	ori	$s2, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	move	$s0, $a0
@@ -30,7 +29,7 @@ jinit_c_coef_controller:                # @jinit_c_coef_controller
 	beqz	$s1, .LBB0_4
 # %bb.1:
 	ld.w	$a0, $fp, 68
-	blt	$a0, $s2, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.2:                                # %.lr.ph
 	ld.d	$a0, $fp, 80
 	move	$s1, $zero
@@ -275,8 +274,7 @@ compress_data:                          # @compress_data
                                         #           Child Loop BB2_26 Depth 5
                                         #           Child Loop BB2_18 Depth 5
 	ld.w	$a0, $fp, 316
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_27
+	blez	$a0, .LBB2_27
 # %bb.7:                                # %.lr.ph107
                                         #   in Loop: Header=BB2_6 Depth=2
 	move	$a4, $zero
@@ -312,8 +310,7 @@ compress_data:                          # @compress_data
 	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ldx.d	$s2, $a2, $a1
 	ld.w	$a1, $s2, 56
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_9
+	blez	$a1, .LBB2_9
 # %bb.11:                               # %.lr.ph104
                                         #   in Loop: Header=BB2_10 Depth=3
 	ld.w	$a0, $s2, 64
@@ -411,8 +408,7 @@ compress_data:                          # @compress_data
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s2, 52
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_12
+	blez	$a1, .LBB2_12
 # %bb.20:                               # %.lr.ph
                                         #   in Loop: Header=BB2_13 Depth=4
 	alsl.d	$a0, $s7, $s1, 3
@@ -553,20 +549,19 @@ compress_first_pass:                    # @compress_first_pass
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	move	$s5, $a0
 	ld.w	$a0, $a0, 68
-	ori	$s1, $zero, 1
 	st.d	$a1, $sp, 0                     # 8-byte Folded Spill
-	blt	$a0, $s1, .LBB3_37
+	blez	$a0, .LBB3_37
 # %bb.1:                                # %.lr.ph126
 	ld.w	$a0, $s5, 312
-	ld.d	$s6, $s5, 448
-	ld.d	$s4, $s5, 80
+	ld.d	$s0, $s5, 448
 	move	$a1, $zero
+	ld.d	$s1, $s5, 80
 	addi.w	$a0, $a0, -1
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	addi.d	$a0, $s6, 112
+	addi.d	$a0, $s0, 112
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s5, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_2:                                # %.loopexit99
@@ -575,7 +570,7 @@ compress_first_pass:                    # @compress_first_pass
 	ld.w	$a0, $s5, 68
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
 	addi.d	$a1, $a1, 1
-	addi.d	$s4, $s4, 96
+	addi.d	$s1, $s1, 96
 	bge	$a1, $a0, .LBB3_37
 .LBB3_3:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_17 Depth 2
@@ -592,84 +587,87 @@ compress_first_pass:                    # @compress_first_pass
 	ld.d	$a5, $a0, 64
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
 	slli.d	$a0, $a1, 3
-	ld.w	$a2, $s6, 16
-	ld.w	$a3, $s4, 12
+	ld.w	$a2, $s0, 16
+	ld.w	$a3, $s1, 12
 	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
 	ldx.d	$a1, $a1, $a0
 	mul.w	$a2, $a3, $a2
 	ori	$a4, $zero, 1
 	move	$a0, $s5
 	jirl	$ra, $a5, 0
-	ld.w	$a1, $s6, 16
+	ld.w	$a1, $s0, 16
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	ld.d	$a0, $sp, 24                    # 8-byte Folded Reload
 	bgeu	$a1, $a0, .LBB3_5
 # %bb.4:                                #   in Loop: Header=BB3_3 Depth=1
-	ld.w	$s0, $s4, 12
+	ld.w	$s8, $s1, 12
 	b	.LBB3_6
 	.p2align	4, , 16
 .LBB3_5:                                #   in Loop: Header=BB3_3 Depth=1
-	ld.w	$a0, $s4, 32
-	ld.w	$a1, $s4, 12
+	ld.w	$a0, $s1, 32
+	ld.w	$a1, $s1, 12
 	mod.wu	$a0, $a0, $a1
 	sltui	$a2, $a0, 1
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
-	or	$s0, $a1, $a0
+	or	$s8, $a1, $a0
 .LBB3_6:                                #   in Loop: Header=BB3_3 Depth=1
-	ld.w	$s3, $s4, 28
-	st.d	$s4, $sp, 64                    # 8-byte Folded Spill
-	ld.w	$s7, $s4, 8
-	mod.wu	$a0, $s3, $s7
+	ld.w	$a6, $s1, 28
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	ld.w	$s6, $s1, 8
+	mod.wu	$a0, $a6, $s6
 	slt	$a1, $zero, $a0
-	sub.w	$a2, $s7, $a0
+	sub.w	$a2, $s6, $a0
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $a2, $a1
 	or	$a0, $a1, $a0
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	blt	$s0, $s1, .LBB3_18
+	blez	$s8, .LBB3_18
 # %bb.7:                                # %.lr.ph
                                         #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	alsl.d	$s2, $a1, $a0, 3
+	alsl.d	$a4, $a1, $a0, 3
+	move	$s2, $a6
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	move	$s3, $a4
 	blez	$a1, .LBB3_16
 # %bb.8:                                # %.lr.ph.split.us.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
-	move	$s8, $zero
-	bstrpick.d	$a0, $s3, 31, 0
+	move	$s7, $zero
+	bstrpick.d	$a0, $a6, 31, 0
 	bstrpick.d	$s1, $a1, 31, 0
 	slli.d	$s4, $s1, 7
 	bstrpick.d	$a1, $s1, 30, 1
 	slli.d	$fp, $a1, 1
-	slli.d	$s6, $a0, 7
+	slli.d	$s0, $a0, 7
 	b	.LBB3_10
 	.p2align	4, , 16
 .LBB3_9:                                # %.loopexit.us
                                         #   in Loop: Header=BB3_10 Depth=2
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	ld.d	$s5, $sp, 40                    # 8-byte Folded Reload
-	beq	$s8, $s0, .LBB3_18
+	move	$a6, $s2
+	move	$a4, $s3
+	beq	$s7, $s8, .LBB3_18
 .LBB3_10:                               # %.lr.ph.split.us
                                         #   Parent Loop BB3_3 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB3_12 Depth 3
                                         #       Child Loop BB3_15 Depth 3
 	ld.d	$a2, $s5, 480
-	slli.d	$a1, $s8, 3
+	slli.d	$a1, $s7, 3
 	move	$a0, $s5
 	ld.d	$a3, $sp, 56                    # 8-byte Folded Reload
 	ldx.d	$s5, $a3, $a1
 	ld.d	$a7, $a2, 8
-	ld.d	$a2, $s2, 0
+	ld.d	$a2, $a4, 0
 	addi.w	$a4, $a1, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	move	$a3, $s5
 	move	$a5, $zero
-	move	$a6, $s3
 	jirl	$ra, $a7, 0
-	add.d	$s5, $s5, $s6
+	add.d	$s5, $s5, $s0
 	move	$a0, $s5
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(jzero_far)
@@ -716,48 +714,49 @@ compress_first_pass:                    # @compress_first_pass
 .LBB3_16:                               # %.lr.ph.split.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
 	move	$s4, $zero
-	move	$fp, $s0
-	ld.d	$s1, $sp, 56                    # 8-byte Folded Reload
+	move	$fp, $s8
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB3_17:                               # %.lr.ph.split
                                         #   Parent Loop BB3_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a0, $s5, 480
-	ld.d	$a3, $s1, 0
+	ld.d	$a3, $s0, 0
 	ld.d	$a7, $a0, 8
-	ld.d	$a2, $s2, 0
+	ld.d	$a2, $a4, 0
 	move	$a0, $s5
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	move	$a4, $s4
 	move	$a5, $zero
-	move	$a6, $s3
+	move	$a6, $s2
 	jirl	$ra, $a7, 0
+	move	$a4, $s3
+	move	$a6, $s2
 	addi.w	$s4, $s4, 8
 	addi.d	$fp, $fp, -1
-	addi.d	$s1, $s1, 8
+	addi.d	$s0, $s0, 8
 	bnez	$fp, .LBB3_17
 .LBB3_18:                               # %._crit_edge
                                         #   in Loop: Header=BB3_3 Depth=1
-	ld.d	$s6, $sp, 16                    # 8-byte Folded Reload
-	ld.w	$a0, $s6, 16
-	ori	$s1, $zero, 1
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
+	ld.w	$a0, $s0, 16
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	bne	$a0, $a1, .LBB3_2
 # %bb.19:                               #   in Loop: Header=BB3_3 Depth=1
-	ld.w	$a0, $s4, 12
-	bge	$s0, $a0, .LBB3_2
+	ld.w	$a0, $s1, 12
+	bge	$s8, $a0, .LBB3_2
 # %bb.20:                               # %.lr.ph114
                                         #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $sp, 48                    # 8-byte Folded Reload
-	add.w	$a0, $a0, $s3
+	add.w	$a0, $a0, $a6
 	bstrpick.d	$a1, $a0, 31, 0
 	slli.d	$s3, $a1, 7
-	bgeu	$a0, $s7, .LBB3_23
+	bgeu	$a0, $s6, .LBB3_23
 # %bb.21:                               # %.lr.ph114.split.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	alsl.d	$fp, $s0, $a0, 3
+	alsl.d	$fp, $s8, $a0, 3
 	.p2align	4, , 16
 .LBB3_22:                               # %.lr.ph114.split
                                         #   Parent Loop BB3_3 Depth=1
@@ -766,28 +765,27 @@ compress_first_pass:                    # @compress_first_pass
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s4, 12
-	addi.d	$s0, $s0, 1
+	ld.w	$a0, $s1, 12
+	addi.d	$s8, $s8, 1
 	addi.d	$fp, $fp, 8
-	blt	$s0, $a0, .LBB3_22
+	blt	$s8, $a0, .LBB3_22
 	b	.LBB3_2
 .LBB3_23:                               # %.lr.ph114.split.us
                                         #   in Loop: Header=BB3_3 Depth=1
-	blez	$s7, .LBB3_35
+	blez	$s6, .LBB3_35
 # %bb.24:                               # %.lr.ph110.us.us.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
-	div.wu	$s2, $a0, $s7
-	bstrpick.d	$a0, $s7, 30, 1
+	div.wu	$s2, $a0, $s6
+	bstrpick.d	$a0, $s6, 30, 1
 	slli.d	$s5, $a0, 1
-	slli.d	$s8, $s7, 7
+	slli.d	$s7, $s6, 7
 	b	.LBB3_26
 	.p2align	4, , 16
 .LBB3_25:                               # %._crit_edge111.split.us.us.us
                                         #   in Loop: Header=BB3_26 Depth=2
-	ld.d	$s4, $sp, 64                    # 8-byte Folded Reload
-	ld.w	$a0, $s4, 12
-	addi.d	$s0, $s0, 1
-	bge	$s0, $a0, .LBB3_2
+	ld.w	$a0, $s1, 12
+	addi.d	$s8, $s8, 1
+	bge	$s8, $a0, .LBB3_2
 .LBB3_26:                               # %.lr.ph110.us.us
                                         #   Parent Loop BB3_3 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -795,8 +793,8 @@ compress_first_pass:                    # @compress_first_pass
                                         #         Child Loop BB3_31 Depth 4
                                         #         Child Loop BB3_34 Depth 4
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	alsl.d	$a0, $s0, $a2, 3
-	slli.d	$a1, $s0, 3
+	alsl.d	$a0, $s8, $a2, 3
+	slli.d	$a1, $s8, 3
 	ldx.d	$s4, $a2, $a1
 	ld.d	$fp, $a0, -8
 	move	$a0, $s4
@@ -805,13 +803,14 @@ compress_first_pass:                    # @compress_first_pass
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
 	addi.d	$a1, $s4, 128
+	ori	$a5, $zero, 1
 	b	.LBB3_28
 	.p2align	4, , 16
 .LBB3_27:                               # %._crit_edge105.us.us.us
                                         #   in Loop: Header=BB3_28 Depth=3
 	addi.w	$a0, $a0, 1
-	add.d	$a1, $a1, $s8
-	add.d	$s4, $s4, $s8
+	add.d	$a1, $a1, $s7
+	add.d	$s4, $s4, $s7
 	bgeu	$a0, $s2, .LBB3_25
 .LBB3_28:                               # %.lr.ph104.us.us.us
                                         #   Parent Loop BB3_3 Depth=1
@@ -819,9 +818,9 @@ compress_first_pass:                    # @compress_first_pass
                                         # =>    This Loop Header: Depth=3
                                         #         Child Loop BB3_31 Depth 4
                                         #         Child Loop BB3_34 Depth 4
-	add.d	$fp, $fp, $s8
+	add.d	$fp, $fp, $s7
 	ld.hu	$a2, $fp, -128
-	bne	$s7, $s1, .LBB3_30
+	bne	$s6, $a5, .LBB3_30
 # %bb.29:                               #   in Loop: Header=BB3_28 Depth=3
 	move	$a4, $zero
 	b	.LBB3_33
@@ -844,11 +843,11 @@ compress_first_pass:                    # @compress_first_pass
 # %bb.32:                               # %middle.block
                                         #   in Loop: Header=BB3_28 Depth=3
 	move	$a4, $s5
-	beq	$s5, $s7, .LBB3_27
+	beq	$s5, $s6, .LBB3_27
 .LBB3_33:                               # %scalar.ph.preheader
                                         #   in Loop: Header=BB3_28 Depth=3
 	slli.d	$a3, $a4, 7
-	sub.d	$a4, $s7, $a4
+	sub.d	$a4, $s6, $a4
 	.p2align	4, , 16
 .LBB3_34:                               # %scalar.ph
                                         #   Parent Loop BB3_3 Depth=1
@@ -863,7 +862,7 @@ compress_first_pass:                    # @compress_first_pass
 .LBB3_35:                               # %.lr.ph110.us.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
 	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	alsl.d	$fp, $s0, $a0, 3
+	alsl.d	$fp, $s8, $a0, 3
 	.p2align	4, , 16
 .LBB3_36:                               # %.lr.ph110.us
                                         #   Parent Loop BB3_3 Depth=1
@@ -872,10 +871,10 @@ compress_first_pass:                    # @compress_first_pass
 	move	$a1, $s3
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $s4, 12
-	addi.d	$s0, $s0, 1
+	ld.w	$a0, $s1, 12
+	addi.d	$s8, $s8, 1
 	addi.d	$fp, $fp, 8
-	blt	$s0, $a0, .LBB3_36
+	blt	$s8, $a0, .LBB3_36
 	b	.LBB3_2
 .LBB3_37:                               # %._crit_edge127
 	move	$a0, $s5
@@ -909,28 +908,26 @@ compress_first_pass:                    # @compress_first_pass
 	.type	compress_output,@function
 compress_output:                        # @compress_output
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 40                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a1, $a0, 316
 	ld.d	$s1, $a0, 448
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB4_3
+	blez	$a1, .LBB4_3
 # %bb.1:                                # %.lr.ph
 	move	$s0, $zero
 	move	$s2, $zero
 	addi.d	$s3, $s1, 112
-	addi.d	$s4, $sp, 8
+	addi.d	$s4, $sp, 0
 	.p2align	4, , 16
 .LBB4_2:                                # =>This Inner Loop Header: Depth=1
 	add.d	$a0, $fp, $s0
@@ -958,12 +955,11 @@ compress_output:                        # @compress_output
 # %bb.4:                                # %.lr.ph84
 	addi.d	$s3, $fp, 320
 	addi.d	$s0, $s1, 32
-	ld.w	$s8, $s1, 20
+	ld.w	$s7, $s1, 20
 	ld.w	$a1, $fp, 352
 	addi.d	$s4, $s1, 48
-	ori	$s5, $zero, 1
-	addi.d	$s6, $sp, 8
-	ori	$s7, $zero, 4
+	addi.d	$s5, $sp, 0
+	ori	$s6, $zero, 4
 	b	.LBB4_7
 	.p2align	4, , 16
 .LBB4_5:                                # %._crit_edge81.loopexit
@@ -971,7 +967,7 @@ compress_output:                        # @compress_output
 	ld.w	$a0, $s1, 28
 .LBB4_6:                                # %._crit_edge81
                                         #   in Loop: Header=BB4_7 Depth=1
-	move	$s8, $zero
+	move	$s7, $zero
 	addi.d	$s2, $s2, 1
 	st.w	$zero, $s1, 20
 	bge	$s2, $a0, .LBB4_25
@@ -981,7 +977,7 @@ compress_output:                        # @compress_output
                                         #         Child Loop BB4_15 Depth 4
                                         #           Child Loop BB4_18 Depth 5
                                         #           Child Loop BB4_21 Depth 5
-	bgeu	$s8, $a1, .LBB4_6
+	bgeu	$s7, $a1, .LBB4_6
 	.p2align	4, , 16
 .LBB4_8:                                # %.preheader
                                         #   Parent Loop BB4_7 Depth=1
@@ -991,7 +987,7 @@ compress_output:                        # @compress_output
                                         #           Child Loop BB4_18 Depth 5
                                         #           Child Loop BB4_21 Depth 5
 	ld.w	$a0, $fp, 316
-	blt	$a0, $s5, .LBB4_22
+	blez	$a0, .LBB4_22
 # %bb.9:                                # %.lr.ph78.preheader
                                         #   in Loop: Header=BB4_8 Depth=2
 	move	$a1, $zero
@@ -1012,16 +1008,16 @@ compress_output:                        # @compress_output
 	slli.d	$a5, $a1, 3
 	ldx.d	$a4, $s3, $a5
 	ld.w	$a3, $a4, 56
-	blt	$a3, $s5, .LBB4_10
+	blez	$a3, .LBB4_10
 # %bb.12:                               # %.lr.ph73
                                         #   in Loop: Header=BB4_11 Depth=3
 	ld.w	$a4, $a4, 52
-	blt	$a4, $s5, .LBB4_10
+	blez	$a4, .LBB4_10
 # %bb.13:                               # %.lr.ph68.us.preheader
                                         #   in Loop: Header=BB4_11 Depth=3
-	ldx.d	$a6, $a5, $s6
+	ldx.d	$a6, $a5, $s5
 	move	$a5, $zero
-	mul.d	$a7, $a4, $s8
+	mul.d	$a7, $a4, $s7
 	bstrpick.d	$t2, $a7, 31, 0
 	alsl.d	$a6, $s2, $a6, 3
 	bstrpick.d	$t0, $a4, 30, 2
@@ -1046,7 +1042,7 @@ compress_output:                        # @compress_output
 	slli.d	$t3, $a5, 3
 	ldx.d	$t3, $a6, $t3
 	add.d	$t5, $t3, $t2
-	bgeu	$a4, $s7, .LBB4_17
+	bgeu	$a4, $s6, .LBB4_17
 # %bb.16:                               #   in Loop: Header=BB4_15 Depth=4
 	move	$t4, $a2
 	move	$t3, $t5
@@ -1109,13 +1105,13 @@ compress_output:                        # @compress_output
 	beqz	$a0, .LBB4_24
 # %bb.23:                               #   in Loop: Header=BB4_8 Depth=2
 	ld.w	$a1, $fp, 352
-	addi.w	$s8, $s8, 1
-	bltu	$s8, $a1, .LBB4_8
+	addi.w	$s7, $s7, 1
+	bltu	$s7, $a1, .LBB4_8
 	b	.LBB4_5
 .LBB4_24:
 	move	$a0, $zero
 	st.w	$s2, $s1, 24
-	st.w	$s8, $s1, 20
+	st.w	$s7, $s1, 20
 	b	.LBB4_32
 .LBB4_25:                               # %._crit_edge85.loopexit
 	ld.w	$a1, $fp, 316
@@ -1145,18 +1141,17 @@ compress_output:                        # @compress_output
 	st.d	$zero, $a0, 20
 	ori	$a0, $zero, 1
 .LBB4_32:
-	ld.d	$s8, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .Lfunc_end4:
 	.size	compress_output, .Lfunc_end4-compress_output

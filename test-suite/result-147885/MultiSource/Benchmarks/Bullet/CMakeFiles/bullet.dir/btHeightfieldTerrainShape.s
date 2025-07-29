@@ -975,7 +975,7 @@ _ZNK25btHeightfieldTerrainShape19processAllTrianglesEP18btTriangleCallbackRK9btV
 	.p2align	4, , 16
 .LBB9_22:                               #   in Loop: Header=BB9_17 Depth=2
 	ld.bu	$a0, $s0, 117
-	bne	$a0, $s8, .LBB9_24
+	beqz	$a0, .LBB9_24
 # %bb.23:                               #   in Loop: Header=BB9_17 Depth=2
 	add.d	$a0, $s1, $s4
 	andi	$a0, $a0, 1

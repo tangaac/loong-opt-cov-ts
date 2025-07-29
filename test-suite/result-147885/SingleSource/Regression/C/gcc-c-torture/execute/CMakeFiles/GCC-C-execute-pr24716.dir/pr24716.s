@@ -9,60 +9,59 @@ f:                                      # @f
 	move	$a0, $zero
 	pcalau12i	$a3, %pc_hi20(W)
 	addi.d	$a3, $a3, %pc_lo12(W)
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 2
-	addi.w	$a6, $zero, -1
+	ori	$a4, $zero, 2
+	addi.w	$a5, $zero, -1
 	b	.LBB0_2
 	.p2align	4, , 16
 .LBB0_1:                                # %.preheader
                                         #   in Loop: Header=BB0_2 Depth=1
 	move	$a1, $zero
-	move	$a7, $a0
-	slt	$a0, $a5, $a0
-	add.w	$a0, $a7, $a0
-	move	$a2, $a6
-	bge	$a5, $a7, .LBB0_15
+	move	$a6, $a0
+	slt	$a0, $a4, $a0
+	add.w	$a0, $a6, $a0
+	move	$a2, $a5
+	bge	$a4, $a6, .LBB0_15
 .LBB0_2:                                # %.preheader40
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_4 Depth 2
 	bge	$a1, $a0, .LBB0_5
 # %bb.3:                                # %.lr.ph
                                         #   in Loop: Header=BB0_2 Depth=1
-	sltui	$a7, $a1, 1
-	add.w	$t0, $a0, $a7
+	sltui	$a6, $a1, 1
+	add.w	$a7, $a0, $a6
 	.p2align	4, , 16
 .LBB0_4:                                #   Parent Loop BB0_2 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	add.w	$a0, $a0, $a7
-	blt	$a1, $t0, .LBB0_4
+	add.w	$a0, $a0, $a6
+	blt	$a1, $a7, .LBB0_4
 .LBB0_5:                                # %.preheader39
                                         #   in Loop: Header=BB0_2 Depth=1
-	slli.d	$a7, $a2, 2
-	ldx.w	$t0, $a3, $a7
-	alsl.d	$a7, $a2, $a3, 2
+	slli.d	$a6, $a2, 2
+	ldx.w	$a7, $a3, $a6
+	alsl.d	$a6, $a2, $a3, 2
 	blez	$a1, .LBB0_9
 # %bb.6:                                # %.preheader39.split
                                         #   in Loop: Header=BB0_2 Depth=1
-	bge	$a2, $a4, .LBB0_12
+	bgtz	$a2, .LBB0_12
 # %bb.7:                                # %.preheader39.split.split
                                         #   in Loop: Header=BB0_2 Depth=1
-	beqz	$t0, .LBB0_1
+	beqz	$a7, .LBB0_1
 # %bb.8:                                #   in Loop: Header=BB0_2 Depth=1
-	st.w	$zero, $a7, 0
+	st.w	$zero, $a6, 0
 	ori	$a0, $zero, 1
 	b	.LBB0_1
 .LBB0_9:                                # %.preheader39.split.us
-	beqz	$t0, .LBB0_11
+	beqz	$a7, .LBB0_11
 # %bb.10:
-	st.w	$zero, $a7, 0
+	st.w	$zero, $a6, 0
 	.p2align	4, , 16
 .LBB0_11:                               # %.peel.next
                                         # =>This Inner Loop Header: Depth=1
 	b	.LBB0_11
 .LBB0_12:                               # %.preheader39.split.split.us
-	beqz	$t0, .LBB0_14
+	beqz	$a7, .LBB0_14
 # %bb.13:
-	st.w	$zero, $a7, 0
+	st.w	$zero, $a6, 0
 	.p2align	4, , 16
 .LBB0_14:                               # %.critedge
                                         # =>This Inner Loop Header: Depth=1

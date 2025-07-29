@@ -171,10 +171,9 @@ _ZN13COutMemStream5WriteEPKvjPj:        # @_ZN13COutMemStream5WriteEPKvjPj
 	.cfi_offset 31, -88
 	move	$s1, $a0
 	ld.bu	$a0, $a0, 40
-	ori	$a4, $zero, 1
 	move	$fp, $a2
 	move	$s0, $a1
-	bne	$a0, $a4, .LBB4_2
+	beqz	$a0, .LBB4_2
 # %bb.1:
 	ld.d	$a0, $s1, 152
 	ld.d	$a1, $a0, 0
@@ -376,8 +375,7 @@ _ZN13COutMemStream4SeekExjPy:           # @_ZN13COutMemStream4SeekExjPy
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a4, $a0, 40
-	ori	$a5, $zero, 1
-	bne	$a4, $a5, .LBB5_3
+	beqz	$a4, .LBB5_3
 # %bb.1:
 	ld.d	$a0, $a0, 160
 	beqz	$a0, .LBB5_7
@@ -433,8 +431,7 @@ _ZN13COutMemStream7SetSizeEy:           # @_ZN13COutMemStream7SetSizeEy
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a2, $a0, 40
-	ori	$a3, $zero, 1
-	bne	$a2, $a3, .LBB6_3
+	beqz	$a2, .LBB6_3
 # %bb.1:
 	ld.d	$a0, $a0, 160
 	beqz	$a0, .LBB6_4
@@ -750,8 +747,7 @@ _ZN8NWindows16NSynchronization14CBaseEventWFMO19IsSignaledAndUpdateEv: # @_ZN8NW
 # %bb.0:
 	move	$a1, $a0
 	ld.bu	$a0, $a0, 17
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB13_3
+	beqz	$a0, .LBB13_3
 # %bb.1:
 	ld.bu	$a2, $a1, 16
 	bnez	$a2, .LBB13_3

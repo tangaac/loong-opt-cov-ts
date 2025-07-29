@@ -25,8 +25,7 @@ foo:                                    # @foo
 	addi.w	$a1, $a1, 1
 	bltz	$a3, .LBB0_1
 .LBB0_3:
-	addi.w	$a0, $zero, -1
-	bge	$a0, $a3, .LBB0_5
+	bltz	$a3, .LBB0_5
 # %bb.4:
 	ret
 .LBB0_5:

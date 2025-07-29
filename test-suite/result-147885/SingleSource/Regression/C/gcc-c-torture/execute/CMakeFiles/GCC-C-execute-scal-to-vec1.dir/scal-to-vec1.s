@@ -71,7 +71,7 @@ main:                                   # @main
 	bne	$a4, $a5, .LBB0_17
 # %bb.8:
 	vpickve2gr.h	$a4, $vr1, 6
-	bstrpick.d	$a4, $a4, 15, 0
+	slli.d	$a4, $a4, 48
 	beqz	$a4, .LBB0_17
 # %bb.9:
 	vpickve2gr.h	$a4, $vr1, 7

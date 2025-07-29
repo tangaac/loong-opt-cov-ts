@@ -227,15 +227,13 @@ _ZN11btUnionFind8allocateEi:            # @_ZN11btUnionFind8allocateEi
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 4
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB5_5
+	bgtz	$a1, .LBB5_5
 	b	.LBB5_7
 .LBB5_4:
 	move	$s2, $a1
 	move	$s0, $zero
 	move	$a1, $s1
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB5_7
+	blez	$a1, .LBB5_7
 .LBB5_5:                                # %.lr.ph.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 3
@@ -319,15 +317,13 @@ _ZN11btUnionFind5resetEi:               # @_ZN11btUnionFind5resetEi
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 4
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	bge	$a1, $a0, .LBB6_5
+	bgtz	$a1, .LBB6_5
 	b	.LBB6_7
 .LBB6_4:
 	move	$s2, $a1
 	move	$s0, $zero
 	move	$a1, $s1
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB6_7
+	blez	$a1, .LBB6_7
 .LBB6_5:                                # %.lr.ph.i.i.i.i
 	move	$a0, $zero
 	slli.d	$a1, $a1, 3
@@ -365,31 +361,30 @@ _ZN11btUnionFind5resetEi:               # @_ZN11btUnionFind5resetEi
 	addi.d	$a2, $a2, 8
 	bnez	$a0, .LBB6_12
 .LBB6_13:                               # %_ZN11btUnionFind8allocateEi.exit
-	ori	$a0, $zero, 1
 	st.w	$a1, $fp, 4
-	blt	$a1, $a0, .LBB6_21
+	blez	$a1, .LBB6_21
 # %bb.14:                               # %.lr.ph
 	ld.d	$a2, $fp, 16
-	bne	$a1, $a0, .LBB6_16
+	ori	$a3, $zero, 1
+	bne	$a1, $a3, .LBB6_16
 # %bb.15:
 	move	$a0, $zero
 	b	.LBB6_19
 .LBB6_16:                               # %vector.ph
 	bstrpick.d	$a0, $a1, 30, 1
 	slli.d	$a0, $a0, 1
-	addi.d	$a3, $a2, 8
-	ori	$a4, $zero, 1
+	addi.d	$a4, $a2, 8
 	ori	$a5, $zero, 1
 	move	$a6, $a0
 	.p2align	4, , 16
 .LBB6_17:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
 	addi.d	$a7, $a5, -1
-	st.w	$a7, $a3, -8
-	st.w	$a5, $a3, 0
-	st.w	$a4, $a3, -4
-	st.w	$a4, $a3, 4
-	addi.d	$a3, $a3, 16
+	st.w	$a7, $a4, -8
+	st.w	$a5, $a4, 0
+	st.w	$a3, $a4, -4
+	st.w	$a3, $a4, 4
+	addi.d	$a4, $a4, 16
 	addi.d	$a6, $a6, -2
 	addi.d	$a5, $a5, 2
 	bnez	$a6, .LBB6_17
@@ -428,8 +423,7 @@ _ZN11btUnionFind11sortIslandsEv:        # @_ZN11btUnionFind11sortIslandsEv
 	.cfi_startproc
 # %bb.0:
 	ld.w	$a1, $a0, 4
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_7
+	blez	$a1, .LBB7_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a2, $a0, 16
 	move	$a3, $zero

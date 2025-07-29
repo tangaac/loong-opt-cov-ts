@@ -5,8 +5,7 @@
 	.type	hypre_BoxInitializeMemory,@function
 hypre_BoxInitializeMemory:              # @hypre_BoxInitializeMemory
 # %bb.0:
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.1:
 	pcalau12i	$a1, %pc_hi20(s_at_a_time)
 	st.w	$a0, $a1, %pc_lo12(s_at_a_time)

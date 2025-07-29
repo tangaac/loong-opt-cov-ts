@@ -350,8 +350,7 @@ DIV_P:                                  # @DIV_P
 	beqz	$a6, .LBB3_12
 # %bb.9:
 	and	$a3, $a3, $a4
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB3_14
+	bnez	$a3, .LBB3_14
 .LBB3_10:
 	beqz	$fp, .LBB3_15
 .LBB3_11:
@@ -372,8 +371,7 @@ DIV_P:                                  # @DIV_P
 	sub.w	$a1, $a5, $a1
 	st.w	$a1, $a2, 0
 	and	$a3, $a3, $a4
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB3_10
+	beqz	$a3, .LBB3_10
 .LBB3_14:
 	sub.w	$a1, $a5, $a1
 	sub.w	$a0, $a5, $a0
@@ -1130,8 +1128,7 @@ MUL_P:                                  # @MUL_P
 	move	$a6, $a5
 .LBB16_11:                              # %.thread
 	and	$a3, $a4, $a3
-	ori	$s0, $zero, 1
-	bne	$a3, $s0, .LBB16_14
+	beqz	$a3, .LBB16_14
 # %bb.12:
 	lu12i.w	$a3, 4096
 	sub.d	$a4, $a3, $a1
@@ -1144,6 +1141,7 @@ MUL_P:                                  # @MUL_P
 	ffint.d.w	$fa2, $fa2
 	fmul.d	$fa0, $fa2, $fa0
 	fcmp.cle.d	$fcc0, $fa1, $fa0
+	ori	$s0, $zero, 1
 	bcnez	$fcc0, .LBB16_15
 # %bb.13:
 	ftintrz.w.d	$fa0, $fa0
@@ -1401,9 +1399,8 @@ SUB_P:                                  # @SUB_P
 	blt	$a6, $a0, .LBB19_3
 # %bb.2:
 	sub.w	$a1, $a1, $a0
-	addi.w	$a5, $zero, -1
 	st.w	$a1, $a2, 0
-	bge	$a5, $a1, .LBB19_5
+	bltz	$a1, .LBB19_5
 .LBB19_3:
 	xori	$a5, $a4, 1
 	or	$a7, $a3, $a5
@@ -1423,8 +1420,7 @@ SUB_P:                                  # @SUB_P
 	lu12i.w	$a6, 2048
 	slt	$s0, $a1, $a6
 	and	$a3, $a4, $a3
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB19_9
+	bnez	$a3, .LBB19_9
 	b	.LBB19_10
 .LBB19_5:
 	addu16i.d	$a5, $a1, 256
@@ -1445,14 +1441,12 @@ SUB_P:                                  # @SUB_P
 	st.w	$a7, $a2, 0
 	slt	$s0, $a6, $a1
 	and	$a3, $a4, $a3
-	ori	$a4, $zero, 1
-	beq	$a3, $a4, .LBB19_9
+	bnez	$a3, .LBB19_9
 	b	.LBB19_10
 .LBB19_8:
 	move	$s0, $zero
 	and	$a3, $a4, $a3
-	ori	$a4, $zero, 1
-	bne	$a3, $a4, .LBB19_10
+	beqz	$a3, .LBB19_10
 .LBB19_9:
 	sub.w	$a0, $a1, $a0
 	addu16i.d	$a0, $a0, 256

@@ -320,9 +320,7 @@ synth_1to1:                             # @synth_1to1
 .LBB1_16:
 	addi.d	$a4, $t1, 8
 	addi.w	$a5, $zero, -128
-	addi.w	$a7, $zero, -15
-	ori	$a6, $zero, 0
-	lu32i.d	$a6, 1
+	addi.w	$a6, $zero, -15
 	b	.LBB1_20
 	.p2align	4, , 16
 .LBB1_17:                               #   in Loop: Header=BB1_20 Depth=1
@@ -332,73 +330,73 @@ synth_1to1:                             # @synth_1to1
 .LBB1_19:                               #   in Loop: Header=BB1_20 Depth=1
 	addi.d	$a4, $a4, 4
 	addi.d	$a5, $a5, -128
-	bstrpick.d	$a7, $a7, 31, 0
-	addi.d	$a7, $a7, 1
-	and	$t0, $a7, $a6
+	bstrpick.d	$a6, $a6, 31, 0
+	addi.d	$a6, $a6, 1
+	slli.d	$a7, $a6, 31
 	addi.d	$a3, $a3, -256
-	bnez	$t0, .LBB1_24
+	bltz	$a7, .LBB1_24
 .LBB1_20:                               # =>This Inner Loop Header: Depth=1
-	add.d	$t0, $s0, $a5
+	add.d	$a7, $s0, $a5
 	fld.d	$fa2, $a3, 112
 	fldx.d	$fa3, $s0, $a5
 	fld.d	$fa4, $a3, 104
-	fld.d	$fa5, $t0, 8
+	fld.d	$fa5, $a7, 8
 	fneg.d	$fa2, $fa2
 	fmul.d	$fa2, $fa3, $fa2
 	fneg.d	$fa3, $fa4
 	fmadd.d	$fa2, $fa3, $fa5, $fa2
 	fld.d	$fa3, $a3, 96
-	fld.d	$fa4, $t0, 16
+	fld.d	$fa4, $a7, 16
 	fld.d	$fa5, $a3, 88
-	fld.d	$fa6, $t0, 24
+	fld.d	$fa6, $a7, 24
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
 	fmadd.d	$fa2, $fa3, $fa6, $fa2
 	fld.d	$fa3, $a3, 80
-	fld.d	$fa4, $t0, 32
+	fld.d	$fa4, $a7, 32
 	fld.d	$fa5, $a3, 72
-	fld.d	$fa6, $t0, 40
+	fld.d	$fa6, $a7, 40
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
 	fmadd.d	$fa2, $fa3, $fa6, $fa2
 	fld.d	$fa3, $a3, 64
-	fld.d	$fa4, $t0, 48
+	fld.d	$fa4, $a7, 48
 	fld.d	$fa5, $a3, 56
-	fld.d	$fa6, $t0, 56
+	fld.d	$fa6, $a7, 56
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
 	fmadd.d	$fa2, $fa3, $fa6, $fa2
 	fld.d	$fa3, $a3, 48
-	fld.d	$fa4, $t0, 64
+	fld.d	$fa4, $a7, 64
 	fld.d	$fa5, $a3, 40
-	fld.d	$fa6, $t0, 72
+	fld.d	$fa6, $a7, 72
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
 	fmadd.d	$fa2, $fa3, $fa6, $fa2
 	fld.d	$fa3, $a3, 32
-	fld.d	$fa4, $t0, 80
+	fld.d	$fa4, $a7, 80
 	fld.d	$fa5, $a3, 24
-	fld.d	$fa6, $t0, 88
+	fld.d	$fa6, $a7, 88
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
 	fmadd.d	$fa2, $fa3, $fa6, $fa2
 	fld.d	$fa3, $a3, 16
-	fld.d	$fa4, $t0, 96
+	fld.d	$fa4, $a7, 96
 	fld.d	$fa5, $a3, 8
-	fld.d	$fa6, $t0, 104
+	fld.d	$fa6, $a7, 104
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
 	fmadd.d	$fa2, $fa3, $fa6, $fa2
 	fld.d	$fa3, $a3, 0
-	fld.d	$fa4, $t0, 112
+	fld.d	$fa4, $a7, 112
 	fld.d	$fa5, $a3, 120
-	fld.d	$fa6, $t0, 120
+	fld.d	$fa6, $a7, 120
 	fneg.d	$fa3, $fa3
 	fmadd.d	$fa2, $fa3, $fa4, $fa2
 	fneg.d	$fa3, $fa5
@@ -414,8 +412,8 @@ synth_1to1:                             # @synth_1to1
 	.p2align	4, , 16
 .LBB1_23:                               #   in Loop: Header=BB1_20 Depth=1
 	ftintrz.l.d	$fa2, $fa2
-	movfr2gr.d	$t0, $fa2
-	st.h	$t0, $a4, 0
+	movfr2gr.d	$a7, $fa2
+	st.h	$a7, $a4, 0
 	b	.LBB1_19
 .LBB1_24:
 	ld.w	$a1, $fp, 0

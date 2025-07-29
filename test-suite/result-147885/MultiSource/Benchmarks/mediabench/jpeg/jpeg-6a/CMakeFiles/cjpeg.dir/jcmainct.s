@@ -50,8 +50,7 @@ jinit_c_main_controller:                # @jinit_c_main_controller
 	jr	$a1
 .LBB0_4:
 	ld.w	$a1, $fp, 68
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB0_1
+	blez	$a1, .LBB0_1
 # %bb.5:                                # %.lr.ph
 	ld.d	$a1, $fp, 80
 	move	$s0, $zero

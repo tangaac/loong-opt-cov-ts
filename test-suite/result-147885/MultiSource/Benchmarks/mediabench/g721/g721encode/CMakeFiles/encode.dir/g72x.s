@@ -249,9 +249,8 @@ step_size:                              # @step_size
 	ld.h	$a3, $a0, 8
 	srli.d	$a0, $a1, 6
 	sub.w	$a1, $a3, $a0
-	ori	$a3, $zero, 1
 	srai.d	$a2, $a2, 2
-	blt	$a1, $a3, .LBB4_5
+	blez	$a1, .LBB4_5
 # %bb.3:
 	mul.w	$a1, $a1, $a2
 .LBB4_4:
@@ -260,8 +259,7 @@ step_size:                              # @step_size
 	addi.w	$a0, $a0, 0
 	ret
 .LBB4_5:
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a1, .LBB4_7
+	bltz	$a1, .LBB4_7
 # %bb.6:
 	addi.w	$a0, $a0, 0
 	ret
@@ -281,11 +279,11 @@ quantize:                               # @quantize
 	xor	$a5, $a0, $a4
 	sub.d	$a4, $a5, $a4
 	slli.w	$a5, $a4, 16
-	srai.d	$a6, $a5, 17
-	ori	$a4, $zero, 1
-	blt	$a6, $a4, .LBB5_3
+	srai.d	$a4, $a5, 17
+	blez	$a4, .LBB5_3
 # %bb.1:                                # %.lr.ph.i.1
-	bne	$a6, $a4, .LBB5_4
+	ori	$a6, $zero, 1
+	bne	$a4, $a6, .LBB5_4
 # %bb.2:
 	lu12i.w	$a6, 16
 	b	.LBB5_27
@@ -293,81 +291,81 @@ quantize:                               # @quantize
 	move	$a6, $zero
 	b	.LBB5_27
 .LBB5_4:                                # %.lr.ph.i.2
-	ori	$a7, $zero, 4
-	bge	$a6, $a7, .LBB5_6
+	ori	$a6, $zero, 4
+	bge	$a4, $a6, .LBB5_6
 # %bb.5:
 	lu12i.w	$a6, 32
 	b	.LBB5_27
 .LBB5_6:                                # %.lr.ph.i.3
-	ori	$a7, $zero, 8
-	bge	$a6, $a7, .LBB5_8
+	ori	$a6, $zero, 8
+	bge	$a4, $a6, .LBB5_8
 # %bb.7:
 	lu12i.w	$a6, 48
 	b	.LBB5_27
 .LBB5_8:                                # %.lr.ph.i.4
-	ori	$a7, $zero, 16
-	bge	$a6, $a7, .LBB5_10
+	ori	$a6, $zero, 16
+	bge	$a4, $a6, .LBB5_10
 # %bb.9:
 	lu12i.w	$a6, 64
 	b	.LBB5_27
 .LBB5_10:                               # %.lr.ph.i.5
-	ori	$a7, $zero, 32
-	bge	$a6, $a7, .LBB5_12
+	ori	$a6, $zero, 32
+	bge	$a4, $a6, .LBB5_12
 # %bb.11:
 	lu12i.w	$a6, 80
 	b	.LBB5_27
 .LBB5_12:                               # %.lr.ph.i.6
-	ori	$a7, $zero, 64
-	bge	$a6, $a7, .LBB5_14
+	ori	$a6, $zero, 64
+	bge	$a4, $a6, .LBB5_14
 # %bb.13:
 	lu12i.w	$a6, 96
 	b	.LBB5_27
 .LBB5_14:                               # %.lr.ph.i.7
-	ori	$a7, $zero, 128
-	bge	$a6, $a7, .LBB5_16
+	ori	$a6, $zero, 128
+	bge	$a4, $a6, .LBB5_16
 # %bb.15:
 	lu12i.w	$a6, 112
 	b	.LBB5_27
 .LBB5_16:                               # %.lr.ph.i.8
-	ori	$a7, $zero, 256
-	bge	$a6, $a7, .LBB5_18
+	ori	$a6, $zero, 256
+	bge	$a4, $a6, .LBB5_18
 # %bb.17:
 	lu12i.w	$a6, 128
 	b	.LBB5_27
 .LBB5_18:                               # %.lr.ph.i.9
-	ori	$a7, $zero, 512
-	bge	$a6, $a7, .LBB5_20
+	ori	$a6, $zero, 512
+	bge	$a4, $a6, .LBB5_20
 # %bb.19:
 	lu12i.w	$a6, 144
 	b	.LBB5_27
 .LBB5_20:                               # %.lr.ph.i.10
-	ori	$a7, $zero, 1024
-	bge	$a6, $a7, .LBB5_22
+	ori	$a6, $zero, 1024
+	bge	$a4, $a6, .LBB5_22
 # %bb.21:
 	lu12i.w	$a6, 160
 	b	.LBB5_27
 .LBB5_22:                               # %.lr.ph.i.11
-	ori	$a7, $zero, 2048
-	bge	$a6, $a7, .LBB5_24
+	ori	$a6, $zero, 2048
+	bge	$a4, $a6, .LBB5_24
 # %bb.23:
 	lu12i.w	$a6, 176
 	b	.LBB5_27
 .LBB5_24:                               # %.lr.ph.i.12
-	lu12i.w	$a7, 1
-	bge	$a6, $a7, .LBB5_26
+	lu12i.w	$a6, 1
+	bge	$a4, $a6, .LBB5_26
 # %bb.25:
 	lu12i.w	$a6, 192
 	b	.LBB5_27
 .LBB5_26:                               # %.lr.ph.i.13
-	lu12i.w	$a7, 2
-	slt	$a6, $a6, $a7
-	lu12i.w	$a7, 224
-	masknez	$a7, $a7, $a6
-	lu12i.w	$t0, 208
-	maskeqz	$a6, $t0, $a6
-	or	$a6, $a6, $a7
+	lu12i.w	$a6, 2
+	slt	$a4, $a4, $a6
+	lu12i.w	$a6, 224
+	masknez	$a6, $a6, $a4
+	lu12i.w	$a7, 208
+	maskeqz	$a4, $a7, $a4
+	or	$a6, $a4, $a6
 .LBB5_27:                               # %quan.exit
-	blt	$a3, $a4, .LBB5_35
+	blez	$a3, .LBB5_35
 # %bb.28:                               # %.lr.ph.i22.preheader
 	move	$a4, $zero
 	srai.d	$a5, $a5, 9
@@ -398,8 +396,7 @@ quantize:                               # @quantize
 	move	$a0, $a4
 	ret
 .LBB5_35:                               # %quan.exit26.thread
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB5_37
+	bltz	$a0, .LBB5_37
 .LBB5_36:                               # %.thread
 	slli.d	$a0, $a3, 1
 	addi.w	$a0, $a0, 1
@@ -422,9 +419,8 @@ reconstruct:                            # @reconstruct
 # %bb.0:
 	bstrpick.d	$a2, $a2, 31, 2
 	add.w	$a1, $a2, $a1
-	lu12i.w	$a2, 8
-	and	$a2, $a1, $a2
-	bnez	$a2, .LBB6_2
+	slli.d	$a2, $a1, 48
+	bltz	$a2, .LBB6_2
 # %bb.1:
 	bstrpick.d	$a2, $a1, 10, 7
 	lu12i.w	$a3, 4
@@ -845,9 +841,9 @@ update:                                 # @update
 	addi.d	$sp, $sp, 16
 	beqz	$a5, .LBB7_65
 # %bb.62:
-	ori	$a0, $zero, 1
-	blt	$a5, $a0, .LBB7_66
+	blez	$a5, .LBB7_66
 # %bb.63:                               # %.lr.ph.i179.1
+	ori	$a0, $zero, 1
 	bne	$a5, $a0, .LBB7_70
 # %bb.64:
 	lu12i.w	$a0, 16
@@ -1056,17 +1052,17 @@ update:                                 # @update
 	xori	$a4, $t0, 1
 	and	$a0, $a0, $a4
 	st.b	$a0, $a7, 52
-	sub.d	$a5, $a3, $a2
-	bstrpick.d	$a5, $a5, 31, 5
-	ld.h	$a6, $a7, 12
-	add.d	$a2, $a2, $a5
+	sub.d	$a4, $a3, $a2
+	bstrpick.d	$a4, $a4, 31, 5
+	ld.h	$a5, $a7, 12
+	add.d	$a2, $a2, $a4
 	st.h	$a2, $a7, 10
 	slli.d	$a3, $a3, 2
-	sub.d	$a3, $a3, $a6
+	sub.d	$a3, $a3, $a5
 	bstrpick.d	$a3, $a3, 31, 7
-	add.d	$a3, $a6, $a3
+	add.d	$a3, $a5, $a3
 	st.h	$a3, $a7, 12
-	bnez	$a4, .LBB7_124
+	beqz	$t0, .LBB7_124
 # %bb.123:
 	ori	$a0, $zero, 256
 	st.h	$a0, $a7, 14

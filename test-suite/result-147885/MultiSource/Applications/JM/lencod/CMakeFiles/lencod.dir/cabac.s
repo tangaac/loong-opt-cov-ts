@@ -3386,14 +3386,13 @@ writeRunLevel_CABAC:                    # @writeRunLevel_CABAC
 	ld.d	$a0, $a0, 0
 	ldptr.d	$a1, $a0, 14224
 	ld.w	$a0, $a0, 12
-	ori	$a3, $zero, 536
 	pcalau12i	$s5, %pc_hi20(writeRunLevel_CABAC.coeff_ctr)
-	ld.w	$a4, $s5, %pc_lo12(writeRunLevel_CABAC.coeff_ctr)
+	ld.w	$a3, $s5, %pc_lo12(writeRunLevel_CABAC.coeff_ctr)
 	ld.w	$a2, $fp, 24
-	mul.d	$a0, $a0, $a3
-	ori	$a3, $zero, 1
+	ori	$a4, $zero, 536
+	mul.d	$a0, $a0, $a4
 	add.d	$s3, $a1, $a0
-	blt	$a4, $a3, .LBB25_4
+	blez	$a3, .LBB25_4
 # %bb.3:
 	ori	$a3, $zero, 1
 	move	$a0, $s3

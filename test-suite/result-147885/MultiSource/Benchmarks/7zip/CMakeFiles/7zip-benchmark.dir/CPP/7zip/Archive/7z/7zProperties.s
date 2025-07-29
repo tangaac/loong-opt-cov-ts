@@ -50,8 +50,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	jirl	$ra, $ra, 0
 .Ltmp3:
 # %bb.2:                                # %.noexc3.i
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_7
+	blez	$s2, .LBB0_7
 # %bb.3:                                # %.lr.ph.i.i.i
 	move	$s1, $zero
 	slli.d	$s3, $s2, 3
@@ -75,13 +74,11 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	st.w	$s2, $sp, 12
 	bne	$s3, $s1, .LBB0_4
 # %bb.6:                                # %_ZN13CRecordVectorIyEC2ERKS0_.exit
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_8
+	bgtz	$s2, .LBB0_8
 	b	.LBB0_89
 .LBB0_7:                                # %_ZN13CRecordVectorIyEC2ERKS0_.exitthread-pre-split
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_8:                                # %.lr.ph.i
 	ld.d	$a0, $sp, 16
 	move	$a1, $zero
@@ -97,8 +94,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	addi.d	$a0, $a0, 8
 	bnez	$a3, .LBB0_9
 # %bb.11:                               # %_ZN8NArchive3N7zL13RemoveOneItemER13CRecordVectorIyEj.exit
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_14
+	bgtz	$s2, .LBB0_14
 	b	.LBB0_89
 .LBB0_12:
 	ld.d	$a0, $sp, 0
@@ -110,8 +106,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 .Ltmp9:
 # %bb.13:                               # %._ZN8NArchive3N7zL13RemoveOneItemER13CRecordVectorIyEj.exit_crit_edge
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_14:                               # %.lr.ph.i4
 	ld.d	$a0, $sp, 16
 	move	$a1, $zero
@@ -127,8 +122,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	addi.d	$a0, $a0, 8
 	bnez	$a3, .LBB0_15
 # %bb.17:                               # %_ZN8NArchive3N7zL13RemoveOneItemER13CRecordVectorIyEj.exit10
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_20
+	bgtz	$s2, .LBB0_20
 	b	.LBB0_89
 .LBB0_18:
 	ld.d	$a0, $sp, 0
@@ -140,8 +134,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 .Ltmp11:
 # %bb.19:                               # %._ZN8NArchive3N7zL13RemoveOneItemER13CRecordVectorIyEj.exit10_crit_edge
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_20:                               # %.lr.ph.i12
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -157,8 +150,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB0_21
 # %bb.23:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_27
+	bgtz	$s2, .LBB0_27
 	b	.LBB0_89
 .LBB0_24:
 .Ltmp12:
@@ -184,8 +176,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 .Ltmp15:
 # %bb.26:                               # %.noexc17._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit_crit_edge
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_27:                               # %.lr.ph.i20
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -201,8 +192,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB0_28
 # %bb.30:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit27
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_34
+	bgtz	$s2, .LBB0_34
 	b	.LBB0_89
 .LBB0_31:
 .Ltmp16:
@@ -228,8 +218,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 .Ltmp19:
 # %bb.33:                               # %.noexc25._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit27_crit_edge
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_34:                               # %.lr.ph.i29
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -245,8 +234,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB0_35
 # %bb.37:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit36
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_41
+	bgtz	$s2, .LBB0_41
 	b	.LBB0_89
 .LBB0_38:
 .Ltmp20:
@@ -272,8 +260,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 .Ltmp23:
 # %bb.40:                               # %.noexc34._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit36_crit_edge
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_41:                               # %.lr.ph.i38
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -289,8 +276,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	addi.d	$a0, $a0, 8
 	bnez	$a2, .LBB0_42
 # %bb.44:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit45
-	ori	$a0, $zero, 1
-	bge	$s2, $a0, .LBB0_48
+	bgtz	$s2, .LBB0_48
 	b	.LBB0_89
 .LBB0_45:
 .Ltmp24:
@@ -316,8 +302,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 .Ltmp27:
 # %bb.47:                               # %.noexc43._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit45_crit_edge
 	ld.w	$s2, $sp, 12
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 .LBB0_48:                               # %.lr.ph.i47
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -358,8 +343,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 # %bb.53:                               # %.noexc52._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit54_crit_edge
 	ld.w	$s2, $sp, 12
 .LBB0_54:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit54
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 # %bb.55:                               # %.lr.ph.i56
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -400,8 +384,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 # %bb.60:                               # %.noexc61._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit63_crit_edge
 	ld.w	$s2, $sp, 12
 .LBB0_61:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit63
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 # %bb.62:                               # %.lr.ph.i65
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -442,8 +425,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 # %bb.67:                               # %.noexc70._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit72_crit_edge
 	ld.w	$s2, $sp, 12
 .LBB0_68:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit72
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 # %bb.69:                               # %.lr.ph.i74
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -483,8 +465,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 # %bb.74:                               # %.noexc79._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit81_crit_edge
 	ld.w	$s2, $sp, 12
 .LBB0_75:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit81
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 # %bb.76:                               # %.lr.ph.i83
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -524,8 +505,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 # %bb.81:                               # %.noexc88._ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit90_crit_edge
 	ld.w	$s2, $sp, 12
 .LBB0_82:                               # %_ZN8NArchive3N7zL11CopyOneItemER13CRecordVectorIyES3_j.exit90
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_89
+	blez	$s2, .LBB0_89
 # %bb.83:                               # %.lr.ph.i92
 	ld.d	$a0, $sp, 16
 	move	$s1, $zero
@@ -573,8 +553,7 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	jirl	$ra, $ra, 0
 .Ltmp53:
 # %bb.90:                               # %.noexc105
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_94
+	blez	$s2, .LBB0_94
 # %bb.91:                               # %.lr.ph.i100
 	move	$s1, $zero
 	slli.d	$s2, $s2, 3
@@ -671,9 +650,8 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	ld.d	$a0, $fp, 896
 	ld.w	$a2, $fp, 892
 	ori	$a1, $zero, 20
-	ori	$a3, $zero, 1
 	st.d	$a1, $a0, 0
-	blt	$a2, $a3, .LBB0_108
+	blez	$a2, .LBB0_108
 # %bb.104:                              # %.lr.ph.i122
 	move	$a1, $zero
 	ori	$a3, $zero, 6
@@ -706,9 +684,8 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	ld.d	$a0, $fp, 896
 	ld.w	$a2, $fp, 892
 	ori	$a1, $zero, 6
-	ori	$a3, $zero, 1
 	st.d	$a1, $a0, 0
-	blt	$a2, $a3, .LBB0_114
+	blez	$a2, .LBB0_114
 # %bb.110:                              # %.lr.ph.i132
 	move	$a1, $zero
 	ori	$a3, $zero, 9
@@ -741,9 +718,8 @@ _ZN8NArchive3N7z8CHandler10FillPopIDsEv: # @_ZN8NArchive3N7z8CHandler10FillPopID
 	ld.d	$a0, $fp, 896
 	ld.w	$a2, $fp, 892
 	ori	$a1, $zero, 9
-	ori	$a3, $zero, 1
 	st.d	$a1, $a0, 0
-	blt	$a2, $a3, .LBB0_120
+	blez	$a2, .LBB0_120
 # %bb.116:                              # %.lr.ph.i142
 	move	$a1, $zero
 	ori	$a3, $zero, 17

@@ -67,7 +67,7 @@ foo:                                    # @foo
 	vldx	$vr0, $fp, $a3
 	vmsknz.b	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
-	bstrpick.d	$a2, $a2, 15, 0
+	slli.d	$a2, $a2, 48
 	bnez	$a2, .LBB1_4
 # %bb.3:                                # %vector.body
                                         #   in Loop: Header=BB1_2 Depth=1
@@ -153,7 +153,7 @@ main:                                   # @main
 	vldx	$vr0, $fp, $a3
 	vmsknz.b	$vr0, $vr0
 	vpickve2gr.hu	$a2, $vr0, 0
-	bstrpick.d	$a2, $a2, 15, 0
+	slli.d	$a2, $a2, 48
 	bnez	$a2, .LBB2_4
 # %bb.3:                                # %vector.body
                                         #   in Loop: Header=BB2_2 Depth=1

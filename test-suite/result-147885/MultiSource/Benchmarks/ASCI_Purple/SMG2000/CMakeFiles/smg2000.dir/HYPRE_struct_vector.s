@@ -51,8 +51,7 @@ HYPRE_StructVectorSetValues:            # @HYPRE_StructVectorSetValues
 	st.d	$zero, $sp, 12
 	st.w	$zero, $sp, 20
 	ld.w	$a2, $a2, 4
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB3_8
+	blez	$a2, .LBB3_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a2, $a3, .LBB3_3
@@ -119,9 +118,8 @@ HYPRE_StructVectorSetBoxValues:         # @HYPRE_StructVectorSetBoxValues
 	st.d	$zero, $sp, 8
 	st.w	$zero, $sp, 16
 	ld.w	$a0, $a0, 4
-	ori	$a4, $zero, 1
 	move	$s0, $a3
-	blt	$a0, $a4, .LBB4_8
+	blez	$a0, .LBB4_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB4_3
@@ -214,8 +212,7 @@ HYPRE_StructVectorAddToValues:          # @HYPRE_StructVectorAddToValues
 	st.d	$zero, $sp, 12
 	st.w	$zero, $sp, 20
 	ld.w	$a2, $a2, 4
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB5_8
+	blez	$a2, .LBB5_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a2, $a3, .LBB5_3
@@ -282,9 +279,8 @@ HYPRE_StructVectorAddToBoxValues:       # @HYPRE_StructVectorAddToBoxValues
 	st.d	$zero, $sp, 8
 	st.w	$zero, $sp, 16
 	ld.w	$a0, $a0, 4
-	ori	$a4, $zero, 1
 	move	$s0, $a3
-	blt	$a0, $a4, .LBB6_8
+	blez	$a0, .LBB6_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB6_3
@@ -377,8 +373,7 @@ HYPRE_StructVectorGetValues:            # @HYPRE_StructVectorGetValues
 	st.d	$zero, $sp, 12
 	st.w	$zero, $sp, 20
 	ld.w	$a3, $a3, 4
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB7_8
+	blez	$a3, .LBB7_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a4, $zero, 8
 	bgeu	$a3, $a4, .LBB7_3
@@ -444,9 +439,8 @@ HYPRE_StructVectorGetBoxValues:         # @HYPRE_StructVectorGetBoxValues
 	st.d	$zero, $sp, 8
 	st.w	$zero, $sp, 16
 	ld.w	$a0, $a0, 4
-	ori	$a4, $zero, 1
 	move	$s0, $a3
-	blt	$a0, $a4, .LBB8_8
+	blez	$a0, .LBB8_8
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a3, $zero, 8
 	bgeu	$a0, $a3, .LBB8_3

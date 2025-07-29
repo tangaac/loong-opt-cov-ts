@@ -558,7 +558,7 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $s7, 0
 	ldptr.w	$a0, $a1, 5640
-	blt	$a0, $fp, .LBB2_76
+	blez	$a0, .LBB2_76
 # %bb.66:                               # %.lr.ph.i.preheader
 	move	$fp, $zero
 	move	$s8, $zero
@@ -710,8 +710,7 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	bne	$a2, $a0, .LBB2_89
 # %bb.78:                               # %.preheader.i79
 	ldptr.w	$a0, $a1, 5644
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_89
+	blez	$a0, .LBB2_89
 # %bb.79:                               # %.lr.ph72.i.preheader
 	move	$fp, $zero
 	move	$s8, $zero
@@ -719,11 +718,13 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	addi.d	$s1, $a0, %pc_lo12(.L.str.74)
 	lu12i.w	$a1, 1
 	ori	$a0, $a1, 1664
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	pcalau12i	$a0, %pc_hi20(.L.str.77)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.77)
-	ori	$a0, $a1, 1668
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	ori	$s2, $zero, 1
+	pcalau12i	$a0, %pc_hi20(.L.str.77)
+	addi.d	$a0, $a0, %pc_lo12(.L.str.77)
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
+	ori	$a0, $a1, 1668
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.78)
 	addi.d	$s3, $a0, %pc_lo12(.L.str.78)
 	pcalau12i	$a0, %pc_hi20(.L.str.79)
@@ -741,7 +742,7 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	ldptr.d	$a2, $a1, 5776
 	ld.d	$a0, $a0, 8
 	ld.d	$a2, $a2, 8
-	ld.d	$a6, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a6, $sp, 40                    # 8-byte Folded Reload
 	ldx.wu	$a3, $a1, $a6
 	ldx.d	$a4, $a0, $fp
 	ldx.d	$a2, $a2, $fp
@@ -751,6 +752,7 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	st.w	$zero, $a2, 4
 	ldx.wu	$a3, $a1, $a6
 	move	$a0, $zero
+	ori	$s2, $zero, 1
 	sll.w	$a3, $a5, $a3
 	st.w	$a3, $a4, 8
 .LBB2_81:                               # %.loopexit.sink.split.i
@@ -790,12 +792,11 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	ld.d	$a1, $s7, 0
 	ldptr.d	$a0, $a1, 5768
 	ld.d	$a0, $a0, 8
-	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ldx.wu	$a2, $a1, $a2
 	ldx.d	$a3, $a0, $fp
 	move	$a0, $zero
-	ori	$a4, $zero, 1
-	sll.w	$a2, $a4, $a2
+	sll.w	$a2, $s2, $a2
 	st.w	$a2, $a3, 0
 .LBB2_86:                               #   in Loop: Header=BB2_83 Depth=1
 	ldptr.d	$a2, $a1, 5776
@@ -807,7 +808,7 @@ RestOfSliceHeader:                      # @RestOfSliceHeader
 	ld.w	$a0, $a3, 32
 	beqz	$a0, .LBB2_82
 # %bb.87:                               #   in Loop: Header=BB2_83 Depth=1
-	move	$a0, $s2
+	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(u_1)
 	jirl	$ra, $ra, 0
@@ -1367,9 +1368,8 @@ decode_poc:                             # @decode_poc
 	beqz	$a2, .LBB4_35
 # %bb.15:
 	stptr.w	$zero, $a0, 5744
-	ori	$a7, $zero, 1
 	addi.d	$a5, $a1, 1036
-	blt	$a4, $a7, .LBB4_37
+	blez	$a4, .LBB4_37
 .LBB4_16:                               # %.lr.ph
 	ori	$a7, $a3, 1648
 	ori	$t0, $zero, 8
@@ -1473,9 +1473,8 @@ decode_poc:                             # @decode_poc
 	addi.w	$a6, $a6, -1
 	stptr.w	$a6, $a0, 5720
 	stptr.w	$zero, $a0, 5744
-	ori	$a7, $zero, 1
 	addi.d	$a5, $a1, 1036
-	bge	$a4, $a7, .LBB4_16
+	bgtz	$a4, .LBB4_16
 .LBB4_37:
 	move	$t1, $zero
 .LBB4_38:                               # %.loopexit202
@@ -1726,9 +1725,8 @@ decode_poc:                             # @decode_poc
 .LBB4_84:
 	move	$a6, $zero
 	stptr.w	$zero, $a0, 5744
-	ori	$a7, $zero, 1
 	addi.d	$a5, $a1, 1036
-	bge	$a4, $a7, .LBB4_16
+	bgtz	$a4, .LBB4_16
 	b	.LBB4_37
 .LBB4_85:                               # %vector.ph259
 	addi.d	$a5, $a6, 1

@@ -8,16 +8,16 @@ perimeter:                              # @perimeter
 	pcalau12i	$a0, %got_pc_hi20(A)
 	ld.d	$a0, $a0, %got_pc_lo12(A)
 	ld.d	$a1, $a0, 0
-	ld.wu	$a5, $a1, 0
-	addi.w	$a2, $a5, 0
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB0_4
+	ld.wu	$a4, $a1, 0
+	addi.w	$a2, $a4, 0
+	blez	$a2, .LBB0_4
 # %bb.1:                                # %.lr.ph
+	ori	$a5, $zero, 1
 	alsl.d	$a3, $a2, $a1, 3
 	move	$a0, $zero
-	bne	$a2, $a4, .LBB0_5
+	bne	$a2, $a5, .LBB0_5
 .LBB0_2:                                # %._crit_edge.loopexit.peel.begin
-	bne	$a4, $a2, .LBB0_10
+	bne	$a5, $a2, .LBB0_10
 # %bb.3:
 	ld.d	$a1, $a1, 8
 	ld.d	$a2, $a3, 0
@@ -34,7 +34,7 @@ perimeter:                              # @perimeter
 	ret
 .LBB0_5:                                # %.lr.ph.split
 	addi.d	$a6, $a1, 20
-	ori	$a4, $zero, 1
+	ori	$a5, $zero, 1
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_6:                                #   in Loop: Header=BB0_8 Depth=1
@@ -48,11 +48,11 @@ perimeter:                              # @perimeter
 .LBB0_7:                                #   in Loop: Header=BB0_8 Depth=1
 	add.d	$a7, $t0, $a7
 	add.d	$a0, $a7, $a0
-	addi.d	$a4, $a4, 1
+	addi.d	$a5, $a5, 1
 	addi.d	$a6, $a6, 8
-	beq	$a5, $a4, .LBB0_2
+	beq	$a4, $a5, .LBB0_2
 .LBB0_8:                                # =>This Inner Loop Header: Depth=1
-	beq	$a5, $a4, .LBB0_6
+	beq	$a4, $a5, .LBB0_6
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=1
 	ld.w	$a7, $a6, -4
 	ld.w	$t0, $a6, -12
@@ -68,9 +68,9 @@ perimeter:                              # @perimeter
 	sub.d	$t0, $t0, $t1
 	b	.LBB0_7
 .LBB0_10:
-	alsl.d	$a2, $a4, $a1, 3
+	alsl.d	$a2, $a5, $a1, 3
 	ld.w	$a3, $a2, 8
-	slli.d	$a4, $a4, 3
+	slli.d	$a4, $a5, 3
 	ldx.w	$a1, $a1, $a4
 	sub.w	$a1, $a3, $a1
 	ld.w	$a3, $a2, 12

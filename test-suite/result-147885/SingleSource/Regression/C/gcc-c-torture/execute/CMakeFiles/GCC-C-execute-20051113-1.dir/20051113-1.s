@@ -11,8 +11,7 @@
 Sum:                                    # @Sum
 # %bb.0:
 	ld.w	$a2, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB0_3
+	blez	$a2, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB0_4
@@ -96,8 +95,7 @@ Sum:                                    # @Sum
 Sum2:                                   # @Sum2
 # %bb.0:
 	ld.w	$a2, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB1_3
+	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph
 	ori	$a1, $zero, 4
 	bgeu	$a2, $a1, .LBB1_4

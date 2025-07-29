@@ -64,8 +64,7 @@ _ZL20BM_PRESSURE_CALC_RAWRN9benchmark5StateE: # @_ZL20BM_PRESSURE_CALC_RAWRN9ben
 # %bb.2:                                # %.preheader62.lr.ph
 	ld.d	$a0, $fp, 32
 	ld.d	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_26
+	blez	$a0, .LBB0_26
 # %bb.3:                                # %.preheader62.us.us.preheader
 	alsl.d	$a3, $a0, $s3, 3
 	alsl.d	$a4, $a0, $s2, 3
@@ -510,8 +509,7 @@ _ZL18BM_ENERGY_CALC_RAWRN9benchmark5StateE: # @_ZL18BM_ENERGY_CALC_RAWRN9benchma
                                         #     Child Loop BB1_33 Depth 2
                                         #     Child Loop BB1_37 Depth 2
                                         #     Child Loop BB1_47 Depth 2
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB1_3
+	blez	$a3, .LBB1_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
 	st.d	$a5, $sp, 296                   # 8-byte Folded Spill
@@ -1804,8 +1802,7 @@ _ZL21BM_DEL_DOT_VEC_2D_RAWRN9benchmark5StateE: # @_ZL21BM_DEL_DOT_VEC_2D_RAWRN9b
 	beqz	$s5, .LBB3_8
 # %bb.3:                                # %.preheader.lr.ph
 	ld.w	$a0, $sp, 88
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.4:                                # %.preheader.us.preheader
 	addi.d	$a1, $s1, 8
 	alsl.d	$a2, $s6, $a1, 3
@@ -2876,8 +2873,7 @@ _ZL10BM_FIR_RAWRN9benchmark5StateE:     # @_ZL10BM_FIR_RAWRN9benchmark5StateE
 	beqz	$s0, .LBB5_12
 # %bb.2:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	addi.w	$a0, $s3, -16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_12
+	blez	$a0, .LBB5_12
 # %bb.3:                                # %.preheader34.us.preheader
 	addi.d	$a1, $s2, 64
 	alsl.d	$a2, $a0, $s1, 3
@@ -3204,9 +3200,8 @@ _ZN7ADomainC2Eii:                       # @_ZN7ADomainC2Eii
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	st.d	$s0, $fp, 72
-	blt	$s7, $a0, .LBB6_25
+	st.d	$a0, $fp, 72
+	blez	$s7, .LBB6_25
 # %bb.24:                               # %.lr.ph.preheader
 	ori	$a1, $zero, 255
 	move	$a0, $s0

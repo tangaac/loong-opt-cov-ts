@@ -409,8 +409,7 @@ zget:                                   # @zget
 	move	$a2, $s0
 	pcaddu18i	$ra, %call36(dict_lookup)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_17
+	blez	$a0, .LBB3_17
 # %bb.13:                               # %._crit_edge
 	ld.d	$a0, $sp, 0
 .LBB3_14:

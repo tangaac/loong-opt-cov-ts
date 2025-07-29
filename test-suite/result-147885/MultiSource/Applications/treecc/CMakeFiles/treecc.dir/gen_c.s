@@ -200,9 +200,8 @@ C_GenSelector:                          # @C_GenSelector
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB4_10
 # %bb.2:
-	ori	$a0, $zero, 1
 	ori	$s2, $zero, 2
-	blt	$a3, $a0, .LBB4_15
+	blez	$a3, .LBB4_15
 # %bb.3:                                # %.lr.ph.i13.preheader
 	slli.d	$a0, $a3, 1
 	addi.d	$s3, $a0, 6
@@ -226,8 +225,7 @@ C_GenSelector:                          # @C_GenSelector
 	bgeu	$s2, $a0, .LBB4_13
 	b	.LBB4_14
 .LBB4_6:
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB4_11
+	blez	$a3, .LBB4_11
 # %bb.7:                                # %.lr.ph.i.preheader
 	slli.d	$a0, $a3, 1
 	addi.d	$s2, $a0, 6
@@ -309,9 +307,8 @@ C_GenEndSelectors:                      # @C_GenEndSelectors
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a1
-	ori	$a0, $zero, 1
 	ori	$s1, $zero, 2
-	blt	$a2, $a0, .LBB5_6
+	blez	$a2, .LBB5_6
 # %bb.1:                                # %.lr.ph.i.preheader
 	slli.d	$a0, $a2, 1
 	addi.d	$s2, $a0, 6
@@ -576,11 +573,10 @@ C_GenCaseCall:                          # @C_GenCaseCall
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
-	ori	$a0, $zero, 1
 	move	$s1, $a3
 	move	$s0, $a2
 	move	$fp, $a1
-	blt	$a4, $a0, .LBB7_12
+	blez	$a4, .LBB7_12
 # %bb.1:                                # %.lr.ph.i.preheader
 	slli.d	$a0, $a4, 1
 	addi.d	$s3, $a0, 7
@@ -958,9 +954,8 @@ C_GenCaseInline:                        # @C_GenCaseInline
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(TreeCCStreamLine)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$a0, $s4
-	blt	$s2, $a1, .LBB8_29
+	blez	$s2, .LBB8_29
 # %bb.27:                               # %.lr.ph.i37.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.18)
@@ -1040,11 +1035,10 @@ C_GenCaseSplit:                         # @C_GenCaseSplit
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
-	ori	$a0, $zero, 1
 	move	$s1, $a3
 	move	$s0, $a2
 	move	$fp, $a1
-	blt	$a4, $a0, .LBB9_12
+	blez	$a4, .LBB9_12
 # %bb.1:                                # %.lr.ph.i.preheader
 	slli.d	$a0, $a4, 1
 	addi.d	$s3, $a0, 7
@@ -1279,10 +1273,9 @@ C_GenEndCase:                           # @C_GenEndCase
 	slli.d	$a0, $a2, 1
 	ori	$s4, $zero, 2
 	alsl.w	$s3, $a2, $s4, 1
-	ori	$a1, $zero, 1
 	addi.d	$s2, $a0, 6
 	move	$a0, $s3
-	blt	$a2, $a1, .LBB10_4
+	blez	$a2, .LBB10_4
 # %bb.1:                                # %.lr.ph.i.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.18)
@@ -1316,8 +1309,7 @@ C_GenEndCase:                           # @C_GenEndCase
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB10_10
+	blez	$s0, .LBB10_10
 # %bb.7:                                # %.lr.ph.i9.preheader
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
 	addi.d	$s0, $a0, %pc_lo12(.L.str.18)
@@ -1380,9 +1372,8 @@ C_GenEndSwitch:                         # @C_GenEndSwitch
 	move	$s0, $a2
 	move	$fp, $a1
 	slli.d	$s2, $a2, 1
-	ori	$a0, $zero, 1
 	ori	$s3, $zero, 2
-	blt	$a2, $a0, .LBB11_12
+	blez	$a2, .LBB11_12
 # %bb.1:                                # %.lr.ph.i.preheader
 	addi.d	$s4, $s2, 6
 	pcalau12i	$a0, %pc_hi20(.L.str.18)
@@ -1619,12 +1610,11 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a0, 2
-	ori	$s3, $a0, 48
-	ldx.hu	$a0, $fp, $s3
+	ori	$s2, $a0, 48
+	ldx.hu	$a0, $fp, $s2
 	ldptr.d	$a1, $fp, 8224
-	lu12i.w	$s2, 1
-	and	$a0, $a0, $s2
-	bnez	$a0, .LBB14_12
+	slli.d	$a0, $a0, 51
+	bltz	$a0, .LBB14_12
 # %bb.9:
 	bnez	$a1, .LBB14_11
 # %bb.10:
@@ -1680,7 +1670,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 128
 	sltui	$a0, $a0, 1
 	ldptr.d	$a2, $fp, 8248
@@ -1760,7 +1750,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 2
 	beqz	$a0, .LBB14_25
 # %bb.18:
@@ -1852,7 +1842,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_20
 # %bb.19:
@@ -1881,7 +1871,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_23
 # %bb.22:
@@ -1928,7 +1918,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_27
 # %bb.26:
@@ -1957,7 +1947,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	beqz	$a0, .LBB14_30
 # %bb.29:
@@ -1984,7 +1974,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_32
 # %bb.31:
@@ -2013,7 +2003,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_35
 # %bb.34:
@@ -2042,7 +2032,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_38
 # %bb.37:
@@ -2071,7 +2061,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 	andi	$a0, $a0, 8
 	bnez	$a0, .LBB14_41
 # %bb.40:
@@ -2105,9 +2095,9 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
-	andi	$a1, $a0, 2048
-	beqz	$a1, .LBB14_51
+	ldx.hu	$a0, $fp, $s2
+	slli.d	$a1, $a0, 52
+	bgez	$a1, .LBB14_51
 # %bb.43:
 	ldptr.d	$s0, $fp, 8232
 	beqz	$s0, .LBB14_62
@@ -2121,7 +2111,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 .LBB14_46:
 	andi	$a1, $a0, 8
 	beqz	$a1, .LBB14_48
@@ -2132,7 +2122,7 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 .LBB14_48:
 	andi	$a1, $a0, 2
 	beqz	$a1, .LBB14_50
@@ -2143,9 +2133,10 @@ TreeCCGenerateC:                        # @TreeCCGenerateC
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-	ldx.hu	$a0, $fp, $s3
+	ldx.hu	$a0, $fp, $s2
 .LBB14_50:                              # %.sink.split
-	and	$a0, $a0, $s2
+	lu12i.w	$a1, 1
+	and	$a0, $a0, $a1
 	sltui	$a0, $a0, 1
 	pcalau12i	$a1, %pc_hi20(.L.str.122)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.122)

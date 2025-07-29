@@ -744,9 +744,7 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	beq	$s1, $s2, .LBB2_90
 .LBB2_54:                               # %RangeEnc_Encode.exit202
 	addi.d	$s5, $sp, 16
-	ori	$s6, $zero, 0
-	lu32i.d	$s6, 1
-	ori	$s7, $zero, 255
+	ori	$s6, $zero, 255
 .LBB2_55:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_56 Depth 2
                                         #     Child Loop BB2_59 Depth 2
@@ -799,9 +797,9 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	addi.d	$s3, $s3, 6
 	bstrpick.d	$a1, $a1, 31, 0
 	addi.d	$a1, $a1, 1
-	and	$a2, $a1, $s6
+	slli.d	$a2, $a1, 31
 	addi.d	$a0, $a0, -1
-	beqz	$a2, .LBB2_59
+	bgez	$a2, .LBB2_59
 # %bb.61:                               # %.critedge176
                                         #   in Loop: Header=BB2_55 Depth=1
 	ld.w	$a2, $sp, 12
@@ -842,7 +840,7 @@ Ppmd7_EncodeSymbol:                     # @Ppmd7_EncodeSymbol
 	slli.d	$a0, $a0, 8
 	srli.d	$a2, $a1, 24
 	st.w	$a0, $s0, 8
-	bne	$a2, $s7, .LBB2_66
+	bne	$a2, $s6, .LBB2_66
 # %bb.65:                               # %._crit_edge.i.i250
                                         #   in Loop: Header=BB2_64 Depth=2
 	ld.d	$a2, $s0, 16

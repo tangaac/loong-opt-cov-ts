@@ -304,8 +304,7 @@ gs_initclip:                            # @gs_initclip
 	move	$a4, $s1
 	pcaddu18i	$ra, %call36(gx_path_add_rectangle)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $zero, -1
-	bge	$s1, $a0, .LBB6_4
+	bltz	$a0, .LBB6_4
 # %bb.1:
 	ld.d	$a0, $fp, 264
 	pcaddu18i	$ra, %call36(gx_path_release)
@@ -331,8 +330,9 @@ gs_initclip:                            # @gs_initclip
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	lu32i.d	$s1, 0
-	st.w	$s1, $fp, 272
+	addi.w	$a1, $zero, -1
+	lu32i.d	$a1, 0
+	st.w	$a1, $fp, 272
 	b	.LBB6_5
 .LBB6_4:
 	move	$fp, $a0
@@ -540,8 +540,7 @@ gx_clip_to_rectangle:                   # @gx_clip_to_rectangle
 	move	$a4, $s0
 	pcaddu18i	$ra, %call36(gx_path_add_rectangle)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $zero, -1
-	bge	$s1, $a0, .LBB10_4
+	bltz	$a0, .LBB10_4
 # %bb.1:
 	ld.d	$a0, $fp, 264
 	pcaddu18i	$ra, %call36(gx_path_release)
@@ -567,8 +566,9 @@ gx_clip_to_rectangle:                   # @gx_clip_to_rectangle
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	lu32i.d	$s1, 0
-	st.w	$s1, $fp, 272
+	addi.w	$a1, $zero, -1
+	lu32i.d	$a1, 0
+	st.w	$a1, $fp, 272
 	b	.LBB10_5
 .LBB10_4:
 	move	$fp, $a0

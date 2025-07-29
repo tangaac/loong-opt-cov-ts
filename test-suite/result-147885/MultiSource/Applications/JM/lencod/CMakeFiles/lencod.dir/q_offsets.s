@@ -372,8 +372,7 @@ CheckOffsetParameterName:               # @CheckOffsetParameterName
 	.type	ParseQOffsetMatrix,@function
 ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB3_39
+	blez	$a1, .LBB3_39
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -2032
 	st.d	$ra, $sp, 2024                  # 8-byte Folded Spill
@@ -489,36 +488,34 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 	ori	$a0, $zero, 2
 	blt	$a2, $a0, .LBB3_38
 # %bb.23:                               # %.lr.ph84.preheader
-	move	$s0, $zero
+	move	$s3, $zero
 	addi.w	$a0, $a2, -1
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$s6, $sp, 88
-	addi.w	$a0, $zero, -1
-	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(errortext)
 	addi.d	$fp, $a0, %pc_lo12(errortext)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a0, $a0, %pc_lo12(.L.str)
-	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	ori	$s7, $zero, 61
 	pcalau12i	$a0, %pc_hi20(OffsetList4x4input)
-	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(offset4x4_check)
 	addi.d	$a0, $a0, %pc_lo12(offset4x4_check)
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$s3, $zero, 1
+	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
+	ori	$s0, $zero, 1
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$s1, $a0, %pc_lo12(.L.str.3)
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.4)
 	pcalau12i	$a0, %pc_hi20(OffsetList8x8input)
-	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(offset8x8_check)
 	addi.d	$a0, $a0, %pc_lo12(offset8x8_check)
-	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)
-	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
 	b	.LBB3_25
 	.p2align	4, , 16
 .LBB3_24:                               #   in Loop: Header=BB3_25 Depth=1
@@ -526,8 +523,8 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 	pcaddu18i	$ra, %call36(putchar)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	add.d	$s0, $s0, $a0
-	addi.w	$a0, $s0, 0
+	add.d	$s3, $s3, $a0
+	addi.w	$a0, $s3, 0
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	addi.d	$s6, $sp, 88
 	ori	$s7, $zero, 61
@@ -535,18 +532,17 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 .LBB3_25:                               # %.lr.ph84
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_36 Depth 2
-	slli.d	$a0, $s0, 3
+	slli.d	$a0, $s3, 3
 	ldx.d	$s4, $a0, $s6
 	addi.d	$a1, $sp, 80
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(CheckOffsetParameterName)
 	jirl	$ra, $ra, 0
 	move	$s5, $a0
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
-	bge	$a0, $s5, .LBB3_28
+	bltz	$a0, .LBB3_28
 # %bb.26:                               # %sub_0
                                         #   in Loop: Header=BB3_25 Depth=1
-	alsl.d	$a0, $s0, $s6, 3
+	alsl.d	$a0, $s3, $s6, 3
 	ld.d	$a0, $a0, 8
 	ld.bu	$a1, $a0, 0
 	bne	$a1, $s7, .LBB3_29
@@ -560,7 +556,7 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 .LBB3_28:                               #   in Loop: Header=BB3_25 Depth=1
 	ori	$a1, $zero, 300
 	move	$a0, $fp
-	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 32                    # 8-byte Folded Reload
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(snprintf)
 	jirl	$ra, $ra, 0
@@ -568,7 +564,7 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(error)
 	jirl	$ra, $ra, 0
-	alsl.d	$a0, $s0, $s6, 3
+	alsl.d	$a0, $s3, $s6, 3
 	ld.d	$a0, $a0, 8
 	ld.bu	$a1, $a0, 0
 	beq	$a1, $s7, .LBB3_27
@@ -578,7 +574,7 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 .LBB3_30:                               #   in Loop: Header=BB3_25 Depth=1
 	ori	$a2, $zero, 78
 	move	$a0, $fp
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
 	ori	$a1, $zero, 300
@@ -591,35 +587,35 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 	slli.d	$a0, $s5, 2
 	beqz	$a2, .LBB3_33
 # %bb.32:                               #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(OffsetList8x8input)
-	ldx.d	$s8, $a2, $a1
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
-	stx.w	$s3, $a1, $a0
-	ori	$a0, $zero, 64
+	ldx.d	$s6, $a2, $a1
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
+	stx.w	$s0, $a1, $a0
+	ori	$s8, $zero, 64
 	b	.LBB3_34
 	.p2align	4, , 16
 .LBB3_33:                               #   in Loop: Header=BB3_25 Depth=1
-	ld.d	$a2, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(OffsetList4x4input)
-	ldx.d	$s8, $a2, $a1
-	ld.d	$a1, $sp, 8                     # 8-byte Folded Reload
-	stx.w	$s3, $a1, $a0
-	ori	$a0, $zero, 16
+	ldx.d	$s6, $a2, $a1
+	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	stx.w	$s0, $a1, $a0
+	ori	$s8, $zero, 16
 .LBB3_34:                               #   in Loop: Header=BB3_25 Depth=1
-	addi.d	$s0, $s0, 2
-	alsl.d	$s7, $s0, $s6, 3
-	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	move	$s6, $a0
+	addi.d	$s3, $s3, 2
+	addi.d	$a0, $sp, 88
+	alsl.d	$s7, $s3, $a0, 3
+	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	b	.LBB3_36
 	.p2align	4, , 16
 .LBB3_35:                               #   in Loop: Header=BB3_36 Depth=2
 	ld.h	$a0, $sp, 84
-	st.h	$a0, $s8, 0
+	st.h	$a0, $s6, 0
 	addi.d	$s7, $s7, 8
-	addi.d	$s6, $s6, -1
-	addi.d	$s8, $s8, 2
-	beqz	$s6, .LBB3_24
+	addi.d	$s8, $s8, -1
+	addi.d	$s6, $s6, 2
+	beqz	$s8, .LBB3_24
 .LBB3_36:                               #   Parent Loop BB3_25 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$s5, $s7, 0
@@ -628,7 +624,7 @@ ParseQOffsetMatrix:                     # @ParseQOffsetMatrix
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB3_35
+	beq	$a0, $s0, .LBB3_35
 # %bb.37:                               #   in Loop: Header=BB3_36 Depth=2
 	ori	$a1, $zero, 300
 	move	$a0, $fp

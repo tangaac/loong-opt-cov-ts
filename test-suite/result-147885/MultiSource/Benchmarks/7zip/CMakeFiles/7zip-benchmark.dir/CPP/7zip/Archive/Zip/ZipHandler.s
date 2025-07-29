@@ -457,9 +457,8 @@ _ZN8NArchive4NZip8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	ld.d	$s4, $s3, 184
 	st.d	$a0, $sp, 8
 	addi.w	$a1, $s4, 0
-	ori	$a2, $zero, 1
 	st.b	$zero, $a0, 0
-	blt	$a1, $a2, .LBB7_8
+	blez	$a1, .LBB7_8
 # %bb.4:
 	ori	$a2, $zero, 3
 	bltu	$a1, $a2, .LBB7_7
@@ -523,8 +522,7 @@ _ZN8NArchive4NZip8CHandler18GetArchivePropertyEjP14tagPROPVARIANT: # @_ZN8NArchi
 	b	.LBB7_19
 .LBB7_14:
 	ld.bu	$a0, $a0, 200
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB7_19
+	beqz	$a0, .LBB7_19
 # %bb.15:
 .Ltmp35:
 	addi.d	$a0, $sp, 40
@@ -928,9 +926,8 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 	ld.d	$s4, $s0, 160
 	st.d	$a0, $sp, 40
 	addi.w	$a0, $s4, 0
-	ori	$a1, $zero, 1
 	st.b	$zero, $s1, 0
-	blt	$a0, $a1, .LBB9_23
+	blez	$a0, .LBB9_23
 # %bb.19:
 	ori	$a1, $zero, 3
 	bltu	$a0, $a1, .LBB9_22
@@ -988,8 +985,7 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 	b	.LBB9_130
 .LBB9_27:
 	ld.w	$a1, $s0, 132
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_132
+	blez	$a1, .LBB9_132
 # %bb.28:                               # %.lr.ph.i115
 	ld.d	$a2, $s0, 136
 	ori	$a3, $zero, 10
@@ -1023,8 +1019,7 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 	b	.LBB9_59
 .LBB9_34:
 	ld.w	$a1, $s0, 132
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_132
+	blez	$a1, .LBB9_132
 # %bb.35:                               # %.lr.ph.i128
 	ld.d	$a2, $s0, 136
 	ori	$a3, $zero, 10
@@ -1057,8 +1052,7 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 	b	.LBB9_76
 .LBB9_42:
 	ld.w	$a1, $s0, 132
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_106
+	blez	$a1, .LBB9_106
 # %bb.43:                               # %.lr.ph.i
 	ld.d	$a2, $s0, 136
 	ori	$a3, $zero, 10
@@ -1097,8 +1091,7 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 	bne	$a0, $a1, .LBB9_60
 # %bb.50:
 	ld.w	$a0, $s0, 132
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_60
+	blez	$a0, .LBB9_60
 # %bb.51:                               # %.lr.ph.i.i
 	ld.d	$a1, $s0, 136
 	lu12i.w	$a2, 9
@@ -1217,8 +1210,7 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 # %bb.75:                               # %..thread193_crit_edge
 	ld.w	$a1, $s0, 132
 .LBB9_76:                               # %.thread193
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_98
+	blez	$a1, .LBB9_98
 # %bb.77:                               # %.lr.ph.i154
 	ld.d	$a2, $s0, 136
 	lu12i.w	$a0, 5
@@ -1285,8 +1277,7 @@ _ZN8NArchive4NZip8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive4NZi
 .LBB9_90:                               # %..thread_crit_edge
 	ld.w	$a1, $s0, 132
 .LBB9_91:                               # %.thread
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB9_106
+	blez	$a1, .LBB9_106
 # %bb.92:                               # %.lr.ph.i103
 	ld.d	$a2, $s0, 136
 	lu12i.w	$a0, 5
@@ -1977,9 +1968,9 @@ _ZNK8NArchive4NZip10CLocalItem16GetUnicodeStringERK11CStringBaseIcE: # @_ZNK8NAr
 	st.d	$a0, $fp, 0
 	st.w	$zero, $a0, 0
 	ori	$a0, $zero, 4
-	andi	$a1, $a1, 2048
+	slli.d	$a1, $a1, 52
 	st.w	$a0, $fp, 12
-	beqz	$a1, .LBB10_5
+	bgez	$a1, .LBB10_5
 # %bb.1:
 .Ltmp171:
 	move	$a0, $s0
@@ -2036,8 +2027,7 @@ _ZNK8NArchive4NZip10CLocalItem16GetUnicodeStringERK11CStringBaseIcE: # @_ZNK8NAr
 .Ltmp178:
 # %bb.11:                               # %.noexc
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	blt	$s3, $a0, .LBB10_13
+	blez	$s3, .LBB10_13
 # %bb.12:                               # %._crit_edge.thread.i.i
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(_ZdaPv)
@@ -2188,12 +2178,11 @@ _ZN11CStringBaseIcEaSEPKc:              # @_ZN11CStringBaseIcEaSEPKc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s2, $a0
-	blt	$s4, $a2, .LBB11_19
+	blez	$s4, .LBB11_19
 # %bb.3:                                # %.preheader.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB11_11
+	blez	$a1, .LBB11_11
 # %bb.4:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -2305,8 +2294,7 @@ _ZNK8NArchive4NZip11CExtraBlock13GetWzAesFieldERNS0_16CWzAesExtraFieldE: # @_ZNK
 	.cfi_startproc
 # %bb.0:
 	ld.w	$a2, $a0, 12
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB12_8
+	blez	$a2, .LBB12_8
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $a0, 16
 	lu12i.w	$a3, 9
@@ -2366,7 +2354,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2374,7 +2361,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s1, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s1, $zero
@@ -2396,8 +2382,8 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -2411,11 +2397,10 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s4, $s5, .LBB13_11
+	blez	$s4, .LBB13_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB13_12
+	blez	$s1, .LBB13_12
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -2511,7 +2496,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $a0, 8
 	stx.b	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -2589,12 +2573,11 @@ _ZN11CStringBaseIcEpLEPKc:              # @_ZN11CStringBaseIcEpLEPKc
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s5, $a1, .LBB14_19
+	blez	$s5, .LBB14_19
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $fp, 0
-	blt	$s4, $a1, .LBB14_11
+	blez	$s4, .LBB14_11
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -2711,8 +2694,7 @@ _ZNK8NArchive4NZip11CExtraBlock20GetStrongCryptoFieldERNS0_18CStrongCryptoFieldE
 	.cfi_startproc
 # %bb.0:
 	ld.w	$a2, $a0, 12
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB15_7
+	blez	$a2, .LBB15_7
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $a0, 16
 	ori	$a3, $zero, 23
@@ -3455,33 +3437,32 @@ _ZN8NArchive4NZip11CZipDecoder6DecodeERNS0_10CInArchiveERKNS0_7CItemExEP20ISeque
 	ori	$a1, $zero, 65
 	bne	$a0, $a1, .LBB23_9
 # %bb.3:
-	ld.w	$a2, $s5, 132
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB23_49
+	ld.w	$a1, $s5, 132
+	blez	$a1, .LBB23_49
 # %bb.4:                                # %.lr.ph.i
-	ld.d	$a3, $s5, 136
-	ori	$a4, $zero, 23
-	ori	$t1, $zero, 8
-	ori	$t2, $zero, 2
+	ld.d	$a2, $s5, 136
+	ori	$a3, $zero, 23
+	ori	$a4, $zero, 8
+	ori	$t0, $zero, 2
 	b	.LBB23_6
 	.p2align	4, , 16
 .LBB23_5:                               # %_ZN8NArchive4NZip18CStrongCryptoField17ParseFromSubBlockERKNS0_14CExtraSubBlockE.exit.thread.i
                                         #   in Loop: Header=BB23_6 Depth=1
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	beqz	$a2, .LBB23_49
+	addi.d	$a1, $a1, -1
+	addi.d	$a2, $a2, 8
+	beqz	$a1, .LBB23_49
 .LBB23_6:                               # =>This Inner Loop Header: Depth=1
-	ld.d	$a7, $a3, 0
-	ld.hu	$t0, $a7, 0
-	bne	$t0, $a4, .LBB23_5
+	ld.d	$t1, $a2, 0
+	ld.hu	$a7, $t1, 0
+	bne	$a7, $a3, .LBB23_5
 # %bb.7:                                #   in Loop: Header=BB23_6 Depth=1
-	ld.d	$t0, $a7, 16
-	bltu	$t0, $t1, .LBB23_5
+	ld.d	$a7, $t1, 16
+	bltu	$a7, $a4, .LBB23_5
 # %bb.8:                                # %_ZN8NArchive4NZip18CStrongCryptoField17ParseFromSubBlockERKNS0_14CExtraSubBlockE.exit.i
                                         #   in Loop: Header=BB23_6 Depth=1
-	ld.d	$a7, $a7, 24
+	ld.d	$a7, $t1, 24
 	ld.hu	$a7, $a7, 0
-	bne	$a7, $t2, .LBB23_5
+	bne	$a7, $t0, .LBB23_5
 .LBB23_9:                               # %.critedge
 	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
 	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
@@ -3492,8 +3473,7 @@ _ZN8NArchive4NZip11CZipDecoder6DecodeERNS0_10CInArchiveERKNS0_7CItemExEP20ISeque
 	bne	$s4, $a1, .LBB23_18
 # %bb.10:
 	ld.w	$a0, $s5, 132
-	ori	$s2, $zero, 1
-	blt	$a0, $s2, .LBB23_18
+	blez	$a0, .LBB23_18
 # %bb.11:                               # %.lr.ph.i289
 	ld.d	$a1, $s5, 136
 	lu12i.w	$a2, 9
@@ -3610,8 +3590,7 @@ _ZN8NArchive4NZip11CZipDecoder6DecodeERNS0_10CInArchiveERKNS0_7CItemExEP20ISeque
 	beqz	$a0, .LBB23_50
 # %bb.31:
 	ld.w	$a0, $s5, 132
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB23_58
+	blez	$a0, .LBB23_58
 # %bb.32:                               # %.lr.ph.i302
 	ld.d	$a1, $s5, 136
 	lu12i.w	$a2, 9
@@ -3724,7 +3703,8 @@ _ZN8NArchive4NZip11CZipDecoder6DecodeERNS0_10CInArchiveERKNS0_7CItemExEP20ISeque
 	b	.LBB23_66
 .LBB23_49:                              # %_ZN9CMyComPtrI20ISequentialOutStreamED2Ev.exit.thread
 	move	$s8, $zero
-	st.w	$a1, $s1, 0
+	ori	$a0, $zero, 1
+	st.w	$a0, $s1, 0
 	b	.LBB23_168
 .LBB23_50:
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
@@ -3887,9 +3867,8 @@ _ZN8NArchive4NZip11CZipDecoder6DecodeERNS0_10CInArchiveERKNS0_7CItemExEP20ISeque
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	or	$a1, $a2, $a1
-	ori	$a2, $zero, 1
 	st.b	$zero, $a0, 0
-	bne	$a1, $a2, .LBB23_79
+	beqz	$a1, .LBB23_79
 # %bb.76:
 	ld.d	$a1, $sp, 120
 .Ltmp297:
@@ -4004,8 +3983,7 @@ _ZN8NArchive4NZip11CZipDecoder6DecodeERNS0_10CInArchiveERKNS0_7CItemExEP20ISeque
 	beqz	$s2, .LBB23_110
 .LBB23_98:
 	ld.w	$s6, $s3, 84
-	ori	$a0, $zero, 1
-	blt	$s6, $a0, .LBB23_102
+	blez	$s6, .LBB23_102
 # %bb.99:                               # %.lr.ph
 	ld.d	$a1, $s3, 88
 	move	$a0, $zero
@@ -5567,12 +5545,11 @@ _ZN11CStringBaseIcEaSERKS0_:            # @_ZN11CStringBaseIcEaSERKS0_
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 8
-	ori	$a2, $zero, 1
 	move	$s1, $a0
-	blt	$s3, $a2, .LBB25_20
+	blez	$s3, .LBB25_20
 # %bb.4:                                # %.preheader.i
 	ld.d	$a0, $fp, 0
-	blt	$a1, $a2, .LBB25_12
+	blez	$a1, .LBB25_12
 # %bb.5:                                # %iter.check
 	ori	$a3, $zero, 16
 	move	$a2, $zero
@@ -8584,8 +8561,7 @@ _ZN13CObjectVectorIN8NArchive4NZip11CMethodItemEE6DeleteEii: # @_ZN13CObjectVect
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB68_7
+	blez	$s1, .LBB68_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -8704,10 +8680,8 @@ _ZN8NArchive4NZip5CItemC2ERKS1_:        # @_ZN8NArchive4NZip5CItemC2ERKS1_
 	vst	$vr0, $a0, 32
 	ld.wu	$s1, $a1, 40
 	addi.d	$s2, $s1, 1
-	ori	$a0, $zero, 0
-	lu32i.d	$a0, 1
-	and	$a0, $s2, $a0
-	beqz	$a0, .LBB69_2
+	slli.d	$a0, $s2, 31
+	bgez	$a0, .LBB69_2
 # %bb.1:
 	move	$a0, $zero
 	b	.LBB69_3
@@ -9209,8 +9183,7 @@ _ZN13CObjectVectorIN8NArchive4NZip14CExtraSubBlockEE6DeleteEii: # @_ZN13CObjectV
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB74_7
+	blez	$s1, .LBB74_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3
@@ -9297,8 +9270,7 @@ _ZN13CObjectVectorIN8NArchive4NZip14CExtraSubBlockEEpLERKS3_: # @_ZN13CObjectVec
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(_ZN17CBaseRecordVector7ReserveEi)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB75_6
+	blez	$s1, .LBB75_6
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s1, 3
@@ -9514,8 +9486,7 @@ _ZN13CObjectVectorIN8NArchive4NZip7CItemExEE6DeleteEii: # @_ZN13CObjectVectorIN8
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB77_11
+	blez	$s1, .LBB77_11
 # %bb.1:                                # %.lr.ph
 	move	$s4, $zero
 	slli.d	$s5, $s0, 3

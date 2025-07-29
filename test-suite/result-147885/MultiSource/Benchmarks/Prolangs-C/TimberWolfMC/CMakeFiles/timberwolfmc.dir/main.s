@@ -374,33 +374,33 @@ main:                                   # @main
 	fld.d	$fa0, $a1, %pc_lo12(totFunc)
 	movgr2fr.w	$fa1, $a0
 	ffint.d.w	$fa1, $fa1
-	fdiv.d	$fa0, $fa0, $fa1
 	ld.w	$a0, $s5, 0
+	fdiv.d	$fa0, $fa0, $fa1
 	fdiv.d	$fa0, $fa0, $fs0
 	ftintrz.w.d	$fa0, $fa0
-	ori	$a2, $zero, 1
 	movfr2gr.s	$a1, $fa0
-	bge	$a0, $a2, .LBB0_20
+	bgtz	$a0, .LBB0_20
 # %bb.19:
 	movgr2fr.d	$fa1, $zero
 	b	.LBB0_28
 .LBB0_20:                               # %.lr.ph
-	pcalau12i	$a3, %got_pc_hi20(cellarray)
-	ld.d	$a3, $a3, %got_pc_lo12(cellarray)
-	ld.d	$a3, $a3, 0
-	ori	$a4, $zero, 4
-	bgeu	$a0, $a4, .LBB0_22
+	pcalau12i	$a2, %got_pc_hi20(cellarray)
+	ld.d	$a2, $a2, %got_pc_lo12(cellarray)
+	ld.d	$a2, $a2, 0
+	ori	$a3, $zero, 4
+	bgeu	$a0, $a3, .LBB0_22
 # %bb.21:
 	move	$a5, $zero
+	ori	$a3, $zero, 1
 	b	.LBB0_25
 .LBB0_22:                               # %vector.ph
-	bstrpick.d	$a2, $a0, 30, 2
-	slli.d	$a4, $a2, 2
+	bstrpick.d	$a3, $a0, 30, 2
+	slli.d	$a4, $a3, 2
 	srli.d	$a5, $a0, 2
-	ori	$a2, $zero, 1
-	bstrins.d	$a2, $a5, 30, 2
+	ori	$a3, $zero, 1
+	bstrins.d	$a3, $a5, 30, 2
 	vrepli.b	$vr0, 0
-	addi.d	$a5, $a3, 32
+	addi.d	$a5, $a2, 32
 	move	$a6, $a4
 	vori.b	$vr1, $vr0, 0
 	.p2align	4, , 16
@@ -436,19 +436,19 @@ main:                                   # @main
 .LBB0_25:                               # %scalar.ph.preheader
 	addi.d	$a4, $a0, 1
 	bstrpick.d	$a4, $a4, 31, 0
-	alsl.d	$a3, $a2, $a3, 3
-	sub.d	$a2, $a4, $a2
+	alsl.d	$a2, $a3, $a2, 3
+	sub.d	$a3, $a4, $a3
 	.p2align	4, , 16
 .LBB0_26:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a3, 0
+	ld.d	$a4, $a2, 0
 	ld.w	$a4, $a4, 76
 	addi.d	$a4, $a4, -1
 	sltui	$a4, $a4, 1
 	add.w	$a5, $a5, $a4
-	addi.d	$a2, $a2, -1
-	addi.d	$a3, $a3, 8
-	bnez	$a2, .LBB0_26
+	addi.d	$a3, $a3, -1
+	addi.d	$a2, $a2, 8
+	bnez	$a3, .LBB0_26
 .LBB0_27:                               # %._crit_edge.loopexit
 	bstrpick.d	$a2, $a5, 31, 0
 	movgr2fr.d	$fa0, $a2
@@ -726,9 +726,8 @@ main:                                   # @main
 .LBB0_46:                               # %._crit_edge119
 	movgr2fr.w	$fa0, $a0
 	ffint.d.w	$fa0, $fa0
-	ori	$a1, $zero, 1
 	fdiv.d	$fs2, $fs0, $fa0
-	bge	$a0, $a1, .LBB0_48
+	bgtz	$a0, .LBB0_48
 # %bb.47:
 	movgr2fr.d	$fs0, $zero
 	b	.LBB0_53
@@ -1077,9 +1076,8 @@ prepSpots:                              # @prepSpots
 	ld.d	$a0, $a0, %got_pc_lo12(numcells)
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.w	$a1, $a0, 0
-	ori	$fp, $zero, 1
 	lu12i.w	$a0, -2442
-	blt	$a1, $fp, .LBB1_4
+	blez	$a1, .LBB1_4
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a2, %got_pc_hi20(cellarray)
 	ld.d	$a2, $a2, %got_pc_lo12(cellarray)
@@ -1090,44 +1088,45 @@ prepSpots:                              # @prepSpots
 	addi.d	$a2, $a3, -1
 	ori	$a0, $a0, 2432
 	lu12i.w	$a3, 2441
-	ori	$a3, $a3, 1664
+	ori	$a4, $a3, 1664
+	ori	$a3, $zero, 1
 	.p2align	4, , 16
 .LBB1_2:                                # =>This Inner Loop Header: Depth=1
-	ld.d	$a4, $a1, 0
-	ld.w	$a5, $a4, 56
-	alsl.d	$a4, $a5, $a4, 3
-	ld.d	$a4, $a4, 152
-	ld.w	$a5, $a4, 60
-	ld.w	$a6, $a4, 56
-	ld.w	$a7, $a4, 68
-	ld.w	$a4, $a4, 64
-	sub.w	$a5, $a5, $a6
-	sub.w	$a4, $a7, $a4
-	slt	$a6, $a5, $a4
-	masknez	$a7, $a4, $a6
-	maskeqz	$a6, $a5, $a6
-	or	$a6, $a6, $a7
-	slt	$a7, $a6, $a3
+	ld.d	$a5, $a1, 0
+	ld.w	$a6, $a5, 56
+	alsl.d	$a5, $a6, $a5, 3
+	ld.d	$a5, $a5, 152
+	ld.w	$a6, $a5, 60
+	ld.w	$a7, $a5, 56
+	ld.w	$t0, $a5, 68
+	ld.w	$a5, $a5, 64
+	sub.w	$a6, $a6, $a7
+	sub.w	$a5, $t0, $a5
+	slt	$a7, $a6, $a5
+	masknez	$t0, $a5, $a7
+	maskeqz	$a7, $a6, $a7
+	or	$a7, $a7, $t0
+	slt	$t0, $a7, $a4
+	maskeqz	$a7, $a7, $t0
+	masknez	$a4, $a4, $t0
+	or	$a4, $a7, $a4
+	slt	$a7, $a3, $a4
+	maskeqz	$a4, $a4, $a7
+	masknez	$a7, $a3, $a7
+	or	$a4, $a4, $a7
+	slt	$a7, $a5, $a6
+	masknez	$a5, $a5, $a7
 	maskeqz	$a6, $a6, $a7
-	masknez	$a3, $a3, $a7
-	or	$a3, $a6, $a3
-	slt	$a6, $fp, $a3
-	maskeqz	$a3, $a3, $a6
-	masknez	$a6, $fp, $a6
-	or	$a3, $a3, $a6
-	slt	$a6, $a4, $a5
-	masknez	$a4, $a4, $a6
+	or	$a5, $a6, $a5
+	slt	$a6, $a0, $a5
 	maskeqz	$a5, $a5, $a6
-	or	$a4, $a5, $a4
-	slt	$a5, $a0, $a4
-	maskeqz	$a4, $a4, $a5
-	masknez	$a0, $a0, $a5
-	or	$a0, $a4, $a0
+	masknez	$a0, $a0, $a6
+	or	$a0, $a5, $a0
 	addi.d	$a2, $a2, -1
 	addi.d	$a1, $a1, 8
 	bnez	$a2, .LBB1_2
 # %bb.3:                                # %._crit_edge.loopexit
-	bstrpick.d	$a1, $a3, 31, 2
+	bstrpick.d	$a1, $a4, 31, 2
 	b	.LBB1_5
 .LBB1_4:
 	lu12i.w	$a1, 610
@@ -1196,11 +1195,10 @@ prepSpots:                              # @prepSpots
 	jirl	$ra, $ra, 0
 	pcalau12i	$s6, %pc_hi20(spots)
 	st.d	$a0, $s6, %pc_lo12(spots)
-	blt	$s1, $fp, .LBB1_15
+	blez	$s1, .LBB1_15
 # %bb.6:                                # %.lr.ph148
 	ld.w	$fp, $s5, %pc_lo12(numYspots)
-	ori	$s2, $zero, 1
-	blt	$fp, $s2, .LBB1_13
+	blez	$fp, .LBB1_13
 # %bb.7:                                # %.lr.ph148.split.preheader
 	move	$s0, $zero
 	b	.LBB1_9
@@ -1218,7 +1216,7 @@ prepSpots:                              # @prepSpots
 	ld.d	$a2, $s6, %pc_lo12(spots)
 	slli.d	$a1, $s0, 3
 	stx.d	$a0, $a2, $a1
-	blt	$fp, $s2, .LBB1_8
+	blez	$fp, .LBB1_8
 # %bb.10:                               # %.lr.ph144.preheader
                                         #   in Loop: Header=BB1_9 Depth=1
 	move	$a0, $zero
@@ -1250,30 +1248,30 @@ prepSpots:                              # @prepSpots
 	bnez	$s2, .LBB1_14
 .LBB1_15:                               # %.preheader136
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
-	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_25
+	ld.w	$a0, $a0, 0
+	blez	$a0, .LBB1_25
 # %bb.16:                               # %.lr.ph157.preheader
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
-	pcalau12i	$a1, %got_pc_hi20(cellarray)
-	ld.d	$s8, $a1, %got_pc_lo12(cellarray)
+	pcalau12i	$a0, %got_pc_hi20(cellarray)
+	ld.d	$s7, $a0, %got_pc_lo12(cellarray)
+	ori	$a0, $zero, 1
 	b	.LBB1_18
 	.p2align	4, , 16
 .LBB1_17:                               # %._crit_edge154
                                         #   in Loop: Header=BB1_18 Depth=1
 	ld.d	$a0, $sp, 72                    # 8-byte Folded Reload
 	ld.w	$a1, $a0, 0
-	addi.d	$a0, $s7, 1
-	bge	$s7, $a1, .LBB1_24
+	addi.d	$a0, $s8, 1
+	bge	$s8, $a1, .LBB1_24
 .LBB1_18:                               # %.lr.ph157
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_21 Depth 2
                                         #       Child Loop BB1_22 Depth 3
-	ld.d	$a1, $s8, 0
-	move	$s7, $a0
+	ld.d	$a1, $s7, 0
+	move	$s8, $a0
 	slli.d	$a0, $a0, 3
 	ldx.d	$a0, $a1, $a0
 	ld.w	$a1, $a0, 56
@@ -1377,13 +1375,12 @@ prepSpots:                              # @prepSpots
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 .LBB1_25:                               # %._crit_edge158
-	ori	$a0, $zero, 1
-	pcalau12i	$a1, %pc_hi20(spotPenalty)
-	addi.d	$fp, $a1, %pc_lo12(spotPenalty)
-	blt	$s1, $a0, .LBB1_38
+	pcalau12i	$a0, %pc_hi20(spotPenalty)
+	addi.d	$fp, $a0, %pc_lo12(spotPenalty)
+	blez	$s1, .LBB1_38
 # %bb.26:                               # %.preheader134.lr.ph
 	ld.w	$a1, $s5, %pc_lo12(numYspots)
-	blt	$a1, $a0, .LBB1_38
+	blez	$a1, .LBB1_38
 # %bb.27:                               # %.preheader134.preheader
 	ld.w	$a0, $s8, 0
 	ld.d	$a2, $sp, 64                    # 8-byte Folded Reload
@@ -1406,7 +1403,6 @@ prepSpots:                              # @prepSpots
 	div.w	$a5, $a5, $a6
 	sub.w	$a0, $a0, $a7
 	div.w	$a6, $a0, $a6
-	ori	$a7, $zero, 1
 	b	.LBB1_29
 	.p2align	4, , 16
 .LBB1_28:                               # %._crit_edge161
@@ -1418,53 +1414,53 @@ prepSpots:                              # @prepSpots
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_36 Depth 2
                                         #     Child Loop BB1_32 Depth 2
-	blt	$a1, $a7, .LBB1_28
+	blez	$a1, .LBB1_28
 # %bb.30:                               # %.lr.ph160
                                         #   in Loop: Header=BB1_29 Depth=1
 	slt	$a0, $a2, $a3
-	slt	$t0, $a4, $a2
-	or	$t0, $a0, $t0
+	slt	$a7, $a4, $a2
+	or	$a7, $a0, $a7
 	slli.d	$a0, $a2, 3
-	beqz	$t0, .LBB1_33
+	beqz	$a7, .LBB1_33
 # %bb.31:                               # %.lr.ph160.split.us.preheader
                                         #   in Loop: Header=BB1_29 Depth=1
-	move	$t0, $zero
+	move	$a7, $zero
 	.p2align	4, , 16
 .LBB1_32:                               # %.lr.ph160.split.us
                                         #   Parent Loop BB1_29 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.d	$a1, $s6, %pc_lo12(spots)
 	ldx.d	$a1, $a1, $a0
-	ldx.b	$t1, $a1, $t0
-	addi.d	$t1, $t1, 1
-	stx.b	$t1, $a1, $t0
-	ld.w	$a1, $s5, %pc_lo12(numYspots)
+	ldx.b	$t0, $a1, $a7
 	addi.d	$t0, $t0, 1
-	blt	$t0, $a1, .LBB1_32
+	stx.b	$t0, $a1, $a7
+	ld.w	$a1, $s5, %pc_lo12(numYspots)
+	addi.d	$a7, $a7, 1
+	blt	$a7, $a1, .LBB1_32
 	b	.LBB1_28
 	.p2align	4, , 16
 .LBB1_33:                               # %.lr.ph160.split.preheader
                                         #   in Loop: Header=BB1_29 Depth=1
-	move	$t0, $zero
+	move	$a7, $zero
 	b	.LBB1_36
 	.p2align	4, , 16
 .LBB1_34:                               #   in Loop: Header=BB1_36 Depth=2
 	ld.d	$a1, $s6, %pc_lo12(spots)
 	ldx.d	$a1, $a1, $a0
-	ldx.b	$t1, $a1, $t0
-	addi.d	$t1, $t1, 1
-	stx.b	$t1, $a1, $t0
+	ldx.b	$t0, $a1, $a7
+	addi.d	$t0, $t0, 1
+	stx.b	$t0, $a1, $a7
 	ld.w	$a1, $s5, %pc_lo12(numYspots)
 .LBB1_35:                               #   in Loop: Header=BB1_36 Depth=2
-	addi.d	$t0, $t0, 1
-	bge	$t0, $a1, .LBB1_28
+	addi.d	$a7, $a7, 1
+	bge	$a7, $a1, .LBB1_28
 .LBB1_36:                               # %.lr.ph160.split
                                         #   Parent Loop BB1_29 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$t0, $a5, .LBB1_34
+	blt	$a7, $a5, .LBB1_34
 # %bb.37:                               # %.lr.ph160.split
                                         #   in Loop: Header=BB1_36 Depth=2
-	bge	$a6, $t0, .LBB1_35
+	bge	$a6, $a7, .LBB1_35
 	b	.LBB1_34
 .LBB1_38:                               # %._crit_edge174.sink.split
 	pcalau12i	$a0, %pc_hi20(spot_control)
@@ -1505,12 +1501,11 @@ prepSpots:                              # @prepSpots
 .LBB1_40:                               # %._crit_edge163
 	pcalau12i	$a1, %pc_hi20(spot_control)
 	fld.d	$fa0, $a1, %pc_lo12(spot_control)
-	ori	$a2, $zero, 1
 	st.w	$zero, $fp, 0
-	blt	$a0, $a2, .LBB1_39
+	blez	$a0, .LBB1_39
 # %bb.41:                               # %.preheader.lr.ph
 	ld.w	$a1, $s5, %pc_lo12(numYspots)
-	blt	$a1, $a2, .LBB1_39
+	blez	$a1, .LBB1_39
 # %bb.42:                               # %.preheader.us.preheader
 	ld.d	$a2, $sp, 80                    # 8-byte Folded Reload
 	ld.w	$a4, $a2, %pc_lo12(spotSize)

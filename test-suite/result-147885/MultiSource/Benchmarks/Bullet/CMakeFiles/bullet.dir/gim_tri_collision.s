@@ -965,8 +965,7 @@ _Z27PLANE_CLIP_TRIANGLE_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRK
 	fcmp.cule.s	$fcc2, $fa0, $fa1
 	movcf2gr	$a6, $fcc2
 	movcf2gr	$a7, $fcc1
-	xor	$a6, $a6, $a7
-	bnez	$a6, .LBB3_5
+	bne	$a6, $a7, .LBB3_5
 # %bb.4:
 	fneg.s	$fa3, $fa0
 	fsub.s	$fa4, $fa2, $fa0
@@ -1018,9 +1017,19 @@ _Z27PLANE_CLIP_TRIANGLE_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRK
 	fcmp.cule.s	$fcc2, $fa2, $fa1
 	movcf2gr	$a5, $fcc2
 	movcf2gr	$a6, $fcc1
-	xor	$a5, $a5, $a6
-	bnez	$a5, .LBB3_9
+	beq	$a5, $a6, .LBB3_12
 # %bb.8:
+	bceqz	$fcc1, .LBB3_13
+.LBB3_9:                                # %_Z26PLANE_CLIP_POLYGON_COLLECTI9btVector3EvRKT_S3_ffPS1_Rj.exit32
+	fcmp.cule.s	$fcc1, $fa3, $fa1
+	movcf2gr	$a2, $fcc0
+	movcf2gr	$a5, $fcc1
+	beq	$a2, $a5, .LBB3_14
+.LBB3_10:
+	bceqz	$fcc0, .LBB3_15
+.LBB3_11:                               # %_Z26PLANE_CLIP_POLYGON_COLLECTI9btVector3EvRKT_S3_ffPS1_Rj.exit34
+	ret
+.LBB3_12:
 	fneg.s	$fa5, $fa2
 	fsub.s	$fa2, $fa3, $fa2
 	fdiv.s	$fa2, $fa5, $fa2
@@ -1043,9 +1052,8 @@ _Z27PLANE_CLIP_TRIANGLE_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRK
 	fmadd.s	$fa2, $fa6, $fa5, $fa2
 	fst.s	$fa2, $a5, 8
 	addi.d	$a0, $a0, 1
-.LBB3_9:
-	bcnez	$fcc1, .LBB3_11
-# %bb.10:
+	bcnez	$fcc1, .LBB3_9
+.LBB3_13:
 	fld.s	$fa2, $a3, 0
 	slli.d	$a2, $a0, 4
 	fstx.s	$fa2, $a4, $a2
@@ -1055,16 +1063,10 @@ _Z27PLANE_CLIP_TRIANGLE_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRK
 	fld.s	$fa2, $a3, 8
 	fst.s	$fa2, $a2, 8
 	addi.d	$a0, $a0, 1
-.LBB3_11:                               # %_Z26PLANE_CLIP_POLYGON_COLLECTI9btVector3EvRKT_S3_ffPS1_Rj.exit32
 	fcmp.cule.s	$fcc1, $fa3, $fa1
 	movcf2gr	$a2, $fcc0
 	movcf2gr	$a5, $fcc1
-	xor	$a2, $a2, $a5
-	beqz	$a2, .LBB3_14
-# %bb.12:
-	bceqz	$fcc0, .LBB3_15
-.LBB3_13:                               # %_Z26PLANE_CLIP_POLYGON_COLLECTI9btVector3EvRKT_S3_ffPS1_Rj.exit34
-	ret
+	bne	$a2, $a5, .LBB3_10
 .LBB3_14:
 	fneg.s	$fa1, $fa3
 	fsub.s	$fa0, $fa0, $fa3
@@ -1089,7 +1091,7 @@ _Z27PLANE_CLIP_TRIANGLE_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRK
 	fmadd.s	$fa0, $fa3, $fa2, $fa0
 	fst.s	$fa0, $a2, 8
 	addi.d	$a0, $a0, 1
-	bcnez	$fcc0, .LBB3_13
+	bcnez	$fcc0, .LBB3_11
 .LBB3_15:
 	fld.s	$fa0, $a1, 0
 	slli.d	$a2, $a0, 4
@@ -1141,8 +1143,7 @@ _Z26PLANE_CLIP_POLYGON_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRKT
 	fcmp.cule.s	$fcc1, $fa3, $fa1
 	movcf2gr	$a4, $fcc0
 	movcf2gr	$a5, $fcc1
-	xor	$a4, $a4, $a5
-	beqz	$a4, .LBB4_13
+	beq	$a4, $a5, .LBB4_13
 # %bb.4:
 	bceqz	$fcc0, .LBB4_14
 .LBB4_5:                                # %_Z26PLANE_CLIP_POLYGON_COLLECTI9btVector3EvRKT_S3_ffPS1_Rj.exit
@@ -1187,8 +1188,7 @@ _Z26PLANE_CLIP_POLYGON_GENERICI9btVector39btVector422DISTANCE_PLANE_3D_FUNCEjRKT
 	fcmp.cule.s	$fcc2, $fa4, $fa1
 	movcf2gr	$a7, $fcc2
 	movcf2gr	$t0, $fcc1
-	xor	$a7, $a7, $t0
-	bnez	$a7, .LBB4_11
+	bne	$a7, $t0, .LBB4_11
 # %bb.10:                               #   in Loop: Header=BB4_9 Depth=1
 	fneg.s	$fa6, $fa4
 	fsub.s	$fa4, $fa3, $fa4

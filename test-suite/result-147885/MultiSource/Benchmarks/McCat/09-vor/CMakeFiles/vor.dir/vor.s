@@ -66,8 +66,7 @@ get_file:                               # @get_file
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $sp, 12
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_3
+	blez	$a0, .LBB2_3
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
@@ -1069,25 +1068,23 @@ main:                                   # @main
 	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(init)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a1, %got_pc_hi20(stdin)
-	ld.d	$s2, $a1, %got_pc_lo12(stdin)
-	ld.d	$a3, $s2, 0
+	ld.d	$s1, $a1, %got_pc_lo12(stdin)
+	ld.d	$a3, $s1, 0
 	pcalau12i	$a1, %pc_hi20(Splaytree)
 	st.d	$a0, $a1, %pc_lo12(Splaytree)
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$a1, $a0, %pc_lo12(.L.str)
-	addi.d	$a2, $sp, 4
+	addi.d	$a2, $sp, 12
 	move	$a0, $a3
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 4
-	ori	$s1, $zero, 1
-	blt	$a0, $s1, .LBB11_3
+	ld.w	$a0, $sp, 12
+	blez	$a0, .LBB11_3
 # %bb.1:                                # %.lr.ph.i.preheader
-	move	$s3, $zero
+	move	$s2, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$fp, $a0, %pc_lo12(.L.str.1)
 	pcalau12i	$a0, %pc_hi20(Splaytree)
@@ -1095,22 +1092,22 @@ main:                                   # @main
 	.p2align	4, , 16
 .LBB11_2:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s2, 0
-	addi.d	$a2, $sp, 12
-	addi.d	$a3, $sp, 8
+	ld.d	$a0, $s1, 0
+	addi.d	$a2, $sp, 20
+	addi.d	$a3, $sp, 16
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 8
-	ld.wu	$a1, $sp, 12
+	ld.w	$a0, $sp, 16
+	ld.wu	$a1, $sp, 20
 	slli.d	$a0, $a0, 32
 	or	$a1, $a0, $a1
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(insert)
 	jirl	$ra, $ra, 0
-	ld.w	$a0, $sp, 4
-	addi.w	$s3, $s3, 1
-	blt	$s3, $a0, .LBB11_2
+	ld.w	$a0, $sp, 12
+	addi.w	$s2, $s2, 1
+	blt	$s2, $a0, .LBB11_2
 .LBB11_3:                               # %get_file.exit
 	pcaddu18i	$ra, %call36(construct_ch)
 	jirl	$ra, $ra, 0
@@ -1129,11 +1126,11 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(free)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(Kcount)
-	st.w	$s1, $a0, %pc_lo12(Kcount)
+	ori	$a1, $zero, 1
+	st.w	$a1, $a0, %pc_lo12(Kcount)
 	pcalau12i	$a0, %pc_hi20(Ecount)
-	st.w	$s1, $a0, %pc_lo12(Ecount)
+	st.w	$a1, $a0, %pc_lo12(Ecount)
 	move	$a0, $zero
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload

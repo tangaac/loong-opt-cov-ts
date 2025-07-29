@@ -159,15 +159,15 @@ store_coding_state:                     # @store_coding_state
 # %bb.3:
 	ldptr.d	$s1, $a1, 14216
 	ld.w	$a2, $a1, 12
-	ldptr.d	$a3, $a1, 14224
-	ld.w	$a4, $fp, 24
-	ori	$a1, $zero, 536
-	mul.d	$a2, $a2, $a1
-	ori	$a1, $zero, 1
-	add.d	$s0, $a3, $a2
-	bne	$a4, $a1, .LBB2_8
+	ldptr.d	$a1, $a1, 14224
+	ld.w	$a3, $fp, 24
+	ori	$a4, $zero, 536
+	mul.d	$a2, $a2, $a4
+	ori	$a4, $zero, 1
+	add.d	$s0, $a1, $a2
+	bne	$a3, $a4, .LBB2_8
 # %bb.4:                                # %.preheader
-	blt	$a0, $a1, .LBB2_7
+	blez	$a0, .LBB2_7
 # %bb.5:                                # %.lr.ph33
 	move	$a1, $zero
 	slli.d	$a2, $a0, 5
@@ -213,7 +213,7 @@ store_coding_state:                     # @store_coding_state
 	jirl	$ra, $ra, 0
 	b	.LBB2_11
 .LBB2_8:                                # %.preheader30
-	blt	$a0, $a1, .LBB2_11
+	blez	$a0, .LBB2_11
 # %bb.9:                                # %.lr.ph
 	move	$a1, $zero
 	ori	$a2, $zero, 104
@@ -285,15 +285,15 @@ reset_coding_state:                     # @reset_coding_state
 # %bb.3:
 	ldptr.d	$s1, $a1, 14216
 	ld.w	$a2, $a1, 12
-	ldptr.d	$a3, $a1, 14224
-	ld.w	$a4, $fp, 24
-	ori	$a1, $zero, 536
-	mul.d	$a2, $a2, $a1
-	ori	$a1, $zero, 1
-	add.d	$s0, $a3, $a2
-	bne	$a4, $a1, .LBB3_8
+	ldptr.d	$a1, $a1, 14224
+	ld.w	$a3, $fp, 24
+	ori	$a4, $zero, 536
+	mul.d	$a2, $a2, $a4
+	ori	$a4, $zero, 1
+	add.d	$s0, $a1, $a2
+	bne	$a3, $a4, .LBB3_8
 # %bb.4:                                # %.preheader
-	blt	$a0, $a1, .LBB3_7
+	blez	$a0, .LBB3_7
 # %bb.5:                                # %.lr.ph33
 	move	$a1, $zero
 	slli.d	$a2, $a0, 5
@@ -339,7 +339,7 @@ reset_coding_state:                     # @reset_coding_state
 	jirl	$ra, $ra, 0
 	b	.LBB3_11
 .LBB3_8:                                # %.preheader30
-	blt	$a0, $a1, .LBB3_11
+	blez	$a0, .LBB3_11
 # %bb.9:                                # %.lr.ph
 	move	$a1, $zero
 	ori	$a2, $zero, 104

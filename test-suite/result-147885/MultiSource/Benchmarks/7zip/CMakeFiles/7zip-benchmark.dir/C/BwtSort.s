@@ -471,18 +471,18 @@ SortGroup:                              # @SortGroup
 	.type	BlockSort,@function
 BlockSort:                              # @BlockSort
 # %bb.0:                                # %.preheader206
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a2
 	move	$s1, $a1
 	move	$s0, $a0
@@ -609,7 +609,7 @@ BlockSort:                              # @BlockSort
 	stx.w	$a0, $s0, $a1
 	slli.d	$a1, $s4, 2
 	lu12i.w	$a2, 16
-	lu12i.w	$s5, 261888
+	lu12i.w	$s7, 261888
 	lu12i.w	$a3, -524288
 	lu32i.d	$a3, 0
 	ori	$a4, $zero, 1024
@@ -617,7 +617,7 @@ BlockSort:                              # @BlockSort
 	lu32i.d	$a5, 0
 	lu12i.w	$a7, -256
 	lu32i.d	$a7, 0
-	st.d	$a7, $sp, 16                    # 8-byte Folded Spill
+	st.d	$a7, $sp, 0                     # 8-byte Folded Spill
 	b	.LBB1_18
 	.p2align	4, , 16
 .LBB1_16:                               # %SetGroupSize.exit
@@ -639,7 +639,7 @@ BlockSort:                              # @BlockSort
 	alsl.d	$a6, $a6, $s0, 2
 	ld.w	$t0, $a6, 0
 	slli.d	$t1, $a7, 20
-	and	$t1, $t1, $s5
+	and	$t1, $t1, $s7
 	or	$t0, $t0, $t1
 	or	$t1, $t0, $a3
 	st.w	$t1, $a6, 0
@@ -649,7 +649,7 @@ BlockSort:                              # @BlockSort
 	ld.w	$t1, $a6, 4
 	st.w	$t0, $a6, 0
 	slli.d	$a7, $a7, 10
-	ld.d	$t0, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$t0, $sp, 0                     # 8-byte Folded Reload
 	and	$a7, $a7, $t0
 	or	$a7, $t1, $a7
 	st.w	$a7, $a6, 4
@@ -662,67 +662,63 @@ BlockSort:                              # @BlockSort
 	lu32i.d	$a1, -524288
 	lu52i.d	$a1, $a1, 0
 	or	$a0, $a0, $a1
-	clz.d	$a0, $a0
-	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
-	ori	$t0, $zero, 2
-	lu12i.w	$s6, 262144
-	addi.w	$s4, $zero, -1
-	ori	$t1, $zero, 1025
-	lu12i.w	$a0, 1023
-	ori	$s7, $a0, 3072
+	clz.d	$s1, $a0
 	ori	$s2, $zero, 2
+	ori	$t0, $zero, 2
+	ori	$s8, $zero, 1025
+	lu12i.w	$a0, 1023
+	ori	$s6, $a0, 3072
 	b	.LBB1_25
 	.p2align	4, , 16
 .LBB1_24:                               # %._crit_edge229.us
                                         #   in Loop: Header=BB1_25 Depth=1
 	slli.w	$s2, $s2, 1
-	beqz	$s8, .LBB1_39
+	beqz	$s4, .LBB1_39
 .LBB1_25:                               # %.lr.ph228.us
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_28 Depth 2
                                         #       Child Loop BB1_33 Depth 3
-	move	$s1, $zero
-	move	$s8, $zero
+	move	$s5, $zero
+	move	$s4, $zero
 	move	$a0, $zero
 	b	.LBB1_28
 	.p2align	4, , 16
 .LBB1_26:                               #   in Loop: Header=BB1_28 Depth=2
 	move	$a0, $fp
 	move	$a1, $s2
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
+	move	$a4, $s1
 	move	$a5, $s0
 	move	$a6, $zero
 	move	$a7, $fp
 	pcaddu18i	$ra, %call36(SortGroup)
 	jirl	$ra, $ra, 0
-	ori	$t1, $zero, 1025
 	ori	$t0, $zero, 2
 	move	$a2, $zero
 	sltui	$a0, $a0, 1
-	masknez	$a1, $s1, $a0
-	maskeqz	$a0, $s8, $a0
-	or	$s8, $a0, $a1
+	masknez	$a1, $s5, $a0
+	maskeqz	$a0, $s4, $a0
+	or	$s4, $a0, $a1
 .LBB1_27:                               # %.loopexit.us
                                         #   in Loop: Header=BB1_28 Depth=2
 	move	$a0, $a2
-	bgeu	$s1, $fp, .LBB1_24
+	bgeu	$s5, $fp, .LBB1_24
 .LBB1_28:                               #   Parent Loop BB1_25 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_33 Depth 3
-	move	$a2, $s1
-	bstrpick.d	$a3, $s1, 31, 0
+	move	$a2, $s5
+	bstrpick.d	$a3, $s5, 31, 0
 	slli.d	$a1, $a3, 2
 	ldx.wu	$a5, $s0, $a1
-	and	$a4, $a5, $s6
+	slli.d	$a4, $a5, 33
 	bstrpick.d	$a1, $a5, 29, 20
-	beqz	$a4, .LBB1_30
+	bgez	$a4, .LBB1_30
 # %bb.29:                               #   in Loop: Header=BB1_28 Depth=2
 	addi.d	$a4, $a2, 1
 	bstrpick.d	$a4, $a4, 31, 0
 	slli.d	$a4, $a4, 2
 	ldx.wu	$a6, $s0, $a4
 	srli.d	$a7, $a6, 10
-	and	$a7, $a7, $s7
+	and	$a7, $a7, $s6
 	or	$a1, $a7, $a1
 	bstrpick.d	$a6, $a6, 19, 0
 	stx.w	$a6, $s0, $a4
@@ -732,8 +728,8 @@ BlockSort:                              # @BlockSort
 	bstrpick.d	$a3, $a5, 19, 0
 	st.w	$a3, $a4, 0
 	addi.w	$a3, $a1, 1
-	add.w	$s1, $a3, $a2
-	blt	$s4, $a5, .LBB1_35
+	add.w	$s5, $a3, $a2
+	bgez	$a5, .LBB1_35
 # %bb.31:                               #   in Loop: Header=BB1_28 Depth=2
 	addi.w	$a5, $a1, 0
 	beqz	$a5, .LBB1_35
@@ -779,16 +775,17 @@ BlockSort:                              # @BlockSort
 	ld.w	$a4, $a3, 0
 	add.d	$a0, $a1, $a0
 	slli.d	$a1, $a0, 20
-	and	$a1, $a1, $s5
+	and	$a1, $a1, $s7
 	or	$a1, $a4, $a1
 	st.w	$a1, $a3, 0
-	bltu	$a2, $t1, .LBB1_27
+	bltu	$a2, $s8, .LBB1_27
 # %bb.38:                               #   in Loop: Header=BB1_28 Depth=2
-	or	$a1, $a1, $s6
+	lu12i.w	$a4, 262144
+	or	$a1, $a1, $a4
 	ld.w	$a4, $a3, 4
 	st.w	$a1, $a3, 0
 	slli.d	$a0, $a0, 10
-	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
 	and	$a0, $a0, $a1
 	or	$a0, $a4, $a0
 	st.w	$a0, $a3, 4
@@ -810,33 +807,33 @@ BlockSort:                              # @BlockSort
 	slli.d	$a1, $a0, 2
 	ldx.wu	$a2, $s0, $a1
 	bstrpick.d	$a1, $a2, 29, 20
-	and	$a4, $a2, $s6
+	slli.d	$a4, $a2, 33
 	addi.w	$a3, $a3, 1
-	beqz	$a4, .LBB1_40
+	bgez	$a4, .LBB1_40
 # %bb.42:                               #   in Loop: Header=BB1_41 Depth=1
 	bstrpick.d	$a4, $a3, 31, 0
 	slli.d	$a4, $a4, 2
 	ldx.wu	$a5, $s0, $a4
 	srli.d	$a6, $a5, 10
-	and	$a6, $a6, $s7
+	and	$a6, $a6, $s6
 	or	$a1, $a6, $a1
 	bstrpick.d	$a5, $a5, 19, 0
 	stx.w	$a5, $s0, $a4
 	b	.LBB1_40
 .LBB1_43:                               # %._crit_edge233
 	ld.w	$a0, $s3, 0
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end1:
 	.size	BlockSort, .Lfunc_end1-BlockSort

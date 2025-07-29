@@ -84,7 +84,6 @@ luaL_error:                             # @luaL_error
 	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
 	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
 	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
 	move	$s0, $a1
 	move	$fp, $a0
 	st.d	$a7, $sp, 200
@@ -94,10 +93,9 @@ luaL_error:                             # @luaL_error
 	st.d	$a3, $sp, 168
 	st.d	$a2, $sp, 160
 	addi.d	$a0, $sp, 160
-	st.d	$a0, $sp, 0
+	st.d	$a0, $sp, 8
 	ori	$a1, $zero, 1
-	addi.d	$a2, $sp, 8
-	ori	$s1, $zero, 1
+	addi.d	$a2, $sp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_getstack)
 	jirl	$ra, $ra, 0
@@ -105,14 +103,14 @@ luaL_error:                             # @luaL_error
 # %bb.1:
 	pcalau12i	$a0, %pc_hi20(.L.str.7)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.7)
-	addi.d	$a2, $sp, 8
+	addi.d	$a2, $sp, 16
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_getinfo)
 	jirl	$ra, $ra, 0
-	ld.w	$a3, $sp, 48
-	blt	$a3, $s1, .LBB1_3
+	ld.w	$a3, $sp, 56
+	blez	$a3, .LBB1_3
 # %bb.2:
-	addi.d	$a2, $sp, 64
+	addi.d	$a2, $sp, 72
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.8)
 	move	$a0, $fp
@@ -127,7 +125,7 @@ luaL_error:                             # @luaL_error
 	pcaddu18i	$ra, %call36(lua_pushlstring)
 	jirl	$ra, $ra, 0
 .LBB1_4:                                # %luaL_where.exit
-	ld.d	$a2, $sp, 0
+	ld.d	$a2, $sp, 8
 	move	$a0, $fp
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(lua_pushvfstring)
@@ -139,7 +137,6 @@ luaL_error:                             # @luaL_error
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(lua_error)
 	jirl	$ra, $ra, 0
-	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
 	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
 	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
@@ -208,8 +205,7 @@ luaL_where:                             # @luaL_where
 	pcaddu18i	$ra, %call36(lua_getinfo)
 	jirl	$ra, $ra, 0
 	ld.w	$a3, $sp, 48
-	ori	$a0, $zero, 1
-	blt	$a3, $a0, .LBB3_3
+	blez	$a3, .LBB3_3
 # %bb.2:
 	addi.d	$a2, $sp, 64
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
@@ -816,8 +812,7 @@ luaL_optnumber:                         # @luaL_optnumber
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(lua_type)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB13_2
+	blez	$a0, .LBB13_2
 # %bb.1:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -917,8 +912,7 @@ luaL_optinteger:                        # @luaL_optinteger
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(lua_type)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB15_2
+	blez	$a0, .LBB15_2
 # %bb.1:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -1401,7 +1395,6 @@ luaL_gsub:                              # @luaL_gsub
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 80
 	addi.d	$s0, $sp, 88
 	st.d	$s0, $sp, 64
@@ -1412,16 +1405,16 @@ luaL_gsub:                              # @luaL_gsub
 	pcaddu18i	$ra, %call36(strstr)
 	jirl	$ra, $ra, 0
 	lu12i.w	$a1, 2
+	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	beqz	$a0, .LBB21_20
 # %bb.1:                                # %.lr.ph
 	move	$a2, $a0
 	ori	$a0, $a1, 24
 	addi.d	$a1, $sp, 64
 	add.d	$s3, $a1, $a0
-	ori	$s2, $zero, 1
 	addi.w	$a0, $zero, -1
 	st.d	$a0, $sp, 56                    # 8-byte Folded Spill
-	ori	$s1, $zero, 8
+	ori	$s2, $zero, 8
 	move	$a0, $a2
 	b	.LBB21_3
 	.p2align	4, , 16
@@ -1441,8 +1434,8 @@ luaL_gsub:                              # @luaL_gsub
                                         #     Child Loop BB21_15 Depth 2
                                         #       Child Loop BB21_18 Depth 3
 	st.d	$a0, $sp, 48                    # 8-byte Folded Spill
-	sub.d	$s4, $a0, $s6
-	bnez	$s4, .LBB21_8
+	sub.d	$s1, $a0, $s6
+	bnez	$s1, .LBB21_8
 .LBB21_4:                               # %luaL_addlstring.exit
                                         #   in Loop: Header=BB21_3 Depth=1
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
@@ -1452,11 +1445,11 @@ luaL_gsub:                              # @luaL_gsub
 # %bb.5:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB21_3 Depth=1
 	move	$s6, $a0
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 40                    # 8-byte Folded Reload
 	b	.LBB21_15
 	.p2align	4, , 16
 .LBB21_6:                               #   in Loop: Header=BB21_8 Depth=2
-	sub.w	$a0, $zero, $s0
+	sub.w	$a0, $zero, $s5
 	masknez	$a2, $a3, $a1
 	maskeqz	$a0, $a0, $a1
 	or	$fp, $a0, $a2
@@ -1469,16 +1462,15 @@ luaL_gsub:                              # @luaL_gsub
 	sub.d	$a0, $a0, $fp
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $sp, 72
-	addi.d	$s0, $sp, 88
 .LBB21_7:                               # %luaL_prepbuffer.exit
                                         #   in Loop: Header=BB21_8 Depth=2
-	addi.d	$s4, $s4, -1
+	addi.d	$s1, $s1, -1
 	ld.b	$a0, $s6, 0
 	addi.d	$s6, $s6, 1
 	addi.d	$a2, $a1, 1
 	st.d	$a2, $sp, 64
 	st.b	$a0, $a1, 0
-	beqz	$s4, .LBB21_4
+	beqz	$s1, .LBB21_4
 .LBB21_8:                               # %.lr.ph.i
                                         #   Parent Loop BB21_3 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1496,37 +1488,37 @@ luaL_gsub:                              # @luaL_gsub
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $sp, 72
 	move	$a1, $s0
-	blt	$a0, $s2, .LBB21_7
+	blez	$a0, .LBB21_7
 # %bb.10:                               #   in Loop: Header=BB21_8 Depth=2
 	ld.d	$s7, $sp, 80
-	addi.w	$s0, $zero, -1
+	addi.w	$s5, $zero, -1
 	move	$a0, $s7
-	move	$a1, $s0
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	move	$s5, $zero
+	move	$s4, $zero
 	.p2align	4, , 16
 .LBB21_11:                              #   Parent Loop BB21_3 Depth=1
                                         #     Parent Loop BB21_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	move	$s8, $s0
-	addi.w	$s0, $s0, -1
+	move	$s8, $s5
+	addi.w	$s5, $s5, -1
 	move	$a0, $s7
-	move	$a1, $s0
+	move	$a1, $s5
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $sp, 72
 	add.w	$a1, $s8, $a2
-	slt	$a1, $s1, $a1
+	slt	$a1, $s2, $a1
 	sltu	$a3, $a0, $fp
 	or	$a1, $a1, $a3
-	addi.w	$a3, $s5, 1
-	bne	$a1, $s2, .LBB21_6
+	addi.w	$a3, $s4, 1
+	beqz	$a1, .LBB21_6
 # %bb.12:                               #   in Loop: Header=BB21_11 Depth=3
-	addi.w	$a4, $s5, 2
+	addi.w	$a4, $s4, 2
 	add.d	$fp, $a0, $fp
-	move	$s5, $a3
+	move	$s4, $a3
 	blt	$a4, $a2, .LBB21_11
 	b	.LBB21_6
 	.p2align	4, , 16
@@ -1544,12 +1536,11 @@ luaL_gsub:                              # @luaL_gsub
 	sub.d	$a0, $a0, $fp
 	addi.d	$a0, $a0, 1
 	st.w	$a0, $sp, 72
-	addi.d	$s0, $sp, 88
 .LBB21_14:                              # %luaL_prepbuffer.exit26
                                         #   in Loop: Header=BB21_15 Depth=2
 	addi.d	$s6, $s6, -1
-	ld.b	$a0, $s4, 0
-	addi.d	$s4, $s4, 1
+	ld.b	$a0, $s1, 0
+	addi.d	$s1, $s1, 1
 	addi.d	$a2, $a1, 1
 	st.d	$a2, $sp, 64
 	st.b	$a0, $a1, 0
@@ -1571,7 +1562,7 @@ luaL_gsub:                              # @luaL_gsub
 	addi.d	$a1, $a0, 1
 	st.w	$a1, $sp, 72
 	move	$a1, $s0
-	blt	$a0, $s2, .LBB21_14
+	blez	$a0, .LBB21_14
 # %bb.17:                               #   in Loop: Header=BB21_15 Depth=2
 	ld.d	$s7, $sp, 80
 	move	$a0, $s7
@@ -1580,28 +1571,28 @@ luaL_gsub:                              # @luaL_gsub
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	move	$s8, $a0
-	move	$s5, $zero
+	move	$s4, $zero
 	.p2align	4, , 16
 .LBB21_18:                              #   Parent Loop BB21_3 Depth=1
                                         #     Parent Loop BB21_15 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	move	$s0, $fp
+	move	$s5, $fp
 	addi.w	$fp, $fp, -1
 	move	$a0, $s7
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $sp, 72
-	add.w	$a1, $s0, $a2
-	slt	$a1, $s1, $a1
+	add.w	$a1, $s5, $a2
+	slt	$a1, $s2, $a1
 	sltu	$a3, $a0, $s8
 	or	$a1, $a1, $a3
-	addi.w	$a3, $s5, 1
-	bne	$a1, $s2, .LBB21_13
+	addi.w	$a3, $s4, 1
+	beqz	$a1, .LBB21_13
 # %bb.19:                               #   in Loop: Header=BB21_18 Depth=3
-	addi.w	$a4, $s5, 2
+	addi.w	$a4, $s4, 2
 	add.d	$s8, $a0, $s8
-	move	$s5, $a3
+	move	$s4, $a3
 	blt	$a4, $a2, .LBB21_18
 	b	.LBB21_13
 .LBB21_20:                              # %._crit_edge
@@ -1636,6 +1627,7 @@ luaL_gsub:                              # @luaL_gsub
 	b	.LBB21_22
 .LBB21_25:                              # %luaL_addstring.exit18
 	ld.d	$a1, $sp, 64
+	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	beq	$a1, $s0, .LBB21_27
 # %bb.26:
 	ld.d	$a0, $sp, 80
@@ -1651,7 +1643,6 @@ luaL_gsub:                              # @luaL_gsub
 .LBB21_27:                              # %.emptybuffer.exit_crit_edge.i
 	ld.w	$a1, $sp, 72
 .LBB21_28:                              # %luaL_pushresult.exit
-	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$a0, $sp, 80
 	pcaddu18i	$ra, %call36(lua_concat)
 	jirl	$ra, $ra, 0
@@ -1851,7 +1842,6 @@ luaL_prepbuffer:                        # @luaL_prepbuffer
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s7, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$a1, $a0, 0
 	addi.d	$fp, $a0, 24
 	beq	$a1, $fp, .LBB26_6
@@ -1865,9 +1855,8 @@ luaL_prepbuffer:                        # @luaL_prepbuffer
 	ld.w	$a0, $s0, 8
 	st.d	$fp, $s0, 0
 	addi.d	$a1, $a0, 1
-	ori	$s4, $zero, 1
 	st.w	$a1, $s0, 8
-	blt	$a0, $s4, .LBB26_6
+	blez	$a0, .LBB26_6
 # %bb.2:
 	ld.d	$s1, $s0, 16
 	addi.w	$s2, $zero, -1
@@ -1876,27 +1865,27 @@ luaL_prepbuffer:                        # @luaL_prepbuffer
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	move	$s6, $zero
-	ori	$s5, $zero, 8
+	move	$s5, $zero
+	ori	$s4, $zero, 8
 	.p2align	4, , 16
 .LBB26_3:                               # =>This Inner Loop Header: Depth=1
-	move	$s7, $s2
+	move	$s6, $s2
 	addi.w	$s2, $s2, -1
 	move	$a0, $s1
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $s0, 8
-	add.w	$a1, $s7, $a2
-	slt	$a1, $s5, $a1
+	add.w	$a1, $s6, $a2
+	slt	$a1, $s4, $a1
 	sltu	$a3, $a0, $s3
 	or	$a1, $a1, $a3
-	addi.w	$a3, $s6, 1
-	bne	$a1, $s4, .LBB26_5
+	addi.w	$a3, $s5, 1
+	beqz	$a1, .LBB26_5
 # %bb.4:                                #   in Loop: Header=BB26_3 Depth=1
-	addi.w	$a4, $s6, 2
+	addi.w	$a4, $s5, 2
 	add.d	$s3, $a0, $s3
-	move	$s6, $a3
+	move	$s5, $a3
 	blt	$a4, $a2, .LBB26_3
 .LBB26_5:
 	sub.w	$a0, $zero, $s2
@@ -1913,7 +1902,6 @@ luaL_prepbuffer:                        # @luaL_prepbuffer
 	st.w	$a0, $s0, 8
 .LBB26_6:                               # %adjuststack.exit
 	move	$a0, $fp
-	ld.d	$s7, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
@@ -1942,17 +1930,16 @@ luaL_addvalue:                          # @luaL_addvalue
 	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s1, $a0, 16
 	addi.w	$s0, $zero, -1
-	addi.d	$a2, $sp, 0
+	addi.d	$a2, $sp, 8
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(lua_tolstring)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 0
-	ld.d	$a2, $sp, 0
+	ld.d	$a2, $sp, 8
 	addi.d	$s2, $fp, 24
 	sub.d	$a3, $s2, $a1
 	lu12i.w	$a4, 2
@@ -1977,9 +1964,8 @@ luaL_addvalue:                          # @luaL_addvalue
 .LBB27_3:                               # %emptybuffer.exit.thread
 	ld.w	$a0, $fp, 8
 	addi.d	$a1, $a0, 1
-	ori	$s3, $zero, 1
 	st.w	$a1, $fp, 8
-	blt	$a0, $s3, .LBB27_9
+	blez	$a0, .LBB27_9
 # %bb.4:
 	ld.d	$s1, $fp, 16
 	move	$a0, $s1
@@ -1987,27 +1973,27 @@ luaL_addvalue:                          # @luaL_addvalue
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
-	move	$s5, $zero
-	ori	$s4, $zero, 8
+	move	$s4, $zero
+	ori	$s3, $zero, 8
 	.p2align	4, , 16
 .LBB27_5:                               # =>This Inner Loop Header: Depth=1
-	move	$s6, $s0
+	move	$s5, $s0
 	addi.w	$s0, $s0, -1
 	move	$a0, $s1
 	move	$a1, $s0
 	pcaddu18i	$ra, %call36(lua_objlen)
 	jirl	$ra, $ra, 0
 	ld.w	$a2, $fp, 8
-	add.w	$a1, $s6, $a2
-	slt	$a1, $s4, $a1
+	add.w	$a1, $s5, $a2
+	slt	$a1, $s3, $a1
 	sltu	$a3, $a0, $s2
 	or	$a1, $a1, $a3
-	addi.w	$a3, $s5, 1
-	bne	$a1, $s3, .LBB27_7
+	addi.w	$a3, $s4, 1
+	beqz	$a1, .LBB27_7
 # %bb.6:                                #   in Loop: Header=BB27_5 Depth=1
-	addi.w	$a4, $s5, 2
+	addi.w	$a4, $s4, 2
 	add.d	$s2, $a0, $s2
-	move	$s5, $a3
+	move	$s4, $a3
 	blt	$a4, $a2, .LBB27_5
 .LBB27_7:
 	sub.w	$a0, $zero, $s0
@@ -2029,7 +2015,7 @@ luaL_addvalue:                          # @luaL_addvalue
 	move	$a1, $a3
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
-	ld.d	$a0, $sp, 0
+	ld.d	$a0, $sp, 8
 	ld.d	$a1, $fp, 0
 	add.d	$a0, $a1, $a0
 	st.d	$a0, $fp, 0
@@ -2038,7 +2024,6 @@ luaL_addvalue:                          # @luaL_addvalue
 	pcaddu18i	$ra, %call36(lua_settop)
 	jirl	$ra, $ra, 0
 .LBB27_9:                               # %adjuststack.exit
-	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s5, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload

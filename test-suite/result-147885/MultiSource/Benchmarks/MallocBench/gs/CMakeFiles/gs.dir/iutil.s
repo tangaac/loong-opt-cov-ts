@@ -382,8 +382,7 @@ ref_to_string:                          # @ref_to_string
 	.type	num_params,@function
 num_params:                             # @num_params
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB6_8
+	blez	$a1, .LBB6_8
 # %bb.1:                                # %.lr.ph
 	move	$a3, $a0
 	move	$a0, $zero

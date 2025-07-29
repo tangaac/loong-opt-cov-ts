@@ -21,37 +21,36 @@ calc:                                   # @calc
 	slli.d	$a1, $a1, 2
 	pcalau12i	$a2, %pc_hi20(lookupTable5B)
 	addi.d	$a2, $a2, %pc_lo12(lookupTable5B)
-	ldx.wu	$a5, $a2, $a1
+	ldx.wu	$a4, $a2, $a1
 	bstrpick.d	$a0, $a0, 31, 0
 	slli.d	$a0, $a0, 2
 	pcalau12i	$a1, %pc_hi20(lookupTable3B)
 	addi.d	$a1, $a1, %pc_lo12(lookupTable3B)
 	ldx.w	$a0, $a1, $a0
-	lu12i.w	$a4, 16
-	and	$a2, $a5, $a4
+	slli.d	$a2, $a4, 47
 	pcalau12i	$a1, %pc_hi20(disparity0)
-	bnez	$a2, .LBB1_3
+	bltz	$a2, .LBB1_3
 # %bb.1:
 	ld.w	$a3, $a1, %pc_lo12(disparity0)
-	bstrpick.d	$a2, $a5, 18, 18
+	bstrpick.d	$a2, $a4, 18, 18
 	xor	$a2, $a3, $a2
 	sltui	$a2, $a2, 1
-	andi	$a6, $a5, 994
-	xori	$a7, $a6, 994
-	masknez	$a7, $a7, $a2
-	maskeqz	$a2, $a6, $a2
-	or	$a2, $a2, $a7
-	lu12i.w	$a6, 128
-	and	$a5, $a5, $a6
-	sltui	$a5, $a5, 1
-	xori	$a6, $a3, 1
-	masknez	$a6, $a6, $a5
-	maskeqz	$a3, $a3, $a5
-	or	$a3, $a3, $a6
-	pcalau12i	$a5, %pc_hi20(disparity1)
-	and	$a4, $a0, $a4
-	st.w	$a3, $a5, %pc_lo12(disparity1)
-	beqz	$a4, .LBB1_4
+	andi	$a5, $a4, 994
+	xori	$a6, $a5, 994
+	masknez	$a6, $a6, $a2
+	maskeqz	$a2, $a5, $a2
+	or	$a2, $a2, $a6
+	lu12i.w	$a5, 128
+	and	$a4, $a4, $a5
+	sltui	$a4, $a4, 1
+	xori	$a5, $a3, 1
+	masknez	$a5, $a5, $a4
+	maskeqz	$a3, $a3, $a4
+	or	$a3, $a3, $a5
+	pcalau12i	$a4, %pc_hi20(disparity1)
+	slli.d	$a5, $a0, 47
+	st.w	$a3, $a4, %pc_lo12(disparity1)
+	bgez	$a5, .LBB1_4
 .LBB1_2:
 	andi	$a4, $a0, 29
 	or	$a0, $a4, $a2
@@ -59,11 +58,11 @@ calc:                                   # @calc
 	ret
 .LBB1_3:
 	ld.w	$a3, $a1, %pc_lo12(disparity0)
-	andi	$a2, $a5, 994
-	pcalau12i	$a5, %pc_hi20(disparity1)
-	and	$a4, $a0, $a4
-	st.w	$a3, $a5, %pc_lo12(disparity1)
-	bnez	$a4, .LBB1_2
+	andi	$a2, $a4, 994
+	pcalau12i	$a4, %pc_hi20(disparity1)
+	slli.d	$a5, $a0, 47
+	st.w	$a3, $a4, %pc_lo12(disparity1)
+	bltz	$a5, .LBB1_2
 .LBB1_4:
 	bstrpick.d	$a4, $a0, 18, 18
 	xor	$a4, $a3, $a4

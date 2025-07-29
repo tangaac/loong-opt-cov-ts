@@ -392,8 +392,7 @@ ReadBytes:                              # @ReadBytes
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$fp, $a1, .LBB12_5
+	blez	$fp, .LBB12_5
 # %bb.1:
 	bnez	$a0, .LBB12_5
 # %bb.2:                                # %.lr.ph.preheader
@@ -443,9 +442,8 @@ ReadBytesSwapped:                       # @ReadBytesSwapped
 	move	$s1, $a0
 	pcaddu18i	$ra, %call36(feof)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s2, $fp
-	blt	$s0, $a1, .LBB13_5
+	blez	$s0, .LBB13_5
 # %bb.1:
 	move	$s2, $fp
 	bnez	$a0, .LBB13_5
@@ -503,17 +501,17 @@ ReadBytesSwapped:                       # @ReadBytesSwapped
 	.type	WriteBytes,@function
 WriteBytes:                             # @WriteBytes
 # %bb.0:
+	blez	$a2, .LBB14_4
+# %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	ori	$s0, $zero, 1
-	blt	$a2, $s0, .LBB14_3
-# %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a0
-	addi.d	$s1, $a2, 1
+	addi.d	$s0, $a2, 1
+	ori	$s1, $zero, 1
 	.p2align	4, , 16
 .LBB14_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -522,16 +520,17 @@ WriteBytes:                             # @WriteBytes
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $s1, -1
+	addi.w	$s0, $s0, -1
 	move	$a1, $s2
-	bltu	$s0, $s1, .LBB14_2
-.LBB14_3:                               # %._crit_edge
+	bltu	$s1, $s0, .LBB14_2
+# %bb.3:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB14_4:                               # %._crit_edge
 	ret
 .Lfunc_end14:
 	.size	WriteBytes, .Lfunc_end14-WriteBytes
@@ -541,36 +540,37 @@ WriteBytes:                             # @WriteBytes
 	.type	WriteBytesSwapped,@function
 WriteBytesSwapped:                      # @WriteBytesSwapped
 # %bb.0:
+	blez	$a2, .LBB15_4
+# %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	ori	$s0, $zero, 1
-	blt	$a2, $s0, .LBB15_3
-# %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a0
-	addi.d	$s1, $a2, 1
+	addi.d	$s0, $a2, 1
 	add.d	$a0, $a2, $a1
-	addi.d	$s2, $a0, -1
+	addi.d	$s1, $a0, -1
+	ori	$s2, $zero, 1
 	.p2align	4, , 16
 .LBB15_2:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.b	$a0, $s2, 0
+	ld.b	$a0, $s1, 0
 	move	$a1, $fp
 	pcaddu18i	$ra, %call36(putc)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $s1, -1
-	addi.d	$s2, $s2, -1
-	bltu	$s0, $s1, .LBB15_2
-.LBB15_3:                               # %._crit_edge
+	addi.w	$s0, $s0, -1
+	addi.d	$s1, $s1, -1
+	bltu	$s2, $s0, .LBB15_2
+# %bb.3:
 	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
 	addi.d	$sp, $sp, 48
+.LBB15_4:                               # %._crit_edge
 	ret
 .Lfunc_end15:
 	.size	WriteBytesSwapped, .Lfunc_end15-WriteBytesSwapped

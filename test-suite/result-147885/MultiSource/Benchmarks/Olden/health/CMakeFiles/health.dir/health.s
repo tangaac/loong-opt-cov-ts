@@ -381,7 +381,6 @@ check_patients_waiting:                 # @check_patients_waiting
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	move	$fp, $a1
 	move	$s0, $a0
 	ld.w	$a0, $a0, 68
@@ -389,16 +388,15 @@ check_patients_waiting:                 # @check_patients_waiting
 # %bb.2:
 	addi.d	$s1, $s0, 80
 	addi.d	$s2, $s0, 104
-	ori	$s4, $zero, 1
-	ori	$s5, $zero, 3
+	ori	$s4, $zero, 3
 	ld.d	$s3, $fp, 8
-	blt	$a0, $s4, .LBB4_4
+	blez	$a0, .LBB4_4
 	.p2align	4, , 16
 .LBB4_3:
 	ld.w	$a1, $s3, 4
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $s0, 68
-	st.w	$s5, $s3, 8
+	st.w	$s4, $s3, 8
 	addi.d	$a0, $a1, 3
 	st.w	$a0, $s3, 4
 	move	$a0, $s1
@@ -422,7 +420,7 @@ check_patients_waiting:                 # @check_patients_waiting
 .LBB4_5:                                # %.lr.ph.splitthread-pre-split
 	ld.w	$a0, $s0, 68
 	ld.d	$s3, $fp, 8
-	bge	$a0, $s4, .LBB4_3
+	bgtz	$a0, .LBB4_3
 	b	.LBB4_4
 	.p2align	4, , 16
 .LBB4_6:                                # %.lr.ph.split.us
@@ -434,7 +432,6 @@ check_patients_waiting:                 # @check_patients_waiting
 	st.w	$a1, $a0, 4
 	bnez	$fp, .LBB4_6
 .LBB4_7:
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
@@ -456,9 +453,8 @@ put_in_hosp:                            # @put_in_hosp
 	ld.w	$a3, $a1, 0
 	ld.w	$a2, $a0, 4
 	addi.d	$a3, $a3, 1
-	ori	$a4, $zero, 1
 	st.w	$a3, $a1, 0
-	blt	$a2, $a4, .LBB5_2
+	blez	$a2, .LBB5_2
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
@@ -572,8 +568,7 @@ main:                                   # @main
 	jirl	$ra, $ra, 0
 	pcalau12i	$s2, %pc_hi20(max_time)
 	ld.d	$a0, $s2, %pc_lo12(max_time)
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_5
+	blez	$a0, .LBB7_5
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	move	$s3, $zero
@@ -713,7 +708,7 @@ sim:                                    # @sim
 	ld.d	$s7, $s5, 0
 	beqz	$s7, .LBB8_8
 # %bb.3:                                # %.lr.ph.preheader
-	ori	$s8, $zero, 1
+	ori	$s8, $zero, 3
 	b	.LBB8_6
 	.p2align	4, , 16
 .LBB8_4:                                #   in Loop: Header=BB8_6 Depth=1
@@ -736,7 +731,7 @@ sim:                                    # @sim
 	ld.w	$a0, $fp, 68
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $s6, 0
-	blt	$a0, $s8, .LBB8_4
+	blez	$a0, .LBB8_4
 # %bb.7:                                #   in Loop: Header=BB8_6 Depth=1
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 68
@@ -745,8 +740,7 @@ sim:                                    # @sim
 	pcaddu18i	$ra, %call36(addList)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s6, 4
-	ori	$a1, $zero, 3
-	st.w	$a1, $s6, 8
+	st.w	$s8, $s6, 8
 	addi.d	$a0, $a0, 3
 	st.w	$a0, $s6, 4
 	b	.LBB8_5
@@ -918,16 +912,15 @@ sim:                                    # @sim
 	ld.w	$a0, $fp, 68
 	blez	$a0, .LBB8_40
 # %bb.36:
-	ori	$s5, $zero, 1
-	ori	$s6, $zero, 3
+	ori	$s5, $zero, 3
 	ld.d	$s3, $s4, 8
-	blt	$a0, $s5, .LBB8_38
+	blez	$a0, .LBB8_38
 	.p2align	4, , 16
 .LBB8_37:
 	ld.w	$a1, $s3, 4
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 68
-	st.w	$s6, $s3, 8
+	st.w	$s5, $s3, 8
 	addi.d	$a0, $a1, 3
 	st.w	$a0, $s3, 4
 	move	$a0, $s1
@@ -951,7 +944,7 @@ sim:                                    # @sim
 .LBB8_39:                               # %.lr.ph.splitthread-pre-split.i
 	ld.w	$a0, $fp, 68
 	ld.d	$s3, $s4, 8
-	bge	$a0, $s5, .LBB8_37
+	bgtz	$a0, .LBB8_37
 	b	.LBB8_38
 	.p2align	4, , 16
 .LBB8_40:                               # %.lr.ph.split.us.i
@@ -986,7 +979,7 @@ sim:                                    # @sim
 	st.d	$fp, $s3, 16
 	ori	$a1, $zero, 1
 	st.d	$a1, $s3, 0
-	blt	$a0, $a1, .LBB8_45
+	blez	$a0, .LBB8_45
 # %bb.43:
 	addi.d	$a0, $a0, -1
 	st.w	$a0, $fp, 68

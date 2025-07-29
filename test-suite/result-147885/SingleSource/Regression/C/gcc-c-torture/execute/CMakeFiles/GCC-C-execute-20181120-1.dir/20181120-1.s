@@ -20,7 +20,7 @@ main:                                   # @main
 	ld.w	$a6, $a1, %pc_lo12(c)
 	addi.w	$a5, $a6, 1
 	st.w	$a5, $a1, %pc_lo12(c)
-	bge	$a6, $a2, .LBB0_4
+	bgtz	$a6, .LBB0_4
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	bne	$a5, $a2, .LBB0_1
 # %bb.3:                                #   in Loop: Header=BB0_2 Depth=1

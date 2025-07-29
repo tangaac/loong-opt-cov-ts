@@ -95,13 +95,12 @@ start_pass_phuff:                       # @start_pass_phuff
 	addi.d	$a2, $a2, %pc_lo12(finish_pass_gather_phuff)
 	masknez	$a2, $a2, $a0
 	pcalau12i	$a3, %pc_hi20(finish_pass_phuff)
-	addi.d	$a3, $a3, %pc_lo12(finish_pass_phuff)
 	ld.w	$a4, $fp, 316
+	addi.d	$a3, $a3, %pc_lo12(finish_pass_phuff)
 	maskeqz	$a0, $a3, $a0
 	or	$a0, $a0, $a2
-	ori	$a2, $zero, 1
 	st.d	$a0, $s0, 16
-	blt	$a4, $a2, .LBB1_39
+	blez	$a4, .LBB1_39
 # %bb.10:                               # %.lr.ph
 	addi.d	$s1, $s0, 72
 	addi.d	$s3, $s0, 120
@@ -351,38 +350,38 @@ encode_mcu_DC_first:                    # @encode_mcu_DC_first
 	jirl	$ra, $ra, 0
 .LBB2_3:
 	ld.w	$a0, $s0, 360
-	ori	$s4, $zero, 1
-	blt	$a0, $s4, .LBB2_13
+	blez	$a0, .LBB2_13
 # %bb.4:                                # %.lr.ph65
-	move	$s5, $zero
-	addi.d	$s6, $s0, 364
-	addi.d	$s7, $s0, 320
-	addi.d	$s8, $fp, 72
+	move	$s4, $zero
+	addi.d	$s5, $s0, 364
+	addi.d	$s6, $s0, 320
+	addi.d	$s7, $fp, 72
 	addi.d	$a0, $fp, 152
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	addi.d	$a0, $fp, 120
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
+	ori	$s8, $zero, 1
 	b	.LBB2_6
 	.p2align	4, , 16
 .LBB2_5:                                #   in Loop: Header=BB2_6 Depth=1
 	ld.w	$a0, $s0, 360
-	addi.d	$s5, $s5, 1
-	bge	$s5, $a0, .LBB2_13
+	addi.d	$s4, $s4, 1
+	bge	$s4, $a0, .LBB2_13
 .LBB2_6:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB2_8 Depth 2
-	slli.d	$a0, $s5, 3
+	slli.d	$a0, $s4, 3
 	ldx.d	$a0, $s1, $a0
-	slli.d	$a1, $s5, 2
-	ldx.w	$a1, $s6, $a1
+	slli.d	$a1, $s4, 2
+	ldx.w	$a1, $s5, $a1
 	ld.h	$a2, $a0, 0
 	slli.d	$a3, $a1, 2
-	ldx.w	$a4, $s8, $a3
+	ldx.w	$a4, $s7, $a3
 	slli.d	$a0, $a1, 3
-	ldx.d	$a0, $s7, $a0
+	ldx.d	$a0, $s6, $a0
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	sra.w	$a1, $a2, $a1
 	sub.w	$s3, $a1, $a4
-	stx.w	$a1, $s8, $a3
+	stx.w	$a1, $s7, $a3
 	move	$s2, $zero
 	beq	$a1, $a4, .LBB2_9
 # %bb.7:                                # %.lr.ph.preheader
@@ -397,7 +396,7 @@ encode_mcu_DC_first:                    # @encode_mcu_DC_first
 	addi.w	$a2, $a1, 0
 	bstrpick.d	$a1, $a1, 31, 1
 	addi.w	$s2, $s2, 1
-	bltu	$s4, $a2, .LBB2_8
+	bltu	$s8, $a2, .LBB2_8
 .LBB2_9:                                # %._crit_edge
                                         #   in Loop: Header=BB2_6 Depth=1
 	ld.w	$a0, $a0, 20
@@ -876,8 +875,7 @@ encode_mcu_DC_refine:                   # @encode_mcu_DC_refine
 	jirl	$ra, $ra, 0
 .LBB4_3:
 	ld.w	$a0, $s0, 360
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_6
+	blez	$a0, .LBB4_6
 # %bb.4:                                # %.lr.ph.preheader
 	move	$s3, $zero
 	.p2align	4, , 16
@@ -1954,9 +1952,8 @@ finish_pass_gather_phuff:               # @finish_pass_gather_phuff
 	ld.w	$a0, $fp, 316
 	ld.w	$a1, $fp, 404
 	vrepli.b	$vr0, 0
-	ori	$a2, $zero, 1
 	vst	$vr0, $sp, 8
-	blt	$a0, $a2, .LBB6_9
+	blez	$a0, .LBB6_9
 # %bb.1:                                # %.lr.ph
 	sltui	$a2, $a1, 1
 	ori	$a3, $zero, 152
@@ -2183,8 +2180,7 @@ emit_restart:                           # @emit_restart
 	bnez	$a1, .LBB8_8
 .LBB8_12:                               # %.preheader
 	ld.w	$a1, $a0, 316
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_15
+	blez	$a1, .LBB8_15
 # %bb.13:                               # %.lr.ph
 	move	$a1, $zero
 	addi.d	$a2, $fp, 72
@@ -2452,8 +2448,7 @@ flush_bits:                             # @flush_bits
 	ret
 .LBB11_2:
 	ld.w	$a0, $fp, 56
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_1
+	blez	$a0, .LBB11_1
 # %bb.3:                                # %.lr.ph.i
 	ori	$a1, $zero, 17
 	ld.d	$a2, $fp, 48

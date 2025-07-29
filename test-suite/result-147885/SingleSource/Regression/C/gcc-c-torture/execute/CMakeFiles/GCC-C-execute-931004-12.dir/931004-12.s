@@ -14,9 +14,8 @@ f:                                      # @f
 	st.d	$a2, $sp, 32
 	st.d	$a1, $sp, 24
 	addi.d	$a1, $sp, 24
-	ori	$a2, $zero, 1
 	st.d	$a1, $sp, 8
-	blt	$a0, $a2, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a2, $zero
 	.p2align	4, , 16

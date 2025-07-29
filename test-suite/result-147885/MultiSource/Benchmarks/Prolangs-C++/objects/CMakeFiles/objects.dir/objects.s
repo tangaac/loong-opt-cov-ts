@@ -20,11 +20,10 @@ _ZN5Table6SearchER6Object:              # @_ZN5Table6SearchER6Object
 	.cfi_offset 25, -40
 	move	$s0, $a0
 	ld.w	$a0, $a0, 8
-	move	$s1, $a1
-	ori	$a1, $zero, 1
 	addi.w	$fp, $zero, -1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
+	move	$s1, $a1
 	move	$s2, $zero
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
@@ -97,7 +96,7 @@ _ZN5TableeqER6Object:                   # @_ZN5TableeqER6Object
 # %bb.1:                                # %.preheader
 	move	$a1, $a0
 	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB1_7
+	blez	$a1, .LBB1_7
 # %bb.2:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	.p2align	4, , 16
@@ -176,9 +175,8 @@ _ZN5ArrayC2Ei7TblType:                  # @_ZN5ArrayC2Ei7TblType
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 24
-	ori	$a1, $zero, 1
 	st.w	$s0, $s1, 32
-	blt	$s0, $a1, .LBB2_2
+	blez	$s0, .LBB2_2
 # %bb.1:                                # %.lr.ph.preheader
 	move	$a1, $zero
 	move	$a2, $fp
@@ -214,23 +212,21 @@ _ZN5ArrayD2Ev:                          # @_ZN5ArrayD2Ev
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.w	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV5Array+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV5Array+16)
-	ori	$s1, $zero, 1
+	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $s1, .LBB3_4
+	bne	$a0, $a2, .LBB3_4
 # %bb.1:
 	ld.w	$s0, $fp, 8
 	.p2align	4, , 16
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
-	blt	$s0, $s1, .LBB3_4
+	blez	$s0, .LBB3_4
 # %bb.3:                                #   in Loop: Header=BB3_2 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 72
@@ -253,7 +249,6 @@ _ZN5ArrayD2Ev:                          # @_ZN5ArrayD2Ev
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -1
 	st.d	$a0, $fp, 8
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -326,23 +321,21 @@ _ZN5ArrayD0Ev:                          # @_ZN5ArrayD0Ev
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.w	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV5Array+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV5Array+16)
-	ori	$s1, $zero, 1
+	ori	$a2, $zero, 1
 	st.d	$a1, $fp, 0
-	bne	$a0, $s1, .LBB5_4
+	bne	$a0, $a2, .LBB5_4
 # %bb.1:
 	ld.w	$s0, $fp, 8
 	.p2align	4, , 16
 .LBB5_2:                                # =>This Inner Loop Header: Depth=1
-	blt	$s0, $s1, .LBB5_4
+	blez	$s0, .LBB5_4
 # %bb.3:                                #   in Loop: Header=BB5_2 Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a2, $a0, 72
@@ -363,7 +356,6 @@ _ZN5ArrayD0Ev:                          # @_ZN5ArrayD0Ev
 .LBB5_6:                                # %_ZN5ArrayD2Ev.exit
 	ori	$a1, $zero, 40
 	move	$a0, $fp
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -756,12 +748,11 @@ _ZN7SpArray6SearchER6Object:            # @_ZN7SpArray6SearchER6Object
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	move	$s0, $a0
 	ld.w	$a2, $a0, 32
-	ori	$a0, $zero, 1
 	addi.w	$fp, $zero, -1
-	blt	$a2, $a0, .LBB14_7
+	blez	$a2, .LBB14_7
 # %bb.1:                                # %.lr.ph
+	move	$s0, $a0
 	move	$s1, $a1
 	move	$s3, $zero
 	move	$s2, $zero
@@ -830,13 +821,13 @@ _ZN7SpArrayD2Ev:                        # @_ZN7SpArrayD2Ev
 	move	$fp, $a0
 	ld.w	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV7SpArray+16)
-	addi.d	$a2, $a1, %pc_lo12(_ZTV7SpArray+16)
-	ori	$a1, $zero, 1
-	st.d	$a2, $fp, 0
-	bne	$a0, $a1, .LBB15_6
+	addi.d	$a1, $a1, %pc_lo12(_ZTV7SpArray+16)
+	ori	$a2, $zero, 1
+	st.d	$a1, $fp, 0
+	bne	$a0, $a2, .LBB15_6
 # %bb.1:
 	ld.w	$a0, $fp, 32
-	blt	$a0, $a1, .LBB15_6
+	blez	$a0, .LBB15_6
 # %bb.2:                                # %.lr.ph
 	addi.d	$s1, $a0, 1
 	slli.d	$a1, $a0, 3
@@ -949,13 +940,13 @@ _ZN7SpArrayD0Ev:                        # @_ZN7SpArrayD0Ev
 	move	$fp, $a0
 	ld.w	$a0, $a0, 16
 	pcalau12i	$a1, %pc_hi20(_ZTV7SpArray+16)
-	addi.d	$a2, $a1, %pc_lo12(_ZTV7SpArray+16)
-	ori	$a1, $zero, 1
-	st.d	$a2, $fp, 0
-	bne	$a0, $a1, .LBB16_6
+	addi.d	$a1, $a1, %pc_lo12(_ZTV7SpArray+16)
+	ori	$a2, $zero, 1
+	st.d	$a1, $fp, 0
+	bne	$a0, $a2, .LBB16_6
 # %bb.1:
 	ld.w	$a0, $fp, 32
-	blt	$a0, $a1, .LBB16_6
+	blez	$a0, .LBB16_6
 # %bb.2:                                # %.lr.ph.i
 	addi.d	$s1, $a0, 1
 	addi.w	$s0, $a0, -1

@@ -1740,8 +1740,7 @@ _ZN9NCompress5NLzma8CDecoder8CodeSpecEP19ISequentialInStreamP20ISequentialOutStr
 	ld.d	$s4, $fp, 128
 	ld.bu	$a1, $fp, 217
 	sub.d	$a0, $s8, $s4
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB24_7
+	beqz	$a1, .LBB24_7
 # %bb.6:                                #   in Loop: Header=BB24_3 Depth=1
 	ld.d	$a1, $fp, 224
 	ld.d	$a2, $fp, 240
@@ -2071,16 +2070,15 @@ _ZThn24_N9NCompress5NLzma8CDecoder15ReleaseInStreamEv: # @_ZThn24_N9NCompress5NL
 _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPvjPj
 	.cfi_startproc
 # %bb.0:
-	addi.d	$sp, $sp, -96
-	.cfi_def_cfa_offset 96
-	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -80
+	.cfi_def_cfa_offset 80
+	st.d	$ra, $sp, 72                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2088,7 +2086,6 @@ _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPv
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	move	$fp, $a3
 	move	$s2, $a2
 	move	$s0, $a1
@@ -2099,7 +2096,6 @@ _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPv
 .LBB30_2:
 	addi.d	$s3, $s1, 76
 	addi.d	$s4, $s1, 80
-	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB30_3:                               # =>This Inner Loop Header: Depth=1
 	ld.w	$a0, $s1, 72
@@ -2123,8 +2119,8 @@ _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPv
 	ld.bu	$a2, $s1, 217
 	sub.d	$a1, $a1, $a0
 	bstrpick.d	$a1, $a1, 31, 0
-	st.d	$a1, $sp, 24
-	bne	$a2, $s5, .LBB30_8
+	st.d	$a1, $sp, 16
+	beqz	$a2, .LBB30_8
 # %bb.7:                                #   in Loop: Header=BB30_3 Depth=1
 	ld.d	$a1, $s1, 224
 	ld.d	$a2, $s1, 240
@@ -2137,21 +2133,21 @@ _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPv
 .LBB30_8:                               #   in Loop: Header=BB30_3 Depth=1
 	ld.d	$a1, $s1, 64
 	bstrpick.d	$a2, $s2, 31, 0
-	st.d	$a2, $sp, 16
+	st.d	$a2, $sp, 8
 	bstrpick.d	$a0, $a0, 31, 0
 	add.d	$a3, $a1, $a0
-	addi.d	$a2, $sp, 16
-	addi.d	$a4, $sp, 24
-	addi.d	$a6, $sp, 12
+	addi.d	$a2, $sp, 8
+	addi.d	$a4, $sp, 16
+	addi.d	$a6, $sp, 4
 	move	$a0, $s4
 	move	$a1, $s0
 	move	$a5, $zero
 	pcaddu18i	$ra, %call36(LzmaDec_DecodeToBuf)
 	jirl	$ra, $ra, 0
-	ld.d	$a2, $sp, 24
+	ld.d	$a2, $sp, 16
 	ld.w	$a1, $s1, 72
 	add.d	$a3, $a1, $a2
-	ld.d	$a1, $sp, 16
+	ld.d	$a1, $sp, 8
 	vld	$vr0, $s1, 232
 	st.w	$a3, $s1, 72
 	vinsgr2vr.d	$vr1, $a2, 0
@@ -2204,15 +2200,14 @@ _ZN9NCompress5NLzma8CDecoder4ReadEPvjPj: # @_ZN9NCompress5NLzma8CDecoder4ReadEPv
 	lu12i.w	$a0, -524284
 	ori	$a0, $a0, 5
 .LBB30_20:                              # %.loopexit
-	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 96
+	ld.d	$s4, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 72                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 80
 	ret
 .Lfunc_end30:
 	.size	_ZN9NCompress5NLzma8CDecoder4ReadEPvjPj, .Lfunc_end30-_ZN9NCompress5NLzma8CDecoder4ReadEPvjPj

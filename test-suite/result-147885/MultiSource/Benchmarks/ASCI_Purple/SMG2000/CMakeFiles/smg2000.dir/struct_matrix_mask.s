@@ -19,13 +19,12 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.d	$s3, $a0, 24
-	ld.d	$s6, $s3, 0
+	ld.d	$s4, $s3, 0
 	ld.w	$s5, $s3, 8
 	move	$s2, $a2
 	move	$s0, $a1
 	ori	$a0, $zero, 1
 	ori	$a1, $zero, 136
-	ori	$s4, $zero, 1
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
@@ -41,12 +40,12 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 	jirl	$ra, $ra, 0
 	st.d	$a0, $s1, 16
 	ori	$a1, $zero, 12
-	ori	$s7, $zero, 12
+	ori	$s6, $zero, 12
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
 	move	$a2, $a0
-	blt	$s0, $s4, .LBB0_3
+	blez	$s0, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a2, 8
 	move	$a1, $s0
@@ -55,17 +54,17 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a4, $a3, 0
-	mul.d	$a4, $a4, $s7
-	ldx.w	$a4, $s6, $a4
+	mul.d	$a4, $a4, $s6
+	ldx.w	$a4, $s4, $a4
 	st.w	$a4, $a0, -8
 	ld.w	$a4, $a3, 0
-	mul.d	$a4, $a4, $s7
-	add.d	$a4, $s6, $a4
+	mul.d	$a4, $a4, $s6
+	add.d	$a4, $s4, $a4
 	ld.w	$a4, $a4, 4
 	st.w	$a4, $a0, -4
 	ld.w	$a4, $a3, 0
-	mul.d	$a4, $a4, $s7
-	add.d	$a4, $s6, $a4
+	mul.d	$a4, $a4, $s6
+	add.d	$a4, $s4, $a4
 	ld.w	$a4, $a4, 8
 	st.w	$a4, $a0, 0
 	addi.d	$a0, $a0, 12
@@ -98,7 +97,7 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $s6, 8
 	move	$s3, $a0
-	blt	$a1, $s4, .LBB0_11
+	blez	$a1, .LBB0_11
 # %bb.4:                                # %.lr.ph94
 	slli.w	$s4, $s0, 2
 	blez	$s0, .LBB0_9
@@ -154,50 +153,49 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 	slli.w	$a0, $s5, 2
 	pcaddu18i	$ra, %call36(hypre_MAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	st.d	$a0, $s1, 80
-	blt	$s5, $a1, .LBB0_19
+	blez	$s5, .LBB0_19
 # %bb.12:                               # %.lr.ph98
-	ld.d	$a2, $fp, 80
-	ori	$a4, $zero, 8
-	move	$a3, $zero
-	bltu	$s5, $a4, .LBB0_17
+	ld.d	$a1, $fp, 80
+	ori	$a3, $zero, 8
+	move	$a2, $zero
+	bltu	$s5, $a3, .LBB0_17
 # %bb.13:                               # %.lr.ph98
-	sub.d	$a4, $a0, $a2
-	ori	$a5, $zero, 32
-	bltu	$a4, $a5, .LBB0_17
+	sub.d	$a3, $a0, $a1
+	ori	$a4, $zero, 32
+	bltu	$a3, $a4, .LBB0_17
 # %bb.14:                               # %vector.ph
-	bstrpick.d	$a3, $s5, 30, 3
-	slli.d	$a3, $a3, 3
-	addi.d	$a4, $a0, 16
-	addi.d	$a5, $a2, 16
-	move	$a6, $a3
+	bstrpick.d	$a2, $s5, 30, 3
+	slli.d	$a2, $a2, 3
+	addi.d	$a3, $a0, 16
+	addi.d	$a4, $a1, 16
+	move	$a5, $a2
 	.p2align	4, , 16
 .LBB0_15:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vld	$vr0, $a5, -16
-	vld	$vr1, $a5, 0
-	vst	$vr0, $a4, -16
-	vst	$vr1, $a4, 0
-	addi.d	$a6, $a6, -8
+	vld	$vr0, $a4, -16
+	vld	$vr1, $a4, 0
+	vst	$vr0, $a3, -16
+	vst	$vr1, $a3, 0
+	addi.d	$a5, $a5, -8
+	addi.d	$a3, $a3, 32
 	addi.d	$a4, $a4, 32
-	addi.d	$a5, $a5, 32
-	bnez	$a6, .LBB0_15
+	bnez	$a5, .LBB0_15
 # %bb.16:                               # %middle.block
-	beq	$a3, $s5, .LBB0_19
+	beq	$a2, $s5, .LBB0_19
 .LBB0_17:                               # %scalar.ph.preheader
-	alsl.d	$a0, $a3, $a0, 2
-	alsl.d	$a2, $a3, $a2, 2
-	sub.d	$a3, $s5, $a3
+	alsl.d	$a0, $a2, $a0, 2
+	alsl.d	$a1, $a2, $a1, 2
+	sub.d	$a2, $s5, $a2
 	.p2align	4, , 16
 .LBB0_18:                               # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a2, 0
-	st.w	$a4, $a0, 0
+	ld.w	$a3, $a1, 0
+	st.w	$a3, $a0, 0
 	addi.d	$a0, $a0, 4
-	addi.d	$a3, $a3, -1
-	addi.d	$a2, $a2, 4
-	bnez	$a3, .LBB0_18
+	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, 4
+	bnez	$a2, .LBB0_18
 .LBB0_19:                               # %.preheader
 	ld.w	$a0, $fp, 88
 	st.w	$a0, $s1, 88
@@ -210,13 +208,14 @@ hypre_StructMatrixCreateMask:           # @hypre_StructMatrixCreateMask
 	ld.w	$a0, $fp, 104
 	st.w	$a0, $s1, 104
 	ld.w	$a0, $fp, 108
-	ld.d	$a2, $s1, 8
+	ld.d	$a1, $s1, 8
 	st.w	$a0, $s1, 108
-	ld.w	$a0, $a2, 52
+	ld.w	$a0, $a1, 52
 	mul.d	$a0, $a0, $s0
 	st.w	$a0, $s1, 112
 	st.d	$zero, $s1, 120
-	st.w	$a1, $s1, 128
+	ori	$a0, $zero, 1
+	st.w	$a0, $s1, 128
 	move	$a0, $s1
 	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload

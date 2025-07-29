@@ -256,8 +256,7 @@ W_isbol:                                # @W_isbol
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(_W_nextbol)
 	ld.w	$a1, $s1, %pc_lo12(_W_nextbol)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_4
+	blez	$a1, .LBB4_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
 	move	$s2, $zero
@@ -321,8 +320,7 @@ W_is_bol:                               # @W_is_bol
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s3, %pc_hi20(_W_nextbol)
 	ld.w	$a1, $s3, %pc_lo12(_W_nextbol)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB5_7
+	blez	$a1, .LBB5_7
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	move	$s4, $zero
@@ -386,8 +384,7 @@ W_islit:                                # @W_islit
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s1, %pc_hi20(_W_nextlit)
 	ld.w	$a1, $s1, %pc_lo12(_W_nextlit)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB6_4
+	blez	$a1, .LBB6_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
 	move	$s2, $zero
@@ -451,8 +448,7 @@ W_is_lit:                               # @W_is_lit
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s3, %pc_hi20(_W_nextlit)
 	ld.w	$a1, $s3, %pc_lo12(_W_nextlit)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_7
+	blez	$a1, .LBB7_7
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	move	$s4, $zero
@@ -517,8 +513,7 @@ W_iscom:                                # @W_iscom
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$s2, %pc_hi20(_W_nextcom)
 	ld.w	$a1, $s2, %pc_lo12(_W_nextcom)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB8_4
+	blez	$a1, .LBB8_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s0, $a0
 	move	$s3, $zero
@@ -586,8 +581,7 @@ W_is_com:                               # @W_is_com
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$s3, %pc_hi20(_W_nextcom)
 	ld.w	$a1, $s3, %pc_lo12(_W_nextcom)
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB9_8
+	blez	$a1, .LBB9_8
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	move	$s4, $zero

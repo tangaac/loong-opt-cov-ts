@@ -479,8 +479,7 @@ _ZN18btSliderConstraint13buildJacobianEv: # @_ZN18btSliderConstraint13buildJacob
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a1, $a0, 96
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB6_2
+	beqz	$a1, .LBB6_2
 # %bb.1:                                # %.sink.split
 	ld.bu	$a1, $a0, 228
 	ori	$a2, $zero, 32
@@ -1552,9 +1551,8 @@ _ZN18btSliderConstraint8getInfo1EPN17btTypedConstraint17btConstraintInfo1E: # @_
 	.cfi_offset 23, -24
 	move	$s0, $a0
 	ld.bu	$a0, $a0, 96
-	ori	$a2, $zero, 1
 	move	$fp, $a1
-	bne	$a0, $a2, .LBB11_2
+	beqz	$a0, .LBB11_2
 # %bb.1:
 	move	$a0, $zero
 	st.w	$zero, $fp, 0
@@ -2483,13 +2481,12 @@ _ZN18btSliderConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstraintI
 	fmadd.s	$fa0, $fa3, $ft3, $fa0
 	fmadd.s	$fa0, $fa1, $ft5, $fa0
 	fmul.s	$fa0, $fa0, $ft6
-	fstx.s	$fa0, $a3, $t3
 	ld.bu	$s5, $fp, 320
-	ori	$a5, $zero, 1
+	fstx.s	$fa0, $a3, $t3
 	fneg.s	$fs5, $fs4
 	fneg.s	$fs7, $fs2
 	fneg.s	$ft5, $fs3
-	bne	$s5, $a5, .LBB15_16
+	beqz	$s5, .LBB15_16
 # %bb.15:                               # %.thread
 	fld.s	$fa0, $fp, 1052
 	fmul.s	$fs0, $fs1, $fa0
@@ -2500,9 +2497,9 @@ _ZN18btSliderConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstraintI
 	sltui	$a4, $a4, 1
 	b	.LBB15_18
 .LBB15_16:
-	ld.bu	$a6, $fp, 1116
+	ld.bu	$a5, $fp, 1116
 	ori	$a4, $zero, 4
-	bne	$a6, $a5, .LBB15_36
+	beqz	$a5, .LBB15_36
 # %bb.17:
 	move	$a4, $zero
 	move	$s3, $zero
@@ -2687,8 +2684,7 @@ _ZN18btSliderConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstraintI
 	fst.s	$fa0, $a0, 0
 .LBB15_36:
 	ld.bu	$s4, $fp, 321
-	ori	$a0, $zero, 1
-	bne	$s4, $a0, .LBB15_38
+	beqz	$s4, .LBB15_38
 # %bb.37:                               # %.thread488
 	fld.s	$fs6, $fp, 1108
 	ld.bu	$a0, $fp, 1132
@@ -2698,8 +2694,8 @@ _ZN18btSliderConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstraintI
 	sltui	$a0, $a0, 1
 	b	.LBB15_40
 .LBB15_38:
-	ld.bu	$a1, $fp, 1132
-	bne	$a1, $a0, .LBB15_53
+	ld.bu	$a0, $fp, 1132
+	beqz	$a0, .LBB15_53
 # %bb.39:
 	move	$a0, $zero
 	move	$s1, $zero
@@ -2867,15 +2863,14 @@ _ZN18btSliderConstraint18getInfo2NonVirtualEPN17btTypedConstraint17btConstraintI
 	.type	_ZN18btSliderConstraint23solveConstraintObsoleteER12btSolverBodyS1_f,@function
 _ZN18btSliderConstraint23solveConstraintObsoleteER12btSolverBodyS1_f: # @_ZN18btSliderConstraint23solveConstraintObsoleteER12btSolverBodyS1_f
 # %bb.0:
-	ld.bu	$a6, $a0, 96
-	ori	$a3, $zero, 1
-	bne	$a6, $a3, .LBB16_3
+	ld.bu	$a3, $a0, 96
+	beqz	$a3, .LBB16_3
 # %bb.1:
 	move	$a4, $a2
 	move	$a5, $a1
 	ld.bu	$a1, $a0, 228
 	fst.s	$fa0, $a0, 840
-	bne	$a1, $a3, .LBB16_4
+	beqz	$a1, .LBB16_4
 # %bb.2:
 	ld.d	$a1, $a0, 24
 	ld.d	$a3, $a0, 32
@@ -3876,21 +3871,20 @@ _ZN18btSliderConstraint18solveConstraintIntER11btRigidBodyR12btSolverBodyS1_S3_:
 	fmul.s	$fa7, $ft0, $fa3
 	fmul.s	$ft0, $ft1, $fa3
 	fmul.s	$fa3, $ft2, $fa3
+	fld.s	$ft1, $a4, 16
 	fmul.s	$fa4, $fa4, $fa7
-	fld.s	$fa7, $a4, 16
 	fmul.s	$fa5, $fa5, $ft0
 	fmul.s	$fa3, $fa6, $fa3
+	fsub.s	$fa4, $ft1, $fa4
 	fld.s	$fa6, $a4, 20
-	fsub.s	$fa4, $fa7, $fa4
 	fst.s	$fa4, $a4, 16
 	fld.s	$fa4, $a4, 24
-	fsub.s	$fa5, $fa6, $fa5
 	ld.bu	$a5, $a0, 1132
+	fsub.s	$fa5, $fa6, $fa5
 	fst.s	$fa5, $a4, 20
 	fsub.s	$fa3, $fa4, $fa3
-	ori	$a6, $zero, 1
 	fst.s	$fa3, $a4, 24
-	bne	$a5, $a6, .LBB17_21
+	beqz	$a5, .LBB17_21
 # %bb.19:
 	fld.s	$fa3, $a0, 1144
 	fld.s	$ft1, $a0, 1140

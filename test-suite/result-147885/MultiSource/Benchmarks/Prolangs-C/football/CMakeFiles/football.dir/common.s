@@ -5,28 +5,27 @@
 	.type	matches_any_team,@function
 matches_any_team:                       # @matches_any_team
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_4
+	blez	$a0, .LBB0_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a0, $a0, 1
-	bstrpick.d	$a3, $a0, 31, 0
-	pcalau12i	$a0, %pc_hi20(common_teams+4)
-	addi.d	$a0, $a0, %pc_lo12(common_teams+4)
-	addi.d	$a3, $a3, -1
+	bstrpick.d	$a0, $a0, 31, 0
+	pcalau12i	$a2, %pc_hi20(common_teams+4)
+	addi.d	$a2, $a2, %pc_lo12(common_teams+4)
+	addi.d	$a3, $a0, -1
+	ori	$a0, $zero, 1
 	.p2align	4, , 16
 .LBB0_2:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$a4, $a0, 0
+	ld.w	$a4, $a2, 0
 	beq	$a4, $a1, .LBB0_5
 # %bb.3:                                #   in Loop: Header=BB0_2 Depth=1
-	addi.w	$a2, $a2, 1
+	addi.w	$a0, $a0, 1
 	addi.d	$a3, $a3, -1
-	addi.d	$a0, $a0, 4
+	addi.d	$a2, $a2, 4
 	bnez	$a3, .LBB0_2
 .LBB0_4:
-	move	$a2, $zero
+	move	$a0, $zero
 .LBB0_5:                                # %._crit_edge
-	move	$a0, $a2
 	ret
 .Lfunc_end0:
 	.size	matches_any_team, .Lfunc_end0-matches_any_team
@@ -44,101 +43,99 @@ matches_any_team:                       # @matches_any_team
 	.type	common,@function
 common:                                 # @common
 # %bb.0:                                # %.preheader95
-	addi.d	$sp, $sp, -176
-	st.d	$ra, $sp, 168                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 160                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 152                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 144                   # 8-byte Folded Spill
-	st.d	$s2, $sp, 136                   # 8-byte Folded Spill
-	st.d	$s3, $sp, 128                   # 8-byte Folded Spill
+	addi.d	$sp, $sp, -160
+	st.d	$ra, $sp, 152                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 144                   # 8-byte Folded Spill
+	st.d	$s0, $sp, 136                   # 8-byte Folded Spill
+	st.d	$s1, $sp, 128                   # 8-byte Folded Spill
+	st.d	$s2, $sp, 120                   # 8-byte Folded Spill
 	move	$fp, $a0
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 8
 	ori	$a2, $zero, 112
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(memset)
 	jirl	$ra, $ra, 0
 	vrepli.b	$vr0, 0
-	ori	$a3, $zero, 1
-	addi.d	$a2, $fp, 1
+	addi.d	$a1, $fp, 1
 	pcalau12i	$a0, %pc_hi20(common_teams)
 	addi.d	$a0, $a0, %pc_lo12(common_teams)
-	blt	$fp, $a3, .LBB1_4
+	blez	$fp, .LBB1_4
 # %bb.1:                                # %.preheader94.preheader
-	bstrpick.d	$t1, $a2, 31, 0
-	vld	$vr2, $sp, 16
-	vld	$vr1, $sp, 32
-	ld.w	$a5, $sp, 48
-	ld.w	$a1, $sp, 52
-	ld.d	$a6, $sp, 84
-	ld.w	$a4, $sp, 56
-	ld.w	$a7, $sp, 60
-	ld.w	$t0, $sp, 80
-	vinsgr2vr.d	$vr4, $a6, 0
-	vld	$vr5, $sp, 92
-	vld	$vr6, $sp, 108
-	pcalau12i	$a6, %pc_hi20(.LCPI1_0)
-	vld	$vr3, $a6, %pc_lo12(.LCPI1_0)
-	ld.w	$a6, $sp, 124
-	vinsgr2vr.w	$vr7, $a7, 0
+	bstrpick.d	$t0, $a1, 31, 0
+	vld	$vr2, $sp, 8
+	vld	$vr1, $sp, 24
+	ld.w	$a4, $sp, 40
+	ld.w	$a2, $sp, 44
+	ld.d	$a5, $sp, 76
+	ld.w	$a3, $sp, 48
+	ld.w	$a6, $sp, 52
+	ld.w	$a7, $sp, 72
+	vinsgr2vr.d	$vr4, $a5, 0
+	vld	$vr5, $sp, 84
+	vld	$vr6, $sp, 100
+	pcalau12i	$a5, %pc_hi20(.LCPI1_0)
+	vld	$vr3, $a5, %pc_lo12(.LCPI1_0)
+	ld.w	$a5, $sp, 116
+	vinsgr2vr.w	$vr7, $a6, 0
 	vinsgr2vr.w	$vr8, $zero, 0
 	vshuf.w	$vr3, $vr8, $vr7
-	vinsgr2vr.w	$vr7, $t0, 0
+	vinsgr2vr.w	$vr7, $a7, 0
 	vpackev.w	$vr7, $vr7, $vr8
 	vpackev.d	$vr4, $vr4, $vr7
-	pcalau12i	$a7, %got_pc_hi20(team_plays)
-	ld.d	$a7, $a7, %got_pc_lo12(team_plays)
-	addi.d	$t0, $a0, 4
-	addi.d	$t1, $t1, -1
-	ori	$t2, $zero, 116
+	pcalau12i	$a6, %got_pc_hi20(team_plays)
+	ld.d	$a6, $a6, %got_pc_lo12(team_plays)
+	addi.d	$a7, $a0, 4
+	addi.d	$t0, $t0, -1
+	ori	$t1, $zero, 116
 	.p2align	4, , 16
 .LBB1_2:                                # %.preheader94
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$t3, $t0, 0
-	mul.d	$t3, $t3, $t2
-	add.d	$t3, $a7, $t3
-	vld	$vr7, $t3, 4
-	vld	$vr8, $t3, 20
+	ld.w	$t2, $a7, 0
+	mul.d	$t2, $t2, $t1
+	add.d	$t2, $a6, $t2
+	vld	$vr7, $t2, 4
+	vld	$vr8, $t2, 20
 	vadd.w	$vr2, $vr2, $vr7
-	vld	$vr7, $t3, 48
-	vld	$vr9, $t3, 64
+	vld	$vr7, $t2, 48
+	vld	$vr9, $t2, 64
 	vadd.w	$vr1, $vr1, $vr8
-	ld.w	$t4, $t3, 36
+	ld.w	$t3, $t2, 36
 	vadd.w	$vr3, $vr3, $vr7
 	vadd.w	$vr4, $vr4, $vr9
-	vld	$vr7, $t3, 80
-	add.w	$a5, $a5, $t4
-	ld.w	$t4, $t3, 40
-	ld.w	$t5, $t3, 44
+	vld	$vr7, $t2, 80
+	add.w	$a4, $a4, $t3
+	ld.w	$t3, $t2, 40
+	ld.w	$t4, $t2, 44
 	vadd.w	$vr5, $vr5, $vr7
-	vld	$vr7, $t3, 96
-	ld.w	$t3, $t3, 112
-	add.w	$a1, $a1, $t4
-	add.w	$a4, $a4, $t5
+	vld	$vr7, $t2, 96
+	ld.w	$t2, $t2, 112
+	add.w	$a2, $a2, $t3
+	add.w	$a3, $a3, $t4
 	vadd.w	$vr6, $vr6, $vr7
-	add.d	$a6, $a6, $t3
-	addi.d	$t1, $t1, -1
-	addi.d	$t0, $t0, 4
-	bnez	$t1, .LBB1_2
+	add.d	$a5, $a5, $t2
+	addi.d	$t0, $t0, -1
+	addi.d	$a7, $a7, 4
+	bnez	$t0, .LBB1_2
 # %bb.3:                                # %.preheader93.loopexit
-	vst	$vr2, $sp, 16
-	vst	$vr1, $sp, 32
-	st.w	$a5, $sp, 48
-	st.w	$a1, $sp, 52
-	st.w	$a4, $sp, 56
-	vst	$vr3, $sp, 60
-	vstelm.w	$vr4, $sp, 80, 1
-	vstelm.w	$vr4, $sp, 84, 2
-	vstelm.w	$vr4, $sp, 88, 3
-	vst	$vr5, $sp, 92
-	vst	$vr6, $sp, 108
-	st.w	$a6, $sp, 124
-	vpickve2gr.w	$a6, $vr5, 0
+	vst	$vr2, $sp, 8
+	vst	$vr1, $sp, 24
+	st.w	$a4, $sp, 40
+	st.w	$a2, $sp, 44
+	st.w	$a3, $sp, 48
+	vst	$vr3, $sp, 52
+	vstelm.w	$vr4, $sp, 72, 1
+	vstelm.w	$vr4, $sp, 76, 2
+	vstelm.w	$vr4, $sp, 80, 3
+	vst	$vr5, $sp, 84
+	vst	$vr6, $sp, 100
+	st.w	$a5, $sp, 116
+	vpickve2gr.w	$a5, $vr5, 0
 	b	.LBB1_5
 .LBB1_4:
-	move	$a6, $zero
-	move	$a4, $zero
-	move	$a1, $zero
 	move	$a5, $zero
+	move	$a3, $zero
+	move	$a2, $zero
+	move	$a4, $zero
 	vori.b	$vr2, $vr0, 0
 	vori.b	$vr1, $vr0, 0
 	vori.b	$vr3, $vr0, 0
@@ -148,273 +145,272 @@ common:                                 # @common
 	vsle.w	$vr2, $vr5, $vr2
 	vrepli.w	$vr6, 1
 	vand.v	$vr2, $vr2, $vr6
-	vst	$vr2, $sp, 16
+	vst	$vr2, $sp, 8
 	vsle.w	$vr1, $vr5, $vr1
 	vand.v	$vr1, $vr1, $vr6
-	vst	$vr1, $sp, 32
-	slt	$a5, $a5, $fp
-	xori	$a5, $a5, 1
-	st.w	$a5, $sp, 48
-	slt	$a1, $a1, $fp
-	xori	$a1, $a1, 1
-	st.w	$a1, $sp, 52
-	slt	$a1, $a4, $fp
-	xori	$a1, $a1, 1
-	st.w	$a1, $sp, 56
+	vst	$vr1, $sp, 24
+	slt	$a4, $a4, $fp
+	xori	$a4, $a4, 1
+	st.w	$a4, $sp, 40
+	slt	$a2, $a2, $fp
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 44
+	slt	$a2, $a3, $fp
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 48
 	vsle.w	$vr1, $vr5, $vr3
 	vand.v	$vr1, $vr1, $vr6
-	vst	$vr1, $sp, 60
+	vst	$vr1, $sp, 52
 	vsle.w	$vr1, $vr5, $vr4
 	vand.v	$vr1, $vr1, $vr6
-	vst	$vr1, $sp, 76
-	slt	$a1, $a6, $fp
-	vld	$vr1, $sp, 96
-	xori	$a1, $a1, 1
-	st.w	$a1, $sp, 92
-	vld	$vr2, $sp, 112
+	vst	$vr1, $sp, 68
+	slt	$a2, $a5, $fp
+	vld	$vr1, $sp, 88
+	xori	$a2, $a2, 1
+	st.w	$a2, $sp, 84
+	vld	$vr2, $sp, 104
 	vsle.w	$vr1, $vr5, $vr1
 	vand.v	$vr1, $vr1, $vr6
-	vst	$vr1, $sp, 96
+	vst	$vr1, $sp, 88
 	vsle.w	$vr1, $vr5, $vr2
 	vand.v	$vr1, $vr1, $vr6
-	vst	$vr1, $sp, 112
-	pcalau12i	$a1, %pc_hi20(common_games)
-	addi.d	$a1, $a1, %pc_lo12(common_games)
-	vst	$vr0, $a1, 92
-	st.w	$zero, $a1, 108
-	vst	$vr0, $a1, 184
-	st.w	$zero, $a1, 200
-	st.w	$zero, $a1, 292
-	vst	$vr0, $a1, 276
-	st.w	$zero, $a1, 384
-	vst	$vr0, $a1, 368
-	st.w	$zero, $a1, 476
-	vst	$vr0, $a1, 460
-	st.w	$zero, $a1, 568
-	vst	$vr0, $a1, 552
-	st.w	$zero, $a1, 660
-	vst	$vr0, $a1, 644
-	st.w	$zero, $a1, 752
-	vst	$vr0, $a1, 736
-	st.w	$zero, $a1, 844
-	vst	$vr0, $a1, 828
-	st.w	$zero, $a1, 936
-	vst	$vr0, $a1, 920
-	st.w	$zero, $a1, 1028
-	vst	$vr0, $a1, 1012
-	st.w	$zero, $a1, 1120
-	vst	$vr0, $a1, 1104
-	st.w	$zero, $a1, 1212
-	vst	$vr0, $a1, 1196
-	st.w	$zero, $a1, 1304
-	vst	$vr0, $a1, 1288
-	st.w	$zero, $a1, 1396
-	vst	$vr0, $a1, 1380
-	st.w	$zero, $a1, 1488
-	vst	$vr0, $a1, 1472
-	st.w	$zero, $a1, 1580
-	vst	$vr0, $a1, 1564
-	st.w	$zero, $a1, 1672
-	vst	$vr0, $a1, 1656
-	st.w	$zero, $a1, 1764
-	vst	$vr0, $a1, 1748
-	st.w	$zero, $a1, 1856
-	vst	$vr0, $a1, 1840
-	st.w	$zero, $a1, 1948
-	vst	$vr0, $a1, 1932
-	st.w	$zero, $a1, 2040
-	vst	$vr0, $a1, 2024
-	ori	$a4, $zero, 2116
-	vstx	$vr0, $a1, $a4
-	stptr.w	$zero, $a1, 2132
-	ori	$a4, $zero, 2208
-	vstx	$vr0, $a1, $a4
-	stptr.w	$zero, $a1, 2224
-	ori	$a4, $zero, 2300
-	vstx	$vr0, $a1, $a4
-	stptr.w	$zero, $a1, 2316
-	ori	$a4, $zero, 2392
-	vstx	$vr0, $a1, $a4
-	pcalau12i	$a4, %got_pc_hi20(num_games)
-	ld.d	$a4, $a4, %got_pc_lo12(num_games)
-	stptr.w	$zero, $a1, 2408
-	ori	$a5, $zero, 2484
-	vstx	$vr0, $a1, $a5
-	ld.w	$a4, $a4, 0
-	stptr.w	$zero, $a1, 2500
-	ori	$a5, $zero, 2576
-	vstx	$vr0, $a1, $a5
-	stptr.w	$zero, $a1, 2592
-	blt	$a4, $a3, .LBB1_37
+	vst	$vr1, $sp, 104
+	pcalau12i	$a2, %pc_hi20(common_games)
+	addi.d	$a2, $a2, %pc_lo12(common_games)
+	vst	$vr0, $a2, 92
+	st.w	$zero, $a2, 108
+	vst	$vr0, $a2, 184
+	st.w	$zero, $a2, 200
+	st.w	$zero, $a2, 292
+	vst	$vr0, $a2, 276
+	st.w	$zero, $a2, 384
+	vst	$vr0, $a2, 368
+	st.w	$zero, $a2, 476
+	vst	$vr0, $a2, 460
+	st.w	$zero, $a2, 568
+	vst	$vr0, $a2, 552
+	st.w	$zero, $a2, 660
+	vst	$vr0, $a2, 644
+	st.w	$zero, $a2, 752
+	vst	$vr0, $a2, 736
+	st.w	$zero, $a2, 844
+	vst	$vr0, $a2, 828
+	st.w	$zero, $a2, 936
+	vst	$vr0, $a2, 920
+	st.w	$zero, $a2, 1028
+	vst	$vr0, $a2, 1012
+	st.w	$zero, $a2, 1120
+	vst	$vr0, $a2, 1104
+	st.w	$zero, $a2, 1212
+	vst	$vr0, $a2, 1196
+	st.w	$zero, $a2, 1304
+	vst	$vr0, $a2, 1288
+	st.w	$zero, $a2, 1396
+	vst	$vr0, $a2, 1380
+	st.w	$zero, $a2, 1488
+	vst	$vr0, $a2, 1472
+	st.w	$zero, $a2, 1580
+	vst	$vr0, $a2, 1564
+	st.w	$zero, $a2, 1672
+	vst	$vr0, $a2, 1656
+	st.w	$zero, $a2, 1764
+	vst	$vr0, $a2, 1748
+	st.w	$zero, $a2, 1856
+	vst	$vr0, $a2, 1840
+	st.w	$zero, $a2, 1948
+	vst	$vr0, $a2, 1932
+	st.w	$zero, $a2, 2040
+	vst	$vr0, $a2, 2024
+	ori	$a3, $zero, 2116
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2132
+	ori	$a3, $zero, 2208
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2224
+	ori	$a3, $zero, 2300
+	vstx	$vr0, $a2, $a3
+	stptr.w	$zero, $a2, 2316
+	ori	$a3, $zero, 2392
+	vstx	$vr0, $a2, $a3
+	pcalau12i	$a3, %got_pc_hi20(num_games)
+	ld.d	$a3, $a3, %got_pc_lo12(num_games)
+	stptr.w	$zero, $a2, 2408
+	ori	$a4, $zero, 2484
+	vstx	$vr0, $a2, $a4
+	ld.w	$a3, $a3, 0
+	stptr.w	$zero, $a2, 2500
+	ori	$a4, $zero, 2576
+	vstx	$vr0, $a2, $a4
+	stptr.w	$zero, $a2, 2592
+	blez	$a3, .LBB1_37
 # %bb.6:                                # %.preheader90.lr.ph
-	ori	$a3, $zero, 1
-	blt	$fp, $a3, .LBB1_37
+	blez	$fp, .LBB1_37
 # %bb.7:                                # %.preheader90.preheader
-	bstrpick.d	$a5, $a2, 31, 0
-	addi.d	$a2, $a4, 1
-	bstrpick.d	$a2, $a2, 31, 0
-	addi.d	$a4, $a5, -1
+	bstrpick.d	$a4, $a1, 31, 0
+	addi.d	$a1, $a3, 1
+	bstrpick.d	$a1, $a1, 31, 0
+	addi.d	$a3, $a4, -1
+	ori	$a4, $zero, 1
 	ori	$a5, $zero, 180
 	pcalau12i	$a6, %got_pc_hi20(sched)
 	ld.d	$a6, $a6, %got_pc_lo12(sched)
 	pcalau12i	$a7, %got_pc_hi20(scores)
 	ld.d	$a7, $a7, %got_pc_lo12(scores)
 	ori	$t0, $zero, 15
-	addi.d	$t1, $sp, 12
+	addi.d	$t1, $sp, 4
 	addi.d	$t2, $a0, 4
-	addi.w	$t3, $zero, -1
-	ori	$t4, $zero, 92
+	ori	$t3, $zero, 92
 	b	.LBB1_9
 	.p2align	4, , 16
 .LBB1_8:                                # %.split105
                                         #   in Loop: Header=BB1_9 Depth=1
-	addi.d	$a3, $a3, 1
-	beq	$a3, $a2, .LBB1_37
+	addi.d	$a4, $a4, 1
+	beq	$a4, $a1, .LBB1_37
 .LBB1_9:                                # %.preheader90
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_12 Depth 2
                                         #       Child Loop BB1_15 Depth 3
                                         #       Child Loop BB1_25 Depth 3
-	ori	$t5, $zero, 1
-	mul.d	$t7, $a3, $a5
-	add.d	$t6, $a6, $t7
-	add.d	$t7, $a7, $t7
+	mul.d	$t5, $a4, $a5
+	add.d	$t4, $a6, $t5
+	add.d	$t5, $a7, $t5
+	ori	$t6, $zero, 1
 	b	.LBB1_12
 .LBB1_10:                               #   in Loop: Header=BB1_12 Depth=2
-	mul.d	$t8, $t8, $t4
-	add.d	$t8, $a1, $t8
-	ld.w	$fp, $t8, 12
-	addi.d	$fp, $fp, 1
-	st.w	$fp, $t8, 12
+	mul.d	$t7, $t7, $t3
+	add.d	$t7, $a2, $t7
+	ld.w	$t8, $t7, 12
+	addi.d	$t8, $t8, 1
+	st.w	$t8, $t7, 12
 	.p2align	4, , 16
 .LBB1_11:                               # %matches_any_team.exit.thread.1
                                         #   in Loop: Header=BB1_12 Depth=2
-	addi.d	$t5, $t5, 1
-	beq	$t5, $t0, .LBB1_8
+	addi.d	$t6, $t6, 1
+	beq	$t6, $t0, .LBB1_8
 .LBB1_12:                               # %.preheader89
                                         #   Parent Loop BB1_9 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB1_15 Depth 3
                                         #       Child Loop BB1_25 Depth 3
-	slli.d	$t8, $t5, 3
-	alsl.d	$fp, $t5, $t8, 2
-	add.d	$s0, $t6, $fp
-	ld.w	$t8, $s0, 8
-	ld.w	$s0, $s0, 4
-	add.d	$fp, $t7, $fp
-	beqz	$t8, .LBB1_22
+	slli.d	$t7, $t6, 3
+	alsl.d	$t8, $t6, $t7, 2
+	add.d	$fp, $t4, $t8
+	ld.w	$t7, $fp, 8
+	ld.w	$fp, $fp, 4
+	add.d	$t8, $t5, $t8
+	beqz	$t7, .LBB1_22
 # %bb.13:                               #   in Loop: Header=BB1_12 Depth=2
-	slli.d	$s1, $t8, 2
-	ldx.w	$s1, $s1, $t1
-	beqz	$s1, .LBB1_22
+	slli.d	$s0, $t7, 2
+	ldx.w	$s0, $s0, $t1
+	beqz	$s0, .LBB1_22
 # %bb.14:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB1_12 Depth=2
-	addi.d	$s1, $a0, 4
-	move	$s2, $a4
+	addi.d	$s0, $a0, 4
+	move	$s1, $a3
 	.p2align	4, , 16
 .LBB1_15:                               # %.lr.ph.i
                                         #   Parent Loop BB1_9 Depth=1
                                         #     Parent Loop BB1_12 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$s3, $s1, 0
-	beq	$s3, $s0, .LBB1_17
+	ld.w	$s2, $s0, 0
+	beq	$s2, $fp, .LBB1_17
 # %bb.16:                               #   in Loop: Header=BB1_15 Depth=3
-	addi.d	$s2, $s2, -1
-	addi.d	$s1, $s1, 4
-	bnez	$s2, .LBB1_15
+	addi.d	$s1, $s1, -1
+	addi.d	$s0, $s0, 4
+	bnez	$s1, .LBB1_15
 	b	.LBB1_22
 .LBB1_17:                               # %matches_any_team.exit
                                         #   in Loop: Header=BB1_12 Depth=2
-	ld.w	$s1, $fp, 8
-	bltz	$s1, .LBB1_21
+	ld.w	$s0, $t8, 8
+	bltz	$s0, .LBB1_21
 # %bb.18:                               #   in Loop: Header=BB1_12 Depth=2
-	ld.w	$s2, $fp, 4
-	bltz	$s2, .LBB1_21
+	ld.w	$s1, $t8, 4
+	bltz	$s1, .LBB1_21
 # %bb.19:                               #   in Loop: Header=BB1_12 Depth=2
-	bgeu	$s1, $s2, .LBB1_31
+	bgeu	$s0, $s1, .LBB1_31
 # %bb.20:                               #   in Loop: Header=BB1_12 Depth=2
-	mul.d	$s1, $s0, $t4
-	ldx.w	$s2, $a1, $s1
-	addi.d	$s2, $s2, 1
-	stx.w	$s2, $a1, $s1
+	mul.d	$s0, $fp, $t3
+	ldx.w	$s1, $a2, $s0
+	addi.d	$s1, $s1, 1
+	stx.w	$s1, $a2, $s0
 	b	.LBB1_22
 .LBB1_21:                               #   in Loop: Header=BB1_12 Depth=2
-	mul.d	$s1, $s0, $t4
-	add.d	$s1, $a1, $s1
-	ld.w	$s2, $s1, 12
-	addi.d	$s2, $s2, 1
-	st.w	$s2, $s1, 12
+	mul.d	$s0, $fp, $t3
+	add.d	$s0, $a2, $s0
+	ld.w	$s1, $s0, 12
+	addi.d	$s1, $s1, 1
+	st.w	$s1, $s0, 12
 	.p2align	4, , 16
 .LBB1_22:                               # %matches_any_team.exit.thread
                                         #   in Loop: Header=BB1_12 Depth=2
-	beqz	$s0, .LBB1_11
+	beqz	$fp, .LBB1_11
 # %bb.23:                               #   in Loop: Header=BB1_12 Depth=2
-	slli.d	$s0, $s0, 2
-	ldx.w	$s0, $s0, $t1
-	beqz	$s0, .LBB1_11
+	slli.d	$fp, $fp, 2
+	ldx.w	$fp, $fp, $t1
+	beqz	$fp, .LBB1_11
 # %bb.24:                               # %.lr.ph.i.1.preheader
                                         #   in Loop: Header=BB1_12 Depth=2
-	move	$s0, $t2
-	move	$s1, $a4
+	move	$fp, $t2
+	move	$s0, $a3
 	.p2align	4, , 16
 .LBB1_25:                               # %.lr.ph.i.1
                                         #   Parent Loop BB1_9 Depth=1
                                         #     Parent Loop BB1_12 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.w	$s2, $s0, 0
-	beq	$s2, $t8, .LBB1_27
+	ld.w	$s1, $fp, 0
+	beq	$s1, $t7, .LBB1_27
 # %bb.26:                               #   in Loop: Header=BB1_25 Depth=3
-	addi.d	$s1, $s1, -1
-	addi.d	$s0, $s0, 4
-	bnez	$s1, .LBB1_25
+	addi.d	$s0, $s0, -1
+	addi.d	$fp, $fp, 4
+	bnez	$s0, .LBB1_25
 	b	.LBB1_11
 .LBB1_27:                               # %matches_any_team.exit.1
                                         #   in Loop: Header=BB1_12 Depth=2
-	ld.w	$s0, $fp, 8
-	bltz	$s0, .LBB1_10
+	ld.w	$fp, $t8, 8
+	bltz	$fp, .LBB1_10
 # %bb.28:                               #   in Loop: Header=BB1_12 Depth=2
-	ld.w	$fp, $fp, 4
-	bge	$t3, $fp, .LBB1_10
+	ld.w	$t8, $t8, 4
+	bltz	$t8, .LBB1_10
 # %bb.29:                               #   in Loop: Header=BB1_12 Depth=2
-	mul.d	$t8, $t8, $t4
-	bgeu	$fp, $s0, .LBB1_33
+	mul.d	$t7, $t7, $t3
+	bgeu	$t8, $fp, .LBB1_33
 # %bb.30:                               #   in Loop: Header=BB1_12 Depth=2
-	ldx.w	$fp, $a1, $t8
-	addi.d	$fp, $fp, 1
-	stx.w	$fp, $a1, $t8
+	ldx.w	$t8, $a2, $t7
+	addi.d	$t8, $t8, 1
+	stx.w	$t8, $a2, $t7
 	b	.LBB1_11
 .LBB1_31:                               #   in Loop: Header=BB1_12 Depth=2
-	mul.d	$s3, $s0, $t4
-	bgeu	$s2, $s1, .LBB1_35
+	mul.d	$s2, $fp, $t3
+	bgeu	$s1, $s0, .LBB1_35
 # %bb.32:                               #   in Loop: Header=BB1_12 Depth=2
-	add.d	$s1, $a1, $s3
-	ld.w	$s2, $s1, 4
-	addi.d	$s2, $s2, 1
-	st.w	$s2, $s1, 4
+	add.d	$s0, $a2, $s2
+	ld.w	$s1, $s0, 4
+	addi.d	$s1, $s1, 1
+	st.w	$s1, $s0, 4
 	b	.LBB1_22
 .LBB1_33:                               #   in Loop: Header=BB1_12 Depth=2
-	add.d	$t8, $a1, $t8
-	bgeu	$s0, $fp, .LBB1_36
+	add.d	$t7, $a2, $t7
+	bgeu	$fp, $t8, .LBB1_36
 # %bb.34:                               #   in Loop: Header=BB1_12 Depth=2
-	ld.w	$fp, $t8, 4
-	addi.d	$fp, $fp, 1
-	st.w	$fp, $t8, 4
+	ld.w	$t8, $t7, 4
+	addi.d	$t8, $t8, 1
+	st.w	$t8, $t7, 4
 	b	.LBB1_11
 .LBB1_35:                               #   in Loop: Header=BB1_12 Depth=2
-	add.d	$s1, $a1, $s3
-	ld.w	$s2, $s1, 8
-	addi.d	$s2, $s2, 1
-	st.w	$s2, $s1, 8
+	add.d	$s0, $a2, $s2
+	ld.w	$s1, $s0, 8
+	addi.d	$s1, $s1, 1
+	st.w	$s1, $s0, 8
 	b	.LBB1_22
 .LBB1_36:                               #   in Loop: Header=BB1_12 Depth=2
-	ld.w	$fp, $t8, 8
-	addi.d	$fp, $fp, 1
-	st.w	$fp, $t8, 8
+	ld.w	$t8, $t7, 8
+	addi.d	$t8, $t8, 1
+	st.w	$t8, $t7, 8
 	b	.LBB1_11
 .LBB1_37:                               # %.preheader.preheader
 	lu12i.w	$a0, -1
 	ori	$a0, $a0, 1520
-	ori	$a2, $zero, 2668
+	ori	$a1, $zero, 2668
 	ori	$a3, $zero, 2672
 	ori	$a4, $zero, 2676
 	ori	$a5, $zero, 2680
@@ -428,8 +424,8 @@ common:                                 # @common
 	beqz	$a0, .LBB1_41
 .LBB1_39:                               # %.preheader
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$t0, $a1, $a0
-	ldx.w	$t1, $t0, $a2
+	add.d	$t0, $a2, $a0
+	ldx.w	$t1, $t0, $a1
 	ldx.w	$t2, $t0, $a3
 	ldx.w	$t3, $t0, $a4
 	ldx.w	$t4, $t0, $a5
@@ -441,13 +437,12 @@ common:                                 # @common
 	stptr.w	$a7, $t0, 2668
 	b	.LBB1_38
 .LBB1_41:
-	ld.d	$s3, $sp, 128                   # 8-byte Folded Reload
-	ld.d	$s2, $sp, 136                   # 8-byte Folded Reload
-	ld.d	$s1, $sp, 144                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 152                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 160                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 168                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 176
+	ld.d	$s2, $sp, 120                   # 8-byte Folded Reload
+	ld.d	$s1, $sp, 128                   # 8-byte Folded Reload
+	ld.d	$s0, $sp, 136                   # 8-byte Folded Reload
+	ld.d	$fp, $sp, 144                   # 8-byte Folded Reload
+	ld.d	$ra, $sp, 152                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 160
 	ret
 .Lfunc_end1:
 	.size	common, .Lfunc_end1-common
@@ -457,8 +452,7 @@ common:                                 # @common
 	.type	head_to_head_sweap,@function
 head_to_head_sweap:                     # @head_to_head_sweap
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_11
+	blez	$a1, .LBB2_11
 # %bb.1:                                # %.preheader.us.preheader
 	move	$a3, $zero
 	move	$a2, $zero
@@ -549,8 +543,7 @@ head_to_head_sweap:                     # @head_to_head_sweap
 	.type	split_around,@function
 split_around:                           # @split_around
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a2, $a4, .LBB3_6
+	blez	$a2, .LBB3_6
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -128
 	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
@@ -749,10 +742,9 @@ break_common:                           # @break_common
 	blt	$a2, $a1, .LBB5_24
 # %bb.1:                                # %.preheader54
 	move	$s0, $a1
-	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB5_16
+	blez	$a1, .LBB5_16
 # %bb.2:                                # %.lr.ph.preheader
+	move	$fp, $a0
 	move	$a1, $zero
 	pcalau12i	$a0, %pc_hi20(common_teams)
 	ori	$a2, $zero, 8
@@ -1109,10 +1101,10 @@ break_net_points:                       # @break_net_points
 	ori	$a3, $zero, 28
 	blt	$a3, $a1, .LBB7_17
 # %bb.1:                                # %.preheader
+	blez	$a1, .LBB7_6
+# %bb.2:                                # %.lr.ph
 	move	$fp, $a2
 	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB7_6
-# %bb.2:                                # %.lr.ph
 	beq	$fp, $a2, .LBB7_7
 # %bb.3:                                # %.lr.ph
 	pcalau12i	$a2, %pc_hi20(.LCPI7_0)
@@ -1899,9 +1891,8 @@ display_split:                          # @display_split
 	st.d	$s4, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
-	ori	$a4, $zero, 1
 	move	$fp, $a0
-	blt	$a3, $a4, .LBB9_4
+	blez	$a3, .LBB9_4
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a1
 	bne	$a2, $a3, .LBB9_5

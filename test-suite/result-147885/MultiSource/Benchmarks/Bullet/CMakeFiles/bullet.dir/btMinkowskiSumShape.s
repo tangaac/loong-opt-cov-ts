@@ -244,8 +244,7 @@ _ZNK19btMinkowskiSumShape37localGetSupportingVertexWithoutMarginERK9btVector3: #
 _ZNK19btMinkowskiSumShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK19btMinkowskiSumShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 	.cfi_startproc
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB3_4
+	blez	$a3, .LBB3_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -48
 	.cfi_def_cfa_offset 48

@@ -706,8 +706,7 @@ _ZN13CObjectVectorIN12CMultiStream14CSubStreamInfoEE6DeleteEii: # @_ZN13CObjectV
 	maskeqz	$a0, $a0, $a1
 	masknez	$a1, $a2, $a1
 	or	$s1, $a0, $a1
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB10_7
+	blez	$s1, .LBB10_7
 # %bb.1:                                # %.lr.ph
 	move	$s3, $zero
 	slli.d	$s4, $s0, 3

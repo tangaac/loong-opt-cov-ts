@@ -125,7 +125,7 @@ audio_init_input:                       # @audio_init_input
 	ori	$a2, $zero, 1
 	pcaddu18i	$ra, %call36(fseek)
 	jirl	$ra, $ra, 0
-	bge	$s8, $a0, .LBB0_21
+	bltz	$a0, .LBB0_21
 # %bb.17:
 	slli.d	$a1, $s3, 24
 	bstrins.d	$a1, $s4, 23, 16

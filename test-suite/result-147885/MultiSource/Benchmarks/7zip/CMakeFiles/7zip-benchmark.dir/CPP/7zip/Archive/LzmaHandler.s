@@ -1366,8 +1366,7 @@ _ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NL
 	b	.LBB11_85
 .LBB11_5:
 	ld.bu	$a1, $a0, 64
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB11_85
+	beqz	$a1, .LBB11_85
 # %bb.6:
 	ld.d	$a1, $a0, 56
 .LBB11_7:                               # %.invoke
@@ -1612,7 +1611,7 @@ _ZN8NArchive5NLzma8CHandler11GetPropertyEjjP14tagPROPVARIANT: # @_ZN8NArchive5NL
 	ori	$a0, $zero, 6
 	b	.LBB11_83
 .LBB11_69:
-	bstrpick.d	$a0, $s2, 19, 0
+	slli.d	$a0, $s2, 44
 	beqz	$a0, .LBB11_88
 # %bb.70:
 	andi	$a0, $s1, 1023

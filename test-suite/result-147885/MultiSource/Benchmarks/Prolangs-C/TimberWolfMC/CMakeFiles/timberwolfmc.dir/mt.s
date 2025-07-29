@@ -783,7 +783,7 @@ MTDecodeP:                              # @MTDecodeP
 	sltui	$a4, $a4, 1
 	and	$a4, $a5, $a4
 	stptr.w	$zero, $a0, 3668
-	bne	$a4, $a6, .LBB13_7
+	beqz	$a4, .LBB13_7
 # %bb.3:
 	bne	$s6, $a6, .LBB13_7
 # %bb.4:
@@ -814,10 +814,10 @@ MTDecodeP:                              # @MTDecodeP
 	addi.d	$a5, $a5, %pc_lo12(.L.str)
 	b	.LBB13_21
 .LBB13_7:
-	addi.d	$a7, $s5, 1
-	sltui	$a7, $a7, 1
-	and	$a5, $a5, $a7
-	bne	$a5, $a6, .LBB13_12
+	addi.d	$a6, $s5, 1
+	sltui	$a6, $a6, 1
+	and	$a5, $a5, $a6
+	beqz	$a5, .LBB13_12
 # %bb.8:
 	addi.w	$a6, $zero, -1
 	bne	$s6, $a6, .LBB13_12
@@ -850,9 +850,8 @@ MTDecodeP:                              # @MTDecodeP
 .LBB13_12:
 	addi.d	$a6, $s6, 1
 	sltui	$a6, $a6, 1
-	and	$a6, $a4, $a6
-	ori	$a4, $zero, 1
-	bne	$a6, $a4, .LBB13_17
+	and	$a4, $a4, $a6
+	beqz	$a4, .LBB13_17
 # %bb.13:
 	bnez	$s4, .LBB13_17
 # %bb.14:
@@ -890,10 +889,10 @@ MTDecodeP:                              # @MTDecodeP
 	st.h	$a3, $a4, 8
 	b	.LBB13_23
 .LBB13_17:
-	addi.d	$a6, $s6, -1
-	sltui	$a6, $a6, 1
-	and	$a5, $a5, $a6
-	bne	$a5, $a4, .LBB13_35
+	addi.d	$a4, $s6, -1
+	sltui	$a4, $a4, 1
+	and	$a4, $a5, $a4
+	beqz	$a4, .LBB13_35
 # %bb.18:
 	bnez	$s4, .LBB13_35
 # %bb.19:
@@ -1061,9 +1060,9 @@ MTDecodeP:                              # @MTDecodeP
 	and	$a4, $a4, $a5
 	sltui	$a6, $s6, 1
 	and	$a4, $a4, $a6
-	ori	$a7, $zero, 1
-	bne	$a4, $a7, .LBB13_40
+	beqz	$a4, .LBB13_40
 # %bb.36:
+	ori	$a7, $zero, 1
 	bne	$s4, $a7, .LBB13_40
 # %bb.37:
 	move	$fp, $a1
@@ -1097,11 +1096,11 @@ MTDecodeP:                              # @MTDecodeP
 	st.w	$a2, $a4, 0
 	b	.LBB13_24
 .LBB13_40:
-	addi.d	$t0, $s3, 1
-	sltui	$t0, $t0, 1
-	and	$a5, $t0, $a5
+	addi.d	$a7, $s3, 1
+	sltui	$a7, $a7, 1
+	and	$a5, $a7, $a5
 	and	$a5, $a5, $a6
-	bne	$a5, $a7, .LBB13_45
+	beqz	$a5, .LBB13_45
 # %bb.41:
 	addi.w	$a6, $zero, -1
 	bne	$s4, $a6, .LBB13_45
@@ -1141,9 +1140,8 @@ MTDecodeP:                              # @MTDecodeP
 .LBB13_45:
 	addi.d	$a6, $s4, -1
 	sltui	$a6, $a6, 1
-	and	$a6, $a5, $a6
-	ori	$a5, $zero, 1
-	bne	$a6, $a5, .LBB13_50
+	and	$a5, $a5, $a6
+	beqz	$a5, .LBB13_50
 # %bb.46:
 	move	$s7, $a1
 	move	$s1, $a0
@@ -1173,10 +1171,10 @@ MTDecodeP:                              # @MTDecodeP
 	move	$a1, $fp
 	b	.LBB13_24
 .LBB13_50:
-	addi.d	$a6, $s4, 1
-	sltui	$a6, $a6, 1
-	and	$a4, $a4, $a6
-	bne	$a4, $a5, .LBB13_56
+	addi.d	$a5, $s4, 1
+	sltui	$a5, $a5, 1
+	and	$a4, $a4, $a5
+	beqz	$a4, .LBB13_56
 # %bb.51:
 	move	$s7, $a1
 	move	$s1, $a0

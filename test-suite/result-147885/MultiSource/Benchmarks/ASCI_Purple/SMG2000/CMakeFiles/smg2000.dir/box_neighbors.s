@@ -120,19 +120,18 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	ld.d	$t4, $a0, 0
 	ld.w	$a0, $t4, 8
 	ld.w	$s0, $fp, 24
-	ori	$a3, $zero, 1
 	st.d	$a2, $sp, 40                    # 8-byte Folded Spill
-	blt	$a0, $a3, .LBB3_21
+	blez	$a0, .LBB3_21
 # %bb.1:                                # %.preheader138.lr.ph
 	move	$s7, $a1
 	ld.w	$t7, $fp, 28
 	ld.w	$a1, $fp, 32
 	add.w	$s3, $a1, $t7
-	blt	$s3, $a3, .LBB3_22
+	blez	$s3, .LBB3_22
 # %bb.2:                                # %.preheader138.us.preheader
 	move	$a1, $zero
 	st.d	$zero, $sp, 8                   # 8-byte Folded Spill
-	move	$s2, $zero
+	move	$s6, $zero
 	ld.d	$t2, $fp, 8
 	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
 	ld.d	$t3, $fp, 16
@@ -146,7 +145,7 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	b	.LBB3_5
 	.p2align	4, , 16
 .LBB3_3:                                #   in Loop: Header=BB3_5 Depth=1
-	addi.w	$s2, $s2, 1
+	addi.w	$s6, $s6, 1
 	addi.w	$a0, $a1, 0
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 .LBB3_4:                                #   in Loop: Header=BB3_5 Depth=1
@@ -159,7 +158,7 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	move	$s5, $zero
 	move	$s4, $zero
 	move	$a0, $zero
-	move	$s6, $a1
+	move	$s2, $a1
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	b	.LBB3_8
 	.p2align	4, , 16
@@ -176,8 +175,8 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 # %bb.9:                                #   in Loop: Header=BB3_8 Depth=2
 	ld.d	$a1, $t4, 0
 	add.d	$a3, $a1, $fp
-	slli.d	$a2, $s6, 4
-	alsl.d	$a2, $s6, $a2, 3
+	slli.d	$a2, $s2, 4
+	alsl.d	$a2, $s2, $a2, 3
 	ldx.w	$a5, $a1, $a2
 	ld.w	$a6, $a3, 12
 	add.d	$a4, $a1, $a2
@@ -286,14 +285,14 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	alsl.d	$a2, $a4, $a2, 3
 	add.d	$a1, $a1, $a2
 	ldx.d	$a2, $a1, $s5
-	st.w	$s2, $a0, 0
+	st.w	$s6, $a0, 0
 	st.d	$a2, $a0, 8
 	stx.d	$a0, $a1, $s5
 	b	.LBB3_6
 	.p2align	4, , 16
 .LBB3_12:                               # %._crit_edge.us
                                         #   in Loop: Header=BB3_5 Depth=1
-	addi.d	$a1, $s6, 1
+	addi.d	$a1, $s2, 1
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a2, .LBB3_16
 # %bb.13:                               #   in Loop: Header=BB3_5 Depth=1
@@ -301,19 +300,19 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	ld.d	$t3, $sp, 24                    # 8-byte Folded Reload
 	beqz	$a0, .LBB3_4
 # %bb.14:                               #   in Loop: Header=BB3_5 Depth=1
-	slli.d	$a0, $s6, 2
+	slli.d	$a0, $s2, 2
 	ldx.w	$a2, $t2, $a0
 	sub.d	$a2, $zero, $a2
 	stx.w	$a2, $t2, $a0
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	bge	$a0, $s6, .LBB3_3
+	bge	$a0, $s2, .LBB3_3
 # %bb.15:                               #   in Loop: Header=BB3_5 Depth=1
 	slli.d	$a0, $a0, 2
-	stx.w	$s6, $t2, $a0
+	stx.w	$s2, $t2, $a0
 	b	.LBB3_3
 	.p2align	4, , 16
 .LBB3_16:                               #   in Loop: Header=BB3_5 Depth=1
-	addi.w	$s2, $s2, 1
+	addi.w	$s6, $s6, 1
 	ld.d	$t2, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$t3, $sp, 24                    # 8-byte Folded Reload
 	b	.LBB3_4
@@ -321,17 +320,16 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB3_23
 # %bb.18:                               # %._crit_edge146
-	ori	$a0, $zero, 1
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
-	blt	$s2, $a0, .LBB3_24
+	blez	$s6, .LBB3_24
 # %bb.19:                               # %.lr.ph
 	ld.d	$a0, $t4, 0
 	move	$a1, $zero
 	move	$a7, $zero
 	addi.d	$a2, $a0, 20
 	ori	$a3, $zero, 24
-	move	$a4, $s2
+	move	$a4, $s6
 	move	$a5, $t2
 	move	$a6, $t3
 	.p2align	4, , 16
@@ -370,19 +368,19 @@ hypre_BoxNeighborsAssemble:             # @hypre_BoxNeighborsAssemble
 	bnez	$a4, .LBB3_20
 	b	.LBB3_24
 .LBB3_21:
-	move	$s2, $zero
+	move	$s6, $zero
 	b	.LBB3_24
 .LBB3_22:                               # %.preheader138.lr.ph.split
 	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
 	sltui	$a1, $a1, 1
-	maskeqz	$s2, $a0, $a1
+	maskeqz	$s6, $a0, $a1
 	b	.LBB3_24
 .LBB3_23:
 	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 0                     # 8-byte Folded Reload
 .LBB3_24:                               # %.loopexit
 	move	$a0, $t4
-	move	$a1, $s2
+	move	$a1, $s6
 	pcaddu18i	$ra, %call36(hypre_BoxArraySetSize)
 	jirl	$ra, $ra, 0
 	st.w	$s0, $fp, 24
@@ -422,8 +420,7 @@ hypre_BoxNeighborsDestroy:              # @hypre_BoxNeighborsDestroy
 	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 28
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB4_32
+	blez	$a0, .LBB4_32
 # %bb.2:                                # %.preheader34.lr.ph
 	move	$s0, $zero
 	addi.w	$s1, $zero, -1

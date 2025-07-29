@@ -50,13 +50,13 @@ TreeCCResolvePathname:                  # @TreeCCResolvePathname
 	move	$s0, $a0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB1_6
+	addi.w	$a1, $a0, 0
+	blez	$a1, .LBB1_6
 # %bb.2:                                # %.lr.ph.preheader
 	bstrpick.d	$a4, $a0, 30, 0
 	ori	$a0, $zero, 47
-	ori	$a2, $zero, 92
+	ori	$a1, $zero, 92
+	ori	$a2, $zero, 1
 	.p2align	4, , 16
 .LBB1_3:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -66,10 +66,10 @@ TreeCCResolvePathname:                  # @TreeCCResolvePathname
 	beq	$a4, $a0, .LBB1_9
 # %bb.4:                                # %.lr.ph
                                         #   in Loop: Header=BB1_3 Depth=1
-	beq	$a4, $a2, .LBB1_9
+	beq	$a4, $a1, .LBB1_9
 # %bb.5:                                #   in Loop: Header=BB1_3 Depth=1
 	addi.d	$a4, $a3, -1
-	blt	$a1, $a3, .LBB1_3
+	blt	$a2, $a3, .LBB1_3
 .LBB1_6:                                # %._crit_edge
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(strlen)
@@ -139,11 +139,10 @@ TreeCCStreamCreate:                     # @TreeCCStreamCreate
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	addi.w	$a4, $zero, -1
 	move	$s1, $a2
 	move	$s2, $a1
 	move	$fp, $a0
-	bge	$a4, $a3, .LBB2_9
+	bltz	$a3, .LBB2_9
 # %bb.1:
 	move	$s0, $a3
 	ldptr.d	$a0, $fp, 8192
@@ -810,9 +809,8 @@ TreeCCStreamPrint:                      # @TreeCCStreamPrint
 	move	$s1, $a0
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
-	ori	$a2, $zero, 1
 	st.b	$a1, $fp, 52
-	blt	$a0, $a2, .LBB8_11
+	blez	$a0, .LBB8_11
 # %bb.1:                                # %.lr.ph.i
 	ld.w	$a0, $fp, 48
 	ori	$s4, $zero, 2048
@@ -924,9 +922,8 @@ TreeCCStreamCode:                       # @TreeCCStreamCode
 	move	$s1, $a0
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
-	ori	$a2, $zero, 1
 	st.b	$a1, $fp, 52
-	blt	$a0, $a2, .LBB9_11
+	blez	$a0, .LBB9_11
 # %bb.1:                                # %.lr.ph.i
 	ld.w	$a0, $fp, 48
 	ori	$s5, $zero, 2048
@@ -1039,7 +1036,7 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	move	$s0, $a2
 	move	$s1, $a0
 	ori	$a3, $zero, 2047
-	ori	$s8, $zero, 2048
+	ori	$s7, $zero, 2048
 	b	.LBB10_3
 	.p2align	4, , 16
 .LBB10_2:                               # %.loopexit
@@ -1051,13 +1048,13 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
                                         #     Child Loop BB10_9 Depth 2
                                         #     Child Loop BB10_20 Depth 2
                                         #       Child Loop BB10_26 Depth 3
-	ld.w	$s7, $s1, 48
-	blt	$a3, $s7, .LBB10_5
+	ld.w	$s8, $s1, 48
+	blt	$a3, $s8, .LBB10_5
 # %bb.4:                                #   in Loop: Header=BB10_3 Depth=1
 	ld.d	$a0, $s1, 40
-	addi.d	$a2, $s7, 1
+	addi.d	$a2, $s8, 1
 	st.w	$a2, $s1, 48
-	stx.b	$a1, $a0, $s7
+	stx.b	$a1, $a0, $s8
 	ld.b	$a0, $s1, 52
 	ori	$a0, $a0, 16
 	st.b	$a0, $s1, 52
@@ -1077,8 +1074,7 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $s1, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_16
+	blez	$a0, .LBB10_16
 # %bb.6:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB10_3 Depth=1
 	addi.d	$s3, $sp, 4
@@ -1086,14 +1082,14 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	.p2align	4, , 16
 .LBB10_7:                               #   in Loop: Header=BB10_9 Depth=2
 	ld.d	$s4, $s1, 40
-	sub.w	$a0, $s8, $s7
+	sub.w	$a0, $s7, $s8
 .LBB10_8:                               #   in Loop: Header=BB10_9 Depth=2
 	addi.w	$a1, $s2, 0
 	sltu	$a2, $a0, $a1
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$s5, $a0, $a1
-	add.d	$a0, $s4, $s7
+	add.d	$a0, $s4, $s8
 	move	$a1, $s3
 	move	$a2, $s5
 	pcaddu18i	$ra, %call36(memcpy)
@@ -1101,13 +1097,13 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	ld.w	$a0, $s1, 48
 	add.d	$s3, $s3, $s5
 	sub.w	$s2, $s2, $s5
-	add.w	$s7, $a0, $s5
-	st.w	$s7, $s1, 48
+	add.w	$s8, $a0, $s5
+	st.w	$s8, $s1, 48
 	blez	$s2, .LBB10_16
 .LBB10_9:                               # %.lr.ph.i.i
                                         #   Parent Loop BB10_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$s7, $s8, .LBB10_7
+	blt	$s8, $s7, .LBB10_7
 # %bb.10:                               #   in Loop: Header=BB10_9 Depth=2
 	ori	$a0, $zero, 2056
 	pcaddu18i	$ra, %call36(malloc)
@@ -1131,7 +1127,7 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 .LBB10_14:                              #   in Loop: Header=BB10_9 Depth=2
 	st.d	$s4, $s1, 32
 .LBB10_15:                              #   in Loop: Header=BB10_9 Depth=2
-	move	$s7, $zero
+	move	$s8, $zero
 	st.d	$s4, $s1, 40
 	st.w	$zero, $s1, 48
 	ori	$a0, $zero, 2048
@@ -1147,18 +1143,17 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	ld.d	$a0, $s1, 24
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s1, 24
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB10_2
+	blez	$s0, .LBB10_2
 # %bb.18:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB10_3 Depth=1
-	move	$s7, $zero
+	move	$s8, $zero
 	b	.LBB10_20
 	.p2align	4, , 16
 .LBB10_19:                              # %_StreamPut.exit31
                                         #   in Loop: Header=BB10_20 Depth=2
 	ori	$a3, $zero, 2047
-	addi.w	$s7, $s7, 1
-	beq	$s7, $s0, .LBB10_2
+	addi.w	$s8, $s8, 1
+	beq	$s8, $s0, .LBB10_2
 .LBB10_20:                              # %.lr.ph
                                         #   Parent Loop BB10_3 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -1174,8 +1169,8 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	ld.b	$a0, $s1, 52
 	ori	$a0, $a0, 16
 	st.b	$a0, $s1, 52
-	addi.w	$s7, $s7, 1
-	bne	$s7, $s0, .LBB10_20
+	addi.w	$s8, $s8, 1
+	bne	$s8, $s0, .LBB10_20
 	b	.LBB10_2
 	.p2align	4, , 16
 .LBB10_22:                              #   in Loop: Header=BB10_20 Depth=2
@@ -1189,8 +1184,7 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $s1, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB10_19
+	blez	$a0, .LBB10_19
 # %bb.23:                               # %.lr.ph.i.i22.preheader
                                         #   in Loop: Header=BB10_20 Depth=2
 	addi.d	$s3, $sp, 6
@@ -1198,7 +1192,7 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
 	.p2align	4, , 16
 .LBB10_24:                              #   in Loop: Header=BB10_26 Depth=3
 	ld.d	$s4, $s1, 40
-	sub.w	$a0, $s8, $s6
+	sub.w	$a0, $s7, $s6
 .LBB10_25:                              #   in Loop: Header=BB10_26 Depth=3
 	addi.w	$a1, $s2, 0
 	sltu	$a2, $a0, $a1
@@ -1220,7 +1214,7 @@ TreeCCStreamCodeIndent:                 # @TreeCCStreamCodeIndent
                                         #   Parent Loop BB10_3 Depth=1
                                         #     Parent Loop BB10_20 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	blt	$s6, $s8, .LBB10_24
+	blt	$s6, $s7, .LBB10_24
 # %bb.27:                               #   in Loop: Header=BB10_26 Depth=3
 	ori	$a0, $zero, 2056
 	pcaddu18i	$ra, %call36(malloc)
@@ -1331,8 +1325,7 @@ TreeCCStreamCodeIndentCustom:           # @TreeCCStreamCodeIndentCustom
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $s2, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_16
+	blez	$a0, .LBB11_16
 # %bb.6:                                # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB11_3 Depth=1
 	addi.d	$s4, $sp, 20
@@ -1402,8 +1395,7 @@ TreeCCStreamCodeIndentCustom:           # @TreeCCStreamCodeIndentCustom
 	ld.d	$a0, $s2, 24
 	addi.d	$a0, $a0, 1
 	st.d	$a0, $s2, 24
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB11_2
+	blez	$s0, .LBB11_2
 # %bb.18:                               # %.lr.ph.preheader
                                         #   in Loop: Header=BB11_3 Depth=1
 	move	$s7, $zero
@@ -1443,8 +1435,7 @@ TreeCCStreamCodeIndentCustom:           # @TreeCCStreamCodeIndentCustom
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $s2, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB11_19
+	blez	$a0, .LBB11_19
 # %bb.23:                               # %.lr.ph.i.i24.preheader
                                         #   in Loop: Header=BB11_20 Depth=2
 	addi.d	$s4, $sp, 22
@@ -1551,26 +1542,26 @@ TreeCCStreamFixLine:                    # @TreeCCStreamFixLine
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	addi.w	$a0, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB12_9
+	blez	$a0, .LBB12_9
 # %bb.4:                                # %.lr.ph.preheader.i
-	addi.d	$a3, $fp, -1
+	addi.d	$a2, $fp, -1
 	bstrpick.d	$a6, $a1, 30, 0
-	ori	$a4, $zero, 47
-	ori	$a5, $zero, 92
+	ori	$a3, $zero, 47
+	ori	$a4, $zero, 92
+	ori	$a5, $zero, 1
 	move	$a0, $s1
 	.p2align	4, , 16
 .LBB12_5:                               # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a6
-	ldx.bu	$a6, $a3, $a6
-	beq	$a6, $a4, .LBB12_10
+	ldx.bu	$a6, $a2, $a6
+	beq	$a6, $a3, .LBB12_10
 # %bb.6:                                # %.lr.ph.i
                                         #   in Loop: Header=BB12_5 Depth=1
-	beq	$a6, $a5, .LBB12_10
+	beq	$a6, $a4, .LBB12_10
 # %bb.7:                                #   in Loop: Header=BB12_5 Depth=1
 	addi.d	$a6, $a1, -1
-	blt	$a2, $a1, .LBB12_5
+	blt	$a5, $a1, .LBB12_5
 # %bb.8:
 	move	$a1, $zero
 	b	.LBB12_10
@@ -1624,26 +1615,26 @@ TreeCCStreamLine:                       # @TreeCCStreamLine
 	jirl	$ra, $ra, 0
 	move	$a1, $a0
 	addi.w	$a0, $a0, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB13_9
+	blez	$a0, .LBB13_9
 # %bb.4:                                # %.lr.ph.preheader
-	addi.d	$a3, $fp, -1
+	addi.d	$a2, $fp, -1
 	bstrpick.d	$a6, $a1, 30, 0
-	ori	$a4, $zero, 47
-	ori	$a5, $zero, 92
+	ori	$a3, $zero, 47
+	ori	$a4, $zero, 92
+	ori	$a5, $zero, 1
 	move	$a0, $s1
 	.p2align	4, , 16
 .LBB13_5:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	move	$a1, $a6
-	ldx.bu	$a6, $a3, $a6
-	beq	$a6, $a4, .LBB13_10
+	ldx.bu	$a6, $a2, $a6
+	beq	$a6, $a3, .LBB13_10
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB13_5 Depth=1
-	beq	$a6, $a5, .LBB13_10
+	beq	$a6, $a4, .LBB13_10
 # %bb.7:                                #   in Loop: Header=BB13_5 Depth=1
 	addi.d	$a6, $a1, -1
-	blt	$a2, $a1, .LBB13_5
+	blt	$a5, $a1, .LBB13_5
 # %bb.8:
 	move	$a1, $zero
 	b	.LBB13_10
@@ -1801,15 +1792,15 @@ OutputMacroName:                        # @OutputMacroName
 # %bb.1:                                # %.lr.ph
 	ori	$s5, $zero, 10
 	ori	$s6, $zero, 2047
-	ori	$s8, $zero, 2048
+	ori	$s7, $zero, 2048
 	b	.LBB16_5
 	.p2align	4, , 16
 .LBB16_2:                               #   in Loop: Header=BB16_5 Depth=1
 	ld.d	$a0, $fp, 40
-	addi.d	$a2, $s7, 1
+	addi.d	$a2, $s8, 1
 	st.w	$a2, $fp, 48
 .LBB16_3:                               #   in Loop: Header=BB16_5 Depth=1
-	stx.b	$a1, $a0, $s7
+	stx.b	$a1, $a0, $s8
 	ld.b	$a0, $fp, 52
 	ori	$a0, $a0, 16
 	st.b	$a0, $fp, 52
@@ -1820,7 +1811,7 @@ OutputMacroName:                        # @OutputMacroName
 .LBB16_5:                               # =>This Loop Header: Depth=1
                                         #     Child Loop BB16_25 Depth 2
                                         #     Child Loop BB16_14 Depth 2
-	ld.w	$s7, $fp, 48
+	ld.w	$s8, $fp, 48
 	addi.d	$a0, $a1, -48
 	bltu	$a0, $s5, .LBB16_9
 # %bb.6:                                #   in Loop: Header=BB16_5 Depth=1
@@ -1829,16 +1820,16 @@ OutputMacroName:                        # @OutputMacroName
 	ori	$a2, $zero, 25
 	bgeu	$a2, $a0, .LBB16_9
 # %bb.7:                                #   in Loop: Header=BB16_5 Depth=1
-	blt	$s6, $s7, .LBB16_21
+	blt	$s6, $s8, .LBB16_21
 # %bb.8:                                #   in Loop: Header=BB16_5 Depth=1
 	ld.d	$a0, $fp, 40
-	addi.d	$a1, $s7, 1
+	addi.d	$a1, $s8, 1
 	st.w	$a1, $fp, 48
 	ori	$a1, $zero, 95
 	b	.LBB16_3
 	.p2align	4, , 16
 .LBB16_9:                               #   in Loop: Header=BB16_5 Depth=1
-	bge	$s6, $s7, .LBB16_2
+	bge	$s6, $s8, .LBB16_2
 # %bb.10:                               #   in Loop: Header=BB16_5 Depth=1
 	st.b	$a1, $sp, 2
 	st.b	$zero, $sp, 3
@@ -1850,8 +1841,7 @@ OutputMacroName:                        # @OutputMacroName
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $fp, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB16_4
+	blez	$a0, .LBB16_4
 # %bb.11:                               # %.lr.ph.i.i.preheader
                                         #   in Loop: Header=BB16_5 Depth=1
 	addi.d	$s2, $sp, 2
@@ -1859,14 +1849,14 @@ OutputMacroName:                        # @OutputMacroName
 	.p2align	4, , 16
 .LBB16_12:                              #   in Loop: Header=BB16_14 Depth=2
 	ld.d	$s3, $fp, 40
-	sub.w	$a0, $s8, $s7
+	sub.w	$a0, $s7, $s8
 .LBB16_13:                              #   in Loop: Header=BB16_14 Depth=2
 	addi.w	$a1, $s1, 0
 	sltu	$a2, $a0, $a1
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$s4, $a0, $a1
-	add.d	$a0, $s3, $s7
+	add.d	$a0, $s3, $s8
 	move	$a1, $s2
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
@@ -1874,13 +1864,13 @@ OutputMacroName:                        # @OutputMacroName
 	ld.w	$a0, $fp, 48
 	add.d	$s2, $s2, $s4
 	sub.w	$s1, $s1, $s4
-	add.w	$s7, $a0, $s4
-	st.w	$s7, $fp, 48
+	add.w	$s8, $a0, $s4
+	st.w	$s8, $fp, 48
 	blez	$s1, .LBB16_4
 .LBB16_14:                              # %.lr.ph.i.i
                                         #   Parent Loop BB16_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$s7, $s8, .LBB16_12
+	blt	$s8, $s7, .LBB16_12
 # %bb.15:                               #   in Loop: Header=BB16_14 Depth=2
 	ori	$a0, $zero, 2056
 	pcaddu18i	$ra, %call36(malloc)
@@ -1904,7 +1894,7 @@ OutputMacroName:                        # @OutputMacroName
 .LBB16_19:                              #   in Loop: Header=BB16_14 Depth=2
 	st.d	$s3, $fp, 32
 .LBB16_20:                              #   in Loop: Header=BB16_14 Depth=2
-	move	$s7, $zero
+	move	$s8, $zero
 	st.d	$s3, $fp, 40
 	st.w	$zero, $fp, 48
 	ori	$a0, $zero, 2048
@@ -1921,8 +1911,7 @@ OutputMacroName:                        # @OutputMacroName
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $fp, 52
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB16_4
+	blez	$a0, .LBB16_4
 # %bb.22:                               # %.lr.ph.i.i34.preheader
                                         #   in Loop: Header=BB16_5 Depth=1
 	addi.d	$s2, $sp, 4
@@ -1930,14 +1919,14 @@ OutputMacroName:                        # @OutputMacroName
 	.p2align	4, , 16
 .LBB16_23:                              #   in Loop: Header=BB16_25 Depth=2
 	ld.d	$s3, $fp, 40
-	sub.w	$a0, $s8, $s7
+	sub.w	$a0, $s7, $s8
 .LBB16_24:                              #   in Loop: Header=BB16_25 Depth=2
 	addi.w	$a1, $s1, 0
 	sltu	$a2, $a0, $a1
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$s4, $a0, $a1
-	add.d	$a0, $s3, $s7
+	add.d	$a0, $s3, $s8
 	move	$a1, $s2
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
@@ -1945,13 +1934,13 @@ OutputMacroName:                        # @OutputMacroName
 	ld.w	$a0, $fp, 48
 	add.d	$s2, $s2, $s4
 	sub.w	$s1, $s1, $s4
-	add.w	$s7, $a0, $s4
-	st.w	$s7, $fp, 48
+	add.w	$s8, $a0, $s4
+	st.w	$s8, $fp, 48
 	blez	$s1, .LBB16_4
 .LBB16_25:                              # %.lr.ph.i.i34
                                         #   Parent Loop BB16_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$s7, $s8, .LBB16_23
+	blt	$s8, $s7, .LBB16_23
 # %bb.26:                               #   in Loop: Header=BB16_25 Depth=2
 	ori	$a0, $zero, 2056
 	pcaddu18i	$ra, %call36(malloc)
@@ -1975,7 +1964,7 @@ OutputMacroName:                        # @OutputMacroName
 .LBB16_30:                              #   in Loop: Header=BB16_25 Depth=2
 	st.d	$s3, $fp, 32
 .LBB16_31:                              #   in Loop: Header=BB16_25 Depth=2
-	move	$s7, $zero
+	move	$s8, $zero
 	st.d	$s3, $fp, 40
 	st.w	$zero, $fp, 48
 	ori	$a0, $zero, 2048
@@ -2005,9 +1994,8 @@ OutputMacroName:                        # @OutputMacroName
 	move	$s1, $a0
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
-	ori	$a2, $zero, 1
 	st.b	$a1, $fp, 52
-	blt	$a0, $a2, .LBB16_45
+	blez	$a0, .LBB16_45
 # %bb.35:                               # %.lr.ph.i.i44
 	ori	$s4, $zero, 2048
 	b	.LBB16_38
@@ -2099,72 +2087,84 @@ OutputDefns:                            # @OutputDefns
 	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
 	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$s5, $a0, 56
-	beqz	$s5, .LBB17_48
+	beqz	$s5, .LBB17_46
 # %bb.1:                                # %.lr.ph
 	move	$fp, $a0
 	move	$s0, $a1
-	move	$s6, $zero
+	move	$s8, $zero
 	lu12i.w	$a0, 2
-	ori	$s7, $a0, 48
-	ori	$s3, $zero, 1
-	ori	$s8, $zero, 2048
-	st.d	$s7, $sp, 8                     # 8-byte Folded Spill
-	b	.LBB17_4
-.LBB17_2:                               #   in Loop: Header=BB17_4 Depth=1
-	ori	$s3, $zero, 1
+	ori	$s6, $a0, 48
+	ori	$s7, $zero, 2048
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
+	b	.LBB17_5
+.LBB17_2:                               #   in Loop: Header=BB17_5 Depth=1
+	ld.d	$a0, $fp, 40
+	addi.d	$a1, $s6, 1
+	st.w	$a1, $fp, 48
+	ori	$a1, $zero, 10
+	stx.b	$a1, $a0, $s6
+	ld.b	$a0, $fp, 52
+	ori	$a0, $a0, 16
+	st.b	$a0, $fp, 52
+.LBB17_3:                               #   in Loop: Header=BB17_5 Depth=1
+	ld.d	$a0, $fp, 24
+	addi.d	$a0, $a0, 1
+	st.d	$a0, $fp, 24
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	.p2align	4, , 16
-.LBB17_3:                               #   in Loop: Header=BB17_4 Depth=1
+.LBB17_4:                               #   in Loop: Header=BB17_5 Depth=1
 	ld.d	$s5, $s5, 32
-	beqz	$s5, .LBB17_46
-.LBB17_4:                               # =>This Loop Header: Depth=1
-                                        #     Child Loop BB17_9 Depth 2
-                                        #     Child Loop BB17_19 Depth 2
-                                        #     Child Loop BB17_28 Depth 2
+	beqz	$s5, .LBB17_44
+.LBB17_5:                               # =>This Loop Header: Depth=1
+                                        #     Child Loop BB17_10 Depth 2
+                                        #     Child Loop BB17_20 Depth 2
+                                        #     Child Loop BB17_29 Depth 2
                                         #     Child Loop BB17_37 Depth 2
 	ld.w	$a0, $s5, 24
-	bne	$a0, $s0, .LBB17_3
-# %bb.5:                                #   in Loop: Header=BB17_4 Depth=1
+	bne	$a0, $s0, .LBB17_4
+# %bb.6:                                #   in Loop: Header=BB17_5 Depth=1
 	ld.d	$a0, $fp, 0
-	ldx.hu	$a0, $a0, $s7
+	ldx.hu	$a0, $a0, $s6
 	andi	$a1, $a0, 512
-	beqz	$a1, .LBB17_15
-# %bb.6:                                #   in Loop: Header=BB17_4 Depth=1
+	beqz	$a1, .LBB17_16
+# %bb.7:                                #   in Loop: Header=BB17_5 Depth=1
 	ld.d	$s1, $s5, 16
 	ld.d	$s2, $s5, 8
 	andi	$a0, $a0, 256
-	beqz	$a0, .LBB17_14
-# %bb.7:                                #   in Loop: Header=BB17_4 Depth=1
+	beqz	$a0, .LBB17_15
+# %bb.8:                                #   in Loop: Header=BB17_5 Depth=1
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $a0, 0
-	blt	$a1, $s3, .LBB17_13
-# %bb.8:                                # %.lr.ph.preheader.i
-                                        #   in Loop: Header=BB17_4 Depth=1
+	blez	$a1, .LBB17_14
+# %bb.9:                                # %.lr.ph.preheader.i
+                                        #   in Loop: Header=BB17_5 Depth=1
 	addi.d	$a1, $s2, -1
 	bstrpick.d	$a2, $a0, 30, 0
 	.p2align	4, , 16
-.LBB17_9:                               # %.lr.ph.i
-                                        #   Parent Loop BB17_4 Depth=1
+.LBB17_10:                              # %.lr.ph.i
+                                        #   Parent Loop BB17_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	move	$a0, $a2
 	ldx.bu	$a2, $a1, $a2
 	ori	$a3, $zero, 47
-	beq	$a2, $a3, .LBB17_13
-# %bb.10:                               # %.lr.ph.i
-                                        #   in Loop: Header=BB17_9 Depth=2
+	beq	$a2, $a3, .LBB17_14
+# %bb.11:                               # %.lr.ph.i
+                                        #   in Loop: Header=BB17_10 Depth=2
 	ori	$a3, $zero, 92
-	beq	$a2, $a3, .LBB17_13
-# %bb.11:                               #   in Loop: Header=BB17_9 Depth=2
+	beq	$a2, $a3, .LBB17_14
+# %bb.12:                               #   in Loop: Header=BB17_10 Depth=2
 	addi.d	$a2, $a0, -1
-	blt	$s3, $a0, .LBB17_9
-# %bb.12:                               #   in Loop: Header=BB17_4 Depth=1
+	ori	$a3, $zero, 1
+	blt	$a3, $a0, .LBB17_10
+# %bb.13:                               #   in Loop: Header=BB17_5 Depth=1
 	move	$a0, $zero
-.LBB17_13:                              # %.critedge.i
-                                        #   in Loop: Header=BB17_4 Depth=1
+.LBB17_14:                              # %.critedge.i
+                                        #   in Loop: Header=BB17_5 Depth=1
 	addi.w	$a0, $a0, 0
 	add.d	$s2, $s2, $a0
-.LBB17_14:                              #   in Loop: Header=BB17_4 Depth=1
+.LBB17_15:                              #   in Loop: Header=BB17_5 Depth=1
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.8)
 	move	$a0, $fp
@@ -2172,8 +2172,8 @@ OutputDefns:                            # @OutputDefns
 	move	$a3, $s2
 	pcaddu18i	$ra, %call36(TreeCCStreamPrint)
 	jirl	$ra, $ra, 0
-.LBB17_15:                              # %TreeCCStreamLine.exit
-                                        #   in Loop: Header=BB17_4 Depth=1
+.LBB17_16:                              # %TreeCCStreamLine.exit
+                                        #   in Loop: Header=BB17_5 Depth=1
 	ld.d	$s1, $s5, 0
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
@@ -2183,16 +2183,16 @@ OutputDefns:                            # @OutputDefns
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $fp, 52
-	blt	$a0, $s3, .LBB17_26
-# %bb.16:                               # %.lr.ph.i27
-                                        #   in Loop: Header=BB17_4 Depth=1
+	blez	$a0, .LBB17_27
+# %bb.17:                               # %.lr.ph.i27
+                                        #   in Loop: Header=BB17_5 Depth=1
 	ld.w	$a0, $fp, 48
-	b	.LBB17_19
+	b	.LBB17_20
 	.p2align	4, , 16
-.LBB17_17:                              #   in Loop: Header=BB17_19 Depth=2
+.LBB17_18:                              #   in Loop: Header=BB17_20 Depth=2
 	ld.d	$s3, $fp, 40
-	sub.w	$a1, $s8, $a0
-.LBB17_18:                              #   in Loop: Header=BB17_19 Depth=2
+	sub.w	$a1, $s7, $a0
+.LBB17_19:                              #   in Loop: Header=BB17_20 Depth=2
 	addi.w	$a2, $s2, 0
 	sltu	$a3, $a1, $a2
 	masknez	$a2, $a2, $a3
@@ -2208,53 +2208,53 @@ OutputDefns:                            # @OutputDefns
 	sub.w	$s2, $s2, $s4
 	add.w	$a0, $a0, $s4
 	st.w	$a0, $fp, 48
-	blez	$s2, .LBB17_26
-.LBB17_19:                              #   Parent Loop BB17_4 Depth=1
+	blez	$s2, .LBB17_27
+.LBB17_20:                              #   Parent Loop BB17_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$a0, $s8, .LBB17_17
-# %bb.20:                               #   in Loop: Header=BB17_19 Depth=2
+	blt	$a0, $s7, .LBB17_18
+# %bb.21:                               #   in Loop: Header=BB17_20 Depth=2
 	ori	$a0, $zero, 2056
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s3, $a0
-	beqz	$a0, .LBB17_23
-# %bb.21:                               #   in Loop: Header=BB17_19 Depth=2
+	beqz	$a0, .LBB17_24
+# %bb.22:                               #   in Loop: Header=BB17_20 Depth=2
 	ld.d	$a0, $fp, 40
 	stptr.d	$zero, $s3, 2048
-	beqz	$a0, .LBB17_24
-.LBB17_22:                              #   in Loop: Header=BB17_19 Depth=2
+	beqz	$a0, .LBB17_25
+.LBB17_23:                              #   in Loop: Header=BB17_20 Depth=2
 	stptr.d	$s3, $a0, 2048
-	b	.LBB17_25
-.LBB17_23:                              #   in Loop: Header=BB17_19 Depth=2
+	b	.LBB17_26
+.LBB17_24:                              #   in Loop: Header=BB17_20 Depth=2
 	move	$a0, $zero
 	pcaddu18i	$ra, %call36(TreeCCOutOfMemory)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 40
 	stptr.d	$zero, $s3, 2048
-	bnez	$a0, .LBB17_22
-.LBB17_24:                              #   in Loop: Header=BB17_19 Depth=2
+	bnez	$a0, .LBB17_23
+.LBB17_25:                              #   in Loop: Header=BB17_20 Depth=2
 	st.d	$s3, $fp, 32
-.LBB17_25:                              #   in Loop: Header=BB17_19 Depth=2
+.LBB17_26:                              #   in Loop: Header=BB17_20 Depth=2
 	move	$a0, $zero
 	st.d	$s3, $fp, 40
 	st.w	$zero, $fp, 48
 	ori	$a1, $zero, 2048
-	b	.LBB17_18
+	b	.LBB17_19
 	.p2align	4, , 16
-.LBB17_26:                              # %WriteBuffer.exit
-                                        #   in Loop: Header=BB17_4 Depth=1
+.LBB17_27:                              # %WriteBuffer.exit
+                                        #   in Loop: Header=BB17_5 Depth=1
 	ld.d	$s1, $s5, 0
 	ori	$a1, $zero, 10
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strchr)
 	jirl	$ra, $ra, 0
-	beqz	$a0, .LBB17_29
-# %bb.27:                               # %.lr.ph.i29
-                                        #   in Loop: Header=BB17_4 Depth=1
+	beqz	$a0, .LBB17_30
+# %bb.28:                               # %.lr.ph.i29
+                                        #   in Loop: Header=BB17_5 Depth=1
 	ld.d	$a1, $fp, 24
 	addi.d	$s2, $a1, 1
 	.p2align	4, , 16
-.LBB17_28:                              #   Parent Loop BB17_4 Depth=1
+.LBB17_29:                              #   Parent Loop BB17_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	addi.d	$a0, $a0, 1
 	st.d	$s2, $fp, 24
@@ -2262,36 +2262,25 @@ OutputDefns:                            # @OutputDefns
 	pcaddu18i	$ra, %call36(strchr)
 	jirl	$ra, $ra, 0
 	addi.d	$s2, $s2, 1
-	bnez	$a0, .LBB17_28
-.LBB17_29:                              # %UpdateLineNum.exit
-                                        #   in Loop: Header=BB17_4 Depth=1
+	bnez	$a0, .LBB17_29
+.LBB17_30:                              # %UpdateLineNum.exit
+                                        #   in Loop: Header=BB17_5 Depth=1
 	ld.bu	$a0, $s1, 0
-	ori	$s6, $zero, 1
-	beqz	$a0, .LBB17_2
-# %bb.30:                               #   in Loop: Header=BB17_4 Depth=1
+	ori	$s8, $zero, 1
+	beqz	$a0, .LBB17_4
+# %bb.31:                               #   in Loop: Header=BB17_5 Depth=1
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
 	add.d	$a0, $s1, $a0
 	ld.bu	$a0, $a0, -1
-	ori	$s3, $zero, 1
 	ori	$a1, $zero, 10
-	beq	$a0, $a1, .LBB17_3
-# %bb.31:                               #   in Loop: Header=BB17_4 Depth=1
-	ld.w	$s7, $fp, 48
+	beq	$a0, $a1, .LBB17_4
+# %bb.32:                               #   in Loop: Header=BB17_5 Depth=1
+	ld.w	$s6, $fp, 48
 	ori	$a0, $zero, 2047
-	blt	$a0, $s7, .LBB17_33
-# %bb.32:                               #   in Loop: Header=BB17_4 Depth=1
-	ld.d	$a0, $fp, 40
-	addi.d	$a1, $s7, 1
-	st.w	$a1, $fp, 48
-	ori	$a1, $zero, 10
-	stx.b	$a1, $a0, $s7
-	ld.b	$a0, $fp, 52
-	ori	$a0, $a0, 16
-	st.b	$a0, $fp, 52
-	b	.LBB17_45
-.LBB17_33:                              #   in Loop: Header=BB17_4 Depth=1
+	bge	$a0, $s6, .LBB17_2
+# %bb.33:                               #   in Loop: Header=BB17_5 Depth=1
 	ori	$a0, $zero, 10
 	st.h	$a0, $sp, 22
 	addi.d	$a0, $sp, 22
@@ -2302,22 +2291,22 @@ OutputDefns:                            # @OutputDefns
 	addi.w	$a0, $a0, 0
 	ori	$a1, $a1, 16
 	st.b	$a1, $fp, 52
-	blt	$a0, $s3, .LBB17_44
+	blez	$a0, .LBB17_3
 # %bb.34:                               # %.lr.ph.i.i.preheader
-                                        #   in Loop: Header=BB17_4 Depth=1
+                                        #   in Loop: Header=BB17_5 Depth=1
 	addi.d	$s2, $sp, 22
 	b	.LBB17_37
 	.p2align	4, , 16
 .LBB17_35:                              #   in Loop: Header=BB17_37 Depth=2
 	ld.d	$s3, $fp, 40
-	sub.w	$a0, $s8, $s7
+	sub.w	$a0, $s7, $s6
 .LBB17_36:                              #   in Loop: Header=BB17_37 Depth=2
 	addi.w	$a1, $s1, 0
 	sltu	$a2, $a0, $a1
 	masknez	$a1, $a1, $a2
 	maskeqz	$a0, $a0, $a2
 	or	$s4, $a0, $a1
-	add.d	$a0, $s3, $s7
+	add.d	$a0, $s3, $s6
 	move	$a1, $s2
 	move	$a2, $s4
 	pcaddu18i	$ra, %call36(memcpy)
@@ -2325,13 +2314,13 @@ OutputDefns:                            # @OutputDefns
 	ld.w	$a0, $fp, 48
 	add.d	$s2, $s2, $s4
 	sub.w	$s1, $s1, $s4
-	add.w	$s7, $a0, $s4
-	st.w	$s7, $fp, 48
-	blez	$s1, .LBB17_44
+	add.w	$s6, $a0, $s4
+	st.w	$s6, $fp, 48
+	blez	$s1, .LBB17_3
 .LBB17_37:                              # %.lr.ph.i.i
-                                        #   Parent Loop BB17_4 Depth=1
+                                        #   Parent Loop BB17_5 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$s7, $s8, .LBB17_35
+	blt	$s6, $s7, .LBB17_35
 # %bb.38:                               #   in Loop: Header=BB17_37 Depth=2
 	ori	$a0, $zero, 2056
 	pcaddu18i	$ra, %call36(malloc)
@@ -2355,28 +2344,19 @@ OutputDefns:                            # @OutputDefns
 .LBB17_42:                              #   in Loop: Header=BB17_37 Depth=2
 	st.d	$s3, $fp, 32
 .LBB17_43:                              #   in Loop: Header=BB17_37 Depth=2
-	move	$s7, $zero
+	move	$s6, $zero
 	st.d	$s3, $fp, 40
 	st.w	$zero, $fp, 48
 	ori	$a0, $zero, 2048
 	b	.LBB17_36
-.LBB17_44:                              # %_StreamPut.exit
-                                        #   in Loop: Header=BB17_4 Depth=1
-	ori	$s3, $zero, 1
-.LBB17_45:                              #   in Loop: Header=BB17_4 Depth=1
-	ld.d	$a0, $fp, 24
-	addi.d	$a0, $a0, 1
-	st.d	$a0, $fp, 24
-	ld.d	$s7, $sp, 8                     # 8-byte Folded Reload
-	b	.LBB17_3
-.LBB17_46:                              # %._crit_edge
-	beqz	$s6, .LBB17_48
-# %bb.47:
+.LBB17_44:                              # %._crit_edge
+	beqz	$s8, .LBB17_46
+# %bb.45:
 	ld.d	$a0, $fp, 0
-	ldx.hu	$a0, $a0, $s7
+	ldx.hu	$a0, $a0, $s6
 	andi	$a1, $a0, 512
-	bnez	$a1, .LBB17_49
-.LBB17_48:                              # %TreeCCStreamFixLine.exit
+	bnez	$a1, .LBB17_47
+.LBB17_46:                              # %TreeCCStreamFixLine.exit
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
@@ -2390,42 +2370,42 @@ OutputDefns:                            # @OutputDefns
 	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
 	addi.d	$sp, $sp, 112
 	ret
-.LBB17_49:
+.LBB17_47:
 	ld.d	$a1, $fp, 24
 	ld.d	$s0, $fp, 16
 	andi	$a0, $a0, 256
 	addi.d	$s1, $a1, 1
-	beqz	$a0, .LBB17_57
-# %bb.50:
+	beqz	$a0, .LBB17_55
+# %bb.48:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	addi.w	$a2, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a2, $a1, .LBB17_56
-# %bb.51:                               # %.lr.ph.preheader.i.i
-	addi.d	$a2, $s0, -1
+	addi.w	$a1, $a0, 0
+	blez	$a1, .LBB17_54
+# %bb.49:                               # %.lr.ph.preheader.i.i
+	addi.d	$a1, $s0, -1
 	bstrpick.d	$a5, $a0, 30, 0
-	ori	$a3, $zero, 47
-	ori	$a4, $zero, 92
+	ori	$a2, $zero, 47
+	ori	$a3, $zero, 92
+	ori	$a4, $zero, 1
 	.p2align	4, , 16
-.LBB17_52:                              # %.lr.ph.i.i32
+.LBB17_50:                              # %.lr.ph.i.i32
                                         # =>This Inner Loop Header: Depth=1
 	move	$a0, $a5
-	ldx.bu	$a5, $a2, $a5
-	beq	$a5, $a3, .LBB17_56
-# %bb.53:                               # %.lr.ph.i.i32
-                                        #   in Loop: Header=BB17_52 Depth=1
-	beq	$a5, $a4, .LBB17_56
-# %bb.54:                               #   in Loop: Header=BB17_52 Depth=1
+	ldx.bu	$a5, $a1, $a5
+	beq	$a5, $a2, .LBB17_54
+# %bb.51:                               # %.lr.ph.i.i32
+                                        #   in Loop: Header=BB17_50 Depth=1
+	beq	$a5, $a3, .LBB17_54
+# %bb.52:                               #   in Loop: Header=BB17_50 Depth=1
 	addi.d	$a5, $a0, -1
-	blt	$a1, $a0, .LBB17_52
-# %bb.55:
+	blt	$a4, $a0, .LBB17_50
+# %bb.53:
 	move	$a0, $zero
-.LBB17_56:                              # %.critedge.i.i
+.LBB17_54:                              # %.critedge.i.i
 	addi.w	$a0, $a0, 0
 	add.d	$s0, $s0, $a0
-.LBB17_57:
+.LBB17_55:
 	pcalau12i	$a0, %pc_hi20(.L.str.8)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.8)
 	move	$a0, $fp

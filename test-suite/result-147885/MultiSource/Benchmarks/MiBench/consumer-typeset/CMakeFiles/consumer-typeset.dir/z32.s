@@ -99,21 +99,20 @@ Next:                                   # @Next
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(strlen)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a3, $a0, 31, 0
-	ori	$a1, $zero, 1
-	addi.w	$a2, $zero, -10
+	bstrpick.d	$a2, $a0, 31, 0
+	addi.w	$a1, $zero, -10
 	.p2align	4, , 16
 .LBB0_17:                               # =>This Inner Loop Header: Depth=1
-	addi.w	$a4, $a0, 0
-	blt	$a4, $a1, .LBB0_5
+	addi.w	$a3, $a0, 0
+	blez	$a3, .LBB0_5
 # %bb.18:                               #   in Loop: Header=BB0_17 Depth=1
-	add.d	$a4, $s0, $a3
-	ld.bu	$a4, $a4, 63
-	addi.d	$s4, $a3, -1
-	addi.d	$a4, $a4, -58
+	add.d	$a3, $s0, $a2
+	ld.bu	$a3, $a3, 63
+	addi.d	$s4, $a2, -1
+	addi.d	$a3, $a3, -58
 	addi.d	$a0, $a0, -1
-	move	$a3, $s4
-	bltu	$a4, $a2, .LBB0_17
+	move	$a2, $s4
+	bltu	$a3, $a1, .LBB0_17
 # %bb.19:                               # %.critedge
 	beqz	$s4, .LBB0_25
 # %bb.20:                               # %.lr.ph.preheader

@@ -160,8 +160,7 @@ inflateReset2:                          # @inflateReset2
 	ori	$a4, $zero, 31
 	bltu	$a4, $a2, .LBB2_22
 # %bb.6:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_8
+	bltz	$a1, .LBB2_8
 # %bb.7:
 	bstrpick.d	$a2, $a1, 31, 4
 	addi.d	$s2, $a2, 5
@@ -473,26 +472,26 @@ inflatePrime:                           # @inflatePrime
 	ori	$a5, $zero, 31
 	bltu	$a5, $a3, .LBB5_5
 # %bb.7:
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a1, .LBB5_11
+	bltz	$a1, .LBB5_11
 # %bb.8:
-	ori	$a5, $zero, 16
-	bltu	$a5, $a1, .LBB5_5
+	ori	$a3, $zero, 16
+	bltu	$a3, $a1, .LBB5_5
 # %bb.9:
-	ld.w	$a6, $a4, 88
-	add.w	$a5, $a6, $a1
-	ori	$a7, $zero, 32
-	bltu	$a7, $a5, .LBB5_5
+	ld.w	$a5, $a4, 88
+	add.w	$a3, $a5, $a1
+	ori	$a6, $zero, 32
+	bltu	$a6, $a3, .LBB5_5
 # %bb.10:
 	move	$a0, $zero
-	sll.d	$a1, $a3, $a1
-	ld.d	$a3, $a4, 80
+	addi.d	$a6, $zero, -1
+	sll.d	$a1, $a6, $a1
+	ld.d	$a6, $a4, 80
 	andn	$a1, $a2, $a1
-	sll.w	$a1, $a1, $a6
+	sll.w	$a1, $a1, $a5
 	bstrpick.d	$a1, $a1, 31, 0
-	add.d	$a1, $a3, $a1
+	add.d	$a1, $a6, $a1
 	st.d	$a1, $a4, 80
-	st.w	$a5, $a4, 88
+	st.w	$a3, $a4, 88
 	ret
 .LBB5_11:
 	move	$a0, $zero

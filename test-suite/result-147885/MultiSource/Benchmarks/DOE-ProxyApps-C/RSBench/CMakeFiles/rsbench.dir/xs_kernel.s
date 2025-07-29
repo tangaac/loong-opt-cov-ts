@@ -1050,7 +1050,6 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	st.d	$s7, $sp, 160                   # 8-byte Folded Spill
 	st.d	$s8, $sp, 152                   # 8-byte Folded Spill
 	fst.d	$fs0, $sp, 144                  # 8-byte Folded Spill
-	move	$fp, $a3
 	move	$s0, $a0
 	vrepli.b	$vr1, 0
 	vst	$vr1, $a0, 16
@@ -1058,18 +1057,19 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	ld.d	$a0, $a3, 16
 	slli.d	$s5, $a1, 2
 	ldx.w	$a0, $a0, $s5
-	ori	$a3, $zero, 1
 	st.d	$a6, $sp, 8                     # 8-byte Folded Spill
-	blt	$a0, $a3, .LBB1_6
+	st.d	$a5, $sp, 0                     # 8-byte Folded Spill
+	blez	$a0, .LBB1_6
 # %bb.1:                                # %.lr.ph
-	move	$s2, $a5
+	move	$fp, $a3
 	move	$s3, $a4
 	move	$s4, $a2
 	fmov.d	$fs0, $fa0
+	move	$s6, $zero
 	move	$s7, $zero
 	move	$s8, $zero
-	move	$s6, $zero
 	slli.d	$s1, $a1, 3
+	ori	$s2, $zero, 1
 	b	.LBB1_4
 	.p2align	4, , 16
 .LBB1_2:                                #   in Loop: Header=BB1_4 Depth=1
@@ -1090,7 +1090,7 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	addi.d	$a3, $sp, 16
 	fmov.d	$fa0, $fs0
 	move	$a4, $s3
-	move	$a5, $s2
+	ld.d	$a5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$a6, $sp, 8                     # 8-byte Folded Reload
 	pcaddu18i	$ra, %call36(calculate_micro_xs_doppler)
 	jirl	$ra, $ra, 0
@@ -1098,38 +1098,37 @@ calculate_macro_xs:                     # @calculate_macro_xs
 	ld.d	$a0, $fp, 32
 	ldx.d	$a0, $a0, $s1
 	fld.d	$fa0, $sp, 112
-	fldx.d	$fa1, $a0, $s8
+	fldx.d	$fa1, $a0, $s7
 	fld.d	$fa2, $s0, 0
 	fmadd.d	$fa0, $fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, 0
 	fld.d	$fa0, $sp, 120
-	fldx.d	$fa1, $a0, $s8
+	fldx.d	$fa1, $a0, $s7
 	fld.d	$fa2, $s0, 8
 	fmadd.d	$fa0, $fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, 8
 	fld.d	$fa0, $sp, 128
-	fldx.d	$fa1, $a0, $s8
+	fldx.d	$fa1, $a0, $s7
 	fld.d	$fa2, $s0, 16
 	fmadd.d	$fa0, $fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, 16
 	fld.d	$fa0, $sp, 136
-	fldx.d	$fa1, $a0, $s8
+	fldx.d	$fa1, $a0, $s7
 	fld.d	$fa2, $s0, 24
 	fmadd.d	$fa0, $fa0, $fa1, $fa2
 	fst.d	$fa0, $s0, 24
 	ld.d	$a0, $fp, 16
 	ldx.w	$a0, $a0, $s5
-	addi.d	$s6, $s6, 1
-	addi.d	$s8, $s8, 8
-	addi.d	$s7, $s7, 4
-	bge	$s6, $a0, .LBB1_6
+	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 8
+	addi.d	$s6, $s6, 4
+	bge	$s8, $a0, .LBB1_6
 .LBB1_4:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 24
 	ldx.d	$a0, $a0, $s1
 	ld.w	$a2, $s4, 28
-	ldx.w	$a1, $a0, $s7
-	ori	$a0, $zero, 1
-	beq	$a2, $a0, .LBB1_2
+	ldx.w	$a1, $a0, $s6
+	beq	$a2, $s2, .LBB1_2
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
 	vld	$vr0, $s4, 16
 	vld	$vr1, $s4, 0
@@ -1209,28 +1208,27 @@ calculate_micro_xs_doppler:             # @calculate_micro_xs_doppler
 	fst.d	$fa0, $sp, 24                   # 8-byte Folded Spill
 	fdiv.d	$fa0, $fa0, $fa1
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a3, $fa0
 	ld.w	$a0, $a2, 24
-	xor	$a1, $a1, $a3
+	movfr2gr.s	$a2, $fa0
+	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	ori	$a2, $zero, 1
-	sub.w	$a1, $a3, $a1
+	sub.w	$a1, $a2, $a1
 	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	blt	$a0, $a2, .LBB2_12
+	blez	$a0, .LBB2_12
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$a1, $fp, 56
+	move	$s6, $zero
 	move	$s7, $zero
-	move	$s8, $zero
 	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
-	alsl.d	$s0, $a2, $a1, 3
+	alsl.d	$s8, $a2, $a1, 3
 	slli.d	$s5, $a0, 3
-	addi.d	$s4, $s3, 8
+	addi.d	$s0, $s3, 8
 	fld.d	$fa0, $sp, 24                   # 8-byte Folded Reload
 	fsqrt.d	$fs2, $fa0
 	fcmp.cor.d	$fcc0, $fs2, $fs2
 	movcf2gr	$a0, $fcc0
 	st.d	$a0, $sp, 48
-	ori	$s6, $zero, 3
+	ori	$s4, $zero, 3
 	movgr2fr.d	$fa0, $zero
 	fneg.d	$fs3, $fa0
 	ori	$s2, $zero, 2
@@ -1258,16 +1256,16 @@ calculate_micro_xs_doppler:             # @calculate_micro_xs_doppler
 	fmul.d	$fa1, $fa0, $fs3
 	fadd.d	$fa1, $fs1, $fa1
 	fneg.d	$fa0, $fa0
-	fst.d	$fa1, $s4, -8
-	fst.d	$fa0, $s4, 0
-	addi.d	$s8, $s8, 8
-	addi.d	$s4, $s4, 16
-	addi.w	$s7, $s7, 1
-	beq	$s5, $s8, .LBB2_12
+	fst.d	$fa1, $s0, -8
+	fst.d	$fa0, $s0, 0
+	addi.d	$s7, $s7, 8
+	addi.d	$s0, $s0, 16
+	addi.w	$s6, $s6, 1
+	beq	$s5, $s7, .LBB2_12
 .LBB2_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s0, 0
-	fldx.d	$fs0, $a0, $s8
+	ld.d	$a0, $s8, 0
+	fldx.d	$fs0, $a0, $s7
 	fmov.d	$fa0, $fs2
 	ld.d	$a0, $sp, 48
 	movgr2cf	$fcc0, $a0
@@ -1275,14 +1273,14 @@ calculate_micro_xs_doppler:             # @calculate_micro_xs_doppler
 # %bb.6:                                # %.lr.ph.i.split
                                         #   in Loop: Header=BB2_5 Depth=1
 	fmul.d	$fs1, $fs0, $fa0
-	beq	$s7, $s6, .LBB2_11
+	beq	$s6, $s4, .LBB2_11
 .LBB2_7:                                # %.lr.ph.i.split
                                         #   in Loop: Header=BB2_5 Depth=1
-	beq	$s7, $s2, .LBB2_2
+	beq	$s6, $s2, .LBB2_2
 # %bb.8:                                # %.lr.ph.i.split
                                         #   in Loop: Header=BB2_5 Depth=1
 	ori	$a0, $zero, 1
-	bne	$s7, $a0, .LBB2_4
+	bne	$s6, $a0, .LBB2_4
 # %bb.9:                                #   in Loop: Header=BB2_5 Depth=1
 	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(atan)
@@ -1295,7 +1293,7 @@ calculate_micro_xs_doppler:             # @calculate_micro_xs_doppler
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	fmul.d	$fs1, $fs0, $fa0
-	bne	$s7, $s6, .LBB2_7
+	bne	$s6, $s4, .LBB2_7
 	.p2align	4, , 16
 .LBB2_11:                               #   in Loop: Header=BB2_5 Depth=1
 	fneg.d	$fa0, $fs1
@@ -1551,22 +1549,21 @@ calculate_micro_xs:                     # @calculate_micro_xs
 	frecip.d	$fa0, $fa0
 	fdiv.d	$fa0, $fs5, $fa0
 	ftintrz.w.d	$fa0, $fa0
-	movfr2gr.s	$a3, $fa0
 	ld.w	$a0, $a2, 24
-	xor	$a1, $a1, $a3
+	movfr2gr.s	$a2, $fa0
+	xor	$a1, $a1, $a2
 	sltui	$a1, $a1, 1
-	ori	$s4, $zero, 1
-	sub.w	$a1, $a3, $a1
+	sub.w	$a1, $a2, $a1
 	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	blt	$a0, $s4, .LBB3_12
+	blez	$a0, .LBB3_12
 # %bb.1:                                # %.lr.ph.i.preheader
 	ld.d	$a1, $s0, 56
+	move	$s4, $zero
 	move	$s5, $zero
-	move	$s6, $zero
 	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
-	alsl.d	$s7, $a2, $a1, 3
-	slli.d	$s8, $a0, 3
-	addi.d	$fp, $s1, 8
+	alsl.d	$s6, $a2, $a1, 3
+	slli.d	$s7, $a0, 3
+	addi.d	$s8, $s1, 8
 	fsqrt.d	$fs2, $fs5
 	fcmp.cor.d	$fcc0, $fs2, $fs2
 	movcf2gr	$a0, $fcc0
@@ -1574,7 +1571,8 @@ calculate_micro_xs:                     # @calculate_micro_xs
 	ori	$s3, $zero, 3
 	movgr2fr.d	$fa0, $zero
 	fneg.d	$fs3, $fa0
-	ori	$s2, $zero, 2
+	ori	$fp, $zero, 2
+	ori	$s2, $zero, 1
 	b	.LBB3_5
 	.p2align	4, , 16
 .LBB3_2:                                #   in Loop: Header=BB3_5 Depth=1
@@ -1599,16 +1597,16 @@ calculate_micro_xs:                     # @calculate_micro_xs
 	fmul.d	$fa1, $fa0, $fs3
 	fadd.d	$fa1, $fs1, $fa1
 	fneg.d	$fa0, $fa0
-	fst.d	$fa1, $fp, -8
-	fst.d	$fa0, $fp, 0
-	addi.d	$s6, $s6, 8
-	addi.d	$fp, $fp, 16
-	addi.w	$s5, $s5, 1
-	beq	$s8, $s6, .LBB3_12
+	fst.d	$fa1, $s8, -8
+	fst.d	$fa0, $s8, 0
+	addi.d	$s5, $s5, 8
+	addi.d	$s8, $s8, 16
+	addi.w	$s4, $s4, 1
+	beq	$s7, $s5, .LBB3_12
 .LBB3_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	ld.d	$a0, $s7, 0
-	fldx.d	$fs0, $a0, $s6
+	ld.d	$a0, $s6, 0
+	fldx.d	$fs0, $a0, $s5
 	fmov.d	$fa0, $fs2
 	ld.d	$a0, $sp, 64
 	movgr2cf	$fcc0, $a0
@@ -1616,13 +1614,13 @@ calculate_micro_xs:                     # @calculate_micro_xs
 # %bb.6:                                # %.lr.ph.i.split
                                         #   in Loop: Header=BB3_5 Depth=1
 	fmul.d	$fs0, $fs0, $fa0
-	beq	$s5, $s3, .LBB3_11
+	beq	$s4, $s3, .LBB3_11
 .LBB3_7:                                # %.lr.ph.i.split
                                         #   in Loop: Header=BB3_5 Depth=1
-	beq	$s5, $s2, .LBB3_2
+	beq	$s4, $fp, .LBB3_2
 # %bb.8:                                # %.lr.ph.i.split
                                         #   in Loop: Header=BB3_5 Depth=1
-	bne	$s5, $s4, .LBB3_4
+	bne	$s4, $s2, .LBB3_4
 # %bb.9:                                #   in Loop: Header=BB3_5 Depth=1
 	fmov.d	$fa0, $fs0
 	pcaddu18i	$ra, %call36(atan)
@@ -1635,7 +1633,7 @@ calculate_micro_xs:                     # @calculate_micro_xs
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	fmul.d	$fs0, $fs0, $fa0
-	bne	$s5, $s3, .LBB3_7
+	bne	$s4, $s3, .LBB3_7
 	.p2align	4, , 16
 .LBB3_11:                               #   in Loop: Header=BB3_5 Depth=1
 	fneg.d	$fa0, $fs0
@@ -1865,24 +1863,24 @@ calculate_sig_T:                        # @calculate_sig_T
 	fst.d	$fs4, $sp, 16                   # 8-byte Folded Spill
 	move	$fp, $a1
 	ld.w	$a1, $a1, 24
-	ori	$s1, $zero, 1
-	blt	$a1, $s1, .LBB4_12
+	blez	$a1, .LBB4_12
 # %bb.1:                                # %.lr.ph
 	move	$s0, $a2
 	fmov.d	$fs0, $fa0
+	move	$s1, $zero
 	move	$s2, $zero
 	move	$s3, $zero
-	move	$s4, $zero
-	addi.d	$s5, $a3, 8
-	slli.d	$s6, $a0, 3
+	addi.d	$s4, $a3, 8
+	slli.d	$s5, $a0, 3
 	fsqrt.d	$fs3, $fa0
 	fcmp.cor.d	$fcc0, $fs3, $fs3
 	movcf2gr	$a0, $fcc0
 	st.d	$a0, $sp, 8
-	ori	$s7, $zero, 3
+	ori	$s6, $zero, 3
 	movgr2fr.d	$fa0, $zero
 	fneg.d	$fs4, $fa0
-	ori	$s8, $zero, 2
+	ori	$s7, $zero, 2
+	ori	$s8, $zero, 1
 	b	.LBB4_5
 	.p2align	4, , 16
 .LBB4_2:                                #   in Loop: Header=BB4_5 Depth=1
@@ -1907,18 +1905,18 @@ calculate_sig_T:                        # @calculate_sig_T
 	fmul.d	$fa1, $fa0, $fs4
 	fadd.d	$fa1, $fs2, $fa1
 	fneg.d	$fa0, $fa0
-	fst.d	$fa1, $s5, -8
-	fst.d	$fa0, $s5, 0
+	fst.d	$fa1, $s4, -8
+	fst.d	$fa0, $s4, 0
 	ld.w	$a0, $fp, 24
-	addi.d	$s4, $s4, 1
-	addi.d	$s5, $s5, 16
-	addi.d	$s3, $s3, 8
-	addi.w	$s2, $s2, 1
-	bge	$s4, $a0, .LBB4_12
+	addi.d	$s3, $s3, 1
+	addi.d	$s4, $s4, 16
+	addi.d	$s2, $s2, 8
+	addi.w	$s1, $s1, 1
+	bge	$s3, $a0, .LBB4_12
 .LBB4_5:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s0, 56
-	ldx.d	$a0, $a0, $s6
-	fldx.d	$fs1, $a0, $s3
+	ldx.d	$a0, $a0, $s5
+	fldx.d	$fs1, $a0, $s2
 	fmov.d	$fa0, $fs3
 	ld.d	$a0, $sp, 8
 	movgr2cf	$fcc0, $a0
@@ -1926,13 +1924,13 @@ calculate_sig_T:                        # @calculate_sig_T
 # %bb.6:                                # %.split
                                         #   in Loop: Header=BB4_5 Depth=1
 	fmul.d	$fs1, $fs1, $fa0
-	beq	$s2, $s7, .LBB4_11
+	beq	$s1, $s6, .LBB4_11
 .LBB4_7:                                # %.split
                                         #   in Loop: Header=BB4_5 Depth=1
-	beq	$s2, $s8, .LBB4_2
+	beq	$s1, $s7, .LBB4_2
 # %bb.8:                                # %.split
                                         #   in Loop: Header=BB4_5 Depth=1
-	bne	$s2, $s1, .LBB4_4
+	bne	$s1, $s8, .LBB4_4
 # %bb.9:                                #   in Loop: Header=BB4_5 Depth=1
 	fmov.d	$fa0, $fs1
 	pcaddu18i	$ra, %call36(atan)
@@ -1945,7 +1943,7 @@ calculate_sig_T:                        # @calculate_sig_T
 	pcaddu18i	$ra, %call36(sqrt)
 	jirl	$ra, $ra, 0
 	fmul.d	$fs1, $fs1, $fa0
-	bne	$s2, $s7, .LBB4_7
+	bne	$s1, $s6, .LBB4_7
 	.p2align	4, , 16
 .LBB4_11:                               #   in Loop: Header=BB4_5 Depth=1
 	fneg.d	$fa0, $fs1

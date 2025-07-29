@@ -16,8 +16,7 @@ main:                                   # @main
 	ld.w	$a1, $a0, 8
 	ld.w	$a0, $a0, 12
 	and	$a0, $a0, $a1
-	addi.w	$a1, $zero, -1
-	blt	$a1, $a0, .LBB0_3
+	bgez	$a0, .LBB0_3
 # %bb.2:
 	pcaddu18i	$ra, %call36(abort)
 	jirl	$ra, $ra, 0

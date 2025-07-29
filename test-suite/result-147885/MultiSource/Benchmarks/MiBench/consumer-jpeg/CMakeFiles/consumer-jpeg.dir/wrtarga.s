@@ -189,9 +189,8 @@ start_output_tga:                       # @start_output_tga
 	move	$a0, $zero
 	st.b	$zero, $sp, 24
 	vrepli.b	$vr0, 0
-	ori	$a3, $zero, 1
 	vst	$vr0, $sp, 8
-	blt	$s2, $a3, .LBB1_15
+	blez	$s2, .LBB1_15
 .LBB1_14:
 	ori	$a0, $zero, 1
 	st.b	$a0, $sp, 9
@@ -229,14 +228,13 @@ start_output_tga:                       # @start_output_tga
 .LBB1_21:
 	st.b	$a0, $sp, 24
 	ld.d	$a3, $fp, 24
-	ori	$s1, $zero, 1
 	addi.d	$a0, $sp, 8
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 18
-	ori	$s3, $zero, 18
+	ori	$s1, $zero, 18
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
-	beq	$a0, $s3, .LBB1_23
+	beq	$a0, $s1, .LBB1_23
 # %bb.22:
 	ld.d	$a0, $s0, 0
 	ld.d	$a1, $a0, 0
@@ -245,7 +243,7 @@ start_output_tga:                       # @start_output_tga
 	move	$a0, $s0
 	jirl	$ra, $a1, 0
 .LBB1_23:                               # %write_header.exit42
-	blt	$s2, $s1, .LBB1_26
+	blez	$s2, .LBB1_26
 # %bb.24:                               # %.lr.ph
 	ld.d	$s1, $fp, 24
 	move	$s3, $zero

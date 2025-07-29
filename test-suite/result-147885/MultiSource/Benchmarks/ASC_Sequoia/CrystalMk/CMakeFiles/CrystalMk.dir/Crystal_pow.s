@@ -26,8 +26,7 @@ Crystal_pow:                            # @Crystal_pow
 	fst.d	$fs0, $sp, 208                  # 8-byte Folded Spill
 	fst.d	$fs1, $sp, 200                  # 8-byte Folded Spill
 	fst.d	$fs2, $sp, 192                  # 8-byte Folded Spill
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_10
+	blez	$a0, .LBB0_10
 # %bb.1:                                # %.lr.ph.preheader
 	move	$fp, $a1
 	move	$s0, $a0

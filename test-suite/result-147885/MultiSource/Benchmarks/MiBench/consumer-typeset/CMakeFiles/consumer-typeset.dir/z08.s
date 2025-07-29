@@ -6592,7 +6592,7 @@ Manifest:                               # @Manifest
 	ld.w	$a1, $s7, 40
 	ld.w	$a0, $s2, 40
 	xor	$a2, $a0, $a1
-	bstrpick.d	$a2, $a2, 28, 0
+	slli.d	$a2, $a2, 35
 	bnez	$a2, .LBB1_534
 # %bb.548:                              #   in Loop: Header=BB1_493 Depth=1
 	lu12i.w	$s1, 393216
@@ -7765,9 +7765,8 @@ Manifest:                               # @Manifest
 	and	$a0, $a0, $fp
 	ld.d	$s1, $sp, 232                   # 8-byte Folded Reload
 	ld.d	$s2, $sp, 200                   # 8-byte Folded Reload
-	ori	$a1, $zero, 1
 	ld.d	$fp, $sp, 216                   # 8-byte Folded Reload
-	bne	$a0, $a1, .LBB1_595
+	beqz	$a0, .LBB1_595
 # %bb.682:                              #   in Loop: Header=BB1_596 Depth=1
 	ld.bu	$a0, $s7, 32
 	beqz	$a0, .LBB1_684

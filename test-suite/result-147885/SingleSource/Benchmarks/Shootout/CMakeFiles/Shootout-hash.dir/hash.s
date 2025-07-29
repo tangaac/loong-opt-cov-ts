@@ -101,8 +101,7 @@ ht_destroy:                             # @ht_destroy
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	move	$fp, $a0
 	ld.w	$a0, $a0, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_6
+	blez	$a0, .LBB2_6
 # %bb.1:                                # %.lr.ph16
 	move	$s1, $zero
 	b	.LBB2_3
@@ -195,13 +194,13 @@ main:                                   # @main
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(calloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s7, $a1, .LBB3_31
+	blez	$s7, .LBB3_31
 # %bb.6:                                # %.lr.ph.preheader
+	ori	$a0, $zero, 1
 	addi.d	$s8, $sp, 9
-	pcalau12i	$a0, %pc_hi20(.L.str.2)
-	addi.d	$s2, $a0, %pc_lo12(.L.str.2)
+	pcalau12i	$a1, %pc_hi20(.L.str.2)
+	addi.d	$s2, $a1, %pc_lo12(.L.str.2)
 	b	.LBB3_9
 	.p2align	4, , 16
 .LBB3_7:                                # %ht_node_create.exit.i
@@ -214,13 +213,13 @@ main:                                   # @main
 .LBB3_8:                                # %ht_find_new.exit
                                         #   in Loop: Header=BB3_9 Depth=1
 	st.w	$s3, $s4, 8
-	addi.w	$a1, $s3, 1
+	addi.w	$a0, $s3, 1
 	beq	$s3, $s7, .LBB3_21
 .LBB3_9:                                # %.lr.ph
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB3_11 Depth 2
                                         #     Child Loop BB3_14 Depth 2
-	move	$s3, $a1
+	move	$s3, $a0
 	addi.d	$a0, $sp, 8
 	move	$a1, $s2
 	move	$a2, $s3
@@ -370,15 +369,15 @@ main:                                   # @main
 .LBB3_31:
 	move	$s2, $zero
 .LBB3_32:                               # %._crit_edge
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB3_37
+	blez	$s1, .LBB3_37
 # %bb.33:                               # %.lr.ph16.i.preheader
 	move	$s1, $zero
-	bstrpick.d	$a1, $s6, 30, 0
-	sltu	$a2, $a0, $a1
-	masknez	$a0, $a0, $a2
-	maskeqz	$a1, $a1, $a2
-	or	$s3, $a1, $a0
+	bstrpick.d	$a0, $s6, 30, 0
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a0, $a0, $a2
+	or	$s3, $a0, $a1
 	b	.LBB3_35
 	.p2align	4, , 16
 .LBB3_34:                               # %._crit_edge.i

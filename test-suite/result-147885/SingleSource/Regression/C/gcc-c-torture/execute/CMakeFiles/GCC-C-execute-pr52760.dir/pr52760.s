@@ -5,8 +5,7 @@
 	.type	foo,@function
 foo:                                    # @foo
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB0_3
+	blez	$a0, .LBB0_3
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$a1, $a1, 4
 	.p2align	4, , 16

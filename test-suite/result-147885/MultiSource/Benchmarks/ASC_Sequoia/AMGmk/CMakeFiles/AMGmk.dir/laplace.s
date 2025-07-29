@@ -45,39 +45,37 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	move	$a0, $s2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$s2, $a1, .LBB0_5
+	blez	$s2, .LBB0_5
 # %bb.1:                                # %.lr.ph.preheader
-	ori	$a2, $zero, 12
-	bgeu	$s2, $a2, .LBB0_68
+	ori	$a1, $zero, 12
+	bgeu	$s2, $a1, .LBB0_68
 # %bb.2:
-	move	$a6, $zero
+	move	$a5, $zero
 .LBB0_3:                                # %.lr.ph.preheader365
-	alsl.d	$a2, $a6, $fp, 3
-	alsl.d	$a3, $a6, $a0, 3
-	alsl.d	$a4, $a6, $s1, 3
-	sub.d	$a6, $s2, $a6
-	lu52i.d	$a5, $zero, 1023
+	alsl.d	$a1, $a5, $fp, 3
+	alsl.d	$a2, $a5, $a0, 3
+	alsl.d	$a3, $a5, $s1, 3
+	sub.d	$a5, $s2, $a5
+	lu52i.d	$a4, $zero, 1023
 	.p2align	4, , 16
 .LBB0_4:                                # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	st.d	$zero, $a4, 0
 	st.d	$zero, $a3, 0
-	st.d	$a5, $a2, 0
+	st.d	$zero, $a2, 0
+	st.d	$a4, $a1, 0
+	addi.d	$a1, $a1, 8
 	addi.d	$a2, $a2, 8
+	addi.d	$a5, $a5, -1
 	addi.d	$a3, $a3, 8
-	addi.d	$a6, $a6, -1
-	addi.d	$a4, $a4, 8
-	bnez	$a6, .LBB0_4
+	bnez	$a5, .LBB0_4
 .LBB0_5:                                # %._crit_edge
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	st.w	$zero, $s3, 0
-	blt	$s7, $a1, .LBB0_30
+	blez	$s7, .LBB0_30
 # %bb.6:                                # %._crit_edge
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB0_30
+	blez	$s8, .LBB0_30
 # %bb.7:                                # %._crit_edge
-	blt	$s6, $a0, .LBB0_30
+	blez	$s6, .LBB0_30
 # %bb.8:                                # %.preheader190.us.us.preheader
 	move	$a0, $zero
 	addi.d	$a1, $s3, 4
@@ -275,21 +273,19 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	move	$a0, $a2
 	pcaddu18i	$ra, %call36(hypre_CAlloc)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$fp, $a0
-	blt	$s6, $a1, .LBB0_61
+	blez	$s6, .LBB0_61
 # %bb.31:                               # %.preheader188.lr.ph
-	ori	$a0, $zero, 1
-	blt	$s7, $a0, .LBB0_61
+	blez	$s7, .LBB0_61
 # %bb.32:                               # %.preheader188.lr.ph
-	ori	$a0, $zero, 1
-	blt	$s8, $a0, .LBB0_61
+	blez	$s8, .LBB0_61
 # %bb.33:                               # %.preheader188.us.us.preheader
-	move	$a2, $zero
+	move	$a1, $zero
 	move	$t0, $zero
 	move	$a4, $zero
-	sub.d	$a1, $zero, $s8
-	sub.d	$a3, $zero, $s0
+	sub.d	$a0, $zero, $s8
+	sub.d	$a2, $zero, $s0
+	ori	$a3, $zero, 1
 	b	.LBB0_35
 	.p2align	4, , 16
 .LBB0_34:                               # %._crit_edge236.split.us.us.us
@@ -306,8 +302,8 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	.p2align	4, , 16
 .LBB0_36:                               # %._crit_edge231.us.us.us.loopexit
                                         #   in Loop: Header=BB0_37 Depth=2
-	add.d	$a2, $a2, $t4
-	addi.d	$a2, $a2, -1
+	add.d	$a1, $a1, $t4
+	addi.d	$a1, $a1, -1
 	move	$a6, $a7
 	beq	$a7, $s7, .LBB0_34
 .LBB0_37:                               # %.preheader.us.us.us
@@ -316,13 +312,13 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
                                         #       Child Loop BB0_47 Depth 3
 	slli.d	$a7, $t0, 2
 	fld.d	$fa0, $s5, 0
-	stx.w	$a2, $s1, $a7
+	stx.w	$a1, $s1, $a7
 	addi.w	$t1, $t0, 1
 	slli.d	$a7, $t0, 3
 	fstx.d	$fa0, $fp, $a7
 	beqz	$a4, .LBB0_39
 # %bb.38:                               #   in Loop: Header=BB0_37 Depth=2
-	sub.d	$a7, $a2, $s0
+	sub.d	$a7, $a1, $s0
 	slli.d	$t2, $t1, 2
 	fld.d	$fa0, $s5, 24
 	stx.w	$a7, $s1, $t2
@@ -332,7 +328,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 .LBB0_39:                               #   in Loop: Header=BB0_37 Depth=2
 	beqz	$a6, .LBB0_41
 # %bb.40:                               #   in Loop: Header=BB0_37 Depth=2
-	sub.d	$a7, $a2, $s8
+	sub.d	$a7, $a1, $s8
 	slli.d	$t0, $t1, 2
 	fld.d	$fa0, $s5, 16
 	stx.w	$a7, $s1, $t0
@@ -340,40 +336,40 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	addi.w	$t1, $t1, 1
 	fstx.d	$fa0, $fp, $a7
 .LBB0_41:                               #   in Loop: Header=BB0_37 Depth=2
-	addi.d	$t2, $a2, 1
-	bne	$s8, $a0, .LBB0_57
+	addi.d	$t2, $a1, 1
+	bne	$s8, $a3, .LBB0_57
 # %bb.42:                               #   in Loop: Header=BB0_37 Depth=2
 	addi.w	$a7, $a6, 1
 	blt	$a7, $s7, .LBB0_58
 .LBB0_43:                               #   in Loop: Header=BB0_37 Depth=2
 	bge	$a5, $s6, .LBB0_59
 .LBB0_44:                               #   in Loop: Header=BB0_37 Depth=2
-	add.d	$t0, $a2, $s0
+	add.d	$t0, $a1, $s0
 	slli.d	$t3, $t1, 2
 	fld.d	$fa0, $s5, 24
 	stx.w	$t0, $s1, $t3
 	addi.w	$t0, $t1, 1
 	slli.d	$t1, $t1, 3
 	fstx.d	$fa0, $fp, $t1
-	beq	$s8, $a0, .LBB0_60
+	beq	$s8, $a3, .LBB0_60
 .LBB0_45:                               # %.peel.next.preheader
                                         #   in Loop: Header=BB0_37 Depth=2
-	add.d	$t1, $s0, $a2
-	add.d	$t2, $s8, $a2
-	add.d	$t3, $a1, $a2
-	add.d	$t5, $a3, $a2
+	add.d	$t1, $s0, $a1
+	add.d	$t2, $s8, $a1
+	add.d	$t3, $a0, $a1
+	add.d	$t5, $a2, $a1
 	ori	$t4, $zero, 2
 	b	.LBB0_47
 	.p2align	4, , 16
 .LBB0_46:                               #   in Loop: Header=BB0_47 Depth=3
 	addi.w	$t4, $t4, 1
-	add.w	$t6, $a1, $t4
-	beq	$t6, $a0, .LBB0_36
+	add.w	$t6, $a0, $t4
+	beq	$t6, $a3, .LBB0_36
 .LBB0_47:                               # %.peel.next
                                         #   Parent Loop BB0_35 Depth=1
                                         #     Parent Loop BB0_37 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	add.d	$t6, $a2, $t4
+	add.d	$t6, $a1, $t4
 	addi.d	$t8, $t6, -1
 	slli.d	$t7, $t0, 2
 	fld.d	$fa0, $s5, 0
@@ -458,7 +454,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	addi.w	$a7, $a6, 1
 	bge	$a7, $s7, .LBB0_43
 .LBB0_58:                               #   in Loop: Header=BB0_37 Depth=2
-	add.d	$t0, $a2, $s8
+	add.d	$t0, $a1, $s8
 	slli.d	$t3, $t1, 2
 	fld.d	$fa0, $s5, 16
 	stx.w	$t0, $s1, $t3
@@ -468,9 +464,9 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	blt	$a5, $s6, .LBB0_44
 .LBB0_59:                               #   in Loop: Header=BB0_37 Depth=2
 	move	$t0, $t1
-	bne	$s8, $a0, .LBB0_45
+	bne	$s8, $a3, .LBB0_45
 .LBB0_60:                               #   in Loop: Header=BB0_37 Depth=2
-	move	$a2, $t2
+	move	$a1, $t2
 	move	$a6, $a7
 	bne	$a7, $s7, .LBB0_37
 	b	.LBB0_34
@@ -495,8 +491,7 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.d	$a0, $s7, 0
 	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_67
+	blez	$s2, .LBB0_67
 # %bb.62:                               # %.lr.ph254.preheader
 	ld.w	$a2, $s3, 0
 	move	$a0, $zero
@@ -561,43 +556,43 @@ GenerateSeqLaplacian:                   # @GenerateSeqLaplacian
 	addi.d	$sp, $sp, 144
 	ret
 .LBB0_68:                               # %vector.memcheck
-	sub.d	$a3, $a0, $s1
-	ori	$a2, $zero, 32
-	move	$a6, $zero
-	bltu	$a3, $a2, .LBB0_3
+	sub.d	$a2, $a0, $s1
+	ori	$a1, $zero, 32
+	move	$a5, $zero
+	bltu	$a2, $a1, .LBB0_3
 # %bb.69:                               # %vector.memcheck
-	sub.d	$a3, $fp, $s1
-	bltu	$a3, $a2, .LBB0_3
+	sub.d	$a2, $fp, $s1
+	bltu	$a2, $a1, .LBB0_3
 # %bb.70:                               # %vector.memcheck
-	sub.d	$a2, $fp, $a0
-	ori	$a3, $zero, 32
-	bltu	$a2, $a3, .LBB0_3
+	sub.d	$a1, $fp, $a0
+	ori	$a2, $zero, 32
+	bltu	$a1, $a2, .LBB0_3
 # %bb.71:                               # %vector.ph
-	bstrpick.d	$a2, $s2, 30, 2
-	slli.d	$a6, $a2, 2
-	addi.d	$a2, $fp, 16
-	addi.d	$a3, $a0, 16
-	addi.d	$a4, $s1, 16
+	bstrpick.d	$a1, $s2, 30, 2
+	slli.d	$a5, $a1, 2
+	addi.d	$a1, $fp, 16
+	addi.d	$a2, $a0, 16
+	addi.d	$a3, $s1, 16
 	vrepli.b	$vr0, 0
-	lu52i.d	$a5, $zero, 1023
-	vreplgr2vr.d	$vr1, $a5
-	move	$a5, $a6
+	lu52i.d	$a4, $zero, 1023
+	vreplgr2vr.d	$vr1, $a4
+	move	$a4, $a5
 	.p2align	4, , 16
 .LBB0_72:                               # %vector.body
                                         # =>This Inner Loop Header: Depth=1
-	vst	$vr0, $a4, -16
-	vst	$vr0, $a4, 0
 	vst	$vr0, $a3, -16
 	vst	$vr0, $a3, 0
-	vst	$vr1, $a2, -16
-	vst	$vr1, $a2, 0
-	addi.d	$a5, $a5, -4
+	vst	$vr0, $a2, -16
+	vst	$vr0, $a2, 0
+	vst	$vr1, $a1, -16
+	vst	$vr1, $a1, 0
+	addi.d	$a4, $a4, -4
+	addi.d	$a1, $a1, 32
 	addi.d	$a2, $a2, 32
 	addi.d	$a3, $a3, 32
-	addi.d	$a4, $a4, 32
-	bnez	$a5, .LBB0_72
+	bnez	$a4, .LBB0_72
 # %bb.73:                               # %middle.block
-	bne	$a6, $s2, .LBB0_3
+	bne	$a5, $s2, .LBB0_3
 	b	.LBB0_5
 .Lfunc_end0:
 	.size	GenerateSeqLaplacian, .Lfunc_end0-GenerateSeqLaplacian

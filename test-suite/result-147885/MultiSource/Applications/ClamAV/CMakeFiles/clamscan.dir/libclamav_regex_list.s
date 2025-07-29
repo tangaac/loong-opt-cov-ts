@@ -281,7 +281,7 @@ regex_list_match:                       # @regex_list_match
 	beqz	$a5, .LBB0_52
 # %bb.35:                               #   in Loop: Header=BB0_27 Depth=2
 	ld.b	$a6, $s0, 16
-	blt	$a6, $s6, .LBB0_39
+	blez	$a6, .LBB0_39
 # %bb.36:                               # %.lr.ph.i
                                         #   in Loop: Header=BB0_27 Depth=2
 	ld.b	$a7, $a0, 0
@@ -868,8 +868,8 @@ load_regex_matcher:                     # @load_regex_matcher
 	ld.b	$a3, $a2, 0
 	slli.d	$a3, $a3, 1
 	ldx.hu	$a3, $a0, $a3
-	andi	$a3, $a3, 2048
-	beqz	$a3, .LBB3_26
+	slli.d	$a3, $a3, 52
+	bgez	$a3, .LBB3_26
 # %bb.16:                               #   in Loop: Header=BB3_15 Depth=2
 	addi.d	$a1, $a1, -1
 	addi.d	$a2, $a2, 1
@@ -894,8 +894,8 @@ load_regex_matcher:                     # @load_regex_matcher
 	ld.b	$a2, $a1, 0
 	slli.d	$a2, $a2, 1
 	ldx.hu	$a2, $a0, $a2
-	andi	$a2, $a2, 2048
-	beqz	$a2, .LBB3_26
+	slli.d	$a2, $a2, 52
+	bgez	$a2, .LBB3_26
 # %bb.20:                               #   in Loop: Header=BB3_19 Depth=2
 	addi.d	$s8, $s8, -1
 	addi.d	$a1, $a1, 1
@@ -1328,8 +1328,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	addi.d	$a2, $a3, -2
 	sltui	$a2, $a2, 1
 	move	$s3, $zero
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB3_89
+	blez	$a1, .LBB3_89
 # %bb.86:                               # %.lr.ph.i.i
                                         #   in Loop: Header=BB3_82 Depth=2
 	move	$a5, $zero
@@ -1407,6 +1406,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	masknez	$a0, $a0, $a1
 	maskeqz	$a1, $s6, $a1
 	or	$s0, $a1, $a0
+	ori	$s1, $zero, 1
 	b	.LBB3_140
 .LBB3_99:                               #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a1, $fp, 88
@@ -1460,8 +1460,8 @@ load_regex_matcher:                     # @load_regex_matcher
                                         #   in Loop: Header=BB3_82 Depth=2
 	st.w	$s2, $s8, 12
 	st.b	$zero, $s8, 8
-	ori	$a0, $zero, 1
-	st.b	$a0, $s8, 17
+	ori	$s3, $zero, 1
+	st.b	$s3, $s8, 17
 	move	$a0, $s6
 	move	$a1, $s8
 	pcaddu18i	$ra, %call36(tree_node_insert_nonbin)
@@ -1513,8 +1513,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	ld.d	$a3, $a3, 0
 	bne	$a3, $s1, .LBB3_114
 # %bb.115:                              #   in Loop: Header=BB3_108 Depth=3
-	ori	$a1, $zero, 1
-	st.b	$a1, $s8, 17
+	st.b	$s3, $s8, 17
 	st.b	$zero, $a0, 17
 	st.d	$s8, $a0, 0
 	b	.LBB3_108
@@ -1544,14 +1543,12 @@ load_regex_matcher:                     # @load_regex_matcher
 	st.b	$zero, $a0, 17
 	st.d	$a1, $s8, 0
 	st.d	$s8, $a0, 0
-	ori	$a0, $zero, 1
-	st.b	$a0, $s8, 17
+	st.b	$s3, $s8, 17
 	b	.LBB3_108
 	.p2align	4, , 16
 .LBB3_121:                              #   in Loop: Header=BB3_108 Depth=3
-	ori	$a0, $zero, 1
-	st.b	$a0, $s8, 17
-	blt	$a2, $a0, .LBB3_108
+	st.b	$s3, $s8, 17
+	blez	$a2, .LBB3_108
 	.p2align	4, , 16
 .LBB3_122:                              # %.lr.ph.i133.i
                                         #   Parent Loop BB3_10 Depth=1
@@ -1648,6 +1645,7 @@ load_regex_matcher:                     # @load_regex_matcher
 .LBB3_138:                              #   in Loop: Header=BB3_82 Depth=2
 	move	$s0, $s6
 	ori	$a2, $zero, 2
+	ori	$s1, $zero, 1
 	blt	$a1, $a2, .LBB3_140
 # %bb.139:                              #   in Loop: Header=BB3_82 Depth=2
 	ld.d	$a0, $a0, 0
@@ -1864,8 +1862,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	nor	$a2, $s3, $zero
 	add.w	$a2, $a0, $a2
 	alsl.d	$s0, $a1, $s4, 3
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB3_172
+	blez	$a2, .LBB3_172
 # %bb.171:                              #   in Loop: Header=BB3_82 Depth=2
 	alsl.d	$a1, $s3, $s0, 3
 	addi.d	$a0, $a1, 8
@@ -1912,8 +1909,7 @@ load_regex_matcher:                     # @load_regex_matcher
 	ori	$a0, $zero, 11
 .LBB3_184:                              # %select.unfold.i
                                         #   in Loop: Header=BB3_82 Depth=2
-	ori	$a1, $zero, 1
-	st.w	$a1, $s8, 12
+	st.w	$s1, $s8, 12
 	st.b	$a0, $s8, 8
 .LBB3_185:                              # %tree_node_char_binsearch.exit.i
                                         #   in Loop: Header=BB3_82 Depth=2
@@ -3017,7 +3013,7 @@ tree_node_insert_nonbin:                # @tree_node_insert_nonbin
 .LBB8_11:
 	ori	$a0, $zero, 1
 	st.b	$a0, $a1, 17
-	blt	$a4, $a0, .LBB8_15
+	blez	$a4, .LBB8_15
 	.p2align	4, , 16
 .LBB8_12:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
@@ -3189,8 +3185,7 @@ destroy_tree_internal:                  # @destroy_tree_internal
 	bne	$a2, $a3, .LBB9_30
 # %bb.27:
 	move	$s1, $zero
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB9_31
+	bgtz	$a0, .LBB9_31
 	b	.LBB9_33
 .LBB9_28:
 	beqz	$s2, .LBB9_36
@@ -3200,8 +3195,7 @@ destroy_tree_internal:                  # @destroy_tree_internal
 	b	.LBB9_36
 .LBB9_30:
 	ld.d	$s1, $a1, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB9_33
+	blez	$a0, .LBB9_33
 .LBB9_31:                               # %.lr.ph.preheader
 	move	$s3, $zero
 	.p2align	4, , 16

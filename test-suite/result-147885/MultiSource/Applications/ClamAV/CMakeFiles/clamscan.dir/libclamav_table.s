@@ -90,8 +90,7 @@ tableInsert:                            # @tableInsert
 	bnez	$a0, .LBB2_3
 # %bb.6:                                # %tableFind.exit
 	ld.w	$a0, $s3, 8
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_8
+	blez	$a0, .LBB2_8
 # %bb.7:
 	xor	$a0, $a0, $fp
 	sltui	$a0, $a0, 1

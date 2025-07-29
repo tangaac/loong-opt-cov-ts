@@ -200,15 +200,15 @@ scan_buffer:                            # @scan_buffer
 	ori	$a1, $zero, 2
 	bne	$a0, $a1, .LBB0_67
 # %bb.25:
-	ori	$a3, $zero, 1
 	addi.w	$a0, $fp, -1
-	blt	$fp, $a3, .LBB0_49
+	blez	$fp, .LBB0_49
 # %bb.26:                               # %.lr.ph316.preheader
 	slli.d	$a1, $a0, 5
 	alsl.d	$a0, $a0, $a1, 3
 	add.d	$a0, $a2, $a0
 	ld.d	$a1, $a0, 8
-	move	$a5, $zero
+	move	$a3, $zero
+	ori	$a5, $zero, 1
 	move	$a0, $fp
 	.p2align	4, , 16
 .LBB0_27:                               # %.lr.ph316
@@ -222,16 +222,16 @@ scan_buffer:                            # @scan_buffer
 	addi.d	$a7, $a7, -1
 	ld.d	$a6, $a6, 8
 	sltui	$a7, $a7, 1
-	masknez	$a5, $a5, $a7
-	maskeqz	$a7, $a3, $a7
-	or	$a5, $a7, $a5
+	masknez	$a3, $a3, $a7
+	maskeqz	$a7, $a5, $a7
+	or	$a3, $a7, $a3
 	bltu	$a6, $a1, .LBB0_30
 # %bb.28:                               #   in Loop: Header=BB0_27 Depth=1
 	bgtz	$a0, .LBB0_27
 # %bb.29:
 	move	$a0, $a4
 .LBB0_30:                               # %._crit_edge317
-	beqz	$a5, .LBB0_49
+	beqz	$a3, .LBB0_49
 # %bb.31:                               # %.lr.ph325.preheader
 	move	$a0, $zero
 	bstrpick.d	$a3, $fp, 31, 0

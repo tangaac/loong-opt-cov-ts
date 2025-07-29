@@ -31,7 +31,6 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	ld.d	$a3, $a0, 0
 	ori	$a1, $zero, 1
 	ori	$a2, $zero, 112
-	ori	$s0, $zero, 1
 	move	$a0, $fp
 	jirl	$ra, $a3, 0
 	ld.d	$a1, $fp, 472
@@ -46,11 +45,11 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	pcalau12i	$a0, %pc_hi20(pre_process_context)
 	addi.d	$a0, $a0, %pc_lo12(pre_process_context)
 	ld.d	$a1, $fp, 8
-	ld.w	$s1, $fp, 308
+	ld.w	$s0, $fp, 308
 	ld.w	$a2, $fp, 68
 	st.d	$a0, $s3, 8
 	ld.d	$a3, $a1, 0
-	alsl.d	$a0, $s1, $s1, 2
+	alsl.d	$a0, $s0, $s0, 2
 	mul.w	$a0, $a2, $a0
 	slli.d	$a2, $a0, 3
 	ori	$a1, $zero, 1
@@ -58,16 +57,16 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	jirl	$ra, $a3, 0
 	ld.w	$a1, $fp, 68
 	st.d	$a0, $sp, 40                    # 8-byte Folded Spill
-	blt	$a1, $s0, .LBB0_26
+	blez	$a1, .LBB0_26
 # %bb.4:                                # %.lr.ph48.i
-	move	$a4, $s1
-	alsl.w	$a0, $s1, $s1, 2
+	move	$a4, $s0
+	alsl.w	$a0, $s0, $s0, 2
 	ld.d	$s7, $fp, 80
-	alsl.w	$s4, $s1, $s1, 1
+	alsl.w	$s4, $s0, $s0, 1
 	slli.d	$a1, $s4, 3
 	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
 	addi.d	$s5, $s3, 16
-	blez	$s1, .LBB0_24
+	blez	$s0, .LBB0_24
 # %bb.5:                                # %.lr.ph.us.preheader.i
 	move	$s8, $zero
 	slli.w	$a1, $a4, 2
@@ -238,7 +237,7 @@ jinit_c_prep_controller:                # @jinit_c_prep_controller
 	pcalau12i	$a1, %pc_hi20(pre_process_data)
 	addi.d	$a1, $a1, %pc_lo12(pre_process_data)
 	st.d	$a1, $s3, 8
-	blt	$a0, $s0, .LBB0_26
+	blez	$a0, .LBB0_26
 # %bb.22:                               # %.lr.ph
 	ld.d	$a0, $fp, 80
 	move	$s0, $zero
@@ -428,13 +427,11 @@ pre_process_context:                    # @pre_process_context
 # %bb.6:                                # %.preheader79
                                         #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a1, $s5, 68
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB2_23
+	blez	$a1, .LBB2_23
 # %bb.7:                                # %.preheader.lr.ph
                                         #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a0, $s5, 308
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_23
+	blez	$a0, .LBB2_23
 # %bb.8:                                # %.preheader.preheader
                                         #   in Loop: Header=BB2_4 Depth=1
 	move	$s1, $zero
@@ -448,8 +445,7 @@ pre_process_context:                    # @pre_process_context
                                         #   Parent Loop BB2_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_12 Depth 3
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB2_9
+	blez	$a0, .LBB2_9
 # %bb.11:                               # %.lr.ph84
                                         #   in Loop: Header=BB2_10 Depth=2
 	move	$s2, $zero
@@ -486,27 +482,26 @@ pre_process_context:                    # @pre_process_context
 # %bb.16:                               # %.preheader80
                                         #   in Loop: Header=BB2_4 Depth=1
 	ld.w	$a1, $s5, 68
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB2_26
+	blez	$a1, .LBB2_26
 # %bb.17:                               # %.lr.ph.split.preheader
                                         #   in Loop: Header=BB2_4 Depth=1
-	move	$s3, $zero
+	move	$s2, $zero
 	b	.LBB2_19
 	.p2align	4, , 16
 .LBB2_18:                               # %expand_bottom_edge.exit
                                         #   in Loop: Header=BB2_19 Depth=2
-	addi.d	$s3, $s3, 1
-	bge	$s3, $a1, .LBB2_25
+	addi.d	$s2, $s2, 1
+	bge	$s2, $a1, .LBB2_25
 .LBB2_19:                               # %.lr.ph.split
                                         #   Parent Loop BB2_4 Depth=1
                                         # =>  This Loop Header: Depth=2
                                         #       Child Loop BB2_21 Depth 3
 	ld.w	$s7, $s0, 100
-	ld.w	$s2, $s0, 108
-	bge	$s7, $s2, .LBB2_18
+	ld.w	$s3, $s0, 108
+	bge	$s7, $s3, .LBB2_18
 # %bb.20:                               # %.lr.ph.i
                                         #   in Loop: Header=BB2_19 Depth=2
-	slli.d	$a0, $s3, 3
+	slli.d	$a0, $s2, 3
 	ldx.d	$s8, $s6, $a0
 	ld.w	$s4, $s5, 40
 	addi.w	$s1, $s7, -1
@@ -523,7 +518,7 @@ pre_process_context:                    # @pre_process_context
 	pcaddu18i	$ra, %call36(jcopy_sample_rows)
 	jirl	$ra, $ra, 0
 	addi.w	$s7, $s7, 1
-	bne	$s2, $s7, .LBB2_21
+	bne	$s3, $s7, .LBB2_21
 # %bb.22:                               # %expand_bottom_edge.exit.loopexit
                                         #   in Loop: Header=BB2_19 Depth=2
 	ld.w	$a1, $s5, 68
@@ -673,8 +668,7 @@ pre_process_data:                       # @pre_process_data
 # %bb.6:                                # %.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
 	ld.w	$a0, $s2, 68
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB3_16
+	blez	$a0, .LBB3_16
 # %bb.7:                                # %.lr.ph.split.preheader
                                         #   in Loop: Header=BB3_3 Depth=1
 	move	$s4, $zero
@@ -752,8 +746,7 @@ pre_process_data:                       # @pre_process_data
 	bgeu	$a0, $s7, .LBB3_2
 # %bb.19:
 	ld.w	$a0, $s2, 68
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_26
+	blez	$a0, .LBB3_26
 # %bb.20:                               # %.lr.ph79.preheader
 	ld.d	$fp, $s2, 80
 	move	$s1, $zero

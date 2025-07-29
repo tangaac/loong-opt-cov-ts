@@ -1129,8 +1129,8 @@ TransferBegin:                          # @TransferBegin
 	beqz	$a0, .LBB1_47
 .LBB1_46:
 	ld.hu	$a0, $a0, 41
-	andi	$a0, $a0, 2048
-	bnez	$a0, .LBB1_48
+	slli.d	$a0, $a0, 52
+	bltz	$a0, .LBB1_48
 .LBB1_47:
 	move	$a0, $s4
 	pcaddu18i	$ra, %call36(FlushGalley)

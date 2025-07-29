@@ -23,9 +23,8 @@ _ZN12CStdInStream4OpenEPKw:             # @_ZN12CStdInStream4OpenEPKw
 	.cfi_offset 25, -40
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 0
-	ori	$a2, $zero, 1
 	move	$s0, $a1
-	bne	$a0, $a2, .LBB0_2
+	beqz	$a0, .LBB0_2
 # %bb.1:
 	ld.d	$a0, $fp, 8
 	pcaddu18i	$ra, %call36(fclose)
@@ -158,7 +157,7 @@ _ZN12CStdInStream5CloseEv:              # @_ZN12CStdInStream5CloseEv
 	move	$a1, $a0
 	ld.bu	$a2, $a0, 0
 	ori	$a0, $zero, 1
-	bne	$a2, $a0, .LBB1_2
+	beqz	$a2, .LBB1_2
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
@@ -186,8 +185,7 @@ _ZN12CStdInStreamD2Ev:                  # @_ZN12CStdInStreamD2Ev
 	.cfi_startproc
 # %bb.0:
 	ld.bu	$a1, $a0, 0
-	ori	$a2, $zero, 1
-	bne	$a1, $a2, .LBB2_2
+	beqz	$a1, .LBB2_2
 # %bb.1:
 	addi.d	$sp, $sp, -16
 	.cfi_def_cfa_offset 16
@@ -447,7 +445,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
 	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s5, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -455,7 +452,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	.cfi_offset 25, -40
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
-	.cfi_offset 28, -64
 	ld.w	$s1, $a0, 8
 	ld.w	$s4, $a0, 12
 	nor	$a2, $s1, $zero
@@ -477,8 +473,8 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	or	$a3, $a3, $a5
 	add.w	$a4, $a3, $a2
 	slti	$a4, $a4, 1
-	ori	$s5, $zero, 1
-	sub.d	$a2, $s5, $a2
+	ori	$a5, $zero, 1
+	sub.d	$a2, $a5, $a2
 	masknez	$a3, $a3, $a4
 	maskeqz	$a2, $a2, $a4
 	or	$a2, $a2, $a3
@@ -492,11 +488,10 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	blt	$s4, $s5, .LBB5_11
+	blez	$s4, .LBB5_11
 # %bb.3:                                # %.preheader.i.i
 	ld.d	$a0, $s3, 0
-	ori	$a1, $zero, 1
-	blt	$s1, $a1, .LBB5_12
+	blez	$s1, .LBB5_12
 # %bb.4:                                # %iter.check
 	ori	$a2, $zero, 16
 	move	$a1, $zero
@@ -592,7 +587,6 @@ _ZN11CStringBaseIcEpLEc:                # @_ZN11CStringBaseIcEpLEc
 	addi.w	$a1, $a1, 1
 	st.w	$a1, $a0, 8
 	stx.b	$zero, $a2, $a1
-	ld.d	$s5, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload

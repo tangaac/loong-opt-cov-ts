@@ -174,9 +174,8 @@ P_file_parse:                           # @P_file_parse
 	ld.d	$a0, $a0, 0
 	slli.d	$a1, $a1, 1
 	ldx.hu	$a0, $a0, $a1
-	lu12i.w	$a1, 2
-	and	$a0, $a0, $a1
-	bnez	$a0, .LBB1_39
+	slli.d	$a0, $a0, 50
+	bltz	$a0, .LBB1_39
 .LBB1_6:                                #   in Loop: Header=BB1_3 Depth=1
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(W_iscom)
@@ -918,8 +917,8 @@ P_file_parse:                           # @P_file_parse
 	ext.w.b	$a1, $a2
 	slli.d	$a0, $a1, 1
 	ldx.hu	$a0, $fp, $a0
-	andi	$a3, $a0, 2048
-	bnez	$a3, .LBB1_94
+	slli.d	$a3, $a0, 52
+	bltz	$a3, .LBB1_94
 # %bb.85:                               #   in Loop: Header=BB1_3 Depth=1
 	andi	$a0, $a0, 1024
 	bnez	$a0, .LBB1_88
@@ -931,7 +930,7 @@ P_file_parse:                           # @P_file_parse
 	addi.d	$a0, $a0, %pc_lo12(_P_alpha)
 	pcaddu18i	$ra, %call36(index)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a0, $a0, 32
 	beqz	$a0, .LBB1_99
 .LBB1_88:                               # %.preheader
                                         #   in Loop: Header=BB1_3 Depth=1
@@ -959,7 +958,7 @@ P_file_parse:                           # @P_file_parse
 	addi.d	$a0, $a0, %pc_lo12(_P_alpha)
 	pcaddu18i	$ra, %call36(index)
 	jirl	$ra, $ra, 0
-	bstrpick.d	$a0, $a0, 31, 0
+	slli.d	$a0, $a0, 32
 	bnez	$a0, .LBB1_89
 .LBB1_93:                               # %_P_in_alpha.exit103.thread.i
                                         #   in Loop: Header=BB1_3 Depth=1
@@ -979,9 +978,9 @@ P_file_parse:                           # @P_file_parse
 	ldx.b	$a0, $s0, $a1
 	slli.d	$a0, $a0, 1
 	ldx.hu	$a0, $fp, $a0
-	andi	$a0, $a0, 2048
+	slli.d	$a0, $a0, 52
 	addi.d	$a1, $a1, 1
-	bnez	$a0, .LBB1_95
+	bltz	$a0, .LBB1_95
 # %bb.96:                               #   in Loop: Header=BB1_3 Depth=1
 	addi.d	$a0, $s2, 16
 	addi.d	$a2, $a1, -1

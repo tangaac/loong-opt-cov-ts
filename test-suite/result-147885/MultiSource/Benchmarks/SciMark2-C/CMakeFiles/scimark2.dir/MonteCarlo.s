@@ -29,9 +29,8 @@ MonteCarlo_integrate:                   # @MonteCarlo_integrate
 	ori	$a0, $zero, 113
 	pcaddu18i	$ra, %call36(new_Random_seed)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s0, $a0
-	blt	$fp, $a1, .LBB1_4
+	blez	$fp, .LBB1_4
 # %bb.1:                                # %.lr.ph.preheader
 	move	$s1, $zero
 	move	$s2, $fp

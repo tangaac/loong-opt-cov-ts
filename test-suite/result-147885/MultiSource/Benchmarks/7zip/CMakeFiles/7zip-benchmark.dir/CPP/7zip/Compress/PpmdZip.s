@@ -746,8 +746,7 @@ _ZN9NCompress8NPpmdZip8CDecoder4CodeEP19ISequentialInStreamP20ISequentialOutStre
 	lu12i.w	$a0, 1
 	ori	$a0, $a0, 3384
 	ldx.bu	$a0, $fp, $a0
-	ori	$a2, $zero, 1
-	bne	$a0, $a2, .LBB5_64
+	beqz	$a0, .LBB5_64
 # %bb.58:
 	beqz	$a1, .LBB5_60
 # %bb.59:

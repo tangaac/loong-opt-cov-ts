@@ -16,9 +16,8 @@ minterms:                               # @minterms
 	pcalau12i	$a1, %got_pc_hi20(cube)
 	ld.d	$s1, $a1, %got_pc_lo12(cube)
 	ld.w	$a1, $s1, 4
-	ori	$s2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $s2, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	ld.d	$a0, $s1, 32
 	ori	$a2, $zero, 8
@@ -89,14 +88,14 @@ minterms:                               # @minterms
 	pcalau12i	$a0, %pc_hi20(Gminterm)
 	ld.w	$a1, $fp, 12
 	ld.w	$a2, $fp, 0
-	ld.d	$s3, $fp, 24
+	ld.d	$s2, $fp, 24
 	st.d	$s0, $a0, %pc_lo12(Gminterm)
-	pcalau12i	$s4, %pc_hi20(Gcube)
+	pcalau12i	$s3, %pc_hi20(Gcube)
 	mul.w	$a0, $a2, $a1
-	st.d	$s3, $s4, %pc_lo12(Gcube)
-	blt	$a0, $s2, .LBB0_14
+	st.d	$s2, $s3, %pc_lo12(Gcube)
+	blez	$a0, .LBB0_14
 # %bb.12:                               # %.lr.ph15.preheader
-	alsl.d	$s2, $a0, $s3, 2
+	alsl.d	$s4, $a0, $s2, 2
 	.p2align	4, , 16
 .LBB0_13:                               # %.lr.ph15
                                         # =>This Inner Loop Header: Depth=1
@@ -106,9 +105,9 @@ minterms:                               # @minterms
 	pcaddu18i	$ra, %call36(explode)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $fp, 0
-	alsl.d	$s3, $a0, $s3, 2
-	st.d	$s3, $s4, %pc_lo12(Gcube)
-	bltu	$s3, $s2, .LBB0_13
+	alsl.d	$s2, $a0, $s2, 2
+	st.d	$s2, $s3, %pc_lo12(Gcube)
+	bltu	$s2, $s4, .LBB0_13
 .LBB0_14:                               # %._crit_edge16
 	move	$a0, $s0
 	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
@@ -234,20 +233,19 @@ map:                                    # @map
 	pcalau12i	$a1, %got_pc_hi20(cube)
 	ld.d	$s3, $a1, %got_pc_lo12(cube)
 	ld.w	$a1, $s3, 4
-	ori	$fp, $zero, 1
 	move	$s0, $a0
-	blt	$a1, $fp, .LBB2_3
+	blez	$a1, .LBB2_3
 # %bb.1:                                # %.lr.ph.i
 	ld.d	$a0, $s3, 32
 	ori	$a2, $zero, 8
 	bgeu	$a1, $a2, .LBB2_4
 # %bb.2:
 	move	$a2, $zero
-	ori	$s1, $zero, 1
+	ori	$fp, $zero, 1
 	b	.LBB2_7
 .LBB2_3:
 	ori	$a0, $zero, 8
-	ori	$s1, $zero, 1
+	ori	$fp, $zero, 1
 	b	.LBB2_11
 .LBB2_4:                                # %vector.ph
 	bstrpick.d	$a2, $a1, 30, 3
@@ -272,7 +270,7 @@ map:                                    # @map
 	vmul.w	$vr0, $vr0, $vr1
 	vreplvei.w	$vr1, $vr0, 1
 	vmul.w	$vr0, $vr0, $vr1
-	vpickve2gr.w	$s1, $vr0, 0
+	vpickve2gr.w	$fp, $vr0, 0
 	beq	$a2, $a1, .LBB2_9
 .LBB2_7:                                # %scalar.ph.preheader
 	sub.d	$a1, $a1, $a2
@@ -281,17 +279,17 @@ map:                                    # @map
 .LBB2_8:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.w	$a2, $a0, 0
-	mul.d	$s1, $a2, $s1
+	mul.d	$fp, $a2, $fp
 	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, 4
 	bnez	$a1, .LBB2_8
 .LBB2_9:                                # %._crit_edge.i
-	addi.w	$a1, $s1, 0
+	addi.w	$a1, $fp, 0
 	ori	$a2, $zero, 33
 	ori	$a0, $zero, 8
 	blt	$a1, $a2, .LBB2_11
 # %bb.10:
-	addi.d	$a0, $s1, -1
+	addi.d	$a0, $fp, -1
 	srli.d	$a0, $a0, 3
 	lu12i.w	$a1, 131071
 	ori	$a1, $a1, 4092
@@ -300,21 +298,21 @@ map:                                    # @map
 .LBB2_11:                               # %._crit_edge.thread.i
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $s1, 0
+	addi.w	$a1, $fp, 0
 	pcaddu18i	$ra, %call36(set_clear)
 	jirl	$ra, $ra, 0
 	pcalau12i	$a3, %pc_hi20(Gminterm)
 	ld.w	$a1, $s0, 12
 	ld.w	$a2, $s0, 0
-	ld.d	$s1, $s0, 24
+	ld.d	$fp, $s0, 24
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	st.d	$a0, $a3, %pc_lo12(Gminterm)
-	pcalau12i	$s2, %pc_hi20(Gcube)
+	pcalau12i	$s1, %pc_hi20(Gcube)
 	mul.w	$a0, $a2, $a1
-	st.d	$s1, $s2, %pc_lo12(Gcube)
-	blt	$a0, $fp, .LBB2_14
+	st.d	$fp, $s1, %pc_lo12(Gcube)
+	blez	$a0, .LBB2_14
 # %bb.12:                               # %.lr.ph15.i.preheader
-	alsl.d	$fp, $a0, $s1, 2
+	alsl.d	$s2, $a0, $fp, 2
 	.p2align	4, , 16
 .LBB2_13:                               # %.lr.ph15.i
                                         # =>This Inner Loop Header: Depth=1
@@ -324,20 +322,20 @@ map:                                    # @map
 	pcaddu18i	$ra, %call36(explode)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s0, 0
-	alsl.d	$s1, $a0, $s1, 2
-	st.d	$s1, $s2, %pc_lo12(Gcube)
-	bltu	$s1, $fp, .LBB2_13
+	alsl.d	$fp, $a0, $fp, 2
+	st.d	$fp, $s1, %pc_lo12(Gcube)
+	bltu	$fp, $s2, .LBB2_13
 .LBB2_14:                               # %minterms.exit
 	ld.d	$a0, $s3, 32
 	ld.w	$a1, $s3, 4
 	alsl.d	$a0, $a1, $a0, 2
-	ld.w	$a1, $a0, -4
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB2_37
+	ld.w	$a0, $a0, -4
+	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
+	blez	$a0, .LBB2_37
 # %bb.15:                               # %.lr.ph51
 	ld.wu	$a2, $s3, 8
 	move	$a1, $zero
+	ori	$a0, $zero, 1
 	st.d	$a2, $sp, 16                    # 8-byte Folded Spill
 	sll.w	$s6, $a0, $a2
 	ld.d	$a0, $sp, 0                     # 8-byte Folded Reload

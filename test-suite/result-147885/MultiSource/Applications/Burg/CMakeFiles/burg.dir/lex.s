@@ -413,8 +413,8 @@ yylex:                                  # @yylex
 	andi	$a2, $a1, 1024
 	bnez	$a2, .LBB2_56
 # %bb.48:
-	andi	$a1, $a1, 2048
-	beqz	$a1, .LBB2_66
+	slli.d	$a1, $a1, 52
+	bgez	$a1, .LBB2_66
 # %bb.49:                               # %.preheader.preheader
 	move	$s0, $zero
 	.p2align	4, , 16
@@ -431,8 +431,8 @@ yylex:                                  # @yylex
 	ld.d	$a1, $fp, 0
 	slli.d	$a2, $a0, 1
 	ldx.hu	$a1, $a1, $a2
-	andi	$a1, $a1, 2048
-	bnez	$a1, .LBB2_50
+	slli.d	$a1, $a1, 52
+	bltz	$a1, .LBB2_50
 # %bb.51:
 	ld.d	$a1, $s3, 0
 	pcaddu18i	$ra, %call36(ungetc)

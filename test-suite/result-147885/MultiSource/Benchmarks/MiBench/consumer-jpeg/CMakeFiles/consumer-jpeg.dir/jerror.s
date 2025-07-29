@@ -65,8 +65,7 @@ emit_message:                           # @emit_message
 	st.d	$ra, $sp, 8                     # 8-byte Folded Spill
 	st.d	$fp, $sp, 0                     # 8-byte Folded Spill
 	ld.d	$fp, $a0, 0
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB2_3
+	bltz	$a1, .LBB2_3
 # %bb.1:
 	ld.w	$a2, $fp, 124
 	blt	$a2, $a1, .LBB2_7
@@ -132,9 +131,8 @@ format_message:                         # @format_message
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	ld.d	$t0, $a0, 0
 	ld.w	$a2, $t0, 40
-	ori	$a3, $zero, 1
 	move	$a0, $a1
-	blt	$a2, $a3, .LBB4_2
+	blez	$a2, .LBB4_2
 # %bb.1:
 	ld.w	$a1, $t0, 144
 	bge	$a1, $a2, .LBB4_6

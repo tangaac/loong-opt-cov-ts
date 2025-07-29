@@ -1288,7 +1288,7 @@ extension_and_user_data:                # @extension_and_user_data
 	ld.d	$s3, $a1, %got_pc_lo12(copyright_number_3)
 	ld.w	$a1, $fp, 0
 	st.w	$a0, $s3, 0
-	blt	$a1, $s6, .LBB4_51
+	blez	$a1, .LBB4_51
 # %bb.18:                               #   in Loop: Header=BB4_3 Depth=1
 	ld.d	$a0, $sp, 136                   # 8-byte Folded Reload
 	srai.d	$a0, $a0, 3

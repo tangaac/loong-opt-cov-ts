@@ -267,14 +267,12 @@ set_position_values:                    # @set_position_values
 	ori	$a4, $zero, 2
 	bge	$a1, $a4, .LBB0_67
 .LBB0_38:                               # %._crit_edge164.1
-	ori	$a4, $zero, 1
-	blt	$a1, $a4, .LBB0_40
+	blez	$a1, .LBB0_40
 # %bb.39:                               # %.preheader.lr.ph
 	ori	$a4, $zero, 2
 	bge	$a0, $a4, .LBB0_49
 .LBB0_40:                               # %._crit_edge175
-	ori	$a3, $zero, 1
-	blt	$a0, $a3, .LBB0_42
+	blez	$a0, .LBB0_42
 # %bb.41:                               # %.preheader.lr.ph.1
 	ori	$a3, $zero, 2
 	bge	$a1, $a3, .LBB0_43

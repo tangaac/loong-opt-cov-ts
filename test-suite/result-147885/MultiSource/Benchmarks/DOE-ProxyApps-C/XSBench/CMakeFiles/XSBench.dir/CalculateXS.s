@@ -87,8 +87,7 @@ calculate_macro_xs:                     # @calculate_macro_xs
 .LBB1_4:                                # %grid_search.exit
 	slli.d	$a1, $a0, 2
 	ldx.w	$a1, $a3, $a1
-	ori	$a3, $zero, 1
-	blt	$a1, $a3, .LBB1_8
+	blez	$a1, .LBB1_8
 # %bb.5:                                # %.lr.ph
 	slli.d	$a3, $a0, 3
 	ldx.d	$a0, $a7, $a3

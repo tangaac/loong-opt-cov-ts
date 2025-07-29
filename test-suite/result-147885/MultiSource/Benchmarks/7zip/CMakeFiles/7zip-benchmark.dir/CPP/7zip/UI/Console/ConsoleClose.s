@@ -20,8 +20,7 @@ _ZN13NConsoleClose14CheckCtrlBreakEv:   # @_ZN13NConsoleClose14CheckCtrlBreakEv
 # %bb.0:
 	pcalau12i	$a0, %pc_hi20(_ZL14g_BreakCounter)
 	ld.w	$a0, $a0, %pc_lo12(_ZL14g_BreakCounter)
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB1_2
+	bgtz	$a0, .LBB1_2
 # %bb.1:
 	ret
 .LBB1_2:

@@ -147,7 +147,7 @@ f:                                      # @f
 	addi.w	$a7, $a7, -16
 	bnez	$t1, .LBB0_4
 .LBB0_6:                                # %middle.split
-	bstrpick.d	$a7, $t0, 15, 0
+	slli.d	$a7, $t0, 48
 	bnez	$a7, .LBB0_12
 # %bb.7:                                # %middle.block
 	beq	$a4, $a6, .LBB0_11
@@ -159,12 +159,11 @@ f:                                      # @f
 	mul.d	$a0, $a3, $a0
 	add.d	$a0, $a2, $a0
 	sub.d	$a0, $a0, $a1
-	addi.w	$a1, $zero, -1
 	.p2align	4, , 16
 .LBB0_9:                                # %scalar.ph
                                         # =>This Inner Loop Header: Depth=1
 	add.w	$a0, $a0, $a3
-	bge	$a1, $a0, .LBB0_12
+	bltz	$a0, .LBB0_12
 # %bb.10:                               #   in Loop: Header=BB0_9 Depth=1
 	addi.w	$a4, $a4, 1
 	bnez	$a4, .LBB0_9

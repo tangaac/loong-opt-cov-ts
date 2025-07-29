@@ -341,10 +341,9 @@ luaK_patchlist:                         # @luaK_patchlist
 	addi.w	$s3, $zero, -1
 	beq	$s0, $s3, .LBB7_22
 # %bb.10:                               # %.lr.ph.i
-	ori	$a4, $zero, 1
 	pcalau12i	$a0, %pc_hi20(luaP_opmodes)
-	addi.d	$s5, $a0, %pc_lo12(luaP_opmodes)
-	ori	$a5, $zero, 27
+	addi.d	$s4, $a0, %pc_lo12(luaP_opmodes)
+	ori	$a4, $zero, 27
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 4032
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
@@ -353,25 +352,25 @@ luaK_patchlist:                         # @luaK_patchlist
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
-	lu12i.w	$s8, 524284
+	lu12i.w	$s7, 524284
 	.p2align	4, , 16
 .LBB7_11:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a0, $a0, 24
 	slli.d	$a1, $s0, 2
-	ldx.wu	$s7, $a0, $a1
-	alsl.d	$s6, $s0, $a0, 2
-	blt	$s0, $a4, .LBB7_13
+	ldx.wu	$s6, $a0, $a1
+	alsl.d	$s5, $s0, $a0, 2
+	blez	$s0, .LBB7_13
 # %bb.12:                               #   in Loop: Header=BB7_11 Depth=1
-	ld.wu	$a1, $s6, -4
+	ld.wu	$a1, $s5, -4
 	andi	$a0, $a1, 63
-	ldx.b	$a0, $s5, $a0
+	ldx.b	$a0, $s4, $a0
 	bltz	$a0, .LBB7_15
 .LBB7_13:                               #   in Loop: Header=BB7_11 Depth=1
-	move	$a1, $s7
-	move	$a0, $s6
+	move	$a1, $s6
+	move	$a0, $s5
 	andi	$a2, $a1, 63
-	bne	$a2, $a5, .LBB7_16
+	bne	$a2, $a4, .LBB7_16
 .LBB7_14:                               #   in Loop: Header=BB7_11 Depth=1
 	srli.d	$a2, $a1, 17
 	ld.d	$a3, $sp, 16                    # 8-byte Folded Reload
@@ -380,9 +379,9 @@ luaK_patchlist:                         # @luaK_patchlist
 	and	$a1, $a1, $a3
 	or	$a1, $a2, $a1
 	nor	$a2, $s0, $zero
-	add.w	$s4, $s1, $a2
-	srai.d	$a2, $s4, 31
-	xor	$a3, $s4, $a2
+	add.w	$s8, $s1, $a2
+	srai.d	$a2, $s8, 31
+	xor	$a3, $s8, $a2
 	sub.d	$a2, $a3, $a2
 	bstrpick.d	$a2, $a2, 31, 17
 	st.w	$a1, $a0, 0
@@ -390,17 +389,17 @@ luaK_patchlist:                         # @luaK_patchlist
 	b	.LBB7_18
 	.p2align	4, , 16
 .LBB7_15:                               #   in Loop: Header=BB7_11 Depth=1
-	addi.d	$a0, $s6, -4
+	addi.d	$a0, $s5, -4
 	andi	$a2, $a1, 63
-	beq	$a2, $a5, .LBB7_14
+	beq	$a2, $a4, .LBB7_14
 .LBB7_16:                               #   in Loop: Header=BB7_11 Depth=1
 	nor	$a0, $s0, $zero
-	add.w	$s4, $s1, $a0
-	srai.d	$a0, $s4, 31
-	xor	$a1, $s4, $a0
+	add.w	$s8, $s1, $a0
+	srai.d	$a0, $s8, 31
+	xor	$a1, $s8, $a0
 	sub.d	$a0, $a1, $a0
 	bstrpick.d	$a1, $a0, 31, 17
-	move	$a0, $s7
+	move	$a0, $s6
 	beqz	$a1, .LBB7_19
 .LBB7_17:                               # %fixjump.exit16.sink.split.sink.split.i
                                         #   in Loop: Header=BB7_11 Depth=1
@@ -408,19 +407,18 @@ luaK_patchlist:                         # @luaK_patchlist
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 27
-	ori	$a4, $zero, 1
+	ori	$a4, $zero, 27
 .LBB7_18:                               # %fixjump.exit16.sink.split.i
                                         #   in Loop: Header=BB7_11 Depth=1
-	ld.w	$a0, $s6, 0
+	ld.w	$a0, $s5, 0
 .LBB7_19:                               # %fixjump.exit16.i
                                         #   in Loop: Header=BB7_11 Depth=1
-	srli.d	$a1, $s7, 14
+	srli.d	$a1, $s6, 14
 	addu16i.d	$a1, $a1, -2
 	addi.d	$a1, $a1, 1
-	bstrins.d	$a0, $s4, 63, 14
-	add.d	$a0, $a0, $s8
-	st.w	$a0, $s6, 0
+	bstrins.d	$a0, $s8, 63, 14
+	add.d	$a0, $a0, $s7
+	st.w	$a0, $s5, 0
 	beq	$a1, $s3, .LBB7_22
 # %bb.20:                               # %fixjump.exit16.i
                                         #   in Loop: Header=BB7_11 Depth=1
@@ -541,10 +539,9 @@ patchlistaux:                           # @patchlistaux
 	bstrpick.d	$a0, $a0, 13, 6
 	slli.d	$a0, $a0, 6
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
-	ori	$a4, $zero, 1
 	pcalau12i	$a0, %pc_hi20(luaP_opmodes)
-	addi.d	$s8, $a0, %pc_lo12(luaP_opmodes)
-	ori	$a5, $zero, 27
+	addi.d	$s7, $a0, %pc_lo12(luaP_opmodes)
+	ori	$a4, $zero, 27
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 4032
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
@@ -557,25 +554,25 @@ patchlistaux:                           # @patchlistaux
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s4, $a0, %pc_lo12(.L.str.1)
-	lu12i.w	$fp, 524284
+	lu12i.w	$s6, 524284
 	.p2align	4, , 16
 .LBB9_2:                                # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $s2, 0
 	ld.d	$a0, $a0, 24
 	slli.d	$a1, $s3, 2
 	ldx.wu	$s1, $a0, $a1
-	alsl.d	$s7, $s3, $a0, 2
-	blt	$s3, $a4, .LBB9_4
+	alsl.d	$fp, $s3, $a0, 2
+	blez	$s3, .LBB9_4
 # %bb.3:                                #   in Loop: Header=BB9_2 Depth=1
-	ld.wu	$a1, $s7, -4
+	ld.wu	$a1, $fp, -4
 	andi	$a0, $a1, 63
-	ldx.b	$a0, $s8, $a0
+	ldx.b	$a0, $s7, $a0
 	bltz	$a0, .LBB9_10
 .LBB9_4:                                #   in Loop: Header=BB9_2 Depth=1
 	move	$a1, $s1
-	move	$a0, $s7
+	move	$a0, $fp
 	andi	$a2, $a1, 63
-	bne	$a2, $a5, .LBB9_11
+	bne	$a2, $a4, .LBB9_11
 .LBB9_5:                                #   in Loop: Header=BB9_2 Depth=1
 	ori	$a2, $zero, 255
 	beq	$s0, $a2, .LBB9_8
@@ -599,9 +596,9 @@ patchlistaux:                           # @patchlistaux
 .LBB9_9:                                #   in Loop: Header=BB9_2 Depth=1
 	nor	$a2, $s3, $zero
 	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
-	add.w	$s6, $a3, $a2
-	srai.d	$a2, $s6, 31
-	xor	$a3, $s6, $a2
+	add.w	$s8, $a3, $a2
+	srai.d	$a2, $s8, 31
+	xor	$a3, $s8, $a2
 	sub.d	$a2, $a3, $a2
 	bstrpick.d	$a2, $a2, 31, 17
 	st.w	$a1, $a0, 0
@@ -609,15 +606,15 @@ patchlistaux:                           # @patchlistaux
 	b	.LBB9_13
 	.p2align	4, , 16
 .LBB9_10:                               #   in Loop: Header=BB9_2 Depth=1
-	addi.d	$a0, $s7, -4
+	addi.d	$a0, $fp, -4
 	andi	$a2, $a1, 63
-	beq	$a2, $a5, .LBB9_5
+	beq	$a2, $a4, .LBB9_5
 .LBB9_11:                               #   in Loop: Header=BB9_2 Depth=1
 	nor	$a0, $s3, $zero
 	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
-	add.w	$s6, $a1, $a0
-	srai.d	$a0, $s6, 31
-	xor	$a1, $s6, $a0
+	add.w	$s8, $a1, $a0
+	srai.d	$a0, $s8, 31
+	xor	$a1, $s8, $a0
 	sub.d	$a0, $a1, $a0
 	bstrpick.d	$a1, $a0, 31, 17
 	move	$a0, $s1
@@ -628,19 +625,18 @@ patchlistaux:                           # @patchlistaux
 	move	$a1, $s4
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 27
-	ori	$a4, $zero, 1
+	ori	$a4, $zero, 27
 .LBB9_13:                               # %fixjump.exit16.sink.split
                                         #   in Loop: Header=BB9_2 Depth=1
-	ld.w	$a0, $s7, 0
+	ld.w	$a0, $fp, 0
 .LBB9_14:                               # %fixjump.exit16
                                         #   in Loop: Header=BB9_2 Depth=1
 	srli.d	$a1, $s1, 14
 	addu16i.d	$a1, $a1, -2
 	addi.d	$a1, $a1, 1
-	bstrins.d	$a0, $s6, 63, 14
-	add.d	$a0, $a0, $fp
-	st.w	$a0, $s7, 0
+	bstrins.d	$a0, $s8, 63, 14
+	add.d	$a0, $a0, $s6
+	st.w	$a0, $fp, 0
 	beq	$a1, $s5, .LBB9_16
 # %bb.15:                               # %fixjump.exit16
                                         #   in Loop: Header=BB9_2 Depth=1
@@ -1317,33 +1313,32 @@ exp2reg:                                # @exp2reg
 # %bb.11:                               # %.lr.ph.i
 	ld.d	$a3, $s1, 0
 	ld.d	$a3, $a3, 24
-	ori	$a4, $zero, 1
-	ori	$a5, $zero, 27
+	ori	$a4, $zero, 27
 	.p2align	4, , 16
 .LBB19_12:                              # =>This Inner Loop Header: Depth=1
-	alsl.d	$a6, $a2, $a3, 2
-	blt	$a2, $a4, .LBB19_14
+	alsl.d	$a5, $a2, $a3, 2
+	blez	$a2, .LBB19_14
 # %bb.13:                               #   in Loop: Header=BB19_12 Depth=1
-	ld.wu	$a7, $a6, -4
-	andi	$t0, $a7, 63
-	ldx.b	$t0, $a1, $t0
-	bltz	$t0, .LBB19_15
+	ld.wu	$a6, $a5, -4
+	andi	$a7, $a6, 63
+	ldx.b	$a7, $a1, $a7
+	bltz	$a7, .LBB19_15
 .LBB19_14:                              #   in Loop: Header=BB19_12 Depth=1
-	ld.w	$a7, $a6, 0
+	ld.w	$a6, $a5, 0
 .LBB19_15:                              # %getjumpcontrol.exit.i
                                         #   in Loop: Header=BB19_12 Depth=1
-	andi	$a7, $a7, 63
-	bne	$a7, $a5, .LBB19_27
+	andi	$a6, $a6, 63
+	bne	$a6, $a4, .LBB19_27
 # %bb.16:                               # %select.unfold.i
                                         #   in Loop: Header=BB19_12 Depth=1
-	ld.wu	$a6, $a6, 0
-	srli.d	$a6, $a6, 14
-	addu16i.d	$a6, $a6, -2
-	addi.d	$a6, $a6, 1
-	beq	$a6, $s5, .LBB19_18
+	ld.wu	$a5, $a5, 0
+	srli.d	$a5, $a5, 14
+	addu16i.d	$a5, $a5, -2
+	addi.d	$a5, $a5, 1
+	beq	$a5, $s5, .LBB19_18
 # %bb.17:                               # %select.unfold.i
                                         #   in Loop: Header=BB19_12 Depth=1
-	add.d	$a2, $a2, $a6
+	add.d	$a2, $a2, $a5
 	addi.w	$a2, $a2, 1
 	bne	$a2, $s5, .LBB19_12
 .LBB19_18:                              # %.loopexit
@@ -1353,34 +1348,33 @@ exp2reg:                                # @exp2reg
 # %bb.19:                               # %.lr.ph.i43
 	ld.d	$a2, $s1, 0
 	ld.d	$a2, $a2, 24
-	ori	$a3, $zero, 1
-	ori	$a4, $zero, 27
+	ori	$a3, $zero, 27
 	addi.w	$s3, $zero, -1
 	.p2align	4, , 16
 .LBB19_20:                              # =>This Inner Loop Header: Depth=1
-	alsl.d	$a5, $a0, $a2, 2
-	blt	$a0, $a3, .LBB19_22
+	alsl.d	$a4, $a0, $a2, 2
+	blez	$a0, .LBB19_22
 # %bb.21:                               #   in Loop: Header=BB19_20 Depth=1
-	ld.wu	$a6, $a5, -4
-	andi	$a7, $a6, 63
-	ldx.b	$a7, $a1, $a7
-	bltz	$a7, .LBB19_23
+	ld.wu	$a5, $a4, -4
+	andi	$a6, $a5, 63
+	ldx.b	$a6, $a1, $a6
+	bltz	$a6, .LBB19_23
 .LBB19_22:                              #   in Loop: Header=BB19_20 Depth=1
-	ld.w	$a6, $a5, 0
+	ld.w	$a5, $a4, 0
 .LBB19_23:                              # %getjumpcontrol.exit.i48
                                         #   in Loop: Header=BB19_20 Depth=1
-	andi	$a6, $a6, 63
-	bne	$a6, $a4, .LBB19_27
+	andi	$a5, $a5, 63
+	bne	$a5, $a3, .LBB19_27
 # %bb.24:                               # %select.unfold.i51
                                         #   in Loop: Header=BB19_20 Depth=1
-	ld.wu	$a5, $a5, 0
-	srli.d	$a5, $a5, 14
-	addu16i.d	$a5, $a5, -2
-	addi.d	$a5, $a5, 1
-	beq	$a5, $s3, .LBB19_26
+	ld.wu	$a4, $a4, 0
+	srli.d	$a4, $a4, 14
+	addu16i.d	$a4, $a4, -2
+	addi.d	$a4, $a4, 1
+	beq	$a4, $s3, .LBB19_26
 # %bb.25:                               # %select.unfold.i51
                                         #   in Loop: Header=BB19_20 Depth=1
-	add.d	$a0, $a0, $a5
+	add.d	$a0, $a0, $a4
 	addi.w	$a0, $a0, 1
 	bne	$a0, $s3, .LBB19_20
 .LBB19_26:
@@ -2140,9 +2134,8 @@ luaK_goiftrue:                          # @luaK_goiftrue
 	ld.d	$a0, $s0, 0
 	ld.w	$a1, $fp, 8
 	ld.d	$a0, $a0, 24
-	ori	$a2, $zero, 1
 	alsl.d	$a0, $a1, $a0, 2
-	blt	$a1, $a2, .LBB25_21
+	blez	$a1, .LBB25_21
 # %bb.20:
 	ld.wu	$a1, $a0, -4
 	andi	$a2, $a1, 63
@@ -2462,9 +2455,8 @@ luaK_prefix:                            # @luaK_prefix
 	ld.d	$a0, $fp, 0
 	ld.w	$a1, $s0, 8
 	ld.d	$a0, $a0, 24
-	ori	$a2, $zero, 1
 	alsl.d	$a0, $a1, $a0, 2
-	blt	$a1, $a2, .LBB28_16
+	blez	$a1, .LBB28_16
 # %bb.15:
 	ld.wu	$a1, $a0, -4
 	andi	$a2, $a1, 63
@@ -2542,50 +2534,49 @@ luaK_prefix:                            # @luaK_prefix
 # %bb.28:                               # %.lr.ph.i.i
 	ld.d	$a2, $fp, 0
 	ld.d	$a2, $a2, 24
-	ori	$a4, $zero, 1
-	pcalau12i	$a5, %pc_hi20(luaP_opmodes)
-	addi.d	$a5, $a5, %pc_lo12(luaP_opmodes)
-	ori	$a6, $zero, 27
-	ori	$a7, $a0, 4032
-	ori	$t0, $a1, 26
+	pcalau12i	$a4, %pc_hi20(luaP_opmodes)
+	addi.d	$a4, $a4, %pc_lo12(luaP_opmodes)
+	ori	$a5, $zero, 27
+	ori	$a6, $a0, 4032
+	ori	$a7, $a1, 26
 	.p2align	4, , 16
 .LBB28_29:                              # =>This Inner Loop Header: Depth=1
-	alsl.d	$t1, $a3, $a2, 2
-	blt	$a3, $a4, .LBB28_31
+	alsl.d	$t0, $a3, $a2, 2
+	blez	$a3, .LBB28_31
 # %bb.30:                               #   in Loop: Header=BB28_29 Depth=1
-	ld.wu	$t2, $t1, -4
-	andi	$t3, $t2, 63
-	ldx.b	$t3, $a5, $t3
-	bltz	$t3, .LBB28_35
+	ld.wu	$t1, $t0, -4
+	andi	$t2, $t1, 63
+	ldx.b	$t2, $a4, $t2
+	bltz	$t2, .LBB28_35
 .LBB28_31:                              #   in Loop: Header=BB28_29 Depth=1
-	ld.w	$t2, $t1, 0
-	move	$t3, $t1
-	andi	$t4, $t2, 63
-	bne	$t4, $a6, .LBB28_33
+	ld.w	$t1, $t0, 0
+	move	$t2, $t0
+	andi	$t3, $t1, 63
+	bne	$t3, $a5, .LBB28_33
 .LBB28_32:                              #   in Loop: Header=BB28_29 Depth=1
-	srli.d	$t4, $t2, 17
-	and	$t4, $t4, $a7
-	and	$t2, $t2, $t0
-	or	$t2, $t4, $t2
-	st.w	$t2, $t3, 0
+	srli.d	$t3, $t1, 17
+	and	$t3, $t3, $a6
+	and	$t1, $t1, $a7
+	or	$t1, $t3, $t1
+	st.w	$t1, $t2, 0
 .LBB28_33:                              # %patchtestreg.exit.i.i
                                         #   in Loop: Header=BB28_29 Depth=1
-	ld.wu	$t1, $t1, 0
-	srli.d	$t1, $t1, 14
-	addu16i.d	$t1, $t1, -2
-	addi.d	$t1, $t1, 1
-	beq	$t1, $s2, .LBB28_36
+	ld.wu	$t0, $t0, 0
+	srli.d	$t0, $t0, 14
+	addu16i.d	$t0, $t0, -2
+	addi.d	$t0, $t0, 1
+	beq	$t0, $s2, .LBB28_36
 # %bb.34:                               # %patchtestreg.exit.i.i
                                         #   in Loop: Header=BB28_29 Depth=1
-	add.d	$a3, $a3, $t1
+	add.d	$a3, $a3, $t0
 	addi.w	$a3, $a3, 1
 	bne	$a3, $s2, .LBB28_29
 	b	.LBB28_36
 	.p2align	4, , 16
 .LBB28_35:                              #   in Loop: Header=BB28_29 Depth=1
-	addi.d	$t3, $t1, -4
-	andi	$t4, $t2, 63
-	beq	$t4, $a6, .LBB28_32
+	addi.d	$t2, $t0, -4
+	andi	$t3, $t1, 63
+	beq	$t3, $a5, .LBB28_32
 	b	.LBB28_33
 .LBB28_36:                              # %removevalues.exitthread-pre-split.i
 	ld.w	$a2, $s0, 16
@@ -2594,50 +2585,49 @@ luaK_prefix:                            # @luaK_prefix
 # %bb.38:                               # %.lr.ph.i29.i
 	ld.d	$a3, $fp, 0
 	ld.d	$a3, $a3, 24
-	ori	$a4, $zero, 1
-	pcalau12i	$a5, %pc_hi20(luaP_opmodes)
-	addi.d	$a5, $a5, %pc_lo12(luaP_opmodes)
-	ori	$a6, $zero, 27
+	pcalau12i	$a4, %pc_hi20(luaP_opmodes)
+	addi.d	$a4, $a4, %pc_lo12(luaP_opmodes)
+	ori	$a5, $zero, 27
 	ori	$a0, $a0, 4032
 	ori	$a1, $a1, 26
 	.p2align	4, , 16
 .LBB28_39:                              # =>This Inner Loop Header: Depth=1
-	alsl.d	$a7, $a2, $a3, 2
-	blt	$a2, $a4, .LBB28_41
+	alsl.d	$a6, $a2, $a3, 2
+	blez	$a2, .LBB28_41
 # %bb.40:                               #   in Loop: Header=BB28_39 Depth=1
-	ld.wu	$t0, $a7, -4
-	andi	$t1, $t0, 63
-	ldx.b	$t1, $a5, $t1
-	bltz	$t1, .LBB28_45
+	ld.wu	$a7, $a6, -4
+	andi	$t0, $a7, 63
+	ldx.b	$t0, $a4, $t0
+	bltz	$t0, .LBB28_45
 .LBB28_41:                              #   in Loop: Header=BB28_39 Depth=1
-	ld.w	$t0, $a7, 0
-	move	$t1, $a7
-	andi	$t2, $t0, 63
-	bne	$t2, $a6, .LBB28_43
+	ld.w	$a7, $a6, 0
+	move	$t0, $a6
+	andi	$t1, $a7, 63
+	bne	$t1, $a5, .LBB28_43
 .LBB28_42:                              #   in Loop: Header=BB28_39 Depth=1
-	srli.d	$t2, $t0, 17
-	and	$t2, $t2, $a0
-	and	$t0, $t0, $a1
-	or	$t0, $t2, $t0
-	st.w	$t0, $t1, 0
+	srli.d	$t1, $a7, 17
+	and	$t1, $t1, $a0
+	and	$a7, $a7, $a1
+	or	$a7, $t1, $a7
+	st.w	$a7, $t0, 0
 .LBB28_43:                              # %patchtestreg.exit.i37.i
                                         #   in Loop: Header=BB28_39 Depth=1
-	ld.wu	$a7, $a7, 0
-	srli.d	$a7, $a7, 14
-	addu16i.d	$a7, $a7, -2
-	addi.d	$a7, $a7, 1
-	beq	$a7, $s2, .LBB28_12
+	ld.wu	$a6, $a6, 0
+	srli.d	$a6, $a6, 14
+	addu16i.d	$a6, $a6, -2
+	addi.d	$a6, $a6, 1
+	beq	$a6, $s2, .LBB28_12
 # %bb.44:                               # %patchtestreg.exit.i37.i
                                         #   in Loop: Header=BB28_39 Depth=1
-	add.d	$a2, $a2, $a7
+	add.d	$a2, $a2, $a6
 	addi.w	$a2, $a2, 1
 	bne	$a2, $s2, .LBB28_39
 	b	.LBB28_12
 	.p2align	4, , 16
 .LBB28_45:                              #   in Loop: Header=BB28_39 Depth=1
-	addi.d	$t1, $a7, -4
-	andi	$t2, $t0, 63
-	beq	$t2, $a6, .LBB28_42
+	addi.d	$t0, $a6, -4
+	andi	$t1, $a7, 63
+	beq	$t1, $a5, .LBB28_42
 	b	.LBB28_43
 .LBB28_46:
 	addi.d	$a0, $a0, -4
@@ -3816,10 +3806,9 @@ luaK_code:                              # @luaK_code
 	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
-	ori	$a4, $zero, 1
 	pcalau12i	$a0, %pc_hi20(luaP_opmodes)
-	addi.d	$s8, $a0, %pc_lo12(luaP_opmodes)
-	ori	$a5, $zero, 27
+	addi.d	$s7, $a0, %pc_lo12(luaP_opmodes)
+	ori	$a4, $zero, 27
 	lu12i.w	$a0, 7
 	ori	$a0, $a0, 4032
 	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
@@ -3828,25 +3817,25 @@ luaK_code:                              # @luaK_code
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
-	lu12i.w	$s3, 524284
+	lu12i.w	$s1, 524284
 	.p2align	4, , 16
 .LBB33_2:                               # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
 	ld.d	$a0, $a0, 24
 	slli.d	$a1, $s6, 2
-	ldx.wu	$s1, $a0, $a1
-	alsl.d	$s0, $s6, $a0, 2
-	blt	$s6, $a4, .LBB33_4
+	ldx.wu	$s0, $a0, $a1
+	alsl.d	$s8, $s6, $a0, 2
+	blez	$s6, .LBB33_4
 # %bb.3:                                #   in Loop: Header=BB33_2 Depth=1
-	ld.wu	$a1, $s0, -4
+	ld.wu	$a1, $s8, -4
 	andi	$a0, $a1, 63
-	ldx.b	$a0, $s8, $a0
+	ldx.b	$a0, $s7, $a0
 	bltz	$a0, .LBB33_6
 .LBB33_4:                               #   in Loop: Header=BB33_2 Depth=1
-	move	$a1, $s1
-	move	$a0, $s0
+	move	$a1, $s0
+	move	$a0, $s8
 	andi	$a2, $a1, 63
-	bne	$a2, $a5, .LBB33_7
+	bne	$a2, $a4, .LBB33_7
 .LBB33_5:                               #   in Loop: Header=BB33_2 Depth=1
 	srli.d	$a2, $a1, 17
 	ld.d	$a3, $sp, 32                    # 8-byte Folded Reload
@@ -3856,8 +3845,8 @@ luaK_code:                              # @luaK_code
 	or	$a1, $a2, $a1
 	nor	$a2, $s6, $zero
 	add.d	$a2, $s4, $a2
-	addi.w	$s7, $a2, 0
-	srai.d	$a3, $s7, 31
+	addi.w	$s3, $a2, 0
+	srai.d	$a3, $s3, 31
 	xor	$a2, $a2, $a3
 	sub.d	$a2, $a2, $a3
 	bstrpick.d	$a2, $a2, 31, 17
@@ -3866,18 +3855,18 @@ luaK_code:                              # @luaK_code
 	b	.LBB33_9
 	.p2align	4, , 16
 .LBB33_6:                               #   in Loop: Header=BB33_2 Depth=1
-	addi.d	$a0, $s0, -4
+	addi.d	$a0, $s8, -4
 	andi	$a2, $a1, 63
-	beq	$a2, $a5, .LBB33_5
+	beq	$a2, $a4, .LBB33_5
 .LBB33_7:                               #   in Loop: Header=BB33_2 Depth=1
 	nor	$a0, $s6, $zero
 	add.d	$a0, $s4, $a0
-	addi.w	$s7, $a0, 0
-	srai.d	$a1, $s7, 31
+	addi.w	$s3, $a0, 0
+	srai.d	$a1, $s3, 31
 	xor	$a0, $a0, $a1
 	sub.d	$a0, $a0, $a1
 	bstrpick.d	$a1, $a0, 31, 17
-	move	$a0, $s1
+	move	$a0, $s0
 	beqz	$a1, .LBB33_10
 .LBB33_8:                               # %fixjump.exit16.sink.split.sink.split.i.i
                                         #   in Loop: Header=BB33_2 Depth=1
@@ -3885,19 +3874,18 @@ luaK_code:                              # @luaK_code
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(luaX_syntaxerror)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 27
-	ori	$a4, $zero, 1
+	ori	$a4, $zero, 27
 .LBB33_9:                               # %fixjump.exit16.sink.split.i.i
                                         #   in Loop: Header=BB33_2 Depth=1
-	ld.w	$a0, $s0, 0
+	ld.w	$a0, $s8, 0
 .LBB33_10:                              # %fixjump.exit16.i.i
                                         #   in Loop: Header=BB33_2 Depth=1
-	srli.d	$a1, $s1, 14
+	srli.d	$a1, $s0, 14
 	addu16i.d	$a1, $a1, -2
 	addi.d	$a1, $a1, 1
-	bstrins.d	$a0, $s7, 63, 14
-	add.d	$a0, $a0, $s3
-	st.w	$a0, $s0, 0
+	bstrins.d	$a0, $s3, 63, 14
+	add.d	$a0, $a0, $s1
+	st.w	$a0, $s8, 0
 	beq	$a1, $s5, .LBB33_12
 # %bb.11:                               # %fixjump.exit16.i.i
                                         #   in Loop: Header=BB33_2 Depth=1

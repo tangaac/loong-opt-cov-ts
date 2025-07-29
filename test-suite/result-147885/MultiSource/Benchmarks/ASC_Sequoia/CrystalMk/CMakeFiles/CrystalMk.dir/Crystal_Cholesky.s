@@ -10,8 +10,7 @@ Crystal_Cholesky:                       # @Crystal_Cholesky
 	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s1, $sp, 8                     # 8-byte Folded Spill
 	st.d	$s2, $sp, 0                     # 8-byte Folded Spill
-	ori	$a4, $zero, 1
-	blt	$a0, $a4, .LBB0_9
+	blez	$a0, .LBB0_9
 # %bb.1:                                # %.lr.ph.preheader
 	ori	$a5, $zero, 4
 	move	$a4, $zero

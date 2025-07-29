@@ -262,8 +262,7 @@ getmynames:                             # @getmynames
 	addi.d	$a0, $sp, 2
 	pcaddu18i	$ra, %call36(uname)
 	jirl	$ra, $ra, 0
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB5_7
+	bltz	$a0, .LBB5_7
 # %bb.2:
 	addi.d	$a1, $sp, 67
 	move	$a0, $fp

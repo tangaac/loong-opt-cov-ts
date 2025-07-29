@@ -90,8 +90,7 @@ jinit_memory_mgr:                       # @jinit_memory_mgr
 	addi.d	$a3, $sp, 15
 	pcaddu18i	$ra, %call36(__isoc99_sscanf)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_5
+	blez	$a0, .LBB0_5
 # %bb.4:
 	ld.bu	$a0, $sp, 15
 	andi	$a0, $a0, 223
@@ -851,8 +850,7 @@ realize_virt_arrays:                    # @realize_virt_arrays
 	ld.d	$a0, $s2, 136
 	bnez	$a0, .LBB7_11
 .LBB7_7:                                # %._crit_edge113
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB7_29
+	blez	$s0, .LBB7_29
 # %bb.8:
 	ld.d	$a3, $s2, 144
 	move	$a0, $fp
@@ -1013,7 +1011,7 @@ access_virt_sarray:                     # @access_virt_sarray
 	ld.w	$a1, $a1, 8
 	move	$s0, $a2
 	add.w	$s6, $a3, $a2
-	st.d	$a4, $sp, 0                     # 8-byte Folded Spill
+	move	$s1, $a4
 	move	$s2, $a0
 	bltu	$a1, $s6, .LBB8_4
 # %bb.1:
@@ -1062,7 +1060,6 @@ access_virt_sarray:                     # @access_virt_sarray
 	ld.wu	$a0, $fp, 24
 	move	$s8, $zero
 	mul.d	$s4, $a2, $s7
-	ori	$s1, $zero, 1
 	.p2align	4, , 16
 .LBB8_11:                               # %.lr.ph.split.i
                                         # =>This Inner Loop Header: Depth=1
@@ -1085,7 +1082,7 @@ access_virt_sarray:                     # @access_virt_sarray
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	blt	$a0, $s1, .LBB8_13
+	blez	$a0, .LBB8_13
 # %bb.12:                               #   in Loop: Header=BB8_11 Depth=1
 	ld.d	$a1, $fp, 0
 	ld.d	$a5, $fp, 64
@@ -1109,38 +1106,37 @@ access_virt_sarray:                     # @access_virt_sarray
 	bgeu	$a0, $s0, .LBB8_16
 # %bb.15:                               # %._crit_edge
 	ld.w	$a0, $fp, 20
-	move	$a1, $s0
-	addi.w	$a2, $a0, 0
-	st.w	$a1, $fp, 28
-	bnez	$a2, .LBB8_17
+	move	$a2, $s0
+	addi.w	$a1, $a0, 0
+	st.w	$a2, $fp, 28
+	bnez	$a1, .LBB8_17
 	b	.LBB8_20
 .LBB8_16:
 	ld.wu	$a0, $fp, 20
 	bstrpick.d	$a1, $s6, 31, 0
 	sub.d	$a1, $a1, $a0
 	srai.d	$a2, $a1, 63
-	andn	$a1, $a1, $a2
-	addi.w	$a2, $a0, 0
-	st.w	$a1, $fp, 28
-	beqz	$a2, .LBB8_20
+	andn	$a2, $a1, $a2
+	addi.w	$a1, $a0, 0
+	st.w	$a2, $fp, 28
+	beqz	$a1, .LBB8_20
 .LBB8_17:                               # %.lr.ph.i78
 	move	$s7, $zero
 	ld.wu	$s8, $fp, 12
-	bstrpick.d	$a2, $a0, 31, 0
-	ld.wu	$a0, $fp, 24
-	bstrpick.d	$a1, $a1, 31, 0
-	mul.d	$s4, $s8, $a1
-	ori	$s1, $zero, 1
+	ld.wu	$a1, $fp, 24
+	bstrpick.d	$a0, $a0, 31, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	mul.d	$s4, $s8, $a2
 	.p2align	4, , 16
 .LBB8_18:                               # %.lr.ph.split.us.i
                                         # =>This Inner Loop Header: Depth=1
-	sub.d	$a1, $a2, $s7
-	sltu	$a2, $a1, $a0
-	maskeqz	$a1, $a1, $a2
+	sub.d	$a0, $a0, $s7
+	sltu	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
 	ld.wu	$a3, $fp, 28
 	ld.wu	$a4, $fp, 32
-	masknez	$a0, $a0, $a2
-	or	$a0, $a1, $a0
+	masknez	$a1, $a1, $a2
+	or	$a0, $a0, $a1
 	add.d	$a1, $s7, $a3
 	sub.d	$a2, $a4, $a1
 	slt	$a3, $a0, $a2
@@ -1153,7 +1149,7 @@ access_virt_sarray:                     # @access_virt_sarray
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	blt	$a0, $s1, .LBB8_20
+	blez	$a0, .LBB8_20
 # %bb.19:                               #   in Loop: Header=BB8_18 Depth=1
 	ld.d	$a1, $fp, 0
 	ld.d	$a5, $fp, 56
@@ -1165,19 +1161,18 @@ access_virt_sarray:                     # @access_virt_sarray
 	move	$a3, $s4
 	move	$a4, $s5
 	jirl	$ra, $a5, 0
-	ld.wu	$a0, $fp, 24
-	ld.wu	$a2, $fp, 20
-	add.d	$s7, $s7, $a0
+	ld.wu	$a1, $fp, 24
+	ld.wu	$a0, $fp, 20
+	add.d	$s7, $s7, $a1
 	add.d	$s4, $s5, $s4
-	bltu	$s7, $a2, .LBB8_18
+	bltu	$s7, $a0, .LBB8_18
 .LBB8_20:                               # %do_sarray_io.exit80
 	ld.w	$a0, $fp, 32
-	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 	bgeu	$a0, $s6, .LBB8_30
 # %bb.21:
 	bgeu	$a0, $s0, .LBB8_24
 # %bb.22:
-	beqz	$s4, .LBB8_26
+	beqz	$s1, .LBB8_26
 # %bb.23:                               # %.thread85
 	ld.d	$a0, $s2, 0
 	ld.d	$a1, $a0, 0
@@ -1188,7 +1183,7 @@ access_virt_sarray:                     # @access_virt_sarray
 	move	$a0, $s0
 	b	.LBB8_25
 .LBB8_24:
-	beqz	$s4, .LBB8_33
+	beqz	$s1, .LBB8_33
 .LBB8_25:                               # %.thread
 	ld.w	$a1, $fp, 36
 	st.w	$s6, $fp, 32
@@ -1206,21 +1201,21 @@ access_virt_sarray:                     # @access_virt_sarray
 # %bb.28:                               # %.lr.ph.preheader
 	ld.wu	$s2, $fp, 12
 	bstrpick.d	$a1, $a1, 31, 0
-	slli.d	$s1, $a1, 3
-	sub.d	$s3, $s6, $a0
+	slli.d	$s3, $a1, 3
+	sub.d	$s4, $s6, $a0
 	.p2align	4, , 16
 .LBB8_29:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
-	ldx.d	$a0, $a0, $s1
+	ldx.d	$a0, $a0, $s3
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $s3, -1
-	addi.d	$s1, $s1, 8
-	bnez	$s3, .LBB8_29
+	addi.w	$s4, $s4, -1
+	addi.d	$s3, $s3, 8
+	bnez	$s4, .LBB8_29
 .LBB8_30:                               # %.loopexit
-	beqz	$s4, .LBB8_32
+	beqz	$s1, .LBB8_32
 .LBB8_31:                               # %.loopexit.thread106
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 40
@@ -1277,7 +1272,7 @@ access_virt_barray:                     # @access_virt_barray
 	ld.w	$a1, $a1, 8
 	move	$s0, $a2
 	add.w	$s6, $a3, $a2
-	st.d	$a4, $sp, 0                     # 8-byte Folded Spill
+	move	$s1, $a4
 	move	$s2, $a0
 	bltu	$a1, $s6, .LBB9_4
 # %bb.1:
@@ -1318,18 +1313,85 @@ access_virt_barray:                     # @access_virt_barray
 	addi.d	$s3, $fp, 56
 	beqz	$a0, .LBB9_14
 # %bb.9:
-	ld.wu	$a0, $fp, 20
-	beqz	$a0, .LBB9_13
+	ld.wu	$a1, $fp, 20
+	beqz	$a1, .LBB9_13
 # %bb.10:                               # %.lr.ph.i
 	ld.wu	$a2, $fp, 12
 	ld.wu	$a3, $fp, 28
+	ld.wu	$a0, $fp, 24
 	move	$s7, $zero
-	ld.wu	$a1, $fp, 24
 	slli.d	$s8, $a2, 7
 	mul.d	$s4, $s8, $a3
-	ori	$s1, $zero, 1
 	.p2align	4, , 16
 .LBB9_11:                               # %.lr.ph.split.i
+                                        # =>This Inner Loop Header: Depth=1
+	sub.d	$a1, $a1, $s7
+	sltu	$a2, $a1, $a0
+	maskeqz	$a1, $a1, $a2
+	ld.wu	$a3, $fp, 28
+	ld.wu	$a4, $fp, 32
+	masknez	$a0, $a0, $a2
+	or	$a0, $a1, $a0
+	add.d	$a1, $s7, $a3
+	sub.d	$a2, $a4, $a1
+	slt	$a3, $a0, $a2
+	ld.wu	$a4, $fp, 8
+	maskeqz	$a0, $a0, $a3
+	masknez	$a2, $a2, $a3
+	or	$a0, $a0, $a2
+	sub.d	$a1, $a4, $a1
+	slt	$a2, $a0, $a1
+	maskeqz	$a0, $a0, $a2
+	masknez	$a1, $a1, $a2
+	or	$a0, $a0, $a1
+	blez	$a0, .LBB9_13
+# %bb.12:                               #   in Loop: Header=BB9_11 Depth=1
+	ld.d	$a1, $fp, 0
+	ld.d	$a5, $fp, 64
+	slli.d	$a2, $s7, 3
+	ldx.d	$a2, $a1, $a2
+	mul.d	$s5, $a0, $s8
+	move	$a0, $s2
+	move	$a1, $s3
+	move	$a3, $s4
+	move	$a4, $s5
+	jirl	$ra, $a5, 0
+	ld.wu	$a0, $fp, 24
+	ld.wu	$a1, $fp, 20
+	add.d	$s7, $s7, $a0
+	add.d	$s4, $s5, $s4
+	bltu	$s7, $a1, .LBB9_11
+.LBB9_13:                               # %do_barray_io.exit
+	st.w	$zero, $fp, 40
+.LBB9_14:
+	ld.w	$a0, $fp, 28
+	bgeu	$a0, $s0, .LBB9_16
+# %bb.15:                               # %._crit_edge
+	ld.w	$a0, $fp, 20
+	move	$a2, $s0
+	addi.w	$a1, $a0, 0
+	st.w	$a2, $fp, 28
+	bnez	$a1, .LBB9_17
+	b	.LBB9_20
+.LBB9_16:
+	ld.wu	$a0, $fp, 20
+	bstrpick.d	$a1, $s6, 31, 0
+	sub.d	$a1, $a1, $a0
+	srai.d	$a2, $a1, 63
+	andn	$a2, $a1, $a2
+	addi.w	$a1, $a0, 0
+	st.w	$a2, $fp, 28
+	beqz	$a1, .LBB9_20
+.LBB9_17:                               # %.lr.ph.i78
+	ld.wu	$a1, $fp, 12
+	move	$s7, $zero
+	slli.d	$s8, $a1, 7
+	ld.wu	$a1, $fp, 24
+	bstrpick.d	$a0, $a0, 31, 0
+	bstrpick.d	$a2, $a2, 31, 0
+	mul.d	$s4, $s8, $a2
+	.p2align	4, , 16
+.LBB9_18:                               # %.lr.ph.split.us.i
                                         # =>This Inner Loop Header: Depth=1
 	sub.d	$a0, $a0, $s7
 	sltu	$a2, $a0, $a1
@@ -1350,10 +1412,10 @@ access_virt_barray:                     # @access_virt_barray
 	maskeqz	$a0, $a0, $a2
 	masknez	$a1, $a1, $a2
 	or	$a0, $a0, $a1
-	blt	$a0, $s1, .LBB9_13
-# %bb.12:                               #   in Loop: Header=BB9_11 Depth=1
+	blez	$a0, .LBB9_20
+# %bb.19:                               #   in Loop: Header=BB9_18 Depth=1
 	ld.d	$a1, $fp, 0
-	ld.d	$a5, $fp, 64
+	ld.d	$a5, $fp, 56
 	slli.d	$a2, $s7, 3
 	ldx.d	$a2, $a1, $a2
 	mul.d	$s5, $a0, $s8
@@ -1366,84 +1428,14 @@ access_virt_barray:                     # @access_virt_barray
 	ld.wu	$a0, $fp, 20
 	add.d	$s7, $s7, $a1
 	add.d	$s4, $s5, $s4
-	bltu	$s7, $a0, .LBB9_11
-.LBB9_13:                               # %do_barray_io.exit
-	st.w	$zero, $fp, 40
-.LBB9_14:
-	ld.w	$a0, $fp, 28
-	bgeu	$a0, $s0, .LBB9_16
-# %bb.15:                               # %._crit_edge
-	ld.w	$a0, $fp, 20
-	move	$a1, $s0
-	addi.w	$a2, $a0, 0
-	st.w	$a1, $fp, 28
-	bnez	$a2, .LBB9_17
-	b	.LBB9_20
-.LBB9_16:
-	ld.wu	$a0, $fp, 20
-	bstrpick.d	$a1, $s6, 31, 0
-	sub.d	$a1, $a1, $a0
-	srai.d	$a2, $a1, 63
-	andn	$a1, $a1, $a2
-	addi.w	$a2, $a0, 0
-	st.w	$a1, $fp, 28
-	beqz	$a2, .LBB9_20
-.LBB9_17:                               # %.lr.ph.i78
-	ld.wu	$a2, $fp, 12
-	move	$s7, $zero
-	slli.d	$s8, $a2, 7
-	bstrpick.d	$a2, $a0, 31, 0
-	ld.wu	$a0, $fp, 24
-	bstrpick.d	$a1, $a1, 31, 0
-	mul.d	$s4, $s8, $a1
-	ori	$s1, $zero, 1
-	.p2align	4, , 16
-.LBB9_18:                               # %.lr.ph.split.us.i
-                                        # =>This Inner Loop Header: Depth=1
-	sub.d	$a1, $a2, $s7
-	sltu	$a2, $a1, $a0
-	maskeqz	$a1, $a1, $a2
-	ld.wu	$a3, $fp, 28
-	ld.wu	$a4, $fp, 32
-	masknez	$a0, $a0, $a2
-	or	$a0, $a1, $a0
-	add.d	$a1, $s7, $a3
-	sub.d	$a2, $a4, $a1
-	slt	$a3, $a0, $a2
-	ld.wu	$a4, $fp, 8
-	maskeqz	$a0, $a0, $a3
-	masknez	$a2, $a2, $a3
-	or	$a0, $a0, $a2
-	sub.d	$a1, $a4, $a1
-	slt	$a2, $a0, $a1
-	maskeqz	$a0, $a0, $a2
-	masknez	$a1, $a1, $a2
-	or	$a0, $a0, $a1
-	blt	$a0, $s1, .LBB9_20
-# %bb.19:                               #   in Loop: Header=BB9_18 Depth=1
-	ld.d	$a1, $fp, 0
-	ld.d	$a5, $fp, 56
-	slli.d	$a2, $s7, 3
-	ldx.d	$a2, $a1, $a2
-	mul.d	$s5, $a0, $s8
-	move	$a0, $s2
-	move	$a1, $s3
-	move	$a3, $s4
-	move	$a4, $s5
-	jirl	$ra, $a5, 0
-	ld.wu	$a0, $fp, 24
-	ld.wu	$a2, $fp, 20
-	add.d	$s7, $s7, $a0
-	add.d	$s4, $s5, $s4
-	bltu	$s7, $a2, .LBB9_18
+	bltu	$s7, $a0, .LBB9_18
 .LBB9_20:                               # %do_barray_io.exit80
 	ld.w	$a0, $fp, 32
-	ld.d	$s4, $sp, 0                     # 8-byte Folded Reload
 	bgeu	$a0, $s6, .LBB9_30
 # %bb.21:
 	bgeu	$a0, $s0, .LBB9_24
 # %bb.22:
-	beqz	$s4, .LBB9_26
+	beqz	$s1, .LBB9_26
 # %bb.23:                               # %.thread85
 	ld.d	$a0, $s2, 0
 	ld.d	$a1, $a0, 0
@@ -1454,7 +1446,7 @@ access_virt_barray:                     # @access_virt_barray
 	move	$a0, $s0
 	b	.LBB9_25
 .LBB9_24:
-	beqz	$s4, .LBB9_33
+	beqz	$s1, .LBB9_33
 .LBB9_25:                               # %.thread
 	ld.w	$a1, $fp, 36
 	st.w	$s6, $fp, 32
@@ -1473,21 +1465,21 @@ access_virt_barray:                     # @access_virt_barray
 	ld.wu	$a2, $fp, 12
 	slli.d	$s2, $a2, 7
 	bstrpick.d	$a1, $a1, 31, 0
-	slli.d	$s1, $a1, 3
-	sub.d	$s3, $s6, $a0
+	slli.d	$s3, $a1, 3
+	sub.d	$s4, $s6, $a0
 	.p2align	4, , 16
 .LBB9_29:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
 	ld.d	$a0, $fp, 0
-	ldx.d	$a0, $a0, $s1
+	ldx.d	$a0, $a0, $s3
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(jzero_far)
 	jirl	$ra, $ra, 0
-	addi.w	$s3, $s3, -1
-	addi.d	$s1, $s1, 8
-	bnez	$s3, .LBB9_29
+	addi.w	$s4, $s4, -1
+	addi.d	$s3, $s3, 8
+	bnez	$s4, .LBB9_29
 .LBB9_30:                               # %.loopexit
-	beqz	$s4, .LBB9_32
+	beqz	$s1, .LBB9_32
 .LBB9_31:                               # %.loopexit.thread106
 	ori	$a0, $zero, 1
 	st.w	$a0, $fp, 40

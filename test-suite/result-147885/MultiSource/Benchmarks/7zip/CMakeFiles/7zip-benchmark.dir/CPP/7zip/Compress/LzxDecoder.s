@@ -1549,9 +1549,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 	lu12i.w	$s8, 1
 	ori	$s3, $s8, 3316
 	ldx.bu	$a0, $a0, $s3
-	ori	$a1, $zero, 1
 	addi.d	$s0, $fp, 16
-	bne	$a0, $a1, .LBB9_3
+	beqz	$a0, .LBB9_3
 # %bb.1:
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $fp, 24
@@ -1642,8 +1641,7 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 .LBB9_17:
 	ori	$a0, $s8, 3317
 	ldx.bu	$a0, $fp, $a0
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB9_35
+	beqz	$a0, .LBB9_35
 # %bb.18:
 	addi.d	$s7, $s5, 1
 	ori	$s8, $zero, 15
@@ -1654,9 +1652,8 @@ _ZN9NCompress4NLzx8CDecoder10ReadTablesEv: # @_ZN9NCompress4NLzx8CDecoder10ReadT
 .LBB9_20:                               # %_ZN9NCompress4NLzx8CDecoder8ReadBitsEj.exit37
 	sub.d	$a0, $s8, $s5
 	srl.w	$a0, $s6, $a0
-	lu12i.w	$a1, 16
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB9_36
+	slli.d	$a0, $a0, 47
+	bgez	$a0, .LBB9_36
 # %bb.21:
 	lu12i.w	$a0, 8
 	lu12i.w	$s8, 1
@@ -2963,9 +2960,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	ori	$s4, $s3, 3308
 	ldx.bu	$a0, $fp, $s4
 	ori	$a1, $zero, 32
-	ori	$a2, $zero, 1
 	st.w	$a1, $fp, 68
-	bne	$a0, $a2, .LBB15_3
+	beqz	$a0, .LBB15_3
 # %bb.2:
 	ld.b	$a0, $fp, 144
 	andi	$a0, $a0, 1
@@ -3045,9 +3041,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	sub.d	$a0, $a0, $s5
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	srl.w	$a0, $a1, $a0
-	lu12i.w	$a1, 16
-	and	$a0, $a0, $a1
-	beqz	$a0, .LBB15_35
+	slli.d	$a0, $a0, 47
+	bgez	$a0, .LBB15_35
 # %bb.14:                               # %.lr.ph.i.i.i.i113
 	addi.d	$a0, $s7, 16
 	st.w	$a0, $fp, 68
@@ -3203,9 +3198,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	st.d	$zero, $fp, 128
 .LBB15_37:                              # %.loopexit185
 	ldptr.w	$a0, $fp, 7408
-	ori	$a1, $zero, 1
 	addi.d	$s2, $fp, 72
-	blt	$a0, $a1, .LBB15_44
+	blez	$a0, .LBB15_44
 # %bb.38:                               # %.loopexit185
 	beqz	$s1, .LBB15_44
 # %bb.39:                               # %.lr.ph
@@ -3534,7 +3528,7 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	sll.w	$a0, $a0, $s8
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ld.bu	$a0, $fp, 145
-	beq	$a0, $a1, .LBB15_86
+	bnez	$a0, .LBB15_86
 	b	.LBB15_96
 .LBB15_85:                              #   in Loop: Header=BB15_61 Depth=2
 	slli.d	$a0, $a0, 17
@@ -3542,9 +3536,8 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	addi.w	$a0, $a0, 0
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
 	ori	$s8, $zero, 17
-	ori	$a1, $zero, 1
 	ld.bu	$a0, $fp, 145
-	bne	$a0, $a1, .LBB15_96
+	beqz	$a0, .LBB15_96
 .LBB15_86:                              #   in Loop: Header=BB15_61 Depth=2
 	ori	$a0, $zero, 3
 	bltu	$s8, $a0, .LBB15_96
@@ -3624,16 +3617,18 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	jirl	$ra, $ra, 0
 	b	.LBB15_91
 .LBB15_96:                              #   in Loop: Header=BB15_61 Depth=2
-	ld.w	$s6, $fp, 68
+	ld.w	$a1, $fp, 68
 	ld.w	$a0, $fp, 64
 	st.d	$a0, $sp, 24                    # 8-byte Folded Spill
-	add.w	$a0, $s6, $s8
+	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
+	add.w	$a0, $a1, $s8
 	st.w	$a0, $fp, 68
 	ori	$a1, $zero, 16
 	bgeu	$a0, $a1, .LBB15_111
 .LBB15_97:                              # %_ZN9NCompress4NLzx10NBitStream8CDecoder8ReadBitsEj.exit159
                                         #   in Loop: Header=BB15_61 Depth=2
-	sub.d	$a0, $s3, $s6
+	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
+	sub.d	$a0, $s3, $a0
 	ld.d	$a1, $sp, 24                    # 8-byte Folded Reload
 	srl.w	$a0, $a1, $a0
 	bstrpick.d	$a0, $a0, 16, 0
@@ -3655,8 +3650,7 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	bltu	$a1, $a2, .LBB15_103
 # %bb.100:                              #   in Loop: Header=BB15_61 Depth=2
 	ld.bu	$a3, $fp, 120
-	ori	$s5, $zero, 1
-	bne	$a3, $s5, .LBB15_134
+	beqz	$a3, .LBB15_134
 # %bb.101:                              #   in Loop: Header=BB15_61 Depth=2
 	ld.w	$a3, $fp, 92
 	bgeu	$a1, $a3, .LBB15_134
@@ -3712,7 +3706,7 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	slli.d	$a0, $a0, 8
 	ld.w	$a2, $fp, 68
 	or	$a0, $a1, $a0
-	or	$a0, $a0, $s5
+	or	$a0, $a0, $s6
 	st.w	$a0, $fp, 64
 	addi.w	$a0, $a2, -16
 	st.w	$a0, $fp, 68
@@ -3727,7 +3721,7 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 # %bb.112:                              #   in Loop: Header=BB15_111 Depth=3
 	addi.d	$a1, $a0, 1
 	st.d	$a1, $s0, 0
-	ld.bu	$s5, $a0, 0
+	ld.bu	$s6, $a0, 0
 	bltu	$a1, $a2, .LBB15_109
 	b	.LBB15_114
 	.p2align	4, , 16
@@ -3737,7 +3731,7 @@ _ZN9NCompress4NLzx8CDecoder8CodeSpecEj: # @_ZN9NCompress4NLzx8CDecoder8CodeSpecE
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $fp, 16
 	ld.d	$a2, $fp, 24
-	move	$s5, $a0
+	move	$s6, $a0
 	bltu	$a1, $a2, .LBB15_109
 .LBB15_114:                             #   in Loop: Header=BB15_111 Depth=3
 	move	$a0, $s0
@@ -4514,8 +4508,7 @@ _ZN9NCompress4NLzx15CDecoderFlusherD2Ev: # @_ZN9NCompress4NLzx15CDecoderFlusherD
 	.cfi_offset 22, -16
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 8
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB19_2
+	beqz	$a0, .LBB19_2
 # %bb.1:
 	ld.d	$a0, $fp, 0
 	ld.d	$a1, $a0, 0

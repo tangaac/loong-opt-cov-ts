@@ -5,18 +5,17 @@
 	.type	read_dmatrix,@function
 read_dmatrix:                           # @read_dmatrix
 # %bb.0:                                # %.lr.ph.i
-	addi.d	$sp, $sp, -112
-	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s8, $sp, 24                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -96
+	st.d	$ra, $sp, 88                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 40                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s7, $sp, 16                    # 8-byte Folded Spill
 	move	$s1, $a1
 	move	$s0, $a0
 	pcalau12i	$a0, %pc_hi20(.L.str)
@@ -25,8 +24,8 @@ read_dmatrix:                           # @read_dmatrix
 	pcaddu18i	$ra, %call36(fopen)
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
-	st.w	$zero, $sp, 12
-	st.w	$zero, $sp, 8
+	st.w	$zero, $sp, 4
+	st.w	$zero, $sp, 0
 	ori	$a1, $zero, 47
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(strrchr)
@@ -42,13 +41,13 @@ read_dmatrix:                           # @read_dmatrix
 	jirl	$ra, $ra, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a0, %pc_lo12(.L.str.2)
-	addi.d	$a2, $sp, 8
-	addi.d	$a3, $sp, 12
+	addi.d	$a2, $sp, 0
+	addi.d	$a3, $sp, 4
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
-	ld.w	$s3, $sp, 8
-	ld.w	$s4, $sp, 12
+	ld.w	$s3, $sp, 0
+	ld.w	$s4, $sp, 4
 	st.d	$s3, $s0, 0
 	slli.d	$s2, $s3, 4
 	move	$a0, $s2
@@ -76,49 +75,48 @@ read_dmatrix:                           # @read_dmatrix
 # %bb.3:                                # %dvarray_init.exit
 	blez	$s3, .LBB0_13
 # %bb.4:                                # %.preheader.lr.ph
-	ori	$s6, $zero, 1
-	blt	$s4, $s6, .LBB0_12
+	blez	$s4, .LBB0_12
 # %bb.5:                                # %.preheader.preheader
-	move	$s7, $zero
+	move	$s6, $zero
 	pcalau12i	$a0, %pc_hi20(.L.str.3)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.3)
 	b	.LBB0_7
 	.p2align	4, , 16
 .LBB0_6:                                # %._crit_edge
                                         #   in Loop: Header=BB0_7 Depth=1
-	addi.d	$s7, $s7, 1
-	bge	$s7, $s3, .LBB0_14
+	addi.d	$s6, $s6, 1
+	bge	$s6, $s3, .LBB0_14
 .LBB0_7:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
 	move	$s5, $zero
-	blt	$s4, $s6, .LBB0_6
+	blez	$s4, .LBB0_6
 # %bb.8:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB0_7 Depth=1
 	move	$s3, $zero
-	move	$s8, $zero
+	move	$s7, $zero
 	.p2align	4, , 16
 .LBB0_9:                                # %.lr.ph
                                         #   Parent Loop BB0_7 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	addi.d	$a2, $sp, 16
+	addi.d	$a2, $sp, 8
 	move	$a0, $fp
 	move	$a1, $s2
 	pcaddu18i	$ra, %call36(__isoc99_fscanf)
 	jirl	$ra, $ra, 0
 	ld.d	$s1, $s0, 8
-	fld.d	$fa0, $sp, 16
-	alsl.d	$a0, $s7, $s1, 4
+	fld.d	$fa0, $sp, 8
+	alsl.d	$a0, $s6, $s1, 4
 	ld.d	$a0, $a0, 8
-	ld.w	$s4, $sp, 12
+	ld.w	$s4, $sp, 4
 	fstx.d	$fa0, $a0, $s3
-	addi.d	$s8, $s8, 1
+	addi.d	$s7, $s7, 1
 	addi.d	$s3, $s3, 8
 	addi.d	$s5, $s5, 1
-	blt	$s8, $s4, .LBB0_9
+	blt	$s7, $s4, .LBB0_9
 # %bb.10:                               # %._crit_edge.loopexit
                                         #   in Loop: Header=BB0_7 Depth=1
-	ld.w	$s3, $sp, 8
+	ld.w	$s3, $sp, 0
 	b	.LBB0_6
 .LBB0_11:                               # %dvarray_init.exit.thread32
 	move	$a0, $s1
@@ -135,7 +133,7 @@ read_dmatrix:                           # @read_dmatrix
                                         # implicit-def: $r28
 	b	.LBB0_15
 .LBB0_14:                               # %._crit_edge22.loopexit
-	move	$s3, $s7
+	move	$s3, $s6
 .LBB0_15:                               # %._crit_edge22
 	addi.w	$a0, $s3, 0
 	alsl.d	$a0, $a0, $s1, 4
@@ -155,18 +153,17 @@ read_dmatrix:                           # @read_dmatrix
 	pcaddu18i	$ra, %call36(puts)
 	jirl	$ra, $ra, 0
 	mul.w	$a0, $s5, $s3
-	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 112
+	ld.d	$s7, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 88                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 96
 	ret
 .Lfunc_end0:
 	.size	read_dmatrix, .Lfunc_end0-read_dmatrix

@@ -111,13 +111,11 @@ polybench_alloc_data:                   # @polybench_alloc_data
 	.type	kernel_doitgen,@function
 kernel_doitgen:                         # @kernel_doitgen
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a0, $a6, .LBB7_19
+	blez	$a0, .LBB7_19
 # %bb.1:
-	blt	$a1, $a6, .LBB7_19
+	blez	$a1, .LBB7_19
 # %bb.2:
-	ori	$a6, $zero, 1
-	blt	$a2, $a6, .LBB7_19
+	blez	$a2, .LBB7_19
 # %bb.3:                                # %.preheader37.us.us.us.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill
@@ -266,13 +264,11 @@ kernel_doitgen:                         # @kernel_doitgen
 	.type	kernel_doitgen_StrictFP,@function
 kernel_doitgen_StrictFP:                # @kernel_doitgen_StrictFP
 # %bb.0:
-	ori	$a6, $zero, 1
-	blt	$a0, $a6, .LBB8_19
+	blez	$a0, .LBB8_19
 # %bb.1:
-	blt	$a1, $a6, .LBB8_19
+	blez	$a1, .LBB8_19
 # %bb.2:
-	ori	$a6, $zero, 1
-	blt	$a2, $a6, .LBB8_19
+	blez	$a2, .LBB8_19
 # %bb.3:                                # %.preheader37.us.us.us.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$fp, $sp, 40                    # 8-byte Folded Spill

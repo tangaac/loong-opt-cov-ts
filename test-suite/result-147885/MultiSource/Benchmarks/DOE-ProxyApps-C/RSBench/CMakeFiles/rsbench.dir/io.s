@@ -354,7 +354,7 @@ read_CLI:                               # @read_CLI
 	move	$s5, $a2
 	ori	$s2, $zero, 355
 	ori	$s8, $zero, 100
-	ori	$s3, $zero, 1000
+	ori	$s0, $zero, 1000
 	ori	$s4, $zero, 1
 	ori	$s7, $a0, 1664
 	ori	$s1, $zero, 116
@@ -363,7 +363,7 @@ read_CLI:                               # @read_CLI
 	ori	$fp, $zero, 1
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
-	ori	$s0, $zero, 1
+	ori	$s3, $zero, 1
 	b	.LBB4_4
 .LBB4_2:                                #   in Loop: Header=BB4_4 Depth=1
 	move	$fp, $zero
@@ -449,7 +449,7 @@ read_CLI:                               # @read_CLI
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
-	move	$s3, $a0
+	move	$s0, $a0
 	b	.LBB4_3
 .LBB4_21:                               #   in Loop: Header=BB4_4 Depth=1
 	addi.w	$s4, $s4, 1
@@ -461,7 +461,7 @@ read_CLI:                               # @read_CLI
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
 	jirl	$ra, $ra, 0
-	move	$s0, $a0
+	move	$s3, $a0
 	b	.LBB4_3
 .LBB4_23:                               #   in Loop: Header=BB4_4 Depth=1
 	addi.w	$s4, $s4, 1
@@ -488,8 +488,8 @@ read_CLI:                               # @read_CLI
 	move	$s2, $a0
 	b	.LBB4_3
 .LBB4_27:                               #   in Loop: Header=BB4_4 Depth=1
-	move	$s8, $s0
-	move	$s0, $s7
+	move	$s8, $s3
+	move	$s3, $s7
 	addi.w	$s4, $s4, 1
 	bge	$s4, $s6, .LBB4_46
 # %bb.28:                               #   in Loop: Header=BB4_4 Depth=1
@@ -527,34 +527,33 @@ read_CLI:                               # @read_CLI
 .LBB4_33:                               #   in Loop: Header=BB4_4 Depth=1
 	st.d	$zero, $sp, 16                  # 8-byte Folded Spill
 .LBB4_34:                               #   in Loop: Header=BB4_4 Depth=1
-	move	$s7, $s0
-	move	$s0, $s8
+	move	$s7, $s3
+	move	$s3, $s8
 	ori	$s8, $zero, 100
 	b	.LBB4_3
 .LBB4_35:
-	ori	$s3, $zero, 1000
+	ori	$s0, $zero, 1000
 	ori	$a1, $zero, 100
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	ori	$s2, $zero, 355
+	ori	$s3, $zero, 1
 	ori	$s7, $a0, 1664
-	ori	$s0, $zero, 1
 	ori	$a0, $zero, 1
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ori	$fp, $zero, 1
 .LBB4_36:                               # %._crit_edge
-	ld.d	$a3, $sp, 0                     # 8-byte Folded Reload
-	st.w	$s3, $a3, 16
-	ld.d	$a4, $sp, 8                     # 8-byte Folded Reload
-	st.w	$a4, $a3, 20
-	st.w	$fp, $a3, 28
+	ld.d	$a2, $sp, 0                     # 8-byte Folded Reload
+	st.w	$s0, $a2, 16
+	ld.d	$a3, $sp, 8                     # 8-byte Folded Reload
+	st.w	$a3, $a2, 20
+	st.w	$fp, $a2, 28
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
-	st.w	$a1, $a3, 12
-	st.w	$s2, $a3, 4
-	st.w	$s7, $a3, 8
-	addi.w	$a0, $s0, 0
-	st.w	$s0, $a3, 0
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB4_45
+	st.w	$a1, $a2, 12
+	st.w	$s2, $a2, 4
+	st.w	$s7, $a2, 8
+	addi.w	$a0, $s3, 0
+	st.w	$s3, $a2, 0
+	blez	$a0, .LBB4_45
 # %bb.37:
 	addi.w	$a0, $s2, 0
 	blez	$a0, .LBB4_45
@@ -562,16 +561,16 @@ read_CLI:                               # @read_CLI
 	addi.w	$a0, $s7, 0
 	blez	$a0, .LBB4_45
 # %bb.39:
-	addi.w	$a0, $s3, 0
+	addi.w	$a0, $s0, 0
 	blez	$a0, .LBB4_45
 # %bb.40:
-	addi.w	$a0, $a4, 0
+	addi.w	$a0, $a3, 0
 	blez	$a0, .LBB4_45
 # %bb.41:
 	bnez	$a1, .LBB4_43
 # %bb.42:
 	ori	$a0, $zero, 68
-	st.w	$a0, $a3, 4
+	st.w	$a0, $a2, 4
 .LBB4_43:
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 32                    # 8-byte Folded Reload
@@ -588,7 +587,7 @@ read_CLI:                               # @read_CLI
 	ret
 .LBB4_44:
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
-	st.w	$s3, $a1, 16
+	st.w	$s0, $a1, 16
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 20
 	st.w	$fp, $a1, 28
@@ -596,20 +595,20 @@ read_CLI:                               # @read_CLI
 	st.w	$a0, $a1, 12
 	st.w	$s2, $a1, 4
 	st.w	$s7, $a1, 8
-	st.w	$s0, $a1, 0
+	st.w	$s3, $a1, 0
 .LBB4_45:
 	pcaddu18i	$ra, %call36(print_CLI_error)
 	jirl	$ra, $ra, 0
 .LBB4_46:
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
-	st.w	$s3, $a1, 16
+	st.w	$s0, $a1, 16
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
 	st.w	$a0, $a1, 20
 	st.w	$fp, $a1, 28
 	ld.d	$a0, $sp, 16                    # 8-byte Folded Reload
 	st.w	$a0, $a1, 12
 	st.w	$s2, $a1, 4
-	st.w	$s0, $a1, 8
+	st.w	$s3, $a1, 8
 	st.w	$s8, $a1, 0
 	pcaddu18i	$ra, %call36(print_CLI_error)
 	jirl	$ra, $ra, 0

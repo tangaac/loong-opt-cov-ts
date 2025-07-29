@@ -82,10 +82,10 @@ main:                                   # @main
 	lu32i.d	$a0, 0
 	st.d	$a2, $sp, 184                   # 8-byte Folded Spill
 	st.w	$a0, $a2, %pc_lo12(Output_Type)
-	addi.d	$s1, $fp, 8
+	addi.d	$s8, $fp, 8
 	ori	$a2, $zero, 45
 	pcalau12i	$a0, %pc_hi20(.LJTI0_0)
-	addi.d	$s8, $a0, %pc_lo12(.LJTI0_0)
+	addi.d	$s3, $a0, %pc_lo12(.LJTI0_0)
 	pcalau12i	$a0, %pc_hi20(.Lstr.9)
 	addi.d	$a0, $a0, %pc_lo12(.Lstr.9)
 	st.d	$a0, $sp, 64                    # 8-byte Folded Spill
@@ -98,7 +98,7 @@ main:                                   # @main
 	pcalau12i	$a0, %pc_hi20(.L.str.13)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.13)
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	ori	$s6, $zero, 1
+	ori	$s1, $zero, 1
 	b	.LBB0_7
 .LBB0_2:                                #   in Loop: Header=BB0_7 Depth=1
 	ld.d	$a0, $sp, 120                   # 8-byte Folded Reload
@@ -112,31 +112,31 @@ main:                                   # @main
 .LBB0_5:                                #   in Loop: Header=BB0_7 Depth=1
 	ori	$a2, $zero, 45
 .LBB0_6:                                #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$s6, $s6, 1
-	bge	$s6, $s0, .LBB0_32
+	addi.w	$s1, $s1, 1
+	bge	$s1, $s0, .LBB0_32
 .LBB0_7:                                # =>This Inner Loop Header: Depth=1
-	sub.w	$s2, $s0, $s6
-	slli.d	$a0, $s6, 3
+	sub.w	$s2, $s0, $s1
+	slli.d	$a0, $s1, 3
 	bne	$s2, $s7, .LBB0_9
 # %bb.8:                                #   in Loop: Header=BB0_7 Depth=1
 	move	$s5, $zero
-	ldx.d	$s3, $fp, $a0
-	ld.bu	$a0, $s3, 0
+	ldx.d	$s6, $fp, $a0
+	ld.bu	$a0, $s6, 0
 	bne	$a0, $a2, .LBB0_6
 	b	.LBB0_10
 	.p2align	4, , 16
 .LBB0_9:                                #   in Loop: Header=BB0_7 Depth=1
-	ldx.d	$a1, $s1, $a0
+	ldx.d	$a1, $s8, $a0
 	ld.bu	$a1, $a1, 0
 	addi.d	$a1, $a1, -45
 	sltui	$s5, $a1, 1
-	ldx.d	$s3, $fp, $a0
-	ld.bu	$a0, $s3, 0
+	ldx.d	$s6, $fp, $a0
+	ld.bu	$a0, $s6, 0
 	bne	$a0, $a2, .LBB0_6
 .LBB0_10:                               #   in Loop: Header=BB0_7 Depth=1
 	pcaddu18i	$ra, %call36(__ctype_toupper_loc)
 	jirl	$ra, $ra, 0
-	ld.bu	$a1, $s3, 1
+	ld.bu	$a1, $s6, 1
 	ld.d	$a0, $a0, 0
 	ext.w.b	$a2, $a1
 	slli.d	$a1, $a2, 2
@@ -146,8 +146,8 @@ main:                                   # @main
 	bltu	$a1, $a0, .LBB0_145
 # %bb.11:                               #   in Loop: Header=BB0_7 Depth=1
 	slli.d	$a0, $a0, 2
-	ldx.w	$a0, $s8, $a0
-	add.d	$a0, $s8, $a0
+	ldx.w	$a0, $s3, $a0
+	add.d	$a0, $s3, $a0
 	jr	$a0
 .LBB0_12:                               #   in Loop: Header=BB0_7 Depth=1
 	addi.d	$a0, $s2, -1
@@ -181,8 +181,8 @@ main:                                   # @main
 	st.w	$s7, $a1, %pc_lo12(Ersatz_Flag)
 	beqz	$a0, .LBB0_142
 # %bb.18:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$s6, $s6, 1
-	slli.d	$a0, $s6, 3
+	addi.w	$s1, $s1, 1
+	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $fp, $a0
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	st.d	$a0, $a1, %pc_lo12(Substitute_Picture_Filename)
@@ -205,14 +205,14 @@ main:                                   # @main
 	st.w	$s7, $s4, %pc_lo12(Two_Streams)
 	beqz	$a0, .LBB0_144
 # %bb.23:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$s6, $s6, 1
-	slli.d	$a0, $s6, 3
+	addi.w	$s1, $s1, 1
+	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $fp, $a0
 	ld.d	$a1, $sp, 192                   # 8-byte Folded Reload
 	st.d	$a0, $a1, %pc_lo12(Enhancement_Layer_Bitstream_Filename)
 	b	.LBB0_5
 .LBB0_24:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.d	$a0, $s3, 2
+	addi.d	$a0, $s6, 2
 	ori	$a2, $zero, 10
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(strtol)
@@ -241,8 +241,8 @@ main:                                   # @main
 	st.w	$s7, $a1, %pc_lo12(Spatial_Flag)
 	beqz	$a0, .LBB0_143
 # %bb.28:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$s6, $s6, 1
-	slli.d	$a0, $s6, 3
+	addi.w	$s1, $s1, 1
+	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $fp, $a0
 	ld.d	$a1, $sp, 96                    # 8-byte Folded Reload
 	st.d	$a0, $a1, %pc_lo12(Lower_Layer_Picture_Filename)
@@ -255,15 +255,15 @@ main:                                   # @main
 	ori	$a2, $zero, 45
 	beqz	$a0, .LBB0_151
 # %bb.30:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$s6, $s6, 1
-	slli.d	$a0, $s6, 3
+	addi.w	$s1, $s1, 1
+	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $fp, $a0
 	ld.d	$a1, $sp, 160                   # 8-byte Folded Reload
 	st.d	$a0, $a1, %pc_lo12(Output_Picture_Filename)
 	b	.LBB0_6
 .LBB0_31:                               #   in Loop: Header=BB0_7 Depth=1
-	addi.w	$s6, $s6, 1
-	slli.d	$a0, $s6, 3
+	addi.w	$s1, $s1, 1
+	slli.d	$a0, $s1, 3
 	ldx.d	$a0, $fp, $a0
 	ld.d	$a1, $sp, 168                   # 8-byte Folded Reload
 	st.d	$a0, $a1, %pc_lo12(Main_Bitstream_Filename)
@@ -293,9 +293,9 @@ main:                                   # @main
 	st.w	$a1, $a2, %pc_lo12(Display_Progressive_Flag)
 	ld.d	$s8, $sp, 152                   # 8-byte Folded Reload
 	ld.d	$fp, $sp, 192                   # 8-byte Folded Reload
-	ld.d	$s0, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 168                   # 8-byte Folded Reload
-	bne	$a0, $s0, .LBB0_36
+	ld.d	$s0, $sp, 168                   # 8-byte Folded Reload
+	ld.d	$a1, $sp, 80                    # 8-byte Folded Reload
+	bne	$a0, $a1, .LBB0_36
 # %bb.35:
 	ori	$a0, $zero, 9
 	st.w	$a0, $a3, %pc_lo12(Output_Type)
@@ -304,7 +304,7 @@ main:                                   # @main
 	st.d	$a1, $a0, %pc_lo12(Output_Picture_Filename)
 .LBB0_36:                               # %Process_Options.exit
 	pcalau12i	$s2, %pc_hi20(ld)
-	ld.d	$a0, $s1, %pc_lo12(Main_Bitstream_Filename)
+	ld.d	$a0, $s0, %pc_lo12(Main_Bitstream_Filename)
 	pcalau12i	$a1, %pc_hi20(base)
 	addi.d	$s3, $a1, %pc_lo12(base)
 	st.d	$s3, $s2, %pc_lo12(ld)
@@ -312,7 +312,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s3, 0
-	bge	$s0, $a0, .LBB0_147
+	bltz	$a0, .LBB0_147
 # %bb.37:
 	beqz	$a0, .LBB0_45
 # %bb.38:
@@ -370,7 +370,7 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(open)
 	jirl	$ra, $ra, 0
 	st.w	$a0, $s7, 0
-	bge	$s0, $a0, .LBB0_150
+	bltz	$a0, .LBB0_150
 # %bb.47:
 	pcaddu18i	$ra, %call36(Initialize_Buffer)
 	jirl	$ra, $ra, 0
@@ -1165,7 +1165,7 @@ main:                                   # @main
 	pcalau12i	$a0, %got_pc_hi20(stderr)
 	ld.d	$a0, $a0, %got_pc_lo12(stderr)
 	ld.d	$a0, $a0, 0
-	ld.d	$a2, $s1, %pc_lo12(Main_Bitstream_Filename)
+	ld.d	$a2, $s0, %pc_lo12(Main_Bitstream_Filename)
 	pcalau12i	$a1, %pc_hi20(.L.str)
 	addi.d	$a1, $a1, %pc_lo12(.L.str)
 	pcaddu18i	$ra, %call36(fprintf)
@@ -1283,8 +1283,7 @@ Error:                                  # @Error
 	.type	Print_Bits,@function
 Print_Bits:                             # @Print_Bits
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_4
+	blez	$a2, .LBB2_4
 # %bb.1:                                # %.lr.ph.preheader
 	addi.d	$sp, $sp, -48
 	st.d	$ra, $sp, 40                    # 8-byte Folded Spill

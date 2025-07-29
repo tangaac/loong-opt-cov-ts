@@ -80,8 +80,7 @@ gen_crc_table:                          # @gen_crc_table
 	.type	update_crc,@function
 update_crc:                             # @update_crc
 # %bb.0:
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB1_3
+	blez	$a2, .LBB1_3
 # %bb.1:                                # %.lr.ph.preheader
 	pcalau12i	$a3, %pc_hi20(crc_table)
 	addi.d	$a3, $a3, %pc_lo12(crc_table)
@@ -114,14 +113,13 @@ update_crc:                             # @update_crc
 	.type	main,@function
 main:                                   # @main
 # %bb.0:
-	addi.d	$sp, $sp, -64
-	st.d	$ra, $sp, 56                    # 8-byte Folded Spill
-	st.d	$fp, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s1, $sp, 32                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 24                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 16                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 8                     # 8-byte Folded Spill
+	addi.d	$sp, $sp, -48
+	st.d	$ra, $sp, 40                    # 8-byte Folded Spill
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
+	st.d	$s3, $sp, 0                     # 8-byte Folded Spill
 	ori	$a2, $zero, 2
 	bne	$a0, $a2, .LBB2_10
 # %bb.1:                                # %vector.ph
@@ -192,8 +190,7 @@ main:                                   # @main
 	bne	$a1, $a2, .LBB2_2
 # %bb.3:                                # %gen_crc_table.exit.preheader
 	addi.w	$fp, $a0, 0
-	ori	$s3, $zero, 1
-	blt	$fp, $s3, .LBB2_8
+	blez	$fp, .LBB2_8
 # %bb.4:                                # %.lr.ph.preheader
 	move	$s0, $zero
 	b	.LBB2_6
@@ -212,25 +209,25 @@ main:                                   # @main
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(packet_size)
 	jirl	$ra, $ra, 0
-	move	$s4, $zero
-	blt	$a0, $s3, .LBB2_5
+	move	$s3, $zero
+	blez	$a0, .LBB2_5
 	.p2align	4, , 16
 .LBB2_7:                                # %.lr.ph.i
                                         #   Parent Loop BB2_6 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
 	ld.bu	$a1, $s1, 0
-	bstrpick.d	$a2, $s4, 31, 24
+	bstrpick.d	$a2, $s3, 31, 24
 	xor	$a1, $a1, $a2
 	slli.d	$a1, $a1, 3
 	ldx.d	$a1, $s2, $a1
 	addi.d	$s1, $s1, 1
-	slli.d	$a2, $s4, 8
+	slli.d	$a2, $s3, 8
 	addi.w	$a0, $a0, -1
-	xor	$s4, $a1, $a2
+	xor	$s3, $a1, $a2
 	bnez	$a0, .LBB2_7
 	b	.LBB2_5
 .LBB2_8:
-                                        # implicit-def: $r27
+                                        # implicit-def: $r26
 .LBB2_9:                                # %gen_crc_table.exit._crit_edge
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$s0, $a0, %got_pc_lo12(stdout)
@@ -241,20 +238,19 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s0, 0
-	addi.w	$a2, $s4, 0
+	addi.w	$a2, $s3, 0
 	pcalau12i	$a1, %pc_hi20(.L.str.2)
 	addi.d	$a1, $a1, %pc_lo12(.L.str.2)
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s4, $sp, 8                     # 8-byte Folded Reload
-	ld.d	$s3, $sp, 16                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 24                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 32                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
-	ld.d	$fp, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$ra, $sp, 56                    # 8-byte Folded Reload
-	addi.d	$sp, $sp, 64
+	ld.d	$s3, $sp, 0                     # 8-byte Folded Reload
+	ld.d	$s2, $sp, 8                     # 8-byte Folded Reload
+	ld.d	$s1, $sp, 16                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 40                    # 8-byte Folded Reload
+	addi.d	$sp, $sp, 48
 	ret
 .LBB2_10:
 	pcalau12i	$a0, %got_pc_hi20(stderr)

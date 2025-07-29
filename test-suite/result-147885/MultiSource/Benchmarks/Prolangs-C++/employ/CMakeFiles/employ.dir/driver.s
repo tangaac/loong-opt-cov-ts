@@ -542,8 +542,7 @@ _ZN4Boss5PrintEv:                       # @_ZN4Boss5PrintEv
 	.type	_ZN4Boss5RaiseEi,@function
 _ZN4Boss5RaiseEi:                       # @_ZN4Boss5RaiseEi
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB17_2
+	blez	$a1, .LBB17_2
 # %bb.1:
 	fld.s	$fa0, $a0, 24
 	fld.s	$fa1, $a0, 28
@@ -847,8 +846,7 @@ _ZN18CommissionedWorker5PrintEv:        # @_ZN18CommissionedWorker5PrintEv
 	.type	_ZN18CommissionedWorker5RaiseEi,@function
 _ZN18CommissionedWorker5RaiseEi:        # @_ZN18CommissionedWorker5RaiseEi
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB25_2
+	blez	$a1, .LBB25_2
 # %bb.1:                                # %_ZN18CommissionedWorker17SetCommissionRateEf.exit
 	pcalau12i	$a2, %pc_hi20(.LCPI25_0)
 	fld.s	$fa0, $a2, %pc_lo12(.LCPI25_0)
@@ -972,8 +970,7 @@ _ZN10WageWorker4WageEv:                 # @_ZN10WageWorker4WageEv
 	.type	_ZN10WageWorker5RaiseEi,@function
 _ZN10WageWorker5RaiseEi:                # @_ZN10WageWorker5RaiseEi
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB30_2
+	blez	$a1, .LBB30_2
 # %bb.1:
 	fld.s	$fa0, $a0, 24
 	fld.s	$fa1, $a0, 28
@@ -1370,8 +1367,7 @@ _ZN12HourlyWorker5PrintEv:              # @_ZN12HourlyWorker5PrintEv
 	.type	_ZN12HourlyWorker5RaiseEi,@function
 _ZN12HourlyWorker5RaiseEi:              # @_ZN12HourlyWorker5RaiseEi
 # %bb.0:
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB39_2
+	blez	$a1, .LBB39_2
 # %bb.1:
 	fld.s	$fa0, $a0, 28
 	fld.s	$fa1, $a0, 24
@@ -1880,10 +1876,9 @@ main:                                   # @main
 	b	.LBB45_4
 .LBB45_20:                              # %.preheader
 	ld.d	$a0, $sp, 8                     # 8-byte Folded Reload
-	addi.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	st.d	$a1, $sp, 32                    # 8-byte Folded Spill
-	blt	$a1, $a0, .LBB45_32
+	addi.w	$a0, $a0, 0
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
+	blez	$a0, .LBB45_32
 # %bb.21:                               # %.lr.ph.i.preheader.preheader
 	move	$s2, $zero
 	pcalau12i	$a0, %got_pc_hi20(_ZSt4cout)

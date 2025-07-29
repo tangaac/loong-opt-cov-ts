@@ -40,20 +40,19 @@ do_minimize:                            # @do_minimize
 	st.d	$s8, $sp, 72                    # 8-byte Folded Spill
 	pcalau12i	$a5, %got_pc_hi20(debug)
 	ld.d	$s8, $a5, %got_pc_lo12(debug)
-	ld.wu	$a6, $s8, 0
-	andi	$a5, $a6, 1024
+	ld.wu	$s0, $s8, 0
+	andi	$a5, $s0, 1024
 	move	$s3, $a4
 	move	$s4, $a3
 	st.d	$a2, $sp, 24                    # 8-byte Folded Spill
 	move	$s7, $a1
 	move	$s1, $a0
-	move	$s6, $a6
+	move	$s6, $s0
 	beqz	$a5, .LBB2_2
 # %bb.1:
-	ori	$s6, $a6, 2080
+	ori	$s6, $s0, 2080
 	st.w	$s6, $s8, 0
 .LBB2_2:
-	st.d	$a6, $sp, 32                    # 8-byte Folded Spill
 	pcaddu18i	$ra, %call36(util_cpu_time)
 	jirl	$ra, $ra, 0
 	move	$s2, $a0
@@ -101,7 +100,7 @@ do_minimize:                            # @do_minimize
 	pcaddu18i	$ra, %call36(print_trace)
 	jirl	$ra, $ra, 0
 .LBB2_6:
-	srli.d	$s0, $s6, 9
+	srli.d	$s2, $s6, 9
 	pcaddu18i	$ra, %call36(util_cpu_time)
 	jirl	$ra, $ra, 0
 	ld.d	$a1, $sp, 64
@@ -111,7 +110,7 @@ do_minimize:                            # @do_minimize
 	pcaddu18i	$ra, %call36(irred_derive_table)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
-	move	$s2, $a0
+	st.d	$a0, $sp, 32                    # 8-byte Folded Spill
 	beqz	$a1, .LBB2_8
 # %bb.7:
 	ld.d	$s6, $sp, 48
@@ -124,7 +123,7 @@ do_minimize:                            # @do_minimize
 	pcaddu18i	$ra, %call36(print_trace)
 	jirl	$ra, $ra, 0
 .LBB2_8:
-	andi	$s5, $s0, 4
+	andi	$s5, $s2, 4
 	sltui	$s6, $s4, 1
 	st.d	$s7, $sp, 40                    # 8-byte Folded Spill
 	beqz	$s3, .LBB2_13
@@ -137,34 +136,33 @@ do_minimize:                            # @do_minimize
 	ld.w	$a1, $a2, 12
 	ld.w	$a3, $a2, 0
 	mul.w	$a1, $a3, $a1
-	ori	$a3, $zero, 1
 	move	$s4, $a0
-	blt	$a1, $a3, .LBB2_14
+	blez	$a1, .LBB2_14
 # %bb.10:                               # %.lr.ph.preheader
-	st.d	$s8, $sp, 16                    # 8-byte Folded Spill
-	move	$s8, $s2
+	st.d	$s8, $sp, 8                     # 8-byte Folded Spill
+	move	$s8, $s0
 	ld.d	$s3, $a2, 24
 	pcalau12i	$a0, %got_pc_hi20(cube)
-	ld.d	$s0, $a0, %got_pc_lo12(cube)
-	alsl.d	$s2, $a1, $s3, 2
+	ld.d	$s2, $a0, %got_pc_lo12(cube)
+	alsl.d	$s7, $a1, $s3, 2
 	.p2align	4, , 16
 .LBB2_11:                               # %.lr.ph
                                         # =>This Inner Loop Header: Depth=1
-	ld.w	$s7, $s0, 0
+	ld.w	$s0, $s2, 0
 	move	$a0, $s3
 	pcaddu18i	$ra, %call36(set_ord)
 	jirl	$ra, $ra, 0
 	ld.hu	$a1, $s3, 2
 	ld.d	$a2, $sp, 48
-	sub.d	$a0, $s7, $a0
+	sub.d	$a0, $s0, $a0
 	slli.d	$a1, $a1, 2
 	stx.w	$a0, $s4, $a1
 	ld.w	$a0, $a2, 0
 	alsl.d	$s3, $a0, $s3, 2
-	bltu	$s3, $s2, .LBB2_11
+	bltu	$s3, $s7, .LBB2_11
 # %bb.12:
-	move	$s2, $s8
-	ld.d	$s8, $sp, 16                    # 8-byte Folded Reload
+	move	$s0, $s8
+	ld.d	$s8, $sp, 8                     # 8-byte Folded Reload
 	b	.LBB2_14
 .LBB2_13:
 	move	$s4, $zero
@@ -172,14 +170,15 @@ do_minimize:                            # @do_minimize
 	pcaddu18i	$ra, %call36(util_cpu_time)
 	jirl	$ra, $ra, 0
 	move	$s7, $a0
-	move	$a0, $s2
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	move	$a0, $s3
 	move	$a1, $s4
 	move	$a2, $s6
 	move	$a3, $s5
 	pcaddu18i	$ra, %call36(sm_minimum_cover)
 	jirl	$ra, $ra, 0
 	ld.w	$a1, $fp, 0
-	move	$s3, $a0
+	move	$s6, $a0
 	beqz	$a1, .LBB2_16
 # %bb.15:
 	pcaddu18i	$ra, %call36(util_cpu_time)
@@ -199,17 +198,17 @@ do_minimize:                            # @do_minimize
 .LBB2_18:
 	ld.bu	$a0, $s8, 1
 	andi	$a0, $a0, 4
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
 	beqz	$a0, .LBB2_38
 # %bb.19:
-	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s2, $sp, 16                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 8                     # 8-byte Folded Spill
 	pcalau12i	$a0, %got_pc_hi20(filename)
 	ld.d	$s5, $a0, %got_pc_lo12(filename)
 	ld.d	$s3, $sp, 64
 	ld.d	$fp, $sp, 56
 	ld.d	$s4, $s5, 0
 	ld.d	$s2, $sp, 48
+	st.d	$s0, $sp, 16                    # 8-byte Folded Spill
 	beqz	$s4, .LBB2_24
 # %bb.20:
 	pcalau12i	$a0, %pc_hi20(.L.str.4)
@@ -270,7 +269,6 @@ do_minimize:                            # @do_minimize
 	pcaddu18i	$ra, %call36(PLA_labels)
 	jirl	$ra, $ra, 0
 	ori	$a2, $zero, 1
-	ori	$s0, $zero, 1
 	move	$a0, $s4
 	move	$a1, $s6
 	pcaddu18i	$ra, %call36(fpr_header)
@@ -288,7 +286,7 @@ do_minimize:                            # @do_minimize
 	ld.w	$a0, $s3, 12
 	ld.w	$a1, $s3, 0
 	mul.w	$a0, $a1, $a0
-	blt	$a0, $s0, .LBB2_28
+	blez	$a0, .LBB2_28
 # %bb.26:                               # %.lr.ph.i.preheader
 	ld.d	$s6, $s3, 24
 	alsl.d	$s0, $a0, $s6, 2
@@ -319,8 +317,7 @@ do_minimize:                            # @do_minimize
 	ld.w	$a0, $fp, 12
 	ld.w	$a1, $fp, 0
 	mul.w	$a0, $a1, $a0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB2_31
+	blez	$a0, .LBB2_31
 # %bb.29:                               # %.lr.ph63.i.preheader
 	ld.d	$s6, $fp, 24
 	alsl.d	$s0, $a0, $s6, 2
@@ -345,15 +342,14 @@ do_minimize:                            # @do_minimize
 	addi.d	$a0, $a0, %pc_lo12(.L.str.12)
 	ori	$a1, $zero, 33
 	ori	$a2, $zero, 1
-	ori	$fp, $zero, 1
 	move	$a3, $s4
 	pcaddu18i	$ra, %call36(fwrite)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 12
 	ld.w	$a1, $s2, 0
 	mul.w	$a0, $a1, $a0
-	ld.d	$s3, $sp, 8                     # 8-byte Folded Reload
-	blt	$a0, $fp, .LBB2_34
+	ld.d	$s3, $sp, 32                    # 8-byte Folded Reload
+	blez	$a0, .LBB2_34
 # %bb.32:                               # %.lr.ph67.i.preheader
 	ld.d	$s6, $s2, 24
 	alsl.d	$fp, $a0, $s6, 2
@@ -377,6 +373,7 @@ do_minimize:                            # @do_minimize
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$fp, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $fp, 0
+	ld.d	$s0, $sp, 16                    # 8-byte Folded Reload
 	beq	$s4, $a0, .LBB2_36
 # %bb.35:
 	move	$a0, $s4
@@ -384,12 +381,12 @@ do_minimize:                            # @do_minimize
 	jirl	$ra, $ra, 0
 .LBB2_36:
 	move	$a0, $s5
-	ld.d	$s2, $sp, 16                    # 8-byte Folded Reload
-	move	$a1, $s2
+	move	$a1, $s3
 	pcaddu18i	$ra, %call36(sm_write)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 0
-	ld.d	$s0, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s6, $sp, 8                     # 8-byte Folded Reload
 	beq	$s5, $a0, .LBB2_38
 # %bb.37:
 	move	$a0, $s5
@@ -406,8 +403,7 @@ do_minimize:                            # @do_minimize
 	ld.w	$a2, $a1, 12
 	ld.w	$a3, $a1, 0
 	mul.w	$a2, $a3, $a2
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB2_41
+	blez	$a2, .LBB2_41
 # %bb.39:                               # %.lr.ph71.preheader
 	ld.d	$s4, $a1, 24
 	alsl.d	$fp, $a2, $s4, 2
@@ -422,7 +418,7 @@ do_minimize:                            # @do_minimize
 	alsl.d	$s4, $a2, $s4, 2
 	bltu	$s4, $fp, .LBB2_40
 .LBB2_41:                               # %._crit_edge
-	ld.d	$fp, $s3, 16
+	ld.d	$fp, $s6, 16
 	beqz	$fp, .LBB2_44
 	.p2align	4, , 16
 .LBB2_42:                               # =>This Inner Loop Header: Depth=1
@@ -451,10 +447,10 @@ do_minimize:                            # @do_minimize
 	ld.d	$a0, $sp, 48
 	pcaddu18i	$ra, %call36(sf_free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s2
+	move	$a0, $s3
 	pcaddu18i	$ra, %call36(sm_free)
 	jirl	$ra, $ra, 0
-	move	$a0, $s3
+	move	$a0, $s6
 	pcaddu18i	$ra, %call36(sm_row_free)
 	jirl	$ra, $ra, 0
 	move	$a0, $s1
@@ -475,15 +471,14 @@ do_minimize:                            # @do_minimize
 	move	$a0, $fp
 	bnez	$a1, .LBB2_49
 # %bb.47:
-	move	$a1, $s0
+	move	$a1, $s2
 	pcaddu18i	$ra, %call36(make_sparse)
 	jirl	$ra, $ra, 0
 	b	.LBB2_49
 .LBB2_48:
 	move	$a0, $fp
 .LBB2_49:
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	st.w	$a1, $s8, 0
+	st.w	$s0, $s8, 0
 	ld.d	$s8, $sp, 72                    # 8-byte Folded Reload
 	ld.d	$s7, $sp, 80                    # 8-byte Folded Reload
 	ld.d	$s6, $sp, 88                    # 8-byte Folded Reload

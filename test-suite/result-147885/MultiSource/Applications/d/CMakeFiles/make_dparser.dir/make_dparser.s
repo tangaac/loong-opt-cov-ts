@@ -9,7 +9,6 @@ main:                                   # @main
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(arg_state)
 	addi.d	$fp, $a0, %pc_lo12(arg_state)
 	move	$a0, $fp
@@ -67,24 +66,22 @@ main:                                   # @main
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(parse_grammar)
 	jirl	$ra, $ra, 0
-	addi.w	$s1, $zero, -1
-	bge	$s1, $a0, .LBB0_5
+	bltz	$a0, .LBB0_5
 # %bb.2:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(build_grammar)
 	jirl	$ra, $ra, 0
-	bge	$s1, $a0, .LBB0_6
+	bltz	$a0, .LBB0_6
 .LBB0_3:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(write_ctables)
 	jirl	$ra, $ra, 0
-	bge	$s1, $a0, .LBB0_7
+	bltz	$a0, .LBB0_7
 .LBB0_4:
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(free_D_Grammar)
 	jirl	$ra, $ra, 0
 	move	$a0, $zero
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -99,7 +96,7 @@ main:                                   # @main
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(build_grammar)
 	jirl	$ra, $ra, 0
-	blt	$s1, $a0, .LBB0_3
+	bgez	$a0, .LBB0_3
 .LBB0_6:
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
@@ -109,7 +106,7 @@ main:                                   # @main
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(write_ctables)
 	jirl	$ra, $ra, 0
-	blt	$s1, $a0, .LBB0_4
+	bgez	$a0, .LBB0_4
 .LBB0_7:
 	pcalau12i	$a0, %pc_hi20(.L.str.2)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.2)

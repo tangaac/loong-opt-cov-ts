@@ -347,8 +347,7 @@ _ZNK11btConeShape37localGetSupportingVertexWithoutMarginERK9btVector3: # @_ZNK11
 	.type	_ZNK11btConeShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i,@function
 _ZNK11btConeShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i: # @_ZNK11btConeShape49batchedUnitVectorGetSupportingVertexWithoutMarginEPK9btVector3PS0_i
 # %bb.0:
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB7_9
+	blez	$a3, .LBB7_9
 # %bb.1:                                # %.lr.ph
 	addi.d	$sp, $sp, -16
 	pcalau12i	$a4, %pc_hi20(.LCPI7_0)

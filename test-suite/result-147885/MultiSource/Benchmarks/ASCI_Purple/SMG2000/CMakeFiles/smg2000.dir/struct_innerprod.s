@@ -22,50 +22,48 @@ hypre_StructInnerProd:                  # @hypre_StructInnerProd
 	ld.d	$a1, $a1, 8
 	ld.d	$t8, $a1, 8
 	ld.w	$a1, $t8, 8
-	ori	$a2, $zero, 1
 	move	$fp, $a0
-	blt	$a1, $a2, .LBB0_14
+	blez	$a1, .LBB0_14
 # %bb.1:                                # %.lr.ph
-	move	$s4, $zero
+	move	$s3, $zero
 	movgr2fr.d	$fs0, $zero
-	addi.w	$s5, $zero, -1
+	addi.w	$s4, $zero, -1
 	b	.LBB0_4
 	.p2align	4, , 16
 .LBB0_2:                                #   in Loop: Header=BB0_4 Depth=1
-	move	$t8, $s8
+	move	$t8, $s7
 .LBB0_3:                                # %._crit_edge
                                         #   in Loop: Header=BB0_4 Depth=1
 	ld.w	$a0, $t8, 8
-	addi.d	$s4, $s4, 1
-	bge	$s4, $a0, .LBB0_15
+	addi.d	$s3, $s3, 1
+	bge	$s3, $a0, .LBB0_15
 .LBB0_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_9 Depth 2
                                         #       Child Loop BB0_10 Depth 3
                                         #         Child Loop BB0_11 Depth 4
 	ld.d	$a0, $fp, 16
 	ld.d	$a1, $s0, 16
-	move	$s8, $t8
+	move	$s7, $t8
 	ld.d	$a2, $t8, 0
-	ld.d	$s7, $a0, 0
+	ld.d	$s6, $a0, 0
 	ld.d	$s2, $a1, 0
 	ld.d	$a0, $fp, 40
 	ld.d	$a1, $fp, 24
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
 	ld.d	$a1, $s0, 40
-	slli.d	$a3, $s4, 2
+	slli.d	$a3, $s3, 2
 	ldx.w	$a0, $a0, $a3
 	st.d	$a0, $sp, 8                     # 8-byte Folded Spill
 	ld.d	$a0, $s0, 24
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
-	ldx.w	$s3, $a1, $a3
-	alsl.d	$a0, $s4, $s4, 1
-	slli.d	$s6, $a0, 3
-	add.d	$s1, $a2, $s6
+	ldx.w	$s8, $a1, $a3
+	alsl.d	$a0, $s3, $s3, 1
+	slli.d	$s5, $a0, 3
+	add.d	$s1, $a2, $s5
 	addi.d	$a1, $sp, 28
 	move	$a0, $s1
 	pcaddu18i	$ra, %call36(hypre_BoxGetSize)
 	jirl	$ra, $ra, 0
-	ori	$a5, $zero, 1
 	ld.w	$a0, $sp, 28
 	ld.w	$a1, $sp, 32
 	ld.w	$a2, $sp, 36
@@ -77,51 +75,51 @@ hypre_StructInnerProd:                  # @hypre_StructInnerProd
 	masknez	$a3, $a3, $a4
 	maskeqz	$a4, $a2, $a4
 	or	$a3, $a4, $a3
-	blt	$a3, $a5, .LBB0_2
+	blez	$a3, .LBB0_2
 # %bb.5:                                # %.preheader222.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	blt	$a2, $a5, .LBB0_2
+	blez	$a2, .LBB0_2
 # %bb.6:                                # %.preheader222.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	blt	$a1, $a5, .LBB0_2
+	blez	$a1, .LBB0_2
 # %bb.7:                                # %.preheader222.lr.ph
                                         #   in Loop: Header=BB0_4 Depth=1
-	blt	$a0, $a5, .LBB0_2
+	blez	$a0, .LBB0_2
 # %bb.8:                                # %.preheader221.us.us.us.us.us.preheader
                                         #   in Loop: Header=BB0_4 Depth=1
-	add.d	$a7, $s7, $s6
-	ldx.w	$a5, $s7, $s6
+	add.d	$a7, $s6, $s5
+	ldx.w	$a5, $s6, $s5
 	ld.w	$a4, $a7, 12
 	move	$a3, $zero
-	add.d	$t1, $s2, $s6
+	add.d	$t1, $s2, $s5
 	sub.w	$a4, $a4, $a5
-	slt	$a6, $s5, $a4
+	slt	$a6, $s4, $a4
 	maskeqz	$a4, $a4, $a6
-	ldx.w	$t2, $s2, $s6
+	ldx.w	$t2, $s2, $s5
 	ld.w	$t0, $t1, 12
-	masknez	$a6, $s5, $a6
+	masknez	$a6, $s4, $a6
 	or	$a4, $a4, $a6
 	addi.d	$a4, $a4, 1
 	sub.w	$a6, $t0, $t2
-	slt	$t0, $s5, $a6
+	slt	$t0, $s4, $a6
 	maskeqz	$a6, $a6, $t0
 	ld.w	$t3, $t1, 4
 	ld.w	$t4, $t1, 16
-	masknez	$t0, $s5, $t0
+	masknez	$t0, $s4, $t0
 	or	$a6, $a6, $t0
 	addi.d	$a6, $a6, 1
 	sub.w	$t0, $t4, $t3
-	slt	$t4, $s5, $t0
+	slt	$t4, $s4, $t0
 	maskeqz	$t0, $t0, $t4
 	ld.w	$t5, $a7, 4
 	ld.w	$t6, $a7, 16
-	masknez	$t4, $s5, $t4
+	masknez	$t4, $s4, $t4
 	or	$t0, $t0, $t4
 	addi.d	$t4, $t0, 1
 	sub.w	$t0, $t6, $t5
-	slt	$t6, $s5, $t0
+	slt	$t6, $s4, $t0
 	maskeqz	$t0, $t0, $t6
-	masknez	$t6, $s5, $t6
+	masknez	$t6, $s4, $t6
 	or	$t0, $t0, $t6
 	addi.d	$t0, $t0, 1
 	sub.d	$t6, $t0, $a1
@@ -148,11 +146,11 @@ hypre_StructInnerProd:                  # @hypre_StructInnerProd
 	mul.d	$t1, $t1, $a6
 	add.w	$t1, $t2, $t1
 	ld.d	$t2, $sp, 0                     # 8-byte Folded Reload
-	alsl.d	$t2, $s3, $t2, 3
+	alsl.d	$t2, $s8, $t2, 3
 	ld.d	$t3, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$t4, $sp, 8                     # 8-byte Folded Reload
 	alsl.d	$t3, $t4, $t3, 3
-	move	$t8, $s8
+	move	$t8, $s7
 	.p2align	4, , 16
 .LBB0_9:                                # %.preheader221.us.us.us.us.us
                                         #   Parent Loop BB0_4 Depth=1

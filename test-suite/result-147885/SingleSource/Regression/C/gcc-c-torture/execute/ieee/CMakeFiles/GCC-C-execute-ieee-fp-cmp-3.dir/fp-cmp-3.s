@@ -70,8 +70,7 @@ main:                                   # @main
 	move	$a3, $s1
 	pcaddu18i	$ra, %call36(__gttf2)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	bge	$a0, $a1, .LBB1_7
+	bgtz	$a0, .LBB1_7
 # %bb.4:
 	ori	$a0, $zero, 0
 	lu32i.d	$a0, -65536

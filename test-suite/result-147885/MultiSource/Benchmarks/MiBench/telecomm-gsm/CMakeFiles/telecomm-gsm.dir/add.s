@@ -130,9 +130,8 @@ gsm_L_mult:                             # @gsm_L_mult
 	.type	gsm_L_add,@function
 gsm_L_add:                              # @gsm_L_add
 # %bb.0:
-	addi.w	$a3, $zero, -1
 	add.d	$a2, $a1, $a0
-	bge	$a3, $a0, .LBB6_2
+	bltz	$a0, .LBB6_2
 # %bb.1:
 	slti	$a0, $a1, 1
 	lu12i.w	$a1, 524287
@@ -202,8 +201,7 @@ gsm_L_sub:                              # @gsm_L_sub
 	.type	gsm_norm,@function
 gsm_norm:                               # @gsm_norm
 # %bb.0:
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB8_4
+	bltz	$a0, .LBB8_4
 # %bb.1:
 	lu12i.w	$a1, -16
 	lu32i.d	$a1, 0
@@ -277,8 +275,7 @@ gsm_L_asl:                              # @gsm_L_asl
 	srai.d	$a0, $a0, 63
 	ret
 .LBB9_4:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB9_6
+	bltz	$a1, .LBB9_6
 # %bb.5:
 	sll.d	$a0, $a0, $a1
 	ret
@@ -306,8 +303,7 @@ gsm_L_asr:                              # @gsm_L_asr
 	move	$a0, $zero
 	ret
 .LBB10_4:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB10_6
+	bltz	$a1, .LBB10_6
 # %bb.5:
 	sra.d	$a0, $a0, $a1
 	ret
@@ -336,8 +332,7 @@ gsm_asl:                                # @gsm_asl
 	ext.w.h	$a0, $a0
 	ret
 .LBB11_4:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB11_6
+	bltz	$a1, .LBB11_6
 # %bb.5:
 	bstrpick.d	$a0, $a0, 15, 0
 	sll.w	$a0, $a0, $a1
@@ -369,8 +364,7 @@ gsm_asr:                                # @gsm_asr
 	ext.w.h	$a0, $zero
 	ret
 .LBB12_4:
-	addi.w	$a2, $zero, -1
-	bge	$a2, $a1, .LBB12_6
+	bltz	$a1, .LBB12_6
 # %bb.5:
 	sra.w	$a0, $a0, $a1
 	ext.w.h	$a0, $a0

@@ -56,7 +56,7 @@ ptou:                                   # @ptou
 .LBB0_9:                                # %.loopexit
 	ld.h	$a0, $fp, 0
 	addi.d	$a0, $a0, -1
-	bstrpick.d	$a1, $a0, 15, 0
+	slli.d	$a1, $a0, 48
 	st.h	$a0, $fp, 0
 	bnez	$a1, .LBB0_11
 # %bb.10:

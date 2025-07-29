@@ -728,8 +728,7 @@ MinSize:                                # @MinSize
 	addi.d	$a0, $a5, -13
 	sltui	$a0, $a0, 1
 	sltu	$a1, $zero, $s0
-	xor	$a0, $a1, $a0
-	bnez	$a0, .LBB1_56
+	bne	$a1, $a0, .LBB1_56
 # %bb.55:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -3006,9 +3005,8 @@ MinSize:                                # @MinSize
 .LBB1_326:
 	ld.d	$a0, $a6, 80
 	ld.hu	$a0, $a0, 41
-	lu12i.w	$a1, 4
-	and	$a0, $a0, $a1
-	bnez	$a0, .LBB1_329
+	slli.d	$a0, $a0, 49
+	bltz	$a0, .LBB1_329
 # %bb.327:
 	ld.bu	$a0, $s4, 120
 	slli.d	$a1, $a0, 3
@@ -4221,12 +4219,11 @@ MinSize:                                # @MinSize
 .LBB1_474:                              # %.thread1745
 	alsl.d	$a0, $s0, $s4, 2
 	ld.w	$a0, $a0, 48
-	addi.w	$fp, $zero, -1
-	bge	$fp, $a0, .LBB1_477
+	bltz	$a0, .LBB1_477
 # %bb.475:
 	alsl.d	$a0, $s0, $s4, 2
 	ld.w	$a0, $a0, 56
-	bge	$fp, $a0, .LBB1_478
+	bltz	$a0, .LBB1_478
 .LBB1_476:
 	move	$a0, $s4
 	ld.d	$s8, $sp, 664                   # 8-byte Folded Reload
@@ -4257,7 +4254,7 @@ MinSize:                                # @MinSize
 	jirl	$ra, $ra, 0
 	alsl.d	$a0, $s0, $s4, 2
 	ld.w	$a0, $a0, 56
-	blt	$fp, $a0, .LBB1_476
+	bgez	$a0, .LBB1_476
 .LBB1_478:
 	pcalau12i	$a0, %got_pc_hi20(no_fpos)
 	ld.d	$a0, $a0, %got_pc_lo12(no_fpos)
@@ -5262,9 +5259,8 @@ MinSize:                                # @MinSize
 	sltui	$a1, $a1, 1
 	addi.d	$a0, $a0, -19
 	sltu	$a0, $zero, $a0
-	xor	$a0, $a1, $a0
 	st.d	$s4, $sp, 112                   # 8-byte Folded Spill
-	beqz	$a0, .LBB1_668
+	beq	$a1, $a0, .LBB1_668
 # %bb.572:
 	ld.hu	$a0, $s4, 42
 	ld.d	$s7, $s4, 8
@@ -5667,8 +5663,7 @@ MinSize:                                # @MinSize
 # %bb.622:                              #   in Loop: Header=BB1_576 Depth=1
 	ld.d	$s3, $sp, 104                   # 8-byte Folded Reload
 	ld.h	$a0, $s3, 46
-	ori	$a2, $zero, 1
-	blt	$a0, $a2, .LBB1_624
+	blez	$a0, .LBB1_624
 # %bb.623:                              #   in Loop: Header=BB1_576 Depth=1
 	addi.d	$a4, $s3, 32
 	pcalau12i	$a0, %pc_hi20(.L.str.21)
@@ -5722,7 +5717,7 @@ MinSize:                                # @MinSize
 	ld.w	$a0, $s3, 40
 	ld.w	$a1, $s2, 40
 	xor	$a0, $a1, $a0
-	bstrpick.d	$a0, $a0, 30, 0
+	slli.d	$a0, $a0, 33
 	bnez	$a0, .LBB1_597
 # %bb.634:                              #   in Loop: Header=BB1_576 Depth=1
 	ld.d	$a0, $s3, 24

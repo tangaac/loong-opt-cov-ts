@@ -90,9 +90,8 @@ bmh_init:                               # @bmh_init
 	vst	$vr0, $a2, 960
 	vst	$vr0, $a2, 976
 	vst	$vr0, $a2, 992
-	ori	$a3, $zero, 1
 	vst	$vr0, $a2, 1008
-	blt	$a1, $a3, .LBB0_8
+	blez	$a1, .LBB0_8
 # %bb.1:                                # %.lr.ph.preheader
 	bstrpick.d	$a3, $a0, 30, 0
 	ori	$a4, $zero, 4
@@ -270,8 +269,7 @@ bmh_search:                             # @bmh_search
 	ld.w	$a5, $a2, %pc_lo12(patlen)
 	nor	$a2, $a1, $zero
 	add.w	$a2, $a5, $a2
-	addi.w	$a3, $zero, -1
-	bge	$a3, $a2, .LBB1_3
+	bltz	$a2, .LBB1_3
 .LBB1_1:
 	move	$a0, $zero
 .LBB1_2:                                # %.critedge.thread
@@ -298,7 +296,6 @@ bmh_search:                             # @bmh_search
 	add.d	$a1, $a0, $a1
 	pcalau12i	$a0, %pc_hi20(skip)
 	addi.d	$t1, $a0, %pc_lo12(skip)
-	ori	$t2, $zero, 1
 .LBB1_4:                                # =>This Loop Header: Depth=1
                                         #     Child Loop BB1_7 Depth 2
 	ldx.bu	$a0, $a3, $a2
@@ -309,23 +306,23 @@ bmh_search:                             # @bmh_search
 # %bb.5:                                #   in Loop: Header=BB1_4 Depth=1
 	blt	$a2, $a4, .LBB1_1
 # %bb.6:                                #   in Loop: Header=BB1_4 Depth=1
-	add.w	$t3, $a2, $a6
-	sub.w	$a0, $t3, $a5
+	add.w	$t2, $a2, $a6
+	sub.w	$a0, $t2, $a5
 	add.d	$a0, $a3, $a0
-	add.d	$t3, $a1, $t3
-	move	$t4, $t0
-	move	$t5, $a5
+	add.d	$t2, $a1, $t2
+	move	$t3, $t0
+	move	$t4, $a5
 	.p2align	4, , 16
 .LBB1_7:                                #   Parent Loop BB1_4 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	blt	$t5, $t2, .LBB1_2
+	blez	$t4, .LBB1_2
 # %bb.8:                                #   in Loop: Header=BB1_7 Depth=2
-	ld.b	$t6, $t3, 0
-	ld.bu	$t7, $t4, 0
-	addi.w	$t5, $t5, -1
-	addi.d	$t4, $t4, -1
+	ld.b	$t5, $t2, 0
+	ld.bu	$t6, $t3, 0
+	addi.w	$t4, $t4, -1
 	addi.d	$t3, $t3, -1
-	beq	$t6, $t7, .LBB1_7
+	addi.d	$t2, $t2, -1
+	beq	$t5, $t6, .LBB1_7
 # %bb.9:                                # %.critedge
                                         #   in Loop: Header=BB1_4 Depth=1
 	add.w	$a2, $a2, $a7

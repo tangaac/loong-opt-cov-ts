@@ -366,7 +366,7 @@ cli_scannulsft:                         # @cli_scannulsft
 	or	$a0, $a3, $a0
 	st.b	$a0, $s0, 8
 	ori	$a0, $zero, 4
-	blt	$s4, $a1, .LBB0_38
+	bgez	$a1, .LBB0_38
 # %bb.36:                               #   in Loop: Header=BB0_12 Depth=1
 	ld.w	$a0, $sp, 72
 	ori	$a2, $zero, 4
@@ -459,7 +459,7 @@ cli_scannulsft:                         # @cli_scannulsft
 	ori	$a0, $a0, 544
 	add.d	$a0, $sp, $a0
 	ld.w	$s6, $a0, 0
-	blt	$s4, $s6, .LBB0_49
+	bgez	$s6, .LBB0_49
 # %bb.47:                               #   in Loop: Header=BB0_45 Depth=2
 	ld.w	$a0, $sp, 72
 	ori	$a2, $zero, 4

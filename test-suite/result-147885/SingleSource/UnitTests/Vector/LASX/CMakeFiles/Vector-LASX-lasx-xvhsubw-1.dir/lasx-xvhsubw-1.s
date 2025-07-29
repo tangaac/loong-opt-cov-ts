@@ -40,8 +40,7 @@ check_lasx_out:                         # @check_lasx_out
 	addi.d	$a0, $a0, %pc_lo12(.L.str.1)
 	pcaddu18i	$ra, %call36(printf)
 	jirl	$ra, $ra, 0
-	ori	$a0, $zero, 1
-	blt	$s2, $a0, .LBB0_7
+	blez	$s2, .LBB0_7
 # %bb.2:                                # %.lr.ph.preheader
 	bstrpick.d	$s3, $s0, 31, 0
 	pcalau12i	$a0, %pc_hi20(.L.str.2)

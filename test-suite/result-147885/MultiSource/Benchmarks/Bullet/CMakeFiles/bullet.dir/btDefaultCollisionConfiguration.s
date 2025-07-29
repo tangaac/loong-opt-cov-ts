@@ -308,25 +308,21 @@ _ZN31btDefaultCollisionConfigurationD2Ev: # @_ZN31btDefaultCollisionConfiguratio
 	st.d	$ra, $sp, 24                    # 8-byte Folded Spill
 	st.d	$fp, $sp, 16                    # 8-byte Folded Spill
 	st.d	$s0, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s1, $sp, 0                     # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
-	.cfi_offset 24, -32
 	move	$fp, $a0
 	ld.bu	$a0, $a0, 24
 	pcalau12i	$a1, %pc_hi20(_ZTV31btDefaultCollisionConfiguration+16)
 	addi.d	$a1, $a1, %pc_lo12(_ZTV31btDefaultCollisionConfiguration+16)
-	ori	$s0, $zero, 1
 	st.d	$a1, $fp, 0
-	beq	$a0, $s0, .LBB1_5
+	bnez	$a0, .LBB1_5
 # %bb.1:
 	ld.bu	$a0, $fp, 56
-	beq	$a0, $s0, .LBB1_12
+	bnez	$a0, .LBB1_12
 .LBB1_2:
 	ld.bu	$a0, $fp, 40
-	ori	$a1, $zero, 1
-	bne	$a0, $a1, .LBB1_4
+	beqz	$a0, .LBB1_4
 .LBB1_3:                                # %_ZN15btPoolAllocatorD2Ev.exit5
 	ld.d	$a0, $fp, 32
 	ld.d	$a0, $a0, 24
@@ -428,7 +424,6 @@ _ZN31btDefaultCollisionConfigurationD2Ev: # @_ZN31btDefaultCollisionConfiguratio
 	ld.d	$a1, $a1, 0
 	jirl	$ra, $a1, 0
 	ld.d	$a0, $fp, 72
-	ld.d	$s1, $sp, 0                     # 8-byte Folded Reload
 	ld.d	$s0, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$fp, $sp, 16                    # 8-byte Folded Reload
 	ld.d	$ra, $sp, 24                    # 8-byte Folded Reload
@@ -441,31 +436,31 @@ _ZN31btDefaultCollisionConfigurationD2Ev: # @_ZN31btDefaultCollisionConfiguratio
 	bnez	$a1, .LBB1_11
 # %bb.6:
 	ld.bu	$a1, $a0, 24
-	move	$s1, $a0
+	move	$s0, $a0
 	bnez	$a1, .LBB1_9
 # %bb.7:
 	ld.d	$a1, $a0, 0
-	move	$s1, $a0
+	move	$s0, $a0
 	beqz	$a1, .LBB1_9
 # %bb.8:
-	move	$s1, $a0
+	move	$s0, $a0
 	move	$a0, $a1
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
-	move	$a0, $s1
-	ld.d	$s1, $fp, 16
+	move	$a0, $s0
+	ld.d	$s0, $fp, 16
 .LBB1_9:                                # %_ZN12btStackAlloc7destroyEv.exit
 	st.w	$zero, $a0, 12
-	ld.w	$a1, $s1, 12
+	ld.w	$a1, $s0, 12
 	st.d	$zero, $a0, 0
 	beqz	$a1, .LBB1_13
 # %bb.10:
-	move	$a0, $s1
+	move	$a0, $s0
 .LBB1_11:                               # %_ZN12btStackAllocD2Ev.exit
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 56
-	bne	$a0, $s0, .LBB1_2
+	beqz	$a0, .LBB1_2
 .LBB1_12:                               # %_ZN15btPoolAllocatorD2Ev.exit
 	ld.d	$a0, $fp, 48
 	ld.d	$a0, $a0, 24
@@ -475,16 +470,15 @@ _ZN31btDefaultCollisionConfigurationD2Ev: # @_ZN31btDefaultCollisionConfiguratio
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 40
-	ori	$a1, $zero, 1
-	beq	$a0, $a1, .LBB1_3
+	bnez	$a0, .LBB1_3
 	b	.LBB1_4
 .LBB1_13:
-	ld.bu	$a1, $s1, 24
-	move	$a0, $s1
+	ld.bu	$a1, $s0, 24
+	move	$a0, $s0
 	bnez	$a1, .LBB1_16
 # %bb.14:
-	ld.d	$a1, $s1, 0
-	move	$a0, $s1
+	ld.d	$a1, $s0, 0
+	move	$a0, $s0
 	beqz	$a1, .LBB1_16
 # %bb.15:
 	move	$a0, $a1
@@ -492,12 +486,12 @@ _ZN31btDefaultCollisionConfigurationD2Ev: # @_ZN31btDefaultCollisionConfiguratio
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $fp, 16
 .LBB1_16:                               # %.noexc2
-	st.d	$zero, $s1, 0
-	st.w	$zero, $s1, 12
+	st.d	$zero, $s0, 0
+	st.w	$zero, $s0, 12
 	pcaddu18i	$ra, %call36(_Z21btAlignedFreeInternalPv)
 	jirl	$ra, $ra, 0
 	ld.bu	$a0, $fp, 56
-	bne	$a0, $s0, .LBB1_2
+	beqz	$a0, .LBB1_2
 	b	.LBB1_12
 .Lfunc_end1:
 	.size	_ZN31btDefaultCollisionConfigurationD2Ev, .Lfunc_end1-_ZN31btDefaultCollisionConfigurationD2Ev

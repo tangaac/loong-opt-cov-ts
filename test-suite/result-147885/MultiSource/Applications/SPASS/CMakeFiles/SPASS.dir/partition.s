@@ -84,9 +84,8 @@ part_Init:                              # @part_Init
 	ld.w	$a1, $a0, -12
 	st.w	$fp, $a0, -4
 	addi.d	$a4, $a1, 1
-	addi.w	$a5, $zero, -1
 	st.w	$a4, $a0, -12
-	blt	$a5, $a1, .LBB1_14
+	bgez	$a1, .LBB1_14
 # %bb.4:                                # %.preheader
 	ori	$a1, $zero, 6
 	blt	$a2, $a1, .LBB1_6
@@ -189,35 +188,34 @@ part_Init:                              # @part_Init
 	.type	part_Find,@function
 part_Find:                              # @part_Find
 # %bb.0:
-	ld.w	$a6, $a0, -12
+	ld.w	$a5, $a0, -12
 	addi.d	$a3, $zero, -4
-	addi.w	$a4, $zero, -1
-	ori	$a5, $zero, 1
-	move	$a7, $a1
+	ori	$a4, $zero, 1
+	move	$a6, $a1
 	b	.LBB2_2
 	.p2align	4, , 16
 .LBB2_1:                                # %part_DelayedInit.exit.i
                                         #   in Loop: Header=BB2_2 Depth=1
-	slli.d	$a7, $a2, 2
-	ldx.w	$a7, $a0, $a7
-	bge	$a4, $a7, .LBB2_4
+	slli.d	$a6, $a2, 2
+	ldx.w	$a6, $a0, $a6
+	bltz	$a6, .LBB2_4
 .LBB2_2:                                # =>This Inner Loop Header: Depth=1
-	move	$a2, $a7
-	sub.w	$a7, $a3, $a7
-	slli.d	$t0, $a7, 2
-	ldx.w	$t0, $a0, $t0
-	beq	$t0, $a6, .LBB2_1
+	move	$a2, $a6
+	sub.w	$a6, $a3, $a6
+	slli.d	$a7, $a6, 2
+	ldx.w	$a7, $a0, $a7
+	beq	$a7, $a5, .LBB2_1
 # %bb.3:                                #   in Loop: Header=BB2_2 Depth=1
-	nor	$a6, $a2, $zero
-	slli.d	$t0, $a2, 2
-	stx.w	$a6, $a0, $t0
-	ld.w	$a6, $a0, -4
-	add.w	$a6, $a6, $a2
-	slli.d	$a6, $a6, 2
-	stx.w	$a5, $a0, $a6
-	ld.w	$a6, $a0, -12
-	alsl.d	$a7, $a7, $a0, 2
-	st.w	$a6, $a7, 0
+	nor	$a5, $a2, $zero
+	slli.d	$a7, $a2, 2
+	stx.w	$a5, $a0, $a7
+	ld.w	$a5, $a0, -4
+	add.w	$a5, $a5, $a2
+	slli.d	$a5, $a5, 2
+	stx.w	$a4, $a0, $a5
+	ld.w	$a5, $a0, -12
+	alsl.d	$a6, $a6, $a0, 2
+	st.w	$a5, $a6, 0
 	b	.LBB2_1
 .LBB2_4:                                # %.preheader.i
 	beq	$a1, $a2, .LBB2_6
@@ -241,75 +239,74 @@ part_Find:                              # @part_Find
 	.type	part_Union,@function
 part_Union:                             # @part_Union
 # %bb.0:
-	ld.w	$a6, $a0, -12
+	ld.w	$a5, $a0, -12
 	addi.d	$a4, $zero, -4
-	addi.w	$a5, $zero, -1
-	ori	$a7, $zero, 1
-	move	$t0, $a1
+	ori	$a6, $zero, 1
+	move	$a7, $a1
 	b	.LBB3_2
 	.p2align	4, , 16
 .LBB3_1:                                # %part_DelayedInit.exit.i
                                         #   in Loop: Header=BB3_2 Depth=1
-	slli.d	$t0, $a3, 2
-	ldx.w	$t0, $a0, $t0
-	bge	$a5, $t0, .LBB3_4
+	slli.d	$a7, $a3, 2
+	ldx.w	$a7, $a0, $a7
+	bltz	$a7, .LBB3_4
 .LBB3_2:                                # =>This Inner Loop Header: Depth=1
-	move	$a3, $t0
-	sub.w	$t0, $a4, $t0
-	slli.d	$t1, $t0, 2
-	ldx.w	$t1, $a0, $t1
-	beq	$t1, $a6, .LBB3_1
+	move	$a3, $a7
+	sub.w	$a7, $a4, $a7
+	slli.d	$t0, $a7, 2
+	ldx.w	$t0, $a0, $t0
+	beq	$t0, $a5, .LBB3_1
 # %bb.3:                                #   in Loop: Header=BB3_2 Depth=1
-	nor	$a6, $a3, $zero
-	slli.d	$t1, $a3, 2
-	stx.w	$a6, $a0, $t1
-	ld.w	$a6, $a0, -4
-	add.w	$a6, $a6, $a3
-	slli.d	$a6, $a6, 2
-	stx.w	$a7, $a0, $a6
-	ld.w	$a6, $a0, -12
-	alsl.d	$t0, $t0, $a0, 2
-	st.w	$a6, $t0, 0
+	nor	$a5, $a3, $zero
+	slli.d	$t0, $a3, 2
+	stx.w	$a5, $a0, $t0
+	ld.w	$a5, $a0, -4
+	add.w	$a5, $a5, $a3
+	slli.d	$a5, $a5, 2
+	stx.w	$a6, $a0, $a5
+	ld.w	$a5, $a0, -12
+	alsl.d	$a7, $a7, $a0, 2
+	st.w	$a5, $a7, 0
 	b	.LBB3_1
 .LBB3_4:                                # %.preheader.i
 	beq	$a1, $a3, .LBB3_7
 	.p2align	4, , 16
 .LBB3_5:                                # %.lr.ph.i
                                         # =>This Inner Loop Header: Depth=1
-	slli.d	$a6, $a1, 2
-	ldx.w	$a1, $a0, $a6
-	stx.w	$a3, $a0, $a6
+	slli.d	$a5, $a1, 2
+	ldx.w	$a1, $a0, $a5
+	stx.w	$a3, $a0, $a5
 	bne	$a1, $a3, .LBB3_5
 # %bb.6:                                # %part_NF.exit.loopexit
-	ld.w	$a6, $a0, -12
+	ld.w	$a5, $a0, -12
 .LBB3_7:                                # %part_NF.exit.preheader
-	ori	$a7, $zero, 1
-	move	$t0, $a2
+	ori	$a6, $zero, 1
+	move	$a7, $a2
 	b	.LBB3_9
 	.p2align	4, , 16
 .LBB3_8:                                # %part_DelayedInit.exit.i36
                                         #   in Loop: Header=BB3_9 Depth=1
-	slli.d	$t0, $a1, 2
-	ldx.w	$t0, $a0, $t0
-	bge	$a5, $t0, .LBB3_11
+	slli.d	$a7, $a1, 2
+	ldx.w	$a7, $a0, $a7
+	bltz	$a7, .LBB3_11
 .LBB3_9:                                # %part_NF.exit
                                         # =>This Inner Loop Header: Depth=1
-	move	$a1, $t0
-	sub.w	$t0, $a4, $t0
-	slli.d	$t1, $t0, 2
-	ldx.w	$t1, $a0, $t1
-	beq	$t1, $a6, .LBB3_8
+	move	$a1, $a7
+	sub.w	$a7, $a4, $a7
+	slli.d	$t0, $a7, 2
+	ldx.w	$t0, $a0, $t0
+	beq	$t0, $a5, .LBB3_8
 # %bb.10:                               #   in Loop: Header=BB3_9 Depth=1
-	nor	$a6, $a1, $zero
-	slli.d	$t1, $a1, 2
-	stx.w	$a6, $a0, $t1
-	ld.w	$a6, $a0, -4
-	add.w	$a6, $a6, $a1
-	slli.d	$a6, $a6, 2
-	stx.w	$a7, $a0, $a6
-	ld.w	$a6, $a0, -12
-	alsl.d	$t0, $t0, $a0, 2
-	st.w	$a6, $t0, 0
+	nor	$a5, $a1, $zero
+	slli.d	$t0, $a1, 2
+	stx.w	$a5, $a0, $t0
+	ld.w	$a5, $a0, -4
+	add.w	$a5, $a5, $a1
+	slli.d	$a5, $a5, 2
+	stx.w	$a6, $a0, $a5
+	ld.w	$a5, $a0, -12
+	alsl.d	$a7, $a7, $a0, 2
+	st.w	$a5, $a7, 0
 	b	.LBB3_8
 .LBB3_11:                               # %.preheader.i38
 	beq	$a2, $a1, .LBB3_13

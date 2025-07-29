@@ -1033,8 +1033,7 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ld.d	$a0, $s0, 144
 	st.d	$zero, $s0, 160
 	move	$s1, $a0
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB4_102
+	bgtz	$a1, .LBB4_102
 	b	.LBB4_104
 .LBB4_99:
 	ld.d	$a2, $s0, 48
@@ -1053,14 +1052,12 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ld.d	$a1, $s0, 128
 	st.d	$zero, $s0, 160
 	add.d	$s1, $a0, $s1
-	ori	$a2, $zero, 1
-	bge	$a1, $a2, .LBB4_102
+	bgtz	$a1, .LBB4_102
 	b	.LBB4_104
 .LBB4_101:
 	ld.d	$a2, $s0, 152
 	add.d	$s1, $a0, $a2
-	ori	$a2, $zero, 1
-	blt	$a1, $a2, .LBB4_104
+	blez	$a1, .LBB4_104
 .LBB4_102:
 	ld.bu	$a2, $s8, 0
 	ori	$a3, $zero, 255
@@ -1106,9 +1103,10 @@ encoding_norm_readline:                 # @encoding_norm_readline
 	ld.bu	$s5, $a0, 1
 	slli.d	$a0, $a1, 8
 	or	$a0, $a0, $s5
-	bstrpick.d	$a3, $a0, 15, 0
-	beqz	$a3, .LBB4_115
+	slli.d	$a1, $a0, 48
+	beqz	$a1, .LBB4_115
 # %bb.111:                              #   in Loop: Header=BB4_110 Depth=1
+	bstrpick.d	$a3, $a0, 15, 0
 	bltu	$s2, $a3, .LBB4_118
 # %bb.112:                              #   in Loop: Header=BB4_110 Depth=1
 	bgeu	$s1, $fp, .LBB4_123

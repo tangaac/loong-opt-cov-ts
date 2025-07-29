@@ -162,21 +162,21 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	ori	$s3, $zero, 1
-	st.b	$s3, $a0, 0
+	ori	$s4, $zero, 1
+	st.b	$s4, $a0, 0
 	pcalau12i	$a0, %pc_hi20(toggle_value)
 	addi.d	$s5, $a0, %pc_lo12(toggle_value)
 	st.d	$s5, $s1, 8
 	pcalau12i	$a0, %pc_hi20(toggle_activate)
 	addi.d	$a0, $a0, %pc_lo12(toggle_activate)
 	st.d	$a0, $s1, 16
-	addi.w	$s4, $fp, 0
+	addi.w	$s3, $fp, 0
 	pcalau12i	$a0, %pc_hi20(.L.str)
 	addi.d	$s0, $a0, %pc_lo12(.L.str)
 	pcalau12i	$a0, %pc_hi20(.L.str.1)
 	addi.d	$s2, $a0, %pc_lo12(.L.str.1)
 	move	$a0, $s0
-	blt	$s4, $s3, .LBB7_7
+	blez	$s3, .LBB7_7
 # %bb.4:                                # %.lr.ph.preheader
 	move	$s6, $fp
 	.p2align	4, , 16
@@ -207,14 +207,14 @@ main:                                   # @main
 	pcaddu18i	$ra, %call36(malloc)
 	jirl	$ra, $ra, 0
 	move	$s1, $a0
-	st.b	$s3, $a0, 0
+	st.b	$s4, $a0, 0
 	st.d	$s5, $a0, 8
 	ori	$a0, $zero, 3
 	st.d	$a0, $s1, 24
 	pcalau12i	$a0, %pc_hi20(nth_toggle_activate)
 	addi.d	$a0, $a0, %pc_lo12(nth_toggle_activate)
 	st.d	$a0, $s1, 16
-	blt	$s4, $s3, .LBB7_10
+	blez	$s3, .LBB7_10
 	.p2align	4, , 16
 .LBB7_8:                                # %.lr.ph25
                                         # =>This Inner Loop Header: Depth=1

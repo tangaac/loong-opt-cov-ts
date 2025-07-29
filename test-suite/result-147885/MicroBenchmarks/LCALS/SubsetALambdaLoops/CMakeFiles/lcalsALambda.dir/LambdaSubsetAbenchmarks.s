@@ -65,8 +65,7 @@ _ZL23BM_PRESSURE_CALC_LAMBDARN9benchmark5StateE: # @_ZL23BM_PRESSURE_CALC_LAMBDA
 	ld.d	$a0, $fp, 32
 	ld.d	$a3, $a0, 0
 	addi.w	$a0, $a3, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_26
+	blez	$a0, .LBB0_26
 # %bb.3:                                # %.lr.ph.us.us.preheader
 	bstrpick.d	$a0, $a3, 30, 0
 	alsl.d	$a4, $a0, $s3, 3
@@ -517,8 +516,7 @@ _ZL21BM_ENERGY_CALC_LAMBDARN9benchmark5StateE: # @_ZL21BM_ENERGY_CALC_LAMBDARN9b
                                         #     Child Loop BB1_37 Depth 2
                                         #     Child Loop BB1_45 Depth 2
 	ld.d	$a0, $sp, 304                   # 8-byte Folded Reload
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB1_3
+	blez	$a0, .LBB1_3
 # %bb.5:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB1_4 Depth=1
 	st.d	$a6, $sp, 312                   # 8-byte Folded Spill
@@ -1806,8 +1804,7 @@ _ZL24BM_DEL_DOT_VEC_2D_LAMBDARN9benchmark5StateE: # @_ZL24BM_DEL_DOT_VEC_2D_LAMB
 	beqz	$s5, .LBB3_8
 # %bb.3:                                # %.lr.ph73
 	ld.w	$a0, $sp, 88
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB3_8
+	blez	$a0, .LBB3_8
 # %bb.4:                                # %.lr.ph.us.preheader
 	addi.d	$a1, $s1, 8
 	alsl.d	$a2, $s6, $a1, 3
@@ -2890,8 +2887,7 @@ _ZL13BM_FIR_LAMBDARN9benchmark5StateE:  # @_ZL13BM_FIR_LAMBDARN9benchmark5StateE
 	beqz	$s0, .LBB5_12
 # %bb.2:                                # %_ZN9benchmark5State13StateIteratorC2EPS0_.exit
 	addi.w	$a0, $s3, -16
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB5_12
+	blez	$a0, .LBB5_12
 # %bb.3:                                # %.preheader.us.preheader
 	alsl.d	$a1, $a0, $s1, 3
 	alsl.d	$a2, $a0, $s2, 3
@@ -3218,9 +3214,8 @@ _ZN7ADomainC2Eii:                       # @_ZN7ADomainC2Eii
 	pcaddu18i	$ra, %call36(_Znam)
 	jirl	$ra, $ra, 0
 	move	$s0, $a0
-	ori	$a0, $zero, 1
-	st.d	$s0, $fp, 72
-	blt	$s7, $a0, .LBB6_25
+	st.d	$a0, $fp, 72
+	blez	$s7, .LBB6_25
 # %bb.24:                               # %.lr.ph.preheader
 	ori	$a1, $zero, 255
 	move	$a0, $s0

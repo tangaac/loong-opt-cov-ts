@@ -32,29 +32,29 @@ set_derives:                            # @set_derives
 	alsl.w	$a0, $a0, $a1, 4
 	pcaddu18i	$ra, %call36(mallocate)
 	jirl	$ra, $ra, 0
-	ld.w	$a2, $s4, 0
-	ori	$a1, $zero, 1
+	ld.w	$a1, $s4, 0
 	move	$fp, $a0
-	blt	$a2, $a1, .LBB0_3
+	blez	$a1, .LBB0_3
 # %bb.1:                                # %.lr.ph
 	pcalau12i	$a0, %got_pc_hi20(rlhs)
 	ld.d	$a0, $a0, %got_pc_lo12(rlhs)
 	ld.d	$a0, $a0, 0
-	alsl.d	$a0, $a2, $a0, 1
+	alsl.d	$a0, $a1, $a0, 1
+	ori	$a2, $zero, 1
 	move	$a3, $fp
 	.p2align	4, , 16
 .LBB0_2:                                # =>This Inner Loop Header: Depth=1
 	ld.h	$a4, $a0, 0
 	slli.d	$a4, $a4, 3
 	ldx.d	$a5, $s1, $a4
-	move	$a6, $a2
+	move	$a6, $a1
 	st.d	$a5, $a3, 0
-	st.h	$a2, $a3, 8
+	st.h	$a1, $a3, 8
 	stx.d	$a3, $s1, $a4
 	addi.d	$a3, $a3, 16
-	addi.d	$a2, $a2, -1
+	addi.d	$a1, $a1, -1
 	addi.d	$a0, $a0, -2
-	bltu	$a1, $a6, .LBB0_2
+	bltu	$a2, $a6, .LBB0_2
 .LBB0_3:                                # %._crit_edge
 	ld.w	$a0, $s3, 0
 	slli.w	$a0, $a0, 3

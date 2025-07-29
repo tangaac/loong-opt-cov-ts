@@ -15,10 +15,10 @@ foo:                                    # @foo
 	ldx.w	$a5, $a4, $a5
 	bne	$a5, $a1, .LBB0_10
 # %bb.2:                                # %.preheader
-	ori	$a5, $zero, 1
-	blt	$a3, $a5, .LBB0_10
+	blez	$a3, .LBB0_10
 # %bb.3:                                # %.lr.ph.preheader
 	move	$a7, $zero
+	ori	$a5, $zero, 1
 	ori	$t0, $zero, 12
 	move	$a6, $a2
 	move	$t1, $a0

@@ -1993,11 +1993,11 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	beq	$s1, $a0, .LBB4_147
 # %bb.122:                              # %_ZNKSt6vectorIeSaIeEE12_M_check_lenEmPKc.exit.i.i
 	srai.d	$a0, $s1, 4
-	ori	$a2, $zero, 1
-	sltu	$a1, $a2, $a0
-	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 127
@@ -2015,8 +2015,7 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	add.d	$s8, $a0, $s1
 	stx.d	$s7, $a0, $s1
 	st.d	$s6, $s8, 8
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_125
+	blez	$s1, .LBB4_125
 # %bb.124:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -2078,11 +2077,11 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	beq	$s1, $a0, .LBB4_147
 # %bb.131:                              # %_ZNKSt6vectorIeSaIeEE12_M_check_lenEmPKc.exit.i.i.1
 	srai.d	$a0, $s1, 4
-	ori	$a2, $zero, 1
-	sltu	$a1, $a2, $a0
-	masknez	$a2, $a2, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 127
@@ -2100,8 +2099,7 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	add.d	$s8, $a0, $s1
 	stx.d	$s7, $a0, $s1
 	st.d	$s6, $s8, 8
-	ori	$a0, $zero, 1
-	blt	$s1, $a0, .LBB4_134
+	blez	$s1, .LBB4_134
 # %bb.133:
 	move	$a0, $s0
 	move	$a1, $fp
@@ -2163,11 +2161,11 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	beq	$s0, $a0, .LBB4_147
 # %bb.140:                              # %_ZNKSt6vectorIeSaIeEE12_M_check_lenEmPKc.exit.i.i.2
 	srai.d	$a0, $s0, 4
-	ori	$s6, $zero, 1
-	sltu	$a1, $s6, $a0
-	masknez	$a2, $s6, $a1
-	maskeqz	$a1, $a0, $a1
-	or	$a1, $a1, $a2
+	ori	$a1, $zero, 1
+	sltu	$a2, $a1, $a0
+	masknez	$a1, $a1, $a2
+	maskeqz	$a2, $a0, $a2
+	or	$a1, $a2, $a1
 	add.d	$a0, $a1, $a0
 	addi.w	$a1, $zero, -1
 	lu52i.d	$a1, $a1, 127
@@ -2182,10 +2180,10 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 .Ltmp122:
 # %bb.141:                              # %.noexc68.2
 	move	$s1, $a0
-	add.d	$s7, $a0, $s0
+	add.d	$s6, $a0, $s0
 	stx.d	$s4, $a0, $s0
-	st.d	$s2, $s7, 8
-	blt	$s0, $s6, .LBB4_143
+	st.d	$s2, $s6, 8
+	blez	$s0, .LBB4_143
 # %bb.142:
 	move	$a0, $s1
 	move	$a1, $fp
@@ -2199,7 +2197,7 @@ _Z25computeReferenceLoopTimesv:         # @_Z25computeReferenceLoopTimesv
 	pcaddu18i	$ra, %call36(_ZdlPv)
 	jirl	$ra, $ra, 0
 .LBB4_145:                              # %_ZNSt6vectorIeSaIeEE17_M_realloc_appendIJRKeEEEvDpOT_.exit.i.2
-	addi.d	$a0, $s7, 16
+	addi.d	$a0, $s6, 16
 	st.d	$s1, $s3, 48
 	st.d	$a0, $s3, 56
 	alsl.d	$a0, $s5, $s1, 4
@@ -2521,7 +2519,6 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
 	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
 	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -2530,7 +2527,6 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 	.cfi_offset 26, -48
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
-	.cfi_offset 29, -72
 	move	$fp, $a0
 	beq	$a1, $a0, .LBB7_31
 # %bb.1:
@@ -2634,15 +2630,14 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 	move	$a0, $zero
 .LBB7_20:                               # %_ZSt4copyIPSt6vectorIeSaIeEES3_ET0_T_S5_S4_.exit
 	add.d	$s5, $s1, $a0
-	st.d	$s4, $sp, 32
-	st.d	$s4, $sp, 16
-	addi.d	$a0, $sp, 32
-	st.d	$a0, $sp, 24
+	st.d	$s4, $sp, 40
+	st.d	$s4, $sp, 24
+	addi.d	$a0, $sp, 40
+	st.d	$a0, $sp, 32
 	beq	$s5, $s0, .LBB7_30
 # %bb.21:                               # %.lr.ph.i.i.i.preheader
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-	ori	$s6, $zero, 1
 	.p2align	4, , 16
 .LBB7_22:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
@@ -2675,7 +2670,7 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 	ld.d	$a1, $s5, 0
 	ld.d	$a0, $s5, 8
 	sub.d	$s2, $a0, $a1
-	blt	$s2, $s6, .LBB7_28
+	blez	$s2, .LBB7_28
 # %bb.27:                               #   in Loop: Header=BB7_22 Depth=1
 	move	$a0, $s1
 	move	$a2, $s2
@@ -2686,7 +2681,7 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 	st.d	$s1, $s4, 8
 	addi.d	$s5, $s5, 24
 	addi.d	$s4, $s4, 24
-	st.d	$s4, $sp, 32
+	st.d	$s4, $sp, 40
 	bne	$s5, $s0, .LBB7_22
 	b	.LBB7_30
 .LBB7_29:
@@ -2698,7 +2693,6 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 	st.d	$a0, $fp, 8
 .LBB7_31:
 	move	$a0, $fp
-	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
 	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
 	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
 	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
@@ -2725,7 +2719,7 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERKS3_: # @_ZNSt6vectorIS_IeSaIeEESaIS1_EEaSERK
 .LBB7_35:
 .Ltmp129:
 	move	$fp, $a0
-	addi.d	$a0, $sp, 16
+	addi.d	$a0, $sp, 24
 	pcaddu18i	$ra, %call36(_ZNSt19_UninitDestroyGuardIPSt6vectorIeSaIeEEvED2Ev)
 	jirl	$ra, $ra, 0
 	move	$a0, $fp
@@ -2795,9 +2789,8 @@ _ZNSt6vectorImSaImEEaSERKS1_:           # @_ZNSt6vectorImSaImEEaSERKS1_
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s0, $a1, .LBB8_4
+	blez	$s0, .LBB8_4
 # %bb.3:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -2837,8 +2830,7 @@ _ZNSt6vectorImSaImEEaSERKS1_:           # @_ZNSt6vectorImSaImEEaSERKS1_
 .LBB8_10:                               # %_ZSt4copyIPmS0_ET0_T_S2_S1_.exit
 	add.d	$a1, $s1, $a1
 	sub.d	$a2, $a3, $a1
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB8_14
+	blez	$a2, .LBB8_14
 # %bb.11:
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
@@ -2924,9 +2916,8 @@ _ZNSt6vectorIeSaIeEEaSERKS1_:           # @_ZNSt6vectorIeSaIeEEaSERKS1_
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s0, $a1, .LBB9_4
+	blez	$s0, .LBB9_4
 # %bb.3:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -2966,8 +2957,7 @@ _ZNSt6vectorIeSaIeEEaSERKS1_:           # @_ZNSt6vectorIeSaIeEEaSERKS1_
 .LBB9_10:                               # %_ZSt4copyIPeS0_ET0_T_S2_S1_.exit
 	add.d	$a1, $s1, $a1
 	sub.d	$a2, $a3, $a1
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB9_14
+	blez	$a2, .LBB9_14
 # %bb.11:
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
@@ -3053,9 +3043,8 @@ _ZNSt6vectorIiSaIiEEaSERKS1_:           # @_ZNSt6vectorIiSaIiEEaSERKS1_
 	move	$a0, $s0
 	pcaddu18i	$ra, %call36(_Znwm)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
 	move	$s3, $a0
-	blt	$s0, $a1, .LBB10_4
+	blez	$s0, .LBB10_4
 # %bb.3:
 	move	$a0, $s3
 	move	$a1, $s1
@@ -3095,8 +3084,7 @@ _ZNSt6vectorIiSaIiEEaSERKS1_:           # @_ZNSt6vectorIiSaIiEEaSERKS1_
 .LBB10_10:                              # %_ZSt4copyIPiS0_ET0_T_S2_S1_.exit
 	add.d	$a1, $s1, $a1
 	sub.d	$a2, $a3, $a1
-	ori	$a3, $zero, 1
-	blt	$a2, $a3, .LBB10_14
+	blez	$a2, .LBB10_14
 # %bb.11:
 	pcaddu18i	$ra, %call36(memcpy)
 	jirl	$ra, $ra, 0
@@ -3155,18 +3143,17 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iter
 	.cfi_personality 155, DW.ref.__gxx_personality_v0
 	.cfi_lsda 27, .Lexception3
 # %bb.0:
-	addi.d	$sp, $sp, -128
-	.cfi_def_cfa_offset 128
-	st.d	$ra, $sp, 120                   # 8-byte Folded Spill
-	st.d	$fp, $sp, 112                   # 8-byte Folded Spill
-	st.d	$s0, $sp, 104                   # 8-byte Folded Spill
-	st.d	$s1, $sp, 96                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 88                    # 8-byte Folded Spill
-	st.d	$s3, $sp, 80                    # 8-byte Folded Spill
-	st.d	$s4, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s5, $sp, 64                    # 8-byte Folded Spill
-	st.d	$s6, $sp, 56                    # 8-byte Folded Spill
-	st.d	$s7, $sp, 48                    # 8-byte Folded Spill
+	addi.d	$sp, $sp, -112
+	.cfi_def_cfa_offset 112
+	st.d	$ra, $sp, 104                   # 8-byte Folded Spill
+	st.d	$fp, $sp, 96                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 88                    # 8-byte Folded Spill
+	st.d	$s1, $sp, 80                    # 8-byte Folded Spill
+	st.d	$s2, $sp, 72                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 64                    # 8-byte Folded Spill
+	st.d	$s4, $sp, 56                    # 8-byte Folded Spill
+	st.d	$s5, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s6, $sp, 40                    # 8-byte Folded Spill
 	.cfi_offset 1, -8
 	.cfi_offset 22, -16
 	.cfi_offset 23, -24
@@ -3176,7 +3163,6 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iter
 	.cfi_offset 27, -56
 	.cfi_offset 28, -64
 	.cfi_offset 29, -72
-	.cfi_offset 30, -80
 	move	$fp, $a3
 	move	$s0, $a2
 	beqz	$a1, .LBB11_3
@@ -3196,27 +3182,26 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iter
 .LBB11_3:
 	move	$s1, $zero
 .LBB11_4:                               # %_ZNSt12_Vector_baseISt6vectorIeSaIeEESaIS2_EE11_M_allocateEm.exit
-	st.d	$s1, $sp, 40
-	st.d	$s1, $sp, 24
-	addi.d	$a0, $sp, 40
-	st.d	$a0, $sp, 32
+	st.d	$s1, $sp, 32
+	st.d	$s1, $sp, 16
+	addi.d	$a0, $sp, 32
+	st.d	$a0, $sp, 24
 	beq	$s0, $fp, .LBB11_13
 # %bb.5:                                # %.lr.ph.preheader.i.i.i
 	move	$s4, $zero
 	vrepli.b	$vr0, 0
 	vst	$vr0, $sp, 0                    # 16-byte Folded Spill
-	ori	$s5, $zero, 1
 	.p2align	4, , 16
 .LBB11_6:                               # %.lr.ph.i.i.i
                                         # =>This Inner Loop Header: Depth=1
-	add.d	$s7, $s0, $s4
-	ld.d	$a0, $s7, 8
+	add.d	$s6, $s0, $s4
+	ld.d	$a0, $s6, 8
 	ldx.d	$a1, $s0, $s4
-	add.d	$s6, $s1, $s4
+	add.d	$s5, $s1, $s4
 	sub.d	$s3, $a0, $a1
 	vld	$vr0, $sp, 0                    # 16-byte Folded Reload
 	vstx	$vr0, $s1, $s4
-	st.d	$zero, $s6, 16
+	st.d	$zero, $s5, 16
 	beq	$a0, $a1, .LBB11_9
 # %bb.7:                                # %_ZNSt15__new_allocatorIeE8allocateEmPKv.exit.i.i.i.i.i.i.i.i
                                         #   in Loop: Header=BB11_6 Depth=1
@@ -3233,14 +3218,14 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iter
 	move	$s2, $zero
 .LBB11_10:                              # %.noexc.i.i.i
                                         #   in Loop: Header=BB11_6 Depth=1
-	st.d	$s2, $s6, 0
-	st.d	$s2, $s6, 8
+	st.d	$s2, $s5, 0
+	st.d	$s2, $s5, 8
 	add.d	$a0, $s2, $s3
-	st.d	$a0, $s6, 16
-	ld.d	$a1, $s7, 0
-	ld.d	$a0, $s7, 8
+	st.d	$a0, $s5, 16
+	ld.d	$a1, $s6, 0
+	ld.d	$a0, $s6, 8
 	sub.d	$s3, $a0, $a1
-	blt	$s3, $s5, .LBB11_12
+	blez	$s3, .LBB11_12
 # %bb.11:                               #   in Loop: Header=BB11_6 Depth=1
 	move	$a0, $s2
 	move	$a2, $s3
@@ -3248,25 +3233,24 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iter
 	jirl	$ra, $ra, 0
 	add.d	$s2, $s2, $s3
 .LBB11_12:                              #   in Loop: Header=BB11_6 Depth=1
-	st.d	$s2, $s6, 8
-	addi.d	$a0, $s6, 24
+	st.d	$s2, $s5, 8
+	addi.d	$a0, $s5, 24
 	addi.d	$s4, $s4, 24
 	add.d	$a1, $s0, $s4
-	st.d	$a0, $sp, 40
+	st.d	$a0, $sp, 32
 	bne	$a1, $fp, .LBB11_6
 .LBB11_13:                              # %_ZNSt6vectorIS_IeSaIeEESaIS1_EE12_Guard_allocD2Ev.exit
 	move	$a0, $s1
-	ld.d	$s7, $sp, 48                    # 8-byte Folded Reload
-	ld.d	$s6, $sp, 56                    # 8-byte Folded Reload
-	ld.d	$s5, $sp, 64                    # 8-byte Folded Reload
-	ld.d	$s4, $sp, 72                    # 8-byte Folded Reload
-	ld.d	$s3, $sp, 80                    # 8-byte Folded Reload
-	ld.d	$s2, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$s1, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s0, $sp, 104                   # 8-byte Folded Reload
-	ld.d	$fp, $sp, 112                   # 8-byte Folded Reload
-	ld.d	$ra, $sp, 120                   # 8-byte Folded Reload
-	addi.d	$sp, $sp, 128
+	ld.d	$s6, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$s5, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$s4, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$s3, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s2, $sp, 72                    # 8-byte Folded Reload
+	ld.d	$s1, $sp, 80                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 88                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$ra, $sp, 104                   # 8-byte Folded Reload
+	addi.d	$sp, $sp, 112
 	ret
 .LBB11_14:
 	lu12i.w	$a0, -349526
@@ -3283,7 +3267,7 @@ _ZNSt6vectorIS_IeSaIeEESaIS1_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iter
 .LBB11_17:                              # %.body
 .Ltmp132:
 	move	$fp, $a0
-	addi.d	$a0, $sp, 24
+	addi.d	$a0, $sp, 16
 	pcaddu18i	$ra, %call36(_ZNSt19_UninitDestroyGuardIPSt6vectorIeSaIeEEvED2Ev)
 	jirl	$ra, $ra, 0
 	beqz	$s1, .LBB11_19

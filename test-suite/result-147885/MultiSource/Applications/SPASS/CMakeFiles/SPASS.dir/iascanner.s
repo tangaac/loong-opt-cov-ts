@@ -26,19 +26,18 @@ ia_lex:                                 # @ia_lex
 	st.d	$s8, $sp, 104                   # 8-byte Folded Spill
 	pcalau12i	$a0, %pc_hi20(yy_init)
 	ld.bu	$a1, $a0, %pc_lo12(yy_init)
-	pcalau12i	$s7, %pc_hi20(yy_hold_char)
+	pcalau12i	$s0, %pc_hi20(yy_hold_char)
 	pcalau12i	$a3, %pc_hi20(yy_start)
 	pcalau12i	$fp, %pc_hi20(ia_text)
 	pcalau12i	$s4, %pc_hi20(yy_c_buf_p)
-	pcalau12i	$s2, %pc_hi20(ia_out)
+	pcalau12i	$s3, %pc_hi20(ia_out)
 	pcalau12i	$a2, %pc_hi20(yy_current_buffer)
 	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	pcalau12i	$s0, %pc_hi20(yy_n_chars)
-	pcalau12i	$s3, %pc_hi20(ia_in)
-	st.d	$a3, $sp, 40                    # 8-byte Folded Spill
-	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$s2, $sp, 8                     # 8-byte Folded Spill
-	st.d	$s3, $sp, 88                    # 8-byte Folded Spill
+	pcalau12i	$a2, %pc_hi20(yy_n_chars)
+	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
+	pcalau12i	$s8, %pc_hi20(ia_in)
+	st.d	$a3, $sp, 48                    # 8-byte Folded Spill
+	st.d	$s3, $sp, 8                     # 8-byte Folded Spill
 	beqz	$a1, .LBB0_2
 # %bb.1:                                # %._crit_edge138
 	ld.d	$a0, $s4, %pc_lo12(yy_c_buf_p)
@@ -49,11 +48,12 @@ ia_lex:                                 # @ia_lex
 	st.b	$a1, $a0, %pc_lo12(yy_init)
 	beqz	$a2, .LBB0_7
 # %bb.3:
-	ld.d	$s0, $s3, %pc_lo12(ia_in)
+	move	$s2, $s0
+	ld.d	$s0, $s8, %pc_lo12(ia_in)
 	beqz	$s0, .LBB0_8
 .LBB0_4:
 	move	$s1, $fp
-	ld.d	$a0, $s2, %pc_lo12(ia_out)
+	ld.d	$a0, $s3, %pc_lo12(ia_out)
 	beqz	$a0, .LBB0_9
 .LBB0_5:
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
@@ -65,21 +65,22 @@ ia_lex:                                 # @ia_lex
 	b	.LBB0_13
 .LBB0_7:
 	st.b	$a1, $a3, %pc_lo12(yy_start)
-	ld.d	$s0, $s3, %pc_lo12(ia_in)
+	move	$s2, $s0
+	ld.d	$s0, $s8, %pc_lo12(ia_in)
 	bnez	$s0, .LBB0_4
 .LBB0_8:
 	pcalau12i	$a0, %got_pc_hi20(stdin)
 	ld.d	$a0, $a0, %got_pc_lo12(stdin)
 	ld.d	$s0, $a0, 0
-	st.d	$s0, $s3, %pc_lo12(ia_in)
+	st.d	$s0, $s8, %pc_lo12(ia_in)
 	move	$s1, $fp
-	ld.d	$a0, $s2, %pc_lo12(ia_out)
+	ld.d	$a0, $s3, %pc_lo12(ia_out)
 	bnez	$a0, .LBB0_5
 .LBB0_9:
 	pcalau12i	$a0, %got_pc_hi20(stdout)
 	ld.d	$a0, $a0, %got_pc_lo12(stdout)
 	ld.d	$a0, $a0, 0
-	st.d	$a0, $s2, %pc_lo12(ia_out)
+	st.d	$a0, $s3, %pc_lo12(ia_out)
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$fp, $a0, %pc_lo12(yy_current_buffer)
 	bnez	$fp, .LBB0_6
@@ -114,12 +115,13 @@ ia_lex:                                 # @ia_lex
 	st.d	$a0, $s1, %pc_lo12(ia_text)
 	ld.d	$a2, $fp, 0
 	move	$fp, $s1
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	st.w	$a1, $s0, %pc_lo12(yy_n_chars)
-	st.d	$a2, $s3, %pc_lo12(ia_in)
+	ld.d	$a3, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a1, $a3, %pc_lo12(yy_n_chars)
+	st.d	$a2, $s8, %pc_lo12(ia_in)
 	ld.b	$a1, $a0, 0
-	st.b	$a1, $s7, %pc_lo12(yy_hold_char)
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	move	$s0, $s2
+	st.b	$a1, $s2, %pc_lo12(yy_hold_char)
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 .LBB0_14:                               # %.loopexit82.preheader
 	pcalau12i	$a1, %pc_hi20(yy_ec)
 	addi.d	$s5, $a1, %pc_lo12(yy_ec)
@@ -127,18 +129,20 @@ ia_lex:                                 # @ia_lex
 	addi.d	$s3, $a1, %pc_lo12(yy_nxt)
 	pcalau12i	$a1, %pc_hi20(yy_accept)
 	addi.d	$a1, $a1, %pc_lo12(yy_accept)
-	st.d	$a1, $sp, 48                    # 8-byte Folded Spill
-	pcalau12i	$a1, %pc_hi20(ia_leng)
 	st.d	$a1, $sp, 56                    # 8-byte Folded Spill
+	pcalau12i	$a1, %pc_hi20(ia_leng)
+	st.d	$a1, $sp, 64                    # 8-byte Folded Spill
+	ori	$s1, $zero, 20
 	pcalau12i	$a1, %pc_hi20(.LJTI0_0)
 	addi.d	$a1, $a1, %pc_lo12(.LJTI0_0)
 	st.d	$a1, $sp, 80                    # 8-byte Folded Spill
 	pcalau12i	$a1, %got_pc_hi20(dfg_LINENUMBER)
 	ld.d	$a1, $a1, %got_pc_lo12(dfg_LINENUMBER)
 	st.d	$a1, $sp, 16                    # 8-byte Folded Spill
-	ori	$s2, $zero, 0
-	lu32i.d	$s2, 1
-	st.d	$s7, $sp, 64                    # 8-byte Folded Spill
+	ori	$a1, $zero, 0
+	lu32i.d	$a1, -1
+	st.d	$a1, $sp, 24                    # 8-byte Folded Spill
+	st.d	$s0, $sp, 72                    # 8-byte Folded Spill
 .LBB0_15:                               # %.loopexit82
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_16 Depth 2
@@ -153,7 +157,7 @@ ia_lex:                                 # @ia_lex
                                         #         Child Loop BB0_71 Depth 4
                                         #         Child Loop BB0_78 Depth 4
                                         #       Child Loop BB0_91 Depth 3
-	ld.b	$a1, $s7, %pc_lo12(yy_hold_char)
+	ld.b	$a1, $s0, %pc_lo12(yy_hold_char)
 	st.b	$a1, $a0, 0
 	ld.bu	$a1, $a3, %pc_lo12(yy_start)
 	move	$a2, $a0
@@ -171,12 +175,12 @@ ia_lex:                                 # @ia_lex
                                         #         Child Loop BB0_71 Depth 4
                                         #         Child Loop BB0_78 Depth 4
                                         #       Child Loop BB0_91 Depth 3
-	addi.d	$s1, $a2, -1
+	addi.d	$s2, $a2, -1
 	.p2align	4, , 16
 .LBB0_17:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.bu	$a2, $s1, 1
+	ld.bu	$a2, $s2, 1
 	slli.d	$a2, $a2, 2
 	ldx.w	$a2, $s5, $a2
 	slli.d	$a3, $a1, 5
@@ -184,7 +188,7 @@ ia_lex:                                 # @ia_lex
 	add.d	$a1, $s3, $a1
 	slli.d	$a2, $a2, 1
 	ldx.h	$a1, $a1, $a2
-	addi.d	$s1, $s1, 1
+	addi.d	$s2, $s2, 1
 	bgtz	$a1, .LBB0_17
 # %bb.18:                               #   in Loop: Header=BB0_16 Depth=2
 	sub.w	$a2, $zero, $a1
@@ -201,16 +205,16 @@ ia_lex:                                 # @ia_lex
                                         #         Child Loop BB0_71 Depth 4
                                         #         Child Loop BB0_78 Depth 4
 	st.d	$a0, $fp, %pc_lo12(ia_text)
-	sub.d	$a0, $s1, $a0
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	sub.d	$a0, $s2, $a0
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	st.w	$a0, $a1, %pc_lo12(ia_leng)
-	ld.b	$a0, $s1, 0
+	ld.b	$a0, $s2, 0
 	slli.d	$a1, $a2, 1
-	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 56                    # 8-byte Folded Reload
 	ldx.h	$a2, $a2, $a1
-	st.b	$a0, $s7, %pc_lo12(yy_hold_char)
-	st.b	$zero, $s1, 0
-	move	$a0, $s1
+	st.b	$a0, $s0, %pc_lo12(yy_hold_char)
+	st.b	$zero, $s2, 0
+	move	$a0, $s2
 .LBB0_20:                               # %yy_get_previous_state.exit63
                                         #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
@@ -223,8 +227,7 @@ ia_lex:                                 # @ia_lex
                                         #           Child Loop BB0_54 Depth 5
 	addi.d	$a1, $a2, -1
 	st.d	$a0, $s4, %pc_lo12(yy_c_buf_p)
-	ori	$a2, $zero, 20
-	bltu	$a2, $a1, .LBB0_117
+	bltu	$s1, $a1, .LBB0_117
 # %bb.21:                               # %yy_get_previous_state.exit63
                                         #   in Loop: Header=BB0_20 Depth=4
 	slli.d	$a1, $a1, 2
@@ -233,31 +236,32 @@ ia_lex:                                 # @ia_lex
 	add.d	$a1, $a2, $a1
 	jr	$a1
 .LBB0_22:                               #   in Loop: Header=BB0_20 Depth=4
-	ld.b	$a0, $s7, %pc_lo12(yy_hold_char)
+	ld.b	$a0, $s0, %pc_lo12(yy_hold_char)
 	ld.d	$a5, $fp, %pc_lo12(ia_text)
-	st.b	$a0, $s1, 0
+	st.b	$a0, $s2, 0
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $a0, %pc_lo12(yy_current_buffer)
-	ld.w	$a2, $s7, 48
+	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
+	ld.w	$a2, $s1, 48
 	beqz	$a2, .LBB0_24
 # %bb.23:                               # %._crit_edge131
                                         #   in Loop: Header=BB0_20 Depth=4
-	ld.w	$a3, $s0, %pc_lo12(yy_n_chars)
-	ld.d	$a1, $s7, 8
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	ld.w	$a3, $a0, %pc_lo12(yy_n_chars)
+	ld.d	$a1, $s1, 8
 	ld.d	$s0, $s4, %pc_lo12(yy_c_buf_p)
 	add.d	$a0, $a1, $a3
 	bltu	$a0, $s0, .LBB0_25
 	b	.LBB0_67
 	.p2align	4, , 16
 .LBB0_24:                               #   in Loop: Header=BB0_20 Depth=4
-	ld.w	$a3, $s7, 28
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, %pc_lo12(ia_in)
-	st.w	$a3, $s0, %pc_lo12(yy_n_chars)
-	st.d	$a0, $s7, 0
+	ld.w	$a3, $s1, 28
+	ld.d	$a0, $s8, %pc_lo12(ia_in)
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a3, $a1, %pc_lo12(yy_n_chars)
+	st.d	$a0, $s1, 0
 	ori	$a2, $zero, 1
-	st.w	$a2, $s7, 48
-	ld.d	$a1, $s7, 8
+	st.w	$a2, $s1, 48
+	ld.d	$a1, $s1, 8
 	ld.d	$s0, $s4, %pc_lo12(yy_c_buf_p)
 	add.d	$a0, $a1, $a3
 	bgeu	$a0, $s0, .LBB0_67
@@ -266,13 +270,13 @@ ia_lex:                                 # @ia_lex
 	bltu	$a0, $s0, .LBB0_119
 # %bb.26:                               #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $fp, %pc_lo12(ia_text)
-	ld.w	$a4, $s7, 44
-	sub.d	$s8, $s0, $a0
+	ld.w	$a4, $s1, 44
+	sub.d	$s7, $s0, $a0
 	beqz	$a4, .LBB0_32
 # %bb.27:                               #   in Loop: Header=BB0_20 Depth=4
-	st.d	$a5, $sp, 32                    # 8-byte Folded Spill
-	addi.w	$a3, $s8, 0
-	addi.w	$s6, $s8, -1
+	st.d	$a5, $sp, 40                    # 8-byte Folded Spill
+	addi.w	$a3, $s7, 0
+	addi.w	$s6, $s7, -1
 	ori	$a4, $zero, 2
 	blt	$a3, $a4, .LBB0_45
 # %bb.28:                               # %iter.check
@@ -296,10 +300,10 @@ ia_lex:                                 # @ia_lex
 	.p2align	4, , 16
 .LBB0_32:                               #   in Loop: Header=BB0_20 Depth=4
 	ori	$a2, $zero, 21
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ori	$s1, $zero, 20
 	ori	$a4, $zero, 1
-	beq	$s8, $a4, .LBB0_20
+	beq	$s7, $a4, .LBB0_20
 	b	.LBB0_74
 .LBB0_33:                               #   in Loop: Header=BB0_20 Depth=4
 	move	$a3, $a1
@@ -381,40 +385,40 @@ ia_lex:                                 # @ia_lex
 	addi.d	$a2, $a3, 1
 	bstrpick.d	$a0, $a0, 31, 0
 	addi.d	$a0, $a0, 1
-	and	$a5, $a0, $s2
+	slli.d	$a5, $a0, 31
 	st.b	$a1, $a3, 0
 	move	$a3, $a2
-	beqz	$a5, .LBB0_43
+	bgez	$a5, .LBB0_43
 .LBB0_44:                               # %._crit_edge.i.loopexit
                                         #   in Loop: Header=BB0_20 Depth=4
-	ld.w	$a2, $s7, 48
+	ld.w	$a2, $s1, 48
 .LBB0_45:                               # %._crit_edge.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ori	$a0, $zero, 2
 	bne	$a2, $a0, .LBB0_47
 # %bb.46:                               # %.thread64.i
                                         #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	st.w	$zero, $s0, %pc_lo12(yy_n_chars)
-	st.w	$zero, $s7, 28
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.w	$zero, $a0, %pc_lo12(yy_n_chars)
+	st.w	$zero, $s1, 28
 	beqz	$s6, .LBB0_66
 	b	.LBB0_73
 .LBB0_47:                               # %.preheader66.i
                                         #   in Loop: Header=BB0_20 Depth=4
-	st.d	$fp, $sp, 24                    # 8-byte Folded Spill
-	ld.w	$a1, $s7, 24
-	sub.w	$a2, $a1, $s8
+	st.d	$fp, $sp, 32                    # 8-byte Folded Spill
+	ld.w	$a1, $s1, 24
+	sub.w	$a2, $a1, $s7
 	bgtz	$a2, .LBB0_52
 # %bb.48:                               # %.lr.ph76.i
                                         #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$fp, $s7, 8
+	ld.d	$fp, $s1, 8
 	.p2align	4, , 16
 .LBB0_49:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
                                         #       Parent Loop BB0_19 Depth=3
                                         #         Parent Loop BB0_20 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.w	$a0, $s7, 32
+	ld.w	$a0, $s1, 32
 	beqz	$a0, .LBB0_115
 # %bb.50:                               #   in Loop: Header=BB0_49 Depth=5
 	slli.d	$a0, $a1, 1
@@ -425,27 +429,26 @@ ia_lex:                                 # @ia_lex
 	masknez	$a0, $a0, $a2
 	maskeqz	$a1, $a1, $a2
 	or	$a0, $a1, $a0
-	st.w	$a0, $s7, 24
+	st.w	$a0, $s1, 24
 	addi.d	$a0, $a0, 2
 	bstrpick.d	$a1, $a0, 31, 0
 	move	$a0, $fp
 	pcaddu18i	$ra, %call36(realloc)
 	jirl	$ra, $ra, 0
-	st.d	$a0, $s7, 8
+	st.d	$a0, $s1, 8
 	beqz	$a0, .LBB0_116
 # %bb.51:                               #   in Loop: Header=BB0_49 Depth=5
-	ld.w	$a1, $s7, 24
+	ld.w	$a1, $s1, 24
 	sub.w	$a2, $s0, $fp
 	add.d	$s0, $a0, $a2
-	sub.w	$a2, $a1, $s8
+	sub.w	$a2, $a1, $s7
 	st.d	$s0, $s4, %pc_lo12(yy_c_buf_p)
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$a2, $a0, .LBB0_49
+	blez	$a2, .LBB0_49
 .LBB0_52:                               # %._crit_edge77.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	srli.d	$a0, $a2, 13
-	ld.w	$a1, $s7, 36
+	ld.w	$a1, $s1, 36
 	sltui	$a0, $a0, 1
 	lu12i.w	$a3, 2
 	masknez	$a3, $a3, $a0
@@ -455,16 +458,15 @@ ia_lex:                                 # @ia_lex
 # %bb.53:                               # %.preheader.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	move	$fp, $zero
-	bstrpick.d	$s7, $s0, 31, 0
-	move	$s8, $s6
+	bstrpick.d	$s1, $s0, 31, 0
+	move	$s7, $s6
 	.p2align	4, , 16
 .LBB0_54:                               #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
                                         #       Parent Loop BB0_19 Depth=3
                                         #         Parent Loop BB0_20 Depth=4
                                         # =>        This Inner Loop Header: Depth=5
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, %pc_lo12(ia_in)
+	ld.d	$a0, $s8, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(getc)
 	jirl	$ra, $ra, 0
 	addi.w	$a1, $zero, -1
@@ -476,16 +478,15 @@ ia_lex:                                 # @ia_lex
 	ld.d	$a2, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a2, $a2, %pc_lo12(yy_current_buffer)
 	ld.d	$a2, $a2, 8
-	stx.b	$a0, $a2, $s8
+	stx.b	$a0, $a2, $s7
 	addi.w	$fp, $fp, 1
-	addi.d	$s7, $s7, -1
-	addi.d	$s8, $s8, 1
-	bnez	$s7, .LBB0_54
+	addi.d	$s1, $s1, -1
+	addi.d	$s7, $s7, 1
+	bnez	$s1, .LBB0_54
 # %bb.57:                               #   in Loop: Header=BB0_20 Depth=4
 	move	$fp, $s0
 .LBB0_58:                               # %.critedge.i
                                         #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
 	beq	$a0, $a1, .LBB0_63
 # %bb.59:                               # %.critedge.i
                                         #   in Loop: Header=BB0_20 Depth=4
@@ -493,9 +494,9 @@ ia_lex:                                 # @ia_lex
 	bne	$a0, $a1, .LBB0_64
 	b	.LBB0_85
 .LBB0_60:                               #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$a0, $s7, 8
-	ld.d	$s7, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a3, $s7, %pc_lo12(ia_in)
+	ld.d	$a0, $s1, 8
+	move	$s1, $s8
+	ld.d	$a3, $s8, %pc_lo12(ia_in)
 	add.d	$a0, $a0, $s6
 	ori	$a1, $zero, 1
 	move	$a2, $s0
@@ -503,47 +504,47 @@ ia_lex:                                 # @ia_lex
 	jirl	$ra, $ra, 0
 	move	$fp, $a0
 	addi.w	$a0, $a0, 0
-	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
-	st.w	$fp, $s0, %pc_lo12(yy_n_chars)
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	st.w	$fp, $a1, %pc_lo12(yy_n_chars)
 	bnez	$a0, .LBB0_84
 # %bb.61:                               #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$a0, $s7, %pc_lo12(ia_in)
+	ld.d	$a0, $s1, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_120
 # %bb.62:                               # %thread-pre-split.thread.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $a0, %pc_lo12(yy_current_buffer)
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
-	st.w	$zero, $s7, 28
+	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
+	st.w	$zero, $s1, 28
 	beqz	$s6, .LBB0_66
 	b	.LBB0_73
 .LBB0_63:                               #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, %pc_lo12(ia_in)
+	ld.d	$a0, $s8, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(ferror)
 	jirl	$ra, $ra, 0
 	bnez	$a0, .LBB0_120
 .LBB0_64:                               # %thread-pre-split.i
                                         #   in Loop: Header=BB0_20 Depth=4
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $a0, %pc_lo12(yy_current_buffer)
-	st.w	$fp, $s0, %pc_lo12(yy_n_chars)
-	st.w	$fp, $s7, 28
+	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
+	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
+	st.w	$fp, $a0, %pc_lo12(yy_n_chars)
+	st.w	$fp, $s1, 28
 	bnez	$fp, .LBB0_83
 # %bb.65:                               #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	bnez	$s6, .LBB0_73
 .LBB0_66:                               # %yy_get_next_buffer.exit.thread79
                                         #   in Loop: Header=BB0_20 Depth=4
-	ld.d	$a0, $sp, 88                    # 8-byte Folded Reload
-	ld.d	$a0, $a0, %pc_lo12(ia_in)
+	ld.d	$a0, $s8, %pc_lo12(ia_in)
 	pcaddu18i	$ra, %call36(ia_restart)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a0, $a0, %pc_lo12(yy_current_buffer)
-	ld.w	$a1, $s0, %pc_lo12(yy_n_chars)
+	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
+	ld.w	$a1, $a1, %pc_lo12(yy_n_chars)
 	ld.d	$a2, $a0, 8
 	stx.b	$zero, $a2, $a1
 	ld.d	$a2, $a0, 8
@@ -552,27 +553,27 @@ ia_lex:                                 # @ia_lex
 	ld.d	$a0, $a0, 8
 	st.d	$a0, $fp, %pc_lo12(ia_text)
 	ori	$a2, $zero, 21
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ori	$s1, $zero, 20
 	b	.LBB0_20
 .LBB0_67:                               #   in Loop: Header=BB0_19 Depth=3
-	sub.w	$a3, $s1, $a5
+	sub.w	$a3, $s2, $a5
 	ld.d	$a0, $fp, %pc_lo12(ia_text)
 	slli.d	$a1, $a3, 32
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, -1
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a1, $a1, $a2
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.bu	$a2, $a2, %pc_lo12(yy_start)
 	srai.d	$a1, $a1, 32
-	add.d	$s1, $a0, $a1
-	st.d	$s1, $s4, %pc_lo12(yy_c_buf_p)
+	add.d	$s2, $a0, $a1
+	st.d	$s2, $s4, %pc_lo12(yy_c_buf_p)
 	ori	$a4, $zero, 2
 	blt	$a3, $a4, .LBB0_80
 # %bb.68:                               # %.lr.ph.i.preheader
                                         #   in Loop: Header=BB0_19 Depth=3
 	move	$a3, $a0
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ori	$s1, $zero, 20
 	b	.LBB0_71
 	.p2align	4, , 16
 .LBB0_69:                               #   in Loop: Header=BB0_71 Depth=4
@@ -599,28 +600,30 @@ ia_lex:                                 # @ia_lex
 	b	.LBB0_70
 .LBB0_73:                               # %yy_get_next_buffer.exit
                                         #   in Loop: Header=BB0_19 Depth=3
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s1, 8
 	ori	$a1, $zero, 2
-	st.w	$a1, $s7, 48
-	st.w	$s6, $s0, %pc_lo12(yy_n_chars)
+	st.w	$a1, $s1, 48
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	st.w	$s6, $a2, %pc_lo12(yy_n_chars)
 	stx.b	$zero, $a0, $s6
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s1, 8
 	add.d	$a0, $a0, $s6
 	st.b	$zero, $a0, 1
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
 	ld.d	$a1, $a0, %pc_lo12(yy_current_buffer)
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s1, 8
 	ld.d	$a1, $a1, 8
-	ld.w	$a3, $s0, %pc_lo12(yy_n_chars)
+	ld.w	$a3, $a2, %pc_lo12(yy_n_chars)
 	st.d	$a0, $fp, %pc_lo12(ia_text)
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ori	$s1, $zero, 20
 .LBB0_74:                               # %yy_get_next_buffer.exit.thread74
                                         #   in Loop: Header=BB0_19 Depth=3
-	ld.d	$a2, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a2, $sp, 48                    # 8-byte Folded Reload
 	ld.bu	$a2, $a2, %pc_lo12(yy_start)
-	add.d	$s1, $a1, $a3
-	st.d	$s1, $s4, %pc_lo12(yy_c_buf_p)
-	bgeu	$a0, $s1, .LBB0_19
+	add.d	$s2, $a1, $a3
+	st.d	$s2, $s4, %pc_lo12(yy_c_buf_p)
+	bgeu	$a0, $s2, .LBB0_19
 # %bb.75:                               # %.lr.ph.i67.preheader
                                         #   in Loop: Header=BB0_19 Depth=3
 	move	$a1, $a0
@@ -636,7 +639,7 @@ ia_lex:                                 # @ia_lex
 	slli.d	$a3, $a3, 1
 	ldx.h	$a2, $a2, $a3
 	addi.d	$a1, $a1, 1
-	beq	$a1, $s1, .LBB0_19
+	beq	$a1, $s2, .LBB0_19
 .LBB0_78:                               # %.lr.ph.i67
                                         #   Parent Loop BB0_15 Depth=1
                                         #     Parent Loop BB0_16 Depth=2
@@ -648,8 +651,8 @@ ia_lex:                                 # @ia_lex
 	ori	$a3, $zero, 1
 	b	.LBB0_77
 .LBB0_80:                               #   in Loop: Header=BB0_19 Depth=3
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ori	$s1, $zero, 20
 .LBB0_81:                               # %yy_get_previous_state.exit
                                         #   in Loop: Header=BB0_19 Depth=3
 	addi.d	$a1, $a2, -3
@@ -660,55 +663,56 @@ ia_lex:                                 # @ia_lex
 	alsl.d	$a1, $a2, $a1, 4
 	add.d	$a1, $s3, $a1
 	ld.h	$a1, $a1, 2
-	addi.d	$a2, $s1, 1
+	addi.d	$a2, $s2, 1
 	st.d	$a2, $s4, %pc_lo12(yy_c_buf_p)
 	b	.LBB0_16
 .LBB0_83:                               # %.loopexit165
                                         #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	sub.w	$a3, $s1, $a0
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	sub.w	$a3, $s2, $a0
 	b	.LBB0_87
 .LBB0_84:                               # %.thread65.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $a0, %pc_lo12(yy_current_buffer)
-	ld.d	$a0, $sp, 32                    # 8-byte Folded Reload
-	sub.w	$a3, $s1, $a0
+	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
+	ld.d	$a0, $sp, 40                    # 8-byte Folded Reload
+	sub.w	$a3, $s2, $a0
 	b	.LBB0_86
 .LBB0_85:                               # %thread-pre-split.thread83.i
                                         #   in Loop: Header=BB0_16 Depth=2
 	ld.d	$a0, $sp, 96                    # 8-byte Folded Reload
-	ld.d	$s7, $a0, %pc_lo12(yy_current_buffer)
-	ld.d	$a0, $s7, 8
-	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload
-	sub.w	$a3, $s1, $a1
+	ld.d	$s1, $a0, %pc_lo12(yy_current_buffer)
+	ld.d	$a0, $s1, 8
+	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	sub.w	$a3, $s2, $a1
 	add.d	$a0, $a0, $s6
 	ori	$a1, $zero, 10
 	stx.b	$a1, $a0, $fp
 	addi.d	$fp, $fp, 1
 .LBB0_86:                               #   in Loop: Header=BB0_16 Depth=2
-	st.w	$fp, $s7, 28
+	st.w	$fp, $s1, 28
 .LBB0_87:                               #   in Loop: Header=BB0_16 Depth=2
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s1, 8
 	add.w	$a1, $fp, $s6
-	st.w	$a1, $s0, %pc_lo12(yy_n_chars)
+	ld.d	$a2, $sp, 88                    # 8-byte Folded Reload
+	st.w	$a1, $a2, %pc_lo12(yy_n_chars)
 	stx.b	$zero, $a0, $a1
-	ld.d	$a0, $s7, 8
+	ld.d	$a0, $s1, 8
 	add.d	$a0, $a0, $a1
 	st.b	$zero, $a0, 1
-	ld.d	$a0, $s7, 8
-	ld.d	$fp, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a0, $s1, 8
+	ld.d	$fp, $sp, 32                    # 8-byte Folded Reload
 	st.d	$a0, $fp, %pc_lo12(ia_text)
 	slli.d	$a1, $a3, 32
-	ori	$a2, $zero, 0
-	lu32i.d	$a2, -1
+	ld.d	$a2, $sp, 24                    # 8-byte Folded Reload
 	add.d	$a2, $a1, $a2
-	ld.d	$a1, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 48                    # 8-byte Folded Reload
 	ld.bu	$a1, $a1, %pc_lo12(yy_start)
 	srai.d	$a4, $a2, 32
 	add.d	$a2, $a0, $a4
 	st.d	$a2, $s4, %pc_lo12(yy_c_buf_p)
-	ld.d	$s7, $sp, 64                    # 8-byte Folded Reload
+	ld.d	$s0, $sp, 72                    # 8-byte Folded Reload
+	ori	$s1, $zero, 20
 	ori	$a5, $zero, 2
 	blt	$a3, $a5, .LBB0_16
 # %bb.88:                               # %.lr.ph.i58.preheader
@@ -741,11 +745,11 @@ ia_lex:                                 # @ia_lex
 	ld.w	$a1, $a2, 0
 	addi.d	$a1, $a1, 1
 	st.w	$a1, $a2, 0
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_15
 .LBB0_94:                               #   in Loop: Header=BB0_15 Depth=1
 	ld.d	$a0, $fp, %pc_lo12(ia_text)
-	ld.d	$a1, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, %pc_lo12(ia_leng)
 	ld.d	$a2, $sp, 8                     # 8-byte Folded Reload
 	ld.d	$a3, $a2, %pc_lo12(ia_out)
@@ -755,7 +759,7 @@ ia_lex:                                 # @ia_lex
 	ld.d	$a0, $s4, %pc_lo12(yy_c_buf_p)
 .LBB0_95:                               # %.loopexit82.backedge.loopexit
                                         #   in Loop: Header=BB0_15 Depth=1
-	ld.d	$a3, $sp, 40                    # 8-byte Folded Reload
+	ld.d	$a3, $sp, 48                    # 8-byte Folded Reload
 	b	.LBB0_15
 .LBB0_96:
 	ori	$a0, $zero, 267
@@ -814,7 +818,7 @@ ia_lex:                                 # @ia_lex
 	ori	$a0, $zero, 269
 	b	.LBB0_114
 .LBB0_110:
-	ld.d	$a0, $sp, 56                    # 8-byte Folded Reload
+	ld.d	$a0, $sp, 64                    # 8-byte Folded Reload
 	ld.w	$a0, $a0, %pc_lo12(ia_leng)
 	addi.w	$a0, $a0, 1
 	pcaddu18i	$ra, %call36(memory_Malloc)
@@ -850,7 +854,7 @@ ia_lex:                                 # @ia_lex
 	addi.d	$sp, $sp, 192
 	ret
 .LBB0_115:                              # %.thread.i
-	st.d	$zero, $s7, 8
+	st.d	$zero, $s1, 8
 .LBB0_116:                              # %.loopexit.i
 	pcalau12i	$a0, %pc_hi20(.L.str.11)
 	addi.d	$a0, $a0, %pc_lo12(.L.str.11)
@@ -1496,8 +1500,7 @@ ia__scan_bytes:                         # @ia__scan_bytes
 	beqz	$a0, .LBB12_13
 # %bb.1:                                # %.preheader
 	move	$fp, $a0
-	ori	$a0, $zero, 1
-	blt	$s0, $a0, .LBB12_3
+	blez	$s0, .LBB12_3
 # %bb.2:                                # %._crit_edge.thread
 	move	$a0, $fp
 	move	$a1, $s1

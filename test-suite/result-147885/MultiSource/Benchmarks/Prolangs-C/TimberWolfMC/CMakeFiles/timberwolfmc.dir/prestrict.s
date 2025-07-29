@@ -22,24 +22,23 @@ prestrict:                              # @prestrict
 	pcalau12i	$a4, %got_pc_hi20(pnodeArray)
 	ld.d	$a4, $a4, %got_pc_lo12(pnodeArray)
 	ld.w	$a5, $s3, 0
-	move	$s1, $a3
-	ld.d	$a4, $a4, 0
-	sub.w	$a3, $a2, $a5
-	pcalau12i	$a2, %got_pc_hi20(pnodeAlength)
-	ld.d	$s5, $a2, %got_pc_lo12(pnodeAlength)
-	slli.d	$a2, $a3, 4
-	alsl.d	$a2, $a3, $a2, 3
-	add.d	$a4, $a4, $a2
-	ld.w	$a3, $s5, 0
+	ld.d	$a7, $a4, 0
+	sub.w	$a6, $a2, $a5
+	slli.d	$a2, $a6, 4
+	pcalau12i	$a4, %got_pc_hi20(pnodeAlength)
+	ld.d	$s5, $a4, %got_pc_lo12(pnodeAlength)
+	alsl.d	$a4, $a6, $a2, 3
 	st.d	$a1, $sp, 8                     # 8-byte Folded Spill
 	slli.d	$a2, $a1, 1
+	add.d	$a4, $a7, $a4
+	ld.w	$a1, $s5, 0
 	st.d	$a0, $sp, 0                     # 8-byte Folded Spill
 	ldx.h	$s2, $a0, $a2
 	ld.d	$s4, $a4, 8
-	add.w	$a0, $a3, $a5
-	ori	$a1, $zero, 1
+	move	$s1, $a3
+	add.w	$a0, $a1, $a5
 	st.d	$zero, $sp, 32
-	blt	$a0, $a1, .LBB0_6
+	blez	$a0, .LBB0_6
 # %bb.1:                                # %.lr.ph
 	move	$s6, $zero
 	ori	$a0, $zero, 12

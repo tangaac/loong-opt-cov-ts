@@ -37,13 +37,13 @@ printnets:                              # @printnets
 	ld.d	$a0, $a0, %got_pc_lo12(largestNet)
 	st.d	$a0, $sp, 16                    # 8-byte Folded Spill
 	ld.w	$a1, $a0, 0
-	ori	$a0, $zero, 1
-	blt	$a1, $a0, .LBB0_19
+	blez	$a1, .LBB0_19
 # %bb.2:                                # %.preheader50.preheader
 	pcalau12i	$a0, %got_pc_hi20(netRoutes)
 	ld.d	$a0, $a0, %got_pc_lo12(netRoutes)
 	st.d	$a0, $sp, 80                    # 8-byte Folded Spill
 	ld.d	$a0, $a0, 0
+	ori	$s6, $zero, 1
 	pcalau12i	$a2, %got_pc_hi20(nnameArray)
 	ld.d	$a2, $a2, %got_pc_lo12(nnameArray)
 	st.d	$a2, $sp, 64                    # 8-byte Folded Spill
@@ -74,32 +74,31 @@ printnets:                              # @printnets
                                         #   in Loop: Header=BB0_5 Depth=1
 	ld.d	$a1, $sp, 16                    # 8-byte Folded Reload
 	ld.w	$a1, $a1, 0
-	ld.d	$a5, $sp, 24                    # 8-byte Folded Reload
+	ld.d	$a4, $sp, 24                    # 8-byte Folded Reload
 .LBB0_4:                                # %._crit_edge67
                                         #   in Loop: Header=BB0_5 Depth=1
-	addi.d	$a2, $a5, 1
-	bge	$a5, $a1, .LBB0_19
+	addi.d	$a2, $a4, 1
+	bge	$a4, $a1, .LBB0_19
 .LBB0_5:                                # %.preheader50
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB0_8 Depth 2
                                         #       Child Loop BB0_11 Depth 3
                                         #       Child Loop BB0_14 Depth 3
                                         #       Child Loop BB0_18 Depth 3
-	move	$a5, $a2
+	move	$a4, $a2
 	slli.d	$a2, $a2, 4
-	alsl.d	$a2, $a5, $a2, 3
+	alsl.d	$a2, $a4, $a2, 3
 	st.d	$a2, $sp, 88                    # 8-byte Folded Spill
 	add.d	$a2, $a0, $a2
 	ld.w	$a3, $a2, 8
-	ori	$a4, $zero, 1
-	blt	$a3, $a4, .LBB0_4
+	blez	$a3, .LBB0_4
 # %bb.6:                                # %.lr.ph66.preheader
                                         #   in Loop: Header=BB0_5 Depth=1
 	ori	$a1, $zero, 1
-	slli.d	$a0, $a5, 3
+	slli.d	$a0, $a4, 3
 	st.d	$a0, $sp, 72                    # 8-byte Folded Spill
-	st.d	$a5, $sp, 24                    # 8-byte Folded Spill
-	slli.d	$s4, $a5, 2
+	st.d	$a4, $sp, 24                    # 8-byte Folded Spill
+	slli.d	$s4, $a4, 2
 	b	.LBB0_8
 	.p2align	4, , 16
 .LBB0_7:                                # %.loopexit
@@ -109,8 +108,8 @@ printnets:                              # @printnets
 	ld.d	$a1, $sp, 88                    # 8-byte Folded Reload
 	add.d	$a2, $a0, $a1
 	ld.w	$a3, $a2, 8
-	addi.d	$a1, $s6, 1
-	bge	$s6, $a3, .LBB0_3
+	addi.d	$a1, $s7, 1
+	bge	$s7, $a3, .LBB0_3
 .LBB0_8:                                # %.lr.ph66
                                         #   Parent Loop BB0_5 Depth=1
                                         # =>  This Loop Header: Depth=2
@@ -121,10 +120,9 @@ printnets:                              # @printnets
 	move	$a2, $a1
 	slli.d	$a1, $a1, 3
 	ldx.d	$a0, $a0, $a1
-	ld.d	$s7, $a0, 16
-	ori	$a1, $zero, 1
+	ld.d	$s8, $a0, 16
 	st.d	$a2, $sp, 96                    # 8-byte Folded Spill
-	bne	$a2, $a1, .LBB0_12
+	bne	$a2, $s6, .LBB0_12
 # %bb.9:                                #   in Loop: Header=BB0_8 Depth=2
 	ld.d	$a1, $sp, 64                    # 8-byte Folded Reload
 	ld.d	$a1, $a1, 0
@@ -147,12 +145,11 @@ printnets:                              # @printnets
 	pcaddu18i	$ra, %call36(fprintf)
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB0_12
+	blez	$a0, .LBB0_12
 # %bb.10:                               # %.lr.ph.split.us.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	move	$s6, $zero
-	ori	$s8, $zero, 4
+	ori	$s7, $zero, 4
 	.p2align	4, , 16
 .LBB0_11:                               # %.lr.ph.split.us
                                         #   Parent Loop BB0_5 Depth=1
@@ -160,7 +157,7 @@ printnets:                              # @printnets
                                         # =>    This Inner Loop Header: Depth=3
 	ld.d	$a0, $s1, 0
 	ldx.w	$a0, $a0, $s4
-	ldx.w	$a1, $s2, $s8
+	ldx.w	$a1, $s2, $s7
 	ld.d	$a2, $s0, 0
 	add.w	$a0, $a1, $a0
 	slli.d	$a0, $a0, 3
@@ -171,33 +168,32 @@ printnets:                              # @printnets
 	jirl	$ra, $ra, 0
 	ld.w	$a0, $s2, 0
 	addi.d	$s6, $s6, 1
-	addi.d	$s8, $s8, 4
+	addi.d	$s7, $s7, 4
 	blt	$s6, $a0, .LBB0_11
 .LBB0_12:                               # %.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
 	move	$a2, $zero
-	beqz	$s7, .LBB0_16
+	ori	$s6, $zero, 1
+	beqz	$s8, .LBB0_16
 # %bb.13:                               # %.lr.ph57.preheader
                                         #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
 	.p2align	4, , 16
 .LBB0_14:                               # %.lr.ph57
                                         #   Parent Loop BB0_5 Depth=1
                                         #     Parent Loop BB0_8 Depth=2
                                         # =>    This Inner Loop Header: Depth=3
-	ld.d	$s7, $s7, 16
+	ld.d	$s8, $s8, 16
 	addi.w	$a2, $a2, 1
-	bnez	$s7, .LBB0_14
+	bnez	$s8, .LBB0_14
 # %bb.15:                               # %._crit_edge
                                         #   in Loop: Header=BB0_8 Depth=2
-	ori	$a0, $zero, 1
-	bne	$s6, $a0, .LBB0_7
+	bne	$s7, $s6, .LBB0_7
 	b	.LBB0_17
 	.p2align	4, , 16
 .LBB0_16:                               #   in Loop: Header=BB0_8 Depth=2
-	ld.d	$s6, $sp, 96                    # 8-byte Folded Reload
-	ori	$a0, $zero, 1
-	bne	$s6, $a0, .LBB0_7
+	ld.d	$s7, $sp, 96                    # 8-byte Folded Reload
+	bne	$s7, $s6, .LBB0_7
 .LBB0_17:                               #   in Loop: Header=BB0_8 Depth=2
 	move	$a0, $fp
 	ld.d	$a1, $sp, 32                    # 8-byte Folded Reload

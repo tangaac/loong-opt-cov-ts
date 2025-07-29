@@ -182,7 +182,7 @@ QRiterate:                              # @QRiterate
 	addi.d	$t3, $t6, -1
 	move	$t8, $zero
 	move	$a4, $a2
-	blt	$t3, $a5, .LBB3_1
+	blez	$t3, .LBB3_1
 # %bb.9:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB3_1 Depth=1
 	move	$a4, $t6

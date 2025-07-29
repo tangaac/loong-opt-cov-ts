@@ -262,9 +262,8 @@ _Z9alphaBetaR13HexxagonBoardiiiPFvvE:   # @_Z9alphaBetaR13HexxagonBoardiiiPFvvE
 .LBB7_5:
 	ld.w	$a1, $s0, 0
 	lu12i.w	$a0, -8
-	ori	$a2, $zero, 1
 	ori	$s4, $a0, 768
-	blt	$a1, $a2, .LBB7_10
+	blez	$a1, .LBB7_10
 # %bb.6:
 	ori	$a1, $a0, 769
 	blt	$s2, $a1, .LBB7_10
@@ -325,8 +324,7 @@ _Z9alphaBetaR13HexxagonBoardiiiPFvvE:   # @_Z9alphaBetaR13HexxagonBoardiiiPFvvE
 	move	$a1, $zero
 	pcaddu18i	$ra, %call36(_ZN13HexxagonBoard11countBricksEi)
 	jirl	$ra, $ra, 0
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB7_17
+	blez	$a0, .LBB7_17
 # %bb.14:
 	lu12i.w	$a1, 4
 	ori	$a1, $a1, 3616
@@ -348,8 +346,7 @@ _Z9alphaBetaR13HexxagonBoardiiiPFvvE:   # @_Z9alphaBetaR13HexxagonBoardiiiPFvvE
 	addi.d	$sp, $sp, 112
 	ret
 .LBB7_17:
-	addi.w	$a1, $zero, -1
-	bge	$a1, $a0, .LBB7_19
+	bltz	$a0, .LBB7_19
 .LBB7_18:
 	move	$a0, $fp
 	ld.d	$s8, $sp, 24                    # 8-byte Folded Reload
@@ -416,70 +413,69 @@ _ZN16HexxagonMoveList13scoreAllMovesE13HexxagonBoardiPFvvEi: # @_ZN16HexxagonMov
 	blt	$s0, $a0, .LBB8_14
 # %bb.1:                                # %.preheader.lr.ph
 	ld.w	$a0, $s2, 0
+	ori	$s3, $zero, 1
 	lu12i.w	$a1, -8
 	ori	$s5, $a1, 768
 	lu12i.w	$a1, 7
-	ori	$s7, $a1, 3328
-	ori	$s4, $zero, 1
+	ori	$s6, $a1, 3328
 	b	.LBB8_3
 	.p2align	4, , 16
 .LBB8_2:                                # %_ZN16HexxagonMoveList8sortListEv.exit
                                         #   in Loop: Header=BB8_3 Depth=1
-	addi.w	$s4, $s4, 1
+	addi.w	$s3, $s3, 1
 	ld.d	$a1, $sp, 0                     # 8-byte Folded Reload
-	beq	$s4, $a1, .LBB8_14
+	beq	$s3, $a1, .LBB8_14
 .LBB8_3:                                # %.preheader
                                         # =>This Loop Header: Depth=1
                                         #     Child Loop BB8_5 Depth 2
                                         #     Child Loop BB8_9 Depth 2
                                         #       Child Loop BB8_12 Depth 3
-	ori	$a1, $zero, 1
-	blt	$a0, $a1, .LBB8_2
+	blez	$a0, .LBB8_2
 # %bb.4:                                # %.lr.ph.preheader
                                         #   in Loop: Header=BB8_3 Depth=1
-	move	$s8, $zero
-	ori	$s6, $zero, 1
-	move	$s3, $s5
+	move	$s7, $zero
+	ori	$s8, $zero, 1
+	move	$s4, $s5
 	move	$s0, $s5
 	.p2align	4, , 16
 .LBB8_5:                                # %.lr.ph
                                         #   Parent Loop BB8_3 Depth=1
                                         # =>  This Inner Loop Header: Depth=2
-	slt	$a0, $s3, $s0
-	masknez	$a1, $s3, $a0
+	slt	$a0, $s4, $s0
+	masknez	$a1, $s4, $a0
 	maskeqz	$a0, $s0, $a0
-	or	$s3, $a0, $a1
+	or	$s4, $a0, $a1
 	addi.d	$a0, $sp, 8
 	move	$a1, $s1
 	pcaddu18i	$ra, %call36(_ZN13HexxagonBoardC1ERKS_)
 	jirl	$ra, $ra, 0
 	ld.d	$a0, $s2, 8
-	add.d	$a1, $a0, $s8
+	add.d	$a1, $a0, $s7
 	addi.d	$a0, $sp, 8
 	pcaddu18i	$ra, %call36(_ZN13HexxagonBoard9applyMoveER12HexxagonMove)
 	jirl	$ra, $ra, 0
-	sub.w	$a3, $zero, $s3
+	sub.w	$a3, $zero, $s4
 	addi.d	$a0, $sp, 8
-	move	$a1, $s4
+	move	$a1, $s3
 	move	$a2, $s5
 	move	$a4, $fp
 	pcaddu18i	$ra, %call36(_Z9alphaBetaR13HexxagonBoardiiiPFvvE)
 	jirl	$ra, $ra, 0
 	ld.d	$a2, $s2, 8
 	sub.w	$a1, $zero, $a0
-	add.d	$a0, $a2, $s8
+	add.d	$a0, $a2, $s7
 	st.w	$a1, $a0, 4
 	ld.w	$a0, $s2, 0
-	bge	$s6, $a0, .LBB8_7
+	bge	$s8, $a0, .LBB8_7
 # %bb.6:                                # %.lr.ph
                                         #   in Loop: Header=BB8_5 Depth=2
 	slt	$a2, $a1, $s0
 	masknez	$a1, $a1, $a2
 	maskeqz	$a2, $s0, $a2
 	or	$s0, $a2, $a1
-	addi.d	$s8, $s8, 8
-	addi.d	$s6, $s6, 1
-	blt	$s0, $s7, .LBB8_5
+	addi.d	$s7, $s7, 8
+	addi.d	$s8, $s8, 1
+	blt	$s0, $s6, .LBB8_5
 .LBB8_7:                                # %._crit_edge
                                         #   in Loop: Header=BB8_3 Depth=1
 	ori	$t0, $zero, 2
